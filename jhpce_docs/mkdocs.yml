@@ -1,2 +1,9 @@
 site_name: JHPCE
-
+site_url: https://www.jhpce-jhu.github.io/test_mkdocs/jhpce_docs/
+nav:
+  - Home: index.md
+  - Register: new_users.md
+  - Help: help.md
+  - Storage: storage.md
+  - Knowledge base: knowledge_base.md
+theme: readthedocs
