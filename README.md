@@ -1,2 +1,5 @@
-# test_mkdocs
-A repo to test out MKDOCS
+#
+
+A repo for a MKDOCS version of the JHPCE documentation site
+
+Live version of the site: [https://jhpce-jhu.github.io/jhpce_mkdocs/jhpce_docs/site/index.html](https://jhpce-jhu.github.io/jhpce_mkdocs/jhpce_docs/site/index.html)
