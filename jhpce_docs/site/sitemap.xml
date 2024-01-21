@@ -2,27 +2,32 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
          <loc>https://www.jhpce-jhu.github.io/test_mkdocs/jhpce_docs/</loc>
-         <lastmod>2023-12-04</lastmod>
+         <lastmod>2024-01-16</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://www.jhpce-jhu.github.io/test_mkdocs/jhpce_docs/faq/</loc>
+         <lastmod>2024-01-16</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://www.jhpce-jhu.github.io/test_mkdocs/jhpce_docs/help/</loc>
-         <lastmod>2023-12-04</lastmod>
+         <lastmod>2024-01-16</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://www.jhpce-jhu.github.io/test_mkdocs/jhpce_docs/knowledge_base/</loc>
-         <lastmod>2023-12-04</lastmod>
+         <lastmod>2024-01-16</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://www.jhpce-jhu.github.io/test_mkdocs/jhpce_docs/new_users/</loc>
-         <lastmod>2023-12-04</lastmod>
+         <lastmod>2024-01-16</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://www.jhpce-jhu.github.io/test_mkdocs/jhpce_docs/storage/</loc>
-         <lastmod>2023-12-04</lastmod>
+         <lastmod>2024-01-16</lastmod>
          <changefreq>daily</changefreq>
     </url>
 </urlset>
