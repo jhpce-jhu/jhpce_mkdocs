@@ -1,5 +1,5 @@
 site_name: JHPCE
-site_url: https://www.jhpce-jhu.github.io/jhpce_mkdocs/jhpce_docs/
+site_url: https://jhpce-jhu.github.io/jhpce_mkdocs/jhpce_docs/site/
 nav:
   - Home: index.md
   - Register: new_users.md
