@@ -22,4 +22,4 @@ scheduled every other week.
 
 ## Orientation Slides
 
-You can download the orientation slides at [JHPCE-Overview](files/JHPCE-Overview-2024-01.pdf)
+You can download the orientation slides at [JHPCE-Overview](/files/JHPCE-Overview-2024-01.pdf)
