@@ -1,33 +1,3 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-    <url>
-         <loc>https://jhpce-jhu.github.io/jhpce_mkdocs/jhpce_docs/site2/</loc>
-         <lastmod>2024-01-23</lastmod>
-         <changefreq>daily</changefreq>
-    </url>
-    <url>
-         <loc>https://jhpce-jhu.github.io/jhpce_mkdocs/jhpce_docs/site2/documents/</loc>
-         <lastmod>2024-01-23</lastmod>
-         <changefreq>daily</changefreq>
-    </url>
-    <url>
-         <loc>https://jhpce-jhu.github.io/jhpce_mkdocs/jhpce_docs/site2/help/</loc>
-         <lastmod>2024-01-23</lastmod>
-         <changefreq>daily</changefreq>
-    </url>
-    <url>
-         <loc>https://jhpce-jhu.github.io/jhpce_mkdocs/jhpce_docs/site2/knowledge_base/</loc>
-         <lastmod>2024-01-23</lastmod>
-         <changefreq>daily</changefreq>
-    </url>
-    <url>
-         <loc>https://jhpce-jhu.github.io/jhpce_mkdocs/jhpce_docs/site2/new_users/</loc>
-         <lastmod>2024-01-23</lastmod>
-         <changefreq>daily</changefreq>
-    </url>
-    <url>
-         <loc>https://jhpce-jhu.github.io/jhpce_mkdocs/jhpce_docs/site2/storage/</loc>
-         <lastmod>2024-01-23</lastmod>
-         <changefreq>daily</changefreq>
-    </url>
 </urlset>

@@ -1,5 +1,5 @@
 site_name: JHPCE Autobuilt Site
-site_url: https://jhpce-jhu.github.io/jhpce_mkdocs/jhpce_docs/site/
+site_url: https://jhpce-jhu.github.io/jhpce_mkdocs/site/
 docs_dir: jhpce_docs/site
 nav:
   - Home: index.md
