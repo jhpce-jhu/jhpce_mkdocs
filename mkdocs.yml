@@ -7,7 +7,6 @@ nav:
   - Help: help.md
   - Storage: storage.md
   - FAQ : faq.md
-    - File Transfer:
       - Globus: globus.md
   - Knowledge base: knowledge_base.md
   - Documents2: documents.md
