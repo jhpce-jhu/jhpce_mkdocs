@@ -1,6 +1,6 @@
 site_name: JHPCE Autobuilt Site
 site_url: https://jhpce-jhu.github.io/
-docs_dir: jhpce_docs/site
+#docs_dir: jhpce_docs/site
 nav:
   - Home: index.md
   - Register: new_users.md
