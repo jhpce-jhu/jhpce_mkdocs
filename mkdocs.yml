@@ -6,7 +6,7 @@ nav:
   - Register: new_users.md
   - Help: help.md
   - Storage: storage.md
-  - FAQ : faq.md
+  - FAQ :
       - Globus: globus.md
   - Knowledge base: knowledge_base.md
   - Documents2: documents.md
