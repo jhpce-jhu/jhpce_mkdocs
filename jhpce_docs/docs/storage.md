@@ -24,7 +24,7 @@ For inquiries about purchasing storage, please email [bitsupport@lists.jhu.edu](
 | Temp scratch | /scratch/temp/<JQT> | $TMPDIR | 500GB-4TB | None | Transient | Free | - | [1][2] |
 | Personal scratch | /fastscratch/myscratch/<userid> | $MYSCRATCH | 22TB | 1TB | 30 days | Free | - | [1][3] |
 | Leased | Lustre /dcl02/leased | - | 200TB | As agreed | Intermediate | $50/TByr | Used TB | - |
-| Project | ZFS /dcs04, /dcs05 | - | 5,000TB | As purchased | Long | $20/TByr + buyin | Purchased TB | [4] |
+| Project | ZFS /dcs04, /dcs05, /dcs07 | - | 5,000TB | As purchased | Long | $20/TByr + buyin | Purchased TB | [4] |
 | Backup | ZFS varies | - | 2,675TB | - | Permanent | $11/TByr | Purchased TB | [5] |
 
 **Notes:**
