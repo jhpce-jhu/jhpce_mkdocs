@@ -19,3 +19,7 @@ your form, the JHPCE management team will contact you to schedule your
 attendance at the next JHPCE Orientation.  All new users are required
 to attend a 1 1/2 hour orientation session. Orientations are generally
 scheduled every other week.
+
+## Orientation Slides
+
+You can download the orientation slides at [JHPCE-Overview](files/JHPCE-Overview-2024-01.pdf)
