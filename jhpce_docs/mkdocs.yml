@@ -7,4 +7,5 @@ nav:
   - Storage: storage.md
   - FAQ : faq.md
   - Knowledge base: knowledge_base.md
+  - Links/Docs: docs.md
 theme: readthedocs
