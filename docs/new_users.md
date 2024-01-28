@@ -4,7 +4,7 @@
 
 If you are a Principal Investigator registering a new project or
 organization, please fill out [this
-form](https://jhpce.jhu.edu/register/project/#form). If you have never
+orm](https://jhpce.jhu.edu/register/project/#form). If you have never
 registered a project and budget number with the JHPCE, we request that
 you contact the director of the JHPCE to arrange a 1/2 hour
 orientation (either in person or via telephone).
@@ -70,7 +70,7 @@ attending the Orientation Session for the CMS Subcluster of the JHPCE
         Install MobaXterm by following the first few steps of
         <https://jhpce.jhu.edu/knowledge-base/mobaxterm-configuration/>
         .  Alternatively, if you already use an SSH client, (such as
-        [putty](%20http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html)
+        [putty](http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html)
         or [Cygwin)](http://x.cygwin.com/) and an SCP client  (such as
         [WinSCP),](http://winscp.net/eng/docs/free_sftp_client_for_windows)
         you can continue using that software.

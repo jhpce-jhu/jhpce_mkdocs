@@ -11,7 +11,7 @@ attending the Orientation Session for the CMS Subcluster of the JHPCE
     from:[JHPCE-Overview-CMS.pdf.](https://jhpce.jhu.edu/wp-content/uploads/2024/01/JHPCE-Overview-CMS-2023-12.pdf)
 +   If you have never used a Linux or Unix system before, we strongly
     recommend going through the [Unix Command
-    Line](https://www.digitalocean.com/community/tutorials/a-linux-command-line-primer%20)
+    Line](https://www.digitalocean.com/community/tutorials/a-linux-command-line-primer)
     tutorial. The cluster is entirely Linux based. Our Orientation is
     about using the cluster, not using Linux. This tutorial should
     only take 30 minutes or so to go through.
@@ -43,7 +43,7 @@ attending the Orientation Session for the CMS Subcluster of the JHPCE
         Install MobaXterm by following the first few steps of
         <https://jhpce.jhu.edu/knowledge-base/mobaxterm-configuration/>
         .  Alternatively, if you already use an SSH client, (such as
-        [putty](%20http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html)
+        [putty](http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html)
         or [Cygwin)](http://x.cygwin.com/) and an SCP client  (such as
         [WinSCP),](http://winscp.net/eng/docs/free_sftp_client_for_windows)
         you can continue using that software.
