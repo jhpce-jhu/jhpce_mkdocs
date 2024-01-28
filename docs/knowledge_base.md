@@ -123,11 +123,6 @@ filesystems.
 + The `DCL02` storage array is built on encrypted disk
 devices.
 
-### [File Transfer](https://jhpce.jhu.edu/knowledge-base/file-transfer/)
-- [Setting up MobaXterm for File Transfers with the JHPCE Cluster](https://jhpce.jhu.edu/knowledge-base/setting-up-mobaxterm-for-file-transfers-with-the-jhpce-cluster/)
-- [Using rclone to Access OneDrive](https://jhpce.jhu.edu/knowledge-base/using-rclone-to-access-onedrive/)
-
-### [GPUs on the JHPCE Cluster under SLURM](https://jhpce.jhu.edu/knowledge-base/gpus-on-the-jhpce-cluster-under-slurm/)
 
 ### [JHPCE Web Portal](https://jhpce.jhu.edu/knowledge-base/jhpce-web-portal/)
 
@@ -140,10 +135,6 @@ devices.
 ### [Numerical Linear Algebra Libraries](https://jhpce.jhu.edu/knowledge-base/numerical-linear-algebra-libraries/)
 
 ### [Running RStudio Server on the JHPCE Cluster](https://jhpce.jhu.edu/knowledge-base/running-rstudio-server-on-the-jhpce-cluster/)
-
-### [SLURM](https://jhpce.jhu.edu/knowledge-base/slurm/)
-
-### [Using Globus to Transfer Files](https://jhpce.jhu.edu/knowledge-base/using-globus-to-transfer-files/)
 
 ### [HOW-TO](https://jhpce.jhu.edu/knowledge-base/how-to/)
 

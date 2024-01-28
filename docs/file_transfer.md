@@ -180,3 +180,7 @@ wget ftp://USER:PASSWORD@ftp.site.gov/path/to/file
 ```
 
 All of these should be done from the `rnet` queue to make use of our high speed ScienceDMZ network connection.
+
+## Links
+- [Setting up MobaXterm for File Transfers with the JHPCE Cluster](https://jhpce.jhu.edu/knowledge-base/setting-up-mobaxterm-for-file-transfers-with-the-jhpce-cluster/)
+- [Using rclone to Access OneDrive](https://jhpce.jhu.edu/knowledge-base/using-rclone-to-access-onedrive/)

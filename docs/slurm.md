@@ -13,3 +13,7 @@ the JHPCE cluster is available, and we will be providing training
 sessions for end users as we get closer to the cutover date. There are
 also documents and example code files in /jhpce/shared/jhpce/slurm on
 the test nodes.
+
+## Links
+[GPUs on the JHPCE Cluster under SLURM](https://jhpce.jhu.edu/knowledge-base/gpus-on-the-jhpce-cluster-under-slurm/)
+
