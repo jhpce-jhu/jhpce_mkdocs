@@ -12,7 +12,7 @@ nav:
   - Links/Docs: docs.md
   - Modules: modules.md
   - File transfer: file_transfer.md
-  - Moba Xterm: moba_xterm.md	
+  - Moba Xterm: moba_xterm.md   
   - Globus: globus.md
   - ACL: acl.md
 theme: readthedocs
