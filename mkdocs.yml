@@ -4,10 +4,14 @@ nav:
   - Home: index.md
   - New users: new_users.md
   - Help: help.md
+  - SLURM: slurm.md
   - Storage: storage.md
+  - Partitions: partitions.md
   - FAQ : faq.md
   - Knowledge base: knowledge_base.md
   - Links/Docs: docs.md
+  - Modules: modules.md
+  - File transfer: file_transfer.md
   - Globus: globus.md
-  - Partitions: partitions.md
+  - ACL: acl.md
 theme: readthedocs

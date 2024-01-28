@@ -24,6 +24,21 @@ scheduled every other week.
 
 You can download the orientation slides at [JHPCE-Overview](files/JHPCE-Overview-2024-01.pdf)
 
+## Generally expected knowledge
++ Anything I/O intensive should be done on the compute nodes rather than the jhpce01 login node.
++ Anything more than a quick `ls` including: copying large files, recursively changing permissions, creating or extracting tar or zip archives, running a `find` should be done in a session on a compute node.
++ Data transfers of files larger about 1GB should be done through `jhpce-transfer01.jhsph.edu` rather than a login node.
++ Try to avoid having directories with more than 100 files in them. 
++ Try to avoid storing programs and scripts in data directories like `DCL*`.
+  + Most storage on the cluster is raided but not backed up. 
++ We do back up home directories and a few other select directories on the DCS and DCL systems for groups that have requested backups.  We do have additional backup storage capacity available for a small fee.
++ Make use of your 1 TB of fastscratch storage for IO intensive job
++ Please remember that DCS and DCL stand for “Dirt Cheap Storage” and
+  “Dirt Cheap Lustre”, and were designed with cost-effectiveness as a
+  primary driving factor over performance.
++ Sharing data can be done in several ways on the cluster: i.) traditional Unix file permissions and groups and ii.) Access Control Lists (ACLs).
++ Sharing files with external collaborators can be done via Globus.
+
 
 ## New C-SUB user orientation 
 
