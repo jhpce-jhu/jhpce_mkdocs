@@ -8,4 +8,4 @@
 + Images are in `docs/images`
 + Files are in `docs/files`
 + `mkdocs build` should run without errors or warnings.
-+ [Mkdocs documentation0](https://www.mkdocs.org/getting-started/)
++ [Mkdocs documentation](https://www.mkdocs.org/getting-started/)
