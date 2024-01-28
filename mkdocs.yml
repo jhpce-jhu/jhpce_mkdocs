@@ -10,4 +10,7 @@ nav:
       - Globus: globus.md
   - Knowledge base: knowledge_base.md
   - Documents2: documents.md
+  - User Guide :
+      - Getting An Account : accounts.md
+      - Software : software.md
 theme: readthedocs
