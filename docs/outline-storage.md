@@ -1,6 +1,6 @@
 # STORAGE TOPIC - page to develop outline
 
-Whether this is all on one page or broken up into multiple pages, what about storage do we need to include in our site?
+Whether this is all on one page or broken up into multiple pages, what about storage do we need to include in our site? Some of the items below are not yet included in our existing SGE-mentioning page.
 
 ## Types of storage
 Mention local versus network.
