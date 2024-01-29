@@ -18,4 +18,5 @@ nav:
   - Managing Files Topic: outline-managing-files.md
   - Software Topic: outline-software.md
   - Storage Topic: outline-storage.md
-theme: readthedocs
+theme: 
+  name: material
