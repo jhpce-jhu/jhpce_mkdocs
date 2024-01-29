@@ -65,7 +65,7 @@ bwoser to use when displaying either help or grachical output. We recommend
 using the chromium browse, and you can use the following options to the
 sas command to do so:
 
-`sas -helpbrowser SAS -xrm "SAS.webBrowser:'/usr/bin/chromium-browser'" -xrm "SAS.helpBrowser:'/usr/bin/chromium-browser'`
+`sas -helpbrowser SAS -xrm "SAS.webBrowser:'/usr/bin/chromium-browser'" -xrm "SAS.helpBrowser:'/usr/bin/chromium-browser'"`
 
 ## I’m on a Mac, and the `~C` command to interrupt an ssh session isn’t working
   
