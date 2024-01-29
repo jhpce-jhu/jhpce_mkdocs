@@ -29,6 +29,5 @@ theme:
     - navigation.sections
     - navigation.expand
     - navigation.path
-  copyright: Copyright &copy; 2024 - 2028 Joint JHPCE Exchange
-  extra:
-    generator: false
+copyright: Copyright &copy; 2024 - 2028 Joint JHPCE Exchange
+
