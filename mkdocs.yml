@@ -1,16 +1,27 @@
-site_name: JHPCE Autobuilt Site
-site_url: https://jhpce-jhu.github.io/
-docs_dir: jhpce_docs/docs
+site_name: JHPCE
+site_url: https://www.jhpce-jhu.github.io/jhpce_docs/
 nav:
   - Home: index.md
-  - Register: new_users.md
+  - New users: new_users.md
   - Help: help.md
   - Storage: storage.md
-  - FAQ :
-      - Globus: globus.md
+  - FAQ:
+      - FAQs : faq.md
+      - SLURM: slurm.md
+      - Partitions: partitions.md
   - Knowledge base: knowledge_base.md
-  - Documents2: documents.md
-  - User Guide :
-      - Getting An Account : accounts.md
-      - Software : software.md
-theme: readthedocs
+  - Links/Docs: docs.md
+  - Modules: modules.md
+  - File transfer: file_transfer.md
+  - Moba Xterm: moba_xterm.md   
+  - Globus: globus.md
+  - ACL: acl.md
+  - Managing Files Topic: outline-managing-files.md
+  - Software Topic: outline-software.md
+  - Storage Topic: outline-storage.md
+theme: 
+  name: material
+  palette:
+    scheme: slate
+  features:
+    - navigation.sections

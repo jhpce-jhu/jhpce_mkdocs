@@ -4,7 +4,7 @@
 
 If you are a Principal Investigator registering a new project or
 organization, please fill out [this
-form](https://jhpce.jhu.edu/register/project/#form). If you have never
+orm](https://jhpce.jhu.edu/register/project/#form). If you have never
 registered a project and budget number with the JHPCE, we request that
 you contact the director of the JHPCE to arrange a 1/2 hour
 orientation (either in person or via telephone).
@@ -23,6 +23,21 @@ scheduled every other week.
 ## Orientation Slides
 
 You can download the orientation slides at [JHPCE-Overview](files/JHPCE-Overview-2024-01.pdf)
+
+## Generally expected knowledge
++ Anything I/O intensive should be done on the compute nodes rather than the jhpce01 login node.
++ Anything more than a quick `ls` including: copying large files, recursively changing permissions, creating or extracting tar or zip archives, running a `find` should be done in a session on a compute node.
++ Data transfers of files larger about 1GB should be done through `jhpce-transfer01.jhsph.edu` rather than a login node.
++ Try to avoid having directories with more than 100 files in them. 
++ Try to avoid storing programs and scripts in data directories like `DCL*`.
+  + Most storage on the cluster is raided but not backed up. 
++ We do back up home directories and a few other select directories on the DCS and DCL systems for groups that have requested backups.  We do have additional backup storage capacity available for a small fee.
++ Make use of your 1 TB of fastscratch storage for IO intensive job
++ Please remember that DCS and DCL stand for “Dirt Cheap Storage” and
+  “Dirt Cheap Lustre”, and were designed with cost-effectiveness as a
+  primary driving factor over performance.
++ Sharing data can be done in several ways on the cluster: i.) traditional Unix file permissions and groups and ii.) Access Control Lists (ACLs).
++ Sharing files with external collaborators can be done via Globus.
 
 
 ## New C-SUB user orientation 
@@ -70,7 +85,7 @@ attending the Orientation Session for the CMS Subcluster of the JHPCE
         Install MobaXterm by following the first few steps of
         <https://jhpce.jhu.edu/knowledge-base/mobaxterm-configuration/>
         .  Alternatively, if you already use an SSH client, (such as
-        [putty](%20http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html)
+        [putty](http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html)
         or [Cygwin)](http://x.cygwin.com/) and an SCP client  (such as
         [WinSCP),](http://winscp.net/eng/docs/free_sftp_client_for_windows)
         you can continue using that software.
