@@ -22,3 +22,5 @@ theme:
   name: material
   palette:
     scheme: slate
+  features:
+    - navigation.sections
