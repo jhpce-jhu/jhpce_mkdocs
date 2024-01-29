@@ -6,9 +6,10 @@ nav:
   - Help: help.md
   - Storage: storage.md
   - FAQ:
-      - FAQs: faq.md
-      - SLURM: slurm.md
-      - Partitions: partitions.md
+      - Topics:
+        - FAQs: faq.md
+        - SLURM: slurm.md
+        - Partitions: partitions.md
   - Knowledge base: knowledge_base.md
   - Links/Docs: docs.md
   - Modules: modules.md
