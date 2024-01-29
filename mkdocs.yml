@@ -15,6 +15,6 @@ nav:
   - Moba Xterm: moba_xterm.md   
   - Globus: globus.md
   - ACL: acl.md
-  - Topic: outline-software.md
-  - Topic: outline-storage.md
+  - Software Topic: outline-software.md
+  - Storage Topic: outline-storage.md
 theme: readthedocs
