@@ -60,27 +60,12 @@ forwarding.` To eliminate this warning, add the line `XAuthLocation
 
 ## When running SAS, an error dialog pops up about Remote Browser
 
-In SAS, results are sometimes presented in HTML format, and need a web
-browser running in order to view the results. When SAS is used on a
-desktop, the local desktop browser is used. However when SAS is run on
-a remote system, such as on the JHPCE cluster, SAS doesn’t know how to
-connect to the browser, and needs to use the SAS Remote Browser
-utility. To do so:
+When running SAS, you may need to specify options to indicate which
+bwoser to use when displaying either help or grachical output. We recommend
+using the chromium browse, and you can use the following options to the
+sas command to do so:
 
-1. Login to the cluster as you normally would:
-2. On the login node, start up the Firefox browser in the background: `console> firefox &`
-3. Still on the login node, `console> rbrowser &`
-4. Now connect to the SAS queue, and start up the SAS program.
-
-``` 
-console> qrsh -l sas
-console> sas
-```
-
-You will be prompted to allow pop-ups from the SAS node when you first
-try and display something back to the Firefox browser on – you
-should allow the pop-ups.
-
+`sas -helpbrowser SAS -xrm "SAS.webBrowser:'/usr/bin/chromium-browser'" -xrm "SAS.helpBrowser:'/usr/bin/chromium-browser'`
 
 ## I’m on a Mac, and the `~C` command to interrupt an ssh session isn’t working
   
