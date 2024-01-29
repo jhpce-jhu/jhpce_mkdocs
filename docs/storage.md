@@ -8,8 +8,7 @@ There are 2 main categories of storage space available for purchase on the JHPCE
 
 Pay-as-you-go spaces are generally more expensive than project spaces due to their smaller size, upfront costs being included in the annual fee, and higher maintenance requirements.
 
-Additionally, two types of scratch storage space are available on the cluster:
-- **SGE scratch space**: A unique `$TMPDIR` directory is created for each job/task on the cluster's compute nodes, ranging from 500GB to 4TB.
+Additionally all users have access to 1TB of "fastscratch" storage for storing files less than 30 days.  More information on using fastscratch can be found at [/jhpce_mkdocs/knowledge_base/#fastscratch]
 - **Personal Scratch space**: A network-based filesystem with a backend NVME based storage array, intended for short-term storage of large files.
 
 Off-site backup space is also available, with `/users` directory currently backed up, and other directories backed up upon request.
