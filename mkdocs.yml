@@ -20,15 +20,7 @@ nav:
   - Managing Files Topic: outline-managing-files.md
   - Software Topic: outline-software.md
   - Storage Topic: outline-storage.md
-  - Potato:
-      - Foo:
-        - 'foo/index.md'
-        - Something: 'foo/another_page'
-      - Bar:
-        - 'bar/index.md'
-        - Something: 'bar/another_page'
-  - Tomato:
-      - Radars: 'something/something.md'
+  
 theme: 
   name: material
   palette:
