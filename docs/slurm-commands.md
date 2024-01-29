@@ -1,8 +1,6 @@
 # SLURM COMMANDS
 Here are links to online copies of the manual pages for commands. If we're written a page with advice about using the command, use the (local) link.
 
-Please do not run information-gathering commands like (slurmpic, squeue, sacct) too frequently, for example once every 2 minutes in shell scripts. The main daemon that does everything has to respond to such queries.
-
 ## Locally Written Tools
 slurmpic: Essential program for getting cluster status info. Use -h option to see essential usage details.
 
@@ -21,6 +19,8 @@ All of the manual pages are [here](https://slurm.schedmd.com/archive/slurm-22.05
 * [srun](https://slurm.schedmd.com/archive/slurm-22.05.9/srun.html): launch one or more tasks of an application across requested resources
 
 ### Information about cluster and jobs
+Do not run slurmpic, squeue, sacct or other Slurm client commands that send remote procedure calls to slurmctld, the main SLURM control and scheduling daemon, from loops in shell scripts or other programs. Ensure that programs limit calls to slurmctld to the minimum necessary for the information you are trying to gather.
+
 * [sacct](https://slurm.schedmd.com/archive/slurm-22.05.9/sacct.html): display accounting data for jobs in the Slurm database
 * [scontrol](https://slurm.schedmd.com/archive/slurm-22.05.9/scontrol.html): display (or modify when permitted) the status of Slurm entities (jobs, nodes, partitions, reservations)
 * [sinfo](https://slurm.schedmd.com/archive/slurm-22.05.9/sinfo.html): display node and partition information
