@@ -25,3 +25,4 @@ theme:
     scheme: slate
   features:
     - navigation.sections
+    - navigation.tabs
