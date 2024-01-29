@@ -20,3 +20,5 @@ nav:
   - Storage Topic: outline-storage.md
 theme: 
   name: material
+  palette:
+    scheme: slate
