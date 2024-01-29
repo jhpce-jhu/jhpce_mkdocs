@@ -1,6 +1,8 @@
 Test 2
 # Current Storage Offerings
 
+Test1
+
 There are 2 main categories of storage space available for purchase on the JHPCE cluster, detailed below:
 
 1. **Pay-as-you-go space**: This includes home directory space, legacy storage space, and leased spaces. Users are charged only for the actual space used and the time data is stored there. For example, using 10 TB of `/dcl01/leased` space for a year costs $500/year.
@@ -45,3 +47,14 @@ The storage spaces listed below are currently in use but are no longer available
 | Leased | ZFS /legacy | - | 100TB | From legacy | Short | < $1350/TByr | Used TB | [1] |
 | Leased | ZFS /starter/starter-02 | - | 10TB | 10TB | Short | $1,041/TByr | Used TB | [1] |
 | Project | Lustre /dcl01 | - | 3,400TB | As purchased | Long | $26-$
+
+There are 2 main categories of storage space available for purchase on the JHPCE cluster, detailed below:
+
+1. **Pay-as-you-go space**: This includes home directory space, legacy storage space, and leased spaces. Users are charged only for the actual space used and the time data is stored there. For example, using 10 TB of `/dcl01/leased` space for a year costs $500/year.
+
+2. **Project spaces**: These are large storage arrays built approximately every 18 months, funded by various labs purchasing allocations on the storage array. For example, the buy-in cost for `/dcl02` was $43/TB, with a $300/year storage management fee for a 10TB allocation.
+
+Pay-as-you-go spaces are generally more expensive than project spaces due to their smaller size, upfront costs being included in the annual fee, and higher maintenance requirements.
+
+Additionally all users have access to 1TB of "fastscratch" storage for storing files less than 30 days.  More information on using fastscratch can be found at [/jhpce_mkdocs/knowledge_base/#fastscratch]
+- **Personal Scratch space**: A network-based filesystem with a backend NVME based storage array, intended for short-term storage of large files.
