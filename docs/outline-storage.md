@@ -1,6 +1,6 @@
 # STORAGE TOPIC - page to develop outline
 
-Whether this is all on one page or broken up into multiple pages, what about storage do we need to include in our site? Some of the items below are not yet included in our existing SGE-mentioning page.
+Whether this is all on one page or broken up into multiple pages, what about storage do we need to include in our site? Some of the items below are not yet included in our existing SGE-mentioning page. Some issues, like backups, need to be addressed more clearly and in a uniform manner.
 
 ## Types of storage
 Mention local versus network.
@@ -22,13 +22,15 @@ How paid for (and therefore length of committment)
 What about requesting increases in /users quota?
 
 ## Backing up storage
-Home directories. Frequency, restore window, cost.
+Home directories. Frequency, restore window.
 
 Project space:
-We offer it.
-What's included. Frequency, restore window.
+We offer backup service.
+
+What's included. Frequency, restore window, cost.
+
 Limit on what we'll consider (ONLY whole file systems?)
-Cost.
+
 Form to request restores.
 
 ## Getting information about storage
