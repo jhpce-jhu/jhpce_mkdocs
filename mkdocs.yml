@@ -10,27 +10,6 @@ nav:
         - New node?: new-node.md
         - Need more space?: new-stg.md
         - Attending orientation: orientation.md
-  - Accessing The Cluster:
-      - Key Elements:
-        - Moba Xterm: moba_xterm.md   
-        - File transfer: file_transfer.md
-        - Globus: globus.md
-  - Storage Topic:
-      - Storage Items: partitions.md
-        - New outline: outline-storage.md
-        - Old doc: storage.md
-  - Software Topic: outline-software.md
-      - Software Items:
-        - Modules: modules.md
-  - SLURM: slurm.md
-      - SLURM Topics:
-        - Partitions: partitions.md
-  - Knowledge base: knowledge_base.md
-  - FAQ: faq.md
-  - Links/Docs: docs.md
-  - Managing Files Topic: outline-managing-files.md
-      - Managing File Topics:
-        - ACL: acl.md
   
 theme: 
   name: material
