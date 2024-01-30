@@ -10,7 +10,16 @@ nav:
         - New node?: new-node.md
         - Need more space?: new-stg.md
         - Attending orientation: orientation.md
-  
+  - Accessing The Cluster:
+      - SSH or file transfer:
+        - Moba Xterm: moba_xterm.md   
+        - File transfer: file_transfer.md
+        - Globus: globus.md
+  - Storage Topic:
+      - Storage Items: partitions.md
+        - New outline: outline-storage.md
+        - Old doc: storage.md
+ 
 theme: 
   name: material
   palette:
