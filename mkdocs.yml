@@ -22,16 +22,10 @@ nav:
   - Software Topic: outline-software.md
       - Software Items:
         - Modules: modules.md
-  - SLURM: slurm.md
+  - SLURM:
       - SLURM Topics:
         - Partitions: partitions.md
         - Command info: slurm-commands.md
-  - Knowledge base: knowledge_base.md
-  - FAQ: faq.md
-  - Links/Docs: docs.md
-  - Managing Files Topic: outline-managing-files.md
-      - Managing File Topics:
-        - ACL: acl.md
 
 theme: 
   name: material
