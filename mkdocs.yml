@@ -28,5 +28,6 @@ theme:
     - navigation.sections
     - navigation.expand
     - navigation.path
+  navigation_depth: 4
 copyright: Copyright &copy; 2024 - 2028 Joint JHPCE Exchange
 
