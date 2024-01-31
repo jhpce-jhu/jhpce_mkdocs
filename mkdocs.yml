@@ -32,6 +32,8 @@ theme:
   palette:
     scheme: default
   features:
+    - navigation.sections
+    - navigation.indexes
     - navigation.path
     - toc.follow
     - navigation.top
