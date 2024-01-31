@@ -19,23 +19,49 @@ nav:
       - Storage Items:
         - New outline: outline-storage.md
         - Old doc: storage.md
- 
+  - Software Topic: outline-software.md
+      - Software Items:
+        - Modules: modules.md
+  - SLURM: slurm.md
+      - SLURM Topics:
+        - Partitions: partitions.md
+        - Command info: slurm-commands.md
+  - Knowledge base: knowledge_base.md
+  - FAQ: faq.md
+  - Links/Docs: docs.md
+  - Managing Files Topic: outline-managing-files.md
+      - Managing File Topics:
+        - ACL: acl.md
+
 theme: 
   name: material
   palette:
     scheme: default
   features:
-    - navigation.sections
-    # https://squidfunk.github.io/mkdocs-material/setup/setting-up-navigation/#navigation-expansion
-    # If expand enabled, page opens with all nav bar section contents displayed
-    - navigation.expand 
     # https://squidfunk.github.io/mkdocs-material/setup/setting-up-navigation/#navigation-path
+    # Adds a path above document title if you've created docs/ subdirectories
     - navigation.path
     # https://squidfunk.github.io/mkdocs-material/setup/setting-up-navigation/#anchor-following
+    # sidebar is automatically scrolled so that the active anchor is always visible
+    # Unsure if we want this.
     - toc.follow
     # when user scrolls up, a button added to center top of page allowing a jump
     # back up to the top.
     - navigation.top
+    # https://squidfunk.github.io/mkdocs-material/setup/setting-up-navigation/#navigation-expansion
+    # If expand enabled, page opens with all nav bar section contents displayed
+    # We don't want that. JRT 20240130
+    #- navigation.expand 
+    # https://squidfunk.github.io/mkdocs-material/setup/setting-up-navigation/#navigation-sections
+    # We don't want that. JRT 20240130
+    #- navigation.sections
   navigation_depth: 4
+  # https://squidfunk.github.io/mkdocs-material/setup/extensions/python-markdown/#python-markdown
+  markdown_extensions:
+    - toc:
+        permalink: true
+	permalink_title: Anchor link to this section for reference
+    # https://squidfunk.github.io/mkdocs-material/reference/lists/#using-definition-lists
+    - def_list
 copyright: Copyright &copy; 2024 - 2028 Joint JHPCE Exchange
 
