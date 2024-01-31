@@ -2,6 +2,7 @@ site_name: JHPCE
 site_url: https://www.jhpce-jhu.github.io/jhpce_docs/
 nav:
   - Home: index.md
+  - Tools For Site Develop: tools-for-our-site.md
   - Getting Help: help.md
   - Getting Started:
       - Key Elements:
@@ -19,24 +20,48 @@ nav:
       - Storage Items:
         - New outline: outline-storage.md
         - Old doc: storage.md
-  - Software Topic: outline-software.md
+  - Software Topic:
       - Software Items:
+        - New outline: outline-software.md
         - Modules: modules.md
+  - Managing Files:
+      - File Topics:
+        - New outline: outline-managing-files.md
   - SLURM:
       - SLURM Topics:
         - Partitions: partitions.md
         - Command info: slurm-commands.md
+        - something: slurm.md
+  - Rest of old docs:
+      - Listed to stop mkdocs serve warnings:
+        - ACL: acl.md
+        - FAQ: faq.md
+        - KnowledgeBase: knowledge-base.md
+        - unknown: docs.md
 
 theme: 
   name: material
   palette:
     scheme: default
+  navigation_depth: 4
   features:
     - navigation.sections
+    # enabling this prevents display of all topics in left sidebar. No thank you.
+    #- navigation.tabs
     - navigation.indexes
     - navigation.path
     - toc.follow
     - navigation.top
-  navigation_depth: 4
+    - header.autohide
+  # Python Markdown extensions
+  # https://squidfunk.github.io/mkdocs-material/setup/extensions/python-markdown/#python-markdown
+  markdown_extensions:
+    # admonitions allow setting off info inside colored boxes, e.g. note,tip,warning,danger,example.
+    # https://squidfunk.github.io/mkdocs-material/reference/admonitions/#supported-types
+    - admonition
+    - codehilite
+    - pymdownx.superfences
+    - pymdownx.details
+    - def_list
+    - abbr
 copyright: Copyright &copy; 2024 - 2028 Joint JHPCE Exchange
-
