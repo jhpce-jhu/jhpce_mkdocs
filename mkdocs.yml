@@ -3,17 +3,43 @@ site_url: https://www.jhpce-jhu.github.io/jhpce_docs/
 nav:
   - Home:
     - index.md
-    - MyIndex: index.md
-    - New user:
-      - Other topic: faq.md
-    - New PI:
+    - Help:
+      - help/index.md
+      - FAQ: help/faq.md
+      - Knowledge Base: help/knowledge-base.md
+    - Tools For Site Develop: 
+      - ourtools/index.md
+    - Getting Started:
+      - New user?: joinus/new-users.md
+      - New PI?: joinus/new-pi.md
+      - New node?: joinus/new-node.md
+      - Need more space?: joinus/new-stg.md
+      - Attending orientation: joinus/orientation.md
+    - Accessing the cluster:
+      - MobaXterm: access/mobaxterm.md
+      - Globus: access/globus.md
+    - Managing Files (Outline):
+      - files/index.md
+    - Software (Outline):
+      - sw/index.md
+      - Modules: sw/modules.md
+    - Storage (Outline):
+      - storage/index.md
+      - Old Stg Page: storage/storage.md
+    - Using the cluster: 
       - slurm/index.md
-      - PI Subtopic1: acl.md
-      - PI Subtopic2: help.md
       - Third PI topic:
-        - sw/README.md
-        - PI Subtopic4: acl.md
-        - PI Subtopic5: storage.md
+        - sw/index.md
+        - PI Subtopic4: files/acl.md
+        - PI Subtopic5: stg/storage.md
+#   - Storage:
+#     - slurm/index.md
+#     - PI Subtopic1: acl.md
+#     - PI Subtopic2: help.md
+#     - Third PI topic:
+#       - sw/README.md
+#       - PI Subtopic4: acl.md
+#       - PI Subtopic5: storage.md
 theme: 
   name: material
   palette:
@@ -21,12 +47,12 @@ theme:
   navigation_depth: 4
   features:
     - navigation.sections
-    #- navigation.expand # works. do we want it or not?
-    - toc.integrate
-    - toc.follow
+    - navigation.expand # works. do we want it or not?
+    #- toc.integrate # do not want this. prevents right side TOC
+    - toc.follow # investigate this. want?
     - navigation.top # works. Displays "Back to top" button when one scrolls upwards
-    - navigation.path # does not work
-    - header.autohide
+    - navigation.path # does not work. even with 3 levels of depth
+    - header.autohide # investigate this. want?
     # indexes:
     #   Do you want a topic header line to represent a document?
     #   If this is enabled, you can, BUT IT HAS TO BE NAMED index.md (or README.md)
