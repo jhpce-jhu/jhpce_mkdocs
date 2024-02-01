@@ -1,44 +1,19 @@
 site_name: JHPCE
 site_url: https://www.jhpce-jhu.github.io/jhpce_docs/
 nav:
-  - Home: index.md
-  - Tools For Site Develop: tools-for-our-site.md
-  - Getting Help: help.md
-  - Getting Started:
-      - Key Elements:
-        - New user?: new-users.md
-        - New PI?: new-pi.md
-        - New node?: new-node.md
-        - Need more space?: new-stg.md
-        - Attending orientation: orientation.md
-  - Accessing The Cluster:
-      - SSH or file transfer:
-        - Moba Xterm: moba_xterm.md   
-        - File transfer: file_transfer.md
-        - Globus: globus.md
-  - Storage Topic:
-      - Storage Items:
-        - New outline: outline-storage.md
-        - Old doc: storage.md
-  - Software Topic:
-      - Software Items:
-        - New outline: outline-software.md
-        - Modules: modules.md
-  - Managing Files:
-      - File Topics:
-        - New outline: outline-managing-files.md
-  - SLURM:
-      - SLURM Topics:
-        - Partitions: partitions.md
-        - Command info: slurm-commands.md
-        - something: slurm.md
-  - Rest of old docs:
-      - Listed to stop mkdocs serve warnings:
-        - ACL: acl.md
-        - FAQ: faq.md
-        - KnowledgeBase: knowledge-base.md
-        - unknown: docs.md
-
+  - Home:
+    - index.md
+    - MyIndex: index.md
+    - New user:
+      - Other topic: faq.md
+    - New PI:
+      - slurm/index.md
+      - PI Subtopic1: acl.md
+      - PI Subtopic2: help.md
+      - Third PI topic:
+        - sw/README.md
+        - PI Subtopic4: acl.md
+        - PI Subtopic5: storage.md
 theme: 
   name: material
   palette:
@@ -46,22 +21,37 @@ theme:
   navigation_depth: 4
   features:
     - navigation.sections
-    # enabling this prevents display of all topics in left sidebar. No thank you.
-    #- navigation.tabs
-    - navigation.indexes
-    - navigation.path
+    #- navigation.expand # works. do we want it or not?
+    - toc.integrate
     - toc.follow
-    - navigation.top
+    - navigation.top # works. Displays "Back to top" button when one scrolls upwards
+    - navigation.path # does not work
     - header.autohide
-  # Python Markdown extensions
-  # https://squidfunk.github.io/mkdocs-material/setup/extensions/python-markdown/#python-markdown
-  markdown_extensions:
-    # admonitions allow setting off info inside colored boxes, e.g. note,tip,warning,danger,example.
-    # https://squidfunk.github.io/mkdocs-material/reference/admonitions/#supported-types
-    - admonition
-    - codehilite
-    - pymdownx.superfences
-    - pymdownx.details
-    - def_list
-    - abbr
-copyright: Copyright &copy; 2024 - 2028 Joint JHPCE Exchange
+    # indexes:
+    #   Do you want a topic header line to represent a document?
+    #   If this is enabled, you can, BUT IT HAS TO BE NAMED index.md (or README.md)
+    #   Whether it is defined or not, you are NOT allowed to specify a document
+    #   for ANY level of topic header line, e.g.   - topicname: doc.md
+    #   These are valid:
+    #       - Home:
+    #         - index.md
+    #   or this:
+    #       - SomeSubject:
+    #         - slurm/index.md
+    #   or this:
+    #       - OtherSubject:
+    #         - slurm/README.md
+    - navigation.indexes
+markdown_extensions:
+  - pymdownx.tasklist:
+      custom_checkbox: true
+  - pymdownx.superfences
+  - pymdownx.details
+  - admonition
+  - pymdownx.highlight:
+      linenums: true
+  - pymdownx.snippets
+  - abbr
+  - def_list
+  - toc:
+      permalink: true
