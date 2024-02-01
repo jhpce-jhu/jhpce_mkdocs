@@ -7,8 +7,7 @@ nav:
       - help/index.md
       - FAQ: help/faq.md
       - Knowledge Base: help/knowledge-base.md
-    - Tools For Site Develop: 
-      - ourtools/index.md
+      - DocsToRelocate: help/docs.md
     - Getting Started:
       - New user?: joinus/new-users.md
       - New PI?: joinus/new-pi.md
@@ -17,6 +16,7 @@ nav:
       - Attending orientation: joinus/orientation.md
     - Accessing the cluster:
       - MobaXterm: access/mobaxterm.md
+      - Transferring files: access/file-transfer.md
       - Globus: access/globus.md
     - Managing Files (Outline):
       - files/index.md
@@ -26,12 +26,20 @@ nav:
     - Storage (Outline):
       - storage/index.md
       - Old Stg Page: storage/storage.md
-    - Using the cluster: 
+    - Using the cluster (SLURM): 
       - slurm/index.md
-      - Third PI topic:
-        - sw/index.md
-        - PI Subtopic4: files/acl.md
-        - PI Subtopic5: stg/storage.md
+      - Partitions: slurm/partitions.md
+      - Commands reference: slurm/slurm-commands-ref.md
+      - Another topic:
+        - slurm/slurm.md
+        - Subtopic4: files/acl.md
+        - Subtopic5: storage/storage.md
+    - Web portal:
+      - Self service Password Reset: portal/index.md
+      - Database access: portal/index.md
+      - Accessing applications: portal/index.md
+    - Tools For Site Develop: 
+      - ourtools/index.md
 #   - Storage:
 #     - slurm/index.md
 #     - PI Subtopic1: acl.md
@@ -52,7 +60,8 @@ theme:
     - toc.follow # investigate this. want?
     - navigation.top # works. Displays "Back to top" button when one scrolls upwards
     - navigation.path # does not work. even with 3 levels of depth
-    - header.autohide # investigate this. want?
+    - header.autohide # hides header if scroll far enough down. More content visable
+    - navigation.footer # provides place to display copyright
     # indexes:
     #   Do you want a topic header line to represent a document?
     #   If this is enabled, you can, BUT IT HAS TO BE NAMED index.md (or README.md)
@@ -79,5 +88,24 @@ markdown_extensions:
   - pymdownx.snippets
   - abbr
   - def_list
-  - toc:
+  - footnotes
+  - toc: # unclear on what this does
       permalink: true
+# footer-related settings (other than the req'd features:navigation.footer)
+copyright: Copyright &copy; 2024 - 2028 Joint JHPCE Exchange
+extra:
+  generator: false # do not display "Made with Material for MkDocs"
+# hide footer in specific pages with these instructions:
+# https://squidfunk.github.io/mkdocs-material/setup/setting-up-the-footer/#hiding-prevnext-links
+#
+# exclude files or directories
+# This follows the .gitignore pattern format
+# (https://www.mkdocs.org/user-guide/configuration/#exclude_docs)
+# (https://git-scm.com/docs/gitignore#_pattern_format)
+exclude_docs: drafts
+#
+# https://www.mkdocs.org/user-guide/configuration/#validation
+validation:
+  omitted_files: warn
+  absolute_links: warn
+  unrecognized_links: warn
