@@ -1,0 +1,74 @@
+---
+name: JHPCE New User Request
+about: Request a new JHPCE Account
+title: ''
+labels: ''
+assignees: ''
+
+---
+
+name: New User Request
+description: Request an account on the JHPCE Cluster 
+title: "[New User]: "
+labels: ["New User"]
+assignees:
+  - jhpce
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Please complete this form for a new JHPCE Account
+ - type: input
+    id: FullName
+    attributes:
+      label: Full Name
+      description: Please enter your Full Name:
+      placeholder: John Smith
+    validations:
+      required: true
+  - type: input
+    id: contact
+    attributes:
+      label: Contact Details
+      description: Please enter your email address:
+      placeholder: ex. email@example.com
+    validations:
+      required: true
+  - type: input
+    id: JHED
+    attributes:
+      label: JHED ID
+      description: Please enter your JHED ID:
+      placeholder: jsmith12
+    validations:
+      required: true
+  - type: textarea
+    id: what-happened
+    attributes:
+      label: What happened?
+      description: Also tell us, what did you expect to happen?
+      placeholder: Tell us what you see!
+      value: "A bug happened!"
+    validations:
+      required: true
+  - type: dropdown
+    id: Sponsoring Organization
+    attributes:
+      label: Sponsor
+      description: Please select a sponsoring organization:
+      options:
+        - Select an option below:
+        - SPH BST (Stuart)
+        - SPH HPM (Smith)
+        - SOM (Jones)
+      default: 0
+    validations:
+      required: true
+  - type: checkboxes
+    id: terms
+    attributes:
+      label: Code of Conduct
+      description: By submitting this issue, you agree to follow our [Code of Conduct](https://jhu.edu)
+      options:
+        - label: I agree to follow this project's Code of Conduct
+          required: true
