@@ -1,12 +1,3 @@
----
-name: JHPCE New User Request
-about: Request a new JHPCE Account
-title: ''
-labels: ''
-assignees: ''
-
----
-
 name: New User Request
 description: Request an account on the JHPCE Cluster 
 title: "[New User]: "
@@ -70,5 +61,8 @@ body:
       label: Code of Conduct
       description: By submitting this issue, you agree to follow our [Code of Conduct](https://jhu.edu)
       options:
+        - label: I agree to follow this project's Code of Conduct
+          required: true
+
         - label: I agree to follow this project's Code of Conduct
           required: true
