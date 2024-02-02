@@ -1,6 +1,6 @@
 name: New User Request
 description: Request an account on the JHPCE Cluster 
-title: "[New User]: "
+title: "[New User]"
 labels: ["New User"]
 assignees:
   - jhpce
@@ -9,7 +9,7 @@ body:
     attributes:
       value: |
         Please complete this form for a new JHPCE Account
- - type: input
+  - type: input
     id: FullName
     attributes:
       label: Full Name
