@@ -1,6 +1,6 @@
 name: New User Request
 description: Request an account on the JHPCE Cluster 
-title: "Please Enter Your Name:"
+title: "[Please Enter Your Name:]"
 labels: ["New User"]
 assignees:
   - jhpce
