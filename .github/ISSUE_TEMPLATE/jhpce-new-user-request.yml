@@ -39,7 +39,7 @@ body:
       label: Sponsor
       description: Please select a sponsoring organization
       options:
-        - Select an option below:
+        - Select an option below
         - SPH BST (Stuart)
         - SPH HPM (Smith)
         - SOM (Jones)
