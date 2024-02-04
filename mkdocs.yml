@@ -1,42 +1,111 @@
 site_name: JHPCE
 site_url: https://www.jhpce-jhu.github.io/jhpce_docs/
 nav:
-  - Home: index.md
-  - Getting Help: help.md
-  - Getting Started:
-      - Key Elements:
-        - New user?: new-users.md
-        - New PI?: new-pi.md
-        - New node?: new-node.md
-        - Need more space?: new-stg.md
-        - Attending orientation: orientation.md
-  - Accessing The Cluster:
-      - SSH or file transfer:
-        - Moba Xterm: moba_xterm.md   
-        - File transfer: file_transfer.md
-        - Globus: globus.md
-  - Storage Topic:
-      - Storage Items:
-        - New outline: outline-storage.md
-        - Old doc: storage.md
-  - Software Topic: outline-software.md
-      - Software Items:
-        - Modules: modules.md
-  - SLURM:
-      - SLURM Topics:
-        - Partitions: partitions.md
-        - Command info: slurm-commands.md
-
+  - Home:
+    - index.md
+    - Help:
+      - help/index.md
+      - FAQ: help/faq.md
+      - Knowledge Base: help/knowledge-base.md
+      - DocsToRelocate: help/docs.md
+    - Getting Started:
+      - New user?: joinus/new-users.md
+      - New PI?: joinus/new-pi.md
+      - New node?: joinus/new-node.md
+      - Need more space?: joinus/new-stg.md
+      - Attending orientation: joinus/orientation.md
+    - Accessing the cluster:
+      - MobaXterm: access/mobaxterm.md
+      - Transferring files: access/file-transfer.md
+      - Globus: access/globus.md
+    - Managing Files (Outline):
+      - files/index.md
+    - Software (Outline):
+      - sw/index.md
+      - Modules: sw/modules.md
+    - Storage (Outline):
+      - storage/index.md
+      - Old Stg Page: storage/storage.md
+    - Using the cluster (SLURM): 
+      - slurm/index.md
+      - Partitions: slurm/partitions.md
+      - Commands reference: slurm/slurm-commands-ref.md
+      - Another topic:
+        - slurm/slurm.md
+        - Subtopic4: files/acl.md
+        - Subtopic5: storage/storage.md
+    - Web portal:
+      - Self service Password Reset: portal/index.md
+      - Database access: portal/index.md
+      - Accessing applications: portal/index.md
+    - Tools For Site Develop: 
+      - ourtools/index.md
+#   - Storage:
+#     - slurm/index.md
+#     - PI Subtopic1: acl.md
+#     - PI Subtopic2: help.md
+#     - Third PI topic:
+#       - sw/README.md
+#       - PI Subtopic4: acl.md
+#       - PI Subtopic5: storage.md
 theme: 
   name: material
   palette:
     scheme: default
+  navigation_depth: 4
   features:
     - navigation.sections
+    - navigation.expand # works. do we want it or not?
+    #- toc.integrate # do not want this. prevents right side TOC
+    - toc.follow # investigate this. want?
+    - navigation.top # works. Displays "Back to top" button when one scrolls upwards
+    - navigation.path # does not work. even with 3 levels of depth
+    - header.autohide # hides header if scroll far enough down. More content visable
+    - navigation.footer # provides place to display copyright
+    # indexes:
+    #   Do you want a topic header line to represent a document?
+    #   If this is enabled, you can, BUT IT HAS TO BE NAMED index.md (or README.md)
+    #   Whether it is defined or not, you are NOT allowed to specify a document
+    #   for ANY level of topic header line, e.g.   - topicname: doc.md
+    #   These are valid:
+    #       - Home:
+    #         - index.md
+    #   or this:
+    #       - SomeSubject:
+    #         - slurm/index.md
+    #   or this:
+    #       - OtherSubject:
+    #         - slurm/README.md
     - navigation.indexes
-    - navigation.path
-    - toc.follow
-    - navigation.top
-  navigation_depth: 4
+markdown_extensions:
+  - pymdownx.tasklist:
+      custom_checkbox: true
+  - pymdownx.superfences
+  - pymdownx.details
+  - admonition
+  - pymdownx.highlight:
+      linenums: true
+  - pymdownx.snippets
+  - abbr
+  - def_list
+  - footnotes
+  - toc: # unclear on what this does
+      permalink: true
+# footer-related settings (other than the req'd features:navigation.footer)
 copyright: Copyright &copy; 2024 - 2028 Joint JHPCE Exchange
-
+extra:
+  generator: false # do not display "Made with Material for MkDocs"
+# hide footer in specific pages with these instructions:
+# https://squidfunk.github.io/mkdocs-material/setup/setting-up-the-footer/#hiding-prevnext-links
+#
+# exclude files or directories
+# This follows the .gitignore pattern format
+# (https://www.mkdocs.org/user-guide/configuration/#exclude_docs)
+# (https://git-scm.com/docs/gitignore#_pattern_format)
+exclude_docs: drafts
+#
+# https://www.mkdocs.org/user-guide/configuration/#validation
+validation:
+  omitted_files: warn
+  absolute_links: warn
+  unrecognized_links: warn
