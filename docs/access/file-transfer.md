@@ -1,3 +1,11 @@
+# THIS PREVIOUS DOC IS TOO LONG AND NEEDS TO BE BROKEN UP INTO AN OVERVIEW AND SOME SUBORDINATE DOCUMENTS
+
+Maybe file transfer needs to be a whole topic, meaning it has its own subdirectory inside docs to hold the markdown files, the include images files (from their own docs/filetransfer/images/ subdirectory), etc.
+
+There is already a [Globus document](globus.md).
+
+(JRT thinks that this doc should include a pointer to a document about INTERNAL file transfers. How to do that on a node, in a batch job, using good rsync arguments.)
+
 # File Transfer
 A number of options exist for transfering files to-and-fro between
 JHPCE and your local host. Which solution you chose, depends on your
@@ -9,7 +17,7 @@ use case.
 + Aspera  —  very fast file transfer to and from Aspera servers
 + OneDrive access with rclone  —  Use “rclone” to access your OneDrive directory (as well as other network drives (AWS buckets, Google Drive…)
 + Unison — keep directories synced between the cluster and your local computer
-+ Mount remote filesystems — directories at JHPCE mounted on your local host.
++ Mount remote filesystems — directories at JHPCE mounted on your local host. **IS THIS MATERIAL STILL ACCURATE IN 2024?** Is this [example SSHFS doc](https://hpc-docs.cubi.bihealth.org/connecting/configure-ssh/linux/#file-system-mount-via-sshfs) worth re-using?
 + ftp (kind of…)
 
 For transferring files to the cluster, you should use

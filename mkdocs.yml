@@ -3,43 +3,70 @@ site_url: https://www.jhpce-jhu.github.io/jhpce_docs/
 nav:
   - Home:
     - index.md
-    - Help:
-      - help/index.md
+    - Getting Help:
+      - Basics: help/help-basics.md
       - FAQ: help/faq.md
-      - Knowledge Base: help/knowledge-base.md
-      - DocsToRelocate: help/docs.md
-    - Getting Started:
+      - InfoToRelocate: help/docs.md
+      - Submitting Good Queries: help/good-query.md
+      - External Guides: help/external.md
+    - How to Join Us:
       - New user?: joinus/new-users.md
+      - New C-SUB user?: csub/new-csub-users.md
       - New PI?: joinus/new-pi.md
       - New node?: joinus/new-node.md
       - Need more space?: joinus/new-stg.md
-      - Attending orientation: joinus/orientation.md
+    - Orientation/Getting Started:
+      - Overview: orient/orientation.md
+      - Our PDF: orient/images/latest-orient.pdf
+      - First Login: orient/orient-stub.md
     - Accessing the cluster:
+      - Overview: access/access-overview.md
+      - SSH: access/ssh.md
       - MobaXterm: access/mobaxterm.md
       - Transferring files: access/file-transfer.md
       - Globus: access/globus.md
-    - Managing Files (Outline):
-      - files/index.md
-    - Software (Outline):
-      - sw/index.md
-      - Modules: sw/modules.md
-    - Storage (Outline):
-      - storage/index.md
+    - Managing Files:
+      - OutlineOfMaterial: files/outline.md
+      - Sharing Files: files/files-stub.md
+      - Quotas: files/files-stub.md
+      - ACL: files/acl.md
+      - HIPAA etc: files/files-stub.md
+    # should storage be a subsidiary of managing files?
+    - Storage:
+      - Storage Overview: storage/stg-overview.md
+      - Getting More Space: storage/buying-in.md
       - Old Stg Page: storage/storage.md
-    - Using the cluster (SLURM): 
-      - slurm/index.md
+      - Backups: storage/backups.md
+    - Software:
+      - Overview (Outline): sw/sw-overview.md
+      - Modules: sw/modules.md
+      - Adding local pkgs: sw/adding-pkgs.md
+      - Building Your Own: sw/building-from-src.md
+      - Linear Algebra Libries: sw/linear-algebra.md
+      - Jupyter: sw/jupyter.md
+      - R and RStudio and friends: sw/r-n-friends.md
+      - Helpful GUI Programs: sw/gui-tools.md
+      - Containers: sw/containers.md
+    - Job scheduler (SLURM): 
+      - Example User Guides: slurm/user-guide-collection.md
       - Partitions: slurm/partitions.md
       - Commands reference: slurm/slurm-commands-ref.md
+      - SLURM FAQ: slurm/slurm-faq.md
       - Another topic:
         - slurm/slurm.md
-        - Subtopic4: files/acl.md
         - Subtopic5: storage/storage.md
-    - Web portal:
-      - Self service Password Reset: portal/index.md
-      - Database access: portal/index.md
-      - Accessing applications: portal/index.md
+    - User Guides:
+      - GPU: gpu/gpu-overview.md
+      - Cost Calculator: access/ssh.md
+      - How to read a manual page: help/images/guide-to-manual-pages.pdf
+    - Web Portal:
+      - GUI Applications: portal/index.md
+      - Database of Databses: portal/index.md
+      - Self Service MFA, Password Requests : portal/index.md
     - Tools For Site Develop: 
       - ourtools/index.md
+      - IsASubTopicRequired: slurm/partitions.md
+# Example of three-level topic syntax
 #   - Storage:
 #     - slurm/index.md
 #     - PI Subtopic1: acl.md
@@ -50,12 +77,14 @@ nav:
 #       - PI Subtopic5: storage.md
 theme: 
   name: material
+  # https://squidfunk.github.io/mkdocs-material/setup/changing-the-logo-and-icons/#changing-the-logo-and-icons
+  logo: images/sph-logo.svg
   palette:
     scheme: default
   navigation_depth: 4
   features:
     - navigation.sections
-    - navigation.expand # works. do we want it or not?
+    #- navigation.expand # works. do we want it or not?
     #- toc.integrate # do not want this. prevents right side TOC
     - toc.follow # investigate this. want?
     - navigation.top # works. Displays "Back to top" button when one scrolls upwards
@@ -77,28 +106,66 @@ theme:
     #       - OtherSubject:
     #         - slurm/README.md
     - navigation.indexes
+#
+# Plugins
+#
+# https://squidfunk.github.io/mkdocs-material/plugins/
+plugins:
+  # SEARCH
+  # search is enabled by default but if you add options it has to be listed
+  # there are A LOT of extras you can do. Someone explore later if desired.
+  #https://squidfunk.github.io/mkdocs-material/setup/setting-up-site-search/
+  - search
+  # BLOG
+  # https://squidfunk.github.io/mkdocs-material/setup/setting-up-a-blog/
+  # Be aware that you cannot use features preceeded by "Insiders"
+  #- blog
+  # JRT tried to install this locally but it blew up like a bomb because it
+  # could not find a .git directory. Everything git is toxic. He deleted the
+  # plugin on his machine. He didn't know if it would work on the server
+  # in any case. He just wanted documents to have last-modified dates on them.
+  #- git-revision-date-localized
+
+#
+# Python MarkDown Extensions
+#
 markdown_extensions:
+  # https://squidfunk.github.io/mkdocs-material/reference/lists/
+  - def_list # Definition lists
   - pymdownx.tasklist:
       custom_checkbox: true
+  # JRT sasy following three lines are ALL needed to enable admonition
+  - admonition
   - pymdownx.superfences
   - pymdownx.details
-  - admonition
+  # JRT included this because someone else did. Investigate.
   - pymdownx.highlight:
       linenums: true
+  # JRT included this because someone else did. Investigate.
   - pymdownx.snippets
-  - abbr
-  - def_list
+  #- md_in_html # https://squidfunk.github.io/mkdocs-material/setup/extensions/python-markdown/#markdown-in-html
+  - abbr # Abbreviations and optional glossery
+  # following four lines needed to enable (some) icons & emojis
+  # https://squidfunk.github.io/mkdocs-material/reference/icons-emojis/
+  - attr_list
+  - pymdownx.emoji:
+      emoji_index: !!python/name:material.extensions.emoji.twemoji
+      emoji_generator: !!python/name:material.extensions.emoji.to_svg
   - footnotes
-  - toc: # unclear on what this does
-      permalink: true
-# footer-related settings (other than the req'd features:navigation.footer)
+  # TABLE OF CONTENTS
+  # https://squidfunk.github.io/mkdocs-material/setup/extensions/python-markdown/#table-of-contents
+  - toc:
+      toc_depth: 5 # optional
+      permalink: true # Adds anchor link to each section of a doc
+      permalink_title: Anchor link to this section for reference # Adds phrase if you hover 
+# FOOTER-RELATED SETTINGS (other than the req'd features:navigation.footer)
 copyright: Copyright &copy; 2024 - 2028 Joint JHPCE Exchange
 extra:
   generator: false # do not display "Made with Material for MkDocs"
 # hide footer in specific pages with these instructions:
 # https://squidfunk.github.io/mkdocs-material/setup/setting-up-the-footer/#hiding-prevnext-links
 #
-# exclude files or directories
+# EXCLUDE FILES OR DIRECTORIES
 # This follows the .gitignore pattern format
 # (https://www.mkdocs.org/user-guide/configuration/#exclude_docs)
 # (https://git-scm.com/docs/gitignore#_pattern_format)

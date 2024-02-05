@@ -1,18 +1,21 @@
-# Registration
+# THIS DOCUMENT NEEDS TO BE REWRITTEN
 
-## For Principal Investigators
+## What does a new user need to know, as an overview
+That's what JRT envisions for this page. Short, sweet, how does the process work and how long will it be before you can login.
 
-If you are a Principal Investigator registering a new project or
-organization, please fill out [this
-orm](https://jhpce.jhu.edu/register/project/#form). If you have never
-registered a project and budget number with the JHPCE, we request that
-you contact the director of the JHPCE to arrange a 1/2 hour
-orientation (either in person or via telephone).
+## What should be here versus in the orient topic?
+JRT created a topic subdirectory docs/orient/ to hold orientation-related pages. 
 
-## For New Users
+
+JRT didn't put the c-sub info in this document.
+(He was assuming that c-sub users would have their own page.)
+In any case, maybe some of the c-sub material should be made a part of this page.
+
+# The Process
 
 If you are prospective user, please start by getting the approval of a
-PI who has provided us with a budget number. Then request a user
+PI who has provided us with a budget number. (If you and they are both new to JHPCE, please ask them to visit [this page](new-pi.md).) 
+Then request a user
 account by filling out [this
 form](https://jhpce.jhu.edu/register/user/).  Once we have received
 your form, the JHPCE management team will contact you to schedule your
@@ -20,24 +23,9 @@ attendance at the next JHPCE Orientation.  All new users are required
 to attend a 1 1/2 hour orientation session. Orientations are generally
 scheduled every other week.
 
-## Orientation Slides
+## Orientation
 
-You can download the orientation slides at [JHPCE-Overview](files/JHPCE-Overview-2024-01.pdf)
-
-## Generally expected knowledge
-+ Anything I/O intensive should be done on the compute nodes rather than the jhpce01 login node.
-+ Anything more than a quick `ls` including: copying large files, recursively changing permissions, creating or extracting tar or zip archives, running a `find` should be done in a session on a compute node.
-+ Data transfers of files larger about 1GB should be done through `jhpce-transfer01.jhsph.edu` rather than a login node.
-+ Try to avoid having directories with more than 100 files in them. 
-+ Try to avoid storing programs and scripts in data directories like `DCL*`.
-  + Most storage on the cluster is raided but not backed up. 
-+ We do back up home directories and a few other select directories on the DCS and DCL systems for groups that have requested backups.  We do have additional backup storage capacity available for a small fee.
-+ Make use of your 1 TB of fastscratch storage for IO intensive job
-+ Please remember that DCS and DCL stand for “Dirt Cheap Storage” and
-  “Dirt Cheap Lustre”, and were designed with cost-effectiveness as a
-  primary driving factor over performance.
-+ Sharing data can be done in several ways on the cluster: i.) traditional Unix file permissions and groups and ii.) Access Control Lists (ACLs).
-+ Sharing files with external collaborators can be done via Globus.
+There is a [separate document](../orient/orientation.md) for orientation. JRT created a topic subdirectory docs/orient/ to hold orientation-related pages. 
 
 
 ## New C-SUB user orientation 
@@ -109,9 +97,13 @@ attending the Orientation Session for the CMS Subcluster of the JHPCE
         download a clean copy of the program.
 
 ### Best practices: passwords and authentication
+
+What should be said about MFA and SSH Keys?
+
++   Your JHPCE account username and password are not related to your JHED credentials. They are maintained by separate organizations. Changing one does not cause the other to change.
 +   Do not share your password with ANYONE.
-+   Choose a "good" password using special characters and letters and
-    digits.
++   Choose a "strong" password.
++   Use the "kpasswd" command to choose a new password. It _requires_ your new password to be composed of at least 3 of the following 4 sets of characters: upper-case, lower-case, numerical digits, and special characters.
 +   It would be best if your password was unique and not the same
     password you use on other systems.
 +   If you believe your password or your computer have been compromised
@@ -122,5 +114,21 @@ attending the Orientation Session for the CMS Subcluster of the JHPCE
     log into that page with your JHED ID and password.
 +   Hopkins staff will \*NEVER\* send you an email message asking for
     your password or login credentials
-+   **NEVER** give out your password and login ID to anyone in an email
-    message or on a web page.
++   **NEVER** give out your password and login ID to anyone in an email message or on a web page.
++   (Are there any cautions about leaving sessions running with tmux or screen?)
+
+
+## Generally expected knowledge
++ Anything I/O intensive should be done on the compute nodes rather than the jhpce01 login node.
++ Anything more than a quick `ls` including: copying large files, recursively changing permissions, creating or extracting tar or zip archives, running a `find` should be done in a session on a compute node.
++ Data transfers of files larger about 1GB should be done through `jhpce-transfer01.jhsph.edu` rather than a login node.
++ Try to avoid having directories with more than 100 files in them. 
++ Try to avoid storing programs and scripts in data directories like `DCL*`.
+  + Most storage on the cluster is raided but not backed up. 
++ We do back up home directories and a few other select directories on the DCS and DCL systems for groups that have requested backups.  We do have additional backup storage capacity available for a small fee.
++ Make use of your 1 TB of fastscratch storage for IO intensive job
++ Please remember that DCS and DCL stand for “Dirt Cheap Storage” and
+  “Dirt Cheap Lustre”, and were designed with cost-effectiveness as a
+  primary driving factor over performance.
++ Sharing data can be done in several ways on the cluster: i.) traditional Unix file permissions and groups and ii.) Access Control Lists (ACLs).
++ Sharing files with external collaborators can be done via Globus.
