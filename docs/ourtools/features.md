@@ -120,3 +120,5 @@ A python example
 def fn():
 pass
 ```
+## Internal links
+From [this mkdocs](https://www.mkdocs.org/user-guide/writing-your-docs/#writing-with-markdown) page JRT learned that you can specify anchor points to document sections knowing that they are converted to lowercase and white space is replaced by dashes. So this very section, named "Internal links" can be specified as a link to "features.md#internal-links"
