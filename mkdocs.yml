@@ -66,7 +66,6 @@ nav:
       - Self Service MFA, Password Requests : portal/index.md
     - Tools For Site Develop: 
       - ourtools/index.md
-      - IsASubTopicRequired: slurm/partitions.md
 # Example of three-level topic syntax
 #   - Storage:
 #     - slurm/index.md
