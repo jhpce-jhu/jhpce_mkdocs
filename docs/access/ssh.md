@@ -116,6 +116,7 @@ https://jhpce.jhu.edu/question/my-x11-forwarding-stops-working-after-20-minutes/
 
 In your ~/.ssh/config file
 
+```
 UseKeychain yes
 XAuthLocation /opt/X11/bin/xauth
 #
@@ -123,3 +124,25 @@ AddKeysToAgent yes
 IdentityFile ~/.ssh/id_ecdsa
 IdentityFile ~/.ssh/id_rsa
 ForwardAgent yes
+```
+
+```
+# These values of 15 and 30 mean that my client ssh program will send a
+# message to the server every 15 seconds, and not decide that a remote
+# server is unresponsive until (15*30)=450 seconds
+
+ServerAliveInterval 15
+ServerAliveCountMax 30
+# IDK whether I included this for a good reason or not. Seems like I
+# would want the connection to die by lack of response to either method
+# Was it because I could not specify how long TCPKeepAlive waited?
+TCPKeepAlive no
+```
+
+```
+Host jhpce01 j1 jhpce01.jhsph.edu
+    Hostname jhpce01.jhsph.edu
+    User your-cluster-username
+    ForwardX11 yes
+    IdentityFile ~/.ssh/id_ecdsa.jhpce
+```
