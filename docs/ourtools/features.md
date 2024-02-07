@@ -20,8 +20,11 @@ The HTML specification is maintained by the W3C.
 The HTML specification is maintained by the W3C.
 *[HTML]: Hyper Text Markup Language
 
+## Glossary
+There's a way to create a document which is automatically updated when people define abbrieviations. See the wishlist document for details.
+
 ## definition list
-You can create an indented block of text using a colon followed by four space characters.
+You can create an indented block of text using a colon followed by FOUR space characters.
 
 Example code and result:
 ```

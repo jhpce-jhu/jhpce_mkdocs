@@ -48,3 +48,6 @@ This is enabled by adding a line to the plugins stanza
 ## last-modified dates on documents
 This might be provided by multiple plugins out in the world.
 The one that might be the most common is "git-revision-date-localized"
+
+## Glossary
+There's a way to create a document which is automatically updated when people define [abbrieviations](features.md#abbrieviations).
