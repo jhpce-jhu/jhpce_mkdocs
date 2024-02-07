@@ -64,8 +64,9 @@ nav:
       - GUI Applications: portal/index.md
       - Database of Databses: portal/index.md
       - Self Service MFA, Password Requests : portal/index.md
-    - Tools For Site Develop: 
-      - ourtools/index.md
+    - Tools For Site Developers: 
+      - Handy Features: ourtools/features.md
+      - Wishlist: ourtools/wishlist.md
 # Example of three-level topic syntax
 #   - Storage:
 #     - slurm/index.md
