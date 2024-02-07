@@ -137,7 +137,7 @@ markdown_extensions:
       custom_checkbox: true
   # JRT sasy following three lines are ALL needed to enable admonition
   - admonition
-  - pymdownx.superfences
+  - pymdownx.superfences # allows for arbitrary nesting of content blocks
   - pymdownx.details
   # JRT included this because someone else did. Investigate.
   - pymdownx.highlight:
