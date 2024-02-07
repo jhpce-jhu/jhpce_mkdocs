@@ -2,9 +2,9 @@
 
 ## SSH Basics
 
-SSH stands for Secure SHell. SSH is actually a set of internet standard protocols. Programs implementing these protocols include both command line interface (CLI) tools and those with graphic user interfaces (GUI).  They all enable you to make secure, encrypted connections from one computer to the next.
-
 Access to the JHPCE cluster requires the use of SSH.
+
+SSH stands for Secure SHell. SSH is actually a set of internet standard protocols. Programs implementing these protocols include both command line interface (CLI) tools and those with graphic user interfaces (GUI).  They all enable you to make secure, encrypted connections from one computer to the next.
 
 Depending on the kind of operating system your computer uses, you may or may not need to install SSH software.
 
@@ -12,29 +12,16 @@ Apple Macs come with CLI SSH tools pre-installed. You use them by entering comma
 
 On a Windows system you will need to install an ssh client.  We recommend the excellent GUI program MobaXterm. [Here is a document](mobaxterm.md) describing how to use it. There are other programs, such as the [PuTTY](https://en.wikipedia.org/wiki/PuTTY) family of tools and [WinSCP](https://en.wikipedia.org/wiki/WinSCP).
 
-### Multi-factor authentication (MFA)
-There are two basic factors required to log into a computer, whether local or remote -- your username and a password. JHPCE requires the use of an additional factor, either a [one-time password](ssh.md#one-time-passwords) (OTP) six digit code, or the use of [SSH key pairs](ssh.md#ssh-keys). 
-
-### One Time Passwords
-When you SSH into JHPCE, you will be prompted for a “Verification Code:” This is your cue to enter in a one-time password six digit code.
-
-Programs like `Google Authenticator` and `Micrsoft Authenticator` generate one-time password codes (OTP). These are only good for a single use, whether you successfully log in or not. Typically they are used to generate a _stream_ of time-based OTPs, or TOTPs. These are only good for one minute, adding another layer of difficulty for someone trying to impersonate you.
-
-These programs are usually used on smartphones, but there are programs available to create them on laptops and desktops. The key with using ANY OTP program is to get it from a trusted source. We will default to mentioning the `Google Authenticator`.
-
-After you log into JHPCE for the first time, you should immediately configure your OTP program using a "secret" accessible to you on the cluster via the `auth_util` program. Instructions for doing that are found in the [Orientation document](../orient/images/latest-orient.pdf).
-
 ### SSH Keys
+SSH programs make use of something called [public-key cryptography](https://en.wikipedia.org/wiki/Public-key_cryptography). Basically secure communications can be created by splitting a secret into to parts, and placing one part on each end of a link.
 
+This can be extended to an optional pair of files you can generate and distribute such that one is located on the JHPCE cluster and the other is on your computer. Or smartphone!
 
-### Screen and Tmux
-[Example document](https://hpc-docs.cubi.bihealth.org/best-practice/screen-tmux/) mentioning these tools.
+This key pair of files is generated once, and protected with a passphrase. You place a copy of the "public" key file on JHPCE in a particular place with specific permissions. You keep a copy of the "private" key file on your personal device(s). Once you prove to a program (ssh-agent) running on your device that you know the passphrase to your private key file, it will thereafter provide your private key when you run an SSH command.
 
-We should add whatever admonitions we want users to know about.
-
+Once configured properly, you can use SSH keys instead of your JHPCE password.
 
 [Example document](https://hpc-docs.cubi.bihealth.org/misc/ssh-basics/)
-
 
 ## Just yanked in here from our Knowledgebase document
 
@@ -49,17 +36,17 @@ We should add whatever admonitions we want users to know about.
 
 - [2 Factor Authentication](https://jhpce.jhu.edu/knowledge-base/2-factor-authentication/)
 
-## SSH
-We also support and recommend the use of SSH public/private key authentication to access your account. 
 
 ### Unix-based machines (linux and mac osx)
+
+(((((((IN 2024 DO WE NEED TO SPECIFY A DIFFERENT (STRONGER) ENCRYPTION TYPE???)))))))
 + First, on your local laptop/desktop, open a terminal and `cd` into your home directory  and invoke the ssh key generator:
 
 ```
 ssh-keygen -t rsa
 ```
 
-+ You will be prompted for a passphrase.  For security reasons, we recommend that you use a passphrase to protect your key.  For the other questions, you can select the default values.
++ You will be prompted for a passphrase.  For security reasons, we require that you use a passphrase to protect your key.  This prevents someone who gets access to your private key file from being able to use it!!!!! For the other questions, you can select the default values.
 + The key generator will put two files in the .ssh subdirectory of your home directory, typically  `~/.ssh/id_rsa` and  `~/.ssh/id_rsa.pub`. 
 + *You should only ever have to run the ssh key generator once on your local host*.  If you have already configured passwordless login and you run the key generator a second time, it will overwrite your previous public and private key files. This will break all password-less logins that you set up with your previous keys.
 + Next you want to copy your public key file to the remote host and append it to the authorized_keys file in the `.ssh` subdirectory of your home directory on the remote host. 
@@ -80,7 +67,11 @@ ssh-agent
 The ssh-agent will remain active for as long as your desktop or laptop is up and running.  If you reboot your desktop/laptop, you will need to rerun the ssh-add and ssh-agent commands.
 
 #### Loging into nodes
-Logging into a cluster node from a login node requires keypairs. If
+
+(((This isn't true if you use `srun`. Is it even true in JHPCE 3.0 anyway?  Also, do we want to be suggesting that people log into compute nodes?)))
+
+Logging into a cluster node from a login node requires keypairs. 
+ If
 your private key file is in `.ssh/` then it should work, since the
 public key file is in your `authorized_keys` file. If you do not want
 the same private key file to be used to log into nodes as the one used
@@ -106,3 +97,29 @@ install MobaXterm on your windows machine. If you are
 using MobaXterm, please use the steps at the bottom of the MobaXterm
 Configuration Page.
 
+## SSH and X11
+
+When -X ?
+When -Y ?
+
+XQuartz is an optional Mac program you have to instal 
+
+MobaXterm contains an X11 client
+
+How do Windows users configure ForwardX11Timeout ?
+
+Is `ForwardX11Timeout 0` better in 2024 than specifying a particular time in hours?
+
+https://jhpce.jhu.edu/question/my-x11-forwarding-stops-working-after-20-minutes/
+
+## Mac-specific Configuration
+
+In your ~/.ssh/config file
+
+UseKeychain yes
+XAuthLocation /opt/X11/bin/xauth
+#
+AddKeysToAgent yes
+IdentityFile ~/.ssh/id_ecdsa
+IdentityFile ~/.ssh/id_rsa
+ForwardAgent yes
