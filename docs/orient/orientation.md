@@ -7,6 +7,7 @@ Add link here.
 
 ## Documentation used in orientation
 You can download the orientation slides at [JHPCE-Overview](../orient/images/JHPCE-Overview-2024-01.pdf)
+You can download the orientation slides at [JHPCE-Overview](../orient/images/latest-orient.pdf)
 
 JRT thinks that such file should live in docs/orient/images/
 
