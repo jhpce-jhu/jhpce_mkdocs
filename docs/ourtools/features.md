@@ -103,3 +103,20 @@ But these other things didn't work. For some of them I downloaded an .svg file f
 :mdiOrderAlphabeticalAscending:
 
 :fa-regular fa-envelope:
+
+## Fenced code blocks
+
+Note that you can set off a block of text using three preceding and three following backtick characters. 
+
+Like in Github you can specify a [programming language keyword](https://github.com/github-linguist/linguist/blob/master/lib/linguist/languages.yml) immediately following the leading three backticks to cause the text to be formatted in that language's nottation. 
+
+There is a directory [full of examples](https://github.com/github-linguist/linguist/tree/master/samples) you can simply click on.
+ 
+Useful keywords include Awk, checksums, DNS Zone, Jupyter Notebook, Python, R, Regular Expression, Rich Text Format, SAS, Shell, sed, SSH Config/filenames, stata, YAML
+
+A python example
+
+```python
+def fn():
+pass
+```

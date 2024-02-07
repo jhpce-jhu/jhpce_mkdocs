@@ -1,5 +1,12 @@
 # Features we might/should implement
 
+## Multi-line column headers
+Maybe this is possible. Would be nice to be able to use more words-per-column without forcing the table to be pushed out and require the use of a scrollbar.
+
+## Absolute paths
+So references to other documents could be made to a single absolute path.
+Right now you have to use relative paths, which is just prone to more errors. 
+
 ## Sortable tables
 They are possible.
 
