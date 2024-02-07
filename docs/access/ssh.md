@@ -1,28 +1,42 @@
-# SSH - all about it
+# SSH - Key Information
 
-[Example document](https://hpc-docs.cubi.bihealth.org/misc/ssh-basics/)
+## SSH Basics
 
-### Multi-factor authentication
+SSH stands for Secure SHell. SSH is actually a set of internet standard protocols. Programs implementing these protocols include both command line interface (CLI) tools and those with graphic user interfaces (GUI).  They all enable you to make secure, encrypted connections from one computer to the next.
+
+Access to the JHPCE cluster requires the use of SSH.
+
+Depending on the kind of operating system your computer uses, you may or may not need to install SSH software.
+
+Apple Macs come with CLI SSH tools pre-installed. You use them by entering commands in the Terminal app.  You can install GUI apps from various vendors, but we will only discuss the CLI tools except for some file transfer GUI programs.
+
+On a Windows system you will need to install an ssh client.  We recommend the excellent GUI program MobaXterm. [Here is a document](mobaxterm.md) describing how to use it. There are other programs, such as the [PuTTY](https://en.wikipedia.org/wiki/PuTTY) family of tools and [WinSCP](https://en.wikipedia.org/wiki/WinSCP).
+
+### Multi-factor authentication (MFA)
+There are two basic factors required to log into a computer, whether local or remote -- your username and a password. JHPCE requires the use of an additional factor, either a [one-time password](ssh.md#one-time-passwords) (OTP) six digit code, or the use of [SSH key pairs](ssh.md#ssh-keys). 
+
+### One Time Passwords
+When you SSH into JHPCE, you will be prompted for a “Verification Code:” This is your cue to enter in a one-time password six digit code.
+
+Programs like `Google Authenticator` and `Micrsoft Authenticator` generate one-time password codes (OTP). These are only good for a single use, whether you successfully log in or not. Typically they are used to generate a _stream_ of time-based OTPs, or TOTPs. These are only good for one minute, adding another layer of difficulty for someone trying to impersonate you.
+
+These programs are usually used on smartphones, but there are programs available to create them on laptops and desktops. The key with using ANY OTP program is to get it from a trusted source. We will default to mentioning the `Google Authenticator`.
+
+After you log into JHPCE for the first time, you should immediately configure your OTP program using a "secret" accessible to you on the cluster via the `auth_util` program. Instructions for doing that are found in the [Orientation document](../orient/images/latest-orient.pdf).
+
 ### SSH Keys
-### Mac and Linux Users
-### Windows Users
-Mention Putty and friends.
-MobaXterm is recommended. Point to MobaXterm document.
+
 
 ### Screen and Tmux
 [Example document](https://hpc-docs.cubi.bihealth.org/best-practice/screen-tmux/) mentioning these tools.
 
 We should add whatever admonitions we want users to know about.
 
-## Just yanked in here from our Knowledgebase document
 
-## Authentication
-+ Access to the JHPCE cluster is provided via SSH.  
-+ SSH allows you to establish a secure, encrypted connection between your laptop and a remote computer.
-+  How you initiate the ssh connection is going to depend on what type of local laptop or desktop you are using.  
-   + If you are on a Mac computes, you can start a Terminal which already has ssh.  
-   + On a Windows system you will need to install an ssh client.  We recommend MobaXterm (https://jhpce.jhu.edu/knowledge-base/mobaxterm-configuration/)
-+ We require that all users use enable 2 Factor Authentication on their JHPCE account. 
+[Example document](https://hpc-docs.cubi.bihealth.org/misc/ssh-basics/)
+
+
+## Just yanked in here from our Knowledgebase document
 
 #### Login howto
 + When ssh-ing into the cluster you will be prompted for 2 pieces of information. 
