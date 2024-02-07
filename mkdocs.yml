@@ -55,6 +55,7 @@ nav:
       - Another topic:
         - slurm/slurm.md
         - Subtopic5: storage/storage.md
+        - Subtopic6: storage/storage.md
     - User Guides:
       - GPU: gpu/gpu-overview.md
       - Cost Calculator: access/ssh.md
