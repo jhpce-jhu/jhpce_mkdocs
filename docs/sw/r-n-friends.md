@@ -7,7 +7,7 @@ tags:
 * RStudio
 * RStudio Server
 
-We have a version of R available as a [module](modules).
+We have a version of R available as a [module](modules.md).
 
 This version of R is also known as conda_R. It was built with conda and contains many extra packages commonly used on the cluster.
 

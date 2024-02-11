@@ -114,14 +114,7 @@ theme:
 # https://squidfunk.github.io/mkdocs-material/plugins/
 plugins:
   # TAGS
-  - tags:
-      tags_allowed:
-        - in-progress
-	- jeffrey
-	- mark
-	- jiong
-	- brian
-	- adi
+  - tags
   # SEARCH
   # search is enabled by default but if you add options it HAS TO BE LISTED
   # there are A LOT of extras you can do. Someone explore later if desired.
