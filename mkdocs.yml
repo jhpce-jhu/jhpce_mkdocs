@@ -23,8 +23,10 @@ nav:
       - Overview: access/access-overview.md
       - SSH: access/ssh.md
       - MobaXterm: access/mobaxterm.md
-      - Transferring files: access/file-transfer.md
-      - Globus: access/globus.md
+      - Transferring files in or out: 
+        - Overview: access/file-transfer.md
+        - Globus: access/globus.md
+        - OneDrive: access/onedrive.md
     - Managing Files:
       - OutlineOfMaterial: files/outline.md
       - Sharing Files: files/files-stub.md

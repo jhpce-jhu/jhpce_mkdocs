@@ -1,3 +1,5 @@
+#stub page for the "Managing Files" topic
+
 This is a stub page for the "Managing Files" topic.
 
 
