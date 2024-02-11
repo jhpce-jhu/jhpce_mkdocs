@@ -57,6 +57,12 @@ Rstudio Server is a web based environment for developing R programs.  On the JHP
 
 You will need to perform one step to enable access to this Rstudio Server from your local laptop/desktop;  specifically, you will need to add a tunnel to your existing ssh session to the JHPCE cluster.
 
+!!! tip
+    In UNIX, you send an interrupt signal to a running foreground program using the key combination `CONTROL c` This is historically written as `^C`  Note that you DO NOT actually use the SHIFT key to capitalize the C. The way it is written is misleading. You do NOT type `CONTROL SHIFT c`. However this is the way it has been written for decades, and we will do so.
+    
+!!! warning
+    However, you DO need to capitalize the letter `c` when trying to send an interrupt signal to the ssh program on Mac or Linux computers. The key combination for an ssh interrupt is `~ SHIFT c`
+
 ### For Mac or Linux computers:
 
 To add this tunnel, first type ~C (while holding down SHIFT, press “~” then “C”).  The ~C is used to send an interrupt to your ssh session.  The ~C will likely not show up, but you should see an “ssh>” prompt as a result.  At this “ssh>” prompt you activate the tunnel by typing  -L XXXXX:compute-YYY:XXXXX  .  This will allow your laptop/desktop to access the compute node compute-YYY on port XXXXX (in the above example, the port used was 12345 and the compute node used was compute-012).
@@ -76,7 +82,6 @@ To start, click on the “Tunneling” icon at the top of MobaXterm, and you sho
 Click on “New SSH Tunnel”, and you should see:
 
 ### Shutting down the Rstudio Server
-
 
 
 When you have finished using Rstudio Server, you should close the browser tab or window that you are using to run Rstudio Server, and then return to the ssh session where you ran the “jhpce-rstudio-server” command.  To stop the Rstudio Server, type “^C”.  You will then be given a few additional steps to run to deactivate the port forward. As with the establishment of the tunnel, these steps are for MacOS and Linux based desktops/laptops.  You will again be prompted to type “~C”, and then enter “-KL XXXXX” at the “ssh>” prompt to stop the forwarding (NOTE: you’ll need to hit <enter> once before typing “~C”).  The session should look similar to:

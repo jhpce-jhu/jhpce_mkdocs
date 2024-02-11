@@ -8,11 +8,18 @@ So references to other documents could be made to a single absolute path.
 Right now you have to use relative paths, which is just prone to more errors. 
 
 ## Sortable tables
-They are possible.
+They are possible. Might require an extension or plugin.
 
 ## Announcement bar in header
 For things like planned outages.
 See issue 777.
+
+## Open URLs in new tabs
+I think there might be plugins which make this easier than what you have to do othwerwise, which is to use HTML instead of the Markdown notation. In normal HTML you add a space and a string to the end of the URL: `target="_blank"`
+
+```
+<a href="https://squidfunk.github.io/mkdocs-material/reference/admonitions/" target="_blank">About admonitions</a>
+```
 
 ## Maybe a user-contribution capability
 For topic headings like SOFTWARE where users have recipes and tuning advice. Implemented how? git pull requests against any page on the site? Is there a way to limit to a subsection?

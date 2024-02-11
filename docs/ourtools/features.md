@@ -38,7 +38,12 @@ Example code and result:
 ## admonitions
 These are **sweet**! We should use them frequently. But be aware that they are not rendered correctly in MacDown.app.
 
-[About admonitions](https://squidfunk.github.io/mkdocs-material/reference/admonitions/)
+<a href="https://squidfunk.github.io/mkdocs-material/reference/admonitions/"" target="_blank">About admonitions</a>
+
+You add an admonition by
+
+1. starting a line with three explanation marks, a space, and a keyword (called a "type qualifier") such as note, danger, example, info, tip, warning. Here is a [list](https://squidfunk.github.io/mkdocs-material/reference/admonitions/#supported-types)
+2. on the next line(s) start with FOUR spaces
 
 !!! note
     Some text in a note.
@@ -46,11 +51,27 @@ These are **sweet**! We should use them frequently. But be aware that they are n
 !!! example
     admonitions allow setting off info inside colored boxes, e.g. note,tip,warning,danger,example.
     https://squidfunk.github.io/mkdocs-material/reference/admonitions/#usage
-    
-    
+
+## Open URLs in new tabs
+I think there might be plugins which make this easier than what you have to do othwerwise, which is to use HTML instead of the Markdown notation. In normal HTML you add a space and a string to the end of the URL: `target="_blank"`
+
+```
+<a href="https://squidfunk.github.io/mkdocs-material/reference/admonitions/" target="_blank">About admonitions</a>
+```
     
 ## Footnotes
-This[^1] is a reference to the feature's description. 
+This[^1] is a reference to the feature's description.
+
+You add a footnote by entering
+
+`[^1]`
+
+in the midst of your text. Anywhere in the document you write the footnote by placing at the start of a line the corresponding numbered entry using the same syntax but adding a colon and a space character after the closing square brace.
+
+
+`[^1]: Wording of footnote`
+
+
 [^1]: https://squidfunk.github.io/mkdocs-material/reference/footnotes/#adding-footnote-references
 
 
