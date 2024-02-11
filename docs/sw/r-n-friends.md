@@ -1,3 +1,7 @@
+---
+tags:
+  - in-progress
+---
 # R Basics
 * R
 * RStudio
