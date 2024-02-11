@@ -1,15 +1,17 @@
-# WEB SITE TOOLS/ENABLED FEATURES JEFFREY IS ACCUMULATING
-Some more useful than others. I like "admonitions" a lot.
+# WEB SITE TOOLS/ENABLED FEATURES WORTH KNOWING HOW TO USE
+Some more useful than others. Jeffrey likes "admonitions" a lot. There is another document containing [wishlist](wishlist.md) items that we might want to enable/configure.
 
 ## Critical reference
 [Materials for MkDocs reference section](https://squidfunk.github.io/mkdocs-material/reference/).
 
 ## Frontmatter (in documents)
-I don't think that this is a complete list of directives that one can optionally add within a document.
-https://squidfunk.github.io/mkdocs-material/reference/
+Tags are the primary use of frontmatter I think we should use at this point. [This](https://squidfunk.github.io/mkdocs-material/reference/) may not be a complete list of directives that one can optionally add within a document. But the basics are that you can add to the top of the document a stanza to set the title of the document, a description of it, a status indicator such as new or deprecated. See [this page](https://squidfunk.github.io/mkdocs-material/reference/#setting-the-page-icon) for how to define an icon for the page.
+
 
 ## Tags
-An example of frontmatter is the code to add tags to documents. 20240211 I tested adding a tag and it works. I also specified in the nav section [a page ](tags.md)for Material for MkDocs to automatically list tags and the pages they are found on. 
+An example of frontmatter is the code to [add tags](https://squidfunk.github.io/mkdocs-material/setup/setting-up-tags/) to documents. 20240211 I tested adding a tag and it works. I also specified in the nav section [a page ](tags.md)for Material for MkDocs to automatically list tags and the pages they are found on.
+
+A lot of optional tag-related settings/capabilities seem to be reserved for paying sponsers as of 20240201. See this [page](https://squidfunk.github.io/mkdocs-material/insiders/). Can users search for documents by tags in the search field?
 
 The tags I envision using at the outset are shown below, so we can try to use them to figure out which pages need attention and possibly who is assigned to finish it.
 
@@ -103,11 +105,6 @@ in the midst of your text. Anywhere in the document you write the footnote by pl
 
 [^1]: https://squidfunk.github.io/mkdocs-material/reference/footnotes/#adding-footnote-references
 
-
-## Tags
-Not attempted at this point. Optional feature allowing users to search by tags.
-https://squidfunk.github.io/mkdocs-material/setup/setting-up-tags/
-A lot of optional tag-related settings/capabilities seem to be reserved for paying sponsers as of 20240201. See this [page](https://squidfunk.github.io/mkdocs-material/insiders/).
 
 ## Data tables
 They don't render in MacDown (and maybe others) unless you also include the line of hyphens under the line containing the column titles.

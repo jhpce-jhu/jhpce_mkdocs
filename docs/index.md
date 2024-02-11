@@ -31,7 +31,7 @@ applications that are typical in traditional HPC fields, e.g.,
 physics, fluid-dynamics, quantum simulation etc. The network fabric
 consists of a 10 Gbps ethernet. The facility is connected via a 40Gbps
 network to the University’s Science DMZ. Job scheduling is performed
-with Open Grid Engine (OGE).
+with Simple Linux Utility for Resource Management ([SLURM](https://slurm.schedmd.com)).
 
 The JHPCE operates as a formal Common Pool Resource (CPR) Hierarchy
 with rights to specific resources based on stakeholder ownership of
@@ -41,7 +41,7 @@ basis, in exchange for fees that defray the operating costs of the
 stakeholders.
 
 If your lab is interested in joining the JHPCE community, either as a
-stakeholder or as a non-stakeholder, please contact the director
+stakeholder or as a non-stakeholder, please contact the directors
 (jhpce@jhu.edu) to determine whether we can accommodate your needs.
 
 If your lab is already a member, and you need to add new users, then
