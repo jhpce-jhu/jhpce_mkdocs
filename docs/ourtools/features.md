@@ -8,6 +8,35 @@ Some more useful than others. I like "admonitions" a lot.
 I don't think that this is a complete list of directives that one can optionally add within a document.
 https://squidfunk.github.io/mkdocs-material/reference/
 
+## Tags
+An example of frontmatter is the code to add tags to documents. 20240211 I tested adding a tag and it works. I also specified in the nav section [a page ](tags.md)for Material for MkDocs to automatically list tags and the pages they are found on. 
+
+The tags I envision using at the outset are shown below, so we can try to use them to figure out which pages need attention and possibly who is assigned to finish it.
+
+The tag "needs-improvement-later" could be added to a page which has "done" to indicate that what we have is able to be published but needs more work.
+
+The tag "contains-refs-to-old-site" came to me because some pages, such as the R page, contain screenshots which contain the URL of the old web site.
+
+The tag "last-revised-YYYYMMDD" could be used on a page which also has "done" or "needs-improvement-later" so you can tell that information by looking at the tags page. As opposed to having to go look at the repository. The [wishlist](wishlist.md) document mentions adding a plugin or extension which allows the last-revised date to be automatically generated and listed at the bottom of each page.
+
+Place lines like this at the very top of the document, before the document title, to add the tags mentioned. Tags are strings but I am hoping to avoid spaces or underscores. (Underscores suck b/c they require the shift key. And you can't always see them depenind on how text renders.)
+
+```
+---
+tags:
+  - done
+  - in-progress
+  - needs-improvement-later
+  - contains-refs-to-old-site
+  - last-revised-20240210
+  - jeffrey
+  - mark
+  - jiong
+  - adi
+  - brian
+---
+```
+
 ## Abbreviations
 Abbreviations can be defined by using a syntax similar to URLs and footnotes, starting with an asterisk immediately followed by the term to be associated in square brackets.
 
