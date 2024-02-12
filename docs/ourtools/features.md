@@ -157,9 +157,15 @@ But these other things didn't work. For some of them I downloaded an .svg file f
 
 ## Fenced code blocks
 
-Note that you can set off a block of text using three preceding and three following backtick characters. 
+Note that you can set off a block of text using three preceding and three following backtick characters.
 
-Like in Github you can specify a [programming language keyword](https://github.com/github-linguist/linguist/blob/master/lib/linguist/languages.yml) immediately following the leading three backticks to cause the text to be formatted in that language's nottation. 
+!!! note:
+    The language keywords are not the same as in github -- there is overlap but also differences. See this list for the  [language keywords](https://pygments.org/docs/lexers/) for the Pygments
+Python syntax highlighter used by Material for MkDocs.
+
+Earlier text:
+
+Like in Github you can specify a [programming language keyword](https://github.com/github-linguist/linguist/blob/master/lib/linguist/languages.yml) immediately following the leading three backticks to cause the text to be formatted in that language's notation. 
 
 There is a directory [full of examples](https://github.com/github-linguist/linguist/tree/master/samples) you can simply click on.
  
