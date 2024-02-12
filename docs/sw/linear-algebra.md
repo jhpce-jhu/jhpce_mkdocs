@@ -1,3 +1,8 @@
+---
+tags:
+  - obsolete
+---
+
 # Numerical Linear Algebra Libraries
 If you are compiling your own numerical packages for R, Python, Perl,
 etc. then you will more than likely need to use the BLAS, LAPACK or
