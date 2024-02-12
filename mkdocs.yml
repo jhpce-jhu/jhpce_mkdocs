@@ -145,6 +145,7 @@ plugins:
 markdown_extensions:
   # https://squidfunk.github.io/mkdocs-material/reference/lists/
   - def_list # Definition lists
+  - tables
   - pymdownx.tasklist:
       custom_checkbox: true
   # JRT sasy following three lines are ALL needed to enable admonition
