@@ -113,11 +113,10 @@ They don't render in MacDown (and maybe others) unless you also include the line
 You can align the column contents to left, center or right by placing a colon at the left side of the divider for that column, both sides, or the right side.
 
 ### Sortable tables
-JRT thinks that you need to add some javascript to enable sortable tables and other to enable instant loading. I suppose as opposed to having to manually reload the page??
+This is now implemented.
 
 https://squidfunk.github.io/mkdocs-material/reference/data-tables/#sortable-tables
 
-http://tristen.ca/tablesort/demo/
 
 ### Import CSV or Excel file
 See https://timvink.github.io/mkdocs-table-reader-plugin/
