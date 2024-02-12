@@ -138,6 +138,9 @@ plugins:
   # plugin on his machine. He didn't know if it would work on the server
   # in any case. He just wanted documents to have last-modified dates on them.
   #- git-revision-date-localized
+  - privacy:
+      links_attr_map:
+        target: _blank
 
 #
 # Python MarkDown Extensions
