@@ -1,8 +1,12 @@
+---
+tags:
+   - done
+---
 # Helpful Hints For Asking Questions or Reporting Problems
 
 This page describes how to write a good help request email.
       
-
+## A Good Request
 1. Write a descriptive summary.
     * Put in a short summary into the Subject.
     * Which cluster are you on? We support two -- JHPCE and C-SUB. We assume JHPCE but specify "C-SUB" if that is where you are working.
@@ -22,9 +26,9 @@ This page describes how to write a good help request email.
     * Never put your password into the ticket.
     * In the case that you handle person-related data of patients/study participants, never write any of this information into the ticket or subsequent email.
 
-There are more specific questions for common issues given below.
+## Specific questions for common issues
 
-Problems Connecting to the Cluster
+### Problems Connecting to the Cluster
 
 * From which machine/IP do you try to connect (ifconfig on Linux/Mac, ipconfig on Windows)?
 * Did it work before?
@@ -32,7 +36,7 @@ Problems Connecting to the Cluster
 * Please send us the output of `ssh-add -l` and add `-vvv` to the SSH command that fails for you.
 * What is the response of the server?
 
-Problems Submitting Jobs
+### Problems Submitting Jobs
 
 * Please give us the directory that you ran things in.
 * Please send us the submission script that you have problems with.
