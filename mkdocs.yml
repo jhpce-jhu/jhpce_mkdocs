@@ -189,3 +189,6 @@ validation:
   omitted_files: warn
   absolute_links: warn
   unrecognized_links: warn
+extra_javascript:
+  - https://unpkg.com/tablesort@5.3.0/dist/tablesort.min.js
+  - javascripts/tablesort.js
