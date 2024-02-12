@@ -1,3 +1,10 @@
+---
+tags:
+  - topic-overview
+  - needs-revision
+---
+
+
 # THIS PREVIOUS DOC IS TOO LONG AND NEEDS TO BE BROKEN UP INTO AN OVERVIEW AND SOME SUBORDINATE DOCUMENTS
 
 Maybe file transfer needs to be a whole topic, meaning it has its own subdirectory inside docs to hold the markdown files, the include images files (from their own docs/filetransfer/images/ subdirectory), etc.

@@ -64,9 +64,9 @@ nav:
       - Cost Calculator: access/ssh.md
       - How to read a manual page: help/images/guide-to-manual-pages.pdf
     - Web Portal:
-      - GUI Applications: portal/index.md
-      - Database of Databses: portal/index.md
-      - Self Service MFA, Password Requests : portal/index.md
+      - GUI Applications: portal/portal-stub.md
+      - Database of Databses: portal/portal-stub.md
+      - Self Service MFA, Password Requests : portal/portal-stub.md
     - Tools For Site Developers: 
       - Handy Features: ourtools/features.md
       - Wishlist: ourtools/wishlist.md
