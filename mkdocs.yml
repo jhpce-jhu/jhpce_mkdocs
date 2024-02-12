@@ -26,7 +26,7 @@ nav:
       - Transferring files in or out: 
         - Overview: access/file-transfer.md
         - Globus: access/globus.md
-        - OneDrive: access/onedrive.md
+        - OneDrive via rclone: access/onedrive.md
     - Managing Files:
       - OutlineOfMaterial: files/outline.md
       - Sharing Files: files/files-stub.md
@@ -111,6 +111,11 @@ theme:
     #       - OtherSubject:
     #         - slurm/README.md
     - navigation.indexes
+    # code blocks - https://squidfunk.github.io/mkdocs-material/reference/code-blocks/
+    #    there are lots of customizations and info there, not just about the
+    #    following feature. e.g. a list of language types https://pygments.org/docs/lexers/
+    - content.code.copy # automatically render button on right side to allow
+                        # users to copy code blocks
 #
 # Plugins
 #
