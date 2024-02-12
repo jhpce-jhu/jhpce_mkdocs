@@ -58,10 +58,3 @@ Pay-as-you-go spaces are generally more expensive than project spaces due to the
 
 Additionally all users have access to 1TB of "fastscratch" storage for storing files less than 30 days.  More information on using fastscratch can be found at [/jhpce_mkdocs/knowledge_base/#fastscratch]
 - **Personal Scratch space**: A network-based filesystem with a backend NVME based storage array, intended for short-term storage of large files.
-
-
-| Method      | Description                          |
-| ----------- | ------------------------------------ |
-| `GET`       | :material-check:     Fetch resource  |
-| `PUT`       | :material-check-all: Update resource |
-| `DELETE`    | :material-close:     Delete resource |
