@@ -56,6 +56,11 @@
          <changefreq>daily</changefreq>
     </url>
     <url>
+         <loc>https://www.jhpce-jhu.github.io/jhpce_docs/forms/new-user/</loc>
+         <lastmod>2024-02-14</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
          <loc>https://www.jhpce-jhu.github.io/jhpce_docs/gpu/gpu-overview/</loc>
          <lastmod>2024-02-14</lastmod>
          <changefreq>daily</changefreq>
