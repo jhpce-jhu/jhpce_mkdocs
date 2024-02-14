@@ -170,6 +170,24 @@ But these other things didn't work. For some of them I downloaded an .svg file f
 
 Note that you can set off a block of text using three preceding and three following backtick characters.
 
+There are MANY options for code blocks. All kinds of syntaxes can be used to mean different things. Here is the m[ain document ](https://squidfunk.github.io/mkdocs-material/reference/code-blocks/#code-blocks)for code blocks.
+
+### code block line numbers & highlighting
+For example, line numbers are enabled by default. You can disable them for a specific code block by adding after the beginning three back ticks a space, then a `linenums="0"`
+If you have multiple code blocks and want the line numbers to continue in second and later blocks, you can replace that 0 with a specific number.
+
+You can highlight specific line numbers within the block by adding after the beginning three back ticks a space, then a `hl_lines="2 3"`
+
+### code block titles & including other files
+Add a title by following leading 3 backticks with a space and `title=".browserslistrc"`
+
+When Snippets is enabled, content from other files (including source files) can be embedded by using the `--8<--` notation directly from within a code block to pull in a file via a relative path, in this case `includes/sample-bashrc`
+
+``` title="sample bashrc"
+--8<-- "includes/sample-bashrc"
+```
+
+### code block formatting by programming language
 !!! note:
     The language keywords are not the same as in github -- there is overlap but also differences. See this list for the  [language keywords](https://pygments.org/docs/lexers/) for the Pygments
 Python syntax highlighter used by Material for MkDocs.
@@ -190,18 +208,19 @@ pass
 ```
 ## Highlighting text
 
-```
-Text can be {--deleted--} and replacement text {++added++}. This can also be
-combined into {~~one~>a single~~} operation. {==Highlighting==} is also
-possible {>>and comments can be added inline<<}.
+JRT doesn't know how to prevent the example text showing the syntax from being rendered. Putting it in or out of code blocks doesn't work.
 
-{==
+Text can be {--deleted--} and replacement text `{++added++}`. This can also be
+combined into `{~~one~>a single~~}` operation. `{==Highlighting==}` is also
+possible `{>>and comments can be added inline<<}`.
+
+`{==`
 
 Formatting can also be applied to blocks by putting the opening and closing
 tags on separate lines and adding new lines between the tags and the content.
 
-==}
-```
+`==}`
+
 
 Text can be {--deleted--} and replacement text {++added++}. This can also be
 combined into {~~one~>a single~~} operation. {==Highlighting==} is also

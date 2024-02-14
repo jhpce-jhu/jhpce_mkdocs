@@ -171,8 +171,9 @@ markdown_extensions:
       emoji_index: !!python/name:material.extensions.emoji.twemoji
       emoji_generator: !!python/name:material.extensions.emoji.to_svg
   - pymdownx.highlight:
-      linenums: true # adds line numbers to code blocks by default (but how to
-                     # disable when desired???
+      linenums: true # adds line numbers to code blocks by default (to disable when desired
+                     # add linenums="0" after the initial three backticks)
+  - pymdownx.inlinehilite
   - pymdownx.keys # keyboard meta keys displayed e.g. ++ctrl++
   # JRT included this because someone else did. Investigate.
   - pymdownx.snippets # adds the ability to embed content from arbitrary files into a document
