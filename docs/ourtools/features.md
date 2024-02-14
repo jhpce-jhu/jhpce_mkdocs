@@ -39,7 +39,19 @@ tags:
   - brian
 ---
 ```
+## Internal links
+From [this mkdocs](https://www.mkdocs.org/user-guide/writing-your-docs/#writing-with-markdown) page JRT learned that you can specify anchor points to document sections by knowing that they are converted to lowercase and white space is replaced by dashes. So this very section, named "Internal links" can be specified as a link to "features.md#internal-links"
 
+## Keyboard meta keys
+
+(enabled by the pymdownx.keys extension)
+keyboard meta keys displayed e.g. ++ctrl++
+by using two plus characters, the keyword like "ctrl", then two more plus characters
+
+Example keywords are: cmd, ctrl, esc, tab, del, arrow-up, pipe, windows.
+
+For more info, see [https://facelessuser.github.io/pymdown-extensions/extensions/keys/
+](https://facelessuser.github.io/pymdown-extensions/extensions/keys/)
 ## Abbreviations
 Abbreviations can be defined by using a syntax similar to URLs and footnotes, starting with an asterisk immediately followed by the term to be associated in square brackets.
 
@@ -176,5 +188,3 @@ A python example
 def fn():
 pass
 ```
-## Internal links
-From [this mkdocs](https://www.mkdocs.org/user-guide/writing-your-docs/#writing-with-markdown) page JRT learned that you can specify anchor points to document sections knowing that they are converted to lowercase and white space is replaced by dashes. So this very section, named "Internal links" can be specified as a link to "features.md#internal-links"
