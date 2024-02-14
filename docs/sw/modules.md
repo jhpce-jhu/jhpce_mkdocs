@@ -68,7 +68,7 @@ file. Otherwise nothing will work! After you source the system-wide
 bashrc file you can tailor your environment variables for any
 applications or versions that you want. For example:
 
-```
+``` bash linenums="true"
 # Always source the global bashrc
 if [ -f /etc/bashrc ]; then
 . /etc/bashrc

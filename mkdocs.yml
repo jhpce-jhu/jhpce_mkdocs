@@ -161,6 +161,10 @@ markdown_extensions:
       toc_depth: 5 # optional
       permalink: true # Adds anchor link to each section of a doc
       permalink_title: Anchor link to this section for reference # Adds phrase if you hover 
+  - pymdownx.caret # enables certain text formatting https://squidfunk.github.io/mkdocs-material/setup/extensions/python-markdown-extensions/#caret-mark-tilde
+  - pymdownx.mark # enables certain text formatting https://squidfunk.github.io/mkdocs-material/setup/extensions/python-markdown-extensions/#caret-mark-tilde
+  - pymdownx.tilde # enables certain text formatting https://squidfunk.github.io/mkdocs-material/setup/extensions/python-markdown-extensions/#caret-mark-tilde
+  - pymdownx.critic # https://squidfunk.github.io/mkdocs-material/reference/formatting/#highlighting-changes
   # following four lines needed to enable (some) icons & emojis
   # https://squidfunk.github.io/mkdocs-material/reference/icons-emojis/
   - pymdownx.emoji:
