@@ -55,6 +55,7 @@ nav:
       - Example User Guides: slurm/user-guide-collection.md
       - Partitions: slurm/partitions.md
       - Commands reference: slurm/slurm-commands-ref.md
+      - Monitoring Your Jobs: slurm/monitoring.md
       - Quality of Service (QOS): slurm/qos.md
       - SLURM FAQ: slurm/slurm-faq.md
       - Another topic:
