@@ -48,6 +48,7 @@ nav:
       - Linear Algebra Libries: sw/linear-algebra.md
       - Jupyter: sw/jupyter.md
       - R and RStudio and friends: sw/r-n-friends.md
+      - Managing Jobs With R and slurmjobs: sw/r-slurmjobs.md
       - Helpful GUI Programs: sw/gui-tools.md
       - Containers: sw/containers.md
     - Job scheduler (SLURM): 
@@ -68,6 +69,9 @@ nav:
       - GUI Applications: portal/portal-stub.md
       - Database of Databses: portal/portal-stub.md
       - Self Service MFA, Password Requests : portal/portal-stub.md
+    - C-SUB:
+      - What Is The C-SUB?: csub/csub-stub.md
+      - New User: csub/csub-stub.md
     - Tools For Site Developers: 
       - Handy Features: ourtools/features.md
       - Wishlist: ourtools/wishlist.md
