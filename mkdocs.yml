@@ -30,7 +30,7 @@ nav:
     - Managing Files:
       - OutlineOfMaterial: files/outline.md
       - Sharing Files: files/files-stub.md
-      - Quotas: files/files-stub.md
+      - Quotas: files/quotas.md
       - ACL: files/acl.md
       - HIPAA etc: files/files-stub.md
     # should storage be a subsidiary of managing files?
