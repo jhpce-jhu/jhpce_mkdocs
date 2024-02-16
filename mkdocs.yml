@@ -30,12 +30,12 @@ nav:
     - Managing Files:
       - OutlineOfMaterial: files/outline.md
       - Sharing Files: files/files-stub.md
-      - Quotas: files/quotas.md
       - ACL: files/acl.md
       - HIPAA etc: files/files-stub.md
     # should storage be a subsidiary of managing files?
     - Storage:
       - Storage Overview: storage/stg-overview.md
+      - Quotas: storage/quotas.md
       - Getting More Space: storage/buying-in.md
       - Old Stg Page: storage/storage.md
       - Fastscratch: storage/fastscratch.md
