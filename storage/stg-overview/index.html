@@ -1300,21 +1300,6 @@
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Disk Storage Space on the JHPCE Cluster">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#fastscratch" class="md-nav__link">
-    <span class="md-ellipsis">
-      Fastscratch
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
 </li>
       
         <li class="md-nav__item">
@@ -2433,21 +2418,6 @@
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Disk Storage Space on the JHPCE Cluster">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#fastscratch" class="md-nav__link">
-    <span class="md-ellipsis">
-      Fastscratch
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
 </li>
       
         <li class="md-nav__item">
@@ -2541,21 +2511,6 @@ See <a href="../backups/">this document</a> for more information.</p>
 <li>In SAS, the default <code>WORK</code> directory will be located under your <code>fastscratch</code> directory.</li>
 <li>In Stata, the default <code>tempfile</code> location is under <code>/tmp</code>. This can be changed by setting the <code>STATATMP</code> environment variable.</li>
 </ul>
-<h3 id="fastscratch">Fastscratch<a class="headerlink" href="#fastscratch" title="Anchor link to this section for reference">&para;</a></h3>
-<ul>
-<li>You can access your Personal Scratch space by using the <code>$MYSCRATCH</code> environment variable from an interactive cluster node session, or within a submitted job.</li>
-<li>The actual absolute path to your Personal Scratch space is <code>/fastscratch/myscratch/$USER</code>.</li>
-<li>There are some very important restrictions for using this personal scratch space.</li>
-<li>There is currently a 1TB quota set on the personal scratch space.</li>
-<li>All files older than 30 days will be removed without exception.  </li>
-<li>Abuse of this space may result in files being deleted on an as needed basis.  </li>
-<li><em>This Personal Scratch space is meant to be a short-term storage location; it is not a long-term storage solution.</em></li>
-<li>If you <code>untar</code> or <code>unzip</code> a file, and the extracted files have a timestamp older than 30 days from the original bundle, they will be removed when the daily purge begins. To work around this, you can use the <code>touch</code> command to update the timestamp on the extracted files.</li>
-<li>Even though there is a 30 day automatic deletion of data, we ask that you please remove data from your Personal Scratch space once you have finished using it.</li>
-<li>The Fast Scratch space is not visible on the login nodes.  You will need to log into a compute node or a transfer node or submit a job in order to see this scratch space.</li>
-<li>There is no cost for using your personal scratch space.</li>
-<li>The personal scratch space has no redundancy, so scratch space drive failures result in data loss. Thus, move important files needed to be kept from scratch space ASAP.</li>
-</ul>
 <h2 id="encrypted-filesystem">Encrypted filesystem<a class="headerlink" href="#encrypted-filesystem" title="Anchor link to this section for reference">&para;</a></h2>
 <ul>
 <li>The JHPCE Cluster currently supports the following mechanisms for
@@ -2588,7 +2543,7 @@ devices.</li>
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1-2.1-2M12.5 7v5.2l4 2.4-1 1L11 13V7h1.5M11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2v1.8Z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">February 12, 2024</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">February 16, 2024</span>
   </span>
 
     
