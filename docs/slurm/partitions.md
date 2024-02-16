@@ -18,7 +18,6 @@ Limits for CPU cores, RAM and Time (default/maximum)
 | Name | Type | Approval[1] | Core | RAM | Time | Notes/Use |
 | ---- | :----: | :-----: | ---- | ---- | :-------: | ----- |
 | shared | public | no | 100 | 1TB | (none/90d) | DEFAULT |
-| shared-no-r | public | no | 100 | 1TB | (none/90d) | Does not support R |
 | interactive | public | no | 2 | 20gb | (none/90d) | Small but accessible |
 | gpu | public | no | (none) | (none) | (none/90d) | |
 | bluejay | PI | yes | (none) | (none) | (none/90d) | |
