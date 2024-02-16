@@ -2304,7 +2304,7 @@
     
     
     
-      <a href="../../ourtools/tags/#in-progress" class="md-tag">in-progress</a>
+      <a href="../../ourtools/tags/#done" class="md-tag">done</a>
     
   
 </nav>
@@ -2313,13 +2313,16 @@
 
 <h1 id="fastscratch">Fastscratch<a class="headerlink" href="#fastscratch" title="Anchor link to this section for reference">&para;</a></h1>
 <p>A 22TB file system created from fast Solid State Disk is available for your use. This provides a fast place to store input or output files for your compute jobs. There is no cost for using your personal scratch space.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
 <p><em>This scratch space is meant to be a short-term storage location; it is not a long-term storage solution.</em></p>
+</div>
 <p>You can access your scratch space by using the <code>$MYSCRATCH</code> environment variable from an interactive cluster node session, or within a submitted job.</p>
 <p>The actual absolute path to your personal scratch space is <code>/fastscratch/myscratch/$USER</code>.</p>
 <h2 id="key-details">Key details<a class="headerlink" href="#key-details" title="Anchor link to this section for reference">&para;</a></h2>
 <p>Because this limited resource is shared by all users, there are some very important restrictions for using it.</p>
 <ul>
-<li>There is a 1TB quota set on the personal scratch space.</li>
+<li>There is a 1TB quota set on the personal scratch space. (See <a href="../quotas/">this document</a> for more information about disk quotas.)</li>
 <li>All files older than 30 days will be removed without exception.  </li>
 <li>Even though there is a 30 day automatic deletion of data, we ask that you please remove data from your personal scratch space once you have finished using it.</li>
 <li>The personal scratch space is not backed up. Therefore if you delete a file it cannot be recovered.</li>
