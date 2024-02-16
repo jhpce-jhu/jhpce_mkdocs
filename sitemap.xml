@@ -191,6 +191,11 @@
          <changefreq>daily</changefreq>
     </url>
     <url>
+         <loc>https://www.jhpce-jhu.github.io/jhpce_docs/storage/fastscratch/</loc>
+         <lastmod>2024-02-16</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
          <loc>https://www.jhpce-jhu.github.io/jhpce_docs/storage/stg-overview/</loc>
          <lastmod>2024-02-16</lastmod>
          <changefreq>daily</changefreq>
