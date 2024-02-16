@@ -69,20 +69,6 @@ Consider potential impact of running certain commands that will cause lots of I/
   + In SAS, the default `WORK` directory will be located under your `fastscratch` directory.
   + In Stata, the default `tempfile` location is under `/tmp`. This can be changed by setting the `STATATMP` environment variable.
 
-### Fastscratch
-+ You can access your Personal Scratch space by using the `$MYSCRATCH` environment variable from an interactive cluster node session, or within a submitted job.
-+ The actual absolute path to your Personal Scratch space is `/fastscratch/myscratch/$USER`.
-+ There are some very important restrictions for using this personal scratch space.
-+ There is currently a 1TB quota set on the personal scratch space.
-+ All files older than 30 days will be removed without exception.  
-+ Abuse of this space may result in files being deleted on an as needed basis.  
-+ *This Personal Scratch space is meant to be a short-term storage location; it is not a long-term storage solution.*
-+ If you `untar` or `unzip` a file, and the extracted files have a timestamp older than 30 days from the original bundle, they will be removed when the daily purge begins. To work around this, you can use the `touch` command to update the timestamp on the extracted files.
-+ Even though there is a 30 day automatic deletion of data, we ask that you please remove data from your Personal Scratch space once you have finished using it.
-+ The Fast Scratch space is not visible on the login nodes.  You will need to log into a compute node or a transfer node or submit a job in order to see this scratch space.
-+ There is no cost for using your personal scratch space.
-+ The personal scratch space has no redundancy, so scratch space drive failures result in data loss. Thus, move important files needed to be kept from scratch space ASAP.
-
 ## Encrypted filesystem
 + The JHPCE Cluster currently supports the following mechanisms for
 using encrypted filesystems.
