@@ -1,13 +1,14 @@
 ---
 tags:
-  - in-progress
+  - done
 ---
 
 # Fastscratch
 
 A 22TB file system created from fast Solid State Disk is available for your use. This provides a fast place to store input or output files for your compute jobs. There is no cost for using your personal scratch space.
 
-*This scratch space is meant to be a short-term storage location; it is not a long-term storage solution.*
+!!! Note
+    *This scratch space is meant to be a short-term storage location; it is not a long-term storage solution.*
 
 You can access your scratch space by using the `$MYSCRATCH` environment variable from an interactive cluster node session, or within a submitted job.
 
@@ -17,7 +18,7 @@ The actual absolute path to your personal scratch space is `/fastscratch/myscrat
 
 Because this limited resource is shared by all users, there are some very important restrictions for using it.
 
-+ There is a 1TB quota set on the personal scratch space.
++ There is a 1TB quota set on the personal scratch space. (See [this document](quotas.md) for more information about disk quotas.)
 + All files older than 30 days will be removed without exception.  
 + Even though there is a 30 day automatic deletion of data, we ask that you please remove data from your personal scratch space once you have finished using it.
 + The personal scratch space is not backed up. Therefore if you delete a file it cannot be recovered.
