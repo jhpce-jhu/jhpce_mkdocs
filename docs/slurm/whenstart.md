@@ -37,7 +37,7 @@ A better formatted of that command which prints only the factors we are currentl
 `sprio -o "%.15i %9r %.8u %.10Y %.10A %.10F %.10P" -S -y,p,u`
 
 ### Fairshare
-To help provide equitable access to the cluster, the FAIRSHARE priority component is based on your recent usage. If you have used fewer CPU minutes than someone else in the last week, then your jobs will receive a higher fairshare value.
+To help provide equitable access to the public partitions of the cluster, the FAIRSHARE priority component is based on your recent usage of those partitions. If you have used fewer CPU minutes than someone else in the last week, then your jobs will receive a higher fairshare value.
 
 The fairshare priority is the result of multiplying a weight stored in a variable, PriorityWeightFairshare, and a factor which is derived from the accounting database.
 
