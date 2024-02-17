@@ -86,7 +86,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#caveat" class="md-skip">
+        <a href="#backups-and-restores" class="md-skip">
           Skip to content
         </a>
       
@@ -1298,6 +1298,8 @@
       <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
       
       
+        
+      
       
         <label class="md-nav__link md-nav__link--active" for="__toc">
           
@@ -1326,6 +1328,8 @@
   
   
   
+    
+  
   
     <label class="md-nav__title" for="__toc">
       <span class="md-nav__icon md-icon"></span>
@@ -1348,6 +1352,21 @@
       Home directories
     </span>
   </a>
+  
+    <nav class="md-nav" aria-label="Home directories">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#self-service-restores" class="md-nav__link">
+    <span class="md-ellipsis">
+      Self Service Restores
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -2445,6 +2464,8 @@
   
   
   
+    
+  
   
     <label class="md-nav__title" for="__toc">
       <span class="md-nav__icon md-icon"></span>
@@ -2467,6 +2488,21 @@
       Home directories
     </span>
   </a>
+  
+    <nav class="md-nav" aria-label="Home directories">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#self-service-restores" class="md-nav__link">
+    <span class="md-ellipsis">
+      Self Service Restores
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -2492,15 +2528,35 @@
               <article class="md-content__inner md-typeset">
                 
                   
+  
+<nav class="md-tags" >
+  
+    
+    
+    
+      <a href="../../ourtools/tags/#in-progress" class="md-tag">in-progress</a>
+    
+  
+</nav>
 
 
-  <h1>Backups</h1>
 
-<p>Backups</p>
+<h1 id="backups-and-restores">Backups and Restores<a class="headerlink" href="#backups-and-restores" title="Anchor link to this section for reference">&para;</a></h1>
 <h2 id="caveat">Caveat<a class="headerlink" href="#caveat" title="Anchor link to this section for reference">&para;</a></h2>
 <p>We try to protect your data, but ultimately you need to keep copies of your most vital files elsewhere.</p>
 <h2 id="home-directories">Home directories<a class="headerlink" href="#home-directories" title="Anchor link to this section for reference">&para;</a></h2>
 <p>Frequency, restore window. Form to request restores. Or just a description of what is needed (what is missing? when did you last see it? where do you want it restored to?)</p>
+<h3 id="self-service-restores">Self Service Restores<a class="headerlink" href="#self-service-restores" title="Anchor link to this section for reference">&para;</a></h3>
+<p>We make snapshots of the /users file system for fourteen days. You can restore files you have deleted recently by changing directory to the appropriate location and then copying the file or files back to your home directory (or anywhere else you desire).</p>
+<p>At any one time there are fourteen subdirectories in the path <code>/users/.zfs/snapshot</code></p>
+<p>Here is an example of looking through the collection of snapshots to find copies of a file you want to restore. Let's say that you deleted a file inside your home directory named susan that was stored in the absolute path <code>/users/your-userid/bob/frank/susan</code> You can see from the <code>ls -ld</code> output when the file existed and also the size of the possibly various versions of that file across the collection of snapshots (perhaps you changed it several times in the last two weeks).</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span></pre></div></td><td class="code"><div><pre><span></span><code>cd /users/.zfs/snapshot
+ls -ld */your-userid/bob/frank/susan
+cp -p 2024-02-16-23:00/your-userid/bob/frank/susan $HOME/restored-susan
+</code></pre></div></td></tr></table></div>
+<p>If restoring substantial amounts of data, please do that work on a compute node instead of a login node. Thank you.</p>
 <h2 id="project-space">Project space<a class="headerlink" href="#project-space" title="Anchor link to this section for reference">&para;</a></h2>
 <p>We offer <strong>optional</strong> backup service.</p>
 <p>What's included. Frequency, restore window, cost.</p>
@@ -2526,7 +2582,7 @@
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1-2.1-2M12.5 7v5.2l4 2.4-1 1L11 13V7h1.5M11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2v1.8Z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">February 5, 2024</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">February 17, 2024</span>
   </span>
 
     
