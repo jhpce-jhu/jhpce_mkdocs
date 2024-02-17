@@ -26,6 +26,16 @@ The final priority is determined by multiplying pairs of weights and factors and
 
 Currently we are using two factors. 
 
+You can see pending job's priority values and the contributors to the final value with the `sprio` command. This sorts jobs by total prio, partition, user.
+
+`sprio -S -y,p,u | less`
+
+A better formatted of that command which prints only the factors we are currently using[^1] is:
+
+[^1]: This command's output will be incomplete if we begin using other priority factors.
+
+`sprio -o "%.15i %9r %.8u %.10Y %.10A %.10F %.10P" -S -y,p,u`
+
 ### Fairshare
 To help provide equitable access to the cluster, the FAIRSHARE priority component is based on your recent usage. If you have used fewer CPU minutes than someone else in the last week, then your jobs will receive a higher fairshare value.
 
