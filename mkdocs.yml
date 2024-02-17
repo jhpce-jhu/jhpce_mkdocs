@@ -56,6 +56,7 @@ nav:
       - Partitions: slurm/partitions.md
       - Commands reference: slurm/slurm-commands-ref.md
       - Monitoring Your Jobs: slurm/monitoring.md
+      - When Will My Job Start?: slurm/whenstart.md
       - Quality of Service (QOS): slurm/qos.md
       - SLURM FAQ: slurm/slurm-faq.md
       - Another topic:
