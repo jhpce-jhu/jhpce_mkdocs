@@ -2867,6 +2867,7 @@
 <p>The tag "contains-refs-to-old-site" came to me because some pages, such as the R page, contain screenshots which contain the URL of the old web site.</p>
 <p>The tag "last-revised-YYYYMMDD" could be used on a page which also has "done" or "needs-improvement-later" so you can tell that information by looking at the tags page. As opposed to having to go look at the repository. The <a href="../wishlist/">wishlist</a> document mentions adding a plugin or extension which allows the last-revised date to be automatically generated and listed at the bottom of each page.</p>
 <p>Place lines like this at the very top of the document, before the document title, to add the tags mentioned. Tags are strings but I am hoping to avoid spaces or underscores. (Underscores suck b/c they require the shift key. And you can't always see them depenind on how text renders.)</p>
+<p>Code blocks are numbered by default (given settings in mkdocs.yml). See <a href="./#code-block-line-numbers-highlighting">this section</a> for instructions on <mark class="critic">adding titles</mark> to code blocks and <mark class="critic">disabling line numbering</mark>.</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
@@ -2898,19 +2899,23 @@ tags:
 <h2 id="internal-links">Internal links<a class="headerlink" href="#internal-links" title="Anchor link to this section for reference">&para;</a></h2>
 <p>From <a href="https://www.mkdocs.org/user-guide/writing-your-docs/#writing-with-markdown">this mkdocs</a> page JRT learned that you can specify anchor points to document sections by knowing that they are converted to lowercase and white space is replaced by dashes. So this very section, named "Internal links" can be specified as a link to "features.md#internal-links"</p>
 <h2 id="keyboard-meta-keys">Keyboard meta keys<a class="headerlink" href="#keyboard-meta-keys" title="Anchor link to this section for reference">&para;</a></h2>
-<p>(enabled by the pymdownx.keys extension)
-keyboard meta keys displayed e.g. <span class="keys"><kbd class="key-control">Ctrl</kbd></span>
+<p>(enabled by the pymdownx.keys extension)</p>
+<p>keyboard meta keys displayed e.g. <span class="keys"><kbd class="key-control">Ctrl</kbd></span>
 by using two plus characters, the keyword like "ctrl", then two more plus characters</p>
-<p>Example keywords are: cmd, ctrl, esc, tab, del, arrow-up, pipe, windows.</p>
-<p>For more info, see <a href="https://facelessuser.github.io/pymdown-extensions/extensions/keys/">https://facelessuser.github.io/pymdown-extensions/extensions/keys/
+<p><span class="keys"><kbd class="key-plus">+</kbd></span> <span class="keys"><kbd class="key-plus">+</kbd></span> <span class="keys"><kbd class="key-control">Ctrl</kbd></span> <span class="keys"><kbd class="key-plus">+</kbd></span> <span class="keys"><kbd class="key-plus">+</kbd></span></p>
+<p>You can create a meta-key sequence by surrounding the sequence with plus symbols but only using single plus symbols in between the keywords.</p>
+<p><span class="keys"><kbd class="key-control">Ctrl</kbd><span>+</span><kbd class="key-alt">Alt</kbd><span>+</span><kbd class="key-delete">Del</kbd></span></p>
+<p><span class="keys"><kbd class="key-plus">+</kbd></span> <span class="keys"><kbd class="key-plus">+</kbd></span> ctrl <span class="keys"><kbd class="key-plus">+</kbd></span> alt <span class="keys"><kbd class="key-plus">+</kbd></span> delete <span class="keys"><kbd class="key-plus">+</kbd></span> <span class="keys"><kbd class="key-plus">+</kbd></span></p>
+<p>A backtick <span class="keys"><kbd class="key-grave">`</kbd></span> is called a grave, by the way. As in the French "accent grave" </p>
+<p>Example keywords are: cmd, ctrl, esc, tab, del, arrow-up, pipe, windows. All of the symbols you could desire are listed here!!!! <a href="https://facelessuser.github.io/pymdown-extensions/extensions/keys/">https://facelessuser.github.io/pymdown-extensions/extensions/keys/
 </a></p>
 <h2 id="abbreviations">Abbreviations<a class="headerlink" href="#abbreviations" title="Anchor link to this section for reference">&para;</a></h2>
 <p>Abbreviations can be defined by using a syntax similar to URLs and footnotes, starting with an asterisk immediately followed by the term to be associated in square brackets.</p>
-<p>This code creates the following sentence. You can hover over "<abbr title="Hyper Text Markup Language">HTML</abbr>" and see the definitino appear.
+<p>This code creates the following sentence. You can hover over "<abbr title="Hyper Text Markup Language">HTML</abbr>" and see the definition appear.</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span></pre></div></td><td class="code"><div><pre><span></span><code>The HTML specification is maintained by the W3C.
 *[HTML]: Hyper Text Markup Language
-</code></pre></div></td></tr></table></div></p>
+</code></pre></div></td></tr></table></div>
 <p>The <abbr title="Hyper Text Markup Language">HTML</abbr> specification is maintained by the W3C.</p>
 <h2 id="glossary">Glossary<a class="headerlink" href="#glossary" title="Anchor link to this section for reference">&para;</a></h2>
 <p>There's a way to create a document which is automatically updated when people define abbrieviations. See the wishlist document for details.</p>
@@ -3017,7 +3022,7 @@ If you have multiple code blocks and want the line numbers to continue in second
 <p>!!! note:
     The language keywords are not the same as in github -- there is overlap but also differences. See this list for the  <a href="https://pygments.org/docs/lexers/">language keywords</a> for the Pygments
 Python syntax highlighter used by Material for MkDocs.</p>
-<p>Earlier text:</p>
+<p>Text written before learning about the above:</p>
 <p>Like in Github you can specify a <a href="https://github.com/github-linguist/linguist/blob/master/lib/linguist/languages.yml">programming language keyword</a> immediately following the leading three backticks to cause the text to be formatted in that language's notation. </p>
 <p>There is a directory <a href="https://github.com/github-linguist/linguist/tree/master/samples">full of examples</a> you can simply click on.</p>
 <p>Useful keywords include Awk, checksums, DNS Zone, Jupyter Notebook, Python, R, Regular Expression, Rich Text Format, SAS, Shell, sed, SSH Config/filenames, stata, YAML</p>
@@ -3027,21 +3032,32 @@ Python syntax highlighter used by Material for MkDocs.</p>
 <span class="k">pass</span>
 </code></pre></div></td></tr></table></div>
 <h2 id="highlighting-text">Highlighting text<a class="headerlink" href="#highlighting-text" title="Anchor link to this section for reference">&para;</a></h2>
-<p>JRT doesn't know how to prevent the example text showing the syntax from being rendered. Putting it in or out of code blocks doesn't work.</p>
-<p>Text can be <del class="critic">deleted</del> and replacement text <code><ins class="critic">added</ins></code>. This can also be
-combined into <code><del class="critic">one</del><ins class="critic">a single</ins></code> operation. <code><mark class="critic">Highlighting</mark></code> is also
-possible <code><span class="critic comment">and comments can be added inline</span></code>.</p>
-<p><code><mark class="critic"></code></p>
-<p>Formatting can also be applied to blocks by putting the opening and closing
-tags on separate lines and adding new lines between the tags and the content.</p>
-<p><code></mark></code></p>
+<p>https://squidfunk.github.io/mkdocs-material/reference/code-blocks/</p>
+<p>https://squidfunk.github.io/mkdocs-material/setup/extensions/python-markdown-extensions/#highlight</p>
 <p>Text can be <del class="critic">deleted</del> and replacement text <ins class="critic">added</ins>. This can also be
 combined into <del class="critic">one</del><ins class="critic">a single</ins> operation. <mark class="critic">Highlighting</mark> is also
 possible <span class="critic comment">and comments can be added inline</span>.</p>
 <mark class="critic block">
-<p>Formatting can also be applied to blocks by putting the opening and closing
-tags on separate lines and adding new lines between the tags and the content.</p>
+<p>Formatting can also be applied to blocks by putting the opening and closing tags on separate lines and adding new lines between the tags and the content.</p>
 </mark>
+<p>I could not figure out how to quote plain text correctly so it would be displayed instead of rendered. Here I'm going to use the key symbols to defeat that challenge.</p>
+<p><mark class="critic">Highlight</mark> a passage by starting with</p>
+<p><span class="keys"><kbd class="key-brace-left">{</kbd></span> <span class="keys"><kbd class="key-equal">=</kbd></span> <span class="keys"><kbd class="key-equal">=</kbd></span></p>
+<p>and end with </p>
+<p><span class="keys"><kbd class="key-equal">=</kbd></span> <span class="keys"><kbd class="key-equal">=</kbd></span> <span class="keys"><kbd class="key-brace-right">}</kbd></span></p>
+<p><del class="critic">Delete text</del> by starting with</p>
+<p><span class="keys"><kbd class="key-brace-left">{</kbd></span> <span class="keys"><kbd class="key-minus">-</kbd></span> <span class="keys"><kbd class="key-minus">-</kbd></span> </p>
+<p>and ending with</p>
+<p><span class="keys"><kbd class="key-minus">-</kbd></span> <span class="keys"><kbd class="key-minus">-</kbd></span> <span class="keys"><kbd class="key-brace-right">}</kbd></span></p>
+<p><ins class="critic">Add</ins> Replacement text by starting with</p>
+<p><span class="keys"><kbd class="key-brace-left">{</kbd></span> <span class="keys"><kbd class="key-plus">+</kbd></span> <span class="keys"><kbd class="key-plus">+</kbd></span></p>
+<p>and ending with</p>
+<p><span class="keys"><kbd class="key-plus">+</kbd></span> <span class="keys"><kbd class="key-plus">+</kbd></span> <span class="keys"><kbd class="key-brace-right">}</kbd></span></p>
+<p>This can also be combined using tildes and greater-than characters. See the markdown source code <del class="critic">one</del><ins class="critic">a single</ins>.</p>
+<p><span class="critic comment">and comments can be added inline</span> by starting with</p>
+<p><span class="keys"><kbd class="key-brace-left">{</kbd></span> <span class="keys"><kbd class="key-greater">&gt;</kbd></span> <span class="keys"><kbd class="key-greater">&gt;</kbd></span></p>
+<p>and ending with</p>
+<p><span class="keys"><kbd class="key-less">&lt;</kbd></span> <span class="keys"><kbd class="key-less">&lt;</kbd></span> <span class="keys"><kbd class="key-brace-right">}</kbd></span></p>
 <div class="footnote">
 <hr />
 <ol>
@@ -3070,7 +3086,7 @@ tags on separate lines and adding new lines between the tags and the content.</p
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1-2.1-2M12.5 7v5.2l4 2.4-1 1L11 13V7h1.5M11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2v1.8Z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">February 14, 2024</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">February 20, 2024</span>
   </span>
 
     
