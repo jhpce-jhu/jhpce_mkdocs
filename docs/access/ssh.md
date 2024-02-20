@@ -1,3 +1,10 @@
+---
+tags:
+  - in-progress
+  - ssh
+---
+
+
 # SSH - Key Information
 
 ## SSH Basics
@@ -99,10 +106,10 @@ Configuration Page.
 
 ## SSH and X11
 
-When -X ?
-When -Y ?
+- When -X ?
+- When -Y ?
 
-XQuartz is an optional Mac program you have to instal 
+XQuartz is an optional Mac program you have to install 
 
 MobaXterm contains an X11 client
 
@@ -116,17 +123,16 @@ https://jhpce.jhu.edu/question/my-x11-forwarding-stops-working-after-20-minutes/
 
 In your ~/.ssh/config file
 
-```
+```Shell title="Key macOS settings"
 UseKeychain yes
 XAuthLocation /opt/X11/bin/xauth
-#
 AddKeysToAgent yes
 IdentityFile ~/.ssh/id_ecdsa
 IdentityFile ~/.ssh/id_rsa
 ForwardAgent yes
 ```
 
-```
+```Shell title="Keeping connections alive"
 # These values of 15 and 30 mean that my client ssh program will send a
 # message to the server every 15 seconds, and not decide that a remote
 # server is unresponsive until (15*30)=450 seconds
@@ -139,7 +145,7 @@ ServerAliveCountMax 30
 TCPKeepAlive no
 ```
 
-```
+```Shell title="Per-host definitions for convenience"
 Host jhpce01 j1 jhpce01.jhsph.edu
     Hostname jhpce01.jhsph.edu
     User your-cluster-username

@@ -23,6 +23,8 @@ The tag "last-revised-YYYYMMDD" could be used on a page which also has "done" or
 
 Place lines like this at the very top of the document, before the document title, to add the tags mentioned. Tags are strings but I am hoping to avoid spaces or underscores. (Underscores suck b/c they require the shift key. And you can't always see them depenind on how text renders.)
 
+Code blocks are numbered by default (given settings in mkdocs.yml). See [this section](features.md#code-block-line-numbers-highlighting) for instructions on {==adding titles==} to code blocks and {==disabling line numbering==}.
+
 ```
 ---
 tags:
@@ -45,17 +47,28 @@ From [this mkdocs](https://www.mkdocs.org/user-guide/writing-your-docs/#writing-
 ## Keyboard meta keys
 
 (enabled by the pymdownx.keys extension)
+
 keyboard meta keys displayed e.g. ++ctrl++
 by using two plus characters, the keyword like "ctrl", then two more plus characters
 
-Example keywords are: cmd, ctrl, esc, tab, del, arrow-up, pipe, windows.
+++plus++ ++plus++ ++ctrl++ ++plus++ ++plus++
 
-For more info, see [https://facelessuser.github.io/pymdown-extensions/extensions/keys/
+You can create a meta-key sequence by surrounding the sequence with plus symbols but only using single plus symbols in between the keywords.
+
+++ctrl+alt+delete++
+
+++plus++ ++plus++ ctrl ++plus++ alt ++plus++ delete ++plus++ ++plus++
+
+A backtick ++grave++ is called a grave, by the way. As in the French "accent grave" 
+
+Example keywords are: cmd, ctrl, esc, tab, del, arrow-up, pipe, windows. All of the symbols you could desire are listed here!!!! [https://facelessuser.github.io/pymdown-extensions/extensions/keys/
 ](https://facelessuser.github.io/pymdown-extensions/extensions/keys/)
+
 ## Abbreviations
 Abbreviations can be defined by using a syntax similar to URLs and footnotes, starting with an asterisk immediately followed by the term to be associated in square brackets.
 
-This code creates the following sentence. You can hover over "HTML" and see the definitino appear.
+This code creates the following sentence. You can hover over "HTML" and see the definition appear.
+
 ```
 The HTML specification is maintained by the W3C.
 *[HTML]: Hyper Text Markup Language
@@ -192,7 +205,7 @@ When Snippets is enabled, content from other files (including source files) can 
     The language keywords are not the same as in github -- there is overlap but also differences. See this list for the  [language keywords](https://pygments.org/docs/lexers/) for the Pygments
 Python syntax highlighter used by Material for MkDocs.
 
-Earlier text:
+Text written before learning about the above:
 
 Like in Github you can specify a [programming language keyword](https://github.com/github-linguist/linguist/blob/master/lib/linguist/languages.yml) immediately following the leading three backticks to cause the text to be formatted in that language's notation. 
 
@@ -208,19 +221,9 @@ pass
 ```
 ## Highlighting text
 
-JRT doesn't know how to prevent the example text showing the syntax from being rendered. Putting it in or out of code blocks doesn't work.
+https://squidfunk.github.io/mkdocs-material/reference/code-blocks/
 
-Text can be {--deleted--} and replacement text `{++added++}`. This can also be
-combined into `{~~one~>a single~~}` operation. `{==Highlighting==}` is also
-possible `{>>and comments can be added inline<<}`.
-
-`{==`
-
-Formatting can also be applied to blocks by putting the opening and closing
-tags on separate lines and adding new lines between the tags and the content.
-
-`==}`
-
+https://squidfunk.github.io/mkdocs-material/setup/extensions/python-markdown-extensions/#highlight
 
 Text can be {--deleted--} and replacement text {++added++}. This can also be
 combined into {~~one~>a single~~} operation. {==Highlighting==} is also
@@ -228,7 +231,47 @@ possible {>>and comments can be added inline<<}.
 
 {==
 
-Formatting can also be applied to blocks by putting the opening and closing
-tags on separate lines and adding new lines between the tags and the content.
+Formatting can also be applied to blocks by putting the opening and closing tags on separate lines and adding new lines between the tags and the content.
 
 ==}
+
+I could not figure out how to quote plain text correctly so it would be displayed instead of rendered. Here I'm going to use the key symbols to defeat that challenge.
+
+{==Highlight==} a passage by starting with
+
+++brace-left++ ++equal++ ++equal++
+
+and end with 
+
+++equal++ ++equal++ ++brace-right++
+
+{--Delete text--} by starting with
+
+++brace-left++ ++minus++ ++minus++ 
+
+and ending with
+
+++minus++ ++minus++ ++brace-right++
+
+
+{++Add++} Replacement text by starting with
+
+++brace-left++ ++plus++ ++plus++
+
+and ending with
+
+++plus++ ++plus++ ++brace-right++
+
+
+This can also be combined using tildes and greater-than characters. See the markdown source code {~~one~>a single~~}.
+
+{>>and comments can be added inline<<} by starting with
+
+++brace-left++ ++greater++ ++greater++
+
+and ending with
+
+++less++ ++less++ ++brace-right++
+
+
+

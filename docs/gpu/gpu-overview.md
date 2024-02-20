@@ -1,6 +1,8 @@
 ---
 tags:
   - topic-overview
+  - gpu
+  - mark
 ---
 
 # GPU Critical Knowledge

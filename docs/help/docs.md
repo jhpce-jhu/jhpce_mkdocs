@@ -1,8 +1,12 @@
 ---
 tags:
   - needs-revision
+  - in-progress
 ---
 # Docs 
+
+Jeffrey has been putting pdf's into the images subdirectories found under each topic.
+He has found that creating symbolic links to actual files with dates in their names for example works. The MarkDown documents we write can refer to the well-chosen static file name and not have to be changed every time the actual document name changes.
 
 ## User tutorials
 
@@ -23,6 +27,13 @@ Engine](https://jhpce.jhu.edu/wp-content/uploads/2021/04/JHPCE-Overview-2022-09.
 + [JHPCE-Overview-BST-ComputingClub-10-17-23](https://jhpce.jhu.edu/wp-content/uploads/2023/10/JHPCE-Overview-BST-ComputingClub-10-17.pdf)
 
 ## Resources description for Grant Applications
+Move this information to somewhere under the "How to Join Us" topic?
+
+This is a Microsoft Word document.
+
+We should make a PDF version available. Also?
+
+This version contains inaccurate (SLURM, ssh access to transfer node is allowed, maybe other items) statements.
 
 + [JHPCEComputingEnvironment -- June 2023](https://jhpce.jhu.edu/wp-content/uploads/2023/06/JHPCEComputingEnvironmentJune2023.docx)
 

@@ -1,10 +1,12 @@
+# ACL - Access Control Lists
+
 Traditional Unix file and group permissions can be used to share
 access to files and directories.  However, there can be times when
 more fine-grained control of shared access is needed. To accomplish
 this, Access Control Lists (ACLs) can be used.
 
-### Overiview
-+ There are 2 sets of ACL commands, one for `/users`, `/dcs04`, and `/dcs05` directories, and one for use on other directories, such as `/dcl01`, `/dcl02` ... .
+### Overview
++ There are 2 sets of ACL commands, one for `/users`, `/dcs04`, and `/dcs05` directories, and one for use on other directories in Lustre file systems, such as `/dcl01`, `/dcl02` ... .
 + Some common notes that are applicable to both types of ACL commands:
 + ACLs can be used to give either read or read/write access to a file or directory. 
 + ACLs should use the security notion of “least privilege”, meaning that ACLs should give only the needed access and nothing more. +  When setting up an ACL for a user access on a file or directory that is several layer deep in the directory structure, a `READ-EXECUTE` ACL will need to be set on all levels above the file or directory you are sharing. For example, if you are setting an ACL on the directory `/users/bob/mydata/project1/shared`, you would also need to set a `READ-EXECUTE` ACL on `/users/bob/mydata/project1`, `/users/bob/mydata`, and `/users/bob`.
@@ -39,7 +41,7 @@ A::EVERYONE@:rtcy
 ```
 
 ### Basic commands
-+ There are 2 commands for dealing with ACLs on `/users`, `/dcs04`, and `/dcs05`.  
++ There are 2 commands for dealing with ACLs on `/users`, `/dcs04`, `/dcs05`, `/dcs06`, and `/dcs07`. 
 + The `nfs4_getfacl` command will display current ACL setting for a file or directory
 + The `nfs4_setfacl` command is used to modify ACLs.  
 + With ACLs you can grant either read-only access, or read-write access on a directory or file to specific users.
@@ -108,10 +110,12 @@ A::EVERYONE@:rtcy
 Now the user bob can copy or save files in the “shared” directory.
 ```
 
-### Defaults
+### Inherited Defaults 
 To set an inherited “default” ACL that will allow bob access on all
 new files and directories that get saved into `/users/alice/shared`, you
-would need to use the `fdi` option to the `nfs4_setacl` command. One
+would need to first give bob the normal ACL permissions, then add a second set of ACLs that will be inherited using the `fdi` option to the `nfs4_setacl` command.
+
+One
 issue we’ve seen is that a `@USER` and `@GROUP` ACL need to be
 explicitly set for permissions to be properly set:
 
@@ -175,10 +179,10 @@ A::GROUP@:rtcy
 A::EVERYONE@:rtcy
 ```
 
-### Directories other than `/users`
+### Directories in Lustre file systems 
 
 There are two commands for dealing with ACLs on the JHPCE cluster for
-directories other than `/users`.  The `getfacl` command will display
+directories in Lustre file systems, which start with `/dcl`.  The `getfacl` command will display
 current ACL setting for a file or directory, and the `setfacl` command
 is used to modify ACLs.  With ACLs you can grant either read-only
 access, or read-write access on a directory or file to specific users.
@@ -258,7 +262,7 @@ Now the user bob can copy or save files in the “shared” directory.
 ```
 
 #### Default ACLs
-To set an inherited default ACL that will allow bob access on all new files and directories that get saved into `/users/alice/shared`, you would need to use the `-d` option to the `setacl` command:
+To set an inherited default ACL that will allow bob access on all new files and directories that get saved into `shared`, you would need to use the `-d` option to the `setacl` command:
 
 ```
 [[alice@compute-123 ~]$ setfacl -d -m user:bob:rwx shared
