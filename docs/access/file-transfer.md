@@ -7,18 +7,11 @@ tags:
 
 # File Transfer - Overview
 
-## THIS PREVIOUS DOC IS TOO LONG AND NEEDS TO BE BROKEN UP INTO AN OVERVIEW AND SOME SUBORDINATE DOCUMENTS
-
-Maybe file transfer needs to be a whole topic, meaning it has its own subdirectory inside docs to hold the markdown files, the include images files (from their own docs/filetransfer/images/ subdirectory), etc.
-
-There is already a [Globus document](globus.md).
-
-(JRT thinks that this doc should include a pointer to a document about INTERNAL file transfers. How to do that on a node, in a batch job, using good rsync arguments.)
-
-# File Transfer
 A number of options exist for transfering files to-and-fro between
 JHPCE and your local host. Which solution you chose, depends on your
 use case.
+
+If you are wanting to transfer files between JHPCE file systems, then you need to use different tools than are discussed here. [Here](../slurm/crafting-jobs.md/#copying-data-within-cluster) is a sample batch job that you can use as a model to do such a transfer on a compute node using good rsync arguments.
 
 + scp or sftp — file transfer via command line
 + GUI for sftp — file transfer by drag and drop from your desktop
@@ -90,26 +83,29 @@ commands, then an application that presents a window for drag and drop
 is what you want. Depending on which OS you are using, we can
 recommend the following applications:
 
-**Apple OSX Filezilla** is an outstanding application that not only
+macOS users might consider [Filezilla](https://en.wikipedia.org/wiki/FileZilla). It 
+ is an outstanding application that not only
 provides a GUI browser for FTP, SFTP, but it also allows you to browse
 WebDav, Amazon S3, and OpenStack Swift file systems. It is free to
 download and install.
 
 
-Microsoft Windows **MobaXterm** is our recommended application for
-accessing the JHPCE cluster, or transferring files to and from the
-cluster.  You can also use WinSCP or Putty if you are already familiar
+Our recommended application for Windows users accessing the JHPCE cluster is [MobaXterm](http://mobaxterm.mobatek.net/download-home-edition.html).
+You can also use https://en.wikipedia.org/wiki/WinSCP or [Putty](https://en.wikipedia.org/wiki/PuTTY) if you are already familiar
 with them.
 
-## Rclone
-Rclone can be used to access network file resources, such as OneDrive,
-Google Drive, and AWS. See here for an example of connecting to
-OneDrive.
+### Rclone
+[Rclone](https://en.wikipedia.org/wiki/Rclone) can be used to access network file resources, such as OneDrive,
+Google Drive, and AWS. See [here](onedrive.md) for instructions on using it to connect to Hopkins OneDrive storage.
 
-## Aspera
-Aspera is a commercial product that allows file transfers that are
+### Aspera
+!!! Warning
+    This might be obsolete information as of 20240220 -- that package is no longer visible at the path mentioned below.
+
+
+[Aspera](https://www.ibm.com/products/aspera) is a commercial product from IBM that allows file transfers that are
 reportedly 20 times faster than `ftp`. If you download data from the
-NCBI Aspera server or download/upload data from/to JHU CIDR on the
+[NCBI Aspera](https://www.ncbi.nlm.nih.gov/home/download/) server or download/upload data from/to JHU CIDR on the
 Bayview campus, then you will use Aspera. The Aspera license does not
 allow us to install the client for our users. You must install it
 yourself. You may either download the linux client from the aspera
@@ -129,16 +125,19 @@ bash aspera-connect-3.6.2.117442-linux-64.sh
 This will install the `ascp` command under your home directory at  `~/.aspera/connect/bin`.  You can either add `~/.aspera/connect/bin` to your `PATH`, or use the full path to the `ascp` command to run it.
 
 
-## Unison
-Using Unison, you can keep data synchronized between a directory on
+### Unison
+!!! Warning
+    This might be obsolete information as of 20240220 -- the unison package is no longer visible at the path mentioned in Fiksel's documentation.
+    
+Using [Unison](https://en.wikipedia.org/wiki/Unison_(software)), you can keep data synchronized between a directory on
 the cluster and a directory on your local system.  Please see this
 excellent document written by Jacob Fiksel, one of our expert JHPCE
 cluster users:
 [https://github.com/jfiksel/cluster-example#how-to-use-unison-for-file-transfer-and-syncing]
 (https://github.com/jfiksel/cluster-example#how-to-use-unison-for-file-transfer-and-syncing)
 
-## Globus
-See [https://jhpce-jhu.github.io/jhpce_mkdocs/globus/](https://jhpce-jhu.github.io/jhpce_mkdocs/globus/).
+### Globus
+We have a Globus endpoint. Please see [this document](globus.md).
 
 
 ## Mounting virtual file systems
@@ -157,6 +156,9 @@ directory in your local file system. So any applications and scripts
 on your local host can access the data in that mount point. From the
 user perspective, it acts just like an SMB or NSF mount point. Data is
 transferred back and forth via an encrypted link.
+
+!!! Obsolete
+    This might be obsolete information as of 20240220 - OSXFUSE is now named macFUSE and is [hosted](https://osxfuse.github.io) at a different location than what is described below.
 
 MacFusion requires the installation of an OSX kernel extenstion and
 some associated tools. OSXFuse provides the needed extension. OSXFuse
@@ -196,7 +198,7 @@ If you know the exact path to the file you want, you can use the “wget” comm
 wget ftp://USER:PASSWORD@ftp.site.gov/path/to/file
 ```
 
-All of these should be done from the `rnet` queue to make use of our high speed ScienceDMZ network connection.
+All of these should be done from the `transfer` queue to make use of our high speed ScienceDMZ network connection.
 
 ## Links
 - [Setting up MobaXterm for File Transfers with the JHPCE Cluster](https://jhpce.jhu.edu/knowledge-base/setting-up-mobaxterm-for-file-transfers-with-the-jhpce-cluster/)
