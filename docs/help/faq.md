@@ -1,12 +1,17 @@
+---
+tags:
+  - needs-review
+  - in-progress
+---
 # FAQ
 
 ## Why does bash report that it can’t find the module command?
 
 If you receive a message like
     
-    ```bash
-    bash: module: command not found
-    ```
+```bash linenums="0"
+bash: module: command not found
+```
     
 The module is a shell function that is declared in `/etc/bashrc`. It
 is always a good idea for `/etc/bashrc` to be sourced immediately in
@@ -14,11 +19,11 @@ you `~/.bashrc`.  Edit your `.bashrc` file so that the first thing it
 does is o execute the system bashrc file, i.e. your `.bashrc` file
 should start with the following lines:
 
-    ```bash
-    if [ -f /etc/bashrc ]; then
-        . /etc/bashrc
-    fi
-    ```
+```bash linenums="0"
+if [ -f /etc/bashrc ]; then
+    . /etc/bashrc
+fi
+```
 
 ## My script is giving odd error messages about `\r` or `^M`.
 Windows and Unix use different characters to indicate a new line.  If
@@ -26,14 +31,15 @@ you have uploaded your script from a Windows machine, it may have the
 Windows newline characters.  These need to be replaced by the Unix
 newline characters.  To do this, you can run the “dos2unix” command on
 your script `dos2unix myscript.sh`. This will strip out all of the
-Windows newlines and replace them with the Unix
+Windows newlines and replace them with the Unix newlines.
 
 ## I’m getting X11 errors when using rstudio with Putty and Xming
 
+!!! Obsolete
+    As of 20240220 vcxsrv is not installed on the cluster. This FAQ item needs to be reviewed and probably removed. JRT
+    
 We’ve had issues reported by users of Putty with Xming. One solution
-we’ve found is to use the
-(vcxsrv))[https://sourceforge.net/projects/vcxsrv/] instead Xming
-newlines.  (This commmand is on all nodes.)
+we’ve found is to use the (vcxsrv))[https://sourceforge.net/projects/vcxsrv/] instead Xming newlines.  (This commmand is on all nodes.)
 
 
 ## How can I add packages into emacs on the cluster?
@@ -101,7 +107,7 @@ As an example, to copy a directory tree from `/home/bst/bob/src` to
 `/dcs01/bob/dst`, first, create a cluster script, let’s call it
 `copy-job`, that contains the line `rsync -avzh /home/bst/bob/src/
 /dcs01/bob/dst/`. Next, submit this script as a batch job to the
-cluster.
+cluster. An example SLURM batch job can be found [here](../slurm/crafting-jobs.md/#copying-data-within-cluster).
 
 ## My app is complaining that it can’t find a shared library, e.g. `libgfortran.so.1` 
 
@@ -131,7 +137,7 @@ job in a bash script that initializes the module command and then
 loads the default modules. You bash shell script should start with the
 following lines:
 
-```
+```Shell
 #!/bin/bash
 
 # Source the global bashrc
@@ -140,3 +146,6 @@ if [ -f /etc/bashrc ]; then
 fi
 module load JHPCE_DEFAULT_ENV
 ```
+## I've deleted files but my quota hasn't changed
+
+See [this document](../storage/quotas.md/#file-deletion-and-delayed-change-in-quota).
