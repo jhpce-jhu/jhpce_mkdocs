@@ -12,6 +12,16 @@ What are some of the things that go into these decisions?
 
 How does it choose which of a set of pending jobs to start in what order on which node and which CPU cores on the node?
 
+## TL;DR
+Your jobs will start faster if you request the fewest resources required for their success, including duration. You should also direct your job to the most appropriate partition. For example, we have an interactive partition for small jobs.
+
+If the scheduler has been able to determine an estimated start date for your job, it will be shown in the output of
+
+```Shell title="Start time estimate" linenums="0"
+squeue --me --start
+```
+
+
 ## Priority
 
 Multiple factors are used to assign a single priority value to each job. This is described in [this document](https://slurm.schedmd.com/priority_multifactor.html). 
@@ -28,13 +38,17 @@ Currently we are using two factors.
 
 You can see pending job's priority values and the contributors to the final value with the `sprio` command. This sorts jobs by total prio, partition, user.
 
-`sprio -S -y,p,u | less`
+```Shell title="Pending jobs sorted by priority" linenums="0"
+sprio -S -y,p,u | less
+```
 
 A better formatted of that command which prints only the factors we are currently using[^1] is:
 
 [^1]: This command's output will be incomplete if we begin using other priority factors.
 
-`sprio -o "%.15i %9r %.8u %.10Y %.10A %.10F %.10P" -S -y,p,u`
+```Shell title="Pending jobs sorted by priority, well-formatted" linenums="0"
+sprio -o "%.15i %9r %.8u %.10Y %.10A %.10F %.10P" -S -y,p,u
+```
 
 ### Fairshare
 To help provide equitable access to the public partitions of the cluster, the FAIRSHARE priority component is based on your recent usage of those partitions. If you have used fewer CPU minutes than someone else in the last week, then your jobs will receive a higher fairshare value.
@@ -42,7 +56,10 @@ To help provide equitable access to the public partitions of the cluster, the FA
 The fairshare priority is the result of multiplying a weight stored in a variable, PriorityWeightFairshare, and a factor which is derived from the accounting database.
 
 You inspect fairshare values for ALL users with this command:
-`sshare -a | sort -k7nr | less `
+
+```Shell title="Fairshare values"
+sshare -a | sort -k7nr | less
+```
 
 You should focus on the values in the right-hand-most column. Heaviest users of the cluster in recent days have values closer to 0.0. People who haven't run any jobs lately will have values closer to 1.0. Jobs submitted by the latter will be given higher fairshare priority values.
 
@@ -56,4 +73,4 @@ Job arrays which started running tasks many days ago will wind up with high age 
 
 In addition to the main scheduling cycle, where jobs are run in the order of priority and availability of resources, all jobs are also considered for "backfill". Backfill is a mechanism which will let jobs with lower priority score start before high priority jobs if they can fit in around them. For example, if a higher priority job needs 30 cores and it will have to wait 20 hours for those resources to be available, if a lower priority job only needs a couple cores for an hour, Slurm will run that shorter job in the meantime. This GREATLY enhances utilization of the cluster.
 
-For this reason, it is important to request accurate walltime limits for your jobs. If your job only requires 2 hours to run, but you request 24 hours, the likelihood that your job will be backfilled is greatly lowered. 
+For this reason, **it is important to request accurate walltime limits for your jobs**. If your job only requires 2 hours to run, but you request 24 hours, the likelihood that your job will be backfilled is greatly lowered. 
