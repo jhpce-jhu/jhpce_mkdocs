@@ -43,3 +43,11 @@ This one appeared when a job asked for more RAM than was allowed by a QOS limit:
 But when more CPUs were requested (instead of too much RAM), the error was different:
 
 `Unable to allocate resources: More processors requested than permitted`
+
+## How many jobs can I run at a time?
+
+As of 20240220 there are few limits.
+
+Array jobs are limited to 15,000 tasks by variable `max_array_tasks` in /etc/slurm/slurm.conf
+
+Total jobs at a single time is 90,000, which is determined by the variable `MaxJobCount` in /etc/slurm/slurm.conf
