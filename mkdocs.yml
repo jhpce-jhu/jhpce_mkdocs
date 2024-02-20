@@ -56,13 +56,14 @@ nav:
       - Partitions: slurm/partitions.md
       - Commands reference: slurm/slurm-commands-ref.md
       - Monitoring Your Jobs: slurm/monitoring.md
+      - Crafting Jobs: slurm/crafting-jobs.md
       - When Will My Job Start?: slurm/whenstart.md
       - Quality of Service (QOS): slurm/qos.md
       - SLURM FAQ: slurm/slurm-faq.md
       - Another topic:
         - slurm/slurm.md
-        - Subtopic5: storage/storage.md
-        - Subtopic6: storage/storage.md
+        - Third-layer-deep: slurm/slurm.md
+        - Subtopic6: slurm/slurm.md
     - User Guides:
       - GPU: gpu/gpu-overview.md
       - Cost Calculator: access/ssh.md
