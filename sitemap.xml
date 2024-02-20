@@ -61,6 +61,11 @@
          <changefreq>daily</changefreq>
     </url>
     <url>
+         <loc>https://www.jhpce-jhu.github.io/jhpce_docs/files/sharing-files/</loc>
+         <lastmod>2024-02-20</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
          <loc>https://www.jhpce-jhu.github.io/jhpce_docs/forms/new-user/</loc>
          <lastmod>2024-02-20</lastmod>
          <changefreq>daily</changefreq>
