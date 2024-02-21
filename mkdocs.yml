@@ -66,7 +66,7 @@ nav:
         - Subtopic6: slurm/slurm.md
     - User Guides:
       - GPU: gpu/gpu-overview.md
-      - Cost Calculator: access/ssh.md
+      - Cost Calculator: help/cost-calculator.md
       - How to read a manual page: help/images/guide-to-manual-pages.pdf
     - Web Portal:
       - GUI Applications: portal/portal-stub.md
