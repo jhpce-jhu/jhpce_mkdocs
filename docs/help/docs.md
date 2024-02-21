@@ -5,8 +5,8 @@ tags:
 ---
 # Docs 
 
-Jeffrey has been putting pdf's into the images subdirectories found under each topic.
-He has found that creating symbolic links to actual files with dates in their names for example works. The MarkDown documents we write can refer to the well-chosen static file name and not have to be changed every time the actual document name changes.
+!!! Note
+    Jeffrey has been putting pdf's into the images subdirectories found under each topic. He has found that creating symbolic links to actual files with dates in their names for example works. The MarkDown documents we write can refer to the well-chosen static file name and not have to be changed every time the actual document name changes.
 
 ## User tutorials
 

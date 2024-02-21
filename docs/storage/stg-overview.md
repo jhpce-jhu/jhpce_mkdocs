@@ -1,12 +1,15 @@
 ---
 tags:
   - topic-overview
+  - needs-revision
 ---
 
 # STORAGE OVERVIEW
 
 Not everything about storage needs to be in this document.
 Probably more readable if this was shorter and was an overview of key info with pointers to other documents. JRT has already created a number of subordinate docs.
+
+Previous [stg page](storage.md) has some text that should move into this one.
 
 ## Types of storage
 Define a set of types, then, for the rest of our documentation, organize and discuss using the same terms. That idea provides coherence and guidance for what needs to be said, and where.
@@ -27,9 +30,11 @@ Speed differences between SSD (dcs06, fastscratch) and spinning.
 Make a table for each of the three types of storage. Instead of one large table. Be consistent in dealing with the three types of stg.
 
 In each table, include
+
 * Name or form (/dcs0N/group/data)
 * the environment variable you can use to refer to it, e.g. $HOME $FASTSCRATCH (JRT doesn't know of a SLURM variable for where your job starts. There's SLURM_SUBMIT_DIR but it doesn't reflect any usage of --chdir)
 
+## Don't fill up /tmp
 What about compute node's /tmp? Users need to know about it, because they may not know that software often writes there, and they need to understand that it is a shared limited resource. if they are explicitly writing to /tmp they need to know to limit their usage and clean up after themselves
 
 ## Home directories
@@ -70,6 +75,10 @@ Consider potential impact of running certain commands that will cause lots of I/
   + In Stata, the default `tempfile` location is under `/tmp`. This can be changed by setting the `STATATMP` environment variable.
 
 ## Encrypted filesystem
+
+!!! Hopefully
+    We can just delete this info because we're getting rid of Lustre ASAP
+    
 + The JHPCE Cluster currently supports the following mechanisms for
 using encrypted filesystems.
 + Encrypted filesystem are used to provide “Encryption At Rest”, meaning that the data on disk will be safely

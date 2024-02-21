@@ -8,4 +8,7 @@
 
 Please don't hesitate to reach out to us if you have any questions or concerns.
 
-When contacting us, please provide enough information so we can promptly diagnose the problem or answer your question. [Here is a page](good-query.md) describing the process to follow.
+!!! TIP
+    When contacting us, please provide enough information so we can promptly diagnose the problem or answer your question.
+    
+    [Here is a page](good-query.md) describing the process to follow.
