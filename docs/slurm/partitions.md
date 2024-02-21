@@ -36,14 +36,16 @@ Limits for CPU cores, RAM and Time (default/maximum)
 | interactive | public | no | 2 | 20gb | (none/90d) | Small but accessible |
 | gpu | public | no | (none) | (none) | (1d/90d) | |
 | bader | PI | yes | (none) | (none) | (none/90d) | |
-| bluejay | PI | yes | (none) | (none) | (none/90d) | |
+| bluejay | PI | yes | (none) | (none) | (none/90d) | UNIX group |
 | cancergen | PI | yes | (none) | (none) | (none/90d) | |
 | caracol | PI | yes | (none) | (none) | (none/90d) | UNIX group |
 | cee | PI | yes | (none) | (none) | (none/90d) | |
 | cegs2 | PI | yes | (none) | (none) | (none/90d) | |
 | chatterjee | PI | yes | (none) | (none) | (none/90d) | |
 | echodac | PI | yes | (none) | (none) | (none/90d) | |
+| gwas | PI | yes | (none) | (none) | (none/90d) | not yet defined |
 | hl | PI | yes | (none) | (none) | (none/90d) | |
+| hpm | PI | yes | (none) | (none) | (none/90d) | not yet defined |
 | hongkai | PI | yes | (none) | (none) | (none/90d) | |
 | mommee | PI | yes | (none) | (none) | (none/90d) | |
 | sas | application | no | (none) | (none) | (none/90d) | Licensed for SAS |
@@ -57,7 +59,7 @@ Limits for CPU cores, RAM and Time (default/maximum)
 
 | Name | Type | Requires Approval | Core | RAM | GPU | Time | Notes/Use |
 | ---- | :----: | :-----: | ---- | ---- | :-------: | ----- | ------|
-| gpu | public | yes | (none) | (none) | (none) | (none/90d) | |
+| gpu | public | no | (none) | (none) | (none) | (1d/90d) | |
 | bestgpu | PI | yes | (none) | (none) | (none) | (none/90d) | |
 | caracol | PI | yes | (none) | (none) | (none) | (none/90d) | |
 | neuron | PI | yes | (none) | (none) | (none) | (none/90d) | |
