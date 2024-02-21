@@ -555,6 +555,15 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#ive-deleted-files-but-my-quota-hasnt-changed" class="md-nav__link">
+    <span class="md-ellipsis">
+      I've deleted files but my quota hasn't changed
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -2170,7 +2179,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../access/ssh/" class="md-nav__link">
+      <a href="../cost-calculator/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2688,6 +2697,15 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#ive-deleted-files-but-my-quota-hasnt-changed" class="md-nav__link">
+    <span class="md-ellipsis">
+      I've deleted files but my quota hasn't changed
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -2701,44 +2719,53 @@
               <article class="md-content__inner md-typeset">
                 
                   
+  
+<nav class="md-tags" >
+  
+    
+    
+    
+      <a href="../../ourtools/tags/#needs-review" class="md-tag">needs-review</a>
+    
+  
+    
+    
+    
+      <a href="../../ourtools/tags/#in-progress" class="md-tag">in-progress</a>
+    
+  
+</nav>
+
 
 
 <h1 id="faq">FAQ<a class="headerlink" href="#faq" title="Anchor link to this section for reference">&para;</a></h1>
 <h2 id="why-does-bash-report-that-it-cant-find-the-module-command">Why does bash report that it can’t find the module command?<a class="headerlink" href="#why-does-bash-report-that-it-cant-find-the-module-command" title="Anchor link to this section for reference">&para;</a></h2>
 <p>If you receive a message like</p>
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
-<span class="normal">2</span>
-<span class="normal">3</span></pre></div></td><td class="code"><div><pre><span></span><code>```bash
-bash: module: command not found
-```
-</code></pre></div></td></tr></table></div>
+<div class="highlight"><pre><span></span><code>bash:<span class="w"> </span>module:<span class="w"> </span><span class="nb">command</span><span class="w"> </span>not<span class="w"> </span>found
+</code></pre></div>
 <p>The module is a shell function that is declared in <code>/etc/bashrc</code>. It
 is always a good idea for <code>/etc/bashrc</code> to be sourced immediately in
 you <code>~/.bashrc</code>.  Edit your <code>.bashrc</code> file so that the first thing it
 does is o execute the system bashrc file, i.e. your <code>.bashrc</code> file
 should start with the following lines:</p>
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
-<span class="normal">2</span>
-<span class="normal">3</span>
-<span class="normal">4</span>
-<span class="normal">5</span></pre></div></td><td class="code"><div><pre><span></span><code>```bash
-if [ -f /etc/bashrc ]; then
-    . /etc/bashrc
-fi
-```
-</code></pre></div></td></tr></table></div>
+<div class="highlight"><pre><span></span><code><span class="k">if</span><span class="w"> </span><span class="o">[</span><span class="w"> </span>-f<span class="w"> </span>/etc/bashrc<span class="w"> </span><span class="o">]</span><span class="p">;</span><span class="w"> </span><span class="k">then</span>
+<span class="w">    </span>.<span class="w"> </span>/etc/bashrc
+<span class="k">fi</span>
+</code></pre></div>
 <h2 id="my-script-is-giving-odd-error-messages-about-r-or-m">My script is giving odd error messages about <code>\r</code> or <code>^M</code>.<a class="headerlink" href="#my-script-is-giving-odd-error-messages-about-r-or-m" title="Anchor link to this section for reference">&para;</a></h2>
 <p>Windows and Unix use different characters to indicate a new line.  If
 you have uploaded your script from a Windows machine, it may have the
 Windows newline characters.  These need to be replaced by the Unix
 newline characters.  To do this, you can run the “dos2unix” command on
 your script <code>dos2unix myscript.sh</code>. This will strip out all of the
-Windows newlines and replace them with the Unix</p>
+Windows newlines and replace them with the Unix newlines.</p>
 <h2 id="im-getting-x11-errors-when-using-rstudio-with-putty-and-xming">I’m getting X11 errors when using rstudio with Putty and Xming<a class="headerlink" href="#im-getting-x11-errors-when-using-rstudio-with-putty-and-xming" title="Anchor link to this section for reference">&para;</a></h2>
+<div class="admonition obsolete">
+<p class="admonition-title">Obsolete</p>
+<p>As of 20240220 vcxsrv is not installed on the cluster. This FAQ item needs to be reviewed and probably removed. JRT</p>
+</div>
 <p>We’ve had issues reported by users of Putty with Xming. One solution
-we’ve found is to use the
-(vcxsrv))[https://sourceforge.net/projects/vcxsrv/] instead Xming
-newlines.  (This commmand is on all nodes.)</p>
+we’ve found is to use the (vcxsrv))[https://sourceforge.net/projects/vcxsrv/] instead Xming newlines.  (This commmand is on all nodes.)</p>
 <h2 id="how-can-i-add-packages-into-emacs-on-the-cluster">How can I add packages into emacs on the cluster?<a class="headerlink" href="#how-can-i-add-packages-into-emacs-on-the-cluster" title="Anchor link to this section for reference">&para;</a></h2>
 <p>Make sure to <code>module load emacs</code> to get a later version of emacs. Then one needs to edit their <code>.emacs</code> file in their home director to include the package repos
     <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
@@ -2785,7 +2812,7 @@ be supplied on the command line to, say, 336 hours (2 weeks):</p>
 <code>/dcs01/bob/dst</code>, first, create a cluster script, let’s call it
 <code>copy-job</code>, that contains the line <code>rsync -avzh /home/bst/bob/src/
 /dcs01/bob/dst/</code>. Next, submit this script as a batch job to the
-cluster.</p>
+cluster. An example SLURM batch job can be found <a href="../../slurm/crafting-jobs/#copying-data-within-cluster">here</a>.</p>
 <h2 id="my-app-is-complaining-that-it-cant-find-a-shared-library-eg-libgfortranso1">My app is complaining that it can’t find a shared library, e.g. <code>libgfortran.so.1</code><a class="headerlink" href="#my-app-is-complaining-that-it-cant-find-a-shared-library-eg-libgfortranso1" title="Anchor link to this section for reference">&para;</a></h2>
 <p>Nine times out of ten, the allegedly missing library is there. The
 problem is that your application is looking for the version of the
@@ -2814,14 +2841,16 @@ following lines:</p>
 <span class="normal">4</span>
 <span class="normal">5</span>
 <span class="normal">6</span>
-<span class="normal">7</span></pre></div></td><td class="code"><div><pre><span></span><code>#!/bin/bash
+<span class="normal">7</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="ch">#!/bin/bash</span>
 
-# Source the global bashrc
-if [ -f /etc/bashrc ]; then
-. /etc/bashrc
-fi
-module load JHPCE_DEFAULT_ENV
+<span class="c1"># Source the global bashrc</span>
+<span class="k">if</span><span class="w"> </span><span class="o">[</span><span class="w"> </span>-f<span class="w"> </span>/etc/bashrc<span class="w"> </span><span class="o">]</span><span class="p">;</span><span class="w"> </span><span class="k">then</span>
+.<span class="w"> </span>/etc/bashrc
+<span class="k">fi</span>
+module<span class="w"> </span>load<span class="w"> </span>JHPCE_DEFAULT_ENV
 </code></pre></div></td></tr></table></div>
+<h2 id="ive-deleted-files-but-my-quota-hasnt-changed">I've deleted files but my quota hasn't changed<a class="headerlink" href="#ive-deleted-files-but-my-quota-hasnt-changed" title="Anchor link to this section for reference">&para;</a></h2>
+<p>See <a href="../../storage/quotas/#file-deletion-and-delayed-change-in-quota">this document</a>.</p>
 
 
 
@@ -2842,7 +2871,7 @@ module load JHPCE_DEFAULT_ENV
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1-2.1-2M12.5 7v5.2l4 2.4-1 1L11 13V7h1.5M11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2v1.8Z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">February 1, 2024</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">February 20, 2024</span>
   </span>
 
     

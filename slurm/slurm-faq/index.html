@@ -1875,13 +1875,22 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#unable-to-allocate-resources" class="md-nav__link">
+  <a href="#how-do-i-hold-or-modify-a-job" class="md-nav__link">
     <span class="md-ellipsis">
-      Unable to allocate resources
+      How do I hold or modify a job?
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Unable to allocate resources">
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#unable-to-allocate-resources" class="md-nav__link">
+    <span class="md-ellipsis">
+      "Unable to allocate resources"
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label=""Unable to allocate resources"">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -1904,6 +1913,15 @@
         
       </ul>
     </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#how-many-jobs-can-i-run-at-a-time" class="md-nav__link">
+    <span class="md-ellipsis">
+      How many jobs can I run at a time?
+    </span>
+  </a>
   
 </li>
       
@@ -2113,7 +2131,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../access/ssh/" class="md-nav__link">
+      <a href="../../help/cost-calculator/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2542,13 +2560,22 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#unable-to-allocate-resources" class="md-nav__link">
+  <a href="#how-do-i-hold-or-modify-a-job" class="md-nav__link">
     <span class="md-ellipsis">
-      Unable to allocate resources
+      How do I hold or modify a job?
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Unable to allocate resources">
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#unable-to-allocate-resources" class="md-nav__link">
+    <span class="md-ellipsis">
+      "Unable to allocate resources"
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label=""Unable to allocate resources"">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -2571,6 +2598,15 @@
         
       </ul>
     </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#how-many-jobs-can-i-run-at-a-time" class="md-nav__link">
+    <span class="md-ellipsis">
+      How many jobs can I run at a time?
+    </span>
+  </a>
   
 </li>
       
@@ -2608,9 +2644,15 @@
 <h2 id="what-partitions-exist">What partitions exist?<a class="headerlink" href="#what-partitions-exist" title="Anchor link to this section for reference">&para;</a></h2>
 <p>See <a href="../partitions/">this document</a>.</p>
 <h2 id="how-do-i-cancel-a-job">How do I cancel a job?<a class="headerlink" href="#how-do-i-cancel-a-job" title="Anchor link to this section for reference">&para;</a></h2>
-<p>Use <code>scancel jobid</code> where jobid is the number for your job.
-If your job is a member of a job array, it will have an underscore in it, e.g. 2095_15. You can cancel an array task or the whole job array. </p>
-<h2 id="unable-to-allocate-resources">Unable to allocate resources<a class="headerlink" href="#unable-to-allocate-resources" title="Anchor link to this section for reference">&para;</a></h2>
+<p>Use <code>scancel &lt;jobid&gt;</code> where jobid is the number for your job. You can specify multiple jobs in a space-separated list.</p>
+<p>If your job is a member of a job array, it will have an underscore in it, e.g. 2095_15. You can cancel an array task (2095_15) or the whole job array (2095).</p>
+<p>If you want to cancel all of your pending jobs, use <code>scancel --me -t PENDING</code>. If you want to cancel all of your jobs, use <code>scancel -u your-username</code></p>
+<h2 id="how-do-i-hold-or-modify-a-job">How do I hold or modify a job?<a class="headerlink" href="#how-do-i-hold-or-modify-a-job" title="Anchor link to this section for reference">&para;</a></h2>
+<p>Note that if you want to modify something about the job, instead of cancelling it and losing any accumulated age priority it has accrued, you can hold the job and modify it with <code>scontrol</code> commands. Only some of ther parameters of a job can be modified when it is pending, and even fewer if it has started running.</p>
+<p><code>scontrol hold &lt;jobid&gt;</code> where <jobid> can be a comma-separated list.
+If your jobs have names, you can hold using the name. (This will hold all matching jobs.) <code>scontrol hold jobname=&lt;jobname&gt;</code>
+<code>scontrol update jobid=&lt;jobid&gt; ...</code> See <a href="https://slurm.schedmd.com/scontrol.html#lbAH">this section</a> of the manual page for a list of attributes which can be modified.</p>
+<h2 id="unable-to-allocate-resources">"Unable to allocate resources"<a class="headerlink" href="#unable-to-allocate-resources" title="Anchor link to this section for reference">&para;</a></h2>
 <p>If the scheduler determines that your job is invalid in some fashion, it will generally reject it immediately instead of putting it into the queue with a pending status. There are a few causes of this. The wording of the error may or may not be clear.</p>
 <h3 id="users-group-not-permitted-to-use-this-partition">User's group not permitted to use this partition<a class="headerlink" href="#users-group-not-permitted-to-use-this-partition" title="Anchor link to this section for reference">&para;</a></h3>
 <p>Some of our PI partitions have UNIX groups defined to control who can submit jobs to them. If you are not a member of that group and try to submit a job, you'll see an error like this:</p>
@@ -2623,6 +2665,10 @@ If your job is a member of a job array, it will have an underscore in it, e.g. 2
 <p><code>Unable to allocate resources: Job violates accounting/QOS policy (job submit limit, user's size and/or time limits)</code></p>
 <p>But when more CPUs were requested (instead of too much RAM), the error was different:</p>
 <p><code>Unable to allocate resources: More processors requested than permitted</code></p>
+<h2 id="how-many-jobs-can-i-run-at-a-time">How many jobs can I run at a time?<a class="headerlink" href="#how-many-jobs-can-i-run-at-a-time" title="Anchor link to this section for reference">&para;</a></h2>
+<p>As of 20240220 there are few limits.</p>
+<p>Array jobs are limited to 15,000 tasks by variable <code>max_array_tasks</code> in /etc/slurm/slurm.conf</p>
+<p>Total jobs at a single time is 90,000, which is determined by the variable <code>MaxJobCount</code> in /etc/slurm/slurm.conf</p>
 
 
 
@@ -2643,7 +2689,7 @@ If your job is a member of a job array, it will have an underscore in it, e.g. 2
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1-2.1-2M12.5 7v5.2l4 2.4-1 1L11 13V7h1.5M11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2v1.8Z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">February 20, 2024</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">February 21, 2024</span>
   </span>
 
     

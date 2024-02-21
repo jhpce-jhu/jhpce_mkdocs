@@ -2011,7 +2011,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../access/ssh/" class="md-nav__link">
+      <a href="../../help/cost-calculator/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2859,6 +2859,17 @@
 <p><a href="https://squidfunk.github.io/mkdocs-material/reference/">Materials for MkDocs reference section</a>.</p>
 <h2 id="frontmatter-in-documents">Frontmatter (in documents)<a class="headerlink" href="#frontmatter-in-documents" title="Anchor link to this section for reference">&para;</a></h2>
 <p>Tags are the primary use of frontmatter I think we should use at this point. <a href="https://squidfunk.github.io/mkdocs-material/reference/">This</a> may not be a complete list of directives that one can optionally add within a document. But the basics are that you can add to the top of the document a stanza to set the title of the document, a description of it, a status indicator such as new or deprecated. See <a href="https://squidfunk.github.io/mkdocs-material/reference/#setting-the-page-icon">this page</a> for how to define an icon for the page.</p>
+<p>Apparently multiple frontmatter elements, like both tags and a page title, need to exist together inside one pair of three dashed lines. See example:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span></pre></div></td><td class="code"><div><pre><span></span><code>---
+tags:
+  - a tag
+title: some docs need explicit titles set
+---
+</code></pre></div></td></tr></table></div>
 <h2 id="tags">Tags<a class="headerlink" href="#tags" title="Anchor link to this section for reference">&para;</a></h2>
 <p>An example of frontmatter is the code to <a href="https://squidfunk.github.io/mkdocs-material/setup/setting-up-tags/">add tags</a> to documents. 20240211 I tested adding a tag and it works. I also specified in the nav section <a href="../tags/">a page </a>for Material for MkDocs to automatically list tags and the pages they are found on.</p>
 <p>A lot of optional tag-related settings/capabilities seem to be reserved for paying sponsers as of 20240201. See this <a href="https://squidfunk.github.io/mkdocs-material/insiders/">page</a>. Can users search for documents by tags in the search field?</p>
@@ -3086,7 +3097,7 @@ possible <span class="critic comment">and comments can be added inline</span>.</
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1-2.1-2M12.5 7v5.2l4 2.4-1 1L11 13V7h1.5M11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2v1.8Z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">February 20, 2024</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">February 21, 2024</span>
   </span>
 
     
