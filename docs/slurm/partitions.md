@@ -1,3 +1,9 @@
+---
+tags:
+  - slurm
+---
+
+
 # Partitions
 
 A partition is a logical collections of nodes that comprise different hardware resources and limits to help meet the wide variety of jobs that get scheduled on the cluster. 
@@ -34,7 +40,7 @@ Limits for CPU cores, RAM and Time (default/maximum)
 | cancergen | PI | yes | (none) | (none) | (none/90d) | |
 | caracol | PI | yes | (none) | (none) | (none/90d) | UNIX group |
 | cee | PI | yes | (none) | (none) | (none/90d) | |
-| cegs | PI | yes | (none) | (none) | (none/90d) | |
+| cegs2 | PI | yes | (none) | (none) | (none/90d) | |
 | chatterjee | PI | yes | (none) | (none) | (none/90d) | |
 | echodac | PI | yes | (none) | (none) | (none/90d) | |
 | hl | PI | yes | (none) | (none) | (none/90d) | |
