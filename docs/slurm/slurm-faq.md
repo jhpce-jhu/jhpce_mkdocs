@@ -18,10 +18,20 @@ See [this document](partitions.md).
 
 ## How do I cancel a job?
 
-Use `scancel jobid` where jobid is the number for your job.
-If your job is a member of a job array, it will have an underscore in it, e.g. 2095_15. You can cancel an array task or the whole job array. 
+Use `scancel <jobid>` where jobid is the number for your job. You can specify multiple jobs in a space-separated list.
 
-## Unable to allocate resources
+If your job is a member of a job array, it will have an underscore in it, e.g. 2095_15. You can cancel an array task (2095_15) or the whole job array (2095).
+
+If you want to cancel all of your pending jobs, use `scancel --me -t PENDING`. If you want to cancel all of your jobs, use `scancel -u your-username`
+
+## How do I hold or modify a job?
+Note that if you want to modify something about the job, instead of cancelling it and losing any accumulated age priority it has accrued, you can hold the job and modify it with `scontrol` commands. Only some of ther parameters of a job can be modified when it is pending, and even fewer if it has started running.
+
+`scontrol hold <jobid>` where <jobid> can be a comma-separated list.
+If your jobs have names, you can hold using the name. (This will hold all matching jobs.) `scontrol hold jobname=<jobname>`
+`scontrol update jobid=<jobid> ...` See [this section](https://slurm.schedmd.com/scontrol.html#lbAH) of the manual page for a list of attributes which can be modified.
+
+## "Unable to allocate resources"
 If the scheduler determines that your job is invalid in some fashion, it will generally reject it immediately instead of putting it into the queue with a pending status. There are a few causes of this. The wording of the error may or may not be clear.
 
 ### User's group not permitted to use this partition
