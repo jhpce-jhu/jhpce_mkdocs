@@ -1251,6 +1251,15 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#dont-fill-up-tmp" class="md-nav__link">
+    <span class="md-ellipsis">
+      Don't fill up /tmp
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#home-directories" class="md-nav__link">
     <span class="md-ellipsis">
       Home directories
@@ -2554,6 +2563,15 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#dont-fill-up-tmp" class="md-nav__link">
+    <span class="md-ellipsis">
+      Don't fill up /tmp
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#home-directories" class="md-nav__link">
     <span class="md-ellipsis">
       Home directories
@@ -2638,6 +2656,12 @@
       <a href="../../ourtools/tags/#topic-overview" class="md-tag">topic-overview</a>
     
   
+    
+    
+    
+      <a href="../../ourtools/tags/#needs-revision" class="md-tag">needs-revision</a>
+    
+  
 </nav>
 
 
@@ -2645,6 +2669,7 @@
 <h1 id="storage-overview">STORAGE OVERVIEW<a class="headerlink" href="#storage-overview" title="Anchor link to this section for reference">&para;</a></h1>
 <p>Not everything about storage needs to be in this document.
 Probably more readable if this was shorter and was an overview of key info with pointers to other documents. JRT has already created a number of subordinate docs.</p>
+<p>Previous <a href="../storage/">stg page</a> has some text that should move into this one.</p>
 <h2 id="types-of-storage">Types of storage<a class="headerlink" href="#types-of-storage" title="Anchor link to this section for reference">&para;</a></h2>
 <p>Define a set of types, then, for the rest of our documentation, organize and discuss using the same terms. That idea provides coherence and guidance for what needs to be said, and where.</p>
 <ul>
@@ -2658,9 +2683,12 @@ Probably more readable if this was shorter and was an overview of key info with 
 <p>Speed differences between SSD (dcs06, fastscratch) and spinning.</p>
 <h2 id="specific-file-systems-you-need-to-know-about">Specific File Systems You Need To Know About<a class="headerlink" href="#specific-file-systems-you-need-to-know-about" title="Anchor link to this section for reference">&para;</a></h2>
 <p>Make a table for each of the three types of storage. Instead of one large table. Be consistent in dealing with the three types of stg.</p>
-<p>In each table, include
-* Name or form (/dcs0N/group/data)
-* the environment variable you can use to refer to it, e.g. $HOME $FASTSCRATCH (JRT doesn't know of a SLURM variable for where your job starts. There's SLURM_SUBMIT_DIR but it doesn't reflect any usage of --chdir)</p>
+<p>In each table, include</p>
+<ul>
+<li>Name or form (/dcs0N/group/data)</li>
+<li>the environment variable you can use to refer to it, e.g. $HOME $FASTSCRATCH (JRT doesn't know of a SLURM variable for where your job starts. There's SLURM_SUBMIT_DIR but it doesn't reflect any usage of --chdir)</li>
+</ul>
+<h2 id="dont-fill-up-tmp">Don't fill up /tmp<a class="headerlink" href="#dont-fill-up-tmp" title="Anchor link to this section for reference">&para;</a></h2>
 <p>What about compute node's /tmp? Users need to know about it, because they may not know that software often writes there, and they need to understand that it is a shared limited resource. if they are explicitly writing to /tmp they need to know to limit their usage and clean up after themselves</p>
 <h2 id="home-directories">Home directories<a class="headerlink" href="#home-directories" title="Anchor link to this section for reference">&para;</a></h2>
 <p>How to learn how much you're using. How often updated?
@@ -2699,6 +2727,10 @@ See <a href="../backups/">this document</a> for more information.</p>
 <li>In Stata, the default <code>tempfile</code> location is under <code>/tmp</code>. This can be changed by setting the <code>STATATMP</code> environment variable.</li>
 </ul>
 <h2 id="encrypted-filesystem">Encrypted filesystem<a class="headerlink" href="#encrypted-filesystem" title="Anchor link to this section for reference">&para;</a></h2>
+<div class="admonition hopefully">
+<p class="admonition-title">Hopefully</p>
+<p>We can just delete this info because we're getting rid of Lustre ASAP</p>
+</div>
 <ul>
 <li>The JHPCE Cluster currently supports the following mechanisms for
 using encrypted filesystems.</li>
@@ -2730,7 +2762,7 @@ devices.</li>
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1-2.1-2M12.5 7v5.2l4 2.4-1 1L11 13V7h1.5M11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2v1.8Z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">February 16, 2024</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">February 21, 2024</span>
   </span>
 
     
