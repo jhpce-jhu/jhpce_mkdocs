@@ -14,8 +14,9 @@ The figure shown during login are updated periodically. Every 30 minutes to an h
 
 ## Home Directory
 
-In the JHPCE cluster, this is set to 100GB.
-In the C-SUB cluster, this is set to 500GB.
+In the JHPCE cluster, this quota is set to 100GB.
+
+In the C-SUB cluster, this quota is set to 500GB.
 
 
 ### File Deletion and Delayed Change in Quota
@@ -24,10 +25,12 @@ When you delete files you may not see an immediate change in your disk consumpti
 
 You can see how much space you are using in your home directory with the commands
 
-1. `cd`
-2. `du -sh .`
+```Shell linenums="0"
+cd
+du -sh .
+```
 
-We use ZFS snapshots for home directories to make automated backups once an day[^1]. These are kept for a period of time[^2] so systems administrators can perform restores.
+We use ZFS snapshots for home directories to make automated backups once an day[^1]. These are kept for a period of time[^2] so users and systems administrators can perform restores. See [this document](backups.md) for instructions on performing your own restores!!!
 
 [^1]: At eleven pm (as of 20240215).
 [^2]: Fourteen days (as of 20240215).
@@ -49,8 +52,10 @@ We have defined in the standard environment a variable `$MYSCRATCH` for users to
 
 There is no reporting system currently available to display fastscratch disk usage and your quota. You can use these commands to view your current usage:
 
-1. `cd $MYSCRATCH`
-2. `du -sh .`
+```Shell linenums="0"
+cd $MYSCRATCH
+du -sh .
+```
 
 ### Fastscratch automated cleaning
 
