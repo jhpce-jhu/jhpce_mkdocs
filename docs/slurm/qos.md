@@ -4,7 +4,7 @@ tags:
 ---
 # Quality of Service -- NEEDS REVISION FOR PUBLIC CONSUMPTION
 
-## HOW WE ARE USING QOS TO DATE
+## HOW WE ARE USING QOS TO DATE...
 
 Our users all have a QOS value of "normal", which is
 inherited from their parent account, named "jhpce"
