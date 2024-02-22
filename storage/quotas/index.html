@@ -2577,7 +2577,11 @@
 
 
 <h1 id="disk-quotas">Disk Quotas<a class="headerlink" href="#disk-quotas" title="Anchor link to this section for reference">&para;</a></h1>
-<p>Disk quotas are used to control disk space for certain file systems. We use "hard" quotas. You are not allowed to use more than your quota.  This can become an obstacle of even logging in, as even a small file needed to record some detail about your login session, such as $HOME/.Xauthority, cannot be created.</p>
+<p>Disk quotas are used to control disk space for certain file systems. We use "hard" quotas. You are not allowed to use more than your quota.  </p>
+<div class="admonition danger">
+<p class="admonition-title">Danger</p>
+<p>This can become an obstacle of even logging in, as even a small file needed to record some detail about your login session, such as $HOME/.Xauthority, cannot be created. Keep your usage below your quota cap.</p>
+</div>
 <p>We use ZFS file systems for large volumes. Unfortunately, ZFS does not provide an end-user quota command with which to inspect your usage and remaining space.</p>
 <p>Therefore we have configured our login nodes to display your home directory disk consumption and quota during the login process.</p>
 <p>The figure shown during login are updated periodically. Every 30 minutes to an hour.</p>
