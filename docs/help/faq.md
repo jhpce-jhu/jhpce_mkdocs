@@ -5,6 +5,8 @@ tags:
 ---
 # FAQ
 
+There is a dedicated [SLURM FAQ](../slurm/slurm-faq.md) document.
+
 ## Why does bash report that it can’t find the module command?
 
 If you receive a message like
