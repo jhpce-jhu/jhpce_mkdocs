@@ -2474,11 +2474,11 @@
           <li class="md-nav__item">
   <a href="#update-jobs" class="md-nav__link">
     <span class="md-ellipsis">
-      Update jobs
+      Update Jobs
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Update jobs">
+    <nav class="md-nav" aria-label="Update Jobs">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -2556,14 +2556,14 @@
 </code></pre></div>
 <div class="highlight"><pre><span></span><code>scontrol<span class="w"> </span>show<span class="w"> </span>partition<span class="w"> </span>&lt;partitionname&gt;
 </code></pre></div>
-<h3 id="update-jobs"><a href="https://slurm.schedmd.com/scontrol.html#lbAH">Update jobs</a><a class="headerlink" href="#update-jobs" title="Anchor link to this section for reference">&para;</a></h3>
-<p>You can update many aspects of pending jobs, fewer for running jobs. What follows is only a sample!!!</p>
+<h3 id="update-jobs">Update Jobs<a class="headerlink" href="#update-jobs" title="Anchor link to this section for reference">&para;</a></h3>
+<p>You can update many aspects of pending jobs, fewer for running jobs. What follows is only a sample!!! Click <a href="https://slurm.schedmd.com/scontrol.html#lbAH">here</a> for the complete list.</p>
 <h4 id="pending-jobs">Pending Jobs<a class="headerlink" href="#pending-jobs" title="Anchor link to this section for reference">&para;</a></h4>
 <p><div class="highlight"><span class="filename">Set max # of tasks in an array that execute at same time</span><pre><span></span><code>scontrol<span class="w"> </span>update<span class="w"> </span><span class="nv">jobid</span><span class="o">=</span>&lt;jobid&gt;<span class="w"> </span><span class="nv">ArrayTaskThrottle</span><span class="o">=</span>&lt;count&gt;
 </code></pre></div>
 Users can change the time limit on their pending jobs. After a job starts to run, only a system administrator can adjust the time.</p>
-<div class="highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">Set max job duration linenums=</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>scontrol<span class="w"> </span>update<span class="w"> </span><span class="nv">jobid</span><span class="o">=</span>&lt;jobid&gt;<span class="w"> </span><span class="nv">TimeMin</span><span class="o">=</span>&lt;time-specification&gt;
-</code></pre></div></td></tr></table></div>
+<div class="highlight"><span class="filename">Set max job duration</span><pre><span></span><code>scontrol<span class="w"> </span>update<span class="w"> </span><span class="nv">jobid</span><span class="o">=</span>&lt;jobid&gt;<span class="w"> </span><span class="nv">TimeMin</span><span class="o">=</span>&lt;time-specification&gt;
+</code></pre></div>
 <div class="highlight"><span class="filename">Hold one of your jobs (to prefer other of your jobs)</span><pre><span></span><code>scontrol<span class="w"> </span>hold<span class="w"> </span>&lt;job-list&gt;<span class="w">  </span><span class="c1"># Can be comma-separated list of jobids</span>
 </code></pre></div>
 <div class="highlight"><span class="filename">Release a held job</span><pre><span></span><code>scontrol<span class="w"> </span>release<span class="w"> </span>&lt;job-list&gt;<span class="w">  </span><span class="c1"># Can be comma-separated list of jobids</span>
