@@ -25,9 +25,9 @@ scontrol show node <nodename>
 scontrol show partition <partitionname>
 ```
 
-### [Update jobs](https://slurm.schedmd.com/scontrol.html#lbAH)
+### Update Jobs
 
-You can update many aspects of pending jobs, fewer for running jobs. What follows is only a sample!!!
+You can update many aspects of pending jobs, fewer for running jobs. What follows is only a sample!!! Click [here](https://slurm.schedmd.com/scontrol.html#lbAH) for the complete list.
 
 #### Pending Jobs
 
@@ -36,7 +36,7 @@ scontrol update jobid=<jobid> ArrayTaskThrottle=<count>
 ```
 Users can change the time limit on their pending jobs. After a job starts to run, only a system administrator can adjust the time.
 
-```Shell title="Set max job duration linenums="0"
+```Shell title="Set max job duration" linenums="0"
 scontrol update jobid=<jobid> TimeMin=<time-specification>
 ```
 
