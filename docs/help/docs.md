@@ -1,7 +1,6 @@
 ---
 tags:
-  - needs-revision
-  - in-progress
+  - needs-major-revision
 ---
 # Docs 
 

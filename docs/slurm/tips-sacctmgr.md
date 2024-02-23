@@ -1,3 +1,8 @@
+---
+tags:
+  - slurm
+---
+
 # sacctmgr useful command examples
     
 Sacctmgr is mostly used by systems administrators. Only they are allowed to make changes.

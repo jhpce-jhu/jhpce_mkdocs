@@ -1,4 +1,11 @@
+---
+tags:
+  - needs-to-be-written
+---
+
 # Are you a Primary Investigator wanting to join JHPCE?
+
+PULL MATERIAL IN FROM [EXISTING WEB SITE POLICIES PAGE](https://jhpce.jhu.edu/policies/)
 
 ## Do we need a C-SUB Version?
 If so it should live in the "csub" directory with all of the other csub-specific files.

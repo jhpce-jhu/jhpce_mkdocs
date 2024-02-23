@@ -1,7 +1,7 @@
 ---
 tags:
   - topic-overview
-  - needs-revision
+  - needs-major-revision
 ---
 
 # STORAGE OVERVIEW

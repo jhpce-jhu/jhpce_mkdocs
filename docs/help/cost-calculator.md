@@ -8,6 +8,8 @@ tags:
 
 Should this document be renamed to something more general, like Billing or The Cost of Computing?
 
+PULL MATERIAL IN FROM [EXISTING WEB SITE POLICIES PAGE](https://jhpce.jhu.edu/policies/)
+
 ## Why?
 
 ## Billing Process

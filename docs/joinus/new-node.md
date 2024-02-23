@@ -1,14 +1,19 @@
+---
+tags:
+  - needs-to-be-written
+---
+
 # How to buy nodes for your research
+
+PULL SOME MATERIAL IN FROM [EXISTING WEB SITE POLICIES PAGE](https://jhpce.jhu.edu/policies/)
 
 This is the document for you. The cluster only exists because PIs bought nodes and collaborated. With more nodes, more research could be done, and faster.
 
-JRT thinks that it this document and the heading in the nav bar should continue to be indictative of the idea he thinks we should be promoting, which is CONSIDER BUYING NODES. 
+There are various times when people might consider buying nodes.
 
-This can be called inside this document "becoming a stakeholder". But JRT thinks using that term in the nav bar is technically correct but **submerges** the ideas that should be in as many minds as possible:
-
-* HEY, MAYBE I SHOULD URGE MY ADVISOR TO BUY A NODE
+* HEY, MAYBE I SHOULD URGE MY ADVISOR TO BUY A NODE SO OUR RESEARCH CAN PROCEED FASTER
 * DOES IT REALLY COST THAT MUCH TO GET A NODE?
-* I'M GOING INTO A BUDGET MEETING, MAYBE I SHOULD BUY A NODE?
+* I'M GOING INTO A BUDGET MEETING, MAYBE I SHOULD PLAN TO BUY A NODE?
 * I'M WRITING A GRANT PROPOSAL, MAYBE I SHOULD INCLUDE MONEY FOR BUYING NODES OR STORAGE!!
 
 ## Process 
@@ -18,7 +23,8 @@ How to go about it.
 
 ### How Your Jobs Are Prioritized
 
-What JRT doesn't know what to say in this document:
+We can pull nodes out of shared.
+We can give jobs in PI partitions higher priority than those in the shared partition.
 
 * how do we help you get your work done preferentially despite the node being in the shared partition
 * about how nodes need to be shared with everyone else. What expectations do we want to set? Do we want to explicitly start talking to the community about buying nodes that are managed but normally private rather than being normally shared?

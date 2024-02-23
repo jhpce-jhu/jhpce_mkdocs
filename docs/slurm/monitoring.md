@@ -1,6 +1,7 @@
 ---
 tags:
-  - in-progress
+  - needs-major-revision
+  - slurm
 ---
 
 # Monitoring SLURM Jobs
@@ -9,10 +10,12 @@ Making sure your jobs request the right amount of RAM and the right number of CP
 
 ## sstat 
 display process statistics of a running job/step
+
 https://slurm.schedmd.com/archive/slurm-22.05.9/sstat.html
 
 ## sacct
 display accounting data for jobs in the Slurm database
+
 https://slurm.schedmd.com/archive/slurm-22.05.9/sacct.html
 
 ## Suggestions

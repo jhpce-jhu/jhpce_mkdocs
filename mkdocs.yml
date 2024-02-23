@@ -17,7 +17,8 @@ nav:
       - Need more space?: joinus/new-stg.md
     - Orientation/Getting Started:
       - Overview: orient/orientation.md
-      - Our PDF: orient/images/latest-orient.pdf
+      - JHPCE Orientation PDF: orient/images/latest-orient.pdf
+      - C-SUB Orientation PDF: orient/images/latest-csub-orient.pdf
       - First Login: orient/orient-stub.md
     - Accessing the cluster:
       - Overview: access/access-overview.md
@@ -75,6 +76,7 @@ nav:
     - C-SUB:
       - What Is The C-SUB?: csub/csub-stub.md
       - New User: csub/csub-stub.md
+      - C-SUB Orientation PDF: orient/images/latest-csub-orient.pdf
     - Tools For Site Developers: 
       - Handy Features: ourtools/features.md
       - Wishlist: ourtools/wishlist.md

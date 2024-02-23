@@ -1,6 +1,7 @@
 ---
 tags:
   - done
+  - slurm
 ---
 # Factors Affecting Job Scheduling
 
