@@ -653,6 +653,8 @@
       
         
       
+        
+      
     
     
       
@@ -715,7 +717,28 @@
         
   
   <span class="md-ellipsis">
-    Our PDF
+    JHPCE Orientation PDF
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../orient/images/latest-csub-orient.pdf" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    C-SUB Orientation PDF
   </span>
   
 
@@ -2303,6 +2326,8 @@
       
         
       
+        
+      
     
     
       
@@ -2366,6 +2391,27 @@
   
   <span class="md-ellipsis">
     New User
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../orient/images/latest-csub-orient.pdf" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    C-SUB Orientation PDF
   </span>
   
 
@@ -2648,10 +2694,11 @@
 <p>If your job is a member of a job array, it will have an underscore in it, e.g. 2095_15. You can cancel an array task (2095_15) or the whole job array (2095).</p>
 <p>If you want to cancel all of your pending jobs, use <code>scancel --me -t PENDING</code>. If you want to cancel all of your jobs, use <code>scancel -u your-username</code></p>
 <h2 id="how-do-i-hold-or-modify-a-job">How do I hold or modify a job?<a class="headerlink" href="#how-do-i-hold-or-modify-a-job" title="Anchor link to this section for reference">&para;</a></h2>
-<p>Note that if you want to modify something about the job, instead of cancelling it and losing any accumulated age priority it has accrued, you can hold the job and modify it with <code>scontrol</code> commands. Only some of ther parameters of a job can be modified when it is pending, and even fewer if it has started running.</p>
+<p>Note that if you want to modify something about the job, instead of cancelling it and losing any accumulated age priority it has accrued, you can hold the job and modify it with <code>scontrol</code> commands. Only some of the parameters of a job can be modified when it is pending, and even fewer if it has started running.</p>
 <p><code>scontrol hold &lt;jobid&gt;</code> where <jobid> can be a comma-separated list.
 If your jobs have names, you can hold using the name. (This will hold all matching jobs.) <code>scontrol hold jobname=&lt;jobname&gt;</code>
 <code>scontrol update jobid=&lt;jobid&gt; ...</code> See <a href="https://slurm.schedmd.com/scontrol.html#lbAH">this section</a> of the manual page for a list of attributes which can be modified.</p>
+<p>We have a number of <a href="../tips-scontrol/">scontrol examples</a> spelled out for you.</p>
 <h2 id="unable-to-allocate-resources">"Unable to allocate resources"<a class="headerlink" href="#unable-to-allocate-resources" title="Anchor link to this section for reference">&para;</a></h2>
 <p>If the scheduler determines that your job is invalid in some fashion, it will generally reject it immediately instead of putting it into the queue with a pending status. There are a few causes of this. The wording of the error may or may not be clear.</p>
 <h3 id="users-group-not-permitted-to-use-this-partition">User's group not permitted to use this partition<a class="headerlink" href="#users-group-not-permitted-to-use-this-partition" title="Anchor link to this section for reference">&para;</a></h3>
@@ -2689,7 +2736,7 @@ If your jobs have names, you can hold using the name. (This will hold all matchi
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1-2.1-2M12.5 7v5.2l4 2.4-1 1L11 13V7h1.5M11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2v1.8Z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">February 21, 2024</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">February 23, 2024</span>
   </span>
 
     
@@ -2823,7 +2870,7 @@ If your jobs have names, you can hold using the name. (This will hold all matchi
     </div>
     
     
-    <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.sections", "toc.follow", "navigation.top", "navigation.path", "header.autohide", "navigation.footer", "navigation.indexes", "content.code.copy"], "search": "../../assets/javascripts/workers/search.b8dbb3d2.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.sections", "toc.follow", "navigation.top", "navigation.path", "header.autohide", "navigation.footer", "navigation.indexes", "content.code.copy", "content.code.annotate"], "search": "../../assets/javascripts/workers/search.b8dbb3d2.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
     
     
       <script src="../../assets/javascripts/bundle.8fd75fb4.min.js"></script>

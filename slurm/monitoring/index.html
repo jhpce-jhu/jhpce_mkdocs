@@ -653,6 +653,8 @@
       
         
       
+        
+      
     
     
       
@@ -715,7 +717,28 @@
         
   
   <span class="md-ellipsis">
-    Our PDF
+    JHPCE Orientation PDF
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../orient/images/latest-csub-orient.pdf" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    C-SUB Orientation PDF
   </span>
   
 
@@ -2252,6 +2275,8 @@
       
         
       
+        
+      
     
     
       
@@ -2315,6 +2340,27 @@
   
   <span class="md-ellipsis">
     New User
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../orient/images/latest-csub-orient.pdf" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    C-SUB Orientation PDF
   </span>
   
 
@@ -2527,7 +2573,13 @@
     
     
     
-      <a href="../../ourtools/tags/#in-progress" class="md-tag">in-progress</a>
+      <a href="../../ourtools/tags/#needs-major-revision" class="md-tag">needs-major-revision</a>
+    
+  
+    
+    
+    
+      <a href="../../ourtools/tags/#slurm" class="md-tag">slurm</a>
     
   
 </nav>
@@ -2537,11 +2589,11 @@
 <h1 id="monitoring-slurm-jobs">Monitoring SLURM Jobs<a class="headerlink" href="#monitoring-slurm-jobs" title="Anchor link to this section for reference">&para;</a></h1>
 <p>Making sure your jobs request the right amount of RAM and the right number of CPUs helps you and others using the clusters use these resources more effeciently, and in turn get work done more quickly. Below are some examples of how to measure your CPU and RAM (aka memory) usage so you can make this happen.</p>
 <h2 id="sstat">sstat<a class="headerlink" href="#sstat" title="Anchor link to this section for reference">&para;</a></h2>
-<p>display process statistics of a running job/step
-https://slurm.schedmd.com/archive/slurm-22.05.9/sstat.html</p>
+<p>display process statistics of a running job/step</p>
+<p>https://slurm.schedmd.com/archive/slurm-22.05.9/sstat.html</p>
 <h2 id="sacct">sacct<a class="headerlink" href="#sacct" title="Anchor link to this section for reference">&para;</a></h2>
-<p>display accounting data for jobs in the Slurm database
-https://slurm.schedmd.com/archive/slurm-22.05.9/sacct.html</p>
+<p>display accounting data for jobs in the Slurm database</p>
+<p>https://slurm.schedmd.com/archive/slurm-22.05.9/sacct.html</p>
 <h2 id="suggestions">Suggestions<a class="headerlink" href="#suggestions" title="Anchor link to this section for reference">&para;</a></h2>
 <p>The following was sent to a user who was having SAS jobs fail with errors indicating a problem with space or quota.</p>
 <p>Instrumenting your job means adding commands to it to gather information. Running df commands to check the size and capacity of all or specific file systems. (df -h -x tmpfs might be a helpful variant). As mentioned in the orientation material, the sstat command can gather information for running jobs (as opposed to sacct which is oriented towards completed jobs). Some of the output fields available via sstat and sacct relate to memory usage while others can reveal disk input/output volumes.</p>
@@ -2585,7 +2637,7 @@ slurm:: sacct -o ALL -j jobid # See all fields for job</p>
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1-2.1-2M12.5 7v5.2l4 2.4-1 1L11 13V7h1.5M11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2v1.8Z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">February 16, 2024</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">February 23, 2024</span>
   </span>
 
     
@@ -2719,7 +2771,7 @@ slurm:: sacct -o ALL -j jobid # See all fields for job</p>
     </div>
     
     
-    <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.sections", "toc.follow", "navigation.top", "navigation.path", "header.autohide", "navigation.footer", "navigation.indexes", "content.code.copy"], "search": "../../assets/javascripts/workers/search.b8dbb3d2.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.sections", "toc.follow", "navigation.top", "navigation.path", "header.autohide", "navigation.footer", "navigation.indexes", "content.code.copy", "content.code.annotate"], "search": "../../assets/javascripts/workers/search.b8dbb3d2.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
     
     
       <script src="../../assets/javascripts/bundle.8fd75fb4.min.js"></script>
