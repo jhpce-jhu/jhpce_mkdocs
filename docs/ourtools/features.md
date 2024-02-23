@@ -1,7 +1,10 @@
 # WEB SITE TOOLS/ENABLED FEATURES WORTH KNOWING HOW TO USE
-Some more useful than others. Jeffrey likes "admonitions" a lot. There is another document containing [wishlist](wishlist.md) items that we might want to enable/configure.
+Some more useful than others. Jeffrey likes "[admonitions](features.md#admonitions)" a lot.
+
+There is another document containing [wishlist](wishlist.md) items that we might want to enable/configure.
 
 ## Critical reference
+Look here for information about these and other features!!! Just keep in mind that ones marked "insiders" are not available for our use.
 [Materials for MkDocs reference section](https://squidfunk.github.io/mkdocs-material/reference/).
 
 ## Frontmatter (in documents)
@@ -90,7 +93,7 @@ The HTML specification is maintained by the W3C.
 ## Glossary
 There's a way to create a document which is automatically updated when people define abbrieviations. See the wishlist document for details.
 
-## definition list
+## Definition List
 You can create an indented block of text using a colon followed by FOUR space characters.
 
 Example code and result:
@@ -102,14 +105,14 @@ Example code and result:
 `a sample term to define`
 :    The definition you are seeking. (But not the droids.)
 
-## admonitions
-These are **sweet**! We should use them frequently. But be aware that they are not rendered correctly in MacDown.app.
+## Admonitions
+These are **sweet**! We should use them frequently. But be aware that they are not rendered correctly in MacDown.app. This is where it is good to be running "mkdocs serve" on your local machine.
 
 <a href="https://squidfunk.github.io/mkdocs-material/reference/admonitions/"" target="_blank">About admonitions</a>
 
 You add an admonition by
 
-1. starting a line with three explanation marks, a space, and a keyword (called a "type qualifier") such as note, danger, example, info, tip, warning. Here is a [list](https://squidfunk.github.io/mkdocs-material/reference/admonitions/#supported-types)
+1. starting a line with three explanation marks, a space, and a keyword (called a "type qualifier") such as note, danger, example, info, tip, warning. Here is a [list](https://squidfunk.github.io/mkdocs-material/reference/admonitions/#supported-types). Certain colors are used for known keywords. If you use your own word or phrase, the color is maybe out of your control.
 2. on the next line(s) start with FOUR spaces
 
 !!! note
@@ -118,9 +121,13 @@ You add an admonition by
 !!! example
     admonitions allow setting off info inside colored boxes, e.g. note,tip,warning,danger,example.
     https://squidfunk.github.io/mkdocs-material/reference/admonitions/#usage
+    
+    All lines indented four spaces are included in your admonition, including fenced code blocks.
 
 ## Open URLs in new tabs
-I think there might be plugins which make this easier than what you have to do othwerwise, which is to use HTML instead of the Markdown notation. In normal HTML you add a space and a string to the end of the URL: `target="_blank"`
+(Adi has configured the server to always open URLs in new tabs.)
+
+JRT thinks there might be plugins which make this easier than what you have to do othwerwise, which is to use HTML instead of the Markdown notation. In normal HTML you add a space and a string to the end of the URL: `target="_blank"`
 
 ```
 <a href="https://squidfunk.github.io/mkdocs-material/reference/admonitions/" target="_blank">About admonitions</a>
