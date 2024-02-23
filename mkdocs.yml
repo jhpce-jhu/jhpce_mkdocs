@@ -133,6 +133,8 @@ theme:
     #    following feature. e.g. a list of language types https://pygments.org/docs/lexers/
     - content.code.copy # automatically render button on right side to allow
                         # users to copy code blocks
+    # https://squidfunk.github.io/mkdocs-material/reference/code-blocks/#adding-annotations
+    - content.code.annotate # Allow annotations inside blocks after comment chars
 #
 # Plugins
 #
