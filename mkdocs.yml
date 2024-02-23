@@ -74,7 +74,7 @@ nav:
       - Database of Databses: portal/datacatalog.md
       - Self Service MFA, Password Requests : portal/portal-stub.md
     - C-SUB:
-      - What Is The C-SUB?: csub/csub-stub.md
+      - What Is The C-SUB?: csub/csub-overview.md
       - New User: csub/csub-stub.md
       - C-SUB Orientation PDF: orient/images/latest-csub-orient.pdf
     - Tools For Site Developers: 
