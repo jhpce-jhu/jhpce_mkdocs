@@ -18,7 +18,7 @@
       
       
       <link rel="icon" href="../../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.5.10">
+      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.5.11">
     
     
       
@@ -796,6 +796,8 @@
       
         
       
+        
+      
     
     
       
@@ -906,6 +908,15 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#x11the-x-window-system" class="md-nav__link">
+    <span class="md-ellipsis">
+      X11/The X Window System
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#multi-factor-authentication-mfa" class="md-nav__link">
     <span class="md-ellipsis">
       Multi-factor authentication (MFA)
@@ -993,6 +1004,27 @@
   
   
     <li class="md-nav__item">
+      <a href="../x11/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    X11
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../mobaxterm/" class="md-nav__link">
         
   
@@ -1031,10 +1063,10 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1_5_4" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1_5_5" >
         
           
-          <label class="md-nav__link" for="__nav_1_5_4" id="__nav_1_5_4_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_1_5_5" id="__nav_1_5_5_label" tabindex="0">
             
   
   <span class="md-ellipsis">
@@ -1045,8 +1077,8 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_1_5_4_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_1_5_4">
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_1_5_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_1_5_5">
             <span class="md-nav__icon md-icon"></span>
             Transferring files in or out
           </label>
@@ -1291,6 +1323,8 @@
       
         
       
+        
+      
     
     
       
@@ -1433,11 +1467,32 @@
   
   
     <li class="md-nav__item">
-      <a href="../../storage/backups/" class="md-nav__link">
+      <a href="../../storage/copying-files/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
-    Backups
+    Copying within cluster
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../storage/backups.md" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Backups and Restores
   </span>
   
 
@@ -2606,6 +2661,15 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#x11the-x-window-system" class="md-nav__link">
+    <span class="md-ellipsis">
+      X11/The X Window System
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#multi-factor-authentication-mfa" class="md-nav__link">
     <span class="md-ellipsis">
       Multi-factor authentication (MFA)
@@ -2699,6 +2763,15 @@ Mention that some interfaces require being on Hopkins networks (is this only the
 <p>Access to the JHPCE cluster requires the use of SSH.</p>
 <p>SSH stands for Secure SHell. SSH is actually a set of internet standard protocols. Programs implementing these protocols include both command line interface (CLI) tools and those with graphic user interfaces (GUI).  They all enable you to make secure, encrypted connections from one computer to the next.</p>
 <p><a href="../ssh/">This document</a> provides more information on SSH.</p>
+<h2 id="x11the-x-window-system">X11/The X Window System<a class="headerlink" href="#x11the-x-window-system" title="Anchor link to this section for reference">&para;</a></h2>
+<p>The <a href="https://en.wikipedia.org/wiki/X_Window_System">X Window System</a> (aka X11, aka X) is the primary GUI system for UNIX computers. X allows a program (an X "client") running on a UNIX computer in the cluster to be displayed on a remote computer (running an X "server"<sup id="fnref:1"><a class="footnote-ref" href="#fn:1">1</a></sup>) over the network. To use it, your local computer needs to have X server software installed on it.</p>
+<p>SSH provides support for tunnelling X11 over an encrypted connection. You may need to tell SSH that you want that service, by, for example, adding the -X flag to an ssh command in a macOS Terminal.</p>
+<ul>
+<li>macOS users need to install <a href="https://en.wikipedia.org/wiki/XQuartz">XQuartz</a> from <a href="https://www.xquartz.org">xquartz.org</a>.</li>
+<li>Windows users need to use a program like MobaXterm (highly recommended) or <a href="https://en.wikipedia.org/wiki/Cygwin">Cygwin</a>. We have a page describing installing and using <a href="../mobaxterm/">MobaXterm</a>.</li>
+<li>Linux laptop or desktop users are already using X as their windowing system.</li>
+</ul>
+<p>For more information, see our <a href="../x11/">X11</a> document.</p>
 <h2 id="multi-factor-authentication-mfa">Multi-factor authentication (MFA)<a class="headerlink" href="#multi-factor-authentication-mfa" title="Anchor link to this section for reference">&para;</a></h2>
 <p>There are two basic factors required to log into a computer, whether your laptop or a remote UNIX cluster login node -- your username and a password. JHPCE requires the use of an additional factor, either a <a href="../ssh/#one-time-passwords">one-time password</a> (OTP) six digit code, or the use of <a href="../ssh/#ssh-keys">SSH key pairs</a>. </p>
 <h3 id="one-time-passwords">One Time Passwords<a class="headerlink" href="#one-time-passwords" title="Anchor link to this section for reference">&para;</a></h3>
@@ -2720,6 +2793,14 @@ Links to the apps page(s) about it.</p>
 <li>windows-specific? recommend a tool</li>
 <li>Internal file transfers - this deserves a document. Perhaps under the Managing Files header. Do's, don'ts, sample batch job, good rsync args to use, etc.</li>
 </ul>
+<div class="footnote">
+<hr />
+<ol>
+<li id="fn:1">
+<p>Note that X reverses the normal conception of client/server operation, which is that the remote computer is the "server". In X11, the "server" is the program receiving the keyboard and mouse inputs and displaying the output of remote "client" programs.&#160;<a class="footnote-backref" href="#fnref:1" title="Jump back to footnote 1 in the text">&#8617;</a></p>
+</li>
+</ol>
+</div>
 
 
 
@@ -2740,7 +2821,7 @@ Links to the apps page(s) about it.</p>
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1-2.1-2M12.5 7v5.2l4 2.4-1 1L11 13V7h1.5M11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2v1.8Z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">February 20, 2024</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">February 26, 2024</span>
   </span>
 
     

@@ -8,13 +8,13 @@
       
       
       
-        <link rel="canonical" href="https://www.jhpce-jhu.github.io/jhpce_docs/help/cost-calculator/">
+        <link rel="canonical" href="https://www.jhpce-jhu.github.io/jhpce_docs/access/x11/">
       
       
-        <link rel="prev" href="../../gpu/gpu-overview/">
+        <link rel="prev" href="../ssh/">
       
       
-        <link rel="next" href="../images/guide-to-manual-pages.pdf">
+        <link rel="next" href="../mobaxterm/">
       
       
       <link rel="icon" href="../../assets/images/favicon.png">
@@ -22,7 +22,7 @@
     
     
       
-        <title>Cost Calculator - JHPCE</title>
+        <title>X11 - JHPCE</title>
       
     
     
@@ -86,7 +86,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#cost-calculator" class="md-skip">
+        <a href="#x11the-x-window-system" class="md-skip">
           Skip to content
         </a>
       
@@ -121,7 +121,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Cost Calculator
+              X11
             
           </span>
         </div>
@@ -370,7 +370,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../help-basics/" class="md-nav__link">
+      <a href="../../help/help-basics/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -391,7 +391,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../faq/" class="md-nav__link">
+      <a href="../../help/faq/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -412,7 +412,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../docs/" class="md-nav__link">
+      <a href="../../help/docs/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -433,7 +433,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../good-query/" class="md-nav__link">
+      <a href="../../help/good-query/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -454,7 +454,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../external/" class="md-nav__link">
+      <a href="../../help/external/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -781,8 +781,10 @@
                 
   
   
+    
   
   
+  
     
     
       
@@ -801,11 +803,11 @@
       
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1_5" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1_5" checked>
         
           
           <label class="md-nav__link" for="__nav_1_5" id="__nav_1_5_label" tabindex="0">
@@ -819,7 +821,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_1_5_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_1_5_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_1_5">
             <span class="md-nav__icon md-icon"></span>
             Accessing the cluster
@@ -833,7 +835,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../access/access-overview/" class="md-nav__link">
+      <a href="../access-overview/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -854,7 +856,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../access/ssh/" class="md-nav__link">
+      <a href="../ssh/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -872,10 +874,30 @@
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../../access/x11/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    X11
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   <span class="md-ellipsis">
@@ -884,6 +906,62 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#what-is-it" class="md-nav__link">
+    <span class="md-ellipsis">
+      What is it?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#how-do-you-get-it" class="md-nav__link">
+    <span class="md-ellipsis">
+      How do you get it?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#example-x11-programs" class="md-nav__link">
+    <span class="md-ellipsis">
+      Example X11 Programs
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#troubleshooting-x-connections" class="md-nav__link">
+    <span class="md-ellipsis">
+      Troubleshooting X Connections
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -896,7 +974,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../access/mobaxterm/" class="md-nav__link">
+      <a href="../mobaxterm/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -962,7 +1040,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../access/file-transfer/" class="md-nav__link">
+      <a href="../file-transfer/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -983,7 +1061,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../access/globus/" class="md-nav__link">
+      <a href="../globus/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1004,7 +1082,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../access/onedrive/" class="md-nav__link">
+      <a href="../onedrive/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2011,10 +2089,8 @@
                 
   
   
-    
   
   
-  
     
     
       
@@ -2029,11 +2105,11 @@
       
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1_10" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1_10" >
         
           
           <label class="md-nav__link" for="__nav_1_10" id="__nav_1_10_label" tabindex="0">
@@ -2047,7 +2123,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_1_10_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_1_10_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_1_10">
             <span class="md-nav__icon md-icon"></span>
             User Guides
@@ -2079,30 +2155,10 @@
                 
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  <span class="md-ellipsis">
-    Cost Calculator
-  </span>
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../../help/cost-calculator/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2111,71 +2167,6 @@
   
 
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#why" class="md-nav__link">
-    <span class="md-ellipsis">
-      Why?
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#billing-process" class="md-nav__link">
-    <span class="md-ellipsis">
-      Billing Process
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#how-do-we-calculate-charges" class="md-nav__link">
-    <span class="md-ellipsis">
-      How do we calculate charges?
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#if-something-changes" class="md-nav__link">
-    <span class="md-ellipsis">
-      If something changes
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#cost-calculator_1" class="md-nav__link">
-    <span class="md-ellipsis">
-      Cost Calculator
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -2188,7 +2179,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../images/guide-to-manual-pages.pdf" class="md-nav__link">
+      <a href="../../help/images/guide-to-manual-pages.pdf" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2592,45 +2583,36 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#why" class="md-nav__link">
+  <a href="#what-is-it" class="md-nav__link">
     <span class="md-ellipsis">
-      Why?
+      What is it?
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#billing-process" class="md-nav__link">
+  <a href="#how-do-you-get-it" class="md-nav__link">
     <span class="md-ellipsis">
-      Billing Process
+      How do you get it?
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#how-do-we-calculate-charges" class="md-nav__link">
+  <a href="#example-x11-programs" class="md-nav__link">
     <span class="md-ellipsis">
-      How do we calculate charges?
+      Example X11 Programs
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#if-something-changes" class="md-nav__link">
+  <a href="#troubleshooting-x-connections" class="md-nav__link">
     <span class="md-ellipsis">
-      If something changes
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#cost-calculator_1" class="md-nav__link">
-    <span class="md-ellipsis">
-      Cost Calculator
+      Troubleshooting X Connections
     </span>
   </a>
   
@@ -2655,37 +2637,38 @@
     
     
     
-      <a href="../../ourtools/tags/#needs-to-be-written" class="md-tag">needs-to-be-written</a>
-    
-  
-    
-    
-    
-      <a href="../../ourtools/tags/#mark" class="md-tag">mark</a>
+      <a href="../../ourtools/tags/#in-progress" class="md-tag">in-progress</a>
     
   
 </nav>
 
 
 
-<h1 id="cost-calculator">Cost Calculator<a class="headerlink" href="#cost-calculator" title="Anchor link to this section for reference">&para;</a></h1>
-<p>Should this document be renamed to something more general, like Billing or The Cost of Computing?</p>
-<p>PULL MATERIAL IN FROM <a href="https://jhpce.jhu.edu/policies/">EXISTING WEB SITE POLICIES PAGE</a></p>
-<h2 id="why">Why?<a class="headerlink" href="#why" title="Anchor link to this section for reference">&para;</a></h2>
-<h2 id="billing-process">Billing Process<a class="headerlink" href="#billing-process" title="Anchor link to this section for reference">&para;</a></h2>
-<h2 id="how-do-we-calculate-charges">How do we calculate charges?<a class="headerlink" href="#how-do-we-calculate-charges" title="Anchor link to this section for reference">&para;</a></h2>
-<p><em>Requested</em> not used, except for duration.</p>
-<p>CPU requested</p>
-<p>RAM requested</p>
-<p>Job duration</p>
-<h2 id="if-something-changes">If something changes<a class="headerlink" href="#if-something-changes" title="Anchor link to this section for reference">&para;</a></h2>
-<p>Who to contact with what information?</p>
-<p>People leave
-People work for different PIs
-People work for multiple PIs
-PIs leave</p>
-<h2 id="cost-calculator_1">Cost Calculator<a class="headerlink" href="#cost-calculator_1" title="Anchor link to this section for reference">&para;</a></h2>
-<p>Are we going to create a form?</p>
+<h1 id="x11the-x-window-system">X11/The X Window System<a class="headerlink" href="#x11the-x-window-system" title="Anchor link to this section for reference">&para;</a></h1>
+<h2 id="what-is-it">What is it?<a class="headerlink" href="#what-is-it" title="Anchor link to this section for reference">&para;</a></h2>
+<p>The <a href="https://en.wikipedia.org/wiki/X_Window_System">X Window System</a> (aka X11, aka X) is the primary GUI system for UNIX computers. X allows a program (an X "client") running on a UNIX computer in the cluster to be displayed on a remote computer (running an X "server"<sup id="fnref:1"><a class="footnote-ref" href="#fn:1">1</a></sup>) over the network. To use it, your local computer needs to have X server software installed on it.</p>
+<p>SSH provides support for tunnelling X11 over an encrypted connection. You may need to tell SSH that you want that service, by, for example, adding the -X flag to an ssh command in a macOS Terminal.</p>
+<p>X11 is (slowly) being replaced by <a href="https://en.wikipedia.org/wiki/Wayland_(protocol)">Wayland</a>. Wayland is the future.</p>
+<h2 id="how-do-you-get-it">How do you get it?<a class="headerlink" href="#how-do-you-get-it" title="Anchor link to this section for reference">&para;</a></h2>
+<ul>
+<li>macOS users need to install <a href="https://en.wikipedia.org/wiki/XQuartz">XQuartz</a> from <a href="https://www.xquartz.org">xquartz.org</a>.</li>
+<li>Windows users need to use a program like MobaXterm. We have a page describing installing and using <a href="../mobaxterm/">MobaXterm</a>.</li>
+<li>Linux laptop or desktop users are already using X as their windowing system.</li>
+</ul>
+<h2 id="example-x11-programs">Example X11 Programs<a class="headerlink" href="#example-x11-programs" title="Anchor link to this section for reference">&para;</a></h2>
+<p>xterm, SAS, RStudio, xclock, thunar.</p>
+<h2 id="troubleshooting-x-connections">Troubleshooting X Connections<a class="headerlink" href="#troubleshooting-x-connections" title="Anchor link to this section for reference">&para;</a></h2>
+<p>printenv DISPLAY or echo $DISPLAY</p>
+<p>[user@login31 ~]$ srun --pty --x11 bash
+srun: error: No DISPLAY variable set, cannot setup x11 forwarding.</p>
+<div class="footnote">
+<hr />
+<ol>
+<li id="fn:1">
+<p>Note that X reverses the normal conception of client/server operation, which is that the remote computer is the "server". In X11, the "server" is the program receiving the keyboard and mouse inputs and displaying the output of remote "client" programs.&#160;<a class="footnote-backref" href="#fnref:1" title="Jump back to footnote 1 in the text">&#8617;</a></p>
+</li>
+</ol>
+</div>
 
 
 
@@ -2706,7 +2689,7 @@ PIs leave</p>
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1-2.1-2M12.5 7v5.2l4 2.4-1 1L11 13V7h1.5M11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2v1.8Z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">February 23, 2024</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">February 26, 2024</span>
   </span>
 
     
@@ -2784,7 +2767,7 @@ PIs leave</p>
       <nav class="md-footer__inner md-grid" aria-label="Footer" >
         
           
-          <a href="../../gpu/gpu-overview/" class="md-footer__link md-footer__link--prev" aria-label="Previous: GPU">
+          <a href="../ssh/" class="md-footer__link md-footer__link--prev" aria-label="Previous: SSH">
             <div class="md-footer__button md-icon">
               
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
@@ -2794,20 +2777,20 @@ PIs leave</p>
                 Previous
               </span>
               <div class="md-ellipsis">
-                GPU
+                SSH
               </div>
             </div>
           </a>
         
         
           
-          <a href="../images/guide-to-manual-pages.pdf" class="md-footer__link md-footer__link--next" aria-label="Next: How to read a manual page">
+          <a href="../mobaxterm/" class="md-footer__link md-footer__link--next" aria-label="Next: MobaXterm">
             <div class="md-footer__title">
               <span class="md-footer__direction">
                 Next
               </span>
               <div class="md-ellipsis">
-                How to read a manual page
+                MobaXterm
               </div>
             </div>
             <div class="md-footer__button md-icon">

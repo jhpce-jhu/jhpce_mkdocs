@@ -18,7 +18,7 @@
       
       
       <link rel="icon" href="../../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.5.10">
+      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.5.11">
     
     
       
@@ -962,6 +962,8 @@
       
         
       
+        
+      
     
     
       
@@ -1041,6 +1043,27 @@
   
   
     <li class="md-nav__item">
+      <a href="../../access/x11/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    X11
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../../access/mobaxterm/" class="md-nav__link">
         
   
@@ -1079,10 +1102,10 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1_5_4" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1_5_5" >
         
           
-          <label class="md-nav__link" for="__nav_1_5_4" id="__nav_1_5_4_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_1_5_5" id="__nav_1_5_5_label" tabindex="0">
             
   
   <span class="md-ellipsis">
@@ -1093,8 +1116,8 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_1_5_4_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_1_5_4">
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_1_5_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_1_5_5">
             <span class="md-nav__icon md-icon"></span>
             Transferring files in or out
           </label>
@@ -1339,6 +1362,8 @@
       
         
       
+        
+      
     
     
       
@@ -1481,11 +1506,32 @@
   
   
     <li class="md-nav__item">
-      <a href="../../storage/backups/" class="md-nav__link">
+      <a href="../../storage/copying-files/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
-    Backups
+    Copying within cluster
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../storage/backups.md" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Backups and Restores
   </span>
   
 
@@ -2833,10 +2879,35 @@ forwarding.</code> To eliminate this warning, add the line <code>XAuthLocation
 /usr/X11/bin/xauth</code> to your <code>~/.ssh/config</code> file on your Mac.</p>
 <h2 id="when-running-sas-an-error-dialog-pops-up-about-remote-browser">When running SAS, an error dialog pops up about Remote Browser<a class="headerlink" href="#when-running-sas-an-error-dialog-pops-up-about-remote-browser" title="Anchor link to this section for reference">&para;</a></h2>
 <p>When running SAS, you may need to specify options to indicate which
-bwoser to use when displaying either help or grachical output. We recommend
+browser to use when displaying either help or graphical output. We recommend
 using the chromium browse, and you can use the following options to the
 sas command to do so:</p>
 <p><code>sas -helpbrowser SAS -xrm "SAS.webBrowser:'/usr/bin/chromium-browser'" -xrm "SAS.helpBrowser:'/usr/bin/chromium-browser'"</code></p>
+<p>Here is some code you can add to your .bashrc file. Once that becomes part of your environment (by sourcing the file or by logging out and back in again), after loading SAS you can start SAS so that it can open the browser if needed.</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="c1"># SAS routines for __interactive__ sessions where plotting is involved</span>
+<span class="c1"># (because SAS generates HTML for the plots when run in interactive mode)</span>
+<span class="c1"># </span>
+<span class="c1"># (YOU HAVE TO RUN &quot;module load SAS&quot; before calling either of these routines)</span>
+<span class="c1">#</span>
+<span class="c1"># If you want to use Firefox as your web browser for SAS:</span>
+<span class="c1">#</span>
+fsas<span class="o">()</span><span class="w"> </span><span class="o">{</span><span class="w"> </span>sas<span class="w"> </span>-helpbrowser<span class="w"> </span>SAS<span class="w"> </span>-xrm<span class="w"> </span><span class="s2">&quot;SAS.webBrowser:&#39;/usr/bin/firefox&#39;&quot;</span><span class="w"> </span>-xrm<span class="w"> </span><span class="s2">&quot;SAS.helpBrowser:&#39;/usr/bin/firefox&#39;&quot;</span><span class="w"> </span><span class="s2">&quot;</span><span class="nv">$@</span><span class="s2">&quot;</span><span class="w"> </span>&gt;<span class="w"> </span>/dev/null<span class="w"> </span><span class="m">2</span>&gt;<span class="p">&amp;</span><span class="m">1</span><span class="p">;</span><span class="w"> </span><span class="o">}</span>
+<span class="c1">#</span>
+<span class="c1"># If you want to use Chromium-browser as your web browser for SAS:</span>
+<span class="c1">#</span>
+csas<span class="o">()</span><span class="w"> </span><span class="o">{</span><span class="w"> </span>sas<span class="w"> </span>-helpbrowser<span class="w"> </span>SAS<span class="w"> </span>-xrm<span class="w"> </span><span class="s2">&quot;SAS.webBrowser:&#39;/usr/bin/chromium-browser&#39;&quot;</span><span class="w"> </span>-xrm<span class="w"> </span><span class="s2">&quot;SAS.helpBrowser:&#39;/usr/bin/chromium-browser&#39;&quot;</span><span class="w"> </span><span class="s2">&quot;</span><span class="nv">$@</span><span class="s2">&quot;</span><span class="w"> </span>&gt;<span class="w"> </span>/dev/null<span class="w"> </span><span class="m">2</span>&gt;<span class="p">&amp;</span><span class="m">1</span><span class="p">;</span><span class="w"> </span><span class="o">}</span>
+</code></pre></div></td></tr></table></div>
 <h2 id="im-on-a-mac-and-the-c-command-to-interrupt-an-ssh-session-isnt-working">I’m on a Mac, and the <code>~C</code> command to interrupt an ssh session isn’t working<a class="headerlink" href="#im-on-a-mac-and-the-c-command-to-interrupt-an-ssh-session-isnt-working" title="Anchor link to this section for reference">&para;</a></h2>
 <p>It used to, but I upgraded MacOS and now it does not work.*  Some
 versions of MacOS have disable by default the ability to send an SSH
@@ -2918,7 +2989,7 @@ module<span class="w"> </span>load<span class="w"> </span>JHPCE_DEFAULT_ENV
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1-2.1-2M12.5 7v5.2l4 2.4-1 1L11 13V7h1.5M11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2v1.8Z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">February 23, 2024</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">February 26, 2024</span>
   </span>
 
     
