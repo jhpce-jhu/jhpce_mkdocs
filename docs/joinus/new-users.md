@@ -1,3 +1,8 @@
+---
+tags:
+  - needs-major-revision
+---
+
 # THIS DOCUMENT NEEDS TO BE REWRITTEN
 
 ## What does a new user need to know, as an overview

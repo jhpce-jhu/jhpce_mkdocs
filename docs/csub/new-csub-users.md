@@ -1,3 +1,8 @@
+---
+tags:
+  - needs-major-revision
+---
+
 # THIS DOCUMENT NEEDS TO BE REWRITTEN. DOESN'T YET CONTAIN MUCH C-SUB INFO.
 
 # Registration
