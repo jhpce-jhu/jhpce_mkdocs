@@ -97,18 +97,23 @@ For Windows desktops/laptops, you should also use “^C” to terminate the Rstu
 ### FAQs/Comments
 
 Q) Why did you do this?  R works just fine for me on the cluster!
+
 A) On the JHPCE cluster we have historically had several ways to run R programs.  Often  people will use the text-based version of R to run programs, and that works well for a lot of people.  Some people prefer to work in a graphical environment, so we also have the X11-based “Rstudio” available on the cluster, which is great, except that on a slower network connection, this can get quite laggy.  The web based Rstudio Server provides the same graphical version available in Rstudio, but over a much lighter network protocol than the X11-based Rstudio, so it is much faster and more responsive to use.
 
 Q) Why not just set up a dedicated web server to run Rstudio Server like I had back at ZZZZ?
+
 A) Rstudio Server does not play well with clusters.  For us to run a dedicated Rstudio Server server, we would need to purchase a fairly large system with lots of RAM and CPU power.  This was considered, but in the end was deemed cost prohibitive, and it didn’t allow the use of the JHPCE cluster resources to run R programs.  This solution allows the nice web-based Rstudio Server to be used, while making use of the existing CPU and RAM resources available on the cluster.
 
 Q) My program can’t run because it needs XXX package!
+
 A) The R that is run within the Rstudio Server is completely separate  from the default version of R that is used on the JHPCE cluster, therefor you may need to install packages using the install.packages() function, or through the Rstudio Server GUI .
 
 Q) I forgot to cleanly disconnect from the Rstudio Server/My session got disconnected.
+
 A) This should be fine.  Your interactive srun session will eventually time out and will kill the Rstudio Server that was running.  You may get warning messages about ports being in use – if so, please wait a few minutes and try again.
 
 Q) When I try to add the port forward, I get an error message about “Port is in use”.  How do I fix this?
+
 A) You can only run one instance of Rstudio Server. You likely have another SSH session running that has the port forward lingering.  If you had been using Rstudio Server in another SSH session, you will need to either need to log out of that ssh session, or run the “~C” “-KL XXXXX” command to tear down the port forward.
 
 If you have any questions  about using Rstudio Server, please feel free to email us at bitsupport.
