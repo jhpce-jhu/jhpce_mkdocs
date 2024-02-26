@@ -22,6 +22,20 @@ SSH stands for Secure SHell. SSH is actually a set of internet standard protocol
 
 [This document](ssh.md) provides more information on SSH.
 
+## X11/The X Window System
+
+The [X Window System](https://en.wikipedia.org/wiki/X_Window_System) (aka X11, aka X) is the primary GUI system for UNIX computers. X allows a program (an X "client") running on a UNIX computer in the cluster to be displayed on a remote computer (running an X "server"[^1]) over the network. To use it, your local computer needs to have X server software installed on it.
+
+SSH provides support for tunnelling X11 over an encrypted connection. You may need to tell SSH that you want that service, by, for example, adding the -X flag to an ssh command in a macOS Terminal.
+
+[^1]:Note that X reverses the normal conception of client/server operation, which is that the remote computer is the "server". In X11, the "server" is the program receiving the keyboard and mouse inputs and displaying the output of remote "client" programs.
+
+- macOS users need to install [XQuartz](https://en.wikipedia.org/wiki/XQuartz) from [xquartz.org](https://www.xquartz.org).
+- Windows users need to use a program like MobaXterm (highly recommended) or [Cygwin](https://en.wikipedia.org/wiki/Cygwin). We have a page describing installing and using [MobaXterm](mobaxterm.md).
+- Linux laptop or desktop users are already using X as their windowing system.
+
+For more information, see our [X11](x11.md) document.
+
 ## Multi-factor authentication (MFA)
 There are two basic factors required to log into a computer, whether your laptop or a remote UNIX cluster login node -- your username and a password. JHPCE requires the use of an additional factor, either a [one-time password](ssh.md#one-time-passwords) (OTP) six digit code, or the use of [SSH key pairs](ssh.md#ssh-keys). 
 
