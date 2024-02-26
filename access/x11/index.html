@@ -950,6 +950,15 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#configuring-ssh-to-support-x11" class="md-nav__link">
+    <span class="md-ellipsis">
+      Configuring SSH To Support X11
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#troubleshooting-x-connections" class="md-nav__link">
     <span class="md-ellipsis">
       Troubleshooting X Connections
@@ -1129,6 +1138,8 @@
       
         
       
+        
+      
     
     
       
@@ -1213,6 +1224,27 @@
   
   <span class="md-ellipsis">
     ACL
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../files/copying-files/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Copying within cluster
   </span>
   
 
@@ -1416,7 +1448,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../storage/copying-files/" class="md-nav__link">
+      <a href="../../files/copying-files/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2610,6 +2642,15 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#configuring-ssh-to-support-x11" class="md-nav__link">
+    <span class="md-ellipsis">
+      Configuring SSH To Support X11
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#troubleshooting-x-connections" class="md-nav__link">
     <span class="md-ellipsis">
       Troubleshooting X Connections
@@ -2648,7 +2689,7 @@
 <h2 id="what-is-it">What is it?<a class="headerlink" href="#what-is-it" title="Anchor link to this section for reference">&para;</a></h2>
 <p>The <a href="https://en.wikipedia.org/wiki/X_Window_System">X Window System</a> (aka X11, aka X) is the primary GUI system for UNIX computers. X allows a program (an X "client") running on a UNIX computer in the cluster to be displayed on a remote computer (running an X "server"<sup id="fnref:1"><a class="footnote-ref" href="#fn:1">1</a></sup>) over the network. To use it, your local computer needs to have X server software installed on it.</p>
 <p>SSH provides support for tunnelling X11 over an encrypted connection. You may need to tell SSH that you want that service, by, for example, adding the -X flag to an ssh command in a macOS Terminal.</p>
-<p>X11 is (slowly) being replaced by <a href="https://en.wikipedia.org/wiki/Wayland_(protocol)">Wayland</a>. Wayland is the future.</p>
+<p>X11 has been (slowly) being replaced by <a href="https://en.wikipedia.org/wiki/Wayland_(protocol)">Wayland</a>. Wayland has been the future for many years, but is becoming common. However this is usually invisible to users. Mentioned here in case you see references to Wayland where you expect to see X11.</p>
 <h2 id="how-do-you-get-it">How do you get it?<a class="headerlink" href="#how-do-you-get-it" title="Anchor link to this section for reference">&para;</a></h2>
 <ul>
 <li>macOS users need to install <a href="https://en.wikipedia.org/wiki/XQuartz">XQuartz</a> from <a href="https://www.xquartz.org">xquartz.org</a>.</li>
@@ -2657,10 +2698,34 @@
 </ul>
 <h2 id="example-x11-programs">Example X11 Programs<a class="headerlink" href="#example-x11-programs" title="Anchor link to this section for reference">&para;</a></h2>
 <p>xterm, SAS, RStudio, xclock, thunar.</p>
+<h2 id="configuring-ssh-to-support-x11">Configuring SSH To Support X11<a class="headerlink" href="#configuring-ssh-to-support-x11" title="Anchor link to this section for reference">&para;</a></h2>
+<div class="admonition authoring guidance">
+<p class="admonition-title">Authoring</p>
+<p>The SSH document points to this one for ALL of the information needed to use X11. So this section needs to be complete. Pointing to the <a href="../mobaxterm/">MobaXterm</a> document of course, for Windows users.</p>
+</div>
 <h2 id="troubleshooting-x-connections">Troubleshooting X Connections<a class="headerlink" href="#troubleshooting-x-connections" title="Anchor link to this section for reference">&para;</a></h2>
+<div class="admonition authoring guidance">
+<p class="admonition-title">Authoring</p>
+<p>This section should include pointers to FAQ items or vice versa. We shouldn't rewrite the same information twice!!!</p>
+</div>
+<ul>
+<li>When -X ?</li>
+<li>
+<p>When -Y ?</p>
+</li>
+<li>
 <p>printenv DISPLAY or echo $DISPLAY</p>
+</li>
+<li>
 <p>[user@login31 ~]$ srun --pty --x11 bash
 srun: error: No DISPLAY variable set, cannot setup x11 forwarding.</p>
+</li>
+<li>
+<p>How do Windows users configure ForwardX11Timeout ?</p>
+</li>
+</ul>
+<p>Is <code>ForwardX11Timeout 0</code> better in 2024 than specifying a particular time in hours?</p>
+<p>https://jhpce.jhu.edu/question/my-x11-forwarding-stops-working-after-20-minutes/</p>
 <div class="footnote">
 <hr />
 <ol>
