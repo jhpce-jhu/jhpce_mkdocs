@@ -74,7 +74,7 @@ nav:
       - How to read a manual page: help/images/guide-to-manual-pages.pdf
     - Web Portal:
       - GUI Applications: portal/portal-stub.md
-      - Database of Databses: portal/datacatalog.md
+      - Datacatalog: portal/datacatalog.md
       - Self Service MFA, Password Requests : portal/portal-stub.md
     - C-SUB:
       - What Is The C-SUB?: csub/csub-overview.md
