@@ -33,6 +33,7 @@ nav:
       - OutlineOfMaterial: files/outline.md
       - Sharing Files: files/sharing-files.md
       - ACL: files/acl.md
+      - Copying within cluster: files/copying-files.md
       - HIPAA etc: files/files-stub.md
     # should storage be a subsidiary of managing files?
     - Storage:
@@ -41,7 +42,7 @@ nav:
       - Getting More Space: storage/buying-in.md
       - Old Stg Page: storage/storage.md
       - Fastscratch: storage/fastscratch.md
-      - Copying within cluster: storage/copying-files.md
+      - Copying within cluster: files/copying-files.md
       - Backups and Restores: storage/backups.md
     - Software:
       - Overview (Outline): sw/sw-overview.md

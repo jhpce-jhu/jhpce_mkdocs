@@ -3,6 +3,9 @@
 ## Places with resources to investigate
 This [best-of-mkdocs](https://github.com/mkdocs/catalog) is updated regularly and has categorized MkDocs plugins and other solutions generated from github star rankings.
 
+This [page](https://chrieke.medium.com/the-best-mkdocs-plugins-and-customizations-fc820eb19759) has a number of recommendations that I find interesting. As always, one has to consider whether something is the best-in-class. The PDF export link below for example hasn't been updated in years. Is it still the right choice? Maybe.
+Mermaid graph generation plugin, [PDF export](https://github.com/zhaoterryy/mkdocs-pdf-export-plugin), page redirects, exclude and exclude-from-search, Jupyter notebook
+
 ## Multi-line column headers
 Maybe this is possible. Would be nice to be able to use more words-per-column without forcing the table to be pushed out and require the use of a scrollbar.
 

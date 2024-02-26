@@ -106,22 +106,14 @@ Configuration Page.
 
 ## SSH and X11
 
-- When -X ?
-- When -Y ?
-
-XQuartz is an optional Mac program you have to install 
-
-MobaXterm contains an X11 client
-
-How do Windows users configure ForwardX11Timeout ?
-
-Is `ForwardX11Timeout 0` better in 2024 than specifying a particular time in hours?
-
-https://jhpce.jhu.edu/question/my-x11-forwarding-stops-working-after-20-minutes/
+See our document on [X11](x11.md) for instructions on making ssh work to support X11 displays.
 
 ## Mac-specific Configuration
 
-In your ~/.ssh/config file
+!!! Under construction
+    Needs refinement. Some mention should be made in the x11 doc.
+    
+In your ~/.ssh/config file you may find some of these options useful.
 
 ```Shell title="Key macOS settings"
 UseKeychain yes
