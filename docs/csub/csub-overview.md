@@ -1,7 +1,7 @@
 ---
 tags:
   - in-progress
-  - topics-overview
+  - topic-overview
 ---
 
 #C-SUB Overview
