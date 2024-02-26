@@ -40,7 +40,7 @@ nav:
       - Getting More Space: storage/buying-in.md
       - Old Stg Page: storage/storage.md
       - Fastscratch: storage/fastscratch.md
-      - Backups: storage/backups.md
+      - Backups & Restores: storage/backups.md
     - Software:
       - Overview (Outline): sw/sw-overview.md
       - Modules: sw/modules.md
