@@ -22,7 +22,7 @@
     
     
       
-        <title>Commands reference - JHPCE</title>
+        <title>Command tips & reference - JHPCE</title>
       
     
     
@@ -121,7 +121,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Commands reference
+              Command tips & reference
             
           </span>
         </div>
@@ -1825,7 +1825,7 @@
           
   
   <span class="md-ellipsis">
-    Commands reference
+    Command tips & reference
   </span>
   
 
@@ -1836,7 +1836,7 @@
         
   
   <span class="md-ellipsis">
-    Commands reference
+    Command tips & reference
   </span>
   
 
@@ -2025,27 +2025,6 @@
   
   
   
-    <li class="md-nav__item">
-      <a href="../slurm-faq/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    SLURM FAQ
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
     
     
       
@@ -2064,10 +2043,10 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1_9_9" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1_9_8" >
         
           
-          <label class="md-nav__link" for="__nav_1_9_9" id="__nav_1_9_9_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_1_9_8" id="__nav_1_9_8_label" tabindex="0">
             
   
   <span class="md-ellipsis">
@@ -2078,8 +2057,8 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_1_9_9_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_1_9_9">
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_1_9_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_1_9_8">
             <span class="md-nav__icon md-icon"></span>
             Another topic
           </label>
@@ -2151,6 +2130,27 @@
           </ul>
         </nav>
       
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../slurm-faq/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    SLURM FAQ
+  </span>
+  
+
+      </a>
     </li>
   
 
@@ -2747,16 +2747,16 @@
 
 <h1 id="slurm-commands">SLURM COMMANDS<a class="headerlink" href="#slurm-commands" title="Anchor link to this section for reference">&para;</a></h1>
 <p>Here are links to online copies of the manual pages for commands. If we've
-written a page with advice about using the command, use the (local tips ) link.</p>
+written a page with advice about using the command, use the (LOCAL TIPS) link.</p>
 <h2 id="locally-written-tools">Locally Written Tools<a class="headerlink" href="#locally-written-tools" title="Anchor link to this section for reference">&para;</a></h2>
-<p>slurmpic: Essential program for getting cluster status info. Use -h option to see essential usage details.</p>
+<p>slurmpic: Essential program for getting cluster status info. Use -h option to see essential usage details. (no man page yet)</p>
 <h2 id="contributed-programs">Contributed Programs<a class="headerlink" href="#contributed-programs" title="Anchor link to this section for reference">&para;</a></h2>
 <ul>
-<li>seff: Display efficiency of CPU and RAM usage of a completed job.</li>
-<li>slurm-mail:</li>
+<li>seff: Display efficiency of CPU and RAM usage of a completed job. (no man page yet)</li>
+<li><a href="https://github.com/neilmunday/slurm-mail">slurm-mail:</a> Tool used to add details to mail sent to you. Not something you can modify. Listed for completeness.</li>
 </ul>
 <h2 id="provided-with-slurm">Provided with Slurm<a class="headerlink" href="#provided-with-slurm" title="Anchor link to this section for reference">&para;</a></h2>
-<p>All of the manual pages are <a href="https://slurm.schedmd.com/archive/slurm-22.05.9/man_index.html">here</a>, including those for configuration files.</p>
+<p>All of the manual pages are <a href="https://slurm.schedmd.com/archive/slurm-22.05.9/man_index.html">here</a>, including those for the configuration files found in /etc/slurm/</p>
 <h3 id="submitting-jobs">Submitting Jobs<a class="headerlink" href="#submitting-jobs" title="Anchor link to this section for reference">&para;</a></h3>
 <ul>
 <li><a href="https://slurm.schedmd.com/archive/slurm-22.05.9/salloc.html">salloc</a>: request an interactive job allocation</li>
@@ -2768,7 +2768,7 @@ written a page with advice about using the command, use the (local tips ) link.<
 <p>Do not run slurmpic, squeue, sacct or other Slurm client commands that send remote procedure calls to slurmctld, the main SLURM control and scheduling daemon, from loops in shell scripts or other programs. Ensure that programs limit calls to slurmctld to the minimum necessary for the information you are trying to gather.</p>
 <ul>
 <li><a href="https://slurm.schedmd.com/archive/slurm-22.05.9/sacct.html">sacct</a>: display accounting data for jobs in the Slurm database</li>
-<li><a href="https://slurm.schedmd.com/archive/slurm-22.05.9/scontrol.html">scontrol</a>: (<a href="../tips-scontrol/">local tips</a>): display (or modify when permitted) the status of Slurm entities (jobs, nodes, partitions, reservations)</li>
+<li><a href="https://slurm.schedmd.com/archive/slurm-22.05.9/scontrol.html">scontrol</a>: (<a href="../tips-scontrol/">LOCAL TIPS</a>): display (or modify when permitted) the status of Slurm entities (jobs, nodes, partitions, reservations)</li>
 <li><a href="https://slurm.schedmd.com/archive/slurm-22.05.9/sinfo.html">sinfo</a>: display node and partition information</li>
 <li><a href="https://slurm.schedmd.com/archive/slurm-22.05.9/sprio.html">sprio</a>: display the factors that comprise a job's scheduling priority</li>
 <li><a href="https://slurm.schedmd.com/archive/slurm-22.05.9/squeue.html">squeue</a>: display the jobs in the scheduling queues, one job per line</li>
@@ -2779,12 +2779,12 @@ written a page with advice about using the command, use the (local tips ) link.<
 <h3 id="controlling-jobs">Controlling Jobs<a class="headerlink" href="#controlling-jobs" title="Anchor link to this section for reference">&para;</a></h3>
 <ul>
 <li><a href="https://slurm.schedmd.com/archive/slurm-22.05.9/scancel.html">scancel</a>: cancel or pause a job or job step or signal a running job or job step to pause</li>
-<li><a href="https://slurm.schedmd.com/archive/slurm-22.05.9/scontrol.html">scontrol</a>: (<a href="../tips-scontrol/">local tips</a>): display (and modify when permitted) the status of Slurm entities (jobs, nodes, partitions, reservations)</li>
+<li><a href="https://slurm.schedmd.com/archive/slurm-22.05.9/scontrol.html">scontrol</a>: (<a href="../tips-scontrol/">LOCAL TIPS</a>): display (and modify when permitted) the status of Slurm entities (jobs, nodes, partitions, reservations)</li>
 </ul>
 <h3 id="for-systems-administrators">For Systems Administrators<a class="headerlink" href="#for-systems-administrators" title="Anchor link to this section for reference">&para;</a></h3>
 <ul>
 <li><a href="https://slurm.schedmd.com/archive/slurm-22.05.9/sacct.html">sacctmgr</a>:</li>
-<li>(<a href="../tips-sacctmgr/">local tips</a>): display and modify Slurm account information</li>
+<li>(<a href="../tips-sacctmgr/">LOCAL TIPS</a>): display and modify Slurm account information</li>
 <li><a href="https://slurm.schedmd.com/archive/slurm-22.05.9/sdiag.html">sdiag</a>: display scheduling statistics and timing parameters</li>
 <li><a href="https://slurm.schedmd.com/archive/slurm-22.05.9/slurmctld.html">slurmctld</a>: central management daemon</li>
 <li><a href="https://slurm.schedmd.com/archive/slurm-22.05.9/slurmd.html">slurmd</a>: client-side daemon</li>
@@ -2810,7 +2810,7 @@ written a page with advice about using the command, use the (local tips ) link.<
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1-2.1-2M12.5 7v5.2l4 2.4-1 1L11 13V7h1.5M11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2v1.8Z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">February 23, 2024</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">February 27, 2024</span>
   </span>
 
     

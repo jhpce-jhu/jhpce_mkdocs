@@ -1808,7 +1808,7 @@
         
   
   <span class="md-ellipsis">
-    Commands reference
+    Command tips & reference
   </span>
   
 
@@ -1908,27 +1908,6 @@
   
   
   
-    <li class="md-nav__item">
-      <a href="../slurm-faq/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    SLURM FAQ
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
     
     
       
@@ -1947,10 +1926,10 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1_9_9" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1_9_8" >
         
           
-          <label class="md-nav__link" for="__nav_1_9_9" id="__nav_1_9_9_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_1_9_8" id="__nav_1_9_8_label" tabindex="0">
             
   
   <span class="md-ellipsis">
@@ -1961,8 +1940,8 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_1_9_9_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_1_9_9">
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_1_9_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_1_9_8">
             <span class="md-nav__icon md-icon"></span>
             Another topic
           </label>
@@ -2034,6 +2013,27 @@
           </ul>
         </nav>
       
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../slurm-faq/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    SLURM FAQ
+  </span>
+  
+
+      </a>
     </li>
   
 
@@ -2651,7 +2651,11 @@
 <h3 id="update-jobs">Update Jobs<a class="headerlink" href="#update-jobs" title="Anchor link to this section for reference">&para;</a></h3>
 <p>You can update many aspects of pending jobs, fewer for running jobs. What follows is only a sample!!! Click <a href="https://slurm.schedmd.com/scontrol.html#lbAH">here</a> for the complete list.</p>
 <h4 id="pending-jobs">Pending Jobs<a class="headerlink" href="#pending-jobs" title="Anchor link to this section for reference">&para;</a></h4>
-<p><div class="highlight"><span class="filename">Set max # of tasks in an array that execute at same time</span><pre><span></span><code>scontrol<span class="w"> </span>update<span class="w"> </span><span class="nv">jobid</span><span class="o">=</span>&lt;jobid&gt;<span class="w"> </span><span class="nv">ArrayTaskThrottle</span><span class="o">=</span>&lt;count&gt;
+<div class="highlight"><span class="filename">Place one of your jobs ahead of other of your jobs</span><pre><span></span><code>scontrol<span class="w"> </span>top<span class="w"> </span>&lt;jobid&gt;
+</code></pre></div>
+<div class="highlight"><span class="filename">Place one of your jobs ahead or behind other of your jobs</span><pre><span></span><code>scontrol<span class="w"> </span>update<span class="w"> </span><span class="nv">jobid</span><span class="o">=</span>&lt;jobid&gt;<span class="w"> </span><span class="nv">nice</span><span class="o">=</span>&lt;adjustment&gt;<span class="w"> </span><span class="c1"># larger #s decrease the priority</span>
+</code></pre></div>
+<p><div class="highlight"><span class="filename">Set or modify max # of tasks in an array that execute at same time</span><pre><span></span><code>scontrol<span class="w"> </span>update<span class="w"> </span><span class="nv">jobid</span><span class="o">=</span>&lt;jobid&gt;<span class="w"> </span><span class="nv">ArrayTaskThrottle</span><span class="o">=</span>&lt;count&gt;
 </code></pre></div>
 Users can change the time limit on their pending jobs. After a job starts to run, only a system administrator can adjust the time.</p>
 <div class="highlight"><span class="filename">Set max job duration</span><pre><span></span><code>scontrol<span class="w"> </span>update<span class="w"> </span><span class="nv">jobid</span><span class="o">=</span>&lt;jobid&gt;<span class="w"> </span><span class="nv">TimeMin</span><span class="o">=</span>&lt;time-specification&gt;
@@ -2675,7 +2679,9 @@ Users can change the time limit on their pending jobs. After a job starts to run
 </code></pre></div>
 <div class="highlight"><span class="filename">Display running configuration</span><pre><span></span><code>scontrol<span class="w"> </span>show<span class="w"> </span>config
 </code></pre></div>
-<div class="highlight"><pre><span></span><code>scontrol<span class="w"> </span>update<span class="w"> </span><span class="nv">partitionname</span><span class="o">=</span>interactive<span class="w"> </span><span class="nv">allowqos</span><span class="o">=</span>normal,interactive-default
+<div class="highlight"><span class="filename">Modify a partition</span><pre><span></span><code>scontrol<span class="w"> </span>update<span class="w"> </span><span class="nv">partitionname</span><span class="o">=</span>interactive<span class="w"> </span><span class="nv">allowqos</span><span class="o">=</span>normal,interactive-default
+</code></pre></div>
+<div class="highlight"><span class="filename">Put a DOWN/DRAIN node back into service</span><pre><span></span><code>scontrol<span class="w"> </span>update<span class="w"> </span><span class="nv">nodename</span><span class="o">=</span>compute-112<span class="w"> </span><span class="nv">state</span><span class="o">=</span>resume<span class="w"> </span><span class="nv">reason</span><span class="o">=</span><span class="s2">&quot;Fixed sssd problem&quot;</span>
 </code></pre></div>
 <div class="highlight"><span class="filename">Show any reservations</span><pre><span></span><code>scontrol<span class="w"> </span>show<span class="w"> </span>reservation
 </code></pre></div>
@@ -2707,7 +2713,7 @@ Users can change the time limit on their pending jobs. After a job starts to run
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1-2.1-2M12.5 7v5.2l4 2.4-1 1L11 13V7h1.5M11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2v1.8Z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">February 23, 2024</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">February 27, 2024</span>
   </span>
 
     
