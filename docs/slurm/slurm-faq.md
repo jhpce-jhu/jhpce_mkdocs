@@ -35,7 +35,8 @@ We have a number of [scontrol examples](tips-scontrol.md) spelled out for you.
 
 ## How do I control the order my jobs start?
 
-You can submit jobs with [dependency directives](https://slurm.schedmd.com/sbatch.html#OPT_dependency) and also with "nice" values. See the `scontrol` tips document mentioned above.
+You can rank your jobs with the "nice" and "top" subcommands to `scontrol`.  See the `scontrol` tips document mentioned above.
+You can also submit jobs with [dependency directives](https://slurm.schedmd.com/sbatch.html#OPT_dependency) and also create [heterogenous jobs](https://slurm.schedmd.com/heterogeneous_jobs.html) which spawn other jobs. 
 
 ## "Unable to allocate resources"
 If the scheduler determines that your job is invalid in some fashion, it will generally reject it immediately instead of putting it into the queue with a pending status. There are a few causes of this. The wording of the error may or may not be clear.
