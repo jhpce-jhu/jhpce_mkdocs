@@ -53,6 +53,7 @@ nav:
       - Jupyter: sw/jupyter.md
       - R and RStudio and friends: sw/r-n-friends.md
       - Managing Jobs With R and slurmjobs: sw/r-slurmjobs.md
+      - SAS: sw/sas.md
       - Helpful GUI Programs: sw/gui-tools.md
       - Containers: sw/containers.md
     - Job scheduler (SLURM): 
