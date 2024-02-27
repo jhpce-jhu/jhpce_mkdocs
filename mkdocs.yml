@@ -44,7 +44,7 @@ nav:
       - Old Stg Page: storage/storage.md
       - Fastscratch: storage/fastscratch.md
       - Copying within cluster: files/copying-files.md
-      - Backups and Restores: storage/backups-restores.md
+      - Backups & Restores: storage/backups-restores.md
     - Software:
       - Overview (Outline): sw/sw-overview.md
       - Modules: sw/modules.md

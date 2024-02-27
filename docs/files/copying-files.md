@@ -16,3 +16,7 @@ Rsync is a powerful command for copying large numbers of files between a SOURCE 
 ### Rsync Examples
 
 ### Rsync Flags You May Want To Use
+
+### Example batch job
+
+Is shown [here](../slurm/crafting-jobs.md#copying-data-within-cluster).

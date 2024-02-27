@@ -26,7 +26,18 @@ Here at JHPCE we have been using srun primarily as way to start interactive sess
 
 [Using srun inside of sbatch scripts,](https://hpc.llnl.gov/banks-jobs/running-jobs/slurm#MultipleJobs) in serial and parallel. Remember to include the `wait` bash command at the end of your batch file so the job doesn't end before all of the tasks inside of it.
 
+## Dependent jobs
+
+You can configure jobs to run in order with some conditional control. See [this part](https://slurm.schedmd.com/sbatch.html#OPT_dependency) of the sbatch manual page.
+
+## Heterogeneous Job Support
+
+Each component of such jobs has virtually all job options available including partition, account and QOS (Quality Of Service). See this [vendor document](https://slurm.schedmd.com/heterogeneous_jobs.html).
+
 ## Copying data within cluster
+
+Here is a sample batch job. More information about this topic is accumulating [here](../files/copying-files.md).
+
 ```Shell
 #!/bin/bash
 
