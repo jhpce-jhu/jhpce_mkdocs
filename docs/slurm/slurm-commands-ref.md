@@ -1,17 +1,17 @@
 # SLURM COMMANDS
 Here are links to online copies of the manual pages for commands. If we've
-written a page with advice about using the command, use the (local tips ) link.
+written a page with advice about using the command, use the (LOCAL TIPS) link.
 
 ## Locally Written Tools
-slurmpic: Essential program for getting cluster status info. Use -h option to see essential usage details.
+slurmpic: Essential program for getting cluster status info. Use -h option to see essential usage details. (no man page yet)
 
 ## Contributed Programs
-* seff: Display efficiency of CPU and RAM usage of a completed job.
-* slurm-mail:
+* seff: Display efficiency of CPU and RAM usage of a completed job. (no man page yet)
+* [slurm-mail:](https://github.com/neilmunday/slurm-mail) Tool used to add details to mail sent to you. Not something you can modify. Listed for completeness.
  
 ## Provided with Slurm
 
-All of the manual pages are [here](https://slurm.schedmd.com/archive/slurm-22.05.9/man_index.html), including those for configuration files.
+All of the manual pages are [here](https://slurm.schedmd.com/archive/slurm-22.05.9/man_index.html), including those for the configuration files found in /etc/slurm/
 
 ### Submitting Jobs
 * [salloc](https://slurm.schedmd.com/archive/slurm-22.05.9/salloc.html): request an interactive job allocation
@@ -23,7 +23,7 @@ All of the manual pages are [here](https://slurm.schedmd.com/archive/slurm-22.05
 Do not run slurmpic, squeue, sacct or other Slurm client commands that send remote procedure calls to slurmctld, the main SLURM control and scheduling daemon, from loops in shell scripts or other programs. Ensure that programs limit calls to slurmctld to the minimum necessary for the information you are trying to gather.
 
 * [sacct](https://slurm.schedmd.com/archive/slurm-22.05.9/sacct.html): display accounting data for jobs in the Slurm database
-* [scontrol](https://slurm.schedmd.com/archive/slurm-22.05.9/scontrol.html): ([local tips](tips-scontrol.md)): display (or modify when permitted) the status of Slurm entities (jobs, nodes, partitions, reservations)
+* [scontrol](https://slurm.schedmd.com/archive/slurm-22.05.9/scontrol.html): ([LOCAL TIPS](tips-scontrol.md)): display (or modify when permitted) the status of Slurm entities (jobs, nodes, partitions, reservations)
 * [sinfo](https://slurm.schedmd.com/archive/slurm-22.05.9/sinfo.html): display node and partition information
 * [sprio](https://slurm.schedmd.com/archive/slurm-22.05.9/sprio.html): display the factors that comprise a job's scheduling priority
 * [squeue](https://slurm.schedmd.com/archive/slurm-22.05.9/squeue.html): display the jobs in the scheduling queues, one job per line
@@ -34,11 +34,11 @@ Do not run slurmpic, squeue, sacct or other Slurm client commands that send remo
 
 ### Controlling Jobs
 * [scancel](https://slurm.schedmd.com/archive/slurm-22.05.9/scancel.html): cancel or pause a job or job step or signal a running job or job step to pause
-* [scontrol](https://slurm.schedmd.com/archive/slurm-22.05.9/scontrol.html): ([local tips](tips-scontrol.md)): display (and modify when permitted) the status of Slurm entities (jobs, nodes, partitions, reservations)
+* [scontrol](https://slurm.schedmd.com/archive/slurm-22.05.9/scontrol.html): ([LOCAL TIPS](tips-scontrol.md)): display (and modify when permitted) the status of Slurm entities (jobs, nodes, partitions, reservations)
 
 ### For Systems Administrators
 * [sacctmgr](https://slurm.schedmd.com/archive/slurm-22.05.9/sacct.html):
-* ([local tips](tips-sacctmgr.md)): display and modify Slurm account information
+* ([LOCAL TIPS](tips-sacctmgr.md)): display and modify Slurm account information
 * [sdiag](https://slurm.schedmd.com/archive/slurm-22.05.9/sdiag.html): display scheduling statistics and timing parameters
 * [slurmctld](https://slurm.schedmd.com/archive/slurm-22.05.9/slurmctld.html): central management daemon
 * [slurmd](https://slurm.schedmd.com/archive/slurm-22.05.9/slurmd.html): client-side daemon

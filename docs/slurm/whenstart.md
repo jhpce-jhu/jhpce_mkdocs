@@ -16,7 +16,7 @@ How does it choose which of a set of pending jobs to start in what order on whic
 There are a number of vendor documents which document scheduling. See the "Workload Prioritization" and "Slurm Scheduling" sections at this [site](https://slurm.schedmd.com/documentation.html).
 
 ## TL;DR
-Your jobs will start faster if you request the fewest resources required for their success, including duration. You should also direct your job to the most appropriate partition. For example, we have an interactive partition for small jobs.
+Your jobs will start faster if you request the fewest resources required for their success, including duration. Smaller jobs "fit" into more slots between other jobs than larger jobs, so consider whether you can divide up your work. You should also direct your job to the most appropriate partition. For example, we have an interactive partition for small jobs.
 
 If the scheduler has been able to determine an estimated start date for your job, it will be shown in the output of
 
@@ -59,7 +59,8 @@ Currently we are using three components: [Age](https://slurm.schedmd.com/priorit
     ```Shell title="Pending jobs sorted by priority, well-formatted" linenums="0"
     sprio -o "%.15i %9r %.8u %.10Y %.10A %.10F %.10P" -S -y,p,u
     ```
-
+!!! Tip
+    You can change the priority of your jobs among your jobs with `scontrol` commands like `top` and `nice`. See [this document](tips-scontrol.md) for details. 
 ### Fairshare
 To help provide equitable access to the public partitions of the cluster, the FAIRSHARE priority component is based on your recent usage of those partitions. If you have used fewer CPU minutes than someone else in the last week, then your jobs will receive a higher fairshare value.
 
@@ -80,6 +81,8 @@ In addition to fairshare, any pending job will accrue AGE priority over time. Cu
 
 Job arrays which started running tasks many days ago will wind up with high age priority values for all of their future tasks. You can see that fairshare somewhat counteracts that age advantage.
 
-## Partition
+If you decide that you want to change something about a pending job, consider whether you can do so using `scontrol` commands as described [here](tips-scontrol.md) instead of killing the job with `scancel` and resubmitting it.
+
+### Partition
 
 We have set this experimentally on the `interactive` partition to try to aid in quick access to interactive sessions.

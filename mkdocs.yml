@@ -60,16 +60,16 @@ nav:
     - Job scheduler (SLURM): 
       - Example User Guides: slurm/user-guide-collection.md
       - Partitions: slurm/partitions.md
-      - Commands reference: slurm/slurm-commands-ref.md
+      - Command tips & reference: slurm/slurm-commands-ref.md
       - Monitoring Your Jobs: slurm/monitoring.md
       - Crafting Jobs: slurm/crafting-jobs.md
       - When Will My Job Start?: slurm/whenstart.md
       - Quality of Service (QOS): slurm/qos.md
-      - SLURM FAQ: slurm/slurm-faq.md
       - Another topic:
         - slurm/slurm.md
         - Third-layer-deep: slurm/slurm.md
         - Subtopic6: slurm/slurm.md
+      - SLURM FAQ: slurm/slurm-faq.md
     - User Guides:
       - GPU: gpu/gpu-overview.md
       - Cost Calculator: help/cost-calculator.md

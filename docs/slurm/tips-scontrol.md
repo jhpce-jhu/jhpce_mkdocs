@@ -31,7 +31,15 @@ You can update many aspects of pending jobs, fewer for running jobs. What follow
 
 #### Pending Jobs
 
-```Shell title="Set max # of tasks in an array that execute at same time" linenums="0"
+```Shell title="Place one of your jobs ahead of other of your jobs" linenums="0"
+scontrol top <jobid>
+```
+
+```Shell title="Place one of your jobs ahead or behind other of your jobs" linenums="0"
+scontrol update jobid=<jobid> nice=<adjustment> # larger #s decrease the priority
+```
+
+```Shell title="Set or modify max # of tasks in an array that execute at same time" linenums="0"
 scontrol update jobid=<jobid> ArrayTaskThrottle=<count>
 ```
 Users can change the time limit on their pending jobs. After a job starts to run, only a system administrator can adjust the time.
@@ -76,8 +84,12 @@ scontrol setdebug info # or verbose
 scontrol show config
 ```
 
-```Shell title="" linenums="0"
+```Shell title="Modify a partition" linenums="0"
 scontrol update partitionname=interactive allowqos=normal,interactive-default
+```
+
+```Shell title="Put a DOWN/DRAIN node back into service" linenums="0"
+scontrol update nodename=compute-112 state=resume reason="Fixed sssd problem"
 ```
 
 ```Shell title="Show any reservations" linenums="0"
