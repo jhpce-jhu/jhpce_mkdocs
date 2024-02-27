@@ -33,7 +33,7 @@ cd
 du -sh .
 ```
 
-We use ZFS snapshots for home directories to make automated backups once an day[^1]. These are kept for a period of time[^2] so users and systems administrators can perform restores. See [this document](backups.md) for instructions on performing your own restores!!!
+We use ZFS snapshots for home directories to make automated backups once an day[^1]. These are kept for a period of time[^2] so users and systems administrators can perform restores. See [this document](backups-restores.md) for instructions on performing your own restores!!!
 
 [^1]: At eleven pm (as of 20240215).
 [^2]: Fourteen days (as of 20240215).

@@ -49,7 +49,7 @@ How paid for (and therefore length of committment)
 
 ## Backing up storage
 You need to ensure that you have copies of your most vital files located somewhere else.
-See [this document](backups.md) for more information.
+See [this document](backups-restores.md) for more information.
 
 ## Getting information about storage
 * du -sh

@@ -1,3 +1,4 @@
+# No TABs allowed in this file. None.
 site_name: JHPCE
 site_url: https://www.jhpce-jhu.github.io/jhpce_docs/
 nav:
@@ -43,7 +44,7 @@ nav:
       - Old Stg Page: storage/storage.md
       - Fastscratch: storage/fastscratch.md
       - Copying within cluster: files/copying-files.md
-      - Backups and Restores: storage/backups.md
+      - Backups and Restores: storage/backups-restores.md
     - Software:
       - Overview (Outline): sw/sw-overview.md
       - Modules: sw/modules.md
@@ -172,8 +173,14 @@ plugins:
 # https://squidfunk.github.io/mkdocs-material/setup/extensions/python-markdown-extensions/
 markdown_extensions:
   # JRT says following three lines are ALL needed to enable admonition
+  # Mermaid: This was added to superfences to enable simple diagrams & charting
+  # https://squidfunk.github.io/mkdocs-material/reference/diagrams/?h=mermaid#diagrams
   - admonition
-  - pymdownx.superfences # allows for arbitrary nesting of content blocks
+  - pymdownx.superfences: # allows for arbitrary nesting of content blocks
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:pymdownx.superfences.fence_code_format
   - pymdownx.details # makes the resulting admonitions call-outs collapsible
   - abbr # Abbreviations and optional glossery
   - attr_list
