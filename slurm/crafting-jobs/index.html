@@ -1386,7 +1386,7 @@
         
   
   <span class="md-ellipsis">
-    Backups and Restores
+    Backups & Restores
   </span>
   
 
@@ -1930,6 +1930,24 @@
   <a href="#running-multiple-jobs-from-one-script" class="md-nav__link">
     <span class="md-ellipsis">
       Running Multiple Jobs From One Script
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#dependent-jobs" class="md-nav__link">
+    <span class="md-ellipsis">
+      Dependent jobs
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#heterogeneous-job-support" class="md-nav__link">
+    <span class="md-ellipsis">
+      Heterogeneous Job Support
     </span>
   </a>
   
@@ -2683,6 +2701,24 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#dependent-jobs" class="md-nav__link">
+    <span class="md-ellipsis">
+      Dependent jobs
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#heterogeneous-job-support" class="md-nav__link">
+    <span class="md-ellipsis">
+      Heterogeneous Job Support
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#copying-data-within-cluster" class="md-nav__link">
     <span class="md-ellipsis">
       Copying data within cluster
@@ -2743,7 +2779,12 @@
 <p><a href="https://docs.nersc.gov/jobs/examples/">Good examples</a>.</p>
 <h2 id="running-multiple-jobs-from-one-script">Running Multiple Jobs From One Script<a class="headerlink" href="#running-multiple-jobs-from-one-script" title="Anchor link to this section for reference">&para;</a></h2>
 <p><a href="https://hpc.llnl.gov/banks-jobs/running-jobs/slurm#MultipleJobs">Using srun inside of sbatch scripts,</a> in serial and parallel. Remember to include the <code>wait</code> bash command at the end of your batch file so the job doesn't end before all of the tasks inside of it.</p>
+<h2 id="dependent-jobs">Dependent jobs<a class="headerlink" href="#dependent-jobs" title="Anchor link to this section for reference">&para;</a></h2>
+<p>You can configure jobs to run in order with some conditional control. See <a href="https://slurm.schedmd.com/sbatch.html#OPT_dependency">this part</a> of the sbatch manual page.</p>
+<h2 id="heterogeneous-job-support">Heterogeneous Job Support<a class="headerlink" href="#heterogeneous-job-support" title="Anchor link to this section for reference">&para;</a></h2>
+<p>Each component of such jobs has virtually all job options available including partition, account and QOS (Quality Of Service). See this <a href="https://slurm.schedmd.com/heterogeneous_jobs.html">vendor document</a>.</p>
 <h2 id="copying-data-within-cluster">Copying data within cluster<a class="headerlink" href="#copying-data-within-cluster" title="Anchor link to this section for reference">&para;</a></h2>
+<p>Here is a sample batch job. More information about this topic is accumulating <a href="../../files/copying-files/">here</a>.</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
@@ -2835,7 +2876,7 @@ date
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1-2.1-2M12.5 7v5.2l4 2.4-1 1L11 13V7h1.5M11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2v1.8Z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">February 20, 2024</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">February 27, 2024</span>
   </span>
 
     

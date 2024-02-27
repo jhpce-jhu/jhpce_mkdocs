@@ -1386,7 +1386,7 @@
         
   
   <span class="md-ellipsis">
-    Backups and Restores
+    Backups & Restores
   </span>
   
 
@@ -2810,7 +2810,8 @@ If your jobs have names, you can hold using the name. (This will hold all matchi
 <code>scontrol update jobid=&lt;jobid&gt; ...</code> See <a href="https://slurm.schedmd.com/scontrol.html#lbAH">this section</a> of the manual page for a list of attributes which can be modified.</p>
 <p>We have a number of <a href="../tips-scontrol/">scontrol examples</a> spelled out for you.</p>
 <h2 id="how-do-i-control-the-order-my-jobs-start">How do I control the order my jobs start?<a class="headerlink" href="#how-do-i-control-the-order-my-jobs-start" title="Anchor link to this section for reference">&para;</a></h2>
-<p>You can submit jobs with <a href="https://slurm.schedmd.com/sbatch.html#OPT_dependency">dependency directives</a> and also with "nice" values. See the <code>scontrol</code> tips document mentioned above.</p>
+<p>You can rank your jobs with the "nice" and "top" subcommands to <code>scontrol</code>.  See the <code>scontrol</code> tips document mentioned above.
+You can also submit jobs with <a href="https://slurm.schedmd.com/sbatch.html#OPT_dependency">dependency directives</a> and also create <a href="https://slurm.schedmd.com/heterogeneous_jobs.html">heterogenous jobs</a> which spawn other jobs. </p>
 <h2 id="unable-to-allocate-resources">"Unable to allocate resources"<a class="headerlink" href="#unable-to-allocate-resources" title="Anchor link to this section for reference">&para;</a></h2>
 <p>If the scheduler determines that your job is invalid in some fashion, it will generally reject it immediately instead of putting it into the queue with a pending status. There are a few causes of this. The wording of the error may or may not be clear.</p>
 <h3 id="users-group-not-permitted-to-use-this-partition">User's group not permitted to use this partition<a class="headerlink" href="#users-group-not-permitted-to-use-this-partition" title="Anchor link to this section for reference">&para;</a></h3>
