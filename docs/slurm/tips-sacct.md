@@ -1,34 +1,46 @@
 ---
 tags:
-  - done
+  - in-progress
   - slurm
 ---
-# scontrol useful command examples
+# sacct useful command examples
     
-[Scontrol](https://slurm.schedmd.com/archive/slurm-22.05.9/scontrol.html) is a command useful to both users and systems administrators.  It is used to display and modify SLURM configuration. It has a number of sub-commands, which take different arguments. See the [index](https://slurm.schedmd.com/archive/slurm-22.05.9/scontrol.html#index) for a pointer to the area of interest.
-
-All  commands and options are case-insensitive, although node names, partition names, and reservation names are case-sensitive. All  commands  and options can be abbreviated to the extent that the specification is unique. 
+[sacct](https://slurm.schedmd.com/archive/slurm-22.05.9/sacct.html) is a command used to display information about jobs. It has a number of subtleties, such as the time window reported on and the formatting of output. We hope that this page will help you get the information you need.
 
 Examples below use angle brackets ++less++ ++greater++  to indicate where you are supposed to replace argumements with your values.
 
-## Scontrol for Users
+!!! Warning
+    This page is under HEAVY construction. It was created by copying the scontrol tips page.
+    
+## sacct basics
 
-### Show things
+1. By default only your own jobs are displayed
+2. Only jobs from a certain time window are displayed by default. The window varies depending the arguments you provide.
+3. You can control the width of output fields 
+4. Even the simplest of batch jobs contain multiple "steps" as far as SLURM is concerned. One of them, named "extern" represents the ssh to the compute node on behalf of your job.
+
+!!! Warning
+    Sacct retrieves data from a SQL database. Be careful when creating your sacct commands to limit the queries to the information you need. That database needs to be modified constantly as jobs start and complete. If you want to look at a large amount of data in a variety of ways, consider saving the output to a text file and then working with that file.
+
+
+### Show available fields
 ```Shell title="" linenums="0"
-scontrol show --details job <jobid>
+sacct -e
 ```
 
-```Shell title="" linenums="0"
-scontrol show node <nodename>
+```Shell title="Show some basic fields" linenums="0"
+sacct --allusers -o "user,jobid,state,nodelist,submit,start,end,exitcode,state"
 ```
 
 ```Shell title="" linenums="0"
 scontrol show partition <partitionname>
 ```
 
-### Update Jobs
+### Using Environment Variables
 
-You can update many aspects of pending jobs, fewer for running jobs. What follows is only a sample!!! Click [here](https://slurm.schedmd.com/scontrol.html#lbAH) for the complete list.
+You can define environment variables in your shell to reduce the complexity of issuing sacct commands. You can also set these in shell scripts.
+
+update many aspects of pending jobs, fewer for running jobs. What follows is only a sample!!! Click [here](https://slurm.schedmd.com/archive/slurm-22.05.9/scontrol.html#lbAH) for the complete list.
 
 #### Pending Jobs
 

@@ -22,10 +22,10 @@ All of the manual pages are [here](https://slurm.schedmd.com/archive/slurm-22.05
 ### Information about cluster and jobs
 Do not run slurmpic, squeue, sacct or other Slurm client commands that send remote procedure calls to slurmctld, the main SLURM control and scheduling daemon, from loops in shell scripts or other programs. Ensure that programs limit calls to slurmctld to the minimum necessary for the information you are trying to gather.
 
-* [sacct](https://slurm.schedmd.com/archive/slurm-22.05.9/sacct.html): display accounting data for jobs in the Slurm database
+* [sacct](https://slurm.schedmd.com/archive/slurm-22.05.9/sacct.html): ([LOCAL TIPS](tips-sacct.md)): display accounting data for jobs in the Slurm database
 * [scontrol](https://slurm.schedmd.com/archive/slurm-22.05.9/scontrol.html): ([LOCAL TIPS](tips-scontrol.md)): display (or modify when permitted) the status of Slurm entities (jobs, nodes, partitions, reservations)
 * [sinfo](https://slurm.schedmd.com/archive/slurm-22.05.9/sinfo.html): display node and partition information
-* [sprio](https://slurm.schedmd.com/archive/slurm-22.05.9/sprio.html): display the factors that comprise a job's scheduling priority
+* [sprio](https://slurm.schedmd.com/archive/slurm-22.05.9/sprio.html): ([LOCAL TIPS](whenstart.md/#priority)) display the factors that comprise a job's scheduling priority
 * [squeue](https://slurm.schedmd.com/archive/slurm-22.05.9/squeue.html): display the jobs in the scheduling queues, one job per line
 * [sshare](https://slurm.schedmd.com/archive/slurm-22.05.9/sshare.html): display the shares and usage for each charge account and user
 * [sstat](https://slurm.schedmd.com/archive/slurm-22.05.9/sstat.html): display process statistics of a running job/step
