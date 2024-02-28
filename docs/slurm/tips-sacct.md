@@ -15,15 +15,18 @@ Examples below use angle brackets ++less++ ++greater++  to indicate where you ar
 ## sacct basics
 
 1. By default only your own jobs are displayed
-2. Only jobs from a certain time window are displayed by default. The window varies depending the arguments you provide.
+2. Only jobs from a certain time window are displayed by default. The window varies depending the arguments you provide. See [this section](https://slurm.schedmd.com/archive/slurm-22.05.9/sacct.html#lbAH) of the manual page.
 3. You can control the width of output fields 
-4. Even the simplest of batch jobs contain multiple "steps" as far as SLURM is concerned. One of them, named "extern" represents the ssh to the compute node on behalf of your job.
+4. Even the simplest of batch jobs contain multiple "steps" as far as SLURM is concerned. One of them, named "extern" represents the ssh to the compute node on behalf of your job. Job records consist of a primary entry for the job as a whole  as  well as entries for job steps. The [Job Launch](https://slurm.schedmd.com/archive/slurm-22.05.9/job_launch.html#job_record) page has a more detailed description of each type of job step.
 
 !!! Warning
-    Sacct retrieves data from a SQL database. Be careful when creating your sacct commands to limit the queries to the information you need. That database needs to be modified constantly as jobs start and complete. If you want to look at a large amount of data in a variety of ways, consider saving the output to a text file and then working with that file.
+    Sacct retrieves data from a SQL database. Be careful when creating your sacct commands to limit the queries to the information you need. That database needs to be modified constantly as jobs start and complete, so we don't want it tied up answering sacct queries. If you want to look at a large amount of data in a variety of ways, consider saving the output to a text file and then working with that file.
 
 
-### Show available fields
+### Available fields
+
+Fields are explained in [this section](https://slurm.schedmd.com/archive/slurm-22.05.9/sacct.html#lbAF) of the manual page.
+
 ```Shell title="" linenums="0"
 sacct -e
 ```
@@ -32,20 +35,37 @@ sacct -e
 sacct --allusers -o "user,jobid,state,nodelist,submit,start,end,exitcode,state"
 ```
 
-```Shell title="" linenums="0"
-scontrol show partition <partitionname>
+```Shell title="See all fields for job" linenums="0"
+sacct -o ALL -j <jobid>
 ```
+
+### Formatting fields
+
+You can put a %NUMBER after a field name to specify how many characters should be printed, e.g.
+   
+- format=name%30 will print 30 characters of field name right justified.  
+- format=name%-30 will print 30 characters left justified.
 
 ### Using Environment Variables
 
-You can define environment variables in your shell to reduce the complexity of issuing sacct commands. You can also set these in shell scripts.
+You can define environment variables in your shell to reduce the complexity of issuing sacct commands. You can also set these in shell scripts. Command line options will always override these settings.
 
-update many aspects of pending jobs, fewer for running jobs. What follows is only a sample!!! Click [here](https://slurm.schedmd.com/archive/slurm-22.05.9/scontrol.html#lbAH) for the complete list.
+SACCT_FORMAT
 
-#### Pending Jobs
+SLURM_TIME_FORMAT
 
-```Shell title="Place one of your jobs ahead of other of your jobs" linenums="0"
-scontrol top <jobid>
+#### Formatting Dates/Times
+You can use most variables defined by the STRFTIME(3) system call. [This web page](https://strftime.org) is a starting point, but what SLURM has chosen to implement may not match.
+
+* %a - abbrieviated name of day of the week
+* %m - month as decimal, 01 to 12
+* %d - day of month as decimal
+* %H - hour as decimal in 24-hour notation
+* %M - minute as decimal, 00 to 59
+* %T - time in 24-hour notation (%H:%M:%S)
+
+```Shell title="" linenums="0"
+export SLURM_TIME_FORMAT="%a %m-%d %H:%M"   #  
 ```
 
 ```Shell title="Place one of your jobs ahead or behind other of your jobs" linenums="0"
@@ -87,7 +107,31 @@ scontrol update jobid=<jobid> mailtype=time_limit_80
 scontrol update jobid=<jobid> mailuser=<your-address@jh.edu>
 ```
 
-## Scontrol for Systems Administrators
+## Flags of Interest
+
+These flags are probably the ones you'll want. See [this section](https://slurm.schedmd.com/archive/slurm-22.05.9/sacct.html#lbAF) of the manual page for the list and their meaning.
+
+### Basics
+- User
+- State
+
+### Resources Asked For, Consumed
+- ReqTRES
+- TRESUsageInTot
+- ReqNodes
+- ReqCPUS
+
+### Times
+- Submit
+- Start
+- Elapsed
+- End
+
+### Nodes
+- AllocNodes
+- NodeList
+
+
 
 ```Shell title="Modify debug level" linenums="0"
 scontrol setdebug info # or verbose
