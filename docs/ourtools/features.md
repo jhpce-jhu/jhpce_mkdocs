@@ -3,11 +3,13 @@ Some more useful than others. Jeffrey likes "[admonitions](features.md#admonitio
 
 There is another document containing [wishlist](wishlist.md) items that we might want to enable/configure.
 
-## Critical reference
+## Critical reference material
 Look here for information about these and other features!!! Just keep in mind that ones marked "insiders" are not available for our use.
 [Materials for MkDocs reference section](https://squidfunk.github.io/mkdocs-material/reference/).
 
-## Frontmatter (in documents)
+It isn't clear how much caution one should use in consulting MkDocs documents and people's solutions for it. JRT thinks that Material for MkDocs differs enough that one should definitely keep in mind whether your google search has turned up something about MkDocs.
+
+## Frontmatter (in document files)
 Tags are the primary use of frontmatter I think we should use at this point. [This](https://squidfunk.github.io/mkdocs-material/reference/) may not be a complete list of directives that one can optionally add within a document. But the basics are that you can add to the top of the document a stanza to set the title of the document, a description of it, a status indicator such as new or deprecated. See [this page](https://squidfunk.github.io/mkdocs-material/reference/#setting-the-page-icon) for how to define an icon for the page.
 
 Apparently multiple frontmatter elements, like both tags and a page title, need to exist together inside one pair of three dashed lines. See example:
@@ -16,10 +18,9 @@ Apparently multiple frontmatter elements, like both tags and a page title, need 
 ---
 tags:
   - a tag
-title: some docs need explicit titles set
+title: some docs need explicit titles set b/c they can't be correctly guessed
 ---
 ```
-
 
 ## Tags
 An example of frontmatter is the code to [add tags](https://squidfunk.github.io/mkdocs-material/setup/setting-up-tags/) to documents. 20240211 I tested adding a tag and it works. I also specified in the nav section [a page ](tags.md)for Material for MkDocs to automatically list tags and the pages they are found on.
@@ -291,4 +292,42 @@ and ending with
 ++less++ ++less++ ++brace-right++
 
 
+## Recipe for Running Mkdocs Locally
+As of 2024029 these steps are needed to build a local Material for MkDocs server that will run a browser at `http://127.0.0.1:8000/`
 
+JRT doesn't understand the requirements for Git items and Material for MkDocs. There are some.
+
+```ShellSession linenums="0"
+cd ~/Documents/GitHub/
+git clone https://github.com/jhpce-jhu/jhpce_mkdocs
+cd jhpce_mkdocs
+
+pip3 install mkdocs-material
+pip3 install mkdocs-git-revision-date-localized-plugin
+pip3 install mkdocs-open-in-new-tab
+pip3 install mkdocs-mermaid2-plugin
+mkdocs build
+mkdocs serve
+```
+
+## Errors You Might Run Into Running Mkdocs Locally
+It can sometimes be useful to ++ctrl+c++ the mkdocs serve program and restart it. Usually this involves significant changes to `mkdocs.yml` and those will stop over time. However when in doubt give it a try.
+
+JRT added some instructions to the mkdocs.yml file causing warnings to be issued. JRT has found them very useful.
+```yaml
+# https://www.mkdocs.org/user-guide/configuration/#validation
+validation:
+  omitted_files: warn
+  absolute_links: warn
+  unrecognized_links: warn
+```
+
+The `mkdocs serve` program will spew out a number of warnings and error messages as you change files. Most of them are important but a few of them are going to recur and are harmless. For example warnings about files in the docs/ tree which are not mentioned in the nav bar. Such files are only going to grow in number. Perhaps there is a way to exclude known cases?
+
+
+
+```Shell title="This means you have an error in frontmatter YML code somewhere" linenums="0"
+TypeError: '<' not supported between instances of 'NoneType' and 'str'
+ERROR   -  [14:46:28] An error happened during the rebuild. The server will appear
+           stuck until build errors are resolved.
+```

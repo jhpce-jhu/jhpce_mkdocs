@@ -1,7 +1,11 @@
-# MANAGING FILES TOPIC - outline page
+---
+tags:
+  - topic-overview
+  - needs-to-be-written
+---
 
-This is not an overview page yet. JRT didn't break out subtopics in the nav bar.
- 
+# MANAGING FILES
+
 We have previously addressed these issues as if they were independent. I believe it would help users increase their efficiency if they were seen as a set of related issues under this topic: managing files.
 
 ## Overview

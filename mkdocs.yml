@@ -31,7 +31,7 @@ nav:
         - Globus: access/globus.md
         - OneDrive via rclone: access/onedrive.md
     - Managing Files:
-      - OutlineOfMaterial: files/outline.md
+      - Files Overview: files/files-overview.md
       - Sharing Files: files/sharing-files.md
       - ACL: files/acl.md
       - Copying within cluster: files/copying-files.md
