@@ -38,7 +38,7 @@ Do not run slurmpic, squeue, sacct or other Slurm client commands that send remo
 
 ### For Systems Administrators
 * [sacctmgr](https://slurm.schedmd.com/archive/slurm-22.05.9/sacct.html):
-* ([LOCAL TIPS](tips-sacctmgr.md)): display and modify Slurm account information
+* [scontrol](https://slurm.schedmd.com/archive/slurm-22.05.9/scontrol.html): ([LOCAL TIPS](tips-sacctmgr.md)): display and modify Slurm account information
 * [sdiag](https://slurm.schedmd.com/archive/slurm-22.05.9/sdiag.html): display scheduling statistics and timing parameters
 * [slurmctld](https://slurm.schedmd.com/archive/slurm-22.05.9/slurmctld.html): central management daemon
 * [slurmd](https://slurm.schedmd.com/archive/slurm-22.05.9/slurmd.html): client-side daemon

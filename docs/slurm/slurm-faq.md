@@ -1,20 +1,29 @@
 ---
 tags:
   - in-progress
+  - slurm
 ---
 
 # JHPCE SLURM FAQ
 
 Use the search field if desired.
 
-[Example document](https://support.ceci-hpc.be/doc/_contents/SubmittingJobs/SlurmFAQ.html)
+## FAQs from other clusters
+Note that the information in these pages will include details which do not apply here in JHPCE. Caveat emptor.
+
+[CECI](https://support.ceci-hpc.be/doc/_contents/SubmittingJobs/SlurmFAQ.html)
 
 
 ## When will my job start?
-See [this document](whenstart.md). 
+See [this document](whenstart.md) for a description of factors affecting when jobs start.  Of course the load on the cluster impacts job start times. Please consult the output of `slurmpic` for information about the state of the cluster and its available resources. Note that your job cannot start until a match is found for the resources you specified. There may be a lot of unused CPUs on a node, for example, but if someone has allocated all of the RAM on that node your job won't fit there.
 
 ## What partitions exist?
-See [this document](partitions.md).
+The default partition is "shared". By default `slurmpic` describes the state of this partition. (Run `slurmpic -h` to see a list of options, including the flag to show other partitions.)
+
+See [this document](partitions.md) for a description of partitions and their purposes and limits.
+
+## How will I know if my job ended?
+See [this document](monitoring.md) for information about monitoring pending, running and completed jobs.
 
 ## How do I cancel a job?
 

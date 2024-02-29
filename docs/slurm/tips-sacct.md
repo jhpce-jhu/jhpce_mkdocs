@@ -1,52 +1,112 @@
 ---
 tags:
-  - in-progress
+  - done
   - slurm
 ---
 # sacct useful command examples
     
+!!! Example
+    ```Shell title="Show my failed jobs between noon and now" linenums="0"
+    sacct -s F -o "user,jobid,state,nodelist,start,end,exitcode" -S noon -E now
+    ```
+
 [sacct](https://slurm.schedmd.com/archive/slurm-22.05.9/sacct.html) is a command used to display information about jobs. It has a number of subtleties, such as the time window reported on and the formatting of output. We hope that this page will help you get the information you need.
 
-Examples below use angle brackets ++less++ ++greater++  to indicate where you are supposed to replace argumements with your values.
+sacct can be used to investigate jobs' resource usage, nodes used, and exit codes. It can point to important information, such as jobs dying on a particular node but working on other nodes.
 
-!!! Warning
-    This page is under HEAVY construction. It was created by copying the scontrol tips page.
+sacct will show all submitted jobs but cannot, of course, provide data for a number of fields until the job has finished. Use the [sstat](https://slurm.schedmd.com/archive/slurm-22.05.9/sstat.html) command to get information about running programs. "Instrumenting" your jobs to gather information about them can include adding one or more sstat commands to batch jobs in multiple places.
+
+!!! Tip
+    Much of this information can be used with `sstat`, but there are differences, particularly in available output fields.
+
+Examples below use angle brackets ++less++ ++greater++  to indicate where you are supposed to replace argumements with your values.
+    
     
 ## sacct basics
 
-1. By default only your own jobs are displayed
-2. Only jobs from a certain time window are displayed by default. The window varies depending the arguments you provide. See [this section](https://slurm.schedmd.com/archive/slurm-22.05.9/sacct.html#lbAH) of the manual page.
-3. You can control the width of output fields 
-4. Even the simplest of batch jobs contain multiple "steps" as far as SLURM is concerned. One of them, named "extern" represents the ssh to the compute node on behalf of your job. Job records consist of a primary entry for the job as a whole  as  well as entries for job steps. The [Job Launch](https://slurm.schedmd.com/archive/slurm-22.05.9/job_launch.html#job_record) page has a more detailed description of each type of job step.
+1. By default only your own jobs are displayed. Use the `--allusers` flag if necessary.
+2. Only jobs from a certain time window are displayed by default. The window varies depending the arguments you provide. See [this section](https://slurm.schedmd.com/archive/slurm-22.05.9/sacct.html#lbAH) of the manual page. It is recommended to always provide start (`-S`) and end (`-E`) times.
+3. You can choose output fields and control their width. 
+4. Even the simplest of batch jobs contain multiple "steps" as far as SLURM is concerned. One of them, named "extern" represents the ssh to the compute node on behalf of your job. Job records consist of a primary entry for the job as a whole  as  well as entries for job steps. The [Job Launch](https://slurm.schedmd.com/archive/slurm-22.05.9/job_launch.html#job_record) page has a more detailed description of each type of job step. You may find the `-X` flag helpful to omit clutter.
+5. Regular jobs are in the form: **JobID[.JobStep]**
+6. Array jobs are in the form: **ArrayJobID_ArrayTaskID**
 
 !!! Warning
-    Sacct retrieves data from a SQL database. Be careful when creating your sacct commands to limit the queries to the information you need. That database needs to be modified constantly as jobs start and complete, so we don't want it tied up answering sacct queries. If you want to look at a large amount of data in a variety of ways, consider saving the output to a text file and then working with that file.
+    Sacct retrieves data from a SQL database. Be careful when creating your sacct commands to limit the queries to the information you need. Narrow the search as much as possible. 
+    That database needs to be modified constantly as jobs start and complete, so we don't want it tied up answering sacct queries. If you want to look at a large amount of data in a variety of ways, consider saving the output to a text file and then working with that file.
 
+## Command Options of Note
 
-### Available fields
+Check the [man page](https://slurm.schedmd.com/archive/slurm-22.05.9/sacct.html). There are other useful options.
 
-Fields are explained in [this section](https://slurm.schedmd.com/archive/slurm-22.05.9/sacct.html#lbAF) of the manual page.
+- -X  show stats for the job allocation itself, ignoring steps (try it)
+- -R <reasonlist> - show jobs not scheduled for given reason
+- -a  allusers
+- -N <nodelist> - only show jobs which ran on this/these nodes
+- -u <userlist> - only show jobs which ran by this/these users
+- --name=<namelist> - only show jobs with this list of name
+- - -n  noheader
+- -p  parsable - puts a | between fields and at end of line
+- -P  parsable2 - does not put a | at end of line
+- --delimeter <char> - use that char instead of | for `-p` or `-P`
+- --units=[KMGTP] - display in this unit
+- -k <minimum time> - looking for jobs with time limits in a range
+- -K <maximum time> - looking for jobs with time limits in a range
+- -q <qoslist> - list of qos used
 
-```Shell title="" linenums="0"
+## Start and End Times
+It is best to use always specify a `-S` start time and a `-E` end time.
+
+Special time words: **today**, **midnight**, **noon**, **now**
+
+now[{+|-}count[seconds(default)|minutes|hours|days|weeks]]
+
+Valid time formats are:
+
+                   HH:MM[:SS][AM|PM]
+                   MMDD[YY][-HH:MM[:SS]]
+                   MM.DD[.YY][-HH:MM[:SS]]
+                   MM/DD[/YY][-HH:MM[:SS]]
+                   YYYY-MM-DD[THH:MM[:SS]]
+
+## Job State Values
+Using the `-s <state>` option, you can prune your search by looking for only jobs which match the state you need, such as F for failed. (All of these work: f, failed, F, FAILED)
+
+!!! Warning
+    Different steps of a job can have different end states. For example the "extern" step is often COMPLETED when the "batch" and overall steps are FAILED
+
+See [this section](https://slurm.schedmd.com/archive/slurm-22.05.9/sacct.html#lbAG) of the manual page, which has also been saved to a text file you can copy for your own reference `/jhpce/shared/jhpce/slurm/docs/job-states.txt`
+
+Primary job states of interest:
+
+- CA CANCELLED
+- CD COMPLETED
+- F FAILED
+- OOM OUT_OF_MEMORY
+- PD PENDING
+- R RUNNING
+- TO TIMEOUT
+
+## Available fields
+
+Field meanings are explained in [this section](https://slurm.schedmd.com/archive/slurm-22.05.9/sacct.html#lbAF) of the manual page.
+
+```Shell title="What output fields are available?" linenums="0"
 sacct -e
 ```
 
-```Shell title="Show some basic fields" linenums="0"
-sacct --allusers -o "user,jobid,state,nodelist,submit,start,end,exitcode,state"
-```
-
-```Shell title="See all fields for job" linenums="0"
+```Shell title="See all fields for a job" linenums="0"
 sacct -o ALL -j <jobid>
 ```
 
-### Formatting fields
+## Formatting fields
 
 You can put a %NUMBER after a field name to specify how many characters should be printed, e.g.
    
 - format=name%30 will print 30 characters of field name right justified.  
 - format=name%-30 will print 30 characters left justified.
 
-### Using Environment Variables
+## Using Environment Variables
 
 You can define environment variables in your shell to reduce the complexity of issuing sacct commands. You can also set these in shell scripts. Command line options will always override these settings.
 
@@ -64,108 +124,72 @@ You can use most variables defined by the STRFTIME(3) system call. [This web pag
 * %M - minute as decimal, 00 to 59
 * %T - time in 24-hour notation (%H:%M:%S)
 
-```Shell title="" linenums="0"
-export SLURM_TIME_FORMAT="%a %m-%d %H:%M"   #  
+```Shell title="Day of week MM-DD HH:MM" linenums="0"
+export SLURM_TIME_FORMAT="%a %m-%d %H:%M" 
 ```
+The start and end field widths show below are suitable for the time format shown above.
 
-```Shell title="Place one of your jobs ahead or behind other of your jobs" linenums="0"
-scontrol update jobid=<jobid> nice=<adjustment> # larger #s decrease the priority
-```
-
-```Shell title="Set or modify max # of tasks in an array that execute at same time" linenums="0"
-scontrol update jobid=<jobid> ArrayTaskThrottle=<count>
-```
-Users can change the time limit on their pending jobs. After a job starts to run, only a system administrator can adjust the time.
-
-```Shell title="Set max job duration" linenums="0"
-scontrol update jobid=<jobid> TimeMin=<time-specification>
-```
-
-```Shell title="Hold one of your jobs (to prefer other of your jobs)" linenums="0"
-scontrol hold <job-list>  # Can be comma-separated list of jobids
-```
-
-```Shell title="Release a held job" linenums="0"
-scontrol release <job-list>  # Can be comma-separated list of jobids
-```
-
-```Shell title="Lower the priority of one of your jobs (to prefer other of your jobs)" linenums="0"
-scontrol update jobid=<jobid> nice=10
-```
-
-```Shell title="This is per-node, not per-job. In megabytes" linenums="0"
-scontrol update jobid=<jobid> MinMemoryNode=1024
-```
-
-#### Running Jobs
-These can also be used on pending jobs. They're just examples of something you might want to set afterwards.
-
-```Shell title="Be notified at 80% of job duration" linenums="0"
-scontrol update jobid=<jobid> mailtype=time_limit_80
-```
-```Shell title="But only if you tell it where to send email" linenums="0"
-scontrol update jobid=<jobid> mailuser=<your-address@jh.edu>
+```Shell title="Resources requested, used" linenums="0"
+export SACCT_FORMAT="user,jobid,jobname,nodelist%12,start%-20,end%-20,state%20,reqtres%40,TRESUsageInTot%200"
 ```
 
 ## Flags of Interest
 
-These flags are probably the ones you'll want. See [this section](https://slurm.schedmd.com/archive/slurm-22.05.9/sacct.html#lbAF) of the manual page for the list and their meaning.
+These flags are probably the ones you'll want. See [this section](https://slurm.schedmd.com/archive/slurm-22.05.9/sacct.html#lbAF) of the manual page for the list and their meaning. Capitalization does not matter; it is used for readability.
+
+- TRES means Trackable RESources, such as RAM and CPUs.
+- A number of fields (not listed) are available to tell you on which node a maximum occurred. Similarly there are fields to tell you minimum, average and maximum values for some items.
 
 ### Basics
 - User
+- JobId
+- JobName
+- Partition
 - State
-
-### Resources Asked For, Consumed
-- ReqTRES
-- TRESUsageInTot
-- ReqNodes
-- ReqCPUS
+- ExitCode
 
 ### Times
 - Submit
 - Start
-- Elapsed
+- Elapsed - in format [DD-[HH:]]MM:SS
 - End
 
 ### Nodes
+- AllocCPUS
 - AllocNodes
-- NodeList
+- NNodes - number of nodes requested/used
+- NodeList - 
+
+### Resources Requested
+- ReqTRES # this is what you will be billed for
+- ReqNodes
+- ReqCPUS
+
+### Resources Consumed
+- TRESUsageInTot
+- CPUTime - (elapsed)*(AllocCPU) in HH:MM:SS format
+- MaxRSS - Max resident set of all tasks in job
+- MaxVMSize - Max virtual memory of all tasks in job
+- MaxDiskRead - Number bytes read by all tasks in job
+- MaxDiskWrite - Number bytes written by all tasks in job
 
 
+## Diagnostic Arguments
 
-```Shell title="Modify debug level" linenums="0"
-scontrol setdebug info # or verbose
+These can be useful to double-check what someone actually did.
+
+```Shell title="See the full command issued to submit the job" linenums="0"
+sacct -o SubmitLine -j <jobid>
 ```
 
-```Shell title="Display running configuration" linenums="0"
-scontrol show config
+```Shell title="See batch file used" linenums="0"
+sacct -B -j <jobid>
 ```
 
-```Shell title="Modify a partition" linenums="0"
-scontrol update partitionname=interactive allowqos=normal,interactive-default
+```Shell title="Directory used by the job to execute commands" linenums="0"
+sacct -o WorkDir -j <jobid>
 ```
 
-```Shell title="Put a DOWN/DRAIN node back into service" linenums="0"
-scontrol update nodename=compute-112 state=resume reason="Fixed sssd problem"
+```Shell title="See jobs given a time limit btwn 1min & 1 day" linenums="0"
+sacct -k 00:01 -K 1-0
 ```
-
-```Shell title="Show any reservations" linenums="0"
-scontrol show reservation
-```
-
-```Shell title="Create a reservation" linenums="0"
-scontrol create reservation starttime=now duration=UNLIMITED user=root,tunison,mmill116,jyang flags=maint,ignore_jobs,NO_HOLD_JOBS_AFTER reservation=resv-name nodes=compute-number
-```
-
-```Shell title="Delete a reservation" linenums="0"
-scontrol delete reservation=<resv-name>
-```
-
-```Shell title="Another way to delete a reservation" linenums="0"
-scontrol update reservation=<resv-name> endtime=now
-```
-
-```Shell title="Add a user to an existing reservation" linenums="0"
-scontrol update reservation=<resv-name> user+=<username>
-```
-

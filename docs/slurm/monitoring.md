@@ -1,22 +1,69 @@
 ---
 tags:
-  - needs-major-revision
+  - in-progress
   - slurm
 ---
 
 # Monitoring SLURM Jobs
 
+Has my job ended? Why did my job fail? How much memory did my sample job use so I can use memory efficiently in for future similar jobs?
+
+There are a number of ways in which you can learn the answers to these questions.
+
 Making sure your jobs request the right amount of RAM and the right number of CPUs helps you and others using the clusters use these resources more effeciently, and in turn get work done more quickly. Below are some examples of how to measure your CPU and RAM (aka memory) usage so you can make this happen.
 
+## Email Notification
+
+You can direct SLURM to send you email when various things happen with your job. These directives can be given on the command line, in batch job scripts, and set in your SLURM defaults file. You can even modify running jobs to set or change their notification settings (see the [scontrol tips](tips-scontrol.md) page).
+
+!!! Warning
+    Take care not to cause a storm of outgoing email from our cluster!!! This will lead to our server being blacklisted by Hopkins and/or other mail administrators.
+    
+    By default email notifications are sent for entire job arrays, not individual tasks. Be VERY careful if you change that behavior.
+
+The mail arguments are shown in the [sbatch](https://slurm.schedmd.com/archive/slurm-22.05.9/sbatch.html#OPT_mail-type) manual page.
+    
+```Shell title="Specify your email address" linenums="0"
+--mail-user=<email-address>
+```
+
+```Shell title="Specify notification events" linenums="0"
+--mail-type=<list-of-types>
+```
+Here are the main types:
+
+- NONE, BEGIN, END, FAIL, INVALID_DEPEND
+- ALL (equivalent to BEGIN, END, FAIL, INVALID_DEPEND, REQUEUE, and STAGE_OUT)
+- TIME_LIMIT, TIME_LIMIT_90 (reached 90 percent of time limit), TIME_LIMIT_80 (reached 80 percent of time limit), TIME_LIMIT_50 (reached 50 percent of time limit)
+
+## Output and error files
+By default your job will store an output file named "slurm-%j.out" where the "%j" is replaced by the job ID containing job output and errors in the same directory in which your job ran. You can direct SLURM to put the file(s) elsewhere and change their names.
+
+For job arrays, the default file name is "slurm-%A_%a.out", "%A" is replaced by the job ID and "%a" with the array index. 
+
+If you add echo statements in your job batch file then you can inspect the job output/error files for clues as to its status.
+
+## scontrol show job
+The `scontrol` command has many uses. Before a job ends you can get detailed information with `scontrol`.
+
+!!! YAY
+    We have written a document describing frequent uses of scontrol. See [this page](tips-scontrol.md).
+    
+## squeue
+Display information about pending and running jobs.
+
+https://slurm.schedmd.com/archive/slurm-22.05.9/squeue.html
+
 ## sstat 
-display process statistics of a running job/step
+Display process statistics of a running job/step. Some of the advice given for `sacct` (below) applies to `sstat`.
 
 https://slurm.schedmd.com/archive/slurm-22.05.9/sstat.html
 
 ## sacct
-display accounting data for jobs in the Slurm database
+Display accounting data for running and completed jobs in the Slurm database.
 
-https://slurm.schedmd.com/archive/slurm-22.05.9/sacct.html
+!!! YAY
+    We have written a document describing key elements of using sacct. See [this page](tips-sacct.md).
 
 ## Suggestions
 
@@ -33,20 +80,3 @@ You could put the sleep, date, sstat commands inside of a while (true) loop. The
 So your information-gathering efforts should probably start by running some sacct commands to inspect the parameters of previous failed jobs, and perhaps even the ones that succeeded to see if any differences appear.
  
 The -e flag is available to both sstat and sacct to show the fields available. The sets overlap but also differ.
- 
-My text notes accumulated with sacct hints can give you ideas for ways to get at the info you want from sstat and sacct.
-The arguments to the SACCT_FORMAT environment variable commands can be given on the command line with the -o or maybe the -O flag. But setting it in the environment variable means your commands can be shorter and easier to issue.
- 
-slurm:: sacct -S or -E now[{+|-}count[seconds(default)|minutes|hours|days|weeks]]
-slurm:: sacct --helpformat # shows available fields # so does -e
-slurm:: sacct: export SACCT_FORMAT="user,jobid,partition,nodelist,timelimit,submit,start,exitcode,state"
-slurm:: sacct: export SLURM_TIME_FORMAT="%a %T"   #  https://strftime.org
-slurm:: sacct: export SLURM_TIME_FORMAT="%a %m-%d %T"   #  https://strftime.org
-slurm:: sacct: export SLURM_TIME_FORMAT="%a %m-%d %H:%M"   #  https://strftime.org
-slurm:: sacct: export SACCT_FORMAT="user,jobid,jobname,nodelist%12,start%-15,end%-15,state%15,reqtres%40,maxrss,maxvmsize"
-slurm:: sacct: export SACCT_FORMAT="user,jobid,jobname,nodelist%12,start%-15,end%-15,state%15,reqtres%40,TRESUsageInTot%60"
-slurm:: sacct: export SACCT_FORMAT="user,jobid,jobname,nodelist%12,start%-20,end%-20,state%20,reqtres%40,TRESUsageInTot%200"
-slurm:: sacct --allusers -o "user,jobid,state,nodelist,submit,start,end,exitcode,state"
-slurm:: sacct -o SubmitLine%100 -j jobid # See what command user submitted
-slurm:: sacct -B -j jobid # See what batch file user submitted
-slurm:: sacct -o ALL -j jobid # See all fields for job
