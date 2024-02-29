@@ -8,33 +8,57 @@ tags:
 
 There are a variety of techniques one can use to initiate SLURM jobs to accomplish various tasks. Here we will initially accumulate pointers to documentation written by others for their clusters. Later we will write concrete examples of our own.
 
+In the directories under `/jhpce/shared/jhpce/slurm/` you will find files used during orientation, some accumulated documents and batch examples.
+
 ## Sbatch, srun and salloc
 
-There are three commands used to request resources from SLURM. You will find all three discussed in the linked documentation.
+There are three commands used to request resources from SLURM. You will find all three discussed in the [linked documentation](slurm-commands-ref.md).
 
-Here at JHPCE we have been using srun primarily as way to start interactive sessions.
+Here at JHPCE we have been using `srun` primarily as way to start interactive sessions. However it can also be used inside of `sbatch` scripts. See web site [below](crafting-jobs.md#running-multiple-jobs-from-one-script) for examples.
 
+Be careful using `salloc` that you don't leave allocated resources unused.
 
-## Workflow
+## Sbatch Rules
+1. First characters in batch file need to be: `#!/bin/bash` (although you can use an interpreter other than bash)
+2. `#SBATCH` directives need to appear as the first characters on their lines.
+3. `#SBATCH` directives need to appear before **_any_** shell commands.
+4. You can put comments after # symbols.
+4. You may need to add a `wait` command at the bottom to ensure that processes spawned earlier complete before the script does.
 
-[This cluster ](https://support.ceci-hpc.be/doc/_contents/SubmittingJobs/WorkflowManagement.html#introduction)has some good material about workflows.
+## SLURM Directive Order of Precendence
+For now see these [two PDF pages](images/slurm-precendence.pdf) from an orientation document.
 
-## NERSC Examples
-[Good examples](https://docs.nersc.gov/jobs/examples/).
-
-## Running Multiple Jobs From One Script
-
-[Using srun inside of sbatch scripts,](https://hpc.llnl.gov/banks-jobs/running-jobs/slurm#MultipleJobs) in serial and parallel. Remember to include the `wait` bash command at the end of your batch file so the job doesn't end before all of the tasks inside of it.
+## Job Environment
+!!! AuthoringNote 
+    This probably deserves its own document. There are a variety of things to describe here, some subtle. Options to pass or not pass parts of environment used to dispatch job into the job. Should people use the `-l` arg to bash? `#SBATCH --chdir=`
 
 ## Dependent jobs
 
-You can configure jobs to run in order with some conditional control. See [this part](https://slurm.schedmd.com/sbatch.html#OPT_dependency) of the sbatch manual page.
+You can configure jobs to run in order with some conditional control. See [this part](https://slurm.schedmd.com/archive/slurm-22.05.9/sbatch.html#OPT_dependency) of the sbatch manual page.
 
 ## Heterogeneous Job Support
 
-Each component of such jobs has virtually all job options available including partition, account and QOS (Quality Of Service). See this [vendor document](https://slurm.schedmd.com/heterogeneous_jobs.html).
+Each component of such jobs has virtually all job options available including partition, account and QOS (Quality Of Service). See this [vendor document](https://slurm.schedmd.com/archive/slurm-22.05.9/heterogeneous_jobs.html).
 
-## Copying data within cluster
+
+## Examples from Elsewhere
+
+### Workflow
+
+[This cluster ](https://support.ceci-hpc.be/doc/_contents/SubmittingJobs/WorkflowManagement.html#introduction)has some good material about workflows.
+
+### NERSC Examples
+[Good examples](https://docs.nersc.gov/jobs/examples/).
+
+### Running Multiple Jobs From One Script
+
+[Using srun inside of sbatch scripts,](https://hpc.llnl.gov/banks-jobs/running-jobs/slurm#MultipleJobs) in serial and parallel. Remember to include the `wait` bash command at the end of your batch file so the job doesn't end before all of the tasks inside of it.
+
+
+
+## Example Batch Jobs
+
+### Copying data within cluster
 
 Here is a sample batch job. More information about this topic is accumulating [here](../files/copying-files.md).
 
@@ -76,4 +100,47 @@ date
 echo "done"
 ```
 
-## Copying data into/out of cluster
+### Copying data into/out of cluster
+We have a transfer node which is a SLURM client.
+
+
+### Running A Job On Every Node
+This is put here as a tool for system administrators needing to do maintenance where a SLURM job is appropriate. Maybe the technique will be useful for someone for a more limited case.
+
+```
+#!/bin/bash
+#
+# JPHCE - dispatch-to-everynode - Dispatch a job to each node which is responding
+#
+#       FAILS TO WORK IF YOU DON'T SPECIFY A BUNCH OF PARTITIONS
+#       BECAUSE SHARED IS USED. Following worked at this time
+#       #SBATCH --partition=shared,cee,transfer,sysadmin,sas,gpu,bstgpu,neuron
+#
+# You need to specify a batch file at the minimum
+# You can specify additional arguments
+# TODO: Nice to be able to specify a partition to sinfo if desired
+#--------------------------------------------------------------------------
+#--------------------------------------------------------------------------
+# Date          Modification                                       Initials
+#--------------------------------------------------------------------------
+# 20231222      Created, added standard comment section.                JRT
+#--------------------------------------------------------------------------
+
+usage()
+{
+    echo "Usage: $0 [directives..] batchfile "
+    echo "Usage:   Specify at least a job file"
+    echo "Usage:   Good idea to include in your batch file --output=/dev/null"
+    exit 1
+}
+
+if [ $# -lt 1 ]; then
+        usage
+else
+        for i in `sinfo -N -r | awk '{print $1}' | sort -u | grep -v NODELIST`
+        do
+                echo $i
+                sbatch --nodelist=${i} "$@"
+        done
+fi
+```
