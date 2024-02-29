@@ -1879,6 +1879,42 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#email-notification" class="md-nav__link">
+    <span class="md-ellipsis">
+      Email Notification
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#output-and-error-files" class="md-nav__link">
+    <span class="md-ellipsis">
+      Output and error files
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#scontrol-show-job" class="md-nav__link">
+    <span class="md-ellipsis">
+      scontrol show job
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#squeue" class="md-nav__link">
+    <span class="md-ellipsis">
+      squeue
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#sstat" class="md-nav__link">
     <span class="md-ellipsis">
       sstat
@@ -2620,6 +2656,42 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#email-notification" class="md-nav__link">
+    <span class="md-ellipsis">
+      Email Notification
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#output-and-error-files" class="md-nav__link">
+    <span class="md-ellipsis">
+      Output and error files
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#scontrol-show-job" class="md-nav__link">
+    <span class="md-ellipsis">
+      scontrol show job
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#squeue" class="md-nav__link">
+    <span class="md-ellipsis">
+      squeue
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#sstat" class="md-nav__link">
     <span class="md-ellipsis">
       sstat
@@ -2665,7 +2737,7 @@
     
     
     
-      <a href="../../ourtools/tags/#needs-major-revision" class="md-tag">needs-major-revision</a>
+      <a href="../../ourtools/tags/#in-progress" class="md-tag">in-progress</a>
     
   
     
@@ -2679,13 +2751,49 @@
 
 
 <h1 id="monitoring-slurm-jobs">Monitoring SLURM Jobs<a class="headerlink" href="#monitoring-slurm-jobs" title="Anchor link to this section for reference">&para;</a></h1>
+<p>Has my job ended? Why did my job fail? How much memory did my sample job use so I can use memory efficiently in for future similar jobs?</p>
+<p>There are a number of ways in which you can learn the answers to these questions.</p>
 <p>Making sure your jobs request the right amount of RAM and the right number of CPUs helps you and others using the clusters use these resources more effeciently, and in turn get work done more quickly. Below are some examples of how to measure your CPU and RAM (aka memory) usage so you can make this happen.</p>
+<h2 id="email-notification">Email Notification<a class="headerlink" href="#email-notification" title="Anchor link to this section for reference">&para;</a></h2>
+<p>You can direct SLURM to send you email when various things happen with your job. These directives can be given on the command line, in batch job scripts, and set in your SLURM defaults file. You can even modify running jobs to set or change their notification settings (see the <a href="../tips-scontrol/">scontrol tips</a> page).</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Take care not to cause a storm of outgoing email from our cluster!!! This will lead to our server being blacklisted by Hopkins and/or other mail administrators.</p>
+<p>By default email notifications are sent for entire job arrays, not individual tasks. Be VERY careful if you change that behavior.</p>
+</div>
+<p>The mail arguments are shown in the <a href="https://slurm.schedmd.com/archive/slurm-22.05.9/sbatch.html#OPT_mail-type">sbatch</a> manual page.</p>
+<div class="highlight"><span class="filename">Specify your email address</span><pre><span></span><code>--mail-user<span class="o">=</span>&lt;email-address&gt;
+</code></pre></div>
+<p><div class="highlight"><span class="filename">Specify notification events</span><pre><span></span><code>--mail-type<span class="o">=</span>&lt;list-of-types&gt;
+</code></pre></div>
+Here are the main types:</p>
+<ul>
+<li>NONE, BEGIN, END, FAIL, INVALID_DEPEND</li>
+<li>ALL (equivalent to BEGIN, END, FAIL, INVALID_DEPEND, REQUEUE, and STAGE_OUT)</li>
+<li>TIME_LIMIT, TIME_LIMIT_90 (reached 90 percent of time limit), TIME_LIMIT_80 (reached 80 percent of time limit), TIME_LIMIT_50 (reached 50 percent of time limit)</li>
+</ul>
+<h2 id="output-and-error-files">Output and error files<a class="headerlink" href="#output-and-error-files" title="Anchor link to this section for reference">&para;</a></h2>
+<p>By default your job will store an output file named "slurm-%j.out" where the "%j" is replaced by the job ID containing job output and errors in the same directory in which your job ran. You can direct SLURM to put the file(s) elsewhere and change their names.</p>
+<p>For job arrays, the default file name is "slurm-%A_%a.out", "%A" is replaced by the job ID and "%a" with the array index. </p>
+<p>If you add echo statements in your job batch file then you can inspect the job output/error files for clues as to its status.</p>
+<h2 id="scontrol-show-job">scontrol show job<a class="headerlink" href="#scontrol-show-job" title="Anchor link to this section for reference">&para;</a></h2>
+<p>The <code>scontrol</code> command has many uses. Before a job ends you can get detailed information with <code>scontrol</code>.</p>
+<div class="admonition yay">
+<p class="admonition-title">Yay</p>
+<p>We have written a document describing frequent uses of scontrol. See <a href="../tips-scontrol/">this page</a>.</p>
+</div>
+<h2 id="squeue">squeue<a class="headerlink" href="#squeue" title="Anchor link to this section for reference">&para;</a></h2>
+<p>Display information about pending and running jobs.</p>
+<p>https://slurm.schedmd.com/archive/slurm-22.05.9/squeue.html</p>
 <h2 id="sstat">sstat<a class="headerlink" href="#sstat" title="Anchor link to this section for reference">&para;</a></h2>
-<p>display process statistics of a running job/step</p>
+<p>Display process statistics of a running job/step. Some of the advice given for <code>sacct</code> (below) applies to <code>sstat</code>.</p>
 <p>https://slurm.schedmd.com/archive/slurm-22.05.9/sstat.html</p>
 <h2 id="sacct">sacct<a class="headerlink" href="#sacct" title="Anchor link to this section for reference">&para;</a></h2>
-<p>display accounting data for jobs in the Slurm database</p>
-<p>https://slurm.schedmd.com/archive/slurm-22.05.9/sacct.html</p>
+<p>Display accounting data for running and completed jobs in the Slurm database.</p>
+<div class="admonition yay">
+<p class="admonition-title">Yay</p>
+<p>We have written a document describing key elements of using sacct. See <a href="../tips-sacct/">this page</a>.</p>
+</div>
 <h2 id="suggestions">Suggestions<a class="headerlink" href="#suggestions" title="Anchor link to this section for reference">&para;</a></h2>
 <p>The following was sent to a user who was having SAS jobs fail with errors indicating a problem with space or quota.</p>
 <p>Instrumenting your job means adding commands to it to gather information. Running df commands to check the size and capacity of all or specific file systems. (df -h -x tmpfs might be a helpful variant). As mentioned in the orientation material, the sstat command can gather information for running jobs (as opposed to sacct which is oriented towards completed jobs). Some of the output fields available via sstat and sacct relate to memory usage while others can reveal disk input/output volumes.</p>
@@ -2694,21 +2802,6 @@
 <p>You could put the sleep, date, sstat commands inside of a while (true) loop. Then cancel the loop with a control c or scancel depending on whether they are running interactive or batch. Redirecting the output to text files would be useful.</p>
 <p>So your information-gathering efforts should probably start by running some sacct commands to inspect the parameters of previous failed jobs, and perhaps even the ones that succeeded to see if any differences appear.</p>
 <p>The -e flag is available to both sstat and sacct to show the fields available. The sets overlap but also differ.</p>
-<p>My text notes accumulated with sacct hints can give you ideas for ways to get at the info you want from sstat and sacct.
-The arguments to the SACCT_FORMAT environment variable commands can be given on the command line with the -o or maybe the -O flag. But setting it in the environment variable means your commands can be shorter and easier to issue.</p>
-<p>slurm:: sacct -S or -E now[{+|-}count[seconds(default)|minutes|hours|days|weeks]]
-slurm:: sacct --helpformat # shows available fields # so does -e
-slurm:: sacct: export SACCT_FORMAT="user,jobid,partition,nodelist,timelimit,submit,start,exitcode,state"
-slurm:: sacct: export SLURM_TIME_FORMAT="%a %T"   #  https://strftime.org
-slurm:: sacct: export SLURM_TIME_FORMAT="%a %m-%d %T"   #  https://strftime.org
-slurm:: sacct: export SLURM_TIME_FORMAT="%a %m-%d %H:%M"   #  https://strftime.org
-slurm:: sacct: export SACCT_FORMAT="user,jobid,jobname,nodelist%12,start%-15,end%-15,state%15,reqtres%40,maxrss,maxvmsize"
-slurm:: sacct: export SACCT_FORMAT="user,jobid,jobname,nodelist%12,start%-15,end%-15,state%15,reqtres%40,TRESUsageInTot%60"
-slurm:: sacct: export SACCT_FORMAT="user,jobid,jobname,nodelist%12,start%-20,end%-20,state%20,reqtres%40,TRESUsageInTot%200"
-slurm:: sacct --allusers -o "user,jobid,state,nodelist,submit,start,end,exitcode,state"
-slurm:: sacct -o SubmitLine%100 -j jobid # See what command user submitted
-slurm:: sacct -B -j jobid # See what batch file user submitted
-slurm:: sacct -o ALL -j jobid # See all fields for job</p>
 
 
 
@@ -2729,7 +2822,7 @@ slurm:: sacct -o ALL -j jobid # See all fields for job</p>
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1-2.1-2M12.5 7v5.2l4 2.4-1 1L11 13V7h1.5M11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2v1.8Z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">February 23, 2024</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">February 29, 2024</span>
   </span>
 
     
