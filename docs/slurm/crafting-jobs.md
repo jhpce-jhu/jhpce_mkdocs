@@ -31,6 +31,31 @@ For now see these [two PDF pages](images/slurm-precendence.pdf) from an orientat
 ## Job Environment
 !!! AuthoringNote 
     This probably deserves its own document. There are a variety of things to describe here, some subtle. Options to pass or not pass parts of environment used to dispatch job into the job. Should people use the `-l` arg to bash? `#SBATCH --chdir=`
+    
+## Input/output Considerations
+
+!!! AuthoringNote 
+    Use the same terms as used in the storage overview. We want to be consistent. It helps users, and helps us make links between related articles.
+
+- home directory
+- local compute node /tmp
+- fastscratch
+- project storage
+    
+Some programs have specific variables you can set to indicate where files should be created.
+
+SAS has "WORK" -- is this set to something in the module load process?
+
+R has "TEMPDIR" which defaults to /tmp.
+
+```
+You could use your 1TB of fastscratch space for this. So your SLURM script could use commands like:
+
+module load conda_R
+export TEMPDIR=$MYSCRATCH
+R CMD BATCH myprog.R
+
+```
 
 ## Dependent jobs
 
