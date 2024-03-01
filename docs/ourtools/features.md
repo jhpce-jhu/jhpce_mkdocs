@@ -9,6 +9,43 @@ Look here for information about these and other features!!! Just keep in mind th
 
 It isn't clear how much caution one should use in consulting MkDocs documents and people's solutions for it. JRT thinks that Material for MkDocs differs enough that one should definitely keep in mind whether your google search has turned up something about MkDocs.
 
+## Diagramming with Mermaid
+
+mkdocs.yml contains code enabling the use of a JavaScript tool called Mermaid. If you want your local `mkdocs serve` program to be able to display it, you need to `pip install mkdocs-mermaid2-plugin` (see [recipe](features.md#recipe-for-running-mkdocs-locally) at bottom of this page)
+
+Material for MkDocs Diagrams [documentation](https://squidfunk.github.io/mkdocs-material/reference/diagrams/?h=mermaid#diagrams)
+
+[Diagram syntax](http://mermaid.js.org/intro/syntax-reference.html) from the mermaid people
+
+A [live editor](https://mermaid.live) at the mer-people site!!! You can copy the resulting code to your buffer or save the image as (png,svg).
+
+```mermaid
+graph LR
+   A[Your computer] --> B[Login nodes]
+   B[Login nodes] --> C[(Compute nodes)]
+```
+
+Supported types: [flowchart](https://mermaid.js.org/syntax/flowchart.html) (aka graph), [sequenceDiagram](https://mermaid.js.org/syntax/sequenceDiagram.html), [stateDiagram-v2](https://mermaid.js.org/syntax/stateDiagram.html),[classDiagram](https://mermaid.js.org/syntax/classDiagram.html), [erDiagram](https://mermaid.js.org/syntax/entityRelationshipDiagram.html)
+
+JRT finds these types interesting: [timeline](https://mermaid.js.org/syntax/timeline.html), user [journey](https://mermaid.js.org/syntax/userJourney.html)
+
+Numerous others, including [pie](https://mermaid.js.org/syntax/pie.html), bar and line charts ([xychart-beta](https://mermaid.js.org/syntax/xyChart.html))
+
+??? Warning "Only some types officially supported by Material for MkDocs"
+    Besides the diagram types listed above, Mermaid.js provides support for pie charts, gantt charts, user journeys, git graphs and requirement diagrams, all of which are not officially supported by Material for MkDocs. Those diagrams should still work as advertised by Mermaid.js, but we don't consider them a good choice, mostly as they don't work well on mobile. While all Mermaid.js features should work out-of-the-box, Material for MkDocs will currently only adjust the fonts and colors for flowcharts, sequence diagrams, class diagrams, state diagrams and entity relationship diagrams.
+
+## Details
+Like an admonition but makes pages more readable by collapsing content.
+Documentation [here](https://facelessuser.github.io/pymdown-extensions/extensions/details/) and also explained in the detail below.
+
+??? tip "Psst: Click To Expand"
+    You can have it be open by default, too. (Add a ++plus++ after the opening ++question+question+question++)
+
+    ???+ multiple "Syntax to use"
+        Details must contain a blank line before they start. Use ??? to start a details block or ???+ if you want to start a details block whose default state is 'open'. Follow the start of the block with an optional class keyword (like "tip" or "warning") or classes (separated with spaces) and the summary contained in double quotes. Content is placed below the header and must be indented with FOUR SPACES.
+        
+        Another detail can be nested inside by adding another blank line and another detail header line and content block. But this header line needs to start with the word "multiple" So ??? multiple class "Title"
+
 ## Frontmatter (in document files)
 Tags are the primary use of frontmatter I think we should use at this point. [This](https://squidfunk.github.io/mkdocs-material/reference/) may not be a complete list of directives that one can optionally add within a document. But the basics are that you can add to the top of the document a stanza to set the title of the document, a description of it, a status indicator such as new or deprecated. See [this page](https://squidfunk.github.io/mkdocs-material/reference/#setting-the-page-icon) for how to define an icon for the page.
 
@@ -295,7 +332,8 @@ and ending with
 ## Recipe for Running Mkdocs Locally
 As of 2024029 these steps are needed to build a local Material for MkDocs server that will run a browser at `http://127.0.0.1:8000/`
 
-JRT doesn't understand the requirements for Git items and Material for MkDocs. There are some.
+!!! Warning
+    Because our `mkdocs.yml` contains some certain material, JRT thinks, `mkdocs serve` spits out errors if it doesn't find Git supporting files/directories. But you're supposed to be able to create stand-alone web pages outside of Git so it would be nice to understand the interdependency.
 
 ```ShellSession linenums="0"
 cd ~/Documents/GitHub/

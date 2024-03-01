@@ -9,6 +9,19 @@ tags:
 ## Cluster structure overview
 Basically the cluster consists of some public-facing hosts and then resources isolated from other networks. Insert a simplistic diagram or an updated one of the one in the Orientation. Help people visualize.
 
+```mermaid
+graph LR
+   A[Your computer] --> B[Login nodes]
+   A[Your computer] -- Only via Hopkins/VPN --> D[App server]
+   A[Your computer] --> C[Transfer node]
+   B[Login nodes] --> E[Compute node1]
+   D[App server] --> E[Compute node1]
+   B[Login nodes] --> F[Compute node2]
+   D[App server] --> F[Compute node2]
+   B[Login nodes] --> G[Compute node3]
+   D[App server] --> G[Compute node3]
+```
+
 ## Public-facing: Login and Transfer 
 What is visible to the Internet?
 Mention that some interfaces require being on Hopkins networks (is this only the C-SUB's login node?)

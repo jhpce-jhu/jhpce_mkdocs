@@ -17,7 +17,7 @@ Making sure your jobs request the right amount of RAM and the right number of CP
 You can direct SLURM to send you email when various things happen with your job. These directives can be given on the command line, in batch job scripts, and set in your SLURM defaults file. You can even modify running jobs to set or change their notification settings (see the [scontrol tips](tips-scontrol.md) page).
 
 !!! Warning
-    Take care not to cause a storm of outgoing email from our cluster!!! This will lead to our server being blacklisted by Hopkins and/or other mail administrators.
+    Take care not to cause a storm of outgoing email from our cluster!!! This will lead to our server being blacklisted by Hopkins and/or other mail administrators. Then NO ONE will get email until we can convince them that it won't happen again.
     
     By default email notifications are sent for entire job arrays, not individual tasks. Be VERY careful if you change that behavior.
 
@@ -28,13 +28,13 @@ The mail arguments are shown in the [sbatch](https://slurm.schedmd.com/archive/s
 ```
 
 ```Shell title="Specify notification events" linenums="0"
---mail-type=<list-of-types>
+--mail-type=<list-of-types>  # comma-separated
 ```
-Here are the main types:
 
-- NONE, BEGIN, END, FAIL, INVALID_DEPEND
-- ALL (equivalent to BEGIN, END, FAIL, INVALID_DEPEND, REQUEUE, and STAGE_OUT)
-- TIME_LIMIT, TIME_LIMIT_90 (reached 90 percent of time limit), TIME_LIMIT_80 (reached 80 percent of time limit), TIME_LIMIT_50 (reached 50 percent of time limit)
+??? note "Here are the main types:"
+    - NONE, BEGIN, END, FAIL, INVALID_DEPEND
+    - ALL (equivalent to BEGIN, END, FAIL, INVALID_DEPEND, REQUEUE, and STAGE_OUT)
+    - TIME_LIMIT, TIME_LIMIT_90 (reached 90 percent of time limit), TIME_LIMIT_80 (reached 80 percent of time limit), TIME_LIMIT_50 (reached 50 percent of time limit)
 
 ## Output and error files
 By default your job will store an output file named "slurm-%j.out" where the "%j" is replaced by the job ID containing job output and errors in the same directory in which your job ran. You can direct SLURM to put the file(s) elsewhere and change their names.

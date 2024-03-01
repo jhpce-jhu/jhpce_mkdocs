@@ -1,3 +1,9 @@
+---
+tags:
+  - topic-overview
+  - needs-to-be-written
+---
+
 # SOFTWARE TOPIC - page to develop outline
 
 ## What we've installed & how to use it

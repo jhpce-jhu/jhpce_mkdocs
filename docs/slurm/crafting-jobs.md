@@ -87,43 +87,45 @@ Each component of such jobs has virtually all job options available including pa
 
 Here is a sample batch job. More information about this topic is accumulating [here](../files/copying-files.md).
 
-```Shell
-#!/bin/bash
+??? note "Click to expand"
+    Content. How hard will it be to do code blocks?
+    ```Shell
+    #!/bin/bash
 
-#SBATCH -p shared
-#SBATCH --mem=10G
-#SBATCH --job-name=cp-files
-#SBATCH --time=15-0
-#SBATCH --nodes=1
-#SBATCH --ntasks=1
-#SBATCH --cpus-per-task=1
-#SBATCH --output=cp-files-%j.out	# file to collect standard output
-#SBATCH --error=cp-files-%j.err	# file to collect standard output
-#SBATCH --mail-user=my-email-address@jhu.edu
-#SBATCH --mail-type=BEGIN,FAIL,END
+    #SBATCH -p shared
+    #SBATCH --mem=10G
+    #SBATCH --job-name=cp-files
+    #SBATCH --time=15-0
+    #SBATCH --nodes=1
+    #SBATCH --ntasks=1
+    #SBATCH --cpus-per-task=1
+    #SBATCH --output=cp-files-%j.out	# file to collect standard output
+    #SBATCH --error=cp-files-%j.err	# file to collect standard output
+    #SBATCH --mail-user=my-email-address@jhu.edu
+    #SBATCH --mail-type=BEGIN,FAIL,END
 
-date
-cd /dcs04/sample/path/
+    date
+    cd /dcs04/sample/path/
 
-echo "I am running on compute node:"
-hostname
+    echo "I am running on compute node:"
+    hostname
 
-echo "In directory:"
-pwd
+    echo "In directory:"
+    pwd
 
-echo "The files found in this directory are:"
-/bin/ls
+    echo "The files found in this directory are:"
+    /bin/ls
 
-# args are meant to try to prevent files from being deleted in destination
-rsyncargs="-h --progress --sparse --numeric-ids --one-file-system --stats --ignore-existing --max-delete=0"
+    # args are meant to try to prevent files from being deleted in destination
+    rsyncargs="-h --progress --sparse --numeric-ids --one-file-system --stats --ignore-existing --max-delete=0"
 
-echo "about to try to rsync"
+    echo "about to try to rsync"
 
-rsync -a $rsyncargs directory-to-be-copied /dcs05/destination/path/
+    rsync -a $rsyncargs directory-to-be-copied /dcs05/destination/path/
 
-date
-echo "done"
-```
+    date
+    echo "done"
+    ```
 
 ### Copying data into/out of cluster
 We have a transfer node which is a SLURM client.
@@ -132,40 +134,41 @@ We have a transfer node which is a SLURM client.
 ### Running A Job On Every Node
 This is put here as a tool for system administrators needing to do maintenance where a SLURM job is appropriate. Maybe the technique will be useful for someone for a more limited case.
 
-```
-#!/bin/bash
-#
-# JPHCE - dispatch-to-everynode - Dispatch a job to each node which is responding
-#
-#       FAILS TO WORK IF YOU DON'T SPECIFY A BUNCH OF PARTITIONS
-#       BECAUSE SHARED IS USED. Following worked at this time
-#       #SBATCH --partition=shared,cee,transfer,sysadmin,sas,gpu,bstgpu,neuron
-#
-# You need to specify a batch file at the minimum
-# You can specify additional arguments
-# TODO: Nice to be able to specify a partition to sinfo if desired
-#--------------------------------------------------------------------------
-#--------------------------------------------------------------------------
-# Date          Modification                                       Initials
-#--------------------------------------------------------------------------
-# 20231222      Created, added standard comment section.                JRT
-#--------------------------------------------------------------------------
+??? note "Click to expand"
+    ```
+    #!/bin/bash
+    #
+    # JPHCE - dispatch-to-everynode - Dispatch a job to each node which is responding
+    #
+    #       FAILS TO WORK IF YOU DON'T SPECIFY A BUNCH OF PARTITIONS
+    #       BECAUSE SHARED IS USED. Following worked at this time
+    #       #SBATCH --partition=shared,cee,transfer,sysadmin,sas,gpu,bstgpu,neuron
+    #
+    # You need to specify a batch file at the minimum
+    # You can specify additional arguments
+    # TODO: Nice to be able to specify a partition to sinfo if desired
+    #--------------------------------------------------------------------------
+    #--------------------------------------------------------------------------
+    # Date          Modification                                       Initials
+    #--------------------------------------------------------------------------
+    # 20231222      Created, added standard comment section.                JRT
+    #--------------------------------------------------------------------------
 
-usage()
-{
+    usage()
+    {
     echo "Usage: $0 [directives..] batchfile "
     echo "Usage:   Specify at least a job file"
     echo "Usage:   Good idea to include in your batch file --output=/dev/null"
     exit 1
-}
+    }
 
-if [ $# -lt 1 ]; then
-        usage
-else
-        for i in `sinfo -N -r | awk '{print $1}' | sort -u | grep -v NODELIST`
-        do
-                echo $i
-                sbatch --nodelist=${i} "$@"
-        done
-fi
-```
+    if [ $# -lt 1 ]; then
+            usage
+    else
+            for i in `sinfo -N -r | awk '{print $1}' | sort -u | grep -v NODELIST`
+            do
+                    echo $i
+                    sbatch --nodelist=${i} "$@"
+            done
+    fi
+    ```
