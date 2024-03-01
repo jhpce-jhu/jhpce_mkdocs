@@ -1206,6 +1206,15 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#creating-a-group-writable-directory" class="md-nav__link">
+    <span class="md-ellipsis">
+      Creating A Group Writable Directory
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -2570,6 +2579,15 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#creating-a-group-writable-directory" class="md-nav__link">
+    <span class="md-ellipsis">
+      Creating A Group Writable Directory
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -2624,6 +2642,49 @@ find<span class="w"> </span>.<span class="w"> </span>-type<span class="w"> </spa
 <h2 id="access-control-lists-acls">Access Control Lists - ACLs<a class="headerlink" href="#access-control-lists-acls" title="Anchor link to this section for reference">&para;</a></h2>
 <p>Sometimes you want to give access to an individual or a group in ways that the traditional UNIX permissions and ownership model do not allow. You can use an ACL to grant those permissions, including </p>
 <p>See <a href="../acl/">this document</a> for details on how to do this.</p>
+<h2 id="creating-a-group-writable-directory">Creating A Group Writable Directory<a class="headerlink" href="#creating-a-group-writable-directory" title="Anchor link to this section for reference">&para;</a></h2>
+<div class="admonition warning">
+<p class="admonition-title">Raw Material Here</p>
+<p>The following needs to be rewritten.</p>
+</div>
+<p>The list command, ls, is crucial to figuring out what is possible, where.
+The long argument, -l, will show you ownership and permission information, as seen in my previous email.
+Sometimes you also want to use the -d argument to tell ls that you want to see the information about a directory and not what is inside it.</p>
+<p>So using ls -l  on /users/shared/55548/ will show you that many subdirectories are not group writable. Your failed efforts involve trying to create files or directories inside of directories that are group readable and searchable and sticky but not writable.</p>
+<p>Every directory in a path to the destination needs to have suitable permissions.
+Readability: every directory in the path /users/55548/shared/MA_switching needs to be readable by for you to be able to list its contents.
+Writability: only the last directory in the path needs to be writable for you to be able to modify its contents.</p>
+<p>jhpcecms01:/users/55548/shared# ls -l
+total 300
+drwxrwsrwx  7 c-jlevy33-55548  c-55548  7 Dec  5 11:10 biosim_leverage/
+drwxr-s---  3 c-eblasco1-55548 c-55548  3 Feb  1 14:00 c-eblasco1-55548/
+drwxr-s---  7 c-tbrow261-10201 c-55548  9 Dec 20 12:17 Elixhauser/
+drwxr-s---  3 c-ttotoja1-55548 c-55548  3 Feb 16 16:09 forOwen/
+drwxrwxr-x 16 c-jxu123-10201   c-55548 22 Jul 15  2023 from-yoda/
+drwxrwsrwx  7 c-jlevy33-55548  c-55548  7 Feb  7 10:54 hipfracture_adrd/
+drwxr-s---  7 c-jlevy33-55548  c-55548  7 Dec 20 14:03 levy_partd/
+drwxr-s---  2 c-aliu63-55548   c-55548  6 Feb 19 16:39 MA_partB/
+drwxr-s---  2 c-aliu63-55548   c-55548  5 Dec 15 14:03 MA_switching/
+drwxr-s--- 10 c-rwu32-55548    c-55548 13 Nov  8 10:31 mltss_duals/
+drwxrws---  4 c-yyang279-55548 c-55548  4 Nov 30 10:13 shen_yang/
+drwxr-s---  2 c-ykuang6-55548  c-55548  4 Jan 30 12:13 test/
+drwxr-s---  2 c-jlevy33-55548  c-55548  3 Aug 29 15:19 toofull/</p>
+<p>Only the owner of a directory can change its permissions. So in this case c-aliu63-55548 needs to change the permissions on MA_switching to make it group writable.
+This command run by them would change the directory:
+chmod g+w /users/55548/shared/MA_Switching
+This command run by them would change the directory and everything within it using the recursive flag:
+chmod -R g+w /users/55548/shared/MA_Switching</p>
+<p>Why are files and directories created with the permissions that they get?
+A key factor here is the “umask” setting in the user’s environment when files and directories are being created.
+The command “umask -S” will show you the permissions that will be used for new files and directories.
+Here you see an example of my inspecting the contents of my umask setting and then changing it to make it such that when I create a file it will be group-writable.
+If you want such a setting to be used in the future for all of your logins, you would add a line to the bottom of your .bashrc file in your home directory.</p>
+<p>jhpcecms01:/users/55548/shared# umask -S
+u=rwx,g=rx,o=rx
+jhpcecms01:/users/55548/shared# umask u=rwx,g=rwx,o=rx
+jhpcecms01:/users/55548/shared# umask -S
+u=rwx,g=rwx,o=rx</p>
+<p>Many of the people modifying files in the shared directory may want to adjust the permissions of existing files and directories, and change their umask values. If they want directory trees to be group writable and new files or directories to be the same. Or some other set of permissions. Not everything within the shared directory needs to be shared with every other user of the DUA.</p>
 
 
 
@@ -2644,7 +2705,7 @@ find<span class="w"> </span>.<span class="w"> </span>-type<span class="w"> </spa
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1-2.1-2M12.5 7v5.2l4 2.4-1 1L11 13V7h1.5M11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2v1.8Z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">February 20, 2024</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">March 1, 2024</span>
   </span>
 
     
