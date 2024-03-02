@@ -17,7 +17,7 @@ Probably put some of it here, some of it into other document(s)
 https://jhpce.jhu.edu/knowledge-base/gpus-on-the-jhpce-cluster/
 
 ## Our GPU Nodes
-Table with their resources, and partition names.
+Table with their resources, and partition names. Point to this [existing](partitions.md#gpu-partitions) page.
 
 ## Using them
 
@@ -30,3 +30,13 @@ Mark has written material and sent it to various people. Combine that with perha
 
 Look for other resources out there containing advice about using GPUs in a SLURM context.
 
+## Existing docs at other sites 
+
+!!! Warning
+    These other clusters have different software and policies. Look for useful information but don't expect what they say/do to work here.
+
+New Mexico State Univ: [their page](https://hpc.nmsu.edu/discovery/slurm/gpu-jobs/)
+
+UMich section showing [relevant SLURM directives for GPU use](https://arc.umich.edu/greatlakes/slurm-user-guide/)
+
+Yale has CUDA, tensorflow and miniconda modules while we do not. U[seful?](https://docs.ycrc.yale.edu/clusters-at-yale/guides/gpus-cuda/) [PyTorch](https://docs.ycrc.yale.edu/clusters-at-yale/guides/pytorch/) install instructions.
