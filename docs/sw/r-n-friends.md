@@ -1,11 +1,14 @@
 ---
 tags:
   - in-progress
----
+---  
 # R Basics
 * R
 * RStudio
 * RStudio Server
+
+!!! Warning "Authoring Note"
+    Jeffrey started copying over RStudio and RStudio Server images and text from the old web site. Then switched to another task. So that, especially, needs careful review.
 
 We have a version of R available as a [module](modules.md).
 
