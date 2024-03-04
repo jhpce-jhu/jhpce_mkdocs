@@ -56,8 +56,9 @@ nav:
       - Building Your Own: sw/building-from-src.md
       - R and RStudio and friends: sw/r-n-friends.md
       - Managing Jobs With R and slurmjobs: sw/r-slurmjobs.md
-      - SAS: sw/sas.md
       - Jupyter: sw/jupyter.md
+      - Matlab: sw/matlab.md
+      - SAS: sw/sas.md
       - Containers: sw/containers.md
     - Job scheduler (SLURM): 
       - Example User Guides: slurm/user-guide-collection.md
