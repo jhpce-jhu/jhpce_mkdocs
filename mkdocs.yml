@@ -170,6 +170,7 @@ plugins:
 # https://squidfunk.github.io/mkdocs-material/setup/extensions/python-markdown-extensions/
 markdown_extensions:
   # JRT says following three lines are ALL needed to enable admonition
+  # Then to the superfences line I added the info needed for mermaid 
   # Mermaid: This was added to superfences to enable simple diagrams & charting
   # https://squidfunk.github.io/mkdocs-material/reference/diagrams/?h=mermaid#diagrams
   - admonition
@@ -183,6 +184,8 @@ markdown_extensions:
   - attr_list
   - def_list # Definition lists
   - footnotes
+  # https://squidfunk.github.io/mkdocs-material/reference/grids/
+  - md_in_html # added to support grids for the home page
   - tables
   # TABLE OF CONTENTS
   # https://squidfunk.github.io/mkdocs-material/setup/extensions/python-markdown/#table-of-contents

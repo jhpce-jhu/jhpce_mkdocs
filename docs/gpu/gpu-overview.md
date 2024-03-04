@@ -1,6 +1,7 @@
 ---
 tags:
   - topic-overview
+  - needs-to-be-written
   - gpu
   - mark
 ---
@@ -17,7 +18,7 @@ Probably put some of it here, some of it into other document(s)
 https://jhpce.jhu.edu/knowledge-base/gpus-on-the-jhpce-cluster/
 
 ## Our GPU Nodes
-Table with their resources, and partition names. Point to this [existing](partitions.md#gpu-partitions) page.
+Table with their resources, and partition names. Point to this [existing](../slurm/partitions.md#gpu-partitions) page.
 
 ## Using them
 
