@@ -1,8 +1,14 @@
+---
+tags:
+  - slurm
+---
 # SLURM USER GUIDES
 
 Umich: [their page](https://arc.umich.edu/greatlakes/slurm-user-guide/)
 
 Yale: [their page](https://docs.ycrc.yale.edu/clusters-at-yale/job-scheduling/)
+
+New Mexico State Univ: [their page](https://hpc.nmsu.edu/discovery/slurm/)
 
 BIH: [their page](https://hpc-docs.cubi.bihealth.org/slurm/overview/)
 

@@ -75,7 +75,7 @@ sas command to do so:
 
 `sas -helpbrowser SAS -xrm "SAS.webBrowser:'/usr/bin/chromium-browser'" -xrm "SAS.helpBrowser:'/usr/bin/chromium-browser'"`
 
-Here is some code you can add to your .bashrc file. Once that becomes part of your environment (by sourcing the file or by logging out and back in again), after loading SAS you can start SAS so that it can open the browser if needed.
+Here is some code you can add to your .bashrc file. Once that becomes part of your environment (by sourcing the file or by logging out and back in again), after loading SAS you can start SAS so that it can open the browser if needed. Part of its benefit is hiding error messages from the Chromium browser that can be ignored. The chromium browser likes to run on a local system with a graphics card, but because it is running in a remote X11 forwarding environment, and can’t find a graphics card, it will generate those warning messages.
 
 ```Shell
 # SAS routines for __interactive__ sessions where plotting is involved
