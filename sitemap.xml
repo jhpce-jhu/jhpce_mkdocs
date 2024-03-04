@@ -291,6 +291,11 @@
          <changefreq>daily</changefreq>
     </url>
     <url>
+         <loc>https://www.jhpce-jhu.github.io/jhpce_docs/sw/matlab/</loc>
+         <lastmod>2024-03-04</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
          <loc>https://www.jhpce-jhu.github.io/jhpce_docs/sw/modules/</loc>
          <lastmod>2024-03-04</lastmod>
          <changefreq>daily</changefreq>
@@ -312,6 +317,11 @@
     </url>
     <url>
          <loc>https://www.jhpce-jhu.github.io/jhpce_docs/sw/sw-overview/</loc>
+         <lastmod>2024-03-04</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://www.jhpce-jhu.github.io/jhpce_docs/sw/sw-stub/</loc>
          <lastmod>2024-03-04</lastmod>
          <changefreq>daily</changefreq>
     </url>
