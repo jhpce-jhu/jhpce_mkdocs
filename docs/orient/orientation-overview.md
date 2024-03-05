@@ -1,6 +1,8 @@
 ---
 tags:
   - needs-to-be-written
+  - topic-overview
+title: "Orientation Overview"
 ---
 # All about orientation
 
@@ -12,7 +14,7 @@ Add link here.
 ## Documentation used in orientation
 You can download the orientation slides at [JHPCE-Overview](../orient/images/latest-orient.pdf)
 
-JRT thinks that such file should live in docs/orient/images/
+(Those files live in docs/orient/images/)
 
 
 
