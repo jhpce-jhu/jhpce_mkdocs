@@ -3,9 +3,10 @@ Let's create a visually appealing web site using some of these features!! Use a 
 
 Jeffrey likes:
 
-* "[admonitions](features.md#admonitions)" a lot.
-* [highlighting text](features.md/#highlighting-text)
+* [admonitions](features.md#admonitions) -- a lot!!
+* {==[highlighting text](features.md/#highlighting-text)==}
 * [keyboard meta keys](features.md/#keyboard-meta-keys) (like ++ctrl++)
+* Details [(collapsed blocks of text)](features.md/#details)
 
 Running the mkdocs package installed via python allows you to develop web pages on your local computer. See [the recipe](features.md##recipe-for-running-mkdocs-locally)
 

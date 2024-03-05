@@ -75,7 +75,8 @@ The ssh-agent will remain active for as long as your desktop or laptop is up and
 
 #### Loging into nodes
 
-(((This isn't true if you use `srun`. Is it even true in JHPCE 3.0 anyway?  Also, do we want to be suggesting that people log into compute nodes?)))
+!!! Warning "Authoring Note"
+    (((This isn't true if you use `srun`. Is it even true in JHPCE 3.0 anyway Also, do we want to be suggesting that people log into compute nodes?)))
 
 Logging into a cluster node from a login node requires keypairs. 
  If
@@ -86,23 +87,42 @@ to log into the login node, then repeat create a new public private
 key / public key pair on the cluster.  Append the public key to
 your`authorized_key` file. Note, when appending, add the public key,
 do not overwrite the existing file.
-  
-#### Troubleshooting
 
-1. Many users set up an alias for the ssh command so they don’t have to type as much to log into the remote host.  You can do this by adding the following line to your `~/.bashrc`, `alias hpc='ssh -X <your_userid>@jhpce01.jhsph.edu'`.
-2. If you followed the directions and ssh is still asking for a password, then it is likely that the permissions of the  `~/.ssh` directory  on the remote host, are not set correctly. To fix the permissions, execute the following command on the remote host `chmod -R o-rwx ~/.ssh`
-3. Finally, if your changed the permissions of your `.ssh` directory
-   and you are still being asked for a password, then perhaps the
-   permissions on your home directory are such that others are allowed
-   to write to it. If this is the case, then this needs to be changed
-   so that only you can write to it. Contact bit support to have this
-   changed.
+Many users set up an alias for the ssh command so they don’t have to type as much to log into the remote host.  You can do this by adding the following line to your `~/.bashrc`, `alias hpc='ssh -X <your_userid>@jhpce01.jhsph.edu'`.
 
 ### Windows machines 
 If your desktop/laptop runs Microsoft Windows then you first need to
 install MobaXterm on your windows machine. If you are
-using MobaXterm, please use the steps at the bottom of the MobaXterm
-Configuration Page.
+using MobaXterm, please use the steps at the bottom of our [MobaXterm
+configuration page](mobaxterm.md).
+
+## Permissions on SSH Files
+SSH is **_very_** strict about the permissions found on your files on the remote end of a connection. These files are found on JHPCE in your home directory inside the directory `.ssh`  Because this directory's name begins with a period, it is not listed when you use the `ls` program.
+
+The primary symptom of there being a file permissions problem is that ssh is still asking for a password when you think it should not.
+
+These rules are normally found to be broken on the remote side of a connection, but the permissions on your computer also matter.
+
+ALL OF THESE FILES NEED TO BE OWNED BY YOUR ACCOUNT.
+
+This table shows you two forms of the chmod command arguments needed to force permissions to be acceptable by SSH. The most convenient notation used by chmod is an octal (base-8) number. The most readable notation is a comma-separated combination of letters.
+
+These two commands are equivalent:
+
+* `chmod 700 $HOME/.ssh`
+* `chmod u+rwx,g-rwx,o-rwx $HOME/.ssh`
+
+
+|File/Directory|Octal|Human Readable|Note|
+|-------|-------------|-------------|----|
+|$HOME|755 or tighter|g-w,o-w|Not writable by group or other|
+|$HOME/.ssh|700|u+rwx,g-rwx,o-rwx|No access by group or other|
+|$HOME/.ssh/authorized_keys|600|u+rw,g-rwx,o-rwx||
+|$HOME/.ssh/config|600|u+rw,g-rwx,o-rwx|Config file|
+|$HOME/.ssh/id_*|600|u+rw,g-rwx,o-rwx|Private key files|
+|$HOME/.ssh/id_*.pub|644|u+rw,g+r,g-wx,o+r,o-wx|Public key files|
+
+
 
 ## SSH and X11
 
