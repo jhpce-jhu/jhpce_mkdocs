@@ -54,12 +54,13 @@ nav:
       - Modules: sw/modules.md
       - Adding local pkgs: sw/adding-pkgs.md
       - Building Your Own: sw/building-from-src.md
-      - R and RStudio and friends: sw/r-n-friends.md
-      - Managing Jobs With R and slurmjobs: sw/r-slurmjobs.md
-      - Jupyter: sw/jupyter.md
-      - Matlab: sw/matlab.md
-      - SAS: sw/sas.md
       - Containers: sw/containers.md
+      - Application-Specific:
+        - R and RStudio and friends: sw/r-n-friends.md
+        - Managing Jobs With R and slurmjobs: sw/r-slurmjobs.md
+        - Jupyter: sw/jupyter.md
+        - Matlab: sw/matlab.md
+        - SAS: sw/sas.md
     - Job scheduler (SLURM): 
       - Example User Guides: slurm/user-guide-collection.md
       - Partitions: slurm/partitions.md
