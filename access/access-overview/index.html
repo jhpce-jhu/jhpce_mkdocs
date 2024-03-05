@@ -2705,7 +2705,7 @@
 
 <h1 id="accessing-the-cluster-overview">Accessing the Cluster: Overview<a class="headerlink" href="#accessing-the-cluster-overview" title="Anchor link to this section for reference">&para;</a></h1>
 <h2 id="cluster-structure-overview">Cluster structure overview<a class="headerlink" href="#cluster-structure-overview" title="Anchor link to this section for reference">&para;</a></h2>
-<p>Basically the cluster consists of some public-facing hosts and then resources isolated from other networks. Insert a simplistic diagram or an updated one of the one in the Orientation. Help people visualize.</p>
+<p>The cluster consists of some public-facing hosts with the remaining computers "behind them" on private networks.</p>
 <pre class="mermaid"><code>graph LR
    A[Your computer] --&gt; B[Login nodes]
    A[Your computer] -- Only via Hopkins/VPN --&gt; D[App server]
@@ -2715,17 +2715,23 @@
    B[Login nodes] --&gt; F[Compute node2]
    D[App server] --&gt; F[Compute node2]
    B[Login nodes] --&gt; G[Compute node3]
-   D[App server] --&gt; G[Compute node3]</code></pre>
+   D[App server] --&gt; G[Compute node3]
+   C[Transfer node] &lt;--&gt; H[(storage servers)]
+   B[Login nodes] &lt;--&gt; H[(storage servers)]
+   D[App server] &lt;--&gt; H[(storage servers)]
+   E[Compute node1] &lt;--&gt; H[(storage servers)]
+   F[Compute node2] &lt;--&gt; H[(storage servers)]
+   G[Compute node3] &lt;--&gt; H[(storage servers)]
+</code></pre>
 <h2 id="public-facing-login-and-transfer">Public-facing: Login and Transfer<a class="headerlink" href="#public-facing-login-and-transfer" title="Anchor link to this section for reference">&para;</a></h2>
-<p>What is visible to the Internet?
-Mention that some interfaces require being on Hopkins networks (is this only the C-SUB's login node?)</p>
-<p>(Whether here or in some other more-specific document: Do we want to say that we recommend being on a Hopkins network because of any factors? Better speed if you're actually on a Hopkins network? Lower speed if you use VPN? Anything?)</p>
+<p>The login and transfer nodes are accessible to the wider Internet. 
+For security reasons, the web portal<sup id="fnref:1"><a class="footnote-ref" href="#fn:1">1</a></sup> is only available to computers on Hopkins networks. If you are not on a Hopkins campus, that means that you need to use the VPN to be able to see that node.</p>
 <h2 id="ssh-is-the-primary-method">SSH Is The Primary Method<a class="headerlink" href="#ssh-is-the-primary-method" title="Anchor link to this section for reference">&para;</a></h2>
 <p>Access to the JHPCE cluster requires the use of SSH.</p>
 <p>SSH stands for Secure SHell. SSH is actually a set of internet standard protocols. Programs implementing these protocols include both command line interface (CLI) tools and those with graphic user interfaces (GUI).  They all enable you to make secure, encrypted connections from one computer to the next.</p>
 <p><a href="../ssh/">This document</a> provides more information on SSH.</p>
 <h2 id="x11the-x-window-system">X11/The X Window System<a class="headerlink" href="#x11the-x-window-system" title="Anchor link to this section for reference">&para;</a></h2>
-<p>The <a href="https://en.wikipedia.org/wiki/X_Window_System">X Window System</a> (aka X11, aka X) is the primary GUI system for UNIX computers. X allows a program (an X "client") running on a UNIX computer in the cluster to be displayed on a remote computer (running an X "server"<sup id="fnref:1"><a class="footnote-ref" href="#fn:1">1</a></sup>) over the network. To use it, your local computer needs to have X server software installed on it.</p>
+<p>The <a href="https://en.wikipedia.org/wiki/X_Window_System">X Window System</a> (aka X11, aka X) is the primary GUI system for UNIX computers. X allows a program (an X "client") running on a UNIX computer in the cluster to be displayed on a remote computer (running an X "server"<sup id="fnref:2"><a class="footnote-ref" href="#fn:2">2</a></sup>) over the network. To use it, your local computer needs to have X server software installed on it.</p>
 <p>SSH provides support for tunnelling X11 over an encrypted connection. You may need to tell SSH that you want that service, by, for example, adding the -X flag to an ssh command in a macOS Terminal.</p>
 <ul>
 <li>macOS users need to install <a href="https://en.wikipedia.org/wiki/XQuartz">XQuartz</a> from <a href="https://www.xquartz.org">xquartz.org</a>.</li>
@@ -2744,7 +2750,7 @@ Mention that some interfaces require being on Hopkins networks (is this only the
 <p>Describe capabilities of web portal.
 Links to the apps page(s) about it.</p>
 <h2 id="safe-desktop">SAFE Desktop<a class="headerlink" href="#safe-desktop" title="Anchor link to this section for reference">&para;</a></h2>
-<p>Do we mention this as an access channel?</p>
+<p>A virtual desktop named the <a href="https://ictr.johnshopkins.edu/service/informatics/safe-desktop/">Secure Analytic Framework Environment</a> (SAFE) is a resource that some people find useful for their computing, as well as a means to access JHPCE (via the <a href="../mobaxterm/">MobaXterm</a> application). It is a virtual Windows computer equipped with many applications JHPCE members use for their research, including SAS and Stata. It includes 100GB of secure data storage for sensitive (PHI, PII) information. That data can be shared by research groups. Free for Johns Hopkins Medicine staff and students, it <mark class="critic">requires filling out a form and waiting for approval</mark>.</p>
 <h2 id="file-transfers">File Transfers<a class="headerlink" href="#file-transfers" title="Anchor link to this section for reference">&para;</a></h2>
 <p>Brief description of our transfer node and its capabilities. Admonition to not use login node for transfers (either in or out or within the cluster)</p>
 <p>Point to some overview doc about this topic, which is going to have several documents in total, not one giant one, i.e.</p>
@@ -2758,7 +2764,10 @@ Links to the apps page(s) about it.</p>
 <hr />
 <ol>
 <li id="fn:1">
-<p>Note that X reverses the normal conception of client/server operation, which is that the remote computer is the "server". In X11, the "server" is the program receiving the keyboard and mouse inputs and displaying the output of remote "client" programs.&#160;<a class="footnote-backref" href="#fnref:1" title="Jump back to footnote 1 in the text">&#8617;</a></p>
+<p>jhpce-app02.jhsph.edu&#160;<a class="footnote-backref" href="#fnref:1" title="Jump back to footnote 1 in the text">&#8617;</a></p>
+</li>
+<li id="fn:2">
+<p>Note that X reverses the normal conception of client/server operation, which is that the remote computer is the "server". In X11, the "server" is the program receiving the keyboard and mouse inputs and displaying the output of remote "client" programs.&#160;<a class="footnote-backref" href="#fnref:2" title="Jump back to footnote 2 in the text">&#8617;</a></p>
 </li>
 </ol>
 </div>
@@ -2782,7 +2791,7 @@ Links to the apps page(s) about it.</p>
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1-2.1-2M12.5 7v5.2l4 2.4-1 1L11 13V7h1.5M11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2v1.8Z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">March 1, 2024</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">March 5, 2024</span>
   </span>
 
     
