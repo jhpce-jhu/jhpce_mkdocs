@@ -1,5 +1,13 @@
 # WEB SITE TOOLS/ENABLED FEATURES WORTH KNOWING HOW TO USE
-Some more useful than others. Jeffrey likes "[admonitions](features.md#admonitions)" a lot.
+Let's create a visually appealing web site using some of these features!! Use a WYSIWYG editor like [MacDown](features.md#macdown-wysiwyg-editor) and ["mkdocs serve"](features.md/#recipe-for-running-mkdocs-locally) to quickly edit.
+
+Jeffrey likes:
+
+* "[admonitions](features.md#admonitions)" a lot.
+* [highlighting text](features.md/#highlighting-text)
+* [keyboard meta keys](features.md/#keyboard-meta-keys) (like ++ctrl++)
+
+Running the mkdocs package installed via python allows you to develop web pages on your local computer. See [the recipe](features.md##recipe-for-running-mkdocs-locally)
 
 There is another document containing [wishlist](wishlist.md) items that we might want to enable/configure.
 
@@ -369,3 +377,20 @@ TypeError: '<' not supported between instances of 'NoneType' and 'str'
 ERROR   -  [14:46:28] An error happened during the rebuild. The server will appear
            stuck until build errors are resolved.
 ```
+
+## MacDown WYSIWYG Editor
+
+Jeffrey has found that the free [MacDown](https://macdown.uranusjr.com) editor is very helpful in authoring. It is a MarkDown editor for the Macintosh which displays the source code in one pane and the rendered document in another pane opposite.
+
+It renders most of Material for MkDocs material correctly, but not all. This is why it is useful to run "mkdocs serve" locally.
+
+There are preferences that are worth enabling. [This page](https://www.markdownguide.org/tools/macdown/) lists the MarkDown elements which are enabled and disabled by default.
+[This page](https://www.markdownguide.org/extended-syntax/#overview) discusses extended syntax and the site has other interesting MarkDown reference information.
+
+If you copy a web URL, highlight some text in your source code, then click on the link insert symbol in the toolbar, it will automatically paste in the URl.
+
+Does automatic pattern matching for syntax. Includes a command line program to use to open documents (Jeffrey configured his Mac using Get Info on an .md file to use MacDown by default so he can say in Terminal "open file.md" and it opens up the GUI). Supports a variety of themes for those who like dark mode.
+
+One flaw in this program is that sometimes the source code pane is blank when you open existing documents. The workaround is to grow and shrink the document width and the dividing line between the source and rendered document panes.
+
+You can install it with Homebrew with `brew install --cask macdown` Stats on [its page ](https://formulae.brew.sh/cask/macdown)indicate some popularity.
