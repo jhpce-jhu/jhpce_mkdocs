@@ -1,6 +1,6 @@
 ---
 tags:
-  - in-progress
+  - done
   - topic-overview
 title: "Access Overview"
 ---
@@ -67,23 +67,21 @@ These programs are usually used on smartphones, but there are programs available
 After you log into JHPCE for the first time, you should immediately configure your OTP program using a "secret" accessible to you on the cluster via the `auth_util` program. Instructions for doing that are found in the [Orientation document](../orient/images/latest-orient.pdf).
 
 ## Web Portal
-We have a web server named [jhpce-app02.jhsph.edu](jhpce-app02.jhsph.edu) configured to offer a growing number of services.
+We have a web server named [jhpce-app02.jhsph.edu](jhpce-app02.jhsph.edu) configured to offer a growing number of services. Click on the links to learn more.
 
-* Reset your password or generate a OTP
-* Run applications on the cluster (RStudio, JupyterLab, VS Code)
-* Inspect a catalog of research databases (under development)
+* Reset your password or generate a OTP ([learn more](../portal/web-reset.md))
+* Run applications on the cluster (RStudio, JupyterLab, VS Code) ([learn more](../portal/web-apps.md))
+* Inspect a catalog of research databases (under development) ([learn more](../portal/datacatalog.md))
 
 ## SAFE Desktop
 A virtual desktop named the [Secure Analytic Framework Environment](https://ictr.johnshopkins.edu/service/informatics/safe-desktop/) (SAFE) is a resource that some people find useful for their computing, as well as a means to access JHPCE (via the [MobaXterm](mobaxterm.md) application). It is a virtual Windows computer equipped with many applications JHPCE members use for their research, including SAS and Stata. It includes 100GB of secure data storage for sensitive (PHI, PII) information. That data can be shared by research groups. Free for Johns Hopkins Medicine staff and students, it {==requires filling out a form and waiting for approval==}.
 
 ## File Transfers
-Brief description of our transfer node and its capabilities. Admonition to not use login node for transfers (either in or out or within the cluster)
 
-Point to some overview doc about this topic, which is going to have several documents in total, not one giant one, i.e.
+We have a transfer server {==jhpce-transfer01.jhsph.edu==} for file transfers into and out of the cluster. It is connected by a 40G Ethernet link to Hopkins networks.
+This computer also offers a Globus Endpoint service (described [here](globus.md)) for transfers from personal computers and other institutions.
 
-* overview doc
-* globus
-* windows-specific? recommend a tool
-* Internal file transfers - this deserves a document. Perhaps under the Managing Files header. Do's, don'ts, sample batch job, good rsync args to use, etc.
+The login nodes SHOULD NOT be used for file transfers into and out of the cluster beyond extremely trivial cases. Their connections are four times slower and they are relied upon by all of your peers.
 
+Please use compute nodes for transfers WITHIN the cluster. For example, copying significant volumes of files from one file system to another, such as `/dcs05/a-place/` to `/dcs07/somewhere-else/`. Information about doing that can be found [here](files/copying-files.md)
 
