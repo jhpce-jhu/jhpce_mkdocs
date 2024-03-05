@@ -1541,14 +1541,6 @@
       
         
       
-        
-      
-        
-      
-        
-      
-        
-      
     
     
       
@@ -1670,6 +1662,76 @@
   
   
     <li class="md-nav__item">
+      <a href="../../sw/containers/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Containers
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1_7_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_1_7_6" id="__nav_1_7_6_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Application-Specific
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_1_7_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_1_7_6">
+            <span class="md-nav__icon md-icon"></span>
+            Application-Specific
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../../sw/r-n-friends/" class="md-nav__link">
         
   
@@ -1768,22 +1830,9 @@
 
               
             
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../sw/containers/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Containers
-  </span>
-  
-
-      </a>
+          </ul>
+        </nav>
+      
     </li>
   
 
@@ -1931,6 +1980,15 @@
   <a href="#pi-partitions" class="md-nav__link">
     <span class="md-ellipsis">
       PI Partitions
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#public-partitions" class="md-nav__link">
+    <span class="md-ellipsis">
+      Public Partitions
     </span>
   </a>
   
@@ -2543,6 +2601,15 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#public-partitions" class="md-nav__link">
+    <span class="md-ellipsis">
+      Public Partitions
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#getting-info-about-partitions" class="md-nav__link">
     <span class="md-ellipsis">
       Getting Info About Partitions
@@ -2605,7 +2672,10 @@
 <li>PI-owned (accessed only by members of the PI's group)</li>
 </ul>
 <h2 id="pi-partitions">PI Partitions<a class="headerlink" href="#pi-partitions" title="Anchor link to this section for reference">&para;</a></h2>
-<p>Only submit jobs to these partitions if you are a member of the Primary Investigator's research groups or have been given explicit permission to do so. If you are in doubt, ask before submitting. Jobs from non-group members will be killed and repeated abuse <em>will</em> lead to repercussions.</p>
+<p>Only submit jobs to these partitions if you are a member of the Primary Investigator's research groups or have been given explicit permission to do so. If you are in doubt, ask before submitting. Jobs from non-group members will be killed and repeated abuse <em>will</em> lead to repercussions.  </p>
+<h2 id="public-partitions">Public Partitions<a class="headerlink" href="#public-partitions" title="Anchor link to this section for reference">&para;</a></h2>
+<p>Partitions shared, interactive, and gpu are considered public and available to all.</p>
+<p>All user are permitted to submit jobs to them. The shared queue provides low-priority access to unused capacity throughout the cluster. Capacity on the shared queue is provided on a strictly “as-available” basis and serves two purposes. First it provides surge capacity to stakeholders who temporarily need more compute capacity than they own, and second, it gives provides non-stakeholders access to computing capacity. Scheduling polices attempt to harvest unused capacity as efficiently as possible while mitigating the impact on the rights of stakeholders to use their resources. The service center does not guarantee that stakeholders will provide sufficient excess capacity to meet non-stakeholders needs, however in practice the cluster is rarely operating at full capacity so there is usually ample computing capacity on the shared queue.</p>
 <h2 id="getting-info-about-partitions">Getting Info About Partitions<a class="headerlink" href="#getting-info-about-partitions" title="Anchor link to this section for reference">&para;</a></h2>
 <p>The command <a href="https://slurm.schedmd.com/archive/slurm-22.05.9/scontrol.html"><code>scontrol</code></a> can be used to show information about a specific partition. This is THE best way to see the configuration of a partition. The syntax to use is <code>scontrol show partition</code> <em>partitionname</em></p>
 <p>The command <a href="https://slurm.schedmd.com/archive/slurm-22.05.9/sinfo.html"><code>sinfo</code></a> shows information about all of the partitions. (Note: Partitions which <em>require</em> group membership to submit to are only visible via <code>sinfo</code> to members of those groups. Because the local command <code>slurmpic</code> uses <code>sinfo</code> to retrieve information, the output of <code>slurmpic -a</code> (show all nodes) will omit those private PI partitions' nodes.)</p>
@@ -2885,7 +2955,7 @@
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1-2.1-2M12.5 7v5.2l4 2.4-1 1L11 13V7h1.5M11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2v1.8Z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">February 21, 2024</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">March 5, 2024</span>
   </span>
 
     
