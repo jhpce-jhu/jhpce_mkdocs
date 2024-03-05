@@ -16,7 +16,13 @@ There are several types of partitions:
 * PI-owned (accessed only by members of the PI's group)
 
 ## PI Partitions
-Only submit jobs to these partitions if you are a member of the Primary Investigator's research groups or have been given explicit permission to do so. If you are in doubt, ask before submitting. Jobs from non-group members will be killed and repeated abuse *will* lead to repercussions.
+Only submit jobs to these partitions if you are a member of the Primary Investigator's research groups or have been given explicit permission to do so. If you are in doubt, ask before submitting. Jobs from non-group members will be killed and repeated abuse *will* lead to repercussions.  
+
+## Public Partitions 
+
+Partitions shared, interactive, and gpu are considered public and available to all.
+
+All user are permitted to submit jobs to them. The shared queue provides low-priority access to unused capacity throughout the cluster. Capacity on the shared queue is provided on a strictly “as-available” basis and serves two purposes. First it provides surge capacity to stakeholders who temporarily need more compute capacity than they own, and second, it gives provides non-stakeholders access to computing capacity. Scheduling polices attempt to harvest unused capacity as efficiently as possible while mitigating the impact on the rights of stakeholders to use their resources. The service center does not guarantee that stakeholders will provide sufficient excess capacity to meet non-stakeholders needs, however in practice the cluster is rarely operating at full capacity so there is usually ample computing capacity on the shared queue.
 
 ## Getting Info About Partitions
 

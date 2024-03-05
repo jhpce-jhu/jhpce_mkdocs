@@ -30,7 +30,7 @@ SAS command to do so:
 Here is some code you can add to your .bashrc file which contain some convenient bash aliases for starting SAS with browser support configured. Once that becomes part of your environment (by sourcing the file or by logging out and back in again), after loading the SAS module you can start SAS using either `csas` or `fsas` so that it can open the desired web browser if needed.
 
 !!! Warning
-    These definitions include optional syntax (`> /dev/null 2>&1`) which hide error messages. If you are having problems displaying SAS material in web browsers, you may need to run SAS without that output redirection. The ["srun half duplex"](../slurm/slurm-faq/#srun-error-_half_duplex) error is an example of such a case.
+    These definitions include optional syntax (`> /dev/null 2>&1`) which hide error messages. If you are having problems displaying SAS material in web browsers, you may need to run SAS without that output redirection. The ["srun half duplex"](../slurm/slurm-faq.md/#srun-error-_half_duplex) error is an example of such a case.
 
 ```Shell
 # SAS routines for __interactive__ sessions where plotting is involved

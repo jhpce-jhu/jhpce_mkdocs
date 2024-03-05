@@ -39,4 +39,4 @@ Are we going to create a form? Or just give some examples?
 
 ## Seeing Your Past Usage
 
-The sacct command is used to view information about completed jobs. Here is [our sacct document](..slurm/tips-sacct.md) with tips for using that command.
+The sacct command is used to view information about completed jobs. Here is [our sacct document](../slurm/tips-sacct.md) with tips for using that command.
