@@ -55,7 +55,7 @@ nav:
       - Adding local pkgs: sw/adding-pkgs.md
       - Building Your Own: sw/building-from-src.md
       - Containers: sw/containers.md
-      - Application-Specific:
+      - Major Applications:
         - R and RStudio and friends: sw/r-n-friends.md
         - Managing Jobs With R and slurmjobs: sw/r-slurmjobs.md
         - Jupyter: sw/jupyter.md
