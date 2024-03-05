@@ -816,6 +816,15 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#macdown-wysiwyg-editor" class="md-nav__link">
+    <span class="md-ellipsis">
+      MacDown WYSIWYG Editor
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -2955,6 +2964,15 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#macdown-wysiwyg-editor" class="md-nav__link">
+    <span class="md-ellipsis">
+      MacDown WYSIWYG Editor
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -2971,7 +2989,14 @@
 
 
 <h1 id="web-site-toolsenabled-features-worth-knowing-how-to-use">WEB SITE TOOLS/ENABLED FEATURES WORTH KNOWING HOW TO USE<a class="headerlink" href="#web-site-toolsenabled-features-worth-knowing-how-to-use" title="Anchor link to this section for reference">&para;</a></h1>
-<p>Some more useful than others. Jeffrey likes "<a href="./#admonitions">admonitions</a>" a lot.</p>
+<p>Let's create a visually appealing web site using some of these features!! Use a WYSIWYG editor like <a href="./#macdown-wysiwyg-editor">MacDown</a> and <a href="./#recipe-for-running-mkdocs-locally">"mkdocs serve"</a> to quickly edit.</p>
+<p>Jeffrey likes:</p>
+<ul>
+<li>"<a href="./#admonitions">admonitions</a>" a lot.</li>
+<li><a href="./#highlighting-text">highlighting text</a></li>
+<li><a href="./#keyboard-meta-keys">keyboard meta keys</a> (like <span class="keys"><kbd class="key-control">Ctrl</kbd></span>)</li>
+</ul>
+<p>Running the mkdocs package installed via python allows you to develop web pages on your local computer. See <a href="./##recipe-for-running-mkdocs-locally">the recipe</a></p>
 <p>There is another document containing <a href="../wishlist/">wishlist</a> items that we might want to enable/configure.</p>
 <h2 id="critical-reference-material">Critical reference material<a class="headerlink" href="#critical-reference-material" title="Anchor link to this section for reference">&para;</a></h2>
 <p>Look here for information about these and other features!!! Just keep in mind that ones marked "insiders" are not available for our use.
@@ -3253,6 +3278,15 @@ mkdocs serve
 ERROR<span class="w">   </span>-<span class="w">  </span><span class="o">[</span><span class="m">14</span>:46:28<span class="o">]</span><span class="w"> </span>An<span class="w"> </span>error<span class="w"> </span>happened<span class="w"> </span>during<span class="w"> </span>the<span class="w"> </span>rebuild.<span class="w"> </span>The<span class="w"> </span>server<span class="w"> </span>will<span class="w"> </span>appear
 <span class="w">           </span>stuck<span class="w"> </span><span class="k">until</span><span class="w"> </span>build<span class="w"> </span>errors<span class="w"> </span>are<span class="w"> </span>resolved.
 </code></pre></div>
+<h2 id="macdown-wysiwyg-editor">MacDown WYSIWYG Editor<a class="headerlink" href="#macdown-wysiwyg-editor" title="Anchor link to this section for reference">&para;</a></h2>
+<p>Jeffrey has found that the free <a href="https://macdown.uranusjr.com">MacDown</a> editor is very helpful in authoring. It is a MarkDown editor for the Macintosh which displays the source code in one pane and the rendered document in another pane opposite.</p>
+<p>It renders most of Material for MkDocs material correctly, but not all. This is why it is useful to run "mkdocs serve" locally.</p>
+<p>There are preferences that are worth enabling. <a href="https://www.markdownguide.org/tools/macdown/">This page</a> lists the MarkDown elements which are enabled and disabled by default.
+<a href="https://www.markdownguide.org/extended-syntax/#overview">This page</a> discusses extended syntax and the site has other interesting MarkDown reference information.</p>
+<p>If you copy a web URL, highlight some text in your source code, then click on the link insert symbol in the toolbar, it will automatically paste in the URl.</p>
+<p>Does automatic pattern matching for syntax. Includes a command line program to use to open documents (Jeffrey configured his Mac using Get Info on an .md file to use MacDown by default so he can say in Terminal "open file.md" and it opens up the GUI). Supports a variety of themes for those who like dark mode.</p>
+<p>One flaw in this program is that sometimes the source code pane is blank when you open existing documents. The workaround is to grow and shrink the document width and the dividing line between the source and rendered document panes.</p>
+<p>You can install it with Homebrew with <code>brew install --cask macdown</code> Stats on <a href="https://formulae.brew.sh/cask/macdown">its page </a>indicate some popularity.</p>
 <div class="footnote">
 <hr />
 <ol>
@@ -3281,7 +3315,7 @@ ERROR<span class="w">   </span>-<span class="w">  </span><span class="o">[</span
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1-2.1-2M12.5 7v5.2l4 2.4-1 1L11 13V7h1.5M11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2v1.8Z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">March 1, 2024</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">March 5, 2024</span>
   </span>
 
     
