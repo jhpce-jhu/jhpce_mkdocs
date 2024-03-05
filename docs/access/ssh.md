@@ -117,7 +117,7 @@ These two commands are equivalent:
 |-------|-------------|-------------|----|
 |$HOME|755 or tighter|g-w,o-w|Not writable by group or other|
 |$HOME/.ssh|700|u+rwx,g-rwx,o-rwx|No access by group or other|
-|$HOME/.ssh/authorized_keys|600|u+rw,g-rwx,o-rwx||
+|$HOME/.ssh/authorized_keys|600|u+rw,g-rwx,o-rwx|Authorized keys file|
 |$HOME/.ssh/config|600|u+rw,g-rwx,o-rwx|Config file|
 |$HOME/.ssh/id_*|600|u+rw,g-rwx,o-rwx|Private key files|
 |$HOME/.ssh/id_*.pub|644|u+rw,g+r,g-wx,o+r,o-wx|Public key files|
