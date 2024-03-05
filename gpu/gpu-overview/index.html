@@ -2225,6 +2225,39 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#application-specific-advice" class="md-nav__link">
+    <span class="md-ellipsis">
+      Application-specific advice
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Application-specific advice">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#alphafold" class="md-nav__link">
+    <span class="md-ellipsis">
+      Alphafold
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tensorflow" class="md-nav__link">
+    <span class="md-ellipsis">
+      Tensorflow
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -2636,6 +2669,39 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#application-specific-advice" class="md-nav__link">
+    <span class="md-ellipsis">
+      Application-specific advice
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Application-specific advice">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#alphafold" class="md-nav__link">
+    <span class="md-ellipsis">
+      Alphafold
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tensorflow" class="md-nav__link">
+    <span class="md-ellipsis">
+      Tensorflow
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -2682,7 +2748,8 @@
 
 <h1 id="gpu-critical-knowledge">GPU Critical Knowledge<a class="headerlink" href="#gpu-critical-knowledge" title="Anchor link to this section for reference">&para;</a></h1>
 <h2 id="overview-or-everything-in-one-document">Overview or Everything in One Document??<a class="headerlink" href="#overview-or-everything-in-one-document" title="Anchor link to this section for reference">&para;</a></h2>
-<p>Should this be an overview. JRT thinks so, because he envisions a growing number of GPU-related documents instead of one massively long document.</p>
+<p>Should this be an overview? JRT thinks so, because he envisions a growing number of GPU-related documents instead of one massively long document. </p>
+<p>Therefore should it be moved out of "User Guides" to be a topic inside of "Software"?</p>
 <h2 id="migrate-previous-web-site-document">MIGRATE PREVIOUS WEB SITE DOCUMENT<a class="headerlink" href="#migrate-previous-web-site-document" title="Anchor link to this section for reference">&para;</a></h2>
 <p>Probably put some of it here, some of it into other document(s)
 https://jhpce.jhu.edu/knowledge-base/gpus-on-the-jhpce-cluster/</p>
@@ -2695,15 +2762,30 @@ https://jhpce.jhu.edu/knowledge-base/gpus-on-the-jhpce-cluster/</p>
 <p>Mark has written material and sent it to various people. Combine that with perhaps info from this
 <a href="https://hpc-docs.cubi.bihealth.org/how-to/software/tensorflow/">Tensorflow sample document</a></p>
 <p>Look for other resources out there containing advice about using GPUs in a SLURM context.</p>
-<p><a href="https://www.carc.usc.edu/user-information/user-guides/software-and-programming/using-gpus">USC documentation</a></p>
 <h2 id="existing-docs-at-other-sites">Existing docs at other sites<a class="headerlink" href="#existing-docs-at-other-sites" title="Anchor link to this section for reference">&para;</a></h2>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
 <p>These other clusters have different software and policies. Look for useful information but don't expect what they say/do to work here.</p>
 </div>
+<p>USC: <a href="https://www.carc.usc.edu/user-information/user-guides/software-and-programming/using-gpus">USC documentation</a></p>
 <p>New Mexico State Univ: <a href="https://hpc.nmsu.edu/discovery/slurm/gpu-jobs/">their page</a></p>
 <p>UMich section showing <a href="https://arc.umich.edu/greatlakes/slurm-user-guide/">relevant SLURM directives for GPU use</a></p>
 <p>Yale has CUDA, tensorflow and miniconda modules while we do not. U<a href="https://docs.ycrc.yale.edu/clusters-at-yale/guides/gpus-cuda/">seful?</a> <a href="https://docs.ycrc.yale.edu/clusters-at-yale/guides/pytorch/">PyTorch</a> install instructions.</p>
+<h2 id="application-specific-advice">Application-specific advice<a class="headerlink" href="#application-specific-advice" title="Anchor link to this section for reference">&para;</a></h2>
+<div class="admonition note">
+<p class="admonition-title">Authoring Note</p>
+<p>JRT added this info here but believes it should be migrated out of the "GPU Overview" document to somewhere else.</p>
+</div>
+<h3 id="alphafold">Alphafold<a class="headerlink" href="#alphafold" title="Anchor link to this section for reference">&para;</a></h3>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span></pre></div></td><td class="code"><div><pre><span></span><code>$<span class="w"> </span>module<span class="w"> </span>load<span class="w"> </span>alphafold/4.3.1
+$<span class="w"> </span>srun<span class="w"> </span>--pty<span class="w"> </span>--x11<span class="w"> </span>--mem<span class="o">=</span>100G<span class="w"> </span>--cpus-per-task<span class="o">=</span><span class="m">8</span><span class="w"> </span>--partition<span class="w"> </span>gpu<span class="w"> </span>--gpus<span class="o">=</span><span class="m">1</span><span class="w"> </span>bash
+<span class="o">[</span>compute-123<span class="o">]</span>$<span class="w"> </span>module<span class="w"> </span>load<span class="w"> </span>alphafold
+<span class="o">(</span>alphafold-gpu<span class="o">)</span><span class="w"> </span><span class="o">[</span>compute-123<span class="o">]</span>$<span class="w"> </span>run_alphafold.sh<span class="w"> </span>-d<span class="w"> </span>/legacy/alphafold/data<span class="w"> </span>-f<span class="w"> </span>./test.fasta<span class="w"> </span>-o<span class="w"> </span>.<span class="w"> </span>-t<span class="w"> </span><span class="m">2020</span>-05-14<span class="w"> </span>-n<span class="w"> </span><span class="m">8</span>
+</code></pre></div></td></tr></table></div>
+<h3 id="tensorflow">Tensorflow<a class="headerlink" href="#tensorflow" title="Anchor link to this section for reference">&para;</a></h3>
 
 
 
