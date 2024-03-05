@@ -18,7 +18,9 @@ Probably put some of it here, some of it into other document(s)
 https://jhpce.jhu.edu/knowledge-base/gpus-on-the-jhpce-cluster/
 
 ## Our GPU Nodes
-Table with their resources, and partition names. Point to this [existing](../slurm/partitions.md#gpu-partitions) page.
+Table with their resources, and partition names. Differentiate between public and PI partitions. Point to this [existing](../slurm/partitions.md#gpu-partitions) page.
+
+Mention `slurmpic -g`
 
 ## Using them
 
@@ -30,6 +32,8 @@ Mark has written material and sent it to various people. Combine that with perha
 [Tensorflow sample document](https://hpc-docs.cubi.bihealth.org/how-to/software/tensorflow/)
 
 Look for other resources out there containing advice about using GPUs in a SLURM context.
+
+[USC documentation](https://www.carc.usc.edu/user-information/user-guides/software-and-programming/using-gpus)
 
 ## Existing docs at other sites 
 

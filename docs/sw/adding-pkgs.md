@@ -35,5 +35,13 @@ You should recompile your libraries when the version of R changes.
 
 How do you recompile instead of install?
 
+When installing R packages from source with compiled programs, you can add custom compiler flags in ~/.R/Makevars. Adding optimization flags may provide a boost in performance for some packages. 
+```
+STDFLAGS = -O2 -pipe -Wall 
+```
+
+We have a wide variety of CPU architecture across the cluster, so you probably don't want to add to STDFLAGS `-march=` and `-mtune=` arguments.
+
+
 
 ## Python
