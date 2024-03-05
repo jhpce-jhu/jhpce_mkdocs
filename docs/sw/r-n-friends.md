@@ -8,7 +8,7 @@ tags:
 * RStudio Server
 
 !!! Warning "Authoring Note"
-    Jeffrey started copying over RStudio and RStudio Server images and text from the old web site. Then switched to another task. So that, especially, needs careful review.
+    Jeffrey started copying over RStudio and RStudio Server images and text from the old web site. Then switched to another task. So those sections, especially, need careful review in this document. They may look complete but is not.
 
 We have a version of R available as a [module](modules.md).
 

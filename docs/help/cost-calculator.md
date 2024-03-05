@@ -28,11 +28,15 @@ Job duration
 
 Who to contact with what information?
 
-People leave
-People work for different PIs
-People work for multiple PIs
-PIs leave
+* People leave
+* People work for different PIs
+* People work for multiple PIs
+* PIs leave
 
 ## Cost Calculator
 
-Are we going to create a form?
+Are we going to create a form? Or just give some examples?
+
+## Seeing Your Past Usage
+
+The sacct command is used to view information about completed jobs. Here is [our sacct document](..slurm/tips-sacct.md) with tips for using that command.

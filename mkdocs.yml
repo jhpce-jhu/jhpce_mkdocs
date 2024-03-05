@@ -73,7 +73,7 @@ nav:
       - GPU: gpu/gpu-overview.md
       - Cost Calculator: help/cost-calculator.md
       - How to read a manual page (pdf): help/images/guide-to-manual-pages.pdf
-      - Navigating Deep Directory Trees: files/images/pushd-popd-dirs.pdf
+      - Navigating Deep Directory Trees (pdf): files/images/pushd-popd-dirs.pdf
       - Helpful GUI Programs: sw/gui-tools.md
     - Web Portal:
       - GUI Applications: portal/portal-stub.md
