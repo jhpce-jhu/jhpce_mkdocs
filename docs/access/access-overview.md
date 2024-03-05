@@ -11,29 +11,26 @@ title: "Access Overview"
 The cluster consists of some public-facing hosts with the remaining computers "behind them" on private networks.
 
 ```mermaid
-graph LR
-   A[Your computer] --> B[Login nodes]
-   A[Your computer] -- Only via Hopkins/VPN --> D[App server]
-   A[Your computer] --> C[Transfer node]
-   B[Login nodes] --> E[Compute node1]
-   D[App server] --> E[Compute node1]
-   B[Login nodes] --> F[Compute node2]
-   D[App server] --> F[Compute node2]
-   B[Login nodes] --> G[Compute node3]
-   D[App server] --> G[Compute node3]
-   C[Transfer node] <--> H[(storage servers)]
-   B[Login nodes] <--> H[(storage servers)]
-   D[App server] <--> H[(storage servers)]
-   E[Compute node1] <--> H[(storage servers)]
-   F[Compute node2] <--> H[(storage servers)]
-   G[Compute node3] <--> H[(storage servers)]
-   
+graph TD
+   A[Your computer] --> B([Login nodes])
+   A[Your computer] -- Only via Hopkins/VPN --> D((Web Portal))
+   A[Your computer] --> C([Transfer node])
+   B([Login nodes]) --> E[Compute node1]
+   D((Web Portal)) --> E[Compute node1]
+   B([Login nodes]) --> F[Compute node2]
+   D((Web Portal)) --> F[Compute node2]
+   B([Login nodes]) --> G[Compute node3]
+   D((Web Portal)) --> G[Compute node3]
+   C([Transfer node]) <--> H[(storage servers)]
 ```
 
 ## Public-facing: Login and Transfer 
 The login and transfer nodes are accessible to the wider Internet. 
-For security reasons, the web portal[^1] is only available to computers on Hopkins networks. If you are not on a Hopkins campus, that means that you need to use the VPN to be able to see that node.
-[^1]: jhpce-app02.jhsph.edu
+For security reasons, the web portal is only available to computers on Hopkins networks. If you are not on a Hopkins campus, that means that you need to use the VPN to be able to see that node.
+
+* **login**: Normally jhpce01.jhsph.edu and jhpce02.jhsph.edu (currently {==jhpce03.jhsph.edu==})
+* **transfer**: {==jhpce-transfer01.jhsph.edu==}
+* **web portal**: {==[jhpce-app02.jhsph.edu](jhpce-app02.jhsph.edu)==}
 
 
 ## SSH Is The Primary Method
@@ -55,10 +52,10 @@ SSH provides support for tunnelling X11 over an encrypted connection. You may ne
 - Windows users need to use a program like MobaXterm (highly recommended) or [Cygwin](https://en.wikipedia.org/wiki/Cygwin). We have a page describing installing and using [MobaXterm](mobaxterm.md).
 - Linux laptop or desktop users are already using X as their windowing system.
 
-For more information, see our [X11](x11.md) document.
+For more information, see [our X11 document](x11.md).
 
 ## Multi-factor authentication (MFA)
-There are two basic factors required to log into a computer, whether your laptop or a remote UNIX cluster login node -- your username and a password. JHPCE requires the use of an additional factor, either a [one-time password](ssh.md#one-time-passwords) (OTP) six digit code, or the use of [SSH key pairs](ssh.md#ssh-keys). 
+There are two basic "factors" required to log into a computer, whether your laptop or a remote UNIX cluster login node -- your username and a password. {==JHPCE requires the use of an additional factor==}, either a [one-time password](ssh.md#one-time-passwords) (OTP) six digit code, or the use of [SSH key pairs](ssh.md#ssh-keys). 
 
 ### One Time Passwords
 When you SSH into JHPCE, you will be prompted for a “Verification Code:” This is your cue to enter in a one-time password six digit code.
@@ -70,8 +67,11 @@ These programs are usually used on smartphones, but there are programs available
 After you log into JHPCE for the first time, you should immediately configure your OTP program using a "secret" accessible to you on the cluster via the `auth_util` program. Instructions for doing that are found in the [Orientation document](../orient/images/latest-orient.pdf).
 
 ## Web Portal
-Describe capabilities of web portal.
-Links to the apps page(s) about it.
+We have a web server named [jhpce-app02.jhsph.edu](jhpce-app02.jhsph.edu) configured to offer a growing number of services.
+
+* Reset your password or generate a OTP
+* Run applications on the cluster (RStudio, JupyterLab, VS Code)
+* Inspect a catalog of research databases (under development)
 
 ## SAFE Desktop
 A virtual desktop named the [Secure Analytic Framework Environment](https://ictr.johnshopkins.edu/service/informatics/safe-desktop/) (SAFE) is a resource that some people find useful for their computing, as well as a means to access JHPCE (via the [MobaXterm](mobaxterm.md) application). It is a virtual Windows computer equipped with many applications JHPCE members use for their research, including SAS and Stata. It includes 100GB of secure data storage for sensitive (PHI, PII) information. That data can be shared by research groups. Free for Johns Hopkins Medicine staff and students, it {==requires filling out a form and waiting for approval==}.

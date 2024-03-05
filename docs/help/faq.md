@@ -29,6 +29,11 @@ There is a dedicated [SLURM FAQ](../slurm/slurm-faq.md) document.
 ??? "Click to expand answer"
     Windows and Unix use different characters to indicate a new line.  If you have uploaded your script from a Windows machine, it may have the Windows newline characters.  These need to be replaced by the Unix newline characters.  To do this, you can run the “dos2unix” command on your script `dos2unix myscript.sh`. This will strip out all of the Windows newlines and replace them with the Unix newlines.
 
+## What is the SAFE desktop?
+
+??? "Click to expand answer"
+    The SAFE desktop is a virtual Windows computer that you can use to run scientific software and access JHPCE. For more information see this [item](../access/access-overview.md#safe-desktop).
+
 ## I’m getting X11 errors when using rstudio with Putty and Xming
 
 !!! Obsolete

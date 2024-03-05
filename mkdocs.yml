@@ -77,12 +77,12 @@ nav:
       - Navigating Deep Directory Trees (pdf): files/images/pushd-popd-dirs.pdf
       - Helpful GUI Programs: sw/gui-tools.md
     - Web Portal:
-      - GUI Applications: portal/portal-stub.md
+      - GUI Applications: portal/webapps.md
       - Datacatalog: portal/datacatalog.md
-      - Self Service MFA, Password Requests : portal/portal-stub.md
+      - Self Service MFA, Password Requests : portal/web-reset.md
     - C-SUB:
       - What Is The C-SUB?: csub/csub-overview.md
-      - New User: csub/csub-stub.md
+      - New User: csub/new-csub-users.md
       - C-SUB Orientation (PDF): orient/images/latest-csub-orient.pdf
 # Example of three-level topic syntax
 #   - Storage:
