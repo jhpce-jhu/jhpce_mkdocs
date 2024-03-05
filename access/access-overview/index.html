@@ -2739,7 +2739,7 @@
     
     
     
-      <a href="../../ourtools/tags/#in-progress" class="md-tag">in-progress</a>
+      <a href="../../ourtools/tags/#done" class="md-tag">done</a>
     
   
     
@@ -2795,23 +2795,19 @@ For security reasons, the web portal is only available to computers on Hopkins n
 <p>These programs are usually used on smartphones, but there are programs available to create them on laptops and desktops. The key with using ANY OTP program is to get it from a trusted source. We will default to mentioning the <code>Google Authenticator</code>.</p>
 <p>After you log into JHPCE for the first time, you should immediately configure your OTP program using a "secret" accessible to you on the cluster via the <code>auth_util</code> program. Instructions for doing that are found in the <a href="../../orient/images/latest-orient.pdf">Orientation document</a>.</p>
 <h2 id="web-portal">Web Portal<a class="headerlink" href="#web-portal" title="Anchor link to this section for reference">&para;</a></h2>
-<p>We have a web server named <a href="jhpce-app02.jhsph.edu">jhpce-app02.jhsph.edu</a> configured to offer a growing number of services.</p>
+<p>We have a web server named <a href="jhpce-app02.jhsph.edu">jhpce-app02.jhsph.edu</a> configured to offer a growing number of services. Click on the links to learn more.</p>
 <ul>
-<li>Reset your password or generate a OTP</li>
-<li>Run applications on the cluster (RStudio, JupyterLab, VS Code)</li>
-<li>Inspect a catalog of research databases (under development)</li>
+<li>Reset your password or generate a OTP (<a href="../../portal/web-reset/">learn more</a>)</li>
+<li>Run applications on the cluster (RStudio, JupyterLab, VS Code) (<a href="../portal/web-apps.md">learn more</a>)</li>
+<li>Inspect a catalog of research databases (under development) (<a href="../../portal/datacatalog/">learn more</a>)</li>
 </ul>
 <h2 id="safe-desktop">SAFE Desktop<a class="headerlink" href="#safe-desktop" title="Anchor link to this section for reference">&para;</a></h2>
 <p>A virtual desktop named the <a href="https://ictr.johnshopkins.edu/service/informatics/safe-desktop/">Secure Analytic Framework Environment</a> (SAFE) is a resource that some people find useful for their computing, as well as a means to access JHPCE (via the <a href="../mobaxterm/">MobaXterm</a> application). It is a virtual Windows computer equipped with many applications JHPCE members use for their research, including SAS and Stata. It includes 100GB of secure data storage for sensitive (PHI, PII) information. That data can be shared by research groups. Free for Johns Hopkins Medicine staff and students, it <mark class="critic">requires filling out a form and waiting for approval</mark>.</p>
 <h2 id="file-transfers">File Transfers<a class="headerlink" href="#file-transfers" title="Anchor link to this section for reference">&para;</a></h2>
-<p>Brief description of our transfer node and its capabilities. Admonition to not use login node for transfers (either in or out or within the cluster)</p>
-<p>Point to some overview doc about this topic, which is going to have several documents in total, not one giant one, i.e.</p>
-<ul>
-<li>overview doc</li>
-<li>globus</li>
-<li>windows-specific? recommend a tool</li>
-<li>Internal file transfers - this deserves a document. Perhaps under the Managing Files header. Do's, don'ts, sample batch job, good rsync args to use, etc.</li>
-</ul>
+<p>We have a transfer server <mark class="critic">jhpce-transfer01.jhsph.edu</mark> for file transfers into and out of the cluster. It is connected by a 40G Ethernet link to Hopkins networks.
+This computer also offers a Globus Endpoint service (described <a href="../globus/">here</a>) for transfers from personal computers and other institutions.</p>
+<p>The login nodes SHOULD NOT be used for file transfers into and out of the cluster beyond extremely trivial cases. Their connections are four times slower and they are relied upon by all of your peers.</p>
+<p>Please use compute nodes for transfers WITHIN the cluster. For example, copying significant volumes of files from one file system to another, such as <code>/dcs05/a-place/</code> to <code>/dcs07/somewhere-else/</code>. Information about doing that can be found <a href="files/copying-files.md">here</a></p>
 <div class="footnote">
 <hr />
 <ol>
