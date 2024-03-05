@@ -33,6 +33,11 @@ There is a dedicated [SLURM FAQ](../slurm/slurm-faq.md) document.
 
 ??? "Click to expand answer"
     The SAFE desktop is a virtual Windows computer that you can use to run scientific software and access JHPCE. For more information see this [item](../access/access-overview.md#safe-desktop).
+    
+## SSH "Bad owner or permissions"
+
+??? "Click to expand answer"
+    If you receive a message like "Bad owner or permissions on ~/.ssh/config" or continue to have to provide your password when ssh'ing to JHPCE when you think you have configured things to not need one, your file owner or permissions may be incorrect. See [this document](access/ssh.md/#permissions-on-ssh-files) for answers.
 
 ## I’m getting X11 errors when using rstudio with Putty and Xming
 
