@@ -1,6 +1,5 @@
 ---
 tags:
-  - in-progress
   - slurm
 ---
 
@@ -77,3 +76,13 @@ As of 20240220 there are few limits.
 Array jobs are limited to 15,000 tasks by variable `max_array_tasks` in /etc/slurm/slurm.conf
 
 Total jobs at a single time is 90,000, which is determined by the variable `MaxJobCount` in /etc/slurm/slurm.conf
+
+## srun: error: _half_duplex
+
+`srun: error: _half_duplex: read error -1 Connection reset by peer`
+
+We consider this a SLURM bug. It appears when `srun` is used with the `--x11` argument. Sometimes immediately, but typically when an X11 program is launched.
+
+If you do not intend to run any X11 programs during your interactive session, then you can log out of that session and start a new one without the `--x11` flag.
+
+If you do intend to use X11 programs, when that error appears the only solution we have found is to abandon that whole login session to the compute node by typing “exit” to quit the shell. Back on the login node, verify that basic X11 functionality works by starting either the xterm or xclock programs. If that works, start a new srun command to get back onto a compute node. Once on a compute node, verify that basic X11 functionality works by starting either the xterm or xclock programs. If they did, then try your X11 program again.
