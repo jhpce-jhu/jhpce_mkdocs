@@ -1,6 +1,7 @@
 ---
 tags:
   - in-progress
+  - jiong
 ---
 
 # SAS
@@ -8,6 +9,9 @@ tags:
 ## We Have A SAS Partition
 
 Containing two nodes.
+
+## Other ways to access SAS
+SAS is available in a virtual Windows environment called SAFE. [Here is a link](../access/access-overview.md#safe-desktop) to information about SAFE.
 
 ## MarketScan Database
 
@@ -18,12 +22,15 @@ Containing two nodes.
 
 When running SAS, you may need to specify options to indicate which
 browser to use when displaying either help or graphical output. We recommend
-using the chromium browse, and you can use the following options to the
-sas command to do so:
+using the Chromium browser. You can use the following options to the
+SAS command to do so:
 
 `sas -helpbrowser SAS -xrm "SAS.webBrowser:'/usr/bin/chromium-browser'" -xrm "SAS.helpBrowser:'/usr/bin/chromium-browser'"`
 
-Here is some code you can add to your .bashrc file. Once that becomes part of your environment (by sourcing the file or by logging out and back in again), after loading SAS you can start SAS so that it can open the browser if needed.
+Here is some code you can add to your .bashrc file which contain some convenient bash aliases for starting SAS with browser support configured. Once that becomes part of your environment (by sourcing the file or by logging out and back in again), after loading the SAS module you can start SAS using either `csas` or `fsas` so that it can open the desired web browser if needed.
+
+!!! Warning
+    These definitions include optional syntax (`> /dev/null 2>&1`) which hide error messages. If you are having problems displaying SAS material in web browsers, you may need to run SAS without that output redirection. The ["srun half duplex"](../slurm/slurm-faq/#srun-error-_half_duplex) error is an example of such a case.
 
 ```Shell
 # SAS routines for __interactive__ sessions where plotting is involved

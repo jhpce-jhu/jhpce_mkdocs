@@ -7,7 +7,7 @@ tags:
 # Accessing the Cluster: Overview
 
 ## Cluster structure overview
-Basically the cluster consists of some public-facing hosts and then resources isolated from other networks. Insert a simplistic diagram or an updated one of the one in the Orientation. Help people visualize.
+The cluster consists of some public-facing hosts with the remaining computers "behind them" on private networks.
 
 ```mermaid
 graph LR
@@ -20,13 +20,20 @@ graph LR
    D[App server] --> F[Compute node2]
    B[Login nodes] --> G[Compute node3]
    D[App server] --> G[Compute node3]
+   C[Transfer node] <--> H[(storage servers)]
+   B[Login nodes] <--> H[(storage servers)]
+   D[App server] <--> H[(storage servers)]
+   E[Compute node1] <--> H[(storage servers)]
+   F[Compute node2] <--> H[(storage servers)]
+   G[Compute node3] <--> H[(storage servers)]
+   
 ```
 
 ## Public-facing: Login and Transfer 
-What is visible to the Internet?
-Mention that some interfaces require being on Hopkins networks (is this only the C-SUB's login node?)
+The login and transfer nodes are accessible to the wider Internet. 
+For security reasons, the web portal[^1] is only available to computers on Hopkins networks. If you are not on a Hopkins campus, that means that you need to use the VPN to be able to see that node.
+[^1]: jhpce-app02.jhsph.edu
 
-(Whether here or in some other more-specific document: Do we want to say that we recommend being on a Hopkins network because of any factors? Better speed if you're actually on a Hopkins network? Lower speed if you use VPN? Anything?)
 
 ## SSH Is The Primary Method
 Access to the JHPCE cluster requires the use of SSH.
@@ -37,11 +44,11 @@ SSH stands for Secure SHell. SSH is actually a set of internet standard protocol
 
 ## X11/The X Window System
 
-The [X Window System](https://en.wikipedia.org/wiki/X_Window_System) (aka X11, aka X) is the primary GUI system for UNIX computers. X allows a program (an X "client") running on a UNIX computer in the cluster to be displayed on a remote computer (running an X "server"[^1]) over the network. To use it, your local computer needs to have X server software installed on it.
+The [X Window System](https://en.wikipedia.org/wiki/X_Window_System) (aka X11, aka X) is the primary GUI system for UNIX computers. X allows a program (an X "client") running on a UNIX computer in the cluster to be displayed on a remote computer (running an X "server"[^2]) over the network. To use it, your local computer needs to have X server software installed on it.
 
 SSH provides support for tunnelling X11 over an encrypted connection. You may need to tell SSH that you want that service, by, for example, adding the -X flag to an ssh command in a macOS Terminal.
 
-[^1]:Note that X reverses the normal conception of client/server operation, which is that the remote computer is the "server". In X11, the "server" is the program receiving the keyboard and mouse inputs and displaying the output of remote "client" programs.
+[^2]:Note that X reverses the normal conception of client/server operation, which is that the remote computer is the "server". In X11, the "server" is the program receiving the keyboard and mouse inputs and displaying the output of remote "client" programs.
 
 - macOS users need to install [XQuartz](https://en.wikipedia.org/wiki/XQuartz) from [xquartz.org](https://www.xquartz.org).
 - Windows users need to use a program like MobaXterm (highly recommended) or [Cygwin](https://en.wikipedia.org/wiki/Cygwin). We have a page describing installing and using [MobaXterm](mobaxterm.md).
@@ -66,7 +73,7 @@ Describe capabilities of web portal.
 Links to the apps page(s) about it.
 
 ## SAFE Desktop
-Do we mention this as an access channel?
+A virtual desktop named the [Secure Analytic Framework Environment](https://ictr.johnshopkins.edu/service/informatics/safe-desktop/) (SAFE) is a resource that some people find useful for their computing, as well as a means to access JHPCE (via the [MobaXterm](mobaxterm.md) application). It is a virtual Windows computer equipped with many applications JHPCE members use for their research, including SAS and Stata. It includes 100GB of secure data storage for sensitive (PHI, PII) information. That data can be shared by research groups. Free for Johns Hopkins Medicine staff and students, it {==requires filling out a form and waiting for approval==}.
 
 ## File Transfers
 Brief description of our transfer node and its capabilities. Admonition to not use login node for transfers (either in or out or within the cluster)

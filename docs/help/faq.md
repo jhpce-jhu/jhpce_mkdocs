@@ -9,31 +9,25 @@ There is a dedicated [SLURM FAQ](../slurm/slurm-faq.md) document.
 
 ## Why does bash report that it can’t find the module command?
 
-If you receive a message like
+??? "Click to expand answer"
+    If you receive a message like
     
-```bash linenums="0"
-bash: module: command not found
-```
+    ```bash linenums="0"
+    bash: module: command not found
+    ```
     
-The module is a shell function that is declared in `/etc/bashrc`. It
-is always a good idea for `/etc/bashrc` to be sourced immediately in
-you `~/.bashrc`.  Edit your `.bashrc` file so that the first thing it
-does is o execute the system bashrc file, i.e. your `.bashrc` file
-should start with the following lines:
+    The module is a shell function that is declared in `/etc/bashrc`. It is always a good idea for `/etc/bashrc` to be sourced immediately in you `~/.bashrc`.  Edit your `.bashrc` file so that the first thing it does is o execute the system bashrc file, i.e. your `.bashrc` file should start with the following lines:
 
-```bash linenums="0"
-if [ -f /etc/bashrc ]; then
+    ```bash linenums="0"
+    if [ -f /etc/bashrc ]; then
     . /etc/bashrc
-fi
-```
+    fi
+    ```
 
 ## My script is giving odd error messages about `\r` or `^M`.
-Windows and Unix use different characters to indicate a new line.  If
-you have uploaded your script from a Windows machine, it may have the
-Windows newline characters.  These need to be replaced by the Unix
-newline characters.  To do this, you can run the “dos2unix” command on
-your script `dos2unix myscript.sh`. This will strip out all of the
-Windows newlines and replace them with the Unix newlines.
+
+??? "Click to expand answer"
+    Windows and Unix use different characters to indicate a new line.  If you have uploaded your script from a Windows machine, it may have the Windows newline characters.  These need to be replaced by the Unix newline characters.  To do this, you can run the “dos2unix” command on your script `dos2unix myscript.sh`. This will strip out all of the Windows newlines and replace them with the Unix newlines.
 
 ## I’m getting X11 errors when using rstudio with Putty and Xming
 
@@ -70,35 +64,16 @@ forwarding.` To eliminate this warning, add the line `XAuthLocation
 
 When running SAS, you may need to specify options to indicate which
 browser to use when displaying either help or graphical output. We recommend
-using the chromium browse, and you can use the following options to the
-sas command to do so:
+using the Chromium browser.
 
-`sas -helpbrowser SAS -xrm "SAS.webBrowser:'/usr/bin/chromium-browser'" -xrm "SAS.helpBrowser:'/usr/bin/chromium-browser'"`
+See our [SAS usage document](../sw/sas.md) about how to resolve this issue.
 
-To hide extraneous error messages, you can add extra arguments at the end of the above command "> /dev/null 2>&1"
-
-Here is some code you can add to your .bashrc file. Once that becomes part of your environment (by sourcing the file or by logging out and back in again), after loading SAS you can start SAS via the command "csas" so that it can open the browser if needed. Part of its benefit is hiding error messages from the Chromium browser that can be ignored. The chromium browser likes to run on a local system with a graphics card, but because it is running in a remote X11 forwarding environment, and can’t find a graphics card, it will generate those warning messages. Of course if you have problems with the browser, you need to consider trying to see its error messages in case there are new and relevant ones.
-
-```Shell
-# SAS routines for __interactive__ sessions where plotting is involved
-# (because SAS generates HTML for the plots when run in interactive mode)
-# 
-# (YOU HAVE TO RUN "module load SAS" before calling either of these routines)
-#
-# If you want to use Firefox as your web browser for SAS:
-#
-fsas() { sas -helpbrowser SAS -xrm "SAS.webBrowser:'/usr/bin/firefox'" -xrm "SAS.helpBrowser:'/usr/bin/firefox'" "$@" > /dev/null 2>&1; }
-#
-# If you want to use Chromium-browser as your web browser for SAS:
-#
-csas() { sas -helpbrowser SAS -xrm "SAS.webBrowser:'/usr/bin/chromium-browser'" -xrm "SAS.helpBrowser:'/usr/bin/chromium-browser'" "$@" > /dev/null 2>&1; }
-```
 
 ## I’m on a Mac, and the `~C` command to interrupt an ssh session isn’t working
   
-It used to, but I upgraded MacOS and now it does not work.*  Some
-versions of MacOS have disable by default the ability to send an SSH
-Escape with `~C`.  To reenable this, on you Mac, you need to set the
+It used to, but I upgraded MacOS and now it does not work.*  Newer
+versions of MacOS have disabled by default the ability to send an SSH
+Escape with `~C` (++tilde++ ++shift+c++).  To reenable this, on you Mac, you need to set the
 `EnableEscapeCommandline` option.  You can do this by either running
 `ssh -o EnableEscapeCommandline=yes . . .` or by editing your
 `~/.ssh/config` file, and at the top of that file add the line:
@@ -109,7 +84,7 @@ EnableEscapeCommandline=yes
 
 ## How do I get the Rstudio program to work on the cluster?
 
-Use the app-portal [https://jhpce-app02.jhsph.edu/](https://jhpce-app02.jhsph.edu/).
+See our [core R support document](../sw/r-n-friends.md) about this and other R usage.
 
 
 ## My X11 forwarding stops working after 20 minutes 
@@ -124,10 +99,12 @@ $ ssh -X username@jhpce01.jhsph.edu -o ForwardX11Timeout=336h
 
 ## How do I copy a large directory structure from one place to another.
 
+Please do not copy or move anything except a small set of files on the login nodes.
+
 As an example, to copy a directory tree from `/home/bst/bob/src` to
-`/dcs01/bob/dst`, first, create a cluster script, let’s call it
+`/dcs07/bob/dst`, first, create a cluster script, let’s call it
 `copy-job`, that contains the line `rsync -avzh /home/bst/bob/src/
-/dcs01/bob/dst/`. Next, submit this script as a batch job to the
+/dcs07/bob/dst/`. Next, submit this script as a batch job to the
 cluster. An example SLURM batch job can be found [here](../slurm/crafting-jobs.md/#copying-data-within-cluster).
 
 ## My app is complaining that it can’t find a shared library, e.g. `libgfortran.so.1` 
@@ -149,6 +126,9 @@ you ssh’d to. Delete that line (it is probably a long line that
 wraps). Then try again
 
 ## Why aren’t SLURM commands, or R, or matlab, or… available to my cron job?
+
+!!! Warning "Authoring note"
+    This info needs to be re-written for upgraded cluster. And moved to the [SLURM FAQ](../slurm/slurm-faq.md). Should the `scrontab` command be mentioned?
 
 `cron` jobs are not launched from a login shell, but the module
 commands and the JHPCE default environment is initialized
