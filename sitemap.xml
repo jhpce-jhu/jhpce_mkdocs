@@ -176,6 +176,16 @@
          <changefreq>daily</changefreq>
     </url>
     <url>
+         <loc>https://www.jhpce-jhu.github.io/jhpce_docs/portal/web-reset/</loc>
+         <lastmod>2024-03-05</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://www.jhpce-jhu.github.io/jhpce_docs/portal/webapps/</loc>
+         <lastmod>2024-03-05</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
          <loc>https://www.jhpce-jhu.github.io/jhpce_docs/slurm/crafting-jobs/</loc>
          <lastmod>2024-03-05</lastmod>
          <changefreq>daily</changefreq>
