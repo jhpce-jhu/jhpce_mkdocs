@@ -9,7 +9,6 @@ nav:
       - Staff: aboutus/staff.md
     - Getting Help:
       - Basics: help/help-basics.md
-      - FAQ: help/faq.md
       - InfoToRelocate: help/docs.md
       - Submitting Good Queries: help/good-query.md
       - External Guides: help/external.md
@@ -28,6 +27,7 @@ nav:
         - JHPCE Orientation (PDF): orient/images/latest-orient.pdf
         - C-SUB Orientation (PDF): orient/images/latest-csub-orient.pdf
         - First Login: orient/orient-stub.md
+    - FAQ: help/faq.md
     - Accessing the cluster:
       - Overview: access/access-overview.md
       - SSH: access/ssh.md
@@ -58,12 +58,11 @@ nav:
       - Adding local pkgs: sw/adding-pkgs.md
       - Building Your Own: sw/building-from-src.md
       - Containers: sw/containers.md
-      - Major Applications:
-        - R and RStudio and friends: sw/r-n-friends.md
-        - Managing Jobs With R and slurmjobs: sw/r-slurmjobs.md
-        - Jupyter: sw/jupyter.md
-        - Matlab: sw/matlab.md
-        - SAS: sw/sas.md
+      - R and RStudio and friends: sw/r-n-friends.md
+      - Managing Jobs With R and slurmjobs: sw/r-slurmjobs.md
+      - Jupyter: sw/jupyter.md
+      - Matlab: sw/matlab.md
+      - SAS: sw/sas.md
     - Job scheduler (SLURM): 
       - Example User Guides: slurm/user-guide-collection.md
       - Partitions: slurm/partitions.md
