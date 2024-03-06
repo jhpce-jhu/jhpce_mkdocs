@@ -4,6 +4,9 @@ site_url: https://www.jhpce-jhu.github.io/jhpce_docs/
 nav:
   - Home:
     - index.md
+    - About Us:
+      - JHPCE Model: aboutus/model.md
+      - Staff: aboutus/staff.md
     - Getting Help:
       - Basics: help/help-basics.md
       - FAQ: help/faq.md
