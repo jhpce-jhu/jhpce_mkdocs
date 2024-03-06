@@ -12,9 +12,7 @@ Health. This fee-for-service core is a long-standing collaborative
 effort between Biostatistics and the Computational Biology & Research
 Computing group in the department of Molecular Microbiology and
 Immunology. The facility is open to all Johns Hopkins affiliated
-researchers. MM
-
-JRT
+researchers. 
 
 ## Community
 The facility is used primarily by labs and research groups in the
