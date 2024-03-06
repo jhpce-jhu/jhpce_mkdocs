@@ -9,6 +9,9 @@ tags:
 
 !!! Warning "Authoring Note"
     Jeffrey started copying over RStudio and RStudio Server images and text from the old web site. Then switched to another task. So those sections, especially, need careful review in this document. They may look complete but is not.
+    
+!!! Warning "Authoring Note"
+    Multiple other documents refer to this one. If it is decided to break this document up into multiple documents, those reference links will need to be updated.
 
 We have a version of R available as a [module](modules.md).
 
@@ -48,12 +51,21 @@ In $HOME/class-scripts/R-demo there are two files, a SLURM batch job file and an
 
 ## Examples of Running RStudio
 
+### Running from the Command Line
+
 - `srun --pty --x11 --mem=10G bash`
 - `module load conda_R`
 - `module load rstudio`
 - `rstudio &`
 
+### Running via the Web Portal
+
+Please see [our page](../portal/web-apps.md) about using it.
+
+
 ## Running RStudio Server
+
+### Running from the Command Line
 
 Depending on which cluster you are using, run one of the following two scripts after starting an interactive session and landing on a compute node. (The discussion below assumes that you are on the jhpce cluster.) 
 

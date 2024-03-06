@@ -1,6 +1,7 @@
 ---
 tags:
   - needs-major-revision
+  - refers-to-old-website
 ---
 
 # THIS DOCUMENT NEEDS TO BE REWRITTEN
@@ -30,7 +31,7 @@ scheduled every other week.
 
 ## Orientation
 
-There is a [separate document](../orient/orientation.md) for orientation. JRT created a topic subdirectory docs/orient/ to hold orientation-related pages. 
+There is a [separate document](../orient/orientation-overview.md) for orientation. JRT created a topic subdirectory docs/orient/ to hold orientation-related pages. 
 
 
 ## New C-SUB user orientation 

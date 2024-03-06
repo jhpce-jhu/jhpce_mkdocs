@@ -30,7 +30,7 @@ For security reasons, the web portal is only available to computers on Hopkins n
 
 * **login**: Normally jhpce01.jhsph.edu and jhpce02.jhsph.edu (currently {==jhpce03.jhsph.edu==})
 * **transfer**: {==jhpce-transfer01.jhsph.edu==}
-* **web portal**: {==[jhpce-app02.jhsph.edu](jhpce-app02.jhsph.edu)==}
+* **web portal**: {==[jhpce-app02.jhsph.edu](https://jhpce-app02.jhsph.edu)==}
 
 
 ## SSH Is The Primary Method
@@ -67,7 +67,7 @@ These programs are usually used on smartphones, but there are programs available
 After you log into JHPCE for the first time, you should immediately configure your OTP program using a "secret" accessible to you on the cluster via the `auth_util` program. Instructions for doing that are found in the [Orientation document](../orient/images/latest-orient.pdf).
 
 ## Web Portal
-We have a web server named [jhpce-app02.jhsph.edu](jhpce-app02.jhsph.edu) configured to offer a growing number of services. Click on the links to learn more.
+We have a web server named [jhpce-app02.jhsph.edu](https://jhpce-app02.jhsph.edu) configured to offer a growing number of services. Click on the links to learn more.
 
 * Reset your password or generate a OTP ([learn more](../portal/web-reset.md))
 * Run applications on the cluster (RStudio, JupyterLab, VS Code) ([learn more](../portal/web-apps.md))
@@ -81,9 +81,9 @@ A virtual desktop named the [Secure Analytic Framework Environment](https://ictr
 We have a transfer server {==jhpce-transfer01.jhsph.edu==} for file transfers into and out of the cluster. It is connected by a 40G Ethernet link to Hopkins networks.
 This computer also offers a Globus Endpoint service (described [here](globus.md)) for transfers from personal computers and other institutions.
 
-Transferring data _into or out of the cluster_ is documented [here](access/file-transfer.md).
+Transferring data _into or out of the cluster_ is documented [here](../access/file-transfer.md).
 
 The login nodes SHOULD NOT be used for file transfers into and out of the cluster beyond extremely trivial cases. Their connections are four times slower and they are relied upon by all of your peers.
 
-Please use compute nodes for transfers _WITHIN the cluster_. For example, copying significant volumes of files from one file system to another, such as `/dcs05/a-place/` to `/dcs07/somewhere-else/`. Information about doing that can be found [here](files/copying-files.md)
+Please use compute nodes for transfers _WITHIN the cluster_. For example, copying significant volumes of files from one file system to another, such as `/dcs05/a-place/` to `/dcs07/somewhere-else/`. Information about doing that can be found [here](../files/copying-files.md)
 

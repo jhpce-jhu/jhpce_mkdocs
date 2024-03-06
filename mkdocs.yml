@@ -21,7 +21,7 @@ nav:
       - New node?: joinus/new-node.md
       - Need more space?: joinus/new-stg.md
       - Orientation/Logging In:
-        - Overview: orient/orientation.md
+        - Overview: orient/orientation-overview.md
         - JHPCE Orientation (PDF): orient/images/latest-orient.pdf
         - C-SUB Orientation (PDF): orient/images/latest-csub-orient.pdf
         - First Login: orient/orient-stub.md
@@ -72,12 +72,13 @@ nav:
       - SLURM FAQ: slurm/slurm-faq.md
     - User Guides/Tutorials:
       - GPU: gpu/gpu-overview.md
+      - VS Code: sw/vscode.md
       - Cost Calculator: help/cost-calculator.md
       - How to read a manual page (pdf): help/images/guide-to-manual-pages.pdf
       - Navigating Deep Directory Trees (pdf): files/images/pushd-popd-dirs.pdf
       - Helpful GUI Programs: sw/gui-tools.md
     - Web Portal:
-      - GUI Applications: portal/webapps.md
+      - GUI Applications: portal/web-apps.md
       - Datacatalog: portal/datacatalog.md
       - Self Service MFA, Password Requests : portal/web-reset.md
     - C-SUB:
