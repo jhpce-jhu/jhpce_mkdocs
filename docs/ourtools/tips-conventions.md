@@ -5,7 +5,7 @@ tags:
 
 # Tips and Conventions
 
-We aim to create a great web site for our users. Consistency is a part of that process. Here are some conventions and time-saving tips.
+We aim to create a great web site for our users. Consistency contributes to that result. Here are some conventions and time-saving tips.
 
 PLEASE read through the [Features](../ourtools/features.md) page for ideas about ways to present information in the best manner. Materials for MkDocs has so many tools for creating attractive and useful pages!!!
 
