@@ -14,6 +14,8 @@ Computing group in the department of Molecular Microbiology and
 Immunology. The facility is open to all Johns Hopkins affiliated
 researchers. MM
 
+JRT
+
 ## Community
 The facility is used primarily by labs and research groups in the
 Johns Hopkins Bloomberg School of Public Health (SPH), the Johns
