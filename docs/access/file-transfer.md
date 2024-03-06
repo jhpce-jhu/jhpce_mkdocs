@@ -2,6 +2,7 @@
 tags:
   - topic-overview
   - needs-major-revision
+  - refers-to-old-website
 title: File Transfer - Overview
 ---
 
