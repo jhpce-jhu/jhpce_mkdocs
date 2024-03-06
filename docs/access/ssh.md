@@ -130,7 +130,7 @@ See our document on [X11](x11.md) for instructions on making ssh work to support
 
 ## Mac-specific Configuration
 
-!!! Under construction
+!!! "Under construction"
     Needs refinement. Some mention should be made in the x11 doc.
     
 In your ~/.ssh/config file you may find some of these options useful.
