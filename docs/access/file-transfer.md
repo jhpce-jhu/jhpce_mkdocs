@@ -6,6 +6,9 @@ tags:
 title: File Transfer - Overview
 ---
 
+!!! Warning "Authoring Note"
+    This document was copied over from the old web site with few changes. Its information needs to be reviewed, links made to the globus and rclone documents and any others that are created as a result of creating an OVERVIEW document _here_ with details in subordinate documents.
+    Also, it would be nice to mention early on in this OVERVIEW that we have another document about [copying data WITHIN](../files/copying-files.md) the cluster.
 
 
 # File Transfer - Overview
