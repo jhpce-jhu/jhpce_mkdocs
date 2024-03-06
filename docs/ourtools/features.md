@@ -1,6 +1,8 @@
 # WEB SITE TOOLS/ENABLED FEATURES WORTH KNOWING HOW TO USE
 Let's create a visually appealing web site using some of these features!! Use a WYSIWYG editor like [MacDown](features.md#macdown-wysiwyg-editor) and ["mkdocs serve"](features.md/#recipe-for-running-mkdocs-locally) to quickly edit.
 
+Please consult the [Tips and Conventions](../ourtools/tips-conventions.md) page for authoring guidance and tips.
+
 Jeffrey likes:
 
 * [admonitions](features.md#admonitions) -- a lot!!

@@ -15,6 +15,7 @@ nav:
       - Tagged Files: ourtools/tags.md
       - Tools For Site Developers: 
          - Handy Features: ourtools/features.md
+         - Tips & Conventions: ourtools/tips-conventions.md
          - Wishlist: ourtools/wishlist.md
     - Getting Started:
       - New user?: joinus/new-users.md
@@ -113,12 +114,13 @@ theme:
         name: Switch to light mode
   navigation_depth: 4
   features:
-    - navigation.sections
-    #- navigation.expand # works. do we want it or not?
+    #- navigation.expand # works. do we want it or not? NO
     #- toc.integrate # do not want this. prevents right side TOC
+    # this does not work because it is an "insiders" feature
+    #- navigation.path # does not work. even with 3 levels of depth
+    - navigation.sections # vital
     - toc.follow # investigate this. want?
     - navigation.top # works. Displays "Back to top" button when one scrolls upwards
-    - navigation.path # does not work. even with 3 levels of depth
     - header.autohide # hides header if scroll far enough down. More content visable
     - navigation.footer # provides place to display copyright
     # indexes:
@@ -139,8 +141,7 @@ theme:
     # code blocks - https://squidfunk.github.io/mkdocs-material/reference/code-blocks/
     #    there are lots of customizations and info there, not just about the
     #    following feature. e.g. a list of language types https://pygments.org/docs/lexers/
-    - content.code.copy # automatically render button on right side to allow
-                        # users to copy code blocks
+    - content.code.copy # allow users to copy code blocks via button on right
     # https://squidfunk.github.io/mkdocs-material/reference/code-blocks/#adding-annotations
     - content.code.annotate # Allow annotations inside blocks after comment chars
 #
