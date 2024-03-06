@@ -18,7 +18,7 @@
       
       
       <link rel="icon" href="../../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.5.12">
+      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.5.13">
     
     
       
@@ -800,7 +800,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../orient/orientation.md" class="md-nav__link">
+      <a href="../../orient/orientation-overview/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1821,6 +1821,30 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="Examples of Running RStudio">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#running-from-the-command-line" class="md-nav__link">
+    <span class="md-ellipsis">
+      Running from the Command Line
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#running-via-the-web-portal" class="md-nav__link">
+    <span class="md-ellipsis">
+      Running via the Web Portal
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
         <li class="md-nav__item">
@@ -1832,6 +1856,15 @@
   
     <nav class="md-nav" aria-label="Running RStudio Server">
       <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#running-from-the-command-line_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Running from the Command Line
+    </span>
+  </a>
+  
+</li>
         
           <li class="md-nav__item">
   <a href="#for-mac-or-linux-computers" class="md-nav__link">
@@ -2233,6 +2266,8 @@
       
         
       
+        
+      
     
     
       
@@ -2275,6 +2310,27 @@
   
   <span class="md-ellipsis">
     GPU
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../vscode/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    VS Code
   </span>
   
 
@@ -2428,7 +2484,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../portal/webapps/" class="md-nav__link">
+      <a href="../../portal/web-apps/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2681,6 +2737,30 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="Examples of Running RStudio">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#running-from-the-command-line" class="md-nav__link">
+    <span class="md-ellipsis">
+      Running from the Command Line
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#running-via-the-web-portal" class="md-nav__link">
+    <span class="md-ellipsis">
+      Running via the Web Portal
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
         <li class="md-nav__item">
@@ -2692,6 +2772,15 @@
   
     <nav class="md-nav" aria-label="Running RStudio Server">
       <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#running-from-the-command-line_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Running from the Command Line
+    </span>
+  </a>
+  
+</li>
         
           <li class="md-nav__item">
   <a href="#for-mac-or-linux-computers" class="md-nav__link">
@@ -2770,6 +2859,10 @@
 <p class="admonition-title">Authoring Note</p>
 <p>Jeffrey started copying over RStudio and RStudio Server images and text from the old web site. Then switched to another task. So those sections, especially, need careful review in this document. They may look complete but is not.</p>
 </div>
+<div class="admonition warning">
+<p class="admonition-title">Authoring Note</p>
+<p>Multiple other documents refer to this one. If it is decided to break this document up into multiple documents, those reference links will need to be updated.</p>
+</div>
 <p>We have a version of R available as a <a href="../modules/">module</a>.</p>
 <p>This version of R is also known as conda_R. It was built with conda and contains many extra packages commonly used on the cluster.</p>
 <p>You can install your own packages to your home directory, as described in <a href="../adding-pkgs/">this document about building your own R and python pkgs</a>. You can also install your own version of R in your home directory, preferably using conda.</p>
@@ -2799,13 +2892,17 @@ For that rsync command to work correctly, there needs to be a trailing slash on 
 <li>See your</li>
 </ul>
 <h2 id="examples-of-running-rstudio">Examples of Running RStudio<a class="headerlink" href="#examples-of-running-rstudio" title="Anchor link to this section for reference">&para;</a></h2>
+<h3 id="running-from-the-command-line">Running from the Command Line<a class="headerlink" href="#running-from-the-command-line" title="Anchor link to this section for reference">&para;</a></h3>
 <ul>
 <li><code>srun --pty --x11 --mem=10G bash</code></li>
 <li><code>module load conda_R</code></li>
 <li><code>module load rstudio</code></li>
 <li><code>rstudio &amp;</code></li>
 </ul>
+<h3 id="running-via-the-web-portal">Running via the Web Portal<a class="headerlink" href="#running-via-the-web-portal" title="Anchor link to this section for reference">&para;</a></h3>
+<p>Please see <a href="../../portal/web-apps/">our page</a> about using it.</p>
 <h2 id="running-rstudio-server">Running RStudio Server<a class="headerlink" href="#running-rstudio-server" title="Anchor link to this section for reference">&para;</a></h2>
+<h3 id="running-from-the-command-line_1">Running from the Command Line<a class="headerlink" href="#running-from-the-command-line_1" title="Anchor link to this section for reference">&para;</a></h3>
 <p>Depending on which cluster you are using, run one of the following two scripts after starting an interactive session and landing on a compute node. (The discussion below assumes that you are on the jhpce cluster.) </p>
 <ul>
 <li>jhpce-rstudio-server</li>
@@ -2866,7 +2963,7 @@ For that rsync command to work correctly, there needs to be a trailing slash on 
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1-2.1-2M12.5 7v5.2l4 2.4-1 1L11 13V7h1.5M11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2v1.8Z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">March 5, 2024</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">March 6, 2024</span>
   </span>
 
     

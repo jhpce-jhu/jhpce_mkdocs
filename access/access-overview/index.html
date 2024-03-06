@@ -18,7 +18,7 @@
       
       
       <link rel="icon" href="../../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.5.12">
+      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.5.13">
     
     
       
@@ -800,7 +800,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../orient/orientation.md" class="md-nav__link">
+      <a href="../../orient/orientation-overview/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2225,6 +2225,8 @@
       
         
       
+        
+      
     
     
       
@@ -2267,6 +2269,27 @@
   
   <span class="md-ellipsis">
     GPU
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../sw/vscode/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    VS Code
   </span>
   
 
@@ -2420,7 +2443,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../portal/webapps/" class="md-nav__link">
+      <a href="../../portal/web-apps/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2772,7 +2795,7 @@ For security reasons, the web portal is only available to computers on Hopkins n
 <ul>
 <li><strong>login</strong>: Normally jhpce01.jhsph.edu and jhpce02.jhsph.edu (currently <mark class="critic">jhpce03.jhsph.edu</mark>)</li>
 <li><strong>transfer</strong>: <mark class="critic">jhpce-transfer01.jhsph.edu</mark></li>
-<li><strong>web portal</strong>: <mark class="critic"><a href="jhpce-app02.jhsph.edu">jhpce-app02.jhsph.edu</a></mark></li>
+<li><strong>web portal</strong>: <mark class="critic"><a href="https://jhpce-app02.jhsph.edu">jhpce-app02.jhsph.edu</a></mark></li>
 </ul>
 <h2 id="ssh-is-the-primary-method">SSH Is The Primary Method<a class="headerlink" href="#ssh-is-the-primary-method" title="Anchor link to this section for reference">&para;</a></h2>
 <p>Access to the JHPCE cluster requires the use of SSH.</p>
@@ -2795,10 +2818,10 @@ For security reasons, the web portal is only available to computers on Hopkins n
 <p>These programs are usually used on smartphones, but there are programs available to create them on laptops and desktops. The key with using ANY OTP program is to get it from a trusted source. We will default to mentioning the <code>Google Authenticator</code>.</p>
 <p>After you log into JHPCE for the first time, you should immediately configure your OTP program using a "secret" accessible to you on the cluster via the <code>auth_util</code> program. Instructions for doing that are found in the <a href="../../orient/images/latest-orient.pdf">Orientation document</a>.</p>
 <h2 id="web-portal">Web Portal<a class="headerlink" href="#web-portal" title="Anchor link to this section for reference">&para;</a></h2>
-<p>We have a web server named <a href="jhpce-app02.jhsph.edu">jhpce-app02.jhsph.edu</a> configured to offer a growing number of services. Click on the links to learn more.</p>
+<p>We have a web server named <a href="https://jhpce-app02.jhsph.edu">jhpce-app02.jhsph.edu</a> configured to offer a growing number of services. Click on the links to learn more.</p>
 <ul>
 <li>Reset your password or generate a OTP (<a href="../../portal/web-reset/">learn more</a>)</li>
-<li>Run applications on the cluster (RStudio, JupyterLab, VS Code) (<a href="../portal/web-apps.md">learn more</a>)</li>
+<li>Run applications on the cluster (RStudio, JupyterLab, VS Code) (<a href="../../portal/web-apps/">learn more</a>)</li>
 <li>Inspect a catalog of research databases (under development) (<a href="../../portal/datacatalog/">learn more</a>)</li>
 </ul>
 <h2 id="safe-desktop">SAFE Desktop<a class="headerlink" href="#safe-desktop" title="Anchor link to this section for reference">&para;</a></h2>
@@ -2806,9 +2829,9 @@ For security reasons, the web portal is only available to computers on Hopkins n
 <h2 id="file-transfers">File Transfers<a class="headerlink" href="#file-transfers" title="Anchor link to this section for reference">&para;</a></h2>
 <p>We have a transfer server <mark class="critic">jhpce-transfer01.jhsph.edu</mark> for file transfers into and out of the cluster. It is connected by a 40G Ethernet link to Hopkins networks.
 This computer also offers a Globus Endpoint service (described <a href="../globus/">here</a>) for transfers from personal computers and other institutions.</p>
-<p>Transferring data <em>into or out of the cluster</em> is documented <a href="access/file-transfer.md">here</a>.</p>
+<p>Transferring data <em>into or out of the cluster</em> is documented <a href="../file-transfer/">here</a>.</p>
 <p>The login nodes SHOULD NOT be used for file transfers into and out of the cluster beyond extremely trivial cases. Their connections are four times slower and they are relied upon by all of your peers.</p>
-<p>Please use compute nodes for transfers <em>WITHIN the cluster</em>. For example, copying significant volumes of files from one file system to another, such as <code>/dcs05/a-place/</code> to <code>/dcs07/somewhere-else/</code>. Information about doing that can be found <a href="files/copying-files.md">here</a></p>
+<p>Please use compute nodes for transfers <em>WITHIN the cluster</em>. For example, copying significant volumes of files from one file system to another, such as <code>/dcs05/a-place/</code> to <code>/dcs07/somewhere-else/</code>. Information about doing that can be found <a href="../../files/copying-files/">here</a></p>
 <div class="footnote">
 <hr />
 <ol>
@@ -2837,7 +2860,7 @@ This computer also offers a Globus Endpoint service (described <a href="../globu
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1-2.1-2M12.5 7v5.2l4 2.4-1 1L11 13V7h1.5M11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2v1.8Z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">March 5, 2024</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">March 6, 2024</span>
   </span>
 
     
