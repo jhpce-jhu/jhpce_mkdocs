@@ -9,9 +9,18 @@ How do you safely collaborate with others in a UNIX environment in an on-going b
 
 There are different locations where you can store files for the long term. The correct location to store files depends on several factors, including their size, whether other users should be able to read or write them, and whether they should remain for your group after you have gone to another organization.
 
+## Home Directory
+
 Everyone has a home directory. By default this is a private space.
 
 You don't want to open up your home directory to everyone in the cluster by making your home directory group or world writable.
+
+## Project Space
+
+## Scratch Space
+
+* /tmp
+* /fastscratch
 
 ## UNIX Permissions
 

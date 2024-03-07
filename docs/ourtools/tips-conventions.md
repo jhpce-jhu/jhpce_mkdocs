@@ -27,3 +27,5 @@ When editing pages on our site, please keep these things in mind.
 * ***Frontmatter Indentation:*** Items in YAML at the top of many pages **has to be indented** according to YAML rules, or things break.
 * ***Indentation for block content:*** FOUR spaces is what you need to put in front of each paragraph you want to be included in something like an admonition or detail. FOUR, no more, no less. Four spaces is also needed to nest list items.
 * ***Inspect example documents*** if you want to see how something was done in practice. The features page contains many such examples.
+* ***Get rid of line numbers*** in code blocks by adding `linenums="0"` after the opening three backticks and a space, i.e. ++grave++ ++grave++ ++grave++ ++space++ linenums="0"
+* ***Add a title, too *** to code blocks by adding `"title words"` after the opening three backticks and a space, i.e. ++grave++ ++grave++ ++grave++ ++space++ ++dblquote++ My title ++dblquote++ ++space++ linenums="0"

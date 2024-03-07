@@ -5,18 +5,21 @@ tags:
 ---
 
 # STORAGE OVERVIEW
-
-Not everything about storage needs to be in this document.
-Probably more readable if this was shorter and was an overview of key info with pointers to other documents. JRT has already created a number of subordinate docs.
+!!! Warning
+    Document under heavy-duty construction
 
 Previous [stg page](storage.md) has some text that should move into this one.
 
 ## Types of storage
-Define a set of types, then, for the rest of our documentation, organize and discuss using the same terms. That idea provides coherence and guidance for what needs to be said, and where.
+There are three basic categories of data storage you can write to.
 
-* home directories
-* project space
-* scratch spaces
+
+|Type|Example Path|Quota?|Use|
+|-------|-------------|:----:|---|
+|Home directory|/users/*yourusername*|Yes|Store your environment|
+|Project space|/dcs07/*grpname*/data|Yes|Research data|
+|Scratch space|/tmp/|No|Application temporary files|
+
 
 Characteristics, best uses of each.
 

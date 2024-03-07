@@ -199,9 +199,27 @@ in the midst of your text. Anywhere in the document you write the footnote by pl
 
 
 ## Data tables
-They don't render in MacDown (and maybe others) unless you also include the line of hyphens under the line containing the column titles.
+Tables are easily constructed out of vertical pipe symbols ++pipe++, hyphens ++hyphen++ and text. Optional colons can be used to align column contents.
 
-You can align the column contents to left, center or right by placing a colon at the left side of the divider for that column, both sides, or the right side.
+They don't render unless you also include the line of hyphens under the line containing the column titles.
+
+A simple table is created with these characters:
+
+++pipe++ Column1 Title ++pipe++ Column2 Title ++pipe++
+
+++pipe++ ---------- ++pipe++ ---------- ++pipe++
+
+++pipe++ Contents C1R1 ++pipe++ Contents C2R1 ++pipe++
+
+++pipe++ Contents C2R1 ++pipe++ Contents C2R2 ++pipe++
+
+Table Tips:
+
+* Number of pipe symbols per line must match.
+* Number of hyphens in the second line do not have to match any column width.
+* Alignment is done by placing a colon to the left, right, or on both sides of the hyphens in your dividing line.
+    * First column aligned left, second aligned right:  ++pipe++ ++colon++---------- ++pipe++ ----------++colon++ ++pipe++ 
+    * First column no alignment, second aligned center:  ++pipe++ ---------- ++pipe++ ++colon++----------++colon++ ++pipe++ 
 
 ### Sortable tables
 This is now implemented.

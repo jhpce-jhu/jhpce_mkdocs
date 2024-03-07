@@ -7,13 +7,16 @@ tags:
 Disk quotas are used to control disk space for certain file systems. We use "hard" quotas. You are not allowed to use more than your quota.  
 
 !!! Danger
-    This can become an obstacle of even logging in, as even a small file needed to record some detail about your login session, such as $HOME/.Xauthority, cannot be created. Keep your usage below your quota cap.
+    Reaching your disk quota can become an obstacle of simply logging in, as even a small file needed to record some detail about your login session, such as $HOME/.Xauthority, cannot be created. Keep your usage below your quota cap.
 
 We use ZFS file systems for large volumes. Unfortunately, ZFS does not provide an end-user quota command with which to inspect your usage and remaining space.
 
 Therefore we have configured our login nodes to display your home directory disk consumption and quota during the login process.
 
 The figure shown during login are updated periodically. Every 30 minutes to an hour.
+
+!!! tip
+    We have written a `getquota` command, which will look up your or someone else's quota.
 
 ## Home Directory
 
