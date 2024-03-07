@@ -27,7 +27,7 @@ nav:
         - Overview: orient/orientation-overview.md
         - JHPCE Orientation (PDF): orient/images/latest-orient.pdf
         - C-SUB Orientation (PDF): orient/images/latest-csub-orient.pdf
-        - First Login: orient/orient-stub.md
+        - First Login: orient/first-login.md
     - FAQ: help/faq.md
     - Accessing the cluster:
       - Overview: access/access-overview.md
