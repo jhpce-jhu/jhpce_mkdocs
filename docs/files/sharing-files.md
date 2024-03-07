@@ -1,30 +1,45 @@
 ---
 tags:
   - in-progress
+  - jeffrey
 ---
 
 # Sharing Files
 
 How do you safely collaborate with others in a UNIX environment in an on-going basis?
 
-There are different locations where you can store files for the long term. The correct location to store files depends on several factors, including their size, whether other users should be able to read or write them, and whether they should remain for your group after you have gone to another organization.
+There are different locations where you can store files for the long term. The correct location to store files depends on several factors, including their size, how private they are, whether other users should be able to read or write them, and whether they should remain for your group after you have gone to another organization.
 
-## Home Directory
+## **Where to share?**
 
-Everyone has a home directory. By default this is a private space.
+### Project Space
+The best place for long-term sharing of files, and the only place to share any significant volume of files, is in file systems created for research groups who purchase allocations of one of our storage servers.
 
-You don't want to open up your home directory to everyone in the cluster by making your home directory group or world writable.
+If your need is temporary or you cannot purchase your own space, you might be able to secure permission from an existing owner to use their space. They will need to create a subdirectory within their allocation for you and change the permissions of the directories above that to allow you and your group to see into those directories. We are happy to create a new UNIX group so you can use it in your permissions scheme. Send the request with the desired group name and a list of members to bitsupport.
 
-## Project Space
+### Home Directory
 
-## Scratch Space
+Everyone has a home directory. By default this is a private space. Things like SSH can break if the permissions on the home directory are set incorrectly.
 
-* /tmp
-* /fastscratch
+You don't want to open up your home directory to everyone in the cluster by making your home directory group or world readable or writable. By default all users belong to the same group. It's not just that people you like and trust can see your files -- so can hackers if they get access to anyone's account. Your configuration files reveal details about your account, your accounts elsewhere and, if writable, allow hackers to set traps so they can become you. Then possibly access your home or other computers.
+
+If you must use your home directory, please use ACLs to give specific access to specific people. We have written [an ACL document](../files/acl.md) to guide you. We are happy to create a new UNIX group so you can use it in your permissions scheme. Send the request with the desired group name and a list of members to bitsupport.
+
+### Scratch Space
+
+If you need to _briefly_ share some files with someone and they are too large to send via email (say 5MB), you might consider placing them in shared scratch space. This is not recommended, but we want you to be informed about this choice before you make it.
+
+If you and your recipient are members of some common group other than the default, it is best to make your temporary directory group readable and searchable but remove access for "other".
+
+**/tmp**
+: An acceptable place for a quick one-time _exchange_ of small files which don't contain protected info _IF YOU ARE CAREFUL_. This directory is world-readable and writable. A prime consideration is whether there is enough room in /tmp for your purpose. The operating system and other users depend on there ALWAYS being enough free space in this file system. Delete your files ASAP after the exchange.
+
+**/fastscratch**
+: An acceptable place for _exchanging_ larger files, but not for sharing over times longer than, say, a week. Everyone has a 1TB quota on this fast file system, but there is only 22TB of space. This space is meant to enable fast access to data read or written by jobs on the compute nodes. Files older than 30 days are deleted automatically. This document describes this file system in more detail.
 
 ## UNIX Permissions
 
-You need to understand the basics of file ownership and permissions. Here are some good tutorials to read:
+You {==must==} understand the basics of file ownership and permissions to share files. Here are some good tutorials to read:
 
 - tutorial1
 - tutorial2
