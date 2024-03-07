@@ -1393,15 +1393,16 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#home-directory" class="md-nav__link">
+  <a href="#where-to-share" class="md-nav__link">
     <span class="md-ellipsis">
-      Home Directory
+      Where to share?
     </span>
   </a>
   
-</li>
-      
-        <li class="md-nav__item">
+    <nav class="md-nav" aria-label="Where to share?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
   <a href="#project-space" class="md-nav__link">
     <span class="md-ellipsis">
       Project Space
@@ -1409,13 +1410,27 @@
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
+        
+          <li class="md-nav__item">
+  <a href="#home-directory" class="md-nav__link">
+    <span class="md-ellipsis">
+      Home Directory
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#scratch-space" class="md-nav__link">
     <span class="md-ellipsis">
       Scratch Space
     </span>
   </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -2723,15 +2738,16 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#home-directory" class="md-nav__link">
+  <a href="#where-to-share" class="md-nav__link">
     <span class="md-ellipsis">
-      Home Directory
+      Where to share?
     </span>
   </a>
   
-</li>
-      
-        <li class="md-nav__item">
+    <nav class="md-nav" aria-label="Where to share?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
   <a href="#project-space" class="md-nav__link">
     <span class="md-ellipsis">
       Project Space
@@ -2739,13 +2755,27 @@
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
+        
+          <li class="md-nav__item">
+  <a href="#home-directory" class="md-nav__link">
+    <span class="md-ellipsis">
+      Home Directory
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#scratch-space" class="md-nav__link">
     <span class="md-ellipsis">
       Scratch Space
     </span>
   </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -2828,24 +2858,38 @@
       <a href="../../ourtools/tags/#in-progress" class="md-tag">in-progress</a>
     
   
+    
+    
+    
+      <a href="../../ourtools/tags/#jeffrey" class="md-tag">jeffrey</a>
+    
+  
 </nav>
 
 
 
 <h1 id="sharing-files">Sharing Files<a class="headerlink" href="#sharing-files" title="Anchor link to this section for reference">&para;</a></h1>
 <p>How do you safely collaborate with others in a UNIX environment in an on-going basis?</p>
-<p>There are different locations where you can store files for the long term. The correct location to store files depends on several factors, including their size, whether other users should be able to read or write them, and whether they should remain for your group after you have gone to another organization.</p>
-<h2 id="home-directory">Home Directory<a class="headerlink" href="#home-directory" title="Anchor link to this section for reference">&para;</a></h2>
-<p>Everyone has a home directory. By default this is a private space.</p>
-<p>You don't want to open up your home directory to everyone in the cluster by making your home directory group or world writable.</p>
-<h2 id="project-space">Project Space<a class="headerlink" href="#project-space" title="Anchor link to this section for reference">&para;</a></h2>
-<h2 id="scratch-space">Scratch Space<a class="headerlink" href="#scratch-space" title="Anchor link to this section for reference">&para;</a></h2>
-<ul>
-<li>/tmp</li>
-<li>/fastscratch</li>
-</ul>
+<p>There are different locations where you can store files for the long term. The correct location to store files depends on several factors, including their size, how private they are, whether other users should be able to read or write them, and whether they should remain for your group after you have gone to another organization.</p>
+<h2 id="where-to-share"><strong>Where to share?</strong><a class="headerlink" href="#where-to-share" title="Anchor link to this section for reference">&para;</a></h2>
+<h3 id="project-space">Project Space<a class="headerlink" href="#project-space" title="Anchor link to this section for reference">&para;</a></h3>
+<p>The best place for long-term sharing of files, and the only place to share any significant volume of files, is in file systems created for research groups who purchase allocations of one of our storage servers.</p>
+<p>If your need is temporary or you cannot purchase your own space, you might be able to secure permission from an existing owner to use their space. They will need to create a subdirectory within their allocation for you and change the permissions of the directories above that to allow you and your group to see into those directories. We are happy to create a new UNIX group so you can use it in your permissions scheme. Send the request with the desired group name and a list of members to bitsupport.</p>
+<h3 id="home-directory">Home Directory<a class="headerlink" href="#home-directory" title="Anchor link to this section for reference">&para;</a></h3>
+<p>Everyone has a home directory. By default this is a private space. Things like SSH can break if the permissions on the home directory are set incorrectly.</p>
+<p>You don't want to open up your home directory to everyone in the cluster by making your home directory group or world readable or writable. By default all users belong to the same group. It's not just that people you like and trust can see your files -- so can hackers if they get access to anyone's account. Your configuration files reveal details about your account, your accounts elsewhere and, if writable, allow hackers to set traps so they can become you. Then possibly access your home or other computers.</p>
+<p>If you must use your home directory, please use ACLs to give specific access to specific people. We have written <a href="../acl/">an ACL document</a> to guide you. We are happy to create a new UNIX group so you can use it in your permissions scheme. Send the request with the desired group name and a list of members to bitsupport.</p>
+<h3 id="scratch-space">Scratch Space<a class="headerlink" href="#scratch-space" title="Anchor link to this section for reference">&para;</a></h3>
+<p>If you need to <em>briefly</em> share some files with someone and they are too large to send via email (say 5MB), you might consider placing them in shared scratch space. This is not recommended, but we want you to be informed about this choice before you make it.</p>
+<p>If you and your recipient are members of some common group other than the default, it is best to make your temporary directory group readable and searchable but remove access for "other".</p>
+<dl>
+<dt><strong>/tmp</strong></dt>
+<dd>An acceptable place for a quick one-time <em>exchange</em> of small files which don't contain protected info <em>IF YOU ARE CAREFUL</em>. This directory is world-readable and writable. A prime consideration is whether there is enough room in /tmp for your purpose. The operating system and other users depend on there ALWAYS being enough free space in this file system. Delete your files ASAP after the exchange.</dd>
+<dt><strong>/fastscratch</strong></dt>
+<dd>An acceptable place for <em>exchanging</em> larger files, but not for sharing over times longer than, say, a week. Everyone has a 1TB quota on this fast file system, but there is only 22TB of space. This space is meant to enable fast access to data read or written by jobs on the compute nodes. Files older than 30 days are deleted automatically. This document describes this file system in more detail.</dd>
+</dl>
 <h2 id="unix-permissions">UNIX Permissions<a class="headerlink" href="#unix-permissions" title="Anchor link to this section for reference">&para;</a></h2>
-<p>You need to understand the basics of file ownership and permissions. Here are some good tutorials to read:</p>
+<p>You <mark class="critic">must</mark> understand the basics of file ownership and permissions to share files. Here are some good tutorials to read:</p>
 <ul>
 <li>tutorial1</li>
 <li>tutorial2</li>
