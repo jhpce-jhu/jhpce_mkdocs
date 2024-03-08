@@ -133,9 +133,9 @@ The start and end field widths show below are suitable for the time format shown
 export SACCT_FORMAT="user,jobid,jobname,nodelist%12,start%-20,end%-20,state%20,reqtres%40,TRESUsageInTot%200"
 ```
 
-## Flags of Interest
+## Output Fields of Interest
 
-These flags are probably the ones you'll want. See [this section](https://slurm.schedmd.com/archive/slurm-22.05.9/sacct.html#lbAF) of the manual page for the list and their meaning. Capitalization does not matter; it is used for readability.
+These fields are probably the ones you'll want. See [this section](https://slurm.schedmd.com/archive/slurm-22.05.9/sacct.html#lbAF) of the manual page for the list and their meaning. Capitalization does not matter; it is used for readability.
 
 - TRES means Trackable RESources, such as RAM and CPUs.
 - A number of fields (not listed) are available to tell you on which node a maximum occurred. Similarly there are fields to tell you minimum, average and maximum values for some items.
@@ -173,6 +173,28 @@ These flags are probably the ones you'll want. See [this section](https://slurm.
 - MaxDiskRead - Number bytes read by all tasks in job
 - MaxDiskWrite - Number bytes written by all tasks in job
 
+## Exit Error Codes
+In addition to the job's "state", SLURM also records error codes. Unfortunately their [Job Exit Codes](https://slurm.schedmd.com/job_exit_code.html) page doesn't provide a meaning for the numerical values.
+
+Error `0:53` often means that something wasn't readable or writable. For example, job output or error files couldn't be written in the directory in which the job ran (or where you told SLURM to put them with a directive).
+
+```
+a guide for exit codes:
+
+0 → success
+non-zero → failure
+Exit code 1 indicates a general failure
+Exit code 2 indicates incorrect use of shell builtins
+Exit codes 3-124 indicate some error in job (check software exit codes)
+Exit code 125 indicates out of memory
+Exit code 126 indicates command cannot execute
+Exit code 127 indicates command not found
+Exit code 128 indicates invalid argument to exit
+Exit codes 129-192 indicate jobs terminated by Linux signals
+For these, subtract 128 from the number and match to signal code
+Enter kill -l to list signal codes
+Enter man signal for more information
+```
 
 ## Diagnostic Arguments
 
