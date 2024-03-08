@@ -10,12 +10,54 @@ How do you safely collaborate with others in a UNIX environment in an on-going b
 
 There are different locations where you can store files for the long term. The correct location to store files depends on several factors, including their size, how private they are, whether other users should be able to read or write them, and whether they should remain for your group after you have gone to another organization.
 
+## UNIX Ownership & Permissions
+
+You {==must==} understand the basics of file ownership and permissions to successfully share files. Here are some tutorials to read:
+
+- https://docs.nersc.gov/filesystems/unix-file-permissions/
+- https://www.tutorialspoint.com/unix/unix-file-permission.htm
+- https://www.redhat.com/sysadmin/linux-file-permissions-explained
+- https://kb.iu.edu/d/abdb
+
+
+In particular, you need to understand the role of the read and execute bits on directories. A directory is essentially a special kind of file, containing details about its contents. So you need to be able to read the directory in order to list its contents. On a directory, the execute bit means "search" or "traverse"
+
+Users _must_ have appropriate permissions on ALL of the parts of a path needed to reach a final file or directory. They don't need to be able to modify all of the parent directories, but they have to be able to descend through the tree of directories.
+
+/dcs07/somegroup/data/src/compile.py
+: An example absolute path composed of four directories and a file. You cannot read the file unless the four directories and the file have appropriate permissions and group memberships.
+
+### UNIX Commands To Know
+
+You can learn more about these commands by reading their manual page. You can run the command `man command-name` to read it locally. [Tips for reading manual pages](../help/images/guide-to-manual-pages.pdf) can be found in this PDF document.
+
+|Command|Description|Notes|
+|:---|:-----|----|
+|ls -l|List file details|Lists both files & dirs|
+|ls -ld|List dir details|-d option says not to list contents of dir|
+|id|Display your user & grp|Specify another user to see their info|
+|chmod|Change permissions|use -R option for recursion|
+|chgrp|Change grp of file or dir|use -R option for recursion|
+|chown|Change owner of file or dir|Ask us to change ownership|
+|newgrp -|Create new shell with different group|the hyphen option is useful|
+|sg|Execute cmd with different grp||
+|mkdir|Make a directory||
+|touch|Create an empty file or modify time stamps on existing||
+
+(To keep table size down, we used abbrieviations: dir for directories, grp for groups, cmd for command.)
+
+## Access Control Lists - ACLs
+
+Sometimes you want to give access to an individual or a group in ways that the traditional UNIX permissions and ownership model do not allow. You can use an ACL to grant those permissions, including 
+
+See [this document](acl.md) for details on how to do this.
+
 ## **Where to share?**
 
 ### Project Space
 The best place for long-term sharing of files, and the only place to share any significant volume of files, is in file systems created for research groups who purchase allocations of one of our storage servers.
 
-If your need is temporary or you cannot purchase your own space, you might be able to secure permission from an existing owner to use their space. They will need to create a subdirectory within their allocation for you and change the permissions of the directories above that to allow you and your group to see into those directories. We are happy to create a new UNIX group so you can use it in your permissions scheme. Send the request with the desired group name and a list of members to bitsupport.
+If your need is temporary or you cannot purchase your own space, you might be able to secure permission from an existing owner to use their space. They will need to create a subdirectory within their allocation for you and change the permissions of the directories above that to allow you and your group to see into those directories. We are happy to create a new UNIX group so you can use it in your permissions scheme. Send the request with the desired group name and a list of member usernames to bitsupport.
 
 ### Home Directory
 
@@ -23,7 +65,7 @@ Everyone has a home directory. By default this is a private space. Things like S
 
 You don't want to open up your home directory to everyone in the cluster by making your home directory group or world readable or writable. By default all users belong to the same group. It's not just that people you like and trust can see your files -- so can hackers if they get access to anyone's account. Your configuration files reveal details about your account, your accounts elsewhere and, if writable, allow hackers to set traps so they can become you. Then possibly access your home or other computers.
 
-If you must use your home directory, please use ACLs to give specific access to specific people. We have written [an ACL document](../files/acl.md) to guide you. We are happy to create a new UNIX group so you can use it in your permissions scheme. Send the request with the desired group name and a list of members to bitsupport.
+If you must use your home directory, please use ACLs to give specific access to specific people. We have written [an ACL document](../files/acl.md) to guide you. We are happy to create a new UNIX group so you can use it in your permissions scheme. Send the request with the desired group name and a list of member usernames to bitsupport.
 
 ### Scratch Space
 
@@ -37,17 +79,10 @@ If you and your recipient are members of some common group other than the defaul
 **/fastscratch**
 : An acceptable place for _exchanging_ larger files, but not for sharing over times longer than, say, a week. Everyone has a 1TB quota on this fast file system, but there is only 22TB of space. This space is meant to enable fast access to data read or written by jobs on the compute nodes. Files older than 30 days are deleted automatically. This document describes this file system in more detail.
 
-## UNIX Permissions
-
-You {==must==} understand the basics of file ownership and permissions to share files. Here are some good tutorials to read:
-
-- tutorial1
-- tutorial2
-
-!!! Note
-    Users have to have appropriate permissions on all of the parts of a path needed to reach a final file or directory.
 
 ### Group Writable Directories
+
+Every file or directory has an owner and a group. Every user has a primary group, and can belong to one or more secondary groups.
 
 #### Group sticky bit
 
@@ -61,11 +96,7 @@ find . -type d | xargs chmod u+rwx,g+rwx,g+s,o-rwx
 find . -type f | xargs chmod u+rwx,g+rw,o-rwx
 ```
 
-## Access Control Lists - ACLs
 
-Sometimes you want to give access to an individual or a group in ways that the traditional UNIX permissions and ownership model do not allow. You can use an ACL to grant those permissions, including 
-
-See [this document](acl.md) for details on how to do this.
 
 ## Creating A Group Writable Directory
 
