@@ -960,7 +960,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../orient/orient-stub/" class="md-nav__link">
+      <a href="../../orient/first-login/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1393,6 +1393,48 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#unix-ownership-permissions" class="md-nav__link">
+    <span class="md-ellipsis">
+      UNIX Ownership &amp; Permissions
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="UNIX Ownership & Permissions">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#important-concepts" class="md-nav__link">
+    <span class="md-ellipsis">
+      Important Concepts
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#unix-commands-to-know" class="md-nav__link">
+    <span class="md-ellipsis">
+      UNIX Commands To Know
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#access-control-lists-acls" class="md-nav__link">
+    <span class="md-ellipsis">
+      Access Control Lists - ACLs
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#where-to-share" class="md-nav__link">
     <span class="md-ellipsis">
       Where to share?
@@ -1429,21 +1471,6 @@
   
 </li>
         
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#unix-permissions" class="md-nav__link">
-    <span class="md-ellipsis">
-      UNIX Permissions
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="UNIX Permissions">
-      <ul class="md-nav__list">
-        
           <li class="md-nav__item">
   <a href="#group-writable-directories" class="md-nav__link">
     <span class="md-ellipsis">
@@ -1470,15 +1497,6 @@
         
       </ul>
     </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#access-control-lists-acls" class="md-nav__link">
-    <span class="md-ellipsis">
-      Access Control Lists - ACLs
-    </span>
-  </a>
   
 </li>
       
@@ -2738,6 +2756,48 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#unix-ownership-permissions" class="md-nav__link">
+    <span class="md-ellipsis">
+      UNIX Ownership &amp; Permissions
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="UNIX Ownership & Permissions">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#important-concepts" class="md-nav__link">
+    <span class="md-ellipsis">
+      Important Concepts
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#unix-commands-to-know" class="md-nav__link">
+    <span class="md-ellipsis">
+      UNIX Commands To Know
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#access-control-lists-acls" class="md-nav__link">
+    <span class="md-ellipsis">
+      Access Control Lists - ACLs
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#where-to-share" class="md-nav__link">
     <span class="md-ellipsis">
       Where to share?
@@ -2774,21 +2834,6 @@
   
 </li>
         
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#unix-permissions" class="md-nav__link">
-    <span class="md-ellipsis">
-      UNIX Permissions
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="UNIX Permissions">
-      <ul class="md-nav__list">
-        
           <li class="md-nav__item">
   <a href="#group-writable-directories" class="md-nav__link">
     <span class="md-ellipsis">
@@ -2815,15 +2860,6 @@
         
       </ul>
     </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#access-control-lists-acls" class="md-nav__link">
-    <span class="md-ellipsis">
-      Access Control Lists - ACLs
-    </span>
-  </a>
   
 </li>
       
@@ -2871,14 +2907,109 @@
 <h1 id="sharing-files">Sharing Files<a class="headerlink" href="#sharing-files" title="Anchor link to this section for reference">&para;</a></h1>
 <p>How do you safely collaborate with others in a UNIX environment in an on-going basis?</p>
 <p>There are different locations where you can store files for the long term. The correct location to store files depends on several factors, including their size, how private they are, whether other users should be able to read or write them, and whether they should remain for your group after you have gone to another organization.</p>
+<h2 id="unix-ownership-permissions">UNIX Ownership &amp; Permissions<a class="headerlink" href="#unix-ownership-permissions" title="Anchor link to this section for reference">&para;</a></h2>
+<p>You <mark class="critic">must</mark> understand the basics of file ownership and permissions to successfully share files. Here are some tutorials to read:</p>
+<ul>
+<li>https://docs.nersc.gov/filesystems/unix-file-permissions/</li>
+<li>https://www.tutorialspoint.com/unix/unix-file-permission.htm</li>
+<li>https://www.redhat.com/sysadmin/linux-file-permissions-explained</li>
+<li>https://kb.iu.edu/d/abdb</li>
+</ul>
+<h3 id="important-concepts">Important Concepts<a class="headerlink" href="#important-concepts" title="Anchor link to this section for reference">&para;</a></h3>
+<p>Out of the basic information on this topic, these are some particular details you should understand. </p>
+<dl>
+<dt><strong>umask</strong></dt>
+<dd>umask is a variable which controls the permissions assigned to files and directories that you create. You have a default umask, which can be changed for future logins if you change your <code>.bashrc</code> file. You can change the current umask at any time before you do run some commands.</dd>
+<dt><strong>re-use of permission bits</strong></dt>
+<dd>There are nine basic permission bits for files and directories. Three each for owner, group, and other. As UNIX developed and new capabilities were needed, the authors added one more bit (used for setuid and setgid), then started adding multiple meanings to some bits. This is shown by the letter (and its capitalization) used to represent it in the output of the <code>ls -l</code> command.</dd>
+<dd></dd>
+<dt><strong>read and execute bits on directories</strong></dt>
+<dd>The role of the read and execute bits on directories is somewhat different than that on files.  A directory is essentially a special kind of file, containing details about its contents. So you need to be able to read the directory in order to list its contents. On a directory, the execute bit means "search" or "traverse"</dd>
+<dd>Users <em>must</em> have appropriate permissions on ALL of the parts of a path needed to reach a final file or directory. They don't need to be able to modify all of the parent directories, but they have to be able to descend through the tree of directories.</dd>
+<dd><strong>/dcs07/somegroup/data/src/compile.py</strong></dd>
+<dd>An example absolute path composed of four directories and a file. You cannot read the file unless the four directories and the file have appropriate permissions and group memberships. You can only modify the file if you have write permission on it. You can create other files in the same directory only if the <code>src</code> directory has the necessary writable bit enabled.</dd>
+</dl>
+<h3 id="unix-commands-to-know">UNIX Commands To Know<a class="headerlink" href="#unix-commands-to-know" title="Anchor link to this section for reference">&para;</a></h3>
+<p>You can learn more about these commands by reading their manual page. You can run the command <code>man command-name</code> to read it locally. <a href="../../help/images/guide-to-manual-pages.pdf">Tips for reading manual pages</a> can be found in this PDF document.</p>
+<p>Only some of the arguments needed are shown in this table.</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Command</th>
+<th style="text-align: left;">Description</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">ls -l</td>
+<td style="text-align: left;">List file details</td>
+<td>Lists both files &amp; dirs</td>
+</tr>
+<tr>
+<td style="text-align: left;">ls -ld</td>
+<td style="text-align: left;">List dir details</td>
+<td>-d option says not to list contents of dir</td>
+</tr>
+<tr>
+<td style="text-align: left;">umask</td>
+<td style="text-align: left;">Display or change umask</td>
+<td>There are two versions, one built into bash and a standalone one /usr/bin/umask. The latter has a <code>-S</code> option which displays permissions in a more readable fashion.<sup id="fnref:1"><a class="footnote-ref" href="#fn:1">1</a></sup></td>
+</tr>
+<tr>
+<td style="text-align: left;">id</td>
+<td style="text-align: left;">Display your user &amp; grp</td>
+<td>Specify another user to see their info</td>
+</tr>
+<tr>
+<td style="text-align: left;">chmod</td>
+<td style="text-align: left;">Change permissions</td>
+<td>use -R option for recursion</td>
+</tr>
+<tr>
+<td style="text-align: left;">chgrp</td>
+<td style="text-align: left;">Change grp of file or dir</td>
+<td>use -R option for recursion</td>
+</tr>
+<tr>
+<td style="text-align: left;">chown</td>
+<td style="text-align: left;">Change owner of file or dir</td>
+<td>Ask us to change ownership</td>
+</tr>
+<tr>
+<td style="text-align: left;">newgrp -</td>
+<td style="text-align: left;">Create new shell with different group</td>
+<td>the hyphen option is useful</td>
+</tr>
+<tr>
+<td style="text-align: left;">sg</td>
+<td style="text-align: left;">Execute cmd with different grp</td>
+<td></td>
+</tr>
+<tr>
+<td style="text-align: left;">mkdir</td>
+<td style="text-align: left;">Make a directory</td>
+<td></td>
+</tr>
+<tr>
+<td style="text-align: left;">touch</td>
+<td style="text-align: left;">Create an empty file or modify time stamps on existing</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p>(To keep table size down, we used abbrieviations: dir for directories, grp for groups, cmd for command.)</p>
+<h2 id="access-control-lists-acls">Access Control Lists - ACLs<a class="headerlink" href="#access-control-lists-acls" title="Anchor link to this section for reference">&para;</a></h2>
+<p>Sometimes you want to give access to an individual or a group in ways that the traditional UNIX permissions and ownership model do not allow. You can use an ACL to grant those permissions, including </p>
+<p>See <a href="../acl/">this document</a> for details on how to do this.</p>
 <h2 id="where-to-share"><strong>Where to share?</strong><a class="headerlink" href="#where-to-share" title="Anchor link to this section for reference">&para;</a></h2>
 <h3 id="project-space">Project Space<a class="headerlink" href="#project-space" title="Anchor link to this section for reference">&para;</a></h3>
 <p>The best place for long-term sharing of files, and the only place to share any significant volume of files, is in file systems created for research groups who purchase allocations of one of our storage servers.</p>
-<p>If your need is temporary or you cannot purchase your own space, you might be able to secure permission from an existing owner to use their space. They will need to create a subdirectory within their allocation for you and change the permissions of the directories above that to allow you and your group to see into those directories. We are happy to create a new UNIX group so you can use it in your permissions scheme. Send the request with the desired group name and a list of members to bitsupport.</p>
+<p>If your need is temporary or you cannot purchase your own space, you might be able to secure permission from an existing owner to use their space. They will need to create a subdirectory within their allocation for you and change the permissions of the directories above that to allow you and your group to see into those directories. We are happy to create a new UNIX group so you can use it in your permissions scheme. Send the request with the desired group name and a list of member usernames to bitsupport.</p>
 <h3 id="home-directory">Home Directory<a class="headerlink" href="#home-directory" title="Anchor link to this section for reference">&para;</a></h3>
 <p>Everyone has a home directory. By default this is a private space. Things like SSH can break if the permissions on the home directory are set incorrectly.</p>
 <p>You don't want to open up your home directory to everyone in the cluster by making your home directory group or world readable or writable. By default all users belong to the same group. It's not just that people you like and trust can see your files -- so can hackers if they get access to anyone's account. Your configuration files reveal details about your account, your accounts elsewhere and, if writable, allow hackers to set traps so they can become you. Then possibly access your home or other computers.</p>
-<p>If you must use your home directory, please use ACLs to give specific access to specific people. We have written <a href="../acl/">an ACL document</a> to guide you. We are happy to create a new UNIX group so you can use it in your permissions scheme. Send the request with the desired group name and a list of members to bitsupport.</p>
+<p>If you must use your home directory, please use ACLs to give specific access to specific people. We have written <a href="../acl/">an ACL document</a> to guide you. We are happy to create a new UNIX group so you can use it in your permissions scheme. Send the request with the desired group name and a list of member usernames to bitsupport.</p>
 <h3 id="scratch-space">Scratch Space<a class="headerlink" href="#scratch-space" title="Anchor link to this section for reference">&para;</a></h3>
 <p>If you need to <em>briefly</em> share some files with someone and they are too large to send via email (say 5MB), you might consider placing them in shared scratch space. This is not recommended, but we want you to be informed about this choice before you make it.</p>
 <p>If you and your recipient are members of some common group other than the default, it is best to make your temporary directory group readable and searchable but remove access for "other".</p>
@@ -2888,17 +3019,8 @@
 <dt><strong>/fastscratch</strong></dt>
 <dd>An acceptable place for <em>exchanging</em> larger files, but not for sharing over times longer than, say, a week. Everyone has a 1TB quota on this fast file system, but there is only 22TB of space. This space is meant to enable fast access to data read or written by jobs on the compute nodes. Files older than 30 days are deleted automatically. This document describes this file system in more detail.</dd>
 </dl>
-<h2 id="unix-permissions">UNIX Permissions<a class="headerlink" href="#unix-permissions" title="Anchor link to this section for reference">&para;</a></h2>
-<p>You <mark class="critic">must</mark> understand the basics of file ownership and permissions to share files. Here are some good tutorials to read:</p>
-<ul>
-<li>tutorial1</li>
-<li>tutorial2</li>
-</ul>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>Users have to have appropriate permissions on all of the parts of a path needed to reach a final file or directory.</p>
-</div>
 <h3 id="group-writable-directories">Group Writable Directories<a class="headerlink" href="#group-writable-directories" title="Anchor link to this section for reference">&para;</a></h3>
+<p>Every file or directory has an owner and a group. Every user has a primary group, and can belong to one or more secondary groups.</p>
 <h4 id="group-sticky-bit">Group sticky bit<a class="headerlink" href="#group-sticky-bit" title="Anchor link to this section for reference">&para;</a></h4>
 <p>When you want to make a directory tree group writable but also configure the SGID bit on directories, you cannot use a simple recursive chmod command. </p>
 <p>These commands are examples of how you can recursively set correct permissions. They use the <code>find</code> command to print path names to directories or files, then pass those to xargs to execute the given commands upon.  </p>
@@ -2908,9 +3030,6 @@
 find<span class="w"> </span>.<span class="w"> </span>-type<span class="w"> </span>d<span class="w"> </span><span class="p">|</span><span class="w"> </span>xargs<span class="w"> </span>chmod<span class="w"> </span>u+rwx,g+rwx,g+s,o-rwx
 find<span class="w"> </span>.<span class="w"> </span>-type<span class="w"> </span>f<span class="w"> </span><span class="p">|</span><span class="w"> </span>xargs<span class="w"> </span>chmod<span class="w"> </span>u+rwx,g+rw,o-rwx
 </code></pre></div></td></tr></table></div>
-<h2 id="access-control-lists-acls">Access Control Lists - ACLs<a class="headerlink" href="#access-control-lists-acls" title="Anchor link to this section for reference">&para;</a></h2>
-<p>Sometimes you want to give access to an individual or a group in ways that the traditional UNIX permissions and ownership model do not allow. You can use an ACL to grant those permissions, including </p>
-<p>See <a href="../acl/">this document</a> for details on how to do this.</p>
 <h2 id="creating-a-group-writable-directory">Creating A Group Writable Directory<a class="headerlink" href="#creating-a-group-writable-directory" title="Anchor link to this section for reference">&para;</a></h2>
 <div class="admonition warning">
 <p class="admonition-title">Raw Material Here</p>
@@ -2954,6 +3073,14 @@ jhpcecms01:/users/55548/shared# umask u=rwx,g=rwx,o=rx
 jhpcecms01:/users/55548/shared# umask -S
 u=rwx,g=rwx,o=rx</p>
 <p>Many of the people modifying files in the shared directory may want to adjust the permissions of existing files and directories, and change their umask values. If they want directory trees to be group writable and new files or directories to be the same. Or some other set of permissions. Not everything within the shared directory needs to be shared with every other user of the DUA.</p>
+<div class="footnote">
+<hr />
+<ol>
+<li id="fn:1">
+<p>To see the umask manual page which supports -S, use the command <code>man 1p umask</code> To use this version of the umask command, you need to specify the full path to it (/usr/bin/umask) instead of <code>umask</code>.&#160;<a class="footnote-backref" href="#fnref:1" title="Jump back to footnote 1 in the text">&#8617;</a></p>
+</li>
+</ol>
+</div>
 
 
 
@@ -2974,7 +3101,7 @@ u=rwx,g=rwx,o=rx</p>
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1-2.1-2M12.5 7v5.2l4 2.4-1 1L11 13V7h1.5M11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2v1.8Z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">March 7, 2024</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">March 8, 2024</span>
   </span>
 
     
