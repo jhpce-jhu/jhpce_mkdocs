@@ -2949,12 +2949,12 @@
 <tr>
 <td style="text-align: left;">ls -ld</td>
 <td style="text-align: left;">List dir details</td>
-<td>-d option says not to list contents of dir</td>
+<td><code>-d</code> option says not to list <em>contents</em> of dir</td>
 </tr>
 <tr>
 <td style="text-align: left;">umask</td>
 <td style="text-align: left;">Display or change umask</td>
-<td>There are two versions, one built into bash and a standalone one /usr/bin/umask. The latter has a <code>-S</code> option which displays permissions in a more readable fashion.<sup id="fnref:1"><a class="footnote-ref" href="#fn:1">1</a></sup></td>
+<td>See footnote<sup id="fnref:1"><a class="footnote-ref" href="#fn:1">1</a></sup></td>
 </tr>
 <tr>
 <td style="text-align: left;">id</td>
@@ -2964,17 +2964,17 @@
 <tr>
 <td style="text-align: left;">chmod</td>
 <td style="text-align: left;">Change permissions</td>
-<td>use -R option for recursion</td>
+<td>use <code>-R</code> option for recursion</td>
 </tr>
 <tr>
 <td style="text-align: left;">chgrp</td>
 <td style="text-align: left;">Change grp of file or dir</td>
-<td>use -R option for recursion</td>
+<td>use <code>-R</code> option for recursion</td>
 </tr>
 <tr>
 <td style="text-align: left;">chown</td>
 <td style="text-align: left;">Change owner of file or dir</td>
-<td>Ask us to change ownership</td>
+<td>Ask sysadmins to change ownership</td>
 </tr>
 <tr>
 <td style="text-align: left;">newgrp -</td>
@@ -2989,12 +2989,12 @@
 <tr>
 <td style="text-align: left;">mkdir</td>
 <td style="text-align: left;">Make a directory</td>
-<td></td>
+<td>You can make a tree of new dirs with <code>-p newdir1/subdir1/subdir2</code></td>
 </tr>
 <tr>
-<td style="text-align: left;">touch</td>
-<td style="text-align: left;">Create an empty file or modify time stamps on existing</td>
-<td></td>
+<td style="text-align: left;">rmdir</td>
+<td style="text-align: left;">Remove an empty directory</td>
+<td>Use <code>/bin/rm -rf</code> to delete non-empty dirs</td>
 </tr>
 </tbody>
 </table>
@@ -3022,7 +3022,7 @@
 <h3 id="group-writable-directories">Group Writable Directories<a class="headerlink" href="#group-writable-directories" title="Anchor link to this section for reference">&para;</a></h3>
 <p>Every file or directory has an owner and a group. Every user has a primary group, and can belong to one or more secondary groups.</p>
 <h4 id="group-sticky-bit">Group sticky bit<a class="headerlink" href="#group-sticky-bit" title="Anchor link to this section for reference">&para;</a></h4>
-<p>When you want to make a directory tree group writable but also configure the SGID bit on directories, you cannot use a simple recursive chmod command. </p>
+<p>When you want to make a directory tree group writable but also configure the SGID bit on directories, you cannot use a simple recursive chmod command. Because that will apply the same permission to both files and directories.</p>
 <p>These commands are examples of how you can recursively set correct permissions. They use the <code>find</code> command to print path names to directories or files, then pass those to xargs to execute the given commands upon.  </p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
@@ -3033,7 +3033,7 @@ find<span class="w"> </span>.<span class="w"> </span>-type<span class="w"> </spa
 <h2 id="creating-a-group-writable-directory">Creating A Group Writable Directory<a class="headerlink" href="#creating-a-group-writable-directory" title="Anchor link to this section for reference">&para;</a></h2>
 <div class="admonition warning">
 <p class="admonition-title">Raw Material Here</p>
-<p>The following needs to be rewritten.</p>
+<p>The following needs to be rewritten. It was sent as email to a user.</p>
 </div>
 <p>The list command, ls, is crucial to figuring out what is possible, where.
 The long argument, -l, will show you ownership and permission information, as seen in my previous email.
@@ -3042,8 +3042,20 @@ Sometimes you also want to use the -d argument to tell ls that you want to see t
 <p>Every directory in a path to the destination needs to have suitable permissions.
 Readability: every directory in the path /users/55548/shared/MA_switching needs to be readable by for you to be able to list its contents.
 Writability: only the last directory in the path needs to be writable for you to be able to modify its contents.</p>
-<p>jhpcecms01:/users/55548/shared# ls -l
-total 300
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span></pre></div></td><td class="code"><div><pre><span></span><code>jhpcecms01:/users/55548/shared# ls -l
 drwxrwsrwx  7 c-jlevy33-55548  c-55548  7 Dec  5 11:10 biosim_leverage/
 drwxr-s---  3 c-eblasco1-55548 c-55548  3 Feb  1 14:00 c-eblasco1-55548/
 drwxr-s---  7 c-tbrow261-10201 c-55548  9 Dec 20 12:17 Elixhauser/
@@ -3056,12 +3068,13 @@ drwxr-s---  2 c-aliu63-55548   c-55548  5 Dec 15 14:03 MA_switching/
 drwxr-s--- 10 c-rwu32-55548    c-55548 13 Nov  8 10:31 mltss_duals/
 drwxrws---  4 c-yyang279-55548 c-55548  4 Nov 30 10:13 shen_yang/
 drwxr-s---  2 c-ykuang6-55548  c-55548  4 Jan 30 12:13 test/
-drwxr-s---  2 c-jlevy33-55548  c-55548  3 Aug 29 15:19 toofull/</p>
+drwxr-s---  2 c-jlevy33-55548  c-55548  3 Aug 29 15:19 toofull/
+</code></pre></div></td></tr></table></div>
 <p>Only the owner of a directory can change its permissions. So in this case c-aliu63-55548 needs to change the permissions on MA_switching to make it group writable.
 This command run by them would change the directory:
-chmod g+w /users/55548/shared/MA_Switching
+<code>chmod g+w /users/55548/shared/MA_Switching</code>
 This command run by them would change the directory and everything within it using the recursive flag:
-chmod -R g+w /users/55548/shared/MA_Switching</p>
+<code>chmod -R g+w /users/55548/shared/MA_Switching</code></p>
 <p>Why are files and directories created with the permissions that they get?
 A key factor here is the “umask” setting in the user’s environment when files and directories are being created.
 The command “umask -S” will show you the permissions that will be used for new files and directories.
@@ -3077,7 +3090,7 @@ u=rwx,g=rwx,o=rx</p>
 <hr />
 <ol>
 <li id="fn:1">
-<p>To see the umask manual page which supports -S, use the command <code>man 1p umask</code> To use this version of the umask command, you need to specify the full path to it (/usr/bin/umask) instead of <code>umask</code>.&#160;<a class="footnote-backref" href="#fnref:1" title="Jump back to footnote 1 in the text">&#8617;</a></p>
+<p>There are 2 versions, one built into bash and a standalone one /usr/bin/umask. The latter has a <code>-S</code> option which displays permissions in a more readable fashion. The built-in only works with octal digits. To see the umask manual page which supports -S, use the command <code>man 1p umask</code> To use this version of the umask command, you need to specify the full path to it (/usr/bin/umask) instead of <code>umask</code>.&#160;<a class="footnote-backref" href="#fnref:1" title="Jump back to footnote 1 in the text">&#8617;</a></p>
 </li>
 </ol>
 </div>
