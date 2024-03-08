@@ -15,7 +15,6 @@ All of the manual pages are [here](https://slurm.schedmd.com/archive/slurm-22.05
 
 ### Submitting Jobs
 * [salloc](https://slurm.schedmd.com/archive/slurm-22.05.9/salloc.html): request an interactive job allocation
-* [sattach](https://slurm.schedmd.com/archive/slurm-22.05.9/sattach.html): attach to a running job step
 * [sbatch](https://slurm.schedmd.com/archive/slurm-22.05.9/sbatch.html): submit a batch script to Slurm
 * [srun](https://slurm.schedmd.com/archive/slurm-22.05.9/srun.html): launch one or more tasks of an application across requested resources
 
@@ -23,6 +22,7 @@ All of the manual pages are [here](https://slurm.schedmd.com/archive/slurm-22.05
 Do not run slurmpic, squeue, sacct or other Slurm client commands that send remote procedure calls to slurmctld, the main SLURM control and scheduling daemon, from loops in shell scripts or other programs. Ensure that programs limit calls to slurmctld to the minimum necessary for the information you are trying to gather.
 
 * [sacct](https://slurm.schedmd.com/archive/slurm-22.05.9/sacct.html): {==([LOCAL TIPS](tips-sacct.md))==}: display accounting data for jobs in the Slurm database
+* [sattach](https://slurm.schedmd.com/archive/slurm-22.05.9/sattach.html): attach to a running job step
 * [scontrol](https://slurm.schedmd.com/archive/slurm-22.05.9/scontrol.html): {==([LOCAL TIPS](tips-scontrol.md))==}: display (or modify when permitted) the status of Slurm entities (jobs, nodes, partitions, reservations)
 * [sinfo](https://slurm.schedmd.com/archive/slurm-22.05.9/sinfo.html): display node and partition information
 * [sprio](https://slurm.schedmd.com/archive/slurm-22.05.9/sprio.html): {==([LOCAL TIPS](whenstart.md/#priority))==}: display the factors that comprise a job's scheduling priority

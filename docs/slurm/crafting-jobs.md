@@ -6,6 +6,9 @@ tags:
 
 # Crafting SLURM Jobs
 
+!!! Note "Authoring Note"
+    This document is accumulating information which might best be split into several more-focused documents. There are many aspects of creating jobs.
+
 There are a variety of techniques one can use to initiate SLURM jobs to accomplish various tasks. Here we will initially accumulate pointers to documentation written by others for their clusters. Later we will write concrete examples of our own.
 
 In the directories under `/jhpce/shared/jhpce/slurm/` you will find files used during orientation, some accumulated documents and batch examples.
@@ -82,7 +85,25 @@ Each component of such jobs has virtually all job options available including pa
 
 [Using srun inside of sbatch scripts,](https://hpc.llnl.gov/banks-jobs/running-jobs/slurm#MultipleJobs) in serial and parallel. Remember to include the `wait` bash command at the end of your batch file so the job doesn't end before all of the tasks inside of it.
 
+### Using signals to clean up/checkpointing
 
+It's a Good Thing to save the state of your computation so that you can pick up where you left off if your job ends earlier than expected.  We should provide some links to existing documentation people have written about how to implement checkpointing.
+
+It's also a Good Thing to clean up after yourself, by, for example, deleting files created in /tmp by your job.
+
+If a job is cancelled or killed because it exceeds its time limit (_maybe_ memory too?), SLURM sends two signals some time apart. Normally the first is a TERM signal, later a KILL signal. You can dispatch jobs with instructions to send them specific signals a specified number of seconds before the KILL signal is sent.
+
+You can modify your batch jobs so they do Good Things when they receive the first signal.
+
+See the [sbatch](https://slurm.schedmd.com/archive/slurm-22.05.9/sbatch.html) manual page's explanation for the `--signal` argument.
+
+Pay attention to which process(es) are sent signals. The batch job, all of the job steps, ...
+
+Here is a [blog post](https://dhruveshp.com/blog/2021/signal-propagation-on-slurm/) which discusses this in some detail.
+
+That post refers to [this one](https://hpc-discourse.usc.edu/t/signalling-a-job-before-time-limit-is-reached/314/4) which was updated after the post was written, so there might be newer info than was incorporated in the post.
+
+This [stackoverflow answer](https://stackoverflow.com/questions/68214421/graceful-signal-handling-in-slurm/68214873#68214873) seems to take a different approach. This is an advanced topic and will require some care and perhaps experimentation to verify your solution.
 
 ## Example Batch Jobs
 
