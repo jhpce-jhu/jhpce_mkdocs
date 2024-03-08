@@ -2766,7 +2766,7 @@
 <p>sacct will show all submitted jobs but cannot, of course, provide data for a number of fields until the job has finished. Use the <a href="https://slurm.schedmd.com/archive/slurm-22.05.9/sstat.html">sstat</a> command to get information about running programs. "Instrumenting" your jobs to gather information about them can include adding one or more sstat commands to batch jobs in multiple places.</p>
 <div class="admonition tip">
 <p class="admonition-title">Tip</p>
-<p>Much of this information can be used with <code>sstat</code>, but there are differences, particularly in available output fields.</p>
+<p>Much of the information on this page can be used with <code>sstat</code>, but there are differences, particularly in available output fields.</p>
 </div>
 <p>Examples below use angle brackets <span class="keys"><kbd class="key-less">&lt;</kbd></span> <span class="keys"><kbd class="key-greater">&gt;</kbd></span>  to indicate where you are supposed to replace argumements with your values.</p>
 <h2 id="sacct-basics">sacct basics<a class="headerlink" href="#sacct-basics" title="Anchor link to this section for reference">&para;</a></h2>
@@ -2786,29 +2786,30 @@ That database needs to be modified constantly as jobs start and complete, so we 
 <h2 id="command-options-of-note">Command Options of Note<a class="headerlink" href="#command-options-of-note" title="Anchor link to this section for reference">&para;</a></h2>
 <p>Check the <a href="https://slurm.schedmd.com/archive/slurm-22.05.9/sacct.html">man page</a>. There are other useful options.</p>
 <ul>
-<li>-X  show stats for the job allocation itself, ignoring steps (try it)</li>
-<li>-R <reasonlist> - show jobs not scheduled for given reason</li>
-<li>-a  allusers</li>
-<li>-N <nodelist> - only show jobs which ran on this/these nodes</li>
-<li>-u <userlist> - only show jobs which ran by this/these users</li>
-<li>--name=<namelist> - only show jobs with this list of name</li>
-<li>
-<ul>
-<li>-n  noheader</li>
-</ul>
-</li>
-<li>-p  parsable - puts a | between fields and at end of line</li>
-<li>-P  parsable2 - does not put a | at end of line</li>
-<li>--delimeter <char> - use that char instead of | for <code>-p</code> or <code>-P</code></li>
-<li>--units=[KMGTP] - display in this unit</li>
-<li>-k <minimum time> - looking for jobs with time limits in a range</li>
-<li>-K <maximum time> - looking for jobs with time limits in a range</li>
-<li>-q <qoslist> - list of qos used</li>
+<li><code>-X</code>  show stats for the job allocation itself, ignoring steps (try it)</li>
+<li><code>-R</code> <em>reasonlist</em>  show jobs not scheduled for given reason</li>
+<li><code>-a</code>  allusers</li>
+<li><code>-N</code> <em>nodelist</em>  only show jobs which ran on this/these nodes</li>
+<li><code>-u</code> <em>userlist</em>  only show jobs which ran by this/these users</li>
+<li><code>--name=</code><em>namelist</em> - only show jobs with this list of names</li>
+<li><code>-n</code>  noheader</li>
+<li><code>-p</code>  parsable  puts a | between fields and at end of line</li>
+<li><code>-P</code>  parsable2  does not put a | at end of line</li>
+<li><code>--delimeter</code> <char> - use that char instead of | for <code>-p</code> or <code>-P</code></li>
+<li><code>--units=[KMGTP]</code> - display in this unit</li>
+<li><code>-k</code> <em>minimum time</em> - looking for jobs with time limits in a range</li>
+<li><code>-K</code> <em>maximum time</em> - looking for jobs with time limits in a range</li>
+<li><code>-q</code> <em>qoslist</em> - list of qos used</li>
 </ul>
 <h2 id="start-and-end-times">Start and End Times<a class="headerlink" href="#start-and-end-times" title="Anchor link to this section for reference">&para;</a></h2>
 <p>It is best to use always specify a <code>-S</code> start time and a <code>-E</code> end time.</p>
 <p>Special time words: <strong>today</strong>, <strong>midnight</strong>, <strong>noon</strong>, <strong>now</strong></p>
 <p>now[{+|-}count[seconds(default)|minutes|hours|days|weeks]]</p>
+<dl>
+<dt>Examples:</dt>
+<dd><code>now-3day</code></dd>
+<dd><code>now-2hr</code></dd>
+</dl>
 <p>Valid time formats are:</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
