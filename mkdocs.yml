@@ -1,4 +1,5 @@
-# No TABs allowed in this file. None.
+# No TABs allowed in this file. None. Your editor may try to insert some.
+# Beware, this is YAML and YAML CARES. A LOT. (too much)
 site_name: JHPCE
 site_url: https://www.jhpce-jhu.github.io/jhpce_docs/
 nav:
@@ -9,7 +10,6 @@ nav:
       - Staff: aboutus/staff.md
     - Getting Help:
       - Basics: help/help-basics.md
-      - InfoToRelocate: help/docs.md
       - Submitting Good Queries: help/good-query.md
       - External Guides: help/external.md
       - Tagged Files: ourtools/tags.md
