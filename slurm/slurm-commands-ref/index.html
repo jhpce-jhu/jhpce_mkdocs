@@ -2806,7 +2806,6 @@ written a page with advice about using the command, use the <mark class="critic"
 <h3 id="submitting-jobs">Submitting Jobs<a class="headerlink" href="#submitting-jobs" title="Anchor link to this section for reference">&para;</a></h3>
 <ul>
 <li><a href="https://slurm.schedmd.com/archive/slurm-22.05.9/salloc.html">salloc</a>: request an interactive job allocation</li>
-<li><a href="https://slurm.schedmd.com/archive/slurm-22.05.9/sattach.html">sattach</a>: attach to a running job step</li>
 <li><a href="https://slurm.schedmd.com/archive/slurm-22.05.9/sbatch.html">sbatch</a>: submit a batch script to Slurm</li>
 <li><a href="https://slurm.schedmd.com/archive/slurm-22.05.9/srun.html">srun</a>: launch one or more tasks of an application across requested resources</li>
 </ul>
@@ -2814,6 +2813,7 @@ written a page with advice about using the command, use the <mark class="critic"
 <p>Do not run slurmpic, squeue, sacct or other Slurm client commands that send remote procedure calls to slurmctld, the main SLURM control and scheduling daemon, from loops in shell scripts or other programs. Ensure that programs limit calls to slurmctld to the minimum necessary for the information you are trying to gather.</p>
 <ul>
 <li><a href="https://slurm.schedmd.com/archive/slurm-22.05.9/sacct.html">sacct</a>: <mark class="critic">(<a href="../tips-sacct/">LOCAL TIPS</a>)</mark>: display accounting data for jobs in the Slurm database</li>
+<li><a href="https://slurm.schedmd.com/archive/slurm-22.05.9/sattach.html">sattach</a>: attach to a running job step</li>
 <li><a href="https://slurm.schedmd.com/archive/slurm-22.05.9/scontrol.html">scontrol</a>: <mark class="critic">(<a href="../tips-scontrol/">LOCAL TIPS</a>)</mark>: display (or modify when permitted) the status of Slurm entities (jobs, nodes, partitions, reservations)</li>
 <li><a href="https://slurm.schedmd.com/archive/slurm-22.05.9/sinfo.html">sinfo</a>: display node and partition information</li>
 <li><a href="https://slurm.schedmd.com/archive/slurm-22.05.9/sprio.html">sprio</a>: <mark class="critic">(<a href="../whenstart/#priority">LOCAL TIPS</a>)</mark>: display the factors that comprise a job's scheduling priority</li>
@@ -2856,7 +2856,7 @@ written a page with advice about using the command, use the <mark class="critic"
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1-2.1-2M12.5 7v5.2l4 2.4-1 1L11 13V7h1.5M11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2v1.8Z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">March 5, 2024</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">March 8, 2024</span>
   </span>
 
     
