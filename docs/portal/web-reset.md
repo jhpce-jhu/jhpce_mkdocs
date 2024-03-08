@@ -4,7 +4,9 @@ tags:
 ---
 # JHPCE User Account Tools
 
-The JHPCE User Account Tools provide means to:
+Our [web portal](https://jhpce-app02.jhsph.edu/) has several sections.
+
+The JHPCE User Account Tools section provide the means to:
 
 * Reset your password
 * Request Authenticator Code ("One Time Password")
@@ -15,6 +17,9 @@ The JHPCE User Account Tools provide means to:
 
 !!! Note
     Your JHPCE cluster username and password are NOT the same as your JHED ID and password. These are maintained by different groups and do not change in one place when changed in the other.
+    
+!!! Tip "Password complexity requirements"
+    After you get logged in, use the "kpasswd" command to choose a new password. You will need to use a password with three of the following four sets of characters: upper-case, lower-case, numerical digits, and special characters.
+    
 
 
-[https://jhpce-app02.jhsph.edu/](https://jhpce-app02.jhsph.edu/)
