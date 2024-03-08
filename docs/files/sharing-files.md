@@ -19,22 +19,37 @@ You {==must==} understand the basics of file ownership and permissions to succes
 - https://www.redhat.com/sysadmin/linux-file-permissions-explained
 - https://kb.iu.edu/d/abdb
 
+### Important Concepts
 
-In particular, you need to understand the role of the read and execute bits on directories. A directory is essentially a special kind of file, containing details about its contents. So you need to be able to read the directory in order to list its contents. On a directory, the execute bit means "search" or "traverse"
+Out of the basic information on this topic, these are some particular details you should understand. 
 
-Users _must_ have appropriate permissions on ALL of the parts of a path needed to reach a final file or directory. They don't need to be able to modify all of the parent directories, but they have to be able to descend through the tree of directories.
+**umask**
+: umask is a variable which controls the permissions assigned to files and directories that you create. You have a default umask, which can be changed for future logins if you change your `.bashrc` file. You can change the current umask at any time before you do run some commands.
 
-/dcs07/somegroup/data/src/compile.py
-: An example absolute path composed of four directories and a file. You cannot read the file unless the four directories and the file have appropriate permissions and group memberships.
+**re-use of permission bits**
+: There are nine basic permission bits for files and directories. Three each for owner, group, and other. As UNIX developed and new capabilities were needed, the authors added one more bit (used for setuid and setgid), then started adding multiple meanings to some bits. This is shown by the letter (and its capitalization) used to represent it in the output of the `ls -l` command.
+
+: 
+
+**read and execute bits on directories**
+: The role of the read and execute bits on directories is somewhat different than that on files.  A directory is essentially a special kind of file, containing details about its contents. So you need to be able to read the directory in order to list its contents. On a directory, the execute bit means "search" or "traverse"
+
+: Users _must_ have appropriate permissions on ALL of the parts of a path needed to reach a final file or directory. They don't need to be able to modify all of the parent directories, but they have to be able to descend through the tree of directories.
+
+: **/dcs07/somegroup/data/src/compile.py**
+: An example absolute path composed of four directories and a file. You cannot read the file unless the four directories and the file have appropriate permissions and group memberships. You can only modify the file if you have write permission on it. You can create other files in the same directory only if the `src` directory has the necessary writable bit enabled.
 
 ### UNIX Commands To Know
 
 You can learn more about these commands by reading their manual page. You can run the command `man command-name` to read it locally. [Tips for reading manual pages](../help/images/guide-to-manual-pages.pdf) can be found in this PDF document.
 
+Only some of the arguments needed are shown in this table.
+
 |Command|Description|Notes|
 |:---|:-----|----|
 |ls -l|List file details|Lists both files & dirs|
 |ls -ld|List dir details|-d option says not to list contents of dir|
+|umask|Display or change umask|There are two versions, one built into bash and a standalone one /usr/bin/umask. The latter has a `-S` option which displays permissions in a more readable fashion.[^1]|
 |id|Display your user & grp|Specify another user to see their info|
 |chmod|Change permissions|use -R option for recursion|
 |chgrp|Change grp of file or dir|use -R option for recursion|
@@ -43,6 +58,8 @@ You can learn more about these commands by reading their manual page. You can ru
 |sg|Execute cmd with different grp||
 |mkdir|Make a directory||
 |touch|Create an empty file or modify time stamps on existing||
+
+[^1]: To see the umask manual page which supports -S, use the command `man 1p umask` To use this version of the umask command, you need to specify the full path to it (/usr/bin/umask) instead of `umask`.
 
 (To keep table size down, we used abbrieviations: dir for directories, grp for groups, cmd for command.)
 
