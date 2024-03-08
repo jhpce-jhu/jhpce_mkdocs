@@ -48,18 +48,18 @@ Only some of the arguments needed are shown in this table.
 |Command|Description|Notes|
 |:---|:-----|----|
 |ls -l|List file details|Lists both files & dirs|
-|ls -ld|List dir details|-d option says not to list contents of dir|
-|umask|Display or change umask|There are two versions, one built into bash and a standalone one /usr/bin/umask. The latter has a `-S` option which displays permissions in a more readable fashion.[^1]|
+|ls -ld|List dir details|`-d` option says not to list _contents_ of dir|
+|umask|Display or change umask|See footnote[^1]|
 |id|Display your user & grp|Specify another user to see their info|
-|chmod|Change permissions|use -R option for recursion|
-|chgrp|Change grp of file or dir|use -R option for recursion|
-|chown|Change owner of file or dir|Ask us to change ownership|
+|chmod|Change permissions|use `-R` option for recursion|
+|chgrp|Change grp of file or dir|use `-R` option for recursion|
+|chown|Change owner of file or dir|Ask sysadmins to change ownership|
 |newgrp -|Create new shell with different group|the hyphen option is useful|
 |sg|Execute cmd with different grp||
-|mkdir|Make a directory||
-|touch|Create an empty file or modify time stamps on existing||
+|mkdir|Make a directory|You can make a tree of new dirs with `-p newdir1/subdir1/subdir2`|
+|rmdir|Remove an empty directory|Use `/bin/rm -rf` to delete non-empty dirs|
 
-[^1]: To see the umask manual page which supports -S, use the command `man 1p umask` To use this version of the umask command, you need to specify the full path to it (/usr/bin/umask) instead of `umask`.
+[^1]: There are 2 versions, one built into bash and a standalone one /usr/bin/umask. The latter has a `-S` option which displays permissions in a more readable fashion. The built-in only works with octal digits. To see the umask manual page which supports -S, use the command `man 1p umask` To use this version of the umask command, you need to specify the full path to it (/usr/bin/umask) instead of `umask`.
 
 (To keep table size down, we used abbrieviations: dir for directories, grp for groups, cmd for command.)
 
@@ -103,7 +103,7 @@ Every file or directory has an owner and a group. Every user has a primary group
 
 #### Group sticky bit
 
-When you want to make a directory tree group writable but also configure the SGID bit on directories, you cannot use a simple recursive chmod command. 
+When you want to make a directory tree group writable but also configure the SGID bit on directories, you cannot use a simple recursive chmod command. Because that will apply the same permission to both files and directories.
 
 These commands are examples of how you can recursively set correct permissions. They use the `find` command to print path names to directories or files, then pass those to xargs to execute the given commands upon.  
 
@@ -118,7 +118,7 @@ find . -type f | xargs chmod u+rwx,g+rw,o-rwx
 ## Creating A Group Writable Directory
 
 !!! Warning "Raw Material Here"
-    The following needs to be rewritten.
+    The following needs to be rewritten. It was sent as email to a user.
 
 The list command, ls, is crucial to figuring out what is possible, where.
 The long argument, -l, will show you ownership and permission information, as seen in my previous email.
@@ -130,8 +130,8 @@ Every directory in a path to the destination needs to have suitable permissions.
 Readability: every directory in the path /users/55548/shared/MA_switching needs to be readable by for you to be able to list its contents.
 Writability: only the last directory in the path needs to be writable for you to be able to modify its contents.
  
+```ShellSession
 jhpcecms01:/users/55548/shared# ls -l
-total 300
 drwxrwsrwx  7 c-jlevy33-55548  c-55548  7 Dec  5 11:10 biosim_leverage/
 drwxr-s---  3 c-eblasco1-55548 c-55548  3 Feb  1 14:00 c-eblasco1-55548/
 drwxr-s---  7 c-tbrow261-10201 c-55548  9 Dec 20 12:17 Elixhauser/
@@ -145,12 +145,13 @@ drwxr-s--- 10 c-rwu32-55548    c-55548 13 Nov  8 10:31 mltss_duals/
 drwxrws---  4 c-yyang279-55548 c-55548  4 Nov 30 10:13 shen_yang/
 drwxr-s---  2 c-ykuang6-55548  c-55548  4 Jan 30 12:13 test/
 drwxr-s---  2 c-jlevy33-55548  c-55548  3 Aug 29 15:19 toofull/
+```
  
 Only the owner of a directory can change its permissions. So in this case c-aliu63-55548 needs to change the permissions on MA_switching to make it group writable.
 This command run by them would change the directory:
-chmod g+w /users/55548/shared/MA_Switching
+`chmod g+w /users/55548/shared/MA_Switching`
 This command run by them would change the directory and everything within it using the recursive flag:
-chmod -R g+w /users/55548/shared/MA_Switching
+`chmod -R g+w /users/55548/shared/MA_Switching`
  
 Why are files and directories created with the permissions that they get?
 A key factor here is the “umask” setting in the user’s environment when files and directories are being created.
