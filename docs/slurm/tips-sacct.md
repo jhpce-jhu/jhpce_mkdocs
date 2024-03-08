@@ -17,7 +17,7 @@ sacct can be used to investigate jobs' resource usage, nodes used, and exit code
 sacct will show all submitted jobs but cannot, of course, provide data for a number of fields until the job has finished. Use the [sstat](https://slurm.schedmd.com/archive/slurm-22.05.9/sstat.html) command to get information about running programs. "Instrumenting" your jobs to gather information about them can include adding one or more sstat commands to batch jobs in multiple places.
 
 !!! Tip
-    Much of this information can be used with `sstat`, but there are differences, particularly in available output fields.
+    Much of the information on this page can be used with `sstat`, but there are differences, particularly in available output fields.
 
 Examples below use angle brackets ++less++ ++greater++  to indicate where you are supposed to replace argumements with your values.
     
@@ -39,20 +39,20 @@ Examples below use angle brackets ++less++ ++greater++  to indicate where you ar
 
 Check the [man page](https://slurm.schedmd.com/archive/slurm-22.05.9/sacct.html). There are other useful options.
 
-- -X  show stats for the job allocation itself, ignoring steps (try it)
-- -R <reasonlist> - show jobs not scheduled for given reason
-- -a  allusers
-- -N <nodelist> - only show jobs which ran on this/these nodes
-- -u <userlist> - only show jobs which ran by this/these users
-- --name=<namelist> - only show jobs with this list of name
-- - -n  noheader
-- -p  parsable - puts a | between fields and at end of line
-- -P  parsable2 - does not put a | at end of line
-- --delimeter <char> - use that char instead of | for `-p` or `-P`
-- --units=[KMGTP] - display in this unit
-- -k <minimum time> - looking for jobs with time limits in a range
-- -K <maximum time> - looking for jobs with time limits in a range
-- -q <qoslist> - list of qos used
+- `-X`  show stats for the job allocation itself, ignoring steps (try it)
+- `-R` *reasonlist*  show jobs not scheduled for given reason
+- `-a`  allusers
+- `-N` *nodelist*  only show jobs which ran on this/these nodes
+- `-u` *userlist*  only show jobs which ran by this/these users
+- `--name=`*namelist* - only show jobs with this list of names
+- `-n`  noheader
+- `-p`  parsable  puts a | between fields and at end of line
+- `-P`  parsable2  does not put a | at end of line
+- `--delimeter` <char> - use that char instead of | for `-p` or `-P`
+- `--units=[KMGTP]` - display in this unit
+- `-k` *minimum time* - looking for jobs with time limits in a range
+- `-K` *maximum time* - looking for jobs with time limits in a range
+- `-q` *qoslist* - list of qos used
 
 ## Start and End Times
 It is best to use always specify a `-S` start time and a `-E` end time.
@@ -60,6 +60,10 @@ It is best to use always specify a `-S` start time and a `-E` end time.
 Special time words: **today**, **midnight**, **noon**, **now**
 
 now[{+|-}count[seconds(default)|minutes|hours|days|weeks]]
+
+Examples:
+: `now-3day`
+: `now-2hr`
 
 Valid time formats are:
 
