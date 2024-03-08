@@ -76,6 +76,11 @@
          <changefreq>daily</changefreq>
     </url>
     <url>
+         <loc>https://www.jhpce-jhu.github.io/jhpce_docs/files/data-security/</loc>
+         <lastmod>2024-03-08</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
          <loc>https://www.jhpce-jhu.github.io/jhpce_docs/files/files-overview/</loc>
          <lastmod>2024-03-08</lastmod>
          <changefreq>daily</changefreq>
