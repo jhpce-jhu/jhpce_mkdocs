@@ -2811,16 +2811,12 @@ That database needs to be modified constantly as jobs start and complete, so we 
 <dd><code>now-2hr</code></dd>
 </dl>
 <p>Valid time formats are:</p>
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
-<span class="normal">2</span>
-<span class="normal">3</span>
-<span class="normal">4</span>
-<span class="normal">5</span></pre></div></td><td class="code"><div><pre><span></span><code>               HH:MM[:SS][AM|PM]
+<div class="highlight"><pre><span></span><code>               HH:MM[:SS][AM|PM]
                MMDD[YY][-HH:MM[:SS]]
                MM.DD[.YY][-HH:MM[:SS]]
                MM/DD[/YY][-HH:MM[:SS]]
                YYYY-MM-DD[THH:MM[:SS]]
-</code></pre></div></td></tr></table></div>
+</code></pre></div>
 <h2 id="job-state-values">Job State Values<a class="headerlink" href="#job-state-values" title="Anchor link to this section for reference">&para;</a></h2>
 <p>Using the <code>-s &lt;state&gt;</code> option, you can prune your search by looking for only jobs which match the state you need, such as F for failed. (All of these work: f, failed, F, FAILED)</p>
 <div class="admonition warning">
@@ -2916,21 +2912,7 @@ The start and end field widths show below are suitable for the time format shown
 <h2 id="exit-error-codes">Exit Error Codes<a class="headerlink" href="#exit-error-codes" title="Anchor link to this section for reference">&para;</a></h2>
 <p>In addition to the job's "state", SLURM also records error codes. Unfortunately their <a href="https://slurm.schedmd.com/job_exit_code.html">Job Exit Codes</a> page doesn't provide a meaning for the numerical values.</p>
 <p>Error <code>0:53</code> often means that something wasn't readable or writable. For example, job output or error files couldn't be written in the directory in which the job ran (or where you told SLURM to put them with a directive).</p>
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
-<span class="normal"> 2</span>
-<span class="normal"> 3</span>
-<span class="normal"> 4</span>
-<span class="normal"> 5</span>
-<span class="normal"> 6</span>
-<span class="normal"> 7</span>
-<span class="normal"> 8</span>
-<span class="normal"> 9</span>
-<span class="normal">10</span>
-<span class="normal">11</span>
-<span class="normal">12</span>
-<span class="normal">13</span>
-<span class="normal">14</span>
-<span class="normal">15</span></pre></div></td><td class="code"><div><pre><span></span><code>a guide for exit codes:
+<div class="highlight"><pre><span></span><code>a guide for exit codes:
 
 0 → success
 non-zero → failure
@@ -2945,7 +2927,7 @@ Exit codes 129-192 indicate jobs terminated by Linux signals
 For these, subtract 128 from the number and match to signal code
 Enter kill -l to list signal codes
 Enter man signal for more information
-</code></pre></div></td></tr></table></div>
+</code></pre></div>
 <h2 id="diagnostic-arguments">Diagnostic Arguments<a class="headerlink" href="#diagnostic-arguments" title="Anchor link to this section for reference">&para;</a></h2>
 <p>These can be useful to double-check what someone actually did.</p>
 <div class="highlight"><span class="filename">See the full command issued to submit the job</span><pre><span></span><code>sacct<span class="w"> </span>-o<span class="w"> </span>SubmitLine<span class="w"> </span>-j<span class="w"> </span>&lt;jobid&gt;

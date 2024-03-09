@@ -2734,12 +2734,10 @@
 <p>We make snapshots of the /users file system for fourteen days. You can restore files you have deleted recently by changing directory to the appropriate location and then copying the file or files back to your home directory (or anywhere else you desire).</p>
 <p>At any one time there are fourteen subdirectories in the path <code>/users/.zfs/snapshot</code></p>
 <p>Here is an example of looking through the collection of snapshots to find copies of a file you want to restore. Let's say that you deleted a file inside your home directory named susan that was stored in the absolute path <code>/users/your-userid/bob/frank/susan</code> You can see from the <code>ls -ld</code> output when the file existed and also the size of the possibly various versions of that file across the collection of snapshots (perhaps you changed it several times in the last two weeks).</p>
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
-<span class="normal">2</span>
-<span class="normal">3</span></pre></div></td><td class="code"><div><pre><span></span><code>cd /users/.zfs/snapshot
+<div class="highlight"><pre><span></span><code>cd /users/.zfs/snapshot
 ls -ld */your-userid/bob/frank/susan
 cp -p 2024-02-16-23:00/your-userid/bob/frank/susan $HOME/restored-susan
-</code></pre></div></td></tr></table></div>
+</code></pre></div>
 <p>If restoring substantial amounts of data, please do that work on a compute node instead of a login node. Thank you.</p>
 <h2 id="project-space">Project space<a class="headerlink" href="#project-space" title="Anchor link to this section for reference">&para;</a></h2>
 <p>We offer <strong>optional</strong> backup service.</p>

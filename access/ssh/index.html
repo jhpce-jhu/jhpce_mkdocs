@@ -2901,8 +2901,8 @@
 <h3 id="unix-based-machines-linux-and-mac-osx">Unix-based machines (linux and mac osx)<a class="headerlink" href="#unix-based-machines-linux-and-mac-osx" title="Anchor link to this section for reference">&para;</a></h3>
 <p>(((((((IN 2024 DO WE NEED TO SPECIFY A DIFFERENT (STRONGER) ENCRYPTION TYPE???)))))))
 + First, on your local laptop/desktop, open a terminal and <code>cd</code> into your home directory  and invoke the ssh key generator:</p>
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>ssh-keygen -t rsa
-</code></pre></div></td></tr></table></div>
+<div class="highlight"><pre><span></span><code>ssh-keygen -t rsa
+</code></pre></div>
 <ul>
 <li>You will be prompted for a passphrase.  For security reasons, we require that you use a passphrase to protect your key.  This prevents someone who gets access to your private key file from being able to use it!!!!! For the other questions, you can select the default values.</li>
 <li>The key generator will put two files in the .ssh subdirectory of your home directory, typically  <code>~/.ssh/id_rsa</code> and  <code>~/.ssh/id_rsa.pub</code>. </li>
@@ -2911,15 +2911,14 @@
 <li>If there is no <code>~/.ssh</code> directory in the remote host, you will need to login to the remote host and create one. Note, attempting to connect to another host, like <code>ssh github.com</code>, will create one if it isn't there already. </li>
 <li>You can perform the copy and append operations in one line as follows;</li>
 </ul>
-<p><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>cat ~/.ssh/id_rsa.pub | ssh &lt;your_userid&gt;@jhpce01.jhsph.edu &#39;cat &gt;&gt; ~/.ssh/authorized_keys&#39;
-</code></pre></div></td></tr></table></div>
+<p><div class="highlight"><pre><span></span><code>cat ~/.ssh/id_rsa.pub | ssh &lt;your_userid&gt;@jhpce01.jhsph.edu &#39;cat &gt;&gt; ~/.ssh/authorized_keys&#39;
+</code></pre></div>
 + Where you replace <code>&lt;your_userid&gt;</code> with your JHPCE userid and where you enter your JHPCE password when you are prompted for it by ssh.
 + To test that everything is working you should be able to log into the remote host from your local host with the following command<code>ssh &lt;your_userid&gt;@jhpce01.jhsph.edu</code>.
 + When you start ssh, you will be prompted for the passphrase that you used to protect your key.  To avoid having to enter your passphrase every time you use ssh, you can use the <code>ssh-agent</code> program.  To use <code>ssh-agent</code>, run</p>
-<p><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
-<span class="normal">2</span></pre></div></td><td class="code"><div><pre><span></span><code>ssh-add
+<p><div class="highlight"><pre><span></span><code>ssh-add
 ssh-agent
-</code></pre></div></td></tr></table></div>
+</code></pre></div>
 The ssh-agent will remain active for as long as your desktop or laptop is up and running.  If you reboot your desktop/laptop, you will need to rerun the ssh-add and ssh-agent commands.</p>
 <h4 id="loging-into-nodes">Loging into nodes<a class="headerlink" href="#loging-into-nodes" title="Anchor link to this section for reference">&para;</a></h4>
 <div class="admonition warning">
@@ -3006,28 +3005,14 @@ configuration page</a>.</p>
 <p>!!! "Under construction"
     Needs refinement. Some mention should be made in the x11 doc.</p>
 <p>In your ~/.ssh/config file you may find some of these options useful.</p>
-<div class="highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">Key macOS settings</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
-<span class="normal">2</span>
-<span class="normal">3</span>
-<span class="normal">4</span>
-<span class="normal">5</span>
-<span class="normal">6</span></pre></div></td><td class="code"><div><pre><span></span><code>UseKeychain<span class="w"> </span>yes
+<div class="highlight"><span class="filename">Key macOS settings</span><pre><span></span><code>UseKeychain<span class="w"> </span>yes
 XAuthLocation<span class="w"> </span>/opt/X11/bin/xauth
 AddKeysToAgent<span class="w"> </span>yes
 IdentityFile<span class="w"> </span>~/.ssh/id_ecdsa
 IdentityFile<span class="w"> </span>~/.ssh/id_rsa
 ForwardAgent<span class="w"> </span>yes
-</code></pre></div></td></tr></table></div>
-<div class="highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">Keeping connections alive</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
-<span class="normal"> 2</span>
-<span class="normal"> 3</span>
-<span class="normal"> 4</span>
-<span class="normal"> 5</span>
-<span class="normal"> 6</span>
-<span class="normal"> 7</span>
-<span class="normal"> 8</span>
-<span class="normal"> 9</span>
-<span class="normal">10</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="c1"># These values of 15 and 30 mean that my client ssh program will send a</span>
+</code></pre></div>
+<div class="highlight"><span class="filename">Keeping connections alive</span><pre><span></span><code><span class="c1"># These values of 15 and 30 mean that my client ssh program will send a</span>
 <span class="c1"># message to the server every 15 seconds, and not decide that a remote</span>
 <span class="c1"># server is unresponsive until (15*30)=450 seconds</span>
 
@@ -3037,17 +3022,13 @@ ServerAliveCountMax<span class="w"> </span><span class="m">30</span>
 <span class="c1"># would want the connection to die by lack of response to either method</span>
 <span class="c1"># Was it because I could not specify how long TCPKeepAlive waited?</span>
 TCPKeepAlive<span class="w"> </span>no
-</code></pre></div></td></tr></table></div>
-<div class="highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">Per-host definitions for convenience</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
-<span class="normal">2</span>
-<span class="normal">3</span>
-<span class="normal">4</span>
-<span class="normal">5</span></pre></div></td><td class="code"><div><pre><span></span><code>Host<span class="w"> </span>jhpce01<span class="w"> </span>j1<span class="w"> </span>jhpce01.jhsph.edu
+</code></pre></div>
+<div class="highlight"><span class="filename">Per-host definitions for convenience</span><pre><span></span><code>Host<span class="w"> </span>jhpce01<span class="w"> </span>j1<span class="w"> </span>jhpce01.jhsph.edu
 <span class="w">    </span>Hostname<span class="w"> </span>jhpce01.jhsph.edu
 <span class="w">    </span>User<span class="w"> </span>your-cluster-username
 <span class="w">    </span>ForwardX11<span class="w"> </span>yes
 <span class="w">    </span>IdentityFile<span class="w"> </span>~/.ssh/id_ecdsa.jhpce
-</code></pre></div></td></tr></table></div>
+</code></pre></div>
 
 
 

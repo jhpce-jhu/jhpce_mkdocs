@@ -2917,18 +2917,18 @@ the files, whereas SCP should be used when you know the exact path of
 the file you want to transfer.</p>
 <h3 id="scp"><code>scp</code><a class="headerlink" href="#scp" title="Anchor link to this section for reference">&para;</a></h3>
 <p>The <code>scp</code> command can be though of as a <code>network cp</code> command.  The command to transfer a file called <code>data.txt</code> from your local system to your home directory on the cluster would be:</p>
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>scp LOCAL_PATH/data.txt USERID@jhpce-transfer01.jhsph.edu:REMOTE_PATH/REMOTE_TARGET_FILENAME
-</code></pre></div></td></tr></table></div>
+<div class="highlight"><pre><span></span><code>scp LOCAL_PATH/data.txt USERID@jhpce-transfer01.jhsph.edu:REMOTE_PATH/REMOTE_TARGET_FILENAME
+</code></pre></div>
 <p>where the paths default to your current local directory and home
 directory on the remote. The target filename if omitted will be the
 local filename.</p>
 <p>If you want to copy a file from the cluster to your local laptop/desktop, you would reverse the arguments. For example to copy <code>data2.txt</code> from the cluster to a local file:</p>
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>scp USERID@jhpce-transfer01.jhsph.edu:REMOTE_PATH/data2.txt LOCAL_PATH/LOCAL_TARGET_FILENAME
-</code></pre></div></td></tr></table></div>
+<div class="highlight"><pre><span></span><code>scp USERID@jhpce-transfer01.jhsph.edu:REMOTE_PATH/data2.txt LOCAL_PATH/LOCAL_TARGET_FILENAME
+</code></pre></div>
 <h3 id="sftp"><code>sftp</code><a class="headerlink" href="#sftp" title="Anchor link to this section for reference">&para;</a></h3>
 <p>The <code>sftp</code> command is another means of transfering data to and from the cluster.  To use <code>sftp</code>, you would run the command:</p>
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>sftp USERID@jhpce-transfer01.jhsph.edu
-</code></pre></div></td></tr></table></div>
+<div class="highlight"><pre><span></span><code>sftp USERID@jhpce-transfer01.jhsph.edu
+</code></pre></div>
 <p>Once you’ve connected, you’ll be shown an <code>sftp&gt;</code> prompt.  From here you can use
 the shell command <code>ls</code> to get a directory listing, and and <code>cd</code> to
 change directories.  In addition to <code>ls</code> and <code>cd</code> you can use the
@@ -2965,11 +2965,11 @@ allow us to install the client for our users. You must install it
 yourself. You may either download the linux client from the aspera
 site or else use the client that we already downloaded. If you prefer
 the latter, simply copy the installation script from here:</p>
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>/jhpce/shared/jhpce/core/JHPCE_tools/1.0/packages/aspera-connect-3.6.2.117442-linux-64.sh
-</code></pre></div></td></tr></table></div>
+<div class="highlight"><pre><span></span><code>/jhpce/shared/jhpce/core/JHPCE_tools/1.0/packages/aspera-connect-3.6.2.117442-linux-64.sh
+</code></pre></div>
 <p>into your home directory, and then run the script:</p>
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>bash aspera-connect-3.6.2.117442-linux-64.sh
-</code></pre></div></td></tr></table></div>
+<div class="highlight"><pre><span></span><code>bash aspera-connect-3.6.2.117442-linux-64.sh
+</code></pre></div>
 <p>This will install the <code>ascp</code> command under your home directory at  <code>~/.aspera/connect/bin</code>.  You can either add <code>~/.aspera/connect/bin</code> to your <code>PATH</code>, or use the full path to the <code>ascp</code> command to run it.</p>
 <h3 id="unison">Unison<a class="headerlink" href="#unison" title="Anchor link to this section for reference">&para;</a></h3>
 <div class="admonition warning">
@@ -3026,13 +3026,13 @@ However if you are downloading files from an older site that does not
 support SFTP or one of the other more modern mechanisms, you have a
 couple of options for ftp.</p>
 <p>If you want to be able to interactively browse through the ftp site you can use the lynx text based browser command:</p>
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>lynx ftp://USER@ftp.site.gov
-</code></pre></div></td></tr></table></div>
+<div class="highlight"><pre><span></span><code>lynx ftp://USER@ftp.site.gov
+</code></pre></div>
 <p>Once connected, you can then use the arrow keys to move around the
 site, and to select a file to download or a directory to descend into.</p>
 <p>If you know the exact path to the file you want, you can use the “wget” command:</p>
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>wget ftp://USER:PASSWORD@ftp.site.gov/path/to/file
-</code></pre></div></td></tr></table></div>
+<div class="highlight"><pre><span></span><code>wget ftp://USER:PASSWORD@ftp.site.gov/path/to/file
+</code></pre></div>
 <p>All of these should be done from the <code>transfer</code> queue to make use of our high speed ScienceDMZ network connection.</p>
 <h2 id="links">Links<a class="headerlink" href="#links" title="Anchor link to this section for reference">&para;</a></h2>
 <ul>

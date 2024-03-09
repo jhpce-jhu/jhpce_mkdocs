@@ -3152,16 +3152,12 @@ Documentation <a href="https://facelessuser.github.io/pymdown-extensions/extensi
 <h2 id="frontmatter-in-document-files">Frontmatter (in document files)<a class="headerlink" href="#frontmatter-in-document-files" title="Anchor link to this section for reference">&para;</a></h2>
 <p>Tags are the primary use of frontmatter I think we should use at this point. <a href="https://squidfunk.github.io/mkdocs-material/reference/">This</a> may not be a complete list of directives that one can optionally add within a document. But the basics are that you can add to the top of the document a stanza to set the title of the document, a description of it, a status indicator such as new or deprecated. See <a href="https://squidfunk.github.io/mkdocs-material/reference/#setting-the-page-icon">this page</a> for how to define an icon for the page.</p>
 <p>Apparently multiple frontmatter elements, like both tags and a page title, need to exist together inside one pair of three dashed lines. See example:</p>
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
-<span class="normal">2</span>
-<span class="normal">3</span>
-<span class="normal">4</span>
-<span class="normal">5</span></pre></div></td><td class="code"><div><pre><span></span><code>---
+<div class="highlight"><pre><span></span><code>---
 tags:
   - a tag
 title: some docs need explicit titles set b/c they can&#39;t be correctly guessed
 ---
-</code></pre></div></td></tr></table></div>
+</code></pre></div>
 <h2 id="tags">Tags<a class="headerlink" href="#tags" title="Anchor link to this section for reference">&para;</a></h2>
 <p>An example of frontmatter is the code to <a href="https://squidfunk.github.io/mkdocs-material/setup/setting-up-tags/">add tags</a> to documents. 20240211 I tested adding a tag and it works. I also specified in the nav section <a href="../tags/">a page </a>for Material for MkDocs to automatically list tags and the pages they are found on.</p>
 <p>A lot of optional tag-related settings/capabilities seem to be reserved for paying sponsers as of 20240201. See this <a href="https://squidfunk.github.io/mkdocs-material/insiders/">page</a>. Can users search for documents by tags in the search field?</p>
@@ -3171,20 +3167,7 @@ title: some docs need explicit titles set b/c they can&#39;t be correctly guesse
 <p>The tag "last-revised-YYYYMMDD" could be used on a page which also has "done" or "needs-improvement-later" so you can tell that information by looking at the tags page. As opposed to having to go look at the repository. The <a href="../wishlist/">wishlist</a> document mentions adding a plugin or extension which allows the last-revised date to be automatically generated and listed at the bottom of each page.</p>
 <p>Place lines like this at the very top of the document, before the document title, to add the tags mentioned. Tags are strings but I am hoping to avoid spaces or underscores. (Underscores suck b/c they require the shift key. And you can't always see them depenind on how text renders.)</p>
 <p>Code blocks are numbered by default (given settings in mkdocs.yml). See <a href="./#code-block-line-numbers-highlighting">this section</a> for instructions on <mark class="critic">adding titles</mark> to code blocks and <mark class="critic">disabling line numbering</mark>.</p>
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
-<span class="normal"> 2</span>
-<span class="normal"> 3</span>
-<span class="normal"> 4</span>
-<span class="normal"> 5</span>
-<span class="normal"> 6</span>
-<span class="normal"> 7</span>
-<span class="normal"> 8</span>
-<span class="normal"> 9</span>
-<span class="normal">10</span>
-<span class="normal">11</span>
-<span class="normal">12</span>
-<span class="normal">13</span>
-<span class="normal">14</span></pre></div></td><td class="code"><div><pre><span></span><code>---
+<div class="highlight"><pre><span></span><code>---
 tags:
   - done
   - needs-review
@@ -3198,7 +3181,7 @@ tags:
   - adi
   - brian
 ---
-</code></pre></div></td></tr></table></div>
+</code></pre></div>
 <h2 id="internal-links">Internal links<a class="headerlink" href="#internal-links" title="Anchor link to this section for reference">&para;</a></h2>
 <p>From <a href="https://www.mkdocs.org/user-guide/writing-your-docs/#writing-with-markdown">this mkdocs</a> page JRT learned that you can specify anchor points to document sections by knowing that they are converted to lowercase and white space is replaced by dashes. So this very section, named "Internal links" can be specified as a link to "features.md#internal-links"</p>
 <h2 id="keyboard-meta-keys">Keyboard meta keys<a class="headerlink" href="#keyboard-meta-keys" title="Anchor link to this section for reference">&para;</a></h2>
@@ -3215,20 +3198,18 @@ by using two plus characters, the keyword like "ctrl", then two more plus charac
 <h2 id="abbreviations">Abbreviations<a class="headerlink" href="#abbreviations" title="Anchor link to this section for reference">&para;</a></h2>
 <p>Abbreviations can be defined by using a syntax similar to URLs and footnotes, starting with an asterisk immediately followed by the term to be associated in square brackets.</p>
 <p>This code creates the following sentence. You can hover over "<abbr title="Hyper Text Markup Language">HTML</abbr>" and see the definition appear.</p>
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
-<span class="normal">2</span></pre></div></td><td class="code"><div><pre><span></span><code>The HTML specification is maintained by the W3C.
+<div class="highlight"><pre><span></span><code>The HTML specification is maintained by the W3C.
 *[HTML]: Hyper Text Markup Language
-</code></pre></div></td></tr></table></div>
+</code></pre></div>
 <p>The <abbr title="Hyper Text Markup Language">HTML</abbr> specification is maintained by the W3C.</p>
 <h2 id="glossary">Glossary<a class="headerlink" href="#glossary" title="Anchor link to this section for reference">&para;</a></h2>
 <p>There's a way to create a document which is automatically updated when people define abbrieviations. See the wishlist document for details.</p>
 <h2 id="definition-list">Definition List<a class="headerlink" href="#definition-list" title="Anchor link to this section for reference">&para;</a></h2>
 <p>You can create an indented block of text using a colon followed by FOUR space characters.</p>
 <p>Example code and result:
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
-<span class="normal">2</span></pre></div></td><td class="code"><div><pre><span></span><code>`a sample term to define`
+<div class="highlight"><pre><span></span><code>`a sample term to define`
 :    The definition you are seeking. (But not the droids.)
-</code></pre></div></td></tr></table></div></p>
+</code></pre></div></p>
 <dl>
 <dt><code>a sample term to define</code></dt>
 <dd>The definition you are seeking. (But not the droids.)</dd>
@@ -3254,8 +3235,8 @@ https://squidfunk.github.io/mkdocs-material/reference/admonitions/#usage</p>
 <h2 id="open-urls-in-new-tabs">Open URLs in new tabs<a class="headerlink" href="#open-urls-in-new-tabs" title="Anchor link to this section for reference">&para;</a></h2>
 <p>(Adi has configured the server to always open URLs in new tabs.)</p>
 <p>JRT thinks there might be plugins which make this easier than what you have to do othwerwise, which is to use <abbr title="Hyper Text Markup Language">HTML</abbr> instead of the Markdown notation. In normal <abbr title="Hyper Text Markup Language">HTML</abbr> you add a space and a string to the end of the URL: <code>target="_blank"</code></p>
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>&lt;a href=&quot;https://squidfunk.github.io/mkdocs-material/reference/admonitions/&quot; target=&quot;_blank&quot;&gt;About admonitions&lt;/a&gt;
-</code></pre></div></td></tr></table></div>
+<div class="highlight"><pre><span></span><code>&lt;a href=&quot;https://squidfunk.github.io/mkdocs-material/reference/admonitions/&quot; target=&quot;_blank&quot;&gt;About admonitions&lt;/a&gt;
+</code></pre></div>
 <h2 id="footnotes">Footnotes<a class="headerlink" href="#footnotes" title="Anchor link to this section for reference">&para;</a></h2>
 <p>This<sup id="fnref:1"><a class="footnote-ref" href="#fn:1">1</a></sup> is a reference to the feature's description.</p>
 <p>You add a footnote by entering</p>
@@ -3310,14 +3291,11 @@ https://squidfunk.github.io/mkdocs-material/reference/admonitions/#usage</p>
 </tbody>
 </table>
 <p>They would not render until I added these three lines to mkdocs.yml:
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
-<span class="normal">2</span>
-<span class="normal">3</span>
-<span class="normal">4</span></pre></div></td><td class="code"><div><pre><span></span><code>  - attr_list
+<div class="highlight"><pre><span></span><code>  - attr_list
   - pymdownx.emoji:
       emoji_index: !!python/name:material.extensions.emoji.twemoji
       emoji_generator: !!python/name:material.extensions.emoji.to_svg
-</code></pre></div></td></tr></table></div></p>
+</code></pre></div></p>
 <p>See this page for more information and links to the "icon sets" as well as other pages that display a bazillion emojis:
 https://squidfunk.github.io/mkdocs-material/reference/icons-emojis/</p>
 <p><img alt="😄" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@15.0.3/assets/svg/1f604.svg" title=":smile:" /> works if you enter <code>:smile:</code></p>
@@ -3336,8 +3314,8 @@ If you have multiple code blocks and want the line numbers to continue in second
 <h3 id="code-block-titles-including-other-files">code block titles &amp; including other files<a class="headerlink" href="#code-block-titles-including-other-files" title="Anchor link to this section for reference">&para;</a></h3>
 <p>Add a title by following leading 3 backticks with a space and <code>title=".browserslistrc"</code></p>
 <p>When Snippets is enabled, content from other files (including source files) can be embedded by using the <code>--8&lt;--</code> notation directly from within a code block to pull in a file via a relative path, in this case <code>includes/sample-bashrc</code></p>
-<div class="highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">sample bashrc</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>
-</code></pre></div></td></tr></table></div>
+<div class="highlight"><span class="filename">sample bashrc</span><pre><span></span><code>
+</code></pre></div>
 <h3 id="code-block-formatting-by-programming-language">code block formatting by programming language<a class="headerlink" href="#code-block-formatting-by-programming-language" title="Anchor link to this section for reference">&para;</a></h3>
 <p>!!! note:
     The language keywords are not the same as in github -- there is overlap but also differences. See this list for the  <a href="https://pygments.org/docs/lexers/">language keywords</a> for the Pygments
@@ -3347,10 +3325,9 @@ Python syntax highlighter used by Material for MkDocs.</p>
 <p>There is a directory <a href="https://github.com/github-linguist/linguist/tree/master/samples">full of examples</a> you can simply click on.</p>
 <p>Useful keywords include Awk, checksums, DNS Zone, Jupyter Notebook, Python, R, Regular Expression, Rich Text Format, SAS, Shell, sed, SSH Config/filenames, stata, YAML</p>
 <p>A python example</p>
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
-<span class="normal">2</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">fn</span><span class="p">():</span>
+<div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">fn</span><span class="p">():</span>
 <span class="k">pass</span>
-</code></pre></div></td></tr></table></div>
+</code></pre></div>
 <h2 id="highlighting-text">Highlighting text<a class="headerlink" href="#highlighting-text" title="Anchor link to this section for reference">&para;</a></h2>
 <p>https://squidfunk.github.io/mkdocs-material/reference/code-blocks/</p>
 <p>https://squidfunk.github.io/mkdocs-material/setup/extensions/python-markdown-extensions/#highlight</p>
@@ -3398,30 +3375,26 @@ mkdocs serve
 <h2 id="errors-you-might-run-into-running-mkdocs-locally">Errors You Might Run Into Running Mkdocs Locally<a class="headerlink" href="#errors-you-might-run-into-running-mkdocs-locally" title="Anchor link to this section for reference">&para;</a></h2>
 <p>It can sometimes be useful to <span class="keys"><kbd class="key-control">Ctrl</kbd><span>+</span><kbd class="key-c">C</kbd></span> the mkdocs serve program and restart it. Usually this involves significant changes to <code>mkdocs.yml</code> and those will stop over time. However when in doubt give it a try.</p>
 <p>JRT added some instructions to the mkdocs.yml file causing warnings to be issued. JRT has found them very useful.
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
-<span class="normal">2</span>
-<span class="normal">3</span>
-<span class="normal">4</span>
-<span class="normal">5</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="c1"># https://www.mkdocs.org/user-guide/configuration/#validation</span>
+<div class="highlight"><pre><span></span><code><span class="c1"># https://www.mkdocs.org/user-guide/configuration/#validation</span>
 <span class="nt">validation</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">omitted_files</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">warn</span>
 <span class="w">  </span><span class="nt">absolute_links</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">warn</span>
 <span class="w">  </span><span class="nt">unrecognized_links</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">warn</span>
-</code></pre></div></td></tr></table></div></p>
+</code></pre></div></p>
 <p>The <code>mkdocs serve</code> program will spew out a number of warnings and error messages as you change files. Most of them are important but a few of them are going to recur and are harmless. For example warnings about files in the docs/ tree which are not mentioned in the nav bar. Such files are only going to grow in number. Perhaps there is a way to exclude known cases?</p>
-<div class="highlight"><span class="filename">This means you have an error in frontmatter YML code somewhere</span><pre><span></span><code>TypeError:<span class="w"> </span><span class="s1">&#39;&lt;&#39;</span><span class="w"> </span>not<span class="w"> </span>supported<span class="w"> </span>between<span class="w"> </span>instances<span class="w"> </span>of<span class="w"> </span><span class="s1">&#39;NoneType&#39;</span><span class="w"> </span>and<span class="w"> </span><span class="s1">&#39;str&#39;</span>
+<div class="highlight"><span class="filename">This error means you have an error in frontmatter YML code somewhere</span><pre><span></span><code>TypeError:<span class="w"> </span><span class="s1">&#39;&lt;&#39;</span><span class="w"> </span>not<span class="w"> </span>supported<span class="w"> </span>between<span class="w"> </span>instances<span class="w"> </span>of<span class="w"> </span><span class="s1">&#39;NoneType&#39;</span><span class="w"> </span>and<span class="w"> </span><span class="s1">&#39;str&#39;</span>
 ERROR<span class="w">   </span>-<span class="w">  </span><span class="o">[</span><span class="m">14</span>:46:28<span class="o">]</span><span class="w"> </span>An<span class="w"> </span>error<span class="w"> </span>happened<span class="w"> </span>during<span class="w"> </span>the<span class="w"> </span>rebuild.<span class="w"> </span>The<span class="w"> </span>server<span class="w"> </span>will<span class="w"> </span>appear
 <span class="w">           </span>stuck<span class="w"> </span><span class="k">until</span><span class="w"> </span>build<span class="w"> </span>errors<span class="w"> </span>are<span class="w"> </span>resolved.
 </code></pre></div>
 <h2 id="macdown-wysiwyg-editor">MacDown WYSIWYG Editor<a class="headerlink" href="#macdown-wysiwyg-editor" title="Anchor link to this section for reference">&para;</a></h2>
-<p>Jeffrey has found that the free <a href="https://macdown.uranusjr.com">MacDown</a> editor is very helpful in authoring. It is a MarkDown editor for the Macintosh which displays the source code in one pane and the rendered document in another pane opposite.</p>
-<p>It renders most of Material for MkDocs material correctly, but not all. This is why it is useful to run "mkdocs serve" locally.</p>
+<p>Jeffrey has found that the free <a href="https://macdown.uranusjr.com">MacDown</a> editor is VERY HELPFUL in authoring. It is a MarkDown editor for the Macintosh which displays the source code in one pane and the rendered document in another pane opposite.</p>
+<p>It renders most of Material for MkDocs material correctly, but not all. This is another reason why it is useful to run "mkdocs serve" locally, so you can see in a web browser the results of your edits.</p>
 <p>There are preferences that are worth enabling. <a href="https://www.markdownguide.org/tools/macdown/">This page</a> lists the MarkDown elements which are enabled and disabled by default.
 <a href="https://www.markdownguide.org/extended-syntax/#overview">This page</a> discusses extended syntax and the site has other interesting MarkDown reference information.</p>
-<p>If you copy a web URL, highlight some text in your source code, then click on the link insert symbol in the toolbar, it will automatically paste in the URl.</p>
+<p>One handy feature: If you copy a web URL, highlight some text in your source code, then click on the link insert symbol in the toolbar, it will automatically paste in the URl as it inserts the square brackets and parentheses to create a URL.</p>
 <p>Does automatic pattern matching for syntax. Includes a command line program to use to open documents (Jeffrey configured his Mac using Get Info on an .md file to use MacDown by default so he can say in Terminal "open file.md" and it opens up the GUI). Supports a variety of themes for those who like dark mode.</p>
-<p>One flaw in this program is that sometimes the source code pane is blank when you open existing documents. The workaround is to grow and shrink the document width and the dividing line between the source and rendered document panes.</p>
-<p>You can install it with Homebrew with <code>brew install --cask macdown</code> Stats on <a href="https://formulae.brew.sh/cask/macdown">its page </a>indicate some popularity.</p>
+<p>One flaw in this program is that sometimes the source code pane is blank when you open existing documents. The solution is to quit the program and launch it again. The fast workaround is to grow and shrink the document width and the dividing line between the source and rendered document panes.</p>
+<p>You can install it by download via the web or with Homebrew with <code>brew install --cask macdown</code> Stats on <a href="https://formulae.brew.sh/cask/macdown">its page </a>indicate some popularity.</p>
 <div class="footnote">
 <hr />
 <ol>
@@ -3450,7 +3423,7 @@ ERROR<span class="w">   </span>-<span class="w">  </span><span class="o">[</span
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1-2.1-2M12.5 7v5.2l4 2.4-1 1L11 13V7h1.5M11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2v1.8Z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">March 7, 2024</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">March 9, 2024</span>
   </span>
 
     

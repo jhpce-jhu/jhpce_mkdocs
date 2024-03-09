@@ -2056,6 +2056,30 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="CPU Partitions">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#public-cpu-partitions" class="md-nav__link">
+    <span class="md-ellipsis">
+      Public CPU Partitions
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pi-cpu-partitions" class="md-nav__link">
+    <span class="md-ellipsis">
+      PI CPU Partitions
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
         <li class="md-nav__item">
@@ -2694,6 +2718,30 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="CPU Partitions">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#public-cpu-partitions" class="md-nav__link">
+    <span class="md-ellipsis">
+      Public CPU Partitions
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pi-cpu-partitions" class="md-nav__link">
+    <span class="md-ellipsis">
+      PI CPU Partitions
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
         <li class="md-nav__item">
@@ -2735,28 +2783,37 @@
 <p>A partition is a logical collections of nodes that comprise different hardware resources and limits to help meet the wide variety of jobs that get scheduled on the cluster. </p>
 <p>There are several types of partitions:</p>
 <ul>
-<li>General access (e.g. shared, interactive, gpu, transfer)</li>
-<li>Application only (e.g. sas)</li>
-<li>GPU (equipped with GPU cards)</li>
-<li>PI-owned (accessed only by members of the PI's group)</li>
+<li><strong>General access</strong> (e.g. shared, interactive, gpu, transfer)</li>
+<li><strong>Application only</strong> (e.g. sas)</li>
+<li><strong>GPU</strong> (equipped with GPU cards)</li>
+<li><strong>PI-owned</strong> (for use only by members of the PI's group)</li>
 </ul>
 <h2 id="pi-partitions">PI Partitions<a class="headerlink" href="#pi-partitions" title="Anchor link to this section for reference">&para;</a></h2>
-<p>Only submit jobs to these partitions if you are a member of the Primary Investigator's research groups or have been given explicit permission to do so. If you are in doubt, ask before submitting. Jobs from non-group members will be killed and repeated abuse <em>will</em> lead to repercussions.  </p>
+<p><mark class="critic">Only submit jobs to these partitions if you are a member of the Primary Investigator's research groups or have been given explicit permission to do so.</mark> If you are in doubt, ask before submitting. Jobs from non-group members will be killed and repeated abuse <em>will</em> lead to repercussions.  </p>
 <h2 id="public-partitions">Public Partitions<a class="headerlink" href="#public-partitions" title="Anchor link to this section for reference">&para;</a></h2>
-<p>Partitions shared, interactive, and gpu are considered public and available to all.</p>
-<p>All user are permitted to submit jobs to them. The shared queue provides low-priority access to unused capacity throughout the cluster. Capacity on the shared queue is provided on a strictly “as-available” basis and serves two purposes. First it provides surge capacity to stakeholders who temporarily need more compute capacity than they own, and second, it gives provides non-stakeholders access to computing capacity. Scheduling polices attempt to harvest unused capacity as efficiently as possible while mitigating the impact on the rights of stakeholders to use their resources. The service center does not guarantee that stakeholders will provide sufficient excess capacity to meet non-stakeholders needs, however in practice the cluster is rarely operating at full capacity so there is usually ample computing capacity on the shared queue.</p>
+<p>Partitions <strong>shared</strong>, <strong>interactive</strong>, <strong>gpu</strong> and <strong>sas</strong> are considered public and available to all.</p>
+<div class="admonition note">
+<p class="admonition-title">Specific use</p>
+<p>Only jobs which require the use of GPU cards should be submitted to the <strong>gpu</strong> partition.</p>
+<p>Only jobs which require the use of the SAS application should be submitted to the <strong>sas</strong> partition.</p>
+</div>
+<p>The public partitions provide low-priority access to unused capacity throughout the cluster. Capacity on the shared queue is provided on a strictly “as-available” basis and serves two purposes.</p>
+<p>First it provides surge capacity to stakeholders who temporarily need more compute capacity than they own, and second, it gives provides non-stakeholders access to computing capacity.</p>
+<p>Scheduling polices attempt to harvest unused capacity as efficiently as possible while mitigating the impact on the rights of stakeholders to use their resources. The JHPCE service center does not guarantee that stakeholders will provide sufficient excess capacity to meet non-stakeholders needs, however in practice the cluster is rarely operating at full capacity so there is usually ample computing capacity on the shared queue.</p>
 <h2 id="getting-info-about-partitions">Getting Info About Partitions<a class="headerlink" href="#getting-info-about-partitions" title="Anchor link to this section for reference">&para;</a></h2>
-<p>The command <a href="https://slurm.schedmd.com/archive/slurm-22.05.9/scontrol.html"><code>scontrol</code></a> can be used to show information about a specific partition. This is THE best way to see the configuration of a partition. The syntax to use is <code>scontrol show partition</code> <em>partitionname</em></p>
-<p>The command <a href="https://slurm.schedmd.com/archive/slurm-22.05.9/sinfo.html"><code>sinfo</code></a> shows information about all of the partitions. (Note: Partitions which <em>require</em> group membership to submit to are only visible via <code>sinfo</code> to members of those groups. Because the local command <code>slurmpic</code> uses <code>sinfo</code> to retrieve information, the output of <code>slurmpic -a</code> (show all nodes) will omit those private PI partitions' nodes.)</p>
+<p>Our command <code>slurmpic</code> shows information about partitions, including the member nodes, their current utilization, and some summary statistics.<sup id="fnref:1"><a class="footnote-ref" href="#fn:1">1</a></sup> By default it displays the <strong>shared</strong> partition. Specific partitions can be displayed using <code>slurmpic -p partitionname</code>. All of the nodes in all of the GPU partitions can be displayed with <code>slurmpic -g</code>. Run <code>slurmpic -h</code> to see usage notes.</p>
+<p>The best way to see the <em>configuration</em> of a partition is with the command <a href="https://slurm.schedmd.com/archive/slurm-22.05.9/scontrol.html"><code>scontrol</code></a>.
+<div class="highlight"><pre><span></span><code>scontrol<span class="w"> </span>show<span class="w"> </span>partition<span class="w"> </span>partitionname
+</code></pre></div></p>
+<p>The command <a href="https://slurm.schedmd.com/archive/slurm-22.05.9/sinfo.html"><code>sinfo</code></a> shows information about all of the partitions. It has many options, so you can also use it to see information about nodes. (Note: Partitions which <em>require</em> group membership to submit to are only visible via <code>sinfo</code> to members of those groups. Because the local command <code>slurmpic</code> uses <code>sinfo</code> to retrieve information, the output of <code>slurmpic -a</code> (show all nodes) will omit those private PI partitions' nodes.)</p>
 <h2 id="cpu-partitions">CPU Partitions<a class="headerlink" href="#cpu-partitions" title="Anchor link to this section for reference">&para;</a></h2>
-<p>To reduce table width, column names are terse.</p>
+<h3 id="public-cpu-partitions">Public CPU Partitions<a class="headerlink" href="#public-cpu-partitions" title="Anchor link to this section for reference">&para;</a></h3>
 <p>Limits for CPU cores, RAM and Time (default/maximum)</p>
 <table>
 <thead>
 <tr>
 <th>Name</th>
 <th style="text-align: center;">Type</th>
-<th style="text-align: center;">Approval[1]</th>
 <th>Core</th>
 <th>RAM</th>
 <th style="text-align: center;">Time</th>
@@ -2767,7 +2824,6 @@
 <tr>
 <td>shared</td>
 <td style="text-align: center;">public</td>
-<td style="text-align: center;">no</td>
 <td>100</td>
 <td>1TB</td>
 <td style="text-align: center;">(1d/90d)</td>
@@ -2776,25 +2832,47 @@
 <tr>
 <td>interactive</td>
 <td style="text-align: center;">public</td>
-<td style="text-align: center;">no</td>
 <td>2</td>
 <td>20gb</td>
-<td style="text-align: center;">(none/90d)</td>
+<td style="text-align: center;">(1d/90d)</td>
 <td>Small but accessible</td>
 </tr>
 <tr>
 <td>gpu</td>
 <td style="text-align: center;">public</td>
-<td style="text-align: center;">no</td>
 <td>(none)</td>
 <td>(none)</td>
 <td style="text-align: center;">(1d/90d)</td>
-<td></td>
+<td>Only for GPU jobs</td>
 </tr>
+<tr>
+<td>sas</td>
+<td style="text-align: center;">application</td>
+<td>(none)</td>
+<td>(none)</td>
+<td style="text-align: center;">(none/90d)</td>
+<td>Licensed for SAS</td>
+</tr>
+</tbody>
+</table>
+<p>To reduce table width, column names are terse.</p>
+<h3 id="pi-cpu-partitions">PI CPU Partitions<a class="headerlink" href="#pi-cpu-partitions" title="Anchor link to this section for reference">&para;</a></h3>
+<p>Limits for CPU cores, RAM and Time (default/maximum)</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th style="text-align: center;">Type</th>
+<th>Core</th>
+<th>RAM</th>
+<th style="text-align: center;">Time</th>
+<th>Notes/Use</th>
+</tr>
+</thead>
+<tbody>
 <tr>
 <td>bader</td>
 <td style="text-align: center;">PI</td>
-<td style="text-align: center;">yes</td>
 <td>(none)</td>
 <td>(none)</td>
 <td style="text-align: center;">(none/90d)</td>
@@ -2803,7 +2881,6 @@
 <tr>
 <td>bluejay</td>
 <td style="text-align: center;">PI</td>
-<td style="text-align: center;">yes</td>
 <td>(none)</td>
 <td>(none)</td>
 <td style="text-align: center;">(none/90d)</td>
@@ -2812,7 +2889,6 @@
 <tr>
 <td>cancergen</td>
 <td style="text-align: center;">PI</td>
-<td style="text-align: center;">yes</td>
 <td>(none)</td>
 <td>(none)</td>
 <td style="text-align: center;">(none/90d)</td>
@@ -2821,7 +2897,6 @@
 <tr>
 <td>caracol</td>
 <td style="text-align: center;">PI</td>
-<td style="text-align: center;">yes</td>
 <td>(none)</td>
 <td>(none)</td>
 <td style="text-align: center;">(none/90d)</td>
@@ -2830,7 +2905,6 @@
 <tr>
 <td>cee</td>
 <td style="text-align: center;">PI</td>
-<td style="text-align: center;">yes</td>
 <td>(none)</td>
 <td>(none)</td>
 <td style="text-align: center;">(none/90d)</td>
@@ -2839,7 +2913,6 @@
 <tr>
 <td>cegs2</td>
 <td style="text-align: center;">PI</td>
-<td style="text-align: center;">yes</td>
 <td>(none)</td>
 <td>(none)</td>
 <td style="text-align: center;">(none/90d)</td>
@@ -2848,7 +2921,6 @@
 <tr>
 <td>chatterjee</td>
 <td style="text-align: center;">PI</td>
-<td style="text-align: center;">yes</td>
 <td>(none)</td>
 <td>(none)</td>
 <td style="text-align: center;">(none/90d)</td>
@@ -2857,16 +2929,14 @@
 <tr>
 <td>echodac</td>
 <td style="text-align: center;">PI</td>
-<td style="text-align: center;">yes</td>
+<td>yes</td>
 <td>(none)</td>
-<td>(none)</td>
-<td style="text-align: center;">(none/90d)</td>
-<td></td>
+<td style="text-align: center;">(none)</td>
+<td>(none/90d)</td>
 </tr>
 <tr>
 <td>gwas</td>
 <td style="text-align: center;">PI</td>
-<td style="text-align: center;">yes</td>
 <td>(none)</td>
 <td>(none)</td>
 <td style="text-align: center;">(none/90d)</td>
@@ -2875,7 +2945,6 @@
 <tr>
 <td>hl</td>
 <td style="text-align: center;">PI</td>
-<td style="text-align: center;">yes</td>
 <td>(none)</td>
 <td>(none)</td>
 <td style="text-align: center;">(none/90d)</td>
@@ -2884,7 +2953,6 @@
 <tr>
 <td>hpm</td>
 <td style="text-align: center;">PI</td>
-<td style="text-align: center;">yes</td>
 <td>(none)</td>
 <td>(none)</td>
 <td style="text-align: center;">(none/90d)</td>
@@ -2893,7 +2961,6 @@
 <tr>
 <td>hongkai</td>
 <td style="text-align: center;">PI</td>
-<td style="text-align: center;">yes</td>
 <td>(none)</td>
 <td>(none)</td>
 <td style="text-align: center;">(none/90d)</td>
@@ -2902,25 +2969,14 @@
 <tr>
 <td>mommee</td>
 <td style="text-align: center;">PI</td>
-<td style="text-align: center;">yes</td>
 <td>(none)</td>
 <td>(none)</td>
 <td style="text-align: center;">(none/90d)</td>
 <td></td>
 </tr>
 <tr>
-<td>sas</td>
-<td style="text-align: center;">application</td>
-<td style="text-align: center;">no</td>
-<td>(none)</td>
-<td>(none)</td>
-<td style="text-align: center;">(none/90d)</td>
-<td>Licensed for SAS</td>
-</tr>
-<tr>
 <td>stanley</td>
 <td style="text-align: center;">PI</td>
-<td style="text-align: center;">yes</td>
 <td>(none)</td>
 <td>(none)</td>
 <td style="text-align: center;">(none/90d)</td>
@@ -2929,7 +2985,6 @@
 <tr>
 <td>sysadmin</td>
 <td style="text-align: center;">admin</td>
-<td style="text-align: center;">yes</td>
 <td>(none)</td>
 <td>(none)</td>
 <td style="text-align: center;">(none/90d)</td>
@@ -2938,16 +2993,15 @@
 <tr>
 <td>transfer</td>
 <td style="text-align: center;">public</td>
-<td style="text-align: center;">no</td>
+<td>no</td>
 <td>(none)</td>
-<td>(none)</td>
-<td style="text-align: center;">(none/90d)</td>
-<td>Data in or out of cluster via SLURM jobs</td>
+<td style="text-align: center;">(none)</td>
+<td>(none/90d)</td>
 </tr>
 </tbody>
 </table>
-<p>[1] Requires approval of PI before submitting jobs.</p>
 <h2 id="gpu-partitions">GPU Partitions<a class="headerlink" href="#gpu-partitions" title="Anchor link to this section for reference">&para;</a></h2>
+<p>Limits for CPU cores, RAM and Time (default/maximum)</p>
 <table>
 <thead>
 <tr>
@@ -3004,6 +3058,14 @@
 </tr>
 </tbody>
 </table>
+<div class="footnote">
+<hr />
+<ol>
+<li id="fn:1">
+<p>Note that the statistics displayed are for that partition, not the whole cluster. Also, memory and CPU use of nodes that are DOWN or in DRAIN are not included in the stats.&#160;<a class="footnote-backref" href="#fnref:1" title="Jump back to footnote 1 in the text">&#8617;</a></p>
+</li>
+</ol>
+</div>
 
 
 
@@ -3024,7 +3086,7 @@
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1-2.1-2M12.5 7v5.2l4 2.4-1 1L11 13V7h1.5M11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2v1.8Z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">March 5, 2024</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">March 9, 2024</span>
   </span>
 
     

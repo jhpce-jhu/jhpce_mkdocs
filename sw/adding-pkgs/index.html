@@ -2716,8 +2716,8 @@ Example from <a href="https://support.ceci-hpc.be/doc/_contents/UsingSoftwareAnd
 <p>You should recompile your libraries when the version of R changes.</p>
 <p>How do you recompile instead of install?</p>
 <p>When installing R packages from source with compiled programs, you can add custom compiler flags in ~/.R/Makevars. Adding optimization flags may provide a boost in performance for some packages. 
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>STDFLAGS = -O2 -pipe -Wall 
-</code></pre></div></td></tr></table></div></p>
+<div class="highlight"><pre><span></span><code>STDFLAGS = -O2 -pipe -Wall 
+</code></pre></div></p>
 <p>We have a wide variety of CPU architecture across the cluster, so you probably don't want to add to STDFLAGS <code>-march=</code> and <code>-mtune=</code> arguments.</p>
 <h2 id="python">Python<a class="headerlink" href="#python" title="Anchor link to this section for reference">&para;</a></h2>
 

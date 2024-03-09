@@ -2786,18 +2786,7 @@ SAS command to do so:</p>
 <p class="admonition-title">Warning</p>
 <p>These definitions include optional syntax (<code>&gt; /dev/null 2&gt;&amp;1</code>) which hide error messages. If you are having problems displaying SAS material in web browsers, you may need to run SAS without that output redirection. The <a href="../../slurm/slurm-faq/#srun-error-_half_duplex">"srun half duplex"</a> error is an example of such a case.</p>
 </div>
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
-<span class="normal"> 2</span>
-<span class="normal"> 3</span>
-<span class="normal"> 4</span>
-<span class="normal"> 5</span>
-<span class="normal"> 6</span>
-<span class="normal"> 7</span>
-<span class="normal"> 8</span>
-<span class="normal"> 9</span>
-<span class="normal">10</span>
-<span class="normal">11</span>
-<span class="normal">12</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="c1"># SAS routines for __interactive__ sessions where plotting is involved</span>
+<div class="highlight"><pre><span></span><code><span class="c1"># SAS routines for __interactive__ sessions where plotting is involved</span>
 <span class="c1"># (because SAS generates HTML for the plots when run in interactive mode)</span>
 <span class="c1"># </span>
 <span class="c1"># (YOU HAVE TO RUN &quot;module load SAS&quot; before calling either of these routines)</span>
@@ -2809,7 +2798,7 @@ fsas<span class="o">()</span><span class="w"> </span><span class="o">{</span><sp
 <span class="c1"># If you want to use Chromium-browser as your web browser for SAS:</span>
 <span class="c1">#</span>
 csas<span class="o">()</span><span class="w"> </span><span class="o">{</span><span class="w"> </span>sas<span class="w"> </span>-helpbrowser<span class="w"> </span>SAS<span class="w"> </span>-xrm<span class="w"> </span><span class="s2">&quot;SAS.webBrowser:&#39;/usr/bin/chromium-browser&#39;&quot;</span><span class="w"> </span>-xrm<span class="w"> </span><span class="s2">&quot;SAS.helpBrowser:&#39;/usr/bin/chromium-browser&#39;&quot;</span><span class="w"> </span><span class="s2">&quot;</span><span class="nv">$@</span><span class="s2">&quot;</span><span class="w"> </span>&gt;<span class="w"> </span>/dev/null<span class="w"> </span><span class="m">2</span>&gt;<span class="p">&amp;</span><span class="m">1</span><span class="p">;</span><span class="w"> </span><span class="o">}</span>
-</code></pre></div></td></tr></table></div>
+</code></pre></div>
 
 
 

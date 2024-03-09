@@ -2857,27 +2857,7 @@ this, Access Control Lists (ACLs) can be used.</p>
 <li>ACL commands should be run on a compute node and not a login node. Long-running recursive ACL commands on large directory trees may also be done via a submitted script.</li>
 <li>Example useage:</li>
 </ul>
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
-<span class="normal"> 2</span>
-<span class="normal"> 3</span>
-<span class="normal"> 4</span>
-<span class="normal"> 5</span>
-<span class="normal"> 6</span>
-<span class="normal"> 7</span>
-<span class="normal"> 8</span>
-<span class="normal"> 9</span>
-<span class="normal">10</span>
-<span class="normal">11</span>
-<span class="normal">12</span>
-<span class="normal">13</span>
-<span class="normal">14</span>
-<span class="normal">15</span>
-<span class="normal">16</span>
-<span class="normal">17</span>
-<span class="normal">18</span>
-<span class="normal">19</span>
-<span class="normal">20</span>
-<span class="normal">21</span></pre></div></td><td class="code"><div><pre><span></span><code>[alice@compute-123 ~]$ mkdir test1
+<div class="highlight"><pre><span></span><code>[alice@compute-123 ~]$ mkdir test1
 [alice@compute-123 ~]$ umask
 0022
 [alice@compute-123 ~]$ nfs4_setfacl -a A:gfdi:hpscc@cm.cluster:RWX test1
@@ -2898,7 +2878,7 @@ A::OWNER@:rwatTcCy
 A::GROUP@:rwatcy
 A:g:hpscc@cm.cluster:rwatcy
 A::EVERYONE@:rtcy
-</code></pre></div></td></tr></table></div>
+</code></pre></div>
 <h3 id="basic-commands">Basic commands<a class="headerlink" href="#basic-commands" title="Anchor link to this section for reference">&para;</a></h3>
 <ul>
 <li>There are 2 commands for dealing with ACLs on <code>/users</code>, <code>/dcs04</code>, <code>/dcs05</code>, <code>/dcs06</code>, and <code>/dcs07</code>. </li>
@@ -2910,50 +2890,21 @@ A::EVERYONE@:rtcy
 owner, and the ACL should reflect this. For example, for the user
 alice, the ACL on their home directory would look like:</li>
 </ul>
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
-<span class="normal">2</span>
-<span class="normal">3</span>
-<span class="normal">4</span>
-<span class="normal">5</span>
-<span class="normal">6</span>
-<span class="normal">7</span></pre></div></td><td class="code"><div><pre><span></span><code>[alice@compute-123 ~]$ pwd
+<div class="highlight"><pre><span></span><code>[alice@compute-123 ~]$ pwd
 /users/alice
 [alice@compute-123 ~]$ nfs4_getfacl .
 # file: .
 A::OWNER@:rwaDxtTcCy
 A::GROUP@:tcy
 A::EVERYONE@:tcy
-</code></pre></div></td></tr></table></div>
+</code></pre></div>
 <h3 id="read-permisions">Read permisions<a class="headerlink" href="#read-permisions" title="Anchor link to this section for reference">&para;</a></h3>
 <ul>
 <li>Now, if alice wanted to grant read-only access to their home
   directory to the user bob, they would use the <code>nfs4_setfacl</code>
   command:</li>
 </ul>
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
-<span class="normal"> 2</span>
-<span class="normal"> 3</span>
-<span class="normal"> 4</span>
-<span class="normal"> 5</span>
-<span class="normal"> 6</span>
-<span class="normal"> 7</span>
-<span class="normal"> 8</span>
-<span class="normal"> 9</span>
-<span class="normal">10</span>
-<span class="normal">11</span>
-<span class="normal">12</span>
-<span class="normal">13</span>
-<span class="normal">14</span>
-<span class="normal">15</span>
-<span class="normal">16</span>
-<span class="normal">17</span>
-<span class="normal">18</span>
-<span class="normal">19</span>
-<span class="normal">20</span>
-<span class="normal">21</span>
-<span class="normal">22</span>
-<span class="normal">23</span>
-<span class="normal">24</span></pre></div></td><td class="code"><div><pre><span></span><code>[alice@compute-123 ~]$ nfs4_setfacl -a A::bob@cm.cluster:RX .
+<div class="highlight"><pre><span></span><code>[alice@compute-123 ~]$ nfs4_setfacl -a A::bob@cm.cluster:RX .
 [alice@compute-123 ~]$ getfacl .
 # file: .
 A::OWNER@:rwaDxtTcCy
@@ -2977,22 +2928,13 @@ A::OWNER@:rwatTcCy
 A::bob@cm.cluster:rwaxtcy
 A::GROUP@:rtcy
 A::EVERYONE@:rtcy
-</code></pre></div></td></tr></table></div>
+</code></pre></div>
 <h3 id="write-permissions">Write permissions<a class="headerlink" href="#write-permissions" title="Anchor link to this section for reference">&para;</a></h3>
 <ul>
 <li>Now suppose alice wanted to create a directory that bob could write to. </li>
 <li>Alice could create a directory, and grant bob write access to it:</li>
 </ul>
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
-<span class="normal"> 2</span>
-<span class="normal"> 3</span>
-<span class="normal"> 4</span>
-<span class="normal"> 5</span>
-<span class="normal"> 6</span>
-<span class="normal"> 7</span>
-<span class="normal"> 8</span>
-<span class="normal"> 9</span>
-<span class="normal">10</span></pre></div></td><td class="code"><div><pre><span></span><code>[alice@compute-123 ~]$ mkdir shared
+<div class="highlight"><pre><span></span><code>[alice@compute-123 ~]$ mkdir shared
 [alice@compute-123 ~]$ nfs4_setfacl -a A::bob@cm.cluster:RWX shared
 [alice@compute-123 ~]$ nfs4_getfacl shared
 nfs4_getfacl shared-data.txt
@@ -3002,7 +2944,7 @@ A::bob@cm.cluster:rwaxtcy
 A::GROUP@:rtcy
 A::EVERYONE@:rtcy
 Now the user bob can copy or save files in the “shared” directory.
-</code></pre></div></td></tr></table></div>
+</code></pre></div>
 <h3 id="inherited-defaults">Inherited Defaults<a class="headerlink" href="#inherited-defaults" title="Anchor link to this section for reference">&para;</a></h3>
 <p>To set an inherited “default” ACL that will allow bob access on all
 new files and directories that get saved into <code>/users/alice/shared</code>, you
@@ -3010,20 +2952,7 @@ would need to first give bob the normal ACL permissions, then add a second set o
 <p>One
 issue we’ve seen is that a <code>@USER</code> and <code>@GROUP</code> ACL need to be
 explicitly set for permissions to be properly set:</p>
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
-<span class="normal"> 2</span>
-<span class="normal"> 3</span>
-<span class="normal"> 4</span>
-<span class="normal"> 5</span>
-<span class="normal"> 6</span>
-<span class="normal"> 7</span>
-<span class="normal"> 8</span>
-<span class="normal"> 9</span>
-<span class="normal">10</span>
-<span class="normal">11</span>
-<span class="normal">12</span>
-<span class="normal">13</span>
-<span class="normal">14</span></pre></div></td><td class="code"><div><pre><span></span><code>[alice@compute-123 ~]$ nfs4_setfacl -a A:fdi:bob@cm.cluster:RWX shared
+<div class="highlight"><pre><span></span><code>[alice@compute-123 ~]$ nfs4_setfacl -a A:fdi:bob@cm.cluster:RWX shared
 [alice@compute-123 ~]$ nfs4_setfacl -a A:fdi:OWNER@:RWX shared
 [alice@compute-123 ~]$ nfs4_setfacl -a A:fdi:GROUP@:RWX shared
 [alice@compute-123 ~]$ nfs4_getfacl shared
@@ -3037,33 +2966,9 @@ A:fdi:OWNER@:rwaDxtTcCy
 A:fdi:bob@cm.cluster:rwaDxtcy
 A:fdi:GROUP@:rwaDxtcy
 A:fdi:EVERYONE@:tcy
-</code></pre></div></td></tr></table></div>
+</code></pre></div>
 <p>To set a Group ACL, you need to add the <code>g</code> option to the <code>nfs4_getfacl</code> command.</p>
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
-<span class="normal"> 2</span>
-<span class="normal"> 3</span>
-<span class="normal"> 4</span>
-<span class="normal"> 5</span>
-<span class="normal"> 6</span>
-<span class="normal"> 7</span>
-<span class="normal"> 8</span>
-<span class="normal"> 9</span>
-<span class="normal">10</span>
-<span class="normal">11</span>
-<span class="normal">12</span>
-<span class="normal">13</span>
-<span class="normal">14</span>
-<span class="normal">15</span>
-<span class="normal">16</span>
-<span class="normal">17</span>
-<span class="normal">18</span>
-<span class="normal">19</span>
-<span class="normal">20</span>
-<span class="normal">21</span>
-<span class="normal">22</span>
-<span class="normal">23</span>
-<span class="normal">24</span>
-<span class="normal">25</span></pre></div></td><td class="code"><div><pre><span></span><code>[alice@compute-123 ~]$ mkdir shared
+<div class="highlight"><pre><span></span><code>[alice@compute-123 ~]$ mkdir shared
 [alice@compute-123 ~]$ nfs4_setfacl -a A:g:hpscc@cm.cluster:RWX shared
 [alice@compute-123 ~]$ nfs4_getfacl shared
 nfs4_getfacl shared-data.txt
@@ -3088,23 +2993,17 @@ A:fdi:OWNER@:rwaDxtTcCy
 A:fdi:GROUP@:rwaDxtcy
 A:fdig:swdev@cm.cluster:rwaDxtcy
 A:fdi:EVERYONE@:tcy
-</code></pre></div></td></tr></table></div>
+</code></pre></div>
 <h3 id="removing-an-acl">Removing an ACL<a class="headerlink" href="#removing-an-acl" title="Anchor link to this section for reference">&para;</a></h3>
 <p>If you want to remove and ACL, you can use the <code>-x</code> option to <code>nfs4_setfacl</code>. Please note that you need to use the full ACL, and not the <code>RWX</code> shortcuts.</p>
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
-<span class="normal">2</span>
-<span class="normal">3</span>
-<span class="normal">4</span>
-<span class="normal">5</span>
-<span class="normal">6</span>
-<span class="normal">7</span></pre></div></td><td class="code"><div><pre><span></span><code>[alice@compute-123 ~]$ nfs4_setfacl -x A::bob@cm.cluster:rwaxtcy shared
+<div class="highlight"><pre><span></span><code>[alice@compute-123 ~]$ nfs4_setfacl -x A::bob@cm.cluster:rwaxtcy shared
 [alice@compute-123 ~]$ nfs4_getfacl shared
 nfs4_getfacl shared-data.txt
 # file: shared-data.txt
 A::OWNER@:rwatTcCy
 A::GROUP@:rtcy
 A::EVERYONE@:rtcy
-</code></pre></div></td></tr></table></div>
+</code></pre></div>
 <h3 id="directories-in-lustre-file-systems">Directories in Lustre file systems<a class="headerlink" href="#directories-in-lustre-file-systems" title="Anchor link to this section for reference">&para;</a></h3>
 <p>There are two commands for dealing with ACLs on the JHPCE cluster for
 directories in Lustre file systems, which start with <code>/dcl</code>.  The <code>getfacl</code> command will display
@@ -3114,15 +3013,7 @@ access, or read-write access on a directory or file to specific users.</p>
 <p>Let’s say there is a directory <code>/dcl01/project/data/alice</code> that alice
 owns. The <code>getfacl</code> command could be used to see the current ACL set
 on the directory:</p>
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
-<span class="normal">2</span>
-<span class="normal">3</span>
-<span class="normal">4</span>
-<span class="normal">5</span>
-<span class="normal">6</span>
-<span class="normal">7</span>
-<span class="normal">8</span>
-<span class="normal">9</span></pre></div></td><td class="code"><div><pre><span></span><code>[alice@compute-123 ]$ pwd
+<div class="highlight"><pre><span></span><code>[alice@compute-123 ]$ pwd
 /dcl01/project/data/alice
 [alice@compute-123 ]$ getfacl .
 # file: .
@@ -3131,19 +3022,10 @@ on the directory:</p>
 user::rwx
 group::---
 other::---
-</code></pre></div></td></tr></table></div>
+</code></pre></div>
 <h4 id="read">Read<a class="headerlink" href="#read" title="Anchor link to this section for reference">&para;</a></h4>
 <p>Now, if alice wanted to grant read-only access to <code>/dcl01/project/data/alice</code> to the user bob, they would use the <code>setfacl</code> command:</p>
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
-<span class="normal"> 2</span>
-<span class="normal"> 3</span>
-<span class="normal"> 4</span>
-<span class="normal"> 5</span>
-<span class="normal"> 6</span>
-<span class="normal"> 7</span>
-<span class="normal"> 8</span>
-<span class="normal"> 9</span>
-<span class="normal">10</span></pre></div></td><td class="code"><div><pre><span></span><code>[alice@compute-123 ]$ setfacl -m user:bob:rx .
+<div class="highlight"><pre><span></span><code>[alice@compute-123 ]$ setfacl -m user:bob:rx .
 [alice@compute-123 ]$ getfacl .
 # file: .
 # owner: alice
@@ -3153,28 +3035,10 @@ user:bob:r-x
 group::---
 mask::r-x
 other::---
-</code></pre></div></td></tr></table></div>
+</code></pre></div>
 <h4 id="write">Write<a class="headerlink" href="#write" title="Anchor link to this section for reference">&para;</a></h4>
 <p>Now suppose there is a file that alice wants to let bob update. Alice could use ACLs to grant write access to a particular file:</p>
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
-<span class="normal"> 2</span>
-<span class="normal"> 3</span>
-<span class="normal"> 4</span>
-<span class="normal"> 5</span>
-<span class="normal"> 6</span>
-<span class="normal"> 7</span>
-<span class="normal"> 8</span>
-<span class="normal"> 9</span>
-<span class="normal">10</span>
-<span class="normal">11</span>
-<span class="normal">12</span>
-<span class="normal">13</span>
-<span class="normal">14</span>
-<span class="normal">15</span>
-<span class="normal">16</span>
-<span class="normal">17</span>
-<span class="normal">18</span>
-<span class="normal">19</span></pre></div></td><td class="code"><div><pre><span></span><code>[alice@compute-123 ]$ ls -l shared-data.txt
+<div class="highlight"><pre><span></span><code>[alice@compute-123 ]$ ls -l shared-data.txt
 -rw-r--r-- 1 alice users 79691776 Feb  2 07:06 shared-data.txt
 [alice@compute-123 ]$ getfacl shared-data.txt
 # file: shared-data.txt
@@ -3193,21 +3057,10 @@ user:bob:rw-
 group::r--
 mask::rwx
 other::r--
-</code></pre></div></td></tr></table></div>
+</code></pre></div>
 <h4 id="creating-a-common-dir">Creating a common dir<a class="headerlink" href="#creating-a-common-dir" title="Anchor link to this section for reference">&para;</a></h4>
 <p>Now suppose alice wanted to create a directory that bob could write to. Alice could create a directory, and grant bob write access to it:</p>
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
-<span class="normal"> 2</span>
-<span class="normal"> 3</span>
-<span class="normal"> 4</span>
-<span class="normal"> 5</span>
-<span class="normal"> 6</span>
-<span class="normal"> 7</span>
-<span class="normal"> 8</span>
-<span class="normal"> 9</span>
-<span class="normal">10</span>
-<span class="normal">11</span>
-<span class="normal">12</span></pre></div></td><td class="code"><div><pre><span></span><code>[alice@compute-123 ~]$ mkdir shared
+<div class="highlight"><pre><span></span><code>[alice@compute-123 ~]$ mkdir shared
 [alice@compute-123 ]$ setfacl -m user:bob:rwx shared
 [alice@compute-123 ]$ getfacl shared
 # file: shared
@@ -3219,35 +3072,10 @@ group::r-x
 mask::rwx
 other::r-x
 Now the user bob can copy or save files in the “shared” directory.
-</code></pre></div></td></tr></table></div>
+</code></pre></div>
 <h4 id="default-acls">Default ACLs<a class="headerlink" href="#default-acls" title="Anchor link to this section for reference">&para;</a></h4>
 <p>To set an inherited default ACL that will allow bob access on all new files and directories that get saved into <code>shared</code>, you would need to use the <code>-d</code> option to the <code>setacl</code> command:</p>
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
-<span class="normal"> 2</span>
-<span class="normal"> 3</span>
-<span class="normal"> 4</span>
-<span class="normal"> 5</span>
-<span class="normal"> 6</span>
-<span class="normal"> 7</span>
-<span class="normal"> 8</span>
-<span class="normal"> 9</span>
-<span class="normal">10</span>
-<span class="normal">11</span>
-<span class="normal">12</span>
-<span class="normal">13</span>
-<span class="normal">14</span>
-<span class="normal">15</span>
-<span class="normal">16</span>
-<span class="normal">17</span>
-<span class="normal">18</span>
-<span class="normal">19</span>
-<span class="normal">20</span>
-<span class="normal">21</span>
-<span class="normal">22</span>
-<span class="normal">23</span>
-<span class="normal">24</span>
-<span class="normal">25</span>
-<span class="normal">26</span></pre></div></td><td class="code"><div><pre><span></span><code>[[alice@compute-123 ~]$ setfacl -d -m user:bob:rwx shared
+<div class="highlight"><pre><span></span><code>[[alice@compute-123 ~]$ setfacl -d -m user:bob:rwx shared
 [alice@compute-123 ]$ getfacl shared
 # file: shared
 # owner: alice
@@ -3273,7 +3101,7 @@ user::rwx
 group::r-x
 mask::r-x
 other::r-x
-</code></pre></div></td></tr></table></div>
+</code></pre></div>
 
 
 

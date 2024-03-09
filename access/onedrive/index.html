@@ -2717,15 +2717,7 @@ You will also get a confirmation message, and you should select “y”.</p>
 <h2 id="regular-operation">Regular Operation<a class="headerlink" href="#regular-operation" title="Anchor link to this section for reference">&para;</a></h2>
 <p>To access your OneDrive, you’ll use the “rclone” command with various options. The most often used commands are “rclone lsd” to list directories, “rclone ls” to recursively list files (this can take a long time if you have a lot of files in OneDrive and you are listing the top lecel directory), and “rclone copy” to copy data between the cluster and your OneDrive.</p>
 <p>An example of “rclone lsd” is below. There are a couple of key items to note. First, the name of the argument following “lsd” should be the same name your used for your OneDrive config. You can run “rclone listremotes” to see the name you used. The second item to note is that the name of your remote must end in a colon.</p>
-<p><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
-<span class="normal">2</span>
-<span class="normal">3</span>
-<span class="normal">4</span>
-<span class="normal">5</span>
-<span class="normal">6</span>
-<span class="normal">7</span>
-<span class="normal">8</span>
-<span class="normal">9</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="gp">[compute-113 /users/bob]$ </span>rclone<span class="w"> </span>lsd<span class="w"> </span>OneDrive:
+<p><div class="highlight"><pre><span></span><code><span class="gp">[compute-113 /users/bob]$ </span>rclone<span class="w"> </span>lsd<span class="w"> </span>OneDrive:
 <span class="go">          -1 2019-12-21 01:54:32         2 BoxMigration</span>
 <span class="go">          -1 2014-11-05 17:23:32        25 Documents</span>
 <span class="go">          -1 2014-11-05 17:22:55       173 HomeDir</span>
@@ -2734,24 +2726,9 @@ You will also get a confirmation message, and you should select “y”.</p>
 <span class="go">          -1 2019-07-11 17:25:16        10 OLDVMs</span>
 <span class="go">          -1 2014-11-05 15:15:11         1 Shared with Everyone</span>
 <span class="go">          -1 2019-07-11 12:13:21         0 USB</span>
-</code></pre></div></td></tr></table></div>
+</code></pre></div>
 To see the files in a particular directory, you would use “rclone ls” and supply a directory name after the colon.</p>
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
-<span class="normal"> 2</span>
-<span class="normal"> 3</span>
-<span class="normal"> 4</span>
-<span class="normal"> 5</span>
-<span class="normal"> 6</span>
-<span class="normal"> 7</span>
-<span class="normal"> 8</span>
-<span class="normal"> 9</span>
-<span class="normal">10</span>
-<span class="normal">11</span>
-<span class="normal">12</span>
-<span class="normal">13</span>
-<span class="normal">14</span>
-<span class="normal">15</span>
-<span class="normal">16</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="gp">[compute-113 /users/bob]$ </span>rclone<span class="w"> </span>ls<span class="w"> </span>OneDrive:Documents
+<div class="highlight"><pre><span></span><code><span class="gp">[compute-113 /users/bob]$ </span>rclone<span class="w"> </span>ls<span class="w"> </span>OneDrive:Documents
 <span class="go">    84842 FY2014Q3 JHPCE Charges.xlsx</span>
 <span class="go">    89229 FY2014Q4 JHPCE Charges.xlsx</span>
 <span class="go">    57580 Globus-compute-022.rtf</span>
@@ -2767,26 +2744,9 @@ To see the files in a particular directory, you would use “rclone ls” and su
 <span class="go">       20 plot1.sh</span>
 <span class="go">       83 test1.sh</span>
 <span class="gp">[compute-113 /users/bob]$ </span>
-</code></pre></div></td></tr></table></div>
+</code></pre></div>
 <p>Finally “rclone copy” can be used to transfer files between your OneDrive and the JHPCE cluster.</p>
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
-<span class="normal"> 2</span>
-<span class="normal"> 3</span>
-<span class="normal"> 4</span>
-<span class="normal"> 5</span>
-<span class="normal"> 6</span>
-<span class="normal"> 7</span>
-<span class="normal"> 8</span>
-<span class="normal"> 9</span>
-<span class="normal">10</span>
-<span class="normal">11</span>
-<span class="normal">12</span>
-<span class="normal">13</span>
-<span class="normal">14</span>
-<span class="normal">15</span>
-<span class="normal">16</span>
-<span class="normal">17</span>
-<span class="normal">18</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="gp">[compute-113 /users/bob]$ </span>ls<span class="w"> </span>pg6400.txt
+<div class="highlight"><pre><span></span><code><span class="gp">[compute-113 /users/bob]$ </span>ls<span class="w"> </span>pg6400.txt
 <span class="go">ls: cannot access pg6400.txt: No such file or directory</span>
 <span class="gp">[compute-113 /users/bob]$ </span>rclone<span class="w"> </span>copy<span class="w"> </span>OneDrive:Documents/pg6400.txt<span class="w"> </span>.
 <span class="gp">[compute-113 /users/bob]$ </span>ls<span class="w"> </span>-l<span class="w"> </span>pg6400.txt
@@ -2804,7 +2764,7 @@ To see the files in a particular directory, you would use “rclone ls” and su
 <span class="go">       20 plot1.sh</span>
 <span class="go">       83 test1.sh</span>
 <span class="go">        0 zzz-test.txt</span>
-</code></pre></div></td></tr></table></div>
+</code></pre></div>
 <p>This should give you a good start on using “rclone” to access your OneDrive. Please email “bitsupport” if you have any questions.</p>
 
 

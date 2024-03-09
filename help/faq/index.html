@@ -2971,12 +2971,10 @@
 we’ve found is to use the (vcxsrv))[https://sourceforge.net/projects/vcxsrv/] instead Xming newlines.  (This commmand is on all nodes.)</p>
 <h2 id="how-can-i-add-packages-into-emacs-on-the-cluster">How can I add packages into emacs on the cluster?<a class="headerlink" href="#how-can-i-add-packages-into-emacs-on-the-cluster" title="Anchor link to this section for reference">&para;</a></h2>
 <p>Make sure to <code>module load emacs</code> to get a later version of emacs. Then one needs to edit their <code>.emacs</code> file in their home director to include the package repos
-    <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
-<span class="normal">2</span>
-<span class="normal">3</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="p">(</span><span class="nb">require</span><span class="w"> </span><span class="ss">&#39;use-package</span><span class="p">)</span>
+    <div class="highlight"><pre><span></span><code><span class="p">(</span><span class="nb">require</span><span class="w"> </span><span class="ss">&#39;use-package</span><span class="p">)</span>
 <span class="p">(</span><span class="nv">add-to-list</span><span class="w"> </span><span class="ss">&#39;package-archives</span><span class="w"> </span><span class="o">&#39;</span><span class="p">(</span><span class="s">&quot;gnu&quot;</span><span class="w"> </span><span class="o">.</span><span class="w"> </span><span class="s">&quot;http://elpa.gnu.org/packages/&quot;</span><span class="p">)</span><span class="w"> </span><span class="no">t</span><span class="p">)</span>
 <span class="p">(</span><span class="nv">add-to-list</span><span class="w"> </span><span class="ss">&#39;package-archives</span><span class="w"> </span><span class="o">&#39;</span><span class="p">(</span><span class="s">&quot;melpa&quot;</span><span class="w"> </span><span class="o">.</span><span class="w"> </span><span class="s">&quot;http://melpa.org/packages/&quot;</span><span class="p">)</span><span class="w"> </span><span class="no">t</span><span class="p">)</span>
-</code></pre></div></td></tr></table></div>
+</code></pre></div>
     After restaring emacs then one can do <code>M-x package-list-packages</code> and follow the GUI.</p>
 <h2 id="xauth-error-messages-from-macos-sierra-when-using-x11-forwarding-in-ssh">Xauth error messages from MacOS Sierra when using X11 forwarding in SSH<a class="headerlink" href="#xauth-error-messages-from-macos-sierra-when-using-x11-forwarding-in-ssh" title="Anchor link to this section for reference">&para;</a></h2>
 <p>With the upgrade to MacOS Sierra, the “-X” option to ssh to enable X11
@@ -2999,16 +2997,16 @@ Escape with <code>~C</code> (<span class="keys"><kbd class="key-tilde">~</kbd></
 <code>EnableEscapeCommandline</code> option.  You can do this by either running
 <code>ssh -o EnableEscapeCommandline=yes . . .</code> or by editing your
 <code>~/.ssh/config</code> file, and at the top of that file add the line:</p>
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>EnableEscapeCommandline=yes
-</code></pre></div></td></tr></table></div>
+<div class="highlight"><pre><span></span><code>EnableEscapeCommandline=yes
+</code></pre></div>
 <h2 id="how-do-i-get-the-rstudio-program-to-work-on-the-cluster">How do I get the Rstudio program to work on the cluster?<a class="headerlink" href="#how-do-i-get-the-rstudio-program-to-work-on-the-cluster" title="Anchor link to this section for reference">&para;</a></h2>
 <p>See our <a href="../../sw/r-n-friends/">core R support document</a> about this and other R usage.</p>
 <h2 id="my-x11-forwarding-stops-working-after-20-minutes">My X11 forwarding stops working after 20 minutes<a class="headerlink" href="#my-x11-forwarding-stops-working-after-20-minutes" title="Anchor link to this section for reference">&para;</a></h2>
 <p>This error comes from the <code>ForwardX11Timeout</code> variable, which is set
 by default to 20 minutes.  To avoid this issue, a larger timeout can
 be supplied on the command line to, say, 336 hours (2 weeks):</p>
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>$ ssh -X username@jhpce01.jhsph.edu -o ForwardX11Timeout=336h
-</code></pre></div></td></tr></table></div>
+<div class="highlight"><pre><span></span><code>$ ssh -X username@jhpce01.jhsph.edu -o ForwardX11Timeout=336h
+</code></pre></div>
 <h2 id="how-do-i-copy-a-large-directory-structure-from-one-place-to-another">How do I copy a large directory structure from one place to another.<a class="headerlink" href="#how-do-i-copy-a-large-directory-structure-from-one-place-to-another" title="Anchor link to this section for reference">&para;</a></h2>
 <p>Please do not copy or move anything except a small set of files on the login nodes.</p>
 <p>As an example, to copy a directory tree from <code>/home/bst/bob/src</code> to
@@ -3042,20 +3040,14 @@ have to do the initialization yourself. Do this by wrapping your cron
 job in a bash script that initializes the module command and then
 loads the default modules. You bash shell script should start with the
 following lines:</p>
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
-<span class="normal">2</span>
-<span class="normal">3</span>
-<span class="normal">4</span>
-<span class="normal">5</span>
-<span class="normal">6</span>
-<span class="normal">7</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="ch">#!/bin/bash</span>
+<div class="highlight"><pre><span></span><code><span class="ch">#!/bin/bash</span>
 
 <span class="c1"># Source the global bashrc</span>
 <span class="k">if</span><span class="w"> </span><span class="o">[</span><span class="w"> </span>-f<span class="w"> </span>/etc/bashrc<span class="w"> </span><span class="o">]</span><span class="p">;</span><span class="w"> </span><span class="k">then</span>
 .<span class="w"> </span>/etc/bashrc
 <span class="k">fi</span>
 module<span class="w"> </span>load<span class="w"> </span>JHPCE_DEFAULT_ENV
-</code></pre></div></td></tr></table></div>
+</code></pre></div>
 <h2 id="ive-deleted-files-but-my-quota-hasnt-changed">I've deleted files but my quota hasn't changed<a class="headerlink" href="#ive-deleted-files-but-my-quota-hasnt-changed" title="Anchor link to this section for reference">&para;</a></h2>
 <p>See <a href="../../storage/quotas/#file-deletion-and-delayed-change-in-quota">this document</a>.</p>
 

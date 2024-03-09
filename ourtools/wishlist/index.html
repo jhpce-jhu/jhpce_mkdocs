@@ -782,6 +782,15 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#tabs" class="md-nav__link">
+    <span class="md-ellipsis">
+      Tabs
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -2815,6 +2824,15 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#tabs" class="md-nav__link">
+    <span class="md-ellipsis">
+      Tabs
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -2849,15 +2867,14 @@ See Github issue 777.</p>
 <h2 id="open-urls-in-new-tabs">Open URLs in new tabs<a class="headerlink" href="#open-urls-in-new-tabs" title="Anchor link to this section for reference">&para;</a></h2>
 <p>(Adi has enabled)
 I think there might be plugins which make this easier than what you have to do othwerwise, which is to use HTML instead of the Markdown notation. In normal HTML you add a space and a string to the end of the URL: <code>target="_blank"</code></p>
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>&lt;a href=&quot;https://squidfunk.github.io/mkdocs-material/reference/admonitions/&quot; target=&quot;_blank&quot;&gt;About admonitions&lt;/a&gt;
-</code></pre></div></td></tr></table></div>
+<div class="highlight"><pre><span></span><code>&lt;a href=&quot;https://squidfunk.github.io/mkdocs-material/reference/admonitions/&quot; target=&quot;_blank&quot;&gt;About admonitions&lt;/a&gt;
+</code></pre></div>
 <h2 id="maybe-a-user-contribution-capability">Maybe a user-contribution capability<a class="headerlink" href="#maybe-a-user-contribution-capability" title="Anchor link to this section for reference">&para;</a></h2>
 <p>For topic headings like SOFTWARE where users have recipes and tuning advice. Implemented how? git pull requests against any page on the site? Is there a way to limit to a subsection?</p>
 <h2 id="search-enhancements">Search enhancements<a class="headerlink" href="#search-enhancements" title="Anchor link to this section for reference">&para;</a></h2>
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
-<span class="normal">2</span></pre></div></td><td class="code"><div><pre><span></span><code>plugins:
+<div class="highlight"><pre><span></span><code>plugins:
   - search
-</code></pre></div></td></tr></table></div>
+</code></pre></div>
 <p>Search is a plugin.
 There are many plugins out there for MkDocs. A different set, I suppose, for Material for MkDocs. Some overlap, some exclusive.</p>
 <p>Note that search is enabled by default but if you add options it HAS TO BE LISTED in the plugins stanza.</p>
@@ -2865,10 +2882,9 @@ There are many plugins out there for MkDocs. A different set, I suppose, for Mat
 <p>https://squidfunk.github.io/mkdocs-material/setup/setting-up-site-search/</p>
 <h2 id="blog">BLOG<a class="headerlink" href="#blog" title="Anchor link to this section for reference">&para;</a></h2>
 <p>A blog writable only by site administrators. As a tool for making announcements.
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
-<span class="normal">2</span></pre></div></td><td class="code"><div><pre><span></span><code>plugins:
+<div class="highlight"><pre><span></span><code>plugins:
   - blog
-</code></pre></div></td></tr></table></div>
+</code></pre></div>
 Blog is a plugin.
 https://squidfunk.github.io/mkdocs-material/setup/setting-up-a-blog/
 Be aware that you cannot use features preceeded by "Insiders"
@@ -2879,6 +2895,9 @@ This is enabled by adding a line to the plugins stanza</p>
 The one that might be the most common is "git-revision-date-localized"</p>
 <h2 id="glossary">Glossary<a class="headerlink" href="#glossary" title="Anchor link to this section for reference">&para;</a></h2>
 <p>There's a way to create a document which is automatically updated when people define <a href="../features/#abbrieviations">abbrieviations</a>.</p>
+<h2 id="tabs">Tabs<a class="headerlink" href="#tabs" title="Anchor link to this section for reference">&para;</a></h2>
+<p>Jeffrey doesn't quite understand where we would use these yet. But they're very neat. <a href="https://squidfunk.github.io/mkdocs-material/reference/content-tabs/#content-tabs">tabs documentation</a>
+Here is an <a href="https://squidfunk.github.io/mkdocs-material/reference/content-tabs/#embedded-content-ordered-list">example</a> of a pair of tabs <em>inside</em> an admonition.</p>
 
 
 
@@ -2899,7 +2918,7 @@ The one that might be the most common is "git-revision-date-localized"</p>
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1-2.1-2M12.5 7v5.2l4 2.4-1 1L11 13V7h1.5M11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2v1.8Z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">February 26, 2024</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">March 9, 2024</span>
   </span>
 
     

@@ -3017,16 +3017,12 @@
 <p>Some programs have specific variables you can set to indicate where files should be created.</p>
 <p>SAS has "WORK" -- is this set to something in the module load process?</p>
 <p>R has "TEMPDIR" which defaults to /tmp.</p>
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
-<span class="normal">2</span>
-<span class="normal">3</span>
-<span class="normal">4</span>
-<span class="normal">5</span></pre></div></td><td class="code"><div><pre><span></span><code>You could use your 1TB of fastscratch space for this. So your SLURM script could use commands like:
+<div class="highlight"><pre><span></span><code>You could use your 1TB of fastscratch space for this. So your SLURM script could use commands like:
 
 module load conda_R
 export TEMPDIR=$MYSCRATCH
 R CMD BATCH myprog.R
-</code></pre></div></td></tr></table></div>
+</code></pre></div>
 <h2 id="dependent-jobs">Dependent jobs<a class="headerlink" href="#dependent-jobs" title="Anchor link to this section for reference">&para;</a></h2>
 <p>You can configure jobs to run in order with some conditional control. See <a href="https://slurm.schedmd.com/archive/slurm-22.05.9/sbatch.html#OPT_dependency">this part</a> of the sbatch manual page.</p>
 <h2 id="heterogeneous-job-support">Heterogeneous Job Support<a class="headerlink" href="#heterogeneous-job-support" title="Anchor link to this section for reference">&para;</a></h2>
@@ -3056,41 +3052,7 @@ R CMD BATCH myprog.R
 <details class="note">
 <summary>Click to expand</summary>
 <p>Content. How hard will it be to do code blocks?
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
-<span class="normal"> 2</span>
-<span class="normal"> 3</span>
-<span class="normal"> 4</span>
-<span class="normal"> 5</span>
-<span class="normal"> 6</span>
-<span class="normal"> 7</span>
-<span class="normal"> 8</span>
-<span class="normal"> 9</span>
-<span class="normal">10</span>
-<span class="normal">11</span>
-<span class="normal">12</span>
-<span class="normal">13</span>
-<span class="normal">14</span>
-<span class="normal">15</span>
-<span class="normal">16</span>
-<span class="normal">17</span>
-<span class="normal">18</span>
-<span class="normal">19</span>
-<span class="normal">20</span>
-<span class="normal">21</span>
-<span class="normal">22</span>
-<span class="normal">23</span>
-<span class="normal">24</span>
-<span class="normal">25</span>
-<span class="normal">26</span>
-<span class="normal">27</span>
-<span class="normal">28</span>
-<span class="normal">29</span>
-<span class="normal">30</span>
-<span class="normal">31</span>
-<span class="normal">32</span>
-<span class="normal">33</span>
-<span class="normal">34</span>
-<span class="normal">35</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="ch">#!/bin/bash</span>
+<div class="highlight"><pre><span></span><code><span class="ch">#!/bin/bash</span>
 
 <span class="c1">#SBATCH -p shared</span>
 <span class="c1">#SBATCH --mem=10G</span>
@@ -3125,7 +3087,7 @@ rsync<span class="w"> </span>-a<span class="w"> </span><span class="nv">$rsyncar
 
 date
 <span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;done&quot;</span>
-</code></pre></div></td></tr></table></div></p>
+</code></pre></div></p>
 </details>
 <h3 id="copying-data-intoout-of-cluster">Copying data into/out of cluster<a class="headerlink" href="#copying-data-intoout-of-cluster" title="Anchor link to this section for reference">&para;</a></h3>
 <p>We have a transfer node which is a SLURM client.</p>
@@ -3133,41 +3095,7 @@ date
 <p>This is put here as a tool for system administrators needing to do maintenance where a SLURM job is appropriate. Maybe the technique will be useful for someone for a more limited case.</p>
 <details class="note">
 <summary>Click to expand</summary>
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
-<span class="normal"> 2</span>
-<span class="normal"> 3</span>
-<span class="normal"> 4</span>
-<span class="normal"> 5</span>
-<span class="normal"> 6</span>
-<span class="normal"> 7</span>
-<span class="normal"> 8</span>
-<span class="normal"> 9</span>
-<span class="normal">10</span>
-<span class="normal">11</span>
-<span class="normal">12</span>
-<span class="normal">13</span>
-<span class="normal">14</span>
-<span class="normal">15</span>
-<span class="normal">16</span>
-<span class="normal">17</span>
-<span class="normal">18</span>
-<span class="normal">19</span>
-<span class="normal">20</span>
-<span class="normal">21</span>
-<span class="normal">22</span>
-<span class="normal">23</span>
-<span class="normal">24</span>
-<span class="normal">25</span>
-<span class="normal">26</span>
-<span class="normal">27</span>
-<span class="normal">28</span>
-<span class="normal">29</span>
-<span class="normal">30</span>
-<span class="normal">31</span>
-<span class="normal">32</span>
-<span class="normal">33</span>
-<span class="normal">34</span>
-<span class="normal">35</span></pre></div></td><td class="code"><div><pre><span></span><code>#!/bin/bash
+<div class="highlight"><pre><span></span><code>#!/bin/bash
 #
 # JPHCE - dispatch-to-everynode - Dispatch a job to each node which is responding
 #
@@ -3202,7 +3130,7 @@ else
                 sbatch --nodelist=${i} &quot;$@&quot;
         done
 fi
-</code></pre></div></td></tr></table></div>
+</code></pre></div>
 </details>
 
 
