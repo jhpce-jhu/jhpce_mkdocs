@@ -66,3 +66,7 @@ The one that might be the most common is "git-revision-date-localized"
 
 ## Glossary
 There's a way to create a document which is automatically updated when people define [abbrieviations](features.md#abbrieviations).
+
+## Tabs
+Jeffrey doesn't quite understand where we would use these yet. But they're very neat. [tabs documentation](https://squidfunk.github.io/mkdocs-material/reference/content-tabs/#content-tabs)
+Here is an [example](https://squidfunk.github.io/mkdocs-material/reference/content-tabs/#embedded-content-ordered-list) of a pair of tabs _inside_ an admonition.

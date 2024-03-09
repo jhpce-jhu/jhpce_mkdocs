@@ -99,6 +99,9 @@ If you and your recipient are members of some common group other than the defaul
 
 ### Group Writable Directories
 
+!!! Warning "Authoring Note"
+    Most remaining work on this page lies below this point. Above here what is missing is mainly some example command output.
+    
 Every file or directory has an owner and a group. Every user has a primary group, and can belong to one or more secondary groups.
 
 #### Group sticky bit

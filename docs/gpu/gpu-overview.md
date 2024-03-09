@@ -18,12 +18,16 @@ Therefore should it be moved out of "User Guides" to be a topic inside of "Softw
 ## MIGRATE PREVIOUS WEB SITE DOCUMENT
 
 Probably put some of it here, some of it into other document(s)
-https://jhpce.jhu.edu/knowledge-base/gpus-on-the-jhpce-cluster/
+
+[https://jhpce.jhu.edu/knowledge-base/gpus-on-the-jhpce-cluster](https://jhpce.jhu.edu/knowledge-base/gpus-on-the-jhpce-cluster)
 
 ## Our GPU Nodes
-Table with their resources, and partition names. Differentiate between public and PI partitions. Point to this [existing](../slurm/partitions.md#gpu-partitions) page.
 
-Mention `slurmpic -g`
+Differentiate between public and PI partitions.
+
+We have a [table](../slurm/partitions.md#gpu-partitions) showing their resources, and partition names.
+
+This command will show you the current use of GPU resources: `slurmpic -g`
 
 ## Using them
 

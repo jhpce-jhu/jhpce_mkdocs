@@ -392,8 +392,7 @@ validation:
 The `mkdocs serve` program will spew out a number of warnings and error messages as you change files. Most of them are important but a few of them are going to recur and are harmless. For example warnings about files in the docs/ tree which are not mentioned in the nav bar. Such files are only going to grow in number. Perhaps there is a way to exclude known cases?
 
 
-
-```Shell title="This means you have an error in frontmatter YML code somewhere" linenums="0"
+```Shell title="This error means you have an error in frontmatter YML code somewhere" linenums="0"
 TypeError: '<' not supported between instances of 'NoneType' and 'str'
 ERROR   -  [14:46:28] An error happened during the rebuild. The server will appear
            stuck until build errors are resolved.
@@ -401,17 +400,17 @@ ERROR   -  [14:46:28] An error happened during the rebuild. The server will appe
 
 ## MacDown WYSIWYG Editor
 
-Jeffrey has found that the free [MacDown](https://macdown.uranusjr.com) editor is very helpful in authoring. It is a MarkDown editor for the Macintosh which displays the source code in one pane and the rendered document in another pane opposite.
+Jeffrey has found that the free [MacDown](https://macdown.uranusjr.com) editor is VERY HELPFUL in authoring. It is a MarkDown editor for the Macintosh which displays the source code in one pane and the rendered document in another pane opposite.
 
-It renders most of Material for MkDocs material correctly, but not all. This is why it is useful to run "mkdocs serve" locally.
+It renders most of Material for MkDocs material correctly, but not all. This is another reason why it is useful to run "mkdocs serve" locally, so you can see in a web browser the results of your edits.
 
 There are preferences that are worth enabling. [This page](https://www.markdownguide.org/tools/macdown/) lists the MarkDown elements which are enabled and disabled by default.
 [This page](https://www.markdownguide.org/extended-syntax/#overview) discusses extended syntax and the site has other interesting MarkDown reference information.
 
-If you copy a web URL, highlight some text in your source code, then click on the link insert symbol in the toolbar, it will automatically paste in the URl.
+One handy feature: If you copy a web URL, highlight some text in your source code, then click on the link insert symbol in the toolbar, it will automatically paste in the URl as it inserts the square brackets and parentheses to create a URL.
 
 Does automatic pattern matching for syntax. Includes a command line program to use to open documents (Jeffrey configured his Mac using Get Info on an .md file to use MacDown by default so he can say in Terminal "open file.md" and it opens up the GUI). Supports a variety of themes for those who like dark mode.
 
-One flaw in this program is that sometimes the source code pane is blank when you open existing documents. The workaround is to grow and shrink the document width and the dividing line between the source and rendered document panes.
+One flaw in this program is that sometimes the source code pane is blank when you open existing documents. The solution is to quit the program and launch it again. The fast workaround is to grow and shrink the document width and the dividing line between the source and rendered document panes.
 
-You can install it with Homebrew with `brew install --cask macdown` Stats on [its page ](https://formulae.brew.sh/cask/macdown)indicate some popularity.
+You can install it by download via the web or with Homebrew with `brew install --cask macdown` Stats on [its page ](https://formulae.brew.sh/cask/macdown)indicate some popularity.
