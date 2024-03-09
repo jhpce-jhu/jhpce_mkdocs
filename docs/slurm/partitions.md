@@ -22,9 +22,10 @@ There are several types of partitions:
 
 Partitions **shared**, **interactive**, **gpu** and **sas** are considered public and available to all.
 
-Only jobs which require the use of GPU cards should be submitted to the **gpu** partition.
+!!! Note "Specific use"
+    Only jobs which require the use of GPU cards should be submitted to the **gpu** partition.
 
-Only jobs which require the use of the SAS application should be submitted to the **sas** partition.
+    Only jobs which require the use of the SAS application should be submitted to the **sas** partition.
 
 The public partitions provide low-priority access to unused capacity throughout the cluster. Capacity on the shared queue is provided on a strictly “as-available” basis and serves two purposes.
 
@@ -34,50 +35,54 @@ Scheduling polices attempt to harvest unused capacity as efficiently as possible
 
 ## Getting Info About Partitions
 
-The command [`scontrol`](https://slurm.schedmd.com/archive/slurm-22.05.9/scontrol.html) can be used to show information about a specific partition. This is THE best way to see the configuration of a partition. The syntax to use is
+Our command `slurmpic` shows information about partitions, including the member nodes, their current utilization, and some summary statistics.[^1] By default it displays the **shared** partition. Specific partitions can be displayed using `slurmpic -p partitionname`. All of the nodes in all of the GPU partitions can be displayed with `slurmpic -g`. Run `slurmpic -h` to see usage notes.
+
+[^1]: Note that the statistics displayed are for that partition, not the whole cluster. Also, memory and CPU use of nodes that are DOWN or in DRAIN are not included in the stats.
+ 
+The best way to see the _configuration_ of a partition is with the command [`scontrol`](https://slurm.schedmd.com/archive/slurm-22.05.9/scontrol.html).
 ```bash linenums="0"
-`scontrol show partition` *partitionname*
+scontrol show partition partitionname
 ```
 
-The command [`sinfo`](https://slurm.schedmd.com/archive/slurm-22.05.9/sinfo.html) shows information about all of the partitions. (Note: Partitions which *require* group membership to submit to are only visible via `sinfo` to members of those groups. Because the local command `slurmpic` uses `sinfo` to retrieve information, the output of `slurmpic -a` (show all nodes) will omit those private PI partitions' nodes.)
+The command [`sinfo`](https://slurm.schedmd.com/archive/slurm-22.05.9/sinfo.html) shows information about all of the partitions. It has many options, so you can also use it to see information about nodes. (Note: Partitions which *require* group membership to submit to are only visible via `sinfo` to members of those groups. Because the local command `slurmpic` uses `sinfo` to retrieve information, the output of `slurmpic -a` (show all nodes) will omit those private PI partitions' nodes.)
 
 ## CPU Partitions
 
 ### Public CPU Partitions
 
-To reduce table width, column names are terse.
-
 Limits for CPU cores, RAM and Time (default/maximum)
 
-| Name | Type | Approval[1] | Core | RAM | Time | Notes/Use |
-| ---- | :----: | :-----: | ---- | ---- | :-------: | ----- |
-| shared | public | no | 100 | 1TB | (1d/90d) | DEFAULT |
-| interactive | public | no | 2 | 20gb | (1d/90d) | Small but accessible |
-| gpu | public | no | (none) | (none) | (1d/90d) | Only for GPU jobs |
-| sas | application | no | (none) | (none) | (none/90d) | Licensed for SAS |
+| Name | Type | Core | RAM | Time | Notes/Use |
+| ---- | :----: | ---- | ---- | :-------: | ----- |
+| shared | public | 100 | 1TB | (1d/90d) | DEFAULT |
+| interactive | public | 2 | 20gb | (1d/90d) | Small but accessible |
+| gpu | public | (none) | (none) | (1d/90d) | Only for GPU jobs |
+| sas | application | (none) | (none) | (none/90d) | Licensed for SAS |
+
+To reduce table width, column names are terse.
 
 ### PI CPU Partitions
 
-| Name | Type | Approval[1] | Core | RAM | Time | Notes/Use |
-| ---- | :----: | :-----: | ---- | ---- | :-------: | ----- |
-| bader | PI | yes | (none) | (none) | (none/90d) | |
-| bluejay | PI | yes | (none) | (none) | (none/90d) | UNIX group |
-| cancergen | PI | yes | (none) | (none) | (none/90d) | |
-| caracol | PI | yes | (none) | (none) | (none/90d) | UNIX group |
-| cee | PI | yes | (none) | (none) | (none/90d) | |
-| cegs2 | PI | yes | (none) | (none) | (none/90d) | |
-| chatterjee | PI | yes | (none) | (none) | (none/90d) | |
-| echodac | PI | yes | (none) | (none) | (none/90d) | |
-| gwas | PI | yes | (none) | (none) | (none/90d) | not yet defined |
-| hl | PI | yes | (none) | (none) | (none/90d) | |
-| hpm | PI | yes | (none) | (none) | (none/90d) | not yet defined |
-| hongkai | PI | yes | (none) | (none) | (none/90d) | |
-| mommee | PI | yes | (none) | (none) | (none/90d) | |
-| stanley | PI | yes | (none) | (none) | (none/90d) | UNIX group |
-| sysadmin | admin | yes | (none) | (none) | (none/90d) | For system testing |
-| transfer | public | no | (none) | (none) | (none/90d) | Data in or out of cluster via SLURM jobs |
+Limits for CPU cores, RAM and Time (default/maximum)
 
-[1] Requires approval of PI before submitting jobs.
+| Name | Type | Core | RAM | Time | Notes/Use |
+| ---- | :----: | ---- | ---- | :-------: | ----- |
+| bader | PI | (none) | (none) | (none/90d) | |
+| bluejay | PI | (none) | (none) | (none/90d) | UNIX group |
+| cancergen | PI | (none) | (none) | (none/90d) | |
+| caracol | PI | (none) | (none) | (none/90d) | UNIX group |
+| cee | PI | (none) | (none) | (none/90d) | |
+| cegs2 | PI | (none) | (none) | (none/90d) | |
+| chatterjee | PI | (none) | (none) | (none/90d) | |
+| echodac | PI | yes | (none) | (none) | (none/90d) | |
+| gwas | PI | (none) | (none) | (none/90d) | not yet defined |
+| hl | PI | (none) | (none) | (none/90d) | |
+| hpm | PI | (none) | (none) | (none/90d) | not yet defined |
+| hongkai | PI | (none) | (none) | (none/90d) | |
+| mommee | PI | (none) | (none) | (none/90d) | |
+| stanley | PI | (none) | (none) | (none/90d) | UNIX group |
+| sysadmin | admin | (none) | (none) | (none/90d) | For system testing |
+| transfer | public | no | (none) | (none) | (none/90d) | Data in or out of cluster via SLURM jobs |
 
 ## GPU Partitions
 Limits for CPU cores, RAM and Time (default/maximum)

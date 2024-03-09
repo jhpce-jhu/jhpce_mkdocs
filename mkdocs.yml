@@ -208,8 +208,8 @@ markdown_extensions:
       emoji_index: !!python/name:material.extensions.emoji.twemoji
       emoji_generator: !!python/name:material.extensions.emoji.to_svg
   - pymdownx.highlight:
-      linenums: true # adds line numbers to code blocks by default (to disable when desired
-                     # add linenums="0" after the initial three backticks)
+      linenums: false # add line numbers to code blocks by default? (to enable when desired
+                     # add linenums="1" after the initial three backticks)
   - pymdownx.inlinehilite
   - pymdownx.keys # keyboard meta keys displayed e.g. ++ctrl++
   # JRT included this because someone else did. Investigate.
