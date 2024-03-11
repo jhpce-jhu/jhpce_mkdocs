@@ -7,19 +7,19 @@ tags:
 ![cluster logo](/jhpce_mkdocs/images/cluster_ai_1.jpg)
 <div class="grid cards" markdown>
   
--   ::fontawesome-circle-info:{ .lg .middle } __About Us__
+-   ::octicon-info-height-24:{ .lg .middle } __About Us__
   
     ---
 
     The Joint High Performance Computing Exchange (JHPCE) is a High-Performance Computing (HPC) facility in the Department of Biostatistics at the Johns Hopkins Bloomberg School of Public Health. This fee-for-service core is a long-standing collaborative effort between Biostatistics and the Computational Biology & Research Computing group in the department of Molecular Microbiology and Immunology. Thefacility is open to all Johns Hopkins affiliated researchers. 
 
--   :fontawesome-user-group:{ .lg .middle } __Community__
+-   :octicon-people-height-24:{ .lg .middle } __Community__
 
     ---
 
     The facility is used primarily by labs and research groups in the Johns Hopkins Bloomberg School of Public Health (SPH), the Johns Hopkins School of Medicine (SOM) and the Lieber Institute for Brain Development (LIBD). We have over 1000 user accounts, 400 active users and         approximately 100 unique users per quarter.
 
--   :material-format-font:{ .lg .middle } __Cluster Details__
+-   :octicon-server-height-24:{ .lg .middle } __Cluster Details__
 
     ---
 
