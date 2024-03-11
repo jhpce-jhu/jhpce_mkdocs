@@ -2,24 +2,17 @@
 tags:
   - refers-to-old-website
 ---
-<div class="grid cards" markdown>
 
-- :fontawesome-brands-html5: __HTML__ for content and structure
-- :fontawesome-brands-js: __JavaScript__ for interactivity
-- :fontawesome-brands-css3: __CSS__ for text running out of boxes
-- :fontawesome-brands-internet-explorer: __Internet Explorer__ ... huh?
-
-</div>
 # Joint HPC Exchange
 <div class="grid cards" markdown>
   
--   :material-format-font:{ .lg .middle } __About Us__
+-   ::fontawesome-circle-info:{ .lg .middle } __About Us__
   
     ---
 
     The Joint High Performance Computing Exchange (JHPCE) is a High-Performance Computing (HPC) facility in the Department of Biostatistics at the Johns Hopkins Bloomberg School of Public Health. This fee-for-service core is a long-standing collaborative effort between Biostatistics and the Computational Biology & Research Computing group in the department of Molecular Microbiology and Immunology. Thefacility is open to all Johns Hopkins affiliated researchers. 
 
--   :material-format-font:{ .lg .middle } __Community__
+-   :fontawesome-user-group:{ .lg .middle } __Community__
 
     ---
 
