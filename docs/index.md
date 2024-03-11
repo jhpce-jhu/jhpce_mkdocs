@@ -1,6 +1,8 @@
 ---
 tags:
   - refers-to-old-website
+hide:
+  - toc
 ---
 
 # Joint HPC Exchange
