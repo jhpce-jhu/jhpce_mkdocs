@@ -36,7 +36,10 @@ Items in YAML at the top of many pages **has to be indented** according to YAML 
 FOUR spaces is what you need to put in front of each paragraph you want to be included in something like an admonition or detail. FOUR, no more, no less. Four spaces is also needed to nest list items.
 ### ***Inspect example documents***
 if you want to see how something was done in practice. The features page contains many such examples.
-### ***Get rid of line numbers***
-in code blocks by adding `linenums="0"` after the opening three backticks and a space, i.e. ++grave++ ++grave++ ++grave++ ++space++ linenums="0"
+### ***Line numbers in code blocks***
+They had been enabled by default until 20240310, when Jeffrey disabled them. When enabled, you got rid of them for a cod block by adding `linenums="0"` after the opening three backticks and a space, i.e. ++grave++ ++grave++ ++grave++ ++space++ linenums="0"
+
+Now that they have been disabled, if you _want_ line numbering, you should _add_ `linenums="1"`
+
 ### ***Add a title, too***
 to code blocks by adding `"title words"` after the opening three backticks and a space, i.e. ++grave++ ++grave++ ++grave++ ++space++ ++dblquote++ My title ++dblquote++ ++space++ linenums="0"
