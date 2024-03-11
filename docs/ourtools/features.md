@@ -366,7 +366,11 @@ As of 2024029 these steps are needed to build a local Material for MkDocs server
 
 ```ShellSession linenums="0"
 cd ~/Documents/GitHub/
+
 git clone https://github.com/jhpce-jhu/jhpce_mkdocs
+or you can use the ssh-key method:
+git clone git@github.com:jhpce-jhu/jhpce_mkdocs
+
 cd jhpce_mkdocs
 
 pip3 install mkdocs-material
