@@ -4,6 +4,7 @@ tags:
 ---
 
 # Joint HPC Exchange
+![cluster logo](/jhpce_mkdocs/images/cluster_ai_1.jpg)
 <div class="grid cards" markdown>
   
 -   ::fontawesome-circle-info:{ .lg .middle } __About Us__
