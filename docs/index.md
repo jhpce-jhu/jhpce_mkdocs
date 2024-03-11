@@ -10,10 +10,10 @@ tags:
 
 -  __Community__
   ---
-  The facility is used primarily by labs and research groups in the Johns Hopkins Bloomberg School of Public Health (SPH), the Johns Hopkins School of Medicine (SOM) and the Lieber Institute for Brain Development (LIBD). We have over 1000 user accounts, 400 active users and approximately 100 unique users per quarter.
+  The facility is used primarily by labs and research groups in the Johns Hopkins Bloomberg School of Public Health (SPH), the Johns Hopkins School of Medicine (SOM) and the Lieber Institute for Brain Development (LIBD). We have over 1000 user accounts, 400 active users and         approximately 100 unique users per quarter.
 
 -  __Cluster Details__
-    ---
+  ---
   The computing and storage systems are optimized for genomics and biomedical research. The cluster has 65 compute nodes, providing about 2800 cores, 30TB of DRAM and over 14 PB of networked mass storage. The network fabric consists of a 10 Gbps ethernet. The facility is connected via a 40Gbps network to the University’s Science DMZ.
 
 Networked mass storage uses open-source file systems (ZFS and
