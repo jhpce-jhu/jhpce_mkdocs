@@ -7,19 +7,19 @@ tags:
 ![cluster logo](/jhpce_mkdocs/images/cluster_ai_1.jpg)
 <div class="grid cards" markdown>
   
--   ::octicon-info-height-24:{ .lg .middle } __About Us__
+-   :material-information-outline:{ .lg .middle } __About Us__
   
     ---
 
     The Joint High Performance Computing Exchange (JHPCE) is a High-Performance Computing (HPC) facility in the Department of Biostatistics at the Johns Hopkins Bloomberg School of Public Health. This fee-for-service core is a long-standing collaborative effort between Biostatistics and the Computational Biology & Research Computing group in the department of Molecular Microbiology and Immunology. Thefacility is open to all Johns Hopkins affiliated researchers. 
 
--   :octicon-people-height-24:{ .lg .middle } __Community__
+-   :material-account-group:{ .lg .middle } __Community__
 
     ---
 
     The facility is used primarily by labs and research groups in the Johns Hopkins Bloomberg School of Public Health (SPH), the Johns Hopkins School of Medicine (SOM) and the Lieber Institute for Brain Development (LIBD). We have over 1000 user accounts, 400 active users and         approximately 100 unique users per quarter.
 
--   :octicon-server-height-24:{ .lg .middle } __Cluster Details__
+-   :material-desktop-classic:{ .lg .middle } __Cluster Details__
 
     ---
 
@@ -27,7 +27,7 @@ tags:
     Networked mass storage uses open-source file systems (ZFS and Lustre-over-ZFS) to provide low cost file systems. We also have a 2PB disk-to-disk backup system off site for backing up more critical data.
     The JHPCE cluster is optimized for the embarrassingly parallel applications that are the bread-and-butter of our stakeholders, e.g., genomics and statistical applications, rather than the tightly-coupled applications that are typical in traditional HPC fields, e.g., physics, fluid-dynamics, quantum simulation etc.  Job scheduling is performed with the Simple Linux Utility for Resource Management ([SLURM](https://slurm.schedmd.com)).
 
--   :material-format-font:{ .lg .middle } __Cost Recovery__
+-   :material-currency-usd:{ .lg .middle } __Cost Recovery__
 
     ---
 
