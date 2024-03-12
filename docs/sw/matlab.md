@@ -23,7 +23,7 @@ x = [1 2 3 4];
 fprintf('Example number = %i\n', x)
 ```
 
-3. Write a submit job script (e.g. matlab_example.sh)
+2. Write a submit job script (e.g. matlab_example.sh)
 ```
 #!/bin/bash
 
