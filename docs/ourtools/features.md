@@ -123,8 +123,12 @@ You can create a meta-key sequence by surrounding the sequence with plus symbols
 
 A backtick ++grave++ is called a grave, by the way. As in the French "accent grave" 
 
-Example keywords are: cmd, ctrl, esc, tab, del, arrow-up, pipe, windows. All of the symbols you could desire are listed here!!!! [https://facelessuser.github.io/pymdown-extensions/extensions/keys/
+Example keywords are: dblquote, cmd, ctrl, esc, tab, del, arrow-up, pipe, windows. All of the symbols you could desire are listed here!!!! [https://facelessuser.github.io/pymdown-extensions/extensions/keys/
 ](https://facelessuser.github.io/pymdown-extensions/extensions/keys/)
+
+To create the vertical pipe or bar symbol, you can use ++plus++ ++plus++ bar ++plus++ ++plus++
+
+You can create a key with any wording you want ++plus++ ++plus++ ++dblquote++ Your Wording Here ++dblquote++ ++plus++ ++plus++ to create ++"Your Wording Here"++
 
 ## Abbreviations
 Abbreviations can be defined by using a syntax similar to URLs and footnotes, starting with an asterisk immediately followed by the term to be associated in square brackets.
@@ -228,7 +232,7 @@ https://squidfunk.github.io/mkdocs-material/reference/data-tables/#sortable-tabl
 
 
 ### Import CSV or Excel file
-See https://timvink.github.io/mkdocs-table-reader-plugin/
+See [https://timvink.github.io/mkdocs-table-reader-plugin/](https://timvink.github.io/mkdocs-table-reader-plugin/)
 
 ## ICONS and EMOJOIS: Examples: Kinds of check marks
 JRT found that these three kinds of check marks are examples of "icons" and "emojis".
@@ -248,10 +252,12 @@ They would not render until I added these three lines to mkdocs.yml:
 ```
 
 See this page for more information and links to the "icon sets" as well as other pages that display a bazillion emojis:
-https://squidfunk.github.io/mkdocs-material/reference/icons-emojis/
+[https://squidfunk.github.io/mkdocs-material/reference/icons-emojis/](https://squidfunk.github.io/mkdocs-material/reference/icons-emojis/)
 
 
 :smile: works if you enter `:smile:`
+
+**STILL UNKNOWN - CAN ANYONE FIGURE IT OUT AND UPDATE THIS PAGE???**
 
 But these other things didn't work. For some of them I downloaded an .svg file for them and placed them in both a top-level .icons/ directory and a docs/.icons/ directory. So read more if you want to be able to put all kinds of cool symbols in our pages. DO YOU NEED TO HAVE .ICONS DIRECTORIES AT ALL?
 
