@@ -5,18 +5,24 @@ tags:
 # Adding Your Own Python and R Libraries
 
 ## How to add your own packages to R and python
-I think our user community would welcome instructions on how to add pkgs to R and python, at the minimum.
 
-There are right and wrong ways to do this.
+!!! Note "Authoring Note"
+    Should this document be split into ones for R and Python?
+    
+    I think our user community would welcome instructions on how to add pkgs to R and python, at the minimum.
 
-There are implications of loading modules in which order before doing things.
+    There are right and wrong ways to do this.
 
-Do you create a conda environment first, or a python virtual environment?
+    There are implications of loading modules in which order before doing things.
 
-What information do other HPC sites deem important to tell their users? Are there examples among the pages for listed TOWARDS THE BOTTOM in [this github issue](https://github.com/jhpce-jhu/jhpce/issues/764)?
+    Do you create a conda environment first, or a python virtual environment?
+    
+    WHAT DO YOU DO WHEN YOU WANT TO RUN A DIFFERENT VERSION OF A LIBRARY THAT IS FOUND IN CONDA_R?
 
-A GOOD EXAMPLE
-Example from [C.E.C.I](https://support.ceci-hpc.be/doc/_contents/UsingSoftwareAndLibraries/InstallingSoftwareByYourself/index.html)
+    What information do other HPC sites deem important to tell their users? Are there examples among the pages for listed TOWARDS THE BOTTOM in [this github issue](https://github.com/jhpce-jhu/jhpce/issues/764)?
+
+    A GOOD EXAMPLE
+    Example from [C.E.C.I](https://support.ceci-hpc.be/doc/_contents/UsingSoftwareAndLibraries/InstallingSoftwareByYourself/index.html)
 
 ## R
 FIRST YOU MUST LOAD R MODULE
