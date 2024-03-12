@@ -9,7 +9,7 @@ If we don't write something, then we can provide pointers to the work of others.
 
 [Software installation with Conda](https://hpc-docs.cubi.bihealth.org/best-practice/software-installation-with-conda/)
 
-[Example page](https://hpc-docs.cubi.bihealth.org/how-to/software/scientific-software/)
+[Example building from source page](https://hpc-docs.cubi.bihealth.org/how-to/software/scientific-software/)
 
 # **Please visit the links below, poke around to nearby topics on those site pages. If you were a new JHPCE user and new to UNIX and HPC, what would you like to see, using these examples?
 **
@@ -25,3 +25,5 @@ Example from [C.E.C.I](https://support.ceci-hpc.be/doc/_contents/UsingSoftwareAn
 Another example for [frontera cluster](https://docs.tacc.utexas.edu/hpc/frontera/#building) Very nice info to help you optimize your code. Advice about locality, I/O performance, machine learning etc nearby in sidebar.
 
 Another example from [Yale](https://docs.ycrc.yale.edu/clusters-at-yale/applications/compile/) warns users about considering node CPU capabilities. (So does Frontera where you get practical info about gcc -march and -mtune)
+
+The C.E.C.I folks are [surprisingly opposed](https://support.ceci-hpc.be/doc/_contents/UsingSoftwareAndLibraries/InstallingSoftwareByYourself/conda.html#conda) to people using Anaconda. I guess this is specifically about the full Anaconda versus Miniconda?????

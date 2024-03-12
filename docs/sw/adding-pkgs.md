@@ -51,3 +51,7 @@ We have a wide variety of CPU architecture across the cluster, so you probably d
 
 
 ## Python
+
+C.E.C.I [has a page](https://support.ceci-hpc.be/doc/_contents/UsingSoftwareAndLibraries/InstallingSoftwareByYourself/index.html) with what I think might be useful info:
+
+It is important when you install a package that you load the correct Python module, and use the Pip option --no-binary :all: to recompile from source rather than install pre-compiled binaries whenever possible. See more information in the PIP documentation 
