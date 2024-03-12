@@ -1,8 +1,9 @@
-Our younger users haven't necessarily ever built anything from source. Or on machines owned by someone else where you cannot use sudo dnf install blah. We can encourage them that it is possible, give them a few pointers to doing it successfully.
+!!! Note "Authoring Note"
+    Our younger users haven't necessarily ever built anything from source. Or on machines owned by someone else where you cannot use sudo dnf install blah. We can encourage them that it is possible, give them a few pointers to doing it successfully.
 
-For example, telling them that they will have to modify the destination location from the typical /usr/local/bin and that you can usually do that easily in the config stage?
+For example, telling them that they will have to modify the destination location from the typical /usr/local/bin and that you can usually do that easily in the config stage with `--config=`
 
-Do it on a compute node in an interactive shell.
+Please do it on a compute node in an interactive shell.
 
 If we don't write something, then we can provide pointers to the work of others. If so, that would probably be inside a larger document.
 
