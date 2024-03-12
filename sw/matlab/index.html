@@ -11,10 +11,10 @@
         <link rel="canonical" href="https://www.jhpce-jhu.github.io/jhpce_docs/sw/matlab/">
       
       
-        <link rel="prev" href="../jupyter/">
+        <link rel="prev" href="../sw-overview/">
       
       
-        <link rel="next" href="../sas/">
+        <link rel="next" href="../r-n-friends/">
       
       
       <link rel="icon" href="../../assets/images/favicon.png">
@@ -86,7 +86,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#stub-page-for-the-software-topic" class="md-skip">
+        <a href="#running-basic-matlab-jobs-over-slurm" class="md-skip">
           Skip to content
         </a>
       
@@ -1634,18 +1634,6 @@
       
         
       
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
     
     
       
@@ -1701,6 +1689,239 @@
                 
   
   
+    
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1_9_2" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_1_9_2" id="__nav_1_9_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Local Software
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_1_9_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_1_9_2">
+            <span class="md-nav__icon md-icon"></span>
+            Local Software
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Matlab
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    Matlab
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#running-basic-matlab-jobs-over-slurm" class="md-nav__link">
+    <span class="md-ellipsis">
+      Running basic Matlab jobs over SLURM
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Running basic Matlab jobs over SLURM">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#-using-matlab-interactively" class="md-nav__link">
+    <span class="md-ellipsis">
+      - Using Matlab interactively
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#-using-matlab-in-batch-mode" class="md-nav__link">
+    <span class="md-ellipsis">
+      - Using Matlab in batch mode
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../python.md" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Python
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../r-n-friends/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    R
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../sas/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    SAS
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../stata.md" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Stata
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
   
   
     <li class="md-nav__item">
@@ -1724,20 +1945,48 @@
   
   
   
-    <li class="md-nav__item">
-      <a href="../adding-pkgs/" class="md-nav__link">
+    
+    
+      
         
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1_9_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_1_9_4" id="__nav_1_9_4_label" tabindex="0">
+            
   
   <span class="md-ellipsis">
-    Adding local pkgs
+    Installing Your Own
   </span>
   
 
-      </a>
-    </li>
-  
-
-              
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_1_9_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_1_9_4">
+            <span class="md-nav__icon md-icon"></span>
+            Installing Your Own
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
             
               
                 
@@ -1750,7 +1999,7 @@
         
   
   <span class="md-ellipsis">
-    Building Your Own
+    Compile from Source
   </span>
   
 
@@ -1767,11 +2016,11 @@
   
   
     <li class="md-nav__item">
-      <a href="../containers/" class="md-nav__link">
+      <a href="../conda.md" class="md-nav__link">
         
   
   <span class="md-ellipsis">
-    Containers
+    Conda Environment
   </span>
   
 
@@ -1788,11 +2037,11 @@
   
   
     <li class="md-nav__item">
-      <a href="../r-n-friends/" class="md-nav__link">
+      <a href="../python-pkg.md" class="md-nav__link">
         
   
   <span class="md-ellipsis">
-    R and RStudio and friends
+    Python Packages
   </span>
   
 
@@ -1809,11 +2058,11 @@
   
   
     <li class="md-nav__item">
-      <a href="../r-slurmjobs/" class="md-nav__link">
+      <a href="../r-pkg.md" class="md-nav__link">
         
   
   <span class="md-ellipsis">
-    Managing Jobs With R and slurmjobs
+    R Packages
   </span>
   
 
@@ -1830,11 +2079,11 @@
   
   
     <li class="md-nav__item">
-      <a href="../jupyter/" class="md-nav__link">
+      <a href="../singularity.md" class="md-nav__link">
         
   
   <span class="md-ellipsis">
-    Jupyter
+    Singularity
   </span>
   
 
@@ -1844,53 +2093,9 @@
 
               
             
-              
-                
-  
-  
-    
-  
-  
-  
-    <li class="md-nav__item md-nav__item--active">
+          </ul>
+        </nav>
       
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
-        
-  
-  <span class="md-ellipsis">
-    Matlab
-  </span>
-  
-
-      </a>
-      
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../sas/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    SAS
-  </span>
-  
-
-      </a>
     </li>
   
 
@@ -2576,8 +2781,47 @@
   
   
   
-    
   
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#running-basic-matlab-jobs-over-slurm" class="md-nav__link">
+    <span class="md-ellipsis">
+      Running basic Matlab jobs over SLURM
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Running basic Matlab jobs over SLURM">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#-using-matlab-interactively" class="md-nav__link">
+    <span class="md-ellipsis">
+      - Using Matlab interactively
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#-using-matlab-in-batch-mode" class="md-nav__link">
+    <span class="md-ellipsis">
+      - Using Matlab in batch mode
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
   
 </nav>
                   </div>
@@ -2592,10 +2836,77 @@
                   
 
 
-<h1 id="stub-page-for-the-software-topic">stub page for the "Software" topic<a class="headerlink" href="#stub-page-for-the-software-topic" title="Anchor link to this section for reference">&para;</a></h1>
-<p>This is a stub page for the "Software" topic.</p>
-<p>Create a new file with the right contents for the topic header in the nav bar.
-Then point that header to the new document instead of "sw/sw-stub.md"</p>
+  <h1>Matlab</h1>
+
+<h2 id="running-basic-matlab-jobs-over-slurm"><strong>Running basic Matlab jobs over SLURM</strong><a class="headerlink" href="#running-basic-matlab-jobs-over-slurm" title="Anchor link to this section for reference">&para;</a></h2>
+<h3 id="-using-matlab-interactively">- Using Matlab interactively<a class="headerlink" href="#-using-matlab-interactively" title="Anchor link to this section for reference">&para;</a></h3>
+<div class="highlight"><pre><span></span><code>[test@login31 ~]$ srun --mem 10G --x11 --pty bash
+srun: job 3109996 queued and waiting for resources
+srun: job 3109996 has been allocated resources
+[test@compute-152 ~]$ module load matlab
+[test@compute-152 ~]$ module list
+
+Currently Loaded Modules:
+  1) JHPCE_ROCKY9_DEFAULT_ENV   2) JHPCE_tools/3.0   3) matlab/R2023a
+
+[test@compute-152 ~]$ matlab
+</code></pre></div>
+<h3 id="-using-matlab-in-batch-mode">- Using Matlab in batch mode<a class="headerlink" href="#-using-matlab-in-batch-mode" title="Anchor link to this section for reference">&para;</a></h3>
+<ol>
+<li>
+<p>Write your matlab source in a file with .m extension (e.g. matlab_example.m)
+<div class="highlight"><pre><span></span><code>x = [1 2 3 4];
+fprintf(&#39;Example number = %i\n&#39;, x)
+</code></pre></div></p>
+</li>
+<li>
+<p>Write a submit job script (e.g. matlab_example.sh)
+<div class="highlight"><pre><span></span><code>#!/bin/bash
+
+#SBATCH --mem=2G
+#SBATCH --time=5:00
+
+#SBATCH -o slurm.%N.%J.%u.out   # STDOUT
+#SBATCH -e slurm.%N.%J.%u.err   # STDERR
+
+module load matlab
+matlab -nojvm -nodisplay -r &quot;matlab_example;quit;&quot;
+</code></pre></div></p>
+</li>
+<li>
+<p>Submit your matlab job
+<div class="highlight"><pre><span></span><code>[test@login31 ~]$ sbatch matlab_example.sh 
+Submitted batch job 3110505
+</code></pre></div></p>
+</li>
+<li>
+<p>Monitor the job status
+<div class="highlight"><pre><span></span><code>[test@login31 ~]$ squeue --me
+             JOBID PARTITION     NAME     USER ST       TIME  NODES NODELIST(REASON)
+           3110505    shared matlab_e    test  R       0:03      1 compute-100
+</code></pre></div></p>
+</li>
+<li>
+<p>When the job is finished, the output files are created in your Current Working Directory
+<div class="highlight"><pre><span></span><code>-rw-r--r-- 1 test test   0 Mar 12 17:09 slurm.compute-100.3110505.test.err
+-rw-r--r-- 1 test test 410 Mar 12 17:10 slurm.compute-100.3110505.test.out
+</code></pre></div></p>
+</li>
+<li>
+<p>Look at the results from output file, file with stderr is empty(job without errors):
+<div class="highlight"><pre><span></span><code>[test@login31 ~]$ cat slurm.compute-100.3110505.test.out
+                                May 25, 2023
+
+For online documentation, see https://www.mathworks.com/support
+For product information, visit www.mathworks.com.
+
+Example number = 1
+Example number = 2
+Example number = 3
+Example number = 4
+</code></pre></div></p>
+</li>
+</ol>
 
 
 
@@ -2616,7 +2927,7 @@ Then point that header to the new document instead of "sw/sw-stub.md"</p>
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1-2.1-2M12.5 7v5.2l4 2.4-1 1L11 13V7h1.5M11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2v1.8Z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">March 4, 2024</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">March 12, 2024</span>
   </span>
 
     
@@ -2694,7 +3005,7 @@ Then point that header to the new document instead of "sw/sw-stub.md"</p>
       <nav class="md-footer__inner md-grid" aria-label="Footer" >
         
           
-          <a href="../jupyter/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Jupyter">
+          <a href="../sw-overview/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Overview (Outline)">
             <div class="md-footer__button md-icon">
               
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
@@ -2704,20 +3015,20 @@ Then point that header to the new document instead of "sw/sw-stub.md"</p>
                 Previous
               </span>
               <div class="md-ellipsis">
-                Jupyter
+                Overview (Outline)
               </div>
             </div>
           </a>
         
         
           
-          <a href="../sas/" class="md-footer__link md-footer__link--next" aria-label="Next: SAS">
+          <a href="../r-n-friends/" class="md-footer__link md-footer__link--next" aria-label="Next: R">
             <div class="md-footer__title">
               <span class="md-footer__direction">
                 Next
               </span>
               <div class="md-ellipsis">
-                SAS
+                R
               </div>
             </div>
             <div class="md-footer__button md-icon">
