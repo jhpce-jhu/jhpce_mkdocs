@@ -55,15 +55,19 @@ nav:
       - Backups & Restores: storage/backups-restores.md
     - Software:
       - Overview (Outline): sw/sw-overview.md
+      - Local Software:
+        - Matlab: sw/matlab.md
+        - Python: sw/python.md
+        - R: sw/r-n-friends.md
+        - SAS: sw/sas.md
+        - Stata: sw/stata.md
       - Modules: sw/modules.md
-      - Adding local pkgs: sw/adding-pkgs.md
-      - Building Your Own: sw/building-from-src.md
-      - Containers: sw/containers.md
-      - R and RStudio and friends: sw/r-n-friends.md
-      - Managing Jobs With R and slurmjobs: sw/r-slurmjobs.md
-      - Jupyter: sw/jupyter.md
-      - Matlab: sw/matlab.md
-      - SAS: sw/sas.md
+      - Installing Your Own:
+        - Compile from Source: sw/building-from-src.md
+        - Conda Environment: sw/conda.md
+        - Python Packages: sw/python-pkg.md
+        - R Packages: sw/r-pkg.md
+        - Singularity: sw/singularity.md
     - Job scheduler (SLURM): 
       - Example User Guides: slurm/user-guide-collection.md
       - Partitions: slurm/partitions.md
