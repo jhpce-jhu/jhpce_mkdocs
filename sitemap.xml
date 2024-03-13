@@ -306,6 +306,11 @@
          <changefreq>daily</changefreq>
     </url>
     <url>
+         <loc>https://www.jhpce-jhu.github.io/jhpce_docs/sw/conda/</loc>
+         <lastmod>2024-03-13</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
          <loc>https://www.jhpce-jhu.github.io/jhpce_docs/sw/containers/</loc>
          <lastmod>2024-03-13</lastmod>
          <changefreq>daily</changefreq>
@@ -331,7 +336,17 @@
          <changefreq>daily</changefreq>
     </url>
     <url>
+         <loc>https://www.jhpce-jhu.github.io/jhpce_docs/sw/python-pkg/</loc>
+         <lastmod>2024-03-13</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
          <loc>https://www.jhpce-jhu.github.io/jhpce_docs/sw/r-n-friends/</loc>
+         <lastmod>2024-03-13</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://www.jhpce-jhu.github.io/jhpce_docs/sw/r-pkg/</loc>
          <lastmod>2024-03-13</lastmod>
          <changefreq>daily</changefreq>
     </url>
@@ -342,6 +357,11 @@
     </url>
     <url>
          <loc>https://www.jhpce-jhu.github.io/jhpce_docs/sw/sas/</loc>
+         <lastmod>2024-03-13</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://www.jhpce-jhu.github.io/jhpce_docs/sw/singularity/</loc>
          <lastmod>2024-03-13</lastmod>
          <changefreq>daily</changefreq>
     </url>
