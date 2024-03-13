@@ -1,11 +1,60 @@
 ---
 tags:
-  - needs-major-revision
+  - done
   - slurm
 ---
-# Quality of Service -- NEEDS REVISION FOR PUBLIC CONSUMPTION
+# Quality of Service
+
+Systems administrators can define resource limits called QOS and assign them to a variety of objects, mainly users and job partitions. We use them to share resources equitably and to allow exceptions.
+
+For example, we have a QOS named `shared-default` which is normally set to allow a user to use 100 CPU cores and 1TB of RAM at any one time in the `shared` partition.  These values were chose to represent roughly 20% of those available in that partition. When Primary Investigators who own nodes need to remove them from the shared partition for their own use, that QOS' definition can be changed to a lower value to maintain the 20% goal.
+
+Vendor QOS documentation about them can be found [here](https://slurm.schedmd.com/qos.html). There are also entries in the manual pages for various SLURM commands about QOS[^1].
+
+[^1]: Capitalization doesn't matter when specifying QOS in commands.
+
+QOS definitions for users and partitions are stored in a database.
+
+We have a [document containing useful QOS-related commands](tips-sacctmgr.md). Those commands include ones which allow you to see the value of a QOS like `interactive-default`
+
+See our currently defined QOS in a readable format:
+
+`sacctmgr show qos format=Name%20,Priority,Flags%30,MaxWall,MaxTRESPU%20,MaxJobsPU,MaxSubmitPU,MaxTRESPA%25`
+
+## Partition QOS
+Job partitions like `shared` have two QOS-related attributes:
+
+1. Qos - If present, this specifies the QOS which by default applies to all jobs submitted. The `interactive` partition has `QoS=interactive-default`
+
+2. AllowQoS - By default, this value is set to ALL. If set to a comma-separated list, then only those can be used or requested by users. The `interactive` partition has `AllowQos=normal,interactive-default`
+
+You can see the _configuration_ of a partition with the scontrol command. ([Vendor's scontrol manual page](https://slurm.schedmd.com/archive/slurm-22.05.9/scontrol.html). Our [local scontrol tips](../slurm/tips-scontrol.md) page.) Here is a command which will show you the QOS attributes on an exmple partition named *partitionname*
+
+```bash linenums="0"
+scontrol show partition partitionname | grep -i qos
+```
+
+## User QOS
+
+User accounts have two QOS-related attributes:
+
+1. Qos - Our users (currently) all have a QOS value of "normal", (which is inherited from their parent account, named "jhpce").  The "normal" QOS  (currently) has no limits defined for it.
+
+2. Allowed Qos - By default, this value is empty. If set to a comma-separated list, then the user can _choose_ to submit jobs using one of them.  Jobs request a QOS using the "--qos=" option to the sbatch, salloc, and srun commands. (If the partition does not allow a QOS to be used, then your job will be rejected.)
+
+See your own user database values:
+`sacctmgr show user withassoc where name=your-cluster-username`
+
+The SLURM FAQ includes [an entry](../slurm/slurm-faq/#job-violates-accountingqos-policy.md) about the error you receive if you ask for more RAM in a single job than is allowed. 
+
+If you submit jobs which together ask for more memory than you are allowed to use at one time, then ones that "fit" inside the limit will run and the remaining jobs will be waiting in PENDING state. 
+
+The "Reason" code shown in the output of `squeue --me -t pd` ("show me my pending jobs") will be `QOSMaxMemoryPerUser`for jobs waiting for your running jobs to be using less than the RAM limit defined in the QOS that is impacting you.  The Reason will be `QOSMaxCpuPerUserLimit` for jobs waiting for your core usage to drop below that which is allowed.
+
 
 ## HOW WE ARE USING QOS TO DATE...
+
+This is a summary of how QOS is configured at JHPCE.
 
 Our users all have a QOS value of "normal", which is
 inherited from their parent account, named "jhpce"
@@ -19,9 +68,7 @@ The "normal" QOS  (currently) has no limits defined for it.
 A fundamental element of our current practice is that the
 user’s __default QOS__ entries in the database are "normal".
 
-We’ve defined additional ones
-and, given some users ones they can optionally use __in addition__
-to normal. 
+We’ve defined additional ones and, for some users, changed the Allowed QoS field in their user entries to list ones that they can optionally use __in addition__ to "normal". 
  
 Those additional ones are being applied
 
@@ -34,4 +81,4 @@ Those additional ones are being applied
     job thenceforward. Users can pick and choose what QOS to use for each job.
     
 
-We have a [document containing useful QOS-related commands](tips-sacctmgr.md).
+

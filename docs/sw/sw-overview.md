@@ -9,6 +9,10 @@ tags:
 ## What we've installed & how to use it
 ### Overview
 ### Modules
+
+Who creates our modules?
+Where is the document about using modules?
+
 ### In the operating system
 Is there anything useful to say about what's available to people outside of what they see listed by `module avail`?
 
@@ -34,7 +38,9 @@ Mark seems to think that we don't need to provide much in the way of instruction
 ## Building your own software
 If we don't write much beyond the adding-pkgs-to-the-two-popular-interpreted-languages, perhaps this section or document merely provides links to the work of others.
 
-JRT thinks that people who have spent decades building software from source may be underestimating what younger people know.  We want to facilitate our users getting going, gaining proficiency. Part of what we want to differentiate us from other options is that we are more helpful than cold and impersonal organizations.
+JRT thinks that people who have spent decades building software from source may be underestimating what younger people know.  
+
+We want to facilitate our users getting going, gaining proficiency. Part of what we want to differentiate us from other options is that we are more helpful than cold and impersonal organizations.
 
 [Here is a starter document](building-from-src.md) about building your own software.
 

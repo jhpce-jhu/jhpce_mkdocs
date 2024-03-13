@@ -6,7 +6,7 @@ tags:
 
 # Partitions
 
-A partition is a logical collections of nodes that comprise different hardware resources and limits to help meet the wide variety of jobs that get scheduled on the cluster. 
+A partition is a logical collections of nodes that comprise different hardware resources and limits to help meet the wide variety of jobs that get scheduled on the cluster. Nodes can belong to more than one partition.
 
 There are several types of partitions:
 
@@ -16,16 +16,20 @@ There are several types of partitions:
 * **PI-owned** (for use only by members of the PI's group)
 
 ## PI Partitions
+JHPCE exists because Primary Investigators worked together to create a cluster. They share their resources via public partitions (see below).
+
 {==Only submit jobs to these partitions if you are a member of the Primary Investigator's research groups or have been given explicit permission to do so.==} If you are in doubt, ask before submitting. Jobs from non-group members will be killed and repeated abuse *will* lead to repercussions.  
 
 ## Public Partitions 
 
-Partitions **shared**, **interactive**, **gpu** and **sas** are considered public and available to all.
+Partitions **shared**, **interactive**, **gpu**, **sas** and **transfer** are considered public and available to all.
 
 !!! Note "Specific use"
     Only jobs which require the use of GPU cards should be submitted to the **gpu** partition.
 
     Only jobs which require the use of the SAS application should be submitted to the **sas** partition.
+    
+    Only jobs related to transferring data into or out of the cluster should be submitted to the **transfer** partition.
 
 The public partitions provide low-priority access to unused capacity throughout the cluster. Capacity on the shared queue is provided on a strictly “as-available” basis and serves two purposes.
 
@@ -39,7 +43,7 @@ Our command `slurmpic` shows information about partitions, including the member 
 
 [^1]: Note that the statistics displayed are for that partition, not the whole cluster. Also, memory and CPU use of nodes that are DOWN or in DRAIN are not included in the stats.
  
-The best way to see the _configuration_ of a partition is with the command [`scontrol`](https://slurm.schedmd.com/archive/slurm-22.05.9/scontrol.html).
+The best way to see the _configuration_ of a partition is with the scontrol command. ([Vendor's scontrol manual page](https://slurm.schedmd.com/archive/slurm-22.05.9/scontrol.html). Our [local scontrol tips](../slurm/tips-scontrol.md) page.)
 ```bash linenums="0"
 scontrol show partition partitionname
 ```
@@ -58,6 +62,7 @@ Limits for CPU cores, RAM and Time (default/maximum)
 | interactive | public | 2 | 20gb | (1d/90d) | Small but accessible |
 | gpu | public | (none) | (none) | (1d/90d) | Only for GPU jobs |
 | sas | application | (none) | (none) | (none/90d) | Licensed for SAS |
+| transfer | public | no | (none) | (none) | (none/90d) | Data in or out of cluster via SLURM jobs |
 
 To reduce table width, column names are terse.
 
@@ -74,7 +79,7 @@ Limits for CPU cores, RAM and Time (default/maximum)
 | cee | PI | (none) | (none) | (none/90d) | |
 | cegs2 | PI | (none) | (none) | (none/90d) | |
 | chatterjee | PI | (none) | (none) | (none/90d) | |
-| echodac | PI | yes | (none) | (none) | (none/90d) | |
+| echodac | PI | (none) | (none) | (none/90d) | |
 | gwas | PI | (none) | (none) | (none/90d) | not yet defined |
 | hl | PI | (none) | (none) | (none/90d) | |
 | hpm | PI | (none) | (none) | (none/90d) | not yet defined |
@@ -82,7 +87,7 @@ Limits for CPU cores, RAM and Time (default/maximum)
 | mommee | PI | (none) | (none) | (none/90d) | |
 | stanley | PI | (none) | (none) | (none/90d) | UNIX group |
 | sysadmin | admin | (none) | (none) | (none/90d) | For system testing |
-| transfer | public | no | (none) | (none) | (none/90d) | Data in or out of cluster via SLURM jobs |
+
 
 ## GPU Partitions
 Limits for CPU cores, RAM and Time (default/maximum)
