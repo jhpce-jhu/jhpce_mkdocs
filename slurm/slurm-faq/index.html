@@ -3019,47 +3019,77 @@
 <p>Note that the information in these pages will include details which do not apply here in JHPCE. Caveat emptor.</p>
 <p><a href="https://support.ceci-hpc.be/doc/_contents/SubmittingJobs/SlurmFAQ.html">CECI</a></p>
 <h2 id="when-will-my-job-start">When will my job start?<a class="headerlink" href="#when-will-my-job-start" title="Anchor link to this section for reference">&para;</a></h2>
+<details>
+<summary>Click to open</summary>
 <p>See <a href="../whenstart/">this document</a> for a description of factors affecting when jobs start.  Of course the load on the cluster impacts job start times. Please consult the output of <code>slurmpic</code> for information about the state of the cluster and its available resources. Note that your job cannot start until a match is found for the resources you specified. There may be a lot of unused CPUs on a node, for example, but if someone has allocated all of the RAM on that node your job won't fit there.</p>
+<p>If the Reason given for a pending job is <code>QOSMaxMemoryPerUser</code> or <code>QOSMaxCpuPerUserLimit</code> then you can read about Quality of Service in our document <a href="../qos/">here</a>.</p>
+</details>
 <h2 id="what-partitions-exist">What partitions exist?<a class="headerlink" href="#what-partitions-exist" title="Anchor link to this section for reference">&para;</a></h2>
+<details>
+<summary>Click to open</summary>
 <p>The default partition is "shared". By default <code>slurmpic</code> describes the state of this partition. (Run <code>slurmpic -h</code> to see a list of options, including the flag to show other partitions.)</p>
 <p>See <a href="../partitions/">this document</a> for a description of partitions and their purposes and limits.</p>
+</details>
 <h2 id="how-will-i-know-if-my-job-ended">How will I know if my job ended?<a class="headerlink" href="#how-will-i-know-if-my-job-ended" title="Anchor link to this section for reference">&para;</a></h2>
 <p>See <a href="../monitoring/">this document</a> for information about monitoring pending, running and completed jobs.</p>
 <h2 id="how-do-i-cancel-a-job">How do I cancel a job?<a class="headerlink" href="#how-do-i-cancel-a-job" title="Anchor link to this section for reference">&para;</a></h2>
+<details>
+<summary>Click to open</summary>
 <p>Use <code>scancel &lt;jobid&gt;</code> where jobid is the number for your job. You can specify multiple jobs in a space-separated list.</p>
 <p>If your job is a member of a job array, it will have an underscore in it, e.g. 2095_15. You can cancel an array task (2095_15) or the whole job array (2095).</p>
 <p>If you want to cancel all of your pending jobs, use <code>scancel --me -t PENDING</code>. If you want to cancel all of your jobs, use <code>scancel -u your-username</code></p>
+</details>
 <h2 id="how-do-i-hold-or-modify-a-job">How do I hold or modify a job?<a class="headerlink" href="#how-do-i-hold-or-modify-a-job" title="Anchor link to this section for reference">&para;</a></h2>
+<details>
+<summary>Click to open</summary>
 <p>Note that if you want to modify something about the job, instead of cancelling it and losing any accumulated <a href="../whenstart/#priority">age priority</a> it has accrued, you can hold the job, modify it and release it with <code>scontrol</code> commands. Only some of the parameters of a job can be modified when it is pending, and even fewer if it has started running.</p>
-<p><code>scontrol hold &lt;jobid&gt;</code> where <jobid> can be a comma-separated list.
-If your jobs have names, you can hold using the name. (This will hold all matching jobs.) <code>scontrol hold jobname=&lt;jobname&gt;</code>
-<code>scontrol update jobid=&lt;jobid&gt; ...</code> See <a href="https://slurm.schedmd.com/scontrol.html#lbAH">this section</a> of the manual page for a list of attributes which can be modified.</p>
+<p><code>scontrol hold &lt;jobid&gt;</code> where <jobid> can be a comma-separated list.</p>
+<p>If your jobs have names, you can hold using the name. (This will hold all matching jobs.) <code>scontrol hold jobname=&lt;jobname&gt;</code> <code>scontrol update jobid=&lt;jobid&gt; ...</code> See <a href="https://slurm.schedmd.com/scontrol.html#lbAH">this section</a> of the manual page for a list of attributes which can be modified.</p>
 <p>We have a number of <a href="../tips-scontrol/">scontrol examples</a> spelled out for you.</p>
+</details>
 <h2 id="how-do-i-control-the-order-my-jobs-start">How do I control the order my jobs start?<a class="headerlink" href="#how-do-i-control-the-order-my-jobs-start" title="Anchor link to this section for reference">&para;</a></h2>
+<details>
+<summary>Click to open</summary>
 <p>You can rank your jobs with the "nice" and "top" subcommands to <code>scontrol</code>.  See the <code>scontrol</code> tips document mentioned above.
 You can also submit jobs with <a href="https://slurm.schedmd.com/sbatch.html#OPT_dependency">dependency directives</a> and also create <a href="https://slurm.schedmd.com/heterogeneous_jobs.html">heterogenous jobs</a> which spawn other jobs. </p>
+</details>
 <h2 id="unable-to-allocate-resources">"Unable to allocate resources"<a class="headerlink" href="#unable-to-allocate-resources" title="Anchor link to this section for reference">&para;</a></h2>
+<details>
+<summary>Click to open</summary>
 <p>If the scheduler determines that your job is invalid in some fashion, it will generally reject it immediately instead of putting it into the queue with a pending status. There are a few causes of this. The wording of the error may or may not be clear.</p>
+</details>
 <h3 id="users-group-not-permitted-to-use-this-partition">User's group not permitted to use this partition<a class="headerlink" href="#users-group-not-permitted-to-use-this-partition" title="Anchor link to this section for reference">&para;</a></h3>
+<details>
+<summary>Click to open</summary>
 <p>Some of our PI partitions have UNIX groups defined to control who can submit jobs to them. If you are not a member of that group and try to submit a job, you'll see an error like this:</p>
 <p><code>srun: error: Unable to allocate resources: User's group not permitted to use this partition</code></p>
 <p>You can see which groups you belong to with the <code>groups</code> command.</p>
 <p>You can see which group you need to belong to by looking for the partition in question in the file /etc/slurm/partitions.conf</p>
+</details>
 <h3 id="job-violates-accountingqos-policy">Job violates accounting/QOS policy<a class="headerlink" href="#job-violates-accountingqos-policy" title="Anchor link to this section for reference">&para;</a></h3>
+<details>
+<summary>Click to open</summary>
 <p>If you ask for more resources than will ever be able to be allocated to you, you might receive one of several error messages.</p>
 <p>This one appeared when a job asked for more RAM than was allowed by a QOS limit:</p>
 <p><code>Unable to allocate resources: Job violates accounting/QOS policy (job submit limit, user's size and/or time limits)</code></p>
 <p>But when more CPUs were requested (instead of too much RAM), the error was different:</p>
 <p><code>Unable to allocate resources: More processors requested than permitted</code></p>
+</details>
 <h2 id="how-many-jobs-can-i-run-at-a-time">How many jobs can I run at a time?<a class="headerlink" href="#how-many-jobs-can-i-run-at-a-time" title="Anchor link to this section for reference">&para;</a></h2>
+<details>
+<summary>Click to open</summary>
 <p>As of 20240220 there are few limits.</p>
 <p>Array jobs are limited to 15,000 tasks by variable <code>max_array_tasks</code> in /etc/slurm/slurm.conf</p>
 <p>Total jobs at a single time is 90,000, which is determined by the variable <code>MaxJobCount</code> in /etc/slurm/slurm.conf</p>
+</details>
 <h2 id="srun-error-_half_duplex">srun: error: _half_duplex<a class="headerlink" href="#srun-error-_half_duplex" title="Anchor link to this section for reference">&para;</a></h2>
+<details>
+<summary>Click to open</summary>
 <p><code>srun: error: _half_duplex: read error -1 Connection reset by peer</code></p>
 <p>We consider this a SLURM bug. It appears when <code>srun</code> is used with the <code>--x11</code> argument. Sometimes immediately, but typically when an X11 program is launched.</p>
 <p>If you do not intend to run any X11 programs during your interactive session, then you can log out of that session and start a new one without the <code>--x11</code> flag.</p>
 <p>If you do intend to use X11 programs, when that error appears the only solution we have found is to abandon that whole login session to the compute node by typing “exit” to quit the shell. Back on the login node, verify that basic X11 functionality works by starting either the xterm or xclock programs. If that works, start a new srun command to get back onto a compute node. Once on a compute node, verify that basic X11 functionality works by starting either the xterm or xclock programs. If they did, then try your X11 program again.</p>
+</details>
 
 
 
@@ -3080,7 +3110,7 @@ You can also submit jobs with <a href="https://slurm.schedmd.com/sbatch.html#OPT
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1-2.1-2M12.5 7v5.2l4 2.4-1 1L11 13V7h1.5M11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2v1.8Z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">March 5, 2024</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">March 13, 2024</span>
   </span>
 
     

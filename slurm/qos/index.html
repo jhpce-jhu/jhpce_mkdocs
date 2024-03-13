@@ -86,7 +86,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#quality-of-service-needs-revision-for-public-consumption" class="md-skip">
+        <a href="#quality-of-service" class="md-skip">
           Skip to content
         </a>
       
@@ -2272,6 +2272,24 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#partition-qos" class="md-nav__link">
+    <span class="md-ellipsis">
+      Partition QOS
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#user-qos" class="md-nav__link">
+    <span class="md-ellipsis">
+      User QOS
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#how-we-are-using-qos-to-date" class="md-nav__link">
     <span class="md-ellipsis">
       HOW WE ARE USING QOS TO DATE...
@@ -2769,6 +2787,24 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#partition-qos" class="md-nav__link">
+    <span class="md-ellipsis">
+      Partition QOS
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#user-qos" class="md-nav__link">
+    <span class="md-ellipsis">
+      User QOS
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#how-we-are-using-qos-to-date" class="md-nav__link">
     <span class="md-ellipsis">
       HOW WE ARE USING QOS TO DATE...
@@ -2796,7 +2832,7 @@
     
     
     
-      <a href="../../ourtools/tags/#needs-major-revision" class="md-tag">needs-major-revision</a>
+      <a href="../../ourtools/tags/#done" class="md-tag">done</a>
     
   
     
@@ -2809,8 +2845,44 @@
 
 
 
-<h1 id="quality-of-service-needs-revision-for-public-consumption">Quality of Service -- NEEDS REVISION FOR PUBLIC CONSUMPTION<a class="headerlink" href="#quality-of-service-needs-revision-for-public-consumption" title="Anchor link to this section for reference">&para;</a></h1>
+<h1 id="quality-of-service">Quality of Service<a class="headerlink" href="#quality-of-service" title="Anchor link to this section for reference">&para;</a></h1>
+<p>Systems administrators can define resource limits called QOS and assign them to a variety of objects, mainly users and job partitions. We use them to share resources equitably and to allow exceptions.</p>
+<p>For example, we have a QOS named <code>shared-default</code> which is normally set to allow a user to use 100 CPU cores and 1TB of RAM at any one time in the <code>shared</code> partition.  These values were chose to represent roughly 20% of those available in that partition. When Primary Investigators who own nodes need to remove them from the shared partition for their own use, that QOS' definition can be changed to a lower value to maintain the 20% goal.</p>
+<p>Vendor QOS documentation about them can be found <a href="https://slurm.schedmd.com/qos.html">here</a>. There are also entries in the manual pages for various SLURM commands about QOS<sup id="fnref:1"><a class="footnote-ref" href="#fn:1">1</a></sup>.</p>
+<p>QOS definitions for users and partitions are stored in a database.</p>
+<p>We have a <a href="../tips-sacctmgr/">document containing useful QOS-related commands</a>. Those commands include ones which allow you to see the value of a QOS like <code>interactive-default</code></p>
+<p>See our currently defined QOS in a readable format:</p>
+<p><code>sacctmgr show qos format=Name%20,Priority,Flags%30,MaxWall,MaxTRESPU%20,MaxJobsPU,MaxSubmitPU,MaxTRESPA%25</code></p>
+<h2 id="partition-qos">Partition QOS<a class="headerlink" href="#partition-qos" title="Anchor link to this section for reference">&para;</a></h2>
+<p>Job partitions like <code>shared</code> have two QOS-related attributes:</p>
+<ol>
+<li>
+<p>Qos - If present, this specifies the QOS which by default applies to all jobs submitted. The <code>interactive</code> partition has <code>QoS=interactive-default</code></p>
+</li>
+<li>
+<p>AllowQoS - By default, this value is set to ALL. If set to a comma-separated list, then only those can be used or requested by users. The <code>interactive</code> partition has <code>AllowQos=normal,interactive-default</code></p>
+</li>
+</ol>
+<p>You can see the <em>configuration</em> of a partition with the scontrol command. (<a href="https://slurm.schedmd.com/archive/slurm-22.05.9/scontrol.html">Vendor's scontrol manual page</a>. Our <a href="../tips-scontrol/">local scontrol tips</a> page.) Here is a command which will show you the QOS attributes on an exmple partition named <em>partitionname</em></p>
+<div class="highlight"><pre><span></span><code>scontrol<span class="w"> </span>show<span class="w"> </span>partition<span class="w"> </span>partitionname<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>-i<span class="w"> </span>qos
+</code></pre></div>
+<h2 id="user-qos">User QOS<a class="headerlink" href="#user-qos" title="Anchor link to this section for reference">&para;</a></h2>
+<p>User accounts have two QOS-related attributes:</p>
+<ol>
+<li>
+<p>Qos - Our users (currently) all have a QOS value of "normal", (which is inherited from their parent account, named "jhpce").  The "normal" QOS  (currently) has no limits defined for it.</p>
+</li>
+<li>
+<p>Allowed Qos - By default, this value is empty. If set to a comma-separated list, then the user can <em>choose</em> to submit jobs using one of them.  Jobs request a QOS using the "--qos=" option to the sbatch, salloc, and srun commands. (If the partition does not allow a QOS to be used, then your job will be rejected.)</p>
+</li>
+</ol>
+<p>See your own user database values:
+<code>sacctmgr show user withassoc where name=your-cluster-username</code></p>
+<p>The SLURM FAQ includes <a href="../slurm/slurm-faq/#job-violates-accountingqos-policy.md">an entry</a> about the error you receive if you ask for more RAM in a single job than is allowed. </p>
+<p>If you submit jobs which together ask for more memory than you are allowed to use at one time, then ones that "fit" inside the limit will run and the remaining jobs will be waiting in PENDING state. </p>
+<p>The "Reason" code shown in the output of <code>squeue --me -t pd</code> ("show me my pending jobs") will be <code>QOSMaxMemoryPerUser</code>for jobs waiting for your running jobs to be using less than the RAM limit defined in the QOS that is impacting you.  The Reason will be <code>QOSMaxCpuPerUserLimit</code> for jobs waiting for your core usage to drop below that which is allowed.</p>
 <h2 id="how-we-are-using-qos-to-date">HOW WE ARE USING QOS TO DATE...<a class="headerlink" href="#how-we-are-using-qos-to-date" title="Anchor link to this section for reference">&para;</a></h2>
+<p>This is a summary of how QOS is configured at JHPCE.</p>
 <p>Our users all have a QOS value of "normal", which is
 inherited from their parent account, named "jhpce"</p>
 <p>(The account jhpce, of the organization jhpce, in the
@@ -2819,9 +2891,7 @@ cluster jhpce3 is the parent of all of the users.)</p>
 (It is the default QOS defined in SLURM. We didn't create it.)</p>
 <p>A fundamental element of our current practice is that the
 user’s <strong>default QOS</strong> entries in the database are "normal".</p>
-<p>We’ve defined additional ones
-and, given some users ones they can optionally use <strong>in addition</strong>
-to normal. </p>
+<p>We’ve defined additional ones and, for some users, changed the Allowed QoS field in their user entries to list ones that they can optionally use <strong>in addition</strong> to "normal". </p>
 <p>Those additional ones are being applied</p>
 <ol>
 <li>via per-partition QOS= definitions in /etc/slurm/partitions.conf
@@ -2832,7 +2902,14 @@ to normal. </p>
     (Users do not have to specify optional QOS on every
     job thenceforward. Users can pick and choose what QOS to use for each job.</li>
 </ol>
-<p>We have a <a href="../tips-sacctmgr/">document containing useful QOS-related commands</a>.</p>
+<div class="footnote">
+<hr />
+<ol>
+<li id="fn:1">
+<p>Capitalization doesn't matter when specifying QOS in commands.&#160;<a class="footnote-backref" href="#fnref:1" title="Jump back to footnote 1 in the text">&#8617;</a></p>
+</li>
+</ol>
+</div>
 
 
 
@@ -2853,7 +2930,7 @@ to normal. </p>
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1-2.1-2M12.5 7v5.2l4 2.4-1 1L11 13V7h1.5M11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2v1.8Z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">February 23, 2024</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">March 13, 2024</span>
   </span>
 
     
