@@ -1,42 +1,42 @@
 ---
 tags:
-  - needs-to-be-written
-  - refers-to-old-website
+  - in-progress
   - jeffrey
 ---
 
 # External References
 
-!!! Note "Authoring Note"
-    What is the best of the web that we can guide our users towards?
+The World Wide Web has been of incalculable benefit to humanity. We owe [Sir Tim Berners-Lee](https://en.wikipedia.org/wiki/Tim_Berners-Lee) an enormous debt of gratitude.
 
-    How should this be organized?
+If you have suggestions for this page, please send the link(s) and your reasons for nominating it/them to bitsupport.
 
-    Currently there are a number of pages with topic-specific links out to other web sites. Some of their info should remain on those pages. 
 
-    In other cases, perhaps after the references are used to write Good Pages, those sites may be good candidates to pull back to here as a general resource for some identified reason.
+## CAVEAT EMPTOR
 
-## FOLLOWING JUST YANKED IN FROM A PREVIOUS DOCUMENT
+You need to consider whether what you're reading on an external web site applies to JHPCE. Policies and practices differ between clusters, as does available software and their versions.  Don't copy-and-paste blindly. Nonetheless, there is a wealth of information out there that you can apply to your work.
 
-!!! Note
-    Jeffrey has been putting pdf's into the images subdirectories found under each topic. He has found that creating symbolic links to actual files with dates in their names for example works. The MarkDown documents we write can refer to the well-chosen static file name and not have to be changed every time the actual document name changes.
+## SLURM Web Sites of Note
+
+We are accumulating this information on [this page](../slurm/user-guide-collection.md).
+
+We also have a [document](../slurm/slurm-commands-ref.md) with links to not only the vendor's documentation for each common command, but also pages we've written with advice and examples for some important commands.
 
 ## User tutorials
 
-+ [Aki Nishimura's tutorial](https://github.com/nishimura-zeger-lab/jhpce-script-examples/tree/master/by_aki)
++ [R/Bioconductor-powered Team Data Science](https://lcolladotor.github.io/bioc_team_ds/#.YI4g4GZKgdk) - this site has a wealth of information for improving your data science and teamwork skills. A real gem for people new to the field!
 + [Lieber Institute RStats club](https://research.libd.org/rstatsclub/)
-+ [Leo Collado Torres YouTube](https://www.youtube.com/c/LeonardoColladoTorres/playlists) including [JHPCE playlist](https://www.youtube.com/playlist?list=PLNNI62fcZPdAslHFllqv0-2iZqby1h0CV)
-+ [Lieber Institute github tools 1](https://github.com/LieberInstitute/jhpce_module_config) and [Lieber Institute github tools 2](https://github.com/LieberInstitute/jhpce_module_source)
++ [Leo Collado Torres YouTube Channel](https://www.youtube.com/c/LeonardoColladoTorres/playlists) including [JHPCE playlist](https://www.youtube.com/playlist?list=PLNNI62fcZPdAslHFllqv0-2iZqby1h0CV) - note that the JHPCE playlist starts off with videos featuring the Sung Grid Engine job scheduler, which has been replaced by SLURM in 2023. The data science contents of the SGE-containing videos may still be of interest.
++ [Lieber Institute module config](https://github.com/LieberInstitute/jhpce_module_config) and [Lieber Institute module source code](https://github.com/LieberInstitute/jhpce_module_source) - Lieber has generously built and maintains many software modules for JHPCE users
 
-## Tutorials
+## JHPCE Tutorials
 
 + [JHPCE 3.0 Orientation
-Slides](https://jhpce.jhu.edu/wp-content/uploads/2024/01/JHPCE-Overview-2024-01.pdf)
+Slides](../orient/images/latest-orient.pdf)
 -- SLURM scheduler & Rocky 9
-+ [JHPCE 2.0 Orientation Slides -- 2023 -- Sun Grid
-Engine](https://jhpce.jhu.edu/wp-content/uploads/2021/04/JHPCE-Overview-2022-09.pdf)
 + [C-SUB JHPCE Orientation Slides
-2023](https://jhpce.jhu.edu/wp-content/uploads/2024/01/JHPCE-Overview-CMS-2023-12.pdf)
-+ [JHPCE-Overview-BST-ComputingClub-10-17-23](https://jhpce.jhu.edu/wp-content/uploads/2023/10/JHPCE-Overview-BST-ComputingClub-10-17.pdf)
+2023](../orient/images/latest-csub-orient.pdf)
 
+### Obsolete
+[JHPCE 2.0 Orientation Slides -- 2023 -- Sun Grid
+Engine](../orient/images/sge-orient.pdf)
 
