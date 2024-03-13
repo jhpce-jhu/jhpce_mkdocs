@@ -8,13 +8,13 @@
       
       
       
-        <link rel="canonical" href="https://www.jhpce-jhu.github.io/jhpce_docs/sw/gui-tools/">
+        <link rel="canonical" href="https://www.jhpce-jhu.github.io/jhpce_docs/sw/python/">
       
       
-        <link rel="prev" href="../../files/images/pushd-popd-dirs.pdf">
+        <link rel="prev" href="../matlab/">
       
       
-        <link rel="next" href="../../portal/web-apps/">
+        <link rel="next" href="../r/">
       
       
       <link rel="icon" href="../../assets/images/favicon.png">
@@ -22,7 +22,7 @@
     
     
       
-        <title>Helpful GUI Programs - JHPCE</title>
+        <title>Python - JHPCE</title>
       
     
     
@@ -85,6 +85,11 @@
     <label class="md-overlay" for="__drawer"></label>
     <div data-md-component="skip">
       
+        
+        <a href="#running-python-jobs-over-slurm" class="md-skip">
+          Skip to content
+        </a>
+      
     </div>
     <div data-md-component="announce">
       
@@ -116,7 +121,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Helpful GUI Programs
+              Python
             
           </span>
         </div>
@@ -1614,8 +1619,10 @@
                 
   
   
+    
   
   
+  
     
     
       
@@ -1632,11 +1639,11 @@
       
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1_9" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1_9" checked>
         
           
           <label class="md-nav__link" for="__nav_1_9" id="__nav_1_9_label" tabindex="0">
@@ -1650,7 +1657,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_1_9_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_1_9_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_1_9">
             <span class="md-nav__icon md-icon"></span>
             Software
@@ -1682,8 +1689,10 @@
                 
   
   
+    
   
   
+  
     
     
       
@@ -1702,11 +1711,11 @@
       
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1_9_2" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1_9_2" checked>
         
           
           <label class="md-nav__link" for="__nav_1_9_2" id="__nav_1_9_2_label" tabindex="0">
@@ -1720,7 +1729,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_1_9_2_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_1_9_2_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_1_9_2">
             <span class="md-nav__icon md-icon"></span>
             Local Software
@@ -1752,10 +1761,28 @@
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../python/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Python
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   <span class="md-ellipsis">
@@ -1764,6 +1791,57 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#running-python-jobs-over-slurm" class="md-nav__link">
+    <span class="md-ellipsis">
+      Running Python Jobs over SLURM
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Running Python Jobs over SLURM">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#-using-python-interactively" class="md-nav__link">
+    <span class="md-ellipsis">
+      - Using Python Interactively
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#-using-python-in-batch-mode" class="md-nav__link">
+    <span class="md-ellipsis">
+      - Using Python in batch mode
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -2266,10 +2344,8 @@
                 
   
   
-    
   
   
-  
     
     
       
@@ -2290,11 +2366,11 @@
       
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1_11" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1_11" >
         
           
           <label class="md-nav__link" for="__nav_1_11" id="__nav_1_11_label" tabindex="0">
@@ -2308,7 +2384,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_1_11_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_1_11_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_1_11">
             <span class="md-nav__icon md-icon"></span>
             User Guides/Tutorials
@@ -2424,17 +2500,10 @@
                 
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../gui-tools/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2443,7 +2512,6 @@
   
 
       </a>
-      
     </li>
   
 
@@ -2714,6 +2782,47 @@
   
   
   
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#running-python-jobs-over-slurm" class="md-nav__link">
+    <span class="md-ellipsis">
+      Running Python Jobs over SLURM
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Running Python Jobs over SLURM">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#-using-python-interactively" class="md-nav__link">
+    <span class="md-ellipsis">
+      - Using Python Interactively
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#-using-python-in-batch-mode" class="md-nav__link">
+    <span class="md-ellipsis">
+      - Using Python in batch mode
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -2725,23 +2834,80 @@
               <article class="md-content__inner md-typeset">
                 
                   
-  
-<nav class="md-tags" >
-  
-    
-    
-    
-      <a href="../../ourtools/tags/#needs-major-revision" class="md-tag">needs-major-revision</a>
-    
-  
-</nav>
 
 
+  <h1>Python</h1>
 
-  <h1>Helpful GUI Programs</h1>
+<h2 id="running-python-jobs-over-slurm"><strong>Running Python Jobs over SLURM</strong><a class="headerlink" href="#running-python-jobs-over-slurm" title="Anchor link to this section for reference">&para;</a></h2>
+<h3 id="-using-python-interactively">- Using Python Interactively<a class="headerlink" href="#-using-python-interactively" title="Anchor link to this section for reference">&para;</a></h3>
+<div class="highlight"><pre><span></span><code>[test@login31 ~]$ srun --pty bash
+srun: job 3168742 queued and waiting for resources
+srun: job 3168742 has been allocated resources
+[test@compute-100 ~]$ module load python
+[test@compute-100 ~]$ module list
 
-<p><a href="../images/helpful-gui-example.pdf">This chart</a> is C-SUB specific.</p>
-<p>JRT thinks JHPCE users would benefit from seeing a chart that is correct for that cluster. (A Github issue exists about considering installing some of these C-SUB-only tools onto main cluster.)</p>
+Currently Loaded Modules:
+  1) JHPCE_ROCKY9_DEFAULT_ENV   2) JHPCE_tools/3.0   3) python/3.9.14
+
+[test@compute-100 ~]$ python3
+Python 3.9.14 (main, May 16 2023, 14:32:18) 
+[GCC 11.3.1 20220421 (Red Hat 11.3.1-2)] on linux
+Type &quot;help&quot;, &quot;copyright&quot;, &quot;credits&quot; or &quot;license&quot; for more information.
+&gt;&gt;&gt; 
+</code></pre></div>
+<h3 id="-using-python-in-batch-mode">- Using Python in batch mode<a class="headerlink" href="#-using-python-in-batch-mode" title="Anchor link to this section for reference">&para;</a></h3>
+<ol>
+<li>
+<p>Write your python source in a file with .py extension (e.g. python_example.py)
+<div class="highlight"><pre><span></span><code>values = [88, 47, 96, 85, 72]
+for i in values:
+    print(&#39;Example number = &#39;, i)
+</code></pre></div></p>
+</li>
+<li>
+<p>Write a submit job script (e.g. python_example.sh)
+<div class="highlight"><pre><span></span><code>#!/bin/bash
+
+#SBATCH --mem=2G
+#SBATCH --time=2:00
+
+#SBATCH -o slurm.%N.%J.%u.out   # STDOUT
+#SBATCH -e slurm.%N.%J.%u.err   # STDERR
+
+module load python
+python3 python_example.py
+</code></pre></div></p>
+</li>
+<li>
+<p>Submit your python job
+<div class="highlight"><pre><span></span><code>[test@login31 ~]$ sbatch python_example.sh 
+Submitted batch job 3169570
+</code></pre></div></p>
+</li>
+<li>
+<p>Monitor the job status
+<div class="highlight"><pre><span></span><code>[test@login31 ~]$ squeue --me
+             JOBID PARTITION     NAME     USER ST       TIME  NODES NODELIST(REASON)
+           3169570    shared python_e    test R       0:01      1 compute-153
+</code></pre></div></p>
+</li>
+<li>
+<p>When the job is finished, the output files are created in your Current Working Directory
+<div class="highlight"><pre><span></span><code>-rw-r--r-- 1 test test   0 Mar 13 12:45 slurm.compute-153.3169570.test.err
+-rw-r--r-- 1 test test 105 Mar 13 12:45 slurm.compute-153.3169570.test.out
+</code></pre></div></p>
+</li>
+<li>
+<p>Look at the results from output file, file with stderr is empty(job without errors):
+<div class="highlight"><pre><span></span><code>[test@login31 ~]$ cat slurm.compute-153.3169570.test.out
+Example number =  88
+Example number =  47
+Example number =  96
+Example number =  85
+Example number =  72
+</code></pre></div></p>
+</li>
+</ol>
 
 
 
@@ -2762,7 +2928,7 @@
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1-2.1-2M12.5 7v5.2l4 2.4-1 1L11 13V7h1.5M11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2v1.8Z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">February 26, 2024</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">March 13, 2024</span>
   </span>
 
     
@@ -2840,7 +3006,7 @@
       <nav class="md-footer__inner md-grid" aria-label="Footer" >
         
           
-          <a href="../../files/images/pushd-popd-dirs.pdf" class="md-footer__link md-footer__link--prev" aria-label="Previous: Navigating Deep Directory Trees (pdf)">
+          <a href="../matlab/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Matlab">
             <div class="md-footer__button md-icon">
               
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
@@ -2850,20 +3016,20 @@
                 Previous
               </span>
               <div class="md-ellipsis">
-                Navigating Deep Directory Trees (pdf)
+                Matlab
               </div>
             </div>
           </a>
         
         
           
-          <a href="../../portal/web-apps/" class="md-footer__link md-footer__link--next" aria-label="Next: GUI Applications">
+          <a href="../r/" class="md-footer__link md-footer__link--next" aria-label="Next: R">
             <div class="md-footer__title">
               <span class="md-footer__direction">
                 Next
               </span>
               <div class="md-ellipsis">
-                GUI Applications
+                R
               </div>
             </div>
             <div class="md-footer__button md-icon">
