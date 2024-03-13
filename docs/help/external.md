@@ -2,17 +2,19 @@
 tags:
   - needs-to-be-written
   - refers-to-old-website
+  - jeffrey
 ---
 
 # External References
 
-What is the best of the web that we can guide our users towards?
+!!! Note "Authoring Note"
+    What is the best of the web that we can guide our users towards?
 
-How should this be organized?
+    How should this be organized?
 
-Currently there are a number of pages with topic-specific links out to other web sites. Some of their info should remain on those pages. 
+    Currently there are a number of pages with topic-specific links out to other web sites. Some of their info should remain on those pages. 
 
-In other cases, perhaps after the references are used to write Good Pages, those sites may be good candidates to pull back to here as a general resource for some identified reason.
+    In other cases, perhaps after the references are used to write Good Pages, those sites may be good candidates to pull back to here as a general resource for some identified reason.
 
 ## FOLLOWING JUST YANKED IN FROM A PREVIOUS DOCUMENT
 
@@ -37,13 +39,4 @@ Engine](https://jhpce.jhu.edu/wp-content/uploads/2021/04/JHPCE-Overview-2022-09.
 2023](https://jhpce.jhu.edu/wp-content/uploads/2024/01/JHPCE-Overview-CMS-2023-12.pdf)
 + [JHPCE-Overview-BST-ComputingClub-10-17-23](https://jhpce.jhu.edu/wp-content/uploads/2023/10/JHPCE-Overview-BST-ComputingClub-10-17.pdf)
 
-## Resources description for Grant Applications
-Move this information to somewhere under the "How to Join Us" topic?
 
-This is a Microsoft Word document.
-
-We should make a PDF version available. Also a Word version if there is formatting that people might want to copy and paste? But at least a PDF so users can read it without having to have a copy of Word.
-
-This version contains inaccurate (SLURM, ssh access to transfer node is allowed, maybe other items) statements.
-
-+ [JHPCEComputingEnvironment -- June 2023](https://jhpce.jhu.edu/wp-content/uploads/2023/06/JHPCEComputingEnvironmentJune2023.docx)

@@ -3,9 +3,11 @@ Here are links to online copies of the manual pages for commands. If we've
 written a page with advice about using the command, use the {==(LOCAL TIPS)==} link.
 
 ## Locally Written Tools
-slurmpic: Essential program for getting cluster status info. Use -h option to see essential usage details. (no man page yet)
+* slurmpic: **Essential** program for getting cluster status info. Use -h option to see essential usage details. (no man page yet)
+* smem: Displays memory used by your currently running jobs. If given a jobid number, it will display info about the memory usage of that job. (no man page yet)
+* memory reporting script - puts per-user output daily into directories under /jhpce/shared/jhpce/jhpce-log/
 
-## Contributed Programs
+## Contributed Programs We've Installed
 * seff: Display efficiency of CPU and RAM usage of a completed job. (no man page yet)
 * [slurm-mail:](https://github.com/neilmunday/slurm-mail) Tool used to add details to mail sent to you. Not something you can modify. Listed for completeness.
  
