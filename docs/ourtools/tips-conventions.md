@@ -28,6 +28,16 @@ Jeffrey enabled "permalink" so each section of each document can have its own UR
 
 * Because documents are divided up between directories by topic, any references you make to them need to use ***correct relative paths***.
 * Links need to ***include the ".md"*** file name suffixes. These are not shown in the URL on the web site, but are required for links to be make correctly.
+### Symbolic Link Image Files Which Change
+We have some documents, such as Orientation PDF, which are updated. During the updates their file names often change in order to embed date versioning info.
+
+Instead of embedding links in our web pages to the actual PDF file, and having to find and update all of the links every time the file name changes, Jeffrey has found that creating symbolic links with well-chosen static file names to the variable file names allows the links to remain constant.
+
+```bash title="Make a target named latest-orient.pdf"
+cd docs/orient/images
+ln -s JHPCE-Overview-CMS-2023-12-2.pdf latest-orient.pdf
+```
+
 ### ***Blank lines are required for some features to work:***
 Some elements, such as lists like this one, rely on there being a blank line above the first item. Same is true for [admonitions](../ourtools/features.md/#admonitions) and [details](../ourtools/features.md/#details).
 ### ***Frontmatter Indentation:***
