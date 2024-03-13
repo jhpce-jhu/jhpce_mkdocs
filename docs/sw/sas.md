@@ -1,48 +1,100 @@
----
-tags:
-  - in-progress
-  - jiong
----
+## **Running basic SAS jobs over SLURM**
 
-# SAS
+### - Using SAS interactively
 
-## We Have A SAS Partition
+```
+[test@login31 ~]$ srun --partition sas --mem 10G --x11 --pty bash
+srun: job 3178287 queued and waiting for resources
+srun: job 3178287 has been allocated resources
 
-Containing two nodes.
+[test@compute-101 ~]$ module load sas
+[test@compute-101 ~]$ module list
 
-## Other ways to access SAS
-SAS is available in a virtual Windows environment called SAFE. [Here is a link](../access/access-overview.md#safe-desktop) to information about SAFE.
+Currently Loaded Modules:
+  1) JHPCE_ROCKY9_DEFAULT_ENV   2) JHPCE_tools/3.0   3) sas/9.4
 
-## MarketScan Database
+[test@compute-101 ~]$ sas -helpbrowser SAS -xrm "SAS.webBrowser:'/usr/bin/chromium-browser'" -xrm "SAS.helpBrowser:'/usr/bin/chromium-browser'"
 
-### How To Get Permission To Access It
-### Where Is It
+## if you want to use Firefox as your web browser for SAS, run the following command instead
+[test@compute-101 ~]$ sas -helpbrowser SAS -xrm "SAS.webBrowser:'/usr/bin/firefox'" -xrm "SAS.helpBrowser:'/usr/bin/firefox'"
+```
 
-## When running SAS, an error dialog pops up about Remote Browser
+Notes:  
+  * You may need to accept popups in the chromium/firefox browser that gets started in order to see the windows that SAS is trying to display  
+  * In the terminal session that you started “sas”, you may see messages similar to ones below.  These can be ignored because the browser wants to run on a local system with a graphics card, and the X11 session doesn’t allow that
+```
+[2970887:2970887:1024/152818.092311:ERROR:chrome_browser_cloud_management_controller.cc(163)] Cloud management controller initialization aborted as CBCM is not enabled.
+[2970887:2971086:1024/152818.161869:ERROR:login_database.cc(922)] Password store database is too new, kCurrentVersionNumber=35, GetCompatibleVersionNumber=39
+[2970887:2971087:1024/152818.164247:ERROR:login_database.cc(922)] Password store database is too new, kCurrentVersionNumber=35, GetCompatibleVersionNumber=39
+[2970887:2971086:1024/152818.167534:ERROR:login_database_async_helper.cc(59)] Could not create/open login database.
+[2970887:2971087:1024/152818.170351:ERROR:login_database_async_helper.cc(59)] Could not create/open login database.
+[2970887:2970887:1024/152818.626429:ERROR:object_proxy.cc(590)] Failed to call method: org.freedesktop.portal.Settings.Read: object_path= /org/freedesktop/portal/desktop: org.freedesktop.portal.Error.NotFound: Requested setting not found
+libGL error: No matching fbConfigs or visuals found
+libGL error: failed to load driver: swrast
+```
 
-When running SAS, you may need to specify options to indicate which
-browser to use when displaying either help or graphical output. We recommend
-using the Chromium browser. You can use the following options to the
-SAS command to do so:
+### - Using SAS in batch mode
 
-`sas -helpbrowser SAS -xrm "SAS.webBrowser:'/usr/bin/chromium-browser'" -xrm "SAS.helpBrowser:'/usr/bin/chromium-browser'"`
+1. Write your sas source in a file with .sas extension (e.g. class-info.sas)
+```
+DATA CLASS;
+     INPUT NAME $ 1-8 SEX $ 10 AGE 12-13 HEIGHT 15-16 WEIGHT 18-22;
+CARDS;
+JOHN     M 12 59 99.5
+JAMES    M 12 57 83.0
+ALFRED   M 14 69 112.5
+ALICE    F 13 56 84.0
 
-Here is some code you can add to your .bashrc file which contain some convenient bash aliases for starting SAS with browser support configured. Once that becomes part of your environment (by sourcing the file or by logging out and back in again), after loading the SAS module you can start SAS using either `csas` or `fsas` so that it can open the desired web browser if needed.
+PROC MEANS;
+     VAR AGE HEIGHT WEIGHT;
+PROC PLOT;
+     PLOT WEIGHT*HEIGHT;
+ENDSAS;
+;
+```
 
-!!! Warning
-    These definitions include optional syntax (`> /dev/null 2>&1`) which hide error messages. If you are having problems displaying SAS material in web browsers, you may need to run SAS without that output redirection. The ["srun half duplex"](../slurm/slurm-faq.md/#srun-error-_half_duplex) error is an example of such a case.
+2. Write a submit job script (e.g. sas-demo1.sh)
+```
+#!/bin/bash
 
-```Shell
-# SAS routines for __interactive__ sessions where plotting is involved
-# (because SAS generates HTML for the plots when run in interactive mode)
-# 
-# (YOU HAVE TO RUN "module load SAS" before calling either of these routines)
-#
-# If you want to use Firefox as your web browser for SAS:
-#
-fsas() { sas -helpbrowser SAS -xrm "SAS.webBrowser:'/usr/bin/firefox'" -xrm "SAS.helpBrowser:'/usr/bin/firefox'" "$@" > /dev/null 2>&1; }
-#
-# If you want to use Chromium-browser as your web browser for SAS:
-#
-csas() { sas -helpbrowser SAS -xrm "SAS.webBrowser:'/usr/bin/chromium-browser'" -xrm "SAS.helpBrowser:'/usr/bin/chromium-browser'" "$@" > /dev/null 2>&1; }
+#SBATCH --partition=sas
+#SBATCH --mem=2G
+#SBATCH --time=2:00
+
+module load sas
+sas class-info.sas
+```
+
+3. Submit your matlab job
+```
+[test@login31 ~]$ sbatch sas-demo1.sh
+Submitted batch job 3178475
+```
+
+4. Monitor the job status
+```
+[test@login31 ~]$ squeue --me
+             JOBID PARTITION     NAME     USER ST       TIME  NODES NODELIST(REASON)
+            3178475       sas sas-demo    test R       0:01      1 compute-101
+```
+
+5. When the job is finished, the output files are created in your Current Working Directory
+```
+-rw-r--r-- 1 test test    0 Mar 13 16:49 slurm-3178475.out
+-rw-r--r-- 1 test test 2108 Mar 13 16:49 class-info.lst
+```
+
+6. Look at the results from output file
+```
+[test@login31 ~]$ cat class-info.lst
+
+                                                        The MEANS Procedure
+
+                           Variable    N            Mean         Std Dev         Minimum         Maximum
+                           -----------------------------------------------------------------------------
+                           AGE         4      12.7500000       0.9574271      12.0000000      14.0000000
+                           HEIGHT      4      60.2500000       5.9651767      56.0000000      69.0000000
+                           WEIGHT      4      94.7500000      14.0386372      83.0000000     112.5000000
+                           -----------------------------------------------------------------------------
+
 ```
