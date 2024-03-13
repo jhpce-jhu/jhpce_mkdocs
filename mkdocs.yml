@@ -58,7 +58,7 @@ nav:
       - Local Software:
         - Matlab: sw/matlab.md
         - Python: sw/python.md
-        - R: sw/r-n-friends.md
+        - R: sw/r.md
         - SAS: sw/sas.md
         - Stata: sw/stata.md
       - Modules: sw/modules.md
