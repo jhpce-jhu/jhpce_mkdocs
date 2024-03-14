@@ -9,10 +9,8 @@ hide:
 <div class="grid cards" markdown>
 
   Our [web portal](https://jhpce-app02.jhsph.edu/) has several sections. ==You will need to log with your JHED ID and password. This web site is only available on campus, so if you are outside of the school network, you will need login to the JHU VPN first.==
-
   ---
-  
-  [![cluster logo](/images/web_portal.png)](https://jhpce-app02.jhsph.edu){ align=center }
+[![cluster logo](/images/web_portal.png)](https://jhpce-app02.jhsph.edu){ align=center }
 
 </div>
 
