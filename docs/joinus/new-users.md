@@ -8,7 +8,7 @@ sign up for one of our upcoming orientation sessions.  The sessions are generall
 
 <sub>(Note: the form is on our old web site and will be transitioned soon)</sub>
 <div style="position: static; overflow: hidden; border: solid 2px #555; width:720px; height:1000px;">
-<div style="overflow: hidden; margin-top: -400px; margin-right: -600px; margin-bottom: -240px;">
+<div style="overflow: hidden; margin-top: -400px; margin-right: -600px; margin-bottom: -240px; height:1000px;">
 
 <iframe src="https://jhpce.jhu.edu/register/user/" id="main" height="1200" width="865" scrolling="no">
   <p>Your browser does not support iframes.</p>
