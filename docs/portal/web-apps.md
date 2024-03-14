@@ -28,7 +28,7 @@ Our [web portal](https://jhpce-app02.jhsph.edu/) has several sections. ==You wil
     RStudio is an integrated development environment (IDE) for R. It includes a console, syntax-highlighting editor that supports direct code execution, as well as tools for plotting, history, debugging and workspace management.
 
 -   :material-information-outline:{ .lg .middle } __Visual Studio Code__
-    ![cluster logo](/images/jhpce_Visual_studio.png.png)]
+    ![cluster logo](/images/jhpce_Visual_studio.png)]
     ---
 
     Visual Studio Code is a lightweight but powerful source code editor. It comes with built-in support for JavaScript, TypeScript and Node.js and has a rich ecosystem of extensions for other languages and runtimes (such as C++, C#, Java, Python, PHP, Go, .NET). 
