@@ -7,8 +7,8 @@ your form, you'll receive an email message with some introductory information an
 sign up for one of our upcoming orientation sessions.  The sessions are generally held every 2 weeks.
 
 <sub>(Note: the form is on our old web site and will be transitioned soon)</sub>
-<div style="position: static; overflow: hidden; border: solid 2px #555; width:720px; height:840px;">
-<div style="overflow: hidden; margin-top: -400px; margin-right: -600px; margin-bottom: -360px;">
+<div style="position: static; overflow: hidden; border: solid 2px #555; width:720px; height:880px;">
+<div style="overflow: hidden; margin-top: -400px; margin-right: -600px; margin-bottom: -240px;">
 
 <iframe src="https://jhpce.jhu.edu/register/user/" id="main" height="1200" width="865" scrolling="no">
   <p>Your browser does not support iframes.</p>
