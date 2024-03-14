@@ -25,7 +25,7 @@ Our [web portal](https://jhpce-app02.jhsph.edu/) has several sections. ==You wil
 
     ---
 
-    ![cluster logo](/images/jhpce_R_studio.png)
+    ![cluster logo](/images/jhpce_R_studio.png){ align=center }
     
     ---
 
@@ -35,13 +35,13 @@ Our [web portal](https://jhpce-app02.jhsph.edu/) has several sections. ==You wil
 
     ---
 
-    [![cluster logo](/images/jhpce_Visual_studio.png)](https://jhpce-app02.jhsph.edu/vstudio-instructions)
+    [![cluster logo](/images/jhpce_Visual_studio.png)](https://jhpce-app02.jhsph.edu/vstudio-instructions){ align=center }
     
     ---
 
-    Visual Studio Code is a lightweight but powerful source code editor. It comes with built-in support for JavaScript, TypeScript and Node.js and has a rich ecosystem of extensions for other languages and runtimes (such as C++, C#, Java, Python, PHP, Go, .NET). You can visit the link belowfor additional setup and usage details (==this link site is only available on campus, so if you are outside of the school network, you will need login to the JHU VPN first.==)
+    Visual Studio Code is a lightweight but powerful source code editor. It comes with built-in support for JavaScript, TypeScript and Node.js and has a rich ecosystem of extensions for other languages and runtimes (such as C++, C#, Java, Python, PHP, Go, .NET). You can visit the link below for additional setup and usage details (==this link site is only available on campus, so if you are outside of the school network, you will need login to the JHU VPN first.==)
 
-    [:octicons-arrow-right-24: Instructions](https://jhpce-app02.jhsph.edu/vstudio-instructions)
+    [:octicons-arrow-right-24: Access Instructions](https://jhpce-app02.jhsph.edu/vstudio-instructions){ align=center }
   
 </div>
 
