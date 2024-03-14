@@ -12,13 +12,19 @@ Our [web portal](https://jhpce-app02.jhsph.edu/) has several sections. ==You wil
 <div class="grid cards" markdown>
   
 -   :material-information-outline:{ .lg .middle } __JupyterLab__
-  ![cluster logo](/images/jhpce_jupyter.png)
+
+    ---
+  
+    ![cluster logo](/images/jhpce_jupyter.png)
 
     ---
 
     JupyterLab is the latest web-based interactive development environment for notebooks, code, and data. Its flexible interface allows users to configure and arrange workflows in data science, scientific computing, computational journalism, and machine learning. A modular design invites extensions to expand and enrich functionality. 
 
 -   :material-information-outline:{ .lg .middle } __RStudio__
+
+    ---
+
     ![cluster logo](/images/jhpce_R_studio.png)
     
     ---
@@ -26,11 +32,16 @@ Our [web portal](https://jhpce-app02.jhsph.edu/) has several sections. ==You wil
     RStudio is an integrated development environment (IDE) for R. It includes a console, syntax-highlighting editor that supports direct code execution, as well as tools for plotting, history, debugging and workspace management.
 
 -   :material-information-outline:{ .lg .middle } __Visual Studio Code__
+
+    ---
+
     [![cluster logo](/images/jhpce_Visual_studio.png)](https://jhpce-app02.jhsph.edu/vstudio-instructions)
     
     ---
 
-    Visual Studio Code is a lightweight but powerful source code editor. It comes with built-in support for JavaScript, TypeScript and Node.js and has a rich ecosystem of extensions for other languages and runtimes (such as C++, C#, Java, Python, PHP, Go, .NET). You can visit [this page](https://jhpce-app02.jhsph.edu/vstudio-instructions) for additional setup and usage details (==this link site is only available on campus, so if you are outside of the school network, you will need login to the JHU VPN first.==)
+    Visual Studio Code is a lightweight but powerful source code editor. It comes with built-in support for JavaScript, TypeScript and Node.js and has a rich ecosystem of extensions for other languages and runtimes (such as C++, C#, Java, Python, PHP, Go, .NET). You can visit the link belowfor additional setup and usage details (==this link site is only available on campus, so if you are outside of the school network, you will need login to the JHU VPN first.==)
+
+    [:octicons-arrow-right-24: Instructions](https://jhpce-app02.jhsph.edu/vstudio-instructions)
   
 </div>
 
