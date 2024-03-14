@@ -2,10 +2,14 @@
 tags:
   - in-progress
   - adi
+hide:
+  - toc
 ---
-# JHPCE User Apps
+# JHPCE Web Enabled User Apps
 
-Our [web portal](https://jhpce-app02.jhsph.edu/) has several sections.
+[![cluster logo](/images/cluster_ai_2.png)](https://jhpce-app02.jhsph.edu)
+
+Our [web portal](https://jhpce-app02.jhsph.edu/) has several sections. ==You will need to log with your JHED ID and password. This web site is only available on campus, so if you are outside of the school network, you will need login to the JHU VPN first.==
 
 The JHPCE User Apps section provide the means to run a growing number of applications on the cluster via a web interface.
 
