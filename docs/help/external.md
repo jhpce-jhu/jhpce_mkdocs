@@ -4,11 +4,12 @@ tags:
   - jeffrey
 ---
 
-# External References
+# External Guides
 
 The World Wide Web has been of incalculable benefit to humanity. We owe [Sir Tim Berners-Lee](https://en.wikipedia.org/wiki/Tim_Berners-Lee) an enormous debt of gratitude.
 
-If you have suggestions for this page, please send the link(s) and your reasons for nominating it/them to bitsupport.
+!!! Tip 
+    If you have suggestions for this page, please send the link(s) and your reasons for nominating it/them to bitsupport.
 
 
 ## CAVEAT EMPTOR

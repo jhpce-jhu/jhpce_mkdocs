@@ -7,10 +7,20 @@ tags:
 Traditional Unix file and group permissions can be used to share
 access to files and directories.  However, there can be times when
 more fine-grained control of shared access is needed. To accomplish
-this, Access Control Lists (ACLs) can be used.
+this, Access Control Lists (ACLs) can be used. They add to the normal permissions.
 
-### Overview
-+ There are 2 sets of ACL commands, one for `/users`, `/dcs04`, and `/dcs05` directories, and one for use on other directories in Lustre file systems, such as `/dcl01`, `/dcl02` ... . As of March 2024, all of the files originally found on a Lustre file server named DCL01 have been copied off to live on other, normal file servers. But the name /dcl01 has been preserved, for convenience. So only paths starting with /dcl02/ are currently served by Lustre file servers. 
+The Wikipedia has a fairly good description of normal [UNIX file and group permissions](https://en.wikipedia.org/wiki/File-system_permissions), including the symbolic and numeric notation schemes.
+
+### Caution
+JHPCE uses two kinds of file systems on its large storage servers: ZFS and Lustre.
+
+You need to use a different pair of ACL commands for each type.
+
+As of March 2024, the only Lustre file systems are those which begin with the path `/dcl02/`
+
+As of March 2024, all of the files originally found on the Lustre file server named DCL01 have been copied off to live on other, ZFS-using file servers. But the name /dcl01 has been preserved, for convenience.
+
+## Overview
 
 Some common notes that are applicable to both types of ACL commands:
 
