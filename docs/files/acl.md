@@ -1,3 +1,7 @@
+---
+tags:
+  - in-progress
+---
 # ACL - Access Control Lists
 
 Traditional Unix file and group permissions can be used to share
@@ -6,15 +10,19 @@ more fine-grained control of shared access is needed. To accomplish
 this, Access Control Lists (ACLs) can be used.
 
 ### Overview
-+ There are 2 sets of ACL commands, one for `/users`, `/dcs04`, and `/dcs05` directories, and one for use on other directories in Lustre file systems, such as `/dcl01`, `/dcl02` ... .
-+ Some common notes that are applicable to both types of ACL commands:
++ There are 2 sets of ACL commands, one for `/users`, `/dcs04`, and `/dcs05` directories, and one for use on other directories in Lustre file systems, such as `/dcl01`, `/dcl02` ... . As of March 2024, all of the files originally found on a Lustre file server named DCL01 have been copied off to live on other, normal file servers. But the name /dcl01 has been preserved, for convenience. So only paths starting with /dcl02/ are currently served by Lustre file servers. 
+
+Some common notes that are applicable to both types of ACL commands:
+
 + ACLs can be used to give either read or read/write access to a file or directory. 
 + ACLs should use the security notion of “least privilege”, meaning that ACLs should give only the needed access and nothing more. +  When setting up an ACL for a user access on a file or directory that is several layer deep in the directory structure, a `READ-EXECUTE` ACL will need to be set on all levels above the file or directory you are sharing. For example, if you are setting an ACL on the directory `/users/bob/mydata/project1/shared`, you would also need to set a `READ-EXECUTE` ACL on `/users/bob/mydata/project1`, `/users/bob/mydata`, and `/users/bob`.
 + Default ACLs can be set on a directory, and this ACL will be inherited into the directory structure as new files and directories are create.
 + However, existing files and directories that exist beneath a directory that an ACL is being set on will not be affected by a new ACL. If you need to propagate an ACL into an exiting directory tree, you will need to use the `recursive` option to the ACL command.
 + With default ACLs, the individual user’s `umask` setting is important in assuring that new files and directories that get created have the correct permissions set. The `umask` setting will take precedence over the ACL, so it must be more permissive than the ACL. For example, if you want to set a default group ACL where the group has write access, you need to make sure that your umask is set to `0002` rather than `0022`, as the “2” in the group umask bit will prevent the group write capability.
-+ ACL commands should be run on a compute node and not a login node. Long-running recursive ACL commands on large directory trees may also be done via a submitted script.
-+ Example useage:
++ ACL commands should be run on a compute node and not a login node. Long-running recursive ACL commands on large directory trees may also be done via a submitted batch job script.
+
+
+Example useage:
 
 ```
 [alice@compute-123 ~]$ mkdir test1
@@ -45,7 +53,7 @@ A::EVERYONE@:rtcy
 + The `nfs4_getfacl` command will display current ACL setting for a file or directory
 + The `nfs4_setfacl` command is used to modify ACLs.  
 + With ACLs you can grant either read-only access, or read-write access on a directory or file to specific users.
-+ The simplest permissions to use in ACLs are R for read access, W for write access, and X for execute and directory access. For detailed description of fine-grained permissions that can be set, please see (https://www.osc.edu/book/export/html/4523).
++ The simplest permissions to use in ACLs are R for read access, W for write access, and X for execute and directory access. For detailed description of fine-grained permissions that can be set, please see ([https://www.osc.edu/book/export/html/4523](https://www.osc.edu/book/export/html/4523)).
 + User ACLs By default, one’s home directory is only accessible to the
 owner, and the ACL should reflect this. For example, for the user
 alice, the ACL on their home directory would look like:
