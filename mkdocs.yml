@@ -18,6 +18,7 @@ nav:
          - Tips & Conventions: ourtools/tips-conventions.md
          - Wishlist: ourtools/wishlist.md
     - Getting Started:
+      - Introduction: joinus/intro.md
       - New user form: joinus/new-users.md
       - New C-SUB user?: csub/new-csub-users.md
       - New PI information and form: joinus/new-pi.md
