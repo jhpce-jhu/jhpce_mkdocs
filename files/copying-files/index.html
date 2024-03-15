@@ -3120,7 +3120,7 @@ This example extends the technique to copying the data off of your current host 
 </dl>
 <h3 id="mind-the-trailing-slash">Mind the trailing slash<a class="headerlink" href="#mind-the-trailing-slash" title="Anchor link to this section for reference">&para;</a></h3>
 <p>rsync ultimately needs you to specify a SOURCE location and a DESTINATION location.</p>
-<p>If the SOURCE represents a directory then adding a forward slash to it will cause the contents of the directory to be copied into DESTINATION. If there is no trailing forward slash, then the SOURCE  directory will be copied into DESTINATION.</p>
+<p>If the SOURCE represents a directory then adding a trailing forward slash to it will cause the contents of the directory to be copied into DESTINATION. If there is no trailing forward slash, then the SOURCE  directory itself will be copied into DESTINATION.</p>
 <dl>
 <dt>Example</dt>
 <dd>If directory /some/source/place contains files a, b, and c</dd>
@@ -3130,7 +3130,10 @@ This example extends the technique to copying the data off of your current host 
 <dd><code>rsync -a /some/source/place  /a/destination/location/</code></dd>
 <dd>will result in the contents being instead /a/destination/location/place</dd>
 </dl>
+<p>This is also true with the old standard <code>cp</code> program too when using the <code>-R</code> recursive flag!!!</p>
 <h3 id="rsync-examples">Rsync Examples<a class="headerlink" href="#rsync-examples" title="Anchor link to this section for reference">&para;</a></h3>
+<div class="highlight"><pre><span></span><code>rsync -arvhAXH --progress --numeric-ids --sparse --one-file-system --stats
+</code></pre></div>
 <h3 id="rsync-flags-you-may-want-to-use">Rsync Flags You May Want To Use<a class="headerlink" href="#rsync-flags-you-may-want-to-use" title="Anchor link to this section for reference">&para;</a></h3>
 <p>Most flags have two forms you can choose between, a short one consisting of a single character, or a readable form preceeded by two hyphens, and typically followed by an equals sign and a value.
 <div class="highlight"><pre><span></span><code>-H preserve hard links
