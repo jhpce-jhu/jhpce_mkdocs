@@ -67,7 +67,7 @@ Access via remote shell:
 
 rsync ultimately needs you to specify a SOURCE location and a DESTINATION location.
 
-If the SOURCE represents a directory then adding a forward slash to it will cause the contents of the directory to be copied into DESTINATION. If there is no trailing forward slash, then the SOURCE  directory will be copied into DESTINATION.
+If the SOURCE represents a directory then adding a trailing forward slash to it will cause the contents of the directory to be copied into DESTINATION. If there is no trailing forward slash, then the SOURCE  directory itself will be copied into DESTINATION.
 
 Example
 : If directory /some/source/place contains files a, b, and c
@@ -77,7 +77,14 @@ Example
 : `rsync -a /some/source/place  /a/destination/location/`
 : will result in the contents being instead /a/destination/location/place
 
+This is also true with the old standard `cp` program too when using the `-R` recursive flag!!!
+
 ### Rsync Examples
+
+```
+rsync -arvhAXH --progress --numeric-ids --sparse --one-file-system --stats
+```
+
 
 ### Rsync Flags You May Want To Use
 
