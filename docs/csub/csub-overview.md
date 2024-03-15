@@ -1,6 +1,6 @@
 ---
 tags:
-  - in-progress
+  - csub
   - topic-overview
 ---
 
@@ -70,25 +70,10 @@ Please keep that in mind when reading JHPCE documentation or asking for help via
 - Common file sharing areas among DUA members (e.g. /users/55548/shared/)
 
 ## Getting Help
+Many of the pages on this web site will be useful to C-SUB users. However they will need to interpret what they read and think about whether applying it in the C-SUB requires any modification or re-interpretation.
 
+Sources of assistance:
 
 - This web site - use the search field
-- 
-- the [orientation slides](../orient/images/latest-csub-orient.pdf)
-
-- bitsupport@lists.johnshopkins.edu
-  - System issues (accessing software, general questions)
-  - Monitored by the systems administrators
-
-- bithelp@lists.johnshopkins.edu
-  - Complex application issues (R/SAS/python...)
-  - Monitored by volunteer power users
-
-- support@harp-csub.freshdesk.com
-  - Data layout questions, export & update requests
-
-- https://jhpce-app02.jhsph.edu (only visible from Hopkins networks)
-  - password resets, one-time password tokens
-
-- Others in your lab
-- Web Search – Google your error message
+- This web site - see the section titled "Getting Help"
+- the [orientation slides](../orient/images/latest-csub-orient.pdf) are improved over time. They contain much information!
