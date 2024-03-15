@@ -6,9 +6,31 @@ tags:
 
 # Copying Files Within The Cluster
 
-When transferring files into and out of the cluster, please use the transfer node. The various tools for that work are described in this [document](../access/file-transfer.md).
+JHPCE users store petabytes of data on our storage servers. Some of it accumulates as work is done. Much is imported from outside the cluster as source material for research. Moving around large numbers of files can be done with a variety of methods.  Some of them give you more confidence in the results than others. Some are misleadingly quiet despite failing or producing a result that isn't the same as the source location.
+
+The `cp` command is a good example of a familiar tool that can produce unexpected results. It supports recursion through the `-R` flag. Depending on the UNIX version, `cp` may or may not treat symbolic links or hard-linked files or sparse files or device files the way you expect.
+
+All tools have limitations, most of which we, thankfully, don't encounter in day-to-day use. However, when manipulating large numbers of files and files in directory trees many levels deep, these issues can begin to surface. For example, consider what happens if a program has a limitation where it cannot handle file paths longer than 1024 characters. You would be unlikely to experience a problem using that program to copy files around unless they are `/stored/in/directory/trees/with/many/entries/YYYY-MM-DD-MM-SS/long-filename-with-details-embedded-in-its-name.dat`  Such paths are common in the sciences and become more common as time passes and data accumulates.
+
+When transferring files **into and out of** the cluster, please use the transfer node. The various tools for that work are described in this [document](../access/file-transfer.md).
 
 Please use compute nodes when copying more than a few files inside the cluster.
+
+## Archive tools moving data through a pipe
+
+Rsync is usually the best method. But rsync wasn't always available in the past, or it didn't support copying one or another attribute that more basic tools did. Kinds of file permissions, data forks, etc.
+
+One method that can be quick and effective is to use an archive program like tar to create an archive file which is passed through an input/output pipe to the same program running in another directory that extracts files into that location. This technique can use available system memory as buffer space, leading to smoother flows of data as disk reads and writes occur with optimal amounts of bytes.
+
+This example copies the named directory some-directory from the current working directory to another location. Because tar by default works with blocks of data 512 bytes in size, a higher efficiency is achieved by telling it to create larger blocks to reduce the overhead of doing input/output requests in such small sizes.
+
+```
+tar cbf 20480 - some-directory | (cd /destination/place; tar -xbf 20480 -)
+```
+This example extends the technique to copying the data off of your current host to another host:
+```
+tar cbf 20480 - some-directory | ssh myaccount@another-host (cd /destination/place; tar -xbf 20480 -)"
+```
 
 ## Rsync
 
