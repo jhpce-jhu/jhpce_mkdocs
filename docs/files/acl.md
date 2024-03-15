@@ -208,6 +208,29 @@ A::GROUP@:rtcy
 A::EVERYONE@:rtcy
 ```
 
+### Duplicating Existing ACLs
+
+!!! Caution "This section under development"
+    The following information needs to be revised and reviewed. It is provided in case it is helpful until then.
+
+You can copy working ACLs but you must be very careful and check the results. Did your umask contribute an unexpected change to the process?
+
+One technique is to save and restore the settings. The second example uses input/output redirection to connect the two commands.
+
+```
+nfs4_getfacl -R source_dir > tmpfile1
+setfacl --restore tmpfile1 destination_dir
+
+nfs4_getfacl -R source_dir |
+setfacl --restore - destination_dir
+```
+
+You can copy the ACLs on a directory with rsync. You **have to** put trailing slashes on BOTH the source and destination.
+
+`rsync -A public-exam1/ /dcs05/somegroup/data/otherdir/`
+
+While -Ar preserves ACLs, it doesn't preserves ownerships and permissions. Use -Arogp (o=owner, g=group, p=permissions) or shorter and more common -Ara (a=archive) for a better copy of your directory.
+
 ## Directories in Lustre file systems 
 
 There are two commands for dealing with ACLs on the JHPCE cluster for
