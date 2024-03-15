@@ -10,10 +10,10 @@ nav:
       - Staff: aboutus/staff.md
     - Getting Started:
       - Introduction: joinus/intro.md
-      - New user form: joinus/new-users.md
-      - New PI information and form: joinus/new-pi.md
-      - New node?: joinus/new-node.md
-      - Need more space?: joinus/new-stg.md
+      - New user form: joinus/new-users-form.md
+      - New PI information and form: 
+         - New PI Information: joinus/new-pi.md
+         - New PI Form: joinus/new-pi-form.md
       - Orientation/Logging In:
         - Overview: orient/orientation-overview.md
         - JHPCE Orientation (PDF): orient/images/latest-orient.pdf
