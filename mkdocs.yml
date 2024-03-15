@@ -11,7 +11,6 @@ nav:
     - Getting Started:
       - Introduction: joinus/intro.md
       - New user form: joinus/new-users.md
-      - New C-SUB user?: csub/new-csub-users.md
       - New PI information and form: joinus/new-pi.md
       - New node?: joinus/new-node.md
       - Need more space?: joinus/new-stg.md
@@ -20,6 +19,7 @@ nav:
         - JHPCE Orientation (PDF): orient/images/latest-orient.pdf
         - C-SUB Orientation (PDF): orient/images/latest-csub-orient.pdf
         - First Login: orient/first-login.md
+      - New C-SUB user?: csub/new-csub-users.md
     - Getting Help:
       - Basics: help/help-basics.md
       - Submitting Good Queries: help/good-query.md

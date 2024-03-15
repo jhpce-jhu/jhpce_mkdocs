@@ -33,7 +33,7 @@ If that sounds like a good fit for your lab, then the first step in accessing
 the cluster would be for you or someone on your team to complete the <A HREF="new-pi.md">New Project form</A>  This will help us gather the relevant contact and financial information for your lab.
 
 
-Once the New Project form is completed, we’ll add your group as a Sponsoring Organization on the <A HREF="new-pi.md">New Project form</A> at which point the members of your team that will be performing the analysis can sign up for an account.  All new users are required to attend one of our JHPCE Orientation Sessions, held every other Wednesday afternoon, during which their account will be set up on the cluster.
+Once the New Project form is completed, we’ll add your group as a Sponsoring Organization on the <A HREF="new-user.md">New Users form</A> at which point the members of your team that will be performing the analysis can sign up for an account.  All new users are required to attend one of our JHPCE Orientation Sessions, held every other Wednesday afternoon, during which their account will be set up on the cluster.
 
 
 JRT didn't put the c-sub info in this document.
