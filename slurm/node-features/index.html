@@ -2388,9 +2388,78 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#cpu-models" class="md-nav__link">
+  <a href="#slurm-job-options-which-use-features" class="md-nav__link">
     <span class="md-ellipsis">
-      CPU Models
+      SLURM Job Options Which Use Features
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#viewing-features" class="md-nav__link">
+    <span class="md-ellipsis">
+      Viewing Features
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#cpu-related-feature-info" class="md-nav__link">
+    <span class="md-ellipsis">
+      CPU-Related Feature Info
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="CPU-Related Feature Info">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#manufacturer" class="md-nav__link">
+    <span class="md-ellipsis">
+      Manufacturer
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#instruction-set-extensions" class="md-nav__link">
+    <span class="md-ellipsis">
+      Instruction Set Extensions
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cpu-types" class="md-nav__link">
+    <span class="md-ellipsis">
+      CPU "Types"
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#building-optimized-code" class="md-nav__link">
+    <span class="md-ellipsis">
+      Building Optimized Code
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#frequency-by-cpu-type" class="md-nav__link">
+    <span class="md-ellipsis">
+      Frequency By CPU-type
     </span>
   </a>
   
@@ -2864,9 +2933,78 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#cpu-models" class="md-nav__link">
+  <a href="#slurm-job-options-which-use-features" class="md-nav__link">
     <span class="md-ellipsis">
-      CPU Models
+      SLURM Job Options Which Use Features
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#viewing-features" class="md-nav__link">
+    <span class="md-ellipsis">
+      Viewing Features
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#cpu-related-feature-info" class="md-nav__link">
+    <span class="md-ellipsis">
+      CPU-Related Feature Info
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="CPU-Related Feature Info">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#manufacturer" class="md-nav__link">
+    <span class="md-ellipsis">
+      Manufacturer
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#instruction-set-extensions" class="md-nav__link">
+    <span class="md-ellipsis">
+      Instruction Set Extensions
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cpu-types" class="md-nav__link">
+    <span class="md-ellipsis">
+      CPU "Types"
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#building-optimized-code" class="md-nav__link">
+    <span class="md-ellipsis">
+      Building Optimized Code
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#frequency-by-cpu-type" class="md-nav__link">
+    <span class="md-ellipsis">
+      Frequency By CPU-type
     </span>
   </a>
   
@@ -2894,23 +3032,73 @@
       <a href="../../ourtools/tags/#slurm" class="md-tag">slurm</a>
     
   
-    
-    
-    
-      <a href="../../ourtools/tags/#in-progress" class="md-tag">in-progress</a>
-    
-  
 </nav>
 
 
 
 <h1 id="node-features">Node Features<a class="headerlink" href="#node-features" title="Anchor link to this section for reference">&para;</a></h1>
-<p>JHPCE has a wide variety of compute nodes. Some have GPU processors, some have large amounts of memory, and there are many models of CPUs present.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>For advanced users who want the highest performance at the expense of possibly waiting longer for jobs to start and maintaining multiple versions of code. We cannot advise you on building optimized code.</p>
+</div>
+<p>JHPCE has a wide variety of compute nodes. Some have GPU processors, some have large amounts of memory, and there are many models of CPUs present. We tend to keep equipment running as long as possible.</p>
 <p>SLURM allows for the assignment of keywords to nodes so that users can guide their jobs to appropriate machines. This is, of course, in addition to the other methods of indicating resource needs, such as desired partition(s), amount of memory, and the need for a GPU.</p>
-<p>If you believe that your code will gain a lot from being run on specific kinds of CPUs, you can compile </p>
-<p>These keywords are up to systems administrators to choose and define. </p>
-<h2 id="cpu-models">CPU Models<a class="headerlink" href="#cpu-models" title="Anchor link to this section for reference">&para;</a></h2>
-<p>The GNU C/C++ compiler suite is the most commonly used one for those languages.</p>
+<p>Currently we have defined features for:</p>
+<ul>
+<li>CPU manufacturer</li>
+<li>CPU line (e.g. Opteron)</li>
+<li>CPU <em>cpu-type</em> architecture as used by the gcc compiler (see <a href="./#cpu-types">below</a>)</li>
+<li>presence of a GPU</li>
+<li>GPU model</li>
+</ul>
+<p>If you believe that your code will gain a lot from being run on specific kinds of CPUs, you can compile it with optimization flags to perform well on them. Of course, you have then created binaries which might fail to run altogether on older nodes. Please name your binaries in a way which makes their special status apparent to you down the road, in case you forget. Asking us to diagnose why your jobs failed when you ran them on the "wrong" nodes is not a productive use of our time.</p>
+<h2 id="slurm-job-options-which-use-features">SLURM Job Options Which Use Features<a class="headerlink" href="#slurm-job-options-which-use-features" title="Anchor link to this section for reference">&para;</a></h2>
+<p>You can tell the scheduler that you prefer or require features using the <code>--prefer=string</code> or <code>--constraint=string</code> when using <code>srun</code> or <code>sbatch</code> or <code>salloc</code></p>
+<p>Of course, saying that you prefer a feature means that your job might be sent to nodes which lack that feature. If your code requires a feature, then this will mean that your job has fewer nodes on which it might run.</p>
+<p>See the <code>--constraint</code> section of the <a href="https://slurm.schedmd.com/archive/slurm-22.05.9/sbatch.html">sbatch</a> manual page for descriptions of using AND and OR operators to combine features. Sadly it does not seem possible to exclude features (so you could say I want any node except ones with these features (because they are too old for my code)).</p>
+<h2 id="viewing-features">Viewing Features<a class="headerlink" href="#viewing-features" title="Anchor link to this section for reference">&para;</a></h2>
+<p>These features keywords are up to systems administrators to choose and define by adding "Features=string1,string2" to "NodeName=" entries in <code>/etc/slurm/nodes.conf</code></p>
+<p>For any particular node, you can see features information with the command <code>scontrol show node nodename</code></p>
+<p>If you specified a feature for a job, it will appear in the output of <code>scontrol show job jobid</code></p>
+<h2 id="cpu-related-feature-info">CPU-Related Feature Info<a class="headerlink" href="#cpu-related-feature-info" title="Anchor link to this section for reference">&para;</a></h2>
+<h3 id="manufacturer">Manufacturer<a class="headerlink" href="#manufacturer" title="Anchor link to this section for reference">&para;</a></h3>
+<p>JHPCE has CPUs made by both Intel and AMD.</p>
+<p>So one feature that has been defined for our nodes is the CPU manufacturer: <code>amd</code> or <code>intel</code></p>
+<h3 id="instruction-set-extensions">Instruction Set Extensions<a class="headerlink" href="#instruction-set-extensions" title="Anchor link to this section for reference">&para;</a></h3>
+<p>As time has passed, computer science has progressed and users have needed new kinds of computation to be as fast as possible, CPU manufacturers have decided that it is worth extending the assembly language used in central processing units because there were significant gains for notable use cases. Nothing is faster than silicon inside of a CPU core, so moving frequent calculations into CPU designs provides notable performance gains for some code sets.</p>
+<p>The x86 instruction set is used on all JHPCE nodes. It has a number of extensions. The <a href="https://en.wikipedia.org/wiki/X86">x86 Wikipedia page</a> includes pointers to them.</p>
+<p>Extensions are listed as "flags" when you look at the output of <code>less /proc/cpuinfo</code> on a particular node.</p>
+<h3 id="cpu-types">CPU "Types"<a class="headerlink" href="#cpu-types" title="Anchor link to this section for reference">&para;</a></h3>
+<p>Instead of listing all of the extensions as features, we instead use <em>cpu-type</em> as defined by the authors of gcc.</p>
+<p>The GNU C/C++ compiler suite is the most commonly used one for those languages. See <a href="https://gcc.gnu.org/onlinedocs/gcc/x86-Options.html">this page</a> for cpu-type details, including which extensions each type represents.</p>
+<p>This command was run on each node to determine its cpu-type:</p>
+<p><code>/usr/bin/gcc -march=native -Q --help=target | grep -- '^[ ]*-march' | cut -f3</code></p>
+<h2 id="building-optimized-code">Building Optimized Code<a class="headerlink" href="#building-optimized-code" title="Anchor link to this section for reference">&para;</a></h2>
+<p>That is beyond the scope of this document.</p>
+<p>“mtune” and “march” are important gcc flags to investigate.</p>
+<p>The various levels of optimization requested via <code>-O#</code> might also impact the flexibility of the binaries you build.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>If you find good documents that would help other users optimize their binaries, please let us know at the bitsupport address.</p>
+</div>
+<h2 id="frequency-by-cpu-type">Frequency By CPU-type<a class="headerlink" href="#frequency-by-cpu-type" title="Anchor link to this section for reference">&para;</a></h2>
+<p>In January 2024, the cluster compute nodes consisted of approximately</p>
+<div class="highlight"><pre><span></span><code>      3 bdver1
+      7 bdver2
+     10 broadwell
+      2 cascadelake
+     11 haswell
+     17 icelake-server
+      5 skylake-avx512
+      4 znver2
+      2 znver3
+</code></pre></div>
+<p>The bdver and znver types represent AMD CPUs.</p>
+<p>bdver1 does not support these gcc flags:
+  -mbmi
+  -mf16c
+  -mfma
+  -mdirect-extern-access</p>
 
 
 

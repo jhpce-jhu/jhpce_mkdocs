@@ -1505,6 +1505,15 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#duplicating-existing-acls" class="md-nav__link">
+    <span class="md-ellipsis">
+      Duplicating Existing ACLs
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -3038,6 +3047,15 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#duplicating-existing-acls" class="md-nav__link">
+    <span class="md-ellipsis">
+      Duplicating Existing ACLs
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -3307,6 +3325,22 @@ A::OWNER@:rwatTcCy
 A::GROUP@:rtcy
 A::EVERYONE@:rtcy
 </code></pre></div>
+<h3 id="duplicating-existing-acls">Duplicating Existing ACLs<a class="headerlink" href="#duplicating-existing-acls" title="Anchor link to this section for reference">&para;</a></h3>
+<div class="admonition caution">
+<p class="admonition-title">This section under development</p>
+<p>The following information needs to be revised and reviewed. It is provided in case it is helpful until then.</p>
+</div>
+<p>You can copy working ACLs but you must be very careful and check the results. Did your umask contribute an unexpected change to the process?</p>
+<p>One technique is to save and restore the settings. The second example uses input/output redirection to connect the two commands.</p>
+<div class="highlight"><pre><span></span><code>nfs4_getfacl -R source_dir &gt; tmpfile1
+setfacl --restore tmpfile1 destination_dir
+
+nfs4_getfacl -R source_dir |
+setfacl --restore - destination_dir
+</code></pre></div>
+<p>You can copy the ACLs on a directory with rsync. You <strong>have to</strong> put trailing slashes on BOTH the source and destination.</p>
+<p><code>rsync -A public-exam1/ /dcs05/somegroup/data/otherdir/</code></p>
+<p>While -Ar preserves ACLs, it doesn't preserves ownerships and permissions. Use -Arogp (o=owner, g=group, p=permissions) or shorter and more common -Ara (a=archive) for a better copy of your directory.</p>
 <h2 id="directories-in-lustre-file-systems">Directories in Lustre file systems<a class="headerlink" href="#directories-in-lustre-file-systems" title="Anchor link to this section for reference">&para;</a></h2>
 <p>There are two commands for dealing with ACLs on the JHPCE cluster for
 directories in Lustre file systems, which start with <code>/dcl02</code>.  The <code>getfacl</code> command will display
