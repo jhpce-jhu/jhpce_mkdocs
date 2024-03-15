@@ -24,22 +24,29 @@ The Health Analytics Research Platform (HARP) was created to implement this visi
 
 The Health Analytics Research Platform (HARP) provides data services to HBHI- affiliated and HEADS Center-affiliated investigators to facilitate research collaborations advancing HBHI’s strategic pillars.
 
-- HPM
-  - HEADS/HARP Director: Dan Polsky 
-  - HEADS/HARP Deputy Director: Matt Eisenberg 
-  - CMS Data Expert: Frank Xu
+**HPM Personnel**
 
-Please send C-SUB data-specific requests to
-support@harp-csub.freshdesk.com
+- HEADS/HARP Director: Dan Polsky 
+- HEADS/HARP Deputy Director: Matt Eisenberg 
+- CMS Data Expert: Frank Xu
 
+**Contact**
+
+Please send C-SUB data-specific requests such as
+
+- joining the C-SUB
 - exporting files out of the C-SUB
 - data inventory – current and desired additions or updates
 
-[Health Analytics Research Platform (HARP)](https://hbhi.jhu.edu/affiliate-resource/health-analytics-research-platform-harp)
+to **support@harp-csub.freshdesk.com**
 
-[Hopkins Business of Health Initiative (HBHI)](https://hbhi.jhu.edu/about-us)
+**Further Information**
 
-[Hopkins Economics of Alzheimer Disease & Services (HEADS)](https://publichealth.jhu.edu/hopkins-economics-of-alzheimers-disease-and-services-center)
+- [Health Analytics Research Platform (HARP)](https://hbhi.jhu.edu/affiliate-resource/health-analytics-research-platform-harp)
+
+- [Hopkins Business of Health Initiative (HBHI)](https://hbhi.jhu.edu/about-us)
+
+- [Hopkins Economics of Alzheimer Disease & Services (HEADS)](https://publichealth.jhu.edu/hopkins-economics-of-alzheimers-disease-and-services-center)
 
 ## Differences between JHPCE & C-SUB Clusters
 
