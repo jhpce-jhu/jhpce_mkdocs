@@ -1441,6 +1441,15 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
+  <a href="#source-and-destination" class="md-nav__link">
+    <span class="md-ellipsis">
+      SOURCE and DESTINATION
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#mind-the-trailing-slash" class="md-nav__link">
     <span class="md-ellipsis">
       Mind the trailing slash
@@ -1740,6 +1749,15 @@
   
     <nav class="md-nav" aria-label="Rsync">
       <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#source-and-destination" class="md-nav__link">
+    <span class="md-ellipsis">
+      SOURCE and DESTINATION
+    </span>
+  </a>
+  
+</li>
         
           <li class="md-nav__item">
   <a href="#mind-the-trailing-slash" class="md-nav__link">
@@ -2933,6 +2951,15 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
+  <a href="#source-and-destination" class="md-nav__link">
+    <span class="md-ellipsis">
+      SOURCE and DESTINATION
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#mind-the-trailing-slash" class="md-nav__link">
     <span class="md-ellipsis">
       Mind the trailing slash
@@ -2995,16 +3022,85 @@
       <a href="../../ourtools/tags/#in-progress" class="md-tag">in-progress</a>
     
   
+    
+    
+    
+      <a href="../../ourtools/tags/#jeffrey" class="md-tag">jeffrey</a>
+    
+  
 </nav>
 
 
 
 <h1 id="copying-files-within-the-cluster">Copying Files Within The Cluster<a class="headerlink" href="#copying-files-within-the-cluster" title="Anchor link to this section for reference">&para;</a></h1>
+<p>When transferring files into and out of the cluster, please use the transfer node. The various tools for that work are described in this <a href="../../access/file-transfer/">document</a>.</p>
+<p>Please use compute nodes when copying more than a few files inside the cluster.</p>
 <h2 id="rsync">Rsync<a class="headerlink" href="#rsync" title="Anchor link to this section for reference">&para;</a></h2>
-<p>Rsync is a powerful command for copying large numbers of files between a SOURCE and a DESTINATION (aka DEST), within a single computer or between computers. It provides MANY arguments to control how this is done. A key benefit of rsync is that it will copy only the material needed to make DESTINATION match SOURCE. Most other programs, such as cp or scp, will always copy over all of SOURCE to DESTINATION.</p>
+<p>Rsync is a powerful command for copying large numbers of files between a SOURCE (aka SRC) and a DESTINATION (aka DEST), within a single computer or between computers. </p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>A key benefit of <code>rsync</code> is that it will copy only the material needed to make DEST match SRC. Most other programs, such as <code>cp</code> or <code>scp</code>, will always copy over all of SRC to DEST.</p>
+</div>
+<p>There are MANY arguments which control how the copying will occur. So you can do things like specify files to exclude, create a log of the actions taken, and provide statistics when done.</p>
+<p>The most common flag used with <code>rsync</code> is <code>-a</code> for "archive"</p>
+<h3 id="source-and-destination">SOURCE and DESTINATION<a class="headerlink" href="#source-and-destination" title="Anchor link to this section for reference">&para;</a></h3>
+<p>Rsync is very flexible.</p>
+<p>SRC and DEST can be paths or hostnames with colons and paths or a combination. rsync will use ssh to send files between hosts, so you can even specify a different username for one of the SRC and DEST.</p>
+<p>Multiple items can be listed as SRC material. Of course there can only be one DESTINATION</p>
+<dl>
+<dt>Local copying:</dt>
+<dd><code>rsync [OPTION...] SRC... DEST</code></dd>
+<dt>Access via remote shell:</dt>
+<dd>Pull:
+             <code>rsync [OPTION...] [USER@]HOST:SRC... [DEST]</code></dd>
+<dd>Push:
+             <code>rsync [OPTION...] SRC... [USER@]HOST:DEST</code></dd>
+</dl>
 <h3 id="mind-the-trailing-slash">Mind the trailing slash<a class="headerlink" href="#mind-the-trailing-slash" title="Anchor link to this section for reference">&para;</a></h3>
+<p>rsync ultimately needs you to specify a SOURCE location and a DESTINATION location.</p>
+<p>If the SOURCE represents a directory then adding a forward slash to it will cause the contents of the directory to be copied into DESTINATION. If there is no trailing forward slash, then the SOURCE  directory will be copied into DESTINATION.</p>
+<dl>
+<dt>Example</dt>
+<dd>If directory /some/source/place contains files a, b, and c</dd>
+<dd><code>rsync -a /some/source/place/  /a/destination/location/</code></dd>
+<dd>will result in the contents of /a/destination/location/ being a, b, and c.</dd>
+<dd>If the command was instead </dd>
+<dd><code>rsync -a /some/source/place  /a/destination/location/</code></dd>
+<dd>will result in the contents being instead /a/destination/location/place</dd>
+</dl>
 <h3 id="rsync-examples">Rsync Examples<a class="headerlink" href="#rsync-examples" title="Anchor link to this section for reference">&para;</a></h3>
 <h3 id="rsync-flags-you-may-want-to-use">Rsync Flags You May Want To Use<a class="headerlink" href="#rsync-flags-you-may-want-to-use" title="Anchor link to this section for reference">&para;</a></h3>
+<p>Most flags have two forms you can choose between, a short one consisting of a single character, or a readable form preceeded by two hyphens, and typically followed by an equals sign and a value.
+<div class="highlight"><pre><span></span><code>-H preserve hard links
+-x don&#39;t cross filesystem boundaries
+--archive, -a            archive mode; equals -rlptgoD (no -H,-A,-X)
+--dry-run, -n            perform a trial run with no changes made
+--atimes -U preserve access (use) times
+--crtimes, -N preserve create times (newness)
+--times, -t preserve modification times
+--acls, -A preserve ACLs (implies --perms)
+--xattrs, -X preserve extended attributes
+--numeric-ids don&#39;t map uid/gid values by user/group name
+--human-readable, -h     output numbers in a human-readable format
+--ignore-existing  (don&#39;t overwrite existing)
+--delete-after  (wait until end to process deletes)
+--max-delete=NUM         don&#39;t delete more than NUM files (FOR SAFETY) 
+--itemize-changes, -i    output a change-summary for all updates 
+--itemize-changes has complex output. see man page string &quot;has a cryptic output&quot; which I&#39;ve saved as shell script rsync-itemize
+--list-only              list the files instead of copying them
+--log-file=FILE
+--size-only              skip files that match in size 
+--sparse                 turn sequences of nulls into sparse blocks
+--ignore-times, -I       don&#39;t skip files that match size and time
+--info=FLAGS             fine-grained informational verbosity
+--chmod=CHMOD            affect file and/or directory permissions
+--usermap=STRING         custom username mapping 
+--groupmap=STRING        custom groupname mapping (STRING is not simply
+--chown=USER:GROUP       simple username/groupname mapping 
+--exclude-from={&#39;list.txt&#39;}
+--exclude={&#39;*.txt&#39;,&#39;dir3&#39;,&#39;dir4&#39;}
+--checksum -c           compare checksums
+</code></pre></div></p>
 <h3 id="example-batch-job">Example batch job<a class="headerlink" href="#example-batch-job" title="Anchor link to this section for reference">&para;</a></h3>
 <p>Is shown <a href="../../slurm/crafting-jobs/#copying-data-within-cluster">here</a>.</p>
 
@@ -3027,7 +3123,7 @@
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1-2.1-2M12.5 7v5.2l4 2.4-1 1L11 13V7h1.5M11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2v1.8Z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">February 27, 2024</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">March 15, 2024</span>
   </span>
 
     
