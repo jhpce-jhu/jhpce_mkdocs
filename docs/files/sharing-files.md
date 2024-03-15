@@ -10,9 +10,21 @@ How do you safely collaborate with others in a UNIX environment in an on-going b
 
 There are different locations where you can store files for the long term. The correct location to store files depends on several factors, including their size, how private they are, whether other users should be able to read or write them, and whether they should remain for your group after you have gone to another organization.
 
+Traditional Unix file and group permissions can be used to share
+access to files and directories.  However, there can be times when
+more fine-grained control of shared access is needed. To accomplish
+this, Access Control Lists (ACLs) can be used. They add to the normal permissions.
+
+!!! Tip
+    Before defining ACLs, you should first read this document for necessary background concepts and skills. Our document about ACLs is [here](..//files/sharing-files.md).
+
 ## UNIX Ownership & Permissions
 
-You {==must==} understand the basics of file ownership and permissions to successfully share files. Here are some tutorials to read:
+You {==must==} understand the basics of file ownership and permissions to successfully share files. 
+
+The Wikipedia has a fairly good description of normal [UNIX file and group permissions](https://en.wikipedia.org/wiki/File-system_permissions#POSIX_permissions), including the symbolic and numeric notation schemes.
+
+Here are some other tutorials you can read:
 
 - https://docs.nersc.gov/filesystems/unix-file-permissions/
 - https://www.tutorialspoint.com/unix/unix-file-permission.htm
@@ -24,7 +36,7 @@ You {==must==} understand the basics of file ownership and permissions to succes
 Out of the basic information on this topic, these are some particular details you should understand. 
 
 **umask**
-: umask is a variable which controls the permissions assigned to files and directories that you create. You have a default umask, which can be changed for future logins if you change your `.bashrc` file. You can change the current umask at any time before you do run some commands.
+: umask is a variable which controls the permissions assigned to files and directories that you create. You have a default umask, which can be changed for future logins if you change your `.bashrc` file. You can change the current umask at any time before you do run some commands. More guidance is included later in this document. The Wikipedia page for [umask](https://en.wikipedia.org/wiki/Umask) is helpful. 
 
 **re-use of permission bits**
 : There are nine basic permission bits for files and directories. Three each for owner, group, and other. As UNIX developed and new capabilities were needed, the authors added one more bit (used for setuid and setgid), then started adding multiple meanings to some bits. This is shown by the letter (and its capitalization) used to represent it in the output of the `ls -l` command.

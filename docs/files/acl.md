@@ -1,6 +1,7 @@
 ---
 tags:
   - in-progress
+  - jeffrey
 ---
 # ACL - Access Control Lists
 
@@ -9,12 +10,17 @@ access to files and directories.  However, there can be times when
 more fine-grained control of shared access is needed. To accomplish
 this, Access Control Lists (ACLs) can be used. They add to the normal permissions.
 
-The Wikipedia has a fairly good description of normal [UNIX file and group permissions](https://en.wikipedia.org/wiki/File-system_permissions), including the symbolic and numeric notation schemes.
+!!! Tip
+    Before defining ACLs, you should first read [our document about sharing files](..//files/sharing-files.md) for necessary background concepts and skills.
 
 ### Caution
 JHPCE uses two kinds of file systems on its large storage servers: ZFS and Lustre.
 
-You need to use a different pair of ACL commands for each type.
+You need to use a different pair of ACL commands for each type:
+1. ZFS: nfs4_getfacl and nfs4_setfacl
+2. Lustre: getfacl and setfacl
+
+Instructions for Lustre file systems is found [later in this document](../files/acl.md#directories-in-lustre-file-systems).
 
 As of March 2024, the only Lustre file systems are those which begin with the path `/dcl02/`
 
@@ -24,12 +30,15 @@ As of March 2024, all of the files originally found on the Lustre file server na
 
 Some common notes that are applicable to both types of ACL commands:
 
-+ ACLs can be used to give either read or read/write access to a file or directory. 
-+ ACLs should use the security notion of “least privilege”, meaning that ACLs should give only the needed access and nothing more. +  When setting up an ACL for a user access on a file or directory that is several layer deep in the directory structure, a `READ-EXECUTE` ACL will need to be set on all levels above the file or directory you are sharing. For example, if you are setting an ACL on the directory `/users/bob/mydata/project1/shared`, you would also need to set a `READ-EXECUTE` ACL on `/users/bob/mydata/project1`, `/users/bob/mydata`, and `/users/bob`.
-+ Default ACLs can be set on a directory, and this ACL will be inherited into the directory structure as new files and directories are create.
++ ACLs can be used on both files and directories.
++ User's *umask* settings impact the permissions assigned to files and directories being created.
++ Use normal UNIX permissions where possible. ACLs can be complex to manage. Use ACLs to *extend* normal permissions.
++ ACLs should use the security notion of “least privilege”, meaning that ACLs should give only the needed access and nothing more.
++  For users to be able to work with a file stored several layer deep in the directory structure, they must be able _to get to it_. {==That requires that they need sufficient permissions, via either normal UNIX permissions or ACLs (or both), to "read" and "execute" (aka "search") **all of the directories above the final file or directory**==}. For example, if you are wanting to enable access to the directory `/dcs07/bob/data/project1/shared`, you would need to provide `READ-EXECUTE` access on `/dcs07/bob/data/project1`, `/dcs07/bob/data`, and `/dcs07/bob`. Using UNIX permissions where appropriate, and ACLs where necessary.
++ "Default" ACLs can be set on a directory, and this ACL will be inherited into the directory structure as new files and directories are created.
 + However, existing files and directories that exist beneath a directory that an ACL is being set on will not be affected by a new ACL. If you need to propagate an ACL into an exiting directory tree, you will need to use the `recursive` option to the ACL command.
-+ With default ACLs, the individual user’s `umask` setting is important in assuring that new files and directories that get created have the correct permissions set. The `umask` setting will take precedence over the ACL, so it must be more permissive than the ACL. For example, if you want to set a default group ACL where the group has write access, you need to make sure that your umask is set to `0002` rather than `0022`, as the “2” in the group umask bit will prevent the group write capability.
-+ ACL commands should be run on a compute node and not a login node. Long-running recursive ACL commands on large directory trees may also be done via a submitted batch job script.
++ With default ACLs, the individual user’s `umask` setting is important in assuring that new files and directories that get created have the correct permissions set. The `umask` setting will take precedence over the ACL, so *it must be more permissive than the ACL*. For example, if you want to set a default group ACL where the group has write access, you need to make sure that your umask is set to `0002` rather than `0022`, as the “2” in the group umask bit will prevent the group write capability.
++ Like any operation, running ACL commands on large numbers of files should be run on a compute node and not a login node. Long-running recursive ACL commands on large directory trees may be done via interactive sessions or submitted batch job scripts.
 
 
 Example useage:
@@ -62,11 +71,10 @@ A::EVERYONE@:rtcy
 + There are 2 commands for dealing with ACLs on `/users`, `/dcs04`, `/dcs05`, `/dcs06`, and `/dcs07`. 
 + The `nfs4_getfacl` command will display current ACL setting for a file or directory
 + The `nfs4_setfacl` command is used to modify ACLs.  
-+ With ACLs you can grant either read-only access, or read-write access on a directory or file to specific users.
++ With ACLs you can grant different kinds of access on directories or files to specific users and groups, in addition to the normal group associated with the object, and in addition to "other".
 + The simplest permissions to use in ACLs are R for read access, W for write access, and X for execute and directory access. For detailed description of fine-grained permissions that can be set, please see ([https://www.osc.edu/book/export/html/4523](https://www.osc.edu/book/export/html/4523)).
-+ User ACLs By default, one’s home directory is only accessible to the
-owner, and the ACL should reflect this. For example, for the user
-alice, the ACL on their home directory would look like:
++ By default, one’s home directory is only accessible to the
+owner, and the original ACL should reflect this. For example, for the user alice, the ACL on their home directory would look like:
 
 ```
 [alice@compute-123 ~]$ pwd
@@ -131,7 +139,10 @@ Now the user bob can copy or save files in the “shared” directory.
 ### Inherited Defaults 
 To set an inherited “default” ACL that will allow bob access on all
 new files and directories that get saved into `/users/alice/shared`, you
-would need to first give bob the normal ACL permissions, then add a second set of ACLs that will be inherited using the `fdi` option to the `nfs4_setacl` command.
+would need to
+
+1. first give bob the normal ACL permissions, then
+2. add a second set of ACLs that will be inherited using the `fdi` option to the `nfs4_setacl` command.
 
 One
 issue we’ve seen is that a `@USER` and `@GROUP` ACL need to be
@@ -197,21 +208,21 @@ A::GROUP@:rtcy
 A::EVERYONE@:rtcy
 ```
 
-### Directories in Lustre file systems 
+## Directories in Lustre file systems 
 
 There are two commands for dealing with ACLs on the JHPCE cluster for
-directories in Lustre file systems, which start with `/dcl`.  The `getfacl` command will display
+directories in Lustre file systems, which start with `/dcl02`.  The `getfacl` command will display
 current ACL setting for a file or directory, and the `setfacl` command
 is used to modify ACLs.  With ACLs you can grant either read-only
 access, or read-write access on a directory or file to specific users.
 
-Let’s say there is a directory `/dcl01/project/data/alice` that alice
+Let’s say there is a directory `/dcl02/project/data/alice` that alice
 owns. The `getfacl` command could be used to see the current ACL set
 on the directory:
 
 ```
 [alice@compute-123 ]$ pwd
-/dcl01/project/data/alice
+/dcl02/project/data/alice
 [alice@compute-123 ]$ getfacl .
 # file: .
 # owner: alice
@@ -222,7 +233,7 @@ other::---
 ```
 
 #### Read
-Now, if alice wanted to grant read-only access to `/dcl01/project/data/alice` to the user bob, they would use the `setfacl` command:
+Now, if alice wanted to grant read-only access to `/dcl02/project/data/alice` to the user bob, they would use the `setfacl` command:
 
 ```
 [alice@compute-123 ]$ setfacl -m user:bob:rx .
