@@ -3054,8 +3054,8 @@
 <p>If you believe that your code will gain a lot from being run on specific kinds of CPUs, you can compile it with optimization flags to perform well on them. Of course, you have then created binaries which might fail to run altogether on older nodes. Please name your binaries in a way which makes their special status apparent to you down the road, in case you forget. Asking us to diagnose why your jobs failed when you ran them on the "wrong" nodes is not a productive use of our time.</p>
 <h2 id="slurm-job-options-which-use-features">SLURM Job Options Which Use Features<a class="headerlink" href="#slurm-job-options-which-use-features" title="Anchor link to this section for reference">&para;</a></h2>
 <p>You can tell the scheduler that you prefer or require features using the <code>--prefer=string</code> or <code>--constraint=string</code> when using <code>srun</code> or <code>sbatch</code> or <code>salloc</code></p>
-<p>Of course, saying that you prefer a feature means that your job might be sent to nodes which lack that feature. If your code requires a feature, then this will mean that your job has fewer nodes on which it might run.</p>
-<p>See the <code>--constraint</code> section of the <a href="https://slurm.schedmd.com/archive/slurm-22.05.9/sbatch.html">sbatch</a> manual page for descriptions of using AND and OR operators to combine features. Sadly it does not seem possible to exclude features (so you could say I want any node except ones with these features (because they are too old for my code)).</p>
+<p>Of course, saying that you <strong>prefer</strong> a feature means that your job might be sent to nodes which lack that feature. If your code <strong>requires</strong> a feature, then this will mean that your job has fewer nodes on which it might run and might stay pending for longer.</p>
+<p>See the <code>--prefer</code> and <code>--constraint</code> sections of the <a href="https://slurm.schedmd.com/archive/slurm-22.05.9/sbatch.html">sbatch</a> manual page for descriptions of using AND and OR operators to combine features. Sadly it does not seem possible to exclude features (so you could say I want any node except ones with these features (because they are too old for my code)).</p>
 <h2 id="viewing-features">Viewing Features<a class="headerlink" href="#viewing-features" title="Anchor link to this section for reference">&para;</a></h2>
 <p>These features keywords are up to systems administrators to choose and define by adding "Features=string1,string2" to "NodeName=" entries in <code>/etc/slurm/nodes.conf</code></p>
 <p>For any particular node, you can see features information with the command <code>scontrol show node nodename</code></p>
@@ -3119,7 +3119,7 @@
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1-2.1-2M12.5 7v5.2l4 2.4-1 1L11 13V7h1.5M11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2v1.8Z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">March 15, 2024</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">March 16, 2024</span>
   </span>
 
     
