@@ -18,7 +18,6 @@ nav:
         - Overview: orient/orientation-overview.md
         - JHPCE Orientation (PDF): orient/images/latest-orient.pdf
         - C-SUB Orientation (PDF): orient/images/latest-csub-orient.pdf
-        - First Login: orient/first-login.md
       - New C-SUB PI or user?: csub/new-csub-users.md
     - Getting Help:
       - Basics: help/help-basics.md
