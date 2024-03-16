@@ -86,7 +86,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#glossary-composed-by-hand" class="md-skip">
+        <a href="#glossary" class="md-skip">
           Skip to content
         </a>
       
@@ -2835,35 +2835,79 @@
     
     
     
-      <a href="../../ourtools/tags/#in-progress" class="md-tag">in-progress</a>
+      <a href="../../ourtools/tags/#contains-snark" class="md-tag">contains-snark</a>
     
   
 </nav>
 
 
 
-<h1 id="glossary-composed-by-hand">Glossary (Composed by hand)<a class="headerlink" href="#glossary-composed-by-hand" title="Anchor link to this section for reference">&para;</a></h1>
+<h1 id="glossary">Glossary<a class="headerlink" href="#glossary" title="Anchor link to this section for reference">&para;</a></h1>
+<p>Terms you might wonder about. If you don't find what you're looking for, please use Google. Italicized terms indicate that there is a glossary entry for that item.</p>
 <dl>
+<dt><strong>Absolute path</strong></dt>
+<dd>A <em>path</em> which starts with a forward slash. Your shell (such as <em>bash</em>) interprets this location as starting with the root of the <em>file systems</em> on a <em>computer</em>. See also: <em>relative path</em></dd>
 <dt><strong>bash</strong></dt>
-<dd>A program which accepts and processes commands entered via text. (Wikipedia <a href="https://en.wikipedia.org/wiki/Bash_(Unix_shell)">page</a>)</dd>
+<dd>An example of a shell, which are programs which accept and process commands entered via text with a certain syntax, or set of rules. (Wikipedia <a href="https://en.wikipedia.org/wiki/Bash_(Unix_shell)">page</a>)</dd>
 <dt><strong>CLI</strong></dt>
-<dd>Command Line Interface - a program like bash which provides a means to enter commands via text strings and see responses. (Wikipedia <a href="https://en.wikipedia.org/wiki/Command-line_interface">page</a>.)</dd>
+<dd>Command Line Interface - a program like <em>bash</em> which provides a means to enter commands via text strings and see responses. (Wikipedia <a href="https://en.wikipedia.org/wiki/Command-line_interface">page</a>.)</dd>
 <dt><strong>Cluster</strong></dt>
-<dd>A collection of computers (aka "nodes") managed as a group to provide services. Usually uses a job scheduler.</dd>
+<dd>A collection of computers (aka "<em>nodes</em>") managed as a group to provide services. Usually uses a <em>job scheduler</em>.</dd>
 <dt><strong>Compute node</strong></dt>
-<dd>Computers within a cluster used to execute jobs</dd>
+<dd>Computers within a <em>cluster</em> used to execute <em>jobs</em></dd>
+<dt><strong>Computer</strong></dt>
+<dd>You're using one right now. Aren't they marvelous?</dd>
+<dt><strong>Core</strong></dt>
+<dd>A component of a <em>CPU</em> which processes <em>threads</em> of program instructions. Cores each have their own collections of components which are needed to execute instructions, such as registers for mathematical operations, memory stores to cache information. CPUs can contain many cores. Cores can have support for <em>hyperthreading</em>. (Wikipedia <a href="https://en.wikipedia.org/wiki/Multi-core_processor">page</a>. SLURM <a href="https://slurm.schedmd.com/mc_support.html">support for cores/threads</a>.)</dd>
+<dt><strong>CPU</strong></dt>
+<dd>Acronym for Central Processing Unit. The main processor in a <em>computer</em>. Contains one or more <em>cores</em>. There may be more than one CPU within a computer. See information about the CPUs on your UNIX computer with the command <code>less /proc/cpuinfo</code> (press q to quit). (<a href="https://en.wikipedia.org/wiki/Central_processing_unit">Wikipedia page</a>)</dd>
+<dt><strong>Current working directory</strong></dt>
+<dd>Expansion of acronym CWD. Your current (aka present) location within a <em>file system</em>. Can be expressed as a <em>path</em>. The command <code>pwd</code> will return the path to your CWD.</dd>
+<dt><strong>EMACS</strong></dt>
+<dd>A super-complex but powerful and VERY extensible text editor written in Lisp, an abomination of a computer language. I called it "Eight Megabytes And Constantly Swapping" back in the day when a megabyte of RAM cost thousands and thousands of dollars. Like Doctor Who, proponents can be tiresome to others. See also: <em>vi</em></dd>
 <dt><strong>File system</strong></dt>
-<dd>A data storage service which allows for the storage and retrieval of information. (Wikipedia <a href="https://en.wikipedia.org/wiki/File_system">page</a>)</dd>
+<dd>A data storage service which allows for the storage and retrieval of information. File systems are basic units of storage. File system services include holding metadata about files, such as when they were created and who owns them. The command <code>df -h .</code> will return information about the file system of your <em>current working directory</em>. (Wikipedia <a href="https://en.wikipedia.org/wiki/File_system">page</a>)</dd>
+<dt><strong>GUI</strong></dt>
+<dd>Acronym for Graphic User Interface. Antonym of <em>CLI</em>. A means of interacting with a user via windows. Operating systems such as macOS and Windows rely on GUI for its ease-of-use. X11 is a protocol which provides for the display of GUI windows over networks. Some of the <em>windows</em> in a GUI might be terminals offering CLI programs, such as <em>bash</em> shells. </dd>
+<dt><strong>Hyperthreading</strong></dt>
+<dd>Modern CPU <em>cores</em> normally have some additional circuitry which store information used by (normally two) threads. This allows the core to easily switch its attention between two threads so work can continue if one of the threads needs to wait for information to be brought into the core from RAM. (Wikipedia <a href="https://en.wikipedia.org/wiki/Hyper-threading">page</a>)</dd>
 <dt><strong>Job</strong></dt>
-<dd>A unit of work given to an operating system by a scheduler on behalf of a user</dd>
+<dd>A unit of work given to an operating system by a <em>scheduler</em> on behalf of a user</dd>
 <dt><strong>Job scheduler</strong></dt>
-<dd>Application which controls the execution of jobs. SLURM is a job scheduler. (Wikipedia <a href="https://en.wikipedia.org/wiki/Job_scheduler">page</a>)</dd>
+<dd>Application which controls the execution of interactive or batch jobs on a cluster. SLURM is a <em>job scheduler</em>. (Wikipedia <a href="https://en.wikipedia.org/wiki/Job_scheduler">page</a>)</dd>
+<dt><strong>Linux</strong></dt>
+<dd>A flavor of UNIX. Don't let them convince you that they invented it. (They will try. It's sad, really.)</dd>
+<dt><strong>locality</strong></dt>
+<dd>The proximity of data stored in memory to the processing circuitry. You want to keep data as close as possible when creating <em>jobs</em>.</dd>
+<dt><strong>Memory</strong></dt>
+<dd>General term for anything that can store information. You have a memory. Computers use many types of memory. People often mean <em>RAM</em> when they say memory. Sometimes they mean hard drive space when they say memory, which is understandable but confusing to those trying to help them. Say "disk space" or "disk storage" instead. Thanks.</dd>
+<dt><strong>Memory hierachy</strong></dt>
+<dd>A hierarchy of types of <em>memory</em> used by a <em>computer</em>. Each type has different speed of access, capacity, and cost. Fast memory is expensive and usually provides for limited capacity. Each is therefore usually used for certain purposes. A register inside of a <em>core</em> inside of a CPU is the fastest memory, but small. Next is one or more caches inside of a core. Next (cheapest, fastest, most capacious) is <em>RAM</em>. After RAM comes hard drives on the same computer. After hard drives on the local computer comes hard drives on file servers which have to pass their information across the network. Next come USB sticks, then floppy disks, then humans typing into keyboards. The closer to a register you can keep the information needed for your program, the faster it can be processed. This distance from the processor is called <em>locality</em>.</dd>
+<dt><strong>Pane</strong></dt>
+<dd>(Associate with <em>window</em>) A subdivision within a window where information is displayed, perhaps alone or perhaps alongside other panes</dd>
 <dt><strong>Path</strong></dt>
-<dd>A string of characters used to identify a location in a directory structure</dd>
+<dd>A string of characters used to identify a location in a directory structure inside of a file system. That location represents either a file or directory. Examples: <code>./my-script</code> or <code>/dcs07/a-groups-data/some/place/down/deep</code> See also: <em>absolute path</em>, <em>current working directory</em>, <em>relative path</em>.</dd>
 <dt><strong>Node</strong></dt>
-<dd>A computer within a cluster</dd>
+<dd>Any computer within a <em>cluster</em> Nodes can be grouped by the services they provide, such as offering computation or file services. Usually used to indicate a <em>compute node.</em></dd>
+<dt><strong>RAM</strong></dt>
+<dd>Acronym for Read Access Memory. Part of a <em>memory hierarchy</em>. A form of computer memory that can be read or written in any order. Contrast with data stored on a tape. You cannot read any data from the tape without moving the tape to reach the portion where your desired information is stored. Some of us had to use data on tapes. We were lucky we didn't have to use data stored on punchcards.</dd>
+<dd>RAM is fast and capacious. Most RAM used in cluster nodes is volatile -- it cannot store information without continuous electrical power. (Wikipedia <a href="https://en.wikipedia.org/wiki/Random-access_memory">page</a>)</dd>
+<dt><strong>Relative path</strong></dt>
+<dd>A path which does not start with a forward slash. Your shell (such as bash) interprets this location starting with your <em>current working directory</em>. See also: <em>absolute path</em></dd>
+<dt><strong>Scheduler</strong></dt>
+<dd>A component of a <em>job scheduler</em> application which decides which <em>jobs</em> to start running, when, and on which <em>cores</em> on which <em>CPUs</em> on which <em>nodes</em>. (Operating systems also contain schedulers, which do the same things for any process or thread, whether or not they are part of a job.) (SLURM CPU allocation process described <a href="https://slurm.schedmd.com/cpu_management.html">here</a>. SLURM has multiple other documents in the Slurm Scheduling section of this <a href="https://slurm.schedmd.com/documentation.html">page</a>.)</dd>
+<dt><strong>SSH</strong></dt>
+<dd>Acronym for Secure SHell. Technically a protocol for multiple network services. Usually meant to refer to a program which implements that protocol to provide a <em>CLI</em>. See our SSH <a href="../../access/ssh/">document</a>. (Wikipedia <a href="https://en.wikipedia.org/wiki/Secure_Shell">page</a>)</dd>
+<dt><strong>Thread</strong></dt>
+<dd>The smallest sequence of programmed instructions that can be managed independently. Part of a process (which may have one or more threads). It takes time for the information needed by a thread to run to be loaded into a CPU core. So there is an expense (delay) to switching between threads on the same core. <em>Hyperthreading</em> attempts to reduce that cost. (Wikipedia <a href="https://en.wikipedia.org/wiki/Thread_(computing)">page</a>. SLURM <a href="https://slurm.schedmd.com/mc_support.html">support for cores/threads</a>.)</dd>
+<dt><strong>UNIX</strong></dt>
+<dd>A family of operating systems initially brought to you by Bell Telephone, a monopoly in the US. UNIX has fundamentally always used a <em>CLI</em> because, well, <em>GUIs</em> didn't exist for many years after UNIX got started. UNIX has a steep learning curve, but has only grown in use over the decades because it is powerful and extensible. If you're struggling to learn UNIX, remember that many people had to learn UNIX without the Internet or Google. Modern macOS and Windows (since Windows NT) rely on UNIX code. Linux is not UNIX. Linux is <em>a flavor</em> of UNIX. Anyone who tells you otherwise is a poser. (Wikipedia <a href="https://en.wikipedia.org/wiki/Unix">page</a>)</dd>
 <dt><strong>User</strong></dt>
 <dd>You</dd>
+<dt><strong>Vi</strong></dt>
+<dd>The best text editor. Anyone who tells you otherwise is uninformed.</dd>
+<dt><strong>Window</strong></dt>
+<dd>(Associate with pane) One or more panes displayed to a user by a software application.</dd>
 </dl>
 
 
