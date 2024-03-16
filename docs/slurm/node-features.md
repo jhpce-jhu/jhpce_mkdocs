@@ -26,9 +26,9 @@ If you believe that your code will gain a lot from being run on specific kinds o
 
 You can tell the scheduler that you prefer or require features using the `--prefer=string` or `--constraint=string` when using `srun` or `sbatch` or `salloc`
 
-Of course, saying that you prefer a feature means that your job might be sent to nodes which lack that feature. If your code requires a feature, then this will mean that your job has fewer nodes on which it might run.
+Of course, saying that you **prefer** a feature means that your job might be sent to nodes which lack that feature. If your code **requires** a feature, then this will mean that your job has fewer nodes on which it might run and might stay pending for longer.
 
-See the `--constraint` section of the [sbatch](https://slurm.schedmd.com/archive/slurm-22.05.9/sbatch.html) manual page for descriptions of using AND and OR operators to combine features. Sadly it does not seem possible to exclude features (so you could say I want any node except ones with these features (because they are too old for my code)).
+See the `--prefer` and `--constraint` sections of the [sbatch](https://slurm.schedmd.com/archive/slurm-22.05.9/sbatch.html) manual page for descriptions of using AND and OR operators to combine features. Sadly it does not seem possible to exclude features (so you could say I want any node except ones with these features (because they are too old for my code)).
 
 ## Viewing Features
 
