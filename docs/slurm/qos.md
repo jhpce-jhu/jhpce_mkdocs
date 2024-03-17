@@ -45,7 +45,7 @@ User accounts have two QOS-related attributes:
 See your own user database values:
 `sacctmgr show user withassoc where name=your-cluster-username`
 
-The SLURM FAQ includes [an entry](../slurm/slurm-faq/#job-violates-accountingqos-policy.md) about the error you receive if you ask for more RAM in a single job than is allowed. 
+The SLURM FAQ includes [an entry](../slurm/slurm-faq.md/#job-violates-accountingqos-policy) about the error you receive if you ask for more RAM in a single job than is allowed. 
 
 If you submit jobs which together ask for more memory than you are allowed to use at one time, then ones that "fit" inside the limit will run and the remaining jobs will be waiting in PENDING state. 
 

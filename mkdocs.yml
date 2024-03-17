@@ -45,7 +45,7 @@ nav:
       - ACL: files/acl.md
       - Copying within cluster: files/copying-files.md
       - Archive Files: files/archive-files.md
-      - Data Security: files/files-stub.md
+      - Data Security: files/data-security.md
     # should storage be a subsidiary of managing files?
     - Storage:
       - Storage Overview: storage/stg-overview.md
