@@ -1457,7 +1457,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../files/files-stub/" class="md-nav__link">
+      <a href="../../files/data-security/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2973,7 +2973,7 @@
 </ol>
 <p>See your own user database values:
 <code>sacctmgr show user withassoc where name=your-cluster-username</code></p>
-<p>The SLURM FAQ includes <a href="../slurm/slurm-faq/#job-violates-accountingqos-policy.md">an entry</a> about the error you receive if you ask for more RAM in a single job than is allowed. </p>
+<p>The SLURM FAQ includes <a href="../slurm-faq/#job-violates-accountingqos-policy">an entry</a> about the error you receive if you ask for more RAM in a single job than is allowed. </p>
 <p>If you submit jobs which together ask for more memory than you are allowed to use at one time, then ones that "fit" inside the limit will run and the remaining jobs will be waiting in PENDING state. </p>
 <p>The "Reason" code shown in the output of <code>squeue --me -t pd</code> ("show me my pending jobs") will be <code>QOSMaxMemoryPerUser</code>for jobs waiting for your running jobs to be using less than the RAM limit defined in the QOS that is impacting you.  The Reason will be <code>QOSMaxCpuPerUserLimit</code> for jobs waiting for your core usage to drop below that which is allowed.</p>
 <h2 id="how-we-are-using-qos-to-date">HOW WE ARE USING QOS TO DATE...<a class="headerlink" href="#how-we-are-using-qos-to-date" title="Anchor link to this section for reference">&para;</a></h2>
@@ -3025,7 +3025,7 @@ user’s <strong>default QOS</strong> entries in the database are "normal".</p>
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1-2.1-2M12.5 7v5.2l4 2.4-1 1L11 13V7h1.5M11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2v1.8Z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">March 13, 2024</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">March 17, 2024</span>
   </span>
 
     

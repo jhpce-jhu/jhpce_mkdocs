@@ -1451,13 +1451,22 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#overview" class="md-nav__link">
+  <a href="#notes-and-suggestions" class="md-nav__link">
     <span class="md-ellipsis">
-      Overview
+      Notes and suggestions
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Overview">
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#acls-in-zfs-file-systems" class="md-nav__link">
+    <span class="md-ellipsis">
+      ACLs in ZFS File Systems
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="ACLs in ZFS File Systems">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -1520,13 +1529,13 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#directories-in-lustre-file-systems" class="md-nav__link">
+  <a href="#acls-in-lustre-file-systems" class="md-nav__link">
     <span class="md-ellipsis">
-      Directories in Lustre file systems
+      ACLs in Lustre file systems
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Directories in Lustre file systems">
+    <nav class="md-nav" aria-label="ACLs in Lustre file systems">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -1628,7 +1637,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../files-stub/" class="md-nav__link">
+      <a href="../data-security/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2993,13 +3002,22 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#overview" class="md-nav__link">
+  <a href="#notes-and-suggestions" class="md-nav__link">
     <span class="md-ellipsis">
-      Overview
+      Notes and suggestions
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Overview">
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#acls-in-zfs-file-systems" class="md-nav__link">
+    <span class="md-ellipsis">
+      ACLs in ZFS File Systems
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="ACLs in ZFS File Systems">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -3062,13 +3080,13 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#directories-in-lustre-file-systems" class="md-nav__link">
+  <a href="#acls-in-lustre-file-systems" class="md-nav__link">
     <span class="md-ellipsis">
-      Directories in Lustre file systems
+      ACLs in Lustre file systems
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Directories in Lustre file systems">
+    <nav class="md-nav" aria-label="ACLs in Lustre file systems">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -3155,26 +3173,33 @@ this, Access Control Lists (ACLs) can be used. They add to the normal permission
 </div>
 <h3 id="caution">Caution<a class="headerlink" href="#caution" title="Anchor link to this section for reference">&para;</a></h3>
 <p>JHPCE uses two kinds of file systems on its large storage servers: ZFS and Lustre.</p>
-<p>You need to use a different pair of ACL commands for each type:
-1. ZFS: nfs4_getfacl and nfs4_setfacl
-2. Lustre: getfacl and setfacl</p>
-<p>Instructions for Lustre file systems is found <a href="./#directories-in-lustre-file-systems">later in this document</a>.</p>
+<p>You need to use a different pair of ACL commands for each type:</p>
+<ol>
+<li>ZFS: nfs4_getfacl and nfs4_setfacl</li>
+<li>Lustre: getfacl and setfacl</li>
+</ol>
+<p>Instructions for Lustre file systems are found <a href="./#directories-in-lustre-file-systems">later in this document</a>.</p>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
 <p>As of March 2024, the only Lustre file systems are those which begin with the path <code>/dcl02/</code></p>
 <p>As of March 2024, all of the files originally found on the Lustre file server named DCL01 have been copied off to live on other, ZFS-using file servers. But the name /dcl01 has been preserved, for convenience.</p>
-<h2 id="overview">Overview<a class="headerlink" href="#overview" title="Anchor link to this section for reference">&para;</a></h2>
+</div>
+<h2 id="notes-and-suggestions">Notes and suggestions<a class="headerlink" href="#notes-and-suggestions" title="Anchor link to this section for reference">&para;</a></h2>
 <p>Some common notes that are applicable to both types of ACL commands:</p>
 <ul>
 <li>ACLs can be used on both files and directories.</li>
-<li>User's <em>umask</em> settings impact the permissions assigned to files and directories being created.</li>
-<li>Use normal UNIX permissions where possible. ACLs can be complex to manage. Use ACLs to <em>extend</em> normal permissions.</li>
+<li>You can tell that a file or directory has an ACL defined by the presence of a <span class="keys"><kbd class="key-plus">+</kbd></span> symbol in the output of <code>ls -l</code></li>
+<li><strong>Use normal UNIX permissions where possible.</strong> ACLs can be complex to manage. Use ACLs to <em>extend</em> normal permissions.</li>
+<li>Check the values of files and directories before, during, and after changing their permissions or defining ACLs. Test what happens afterwards. Don't change many files at once until you are confident that your commands are correct. You can capture the original configuration using commands like <code>ls -lR directoryname &gt; saved-listing.txt</code> for normal UNIX permissions and <code>nfs4_getfacl --recursive directoryname &gt; saved-acls.txt</code></li>
 <li>ACLs should use the security notion of “least privilege”, meaning that ACLs should give only the needed access and nothing more.</li>
 <li>For users to be able to work with a file stored several layer deep in the directory structure, they must be able <em>to get to it</em>. <mark class="critic">That requires that they need sufficient permissions, via either normal UNIX permissions or ACLs (or both), to "read" and "execute" (aka "search") <strong>all of the directories above the final file or directory</strong></mark>. For example, if you are wanting to enable access to the directory <code>/dcs07/bob/data/project1/shared</code>, you would need to provide <code>READ-EXECUTE</code> access on <code>/dcs07/bob/data/project1</code>, <code>/dcs07/bob/data</code>, and <code>/dcs07/bob</code>. Using UNIX permissions where appropriate, and ACLs where necessary.</li>
-<li>"Default" ACLs can be set on a directory, and this ACL will be inherited into the directory structure as new files and directories are created.</li>
-<li>However, existing files and directories that exist beneath a directory that an ACL is being set on will not be affected by a new ACL. If you need to propagate an ACL into an exiting directory tree, you will need to use the <code>recursive</code> option to the ACL command.</li>
-<li>With default ACLs, the individual user’s <code>umask</code> setting is important in assuring that new files and directories that get created have the correct permissions set. The <code>umask</code> setting will take precedence over the ACL, so <em>it must be more permissive than the ACL</em>. For example, if you want to set a default group ACL where the group has write access, you need to make sure that your umask is set to <code>0002</code> rather than <code>0022</code>, as the “2” in the group umask bit will prevent the group write capability.</li>
+<li>Setting an ACL on a directory does not change existing files and directories inside it unless you use the <code>recursive</code> option to the ACL command.</li>
+<li>User's <em>umask</em> settings impact the permissions assigned to files and directories being created whether you are using traditional UNIX permissions or ACLs.</li>
+<li>"Default" ACLs can be set on a directory, and this ACL will be <em>inherited</em> into the directory structure as new files and subdirectories are created. You might need to create different "default" ACLs to control the creation of new files and others to control the creation of new subdirectories.</li>
+<li>With "default" or "inherited" ACLs, the individual user’s <code>umask</code> setting is important in assuring that future new files and directories being created have the correct permissions set. The <code>umask</code> setting will take precedence over the ACL, so <em>it must be more permissive than the ACL</em>. For example, if you want to set a default group ACL where the group has write access, you need to make sure that your umask is set to <code>0002</code> rather than <code>0022</code>, as the “2” in the group umask bit will prevent the group write capability.</li>
 <li>Like any operation, running ACL commands on large numbers of files should be run on a compute node and not a login node. Long-running recursive ACL commands on large directory trees may be done via interactive sessions or submitted batch job scripts.</li>
 </ul>
-<p>Example useage:</p>
+<p>Example usage:</p>
 <div class="highlight"><pre><span></span><code>[alice@compute-123 ~]$ mkdir test1
 [alice@compute-123 ~]$ umask
 0022
@@ -3197,6 +3222,7 @@ A::GROUP@:rwatcy
 A:g:hpscc@cm.cluster:rwatcy
 A::EVERYONE@:rtcy
 </code></pre></div>
+<h2 id="acls-in-zfs-file-systems">ACLs in ZFS File Systems<a class="headerlink" href="#acls-in-zfs-file-systems" title="Anchor link to this section for reference">&para;</a></h2>
 <h3 id="basic-commands">Basic commands<a class="headerlink" href="#basic-commands" title="Anchor link to this section for reference">&para;</a></h3>
 <ul>
 <li>There are 2 commands for dealing with ACLs on <code>/users</code>, <code>/dcs04</code>, <code>/dcs05</code>, <code>/dcs06</code>, and <code>/dcs07</code>. </li>
@@ -3341,9 +3367,12 @@ setfacl --restore - destination_dir
 <p>You can copy the ACLs on a directory with rsync. You <strong>have to</strong> put trailing slashes on BOTH the source and destination.</p>
 <p><code>rsync -A public-exam1/ /dcs05/somegroup/data/otherdir/</code></p>
 <p>While -Ar preserves ACLs, it doesn't preserves ownerships and permissions. Use -Arogp (o=owner, g=group, p=permissions) or shorter and more common -Ara (a=archive) for a better copy of your directory.</p>
-<h2 id="directories-in-lustre-file-systems">Directories in Lustre file systems<a class="headerlink" href="#directories-in-lustre-file-systems" title="Anchor link to this section for reference">&para;</a></h2>
+<p>This <a href="https://portal.perforce.com/s/article/12405">page</a> has example scripts for saving and restoring ACLs on many files at once.</p>
+<p>This <a href="https://stackoverflow.com/questions/3450250/is-it-possible-to-create-a-script-to-save-and-restore-permissions">page</a> has different advice for the same goal.</p>
+<h2 id="acls-in-lustre-file-systems">ACLs in Lustre file systems<a class="headerlink" href="#acls-in-lustre-file-systems" title="Anchor link to this section for reference">&para;</a></h2>
 <p>There are two commands for dealing with ACLs on the JHPCE cluster for
-directories in Lustre file systems, which start with <code>/dcl02</code>.  The <code>getfacl</code> command will display
+directories in Lustre file systems, which start with <code>/dcl02</code>.</p>
+<p>The <code>getfacl</code> command will display
 current ACL setting for a file or directory, and the <code>setfacl</code> command
 is used to modify ACLs.  With ACLs you can grant either read-only
 access, or read-write access on a directory or file to specific users.</p>
@@ -3459,7 +3488,7 @@ other::r-x
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1-2.1-2M12.5 7v5.2l4 2.4-1 1L11 13V7h1.5M11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2v1.8Z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">March 15, 2024</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">March 17, 2024</span>
   </span>
 
     
