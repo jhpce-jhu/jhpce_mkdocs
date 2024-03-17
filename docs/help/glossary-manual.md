@@ -1,8 +1,3 @@
----
-tags:
-  - contains-snark
----
-
 # Glossary
 
 Terms you might wonder about. If you don't find what you're looking for, please use Google. Italicized terms indicate that there is a glossary entry for that item.
