@@ -20,6 +20,8 @@ as their guidance is fulfilled by your modifying the document.
 Instead of placing versions of the same information in multiple places, put one authoritative version in the right document and then refer to it in other documents where needed. Example: In the FAQ, the answer to a question/issue may be a simple "See this document"
 ### ***Refer to specific locations within documents***
 Jeffrey enabled "permalink" so each section of each document can have its own URL.
+### ***Images live near their documents***
+Each topic subdirectory under docs/ has an images/ directory to hold images for documents in that directory. This aids in web site maintenance, as it is more clear over time which of many dozen image files on the web site is used where.
 
 
 ## **Tips**

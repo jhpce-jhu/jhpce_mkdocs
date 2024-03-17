@@ -12,7 +12,7 @@ Our [web portal](https://jhpce-app02.jhsph.edu/) has several sections. ==You wil
 
 ---
 
-[![cluster logo](/images/web_portal.png)](https://jhpce-app02.jhsph.edu){ align=center }
+[![cluster logo](../portal/images/web_portal.png)](https://jhpce-app02.jhsph.edu){ align=center }
 
 <div class="grid cards" markdown>
   
@@ -20,7 +20,7 @@ Our [web portal](https://jhpce-app02.jhsph.edu/) has several sections. ==You wil
 
     ---
   
-    ![cluster logo](/images/jhpce_jupyter.png)
+    ![cluster logo](../portal/images/jhpce_jupyter.png)
 
     ---
 
@@ -30,7 +30,7 @@ Our [web portal](https://jhpce-app02.jhsph.edu/) has several sections. ==You wil
 
     ---
 
-    ![cluster logo](/images/jhpce_R_studio.png){ align=center }
+    ![cluster logo](../portal/images/jhpce_R_studio.png){ align=center }
     
     ---
 
@@ -40,7 +40,7 @@ Our [web portal](https://jhpce-app02.jhsph.edu/) has several sections. ==You wil
 
     ---
 
-    [![cluster logo](/images/jhpce_Visual_studio.png)](https://jhpce-app02.jhsph.edu/vstudio-instructions){ align=center }
+    [![cluster logo](../portal/images/jhpce_Visual_studio.png)](https://jhpce-app02.jhsph.edu/vstudio-instructions){ align=center }
     
     ---
 
