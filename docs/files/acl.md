@@ -17,31 +17,35 @@ this, Access Control Lists (ACLs) can be used. They add to the normal permission
 JHPCE uses two kinds of file systems on its large storage servers: ZFS and Lustre.
 
 You need to use a different pair of ACL commands for each type:
+
 1. ZFS: nfs4_getfacl and nfs4_setfacl
 2. Lustre: getfacl and setfacl
 
-Instructions for Lustre file systems is found [later in this document](../files/acl.md#directories-in-lustre-file-systems).
+Instructions for Lustre file systems are found [later in this document](../files/acl.md#directories-in-lustre-file-systems).
 
-As of March 2024, the only Lustre file systems are those which begin with the path `/dcl02/`
+!!! Tip
+    As of March 2024, the only Lustre file systems are those which begin with the path `/dcl02/`
 
-As of March 2024, all of the files originally found on the Lustre file server named DCL01 have been copied off to live on other, ZFS-using file servers. But the name /dcl01 has been preserved, for convenience.
+    As of March 2024, all of the files originally found on the Lustre file server named DCL01 have been copied off to live on other, ZFS-using file servers. But the name /dcl01 has been preserved, for convenience.
 
-## Overview
+## Notes and suggestions
 
 Some common notes that are applicable to both types of ACL commands:
 
 + ACLs can be used on both files and directories.
-+ User's *umask* settings impact the permissions assigned to files and directories being created.
-+ Use normal UNIX permissions where possible. ACLs can be complex to manage. Use ACLs to *extend* normal permissions.
++ You can tell that a file or directory has an ACL defined by the presence of a ++plus++ symbol in the output of `ls -l`
++ **Use normal UNIX permissions where possible.** ACLs can be complex to manage. Use ACLs to *extend* normal permissions.
++ Check the values of files and directories before, during, and after changing their permissions or defining ACLs. Test what happens afterwards. Don't change many files at once until you are confident that your commands are correct. You can capture the original configuration using commands like `ls -lR directoryname > saved-listing.txt` for normal UNIX permissions and `nfs4_getfacl --recursive directoryname > saved-acls.txt`
 + ACLs should use the security notion of “least privilege”, meaning that ACLs should give only the needed access and nothing more.
 +  For users to be able to work with a file stored several layer deep in the directory structure, they must be able _to get to it_. {==That requires that they need sufficient permissions, via either normal UNIX permissions or ACLs (or both), to "read" and "execute" (aka "search") **all of the directories above the final file or directory**==}. For example, if you are wanting to enable access to the directory `/dcs07/bob/data/project1/shared`, you would need to provide `READ-EXECUTE` access on `/dcs07/bob/data/project1`, `/dcs07/bob/data`, and `/dcs07/bob`. Using UNIX permissions where appropriate, and ACLs where necessary.
-+ "Default" ACLs can be set on a directory, and this ACL will be inherited into the directory structure as new files and directories are created.
-+ However, existing files and directories that exist beneath a directory that an ACL is being set on will not be affected by a new ACL. If you need to propagate an ACL into an exiting directory tree, you will need to use the `recursive` option to the ACL command.
-+ With default ACLs, the individual user’s `umask` setting is important in assuring that new files and directories that get created have the correct permissions set. The `umask` setting will take precedence over the ACL, so *it must be more permissive than the ACL*. For example, if you want to set a default group ACL where the group has write access, you need to make sure that your umask is set to `0002` rather than `0022`, as the “2” in the group umask bit will prevent the group write capability.
++ Setting an ACL on a directory does not change existing files and directories inside it unless you use the `recursive` option to the ACL command.
++ User's *umask* settings impact the permissions assigned to files and directories being created whether you are using traditional UNIX permissions or ACLs.
++ "Default" ACLs can be set on a directory, and this ACL will be _inherited_ into the directory structure as new files and subdirectories are created. You might need to create different "default" ACLs to control the creation of new files and others to control the creation of new subdirectories.
++ With "default" or "inherited" ACLs, the individual user’s `umask` setting is important in assuring that future new files and directories being created have the correct permissions set. The `umask` setting will take precedence over the ACL, so *it must be more permissive than the ACL*. For example, if you want to set a default group ACL where the group has write access, you need to make sure that your umask is set to `0002` rather than `0022`, as the “2” in the group umask bit will prevent the group write capability.
 + Like any operation, running ACL commands on large numbers of files should be run on a compute node and not a login node. Long-running recursive ACL commands on large directory trees may be done via interactive sessions or submitted batch job scripts.
 
 
-Example useage:
+Example usage:
 
 ```
 [alice@compute-123 ~]$ mkdir test1
@@ -66,6 +70,8 @@ A::GROUP@:rwatcy
 A:g:hpscc@cm.cluster:rwatcy
 A::EVERYONE@:rtcy
 ```
+
+## ACLs in ZFS File Systems
 
 ### Basic commands
 + There are 2 commands for dealing with ACLs on `/users`, `/dcs04`, `/dcs05`, `/dcs06`, and `/dcs07`. 
@@ -231,10 +237,16 @@ You can copy the ACLs on a directory with rsync. You **have to** put trailing sl
 
 While -Ar preserves ACLs, it doesn't preserves ownerships and permissions. Use -Arogp (o=owner, g=group, p=permissions) or shorter and more common -Ara (a=archive) for a better copy of your directory.
 
-## Directories in Lustre file systems 
+This [page](https://portal.perforce.com/s/article/12405) has example scripts for saving and restoring ACLs on many files at once.
+
+This [page](https://stackoverflow.com/questions/3450250/is-it-possible-to-create-a-script-to-save-and-restore-permissions) has different advice for the same goal.
+
+## ACLs in Lustre file systems 
 
 There are two commands for dealing with ACLs on the JHPCE cluster for
-directories in Lustre file systems, which start with `/dcl02`.  The `getfacl` command will display
+directories in Lustre file systems, which start with `/dcl02`.
+
+The `getfacl` command will display
 current ACL setting for a file or directory, and the `setfacl` command
 is used to modify ACLs.  With ACLs you can grant either read-only
 access, or read-write access on a directory or file to specific users.

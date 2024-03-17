@@ -2,36 +2,40 @@
 tags:
   - topic-overview
   - needs-major-revision
-  - refers-to-old-website
 title: File Transfer - Overview
 ---
 
 !!! Warning "Authoring Note"
-    This document was copied over from the old web site with few changes. Its information needs to be reviewed, links made to the globus and rclone documents and any others that are created as a result of creating an OVERVIEW document _here_ with details in subordinate documents.
-    Also, it would be nice to mention early on in this OVERVIEW that we have another document about [copying data WITHIN](../files/copying-files.md) the cluster.
-
+    This document was copied over from the old web site and is being slowly updated.
 
 # File Transfer - Overview
 
+For transferring files to and from the cluster, you should use
+`jhpce-transfer01.jhsph.edu` rather than a login node.
+This is both significantly faster, as the transfer node has a 40G Ethernet connection to the outside world while the login nodes have 10G connections. In any case, EVERYONE depends on the login nodes, and you should not run ANYTHING on them that occupies them.
+
 A number of options exist for transfering files to-and-fro between
-JHPCE and your local host. Which solution you chose, depends on your
+JHPCE and your local host. Which solution you chose depends on your
 use case.
 
-If you are wanting to transfer files between JHPCE file systems, then you need to use different tools than are discussed here. [Here](../slurm/crafting-jobs.md/#copying-data-within-cluster) is a sample batch job that you can use as a model to do such a transfer on a compute node using good rsync arguments.
+We have a document about [using rsync](../files/copying-files.md) to copy files. This tool is especially useful when copying files around inside the cluster, between JHPCE file systems, but can also be used for moving files into or out of the cluster.
+
+[Here](../slurm/crafting-jobs.md/#copying-data-within-cluster) is a sample SLURM batch job that you can use as a model to do an internal transfer on a compute node using good rsync arguments. You can adapt it to run on the `transfer` partition to perform transfers into or out of the cluster. You can also change it to use some other transfer programs. Usually such batch jobs require care when providing authentication information.
+
+## Common Tools
+
+Many of these transfer protocols have both command-line and graphic user interface programs available.
 
 + scp or sftp — file transfer via command line
++ [rsync](../files/copying-files.md) - a **very** useful uni-directional mirroring utility program
 + GUI for sftp — file transfer by drag and drop from your desktop
 + GlobusOnline — fast file transfers between GlobusOnline endpoints
 + Aspera  —  very fast file transfer to and from Aspera servers
 + OneDrive access with rclone  —  Use “rclone” to access your OneDrive directory (as well as other network drives (AWS buckets, Google Drive…)
-+ Unison — keep directories synced between the cluster and your local computer
++ Unison — keep directories synced (can be configured to be bi-directional)
 + Mount remote filesystems — directories at JHPCE mounted on your local host. **IS THIS MATERIAL STILL ACCURATE IN 2024?** Is this [example SSHFS doc](https://hpc-docs.cubi.bihealth.org/connecting/configure-ssh/linux/#file-system-mount-via-sshfs) worth re-using?
 + ftp (kind of…)
 
-For transferring files to the cluster, you should use
-`jhpce-transfer01.jhsph.edu` rather than a login node when
-connecting. This is both significantly faster and more considerate to
-other users.
 
 ## `scp` and `sftp`
 The `scp` and `sftp` command-line tools are the most common tools used for
@@ -102,7 +106,7 @@ with them.
 
 ### Rclone
 [Rclone](https://en.wikipedia.org/wiki/Rclone) can be used to access network file resources, such as OneDrive,
-Google Drive, and AWS. See [here](onedrive.md) for instructions on using it to connect to Hopkins OneDrive storage.
+Google Drive, and AWS. See [here](../access/onedrive.md) for instructions on using it to connect to Hopkins OneDrive storage.
 
 ### Aspera
 !!! Warning
@@ -132,26 +136,31 @@ This will install the `ascp` command under your home directory at  `~/.aspera/co
 
 
 ### Unison
-!!! Warning
-    This might be obsolete information as of 20240220 -- the unison package is no longer visible at the path mentioned in Fiksel's documentation.
     
-Using [Unison](https://en.wikipedia.org/wiki/Unison_(software)), you can keep data synchronized between a directory on
-the cluster and a directory on your local system.  Please see this
-excellent document written by Jacob Fiksel, one of our expert JHPCE
-cluster users:
-[https://github.com/jfiksel/cluster-example#how-to-use-unison-for-file-transfer-and-syncing]
-(https://github.com/jfiksel/cluster-example#how-to-use-unison-for-file-transfer-and-syncing)
+Using [Unison](https://en.wikipedia.org/wiki/Unison_(software)), you can keep data synchronized between directories, including ones on a single computer or between the cluster and on your local system. Both CLI and GUI versions are available. Unison needs to be installed on both computers if used across a network.
+
+Unison is a synchronization tool. It can be told to update files in both SOURCE and DESTINATION locations according to some rules.
+
+Unison home page is [here](https://github.com/bcpierce00/unison?tab=readme-ov-file#readme) with a [wiki](https://github.com/bcpierce00/unison/wiki) that provides access to documentation and some binaries.
+
+An extensive [tutorial](https://ostechnix.com/how-to-synchronize-files-with-unison-on-linux/) at ostechnix.
+
+A [wiki](https://wiki.archlinux.org/title/unison) about using it from ArchLinux.
 
 ### Globus
 We have a Globus endpoint. Please see [this document](globus.md).
 
 
 ## Mounting virtual file systems
+
+!!! Obsolete
+    This might be obsolete information as of 20240220 - OSXFUSE is now named macFUSE and is [hosted](https://osxfuse.github.io) at a different location than what is described below.
+
 A common use case occurs when a user has a pipeline that is
 periodicially emiting tab delimited files and the user wants to plot
 these files with a favorite plotting or analysis application that runs
 on their local host. In this case it is common to mount the remote
-file system on the local host via NSF or SMB.
+file system on the local host via NFS or SMB.
 
 Unfortunately, given the size and hetergeneity of our user base (which
 spans the entire medical campus), this is not practical. Instead, we
@@ -163,8 +172,6 @@ on your local host can access the data in that mount point. From the
 user perspective, it acts just like an SMB or NSF mount point. Data is
 transferred back and forth via an encrypted link.
 
-!!! Obsolete
-    This might be obsolete information as of 20240220 - OSXFUSE is now named macFUSE and is [hosted](https://osxfuse.github.io) at a different location than what is described below.
 
 MacFusion requires the installation of an OSX kernel extenstion and
 some associated tools. OSXFuse provides the needed extension. OSXFuse
@@ -205,7 +212,3 @@ wget ftp://USER:PASSWORD@ftp.site.gov/path/to/file
 ```
 
 All of these should be done from the `transfer` queue to make use of our high speed ScienceDMZ network connection.
-
-## Links
-- [Setting up MobaXterm for File Transfers with the JHPCE Cluster](https://jhpce.jhu.edu/knowledge-base/setting-up-mobaxterm-for-file-transfers-with-the-jhpce-cluster/)
-- [Using rclone to Access OneDrive](https://jhpce.jhu.edu/knowledge-base/using-rclone-to-access-onedrive/)

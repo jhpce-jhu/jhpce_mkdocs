@@ -8,7 +8,7 @@ title: "Access Overview"
 # Accessing the Cluster: Overview
 
 ## Cluster structure overview
-The cluster consists of some public-facing hosts with the remaining computers "behind them" on private networks. An incomplete approximation:
+The cluster consists of some public-facing hosts with the remaining computers "behind them" on private networks. An incomplete and very oversimplified approximation:
 
 ```mermaid
 graph TD
