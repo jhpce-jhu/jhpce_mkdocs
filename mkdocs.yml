@@ -56,7 +56,7 @@ nav:
       - Copying within cluster: files/copying-files.md
       - Backups & Restores: storage/backups-restores.md
     - Software:
-      - Overview (Outline): sw/sw-overview.md
+      - Overview: sw/sw-overview.md
       - Local Software:
         - Matlab: sw/matlab.md
         - Python: sw/python.md
