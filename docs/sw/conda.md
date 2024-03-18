@@ -1,13 +1,26 @@
----
-tags:
-  - needs-to-be-written
-  - jiong
----
+## Installing conda packages
 
-#stub page for the "Software" topic
+### Install a conda package
+- load conda module
+```
+module load conda
+```
+or  
+```
+module load anaconda
+```
 
-This is a stub page for the "Software" topic.
+- install a package
+```
+conda install package-name
+```
 
-
-Create a new file with the right contents for the topic header in the nav bar.
-Then point that header to the new document instead of "sw/sw-stub.md"
+!!! Note "Notes:"  
+    To install a specific version:  
+    ```
+    conda install package-name=2.3.4
+    ```  
+    To specify only a major version
+    ```
+    conda install package-name=2
+    ```
