@@ -26,7 +26,7 @@ Note that tablesort provides alternative comparison implementations like numbers
 
 ## Announcement bar in header
 For things like planned outages.
-See Github issue 777.
+Update `/overrides/main.html` file and replace the message with any costom one. Site needs to be rebuild afterwards for the announcement to propagate to live.
 
 ## Open URLs in new tabs
 (Adi has enabled)
