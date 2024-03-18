@@ -13,9 +13,16 @@ Maybe this is possible. Would be nice to be able to use more words-per-column wi
 So references to other documents could be made to a single absolute path.
 Right now you have to use relative paths, which is just prone to more errors. 
 
+20240317 - JRT noticed that Adi's use of absolute paths for web portal images were rendered on the web site but not when viewed through a "mkdocs serve" session. He changed those links to be relative.
+
 ## Sortable tables
-(Adi has enabled)
+(Adi has enabled) (but there are other options we might want to enable)
+
 They are possible. Might require an extension or plugin.
+
+This might have been enabled by adding [this](https://squidfunk.github.io/mkdocs-material/reference/data-tables/#sortable-tables-mkdocsyml) to mkdocs.yml
+
+Note that tablesort provides alternative comparison implementations like numbers, filesizes, dates and month names. See the [tablesort documentation](http://tristen.ca/tablesort/demo/) for more information.
 
 ## Announcement bar in header
 For things like planned outages.
