@@ -50,8 +50,7 @@ able to keep our costs low.
 
 ## How to register
 If you are a Principal Investigator registering a new project or
-organization, please fill out [this
-orm](new-pi-form.md). If you have never
+organization, please fill out [this Form](new-pi-form.md). If you have never
 registered a project and budget number with the JHPCE, we request that
 you contact the director of the JHPCE to arrange a 1/2 hour
 orientation (either in person or via telephone).
