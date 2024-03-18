@@ -1,4 +1,4 @@
-## Create a environment
+## Create an environment
 - load conda module
 ```
 module load conda
