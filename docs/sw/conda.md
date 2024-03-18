@@ -1,6 +1,4 @@
-## Installing conda packages
-
-### Install a conda package
+## Create a environment
 - load conda module
 ```
 module load conda
@@ -10,8 +8,23 @@ or
 module load anaconda
 ```
 
-- install a package
+- create a new environment
 ```
+conda create -n <evn-name>
+```
+
+## list environments
+- lista all your conda environment
+```
+conda info --envs
+```
+
+!!! Tip "Tip"
+    The active environment is the one with an asterisk (*)
+
+## Install a conda package in the new created environment
+```
+conda activate env-name
 conda install package-name
 ```
 
@@ -24,3 +37,10 @@ conda install package-name
     ```
     conda install package-name=2
     ```
+ 
+## specifying channels to use
+- Channels are locations where packages are stored. By default, conda searchs for packages in its default channels. You can specify a channel when installing the package (e.g. conda-forge channel)
+```
+conda install conda-forge::numpy
+```
+
