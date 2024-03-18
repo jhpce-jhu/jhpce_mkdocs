@@ -1,6 +1,5 @@
 ## Installing R packages
 
-### Install a package from CRAN
 - load R module from a compute node
 ```
 [test@compute-107 ~]$ module load R
