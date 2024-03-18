@@ -83,3 +83,27 @@ Submitted batch job 3177833
 ```
 [test@login31 ~]$ xpdf plot1-R-results.pdf
 ```
+### - Running RStudio
+```
+[test@login31 ~]$ srun --mem 10G --x11 --pty bash
+srun: job 3244190 queued and waiting for resources
+srun: job 3244190 has been allocated resources
+[test@compute-097 ~]$ module load R
+Loading R/4.3
+(4.3)[test@compute-097 ~]$ module load rstudio
+(4.3)[test@compute-097 ~]$ rstudio
+```
+
+!!! Note "Note"
+    X Windows Setup  
+    - For Windows, MobaXterm has an X server built into it  
+    - For Mac, you need to have the XQuartz program installed (which requires a reboot), and you need to add the "-X" option to ssh:  
+    ```
+    ssh -X yourusername@jhpce03.jhsph.edu
+    ```
+
+### - Running RStudio via web
+You can run RStudio via [JHPCE Application Portal](https://jhpce-app02.jhsph.edu/) by login with your JHED ID and password.
+
+!!! Note "Note"
+    This web site is only available on campus, so if you are outside of the school network, you will need login to the JHU VPN first.
