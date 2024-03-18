@@ -1,5 +1,3 @@
-## Software on JHPCE
-
 ### Introduction
 
 The Joint High Performance Computing Exchange (JHPCE) offers a variety of software for use on the cluster. They are installed and running on Rocky Linux 9.2. We use [Lmod module system](modules.md) to manage the installed software. You can run `module aval` at the cluster prompt for the available software.
