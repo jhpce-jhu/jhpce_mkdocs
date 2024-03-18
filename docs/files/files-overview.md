@@ -1,18 +1,22 @@
 ---
 tags:
   - topic-overview
-  - needs-to-be-written
+  - in-progress
   - jeffrey
 ---
 
 # MANAGING FILES
 
-We have previously addressed these issues as if they were independent. I believe it would help users increase their efficiency if they were seen as a set of related issues under this topic: managing files.
+We spend a lot of our time manipulating files.  This document attempts to provide an overview of, and pointers to, useful knowledge.
 
 ## Overview
+
 General info about where files of different types live (should live). Pointers to existing info over in the Storage topic. Reminder about what is backed up and what is not.
 
 ## Sharing files with other users
+
+Collaborating with others is a daily activity on the cluster. There are better -- and worse -- ways to do that.
+
 ### Normal UNIX file ownership and permissions
 Brief overview of how things work and how to inspect.
 
@@ -29,19 +33,35 @@ What are the default settings and why are they important?
 What are common variations?
 
 ### Using ACL's to allow increased access
-Existing document goes here, although that needs revision. Among other things, to be more clear about how commands to provide inherited are needed in addition to the initial commands providing the desired access.
+Traditional Unix file ownership and permissions can be used to share access to files and directories. However, there can be times when more fine-grained control of access is needed. To accomplish this, Access Control Lists (ACLs) can be used. They add to or extend the normal permissions.
+
+We have a good document about how to use ACLs [here](../files/acl.md).
 
 ## Transferring files into and out of the cluster
-Our existing information gets folded in here.
+
+A variety of tools exist for this task. We have documented many of them in [this document](../files/copying-files.md).
+
+Before moving large amounts of data in or out, you may want to consolidate it into fewer files using archive tools. We have documented some of the relevant considerations in [this document](../files/archive-files.md).
+
+For transferring files to and from the cluster, you should use
+`jhpce-transfer01.jhsph.edu` rather than a login node.
+This is both significantly faster, as the transfer node has a 40G Ethernet connection to the outside world while the login nodes have 10G connections. In any case, EVERYONE depends on the login nodes, and you should not run ANYTHING on them that occupies them.
 
 ## Accessing data from compute nodes
-Should you stage your data to fastscratch?
 
-Should you stage the data locally? Space considerations. (DO NOT FILL UP /TMP). Mention [sbcast](https://slurm.schedmd.com/sbcast.html)?
+Consider your input/output needs for computations. Which storage location and type provides the best combination of speed, capacity and proximity to CPUs?
 
-There's probably other things we could usefully say about this subject.
+There may well be different answers for different kinds of files used during your work.
+
+Should you stage your data to the [fastscratch](../storage/fastscratch.md) file system?
+
+Should you stage the data locally to the compute nodes or access it over the network? Compute nodes only have local storage in their /tmp file systems. Everyone else using a node needs to share that space. The operating system of the node itself needs there to be some free space in /tmp.
+
+There is a SLURM command which can copy data to assigned nodes. See the [sbcast](https://slurm.schedmd.com/sbcast.html) manual page.
+
 
 ## Copying Data Around **Within** Cluster
+
 Alternatives to copying (sharing via ACL, using symbolic links).
 
 Do it on compute nodes.
@@ -51,13 +71,23 @@ Example batch jobs for doing so.
 Rsync argument recommendations.
 
 ## Best Practices
-Should users bother with compressing? No, because of underlying ZFS compression.
 
-But archiving files can be a good idea. Speeds up directory access (less metadata in directories). Simplifies transferring. Mention checksumming with md5sum.
+Think before hitting ++return++. Think again. There are few substitutes.
 
-Check beforehand that there will be sufficient space in destination before trying to import data or copy it around.
+Check beforehand that there will be sufficient space in destination before trying to import or create data or copy it around.
 
-Suggestions about backing up your critical files, such as using versioning systems.
+We protect home directories and project space with redundant arrays of disks. Some of our file systems are backed up daily to other locations. But ultimately **you** need to ensure that you have backups elsewhere of precious files. Consider creating a GitHub repo to hold programming code -- it represents a lot of effort.
+
+Don't bother compressing files in most cases because we have enabled compression on our ZFS file systems. 
+
+Archiving old or infrequently-used files can be a good idea. It speeds up directory access (less metadata in directories). It simplifies transferring bulk data and checking on the success or failure.
+
+## Backups and Restores
+
+Home directories are backed up once a day. Users can access the last fourteen days of data themselves. Primary Investigators can request that we back up project spaces. Only a few have done so.
+
+Further information about this topic can be found in [this document](../storage/backups-restores.md)
 
 ## Data Protection Policies
-What do users need to know about cluster and university policies to protect certain classes of information? Within their own files and with respect to files copied out of databases like marketscan.
+
+We will be publishing information  about cluster and university policies for the protection of certain classes of information in [this document](../files/data-security.md). 

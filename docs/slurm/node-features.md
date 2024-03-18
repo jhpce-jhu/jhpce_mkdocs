@@ -12,23 +12,33 @@ JHPCE has a wide variety of compute nodes. Some have GPU processors, some have l
 
 SLURM allows for the assignment of keywords to nodes so that users can guide their jobs to appropriate machines. This is, of course, in addition to the other methods of indicating resource needs, such as desired partition(s), amount of memory, and the need for a GPU.
 
+If you believe that your code will gain a lot from being run on specific kinds of CPUs, you can compile it with optimization flags to perform well on them. Of course, you have then created binaries which might fail to run altogether on older nodes. Please name your binaries in a way which makes their special status apparent to you down the road, in case you forget. That might be a challenging puzzle to figure out.
+
+One could, at run-time, write batch job scripts which check the features of the node they were assigned, and choose to execute code highly-optimized for that node's CPU.
+
+## Current tag categories
 Currently we have defined features for:
 
-- CPU manufacturer
-- CPU line (e.g. Opteron)
+- CPU manufacturer (intel,amd)
+- CPU line (e.g. Opteron)[^1]
 - CPU *cpu-type* architecture as used by the gcc compiler (see [below](../slurm/node-features.md/#cpu-types))
 - presence of a GPU
 - GPU model
+- GPU with memory amount
+- RAM amount in 250Gb increments at 500 and above[^1]
 
-If you believe that your code will gain a lot from being run on specific kinds of CPUs, you can compile it with optimization flags to perform well on them. Of course, you have then created binaries which might fail to run altogether on older nodes. Please name your binaries in a way which makes their special status apparent to you down the road, in case you forget. Asking us to diagnose why your jobs failed when you ran them on the "wrong" nodes is not a productive use of our time.
+[^1]: It's not clear that these tags add much value. The RAM tags were thought to perhaps aid someone trying to increase memory locality. SLURM's scheduler, will, of course, allocate nodes with enough free memory to meet the jobs requirements.
 
-## SLURM Job Options Which Use Features
+## Using Features with SLURM Jobs
 
-You can tell the scheduler that you prefer or require features using the `--prefer=string` or `--constraint=string` when using `srun` or `sbatch` or `salloc`
+You can tell the scheduler that you **prefer** or **require** features using the `--prefer=string` or `--constraint=string` when using `srun` or `sbatch` or `salloc`
 
 Of course, saying that you **prefer** a feature means that your job might be sent to nodes which lack that feature. If your code **requires** a feature, then this will mean that your job has fewer nodes on which it might run and might stay pending for longer.
 
-See the `--prefer` and `--constraint` sections of the [sbatch](https://slurm.schedmd.com/archive/slurm-22.05.9/sbatch.html) manual page for descriptions of using AND and OR operators to combine features. Sadly it does not seem possible to exclude features (so you could say I want any node except ones with these features (because they are too old for my code)).
+See the `--prefer` and `--constraint` sections of the [sbatch](https://slurm.schedmd.com/archive/slurm-22.05.9/sbatch.html) manual page for descriptions of using AND and OR operators to combine features. Sadly it does not seem possible to simply exclude features (so you could say I want any node except ones with these features (because they are too old for my code)).
+
+!!! Tip
+    When specifying multiple features, you may need to enclose them in double quotes. The symbols used for AND, OR and number of matches are all ones which the bash shell will mis-interpret.
 
 ## Viewing Features
 
@@ -93,8 +103,8 @@ In January 2024, the cluster compute nodes consisted of approximately
 
 The bdver and znver types represent AMD CPUs.
 
-bdver1 does not support these gcc flags:
-  -mbmi
+Perhaps the largest delta in compiler flags is between bdver1 and the rest. bdver1 does not support these gcc flags:
+  **-mbmi
   -mf16c
   -mfma
-  -mdirect-extern-access
+  -mdirect-extern-access**
