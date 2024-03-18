@@ -1,29 +1,71 @@
-!!! Note "Authoring Note"
-    Our younger users haven't necessarily ever built anything from source. Or on machines owned by someone else where you cannot use sudo dnf install blah. We can encourage them that it is possible, give them a few pointers to doing it successfully.
+## Compiling and installing software with no root privilege
 
-For example, telling them that they will have to modify the destination location from the typical /usr/local/bin and that you can usually do that easily in the config stage with `--config=`
+You are allowed to download and install small software packages in your own home directory. In this page, we go through an example of installing a piece of free software that converts between different units of measurements, to show you the general steps needed to install a software from source.
 
-Please do it on a compute node in an interactive shell.
+!!! Warning "Warning"
+    **Please do the software installation from a compute node**
 
-If we don't write something, then we can provide pointers to the work of others. If so, that would probably be inside a larger document.
+### Step 1: Download source code
+```
+[test@compute-110 ~]$ mkdir download
+[test@compute-110 ~]$ cd download/
+[test@compute-110 download]$ wget http://ftp.gnu.org/gnu/units/units-2.23.tar.gz
+--2024-03-18 11:57:38--  http://ftp.gnu.org/gnu/units/units-2.23.tar.gz
+Resolving ftp.gnu.org (ftp.gnu.org)... 209.51.188.20, 2001:470:142:3::b
+Connecting to ftp.gnu.org (ftp.gnu.org)|209.51.188.20|:80... connected.
+HTTP request sent, awaiting response... 200 OK
+Length: 1423494 (1.4M) [application/x-gzip]
+Saving to: ‘units-2.23.tar.gz’
 
-[Software installation with Conda](https://hpc-docs.cubi.bihealth.org/best-practice/software-installation-with-conda/)
+units-2.23.tar.gz                                 100%[==========================================================================================================>]   1.36M  --.-KB/s    in 0.1s    
 
-[Example building from source page](https://hpc-docs.cubi.bihealth.org/how-to/software/scientific-software/)
+2024-03-18 11:57:39 (12.7 MB/s) - ‘units-2.23.tar.gz’ saved [1423494/1423494]
+```
 
-# **Please visit the links below, poke around to nearby topics on those site pages. If you were a new JHPCE user and new to UNIX and HPC, what would you like to see, using these examples?
-**
+### Step 2: Extract the source code
+```
+[test@compute-110 download]$ ls -l
+-rw-r--r-- 1 test test 1423494 Feb 18 22:45 units-2.23.tar.gz
 
-Maybe the info JRT has collected below about toolchains, maybe these particular URL compared to others on those sites, should be inserted into a github issue and considered later. JRT wonders if we should begin to adopt the practice of being more specific about creating and using toolchains.
+[test@compute-110 download]$ tar -zxvf units-2.23.tar.gz 
+units-2.23/
+units-2.23/definitions.units
+units-2.23/units.txt
+...
+```
 
-Note that these clusters provide modules with toolchain information. AFAIK we've never named our modules with toolchain information (with which compiler they were built). Does ARCH? A lot of this seems to be Intel vs gcc. But wouldn't it help us keep our modules updated if we embedded the compiler generation they were built with into their name?
+### Step 3: Configure the software
+```
+[test@compute-110 download]$ cd units-2.23/
+[test@compute-110 units-2.23]$ ./configure --prefix=$HOME/mysoftware/units-2.23
+```
+!!! Note "Note"  
+    The first thing to do is carefully read the `README` and `INSTALL` text files (use the `less` command). These contain important information on how to compile and the run the software.  
+    Since you do not have root privilege to install the software on system area, you will need to specify the installation directory using `--prefix=/path/to/your/softwre`.  
+ 
+### Step 4: Build and install
+```
+[test@compute-110 units-2.23]$ make
+[test@compute-110 units-2.23]$ make install
+```
 
-These places give date names to collections of tools. Yale's [toolchain](https://docs.ycrc.yale.edu/clusters-at-yale/applications/toolchains/) page has an illustration of "foss" versus "foss-cuda"
+!!! Note "Note"
+    This will install the files into the `~/mysoftware/units-2.23` directory that you specified with `./configure`.
 
-Example from [C.E.C.I](https://support.ceci-hpc.be/doc/_contents/UsingSoftwareAndLibraries/CompilingSoftwareFromSources/index.html)
+### Step 5: Add the software to path
+```
+[test@compute-110 ~]$ export PATH=$PATH:$HOME/mysoftware/units-2.23/bin
+```
+!!! Note "Note"
+    You can add the above line in your `.bashrc` file so the software would be available when you login
 
-Another example for [frontera cluster](https://docs.tacc.utexas.edu/hpc/frontera/#building) Very nice info to help you optimize your code. Advice about locality, I/O performance, machine learning etc nearby in sidebar.
-
-Another example from [Yale](https://docs.ycrc.yale.edu/clusters-at-yale/applications/compile/) warns users about considering node CPU capabilities. (So does Frontera where you get practical info about gcc -march and -mtune)
-
-The C.E.C.I folks are [surprisingly opposed](https://support.ceci-hpc.be/doc/_contents/UsingSoftwareAndLibraries/InstallingSoftwareByYourself/conda.html#conda) to people using Anaconda. I guess this is specifically about the full Anaconda versus Miniconda?????
+### Step 6: Run the software
+```
+[test@compute-110 ~]$ units
+...
+You have: tempF(75)
+You want: tempC
+	23.888889
+You have: exit
+[test@compute-110 ~]$
+```
