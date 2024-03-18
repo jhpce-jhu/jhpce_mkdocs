@@ -86,7 +86,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#stub-page-for-the-software-topic" class="md-skip">
+        <a href="#create-a-environment" class="md-skip">
           Skip to content
         </a>
       
@@ -2025,8 +2025,17 @@
       <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
       
       
-        
       
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Conda Environment
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
       
       <a href="./" class="md-nav__link md-nav__link--active">
         
@@ -2037,6 +2046,59 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#create-a-environment" class="md-nav__link">
+    <span class="md-ellipsis">
+      Create a environment
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#list-environments" class="md-nav__link">
+    <span class="md-ellipsis">
+      list environments
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#install-a-conda-package-in-the-new-created-environment" class="md-nav__link">
+    <span class="md-ellipsis">
+      Install a conda package in the new created environment
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#specifying-channels-to-use" class="md-nav__link">
+    <span class="md-ellipsis">
+      specifying channels to use
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
       
     </li>
   
@@ -2817,8 +2879,50 @@
   
   
   
-    
   
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#create-a-environment" class="md-nav__link">
+    <span class="md-ellipsis">
+      Create a environment
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#list-environments" class="md-nav__link">
+    <span class="md-ellipsis">
+      list environments
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#install-a-conda-package-in-the-new-created-environment" class="md-nav__link">
+    <span class="md-ellipsis">
+      Install a conda package in the new created environment
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#specifying-channels-to-use" class="md-nav__link">
+    <span class="md-ellipsis">
+      specifying channels to use
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
   
 </nav>
                   </div>
@@ -2831,29 +2935,55 @@
               <article class="md-content__inner md-typeset">
                 
                   
-  
-<nav class="md-tags" >
-  
-    
-    
-    
-      <a href="../../ourtools/tags/#needs-to-be-written" class="md-tag">needs-to-be-written</a>
-    
-  
-    
-    
-    
-      <a href="../../ourtools/tags/#jiong" class="md-tag">jiong</a>
-    
-  
-</nav>
 
 
+  <h1>Conda Environment</h1>
 
-<h1 id="stub-page-for-the-software-topic">stub page for the "Software" topic<a class="headerlink" href="#stub-page-for-the-software-topic" title="Anchor link to this section for reference">&para;</a></h1>
-<p>This is a stub page for the "Software" topic.</p>
-<p>Create a new file with the right contents for the topic header in the nav bar.
-Then point that header to the new document instead of "sw/sw-stub.md"</p>
+<h2 id="create-a-environment">Create a environment<a class="headerlink" href="#create-a-environment" title="Anchor link to this section for reference">&para;</a></h2>
+<ul>
+<li>
+<p>load conda module
+<div class="highlight"><pre><span></span><code>module load conda
+</code></pre></div>
+or<br />
+<div class="highlight"><pre><span></span><code>module load anaconda
+</code></pre></div></p>
+</li>
+<li>
+<p>create a new environment
+<div class="highlight"><pre><span></span><code>conda create -n &lt;evn-name&gt;
+</code></pre></div></p>
+</li>
+</ul>
+<h2 id="list-environments">list environments<a class="headerlink" href="#list-environments" title="Anchor link to this section for reference">&para;</a></h2>
+<ul>
+<li>lista all your conda environment
+<div class="highlight"><pre><span></span><code>conda info --envs
+</code></pre></div></li>
+</ul>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>The active environment is the one with an asterisk (*)</p>
+</div>
+<h2 id="install-a-conda-package-in-the-new-created-environment">Install a conda package in the new created environment<a class="headerlink" href="#install-a-conda-package-in-the-new-created-environment" title="Anchor link to this section for reference">&para;</a></h2>
+<div class="highlight"><pre><span></span><code>conda activate env-name
+conda install package-name
+</code></pre></div>
+<div class="admonition note">
+<p class="admonition-title">Notes:</p>
+<p>To install a specific version:<br />
+<div class="highlight"><pre><span></span><code>conda install package-name=2.3.4
+</code></pre></div>
+To specify only a major version
+<div class="highlight"><pre><span></span><code>conda install package-name=2
+</code></pre></div></p>
+</div>
+<h2 id="specifying-channels-to-use">specifying channels to use<a class="headerlink" href="#specifying-channels-to-use" title="Anchor link to this section for reference">&para;</a></h2>
+<ul>
+<li>Channels are locations where packages are stored. By default, conda searchs for packages in its default channels. You can specify a channel when installing the package (e.g. conda-forge channel)
+<div class="highlight"><pre><span></span><code>conda install conda-forge::numpy
+</code></pre></div></li>
+</ul>
 
 
 
@@ -2874,7 +3004,7 @@ Then point that header to the new document instead of "sw/sw-stub.md"</p>
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1-2.1-2M12.5 7v5.2l4 2.4-1 1L11 13V7h1.5M11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2v1.8Z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">March 13, 2024</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">March 18, 2024</span>
   </span>
 
     

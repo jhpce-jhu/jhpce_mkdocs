@@ -86,7 +86,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#stub-page-for-the-software-topic" class="md-skip">
+        <a href="#installing-r-packages" class="md-skip">
           Skip to content
         </a>
       
@@ -2067,8 +2067,17 @@
       <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
       
       
-        
       
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    R Packages
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
       
       <a href="./" class="md-nav__link md-nav__link--active">
         
@@ -2079,6 +2088,47 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#installing-r-packages" class="md-nav__link">
+    <span class="md-ellipsis">
+      Installing R packages
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Installing R packages">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#install-a-package-from-cran" class="md-nav__link">
+    <span class="md-ellipsis">
+      Install a package from CRAN
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
       
     </li>
   
@@ -2817,8 +2867,38 @@
   
   
   
-    
   
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#installing-r-packages" class="md-nav__link">
+    <span class="md-ellipsis">
+      Installing R packages
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Installing R packages">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#install-a-package-from-cran" class="md-nav__link">
+    <span class="md-ellipsis">
+      Install a package from CRAN
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
   
 </nav>
                   </div>
@@ -2831,29 +2911,34 @@
               <article class="md-content__inner md-typeset">
                 
                   
-  
-<nav class="md-tags" >
-  
-    
-    
-    
-      <a href="../../ourtools/tags/#needs-to-be-written" class="md-tag">needs-to-be-written</a>
-    
-  
-    
-    
-    
-      <a href="../../ourtools/tags/#jiong" class="md-tag">jiong</a>
-    
-  
-</nav>
 
 
+  <h1>R Packages</h1>
 
-<h1 id="stub-page-for-the-software-topic">stub page for the "Software" topic<a class="headerlink" href="#stub-page-for-the-software-topic" title="Anchor link to this section for reference">&para;</a></h1>
-<p>This is a stub page for the "Software" topic.</p>
-<p>Create a new file with the right contents for the topic header in the nav bar.
-Then point that header to the new document instead of "sw/sw-stub.md"</p>
+<h2 id="installing-r-packages">Installing R packages<a class="headerlink" href="#installing-r-packages" title="Anchor link to this section for reference">&para;</a></h2>
+<h3 id="install-a-package-from-cran">Install a package from CRAN<a class="headerlink" href="#install-a-package-from-cran" title="Anchor link to this section for reference">&para;</a></h3>
+<ul>
+<li>
+<p>load R module from a compute node
+<div class="highlight"><pre><span></span><code>[test@compute-107 ~]$ module load R
+Loading R/4.3
+(4.3)[test@compute-107 ~]$
+</code></pre></div></p>
+</li>
+<li>
+<p>use <code>install.package(pkgname)</code> to install a package
+<div class="highlight"><pre><span></span><code>(4.3)[test@compute-107 ~]$ R
+
+R version 4.3.1 Patched (2023-07-19 r84711) -- &quot;Beagle Scouts&quot;
+Copyright (C) 2023 The R Foundation for Statistical Computing
+Platform: x86_64-conda-linux-gnu (64-bit)
+...
+[Previously saved workspace restored]
+
+&gt; install.package(&quot;your-package-name&quot;)
+</code></pre></div></p>
+</li>
+</ul>
 
 
 
@@ -2874,7 +2959,7 @@ Then point that header to the new document instead of "sw/sw-stub.md"</p>
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1-2.1-2M12.5 7v5.2l4 2.4-1 1L11 13V7h1.5M11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2v1.8Z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">March 13, 2024</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">March 18, 2024</span>
   </span>
 
     
