@@ -131,6 +131,11 @@
          <changefreq>daily</changefreq>
     </url>
     <url>
+         <loc>https://www.jhpce-jhu.github.io/jhpce_docs/help/faq-old/</loc>
+         <lastmod>2024-03-18</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
          <loc>https://www.jhpce-jhu.github.io/jhpce_docs/help/faq/</loc>
          <lastmod>2024-03-18</lastmod>
          <changefreq>daily</changefreq>
@@ -352,6 +357,11 @@
     </url>
     <url>
          <loc>https://www.jhpce-jhu.github.io/jhpce_docs/sw/matlab/</loc>
+         <lastmod>2024-03-18</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://www.jhpce-jhu.github.io/jhpce_docs/sw/modules-old/</loc>
          <lastmod>2024-03-18</lastmod>
          <changefreq>daily</changefreq>
     </url>
