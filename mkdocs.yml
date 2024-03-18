@@ -128,6 +128,7 @@ theme:
     #- navigation.path # does not work. even with 3 levels of depth
     - navigation.sections # vital
     - toc.follow # investigate this. want?
+    - announce.dismiss # announcement can be dismissed
     - navigation.top # works. Displays "Back to top" button when one scrolls upwards
     - header.autohide # hides header if scroll far enough down. More content visable
     - navigation.footer # provides place to display copyright
