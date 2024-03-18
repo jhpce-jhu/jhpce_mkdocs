@@ -18,7 +18,7 @@
       
       
       <link rel="icon" href="../../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.5.13">
+      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.5.14">
     
     
       
@@ -26,7 +26,7 @@
       
     
     
-      <link rel="stylesheet" href="../../assets/stylesheets/main.7e359304.min.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/main.10ba22f1.min.css">
       
         
         <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
@@ -2388,9 +2388,18 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#slurm-job-options-which-use-features" class="md-nav__link">
+  <a href="#current-tag-categories" class="md-nav__link">
     <span class="md-ellipsis">
-      SLURM Job Options Which Use Features
+      Current tag categories
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#using-features-with-slurm-jobs" class="md-nav__link">
+    <span class="md-ellipsis">
+      Using Features with SLURM Jobs
     </span>
   </a>
   
@@ -2933,9 +2942,18 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#slurm-job-options-which-use-features" class="md-nav__link">
+  <a href="#current-tag-categories" class="md-nav__link">
     <span class="md-ellipsis">
-      SLURM Job Options Which Use Features
+      Current tag categories
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#using-features-with-slurm-jobs" class="md-nav__link">
+    <span class="md-ellipsis">
+      Using Features with SLURM Jobs
     </span>
   </a>
   
@@ -3043,19 +3061,27 @@
 </div>
 <p>JHPCE has a wide variety of compute nodes. Some have GPU processors, some have large amounts of memory, and there are many models of CPUs present. We tend to keep equipment running as long as possible.</p>
 <p>SLURM allows for the assignment of keywords to nodes so that users can guide their jobs to appropriate machines. This is, of course, in addition to the other methods of indicating resource needs, such as desired partition(s), amount of memory, and the need for a GPU.</p>
+<p>If you believe that your code will gain a lot from being run on specific kinds of CPUs, you can compile it with optimization flags to perform well on them. Of course, you have then created binaries which might fail to run altogether on older nodes. Please name your binaries in a way which makes their special status apparent to you down the road, in case you forget. That might be a challenging puzzle to figure out.</p>
+<p>One could, at run-time, write batch job scripts which check the features of the node they were assigned, and choose to execute code highly-optimized for that node's CPU.</p>
+<h2 id="current-tag-categories">Current tag categories<a class="headerlink" href="#current-tag-categories" title="Anchor link to this section for reference">&para;</a></h2>
 <p>Currently we have defined features for:</p>
 <ul>
-<li>CPU manufacturer</li>
-<li>CPU line (e.g. Opteron)</li>
+<li>CPU manufacturer (intel,amd)</li>
+<li>CPU line (e.g. Opteron)<sup id="fnref:1"><a class="footnote-ref" href="#fn:1">1</a></sup></li>
 <li>CPU <em>cpu-type</em> architecture as used by the gcc compiler (see <a href="./#cpu-types">below</a>)</li>
 <li>presence of a GPU</li>
 <li>GPU model</li>
+<li>GPU with memory amount</li>
+<li>RAM amount in 250Gb increments at 500 and above<sup id="fnref2:1"><a class="footnote-ref" href="#fn:1">1</a></sup></li>
 </ul>
-<p>If you believe that your code will gain a lot from being run on specific kinds of CPUs, you can compile it with optimization flags to perform well on them. Of course, you have then created binaries which might fail to run altogether on older nodes. Please name your binaries in a way which makes their special status apparent to you down the road, in case you forget. Asking us to diagnose why your jobs failed when you ran them on the "wrong" nodes is not a productive use of our time.</p>
-<h2 id="slurm-job-options-which-use-features">SLURM Job Options Which Use Features<a class="headerlink" href="#slurm-job-options-which-use-features" title="Anchor link to this section for reference">&para;</a></h2>
-<p>You can tell the scheduler that you prefer or require features using the <code>--prefer=string</code> or <code>--constraint=string</code> when using <code>srun</code> or <code>sbatch</code> or <code>salloc</code></p>
+<h2 id="using-features-with-slurm-jobs">Using Features with SLURM Jobs<a class="headerlink" href="#using-features-with-slurm-jobs" title="Anchor link to this section for reference">&para;</a></h2>
+<p>You can tell the scheduler that you <strong>prefer</strong> or <strong>require</strong> features using the <code>--prefer=string</code> or <code>--constraint=string</code> when using <code>srun</code> or <code>sbatch</code> or <code>salloc</code></p>
 <p>Of course, saying that you <strong>prefer</strong> a feature means that your job might be sent to nodes which lack that feature. If your code <strong>requires</strong> a feature, then this will mean that your job has fewer nodes on which it might run and might stay pending for longer.</p>
-<p>See the <code>--prefer</code> and <code>--constraint</code> sections of the <a href="https://slurm.schedmd.com/archive/slurm-22.05.9/sbatch.html">sbatch</a> manual page for descriptions of using AND and OR operators to combine features. Sadly it does not seem possible to exclude features (so you could say I want any node except ones with these features (because they are too old for my code)).</p>
+<p>See the <code>--prefer</code> and <code>--constraint</code> sections of the <a href="https://slurm.schedmd.com/archive/slurm-22.05.9/sbatch.html">sbatch</a> manual page for descriptions of using AND and OR operators to combine features. Sadly it does not seem possible to simply exclude features (so you could say I want any node except ones with these features (because they are too old for my code)).</p>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>When specifying multiple features, you may need to enclose them in double quotes. The symbols used for AND, OR and number of matches are all ones which the bash shell will mis-interpret.</p>
+</div>
 <h2 id="viewing-features">Viewing Features<a class="headerlink" href="#viewing-features" title="Anchor link to this section for reference">&para;</a></h2>
 <p>These features keywords are up to systems administrators to choose and define by adding "Features=string1,string2" to "NodeName=" entries in <code>/etc/slurm/nodes.conf</code></p>
 <p>For any particular node, you can see features information with the command <code>scontrol show node nodename</code></p>
@@ -3094,11 +3120,19 @@
       2 znver3
 </code></pre></div>
 <p>The bdver and znver types represent AMD CPUs.</p>
-<p>bdver1 does not support these gcc flags:
-  -mbmi
+<p>Perhaps the largest delta in compiler flags is between bdver1 and the rest. bdver1 does not support these gcc flags:
+  <strong>-mbmi
   -mf16c
   -mfma
-  -mdirect-extern-access</p>
+  -mdirect-extern-access</strong></p>
+<div class="footnote">
+<hr />
+<ol>
+<li id="fn:1">
+<p>It's not clear that these tags add much value. The RAM tags were thought to perhaps aid someone trying to increase memory locality. SLURM's scheduler, will, of course, allocate nodes with enough free memory to meet the jobs requirements.&#160;<a class="footnote-backref" href="#fnref:1" title="Jump back to footnote 1 in the text">&#8617;</a><a class="footnote-backref" href="#fnref2:1" title="Jump back to footnote 1 in the text">&#8617;</a></p>
+</li>
+</ol>
+</div>
 
 
 
@@ -3119,7 +3153,7 @@
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1-2.1-2M12.5 7v5.2l4 2.4-1 1L11 13V7h1.5M11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2v1.8Z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">March 16, 2024</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">March 18, 2024</span>
   </span>
 
     
@@ -3256,7 +3290,7 @@
     <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.sections", "toc.follow", "navigation.top", "header.autohide", "navigation.footer", "navigation.indexes", "content.code.copy", "content.code.annotate"], "search": "../../assets/javascripts/workers/search.b8dbb3d2.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
     
     
-      <script src="../../assets/javascripts/bundle.c8d2eff1.min.js"></script>
+      <script src="../../assets/javascripts/bundle.bd41221c.min.js"></script>
       
         <script src="https://unpkg.com/tablesort@5.3.0/dist/tablesort.min.js"></script>
       
