@@ -9,16 +9,29 @@ title: File Transfer - Overview
     This document was copied over from the old web site and is being slowly updated.
 
 # File Transfer - Overview
+A number of options exist for transfering files to-and-fro between
+JHPCE and your local host. Which solution you chose depends on your
+use case.
+
+Copying files around inside the cluster, between JHPCE file systems, is a different activity.
+We have a document about [using rsync](../files/copying-files.md) to copy files. This tool can be used for both internal copies and for moving files into or out of the cluster.
+
+## Use the transfer node and partition
 
 For transferring files to and from the cluster, you should use
 `jhpce-transfer01.jhsph.edu` rather than a login node.
 This is both significantly faster, as the transfer node has a 40G Ethernet connection to the outside world while the login nodes have 10G connections. In any case, EVERYONE depends on the login nodes, and you should not run ANYTHING on them that occupies them.
 
-A number of options exist for transfering files to-and-fro between
-JHPCE and your local host. Which solution you chose depends on your
-use case.
+### Interactive use of the transfer node
+You can ssh directly to `jhpce-transfer01.jhsph.edu` and do your work.
 
-We have a document about [using rsync](../files/copying-files.md) to copy files. This tool is especially useful when copying files around inside the cluster, between JHPCE file systems, but can also be used for moving files into or out of the cluster.
+We have a `transfer` SLURM [partition](../slurm/partitions.md) which uses the same node that you can use for interactive or batch sessions.
+
+``` title="Interactive job"
+jhpce01% srun --pty --x11 -p transfer bash
+```
+
+### Batch use of the transfer node/partition
 
 [Here](../slurm/crafting-jobs.md/#copying-data-within-cluster) is a sample SLURM batch job that you can use as a model to do an internal transfer on a compute node using good rsync arguments. You can adapt it to run on the `transfer` partition to perform transfers into or out of the cluster. You can also change it to use some other transfer programs. Usually such batch jobs require care when providing authentication information.
 
@@ -136,6 +149,9 @@ This will install the `ascp` command under your home directory at  `~/.aspera/co
 
 
 ### Unison
+
+!!! Warning
+    As of 20240318 we don't have unison installed in the cluster. We will work on adding it.
     
 Using [Unison](https://en.wikipedia.org/wiki/Unison_(software)), you can keep data synchronized between directories, including ones on a single computer or between the cluster and on your local system. Both CLI and GUI versions are available. Unison needs to be installed on both computers if used across a network.
 
