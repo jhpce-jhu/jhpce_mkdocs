@@ -106,6 +106,7 @@ nav:
 #       - PI Subtopic5: storage.md
 theme: 
   name: material
+  custom_dir: overrides
   # https://squidfunk.github.io/mkdocs-material/setup/changing-the-logo-and-icons/#changing-the-logo-and-icons
   logo: images/sph-logo.svg
   palette:
