@@ -29,7 +29,7 @@ nav:
          - Handy Features: ourtools/features.md
          - Tips & Conventions: ourtools/tips-conventions.md
          - Wishlist: ourtools/wishlist.md
-    - FAQ: help/faq.md
+    - "FAQ: Frequently Asked Questions": help/faq.md
     - Accessing the cluster:
       - Overview: access/access-overview.md
       - SSH: access/ssh.md
