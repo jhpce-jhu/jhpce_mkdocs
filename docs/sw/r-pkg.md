@@ -1,13 +1,22 @@
----
-tags:
-  - needs-to-be-written
-  - jiong
----
+## Installing R packages
 
-#stub page for the "Software" topic
+### Install a package from CRAN
+- load R module from a compute node
+```
+[test@compute-107 ~]$ module load R
+Loading R/4.3
+(4.3)[test@compute-107 ~]$
+```
 
-This is a stub page for the "Software" topic.
+- use `install.package(pkgname)` to install a package
+```
+(4.3)[test@compute-107 ~]$ R
 
+R version 4.3.1 Patched (2023-07-19 r84711) -- "Beagle Scouts"
+Copyright (C) 2023 The R Foundation for Statistical Computing
+Platform: x86_64-conda-linux-gnu (64-bit)
+...
+[Previously saved workspace restored]
 
-Create a new file with the right contents for the topic header in the nav bar.
-Then point that header to the new document instead of "sw/sw-stub.md"
+> install.package("your-package-name")
+```
