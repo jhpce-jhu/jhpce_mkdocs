@@ -1,7 +1,4 @@
-## **Running R Jobs over SLURM**
-
-
-### - Using R Interactively from command line
+## Running R Interactively from command line
 
 ```
 [test@login31 ~]$ srun --pty bash
@@ -27,7 +24,7 @@ Type 'q()' to quit R.
 > 
 ```
 
-### - Using R in batch mode
+## Running R in batch mode
 
 1. Write your R source in a file with .r extension (e.g. plot1.r)
 ```
@@ -83,7 +80,7 @@ Submitted batch job 3177833
 ```
 [test@login31 ~]$ xpdf plot1-R-results.pdf
 ```
-### - Running RStudio
+## Running RStudio
 ```
 [test@login31 ~]$ srun --mem 10G --x11 --pty bash
 srun: job 3244190 queued and waiting for resources
@@ -102,7 +99,7 @@ Loading R/4.3
     ssh -X yourusername@jhpce03.jhsph.edu
     ```
 
-### - Running RStudio via web
+## Running RStudio via web
 You can run RStudio via [JHPCE Application Portal](https://jhpce-app02.jhsph.edu/) by login with your JHED ID and password.
 
 !!! Note "Note"
