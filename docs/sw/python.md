@@ -1,7 +1,4 @@
-## **Running Python Jobs over SLURM**
-
-
-### - Using Python Interactively
+## Using Python Interactively on command line
 
 ```
 [test@login31 ~]$ srun --pty bash
@@ -20,7 +17,7 @@ Type "help", "copyright", "credits" or "license" for more information.
 >>> 
 ```
 
-### - Using Python in batch mode
+## Running Python program in batch mode
 
 1. Write your python source in a file with .py extension (e.g. python_example.py)
 ```
