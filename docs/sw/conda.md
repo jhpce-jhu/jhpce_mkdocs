@@ -1,3 +1,6 @@
+## Introduction
+Conda gives you the ability to create environments with packages and their dependencies that will be separate from other environments. This page goes over the basic usage of it.
+
 ## Create an environment
 - load conda module
 ```
@@ -12,6 +15,9 @@ module load anaconda
 ```
 conda create -n <evn-name>
 ```
+!!! Note "Note"
+    - Conda is a package manager, similar to pip.  
+    - Anaconda is a "batteries included" distribution of Python. It uses Conda as its package manager.
 
 ## list environments
 - lista all your conda environment
