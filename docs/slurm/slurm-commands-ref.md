@@ -1,3 +1,7 @@
+---
+tags:
+   - slurm
+---
 # SLURM COMMANDS
 Here are links to online copies of the manual pages for commands. If we've
 written a page with advice about using the command, use the {==(LOCAL TIPS)==} link.
