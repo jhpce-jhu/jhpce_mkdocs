@@ -6,7 +6,9 @@
 Loading R/4.3
 (4.3)[test@compute-107 ~]$
 ```
-
+!!! Note "Note"
+    R points to conda_R. Therefore, loading either R or conda_R would use the same version of R.
+    
 - use `install.package(pkgname)` to install a package
 ```
 (4.3)[test@compute-107 ~]$ R
