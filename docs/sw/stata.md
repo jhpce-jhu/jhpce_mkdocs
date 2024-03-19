@@ -1,6 +1,4 @@
-## **Running basic Stata jobs over SLURM**
-
-### - Using Stata interactively
+## Using Stata interactively
 
 ```
 [test@login31 ~]$ srun --mem 10G --x11 --pty bash
@@ -15,7 +13,7 @@ Currently Loaded Modules:
 [test@compute-092 ~]$ xstata
 ```
 
-### - Using Stata in batch mode
+## Running Stata program in batch mode
 
 1. Write your Stata source in a file with .do extension (e.g. stata-demo1.do)
 ```
