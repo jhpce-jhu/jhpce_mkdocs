@@ -83,6 +83,7 @@ nav:
       - Crafting Jobs: slurm/crafting-jobs.md
       - When Will My Job Start?: slurm/whenstart.md
       - Quality of Service (QOS): slurm/qos.md
+      - Job Environment: slurm/environment.md
       - Node Features: slurm/node-features.md
     - User Guides/Tutorials:
       - GPU: gpu/gpu-overview.md
