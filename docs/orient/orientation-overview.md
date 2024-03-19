@@ -5,7 +5,7 @@ title: "Orientation Overview"
 All new cluster users are required to attend a JHPCE orientation session. These sessions
 are generally held every other Wednesday afternoon via Zoom.
 
-Before signing up for a sesssion, please be sure that you have completed the [New User Form](/joinus/new-users-form/)
+Before signing up for a sesssion, please be sure that you have completed the [New User Form](../joinus/new-users-form.md)
 and that your PI has approved your account.  Once that is done you can sign up for a slot
 in our next session at our [Signup Site]( https://signup.com/go/OYYMAMq)
 

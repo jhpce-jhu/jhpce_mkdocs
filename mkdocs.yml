@@ -18,6 +18,7 @@ nav:
         - Overview: orient/orientation-overview.md
         - JHPCE Orientation (PDF): orient/images/latest-orient.pdf
         - C-SUB Orientation (PDF): orient/images/latest-csub-orient.pdf
+      - Leaving JHPCE as a User or PI: joinus/leaving.md
       - New C-SUB PI or user?: csub/new-csub-users.md
       - Policies: joinus/policies.md
       - HIPAA on JHPCE: joinus/HIPAA.md
