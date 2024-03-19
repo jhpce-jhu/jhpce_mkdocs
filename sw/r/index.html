@@ -86,7 +86,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#running-r-jobs-over-slurm" class="md-skip">
+        <a href="#running-r-interactively-from-command-line" class="md-skip">
           Skip to content
         </a>
       
@@ -102,7 +102,6 @@
               </button>
             
             
-  JHPCE Cluster 3.0
 
           </div>
           
@@ -1999,53 +1998,38 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#running-r-jobs-over-slurm" class="md-nav__link">
+  <a href="#running-r-interactively-from-command-line" class="md-nav__link">
     <span class="md-ellipsis">
-      Running R Jobs over SLURM
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Running R Jobs over SLURM">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#-using-r-interactively-from-command-line" class="md-nav__link">
-    <span class="md-ellipsis">
-      - Using R Interactively from command line
+      Running R Interactively from command line
     </span>
   </a>
   
 </li>
-        
-          <li class="md-nav__item">
-  <a href="#-using-r-in-batch-mode" class="md-nav__link">
+      
+        <li class="md-nav__item">
+  <a href="#running-r-in-batch-mode" class="md-nav__link">
     <span class="md-ellipsis">
-      - Using R in batch mode
+      Running R in batch mode
     </span>
   </a>
   
 </li>
-        
-          <li class="md-nav__item">
-  <a href="#-running-rstudio" class="md-nav__link">
+      
+        <li class="md-nav__item">
+  <a href="#running-rstudio" class="md-nav__link">
     <span class="md-ellipsis">
-      - Running RStudio
+      Running RStudio
     </span>
   </a>
   
 </li>
-        
-          <li class="md-nav__item">
-  <a href="#-running-rstudio-via-web" class="md-nav__link">
+      
+        <li class="md-nav__item">
+  <a href="#running-rstudio-via-web" class="md-nav__link">
     <span class="md-ellipsis">
-      - Running RStudio via web
+      Running RStudio via web
     </span>
   </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
       
@@ -2326,6 +2310,8 @@
       
         
       
+        
+      
     
     
       
@@ -2515,6 +2501,27 @@
   
   <span class="md-ellipsis">
     Quality of Service (QOS)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../slurm/environment/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Job Environment
   </span>
   
 
@@ -3002,53 +3009,38 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#running-r-jobs-over-slurm" class="md-nav__link">
+  <a href="#running-r-interactively-from-command-line" class="md-nav__link">
     <span class="md-ellipsis">
-      Running R Jobs over SLURM
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Running R Jobs over SLURM">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#-using-r-interactively-from-command-line" class="md-nav__link">
-    <span class="md-ellipsis">
-      - Using R Interactively from command line
+      Running R Interactively from command line
     </span>
   </a>
   
 </li>
-        
-          <li class="md-nav__item">
-  <a href="#-using-r-in-batch-mode" class="md-nav__link">
+      
+        <li class="md-nav__item">
+  <a href="#running-r-in-batch-mode" class="md-nav__link">
     <span class="md-ellipsis">
-      - Using R in batch mode
+      Running R in batch mode
     </span>
   </a>
   
 </li>
-        
-          <li class="md-nav__item">
-  <a href="#-running-rstudio" class="md-nav__link">
+      
+        <li class="md-nav__item">
+  <a href="#running-rstudio" class="md-nav__link">
     <span class="md-ellipsis">
-      - Running RStudio
+      Running RStudio
     </span>
   </a>
   
 </li>
-        
-          <li class="md-nav__item">
-  <a href="#-running-rstudio-via-web" class="md-nav__link">
+      
+        <li class="md-nav__item">
+  <a href="#running-rstudio-via-web" class="md-nav__link">
     <span class="md-ellipsis">
-      - Running RStudio via web
+      Running RStudio via web
     </span>
   </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
       
@@ -3069,8 +3061,7 @@
 
   <h1>R</h1>
 
-<h2 id="running-r-jobs-over-slurm"><strong>Running R Jobs over SLURM</strong><a class="headerlink" href="#running-r-jobs-over-slurm" title="Anchor link to this section for reference">&para;</a></h2>
-<h3 id="-using-r-interactively-from-command-line">- Using R Interactively from command line<a class="headerlink" href="#-using-r-interactively-from-command-line" title="Anchor link to this section for reference">&para;</a></h3>
+<h2 id="running-r-interactively-from-command-line">Running R Interactively from command line<a class="headerlink" href="#running-r-interactively-from-command-line" title="Anchor link to this section for reference">&para;</a></h2>
 <div class="highlight"><pre><span></span><code>[test@login31 ~]$ srun --pty bash
 srun: job 3176550 queued and waiting for resources
 srun: job 3176550 has been allocated resources
@@ -3093,7 +3084,7 @@ Type &#39;q()&#39; to quit R.
 ...
 &gt; 
 </code></pre></div>
-<h3 id="-using-r-in-batch-mode">- Using R in batch mode<a class="headerlink" href="#-using-r-in-batch-mode" title="Anchor link to this section for reference">&para;</a></h3>
+<h2 id="running-r-in-batch-mode">Running R in batch mode<a class="headerlink" href="#running-r-in-batch-mode" title="Anchor link to this section for reference">&para;</a></h2>
 <ol>
 <li>
 <p>Write your R source in a file with .r extension (e.g. plot1.r)
@@ -3151,7 +3142,7 @@ Submitted batch job 3177833
 </code></pre></div></p>
 </li>
 </ol>
-<h3 id="-running-rstudio">- Running RStudio<a class="headerlink" href="#-running-rstudio" title="Anchor link to this section for reference">&para;</a></h3>
+<h2 id="running-rstudio">Running RStudio<a class="headerlink" href="#running-rstudio" title="Anchor link to this section for reference">&para;</a></h2>
 <div class="highlight"><pre><span></span><code>[test@login31 ~]$ srun --mem 10G --x11 --pty bash
 srun: job 3244190 queued and waiting for resources
 srun: job 3244190 has been allocated resources
@@ -3168,7 +3159,7 @@ Loading R/4.3
 <div class="highlight"><pre><span></span><code>ssh -X yourusername@jhpce03.jhsph.edu
 </code></pre></div></p>
 </div>
-<h3 id="-running-rstudio-via-web">- Running RStudio via web<a class="headerlink" href="#-running-rstudio-via-web" title="Anchor link to this section for reference">&para;</a></h3>
+<h2 id="running-rstudio-via-web">Running RStudio via web<a class="headerlink" href="#running-rstudio-via-web" title="Anchor link to this section for reference">&para;</a></h2>
 <p>You can run RStudio via <a href="https://jhpce-app02.jhsph.edu/">JHPCE Application Portal</a> by login with your JHED ID and password.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
@@ -3194,7 +3185,7 @@ Loading R/4.3
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1-2.1-2M12.5 7v5.2l4 2.4-1 1L11 13V7h1.5M11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2v1.8Z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">March 18, 2024</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">March 19, 2024</span>
   </span>
 
     

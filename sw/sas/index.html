@@ -86,7 +86,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#running-basic-sas-jobs-over-slurm" class="md-skip">
+        <a href="#using-sas-interactively" class="md-skip">
           Skip to content
         </a>
       
@@ -102,7 +102,6 @@
               </button>
             
             
-  JHPCE Cluster 3.0
 
           </div>
           
@@ -2020,35 +2019,20 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#running-basic-sas-jobs-over-slurm" class="md-nav__link">
+  <a href="#using-sas-interactively" class="md-nav__link">
     <span class="md-ellipsis">
-      Running basic SAS jobs over SLURM
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Running basic SAS jobs over SLURM">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#-using-sas-interactively" class="md-nav__link">
-    <span class="md-ellipsis">
-      - Using SAS interactively
+      Using SAS interactively
     </span>
   </a>
   
 </li>
-        
-          <li class="md-nav__item">
-  <a href="#-using-sas-in-batch-mode" class="md-nav__link">
+      
+        <li class="md-nav__item">
+  <a href="#running-sas-job-in-batch-mode" class="md-nav__link">
     <span class="md-ellipsis">
-      - Using SAS in batch mode
+      Running SAS job in batch mode
     </span>
   </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
       
@@ -2308,6 +2292,8 @@
       
         
       
+        
+      
     
     
       
@@ -2497,6 +2483,27 @@
   
   <span class="md-ellipsis">
     Quality of Service (QOS)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../slurm/environment/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Job Environment
   </span>
   
 
@@ -2984,35 +2991,20 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#running-basic-sas-jobs-over-slurm" class="md-nav__link">
+  <a href="#using-sas-interactively" class="md-nav__link">
     <span class="md-ellipsis">
-      Running basic SAS jobs over SLURM
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Running basic SAS jobs over SLURM">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#-using-sas-interactively" class="md-nav__link">
-    <span class="md-ellipsis">
-      - Using SAS interactively
+      Using SAS interactively
     </span>
   </a>
   
 </li>
-        
-          <li class="md-nav__item">
-  <a href="#-using-sas-in-batch-mode" class="md-nav__link">
+      
+        <li class="md-nav__item">
+  <a href="#running-sas-job-in-batch-mode" class="md-nav__link">
     <span class="md-ellipsis">
-      - Using SAS in batch mode
+      Running SAS job in batch mode
     </span>
   </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
       
@@ -3033,8 +3025,7 @@
 
   <h1>SAS</h1>
 
-<h2 id="running-basic-sas-jobs-over-slurm"><strong>Running basic SAS jobs over SLURM</strong><a class="headerlink" href="#running-basic-sas-jobs-over-slurm" title="Anchor link to this section for reference">&para;</a></h2>
-<h3 id="-using-sas-interactively">- Using SAS interactively<a class="headerlink" href="#-using-sas-interactively" title="Anchor link to this section for reference">&para;</a></h3>
+<h2 id="using-sas-interactively">Using SAS interactively<a class="headerlink" href="#using-sas-interactively" title="Anchor link to this section for reference">&para;</a></h2>
 <div class="highlight"><pre><span></span><code>[test@login31 ~]$ srun --partition sas --mem 10G --x11 --pty bash
 srun: job 3178287 queued and waiting for resources
 srun: job 3178287 has been allocated resources
@@ -3050,9 +3041,11 @@ Currently Loaded Modules:
 ## if you want to use Firefox as your web browser for SAS, run the following command instead
 [test@compute-101 ~]$ sas -helpbrowser SAS -xrm &quot;SAS.webBrowser:&#39;/usr/bin/firefox&#39;&quot; -xrm &quot;SAS.helpBrowser:&#39;/usr/bin/firefox&#39;&quot;
 </code></pre></div>
-<p>Notes:<br />
-  * You may need to accept popups in the chromium/firefox browser that gets started in order to see the windows that SAS is trying to display<br />
-  * In the terminal session that you started “sas”, you may see messages similar to ones below.  These can be ignored because the browser wants to run on a local system with a graphics card, and the X11 session doesn’t allow that
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<ul>
+<li>You may need to accept popups in the chromium/firefox browser that gets started in order to see the windows that SAS is trying to display  </li>
+<li>In the terminal session that you started “sas”, you may see messages similar to ones below.  These can be ignored because the browser wants to run on a local system with a graphics card, and the X11 session doesn’t allow that
 <div class="highlight"><pre><span></span><code>[2970887:2970887:1024/152818.092311:ERROR:chrome_browser_cloud_management_controller.cc(163)] Cloud management controller initialization aborted as CBCM is not enabled.
 [2970887:2971086:1024/152818.161869:ERROR:login_database.cc(922)] Password store database is too new, kCurrentVersionNumber=35, GetCompatibleVersionNumber=39
 [2970887:2971087:1024/152818.164247:ERROR:login_database.cc(922)] Password store database is too new, kCurrentVersionNumber=35, GetCompatibleVersionNumber=39
@@ -3061,8 +3054,10 @@ Currently Loaded Modules:
 [2970887:2970887:1024/152818.626429:ERROR:object_proxy.cc(590)] Failed to call method: org.freedesktop.portal.Settings.Read: object_path= /org/freedesktop/portal/desktop: org.freedesktop.portal.Error.NotFound: Requested setting not found
 libGL error: No matching fbConfigs or visuals found
 libGL error: failed to load driver: swrast
-</code></pre></div></p>
-<h3 id="-using-sas-in-batch-mode">- Using SAS in batch mode<a class="headerlink" href="#-using-sas-in-batch-mode" title="Anchor link to this section for reference">&para;</a></h3>
+</code></pre></div></li>
+</ul>
+</div>
+<h2 id="running-sas-job-in-batch-mode">Running SAS job in batch mode<a class="headerlink" href="#running-sas-job-in-batch-mode" title="Anchor link to this section for reference">&para;</a></h2>
 <ol>
 <li>
 <p>Write your sas source in a file with .sas extension (e.g. class-info.sas)
@@ -3148,7 +3143,7 @@ Submitted batch job 3178475
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1-2.1-2M12.5 7v5.2l4 2.4-1 1L11 13V7h1.5M11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2v1.8Z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">March 13, 2024</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">March 19, 2024</span>
   </span>
 
     
