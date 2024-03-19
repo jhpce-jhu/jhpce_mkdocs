@@ -90,7 +90,7 @@ There is a dedicated [SLURM FAQ](../slurm/slurm-faq.md) document
     This error comes from the `ForwardX11Timeout` variable, which is set by default to 20 minutes.  To avoid this issue, a larger timeout can be supplied on the command line to, say, 336 hours (2 weeks):
 
     ```
-    $ ssh -X username@jhpce01.jhsph.edu -o ForwardX11Timeout=336h
+    $ ssh -X username@jhpce03.jhsph.edu -o ForwardX11Timeout=336h
     ```
 
 - Xauth error messages from MacOS Sierra when using X11 forwarding in SSH
