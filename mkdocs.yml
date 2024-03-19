@@ -9,6 +9,7 @@ nav:
       - JHPCE Model: aboutus/model.md
       - Staff: aboutus/staff.md
     - Getting Started:
+      - joinus/index.md
       - Introduction: joinus/intro.md
       - New user form: joinus/new-users-form.md
       - New PI information and form: 
