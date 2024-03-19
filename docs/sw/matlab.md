@@ -1,6 +1,4 @@
-## **Running basic Matlab jobs over SLURM**
-
-### - Using Matlab interactively
+## Using Matlab interactively
 
 ```
 [test@login31 ~]$ srun --mem 10G --x11 --pty bash
@@ -15,7 +13,7 @@ Currently Loaded Modules:
 [test@compute-152 ~]$ matlab
 ```
 
-### - Using Matlab in batch mode
+## Running Matlab program in batch mode
 
 1. Write your matlab source in a file with .m extension (e.g. matlab_example.m)
 ```
