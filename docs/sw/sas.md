@@ -1,6 +1,4 @@
-## **Running basic SAS jobs over SLURM**
-
-### - Using SAS interactively
+## Using SAS interactively
 
 ```
 [test@login31 ~]$ srun --partition sas --mem 10G --x11 --pty bash
@@ -19,21 +17,21 @@ Currently Loaded Modules:
 [test@compute-101 ~]$ sas -helpbrowser SAS -xrm "SAS.webBrowser:'/usr/bin/firefox'" -xrm "SAS.helpBrowser:'/usr/bin/firefox'"
 ```
 
-Notes:  
-  * You may need to accept popups in the chromium/firefox browser that gets started in order to see the windows that SAS is trying to display  
-  * In the terminal session that you started “sas”, you may see messages similar to ones below.  These can be ignored because the browser wants to run on a local system with a graphics card, and the X11 session doesn’t allow that
-```
-[2970887:2970887:1024/152818.092311:ERROR:chrome_browser_cloud_management_controller.cc(163)] Cloud management controller initialization aborted as CBCM is not enabled.
-[2970887:2971086:1024/152818.161869:ERROR:login_database.cc(922)] Password store database is too new, kCurrentVersionNumber=35, GetCompatibleVersionNumber=39
-[2970887:2971087:1024/152818.164247:ERROR:login_database.cc(922)] Password store database is too new, kCurrentVersionNumber=35, GetCompatibleVersionNumber=39
-[2970887:2971086:1024/152818.167534:ERROR:login_database_async_helper.cc(59)] Could not create/open login database.
-[2970887:2971087:1024/152818.170351:ERROR:login_database_async_helper.cc(59)] Could not create/open login database.
-[2970887:2970887:1024/152818.626429:ERROR:object_proxy.cc(590)] Failed to call method: org.freedesktop.portal.Settings.Read: object_path= /org/freedesktop/portal/desktop: org.freedesktop.portal.Error.NotFound: Requested setting not found
-libGL error: No matching fbConfigs or visuals found
-libGL error: failed to load driver: swrast
-```
+!!! Note "Note"  
+    - You may need to accept popups in the chromium/firefox browser that gets started in order to see the windows that SAS is trying to display  
+    - In the terminal session that you started “sas”, you may see messages similar to ones below.  These can be ignored because the browser wants to run on a local system with a graphics card, and the X11 session doesn’t allow that
+    ```
+    [2970887:2970887:1024/152818.092311:ERROR:chrome_browser_cloud_management_controller.cc(163)] Cloud management controller initialization aborted as CBCM is not enabled.
+    [2970887:2971086:1024/152818.161869:ERROR:login_database.cc(922)] Password store database is too new, kCurrentVersionNumber=35, GetCompatibleVersionNumber=39
+    [2970887:2971087:1024/152818.164247:ERROR:login_database.cc(922)] Password store database is too new, kCurrentVersionNumber=35, GetCompatibleVersionNumber=39
+    [2970887:2971086:1024/152818.167534:ERROR:login_database_async_helper.cc(59)] Could not create/open login database.
+    [2970887:2971087:1024/152818.170351:ERROR:login_database_async_helper.cc(59)] Could not create/open login database.
+    [2970887:2970887:1024/152818.626429:ERROR:object_proxy.cc(590)] Failed to call method: org.freedesktop.portal.Settings.Read: object_path= /org/freedesktop/portal/desktop: org.freedesktop.portal.Error.NotFound: Requested setting not found
+    libGL error: No matching fbConfigs or visuals found
+    libGL error: failed to load driver: swrast
+    ```
 
-### - Using SAS in batch mode
+## Running SAS job in batch mode
 
 1. Write your sas source in a file with .sas extension (e.g. class-info.sas)
 ```
