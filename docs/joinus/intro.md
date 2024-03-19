@@ -10,7 +10,7 @@ Biostats department of the Bloomberg JHU Bloomberg School of Public Health. As
 such we do charge fairly nominal fees for compute and storage, and all
 users on the cluster need to have a sponsoring PI that will fund their usage.
 ## Information for New Sponsoring PIs
-As menetioned above, we do operate as a non-profit JHU Service Center, and do
+As mentioned above, we do operate as a non-profit JHU Service Center, and do
 charge for **compute** and **storage** usage on the cluster.  
 
 <details>
@@ -31,7 +31,7 @@ storage arrays.  Every 12 months or so we purchase a new large storage array
 for the JHPCE cluster, and sell allocations on that array. The cost for an 
 allocation will be based on the actual cost of the storage, but has been 
 decreasing over time.  Our latest storage build worked out to be about $30 
-per TB per year.  There is typically a 10TB minimum buyin for new storage 
+per TB per year.  There is typically a 10TB minimum buy-in for new storage 
 purchases.
 </details>
 
@@ -54,5 +54,5 @@ All new users are required to attend one of our JHPCE Orientation
 Sessions, during which their account will be set up on the cluster.  The
 Orientation is typically held every other Wednesday afternoon, and lasts for
 about 2 hours.  Prior to attending the orientation, you should review the
-<A HREF="/jhpce_docs/orient/orientation-overview/">What to do before attenting the orientation session</A> page.  The slides for the orientation can be found <A HREF="/jhpce_docs/orient/images/latest-orient.pdf">Here</A>
+<A HREF="/jhpce_docs/orient/orientation-overview/">What to do before attending the orientation session</A> page.  The slides for the orientation can be found <A HREF="/jhpce_docs/orient/images/latest-orient.pdf">Here</A>
 

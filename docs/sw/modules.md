@@ -1,3 +1,9 @@
+---
+markdown_extensions:
+  - pymdownx.highlight
+  - pymdownx.inlinehilite
+---
+
 ## **Environment Modules**
 
 ### Introduction
@@ -8,7 +14,12 @@ The JHPCE cluster uses the [Lmod](https://lmod.readthedocs.io/en/latest/) module
 
 ### Use modules on JHPCE cluster
 - list loaded modules in your environment
-```
+<pre><code>[test@compute-107 ~]$ <span style="background-color:yellow">module list</span>
+
+Currently Loaded Modules:
+  1) JHPCE_ROCKY9_DEFAULT_ENV   2) JHPCE_tools/3.0
+</code></pre>
+``` shell-session
 [test@compute-107 ~]$ module list
 
 Currently Loaded Modules:
@@ -25,7 +36,7 @@ Currently Loaded Modules:
     * LIBD contributes many modules. If you need help with any of these, please email bithelp
 
 - load a module (e.g. R module)
-```
+``` hl_lines="6"
 [test@compute-107 ~]$ module load R
 Loading R/4.3
 (4.3)[test@compute-107 ~]$ module list

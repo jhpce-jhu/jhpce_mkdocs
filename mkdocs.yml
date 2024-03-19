@@ -20,6 +20,7 @@ nav:
         - C-SUB Orientation (PDF): orient/images/latest-csub-orient.pdf
       - New C-SUB PI or user?: csub/new-csub-users.md
       - Policies: joinus/policies.md
+      - HIPAA on JHPCE: joinus/HIPAA.md
     - Getting Help:
       - Basics: help/help-basics.md
       - Submitting Good Queries: help/good-query.md

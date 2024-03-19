@@ -13,7 +13,7 @@ they either acquire computing resources they want to contribute to the cluster,
 or purchase computing resources for the cluster either through a grant or
 through their normal budgeting cycle. 
 
-As a Stakeholder, you agree to share any unused capaictiy on your compute nodes
+As a Stakeholder, you agree to share any unused capacity on your compute nodes
 with the broader JHPCE community by placing them on the "shared" partition or
 queue on the cluster. For non-Stakeholders, the only access to computing
 resources is via those shared by the Stakeholders.  This model has historically
@@ -57,7 +57,7 @@ orientation (either in person or via telephone).
 ## Becoming a stakeholder
 There are many benefits to becoming a Stakeholder in the JHPCE cluster.
 
-As a Stakeholder, you will be given a dedicted partition on the node that you
+As a Stakeholder, you will be given a dedicated partition on the node that you
 purchase for the cluster.  The partition will only be accessible by members of
 your group, thus avoiding delays when the shared partition becomes busy. We
 also allow you to pull your node off the the shared partition if you need
@@ -66,8 +66,8 @@ that while the node is off of the shared partition, you will be paying the
 entire management fee for the node.
 
 If you are interested in purchasing nodes to add to the JHPCE cluster to become
-a Stakeholder, please email the jhpce Director at
+a Stakeholder, please email the JHPCE Director at
 <a href="mailto:jhpce@jhu.edu">jhpce@jhu.edu</a>. We can help you with sizing
-an approriate solution for your needs, and coordinate with vendors to get
+an appropriate solution for your needs, and coordinate with vendors to get
 quotes.
 

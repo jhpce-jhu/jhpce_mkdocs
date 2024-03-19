@@ -55,3 +55,19 @@ Now that they have been disabled, if you _want_ line numbering, you should _add_
 
 ### ***Add a title, too***
 to code blocks by adding `"title words"` after the opening three backticks and a space, i.e. ++grave++ ++grave++ ++grave++ ++space++ ++dblquote++ My title ++dblquote++ ++space++ linenums="0"
+
+### 2 ways of embedding code blocks:
+- With HTML:
+<pre><code>[test@compute-107 ~]$ <span style="background-color:yellow">module list</span>
+
+Currently Loaded Modules:
+  1) JHPCE_ROCKY9_DEFAULT_ENV   2) JHPCE_tools/3.0
+</code></pre>
+- With Markdown:
+``` shell-session
+[test@compute-107 ~]$ module list 
+
+Currently Loaded Modules:
+  1) JHPCE_ROCKY9_DEFAULT_ENV   2) JHPCE_tools/3.0
+```
+
