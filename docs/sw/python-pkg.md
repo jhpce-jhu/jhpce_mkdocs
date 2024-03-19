@@ -6,7 +6,9 @@
 [test@compute-107 ~]$ python3 --version
 Python 3.9.14
 ```
-
+!!! Note "Note"
+    You can use `module avail python` to see available python versions on the cluster, and load the one you want to use.
+    
 - Ensure you can run pip from the command line
 ```
 [compute-107 /users/test]$ python3 -m pip --version
