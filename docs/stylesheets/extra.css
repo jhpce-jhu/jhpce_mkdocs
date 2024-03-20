@@ -9,3 +9,8 @@
 .md-footer-meta {
   background-color: color(srgb 0.2511 0.3187 0.7114);
 }
+
+.md-banner {
+  background-color: #ffcc00;
+  color: #cc3300;
+}
