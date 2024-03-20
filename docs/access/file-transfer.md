@@ -151,7 +151,7 @@ This will install the `ascp` command under your home directory at  `~/.aspera/co
 ### Unison
 
 !!! Warning
-    As of 20240318 we don't have unison installed in the cluster. We will work on adding it.
+    As of 20240318 we don't have unison installed in the cluster. We will work on adding it. (You can install your own copy of it.)
     
 Using [Unison](https://en.wikipedia.org/wiki/Unison_(software)), you can keep data synchronized between directories, including ones on a single computer or between the cluster and on your local system. Both CLI and GUI versions are available. Unison needs to be installed on both computers if used across a network.
 
@@ -162,6 +162,8 @@ Unison home page is [here](https://github.com/bcpierce00/unison?tab=readme-ov-fi
 An extensive [tutorial](https://ostechnix.com/how-to-synchronize-files-with-unison-on-linux/) at ostechnix.
 
 A [wiki](https://wiki.archlinux.org/title/unison) about using it from ArchLinux.
+
+[This](https://github.com/jfiksel/cluster-example#how-to-use-unison-for-file-transfer-and-syncing) document written by a previous JHPCE user (Jacob Fiksel) might still be useful.
 
 ### Globus
 We have a Globus endpoint. Please see [this document](globus.md).
