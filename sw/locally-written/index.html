@@ -3199,16 +3199,19 @@ Joint HPC Exchange - Just a test announcement
 </ul>
 <h2 id="container-computing">Container Computing<a class="headerlink" href="#container-computing" title="Anchor link to this section for reference">&para;</a></h2>
 <ul>
-<li><strong>jupyterlab.sh</strong>: </li>
-<li><strong>jupyterlab-gpu.sh</strong>: </li>
-<li><strong>jhpce-rstudio-server</strong>: </li>
-<li><strong>csub-rstudio-server</strong>:</li>
+<li><strong>jupyterlab.sh</strong>: Start an Jupyter server available via an SSH tunnel.</li>
+<li><strong>jupyterlab-gpu.sh</strong>: Start an Jupyter server available via an SSH tunnel with CUDA libraries in LD_LIBRARY_PATH.</li>
+<li><strong>jhpce-rstudio-server</strong>: Start an RStudio server available via an SSH tunnel.</li>
+<li><strong>csub-rstudio-server</strong>: Cluster-specific version.</li>
 </ul>
 <h2 id="slurm-related">SLURM-related<a class="headerlink" href="#slurm-related" title="Anchor link to this section for reference">&para;</a></h2>
 <h3 id="information-about-cluster-and-jobs">Information about cluster and jobs<a class="headerlink" href="#information-about-cluster-and-jobs" title="Anchor link to this section for reference">&para;</a></h3>
-<p><strong>Do not frequently run slurmpic, squeue, sacct or other Slurm client commands using loops in shell scripts or other programs.</strong> </p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p><strong>Do not frequently<sup id="fnref:1"><a class="footnote-ref" href="#fn:1">1</a></sup> run slurmpic, squeue, sacct or other Slurm client commands using loops in shell scripts or other programs.</strong> </p>
 <p>These commands all send remote procedure calls to slurmctld, the main SLURM control and scheduling daemon, They may also perform look-ups in the accounting database. That process and the database need to be <em>highly responsive</em> to the input/output caused by running jobs.</p>
-<p>Ensure that programs limit calls to slurmctld to the minimum necessary for the information you are trying to gather.</p>
+<p>Ensure that programs limit calls to slurmctld to the minimum necessary for the information you are trying to gather. Add arguments to limit to needed partitions or users or job data fields, etcetera.</p>
+</div>
 <ul>
 <li><strong>slurmpic</strong>: <strong>Essential</strong> program for getting cluster status info. Use -h option to see essential usage details. (no man page yet)</li>
 <li><strong>smem</strong>: Displays memory used by your currently running jobs. If given a jobid number, it will display info about the memory usage of that job. (no man page yet)</li>
@@ -3222,6 +3225,14 @@ Joint HPC Exchange - Just a test announcement
 <li><strong>seff</strong>: Display efficiency of CPU and RAM usage of a completed job. (no man page yet)</li>
 <li><strong><a href="https://github.com/neilmunday/slurm-mail">slurm-mail:</a></strong> Tool used to add details to mail sent to you. Not something you can modify. Listed for completeness.</li>
 </ul>
+<div class="footnote">
+<hr />
+<ol>
+<li id="fn:1">
+<p>Frequently meaning more than once every <strong>five minutes</strong>. Do you REALLY <strong>need</strong> to know something sooner than that? If you want to know when a job finishes, use email notification settings. You can add them to pending and running jobs using <a href="../../slurm/tips-scontrol/">scontrol</a>.&#160;<a class="footnote-backref" href="#fnref:1" title="Jump back to footnote 1 in the text">&#8617;</a></p>
+</li>
+</ol>
+</div>
 
 
 
@@ -3242,7 +3253,7 @@ Joint HPC Exchange - Just a test announcement
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1-2.1-2M12.5 7v5.2l4 2.4-1 1L11 13V7h1.5M11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2v1.8Z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">March 19, 2024</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">March 20, 2024</span>
   </span>
 
     
