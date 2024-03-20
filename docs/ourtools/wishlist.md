@@ -26,8 +26,20 @@ Note that tablesort provides alternative comparison implementations like numbers
 
 ## Announcement bar in header
 For things like planned outages.
-Update `/overrides/main.html` file and replace the message with any costom one. Site needs to be rebuild afterwards for the announcement to propagate to live.
+Update `/overrides/main.html` file and replace the message with any custom one. Site needs to be rebuild afterwards for the announcement to propagate to live.
 
+To hide the announcement (or any overriden block) use `-%` at the top block definition and `%-` at definitioan closing.
+```
+{% block announce -%}
+{%- endblock %}
+```
+To adjust colors modify `docs/stylesheets/extra.css` and adjust the `.md-banner` style definition to match your color preference.
+```
+.md-banner {
+  background-color: #ffcc00;
+  color: #cc3300;
+}
+```
 ## Open URLs in new tabs
 (Adi has enabled)
 I think there might be plugins which make this easier than what you have to do othwerwise, which is to use HTML instead of the Markdown notation. In normal HTML you add a space and a string to the end of the URL: `target="_blank"`
