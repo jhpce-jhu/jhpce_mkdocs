@@ -88,7 +88,7 @@ See [this document](monitoring.md) for information about monitoring pending, run
 ## How many jobs can I run at a time?
 
 ??? "Click to open"
-    As of 20240220 there are few limits.
+    As of 20240220 there are few limits. We are not currently limiting the number of simultaneous jobs submitted or running.
 
     Array jobs are limited to 15,000 tasks by variable `max_array_tasks` in /etc/slurm/slurm.conf
 
@@ -104,3 +104,9 @@ See [this document](monitoring.md) for information about monitoring pending, run
     If you do not intend to run any X11 programs during your interactive session, then you can log out of that session and start a new one without the `--x11` flag.
 
     If you do intend to use X11 programs, when that error appears the only solution we have found is to abandon that whole login session to the compute node by typing “exit” to quit the shell. Back on the login node, verify that basic X11 functionality works by starting either the xterm or xclock programs. If that works, start a new srun command to get back onto a compute node. Once on a compute node, verify that basic X11 functionality works by starting either the xterm or xclock programs. If they did, then try your X11 program again.
+
+## srun: error: Ignoring --x11 option
+??? "Click to open"
+    `srun: error: Ignoring --x11 option for a job step within an existing job. Set x11 options at job allocation time.`
+    
+    This error is issued because the srun command was run after already logging into a compute node via an interactive job. In other words, it is an srun inside of an srun.  `Srun` can be issued inside of *resource allocations* created by the `salloc` or `sbatch commands`, but not inside of other srun’s.
