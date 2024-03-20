@@ -23,19 +23,22 @@ Your environment, including your PATH variable, is created when logging in. A nu
 
 ## Container Computing
 
-* **jupyterlab.sh**: 
-* **jupyterlab-gpu.sh**: 
-* **jhpce-rstudio-server**: 
-* **csub-rstudio-server**:
+* **jupyterlab.sh**: Start an Jupyter server available via an SSH tunnel.
+* **jupyterlab-gpu.sh**: Start an Jupyter server available via an SSH tunnel with CUDA libraries in LD_LIBRARY_PATH.
+* **jhpce-rstudio-server**: Start an RStudio server available via an SSH tunnel.
+* **csub-rstudio-server**: Cluster-specific version.
 
 ## SLURM-related
 
 ### Information about cluster and jobs
-**Do not frequently run slurmpic, squeue, sacct or other Slurm client commands using loops in shell scripts or other programs.** 
+!!! Warning
+    **Do not frequently[^1] run slurmpic, squeue, sacct or other Slurm client commands using loops in shell scripts or other programs.** 
 
-These commands all send remote procedure calls to slurmctld, the main SLURM control and scheduling daemon, They may also perform look-ups in the accounting database. That process and the database need to be *highly responsive* to the input/output caused by running jobs.
+    These commands all send remote procedure calls to slurmctld, the main SLURM control and scheduling daemon, They may also perform look-ups in the accounting database. That process and the database need to be *highly responsive* to the input/output caused by running jobs.
 
-Ensure that programs limit calls to slurmctld to the minimum necessary for the information you are trying to gather.
+    Ensure that programs limit calls to slurmctld to the minimum necessary for the information you are trying to gather. Add arguments to limit to needed partitions or users or job data fields, etcetera.
+
+[^1]: Frequently meaning more than once every **five minutes**. Do you REALLY **need** to know something sooner than that? If you want to know when a job finishes, use email notification settings. You can add them to pending and running jobs using [scontrol](../slurm/tips-scontrol.md).
 
 * **slurmpic**: **Essential** program for getting cluster status info. Use -h option to see essential usage details. (no man page yet)
 * **smem**: Displays memory used by your currently running jobs. If given a jobid number, it will display info about the memory usage of that job. (no man page yet)
