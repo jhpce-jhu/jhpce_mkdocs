@@ -2530,6 +2530,15 @@ Joint HPC Exchange - Just a test announcement
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#the-essentials" class="md-nav__link">
+    <span class="md-ellipsis">
+      The essentials
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#shortcuts" class="md-nav__link">
     <span class="md-ellipsis">
       Shortcuts
@@ -3174,6 +3183,15 @@ Joint HPC Exchange - Just a test announcement
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#the-essentials" class="md-nav__link">
+    <span class="md-ellipsis">
+      The essentials
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#shortcuts" class="md-nav__link">
     <span class="md-ellipsis">
       Shortcuts
@@ -3201,12 +3219,6 @@ Joint HPC Exchange - Just a test announcement
     
     
     
-      <a href="../../ourtools/tags/#in-progress" class="md-tag">in-progress</a>
-    
-  
-    
-    
-    
       <a href="../../ourtools/tags/#slurm" class="md-tag">slurm</a>
     
   
@@ -3221,24 +3233,30 @@ Joint HPC Exchange - Just a test announcement
 
 
 <h1 id="interactive-jobs">Interactive Jobs<a class="headerlink" href="#interactive-jobs" title="Anchor link to this section for reference">&para;</a></h1>
-<div class="admonition note">
-<p class="admonition-title">Authoring Note</p>
-<p>It is not yet clear whether there is enough material to warrant a dedicated page for this topic.</p>
-</div>
+<h2 id="the-essentials">The essentials<a class="headerlink" href="#the-essentials" title="Anchor link to this section for reference">&para;</a></h2>
 <p>The core command to create an interactive session is:</p>
 <p><code>srun --pty --x11 bash</code></p>
 <p>The last element of an srun command has to be a program.</p>
 <p>The <code>--x11</code> is optional, and only needed if you are going to be <a href="../../access/x11/">running X11 programs</a> during your session. Omitting it can avoid a number of issues.</p>
 <h2 id="shortcuts">Shortcuts<a class="headerlink" href="#shortcuts" title="Anchor link to this section for reference">&para;</a></h2>
-<p>You can define aliases bash routines in your .bashrc file for commands you use frequently.  Bash functions can be useful for commands that are difficult to use in simple shell aliases. You can view the definition of aliases with <code>alias</code> and bash routines with the command <code>declare -f function_name</code>.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>If you want to type 5 characters instead of 22 every time you want to create an interactive job, read on and indicate that this page was helpful.  If you like to type every last character of every command, skip this section.</p>
+</div>
+<dl>
+<dt>Here are two equivalent commands. Which would you rather use?</dt>
+<dd><code>srun --pty --x11 --mem=20G -p interactive bash</code></dd>
+<dd><code>jsrun --mem=20G -p interactive</code></dd>
+</dl>
+<p>You can define aliases and bash routines in your <code>.bashrc</code> file for commands you use frequently.  Bash functions can be useful for commands that are difficult to specify in simple shell aliases. You can view the definition of aliases with <code>alias</code> and bash routines with the command <code>declare -f function_name</code>.   Changes to your <code>.bashrc</code> file aren't available to your currently running shell unless you log out and back in again, launch a new shell on top of the old one, or simply have your current shell re-read the file ("source it") with <code>. .bashrc</code> The following routines can be copied to your buffer by hovering your mouse over the right-hand side and clicking on the copy icon which appears (faintly).</p>
 <p><strong>jsrun</strong> - JHPCE srun with X11 support:
 <div class="highlight"><pre><span></span><code>jsrun() { if [ -z ${DISPLAY} ]; then /usr/bin/srun --pty &quot;$@&quot; bash; else /usr/bin/srun --pty --x11 &quot;$@&quot; bash; fi }
 </code></pre></div></p>
 <p><strong>jxrun</strong> - JHPCE srun when you want to skip X11 entirely:</p>
 <p><code>jxrun() { /usr/bin/srun --pty "$@" bash; }</code></p>
 <p>These examples inclue <code>$@</code> symbols, which are replaced by any additional arguments you provide. The srun command requires bash or another program to come last, which is one of the reasons why a simple shell alias can't be used. You have to create either a shell script or a routine.</p>
-<p>So you can use these like a normal srun command, e.g.</p>
-<p><code>jsrun --mem=20G -p interactive</code></p>
+<p>So you can use these functions like a normal srun command, e.g.</p>
+<p><code>jsrun --mem=3G -p transfer</code></p>
 
 
 
