@@ -5,7 +5,11 @@ tags:
 
 # JHPCE SLURM FAQ
 
-Use the search field if desired.
+The search field on this web site produces good results.
+
+## FAQs from the vendor
+
+[https://slurm.schedmd.com/faq.html](https://slurm.schedmd.com/faq.html)
 
 ## FAQs from other clusters
 Note that the information in these pages will include details which do not apply here in JHPCE. Caveat emptor.
