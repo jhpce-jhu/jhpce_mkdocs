@@ -7,7 +7,7 @@ Here are links to online copies of the manual pages for commands. If we've
 written a page with advice about using the command, use the {==(LOCAL TIPS)==} link.
 
 ## Locally Written Tools
-* **slurmpic**: **Essential** program for getting cluster status info. Use -h option to see essential usage details. (no man page yet)
+* **slurmpic**: An **essential** program for getting cluster status info. Use -h option to see essential usage details. (no man page yet)
 * **smem**: Displays memory used by your currently running jobs. If given a jobid number, it will display info about the memory usage of that job. (no man page yet)
 * memory reporting script - puts per-user output daily into directories under /jhpce/shared/jhpce/jhpce-log/
 
@@ -34,7 +34,9 @@ All of the manual pages are [here](https://slurm.schedmd.com/archive/slurm-22.05
 
     Ensure that programs limit calls to slurmctld to the minimum necessary for the information you are trying to gather. Add arguments to limit to needed partitions or users or job data fields, etcetera.
 
-[^1]: Frequently meaning more than once every **five minutes**. Do you REALLY **need** to know something sooner than that? If you want to know when a job finishes, use email notification settings. You can add them to pending and running jobs using [scontrol](../slurm/tips-scontrol.md).
+[^1]: Frequently meaning more than once every **five minutes**. Do you REALLY **need** to know something sooner than that? If you want to know when a job starts, fails, or finishes, use email notification settings. You can add them to pending and running jobs using [scontrol](../slurm/tips-scontrol.md). (See sbatch manual page for possible mail types.)
+
+Some SLURM commands such as sacct and squeue can display a wide variety of information. It can be complex to specify what you want to see and to format it so it is readable. We've tried to document some common choices in the LOCAL TIPS documents. A tip: you  set certain environment variables to specify output arguments instead of providing the arguments on the command line. It can be useful to define these different ways in aliases or shell scripts to format output in ways you need, because simply changing the value of these variables can produce vastly different output for commands like sacct and squeue. Example variables are: SLURM_TIME_FORMAT, SACCT_FORMAT, SQUEUE_FORMAT, SQUEUE_FORMAT2, SQUEUE_SORT. 
 
 * [sacct](https://slurm.schedmd.com/archive/slurm-22.05.9/sacct.html): {==([LOCAL TIPS](tips-sacct.md))==}: display accounting data for jobs in the Slurm database
 * [sattach](https://slurm.schedmd.com/archive/slurm-22.05.9/sattach.html): attach to a running job step

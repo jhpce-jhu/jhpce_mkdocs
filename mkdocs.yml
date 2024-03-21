@@ -76,6 +76,7 @@ nav:
         - Singularity: sw/singularity.md
       - JHPCE-created: sw/locally-written.md
     - Job scheduler (SLURM): 
+      - Getting Started: slurm/getting-started.md
       - SLURM FAQ: slurm/slurm-faq.md
       - Example User Guides: slurm/user-guide-collection.md
       - Partitions: slurm/partitions.md

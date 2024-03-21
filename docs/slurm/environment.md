@@ -17,9 +17,11 @@ Some parts of the environment in the shell you submit a job are copied into the 
 
 Some clusters strongly advise their users to create batch scripts in which the `#!/bin/bash` first line has a `-l` flag. Because shells like bash process "dot files" (e.g. `.profile` and .`bashrc`) differently for login versus interactive shells. Perhaps this can explain subtle behaviors you notice. Perhaps this is more important in some clusters than others because of the way accounts are provisioned when created.
 
-SLURM sets a large number of shell variables for jobs to consult if desired. You can see some of them by starting an interactive session and running `printenv | grep -i slurm` (there may be others that are set for jobs depending on their type and arguments -- array jobs, dependent jobs, ???).
+SLURM sets a large number of shell environment variables for jobs to consult if desired.  A good list can be found in the sbatch manual page's INPUT ENVIRONMENT VARIABLES and OUTPUT ENVIRONMENT VARIABLES sections.
 
-SLURM command manual pages often list only some of the available environment variables. This seems to be an oversight in their documentation authors.
+You can see some of them by starting an interactive session and running `printenv | grep -i slurm` (there may be others that are set for jobs depending on their type and arguments -- array jobs, dependent jobs, ???).
+
+The way SLURM commands operate can be influenced by setting some certain environment variables, such as SLURM_TIME_FORMAT, SACCT_FORMAT, SQUEUE_FORMAT, SQUEUE_FORMAT2, SQUEUE_SORT. It can be useful to define these in aliases or shell scripts to format output in ways you need. Simply changing the value of these variables can produce vastly different output for commands like sacct and squeue.
 
 Are there any tricks to propagating information between components of a job? I mean setting your own variables in batch job scripts and having them be visible by all of the processes you mean to use them?
 
