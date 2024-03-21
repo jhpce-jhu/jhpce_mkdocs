@@ -94,6 +94,7 @@ nav:
       - Navigating Deep Directory Trees (pdf): files/images/pushd-popd-dirs.pdf
       - Helpful GUI Programs: sw/gui-tools.md
     - Web Portal:
+      - portal/index.md
       - GUI Applications: portal/web-apps.md
       - Datacatalog: portal/datacatalog.md
       - Self Service MFA, Password Requests : portal/web-reset.md
