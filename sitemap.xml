@@ -251,6 +251,11 @@
          <changefreq>daily</changefreq>
     </url>
     <url>
+         <loc>https://jhpce-beta.jhu.edu/slurm/interactive-jobs/</loc>
+         <lastmod>2024-03-21</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
          <loc>https://jhpce-beta.jhu.edu/slurm/monitoring/</loc>
          <lastmod>2024-03-21</lastmod>
          <changefreq>daily</changefreq>
