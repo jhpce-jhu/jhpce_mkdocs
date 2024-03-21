@@ -77,20 +77,21 @@ nav:
       - JHPCE-created: sw/locally-written.md
     - Job scheduler (SLURM): 
       - Getting Started: slurm/getting-started.md
-      - SLURM FAQ: slurm/slurm-faq.md
-      - Example User Guides: slurm/user-guide-collection.md
       - Partitions: slurm/partitions.md
       - "Command tips & reference":
         - "Cmd tips & reference": slurm/slurm-commands-ref.md
-        - "sacct tips": slurm/tips-sacct.md
-        - "sacctmgr tips": slurm/tips-sacctmgr.md
-        - "scontrol tips": slurm/tips-scontrol.md
+        - sacct tips: slurm/tips-sacct.md
+        - sacctmgr tips: slurm/tips-sacctmgr.md
+        - scontrol tips: slurm/tips-scontrol.md
+      - Interactive Jobs: slurm/interactive-jobs.md
+      - Crafting Batch Jobs: slurm/crafting-batch-jobs.md
       - Monitoring Your Jobs: slurm/monitoring.md
-      - Crafting Jobs: slurm/crafting-jobs.md
       - When Will My Job Start?: slurm/whenstart.md
       - Quality of Service (QOS): slurm/qos.md
       - Job Environment: slurm/environment.md
       - Node Features: slurm/node-features.md
+      - Example User Guides: slurm/user-guide-collection.md
+      - SLURM FAQ: slurm/slurm-faq.md
     - User Guides/Tutorials:
       - GPU: gpu/gpu-overview.md
       - VS Code: sw/vscode.md
