@@ -80,7 +80,11 @@ nav:
       - SLURM FAQ: slurm/slurm-faq.md
       - Example User Guides: slurm/user-guide-collection.md
       - Partitions: slurm/partitions.md
-      - Command tips & reference: slurm/slurm-commands-ref.md
+      - "Command tips & reference":
+        - "Cmd tips & reference": slurm/slurm-commands-ref.md
+        - "sacct tips": slurm/tips-sacct.md
+        - "sacctmgr tips": slurm/tips-sacctmgr.md
+        - "scontrol tips": slurm/tips-scontrol.md
       - Monitoring Your Jobs: slurm/monitoring.md
       - Crafting Jobs: slurm/crafting-jobs.md
       - When Will My Job Start?: slurm/whenstart.md
@@ -165,25 +169,21 @@ theme:
 #
 # https://squidfunk.github.io/mkdocs-material/plugins/
 plugins:
-  # TAGS
-  - tags:
-      tags_file: ourtools/tags.md
-  - search
-  - open-in-new-tab
-  - git-revision-date-localized
-  # SEARCH
-  # search is enabled by default but if you add options it HAS TO BE LISTED
-  # there are A LOT of extras you can do. Someone explore later if desired.
-  #https://squidfunk.github.io/mkdocs-material/setup/setting-up-site-search/
   # BLOG
   # https://squidfunk.github.io/mkdocs-material/setup/setting-up-a-blog/
   # Be aware that you cannot use features preceeded by "Insiders"
   #- blog
-  # JRT tried to install this locally but it blew up like a bomb because it
-  # could not find a .git directory. Everything git is toxic. He deleted the
-  # plugin on his machine. He didn't know if it would work on the server
-  # in any case. He just wanted documents to have last-modified dates on them.
-  #- git-revision-date-localized
+  - git-revision-date-localized # this forces you to work in a git cloned repo
+  # If you are not, then everything breaks until you comment out this plugin.
+  - open-in-new-tab
+  # SEARCH
+  # search is enabled by default but if you add options it HAS TO BE LISTED
+  # there are A LOT of extras you can do. Someone explore later if desired.
+  #https://squidfunk.github.io/mkdocs-material/setup/setting-up-site-search/
+  - search
+  # TAGS
+  - tags:
+      tags_file: ourtools/tags.md
 
 #
 # Python MarkDown Extensions
