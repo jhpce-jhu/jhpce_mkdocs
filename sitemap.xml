@@ -221,11 +221,6 @@
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://jhpce-beta.jhu.edu/portal/</loc>
-         <lastmod>2024-03-21</lastmod>
-         <changefreq>daily</changefreq>
-    </url>
-    <url>
          <loc>https://jhpce-beta.jhu.edu/portal/datacatalog/</loc>
          <lastmod>2024-03-21</lastmod>
          <changefreq>daily</changefreq>
