@@ -2262,6 +2262,8 @@ Joint HPC Exchange - Just a test announcement
       
         
       
+        
+      
     
     
       
@@ -2291,6 +2293,27 @@ Joint HPC Exchange - Just a test announcement
             Job scheduler (SLURM)
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../getting-started/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Getting Started
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
             
               
                 
@@ -3169,7 +3192,7 @@ Joint HPC Exchange - Just a test announcement
 written a page with advice about using the command, use the <mark class="critic">(LOCAL TIPS)</mark> link.</p>
 <h2 id="locally-written-tools">Locally Written Tools<a class="headerlink" href="#locally-written-tools" title="Anchor link to this section for reference">&para;</a></h2>
 <ul>
-<li><strong>slurmpic</strong>: <strong>Essential</strong> program for getting cluster status info. Use -h option to see essential usage details. (no man page yet)</li>
+<li><strong>slurmpic</strong>: An <strong>essential</strong> program for getting cluster status info. Use -h option to see essential usage details. (no man page yet)</li>
 <li><strong>smem</strong>: Displays memory used by your currently running jobs. If given a jobid number, it will display info about the memory usage of that job. (no man page yet)</li>
 <li>memory reporting script - puts per-user output daily into directories under /jhpce/shared/jhpce/jhpce-log/</li>
 </ul>
@@ -3193,6 +3216,7 @@ written a page with advice about using the command, use the <mark class="critic"
 <p>These commands all send remote procedure calls to slurmctld, the main SLURM control and scheduling daemon, They may also perform look-ups in the accounting database. That process and the database need to be <em>highly responsive</em> to the input/output caused by running jobs.</p>
 <p>Ensure that programs limit calls to slurmctld to the minimum necessary for the information you are trying to gather. Add arguments to limit to needed partitions or users or job data fields, etcetera.</p>
 </div>
+<p>Some SLURM commands such as sacct and squeue can display a wide variety of information. It can be complex to specify what you want to see and to format it so it is readable. We've tried to document some common choices in the LOCAL TIPS documents. A tip: you  set certain environment variables to specify output arguments instead of providing the arguments on the command line. It can be useful to define these different ways in aliases or shell scripts to format output in ways you need, because simply changing the value of these variables can produce vastly different output for commands like sacct and squeue. Example variables are: SLURM_TIME_FORMAT, SACCT_FORMAT, SQUEUE_FORMAT, SQUEUE_FORMAT2, SQUEUE_SORT. </p>
 <ul>
 <li><a href="https://slurm.schedmd.com/archive/slurm-22.05.9/sacct.html">sacct</a>: <mark class="critic">(<a href="../tips-sacct/">LOCAL TIPS</a>)</mark>: display accounting data for jobs in the Slurm database</li>
 <li><a href="https://slurm.schedmd.com/archive/slurm-22.05.9/sattach.html">sattach</a>: attach to a running job step</li>
@@ -3222,7 +3246,7 @@ written a page with advice about using the command, use the <mark class="critic"
 <hr />
 <ol>
 <li id="fn:1">
-<p>Frequently meaning more than once every <strong>five minutes</strong>. Do you REALLY <strong>need</strong> to know something sooner than that? If you want to know when a job finishes, use email notification settings. You can add them to pending and running jobs using <a href="../tips-scontrol/">scontrol</a>.&#160;<a class="footnote-backref" href="#fnref:1" title="Jump back to footnote 1 in the text">&#8617;</a></p>
+<p>Frequently meaning more than once every <strong>five minutes</strong>. Do you REALLY <strong>need</strong> to know something sooner than that? If you want to know when a job starts, fails, or finishes, use email notification settings. You can add them to pending and running jobs using <a href="../tips-scontrol/">scontrol</a>. (See sbatch manual page for possible mail types.)&#160;<a class="footnote-backref" href="#fnref:1" title="Jump back to footnote 1 in the text">&#8617;</a></p>
 </li>
 </ol>
 </div>
@@ -3246,7 +3270,7 @@ written a page with advice about using the command, use the <mark class="critic"
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1-2.1-2M12.5 7v5.2l4 2.4-1 1L11 13V7h1.5M11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2v1.8Z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">March 20, 2024</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">March 21, 2024</span>
   </span>
 
     
