@@ -15,6 +15,9 @@ There are several types of partitions:
 * **GPU** (equipped with GPU cards)
 * **PI-owned** (for use only by members of the PI's group)
 
+## Jobs and Partitions
+Jobs can be submitted to multiple partitions. They will start in the first partition that has the required resources.
+
 ## PI Partitions
 JHPCE exists because Primary Investigators worked together to create a cluster. They share their resources via public partitions (see below).
 
