@@ -84,7 +84,7 @@ In addition to fairshare, any pending job will accrue AGE priority over time. Cu
 
 Job arrays which started running tasks many days ago will wind up with high age priority values for all of their future tasks. You can see that fairshare somewhat counteracts that age advantage.
 
-If you decide that you want to change something about a pending job, consider whether you can do so using `scontrol` commands as described [here](tips-scontrol.md) instead of killing the job with `scancel` and resubmitting it.
+If you decide that you want to change something about a pending job, consider whether you can do so using `scontrol` commands as described [here](tips-scontrol.md) instead of killing the job with `scancel` and resubmitting it. That would preserve the age priority your job has accrued.
 
 ### Partition Priority
 
