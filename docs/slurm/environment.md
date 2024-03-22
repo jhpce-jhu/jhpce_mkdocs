@@ -13,15 +13,38 @@ tags:
     
 ## Overview of what might be covered here
 
-Some parts of the environment in the shell you submit a job are copied into the job's environment. This can be controlled with certain SLURM arguments.
-
-Some clusters strongly advise their users to create batch scripts in which the `#!/bin/bash` first line has a `-l` flag. Because shells like bash process "dot files" (e.g. `.profile` and .`bashrc`) differently for login versus interactive shells. Perhaps this can explain subtle behaviors you notice. Perhaps this is more important in some clusters than others because of the way accounts are provisioned when created.
-
+### Set by SLURM
 SLURM sets a large number of shell environment variables for jobs to consult if desired.  A good list can be found in the sbatch manual page's INPUT ENVIRONMENT VARIABLES and OUTPUT ENVIRONMENT VARIABLES sections.
 
 You can see some of them by starting an interactive session and running `printenv | grep -i slurm` (there may be others that are set for jobs depending on their type and arguments -- array jobs, dependent jobs, ???).
 
+### Managing output of sacct and squeue
 The way SLURM commands operate can be influenced by setting some certain environment variables, such as SLURM_TIME_FORMAT, SACCT_FORMAT, SQUEUE_FORMAT, SQUEUE_FORMAT2, SQUEUE_SORT. It can be useful to define these in aliases or shell scripts to format output in ways you need. Simply changing the value of these variables can produce vastly different output for commands like sacct and squeue.
+
+### Existing environment
+Are any parts of the environment in the shell you submit a job from copied into the job's environment? This can be controlled with the `--export` argument.
+
+Some clusters strongly advise their users to create batch scripts in which the `#!/bin/bash` first line has a `-l` flag. Because shells like bash process "dot files" (e.g. `.profile` and .`bashrc`) differently for login versus interactive shells. Perhaps this can explain subtle behaviors you notice. Perhaps this is more important in some clusters than others because of the way accounts are provisioned when created. You can test the difference in behavior by submitting trivial test jobs that run a command to save the environment of the job (`printenv > my-env.txt`) and compare them.
+
+### Passing info into jobs
+
+It is possible to pass variables into a SLURM job when you submit the job using the `-–export` flag. For example to pass the value of the variables A and b into the job script named jobscript.sh you can use:
+
+`sbatch --export=A=25,b='test' script.sh`
+
+or use the special keyword `ALL` (although one can imagine that going awry)
+
+`sbatch --export=ALL,A=7,b='test3' script.sh`
+
+Using variables to set SLURM job name and output files
+
+**SLURM does not support using variables in the #SBATCH lines within a job script.** However, values passed from the command line have precedence over values defined in the job script. So the job name and output/error files can be passed on the sbatch command line:
+
+```
+A=70
+b='trial-24'
+sbatch --job-name=$A.$b.run --output=$A.$b.out --export=A=$A,b=$b script.sh
+```
 
 Are there any tricks to propagating information between components of a job? I mean setting your own variables in batch job scripts and having them be visible by all of the processes you mean to use them?
 
