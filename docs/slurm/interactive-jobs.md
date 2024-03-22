@@ -34,7 +34,9 @@ jsrun() { if [ -z ${DISPLAY} ]; then /usr/bin/srun --pty "$@" bash; else /usr/bi
 
 **jxrun** - JHPCE srun when you want to skip X11 entirely:
 
-```jxrun() { /usr/bin/srun --pty "$@" bash; }```
+```
+jxrun() { /usr/bin/srun --pty "$@" bash; }
+```
 
 These examples inclue `$@` symbols, which are replaced by any additional arguments you provide. The srun command requires bash or another program to come last, which is one of the reasons why a simple shell alias can't be used. You have to create either a shell script or a routine.
 
