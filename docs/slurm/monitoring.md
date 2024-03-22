@@ -24,6 +24,7 @@ Batch jobs consist of several job steps, two at minimum ("batch"[^2] and "extern
 2. SLURM evaluates syntax and resource requests.
 3. If problems found, then job is rejected immediately.
 4. Otherwise it is accepted and becomes PENDING (PD).
+5. SLURM's scheduler algorithms begin testing where your job will "fit" in its planning process for the future. There will be more slots where smaller jobs (in RAM, CPU and duration) will fit than larger ones.
 5. PENDING jobs can be held, CANCELLED (CA) or be dispatched to compute node(s) to start RUNNING (R).
 6. RUNNING jobs can immediately run into a problem due to coding errors and become FAILED (F).
 7. RUNNING jobs can run correctly but then exceed their memory allocation and become OUT_OF_MEMORY (OOM).
