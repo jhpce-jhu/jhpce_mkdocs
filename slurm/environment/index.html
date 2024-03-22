@@ -2641,6 +2641,48 @@ Joint HPC Exchange - Just a test announcement
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="Overview of what might be covered here">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#set-by-slurm" class="md-nav__link">
+    <span class="md-ellipsis">
+      Set by SLURM
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#managing-output-of-sacct-and-squeue" class="md-nav__link">
+    <span class="md-ellipsis">
+      Managing output of sacct and squeue
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#existing-environment" class="md-nav__link">
+    <span class="md-ellipsis">
+      Existing environment
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#passing-info-into-jobs" class="md-nav__link">
+    <span class="md-ellipsis">
+      Passing info into jobs
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
         <li class="md-nav__item">
@@ -3189,6 +3231,48 @@ Joint HPC Exchange - Just a test announcement
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="Overview of what might be covered here">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#set-by-slurm" class="md-nav__link">
+    <span class="md-ellipsis">
+      Set by SLURM
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#managing-output-of-sacct-and-squeue" class="md-nav__link">
+    <span class="md-ellipsis">
+      Managing output of sacct and squeue
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#existing-environment" class="md-nav__link">
+    <span class="md-ellipsis">
+      Existing environment
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#passing-info-into-jobs" class="md-nav__link">
+    <span class="md-ellipsis">
+      Passing info into jobs
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
         <li class="md-nav__item">
@@ -3244,11 +3328,25 @@ Joint HPC Exchange - Just a test announcement
 <p>There are useful things we can document about controlling the job execution environment. This is fairly low priority though, as most things Just Work. </p>
 </div>
 <h2 id="overview-of-what-might-be-covered-here">Overview of what might be covered here<a class="headerlink" href="#overview-of-what-might-be-covered-here" title="Anchor link to this section for reference">&para;</a></h2>
-<p>Some parts of the environment in the shell you submit a job are copied into the job's environment. This can be controlled with certain SLURM arguments.</p>
-<p>Some clusters strongly advise their users to create batch scripts in which the <code>#!/bin/bash</code> first line has a <code>-l</code> flag. Because shells like bash process "dot files" (e.g. <code>.profile</code> and .<code>bashrc</code>) differently for login versus interactive shells. Perhaps this can explain subtle behaviors you notice. Perhaps this is more important in some clusters than others because of the way accounts are provisioned when created.</p>
+<h3 id="set-by-slurm">Set by SLURM<a class="headerlink" href="#set-by-slurm" title="Anchor link to this section for reference">&para;</a></h3>
 <p>SLURM sets a large number of shell environment variables for jobs to consult if desired.  A good list can be found in the sbatch manual page's INPUT ENVIRONMENT VARIABLES and OUTPUT ENVIRONMENT VARIABLES sections.</p>
 <p>You can see some of them by starting an interactive session and running <code>printenv | grep -i slurm</code> (there may be others that are set for jobs depending on their type and arguments -- array jobs, dependent jobs, ???).</p>
+<h3 id="managing-output-of-sacct-and-squeue">Managing output of sacct and squeue<a class="headerlink" href="#managing-output-of-sacct-and-squeue" title="Anchor link to this section for reference">&para;</a></h3>
 <p>The way SLURM commands operate can be influenced by setting some certain environment variables, such as SLURM_TIME_FORMAT, SACCT_FORMAT, SQUEUE_FORMAT, SQUEUE_FORMAT2, SQUEUE_SORT. It can be useful to define these in aliases or shell scripts to format output in ways you need. Simply changing the value of these variables can produce vastly different output for commands like sacct and squeue.</p>
+<h3 id="existing-environment">Existing environment<a class="headerlink" href="#existing-environment" title="Anchor link to this section for reference">&para;</a></h3>
+<p>Are any parts of the environment in the shell you submit a job from copied into the job's environment? This can be controlled with the <code>--export</code> argument.</p>
+<p>Some clusters strongly advise their users to create batch scripts in which the <code>#!/bin/bash</code> first line has a <code>-l</code> flag. Because shells like bash process "dot files" (e.g. <code>.profile</code> and .<code>bashrc</code>) differently for login versus interactive shells. Perhaps this can explain subtle behaviors you notice. Perhaps this is more important in some clusters than others because of the way accounts are provisioned when created. You can test the difference in behavior by submitting trivial test jobs that run a command to save the environment of the job (<code>printenv &gt; my-env.txt</code>) and compare them.</p>
+<h3 id="passing-info-into-jobs">Passing info into jobs<a class="headerlink" href="#passing-info-into-jobs" title="Anchor link to this section for reference">&para;</a></h3>
+<p>It is possible to pass variables into a SLURM job when you submit the job using the <code>-–export</code> flag. For example to pass the value of the variables A and b into the job script named jobscript.sh you can use:</p>
+<p><code>sbatch --export=A=25,b='test' script.sh</code></p>
+<p>or use the special keyword <code>ALL</code> (although one can imagine that going awry)</p>
+<p><code>sbatch --export=ALL,A=7,b='test3' script.sh</code></p>
+<p>Using variables to set SLURM job name and output files</p>
+<p><strong>SLURM does not support using variables in the #SBATCH lines within a job script.</strong> However, values passed from the command line have precedence over values defined in the job script. So the job name and output/error files can be passed on the sbatch command line:</p>
+<div class="highlight"><pre><span></span><code>A=70
+b=&#39;trial-24&#39;
+sbatch --job-name=$A.$b.run --output=$A.$b.out --export=A=$A,b=$b script.sh
+</code></pre></div>
 <p>Are there any tricks to propagating information between components of a job? I mean setting your own variables in batch job scripts and having them be visible by all of the processes you mean to use them?</p>
 <p>When modifying environment variables in shell scripts or your current shell, remember that you may be dealing with existing information that you don't want to discard (by redefining the variable without referring to the existing value). When dealing with variables that you don't make up out of whole cloth and which have simple names which might match existing ones, check for their existence first. If they exist, you may want to prepend your changes, say to a PATH-type variable which usually has multiple entries. Or append, if you want system defaults to come <em>before</em> your values.</p>
 <p>Remember that <a href="../../sw/modules/">modules</a> change environment variables when loaded and unloaded. User's default environments are controlled by some JHPCE-created modules. </p>
@@ -3275,7 +3373,7 @@ Joint HPC Exchange - Just a test announcement
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1-2.1-2M12.5 7v5.2l4 2.4-1 1L11 13V7h1.5M11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2v1.8Z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">March 21, 2024</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">March 22, 2024</span>
   </span>
 
     
