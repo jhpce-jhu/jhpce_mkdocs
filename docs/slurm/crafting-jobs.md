@@ -17,9 +17,9 @@ In the directories under `/jhpce/shared/jhpce/slurm/` you will find files used d
 
 There are three commands used to request resources from SLURM. You will find all three discussed in the [linked documentation](slurm-commands-ref.md).
 
-Here at JHPCE we have been using `srun` primarily as way to start interactive sessions. However it can also be used inside of `sbatch` scripts. See web site [below](crafting-jobs.md#running-multiple-jobs-from-one-script) for examples.
+Here at JHPCE we have been using `srun` primarily as way to start interactive sessions. However it can also be used after allocating resources with `salloc` and inside of `sbatch` scripts. See web site [below](crafting-jobs.md#running-multiple-jobs-from-one-script) for examples.
 
-Be careful using `salloc` that you don't leave allocated resources unused.
+Be careful using `salloc` that you don't leave allocated resources unused. One way to use salloc is to request resources and launch a new bash shell. Those resources are not released until that bash shell is ended.
 
 ## Sbatch Rules
 1. First characters in batch file need to be: `#!/bin/bash` (although you can use an interpreter other than bash)
@@ -32,8 +32,9 @@ Be careful using `salloc` that you don't leave allocated resources unused.
 For now see these [two PDF pages](images/slurm-precendence.pdf) from an orientation document.
 
 ## Job Environment
-!!! AuthoringNote 
-    This probably deserves its own document. There are a variety of things to describe here, some subtle. Options to pass or not pass parts of environment used to dispatch job into the job. Should people use the `-l` arg to bash? `#SBATCH --chdir=`
+By default jobs start in the same directory that was the current working directory when `sbatch` or `srun` were used. The directive `--chdir=somepath` or `#SBATCH --chdir=somepath` can be used to set the working directory of the job. Whether you choose to use this directive depends on your workflow and typical awareness of where you "are". Would you rather change batch files or set command line arguments to ensure that jobs run in the desired directories or would you rather double-check your location? 
+
+We have a document that describes [other aspects of job environments](../slurm/environment.md).
     
 ## Input/output Considerations
 
@@ -67,43 +68,6 @@ You can configure jobs to run in order with some conditional control. See [this 
 ## Heterogeneous Job Support
 
 Each component of such jobs has virtually all job options available including partition, account and QOS (Quality Of Service). See this [vendor document](https://slurm.schedmd.com/archive/slurm-22.05.9/heterogeneous_jobs.html).
-
-
-## Examples from Elsewhere
-
-### Workflow
-
-[This cluster ](https://support.ceci-hpc.be/doc/_contents/SubmittingJobs/WorkflowManagement.html#introduction)has some good material about workflows.
-
-### NERSC Examples
-[Good examples](https://docs.nersc.gov/jobs/examples/).
-
-### USC Examples
-[Good examples of basic different types of batch jobs](https://www.carc.usc.edu/user-information/user-guides/hpc-basics/slurm-templates)
-
-### Running Multiple Jobs From One Script
-
-[Using srun inside of sbatch scripts,](https://hpc.llnl.gov/banks-jobs/running-jobs/slurm#MultipleJobs) in serial and parallel. Remember to include the `wait` bash command at the end of your batch file so the job doesn't end before all of the tasks inside of it.
-
-### Using signals to clean up/checkpointing
-
-It's a Good Thing to save the state of your computation so that you can pick up where you left off if your job ends earlier than expected.  We should provide some links to existing documentation people have written about how to implement checkpointing.
-
-It's also a Good Thing to clean up after yourself, by, for example, deleting files created in /tmp by your job.
-
-If a job is cancelled or killed because it exceeds its time limit (_maybe_ memory too?), SLURM sends two signals some time apart. Normally the first is a TERM signal, later a KILL signal. You can dispatch jobs with instructions to send them specific signals a specified number of seconds before the KILL signal is sent.
-
-You can modify your batch jobs so they do Good Things when they receive the first signal.
-
-See the [sbatch](https://slurm.schedmd.com/archive/slurm-22.05.9/sbatch.html) manual page's explanation for the `--signal` argument.
-
-Pay attention to which process(es) are sent signals. The batch job, all of the job steps, ...
-
-Here is a [blog post](https://dhruveshp.com/blog/2021/signal-propagation-on-slurm/) which discusses this in some detail.
-
-That post refers to [this one](https://hpc-discourse.usc.edu/t/signalling-a-job-before-time-limit-is-reached/314/4) which was updated after the post was written, so there might be newer info than was incorporated in the post.
-
-This [stackoverflow answer](https://stackoverflow.com/questions/68214421/graceful-signal-handling-in-slurm/68214873#68214873) seems to take a different approach. This is an advanced topic and will require some care and perhaps experimentation to verify your solution.
 
 ## Example Batch Jobs
 
@@ -196,3 +160,42 @@ This is put here as a tool for system administrators needing to do maintenance w
             done
     fi
     ```
+
+
+## Examples from Elsewhere
+
+
+### Workflow
+
+[This cluster ](https://support.ceci-hpc.be/doc/_contents/SubmittingJobs/WorkflowManagement.html#introduction)has some good material about workflows.
+
+### NERSC Examples
+[Good examples](https://docs.nersc.gov/jobs/examples/).
+
+### USC Examples
+[Good examples of basic different types of batch jobs](https://www.carc.usc.edu/user-information/user-guides/hpc-basics/slurm-templates)
+
+### Running Multiple Jobs From One Script
+
+[Using srun inside of sbatch scripts,](https://hpc.llnl.gov/banks-jobs/running-jobs/slurm#MultipleJobs) in serial and parallel. Remember to include the `wait` bash command at the end of your batch file so the job doesn't end before all of the tasks inside of it.
+
+### Using signals to clean up/checkpointing
+
+It's a Good Thing to save the state of your computation so that you can pick up where you left off if your job ends earlier than expected.  We should provide some links to existing documentation people have written about how to implement checkpointing.
+
+It's also a Good Thing to clean up after yourself, by, for example, deleting files created in /tmp by your job.
+
+If a job is cancelled or killed because it exceeds its time limit (_maybe_ memory too?), SLURM sends two signals some time apart. Normally the first is a TERM signal, later a KILL signal. You can dispatch jobs with instructions to send them specific signals a specified number of seconds before the KILL signal is sent.
+
+You can modify your batch jobs so they do Good Things when they receive the first signal.
+
+See the [sbatch](https://slurm.schedmd.com/archive/slurm-22.05.9/sbatch.html) manual page's explanation for the `--signal` argument.
+
+Pay attention to which process(es) are sent signals. The batch job, all of the job steps, ...
+
+Here is a [blog post](https://dhruveshp.com/blog/2021/signal-propagation-on-slurm/) which discusses this in some detail.
+
+That post refers to [this one](https://hpc-discourse.usc.edu/t/signalling-a-job-before-time-limit-is-reached/314/4) which was updated after the post was written, so there might be newer info than was incorporated in the post.
+
+This [stackoverflow answer](https://stackoverflow.com/questions/68214421/graceful-signal-handling-in-slurm/68214873#68214873) seems to take a different approach. This is an advanced topic and will require some care and perhaps experimentation to verify your solution.
+
