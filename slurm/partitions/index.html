@@ -3380,6 +3380,7 @@ Joint HPC Exchange - Just a test announcement
 <p>The command <a href="https://slurm.schedmd.com/archive/slurm-22.05.9/sinfo.html"><code>sinfo</code></a> shows information about all of the partitions. It has many options, so you can also use it to see information about nodes. (Note: Partitions which <em>require</em> group membership to submit to are only visible via <code>sinfo</code> to members of those groups. Because the local command <code>slurmpic</code> uses <code>sinfo</code> to retrieve information, the output of <code>slurmpic -a</code> (show all nodes) will omit those private PI partitions' nodes.)</p>
 <h2 id="cpu-partitions">CPU Partitions<a class="headerlink" href="#cpu-partitions" title="Anchor link to this section for reference">&para;</a></h2>
 <h3 id="public-cpu-partitions">Public CPU Partitions<a class="headerlink" href="#public-cpu-partitions" title="Anchor link to this section for reference">&para;</a></h3>
+<p>The CPU and RAM limits for <code>shared</code> change depending on node availability. We change the QOS <code>shared-default</code>up and down to try to keep RAM, in particular, limited to about 20% of the total available in order to assure equitable access to the resources. You can learn more about QOS <a href="../qos/">here</a>.</p>
 <p>Limits for CPU cores, RAM and Time (default/maximum)</p>
 <table>
 <thead>
@@ -3397,7 +3398,7 @@ Joint HPC Exchange - Just a test announcement
 <td>shared</td>
 <td style="text-align: center;">public</td>
 <td>100</td>
-<td>1TB</td>
+<td>512MB</td>
 <td style="text-align: center;">(1d/90d)</td>
 <td>DEFAULT</td>
 </tr>
