@@ -16,10 +16,12 @@ There are several types of partitions:
 * **PI-owned** (for use only by members of the PI's group)
 
 ## Jobs and Partitions
-Jobs can be submitted to multiple partitions. They will start in the first partition that has the required resources.
+Jobs can be submitted to multiple partitions. They will generally start in the first partition that has the required resources. However there are a number of ways in which partitions are configured which may nudge a pending job to one partition over others. Pending jobs in some partitions are evaluated ahead of others. Priorities can be set on some partitions (such as `interactive`) as described [here](../slurm/whenstart.md/#partition-priority).
+
+Array jobs *seem* to be able to dispatch child jobs to any of the partitions specified. We are not 100% sure of this -- they might all be run into the first partition chosen. (If the latter is true, you may not want to tie your array completion to a partition that has many fewer resources than your other option(s).)
 
 ## PI Partitions
-JHPCE exists because Primary Investigators worked together to create a cluster. They share their resources via public partitions (see below).
+JHPCE exists because Primary Investigators worked together to create a cluster. They share their resources via public partitions (see cost recovery descriptions [here](../aboutus/model.md/#cost-recovery) and [here](../joinus/new-pi.md)).
 
 {==Only submit jobs to these partitions if you are a member of the Primary Investigator's research groups or have been given explicit permission to do so.==} If you are in doubt, ask before submitting. Jobs from non-group members will be killed and repeated abuse *will* lead to repercussions.  
 
