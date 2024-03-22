@@ -9,9 +9,12 @@ tags:
 !!! Note "Authoring Note"
     This document is accumulating information which might best be split into several more-focused documents. There are many aspects of creating jobs.
 
-There are a variety of techniques one can use to initiate SLURM jobs to accomplish various tasks. Here we will initially accumulate pointers to documentation written by others for their clusters. Later we will write concrete examples of our own.
+There are a variety of techniques one can use to initiate SLURM jobs to accomplish various tasks. Here we will describe important topics and accumulate pointers to documentation written by others for their clusters. Later we will write concrete examples of our own.
 
-In the directories under `/jhpce/shared/jhpce/slurm/` you will find files used during orientation, some accumulated documents and batch examples.
+In the directories under `/jhpce/shared/jhpce/slurm/` you will find files used during orientation, some accumulated documents and batch examples. 
+
+!!! Note
+    If you want to submit example batch jobs, or documents describing good workflows for specific tasks, or anything of the kind, we will happily consider adding them to that directory and to this document!!!
 
 ## Sbatch, srun and salloc
 
