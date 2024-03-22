@@ -6,7 +6,7 @@
 * Jeffrey Tunison - Systems Engineer<br>
 * Adi Gherman - Senior Research Associate [JHU Bio](https://publichealth.jhu.edu/faculty/3326/adrian-gherman)<br>
 
-Please do not *default* to sending individual team members requests for general assistance. Mailing lists exist so that the entire team sees requests/problems as described [here](../help/help-basics.md). Thank you.
+Please do not *default* to sending individual team members requests for general assistance. Mailing lists exist so that the entire team (or more!) sees requests/problems as described [here](../help/help-basics.md). Thank you.
 
 **Oversight of the JHPCE is done by the BIT Committee, composed of the following individuals.**
 
