@@ -60,14 +60,45 @@ export TEMPDIR=$MYSCRATCH
 R CMD BATCH myprog.R
 
 ```
+## Array jobs
+
+!!! Warning
+    Needs to be written
+
+Array jobs allow you to use one job script to run many jobs across a set of samples. That script needs to contain syntax that can be used by SLURM to assign different work to different task element jobs.
+
+When you submit an array job you can indicate that you only want a certain number of tasks to be executed at a time. (You can also use the `scontrol` command to add or adjust that aspect of the job to pending or running jobs. See our [scontrol tips ](../slurm/tips-scontrol.md) page.)
 
 ## Dependent jobs
 
-You can configure jobs to run in order with some conditional control. See [this part](https://slurm.schedmd.com/archive/slurm-22.05.9/sbatch.html#OPT_dependency) of the sbatch manual page.
+You can configure jobs to run in order with some conditional control. Conditions include jobs starting, jobs finishing, jobs finishing without errors, all of a set of jobs finishing, etc.
+
+This can be used to achieve different goals, such as
+
+* controlling how many resources you consume at one time when running jobs on PI partitions where there are no enforced QOS limits, and
+* breaking up jobs into smaller pieces yet still have them run in the right order. 
+
+Smaller jobs start more quickly, and it can be better to make progress where possible while, for example, waiting for a large amount of RAM to become available on a single node. This is also more efficient for the cluster, since work can be done with, say, less RAM for this portion of the overall task, then a large amount for that portion, then a smaller amount again for some cleanup or merging portion. This is much better than having to wait for a large amount of RAM to become available and then, when it is allocated, tying it down for the entire duration of the single job.
+
+This approach also allows you to use different resources to complete a larger task. For example, use the more common CPU nodes to prepare some data for another job to process on a GPU node, of which there are fewer, and then possibly doing some further data reduction on any available CPU node.
+
+As you can see, people can get more work done more quickly by crafting a set of jobs to use only the necessary resources for each stage of a larger task.
+
+See [this part](https://slurm.schedmd.com/archive/slurm-22.05.9/sbatch.html#OPT_dependency) of the sbatch manual page. Many clusters have sections describing this technique.
 
 ## Heterogeneous Job Support
 
-Each component of such jobs has virtually all job options available including partition, account and QOS (Quality Of Service). See this [vendor document](https://slurm.schedmd.com/archive/slurm-22.05.9/heterogeneous_jobs.html).
+These kinds of jobs aim to achieve some of the same goals as the simpler technique of specifying dependencies between jobs. Such as specifying different resource requirements for different components.
+
+Each component of such jobs has virtually all job options available including partition and QOS (Quality Of Service). See this [vendor document](https://slurm.schedmd.com/archive/slurm-22.05.9/heterogeneous_jobs.html).
+
+## Checkpointing Jobs
+
+Losing work is a sad occassion. If you add some complexity to your job scripts you can have them save enough data of the right kind to be able to resume work if the job ends prematurely.  Jobs end through no fault of your own, such as file systems filling up or nodes crashing or needing to be rebooted before they can accept new jobs (this is something that occurs regularly!!!).  If you set a time limit for your job too low, at least you can submit a new job that picks up where the old one left off.
+
+One [example checkpointing document](https://hpc.nmsu.edu/discovery/slurm/backfill-and-checkpoints/#_introduction_to_checkpoint) about implementing this is from the NMSU cluster. It features example code workflows for Python, R and other languages.
+
+Until we add more examples, you can search for them yourself.
 
 ## Example Batch Jobs
 
