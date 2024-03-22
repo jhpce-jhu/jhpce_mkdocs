@@ -59,11 +59,13 @@ The command [`sinfo`](https://slurm.schedmd.com/archive/slurm-22.05.9/sinfo.html
 
 ### Public CPU Partitions
 
+The CPU and RAM limits for `shared` change depending on node availability. We change the QOS `shared-default`up and down to try to keep RAM, in particular, limited to about 20% of the total available in order to assure equitable access to the resources. You can learn more about QOS [here](../slurm/qos.md).
+
 Limits for CPU cores, RAM and Time (default/maximum)
 
 | Name | Type | Core | RAM | Time | Notes/Use |
 | ---- | :----: | ---- | ---- | :-------: | ----- |
-| shared | public | 100 | 1TB | (1d/90d) | DEFAULT |
+| shared | public | 100 | 512MB | (1d/90d) | DEFAULT |
 | interactive | public | 2 | 20gb | (1d/90d) | Small but accessible |
 | gpu | public | (none) | (none) | (1d/90d) | Only for GPU jobs |
 | sas | application | (none) | (none) | (none/90d) | Licensed for SAS |

@@ -17,7 +17,7 @@ QOS definitions for users and partitions are stored in a database.
 
 We have a [document containing useful QOS-related commands](tips-sacctmgr.md). Those commands include ones which allow you to see the value of a QOS like `interactive-default`
 
-See our currently defined QOS in a readable format:
+See our currently-defined QOS in a readable format:
 
 `sacctmgr show qos format=Name%20,Priority,Flags%30,MaxWall,MaxTRESPU%20,MaxJobsPU,MaxSubmitPU,MaxTRESPA%25`
 
