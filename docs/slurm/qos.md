@@ -15,11 +15,19 @@ Vendor QOS documentation about them can be found [here](https://slurm.schedmd.co
 
 QOS definitions for users and partitions are stored in a database.
 
-We have a [document containing useful QOS-related commands](tips-sacctmgr.md). Those commands include ones which allow you to see the value of a QOS like `interactive-default`
+We have a [document containing useful QOS-related commands](tips-sacctmgr.md). Those commands include ones like this one which allow you to see the value of all defined QOS in a readable format:
+: `sacctmgr show qos format=Name%20,Priority,Flags%30,MaxWall,MaxTRESPU%20,MaxJobsPU,MaxSubmitPU,MaxTRESPA%25`
 
-See our currently-defined QOS in a readable format:
+## Using QOS
+If you need to submit a job with a particular QOS, AND that QOS is in **_both_** your **and** the specified partition's AllowedQOS list (see below sections), then you need to add an extra SLURM directive in your batch job or on the command line.
 
-`sacctmgr show qos format=Name%20,Priority,Flags%30,MaxWall,MaxTRESPU%20,MaxJobsPU,MaxSubmitPU,MaxTRESPA%25`
+`sbatch --qos=shared-200-2 myjobscript`
+
+You can modify a pending job with jobid# with this command:
+
+`scontrol update job jobid# qos=shared-200-2`
+
+Specifying a QOS that you do not have access to or which your specified partition does not allow will cause the job to be rejected immediately. Pending jobs which specify a QOS that you lose access to will probably fail the next time the scheduler inspects them. If not then, then when they are otherwise ready to be started.
 
 ## Partition QOS
 Job partitions like `shared` have two QOS-related attributes:

@@ -30,6 +30,8 @@ scontrol show partition <partitionname>
 
 You can update many aspects of pending jobs, fewer for running jobs. What follows is only a sample!!! Click [here](https://slurm.schedmd.com/scontrol.html#lbAH) for the complete list.
 
+You can find the commands necessary to add a QOS to your job specification or to update a pending job in our [QOS document](../slurm/qos.md).
+
 #### Pending Jobs
 
 ```Shell title="Place one of your jobs ahead of other of your jobs" linenums="0"
