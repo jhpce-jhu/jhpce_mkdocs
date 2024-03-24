@@ -111,7 +111,11 @@ If a job is cancelled or killed because it exceeds its time limit (_maybe_ also 
 
 You can modify your batch jobs so they do Good Things when they receive the first signal. This extra code is called a *signal handler*.
 
+You can also ask SLURM to send specific signals to your program.
+
 This is an advanced topic and will require some care and perhaps experimentation to verify your solution.
+
+This cluster's [checkpointing](https://hpc-unibe-ch.github.io/slurm/checkpointing.html) page includes examples of handling signals with a focus on checkpointing. Signal handler examples are shown for bash, C/C++ and Python.
 
 See the [sbatch](https://slurm.schedmd.com/archive/slurm-22.05.9/sbatch.html) manual page's explanation for the `--signal` argument.
 

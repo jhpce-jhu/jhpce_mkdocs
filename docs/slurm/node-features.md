@@ -16,6 +16,9 @@ If you believe that your code will gain a lot from being run on specific kinds o
 
 One could, at run-time, write batch job scripts which check the features of the node they were assigned, and choose to execute code highly-optimized for that node's CPU.
 
+!!! Tip
+    See most available tag info for the cluster's node with
+    `sinfo -o "%25N %50f %20G" | less`
 ## Current tag categories
 Currently we have defined features for:
 
@@ -84,6 +87,12 @@ The various levels of optimization requested via `-O#` might also impact the fle
 
 !!! Note
     If you find good documents that would help other users optimize their binaries, please let us know at the bitsupport address.
+
+If you want to create batch scripts which can switch between binaries at run-time, there are several techniques you can try:
+1)	If you use `-—constraint` and your job starts, then (we believe) it will be running on the requested feature. (We haven’t tested to ensure that that is 100% respected. It’s _supposed to be_ (as opposed to using `-—prefer`). Therefore you can also pass a variable into your job with the `-—export` flag as explained in [this page](../slurm/environment.md)
+2)	If you  do some output munging with regular expression matching, you can get the info out of your environment at runtime. You DO see the specified feature in the output of `scontrol show job $SLURM_JOBID` as `Features=amd` But you have to search for it in the output AND it only shows you the feature you specified, not all of those applicable to that node.
+3) You could also examine the available features of the node on which your shell is running in the `ActiveFeatures` attribute in the output of `scontrol show node $SLURMD_NODENAME`
+
 
 ## Frequency By CPU-type
 
