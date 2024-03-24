@@ -18,7 +18,7 @@
       
       
       <link rel="icon" href="../../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.5.14">
+      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.5.15">
     
     
       
@@ -26,7 +26,7 @@
       
     
     
-      <link rel="stylesheet" href="../../assets/stylesheets/main.10ba22f1.min.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/main.7e359304.min.css">
       
         
         <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
@@ -3651,7 +3651,9 @@ R CMD BATCH myprog.R
 <h3 id="using-signals-to-clean-upcheckpoint">Using signals to clean up/checkpoint<a class="headerlink" href="#using-signals-to-clean-upcheckpoint" title="Anchor link to this section for reference">&para;</a></h3>
 <p>If a job is cancelled or killed because it exceeds its time limit (<em>maybe</em> also memory too?), SLURM sends two signals some time apart. Normally the first is a TERM signal, later a KILL signal. You can dispatch jobs with instructions to send them specific signals a specified number of seconds before the KILL signal is sent.</p>
 <p>You can modify your batch jobs so they do Good Things when they receive the first signal. This extra code is called a <em>signal handler</em>.</p>
+<p>You can also ask SLURM to send specific signals to your program.</p>
 <p>This is an advanced topic and will require some care and perhaps experimentation to verify your solution.</p>
+<p>This cluster's <a href="https://hpc-unibe-ch.github.io/slurm/checkpointing.html">checkpointing</a> page includes examples of handling signals with a focus on checkpointing. Signal handler examples are shown for bash, C/C++ and Python.</p>
 <p>See the <a href="https://slurm.schedmd.com/archive/slurm-22.05.9/sbatch.html">sbatch</a> manual page's explanation for the <code>--signal</code> argument.</p>
 <p>Pay attention to which process(es) are sent signals. The batch job, all of the job steps, ...</p>
 <p>Here is a <a href="https://dhruveshp.com/blog/2021/signal-propagation-on-slurm/">blog post</a> which discusses this in some detail.</p>
@@ -3772,7 +3774,7 @@ fi
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1-2.1-2M12.5 7v5.2l4 2.4-1 1L11 13V7h1.5M11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2v1.8Z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">March 22, 2024</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">March 24, 2024</span>
   </span>
 
     
