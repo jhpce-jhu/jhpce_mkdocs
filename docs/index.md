@@ -42,7 +42,7 @@ stakeholder or as a non-stakeholder, please contact the directors
 
 If your lab is already a member, and you need to add new users, then
 have the users fill out the [JHPCE new user request
-form](https://jhpce.jhu.edu/register/new-user-request/).
+form](http://ec2-44-214-193-38.compute-1.amazonaws.com/register/new-user-request/).
 
 Mark Miller and Brian Caffo  
 Co-Directors, JHPCE
