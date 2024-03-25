@@ -85,6 +85,11 @@
     <label class="md-overlay" for="__drawer"></label>
     <div data-md-component="skip">
       
+        
+        <a href="#time-limits" class="md-skip">
+          Skip to content
+        </a>
+      
     </div>
     <div data-md-component="announce">
       
@@ -2348,6 +2353,19 @@ Joint HPC Exchange - Just a test announcement
       <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
       
       
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Time Limits
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
       
       <a href="./" class="md-nav__link md-nav__link--active">
         
@@ -2358,6 +2376,88 @@ Joint HPC Exchange - Just a test announcement
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#setting-a-time-limit-for-your-slurm-job-on-jhpce" class="md-nav__link">
+    <span class="md-ellipsis">
+      Setting a time limit for your SLURM job on JHPCE
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#importance-of-time-limits" class="md-nav__link">
+    <span class="md-ellipsis">
+      Importance of Time Limits:
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#syntax-for-setting-time-limits" class="md-nav__link">
+    <span class="md-ellipsis">
+      Syntax for Setting Time Limits:
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#jhpce-cluster-time-limit-policies" class="md-nav__link">
+    <span class="md-ellipsis">
+      JHPCE Cluster Time Limit Policies:
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#best-practices" class="md-nav__link">
+    <span class="md-ellipsis">
+      Best Practices:
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#backfill-scheduler-strategies" class="md-nav__link">
+    <span class="md-ellipsis">
+      Backfill Scheduler Strategies:
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#conclusion" class="md-nav__link">
+    <span class="md-ellipsis">
+      Conclusion:
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
       
     </li>
   
@@ -3141,6 +3241,79 @@ Joint HPC Exchange - Just a test announcement
   
   
   
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#setting-a-time-limit-for-your-slurm-job-on-jhpce" class="md-nav__link">
+    <span class="md-ellipsis">
+      Setting a time limit for your SLURM job on JHPCE
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#importance-of-time-limits" class="md-nav__link">
+    <span class="md-ellipsis">
+      Importance of Time Limits:
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#syntax-for-setting-time-limits" class="md-nav__link">
+    <span class="md-ellipsis">
+      Syntax for Setting Time Limits:
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#jhpce-cluster-time-limit-policies" class="md-nav__link">
+    <span class="md-ellipsis">
+      JHPCE Cluster Time Limit Policies:
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#best-practices" class="md-nav__link">
+    <span class="md-ellipsis">
+      Best Practices:
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#backfill-scheduler-strategies" class="md-nav__link">
+    <span class="md-ellipsis">
+      Backfill Scheduler Strategies:
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#conclusion" class="md-nav__link">
+    <span class="md-ellipsis">
+      Conclusion:
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
   
 </nav>
                   </div>
@@ -3153,24 +3326,41 @@ Joint HPC Exchange - Just a test announcement
               <article class="md-content__inner md-typeset">
                 
                   
+  
+<nav class="md-tags" >
+  
+    
+    
+    
+      <a href="../../ourtools/tags/#in-progress" class="md-tag">in-progress</a>
+    
+  
+    
+    
+    
+      <a href="../../ourtools/tags/#slurm" class="md-tag">slurm</a>
+    
+  
+</nav>
 
 
-  <h1>Time Limits</h1>
 
-<p>Setting a time limit for your SLURM job on JHPCE
-Introduction:
-SLURM (Simple Linux Utility for Resource Management) is a powerful workload manager and job scheduler used in high-performance computing (HPC) environments. It allows users to efficiently submit, monitor, and manage computational tasks on clusters. One crucial aspect of job management in SLURM is setting time limits for job execution. Time limits help ensure fair resource allocation, prevent jobs from monopolizing system resources, and facilitate efficient utilization of computing resources.</p>
-<p>Importance of Time Limits:
-Setting time limits is essential for maintaining a balanced workload on an HPC system. By specifying a maximum runtime for each job, users prevent inefficient use of resources and minimize delays for others waiting to run their tasks. Time limits also aid in preventing runaway or stuck jobs that may consume resources indefinitely. This proactive approach to job management promotes fairness and improves the overall system efficiency, making it more accessible to a larger number of users.</p>
-<p>Syntax for Setting Time Limits:
-In SLURM, users can set time limits using the --time or -t option when submitting a job. The time limit is specified in the format days-hours:minutes:seconds. For example, to request a job with a maximum runtime of 2 days, the following command can be used:</p>
-<p>sbatch --time=2-00:00:00 my_script.sh
+<h1 id="time-limits">Time Limits<a class="headerlink" href="#time-limits" title="Anchor link to this section for reference">&para;</a></h1>
+<div class="highlight"><pre><span></span><code>Note: The following was largely written using ChatGPT.
+</code></pre></div>
+<h2 id="setting-a-time-limit-for-your-slurm-job-on-jhpce">Setting a time limit for your SLURM job on JHPCE<a class="headerlink" href="#setting-a-time-limit-for-your-slurm-job-on-jhpce" title="Anchor link to this section for reference">&para;</a></h2>
+<p>One crucial aspect of job management in SLURM is setting time limits for job execution. Time limits help ensure fair resource allocation, prevent jobs from monopolizing system resources, and facilitate efficient utilization of computing resources.</p>
+<h2 id="importance-of-time-limits">Importance of Time Limits:<a class="headerlink" href="#importance-of-time-limits" title="Anchor link to this section for reference">&para;</a></h2>
+<p>Setting time limits is essential for maintaining a balanced workload on an HPC system. By specifying a maximum runtime for each job, users prevent inefficient use of resources and minimize delays for others waiting to run their tasks. Time limits also aid in preventing runaway or stuck jobs that may consume resources indefinitely. This proactive approach to job management promotes fairness and improves the overall system efficiency, making it more accessible to a larger number of users.</p>
+<h2 id="syntax-for-setting-time-limits">Syntax for Setting Time Limits:<a class="headerlink" href="#syntax-for-setting-time-limits" title="Anchor link to this section for reference">&para;</a></h2>
+<p>In SLURM, users can set time limits using the --time or -t option when submitting a job. The time limit is specified in the format days-hours:minutes:seconds. For example, to request a job with a maximum runtime of 2 days, the following command can be used:</p>
+<p><code>sbatch --time=2-00:00:00 my_script.sh</code>
 To request an srun session with at 4 hour time limit you would run:</p>
-<p>srun --pty --x11 -t 4:00:00 bash
+<p><code>srun --pty --x11 -t 4:00:00 bash</code>
 Note that the “-t” option should be followed by a space and the “–time” option should be followed by an “=”. This syntax allows users to tailor the time limit to the specific requirements of their jobs, balancing the need for computational resources with fair usage practices.</p>
-<p>JHPCE Cluster Time Limit Policies:
-On the JHPCE cluster, specific time limit policies are in place to balance the needs of diverse users. The default time limit for job execution on the shared and gpu partitions is set to 1 day, ensuring that shorter tasks do not face unnecessary delays. Additionally, users have the flexibility to request a maximum time limit of up to 90 days for longer-running jobs. This range accommodates a variety of computational workloads, offering users the freedom to tailor time limits according to the requirements of their specific tasks. Please note that by default these limits are only set on the shared and gpu partition.</p>
-<p>Best Practices:</p>
+<h2 id="jhpce-cluster-time-limit-policies">JHPCE Cluster Time Limit Policies:<a class="headerlink" href="#jhpce-cluster-time-limit-policies" title="Anchor link to this section for reference">&para;</a></h2>
+<p>On the JHPCE cluster, specific time limit policies are in place to balance the needs of diverse users. The default time limit for job execution on the shared and gpu partitions is set to 1 day, ensuring that shorter tasks do not face unnecessary delays. Additionally, users have the flexibility to request a maximum time limit of up to 90 days for longer-running jobs. This range accommodates a variety of computational workloads, offering users the freedom to tailor time limits according to the requirements of their specific tasks. Please note that by default these limits are only set on the shared and gpu partition.</p>
+<h2 id="best-practices">Best Practices:<a class="headerlink" href="#best-practices" title="Anchor link to this section for reference">&para;</a></h2>
 <p>When setting time limits in SLURM, it is crucial to consider the nature of the computational task.
 Jobs with well-defined execution times benefit from precise time limits, while more unpredictable tasks may require a degree of flexibility.
 Regularly reviewing and adjusting time limits based on job characteristics and system performance is a best practice to ensure optimal utilization of resources.
@@ -3211,11 +3401,10 @@ Sleeping  71  seconds...
 slurmstepd: error: *** JOB 1980476 ON compute-093 
 CANCELLED AT 2024-02-13T12:03:27 DUE TO TIME LIMIT *** 
 </code></pre></div>
-<p>Backfill Scheduler Strategies: SLURM’s backfill scheduler introduces an additional layer of sophistication to job scheduling. Backfilling allows shorter jobs to be scheduled into available resources ahead of longer jobs, provided that the overall system efficiency is not compromised. Time limits play a crucial role in backfill strategies, ensuring that shorter jobs do not overstay their welcome while maximizing resource utilization. The backfill scheduler contributes to improved job throughput, reduced queue times, and enhanced overall system responsiveness.</p>
-<p>Conclusion:
-In conclusion, setting time limits in SLURM is a fundamental practice for efficient job management in HPC environments. It promotes fair resource allocation, prevents runaway jobs, and contributes to the overall effectiveness of the computing cluster. Users should be mindful of their job requirements, system dynamics, and best practices to harness the full potential of SLURM’s capabilities while maintaining a balanced and responsive computing environment.</p>
-<div class="highlight"><pre><span></span><code>Note: The above was largely written using ChatGPT.
-</code></pre></div>
+<h2 id="backfill-scheduler-strategies">Backfill Scheduler Strategies:<a class="headerlink" href="#backfill-scheduler-strategies" title="Anchor link to this section for reference">&para;</a></h2>
+<p>SLURM’s backfill scheduler introduces an additional layer of sophistication to job scheduling. Backfilling allows shorter jobs to be scheduled into available resources ahead of longer jobs, provided that the overall system efficiency is not compromised. Time limits play a crucial role in backfill strategies, ensuring that shorter jobs do not overstay their welcome while maximizing resource utilization. The backfill scheduler contributes to improved job throughput, reduced queue times, and enhanced overall system responsiveness.</p>
+<h2 id="conclusion">Conclusion:<a class="headerlink" href="#conclusion" title="Anchor link to this section for reference">&para;</a></h2>
+<p>In conclusion, setting time limits in SLURM is a fundamental practice for efficient job management in HPC environments. It promotes fair resource allocation, prevents runaway jobs, and contributes to the overall effectiveness of the computing cluster. Users should be mindful of their job requirements, system dynamics, and best practices to harness the full potential of SLURM’s capabilities while maintaining a balanced and responsive computing environment.</p>
 
 
 
