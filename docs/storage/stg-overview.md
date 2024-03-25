@@ -18,16 +18,12 @@ There are three basic categories of data storage you can write to.
 |-------|-------------|:----:|---|
 |Home directory|/users/*yourusername*|Yes|Store your environment|
 |Project space|/dcs07/*grpname*/data|Yes|Research data|
-|Scratch space|/tmp/|No|Application temporary files|
+|Scratch space|/fastscratch/|No|Application temporary files|
 
 
 Characteristics, best uses of each.
 
-Mention local versus network.
-
-(/tmp is a local example. Are we going to keep /scratch in existence? See [Github 774](https://github.com/jhpce-jhu/jhpce/issues/774).)
-
-Speed differences between SSD (dcs06, fastscratch) and spinning.
+Speed differences between SSD (dcs06, fastscratch) and spinning hard drives (dcs04, dsc05, dcs06).
 
 ## Specific File Systems You Need To Know About
 Make a table for each of the three types of storage. Instead of one large table. Be consistent in dealing with the three types of stg.
