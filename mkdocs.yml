@@ -94,7 +94,10 @@ nav:
       - Example User Guides: slurm/user-guide-collection.md
       - SLURM FAQ: slurm/slurm-faq.md
     - User Guides/Tutorials:
-      - GPU: gpu/gpu-overview.md
+      - GPU: 
+        - gpu/index.md
+        - Using GPUs on JHPCE: gpu/gpu-info.md
+        - Alphafold: gpu/alphafold.md
       - VS Code: sw/vscode.md
       - Cost Calculator: help/cost-calculator.md
       - How to read a manual page (pdf): help/images/guide-to-manual-pages.pdf
