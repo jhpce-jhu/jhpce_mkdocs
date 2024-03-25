@@ -26,6 +26,7 @@ Popular programs:
 - gzip
 - tar
 - zip
+- 7z
 
 ## Compression
 Most archive commands have optional arguments enabling the compression or decompression of files being added to or extracted from archives.
