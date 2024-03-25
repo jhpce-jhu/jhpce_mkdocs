@@ -134,7 +134,6 @@ This [stackoverflow answer](https://stackoverflow.com/questions/68214421/gracefu
 Here is a sample batch job. More information about this topic is accumulating [here](../files/copying-files.md).
 
 ??? note "Click to expand"
-    Content. How hard will it be to do code blocks?
     ```Shell
     #!/bin/bash
 
