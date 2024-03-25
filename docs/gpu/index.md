@@ -2,6 +2,7 @@
 tags:
   - gpu
   - mark
+  - refers-to-old-website
 ---
 <s>
 # GPU Critical Knowledge
