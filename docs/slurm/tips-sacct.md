@@ -177,6 +177,10 @@ These fields are probably the ones you'll want. See [this section](https://slurm
 - MaxDiskRead - Number bytes read by all tasks in job
 - MaxDiskWrite - Number bytes written by all tasks in job
 
+Virtual Memory Size (VMSize) is the total memory size of a job. It includes both memory actually in RAM (the RSS) and parts of executabilities which were not needed to be read in off of disk into RAM. Because, for example, routines in dynamically linked libraries were never called, so those libraries were not loaded. 
+
+RSS - resident set size (RSS) is the portion of memory (measured in megabytes) occupied by a job that is held in main memory (RAM). The rest of the memory required by the job exists in the swap space or file system, either because some parts of the occupied memory were paged out, or because some parts of the executable were never loaded.
+
 ## Exit Error Codes
 In addition to the job's "state", SLURM also records error codes. Unfortunately their [Job Exit Codes](https://slurm.schedmd.com/job_exit_code.html) page doesn't provide a meaning for the numerical values.
 
