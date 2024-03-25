@@ -78,6 +78,7 @@ nav:
     - Job scheduler (SLURM): 
       - Getting Started: slurm/getting-started.md
       - Partitions: slurm/partitions.md
+      - Time Limits: slurm/time-limits.md
       - "Command tips & reference":
         - "Cmd tips & reference": slurm/slurm-commands-ref.md
         - sacct tips: slurm/tips-sacct.md
