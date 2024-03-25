@@ -86,7 +86,7 @@ attending the Orientation Session for the CMS Subcluster of the JHPCE
         JHPCE cluster is MobaXterm as it combines the functionality of
         all 3 software packages (SSH, SFTP, and X11) in 1 program. 
         Install MobaXterm by following the first few steps of
-        <https://jhpce.jhu.edu/knowledge-base/mobaxterm-configuration/>
+        <https://jhpce.jhu.edu/access/mobaxterm.md>
         .  Alternatively, if you already use an SSH client, (such as
         [putty](http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html)
         or [Cygwin)](http://x.cygwin.com/) and an SCP client  (such as
