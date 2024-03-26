@@ -122,7 +122,9 @@ Checkpointing is saving the state of your computation at intervals so that you c
 
 Losing work is a sad occasion. If you add some complexity to your job scripts you can have them save enough data of the right kind to be able to resume work if the job ends prematurely.  Jobs end through no fault of your own, such as file systems filling up or nodes crashing or needing to be rebooted before they can accept new jobs (this is something that occurs regularly!!!).  If you set a time limit for your job too low, at least you can submit a new job that picks up where the old one left off.
 
-One [example checkpointing document](https://hpc.nmsu.edu/discovery/slurm/backfill-and-checkpoints/#_introduction_to_checkpoint) about implementing this is from the NMSU cluster. It features example code workflows for Python, R and other languages.
+One [example checkpointing document](https://hpc.nmsu.edu/discovery/slurm/backfill-and-checkpoints/#_introduction_to_checkpoint) about implementing this is from the NMSU cluster. It features example code workflows for Python, R and other languages!!!
+
+Here is a Youtube [video about checkpointing from CECI](https://www.youtube.com/watch?v=LyWSYYj4zHY), a European organization.
 
 Until we add more examples, you can search for them yourself.
 
