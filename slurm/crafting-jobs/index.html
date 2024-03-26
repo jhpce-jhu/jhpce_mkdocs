@@ -2620,11 +2620,26 @@ Please excuse any issues with non-working pages.
 </li>
       
         <li class="md-nav__item">
-  <a href="#job-array" class="md-nav__link">
+  <a href="#job-arrays" class="md-nav__link">
     <span class="md-ellipsis">
-      Job Array
+      Job Arrays
     </span>
   </a>
+  
+    <nav class="md-nav" aria-label="Job Arrays">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#job-array-related-environment-variables" class="md-nav__link">
+    <span class="md-ellipsis">
+      Job array-related environment variables
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -3509,11 +3524,26 @@ Please excuse any issues with non-working pages.
 </li>
       
         <li class="md-nav__item">
-  <a href="#job-array" class="md-nav__link">
+  <a href="#job-arrays" class="md-nav__link">
     <span class="md-ellipsis">
-      Job Array
+      Job Arrays
     </span>
   </a>
+  
+    <nav class="md-nav" aria-label="Job Arrays">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#job-array-related-environment-variables" class="md-nav__link">
+    <span class="md-ellipsis">
+      Job array-related environment variables
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -3695,11 +3725,11 @@ Please excuse any issues with non-working pages.
 <p class="admonition-title">Note</p>
 <p>If you want to submit example batch jobs, or documents describing good workflows for specific tasks, or anything of the kind, we will happily consider adding them to that directory and to this document!!!</p>
 </div>
-<h2 id="sbatch-srun-and-salloc">Sbatch, srun and salloc<a class="headerlink" href="#sbatch-srun-and-salloc" title="Anchor link to this section for reference">&para;</a></h2>
+<h2 id="sbatch-srun-and-salloc"><strong>Sbatch, srun and salloc</strong><a class="headerlink" href="#sbatch-srun-and-salloc" title="Anchor link to this section for reference">&para;</a></h2>
 <p>There are three commands used to request resources from SLURM. You will find all three discussed in the <a href="../slurm-commands-ref/">linked documentation</a>.</p>
 <p>Here at JHPCE we have been using <code>srun</code> primarily as way to start interactive sessions. However it can also be used after allocating resources with <code>salloc</code> and inside of <code>sbatch</code> scripts. See web site <a href="./#running-multiple-jobs-from-one-script">below</a> for examples.</p>
 <p>Be careful using <code>salloc</code> that you don't leave allocated resources unused. One way to use salloc is to request resources and launch a new bash shell. Those resources are not released until that bash shell is ended.</p>
-<h2 id="sbatch-rules">Sbatch Rules<a class="headerlink" href="#sbatch-rules" title="Anchor link to this section for reference">&para;</a></h2>
+<h2 id="sbatch-rules"><strong>Sbatch Rules</strong><a class="headerlink" href="#sbatch-rules" title="Anchor link to this section for reference">&para;</a></h2>
 <ol>
 <li>First characters in batch file need to be: <code>#!/bin/bash</code> (although you can use an interpreter other than bash)</li>
 <li><code>#SBATCH</code> directives need to appear as the first characters on their lines.</li>
@@ -3707,42 +3737,71 @@ Please excuse any issues with non-working pages.
 <li>You can put comments after # symbols.</li>
 <li>You may need to add a <code>wait</code> command at the bottom to ensure that processes spawned earlier complete before the script does.</li>
 </ol>
-<h2 id="slurm-directive-order-of-precendence">SLURM Directive Order of Precendence<a class="headerlink" href="#slurm-directive-order-of-precendence" title="Anchor link to this section for reference">&para;</a></h2>
+<h2 id="slurm-directive-order-of-precendence"><strong>SLURM Directive Order of Precendence</strong><a class="headerlink" href="#slurm-directive-order-of-precendence" title="Anchor link to this section for reference">&para;</a></h2>
 <p>For now see these <a href="../images/slurm-precendence.pdf">two PDF pages</a> from an orientation document.</p>
-<h2 id="job-environment">Job Environment<a class="headerlink" href="#job-environment" title="Anchor link to this section for reference">&para;</a></h2>
+<h2 id="job-environment"><strong>Job Environment</strong><a class="headerlink" href="#job-environment" title="Anchor link to this section for reference">&para;</a></h2>
 <p>By default jobs start in the same directory that was the current working directory when <code>sbatch</code> or <code>srun</code> were used. The directive <code>--chdir=somepath</code> or <code>#SBATCH --chdir=somepath</code> can be used to set the working directory of the job. Whether you choose to use this directive depends on your workflow and typical awareness of where you "are". Would you rather change batch files or set command line arguments to ensure that jobs run in the desired directories or would you rather double-check your location? </p>
 <p>We have a document that describes <a href="../environment/">other aspects of job environments</a>.</p>
-<h2 id="inputoutput-considerations">Input/output Considerations<a class="headerlink" href="#inputoutput-considerations" title="Anchor link to this section for reference">&para;</a></h2>
+<h2 id="inputoutput-considerations"><strong>Input/output Considerations</strong><a class="headerlink" href="#inputoutput-considerations" title="Anchor link to this section for reference">&para;</a></h2>
 <div class="admonition authoringnote">
 <p class="admonition-title">Authoringnote</p>
 <p>Use the same terms as used in the storage overview. We want to be consistent. It helps users, and helps us make links between related articles.</p>
 </div>
 <ul>
 <li>home directory</li>
-<li>local compute node /tmp</li>
-<li>fastscratch</li>
 <li>project storage</li>
+<li>fastscratch</li>
+<li>local compute node /tmp</li>
 </ul>
 <p>Some programs have specific variables you can set to indicate where files should be created.</p>
 <p>SAS has "WORK" -- is this set to something in the module load process?</p>
-<p>R has "TEMPDIR" which defaults to /tmp.</p>
+<p>R has "TEMPDIR" which defaults to /tmp. We may be changing the module load code to define this to /fastscratch where that is present (which should be everywhere except on C-SUB nodes).</p>
 <div class="highlight"><pre><span></span><code>You could use your 1TB of fastscratch space for this. So your SLURM script could use commands like:
 
 module load conda_R
 export TEMPDIR=$MYSCRATCH
 R CMD BATCH myprog.R
 </code></pre></div>
-<h2 id="job-array">Job Array<a class="headerlink" href="#job-array" title="Anchor link to this section for reference">&para;</a></h2>
-<div class="admonition warning">
-<p class="admonition-title">Warning</p>
-<p>Needs to be written</p>
-</div>
-<p>Array jobs allow you to use one job script to run many jobs across a set of samples. That script needs to contain syntax that can be used by SLURM to assign different work to different task element jobs.</p>
-<p>When you submit an array job you can indicate that you only want a certain number of tasks to be executed at a time. (You can also use the <code>scontrol</code> command to add or adjust that aspect of the job to pending or running jobs. See our <a href="../tips-scontrol/">scontrol tips </a> page.)</p>
+<h2 id="job-arrays"><strong>Job Arrays</strong><a class="headerlink" href="#job-arrays" title="Anchor link to this section for reference">&para;</a></h2>
+<p>Array jobs allow you to use one job script to run many jobs across a set of samples. That SLURM script or the program(s) it calls need(s) to contain syntax that uses SLURM environment variables to assign different work to different task element jobs.</p>
+<p>When you submit an array job you can indicate that you only want a certain number of tasks to be executed at a time. This is called the "step size". (You can also use the <code>scontrol</code> command to add or adjust that aspect of the job for pending or running jobs. See our <a href="../tips-scontrol/">scontrol tips </a> page.)</p>
+<p>To reference this specific task of a job array, combine SLURM_ARRAY_JOB_ID with SLURM_ARRAY_TASK_ID (e.g. "scontrol update ${SLURM_ARRAY_JOB_ID}_{$SLURM_ARRAY_TASK_ID} ...").</p>
 <p>Vendor docs about job arrays are <a href="https://slurm.schedmd.com/job_array.html">here</a>.</p>
 <p>New Mexico State University job array section <a href="https://hpc.nmsu.edu/discovery/slurm/job-arrays/">here</a>. Good, compact example document.</p>
 <p><a href="https://www.carc.usc.edu/user-information/user-guides/hpc-basics/slurm-templates">USC explanation</a> of job arrays.</p>
-<h2 id="dependent-jobs">Dependent jobs<a class="headerlink" href="#dependent-jobs" title="Anchor link to this section for reference">&para;</a></h2>
+<h3 id="job-array-related-environment-variables"><strong>Job array-related environment variables</strong><a class="headerlink" href="#job-array-related-environment-variables" title="Anchor link to this section for reference">&para;</a></h3>
+<p>These variables are only set if this job is part of a job array.</p>
+<table>
+<thead>
+<tr>
+<th>Variable name</th>
+<th>Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>SLURM_ARRAY_JOB_ID</strong></td>
+<td>The overall job ID</td>
+</tr>
+<tr>
+<td><strong>SLURM_ARRAY_TASK_ID</strong></td>
+<td>The individual task ID</td>
+</tr>
+<tr>
+<td><strong>SLURM_ARRAY_TASK_STEP</strong></td>
+<td>The step size of task IDs</td>
+</tr>
+<tr>
+<td><strong>SLURM_ARRAY_TASK_MIN</strong></td>
+<td>The minimum task ID</td>
+</tr>
+<tr>
+<td><strong>SLURM_ARRAY_TASK_MAX</strong></td>
+<td>The maximum task ID</td>
+</tr>
+</tbody>
+</table>
+<h2 id="dependent-jobs"><strong>Dependent jobs</strong><a class="headerlink" href="#dependent-jobs" title="Anchor link to this section for reference">&para;</a></h2>
 <p>You can configure jobs to run in order with some conditional control. Conditions include jobs starting, jobs finishing, jobs finishing without errors, all of a set of jobs finishing, etc.</p>
 <p>This can be used to achieve different goals, such as</p>
 <ul>
@@ -3753,15 +3812,15 @@ R CMD BATCH myprog.R
 <p>This approach also allows you to use different resources to complete a larger task. For example, use the more common CPU nodes to prepare some data for another job to process on a GPU node, of which there are fewer, and then possibly doing some further data reduction on any available CPU node.</p>
 <p>As you can see, people can get more work done more quickly by crafting a set of jobs to use only the necessary resources for each stage of a larger task.</p>
 <p>See <a href="https://slurm.schedmd.com/archive/slurm-22.05.9/sbatch.html#OPT_dependency">this part</a> of the sbatch manual page. Many clusters have sections describing this technique.</p>
-<h2 id="heterogeneous-job-support">Heterogeneous Job Support<a class="headerlink" href="#heterogeneous-job-support" title="Anchor link to this section for reference">&para;</a></h2>
+<h2 id="heterogeneous-job-support"><strong>Heterogeneous Job Support</strong><a class="headerlink" href="#heterogeneous-job-support" title="Anchor link to this section for reference">&para;</a></h2>
 <p>These kinds of jobs aim to achieve some of the same goals as the simpler technique of specifying dependencies between jobs. Such as specifying different resource requirements for different components.</p>
 <p>Each component of such jobs has virtually all job options available including partition and QOS (Quality Of Service). See this <a href="https://slurm.schedmd.com/archive/slurm-22.05.9/heterogeneous_jobs.html">vendor document</a>.</p>
-<h2 id="checkpointing-jobs">Checkpointing Jobs<a class="headerlink" href="#checkpointing-jobs" title="Anchor link to this section for reference">&para;</a></h2>
+<h2 id="checkpointing-jobs"><strong>Checkpointing Jobs</strong><a class="headerlink" href="#checkpointing-jobs" title="Anchor link to this section for reference">&para;</a></h2>
 <p>Checkpointing is saving the state of your computation at intervals so that you can pick up where you left off if your job ends earlier than expected.</p>
 <p>Losing work is a sad occasion. If you add some complexity to your job scripts you can have them save enough data of the right kind to be able to resume work if the job ends prematurely.  Jobs end through no fault of your own, such as file systems filling up or nodes crashing or needing to be rebooted before they can accept new jobs (this is something that occurs regularly!!!).  If you set a time limit for your job too low, at least you can submit a new job that picks up where the old one left off.</p>
 <p>One <a href="https://hpc.nmsu.edu/discovery/slurm/backfill-and-checkpoints/#_introduction_to_checkpoint">example checkpointing document</a> about implementing this is from the NMSU cluster. It features example code workflows for Python, R and other languages.</p>
 <p>Until we add more examples, you can search for them yourself.</p>
-<h3 id="using-signals-to-clean-upcheckpoint">Using signals to clean up/checkpoint<a class="headerlink" href="#using-signals-to-clean-upcheckpoint" title="Anchor link to this section for reference">&para;</a></h3>
+<h3 id="using-signals-to-clean-upcheckpoint"><strong>Using signals to clean up/checkpoint</strong><a class="headerlink" href="#using-signals-to-clean-upcheckpoint" title="Anchor link to this section for reference">&para;</a></h3>
 <p>If a job is cancelled or killed because it exceeds its time limit (<em>maybe</em> also memory too?), SLURM sends two signals some time apart. Normally the first is a TERM signal, later a KILL signal. You can dispatch jobs with instructions to send them specific signals a specified number of seconds before the KILL signal is sent.</p>
 <p>You can modify your batch jobs so they do Good Things when they receive the first signal. This extra code is called a <em>signal handler</em>.</p>
 <p>You can also ask SLURM to send specific signals to your program.</p>
@@ -3772,8 +3831,8 @@ R CMD BATCH myprog.R
 <p>Here is a <a href="https://dhruveshp.com/blog/2021/signal-propagation-on-slurm/">blog post</a> which discusses this in some detail.</p>
 <p>That post refers to <a href="https://hpc-discourse.usc.edu/t/signalling-a-job-before-time-limit-is-reached/314/4">this one</a> which was updated after the post was written, so there might be newer info than was incorporated in the post.</p>
 <p>This <a href="https://stackoverflow.com/questions/68214421/graceful-signal-handling-in-slurm/68214873#68214873">stackoverflow answer</a> seems to take a different approach. </p>
-<h2 id="example-batch-jobs">Example Batch Jobs<a class="headerlink" href="#example-batch-jobs" title="Anchor link to this section for reference">&para;</a></h2>
-<h3 id="copying-data-within-cluster">Copying data within cluster<a class="headerlink" href="#copying-data-within-cluster" title="Anchor link to this section for reference">&para;</a></h3>
+<h2 id="example-batch-jobs"><strong>Example Batch Jobs</strong><a class="headerlink" href="#example-batch-jobs" title="Anchor link to this section for reference">&para;</a></h2>
+<h3 id="copying-data-within-cluster"><strong>Copying data within cluster</strong><a class="headerlink" href="#copying-data-within-cluster" title="Anchor link to this section for reference">&para;</a></h3>
 <p>Here is a sample batch job. More information about this topic is accumulating <a href="../../files/copying-files/">here</a>.</p>
 <details class="note">
 <summary>Click to expand</summary>
@@ -3814,9 +3873,9 @@ date
 <span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;done&quot;</span>
 </code></pre></div>
 </details>
-<h3 id="copying-data-intoout-of-cluster">Copying data into/out of cluster<a class="headerlink" href="#copying-data-intoout-of-cluster" title="Anchor link to this section for reference">&para;</a></h3>
-<p>We have a transfer node which is a SLURM client.</p>
-<h3 id="running-a-job-on-every-node">Running A Job On Every Node<a class="headerlink" href="#running-a-job-on-every-node" title="Anchor link to this section for reference">&para;</a></h3>
+<h3 id="copying-data-intoout-of-cluster"><strong>Copying data into/out of cluster</strong><a class="headerlink" href="#copying-data-intoout-of-cluster" title="Anchor link to this section for reference">&para;</a></h3>
+<p>We have a transfer node which is a SLURM client. It has its own "transfer" partition. You can craft a batch job to move data using that partition by modifying the script in the data copying section above.</p>
+<h3 id="running-a-job-on-every-node"><strong>Running A Job On Every Node</strong><a class="headerlink" href="#running-a-job-on-every-node" title="Anchor link to this section for reference">&para;</a></h3>
 <p>This is put here as a tool for system administrators needing to do maintenance where a SLURM job is appropriate. Maybe the technique will be useful for someone for a more limited case.</p>
 <details class="note">
 <summary>Click to expand</summary>
@@ -3857,14 +3916,14 @@ else
 fi
 </code></pre></div>
 </details>
-<h2 id="examples-from-elsewhere">Examples from Elsewhere<a class="headerlink" href="#examples-from-elsewhere" title="Anchor link to this section for reference">&para;</a></h2>
-<h3 id="workflow">Workflow<a class="headerlink" href="#workflow" title="Anchor link to this section for reference">&para;</a></h3>
-<p><a href="https://support.ceci-hpc.be/doc/_contents/SubmittingJobs/WorkflowManagement.html#introduction">This cluster </a>has some good material about workflows.</p>
-<h3 id="nersc-examples">NERSC Examples<a class="headerlink" href="#nersc-examples" title="Anchor link to this section for reference">&para;</a></h3>
+<h2 id="examples-from-elsewhere"><strong>Examples from Elsewhere</strong><a class="headerlink" href="#examples-from-elsewhere" title="Anchor link to this section for reference">&para;</a></h2>
+<h3 id="workflow"><strong>Workflow</strong><a class="headerlink" href="#workflow" title="Anchor link to this section for reference">&para;</a></h3>
+<p><a href="https://support.ceci-hpc.be/doc/_contents/SubmittingJobs/WorkflowManagement.html#introduction">This cluster </a> has some good material about workflows. It includes references to a number of tools which make managing job arrays easier. Also links to papers about the topic of creating workflows for scientific computing.</p>
+<h3 id="nersc-examples"><strong>NERSC Examples</strong><a class="headerlink" href="#nersc-examples" title="Anchor link to this section for reference">&para;</a></h3>
 <p><a href="https://docs.nersc.gov/jobs/examples/">Good examples</a>.</p>
-<h3 id="usc-examples">USC Examples<a class="headerlink" href="#usc-examples" title="Anchor link to this section for reference">&para;</a></h3>
+<h3 id="usc-examples"><strong>USC Examples</strong><a class="headerlink" href="#usc-examples" title="Anchor link to this section for reference">&para;</a></h3>
 <p><a href="https://www.carc.usc.edu/user-information/user-guides/hpc-basics/slurm-templates">Good examples of basic different types of batch jobs</a></p>
-<h3 id="running-multiple-jobs-from-one-script">Running Multiple Jobs From One Script<a class="headerlink" href="#running-multiple-jobs-from-one-script" title="Anchor link to this section for reference">&para;</a></h3>
+<h3 id="running-multiple-jobs-from-one-script"><strong>Running Multiple Jobs From One Script</strong><a class="headerlink" href="#running-multiple-jobs-from-one-script" title="Anchor link to this section for reference">&para;</a></h3>
 <p><a href="https://hpc.llnl.gov/banks-jobs/running-jobs/slurm#MultipleJobs">Using srun inside of sbatch scripts,</a> in serial and parallel. Remember to include the <code>wait</code> bash command at the end of your batch file so the job doesn't end before all of the tasks inside of it.</p>
 
 
