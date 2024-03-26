@@ -16,7 +16,7 @@ In the directories under `/jhpce/shared/jhpce/slurm/` you will find files used d
 !!! Note
     If you want to submit example batch jobs, or documents describing good workflows for specific tasks, or anything of the kind, we will happily consider adding them to that directory and to this document!!!
 
-## Sbatch, srun and salloc
+## **Sbatch, srun and salloc**
 
 There are three commands used to request resources from SLURM. You will find all three discussed in the [linked documentation](slurm-commands-ref.md).
 
@@ -24,36 +24,36 @@ Here at JHPCE we have been using `srun` primarily as way to start interactive se
 
 Be careful using `salloc` that you don't leave allocated resources unused. One way to use salloc is to request resources and launch a new bash shell. Those resources are not released until that bash shell is ended.
 
-## Sbatch Rules
+## **Sbatch Rules**
 1. First characters in batch file need to be: `#!/bin/bash` (although you can use an interpreter other than bash)
 2. `#SBATCH` directives need to appear as the first characters on their lines.
 3. `#SBATCH` directives need to appear before **_any_** shell commands.
 4. You can put comments after # symbols.
 4. You may need to add a `wait` command at the bottom to ensure that processes spawned earlier complete before the script does.
 
-## SLURM Directive Order of Precendence
+## **SLURM Directive Order of Precendence**
 For now see these [two PDF pages](images/slurm-precendence.pdf) from an orientation document.
 
-## Job Environment
+## **Job Environment**
 By default jobs start in the same directory that was the current working directory when `sbatch` or `srun` were used. The directive `--chdir=somepath` or `#SBATCH --chdir=somepath` can be used to set the working directory of the job. Whether you choose to use this directive depends on your workflow and typical awareness of where you "are". Would you rather change batch files or set command line arguments to ensure that jobs run in the desired directories or would you rather double-check your location? 
 
 We have a document that describes [other aspects of job environments](../slurm/environment.md).
     
-## Input/output Considerations
+## **Input/output Considerations**
 
 !!! AuthoringNote 
     Use the same terms as used in the storage overview. We want to be consistent. It helps users, and helps us make links between related articles.
 
 - home directory
-- local compute node /tmp
-- fastscratch
 - project storage
+- fastscratch
+- local compute node /tmp
     
 Some programs have specific variables you can set to indicate where files should be created.
 
 SAS has "WORK" -- is this set to something in the module load process?
 
-R has "TEMPDIR" which defaults to /tmp.
+R has "TEMPDIR" which defaults to /tmp. We may be changing the module load code to define this to /fastscratch where that is present (which should be everywhere except on C-SUB nodes).
 
 ```
 You could use your 1TB of fastscratch space for this. So your SLURM script could use commands like:
@@ -63,14 +63,13 @@ export TEMPDIR=$MYSCRATCH
 R CMD BATCH myprog.R
 
 ```
-## Job Array
+## **Job Arrays**
 
-!!! Warning
-    Needs to be written
+Array jobs allow you to use one job script to run many jobs across a set of samples. That SLURM script or the program(s) it calls need(s) to contain syntax that uses SLURM environment variables to assign different work to different task element jobs.
 
-Array jobs allow you to use one job script to run many jobs across a set of samples. That script needs to contain syntax that can be used by SLURM to assign different work to different task element jobs.
+When you submit an array job you can indicate that you only want a certain number of tasks to be executed at a time. This is called the "step size". (You can also use the `scontrol` command to add or adjust that aspect of the job for pending or running jobs. See our [scontrol tips ](../slurm/tips-scontrol.md) page.)
 
-When you submit an array job you can indicate that you only want a certain number of tasks to be executed at a time. (You can also use the `scontrol` command to add or adjust that aspect of the job to pending or running jobs. See our [scontrol tips ](../slurm/tips-scontrol.md) page.)
+To reference this specific task of a job array, combine SLURM_ARRAY_JOB_ID with SLURM_ARRAY_TASK_ID (e.g. "scontrol update ${SLURM_ARRAY_JOB_ID}_{$SLURM_ARRAY_TASK_ID} ...").
 
 Vendor docs about job arrays are [here](https://slurm.schedmd.com/job_array.html).
 
@@ -78,7 +77,19 @@ New Mexico State University job array section [here](https://hpc.nmsu.edu/discov
 
 [USC explanation](https://www.carc.usc.edu/user-information/user-guides/hpc-basics/slurm-templates) of job arrays.
 
-## Dependent jobs
+### **Job array-related environment variables**
+
+These variables are only set if this job is part of a job array.
+
+| Variable name | Meaning |
+| -----| ----|
+|**SLURM_ARRAY_JOB_ID** | The overall job ID|
+|**SLURM_ARRAY_TASK_ID** | The individual task ID|
+|**SLURM_ARRAY_TASK_STEP**|The step size of task IDs|
+|**SLURM_ARRAY_TASK_MIN**|The minimum task ID|
+|**SLURM_ARRAY_TASK_MAX** | The maximum task ID |
+
+## **Dependent jobs**
 
 You can configure jobs to run in order with some conditional control. Conditions include jobs starting, jobs finishing, jobs finishing without errors, all of a set of jobs finishing, etc.
 
@@ -95,13 +106,13 @@ As you can see, people can get more work done more quickly by crafting a set of 
 
 See [this part](https://slurm.schedmd.com/archive/slurm-22.05.9/sbatch.html#OPT_dependency) of the sbatch manual page. Many clusters have sections describing this technique.
 
-## Heterogeneous Job Support
+## **Heterogeneous Job Support**
 
 These kinds of jobs aim to achieve some of the same goals as the simpler technique of specifying dependencies between jobs. Such as specifying different resource requirements for different components.
 
 Each component of such jobs has virtually all job options available including partition and QOS (Quality Of Service). See this [vendor document](https://slurm.schedmd.com/archive/slurm-22.05.9/heterogeneous_jobs.html).
 
-## Checkpointing Jobs
+## **Checkpointing Jobs**
 
 Checkpointing is saving the state of your computation at intervals so that you can pick up where you left off if your job ends earlier than expected.
 
@@ -111,7 +122,7 @@ One [example checkpointing document](https://hpc.nmsu.edu/discovery/slurm/backfi
 
 Until we add more examples, you can search for them yourself.
 
-### Using signals to clean up/checkpoint
+### **Using signals to clean up/checkpoint**
 
 If a job is cancelled or killed because it exceeds its time limit (_maybe_ also memory too?), SLURM sends two signals some time apart. Normally the first is a TERM signal, later a KILL signal. You can dispatch jobs with instructions to send them specific signals a specified number of seconds before the KILL signal is sent.
 
@@ -133,9 +144,9 @@ That post refers to [this one](https://hpc-discourse.usc.edu/t/signalling-a-job-
 
 This [stackoverflow answer](https://stackoverflow.com/questions/68214421/graceful-signal-handling-in-slurm/68214873#68214873) seems to take a different approach. 
 
-## Example Batch Jobs
+## **Example Batch Jobs**
 
-### Copying data within cluster
+### **Copying data within cluster**
 
 Here is a sample batch job. More information about this topic is accumulating [here](../files/copying-files.md).
 
@@ -178,11 +189,11 @@ Here is a sample batch job. More information about this topic is accumulating [h
     echo "done"
     ```
 
-### Copying data into/out of cluster
-We have a transfer node which is a SLURM client.
+### **Copying data into/out of cluster**
+We have a transfer node which is a SLURM client. It has its own "transfer" partition. You can craft a batch job to move data using that partition by modifying the script in the data copying section above.
 
 
-### Running A Job On Every Node
+### **Running A Job On Every Node**
 This is put here as a tool for system administrators needing to do maintenance where a SLURM job is appropriate. Maybe the technique will be useful for someone for a more limited case.
 
 ??? note "Click to expand"
@@ -225,20 +236,20 @@ This is put here as a tool for system administrators needing to do maintenance w
     ```
 
 
-## Examples from Elsewhere
+## **Examples from Elsewhere**
 
 
-### Workflow
+### **Workflow**
 
-[This cluster ](https://support.ceci-hpc.be/doc/_contents/SubmittingJobs/WorkflowManagement.html#introduction)has some good material about workflows.
+[This cluster ](https://support.ceci-hpc.be/doc/_contents/SubmittingJobs/WorkflowManagement.html#introduction) has some good material about workflows. It includes references to a number of tools which make managing job arrays easier. Also links to papers about the topic of creating workflows for scientific computing.
 
-### NERSC Examples
+### **NERSC Examples**
 [Good examples](https://docs.nersc.gov/jobs/examples/).
 
-### USC Examples
+### **USC Examples**
 [Good examples of basic different types of batch jobs](https://www.carc.usc.edu/user-information/user-guides/hpc-basics/slurm-templates)
 
-### Running Multiple Jobs From One Script
+### **Running Multiple Jobs From One Script**
 
 [Using srun inside of sbatch scripts,](https://hpc.llnl.gov/banks-jobs/running-jobs/slurm#MultipleJobs) in serial and parallel. Remember to include the `wait` bash command at the end of your batch file so the job doesn't end before all of the tasks inside of it.
 

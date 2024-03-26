@@ -8,7 +8,7 @@ JHPCE cluster and either delete your data from the cluster, or migrate it to
 another location. If you have data on the cluster that you are authorized to
 keep, please be sure to transfer the data to a location outside of the cluster
 so that you can access it once you account is closed. We have some tips on
-transferring data to and from the cluster [here](../access/file-transfer/)
+transferring data to and from the cluster [here](../access/file-transfer.md)
 
 We can keep your account open for a short time after you leave JHU if your PI
 agrees to continue to sponsor your usage. Please have your PI reach out to us

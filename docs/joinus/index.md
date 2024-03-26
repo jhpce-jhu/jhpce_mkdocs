@@ -13,4 +13,4 @@ We also manage a smaller sub-cluster for working on CMS Medicare and Medicaid
 data. We refer to this cluster as the C-SUB (See Sub) cluster. While the JHPCE
 service cnter manages this HPC cluster, it's operation is overseen by the [HARP](https://hbhi.jhu.edu/affiliate-resource/health-analytics-research-platform-harp)
 organization in JHU. Technical infomation about the C-SUB can be found at the
-[CSUB Overview](../csub/csub-overview/).
+[CSUB Overview](../csub/csub-overview.md).
