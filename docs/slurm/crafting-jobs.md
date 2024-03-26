@@ -69,17 +69,25 @@ R CMD BATCH myprog.R
 ```
 ## **Job Arrays**
 
-Array jobs allow you to use one job script to run many jobs across a set of samples. That SLURM script or the program(s) it calls need(s) to contain syntax that uses SLURM environment variables to assign different work to different task element jobs.
+Array jobs allow you to use one job script to run many jobs across a set of samples. That SLURM script (or the program(s) it calls) need(s) to contain syntax that uses SLURM environment variables to assign different work to different task element jobs.
 
-When you submit an array job you can indicate that you only want a certain number of tasks to be executed at a time. This is called the "step size". (You can also use the `scontrol` command to add or adjust that aspect of the job for pending or running jobs. See our [scontrol tips ](../slurm/tips-scontrol.md) page.)
+The underscore character is used in commands and seen in the output of programs like `sacct` as a separator between the job ID number and that of the array task ID number. Output and error files also use underscores in their names.
 
-To reference this specific task of a job array, combine SLURM_ARRAY_JOB_ID with SLURM_ARRAY_TASK_ID (e.g. "scontrol update ${SLURM_ARRAY_JOB_ID}_{$SLURM_ARRAY_TASK_ID} ...").
+Controlling your usage:
+
+When you submit an array job you can indicate that you only want a certain number of tasks to be executed at a time. This will allow other users of your partition to be able to access it, or control the disk and network input/output rate to avoid choking a file server.
+
+You can use the `scontrol` command to add or adjust that aspect of the job for pending or running jobs. See our [scontrol tips ](../slurm/tips-scontrol.md) page.) To reference a specific task of a job array, combine SLURM_ARRAY_JOB_ID with SLURM_ARRAY_TASK_ID (e.g. "scontrol update ${SLURM_ARRAY_JOB_ID}_{$SLURM_ARRAY_TASK_ID} ...").
 
 Vendor docs about job arrays are [here](https://slurm.schedmd.com/job_array.html).
 
 New Mexico State University job array section [here](https://hpc.nmsu.edu/discovery/slurm/job-arrays/). Good, compact example document.
 
+Another nice straightforward description is in this [Ronin blog post](https://blog.ronin.cloud/slurm-job-arrays/). 
+
 [USC explanation](https://www.carc.usc.edu/user-information/user-guides/hpc-basics/slurm-templates) of job arrays.
+
+Email notifications: These are handled at the job level, not the individual task element level, unless you provide an extra arguement. Please don't do that, unless you KNOW that your jobs are going to take a long time, so you don't create a mail "storm" of messages.
 
 ### **Job array-related environment variables**
 
