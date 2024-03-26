@@ -63,7 +63,7 @@ export TEMPDIR=$MYSCRATCH
 R CMD BATCH myprog.R
 
 ```
-## Array jobs
+## Job Array
 
 !!! Warning
     Needs to be written
@@ -71,6 +71,12 @@ R CMD BATCH myprog.R
 Array jobs allow you to use one job script to run many jobs across a set of samples. That script needs to contain syntax that can be used by SLURM to assign different work to different task element jobs.
 
 When you submit an array job you can indicate that you only want a certain number of tasks to be executed at a time. (You can also use the `scontrol` command to add or adjust that aspect of the job to pending or running jobs. See our [scontrol tips ](../slurm/tips-scontrol.md) page.)
+
+Vendor docs about job arrays are [here](https://slurm.schedmd.com/job_array.html).
+
+New Mexico State University job array section [here](https://hpc.nmsu.edu/discovery/slurm/job-arrays/). Good, compact example document.
+
+[USC explanation](https://www.carc.usc.edu/user-information/user-guides/hpc-basics/slurm-templates) of job arrays.
 
 ## Dependent jobs
 

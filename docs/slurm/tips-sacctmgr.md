@@ -29,6 +29,9 @@ sacctmgr mod user where name=tunison set qos=normal,shared-200-2
 # Remove a QOS from a user's existing allowed QOS:
 sacctmgr mod user where name=tunison set qos-=shared-200-2 # to remove
 
+# Limit a user's ability to run and submit jobs
+sacctmgr mod user where name=tunison set MaxJobs=100,MaxSubmit=200
+
 # How users accounts are created in the sacctmgr database
 sacctmgr -i create user name=$userid cluster=jhpce3 account=jhpce 
 
