@@ -32,6 +32,10 @@ Be careful using `salloc` that you don't leave allocated resources unused. One w
 4. You may need to add a `wait` command at the bottom to ensure that processes spawned earlier complete before the script does.
 
 ## **SLURM Directive Order of Precendence**
+
+!!! Note "Authoring Note"
+    This needs to be written. Should it be its own document, for better readability?
+
 For now see these [two PDF pages](images/slurm-precendence.pdf) from an orientation document.
 
 ## **Job Environment**
