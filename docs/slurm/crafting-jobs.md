@@ -118,11 +118,17 @@ Each component of such jobs has virtually all job options available including pa
 
 ## **Checkpointing Jobs**
 
-Checkpointing is saving the state of your computation at intervals so that you can pick up where you left off if your job ends earlier than expected.
+Checkpointing is saving the state of your computation at intervals so that you can pick up where you left off if your job ends earlier than expected. And the corresponding logic at the outset of your job that checks for the existence of state data that indicates where it should start and with which files.
 
-Losing work is a sad occasion. If you add some complexity to your job scripts you can have them save enough data of the right kind to be able to resume work if the job ends prematurely.  Jobs end through no fault of your own, such as file systems filling up or nodes crashing or needing to be rebooted before they can accept new jobs (this is something that occurs regularly!!!).  If you set a time limit for your job too low, at least you can submit a new job that picks up where the old one left off.
+Losing work is a sad occasion. If you add some complexity to your job scripts you can have them save enough data of the right kind to be able to resume work if the job ends prematurely.  Jobs end through no fault of your own, such as file systems filling up or nodes crashing or needing to be rebooted before they can accept new jobs (**this is something that occurs regularly!!!**).  If you set a time limit for your job too low, at least you can submit a new job that picks up where the old one left off.
 
-One [example checkpointing document](https://hpc.nmsu.edu/discovery/slurm/backfill-and-checkpoints/#_introduction_to_checkpoint) about implementing this is from the NMSU cluster. It features example code workflows for Python, R and other languages!!!
+Depending on the workflow you use, adding data saving steps might occur in different locations. Possibilities include:
+
+1. Inside your sbatch script as you loop through some steps -- add a step to save aside checkpoint data, such as which step number you are on and the data needed to resume from that point
+2. Inside your sbatch script you might add signal handling code (see section below) if you have a single long-running process. Your code could save aside a copy of generated data with the time and date in its file name.
+3. If you have a series of jobs which build upon previous work, you could intersperse checkpointing jobs which save aside state information. You might want to make them dependent upon successful completion of previous ones.
+
+One [example checkpointing document](https://hpc.nmsu.edu/discovery/slurm/backfill-and-checkpoints/#_introduction_to_checkpoint) about implementing this is from the NMSU cluster. {==It features example code workflows for Python, R and other languages!!!==}
 
 Here is a Youtube [video about checkpointing from CECI](https://www.youtube.com/watch?v=LyWSYYj4zHY), a European organization.
 
