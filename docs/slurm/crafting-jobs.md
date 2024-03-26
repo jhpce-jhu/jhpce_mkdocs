@@ -45,7 +45,7 @@ We have a document that describes [other aspects of job environments](../slurm/e
     
 ## **Input/output Considerations**
 
-!!! AuthoringNote 
+!!! Note "Authoring Note" 
     Use the same terms as used in the storage overview. We want to be consistent. It helps users, and helps us make links between related articles.
 
 - home directory
