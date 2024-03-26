@@ -3738,13 +3738,17 @@ Please excuse any issues with non-working pages.
 <li>You may need to add a <code>wait</code> command at the bottom to ensure that processes spawned earlier complete before the script does.</li>
 </ol>
 <h2 id="slurm-directive-order-of-precendence"><strong>SLURM Directive Order of Precendence</strong><a class="headerlink" href="#slurm-directive-order-of-precendence" title="Anchor link to this section for reference">&para;</a></h2>
+<div class="admonition note">
+<p class="admonition-title">Authoring Note</p>
+<p>This needs to be written. Should it be its own document, for better readability?</p>
+</div>
 <p>For now see these <a href="../images/slurm-precendence.pdf">two PDF pages</a> from an orientation document.</p>
 <h2 id="job-environment"><strong>Job Environment</strong><a class="headerlink" href="#job-environment" title="Anchor link to this section for reference">&para;</a></h2>
 <p>By default jobs start in the same directory that was the current working directory when <code>sbatch</code> or <code>srun</code> were used. The directive <code>--chdir=somepath</code> or <code>#SBATCH --chdir=somepath</code> can be used to set the working directory of the job. Whether you choose to use this directive depends on your workflow and typical awareness of where you "are". Would you rather change batch files or set command line arguments to ensure that jobs run in the desired directories or would you rather double-check your location? </p>
 <p>We have a document that describes <a href="../environment/">other aspects of job environments</a>.</p>
 <h2 id="inputoutput-considerations"><strong>Input/output Considerations</strong><a class="headerlink" href="#inputoutput-considerations" title="Anchor link to this section for reference">&para;</a></h2>
-<div class="admonition authoringnote">
-<p class="admonition-title">Authoringnote</p>
+<div class="admonition note">
+<p class="admonition-title">Authoring Note</p>
 <p>Use the same terms as used in the storage overview. We want to be consistent. It helps users, and helps us make links between related articles.</p>
 </div>
 <ul>
@@ -3818,7 +3822,8 @@ R CMD BATCH myprog.R
 <h2 id="checkpointing-jobs"><strong>Checkpointing Jobs</strong><a class="headerlink" href="#checkpointing-jobs" title="Anchor link to this section for reference">&para;</a></h2>
 <p>Checkpointing is saving the state of your computation at intervals so that you can pick up where you left off if your job ends earlier than expected.</p>
 <p>Losing work is a sad occasion. If you add some complexity to your job scripts you can have them save enough data of the right kind to be able to resume work if the job ends prematurely.  Jobs end through no fault of your own, such as file systems filling up or nodes crashing or needing to be rebooted before they can accept new jobs (this is something that occurs regularly!!!).  If you set a time limit for your job too low, at least you can submit a new job that picks up where the old one left off.</p>
-<p>One <a href="https://hpc.nmsu.edu/discovery/slurm/backfill-and-checkpoints/#_introduction_to_checkpoint">example checkpointing document</a> about implementing this is from the NMSU cluster. It features example code workflows for Python, R and other languages.</p>
+<p>One <a href="https://hpc.nmsu.edu/discovery/slurm/backfill-and-checkpoints/#_introduction_to_checkpoint">example checkpointing document</a> about implementing this is from the NMSU cluster. It features example code workflows for Python, R and other languages!!!</p>
+<p>Here is a Youtube <a href="https://www.youtube.com/watch?v=LyWSYYj4zHY">video about checkpointing from CECI</a>, a European organization.</p>
 <p>Until we add more examples, you can search for them yourself.</p>
 <h3 id="using-signals-to-clean-upcheckpoint"><strong>Using signals to clean up/checkpoint</strong><a class="headerlink" href="#using-signals-to-clean-upcheckpoint" title="Anchor link to this section for reference">&para;</a></h3>
 <p>If a job is cancelled or killed because it exceeds its time limit (<em>maybe</em> also memory too?), SLURM sends two signals some time apart. Normally the first is a TERM signal, later a KILL signal. You can dispatch jobs with instructions to send them specific signals a specified number of seconds before the KILL signal is sent.</p>
