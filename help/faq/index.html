@@ -1211,9 +1211,27 @@ Please excuse any issues with non-working pages.
 </li>
       
         <li class="md-nav__item">
+  <a href="#rstudio" class="md-nav__link">
+    <span class="md-ellipsis">
+      RStudio
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#slurm" class="md-nav__link">
     <span class="md-ellipsis">
       Slurm
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ssh" class="md-nav__link">
+    <span class="md-ellipsis">
+      SSH
     </span>
   </a>
   
@@ -3375,9 +3393,27 @@ Please excuse any issues with non-working pages.
 </li>
       
         <li class="md-nav__item">
+  <a href="#rstudio" class="md-nav__link">
+    <span class="md-ellipsis">
+      RStudio
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#slurm" class="md-nav__link">
     <span class="md-ellipsis">
       Slurm
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ssh" class="md-nav__link">
+    <span class="md-ellipsis">
+      SSH
     </span>
   </a>
   
@@ -3435,14 +3471,16 @@ Please excuse any issues with non-working pages.
 </details>
 <h2 id="file-transfer">File Transfer<a class="headerlink" href="#file-transfer" title="Anchor link to this section for reference">&para;</a></h2>
 <ul>
-<li>How do I copy a large directory structure from one place to another.</li>
+<li>How do I copy a large directory structure from one place to another? Within the cluster? Into the cluster? Out of the cluster?</li>
 </ul>
 <details>
 <summary>Click to expand answer</summary>
+<p>We have a document about transferring data into or out of the cluster <a href="../../access/file-transfer/">here</a>.
+We have a document with advice about copying data around within the cluster <a href="../../files/copying-files/">here</a>. (This also includes good tips for using the rsync program for any data copying.)</p>
 <p>As an example, to copy a directory tree from /users/bob/src to /dcs08/bob/dst, first, create a cluster script, let's call it "copy-job", that contains the line
 <div class="highlight"><pre><span></span><code>#!/bin/bash
 
-rsync -avzh //users/bob/src /dcs08/bob/dst
+rsync -avzh /users/bob/src /dcs08/bob/dst
 </code></pre></div>
 Next, submit a batch job to the cluster
 <div class="highlight"><pre><span></span><code>sbatch --mail-type=FAIL,END --mail-user=bob@jhu.edu copy-job
@@ -3450,7 +3488,7 @@ Next, submit a batch job to the cluster
 This will submit the "copy-id" script to the cluster, which will run the job on one of the computer nodes, and send an email when it finishes.</p>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
-<p>Please do not copy or move any larger files on the login nodes.</p>
+<p>Please do not copy or move any larger files on the login nodes. Use the transfer node for internal/external transfers and compute nodes for transfers between cluster storage locations.</p>
 </div>
 </details>
 <h2 id="login">Login<a class="headerlink" href="#login" title="Anchor link to this section for reference">&para;</a></h2>
@@ -3505,8 +3543,22 @@ This will submit the "copy-id" script to the cluster, which will run the job on 
 <summary>Click to expand answer</summary>
 <p>The SAFE desktop is a virtual Windows computer that you can use to run scientific software and access JHPCE. For more information see this <a href="../../access/access-overview/#safe-desktop">item</a>.</p>
 </details>
+<h2 id="rstudio">RStudio<a class="headerlink" href="#rstudio" title="Anchor link to this section for reference">&para;</a></h2>
+<ul>
+<li>Why do I see a mass of error messages about "GL" and "GPU" every time I launch RStudio?</li>
+</ul>
+<details>
+<summary>Click to expand answer</summary>
+<p>Those errors are normal. RStudio expects to be run on a computer with an attached display driven by a local graphics processing card and supported by a set of graphics software libraries and device drivers. We don’t have such cards in our rack-mounted systems.</p>
+</details>
 <h2 id="slurm">Slurm<a class="headerlink" href="#slurm" title="Anchor link to this section for reference">&para;</a></h2>
-<p>There is a dedicated <a href="../../slurm/slurm-faq/">SLURM FAQ</a> document</p>
+<ul>
+<li>There is a dedicated <a href="../../slurm/slurm-faq/">SLURM FAQ</a> document</li>
+</ul>
+<h2 id="ssh">SSH<a class="headerlink" href="#ssh" title="Anchor link to this section for reference">&para;</a></h2>
+<ul>
+<li>Variety of questions about ssh - please see our <a href="../../access/ssh/">ssh document</a>.</li>
+</ul>
 <h2 id="x11">X11<a class="headerlink" href="#x11" title="Anchor link to this section for reference">&para;</a></h2>
 <ul>
 <li>My X11 forwarding stops working after 20 minutes </li>
@@ -3544,7 +3596,7 @@ This will submit the "copy-id" script to the cluster, which will run the job on 
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1-2.1-2M12.5 7v5.2l4 2.4-1 1L11 13V7h1.5M11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2v1.8Z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">March 19, 2024</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">March 27, 2024</span>
   </span>
 
     
