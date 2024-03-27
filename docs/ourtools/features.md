@@ -46,16 +46,18 @@ Numerous others, including [pie](https://mermaid.js.org/syntax/pie.html), bar an
     Besides the diagram types listed above, Mermaid.js provides support for pie charts, gantt charts, user journeys, git graphs and requirement diagrams, all of which are not officially supported by Material for MkDocs. Those diagrams should still work as advertised by Mermaid.js, but we don't consider them a good choice, mostly as they don't work well on mobile. While all Mermaid.js features should work out-of-the-box, Material for MkDocs will currently only adjust the fonts and colors for flowcharts, sequence diagrams, class diagrams, state diagrams and entity relationship diagrams.
 
 ## Details
-Like an admonition but makes pages more readable by collapsing content.
+Like an [admonition](#admonitions) but makes pages more readable by collapsing content.
 Documentation [here](https://facelessuser.github.io/pymdown-extensions/extensions/details/) and also explained in the detail below.
 
 ??? tip "Psst: Click To Expand"
-    You can have it be open by default, too. (Add a ++plus++ after the opening ++question+question+question++)
+    You can have it be open by default, too. (Add a ++plus++ after the opening ++question+question+question++). The following "detail" was set in the Markdown to display opened up.
 
     ???+ multiple "Syntax to use"
         Details must contain a blank line before they start. Use ??? to start a details block or ???+ if you want to start a details block whose default state is 'open'. Follow the start of the block with an optional class keyword (like "tip" or "warning") or classes (separated with spaces) and the summary contained in double quotes. Content is placed below the header and must be indented with FOUR SPACES.
         
         Another detail can be nested inside by adding another blank line and another detail header line and content block. But this header line needs to start with the word "multiple" So ??? multiple class "Title"
+
+You can probably include [code blocks](#fenced-code-blocks) inside of details like you can with admonitions.
 
 ## Frontmatter (in document files)
 Tags are the primary use of frontmatter I think we should use at this point. [This](https://squidfunk.github.io/mkdocs-material/reference/) may not be a complete list of directives that one can optionally add within a document. But the basics are that you can add to the top of the document a stanza to set the title of the document, a description of it, a status indicator such as new or deprecated. See [this page](https://squidfunk.github.io/mkdocs-material/reference/#setting-the-page-icon) for how to define an icon for the page.
@@ -85,7 +87,7 @@ The tag "last-revised-YYYYMMDD" could be used on a page which also has "done" or
 
 Place lines like this at the very top of the document, before the document title, to add the tags mentioned. Tags are strings but I am hoping to avoid spaces or underscores. (Underscores suck b/c they require the shift key. And you can't always see them depenind on how text renders.)
 
-Code blocks are numbered by default (given settings in mkdocs.yml). See [this section](features.md#code-block-line-numbers-highlighting) for instructions on {==adding titles==} to code blocks and {==disabling line numbering==}.
+Code blocks can be numbered or not by default (given settings in mkdocs.yml). THEY ARE NOW OFF BY DEFAULT. See [this section](features.md#code-block-line-numbers-highlighting) for instructions on {==adding titles==} to code blocks and {==enabling or disabling line numbering==}.
 
 ```
 ---
@@ -104,7 +106,7 @@ tags:
 ---
 ```
 ## Internal links
-From [this mkdocs](https://www.mkdocs.org/user-guide/writing-your-docs/#writing-with-markdown) page JRT learned that you can specify anchor points to document sections by knowing that they are converted to lowercase and white space is replaced by dashes. So this very section, named "Internal links" can be specified as a link to "features.md#internal-links"
+From [this mkdocs](https://www.mkdocs.org/user-guide/writing-your-docs/#writing-with-markdown) page JRT learned that {==you can specify anchor points to document sections by knowing that they are converted to lowercase and white space is replaced by dashes.==} So this very section, named "Internal links" can be specified as a link to "../ourtools/features.md#internal-links" (in a different document) or "#internal-links" (inside the same document).
 
 ## Keyboard meta keys
 
@@ -133,7 +135,7 @@ You can create a key with any wording you want ++plus++ ++plus++ ++dblquote++ Yo
 ## Abbreviations
 Abbreviations can be defined by using a syntax similar to URLs and footnotes, starting with an asterisk immediately followed by the term to be associated in square brackets.
 
-This code creates the following sentence. You can hover over "HTML" and see the definition appear.
+This code creates the sentence that follows. You can hover over "HTML" and see the definition appear.
 
 ```
 The HTML specification is maintained by the W3C.
@@ -144,7 +146,7 @@ The HTML specification is maintained by the W3C.
 *[HTML]: Hyper Text Markup Language
 
 ## Glossary
-There's a way to create a document which is automatically updated when people define abbrieviations. See the wishlist document for details.
+There's a way to create a document which is automatically updated when people define abbrieviations. See the wishlist document for details. Currently we have a manually written glossary, because that was quicker, and allows for the explanation to be longer than many page authors would probably provide in their individual pages.
 
 ## Definition List
 You can create an indented block of text using a colon followed by FOUR space characters.
@@ -159,23 +161,32 @@ Example code and result:
 :    The definition you are seeking. (But not the droids.)
 
 ## Admonitions
-These are **sweet**! We should use them frequently. But be aware that they are not rendered correctly in MacDown.app. This is where it is good to be running "mkdocs serve" on your local machine.
+These are **sweet**! We should use them frequently. But be aware that they are not rendered correctly in MacDown.app. This is where it is good to be running "mkdocs serve" on your local machine. So you can verify that they are properly constructed before you push up your modified markdown file.
 
-<a href="https://squidfunk.github.io/mkdocs-material/reference/admonitions/"" target="_blank">About admonitions</a>
+Consider whether or not you want the material collapsed or expanded when users first visit a page. If you want the information collapsed, create a "detail" instead of an "admonition" by using question marks instead of exclamation points. Details are documented [above](#details).
+
+<a href="https://squidfunk.github.io/mkdocs-material/reference/admonitions/"" target="_blank">Admonition documentation</a>
 
 You add an admonition by
 
 1. starting a line with three explanation marks, a space, and a keyword (called a "type qualifier") such as note, danger, example, info, tip, warning. Here is a [list](https://squidfunk.github.io/mkdocs-material/reference/admonitions/#supported-types). Certain colors are used for known keywords. If you use your own word or phrase, the color is maybe out of your control.
-2. on the next line(s) start with FOUR spaces
+2. You can add an optional title for your admonition by adding a double quoted string after the type qualifier.
+3. on the next line(s) start with FOUR spaces. You can have multiple paragraphs inside your admonition by continuing to indent the first line by FOUR SPACES.
+
 
 !!! note
-    Some text in a note.
+    Some text using the "note" type qualifier
 
 !!! example
-    admonitions allow setting off info inside colored boxes, e.g. note,tip,warning,danger,example.
+    admonitions allow setting off info inside colored boxes, e.g. note, tip, warning, danger, example.
     https://squidfunk.github.io/mkdocs-material/reference/admonitions/#usage
     
     All lines indented four spaces are included in your admonition, including fenced code blocks.
+    
+!!! Example "Code block inside of an admonition"
+    ```Shell title="Show my failed jobs between noon and now" linenums="0"
+    sacct -s F -o "user,jobid,state,nodelist,start,end,exitcode" -S noon -E now
+    ```
 
 ## Open URLs in new tabs
 (Adi has configured the server to always open URLs in new tabs.)
@@ -193,11 +204,18 @@ You add a footnote by entering
 
 `[^1]`
 
-in the midst of your text. Anywhere in the document you write the footnote by placing at the start of a line the corresponding numbered entry using the same syntax but adding a colon and a space character after the closing square brace.
+in the midst of your text. Anywhere in the document afterwards you create the footnote contents by
+
+* after a blank line
+* placing at the start of a line
+* the corresponding numbered entry using the same syntax
+* but adding a colon and a space character after the closing square brace, then
+* adding your wording for the footnote.
 
 
 `[^1]: Wording of footnote`
 
+Numbering: It seems to be the case that you can use whatever number you want in your Markdown and Materials for MkDocs will generate the correct numbering in the resulting HTML files. In other words, you could give each footnote the number "1" Perhaps this depends on the ordering of the use of a footnote and its definition. (The only algorithm available to the processing is going to be to associate the first use with the first definition, the second use with the second definition, ...)
 
 [^1]: https://squidfunk.github.io/mkdocs-material/reference/footnotes/#adding-footnote-references
 
@@ -272,12 +290,20 @@ But these other things didn't work. For some of them I downloaded an .svg file f
 ## Fenced code blocks
 
 Note that you can set off a block of text using three preceding and three following backtick characters.
+If you provide a valid keyword *immediately* after the backticks (no space char), then your code block will have a set of formatting choices applied to them. That keyword could be, for example, python.
+
+Code blocks can be located inside of [details](#details) and [admonitions](#admonitions) and probably other things (because of settings added to mkdocs.yml)
 
 There are MANY options for code blocks. All kinds of syntaxes can be used to mean different things. Here is the m[ain document ](https://squidfunk.github.io/mkdocs-material/reference/code-blocks/#code-blocks)for code blocks.
 
 ### code block line numbers & highlighting
-For example, line numbers are enabled by default. You can disable them for a specific code block by adding after the beginning three back ticks a space, then a `linenums="0"`
-If you have multiple code blocks and want the line numbers to continue in second and later blocks, you can replace that 0 with a specific number.
+Code blocks can be numbered or not by default (given settings in mkdocs.yml). THEY ARE NOW OFF BY DEFAULT. See [this section](features.md#code-block-line-numbers-highlighting) for instructions on {==adding titles==} to code blocks and {==enabling or disabling line numbering==}.
+
+If line numbers are enabled by default, you can disable them for a specific code block by adding after the beginning three back ticks a space, then a `linenums="0"`
+
+If line numbers are disasbled by default, you can enable them for a specific code block by adding after the beginning three back ticks a space, then a `linenums="N"` where N is a (?positive?) integer other than zero.
+
+If you have multiple code blocks and want the line numbers to continue in second and later blocks, you can replace that "N" with a specific number.
 
 You can highlight specific line numbers within the block by adding after the beginning three back ticks a space, then a `hl_lines="2 3"`
 

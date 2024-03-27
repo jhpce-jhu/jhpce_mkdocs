@@ -12,20 +12,22 @@ tags:
 
 [sacct](https://slurm.schedmd.com/archive/slurm-22.05.9/sacct.html) is a command used to display information about jobs. It has a number of subtleties, such as the time window reported on and the formatting of output. We hope that this page will help you get the information you need.
 
-sacct can be used to investigate jobs' resource usage, nodes used, and exit codes. It can point to important information, such as jobs dying on a particular node but working on other nodes.
+`sacct` can be used to investigate jobs' resource usage, nodes used, and exit codes. It can point to important information, such as jobs dying on a particular node but working on other nodes[^1].
+
+[^1]: In which case you can add the directive `--exclude=compute-xxx` to your job submission, then notify us via bitsupport so we can fix that node.
 
 sacct will show all submitted jobs but cannot, of course, provide data for a number of fields until the job has finished. Use the [sstat](https://slurm.schedmd.com/archive/slurm-22.05.9/sstat.html) command to get information about running programs. "Instrumenting" your jobs to gather information about them can include adding one or more sstat commands to batch jobs in multiple places.
 
 !!! Tip
-    Much of the information on this page can be used with `sstat`, but there are differences, particularly in available output fields.
+    Much of the information on this page can be used with `sstat`, but there are differences, particularly in available output fields (compare the output of `sacct -e` and `sstat -e`).
 
 Examples below use angle brackets ++less++ ++greater++  to indicate where you are supposed to replace argumements with your values.
     
     
 ## sacct basics
 
-1. By default only your own jobs are displayed. Use the `--allusers` flag if necessary.
-2. Only jobs from a certain time window are displayed by default. The window varies depending the arguments you provide. See [this section](https://slurm.schedmd.com/archive/slurm-22.05.9/sacct.html#lbAH) of the manual page. It is recommended to always provide start (`-S`) and end (`-E`) times.
+1. By default only your own jobs are displayed. Use the `--allusers` or `-a` flag if necessary.
+2. Only jobs from a certain time window are displayed by default. That window varies in a confusing manner depending the arguments you provide. See [this section](https://slurm.schedmd.com/archive/slurm-22.05.9/sacct.html#lbAH) of the manual page. Therefore it is recommended to **always** provide start (`-S`) and end (`-E`) times to be sure that you are seeing what you expect.
 3. You can choose output fields and control their width. 
 4. Even the simplest of batch jobs contain multiple "steps" as far as SLURM is concerned. One of them, named "extern" represents the ssh to the compute node on behalf of your job. Job records consist of a primary entry for the job as a whole  as  well as entries for job steps. The [Job Launch](https://slurm.schedmd.com/archive/slurm-22.05.9/job_launch.html#job_record) page has a more detailed description of each type of job step. You may find the `-X` flag helpful to omit clutter.
 5. Regular jobs are in the form: **JobID[.JobStep]**
