@@ -108,15 +108,19 @@ You can configure jobs to run in order with some conditional control. Conditions
 This can be used to achieve different goals, such as
 
 * controlling how many resources you consume at one time when running jobs on PI partitions where there are no enforced QOS limits, and
-* breaking up jobs into smaller pieces yet still have them run in the right order. 
+* breaking up jobs into smaller pieces yet still have them run in the right order. For example, copying some data to /fastscratch and, if that was successful, launching an analysis job.
 
 Smaller jobs start more quickly, and it can be better to make progress where possible while, for example, waiting for a large amount of RAM to become available on a single node. This is also more efficient for the cluster, since work can be done with, say, less RAM for this portion of the overall task, then a large amount for that portion, then a smaller amount again for some cleanup or merging portion. This is much better than having to wait for a large amount of RAM to become available and then, when it is allocated, tying it down for the entire duration of the single job.
 
 This approach also allows you to use different resources to complete a larger task. For example, use the more common CPU nodes to prepare some data for another job to process on a GPU node, of which there are fewer, and then possibly doing some further data reduction on any available CPU node.
 
-As you can see, people can get more work done more quickly by crafting a set of jobs to use only the necessary resources for each stage of a larger task.
+{==As you can see, people can get more work done more quickly by crafting a set of jobs to use only the necessary resources for each stage of a larger task.==}
 
-See [this part](https://slurm.schedmd.com/archive/slurm-22.05.9/sbatch.html#OPT_dependency) of the sbatch manual page. Many clusters have sections describing this technique.
+You can use different terms (afterany, aftercorr, afterok, afternotok, singleton) and syntaxes to build dependencies. Some people use programs to create dependency graphs to manage their jobs.
+
+Note that SLURM's idea of whether a job completed successfully may not match your definition. You may need to look at the logic of your batch script and add "exit N" statements and other logic to provide non-zero exit codes if something goes wrong before the very last command in the script. You can also add code that specifically checks for success (as opposed to only counting on a final exit code).
+
+See [this part](https://slurm.schedmd.com/archive/slurm-22.05.9/sbatch.html#OPT_dependency) of the sbatch manual page. Many clusters have sections describing this technique. [Yale](https://docs.ycrc.yale.edu/clusters-at-yale/job-scheduling/dependency/). CECI has a bunch of [info on workflows](https://support.ceci-hpc.be/doc/_contents/SubmittingJobs/WorkflowManagement.html#introduction) including using additional software to manage job arrays and dependencies.
 
 ## **Heterogeneous Job Support**
 
