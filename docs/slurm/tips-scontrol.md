@@ -48,7 +48,7 @@ scontrol update jobid=<jobid> ArrayTaskThrottle=<count>
 Users can change the time limit on their pending jobs. After a job starts to run, only a system administrator can adjust the time.
 
 ```Shell title="Set max job duration" linenums="0"
-scontrol update jobid=<jobid> TimeMin=<time-specification>
+scontrol update jobid=<jobid> TimeLimit=<time-specification>
 ```
 
 ```Shell title="Hold one of your jobs (to prefer other of your jobs)" linenums="0"
