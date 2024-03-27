@@ -15,13 +15,17 @@
     Nine times out of ten, the allegedly missing library is there. The problem is that your application is looking for the version of the library that is compatible with the old system software. It will not help to point your application to the new libraries. They are more than likely to be incompatible with the new system. The correct solution is to reinstall your software. If the problem persists after the reinstallation, then please contact us and we will install standard libraries that are actually missing.
 
 ## File Transfer
-- How do I copy a large directory structure from one place to another.
+- How do I copy a large directory structure from one place to another? Within the cluster? Into the cluster? Out of the cluster?
+
 ??? "Click to expand answer"
+    We have a document about transferring data into or out of the cluster [here](../access/file-transfer.md).
+    We have a document with advice about copying data around within the cluster [here](../files/copying-files.md). (This also includes good tips for using the rsync program for any data copying.)
+    
     As an example, to copy a directory tree from /users/bob/src to /dcs08/bob/dst, first, create a cluster script, let's call it "copy-job", that contains the line
     ```
     #!/bin/bash
 
-    rsync -avzh //users/bob/src /dcs08/bob/dst
+    rsync -avzh /users/bob/src /dcs08/bob/dst
     ```
     Next, submit a batch job to the cluster
     ```
@@ -30,7 +34,7 @@
     This will submit the "copy-id" script to the cluster, which will run the job on one of the computer nodes, and send an email when it finishes.
 
     !!! Warning
-        Please do not copy or move any larger files on the login nodes.
+        Please do not copy or move any larger files on the login nodes. Use the transfer node for internal/external transfers and compute nodes for transfers between cluster storage locations.
 
 ## Login
 - SSH gave a warning: REMOTE HOST IDENTIFICATION HAS CHANGED
@@ -81,8 +85,17 @@
 ??? "Click to expand answer"
     The SAFE desktop is a virtual Windows computer that you can use to run scientific software and access JHPCE. For more information see this [item](../access/access-overview.md#safe-desktop).
 
+## RStudio
+- Why do I see a mass of error messages about "GL" and "GPU" every time I launch RStudio?
+
+??? "Click to expand answer"
+    Those errors are normal. RStudio expects to be run on a computer with an attached display driven by a local graphics processing card and supported by a set of graphics software libraries and device drivers. We don’t have such cards in our rack-mounted systems.
+
 ## Slurm
-There is a dedicated [SLURM FAQ](../slurm/slurm-faq.md) document
+- There is a dedicated [SLURM FAQ](../slurm/slurm-faq.md) document
+
+## SSH
+- Variety of questions about ssh - please see our [ssh document](../access/ssh.md).
 
 ## X11
 - My X11 forwarding stops working after 20 minutes 
