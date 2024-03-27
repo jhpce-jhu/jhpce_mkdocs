@@ -89,13 +89,13 @@
 - Why do I see a mass of error messages about "GL" and "GPU" every time I launch RStudio?
 
 ??? "Click to expand answer"
-    Those errors are normal. RStudio expects to be run on a computer with an attached display driven by a local graphics processing card and supported by a set of graphics software libraries and device drivers. We don’t have such cards in our rack-mounted systems.
+    Those errors are normal. RStudio expects to be run on a computer with an attached display driven by a local graphics processing card and supported by a set of graphics software libraries and device drivers. We don’t have such cards in our rack-mounted systems, nor the software that goes with them.
 
 ## Slurm
 - There is a dedicated [SLURM FAQ](../slurm/slurm-faq.md) document
 
 ## SSH
-- Variety of questions about ssh - please see our [ssh document](../access/ssh.md).
+- For a variety of questions about ssh - please see our [ssh document](../access/ssh.md).
 
 ## X11
 - My X11 forwarding stops working after 20 minutes 
