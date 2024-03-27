@@ -3797,17 +3797,18 @@ Please excuse any issues with non-working pages.
 <p>Besides the diagram types listed above, Mermaid.js provides support for pie charts, gantt charts, user journeys, git graphs and requirement diagrams, all of which are not officially supported by Material for MkDocs. Those diagrams should still work as advertised by Mermaid.js, but we don't consider them a good choice, mostly as they don't work well on mobile. While all Mermaid.js features should work out-of-the-box, Material for MkDocs will currently only adjust the fonts and colors for flowcharts, sequence diagrams, class diagrams, state diagrams and entity relationship diagrams.</p>
 </details>
 <h2 id="details">Details<a class="headerlink" href="#details" title="Anchor link to this section for reference">&para;</a></h2>
-<p>Like an admonition but makes pages more readable by collapsing content.
+<p>Like an <a href="#admonitions">admonition</a> but makes pages more readable by collapsing content.
 Documentation <a href="https://facelessuser.github.io/pymdown-extensions/extensions/details/">here</a> and also explained in the detail below.</p>
 <details class="tip">
 <summary>Psst: Click To Expand</summary>
-<p>You can have it be open by default, too. (Add a <span class="keys"><kbd class="key-plus">+</kbd></span> after the opening <span class="keys"><kbd class="key-question">?</kbd><span>+</span><kbd class="key-question">?</kbd><span>+</span><kbd class="key-question">?</kbd></span>)</p>
+<p>You can have it be open by default, too. (Add a <span class="keys"><kbd class="key-plus">+</kbd></span> after the opening <span class="keys"><kbd class="key-question">?</kbd><span>+</span><kbd class="key-question">?</kbd><span>+</span><kbd class="key-question">?</kbd></span>). The following "detail" was set in the Markdown to display opened up.</p>
 <details class="multiple" open="open">
 <summary>Syntax to use</summary>
 <p>Details must contain a blank line before they start. Use ??? to start a details block or ???+ if you want to start a details block whose default state is 'open'. Follow the start of the block with an optional class keyword (like "tip" or "warning") or classes (separated with spaces) and the summary contained in double quotes. Content is placed below the header and must be indented with FOUR SPACES.</p>
 <p>Another detail can be nested inside by adding another blank line and another detail header line and content block. But this header line needs to start with the word "multiple" So ??? multiple class "Title"</p>
 </details>
 </details>
+<p>You can probably include <a href="#fenced-code-blocks">code blocks</a> inside of details like you can with admonitions.</p>
 <h2 id="frontmatter-in-document-files">Frontmatter (in document files)<a class="headerlink" href="#frontmatter-in-document-files" title="Anchor link to this section for reference">&para;</a></h2>
 <p>Tags are the primary use of frontmatter I think we should use at this point. <a href="https://squidfunk.github.io/mkdocs-material/reference/">This</a> may not be a complete list of directives that one can optionally add within a document. But the basics are that you can add to the top of the document a stanza to set the title of the document, a description of it, a status indicator such as new or deprecated. See <a href="https://squidfunk.github.io/mkdocs-material/reference/#setting-the-page-icon">this page</a> for how to define an icon for the page.</p>
 <p>Apparently multiple frontmatter elements, like both tags and a page title, need to exist together inside one pair of three dashed lines. See example:</p>
@@ -3825,7 +3826,7 @@ title: some docs need explicit titles set b/c they can&#39;t be correctly guesse
 <p>The tag "contains-refs-to-old-site" came to me because some pages, such as the R page, contain screenshots which contain the URL of the old web site.</p>
 <p>The tag "last-revised-YYYYMMDD" could be used on a page which also has "done" or "needs-improvement-later" so you can tell that information by looking at the tags page. As opposed to having to go look at the repository. The <a href="../wishlist/">wishlist</a> document mentions adding a plugin or extension which allows the last-revised date to be automatically generated and listed at the bottom of each page.</p>
 <p>Place lines like this at the very top of the document, before the document title, to add the tags mentioned. Tags are strings but I am hoping to avoid spaces or underscores. (Underscores suck b/c they require the shift key. And you can't always see them depenind on how text renders.)</p>
-<p>Code blocks are numbered by default (given settings in mkdocs.yml). See <a href="./#code-block-line-numbers-highlighting">this section</a> for instructions on <mark class="critic">adding titles</mark> to code blocks and <mark class="critic">disabling line numbering</mark>.</p>
+<p>Code blocks can be numbered or not by default (given settings in mkdocs.yml). THEY ARE NOW OFF BY DEFAULT. See <a href="./#code-block-line-numbers-highlighting">this section</a> for instructions on <mark class="critic">adding titles</mark> to code blocks and <mark class="critic">enabling or disabling line numbering</mark>.</p>
 <div class="highlight"><pre><span></span><code>---
 tags:
   - done
@@ -3842,7 +3843,7 @@ tags:
 ---
 </code></pre></div>
 <h2 id="internal-links">Internal links<a class="headerlink" href="#internal-links" title="Anchor link to this section for reference">&para;</a></h2>
-<p>From <a href="https://www.mkdocs.org/user-guide/writing-your-docs/#writing-with-markdown">this mkdocs</a> page JRT learned that you can specify anchor points to document sections by knowing that they are converted to lowercase and white space is replaced by dashes. So this very section, named "Internal links" can be specified as a link to "features.md#internal-links"</p>
+<p>From <a href="https://www.mkdocs.org/user-guide/writing-your-docs/#writing-with-markdown">this mkdocs</a> page JRT learned that <mark class="critic">you can specify anchor points to document sections by knowing that they are converted to lowercase and white space is replaced by dashes.</mark> So this very section, named "Internal links" can be specified as a link to "../ourtools/features.md#internal-links" (in a different document) or "#internal-links" (inside the same document).</p>
 <h2 id="keyboard-meta-keys">Keyboard meta keys<a class="headerlink" href="#keyboard-meta-keys" title="Anchor link to this section for reference">&para;</a></h2>
 <p>(enabled by the pymdownx.keys extension)</p>
 <p>keyboard meta keys displayed e.g. <span class="keys"><kbd class="key-control">Ctrl</kbd></span>
@@ -3858,13 +3859,13 @@ by using two plus characters, the keyword like "ctrl", then two more plus charac
 <p>You can create a key with any wording you want <span class="keys"><kbd class="key-plus">+</kbd></span> <span class="keys"><kbd class="key-plus">+</kbd></span> <span class="keys"><kbd class="key-double-quote">"</kbd></span> Your Wording Here <span class="keys"><kbd class="key-double-quote">"</kbd></span> <span class="keys"><kbd class="key-plus">+</kbd></span> <span class="keys"><kbd class="key-plus">+</kbd></span> to create <span class="keys"><kbd>Your Wording Here</kbd></span></p>
 <h2 id="abbreviations">Abbreviations<a class="headerlink" href="#abbreviations" title="Anchor link to this section for reference">&para;</a></h2>
 <p>Abbreviations can be defined by using a syntax similar to URLs and footnotes, starting with an asterisk immediately followed by the term to be associated in square brackets.</p>
-<p>This code creates the following sentence. You can hover over "<abbr title="Hyper Text Markup Language">HTML</abbr>" and see the definition appear.</p>
+<p>This code creates the sentence that follows. You can hover over "<abbr title="Hyper Text Markup Language">HTML</abbr>" and see the definition appear.</p>
 <div class="highlight"><pre><span></span><code>The HTML specification is maintained by the W3C.
 *[HTML]: Hyper Text Markup Language
 </code></pre></div>
 <p>The <abbr title="Hyper Text Markup Language">HTML</abbr> specification is maintained by the W3C.</p>
 <h2 id="glossary">Glossary<a class="headerlink" href="#glossary" title="Anchor link to this section for reference">&para;</a></h2>
-<p>There's a way to create a document which is automatically updated when people define abbrieviations. See the wishlist document for details.</p>
+<p>There's a way to create a document which is automatically updated when people define abbrieviations. See the wishlist document for details. Currently we have a manually written glossary, because that was quicker, and allows for the explanation to be longer than many page authors would probably provide in their individual pages.</p>
 <h2 id="definition-list">Definition List<a class="headerlink" href="#definition-list" title="Anchor link to this section for reference">&para;</a></h2>
 <p>You can create an indented block of text using a colon followed by FOUR space characters.</p>
 <p>Example code and result:
@@ -3876,22 +3877,29 @@ by using two plus characters, the keyword like "ctrl", then two more plus charac
 <dd>The definition you are seeking. (But not the droids.)</dd>
 </dl>
 <h2 id="admonitions">Admonitions<a class="headerlink" href="#admonitions" title="Anchor link to this section for reference">&para;</a></h2>
-<p>These are <strong>sweet</strong>! We should use them frequently. But be aware that they are not rendered correctly in MacDown.app. This is where it is good to be running "mkdocs serve" on your local machine.</p>
-<p><a href="https://squidfunk.github.io/mkdocs-material/reference/admonitions/"" target="_blank">About admonitions</a></p>
+<p>These are <strong>sweet</strong>! We should use them frequently. But be aware that they are not rendered correctly in MacDown.app. This is where it is good to be running "mkdocs serve" on your local machine. So you can verify that they are properly constructed before you push up your modified markdown file.</p>
+<p>Consider whether or not you want the material collapsed or expanded when users first visit a page. If you want the information collapsed, create a "detail" instead of an "admonition" by using question marks instead of exclamation points. Details are documented <a href="#details">above</a>.</p>
+<p><a href="https://squidfunk.github.io/mkdocs-material/reference/admonitions/"" target="_blank">Admonition documentation</a></p>
 <p>You add an admonition by</p>
 <ol>
 <li>starting a line with three explanation marks, a space, and a keyword (called a "type qualifier") such as note, danger, example, info, tip, warning. Here is a <a href="https://squidfunk.github.io/mkdocs-material/reference/admonitions/#supported-types">list</a>. Certain colors are used for known keywords. If you use your own word or phrase, the color is maybe out of your control.</li>
-<li>on the next line(s) start with FOUR spaces</li>
+<li>You can add an optional title for your admonition by adding a double quoted string after the type qualifier.</li>
+<li>on the next line(s) start with FOUR spaces. You can have multiple paragraphs inside your admonition by continuing to indent the first line by FOUR SPACES.</li>
 </ol>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>Some text in a note.</p>
+<p>Some text using the "note" type qualifier</p>
 </div>
 <div class="admonition example">
 <p class="admonition-title">Example</p>
-<p>admonitions allow setting off info inside colored boxes, e.g. note,tip,warning,danger,example.
+<p>admonitions allow setting off info inside colored boxes, e.g. note, tip, warning, danger, example.
 https://squidfunk.github.io/mkdocs-material/reference/admonitions/#usage</p>
 <p>All lines indented four spaces are included in your admonition, including fenced code blocks.</p>
+</div>
+<div class="admonition example">
+<p class="admonition-title">Code block inside of an admonition</p>
+<div class="highlight"><span class="filename">Show my failed jobs between noon and now</span><pre><span></span><code>sacct<span class="w"> </span>-s<span class="w"> </span>F<span class="w"> </span>-o<span class="w"> </span><span class="s2">&quot;user,jobid,state,nodelist,start,end,exitcode&quot;</span><span class="w"> </span>-S<span class="w"> </span>noon<span class="w"> </span>-E<span class="w"> </span>now
+</code></pre></div>
 </div>
 <h2 id="open-urls-in-new-tabs">Open URLs in new tabs<a class="headerlink" href="#open-urls-in-new-tabs" title="Anchor link to this section for reference">&para;</a></h2>
 <p>(Adi has configured the server to always open URLs in new tabs.)</p>
@@ -3902,8 +3910,16 @@ https://squidfunk.github.io/mkdocs-material/reference/admonitions/#usage</p>
 <p>This<sup id="fnref:1"><a class="footnote-ref" href="#fn:1">1</a></sup> is a reference to the feature's description.</p>
 <p>You add a footnote by entering</p>
 <p><code>[^1]</code></p>
-<p>in the midst of your text. Anywhere in the document you write the footnote by placing at the start of a line the corresponding numbered entry using the same syntax but adding a colon and a space character after the closing square brace.</p>
+<p>in the midst of your text. Anywhere in the document afterwards you create the footnote contents by</p>
+<ul>
+<li>after a blank line</li>
+<li>placing at the start of a line</li>
+<li>the corresponding numbered entry using the same syntax</li>
+<li>but adding a colon and a space character after the closing square brace, then</li>
+<li>adding your wording for the footnote.</li>
+</ul>
 <p><code>[^1]: Wording of footnote</code></p>
+<p>Numbering: It seems to be the case that you can use whatever number you want in your Markdown and Materials for MkDocs will generate the correct numbering in the resulting <abbr title="Hyper Text Markup Language">HTML</abbr> files. In other words, you could give each footnote the number "1" Perhaps this depends on the ordering of the use of a footnote and its definition. (The only algorithm available to the processing is going to be to associate the first use with the first definition, the second use with the second definition, ...)</p>
 <h2 id="data-tables">Data tables<a class="headerlink" href="#data-tables" title="Anchor link to this section for reference">&para;</a></h2>
 <p>Tables are easily constructed out of vertical pipe symbols <span class="keys"><kbd class="key-bar">|</kbd></span>, hyphens <span class="keys"><kbd class="key-minus">-</kbd></span> and text. Optional colons can be used to align column contents.</p>
 <p>They don't render unless you also include the line of hyphens under the line containing the column titles.</p>
@@ -3967,11 +3983,15 @@ https://squidfunk.github.io/mkdocs-material/reference/admonitions/#usage</p>
 <p>:mdiOrderAlphabeticalAscending:</p>
 <p>:fa-regular fa-envelope:</p>
 <h2 id="fenced-code-blocks">Fenced code blocks<a class="headerlink" href="#fenced-code-blocks" title="Anchor link to this section for reference">&para;</a></h2>
-<p>Note that you can set off a block of text using three preceding and three following backtick characters.</p>
+<p>Note that you can set off a block of text using three preceding and three following backtick characters.
+If you provide a valid keyword <em>immediately</em> after the backticks (no space char), then your code block will have a set of formatting choices applied to them. That keyword could be, for example, python.</p>
+<p>Code blocks can be located inside of <a href="#details">details</a> and <a href="#admonitions">admonitions</a> and probably other things (because of settings added to mkdocs.yml)</p>
 <p>There are MANY options for code blocks. All kinds of syntaxes can be used to mean different things. Here is the m<a href="https://squidfunk.github.io/mkdocs-material/reference/code-blocks/#code-blocks">ain document </a>for code blocks.</p>
 <h3 id="code-block-line-numbers-highlighting">code block line numbers &amp; highlighting<a class="headerlink" href="#code-block-line-numbers-highlighting" title="Anchor link to this section for reference">&para;</a></h3>
-<p>For example, line numbers are enabled by default. You can disable them for a specific code block by adding after the beginning three back ticks a space, then a <code>linenums="0"</code>
-If you have multiple code blocks and want the line numbers to continue in second and later blocks, you can replace that 0 with a specific number.</p>
+<p>Code blocks can be numbered or not by default (given settings in mkdocs.yml). THEY ARE NOW OFF BY DEFAULT. See <a href="./#code-block-line-numbers-highlighting">this section</a> for instructions on <mark class="critic">adding titles</mark> to code blocks and <mark class="critic">enabling or disabling line numbering</mark>.</p>
+<p>If line numbers are enabled by default, you can disable them for a specific code block by adding after the beginning three back ticks a space, then a <code>linenums="0"</code></p>
+<p>If line numbers are disasbled by default, you can enable them for a specific code block by adding after the beginning three back ticks a space, then a <code>linenums="N"</code> where N is a (?positive?) integer other than zero.</p>
+<p>If you have multiple code blocks and want the line numbers to continue in second and later blocks, you can replace that "N" with a specific number.</p>
 <p>You can highlight specific line numbers within the block by adding after the beginning three back ticks a space, then a <code>hl_lines="2 3"</code></p>
 <h3 id="code-block-titles-including-other-files">code block titles &amp; including other files<a class="headerlink" href="#code-block-titles-including-other-files" title="Anchor link to this section for reference">&para;</a></h3>
 <p>Add a title by following leading 3 backticks with a space and <code>title=".browserslistrc"</code></p>
@@ -4089,7 +4109,7 @@ ERROR<span class="w">   </span>-<span class="w">  </span><span class="o">[</span
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1-2.1-2M12.5 7v5.2l4 2.4-1 1L11 13V7h1.5M11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2v1.8Z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">March 12, 2024</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">March 27, 2024</span>
   </span>
 
     
