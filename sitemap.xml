@@ -321,6 +321,11 @@
          <changefreq>daily</changefreq>
     </url>
     <url>
+         <loc>https://jhpce-beta.jhu.edu/slurm/tips-squeue/</loc>
+         <lastmod>2024-03-27</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
          <loc>https://jhpce-beta.jhu.edu/slurm/user-guide-collection/</loc>
          <lastmod>2024-03-27</lastmod>
          <changefreq>daily</changefreq>
