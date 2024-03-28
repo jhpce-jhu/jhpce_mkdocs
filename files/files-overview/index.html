@@ -3537,7 +3537,7 @@ getconf PATH_MAX /
 <p>Traditional Unix file ownership and permissions can be used to share access to files and directories. However, there can be times when more fine-grained control of access is needed. To accomplish this, Access Control Lists (ACLs) can be used. They add to or extend the normal permissions.</p>
 <p>We have a good document about how to use ACLs <a href="../acl/">here</a>.</p>
 <h2 id="transferring-files-into-and-out-of-the-cluster">Transferring files into and out of the cluster<a class="headerlink" href="#transferring-files-into-and-out-of-the-cluster" title="Anchor link to this section for reference">&para;</a></h2>
-<p>A variety of tools exist for this task. We have documented many of them in <a href="../copying-files/">this document</a>. Details about using rsync for copying data</p>
+<p>A variety of tools exist for this task. We have documented many of them in <a href="../copying-files/">this document</a>.  <code>Rsync</code> is one such program. It has a learning curve and there are some important things to know about using it. We have put that information into the document we wrote about <a href="../files/copying.md">copying data around within the cluster</a>. </p>
 <p>Before moving large amounts of data in or out, you may want to consolidate it into fewer files using archive tools. We have documented some of the relevant considerations in <a href="../archive-files/">this document</a>.</p>
 <p>For transferring files to and from the cluster, you should use
 <code>jhpce-transfer01.jhsph.edu</code> rather than a login node.
