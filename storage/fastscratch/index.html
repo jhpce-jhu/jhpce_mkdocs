@@ -1780,6 +1780,15 @@ Please excuse any issues with non-working pages.
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#use-chains-of-jobs-to-stage-data" class="md-nav__link">
+    <span class="md-ellipsis">
+      Use chains of jobs to stage data
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -3315,6 +3324,15 @@ Please excuse any issues with non-working pages.
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#use-chains-of-jobs-to-stage-data" class="md-nav__link">
+    <span class="md-ellipsis">
+      Use chains of jobs to stage data
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -3345,24 +3363,30 @@ Please excuse any issues with non-working pages.
 <p>A 22TB file system created from fast Solid State Disk is available for your use. This provides a fast place to store input or output files for your compute jobs. There is no cost for using your personal scratch space.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p><em>This scratch space is meant to be a short-term storage location; it is not a long-term storage solution.</em></p>
+<p><em>This scratch space is meant to be a short-term storage location; it is not a long-term storage solution. Please remove data from your personal scratch space once you have finished using it.</em></p>
 </div>
 <p>You can access your scratch space by using the <code>$MYSCRATCH</code> environment variable from an interactive cluster node session, or within a submitted job.</p>
 <p>The actual absolute path to your personal scratch space is <code>/fastscratch/myscratch/$USER</code>.</p>
 <h2 id="key-details">Key details<a class="headerlink" href="#key-details" title="Anchor link to this section for reference">&para;</a></h2>
 <p>Because this limited resource is shared by all users, there are some very important restrictions for using it.</p>
 <ul>
-<li>There is a 1TB quota set on the personal scratch space. (See <a href="../quotas/">this document</a> for more information about disk quotas.)</li>
+<li>There is a generous 1TB quota set on the personal scratch space. (See <a href="../quotas/">this document</a> for more information about disk quotas.)</li>
 <li>All files older than 30 days will be removed without exception.  </li>
-<li>Even though there is a 30 day automatic deletion of data, we ask that you please remove data from your personal scratch space once you have finished using it.</li>
+<li>Even though there is a 30 day automatic deletion of data, <mark class="critic">we ask that you please remove data from your personal scratch space once you have finished using it.</mark> If only 22 users used their full quotas and left their files behind counting on automatic deletion then the file system would fill up and many jobs would fail.</li>
 <li>The personal scratch space is not backed up. Therefore if you delete a file it cannot be recovered.</li>
 <li>The fastscratch file system has NO redundancy, so scratch space drive failures result in data loss. Thus, move important files needed to be kept from scratch space ASAP.</li>
 <li>Abuse of this space may result in files being deleted on an as needed basis.</li>
 </ul>
 <div class="admonition danger">
 <p class="admonition-title">Danger</p>
-<p>If you <code>untar</code> or <code>unzip</code> a file, and the extracted files have a timestamp older than 30 days from the original bundle, they will be removed when the daily purge begins. To work around this, you can use the <code>touch</code> command to update the timestamp on the extracted files.</p>
+<p>If you <code>untar</code> or <code>unzip</code> an archive file, and the extracted files have a timestamp older than 30 days from the original bundle, they will be removed when the daily purge begins. To work around this, you can use the <code>touch</code> command to update the timestamp on the extracted files.</p>
 </div>
+<h2 id="use-chains-of-jobs-to-stage-data">Use chains of jobs to stage data<a class="headerlink" href="#use-chains-of-jobs-to-stage-data" title="Anchor link to this section for reference">&para;</a></h2>
+<p>By using the dependent jobs feature of SLURM, you can arrange a series of jobs to stage data into and out of /fastscratch.</p>
+<p>This document has information about dependent jobs https://jhpce.jhu.edu/slurm/crafting-jobs/#dependent-jobs</p>
+<p>You can use a batch job to copy files from project storage space (e.g. /dcs07/something) or your home directory as they are needed. Or even download a file from the internet via a job submitted to the <code>transfer</code> partition.</p>
+<p>Then you can create a second batch job that starts automatically when the copy batch job completes successfully by making the second job dependent on the first one using the right condition tag.</p>
+<p>Third or later jobs can be run to clean out your finished files, whether by deleting them or creating archive files and copying them to a permanent location.</p>
 
 
 
@@ -3383,11 +3407,26 @@ Please excuse any issues with non-working pages.
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1-2.1-2M12.5 7v5.2l4 2.4-1 1L11 13V7h1.5M11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2v1.8Z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">February 16, 2024</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">March 28, 2024</span>
   </span>
 
     
     
+    
+      
+  
+  <span class="md-source-file__fact">
+    <span class="md-icon" title="Contributors">
+      
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 4a4 4 0 0 1 4 4 4 4 0 0 1-4 4 4 4 0 0 1-4-4 4 4 0 0 1 4-4m0 10c4.42 0 8 1.79 8 4v2H4v-2c0-2.21 3.58-4 8-4Z"/></svg>
+      
+    </span>
+    <nav>
+      
+        <a href="mailto:tunison@jhu.edu">jeffreytunison</a>
+    </nav>
+  </span>
+
     
     
   </aside>

@@ -3843,6 +3843,10 @@ R CMD BATCH myprog.R
 <p>This approach also allows you to use different resources to complete a larger task. For example, use the more common CPU nodes to prepare some data for another job to process on a GPU node, of which there are fewer, and then possibly doing some further data reduction on any available CPU node.</p>
 <p><mark class="critic">As you can see, people can get more work done more quickly by crafting a set of jobs to use only the necessary resources for each stage of a larger task.</mark></p>
 <p>You can use different terms (afterany, aftercorr, afterok, afternotok, singleton) and syntaxes to build dependencies. Some people use programs to create dependency graphs to manage their jobs.</p>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>You may think that the dependency term "after" is okay to use. Note that it does not mean after a job ends. It means after a job is started or cancelled.</p>
+</div>
 <p>Note that SLURM's idea of whether a job completed successfully may not match your definition. You may need to look at the logic of your batch script and add "exit N" statements and other logic to provide non-zero exit codes if something goes wrong before the very last command in the script. You can also add code that specifically checks for success (as opposed to only counting on a final exit code).</p>
 <p>See <a href="https://slurm.schedmd.com/archive/slurm-22.05.9/sbatch.html#OPT_dependency">this part</a> of the sbatch manual page. Many clusters have sections describing this technique. <a href="https://docs.ycrc.yale.edu/clusters-at-yale/job-scheduling/dependency/">Yale</a>. CECI has a bunch of <a href="https://support.ceci-hpc.be/doc/_contents/SubmittingJobs/WorkflowManagement.html#introduction">info on workflows</a> including using additional software to manage job arrays and dependencies.</p>
 <h2 id="heterogeneous-job-support"><strong>Heterogeneous Job Support</strong><a class="headerlink" href="#heterogeneous-job-support" title="Anchor link to this section for reference">&para;</a></h2>
@@ -3985,11 +3989,26 @@ fi
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1-2.1-2M12.5 7v5.2l4 2.4-1 1L11 13V7h1.5M11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2v1.8Z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">March 27, 2024</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">March 28, 2024</span>
   </span>
 
     
     
+    
+      
+  
+  <span class="md-source-file__fact">
+    <span class="md-icon" title="Contributors">
+      
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 4a4 4 0 0 1 4 4 4 4 0 0 1-4 4 4 4 0 0 1-4-4 4 4 0 0 1 4-4m0 10c4.42 0 8 1.79 8 4v2H4v-2c0-2.21 3.58-4 8-4Z"/></svg>
+      
+    </span>
+    <nav>
+      
+        <a href="mailto:tunison@jhu.edu">jeffreytunison</a>
+    </nav>
+  </span>
+
     
     
   </aside>
