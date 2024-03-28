@@ -1305,6 +1305,33 @@ Please excuse any issues with non-working pages.
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#download" class="md-nav__link">
+    <span class="md-ellipsis">
+      Download
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#configuring-ssh-sessions" class="md-nav__link">
+    <span class="md-ellipsis">
+      Configuring SSH Sessions
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#configuring-sftp-sessions" class="md-nav__link">
+    <span class="md-ellipsis">
+      Configuring SFTP Sessions
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#optional-setting-up-ssh-keys-in-mobaxterm" class="md-nav__link">
     <span class="md-ellipsis">
       OPTIONAL -- Setting up SSH Keys in MobaXterm:
@@ -3307,6 +3334,33 @@ Please excuse any issues with non-working pages.
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#download" class="md-nav__link">
+    <span class="md-ellipsis">
+      Download
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#configuring-ssh-sessions" class="md-nav__link">
+    <span class="md-ellipsis">
+      Configuring SSH Sessions
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#configuring-sftp-sessions" class="md-nav__link">
+    <span class="md-ellipsis">
+      Configuring SFTP Sessions
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#optional-setting-up-ssh-keys-in-mobaxterm" class="md-nav__link">
     <span class="md-ellipsis">
       OPTIONAL -- Setting up SSH Keys in MobaXterm:
@@ -3328,6 +3382,17 @@ Please excuse any issues with non-working pages.
               <article class="md-content__inner md-typeset">
                 
                   
+  
+<nav class="md-tags" >
+  
+    
+    
+    
+      <a href="../../ourtools/tags/#in-progress" class="md-tag">in-progress</a>
+    
+  
+</nav>
+
 
 
 <h1 id="mobaxterm-configuration">Mobaxterm Configuration<a class="headerlink" href="#mobaxterm-configuration" title="Anchor link to this section for reference">&para;</a></h1>
@@ -3338,11 +3403,13 @@ cluster.  There is some configuration that needs to be done though in
 order to effectively use Mobaxterm in the JHPCE environment.  This FAQ
 will take you through the steps needed to configure Mobaxterm.  Before
 your proceed you should have your Google Authenticator app available.</p>
+<h2 id="download">Download<a class="headerlink" href="#download" title="Anchor link to this section for reference">&para;</a></h2>
 <p>The first thing you will need to do is download the MobaXterm program from their web site
 <a href="http://mobaxterm.mobatek.net/download-home-edition.html">http://mobaxterm.mobatek.net/download-home-edition.html</a></p>
 <p>Be sure to use the "Installer Edition" instead of the "Portable Edition"</p>
 <p><img alt="moba-web-site2" src="../images/moba-web-site2.jpg" /></p>
 <p>Once the program has been downloaded, install it as you would any other Windows program.</p>
+<h2 id="configuring-ssh-sessions">Configuring SSH Sessions<a class="headerlink" href="#configuring-ssh-sessions" title="Anchor link to this section for reference">&para;</a></h2>
 <p>Once the program is installed, start the MobaXterm program. You should see a screen like this:</p>
 <p><img alt="mobaxterm1" src="../images/mobaxterm1.gif" /></p>
 <p>From this screen, click on the "Sessions" icon </p>
@@ -3362,7 +3429,7 @@ boxes pop up (usually 3) prompting for another Verification Code. Click
 password. In the lower left, check the box that says "Do not ask this
 again" and then click "No". (We will get rid of these annoying boxes in
 a couple of steps).</p>
-<p><a href="../images/mobaxterm5.gif">mobaxterm5</a></p>
+<p><img alt="mobaxterm5" src="../images/mobaxterm5.gif" /></p>
 <p>At this point you should be logged into the JHPCE cluster and sitting
 at a shell prompt.</p>
 <p>After you exit out of the JHPCE cluster, a "jhpce01" session will be
@@ -3370,6 +3437,12 @@ saved as a "Saved Sessions".  To login again, double-click on the
 jhpce01 "Saved Session", and you should then be prompted for
 "Verification Code" (which will come from Google Authenticator) and
 "Password:"</p>
+<h2 id="configuring-sftp-sessions">Configuring SFTP Sessions<a class="headerlink" href="#configuring-sftp-sessions" title="Anchor link to this section for reference">&para;</a></h2>
+<div class="admonition note">
+<p class="admonition-title">Authoring Note</p>
+<p>This needs to be written.</p>
+</div>
+<p>The main thing to know is that you need to, when configuring a session, check a box related to verification being used by the remote server.</p>
 <h2 id="optional-setting-up-ssh-keys-in-mobaxterm">OPTIONAL -- Setting up SSH Keys in MobaXterm:<a class="headerlink" href="#optional-setting-up-ssh-keys-in-mobaxterm" title="Anchor link to this section for reference">&para;</a></h2>
 <p>To make logging in more streamlined and avoid the pop-up windows when
 you login, you can create an SSH key pair in MobaXterm. Before
@@ -3477,7 +3550,7 @@ to enter a password or Google Authenticator PIN. </li>
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1-2.1-2M12.5 7v5.2l4 2.4-1 1L11 13V7h1.5M11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2v1.8Z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">February 1, 2024</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">March 28, 2024</span>
   </span>
 
     
