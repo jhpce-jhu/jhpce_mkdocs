@@ -1,3 +1,7 @@
+---
+tags:
+  - in-progress
+---
 # Mobaxterm Configuration 
 Mobaxterm is a Windows application that provides an ssh client, scp
 client and X11 server all in one program.  It is a very convenient tool
@@ -7,7 +11,7 @@ order to effectively use Mobaxterm in the JHPCE environment.  This FAQ
 will take you through the steps needed to configure Mobaxterm.  Before
 your proceed you should have your Google Authenticator app available.
 
-
+## Download
 The first thing you will need to do is download the MobaXterm program from their web site
 [http://mobaxterm.mobatek.net/download-home-edition.html](http://mobaxterm.mobatek.net/download-home-edition.html)
 
@@ -16,6 +20,8 @@ Be sure to use the "Installer Edition" instead of the "Portable Edition"
 ![moba-web-site2](images/moba-web-site2.jpg)
 
 Once the program has been downloaded, install it as you would any other Windows program.
+
+## Configuring SSH Sessions
 
 Once the program is installed, start the MobaXterm program. You should see a screen like this:
 
@@ -46,7 +52,7 @@ password. In the lower left, check the box that says "Do not ask this
 again" and then click "No". (We will get rid of these annoying boxes in
 a couple of steps).
 
-[mobaxterm5](images/mobaxterm5.gif)
+![mobaxterm5](images/mobaxterm5.gif)
 
 At this point you should be logged into the JHPCE cluster and sitting
 at a shell prompt.
@@ -57,6 +63,12 @@ jhpce01 "Saved Session", and you should then be prompted for
 "Verification Code" (which will come from Google Authenticator) and
 "Password:"
 
+## Configuring SFTP Sessions
+
+!!! Note "Authoring Note"
+    This needs to be written.
+    
+The main thing to know is that you need to, when configuring a session, check a box related to verification being used by the remote server.
 
 ## OPTIONAL -- Setting up SSH Keys in MobaXterm:
 To make logging in more streamlined and avoid the pop-up windows when
