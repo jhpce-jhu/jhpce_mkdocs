@@ -1,7 +1,7 @@
 # No TABs allowed in this file. None. Your editor may try to insert some.
 # Beware, this is YAML and YAML CARES. A LOT. (too much)
 site_name: JHPCE
-site_url: https://jhpce-beta.jhu.edu/
+site_url: https://jhpce.jhu.edu/
 nav:
   - Home:
     - index.md
