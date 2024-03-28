@@ -681,7 +681,7 @@ Please excuse any issues with non-working pages.
   
   
     <li class="md-nav__item">
-      <a href="../../orient/orientation-overview/" class="md-nav__link">
+      <a href="../../orient/orientation-overview.md" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1501,9 +1501,18 @@ Please excuse any issues with non-working pages.
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#overview" class="md-nav__link">
+  <a href="#where-files-live" class="md-nav__link">
     <span class="md-ellipsis">
-      Overview
+      Where files live
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#naming-files" class="md-nav__link">
+    <span class="md-ellipsis">
+      Naming files
     </span>
   </a>
   
@@ -1518,33 +1527,6 @@ Please excuse any issues with non-working pages.
   
     <nav class="md-nav" aria-label="Sharing files with other users">
       <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#normal-unix-file-ownership-and-permissions" class="md-nav__link">
-    <span class="md-ellipsis">
-      Normal UNIX file ownership and permissions
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#home-directory" class="md-nav__link">
-    <span class="md-ellipsis">
-      Home Directory
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#project-storage" class="md-nav__link">
-    <span class="md-ellipsis">
-      Project storage
-    </span>
-  </a>
-  
-</li>
         
           <li class="md-nav__item">
   <a href="#using-acls-to-allow-increased-access" class="md-nav__link">
@@ -3412,9 +3394,18 @@ Please excuse any issues with non-working pages.
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#overview" class="md-nav__link">
+  <a href="#where-files-live" class="md-nav__link">
     <span class="md-ellipsis">
-      Overview
+      Where files live
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#naming-files" class="md-nav__link">
+    <span class="md-ellipsis">
+      Naming files
     </span>
   </a>
   
@@ -3429,33 +3420,6 @@ Please excuse any issues with non-working pages.
   
     <nav class="md-nav" aria-label="Sharing files with other users">
       <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#normal-unix-file-ownership-and-permissions" class="md-nav__link">
-    <span class="md-ellipsis">
-      Normal UNIX file ownership and permissions
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#home-directory" class="md-nav__link">
-    <span class="md-ellipsis">
-      Home Directory
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#project-storage" class="md-nav__link">
-    <span class="md-ellipsis">
-      Project storage
-    </span>
-  </a>
-  
-</li>
         
           <li class="md-nav__item">
   <a href="#using-acls-to-allow-increased-access" class="md-nav__link">
@@ -3547,42 +3511,33 @@ Please excuse any issues with non-working pages.
       <a href="../../ourtools/tags/#topic-overview" class="md-tag">topic-overview</a>
     
   
-    
-    
-    
-      <a href="../../ourtools/tags/#in-progress" class="md-tag">in-progress</a>
-    
-  
-    
-    
-    
-      <a href="../../ourtools/tags/#jeffrey" class="md-tag">jeffrey</a>
-    
-  
 </nav>
 
 
 
 <h1 id="managing-files">MANAGING FILES<a class="headerlink" href="#managing-files" title="Anchor link to this section for reference">&para;</a></h1>
-<p>We spend a lot of our time manipulating files.  This document attempts to provide an overview of, and pointers to, useful knowledge.</p>
-<h2 id="overview">Overview<a class="headerlink" href="#overview" title="Anchor link to this section for reference">&para;</a></h2>
-<p>General info about where files of different types live (should live). Pointers to existing info over in the Storage topic. Reminder about what is backed up and what is not.</p>
+<p>We all spend a lot of our time manipulating files.  This document attempts to provide an overview of, and pointers to, useful knowledge.</p>
+<h2 id="where-files-live">Where files live<a class="headerlink" href="#where-files-live" title="Anchor link to this section for reference">&para;</a></h2>
+<p>We have created a Storage topic in this web site. Please visit the <a href="../../storage/stg-overview/">overview</a> and any other pages of interest.</p>
+<h2 id="naming-files">Naming files<a class="headerlink" href="#naming-files" title="Anchor link to this section for reference">&para;</a></h2>
+<p>Files are created and manipulated with programs. Those programs are written by many different people and organizations. Some of them attempt to adhere to standards like <a href="https://en.wikipedia.org/wiki/POSIX">POSIX</a>. Files are stored in file systems. Both programs and file systems have rules and limitations -- and bugs. <mark class="critic">It is best to be conservative when naming files.</mark></p>
+<p>UNIX shells like bash, our default, interpret many characters that people have grown used to using in file names on their Windows or Mac computers as having special meanings. Ampersands, parentheses, vertical bars for example. Using other characters, such as spaces, require file names to be enclosed in single or double quotes or escaped with backslashes when provided to UNIX commands. Combining multiple commands which pass file names from one to the other either fail or require the use of special techniques.</p>
+<p>Instead of space characters, use hyphens or underscores.</p>
+<p>It is best to use the plain Latin alphabet. Accented characters or those which require Unicode to portray might be stored in the file system, but they may not be handled correctly by programs that try to manipulate them. If those failures are silent, then you may not understand what is happening or what failed to happen. For example, a file may not be added to an archive file, or if it is, might be hard to extract.</p>
+<p>There are limits to the length of file names (255 characters in most <em>file systems</em>) and <em>program</em> limits to the length of file paths (e.g. 4096 in Linux, 1024 in macOS). Again, exceeding these limits might work in some situations but not others. For example, creating the files might succeed but trying to specify one using a long absolute path might fail. Working with them in one operating system and then transferring them to another might fail.</p>
+<p>You can look up some limits using the getconf command. Note again that these limits are not guarantees that all of the software you are using will work correctly with things that approach or exceed them.</p>
+<div class="highlight"><pre><span></span><code>getconf NAME_MAX /
+getconf PATH_MAX /
+</code></pre></div>
+<p><mark class="critic">It is HIGHLY RECOMMENDED that you simply DO NOT create files with such names, and that you rename ones you might already have. It will save you a lot of grief over the long run.</mark></p>
 <h2 id="sharing-files-with-other-users">Sharing files with other users<a class="headerlink" href="#sharing-files-with-other-users" title="Anchor link to this section for reference">&para;</a></h2>
 <p>Collaborating with others is a daily activity on the cluster. There are better -- and worse -- ways to do that.</p>
-<h3 id="normal-unix-file-ownership-and-permissions">Normal UNIX file ownership and permissions<a class="headerlink" href="#normal-unix-file-ownership-and-permissions" title="Anchor link to this section for reference">&para;</a></h3>
-<p>Brief overview of how things work and how to inspect.</p>
-<p>UNIX groups.</p>
-<p>If nothing else, a pointer to other web pages (ours or on the Internet).</p>
-<h3 id="home-directory">Home Directory<a class="headerlink" href="#home-directory" title="Anchor link to this section for reference">&para;</a></h3>
-<p>What are the default settings and why are they important?</p>
-<h3 id="project-storage">Project storage<a class="headerlink" href="#project-storage" title="Anchor link to this section for reference">&para;</a></h3>
-<p>What are the default settings and why are they important?</p>
-<p>What are common variations?</p>
+<p>We have tried to document relevant information in <a href="../sharing-files/">this document</a>.</p>
 <h3 id="using-acls-to-allow-increased-access">Using ACL's to allow increased access<a class="headerlink" href="#using-acls-to-allow-increased-access" title="Anchor link to this section for reference">&para;</a></h3>
 <p>Traditional Unix file ownership and permissions can be used to share access to files and directories. However, there can be times when more fine-grained control of access is needed. To accomplish this, Access Control Lists (ACLs) can be used. They add to or extend the normal permissions.</p>
 <p>We have a good document about how to use ACLs <a href="../acl/">here</a>.</p>
 <h2 id="transferring-files-into-and-out-of-the-cluster">Transferring files into and out of the cluster<a class="headerlink" href="#transferring-files-into-and-out-of-the-cluster" title="Anchor link to this section for reference">&para;</a></h2>
-<p>A variety of tools exist for this task. We have documented many of them in <a href="../copying-files/">this document</a>.</p>
+<p>A variety of tools exist for this task. We have documented many of them in <a href="../copying-files/">this document</a>. Details about using rsync for copying data</p>
 <p>Before moving large amounts of data in or out, you may want to consolidate it into fewer files using archive tools. We have documented some of the relevant considerations in <a href="../archive-files/">this document</a>.</p>
 <p>For transferring files to and from the cluster, you should use
 <code>jhpce-transfer01.jhsph.edu</code> rather than a login node.
@@ -3590,7 +3545,7 @@ This is both significantly faster, as the transfer node has a 40G Ethernet conne
 <h2 id="accessing-data-from-compute-nodes">Accessing data from compute nodes<a class="headerlink" href="#accessing-data-from-compute-nodes" title="Anchor link to this section for reference">&para;</a></h2>
 <p>Consider your input/output needs for computations. Which storage location and type provides the best combination of speed, capacity and proximity to CPUs?</p>
 <p>There may well be different answers for different kinds of files used during your work.</p>
-<p>Should you stage your data to the <a href="../../storage/fastscratch/">fastscratch</a> file system?</p>
+<p>Should you stage your data to the <a href="../../storage/fastscratch/">fastscratch</a> file system? That document describes how to use chained jobs to get the data there with one batch job and then start the computation with another.</p>
 <p>Should you stage the data locally to the compute nodes or access it over the network? Compute nodes only have local storage in their /tmp file systems. Everyone else using a node needs to share that space. The operating system of the node itself needs there to be some free space in /tmp.</p>
 <p>There is a SLURM command which can copy data to assigned nodes. See the <a href="https://slurm.schedmd.com/sbcast.html">sbcast</a> manual page.</p>
 <h2 id="copying-data-around-within-cluster">Copying Data Around <strong>Within</strong> Cluster<a class="headerlink" href="#copying-data-around-within-cluster" title="Anchor link to this section for reference">&para;</a></h2>
@@ -3601,11 +3556,11 @@ This is both significantly faster, as the transfer node has a 40G Ethernet conne
 <h2 id="best-practices">Best Practices<a class="headerlink" href="#best-practices" title="Anchor link to this section for reference">&para;</a></h2>
 <p>Think before hitting <span class="keys"><kbd class="key-enter">Enter</kbd></span>. Think again. There are few substitutes.</p>
 <p>Check beforehand that there will be sufficient space in destination before trying to import or create data or copy it around.</p>
-<p>We protect home directories and project space with redundant arrays of disks. Some of our file systems are backed up daily to other locations. But ultimately <strong>you</strong> need to ensure that you have backups elsewhere of precious files. Consider creating a GitHub repo to hold programming code -- it represents a lot of effort.</p>
+<p>We protect home directories and project space with redundant arrays of disks. Some of our file systems are backed up daily to other locations. But ultimately <strong>you</strong> need to ensure that you have backups <strong>elsewhere</strong> of precious files. Consider creating a GitHub repo to hold programming code -- such files represent a lot of effort. US Navy SEALs have a pessimistic/realistic motto about redundancy: Two is one, one is none.</p>
 <p>Don't bother compressing files in most cases because we have enabled compression on our ZFS file systems. </p>
-<p>Archiving old or infrequently-used files can be a good idea. It speeds up directory access (less metadata in directories). It simplifies transferring bulk data and checking on the success or failure.</p>
+<p>Archiving old or infrequently-used files can be a good idea. It speeds up directory access (less metadata in directories). It simplifies transferring bulk data and checking on the success or failure. We have a document exploring file archiving <a href="../archive-files/">here</a>.</p>
 <h2 id="backups-and-restores">Backups and Restores<a class="headerlink" href="#backups-and-restores" title="Anchor link to this section for reference">&para;</a></h2>
-<p>Home directories are backed up once a day. Users can access the last fourteen days of data themselves. Primary Investigators can request that we back up project spaces. Only a few have done so.</p>
+<p>Home directories are backed up once a day. Users can access the last fourteen days of data themselves. Primary Investigators can request that we back up project spaces. (Only a few have done so.)</p>
 <p>Further information about this topic can be found in <a href="../../storage/backups-restores/">this document</a></p>
 <h2 id="data-protection-policies">Data Protection Policies<a class="headerlink" href="#data-protection-policies" title="Anchor link to this section for reference">&para;</a></h2>
 <p>We will be publishing information  about cluster and university policies for the protection of certain classes of information in <a href="../data-security/">this document</a>. </p>
@@ -3629,7 +3584,7 @@ This is both significantly faster, as the transfer node has a 40G Ethernet conne
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1-2.1-2M12.5 7v5.2l4 2.4-1 1L11 13V7h1.5M11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2v1.8Z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">March 18, 2024</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">March 28, 2024</span>
   </span>
 
     
@@ -3640,12 +3595,11 @@ This is both significantly faster, as the transfer node has a 40G Ethernet conne
   <span class="md-source-file__fact">
     <span class="md-icon" title="Contributors">
       
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 5.5A3.5 3.5 0 0 1 15.5 9a3.5 3.5 0 0 1-3.5 3.5A3.5 3.5 0 0 1 8.5 9 3.5 3.5 0 0 1 12 5.5M5 8c.56 0 1.08.15 1.53.42-.15 1.43.27 2.85 1.13 3.96C7.16 13.34 6.16 14 5 14a3 3 0 0 1-3-3 3 3 0 0 1 3-3m14 0a3 3 0 0 1 3 3 3 3 0 0 1-3 3c-1.16 0-2.16-.66-2.66-1.62a5.536 5.536 0 0 0 1.13-3.96c.45-.27.97-.42 1.53-.42M5.5 18.25c0-2.07 2.91-3.75 6.5-3.75s6.5 1.68 6.5 3.75V20h-13v-1.75M0 20v-1.5c0-1.39 1.89-2.56 4.45-2.9-.59.68-.95 1.62-.95 2.65V20H0m24 0h-3.5v-1.75c0-1.03-.36-1.97-.95-2.65 2.56.34 4.45 1.51 4.45 2.9V20Z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 4a4 4 0 0 1 4 4 4 4 0 0 1-4 4 4 4 0 0 1-4-4 4 4 0 0 1 4-4m0 10c4.42 0 8 1.79 8 4v2H4v-2c0-2.21 3.58-4 8-4Z"/></svg>
       
     </span>
     <nav>
       
-        <a href="mailto:bcaffo@users.noreply.github.com">Brian Caffo</a>, 
         <a href="mailto:tunison@jhu.edu">jeffreytunison</a>
     </nav>
   </span>
