@@ -409,6 +409,7 @@ pip3 install mkdocs-material
 pip3 install mkdocs-git-revision-date-localized-plugin
 pip3 install mkdocs-open-in-new-tab
 pip3 install mkdocs-mermaid2-plugin
+pip3 install mkdocs-git-authors-plugin
 mkdocs build
 mkdocs serve
 ```

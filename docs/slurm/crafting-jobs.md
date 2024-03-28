@@ -118,6 +118,9 @@ This approach also allows you to use different resources to complete a larger ta
 
 You can use different terms (afterany, aftercorr, afterok, afternotok, singleton) and syntaxes to build dependencies. Some people use programs to create dependency graphs to manage their jobs.
 
+!!! Tip
+    You may think that the dependency term "after" is okay to use. Note that it does not mean after a job ends. It means after a job is started or cancelled.
+
 Note that SLURM's idea of whether a job completed successfully may not match your definition. You may need to look at the logic of your batch script and add "exit N" statements and other logic to provide non-zero exit codes if something goes wrong before the very last command in the script. You can also add code that specifically checks for success (as opposed to only counting on a final exit code).
 
 See [this part](https://slurm.schedmd.com/archive/slurm-22.05.9/sbatch.html#OPT_dependency) of the sbatch manual page. Many clusters have sections describing this technique. [Yale](https://docs.ycrc.yale.edu/clusters-at-yale/job-scheduling/dependency/). CECI has a bunch of [info on workflows](https://support.ceci-hpc.be/doc/_contents/SubmittingJobs/WorkflowManagement.html#introduction) including using additional software to manage job arrays and dependencies.

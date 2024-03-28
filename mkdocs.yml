@@ -175,6 +175,13 @@ theme:
 #
 # https://squidfunk.github.io/mkdocs-material/plugins/
 plugins:
+  # https://timvink.github.io/mkdocs-git-authors-plugin/index.html
+  # AUTHORSHIP
+  - git-authors:
+      enabled: true
+      show-contribution: true
+      authorship_threshold_percent: 33
+      fallback_to_empty: true
   # BLOG
   # https://squidfunk.github.io/mkdocs-material/setup/setting-up-a-blog/
   # Be aware that you cannot use features preceeded by "Insiders"

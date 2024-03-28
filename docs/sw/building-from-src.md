@@ -3,7 +3,7 @@
 You are allowed to download and install small software packages in your own home directory. In this page, we go through an example of installing a piece of free software that converts between different units of measurements, to show you the general steps needed to install a software from source.
 
 !!! Warning "Warning"
-    **Please do the software installation from a compute node**
+    **Please do the software installation on a compute node**
 
 ### Step 1: Download source code
 ```
