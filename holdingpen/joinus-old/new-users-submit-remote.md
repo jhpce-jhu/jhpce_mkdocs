@@ -3,7 +3,7 @@ tags:
   - needs-major-revision
   - refers-to-old-website
 ---
-<form action="https://ec2-44-214-193-38.compute-1.amazonaws.com/wp-json/contact-form-7/v1/contact-forms/501/feedback" method="post" target="_blank" onsubmit="window.open('about:blank', '_blank', 'width=300,height=250');">
+<form action="https://www.jhpce.jhu.edu/wp-json/contact-form-7/v1/contact-forms/501/feedback" method="post" target="_blank" onsubmit="window.open('about:blank', '_blank', 'width=300,height=250');">
 
 <TABLE style="width:700px">
 <TR><TD COLSPAN="2" >
