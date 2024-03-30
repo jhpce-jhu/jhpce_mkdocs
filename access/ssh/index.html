@@ -1368,6 +1368,63 @@ Please excuse any issues with non-working pages.
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="Mac-specific Configuration">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#config-file-overview" class="md-nav__link">
+    <span class="md-ellipsis">
+      Config File Overview
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#changing-your-config-file" class="md-nav__link">
+    <span class="md-ellipsis">
+      Changing Your Config File
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Changing Your Config File">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#general-settings" class="md-nav__link">
+    <span class="md-ellipsis">
+      General Settings
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#host-specific-settings" class="md-nav__link">
+    <span class="md-ellipsis">
+      Host-specific Settings
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#host-related-settings" class="md-nav__link">
+    <span class="md-ellipsis">
+      Host-related Settings
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
     </ul>
@@ -3511,6 +3568,63 @@ Please excuse any issues with non-working pages.
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="Mac-specific Configuration">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#config-file-overview" class="md-nav__link">
+    <span class="md-ellipsis">
+      Config File Overview
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#changing-your-config-file" class="md-nav__link">
+    <span class="md-ellipsis">
+      Changing Your Config File
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Changing Your Config File">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#general-settings" class="md-nav__link">
+    <span class="md-ellipsis">
+      General Settings
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#host-specific-settings" class="md-nav__link">
+    <span class="md-ellipsis">
+      Host-specific Settings
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#host-related-settings" class="md-nav__link">
+    <span class="md-ellipsis">
+      Host-related Settings
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
     </ul>
@@ -3690,32 +3804,82 @@ configuration page</a>.</p>
 <h2 id="ssh-and-x11">SSH and X11<a class="headerlink" href="#ssh-and-x11" title="Anchor link to this section for reference">&para;</a></h2>
 <p>See our document on <a href="../x11/">X11</a> for instructions on making ssh work to support X11 displays.</p>
 <h2 id="mac-specific-configuration">Mac-specific Configuration<a class="headerlink" href="#mac-specific-configuration" title="Anchor link to this section for reference">&para;</a></h2>
-<p>!!! "Under construction"
-    Needs refinement. Some mention should be made in the x11 doc.</p>
-<p>In your ~/.ssh/config file you may find some of these options useful.</p>
-<div class="highlight"><span class="filename">Key macOS settings</span><pre><span></span><code>UseKeychain<span class="w"> </span>yes
-XAuthLocation<span class="w"> </span>/opt/X11/bin/xauth
-AddKeysToAgent<span class="w"> </span>yes
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>You do not <strong>need</strong> to do ANY configuration for things to work, including running X11. All you need to do is to install the XQuartz package to support X11 window display. (The following material assumes you have installed it, and rebooted afterwards.)</p>
+</div>
+<p>You can choose to put configuration information into a file in your home directory to make your life easier by, for example, specifying the username of some remote computer if it differs from your local username.  If you do that, then you no longer have to provide that information for every ssh command. <mark class="critic">However, you then need to remember that you have made choices in that file when something doesn't work the way you expect.</mark></p>
+<h3 id="config-file-overview">Config File Overview<a class="headerlink" href="#config-file-overview" title="Anchor link to this section for reference">&para;</a></h3>
+<p>SSH is a client-server program. SSH client programs like <code>ssh</code> connect over networks to SSH server programs (usually named <code>sshd</code>).  You don't have to worry about <code>sshd</code> configuration unless you are managing a computer that accepts incoming SSH connections.  macOS and Linux computers can run sshd if you enable that service (by checking the box "Remote Login" in macOS' Sharing pane of System Preferences).</p>
+<p>Both client and server have configuration files. There are <em>system-wide</em> ones for each, typically located in /etc/ssh/, and <em>per-user</em> ones, typically located in $HOME/.ssh, e.g. /Users/yourusername/.ssh on a Mac). A tilde symbol used in a shell like bash is a shortcut to "my home directory" so $HOME/.ssh and ~/.ssh should be equivalent ways of specifying the same directory. You can read about user SSH configuration files, the order in which they are read, and the syntax to use with the command <code>man ssh_config</code>. <mark class="critic">Do not add anything that you do not understand !! </mark></p>
+<h3 id="changing-your-config-file">Changing Your Config File<a class="headerlink" href="#changing-your-config-file" title="Anchor link to this section for reference">&para;</a></h3>
+<dl>
+<dt>You do not need ANY per-user config file for things to work, including running X11 (at least not when tested in macOS 12.6.3).</dt>
+<dd>
+<p>The only line you <em>might</em> need in your ~/.ssh/config file is this:</p>
+</dd>
+<dd>
+<p><code>XAuthLocation /opt/X11/bin/xauth</code></p>
+</dd>
+<dd>
+<p>if you are told that xauth is missing. This location has been the standard used by XQuartz -- it might change in the future. The file specified needs to be executable and exist at that location. You can test it by running it with the arguemnt <code>/opt/X11/bin/xauth list</code></p>
+</dd>
+</dl>
+<p><strong>In your ~/.ssh/config file you may find some of the following options useful.</strong> </p>
+<p>The basic structure of this file is:</p>
+<ol>
+<li>some general settings</li>
+<li>some (optional) host-specific settings, in stanzas</li>
+<li>some (optional) settings meant to apply to all hosts not previously specified, in a stanza which begins with a line <code>Host *</code></li>
+</ol>
+<h4 id="general-settings">General Settings<a class="headerlink" href="#general-settings" title="Anchor link to this section for reference">&para;</a></h4>
+<div class="highlight"><span class="filename">Useful general macOS ~/.ssh/config file settings</span><pre><span></span><code>ForwardX11<span class="w"> </span>yes.<span class="w">      </span><span class="c1"># Equiv to &quot;-X&quot; arg</span>
+XAuthLocation<span class="w"> </span>/opt/X11/bin/xauth<span class="w">  </span><span class="c1"># only include if needed</span>
+<span class="c1"># These are for users of public keys</span>
+UseKeychain<span class="w"> </span>yes<span class="w">      </span><span class="c1"># look for passphrases for public keys in macOS keychain</span>
+AddKeysToAgent<span class="w"> </span>yes<span class="w">   </span><span class="c1"># store passphrases for public keys in macOS keychain</span>
+<span class="c1"># These keys are tried in order when logging in, and are loaded by your SSH agent</span>
 IdentityFile<span class="w"> </span>~/.ssh/id_ecdsa
 IdentityFile<span class="w"> </span>~/.ssh/id_rsa
-ForwardAgent<span class="w"> </span>yes
+ForwardAgent<span class="w"> </span>yes<span class="w">     </span><span class="c1"># Equiv to the &quot;-A&quot; arg. For ssh&#39;ing from 1 to 2 to 3. </span>
 </code></pre></div>
-<div class="highlight"><span class="filename">Keeping connections alive</span><pre><span></span><code><span class="c1"># These values of 15 and 30 mean that my client ssh program will send a</span>
-<span class="c1"># message to the server every 15 seconds, and not decide that a remote</span>
-<span class="c1"># server is unresponsive until (15*30)=450 seconds</span>
-
-ServerAliveInterval<span class="w"> </span><span class="m">15</span>
+<div class="highlight"><span class="filename">Keeping connections alive - method one</span><pre><span></span><code>ServerAliveInterval<span class="w"> </span><span class="m">15</span>
 ServerAliveCountMax<span class="w"> </span><span class="m">30</span>
-<span class="c1"># IDK whether I included this for a good reason or not. Seems like I</span>
-<span class="c1"># would want the connection to die by lack of response to either method</span>
-<span class="c1"># Was it because I could not specify how long TCPKeepAlive waited?</span>
-TCPKeepAlive<span class="w"> </span>no
+<span class="c1"># These values mean that your client ssh program will send a message to the server</span>
+<span class="c1"># every 15 seconds, and not decide that a remote server is unresponsive until</span>
+<span class="c1"># (15*30)=450 seconds</span>
 </code></pre></div>
+<div class="highlight"><span class="filename">Keeping connections alive - method two</span><pre><span></span><code>TCPKeepAlive<span class="w"> </span>no
+<span class="c1"># TCPKeepAlive defaults to YES, so you have to intentionally disable it.</span>
+<span class="c1"># The author of this web page chose to disable TCPKeepAlive at one time (and then</span>
+<span class="c1"># used the earlier method for many years happily) because it seemed to be the case</span>
+<span class="c1"># that with it enabled, ssh sessions would die if the connection dropped even</span>
+<span class="c1"># briefly.</span>
+<span class="c1"># It is unclear how long SSH waits if TCPKeepAlive is yes. The output of this</span>
+<span class="c1"># command may give clues, at least on Linux computers:</span>
+<span class="c1">#     grep -T . /proc/sys/net/ipv4/tcp_keepalive*</span>
+<span class="c1"># In any case, normal users cannot change the duration if they use TCPKeepAlive yes</span>
+</code></pre></div>
+<h4 id="host-specific-settings">Host-specific Settings<a class="headerlink" href="#host-specific-settings" title="Anchor link to this section for reference">&para;</a></h4>
+<p>Optional.</p>
+<p>You can specify stanzas for specific hosts in order to create short aliases for those destinations, indicate the username you use there, and control which public key is used for access.</p>
 <div class="highlight"><span class="filename">Per-host definitions for convenience</span><pre><span></span><code>Host<span class="w"> </span>jhpce01<span class="w"> </span>j1<span class="w"> </span>jhpce01.jhsph.edu
 <span class="w">    </span>Hostname<span class="w"> </span>jhpce01.jhsph.edu
 <span class="w">    </span>User<span class="w"> </span>your-cluster-username
 <span class="w">    </span>ForwardX11<span class="w"> </span>yes
 <span class="w">    </span>IdentityFile<span class="w"> </span>~/.ssh/id_ecdsa.jhpce
+</code></pre></div>
+<div class="admonition note">
+<p class="admonition-title">The above stanza allows you to use this command</p>
+<p><code>ssh j1</code></p>
+<p>instead of this command:</p>
+<p><code>ssh -X -i ~/.ssh/id_ecdsa.jhpce your-cluster-username@jhpce01.jhsph.edu</code></p>
+</div>
+<h4 id="host-related-settings">Host-related Settings<a class="headerlink" href="#host-related-settings" title="Anchor link to this section for reference">&para;</a></h4>
+<p>Optional.</p>
+<div class="highlight"><span class="filename">Per-host definitions for convenience</span><pre><span></span><code>Host<span class="w"> </span>*
+<span class="w">    </span>ForwardX11<span class="w"> </span>no
+<span class="w">    </span>IdentityFile<span class="w"> </span>~/.ssh/id_rsa.my-general-key
 </code></pre></div>
 
 
@@ -3737,7 +3901,7 @@ TCPKeepAlive<span class="w"> </span>no
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1-2.1-2M12.5 7v5.2l4 2.4-1 1L11 13V7h1.5M11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2v1.8Z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">March 28, 2024</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">March 30, 2024</span>
   </span>
 
     
@@ -3748,12 +3912,11 @@ TCPKeepAlive<span class="w"> </span>no
   <span class="md-source-file__fact">
     <span class="md-icon" title="Contributors">
       
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 5.5A3.5 3.5 0 0 1 15.5 9a3.5 3.5 0 0 1-3.5 3.5A3.5 3.5 0 0 1 8.5 9 3.5 3.5 0 0 1 12 5.5M5 8c.56 0 1.08.15 1.53.42-.15 1.43.27 2.85 1.13 3.96C7.16 13.34 6.16 14 5 14a3 3 0 0 1-3-3 3 3 0 0 1 3-3m14 0a3 3 0 0 1 3 3 3 3 0 0 1-3 3c-1.16 0-2.16-.66-2.66-1.62a5.536 5.536 0 0 0 1.13-3.96c.45-.27.97-.42 1.53-.42M5.5 18.25c0-2.07 2.91-3.75 6.5-3.75s6.5 1.68 6.5 3.75V20h-13v-1.75M0 20v-1.5c0-1.39 1.89-2.56 4.45-2.9-.59.68-.95 1.62-.95 2.65V20H0m24 0h-3.5v-1.75c0-1.03-.36-1.97-.95-2.65 2.56.34 4.45 1.51 4.45 2.9V20Z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 4a4 4 0 0 1 4 4 4 4 0 0 1-4 4 4 4 0 0 1-4-4 4 4 0 0 1 4-4m0 10c4.42 0 8 1.79 8 4v2H4v-2c0-2.21 3.58-4 8-4Z"/></svg>
       
     </span>
     <nav>
       
-        <a href="mailto:bcaffo@users.noreply.github.com">Brian Caffo</a>, 
         <a href="mailto:tunison@jhu.edu">jeffreytunison</a>
     </nav>
   </span>
