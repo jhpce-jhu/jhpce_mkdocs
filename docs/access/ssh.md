@@ -141,7 +141,9 @@ You can choose to put configuration information into a file in your home directo
 
 SSH is a client-server program. SSH client programs like `ssh` connect over networks to SSH server programs (usually named `sshd`).  You don't have to worry about `sshd` configuration unless you are managing a computer that accepts incoming SSH connections.  macOS and Linux computers can run sshd if you enable that service (by checking the box "Remote Login" in macOS' Sharing pane of System Preferences).
 
-Both client and server have configuration files. There are _system-wide_ ones for each, typically located in /etc/ssh/, and _per-user_ ones, typically located in $HOME/.ssh, e.g. /Users/yourusername/.ssh on a Mac). A tilde symbol used in a shell like bash is a shortcut to "my home directory" so $HOME/.ssh and ~/.ssh should be equivalent ways of specifying the same directory. You can read about user SSH configuration files, the order in which they are read, and the syntax to use with the command `man ssh_config`. {==Do not add anything that you do not understand !! ==}
+Both client and server have configuration files. There are _system-wide_ ones for each, typically located in /etc/ssh/, and _per-user_ ones, typically located in $HOME/.ssh, e.g. /Users/yourusername/.ssh on a Mac). A tilde symbol used in a shell like bash is a shortcut to "my home directory" so $HOME/.ssh and ~/.ssh should be equivalent ways of specifying the same directory. You can read about user SSH configuration files, the order in which they are read, and the meaning of the options, with the command `man ssh_config`. 
+
+{==Do not add anything that you do not understand !! ==}
 
 ### Changing Your Config File
 You do not need ANY per-user config file for things to work, including running X11 (at least not when tested in macOS 12.6.3).
@@ -196,7 +198,7 @@ TCPKeepAlive no
 #### Host-specific Settings
 Optional.
 
-You can specify stanzas for specific hosts in order to create short aliases for those destinations, indicate the username you use there, and control which public key is used for access.
+You can specify stanzas for specific hosts in order to create short aliases for those destinations, indicate the username you use there, and control which public key is used for access. (It is recommended to use different keys for different organizations.)
 
 ```Shell title="Per-host definitions for convenience"
 Host jhpce01 j1 jhpce01.jhsph.edu
