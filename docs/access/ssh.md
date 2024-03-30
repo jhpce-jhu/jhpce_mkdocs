@@ -30,9 +30,12 @@ This key pair of files is generated once, and protected with a passphrase. You p
 
 Once configured properly, you can use SSH keys instead of your JHPCE password.
 
-[Example document](https://hpc-docs.cubi.bihealth.org/misc/ssh-basics/)
+[SSH Keys described by another cluster](https://hpc-docs.cubi.bihealth.org/connecting/ssh-basics/#ssh-keys)
 
 ## Just yanked in here from our Knowledgebase document
+
+!!! Note "Authoring Note"
+    This material needs to be placed in the right places.
 
 #### Login howto
 + When ssh-ing into the cluster you will be prompted for 2 pieces of information. 
