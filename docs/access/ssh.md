@@ -9,9 +9,15 @@ tags:
 
 # SSH - Key Information
 
+!!! Note "Authoring Note"
+    This page contains both good information and a bunch that needs to be reviewed, reorganized. Take what you need and leave the rest.
+    This page should be organized around SSH usage concepts with the per-OS implementation details contained within the sections.
+    Windows users: We're not going to document how to do each thing in Putty, Cygwin, etc. Only MobaXterm. The way to accomplish some of the same goals in MobaXterm would be nice to identify (probably in new sections in the existing [MobaXterm configuration document](../access/mobaxterm.md)).
+    Material like the section "Mac-specific configuration" describes ssh per-user config file syntax and content. Most of it applies to Linux users as well.  So perhaps rename such material to be "CLI SSH"?
+    
 ## SSH Basics
 
-Access to the JHPCE cluster requires the use of SSH.
+Access to the JHPCE cluster requires the use of SSH. Over time, the ability to launch applications via a web interface will increase, but for the foreseeable future you will need to be able to SSH in and then use command line UNIX skills to do your work.
 
 SSH stands for Secure SHell. SSH is actually a set of internet standard protocols. Programs implementing these protocols include both command line interface (CLI) tools and those with graphic user interfaces (GUI).  They all enable you to make secure, encrypted connections from one computer to the next.
 

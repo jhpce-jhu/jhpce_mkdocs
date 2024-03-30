@@ -46,7 +46,7 @@ We have a good document about how to use ACLs [here](../files/acl.md).
 
 ## Transferring files into and out of the cluster
 
-A variety of tools exist for this task. We have documented many of them in [this document](../files/copying-files.md).  `Rsync` is one such program. It has a learning curve and there are some important things to know about using it. We have put that information into the document we wrote about [copying data around within the cluster](../files/copying.md). 
+A variety of tools exist for this task. We have documented many of them in [this document](../files/copying-files.md).  `Rsync` is one such program. It has a learning curve and there are some important things to know about using it. We have put that information into the document we wrote about [copying data around within the cluster](../files/copying-files.md). 
 
 Before moving large amounts of data in or out, you may want to consolidate it into fewer files using archive tools. We have documented some of the relevant considerations in [this document](../files/archive-files.md).
 
