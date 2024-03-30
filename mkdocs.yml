@@ -179,7 +179,7 @@ plugins:
   # AUTHORSHIP
   - git-authors:
       enabled: true
-      show-contribution: true
+      show_contribution: true
       authorship_threshold_percent: 33
       fallback_to_empty: true
   # BLOG
