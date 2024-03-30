@@ -132,32 +132,71 @@ See our document on [X11](x11.md) for instructions on making ssh work to support
 
 ## Mac-specific Configuration
 
-!!! "Under construction"
-    Needs refinement. Some mention should be made in the x11 doc.
-    
-In your ~/.ssh/config file you may find some of these options useful.
+!!! Note
+    You do not **need** to do ANY configuration for things to work, including running X11. All you need to do is to install the XQuartz package to support X11 window display. (The following material assumes you have installed it, and rebooted afterwards.)
 
-```Shell title="Key macOS settings"
-UseKeychain yes
-XAuthLocation /opt/X11/bin/xauth
-AddKeysToAgent yes
+You can choose to put configuration information into a file in your home directory to make your life easier by, for example, specifying the username of some remote computer if it differs from your local username.  If you do that, then you no longer have to provide that information for every ssh command. {==However, you then need to remember that you have made choices in that file when something doesn't work the way you expect.==}
+
+### Config File Overview
+
+SSH is a client-server program. SSH client programs like `ssh` connect over networks to SSH server programs (usually named `sshd`).  You don't have to worry about `sshd` configuration unless you are managing a computer that accepts incoming SSH connections.  macOS and Linux computers can run sshd if you enable that service (by checking the box "Remote Login" in macOS' Sharing pane of System Preferences).
+
+Both client and server have configuration files. There are _system-wide_ ones for each, typically located in /etc/ssh/, and _per-user_ ones, typically located in $HOME/.ssh, e.g. /Users/yourusername/.ssh on a Mac). A tilde symbol used in a shell like bash is a shortcut to "my home directory" so $HOME/.ssh and ~/.ssh should be equivalent ways of specifying the same directory. You can read about user SSH configuration files, the order in which they are read, and the syntax to use with the command `man ssh_config`. {==Do not add anything that you do not understand !! ==}
+
+### Changing Your Config File
+You do not need ANY per-user config file for things to work, including running X11 (at least not when tested in macOS 12.6.3).
+
+: The only line you *might* need in your ~/.ssh/config file is this:
+: `XAuthLocation /opt/X11/bin/xauth`
+: if you are told that xauth is missing. This location has been the standard used by XQuartz -- it might change in the future. The file specified needs to be executable and exist at that location. You can test it by running it with the arguemnt `/opt/X11/bin/xauth list`
+
+**In your ~/.ssh/config file you may find some of the following options useful.** 
+
+The basic structure of this file is:
+
+1. some general settings
+2. some (optional) host-specific settings, in stanzas
+3. some (optional) settings meant to apply to all hosts not previously specified, in a stanza which begins with a line `Host *`
+
+#### General Settings
+
+```Shell title="Useful general macOS ~/.ssh/config file settings"
+ForwardX11 yes.      # Equiv to "-X" arg
+XAuthLocation /opt/X11/bin/xauth  # only include if needed
+# These are for users of public keys
+UseKeychain yes      # look for passphrases for public keys in macOS keychain
+AddKeysToAgent yes   # store passphrases for public keys in macOS keychain
+# These keys are tried in order when logging in, and are loaded by your SSH agent
 IdentityFile ~/.ssh/id_ecdsa
 IdentityFile ~/.ssh/id_rsa
-ForwardAgent yes
+ForwardAgent yes     # Equiv to the "-A" arg. For ssh'ing from 1 to 2 to 3. 
 ```
 
-```Shell title="Keeping connections alive"
-# These values of 15 and 30 mean that my client ssh program will send a
-# message to the server every 15 seconds, and not decide that a remote
-# server is unresponsive until (15*30)=450 seconds
-
+```Shell title="Keeping connections alive - method one"
 ServerAliveInterval 15
 ServerAliveCountMax 30
-# IDK whether I included this for a good reason or not. Seems like I
-# would want the connection to die by lack of response to either method
-# Was it because I could not specify how long TCPKeepAlive waited?
-TCPKeepAlive no
+# These values mean that your client ssh program will send a message to the server
+# every 15 seconds, and not decide that a remote server is unresponsive until
+# (15*30)=450 seconds
 ```
+
+```Shell title="Keeping connections alive - method two"
+TCPKeepAlive no
+# TCPKeepAlive defaults to YES, so you have to intentionally disable it.
+# The author of this web page chose to disable TCPKeepAlive at one time (and then
+# used the earlier method for many years happily) because it seemed to be the case
+# that with it enabled, ssh sessions would die if the connection dropped even
+# briefly.
+# It is unclear how long SSH waits if TCPKeepAlive is yes. The output of this
+# command may give clues, at least on Linux computers:
+#     grep -T . /proc/sys/net/ipv4/tcp_keepalive*
+# In any case, normal users cannot change the duration if they use TCPKeepAlive yes
+```
+
+#### Host-specific Settings
+Optional.
+
+You can specify stanzas for specific hosts in order to create short aliases for those destinations, indicate the username you use there, and control which public key is used for access.
 
 ```Shell title="Per-host definitions for convenience"
 Host jhpce01 j1 jhpce01.jhsph.edu
@@ -165,4 +204,21 @@ Host jhpce01 j1 jhpce01.jhsph.edu
     User your-cluster-username
     ForwardX11 yes
     IdentityFile ~/.ssh/id_ecdsa.jhpce
+```
+
+!!! Note "The above stanza allows you to use this command"
+    `ssh j1`
+    
+    instead of this command:
+    
+    `ssh -X -i ~/.ssh/id_ecdsa.jhpce your-cluster-username@jhpce01.jhsph.edu`
+
+#### Host-related Settings
+
+Optional.
+
+```Shell title="Per-host definitions for convenience"
+Host *
+    ForwardX11 no
+    IdentityFile ~/.ssh/id_rsa.my-general-key
 ```
