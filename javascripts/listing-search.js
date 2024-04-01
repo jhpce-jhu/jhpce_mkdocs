@@ -10,7 +10,40 @@ PREVIEW_RESULTS = 15;
 BASE_URL="";
 DEFAULT_SEARCH_MODE="substr-i";
 // START: These values may be overwritten when the file is copied by the plugin
-STYLE=``;
+STYLE=`#listing-extract-search .search-input-line {
+    display: flex;
+}
+
+#listing-extract-search .search-input-line input {
+    flex: 1;
+}
+
+#listing-extract-search {
+    border: 2px solid gray;
+    border-radius: 5px;
+    padding: 10px;
+}
+
+
+#listing-extract-search .search-result {
+    border-top: 2px solid gray;
+    margin-top: 30px;
+    padding-top: 10px;
+}
+
+#listing-extract-search .search-result .url {
+    color: gray;
+    font-size: small;
+    display: block;
+}
+
+#listing-extract-search .search-result .heading {
+    font-size: larger;
+    display: block;
+}
+
+
+`;
 OFFLINE_JSON_DATA=null;
 // END
 
