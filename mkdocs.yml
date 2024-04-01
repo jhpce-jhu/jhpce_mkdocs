@@ -194,6 +194,12 @@ plugins:
   # there are A LOT of extras you can do. Someone explore later if desired.
   #https://squidfunk.github.io/mkdocs-material/setup/setting-up-site-search/
   - search
+  - extract_listings:
+    listings_file: plugin/all-listings.md
+    placeholder: CUSTOM_PLACEHOLDER_FOR_THE_LISTINGS_PLUGIN
+    javascript_search_file: some-path/listing-search.js
+    default_css: true
+    offline: false
   # TAGS
   - tags:
       tags_file: ourtools/tags.md
