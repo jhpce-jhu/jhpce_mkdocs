@@ -34,7 +34,7 @@ Our [web portal](https://jhpce-app02.jhsph.edu/) has several sections. ==You wil
     
     ---
 
-    RStudio is an integrated development environment (IDE) for R. It includes a console, syntax-highlighting editor that supports direct code execution, as well as tools for plotting, history, debugging and workspace management. The JHPCE RStudio session ==will timeout after xxx(Mark?) minutes of innactivity==, a new session will need to be requested if that happens.
+    RStudio is an integrated development environment (IDE) for R. It includes a console, syntax-highlighting editor that supports direct code execution, as well as tools for plotting, history, debugging and workspace management. The JHPCE RStudio session ==will timeout after 1 day of innactivity==, a new session will need to be requested if that happens.
 
 -   :material-information-outline:{ .lg .middle } __Visual Studio Code__
 
