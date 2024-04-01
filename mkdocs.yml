@@ -195,7 +195,7 @@ plugins:
   # https://squidfunk.github.io/mkdocs-material/setup/setting-up-site-search/
   - search
   - extract_listings:
-      listings_file: all_listings.md
+      listings_file: all-listings.md
       placeholder: JHPCE_PLACEHOLDER_FOR_THE_LISTINGS_PLUGIN
   # TAGS
   - tags:
