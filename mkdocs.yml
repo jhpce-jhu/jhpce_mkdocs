@@ -197,6 +197,7 @@ plugins:
   - extract_listings:
       listings_file: all-listings.md
       placeholder: JHPCE_PLACEHOLDER_FOR_THE_LISTINGS_PLUGIN
+      javascript_search_file: javascripts/listing-search.js
   # TAGS
   - tags:
       tags_file: ourtools/tags.md
