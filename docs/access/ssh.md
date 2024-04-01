@@ -172,15 +172,16 @@ The basic structure of this file is:
 #### General Settings
 
 ```Shell title="Useful general macOS ~/.ssh/config file settings"
-ForwardX11 yes.      # Equiv to "-X" arg
+ForwardX11 yes        # Equiv to "-X" arg
+ForwardX11Trusted yes # Equiv to "-Y" arg
 XAuthLocation /opt/X11/bin/xauth  # only include if needed
 # These are for users of public keys
-UseKeychain yes      # look for passphrases for public keys in macOS keychain
-AddKeysToAgent yes   # store passphrases for public keys in macOS keychain
+UseKeychain yes       # look for passphrases for public keys in macOS keychain
+AddKeysToAgent yes    # store passphrases for public keys in macOS keychain
 # These keys are tried in order when logging in, and are loaded by your SSH agent
 IdentityFile ~/.ssh/id_ecdsa
 IdentityFile ~/.ssh/id_rsa
-ForwardAgent yes     # Equiv to the "-A" arg. For ssh'ing from 1 to 2 to 3. 
+ForwardAgent yes      # Equiv to the "-A" arg. For ssh'ing from 1 to 2 to 3. 
 ```
 
 ```Shell title="Keeping connections alive - method one"
