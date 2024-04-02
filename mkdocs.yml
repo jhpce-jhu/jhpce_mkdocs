@@ -73,6 +73,7 @@ nav:
         - Conda Environment: sw/conda.md
         - Python Packages: sw/python-pkg.md
         - R Packages: sw/r-pkg.md
+        - R Studio Server : sw/rstudio-server.md
         - Singularity: sw/singularity.md
       - JHPCE-created: sw/locally-written.md
     - Job scheduler (SLURM): 
