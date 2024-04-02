@@ -1,6 +1,10 @@
 Running Rstudio Server on the JHPCE cluster
 ===========================================
 
+!!! Note "Authoring Note"
+    A revised and updated version of this document exists at this [page](../sw/r-n-friends.md#running-rstudio-server).
+    It has many text additions and clarifications as well as simple improvements like page sections marked with the correct markdown notation. It needs review to ensure that all of the image files needed are present, the version of the script to choose is the right one, etc. 
+ 
 Rstudio Server is a web based environment for developing R programs.  On the JHPCE cluster we have put together a script called “jhpce-rstudio-server” which will allow you to run your own personal copy of Rstudio Server and access it from a browser on your laptop or desktop.  When the “jhpce-rstudio-server” program is run, it starts an instance of the Rstudio Server web server within a Singularity image on a unique port number, and then provides instructions for setting up an ssh tunnel to allow you to access Rstudio Server from your local system.  
 
 To use Rstudio Server, start by srun-ing into a compute node, then run “jhpce-rstudio-server”, and then follow the  steps displayed. There are several versions of Rstudio Server installed, so you should run the appropriate program to pick the version that corresponds to the version of R that you want to use.  With the migration to SLURM, we currently have one version of R available in “jhpce-rstudio-server”.  If you just run jhpce-rstudio-server, you will be using R 4.3. The versions currently available, as of October 2023, are:

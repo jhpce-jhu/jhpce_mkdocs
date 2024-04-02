@@ -6,7 +6,7 @@ tags:
 # Containers
 
 ## Using Our Container Solutions
-We have two solutions that you can use.
+We have two solutions that you can use (R Studio Server, JupyterHub). See which documents about using them???
 
 Maybe this is a good time to at least get credit for the work Mark has done building the singularity containers we now offer.
 

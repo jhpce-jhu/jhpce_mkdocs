@@ -78,10 +78,10 @@ Rstudio Server is a web based environment for developing R programs.  On the JHP
 You will need to perform one step to enable access to this Rstudio Server from your local laptop/desktop;  specifically, you will need to add a tunnel to your existing ssh session to the JHPCE cluster.
 
 !!! tip
-    In UNIX, you send an interrupt signal to a running foreground program using the key combination `CONTROL c` This is historically written as `^C`  Note that you DO NOT actually use the SHIFT key to capitalize the C. The way it is written is misleading. You do NOT type `CONTROL SHIFT c`. However this is the way it has been written for decades, and we will do so.
+    In UNIX, you send an interrupt signal to a running foreground program using the key combination ++control+c++ This is historically written as `^C`  Note that you DO NOT actually use the SHIFT key to capitalize the C. The way it is written is misleading. You do NOT type ++control+shift+c++. However this `^C` is the way it has been written for decades, and we will do so.
     
 !!! warning
-    However, you DO need to capitalize the letter `c` when trying to send an interrupt signal to the ssh program on Mac or Linux computers. The key combination for an ssh interrupt is `~ SHIFT c`
+    However, you DO need to capitalize the letter `c` when trying to send an interrupt signal to the ssh program on Mac or Linux computers. The key combination for an ssh interrupt is `~ SHIFT c` or ++tilde+shift+c++
 
 ### For Mac or Linux computers:
 
