@@ -174,6 +174,10 @@ theme:
 #
 # Plugins
 #
+# If you add a plugin, update the mkdocs recipe in the features.md
+#
+# ROUGHLY ALPHABETICAL by topic
+#
 # https://squidfunk.github.io/mkdocs-material/plugins/
 plugins:
   # https://timvink.github.io/mkdocs-git-authors-plugin/index.html
@@ -195,6 +199,8 @@ plugins:
   # there are A LOT of extras you can do. Someone explore later if desired.
   # https://squidfunk.github.io/mkdocs-material/setup/setting-up-site-search/
   - search
+  # Adi added extract_listings 20240401
+  # https://github.com/six-two/mkdocs-extract-listings-plugin
   - extract_listings:
       listings_file: all-listings.md
       placeholder: JHPCE_PLACEHOLDER_FOR_THE_LISTINGS_PLUGIN

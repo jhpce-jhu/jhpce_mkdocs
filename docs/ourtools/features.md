@@ -391,7 +391,7 @@ and ending with
 
 
 ## Recipe for Running Mkdocs Locally
-As of 2024029 these steps are needed to build a local Material for MkDocs server that will run a browser at `http://127.0.0.1:8000/`
+As of 20240401 these steps are needed to build a local Material for MkDocs server that will run a browser at `http://127.0.0.1:8000/`
 
 !!! Warning
     Because our `mkdocs.yml` contains some certain material, JRT thinks, `mkdocs serve` spits out errors if it doesn't find Git supporting files/directories. But you're supposed to be able to create stand-alone web pages outside of Git so it would be nice to understand the interdependency.
@@ -410,6 +410,7 @@ pip3 install mkdocs-git-revision-date-localized-plugin
 pip3 install mkdocs-open-in-new-tab
 pip3 install mkdocs-mermaid2-plugin
 pip3 install mkdocs-git-authors-plugin
+pip3 install mkdocs-extract-listings-plugin
 mkdocs build
 mkdocs serve
 ```
