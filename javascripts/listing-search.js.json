@@ -512,8 +512,8 @@
   {
     "page_name": "Handy Features",
     "page_url": "../ourtools/features/",
-    "text": "cd ~/Documents/GitHub/\n\ngit clone https://github.com/jhpce-jhu/jhpce_mkdocs\nor you can use the ssh-key method:\ngit clone git@github.com:jhpce-jhu/jhpce_mkdocs\n\ncd jhpce_mkdocs\n\npip3 install mkdocs-material\npip3 install mkdocs-git-revision-date-localized-plugin\npip3 install mkdocs-open-in-new-tab\npip3 install mkdocs-mermaid2-plugin\npip3 install mkdocs-git-authors-plugin\nmkdocs build\nmkdocs serve\n",
-    "html": "<pre><span></span><code>cd ~/Documents/GitHub/\n\ngit clone https://github.com/jhpce-jhu/jhpce_mkdocs\nor you can use the ssh-key method:\ngit clone git@github.com:jhpce-jhu/jhpce_mkdocs\n\ncd jhpce_mkdocs\n\npip3 install mkdocs-material\npip3 install mkdocs-git-revision-date-localized-plugin\npip3 install mkdocs-open-in-new-tab\npip3 install mkdocs-mermaid2-plugin\npip3 install mkdocs-git-authors-plugin\nmkdocs build\nmkdocs serve\n</code></pre>"
+    "text": "cd ~/Documents/GitHub/\n\ngit clone https://github.com/jhpce-jhu/jhpce_mkdocs\nor you can use the ssh-key method:\ngit clone git@github.com:jhpce-jhu/jhpce_mkdocs\n\ncd jhpce_mkdocs\n\npip3 install mkdocs-material\npip3 install mkdocs-git-revision-date-localized-plugin\npip3 install mkdocs-open-in-new-tab\npip3 install mkdocs-mermaid2-plugin\npip3 install mkdocs-git-authors-plugin\npip3 install mkdocs-extract-listings-plugin\nmkdocs build\nmkdocs serve\n",
+    "html": "<pre><span></span><code>cd ~/Documents/GitHub/\n\ngit clone https://github.com/jhpce-jhu/jhpce_mkdocs\nor you can use the ssh-key method:\ngit clone git@github.com:jhpce-jhu/jhpce_mkdocs\n\ncd jhpce_mkdocs\n\npip3 install mkdocs-material\npip3 install mkdocs-git-revision-date-localized-plugin\npip3 install mkdocs-open-in-new-tab\npip3 install mkdocs-mermaid2-plugin\npip3 install mkdocs-git-authors-plugin\npip3 install mkdocs-extract-listings-plugin\nmkdocs build\nmkdocs serve\n</code></pre>"
   },
   {
     "page_name": "Handy Features",
