@@ -2056,6 +2056,8 @@ storage array. We are working on this issue and will provide updates as the situ
       
         
       
+        
+      
     
     
       
@@ -2161,6 +2163,27 @@ storage array. We are working on this issue and will provide updates as the situ
   
   <span class="md-ellipsis">
     R Packages
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../sw/rstudio-server/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    R Studio Server
   </span>
   
 
@@ -3327,15 +3350,16 @@ storage array. We are working on this issue and will provide updates as the situ
 </code></pre><pre><span></span><code>cat ~/.ssh/id_rsa.pub | ssh &lt;your_userid&gt;@jhpce01.jhsph.edu 'cat &gt;&gt; ~/.ssh/authorized_keys'
 </code></pre><pre><span></span><code>ssh-add
 ssh-agent
-</code></pre><pre><span></span><code>ForwardX11<span class="w"> </span>yes.<span class="w">      </span><span class="c1"># Equiv to "-X" arg</span>
+</code></pre><pre><span></span><code>ForwardX11<span class="w"> </span>yes<span class="w">        </span><span class="c1"># Equiv to "-X" arg</span>
+ForwardX11Trusted<span class="w"> </span>yes<span class="w"> </span><span class="c1"># Equiv to "-Y" arg</span>
 XAuthLocation<span class="w"> </span>/opt/X11/bin/xauth<span class="w">  </span><span class="c1"># only include if needed</span>
 <span class="c1"># These are for users of public keys</span>
-UseKeychain<span class="w"> </span>yes<span class="w">      </span><span class="c1"># look for passphrases for public keys in macOS keychain</span>
-AddKeysToAgent<span class="w"> </span>yes<span class="w">   </span><span class="c1"># store passphrases for public keys in macOS keychain</span>
+UseKeychain<span class="w"> </span>yes<span class="w">       </span><span class="c1"># look for passphrases for public keys in macOS keychain</span>
+AddKeysToAgent<span class="w"> </span>yes<span class="w">    </span><span class="c1"># store passphrases for public keys in macOS keychain</span>
 <span class="c1"># These keys are tried in order when logging in, and are loaded by your SSH agent</span>
 IdentityFile<span class="w"> </span>~/.ssh/id_ecdsa
 IdentityFile<span class="w"> </span>~/.ssh/id_rsa
-ForwardAgent<span class="w"> </span>yes<span class="w">     </span><span class="c1"># Equiv to the "-A" arg. For ssh'ing from 1 to 2 to 3. </span>
+ForwardAgent<span class="w"> </span>yes<span class="w">      </span><span class="c1"># Equiv to the "-A" arg. For ssh'ing from 1 to 2 to 3. </span>
 </code></pre><pre><span></span><code>ServerAliveInterval<span class="w"> </span><span class="m">15</span>
 ServerAliveCountMax<span class="w"> </span><span class="m">30</span>
 <span class="c1"># These values mean that your client ssh program will send a message to the server</span>
@@ -4630,6 +4654,29 @@ Loading R/4.3
 (4.3)[test@compute-097 ~]$ module load rstudio
 (4.3)[test@compute-097 ~]$ rstudio
 </code></pre><pre><span></span><code>ssh -X yourusername@jhpce03.jhsph.edu
+</code></pre><h2><a class="heading" href="../sw/rstudio-server">R Studio Server</a></h2><a class="url" href="../sw/rstudio-server">sw/rstudio-server/</a><pre><span></span><code>\[login31/users/jdoe1\] $ **srun --pty --x11 --mem=10G bash**
+Last login: Wed May 1 17:02:29 2019 from login31.cm.cluster
+Loading conda\_R/3.5.x
+\[compute-012 /users/jdoe1\] $ **jhpce-rstudio-server**
+------------
+1) Establish your SSH tunnel.
+\* Windows users see: https://jhpce.jhu.edu/knowledge-base/rstudio-server
+\* Mac or Linux Desktop users, please type:
+~C
+-L 12345:compute-012:12345
+
+2) From the browser running on your local system or SAFE desktop, go to:
+
+  http://localhost:12345
+
+3) When prompted for Username, enter your JHPCE ID:  jdoe1
+4) When prompted for Password, enter your JHPCE password.
+
+When you are finished using Rstudio Server, type &lt;CTRL&gt;-C
+
+**~C**
+ssh&gt; **\-L 12345:compute-012:12345**
+Forwarding port.
 </code></pre><h2><a class="heading" href="../sw/sas-old">SAS</a></h2><a class="url" href="../sw/sas-old">sw/sas-old/</a><pre><span></span><code><span class="c1"># SAS routines for __interactive__ sessions where plotting is involved</span>
 <span class="c1"># (because SAS generates HTML for the plots when run in interactive mode)</span>
 <span class="c1"># </span>
