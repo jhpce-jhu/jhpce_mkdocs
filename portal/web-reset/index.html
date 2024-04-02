@@ -18,7 +18,7 @@
       
       
       <link rel="icon" href="../../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.5.16">
+      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.5.17">
     
     
       
@@ -3339,6 +3339,26 @@ storage array. We are working on this issue and will provide updates as the situ
 <li>Request Authenticator Code ("One Time Password")</li>
 <li>Update Contact Information</li>
 </ul>
+<hr />
+<p>You can visit <a href="https://jhpce-app02.jhsph.edu/">web portal</a> to get a one-time use verification code and/or reset your password.  You log into that web site with your JHED ID and password, and then you should find a link for requesting a verification code or resetting your password.  This web site is only available on campus, so if you are outside of the school network, you will need login to the JHU VPN first.</p>
+<p>After you ssh into the cluster:</p>
+<ul>
+<li>
+<p>If you need to change your password, use the <code>kpasswd</code> command. You will need to use a password with three of the following four sets of
+characters: upper-case, lower-case, numerical digits, and special characters.</p>
+</li>
+<li>
+<p>If you need to set up your Google Authenticator, you can use the following steps:</p>
+</li>
+<li>On your smartphone, bring up the "Google Authenticator" app</li>
+<li>On the JHPCE cluster, run <code>auth_util</code></li>
+<li>In <code>auth_util</code>, use option "5" to display the QR code (you may need to resize your ssh window - ”view-&gt;terminal unzoom” in MobaXterm)</li>
+<li>Scan the QR code with the Google Authenticator app</li>
+<li>Next in <code>auth_util</code> use option 2 to display your scratch codes</li>
+<li>In <code>auth_util</code>, use option "6" to exit from <code>auth_util</code></li>
+</ul>
+<p>Going forward, you would then use the 6 digit code from Google Authenticator when prompted for “Verification Code” when logging into the JHPCE cluster.</p>
+<hr />
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
 <p>As of 20240306, C-SUB users cannot use these services, as they are not yet included in an underlying database.</p>
@@ -3371,7 +3391,7 @@ storage array. We are working on this issue and will provide updates as the situ
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1-2.1-2M12.5 7v5.2l4 2.4-1 1L11 13V7h1.5M11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2v1.8Z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">March 8, 2024</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">April 2, 2024</span>
   </span>
 
     
@@ -3382,12 +3402,13 @@ storage array. We are working on this issue and will provide updates as the situ
   <span class="md-source-file__fact">
     <span class="md-icon" title="Contributors">
       
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 4a4 4 0 0 1 4 4 4 4 0 0 1-4 4 4 4 0 0 1-4-4 4 4 0 0 1 4-4m0 10c4.42 0 8 1.79 8 4v2H4v-2c0-2.21 3.58-4 8-4Z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 5.5A3.5 3.5 0 0 1 15.5 9a3.5 3.5 0 0 1-3.5 3.5A3.5 3.5 0 0 1 8.5 9 3.5 3.5 0 0 1 12 5.5M5 8c.56 0 1.08.15 1.53.42-.15 1.43.27 2.85 1.13 3.96C7.16 13.34 6.16 14 5 14a3 3 0 0 1-3-3 3 3 0 0 1 3-3m14 0a3 3 0 0 1 3 3 3 3 0 0 1-3 3c-1.16 0-2.16-.66-2.66-1.62a5.536 5.536 0 0 0 1.13-3.96c.45-.27.97-.42 1.53-.42M5.5 18.25c0-2.07 2.91-3.75 6.5-3.75s6.5 1.68 6.5 3.75V20h-13v-1.75M0 20v-1.5c0-1.39 1.89-2.56 4.45-2.9-.59.68-.95 1.62-.95 2.65V20H0m24 0h-3.5v-1.75c0-1.03-.36-1.97-.95-2.65 2.56.34 4.45 1.51 4.45 2.9V20Z"/></svg>
       
     </span>
     <nav>
       
-        <a href="mailto:tunison@jhu.edu">jeffreytunison</a>
+        <a href="mailto:tunison@jhu.edu">jeffreytunison</a>, 
+        <a href="mailto:adig@jhu.edu">Adi G</a>
     </nav>
   </span>
 
@@ -3523,7 +3544,7 @@ storage array. We are working on this issue and will provide updates as the situ
     <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.sections", "toc.follow", "announce.dismiss", "navigation.top", "header.autohide", "navigation.footer", "navigation.indexes", "content.code.copy", "content.code.annotate"], "search": "../../assets/javascripts/workers/search.b8dbb3d2.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
     
     
-      <script src="../../assets/javascripts/bundle.bd41221c.min.js"></script>
+      <script src="../../assets/javascripts/bundle.1e8ae164.min.js"></script>
       
         <script src="https://unpkg.com/tablesort@5.3.0/dist/tablesort.min.js"></script>
       
