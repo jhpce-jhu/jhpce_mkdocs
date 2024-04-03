@@ -3533,13 +3533,13 @@ storage array. We are working on this issue and will provide updates as the situ
 <p>You can use the command <code>which cmd</code> to be told where "cmd" comes from.</p>
 <h2 id="general">General<a class="headerlink" href="#general" title="Anchor link to this section for reference">&para;</a></h2>
 <ul>
-<li><strong>auth_util</strong>: Interface for working with OTP MFA configuration. View and generate verification tokens for Google Authenticator. See orientation documents for details on using it to configure your smartphone, etc.</li>
+<li><strong>auth_util</strong>: Interface for working with OTP MFA configuration. View and generate verification tokens for Google Authenticator. See <a href="../../orient/images/latest-orient.pdf">orientation documents</a> for details on using it to configure your smartphone, etc. (no man page yet)</li>
 </ul>
 <h2 id="disk-usage">Disk Usage<a class="headerlink" href="#disk-usage" title="Anchor link to this section for reference">&para;</a></h2>
 <ul>
 <li><strong>getquota</strong>: Displays your quota stats (not yet working on C-SUB)</li>
-<li><strong>cmsquota-dcs05</strong>: For C-SUB users</li>
-<li><strong>cmsquota-dcs06</strong>: For C-SUB users</li>
+<li><strong>cmsquota-dcs05</strong>: For C-SUB users, (only works on compute nodes)</li>
+<li><strong>cmsquota-dcs06</strong>: For C-SUB users, (works on both login and compute nodes)</li>
 </ul>
 <h2 id="container-computing">Container Computing<a class="headerlink" href="#container-computing" title="Anchor link to this section for reference">&para;</a></h2>
 <ul>
@@ -3561,6 +3561,8 @@ storage array. We are working on this issue and will provide updates as the situ
 <li><strong>smem</strong>: Displays memory used by your currently running jobs. If given a jobid number, it will display info about the memory usage of that job. (no man page yet)</li>
 <li>memory reporting script - puts per-user output daily into directories under <code>/jhpce/shared/jhpce/jhpce-log/</code></li>
 <li><strong>jobson</strong>: Displays running jobs when given a three digit node number.</li>
+<li><strong>showjob</strong>: Displays job information when given a jobid. Currently simply a shortcut for <code>scontrol show job jobid --details</code> but hopefully in the future will produce more readable output. (no man page yet)</li>
+<li><strong>showqos</strong>: Displays list of our <a href="../../slurm/qos/">QOS definitions</a> in a readable format. (no man page yet)</li>
 </ul>
 <h3 id="submitting-jobs">Submitting Jobs<a class="headerlink" href="#submitting-jobs" title="Anchor link to this section for reference">&para;</a></h3>
 <p>None yet.</p>
@@ -3597,7 +3599,7 @@ storage array. We are working on this issue and will provide updates as the situ
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1-2.1-2M12.5 7v5.2l4 2.4-1 1L11 13V7h1.5M11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2v1.8Z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">March 20, 2024</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">April 3, 2024</span>
   </span>
 
     
