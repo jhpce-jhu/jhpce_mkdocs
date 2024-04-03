@@ -4,12 +4,6 @@
 ??? "Click to expand answer"
     Windows and Unix use different characters to indicate a new line.  If you have uploaded your script from a Windows machine, it may have the Windows newline characters.  These need to be replaced by the Unix newline characters.  To do this, you can run the “dos2unix” command on your script `dos2unix myscript.sh`. This will strip out all of the Windows newlines and replace them with the Unix newlines.
 
-- I’m on a Mac, and the ~C command to interrupt an ssh session isn’t working
-??? "Click to expand answer"
-    New versions of MacOS have disabled the default ability to send an SSH Escape with `~C` (++tilde++ ++shift+c++). To reenable this, on you Mac, you need to set the `EnableEscapeCommandline` option. You can do this by either running `ssh -o EnableEscapeCommandline=yes . . .` or by editing your `~/.ssh/config` file, and at the top of that file add the line:
-    ```
-    EnableEscapeCommandline=yes
-    ``` 
 - My app is complaining that it can’t find a shared library, e.g. libgfortran.so.1
 ??? "Click to expand answer"
     Nine times out of ten, the allegedly missing library is there. The problem is that your application is looking for the version of the library that is compatible with the old system software. It will not help to point your application to the new libraries. They are more than likely to be incompatible with the new system. The correct solution is to reinstall your software. If the problem persists after the reinstallation, then please contact us and we will install standard libraries that are actually missing.
@@ -96,6 +90,13 @@
 
 ## SSH
 - For a variety of questions about ssh - please see our [ssh document](../access/ssh.md).
+
+- I’m on a Mac, and the ~C command to interrupt an ssh session isn’t working
+??? "Click to expand answer"
+    New versions of MacOS have disabled the ability to send an SSH Escape with `~C` (++tilde++ ++shift+c++). To reenable this, on you Mac, you need to set the `EnableEscapeCommandline` option. You can do this by either running `ssh -o EnableEscapeCommandline=yes . . .` or by editing your `~/.ssh/config` file, and at the top of that file add the line:
+    ```
+    EnableEscapeCommandline=yes
+    ``` 
 
 ## X11
 - My X11 forwarding stops working after 20 minutes 
