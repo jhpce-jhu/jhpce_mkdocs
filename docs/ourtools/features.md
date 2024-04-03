@@ -14,11 +14,19 @@ Running the mkdocs package installed via python allows you to develop web pages 
 
 There is another document containing [wishlist](wishlist.md) items that we might want to enable/configure.
 
-## Critical reference material
+## Critical Material for MkDocs reference material
 Look here for information about these and other features!!! Just keep in mind that ones marked "insiders" are not available for our use.
 [Materials for MkDocs reference section](https://squidfunk.github.io/mkdocs-material/reference/).
 
 It isn't clear how much caution one should use in consulting MkDocs documents and people's solutions for it. JRT thinks that Material for MkDocs differs enough that one should definitely keep in mind whether your google search has turned up something about MkDocs.
+
+## Modifying text patterns across the site
+Example of changing all markdown files in a copy of the git repo:
+
+1. cd jhpce_mkdocs
+2. find . -type f -name \*.md -exec grep -il "www.jhpce.jhu.edu" {} \;
+3. find . -type f -name \*.md -exec sed -i '' "s/www.jhpce.jhu.edu/jhpce-old.jhu.edu/g" {} \;
+4. find . -type f -name \*.md -exec grep -il "jhpce-old.jhu.edu" {} \; | xargs git add
 
 ## Diagramming with Mermaid
 
