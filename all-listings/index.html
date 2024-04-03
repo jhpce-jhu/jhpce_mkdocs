@@ -4086,8 +4086,7 @@ python nvidia-test.py
 .<span class="w"> </span>/etc/bashrc
 <span class="k">fi</span>
 module<span class="w"> </span>load<span class="w"> </span>JHPCE_DEFAULT_ENV
-</code></pre><h2><a class="heading" href="../help/faq">FAQ</a></h2><a class="url" href="../help/faq">help/faq/</a><pre><span></span><code>EnableEscapeCommandline=yes
-</code></pre><pre><span></span><code>#!/bin/bash
+</code></pre><h2><a class="heading" href="../help/faq">FAQ</a></h2><a class="url" href="../help/faq">help/faq/</a><pre><span></span><code>#!/bin/bash
 
 rsync -avzh /users/bob/src /dcs08/bob/dst
 </code></pre><pre><span></span><code>sbatch --mail-type=FAIL,END --mail-user=bob@jhu.edu copy-job
@@ -4095,6 +4094,7 @@ rsync -avzh /users/bob/src /dcs08/bob/dst
 </code></pre><pre><span></span><code><span class="k">if</span><span class="w"> </span><span class="o">[</span><span class="w"> </span>-f<span class="w"> </span>/etc/bashrc<span class="w"> </span><span class="o">]</span><span class="p">;</span><span class="w"> </span><span class="k">then</span>
 .<span class="w"> </span>/etc/bashrc
 <span class="k">fi</span>
+</code></pre><pre><span></span><code>EnableEscapeCommandline=yes
 </code></pre><pre><span></span><code>$ ssh -X username@jhpce03.jhsph.edu -o ForwardX11Timeout=336h
 </code></pre><h2><a class="heading" href="../ourtools/features">Handy Features</a></h2><a class="url" href="../ourtools/features">ourtools/features/</a><pre class="mermaid"><code>graph LR
    A[Your computer] --&gt; B[Login nodes]

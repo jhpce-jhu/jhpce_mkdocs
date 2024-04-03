@@ -422,12 +422,6 @@
   {
     "page_name": "FAQ",
     "page_url": "../help/faq/",
-    "text": "EnableEscapeCommandline=yes\n",
-    "html": "<pre><span></span><code>EnableEscapeCommandline=yes\n</code></pre>"
-  },
-  {
-    "page_name": "FAQ",
-    "page_url": "../help/faq/",
     "text": "#!/bin/bash\n\nrsync -avzh /users/bob/src /dcs08/bob/dst\n",
     "html": "<pre><span></span><code>#!/bin/bash\n\nrsync -avzh /users/bob/src /dcs08/bob/dst\n</code></pre>"
   },
@@ -448,6 +442,12 @@
     "page_url": "../help/faq/",
     "text": "if [ -f /etc/bashrc ]; then\n. /etc/bashrc\nfi\n",
     "html": "<pre><span></span><code><span class=\"k\">if</span><span class=\"w\"> </span><span class=\"o\">[</span><span class=\"w\"> </span>-f<span class=\"w\"> </span>/etc/bashrc<span class=\"w\"> </span><span class=\"o\">]</span><span class=\"p\">;</span><span class=\"w\"> </span><span class=\"k\">then</span>\n.<span class=\"w\"> </span>/etc/bashrc\n<span class=\"k\">fi</span>\n</code></pre>"
+  },
+  {
+    "page_name": "FAQ",
+    "page_url": "../help/faq/",
+    "text": "EnableEscapeCommandline=yes\n",
+    "html": "<pre><span></span><code>EnableEscapeCommandline=yes\n</code></pre>"
   },
   {
     "page_name": "FAQ",
