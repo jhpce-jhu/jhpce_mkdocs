@@ -28,27 +28,39 @@ Some clusters strongly advise their users to create batch scripts in which the `
 
 ### Passing info into jobs
 
-It is possible to pass variables into a SLURM job when you submit the job using the `-–export` flag. For example to pass the value of the variables A and b into the job script named jobscript.sh you can use:
+It is possible to pass variables into a SLURM job when you submit the job using the `-–export` flag. For example to pass the value of the variables A and b into the job script script.sh you can use:
 
 `sbatch --export=A=25,b='test' script.sh`
 
-or use the special keyword `ALL` (although one can imagine that going awry)
+```Shell title="Inside of script.sh"
+#!/bin/bash
+echo ${A}
+echo ${b}
+```
+
+or use the special keyword `ALL` (although one can imagine that possibly going awry)
 
 `sbatch --export=ALL,A=7,b='test3' script.sh`
 
-Using variables to set SLURM job name and output files
+### Using variables to set SLURM job name and output files
 
 **SLURM does not support using variables in the #SBATCH lines within a job script.** However, values passed from the command line have precedence over values defined in the job script. So the job name and output/error files can be passed on the sbatch command line:
 
 ```
 A=70
 b='trial-24'
-sbatch --job-name=$A.$b.run --output=$A.$b.out --export=A=$A,b=$b script.sh
+
+sbatch --job-name=${A}.${b}.run --output=${A}.${b}.out --export=D=${A},f=${b} script.sh
 ```
 
-Are there any tricks to propagating information between components of a job? I mean setting your own variables in batch job scripts and having them be visible by all of the processes you mean to use them?
+Are there any tricks to propagating information between components of a job? I mean setting your own variables in batch job scripts and having them be visible by all of the processes you mean to use them? This [UPenn page](https://hpc.seas.upenn.edu/home/mp-clusters/how-to-use-mp-clusters-slurm/advanced-slurm-options/) in item number 2 suggests creating a shell script that you run within an sbatch file:
 
-When modifying environment variables in shell scripts or your current shell, remember that you may be dealing with existing information that you don't want to discard (by redefining the variable without referring to the existing value). When dealing with variables that you don't make up out of whole cloth and which have simple names which might match existing ones, check for their existence first. If they exist, you may want to prepend your changes, say to a PATH-type variable which usually has multiple entries. Or append, if you want system defaults to come *before* your values.
+"In certain situations (e.g. multiple nodes), the scriptfile itself will not see your environment variable. To get around this, separate your submission into a control file that you submit to sbatch, and a script file that is actually run within each task slot of your job. For example, if you want to run sbatch –export=MYVARIABLE controlfile, OR you have an environment variable MYVARIABLE already set and you just run sbatch controlfile, then your controlfile would have your regular #SBATCH headers and one command: srun scriptfile. This makes sure that your entire environment is transferred to the scriptfile on every job step, inside every task.""
+
+
+
+!!! Warning
+    When modifying environment variables in shell scripts or your current shell, remember that you may be dealing with existing information that you don't want to discard (by redefining the variable without referring to the existing value). When dealing with variables that you don't make up out of whole cloth and which have simple names which might match existing ones, check for their existence first. If they exist, you may want to prepend your changes, say to a PATH-type variable which usually has multiple entries. Or append, if you want system defaults to come *before* your values.
 
 Remember that [modules](../sw/modules.md) change environment variables when loaded and unloaded. User's default environments are controlled by some JHPCE-created modules. 
 
