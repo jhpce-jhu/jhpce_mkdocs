@@ -3891,7 +3891,9 @@ configuration page</a>.</p>
 <li>some (optional) settings meant to apply to all hosts not previously specified, in a stanza which begins with a line <code>Host *</code></li>
 </ol>
 <h4 id="general-settings">General Settings<a class="headerlink" href="#general-settings" title="Anchor link to this section for reference">&para;</a></h4>
-<div class="highlight"><span class="filename">Useful general macOS ~/.ssh/config file settings</span><pre><span></span><code>ForwardX11<span class="w"> </span>yes<span class="w">        </span><span class="c1"># Equiv to &quot;-X&quot; arg</span>
+<p><div class="highlight"><span class="filename">Useful general macOS ~/.ssh/config file settings</span><pre><span></span><code>EnableEscapeCommandline<span class="w"> </span>yes<span class="w"> </span><span class="c1"># Needed for recent macOS if you want to issue an SSH escape,</span>
+<span class="c1">#.      to create or close a tunnel for example</span>
+ForwardX11<span class="w"> </span>yes<span class="w">        </span><span class="c1"># Equiv to &quot;-X&quot; arg</span>
 ForwardX11Trusted<span class="w"> </span>yes<span class="w"> </span><span class="c1"># Equiv to &quot;-Y&quot; arg</span>
 XAuthLocation<span class="w"> </span>/opt/X11/bin/xauth<span class="w">  </span><span class="c1"># only include if needed</span>
 <span class="c1"># These are for users of public keys</span>
@@ -3902,6 +3904,9 @@ IdentityFile<span class="w"> </span>~/.ssh/id_ecdsa
 IdentityFile<span class="w"> </span>~/.ssh/id_rsa
 ForwardAgent<span class="w"> </span>yes<span class="w">      </span><span class="c1"># Equiv to the &quot;-A&quot; arg. For ssh&#39;ing from 1 to 2 to 3. </span>
 </code></pre></div>
+<div class="highlight"><span class="filename">Keeping X11 forwarding enabled</span><pre><span></span><code>ForwardX11Timeout<span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="c1"># disables the timeout, which is by default 20mins</span>
+<span class="w">                    </span><span class="c1"># you can also set it to a time value like &quot;336h&quot; (2 weeks)</span>
+</code></pre></div></p>
 <div class="highlight"><span class="filename">Keeping connections alive - method one</span><pre><span></span><code>ServerAliveInterval<span class="w"> </span><span class="m">15</span>
 ServerAliveCountMax<span class="w"> </span><span class="m">30</span>
 <span class="c1"># These values mean that your client ssh program will send a message to the server</span>
@@ -3960,7 +3965,7 @@ ServerAliveCountMax<span class="w"> </span><span class="m">30</span>
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1-2.1-2M12.5 7v5.2l4 2.4-1 1L11 13V7h1.5M11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2v1.8Z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">April 1, 2024</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">April 3, 2024</span>
   </span>
 
     

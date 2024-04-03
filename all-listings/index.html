@@ -3373,7 +3373,9 @@ storage array. We are working on this issue and will provide updates as the situ
 </code></pre><pre><span></span><code>cat ~/.ssh/id_rsa.pub | ssh &lt;your_userid&gt;@jhpce01.jhsph.edu 'cat &gt;&gt; ~/.ssh/authorized_keys'
 </code></pre><pre><span></span><code>ssh-add
 ssh-agent
-</code></pre><pre><span></span><code>ForwardX11<span class="w"> </span>yes<span class="w">        </span><span class="c1"># Equiv to "-X" arg</span>
+</code></pre><pre><span></span><code>EnableEscapeCommandline<span class="w"> </span>yes<span class="w"> </span><span class="c1"># Needed for recent macOS if you want to issue an SSH escape,</span>
+<span class="c1">#.      to create or close a tunnel for example</span>
+ForwardX11<span class="w"> </span>yes<span class="w">        </span><span class="c1"># Equiv to "-X" arg</span>
 ForwardX11Trusted<span class="w"> </span>yes<span class="w"> </span><span class="c1"># Equiv to "-Y" arg</span>
 XAuthLocation<span class="w"> </span>/opt/X11/bin/xauth<span class="w">  </span><span class="c1"># only include if needed</span>
 <span class="c1"># These are for users of public keys</span>
@@ -3383,6 +3385,8 @@ AddKeysToAgent<span class="w"> </span>yes<span class="w">    </span><span class=
 IdentityFile<span class="w"> </span>~/.ssh/id_ecdsa
 IdentityFile<span class="w"> </span>~/.ssh/id_rsa
 ForwardAgent<span class="w"> </span>yes<span class="w">      </span><span class="c1"># Equiv to the "-A" arg. For ssh'ing from 1 to 2 to 3. </span>
+</code></pre><pre><span></span><code>ForwardX11Timeout<span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="c1"># disables the timeout, which is by default 20mins</span>
+<span class="w">                    </span><span class="c1"># you can also set it to a time value like "336h" (2 weeks)</span>
 </code></pre><pre><span></span><code>ServerAliveInterval<span class="w"> </span><span class="m">15</span>
 ServerAliveCountMax<span class="w"> </span><span class="m">30</span>
 <span class="c1"># These values mean that your client ssh program will send a message to the server</span>
