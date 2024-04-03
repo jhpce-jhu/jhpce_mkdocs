@@ -58,7 +58,7 @@ attending the Orientation Session for the CMS Subcluster of the JHPCE
 (pronounced by its letters J-H-P-C-E) cluster.
 
 +   Download a copy of the slides from the Orientation
-    from:[JHPCE-Overview-CMS.pdf.](http://www.jhpce.jhu.edu/wp-content/uploads/2024/01/JHPCE-Overview-CMS-2023-12.pdf)
+    from:[JHPCE-Overview-CMS.pdf.](http://jhpce-old.jhu.edu/wp-content/uploads/2024/01/JHPCE-Overview-CMS-2023-12.pdf)
 +   
 +   In order to access the JHPCE cluster and make use of the
     applications on the cluster, you may need to install additional
@@ -73,7 +73,7 @@ attending the Orientation Session for the CMS Subcluster of the JHPCE
     GoogleAuthenticator app on your smart phone, or install the Authy
     Chrome extension.** We will be configuring Google Authenticator
     during the Orientation Session. Please
-    see <http://www.jhpce.jhu.edu/knowledge-base/authentication/2-factor-authentication/#otp>
+    see <http://jhpce-old.jhu.edu/knowledge-base/authentication/2-factor-authentication/#otp>
     for instructions.
 2.  **Install required client software.**  You may need to install a
     couple of programs on your laptop or desktop in order to access the

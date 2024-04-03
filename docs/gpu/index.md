@@ -18,7 +18,7 @@ Therefore should it be moved out of "User Guides" to be a topic inside of "Softw
 <s>
 Probably put some of it here, some of it into other document(s)
 
-[http://www.jhpce.jhu.edu/knowledge-base/gpus-on-the-jhpce-cluster](http://www.jhpce.jhu.edu/knowledge-base/gpus-on-the-jhpce-cluster)
+[http://jhpce-old.jhu.edu/knowledge-base/gpus-on-the-jhpce-cluster](http://jhpce-old.jhu.edu/knowledge-base/gpus-on-the-jhpce-cluster)
 </s>
 
 ## Our GPU Nodes

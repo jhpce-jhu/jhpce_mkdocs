@@ -40,7 +40,7 @@ This version contains inaccurate (SLURM, ssh access to transfer node is allowed,
 ## White papers
 
 + [green Dirt Cheap
-Storage](http://www.jhpce.jhu.edu/wp-content/uploads/2014/05/greenDirtCheapStorage.pdf) description of the 1PB (raw) ZFS NAS that went into production in
+Storage](http://jhpce-old.jhu.edu/wp-content/uploads/2014/05/greenDirtCheapStorage.pdf) description of the 1PB (raw) ZFS NAS that went into production in
 2013
 + [Disruptive Storage
 Strategies](http://casc.org/meetings/15mar/Disruptive_Storage_Strategies_CASC_2015_03_31.pdf), presentation at the [2015 CASC Spring meeting](http://casc.org/meetings-presentations/)

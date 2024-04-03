@@ -52,7 +52,7 @@ Once configured properly, you can use SSH keys instead of your JHPCE password.
 + If you have tried several times to login, and you try to ssh again and get a “Connection Refused” message, you will need to wait 30 minutes before trying to login again.
 + If you continue to have login issues, please contact bitsupport@lists.jhu.edu.
 
-- [2 Factor Authentication](http://www.jhpce.jhu.edu/knowledge-base/2-factor-authentication/)
+- [2 Factor Authentication](http://jhpce-old.jhu.edu/knowledge-base/2-factor-authentication/)
 
 
 ### Unix-based machines (linux and mac osx)
