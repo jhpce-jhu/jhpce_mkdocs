@@ -1095,9 +1095,18 @@ storage array. We are working on this issue and will provide updates as the situ
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#critical-reference-material" class="md-nav__link">
+  <a href="#critical-material-for-mkdocs-reference-material" class="md-nav__link">
     <span class="md-ellipsis">
-      Critical reference material
+      Critical Material for MkDocs reference material
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#modifying-text-patterns-across-the-site" class="md-nav__link">
+    <span class="md-ellipsis">
+      Modifying text patterns across the site
     </span>
   </a>
   
@@ -3583,9 +3592,18 @@ storage array. We are working on this issue and will provide updates as the situ
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#critical-reference-material" class="md-nav__link">
+  <a href="#critical-material-for-mkdocs-reference-material" class="md-nav__link">
     <span class="md-ellipsis">
-      Critical reference material
+      Critical Material for MkDocs reference material
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#modifying-text-patterns-across-the-site" class="md-nav__link">
+    <span class="md-ellipsis">
+      Modifying text patterns across the site
     </span>
   </a>
   
@@ -3846,10 +3864,18 @@ storage array. We are working on this issue and will provide updates as the situ
 </ul>
 <p>Running the mkdocs package installed via python allows you to develop web pages on your local computer. See <a href="./##recipe-for-running-mkdocs-locally">the recipe</a></p>
 <p>There is another document containing <a href="../wishlist/">wishlist</a> items that we might want to enable/configure.</p>
-<h2 id="critical-reference-material">Critical reference material<a class="headerlink" href="#critical-reference-material" title="Anchor link to this section for reference">&para;</a></h2>
+<h2 id="critical-material-for-mkdocs-reference-material">Critical Material for MkDocs reference material<a class="headerlink" href="#critical-material-for-mkdocs-reference-material" title="Anchor link to this section for reference">&para;</a></h2>
 <p>Look here for information about these and other features!!! Just keep in mind that ones marked "insiders" are not available for our use.
 <a href="https://squidfunk.github.io/mkdocs-material/reference/">Materials for MkDocs reference section</a>.</p>
 <p>It isn't clear how much caution one should use in consulting MkDocs documents and people's solutions for it. JRT thinks that Material for MkDocs differs enough that one should definitely keep in mind whether your google search has turned up something about MkDocs.</p>
+<h2 id="modifying-text-patterns-across-the-site">Modifying text patterns across the site<a class="headerlink" href="#modifying-text-patterns-across-the-site" title="Anchor link to this section for reference">&para;</a></h2>
+<p>Example of changing all markdown files in a copy of the git repo:</p>
+<ol>
+<li>cd jhpce_mkdocs</li>
+<li>find . -type f -name *.md -exec grep -il "www.jhpce.jhu.edu" {} \;</li>
+<li>find . -type f -name *.md -exec sed -i '' "s/www.jhpce.jhu.edu/jhpce-old.jhu.edu/g" {} \;</li>
+<li>find . -type f -name *.md -exec grep -il "jhpce-old.jhu.edu" {} \; | xargs git add</li>
+</ol>
 <h2 id="diagramming-with-mermaid">Diagramming with Mermaid<a class="headerlink" href="#diagramming-with-mermaid" title="Anchor link to this section for reference">&para;</a></h2>
 <p>mkdocs.yml contains code enabling the use of a JavaScript tool called Mermaid. If you want your local <code>mkdocs serve</code> program to be able to display it, you need to <code>pip install mkdocs-mermaid2-plugin</code> (see <a href="./#recipe-for-running-mkdocs-locally">recipe</a> at bottom of this page)</p>
 <p>Material for MkDocs Diagrams <a href="https://squidfunk.github.io/mkdocs-material/reference/diagrams/?h=mermaid#diagrams">documentation</a></p>
@@ -4180,7 +4206,7 @@ ERROR<span class="w">   </span>-<span class="w">  </span><span class="o">[</span
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1-2.1-2M12.5 7v5.2l4 2.4-1 1L11 13V7h1.5M11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2v1.8Z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">April 2, 2024</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">April 3, 2024</span>
   </span>
 
     

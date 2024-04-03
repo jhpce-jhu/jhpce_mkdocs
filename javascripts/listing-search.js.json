@@ -602,8 +602,14 @@
   {
     "page_name": "Job Environment",
     "page_url": "../slurm/environment/",
-    "text": "A=70\nb='trial-24'\nsbatch --job-name=$A.$b.run --output=$A.$b.out --export=A=$A,b=$b script.sh\n",
-    "html": "<pre><span></span><code>A=70\nb='trial-24'\nsbatch --job-name=$A.$b.run --output=$A.$b.out --export=A=$A,b=$b script.sh\n</code></pre>"
+    "text": "#!/bin/bash\necho ${A}\necho ${b}\n",
+    "html": "<pre><span></span><code><span class=\"ch\">#!/bin/bash</span>\n<span class=\"nb\">echo</span><span class=\"w\"> </span><span class=\"si\">${</span><span class=\"nv\">A</span><span class=\"si\">}</span>\n<span class=\"nb\">echo</span><span class=\"w\"> </span><span class=\"si\">${</span><span class=\"nv\">b</span><span class=\"si\">}</span>\n</code></pre>"
+  },
+  {
+    "page_name": "Job Environment",
+    "page_url": "../slurm/environment/",
+    "text": "A=70\nb='trial-24'\n\nsbatch --job-name=${A}.${b}.run --output=${A}.${b}.out --export=D=${A},f=${b} script.sh\n",
+    "html": "<pre><span></span><code>A=70\nb='trial-24'\n\nsbatch --job-name=${A}.${b}.run --output=${A}.${b}.out --export=D=${A},f=${b} script.sh\n</code></pre>"
   },
   {
     "page_name": "Interactive Jobs",
