@@ -16,12 +16,12 @@ Your environment, including your PATH variable, is created when logging in. A nu
 You can use the command `which cmd` to be told where "cmd" comes from.
 
 ## General
-* **auth_util**: Interface for working with OTP MFA configuration. View and generate verification tokens for Google Authenticator. See orientation documents for details on using it to configure your smartphone, etc.
+* **auth_util**: Interface for working with OTP MFA configuration. View and generate verification tokens for Google Authenticator. See [orientation documents](../orient/images/latest-orient.pdf) for details on using it to configure your smartphone, etc. (no man page yet)
 
 ## Disk Usage
 * **getquota**: Displays your quota stats (not yet working on C-SUB)
-* **cmsquota-dcs05**: For C-SUB users
-* **cmsquota-dcs06**: For C-SUB users
+* **cmsquota-dcs05**: For C-SUB users, (only works on compute nodes)
+* **cmsquota-dcs06**: For C-SUB users, (works on both login and compute nodes)
 
 ## Container Computing
 
@@ -46,6 +46,8 @@ You can use the command `which cmd` to be told where "cmd" comes from.
 * **smem**: Displays memory used by your currently running jobs. If given a jobid number, it will display info about the memory usage of that job. (no man page yet)
 * memory reporting script - puts per-user output daily into directories under `/jhpce/shared/jhpce/jhpce-log/`
 * **jobson**: Displays running jobs when given a three digit node number.
+* **showjob**: Displays job information when given a jobid. Currently simply a shortcut for `scontrol show job jobid --details` but hopefully in the future will produce more readable output. (no man page yet)
+* **showqos**: Displays list of our [QOS definitions](../slurm/qos.md) in a readable format. (no man page yet)
 
 ### Submitting Jobs
 None yet.

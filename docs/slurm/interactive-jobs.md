@@ -1,7 +1,7 @@
 ---
 tags:
   - slurm
-  - jeffrey
+  - in-progress
 ---
 
 # Interactive Jobs  
