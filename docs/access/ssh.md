@@ -172,6 +172,8 @@ The basic structure of this file is:
 #### General Settings
 
 ```Shell title="Useful general macOS ~/.ssh/config file settings"
+EnableEscapeCommandline yes # Needed for recent macOS if you want to issue an SSH escape,
+#.      to create or close a tunnel for example
 ForwardX11 yes        # Equiv to "-X" arg
 ForwardX11Trusted yes # Equiv to "-Y" arg
 XAuthLocation /opt/X11/bin/xauth  # only include if needed
@@ -182,6 +184,10 @@ AddKeysToAgent yes    # store passphrases for public keys in macOS keychain
 IdentityFile ~/.ssh/id_ecdsa
 IdentityFile ~/.ssh/id_rsa
 ForwardAgent yes      # Equiv to the "-A" arg. For ssh'ing from 1 to 2 to 3. 
+```
+```Shell title="Keeping X11 forwarding enabled"
+ForwardX11Timeout 0 # disables the timeout, which is by default 20mins
+                    # you can also set it to a time value like "336h" (2 weeks)
 ```
 
 ```Shell title="Keeping connections alive - method one"

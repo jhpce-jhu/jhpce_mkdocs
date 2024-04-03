@@ -100,7 +100,7 @@
 ## X11
 - My X11 forwarding stops working after 20 minutes 
 ??? "Click to expand answer"
-    This error comes from the `ForwardX11Timeout` variable, which is set by default to 20 minutes.  To avoid this issue, a larger timeout can be supplied on the command line to, say, 336 hours (2 weeks):
+    This error comes from the `ForwardX11Timeout` variable, which is set by default to 20 minutes.  To avoid this issue, you can specify a value of 0 which completely disables the timeout. Or you can set a larger timeout to, say, 336 hours (2 weeks). This value can be supplied by changing your SSH configuration (see our [SSH document](../access/ssh.md)) or for each connection on the command line like this:
 
     ```
     $ ssh -X username@jhpce03.jhsph.edu -o ForwardX11Timeout=336h
