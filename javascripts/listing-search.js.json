@@ -612,6 +612,12 @@
     "html": "<pre><span></span><code>A=70\nb='trial-24'\n\nsbatch --job-name=${A}.${b}.run --output=${A}.${b}.out --export=D=${A},f=${b} script.sh\n</code></pre>"
   },
   {
+    "page_name": "Getting Started",
+    "page_url": "../slurm/getting-started/",
+    "text": "<job_array>_<job_id>.<step_id>\n",
+    "html": "<pre><span></span><code>&lt;job_array&gt;_&lt;job_id&gt;.&lt;step_id&gt;\n</code></pre>"
+  },
+  {
     "page_name": "Interactive Jobs",
     "page_url": "../slurm/interactive-jobs/",
     "text": "jsrun() { if [ -z ${DISPLAY} ]; then /usr/bin/srun --pty \"$@\" bash; else /usr/bin/srun --pty --x11 \"$@\" bash; fi }\n",
