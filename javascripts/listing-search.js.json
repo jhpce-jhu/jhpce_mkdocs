@@ -128,6 +128,12 @@
   {
     "page_name": "ACL",
     "page_url": "../files/acl/",
+    "text": "access type:[flags]:principal:permissions\n",
+    "html": "<pre><span></span><code>access type:[flags]:principal:permissions\n</code></pre>"
+  },
+  {
+    "page_name": "ACL",
+    "page_url": "../files/acl/",
     "text": "[alice@compute-123 ~]$ mkdir test1\n[alice@compute-123 ~]$ umask\n0022\n[alice@compute-123 ~]$ nfs4_setfacl -a A:gfdi:hpscc@cm.cluster:RWX test1\n[alice@compute-123 ~]$ touch test1/f1\n[alice@compute-123 ~]$ nfs4_getfacl test1/f1\n\n# file: test1/f1\nA::OWNER@:rwatTcCy\nA::GROUP@:rtcy\nA:g:hpscc@cm.cluster:rtcy\nA::EVERYONE@:rtcy\n[alice@compute-123 ~]$ umask 0002\n[alice@compute-123 ~]$ touch test1/f2\n[alice@compute-123 ~]$ nfs4_getfacl test1/f2\n\n# file: test1/f2\nA::OWNER@:rwatTcCy\nA::GROUP@:rwatcy\nA:g:hpscc@cm.cluster:rwatcy\nA::EVERYONE@:rtcy\n",
     "html": "<pre><span></span><code>[alice@compute-123 ~]$ mkdir test1\n[alice@compute-123 ~]$ umask\n0022\n[alice@compute-123 ~]$ nfs4_setfacl -a A:gfdi:hpscc@cm.cluster:RWX test1\n[alice@compute-123 ~]$ touch test1/f1\n[alice@compute-123 ~]$ nfs4_getfacl test1/f1\n\n# file: test1/f1\nA::OWNER@:rwatTcCy\nA::GROUP@:rtcy\nA:g:hpscc@cm.cluster:rtcy\nA::EVERYONE@:rtcy\n[alice@compute-123 ~]$ umask 0002\n[alice@compute-123 ~]$ touch test1/f2\n[alice@compute-123 ~]$ nfs4_getfacl test1/f2\n\n# file: test1/f2\nA::OWNER@:rwatTcCy\nA::GROUP@:rwatcy\nA:g:hpscc@cm.cluster:rwatcy\nA::EVERYONE@:rtcy\n</code></pre>"
   },
@@ -170,8 +176,20 @@
   {
     "page_name": "ACL",
     "page_url": "../files/acl/",
+    "text": "cd into-the-top-of-the-directory-tree\nfind . -type d -print0 | xargs --null nfs4_setfacl -a A::bob@cm.cluster:RWX\nfind . -type f -print0 | xargs --null nfs4_setfacl -a A::bob@cm.cluster:R\n",
+    "html": "<pre><span></span><code><span class=\"nb\">cd</span><span class=\"w\"> </span>into-the-top-of-the-directory-tree\nfind<span class=\"w\"> </span>.<span class=\"w\"> </span>-type<span class=\"w\"> </span>d<span class=\"w\"> </span>-print0<span class=\"w\"> </span><span class=\"p\">|</span><span class=\"w\"> </span>xargs<span class=\"w\"> </span>--null<span class=\"w\"> </span>nfs4_setfacl<span class=\"w\"> </span>-a<span class=\"w\"> </span>A::bob@cm.cluster:RWX\nfind<span class=\"w\"> </span>.<span class=\"w\"> </span>-type<span class=\"w\"> </span>f<span class=\"w\"> </span>-print0<span class=\"w\"> </span><span class=\"p\">|</span><span class=\"w\"> </span>xargs<span class=\"w\"> </span>--null<span class=\"w\"> </span>nfs4_setfacl<span class=\"w\"> </span>-a<span class=\"w\"> </span>A::bob@cm.cluster:R\n</code></pre>"
+  },
+  {
+    "page_name": "ACL",
+    "page_url": "../files/acl/",
     "text": "nfs4_getfacl -R source_dir > tmpfile1\nsetfacl --restore tmpfile1 destination_dir\n\nnfs4_getfacl -R source_dir |\nsetfacl --restore - destination_dir\n",
     "html": "<pre><span></span><code>nfs4_getfacl -R source_dir &gt; tmpfile1\nsetfacl --restore tmpfile1 destination_dir\n\nnfs4_getfacl -R source_dir |\nsetfacl --restore - destination_dir\n</code></pre>"
+  },
+  {
+    "page_name": "ACL",
+    "page_url": "../files/acl/",
+    "text": "# file: .\nA::OWNER@:rwaDxtTcCy\nA::GROUP@:tcy\nA::EVERYONE@:tcy\n",
+    "html": "<pre><span></span><code># file: .\nA::OWNER@:rwaDxtTcCy\nA::GROUP@:tcy\nA::EVERYONE@:tcy\n</code></pre>"
   },
   {
     "page_name": "ACL",
@@ -316,6 +334,12 @@
     "page_url": "../files/sharing-files/",
     "text": "cd into-the-top-of-the-directory-tree\nfind . -type d | xargs chmod u+rwx,g+rwx,g+s,o-rwx\nfind . -type f | xargs chmod u+rwx,g+rw,o-rwx\n",
     "html": "<pre><span></span><code><span class=\"nb\">cd</span><span class=\"w\"> </span>into-the-top-of-the-directory-tree\nfind<span class=\"w\"> </span>.<span class=\"w\"> </span>-type<span class=\"w\"> </span>d<span class=\"w\"> </span><span class=\"p\">|</span><span class=\"w\"> </span>xargs<span class=\"w\"> </span>chmod<span class=\"w\"> </span>u+rwx,g+rwx,g+s,o-rwx\nfind<span class=\"w\"> </span>.<span class=\"w\"> </span>-type<span class=\"w\"> </span>f<span class=\"w\"> </span><span class=\"p\">|</span><span class=\"w\"> </span>xargs<span class=\"w\"> </span>chmod<span class=\"w\"> </span>u+rwx,g+rw,o-rwx\n</code></pre>"
+  },
+  {
+    "page_name": "Sharing Files",
+    "page_url": "../files/sharing-files/",
+    "text": "cd into-the-top-of-the-directory-tree\nfind . -type d -print0 | xargs --null chmod u+rwx,g+rwx,g+s,o-rwx\nfind . -type f -print0 | xargs --null chmod u+rwx,g+rw,o-rwx\n",
+    "html": "<pre><span></span><code><span class=\"nb\">cd</span><span class=\"w\"> </span>into-the-top-of-the-directory-tree\nfind<span class=\"w\"> </span>.<span class=\"w\"> </span>-type<span class=\"w\"> </span>d<span class=\"w\"> </span>-print0<span class=\"w\"> </span><span class=\"p\">|</span><span class=\"w\"> </span>xargs<span class=\"w\"> </span>--null<span class=\"w\"> </span>chmod<span class=\"w\"> </span>u+rwx,g+rwx,g+s,o-rwx\nfind<span class=\"w\"> </span>.<span class=\"w\"> </span>-type<span class=\"w\"> </span>f<span class=\"w\"> </span>-print0<span class=\"w\"> </span><span class=\"p\">|</span><span class=\"w\"> </span>xargs<span class=\"w\"> </span>--null<span class=\"w\"> </span>chmod<span class=\"w\"> </span>u+rwx,g+rw,o-rwx\n</code></pre>"
   },
   {
     "page_name": "Sharing Files",
