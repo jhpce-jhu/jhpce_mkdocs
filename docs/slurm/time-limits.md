@@ -42,6 +42,22 @@ Additionally, users have the flexibility to request a maximum time limit of up t
 
 ## Best Practices:
 
+### Receive Email Notifications
+
+The directives `--mail-user` and `--mail-type` are used to tell SLURM that you want to receive email updates for certain events. One set of events is related to an approaching time limit: TIME_LIMIT_50, TIME_LIMIT_80, TIME_LIMIT_90 and TIME_LIMIT.
+
+If you did not use these directives when submitting your job, you can define or modify them on both pending and running jobs using `scontrol`
+
+```Shell title="Be notified at 80% of job duration" linenums="0"
+scontrol update jobid=<jobid> mailtype=time_limit_80
+```
+```Shell title="But only if you tell it where to send email" linenums="0"
+scontrol update jobid=<jobid> mailuser=<your-address@jh.edu>
+```
+
+
+### What ChatGPT Wrote:
+
 When setting time limits in SLURM, it is crucial to consider the nature of the computational task.
 Jobs with well-defined execution times benefit from precise time limits, while more unpredictable tasks may require a degree of flexibility.
 Regularly reviewing and adjusting time limits based on job characteristics and system performance is a best practice to ensure optimal utilization of resources.
