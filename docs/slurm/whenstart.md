@@ -36,7 +36,7 @@ For this reason, **it is important to request accurate walltime limits for your 
 !!! Caution "Cluster-specific"
     As of 20240320, multifactor priority is not enabled on the C-SUB.
     
-Multiple factors are used to assign a single priority value to each job. This is described in the [Multifacor Job Priority](https://slurm.schedmd.com/priority_multifactor.html) document.
+Multiple factors are used to assign a single priority value to each job. This is described in the [Multifactor Job Priority](https://slurm.schedmd.com/priority_multifactor.html) document.
 
 (This priority is only used to decide which jobs to dispatch first. It is not used to set a UNIX process `nice` value on the processes created by jobs out on the compute nodes.)
 
