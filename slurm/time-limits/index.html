@@ -2482,6 +2482,30 @@ storage array. We are working on this issue and will provide updates as the situ
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="Best Practices:">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#receive-email-notifications" class="md-nav__link">
+    <span class="md-ellipsis">
+      Receive Email Notifications
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#what-chatgpt-wrote" class="md-nav__link">
+    <span class="md-ellipsis">
+      What ChatGPT Wrote:
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
         <li class="md-nav__item">
@@ -3449,6 +3473,30 @@ storage array. We are working on this issue and will provide updates as the situ
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="Best Practices:">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#receive-email-notifications" class="md-nav__link">
+    <span class="md-ellipsis">
+      Receive Email Notifications
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#what-chatgpt-wrote" class="md-nav__link">
+    <span class="md-ellipsis">
+      What ChatGPT Wrote:
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
         <li class="md-nav__item">
@@ -3521,6 +3569,14 @@ storage array. We are working on this issue and will provide updates as the situ
 <p>On the JHPCE cluster, specific time limit policies are in place to balance the needs of diverse users. The default time limit for job execution on the <a href="../partitions/">public partitions</a> (shared, interactive and gpu partitions) is set to 1 day, ensuring that shorter tasks do not face unnecessary delays. </p>
 <p>Additionally, users have the flexibility to request a maximum time limit of up to 90 days for longer-running jobs. This range accommodates a variety of computational workloads, offering users the freedom to tailor time limits according to the requirements of their specific tasks. Please note that by default these limits are only set on the <a href="../partitions/">public partitions</a> (shared, interactive and gpu partitions).</p>
 <h2 id="best-practices">Best Practices:<a class="headerlink" href="#best-practices" title="Anchor link to this section for reference">&para;</a></h2>
+<h3 id="receive-email-notifications">Receive Email Notifications<a class="headerlink" href="#receive-email-notifications" title="Anchor link to this section for reference">&para;</a></h3>
+<p>The directives <code>--mail-user</code> and <code>--mail-type</code> are used to tell SLURM that you want to receive email updates for certain events. One set of events is related to an approaching time limit: TIME_LIMIT_50, TIME_LIMIT_80, TIME_LIMIT_90 and TIME_LIMIT.</p>
+<p>If you did not use these directives when submitting your job, you can define or modify them on both pending and running jobs using <code>scontrol</code></p>
+<p><div class="highlight"><span class="filename">Be notified at 80% of job duration</span><pre><span></span><code>scontrol<span class="w"> </span>update<span class="w"> </span><span class="nv">jobid</span><span class="o">=</span>&lt;jobid&gt;<span class="w"> </span><span class="nv">mailtype</span><span class="o">=</span>time_limit_80
+</code></pre></div>
+<div class="highlight"><span class="filename">But only if you tell it where to send email</span><pre><span></span><code>scontrol<span class="w"> </span>update<span class="w"> </span><span class="nv">jobid</span><span class="o">=</span>&lt;jobid&gt;<span class="w"> </span><span class="nv">mailuser</span><span class="o">=</span>&lt;your-address@jh.edu&gt;
+</code></pre></div></p>
+<h3 id="what-chatgpt-wrote">What ChatGPT Wrote:<a class="headerlink" href="#what-chatgpt-wrote" title="Anchor link to this section for reference">&para;</a></h3>
 <p>When setting time limits in SLURM, it is crucial to consider the nature of the computational task.
 Jobs with well-defined execution times benefit from precise time limits, while more unpredictable tasks may require a degree of flexibility.
 Regularly reviewing and adjusting time limits based on job characteristics and system performance is a best practice to ensure optimal utilization of resources.
@@ -3585,7 +3641,7 @@ CANCELLED AT 2024-02-13T12:03:27 DUE TO TIME LIMIT ***
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1-2.1-2M12.5 7v5.2l4 2.4-1 1L11 13V7h1.5M11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2v1.8Z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">March 25, 2024</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">April 5, 2024</span>
   </span>
 
     

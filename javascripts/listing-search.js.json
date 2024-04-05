@@ -698,6 +698,18 @@
   {
     "page_name": "Time Limits",
     "page_url": "../slurm/time-limits/",
+    "text": "scontrol update jobid=<jobid> mailtype=time_limit_80\n",
+    "html": "<pre><span></span><code>scontrol<span class=\"w\"> </span>update<span class=\"w\"> </span><span class=\"nv\">jobid</span><span class=\"o\">=</span>&lt;jobid&gt;<span class=\"w\"> </span><span class=\"nv\">mailtype</span><span class=\"o\">=</span>time_limit_80\n</code></pre>"
+  },
+  {
+    "page_name": "Time Limits",
+    "page_url": "../slurm/time-limits/",
+    "text": "scontrol update jobid=<jobid> mailuser=<your-address@jh.edu>\n",
+    "html": "<pre><span></span><code>scontrol<span class=\"w\"> </span>update<span class=\"w\"> </span><span class=\"nv\">jobid</span><span class=\"o\">=</span>&lt;jobid&gt;<span class=\"w\"> </span><span class=\"nv\">mailuser</span><span class=\"o\">=</span>&lt;your-address@jh.edu&gt;\n</code></pre>"
+  },
+  {
+    "page_name": "Time Limits",
+    "page_url": "../slurm/time-limits/",
     "text": "[mmill116@login31 class-scripts]$ cat script1\n #!/bin/bash\n # Test script for JHPCE cluster\n date\n echo \"I am now running on compute node:\"\n hostname\n SLEEPTIME=$((20 + $RANDOM % 60))\n echo \"Sleeping \" $SLEEPTIME \" seconds...\"\n sleep $SLEEPTIME\n date\n echo \"Done...\"\n exit 0 \n[mmill116@login31 class-scripts]$ sbatch -a 1-10%4 -t 00:00:30 script1\nSubmitted batch job 1980474 \n\n[mmill116@login31 class-scripts]$ sacct -j 1980474\n JobID           JobName  Partition    Account  AllocCPUS      State ExitCode \n ------------ ---------- ---------- ---------- ---------- ---------- -------- \n 1980474_1       script1     shared      jhpce          2  COMPLETED      0:0 \n 1980474_1.b+      batch                 jhpce          2  COMPLETED      0:0 \n 1980474_1.e+     extern                 jhpce          2  COMPLETED      0:0 \n 1980474_2       script1     shared      jhpce          2    TIMEOUT      0:0 \n 1980474_2.b+      batch                 jhpce          2  CANCELLED     0:15\n\n. . .\n\n[mmill116@login31 class-scripts]$ cat slurm-1980474_2.out\nTue Feb 13 12:02:19 PM EST 2024\nI am now running on compute node:\ncompute-093.cm.cluster\nSleeping  71  seconds...\nslurmstepd: error: *** JOB 1980476 ON compute-093 \nCANCELLED AT 2024-02-13T12:03:27 DUE TO TIME LIMIT *** \n",
     "html": "<pre><span></span><code>[mmill116@login31 class-scripts]$ cat script1\n #!/bin/bash\n # Test script for JHPCE cluster\n date\n echo \"I am now running on compute node:\"\n hostname\n SLEEPTIME=$((20 + $RANDOM % 60))\n echo \"Sleeping \" $SLEEPTIME \" seconds...\"\n sleep $SLEEPTIME\n date\n echo \"Done...\"\n exit 0 \n[mmill116@login31 class-scripts]$ sbatch -a 1-10%4 -t 00:00:30 script1\nSubmitted batch job 1980474 \n\n[mmill116@login31 class-scripts]$ sacct -j 1980474\n JobID           JobName  Partition    Account  AllocCPUS      State ExitCode \n ------------ ---------- ---------- ---------- ---------- ---------- -------- \n 1980474_1       script1     shared      jhpce          2  COMPLETED      0:0 \n 1980474_1.b+      batch                 jhpce          2  COMPLETED      0:0 \n 1980474_1.e+     extern                 jhpce          2  COMPLETED      0:0 \n 1980474_2       script1     shared      jhpce          2    TIMEOUT      0:0 \n 1980474_2.b+      batch                 jhpce          2  CANCELLED     0:15\n\n. . .\n\n[mmill116@login31 class-scripts]$ cat slurm-1980474_2.out\nTue Feb 13 12:02:19 PM EST 2024\nI am now running on compute node:\ncompute-093.cm.cluster\nSleeping  71  seconds...\nslurmstepd: error: *** JOB 1980476 ON compute-093 \nCANCELLED AT 2024-02-13T12:03:27 DUE TO TIME LIMIT *** \n</code></pre>"
   },

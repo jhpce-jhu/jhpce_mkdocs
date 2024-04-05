@@ -4293,6 +4293,8 @@ sbatch --job-name=${A}.${b}.run --output=${A}.${b}.out --export=D=${A},f=${b} sc
 </code></pre><h2><a class="heading" href="../slurm/partitions">Partitions</a></h2><a class="url" href="../slurm/partitions">slurm/partitions/</a><pre><span></span><code>scontrol<span class="w"> </span>show<span class="w"> </span>partition<span class="w"> </span>partitionname
 </code></pre><h2><a class="heading" href="../slurm/qos">Quality of Service (QOS)</a></h2><a class="url" href="../slurm/qos">slurm/qos/</a><pre><span></span><code>scontrol<span class="w"> </span>show<span class="w"> </span>partition<span class="w"> </span>partitionname<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>-i<span class="w"> </span>qos
 </code></pre><h2><a class="heading" href="../slurm/time-limits">Time Limits</a></h2><a class="url" href="../slurm/time-limits">slurm/time-limits/</a><pre><span></span><code>Note: The following was largely written using ChatGPT.
+</code></pre><pre><span></span><code>scontrol<span class="w"> </span>update<span class="w"> </span><span class="nv">jobid</span><span class="o">=</span>&lt;jobid&gt;<span class="w"> </span><span class="nv">mailtype</span><span class="o">=</span>time_limit_80
+</code></pre><pre><span></span><code>scontrol<span class="w"> </span>update<span class="w"> </span><span class="nv">jobid</span><span class="o">=</span>&lt;jobid&gt;<span class="w"> </span><span class="nv">mailuser</span><span class="o">=</span>&lt;your-address@jh.edu&gt;
 </code></pre><pre><span></span><code>[mmill116@login31 class-scripts]$ cat script1
  #!/bin/bash
  # Test script for JHPCE cluster
