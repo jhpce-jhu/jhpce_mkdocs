@@ -211,7 +211,7 @@ Enter man signal for more information
 These can be useful to double-check what someone actually did.
 
 ```Shell title="See the full command issued to submit the job" linenums="0"
-sacct -o SubmitLine -j <jobid>
+sacct -o SubmitLine%250 -j <jobid> # may need to increase field width
 ```
 
 ```Shell title="See batch file used" linenums="0"

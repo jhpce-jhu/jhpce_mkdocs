@@ -79,12 +79,29 @@ scontrol update jobid=<jobid> mailuser=<your-address@jh.edu>
 
 ## Scontrol for Systems Administrators
 
+One can modify a number of overall configuration parameters normally defined in slurm.conf. However, this change is temporary, and will be overwritten whenever the daemon reads the slurm.conf configuration file.
+
 ```Shell title="Modify debug level" linenums="0"
-scontrol setdebug info # or verbose
+scontrol setdebug info [nodes=<nodelist>]
+# (info is our normal level, so please return to that after debugging)
+# values in order: quiet,fatal,error,info,verbose,debug,debug2 thru debug5
 ```
+If you specify any nodes, then that node's slurmd will be modified rather than the master slurmctld.
+
+```Shell title="Modify debug flags" linenums="0"
+scontrol setdebugflags + | - FLAG [nodes=<nodelist>]
+# The plus or minus is required
+# Possibly most interesting flags:
+# Backfill, BackfillMap, CPU_Bind, Gres, NodeFeatures, Priority, Reservation, Steps, TraceJobs
+```
+There is a warning that some debugflags require restarting slurmctld, which means using them requires editing slurm.conf. It would be nice if they told us which ones.
+
+If you specify any nodes, then that node's slurmd will be modified rather than the master slurmctld. It is unclear which flags will produce meaningful information on compute nodes since most often we are interested in the decisions made by the scheduler, which is in slurmctld.
+
 
 ```Shell title="Display running configuration" linenums="0"
 scontrol show config
+scontrol show config | grep -i debug # show debug, debugflags
 ```
 
 ```Shell title="Modify a partition" linenums="0"
