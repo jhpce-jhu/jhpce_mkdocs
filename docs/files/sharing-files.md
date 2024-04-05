@@ -128,7 +128,13 @@ find . -type d | xargs chmod u+rwx,g+rwx,g+s,o-rwx
 find . -type f | xargs chmod u+rwx,g+rw,o-rwx
 ```
 
+This version adds arguements to `find` and `xargs` which handle the case where files or directory names contain evil, no-good, awful characters like white space, quote marks, or backslashes:
 
+```Shell
+cd into-the-top-of-the-directory-tree
+find . -type d -print0 | xargs --null chmod u+rwx,g+rwx,g+s,o-rwx
+find . -type f -print0 | xargs --null chmod u+rwx,g+rw,o-rwx
+```
 
 ## Creating A Group Writable Directory
 

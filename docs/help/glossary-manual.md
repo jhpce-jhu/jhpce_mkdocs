@@ -5,6 +5,12 @@ Terms you might wonder about. If you don't find what you're looking for, please 
 **Absolute path**
 : A *path* which starts with a forward slash. Your shell (such as *bash*) interprets this location as starting with the root of the *file systems* on a *computer*. See also: *relative path*
 
+**ACE**
+: Access Control Entry. A component of an ACL. See [our ACL document](../files/acl.md).
+
+**ACL**
+: Access Control List. A collection of ACEs associated with a file or directory. Used to extend the normal UNIX permission scheme. See [our ACL document](../files/acl.md).
+
 **bash**
 : An example of a shell, which are programs which accept and process commands entered via text with a certain syntax, or set of rules. (Wikipedia [page](https://en.wikipedia.org/wiki/Bash_(Unix_shell)))
 
