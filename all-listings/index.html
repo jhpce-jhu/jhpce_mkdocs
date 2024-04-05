@@ -4105,6 +4105,14 @@ rsync -avzh /users/bob/src /dcs08/bob/dst
 </code></pre><pre><span></span><code><span class="k">if</span><span class="w"> </span><span class="o">[</span><span class="w"> </span>-f<span class="w"> </span>/etc/bashrc<span class="w"> </span><span class="o">]</span><span class="p">;</span><span class="w"> </span><span class="k">then</span>
 .<span class="w"> </span>/etc/bashrc
 <span class="k">fi</span>
+</code></pre><pre><span></span><code>[2970887:2970887:1024/152818.092311:ERROR:chrome_browser_cloud_management_controller.cc(163)] Cloud management controller initialization aborted as CBCM is not enabled.
+    [2970887:2971086:1024/152818.161869:ERROR:login_database.cc(922)] Password store database is too new, kCurrentVersionNumber=35, GetCompatibleVersionNumber=39
+    [2970887:2971087:1024/152818.164247:ERROR:login_database.cc(922)] Password store database is too new, kCurrentVersionNumber=35, GetCompatibleVersionNumber=39
+    [2970887:2971086:1024/152818.167534:ERROR:login_database_async_helper.cc(59)] Could not create/open login database.
+    [2970887:2971087:1024/152818.170351:ERROR:login_database_async_helper.cc(59)] Could not create/open login database.
+    [2970887:2970887:1024/152818.626429:ERROR:object_proxy.cc(590)] Failed to call method: org.freedesktop.portal.Settings.Read: object_path= /org/freedesktop/portal/desktop: org.freedesktop.portal.Error.NotFound: Requested setting not found
+libGL error: No matching fbConfigs or visuals found
+libGL error: failed to load driver: swrast
 </code></pre><pre><span></span><code>EnableEscapeCommandline=yes
 </code></pre><pre><span></span><code>$ ssh -X username@jhpce03.jhsph.edu -o ForwardX11Timeout=336h
 </code></pre><h2><a class="heading" href="../ourtools/features">Handy Features</a></h2><a class="url" href="../ourtools/features">ourtools/features/</a><pre class="mermaid"><code>graph LR
@@ -4343,7 +4351,7 @@ Exit codes 129-192 indicate jobs terminated by Linux signals
 For these, subtract 128 from the number and match to signal code
 Enter kill -l to list signal codes
 Enter man signal for more information
-</code></pre><pre><span></span><code>sacct<span class="w"> </span>-o<span class="w"> </span>SubmitLine<span class="w"> </span>-j<span class="w"> </span>&lt;jobid&gt;
+</code></pre><pre><span></span><code>sacct<span class="w"> </span>-o<span class="w"> </span>SubmitLine%250<span class="w"> </span>-j<span class="w"> </span>&lt;jobid&gt;<span class="w"> </span><span class="c1"># may need to increase field width</span>
 </code></pre><pre><span></span><code>sacct<span class="w"> </span>-B<span class="w"> </span>-j<span class="w"> </span>&lt;jobid&gt;
 </code></pre><pre><span></span><code>sacct<span class="w"> </span>-o<span class="w"> </span>WorkDir<span class="w"> </span>-j<span class="w"> </span>&lt;jobid&gt;
 </code></pre><pre><span></span><code>sacct<span class="w"> </span>-k<span class="w"> </span><span class="m">00</span>:01<span class="w"> </span>-K<span class="w"> </span><span class="m">1</span>-0
@@ -4397,8 +4405,15 @@ sacctmgr modify qos shared-default set MaxTRESPerUser=mem=524288 MaxTRESPerUser=
 </code></pre><pre><span></span><code>scontrol<span class="w"> </span>update<span class="w"> </span><span class="nv">jobid</span><span class="o">=</span>&lt;jobid&gt;<span class="w"> </span><span class="nv">MinMemoryNode</span><span class="o">=</span><span class="m">1024</span>
 </code></pre><pre><span></span><code>scontrol<span class="w"> </span>update<span class="w"> </span><span class="nv">jobid</span><span class="o">=</span>&lt;jobid&gt;<span class="w"> </span><span class="nv">mailtype</span><span class="o">=</span>time_limit_80
 </code></pre><pre><span></span><code>scontrol<span class="w"> </span>update<span class="w"> </span><span class="nv">jobid</span><span class="o">=</span>&lt;jobid&gt;<span class="w"> </span><span class="nv">mailuser</span><span class="o">=</span>&lt;your-address@jh.edu&gt;
-</code></pre><pre><span></span><code>scontrol<span class="w"> </span>setdebug<span class="w"> </span>info<span class="w"> </span><span class="c1"># or verbose</span>
+</code></pre><pre><span></span><code>scontrol<span class="w"> </span>setdebug<span class="w"> </span>info<span class="w"> </span><span class="o">[</span><span class="nv">nodes</span><span class="o">=</span>&lt;nodelist&gt;<span class="o">]</span>
+<span class="c1"># (info is our normal level, so please return to that after debugging)</span>
+<span class="c1"># values in order: quiet,fatal,error,info,verbose,debug,debug2 thru debug5</span>
+</code></pre><pre><span></span><code>scontrol<span class="w"> </span>setdebugflags<span class="w"> </span>+<span class="w"> </span><span class="p">|</span><span class="w"> </span>-<span class="w"> </span>FLAG<span class="w"> </span><span class="o">[</span><span class="nv">nodes</span><span class="o">=</span>&lt;nodelist&gt;<span class="o">]</span>
+<span class="c1"># The plus or minus is required</span>
+<span class="c1"># Possibly most interesting flags:</span>
+<span class="c1"># Backfill, BackfillMap, CPU_Bind, Gres, NodeFeatures, Priority, Reservation, Steps, TraceJobs</span>
 </code></pre><pre><span></span><code>scontrol<span class="w"> </span>show<span class="w"> </span>config
+scontrol<span class="w"> </span>show<span class="w"> </span>config<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>-i<span class="w"> </span>debug<span class="w"> </span><span class="c1"># show debug, debugflags</span>
 </code></pre><pre><span></span><code>scontrol<span class="w"> </span>update<span class="w"> </span><span class="nv">partitionname</span><span class="o">=</span>interactive<span class="w"> </span><span class="nv">allowqos</span><span class="o">=</span>normal,interactive-default
 </code></pre><pre><span></span><code>scontrol<span class="w"> </span>update<span class="w"> </span><span class="nv">nodename</span><span class="o">=</span>compute-112<span class="w"> </span><span class="nv">state</span><span class="o">=</span>resume<span class="w"> </span><span class="nv">reason</span><span class="o">=</span><span class="s2">"Fixed sssd problem"</span>
 </code></pre><pre><span></span><code>scontrol<span class="w"> </span>show<span class="w"> </span>reservation
@@ -4721,7 +4736,31 @@ When you are finished using Rstudio Server, type &lt;CTRL&gt;-C
 **~C**
 ssh&gt; **\-L 12345:compute-012:12345**
 Forwarding port.
-</code></pre><h2><a class="heading" href="../sw/sas-old">SAS</a></h2><a class="url" href="../sw/sas-old">sw/sas-old/</a><pre><span></span><code><span class="c1"># SAS routines for __interactive__ sessions where plotting is involved</span>
+</code></pre><h2><a class="heading" href="../sw/sas">SAS</a></h2><a class="url" href="../sw/sas">sw/sas/</a><pre><span></span><code>[test@login31 ~]$ srun --partition sas --mem 10G --x11 --pty bash
+srun: job 3178287 queued and waiting for resources
+srun: job 3178287 has been allocated resources
+
+[test@compute-101 ~]$ module load sas
+[test@compute-101 ~]$ module list
+
+Currently Loaded Modules:
+  1) JHPCE_ROCKY9_DEFAULT_ENV   2) JHPCE_tools/3.0   3) sas/9.4
+
+[test@compute-101 ~]$ sas
+</code></pre><pre><span></span><code>[test@login31 ~]$ srun --partition sas --mem 10G --x11 --pty bash
+srun: job 3178287 queued and waiting for resources
+srun: job 3178287 has been allocated resources
+
+[test@compute-101 ~]$ module load sas
+[test@compute-101 ~]$ module list
+
+Currently Loaded Modules:
+  1) JHPCE_ROCKY9_DEFAULT_ENV   2) JHPCE_tools/3.0   3) sas/9.4
+</code></pre><pre><span></span><code>sas -helpbrowser SAS -xrm "SAS.webBrowser:'/usr/bin/chromium-browser'" -xrm "SAS.helpBrowser:'/usr/bin/chromium-browser'"
+</code></pre><pre><span></span><code>sas -helpbrowser SAS -xrm "SAS.webBrowser:'/usr/bin/firefox'" -xrm "SAS.helpBrowser:'/usr/bin/firefox'"
+</code></pre><pre><span></span><code>csas
+</code></pre><pre><span></span><code>fsas
+</code></pre><pre><span></span><code><span class="c1"># SAS routines for __interactive__ sessions where plotting is involved</span>
 <span class="c1"># (because SAS generates HTML for the plots when run in interactive mode)</span>
 <span class="c1"># </span>
 <span class="c1"># (YOU HAVE TO RUN "module load SAS" before calling either of these routines)</span>
@@ -4733,28 +4772,6 @@ fsas<span class="o">()</span><span class="w"> </span><span class="o">{</span><sp
 <span class="c1"># If you want to use Chromium-browser as your web browser for SAS:</span>
 <span class="c1">#</span>
 csas<span class="o">()</span><span class="w"> </span><span class="o">{</span><span class="w"> </span>sas<span class="w"> </span>-helpbrowser<span class="w"> </span>SAS<span class="w"> </span>-xrm<span class="w"> </span><span class="s2">"SAS.webBrowser:'/usr/bin/chromium-browser'"</span><span class="w"> </span>-xrm<span class="w"> </span><span class="s2">"SAS.helpBrowser:'/usr/bin/chromium-browser'"</span><span class="w"> </span><span class="s2">"</span><span class="nv">$@</span><span class="s2">"</span><span class="w"> </span>&gt;<span class="w"> </span>/dev/null<span class="w"> </span><span class="m">2</span>&gt;<span class="p">&amp;</span><span class="m">1</span><span class="p">;</span><span class="w"> </span><span class="o">}</span>
-</code></pre><h2><a class="heading" href="../sw/sas">SAS</a></h2><a class="url" href="../sw/sas">sw/sas/</a><pre><span></span><code>[test@login31 ~]$ srun --partition sas --mem 10G --x11 --pty bash
-srun: job 3178287 queued and waiting for resources
-srun: job 3178287 has been allocated resources
-
-[test@compute-101 ~]$ module load sas
-[test@compute-101 ~]$ module list
-
-Currently Loaded Modules:
-  1) JHPCE_ROCKY9_DEFAULT_ENV   2) JHPCE_tools/3.0   3) sas/9.4
-
-[test@compute-101 ~]$ sas -helpbrowser SAS -xrm "SAS.webBrowser:'/usr/bin/chromium-browser'" -xrm "SAS.helpBrowser:'/usr/bin/chromium-browser'"
-
-## if you want to use Firefox as your web browser for SAS, run the following command instead
-[test@compute-101 ~]$ sas -helpbrowser SAS -xrm "SAS.webBrowser:'/usr/bin/firefox'" -xrm "SAS.helpBrowser:'/usr/bin/firefox'"
-</code></pre><pre><span></span><code>[2970887:2970887:1024/152818.092311:ERROR:chrome_browser_cloud_management_controller.cc(163)] Cloud management controller initialization aborted as CBCM is not enabled.
-[2970887:2971086:1024/152818.161869:ERROR:login_database.cc(922)] Password store database is too new, kCurrentVersionNumber=35, GetCompatibleVersionNumber=39
-[2970887:2971087:1024/152818.164247:ERROR:login_database.cc(922)] Password store database is too new, kCurrentVersionNumber=35, GetCompatibleVersionNumber=39
-[2970887:2971086:1024/152818.167534:ERROR:login_database_async_helper.cc(59)] Could not create/open login database.
-[2970887:2971087:1024/152818.170351:ERROR:login_database_async_helper.cc(59)] Could not create/open login database.
-[2970887:2970887:1024/152818.626429:ERROR:object_proxy.cc(590)] Failed to call method: org.freedesktop.portal.Settings.Read: object_path= /org/freedesktop/portal/desktop: org.freedesktop.portal.Error.NotFound: Requested setting not found
-libGL error: No matching fbConfigs or visuals found
-libGL error: failed to load driver: swrast
 </code></pre><pre><span></span><code>DATA CLASS;
      INPUT NAME $ 1-8 SEX $ 10 AGE 12-13 HEIGHT 15-16 WEIGHT 18-22;
 CARDS;

@@ -466,11 +466,6 @@
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://jhpce.jhu.edu/sw/sas-old/</loc>
-         <lastmod>2024-04-05</lastmod>
-         <changefreq>daily</changefreq>
-    </url>
-    <url>
          <loc>https://jhpce.jhu.edu/sw/sas/</loc>
          <lastmod>2024-04-05</lastmod>
          <changefreq>daily</changefreq>
