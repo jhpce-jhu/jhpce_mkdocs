@@ -1,5 +1,43 @@
+---
+tags:
+  - in-progress
+---
+
+# SAS
+
+## We Have A SAS Partition
+
+We have a limited number of licenses.
+
+Please use this partition by specifying `-p sas` when submitting your jobs. You can see the available resources in this partition with the command `slurmpic -p sas` If your job will not fit in the partition or you want to run your job in a PI partition you are authorized to use, you can use a different one.
+
+## Other ways to access SAS
+SAS is available in a virtual Windows environment called SAFE. For small jobs,
+or collaborating with others, or if you don't have SAS installed on your
+personal computer, you might want to register for this free service.
+
+[Here is a link](../access/access-overview.md#safe-desktop) to information about SAFE.
+
+## MarketScan Database
+
+Many of our SAS users work with this licensed database.
+
+### How To Get Permission To Access It
+Contact Jill Curran <jcurra14@jhmi.edu> in the Center for Drug Safety and Effectiveness.
+Her group controls the access to the Marketscan data on the JHPCE cluster.  They have some
+good guides on how the data is organized on the cluster.  She will then ask us to add you to
+the "alexander" UNIX group so you can see the database's files.
+
+### Where Is It Located?
+
+As of April 2024 it is located in `/dcl02/alexande/data/MARKETSCAN/`
+
 ## Using SAS interactively
 
+The amount of memory you request for your interactive session depends on the size of the data you will be manipulating.
+
+### Without Browser Support
+If you do not intend to do any *plotting* or use the *built-in help*, you can start sas with a simple "sas" command.
 ```
 [test@login31 ~]$ srun --partition sas --mem 10G --x11 --pty bash
 srun: job 3178287 queued and waiting for resources
@@ -11,24 +49,71 @@ srun: job 3178287 has been allocated resources
 Currently Loaded Modules:
   1) JHPCE_ROCKY9_DEFAULT_ENV   2) JHPCE_tools/3.0   3) sas/9.4
 
-[test@compute-101 ~]$ sas -helpbrowser SAS -xrm "SAS.webBrowser:'/usr/bin/chromium-browser'" -xrm "SAS.helpBrowser:'/usr/bin/chromium-browser'"
-
-## if you want to use Firefox as your web browser for SAS, run the following command instead
-[test@compute-101 ~]$ sas -helpbrowser SAS -xrm "SAS.webBrowser:'/usr/bin/firefox'" -xrm "SAS.helpBrowser:'/usr/bin/firefox'"
+[test@compute-101 ~]$ sas
 ```
 
+### With Browser Support
+
+To display either *built-in help* or *graphical output* when running SAS, you need to specify options to allow a web browser to be launched if called for.
+
+We recommend using the Chromium browser. Firefox is also available. 
+
 !!! Note "Note"  
-    - You may need to accept popups in the chromium/firefox browser that gets started in order to see the windows that SAS is trying to display  
-    - In the terminal session that you started “sas”, you may see messages similar to ones below.  These can be ignored because the browser wants to run on a local system with a graphics card, and the X11 session doesn’t allow that
-    ```
-    [2970887:2970887:1024/152818.092311:ERROR:chrome_browser_cloud_management_controller.cc(163)] Cloud management controller initialization aborted as CBCM is not enabled.
-    [2970887:2971086:1024/152818.161869:ERROR:login_database.cc(922)] Password store database is too new, kCurrentVersionNumber=35, GetCompatibleVersionNumber=39
-    [2970887:2971087:1024/152818.164247:ERROR:login_database.cc(922)] Password store database is too new, kCurrentVersionNumber=35, GetCompatibleVersionNumber=39
-    [2970887:2971086:1024/152818.167534:ERROR:login_database_async_helper.cc(59)] Could not create/open login database.
-    [2970887:2971087:1024/152818.170351:ERROR:login_database_async_helper.cc(59)] Could not create/open login database.
-    [2970887:2970887:1024/152818.626429:ERROR:object_proxy.cc(590)] Failed to call method: org.freedesktop.portal.Settings.Read: object_path= /org/freedesktop/portal/desktop: org.freedesktop.portal.Error.NotFound: Requested setting not found
-    libGL error: No matching fbConfigs or visuals found
-    libGL error: failed to load driver: swrast
+    - You may need to accept popups in the chromium/firefox browser that gets started in order to see the windows that SAS is trying to display.
+    - If you do not redirect standard output and standard error data streams, you will see a bunch of error messages. These can be ignored because the browser wants to run on a local system with a graphics card, and the our compute nodes don't have such cards or the software to support them.
+
+The initial steps are the same as we used before:
+```
+[test@login31 ~]$ srun --partition sas --mem 10G --x11 --pty bash
+srun: job 3178287 queued and waiting for resources
+srun: job 3178287 has been allocated resources
+
+[test@compute-101 ~]$ module load sas
+[test@compute-101 ~]$ module list
+
+Currently Loaded Modules:
+  1) JHPCE_ROCKY9_DEFAULT_ENV   2) JHPCE_tools/3.0   3) sas/9.4
+```
+
+Your next step is choose which SAS command to run and
+which optional arguements to give it to about your files or how you want SAS to behave.
+
+Choose one of the following variations (note that you can click on the faint pages icon at the right end of the section to copy the contents to your copy-and-paste buffer):
+
+``` title="Chrome, no I/O redirection"
+sas -helpbrowser SAS -xrm "SAS.webBrowser:'/usr/bin/chromium-browser'" -xrm "SAS.helpBrowser:'/usr/bin/chromium-browser'"
+```
+``` title="Firefox, no I/O redirection"
+sas -helpbrowser SAS -xrm "SAS.webBrowser:'/usr/bin/firefox'" -xrm "SAS.helpBrowser:'/usr/bin/firefox'"
+```
+
+``` title="Chrome, all I/O redirected to a black hole (see tip below)"
+csas
+```
+
+``` title="Firefox, all I/O redirected to a black hole (see tip below)"
+fsas
+```
+
+??? tip "Define these handy aliases for a better life"
+    Here is some code you can add to your .bashrc file which contain some convenient bash aliases for starting SAS with browser support configured. Once that becomes part of your environment (by sourcing the file (`. ~/.bashrc`) or by logging out and back in again), after loading the SAS module you can start SAS using either `csas` or `fsas` so that it can open the desired web browser if needed. These definitions include $@ symbols, which are replaced by any additional arguments to SAS that you provide. Note that you can click on the faint pages icon at the right end of the section to copy the contents to your copy-and-paste buffer.
+
+    !!! Warning
+    These definitions include optional syntax (`> /dev/null 2>&1`) which hide error messages. If you are having problems launching or using SAS, you may need to run SAS without that output redirection!!!! The ["srun half duplex"](../slurm/slurm-faq.md/#srun-error-_half_duplex) error is an example of such a case.
+
+    ```Shell
+    # SAS routines for __interactive__ sessions where plotting is involved
+    # (because SAS generates HTML for the plots when run in interactive mode)
+    # 
+    # (YOU HAVE TO RUN "module load SAS" before calling either of these routines)
+    #
+    # If you want to use Firefox as your web browser for SAS:
+    #
+    fsas() { sas -helpbrowser SAS -xrm "SAS.webBrowser:'/usr/bin/firefox'" -xrm "SAS.helpBrowser:'/usr/bin/firefox'" "$@" > /dev/null 2>&1; }
+    #
+    # If you want to use Chromium-browser as your web browser for SAS:
+    #
+    csas() { sas -helpbrowser SAS -xrm "SAS.webBrowser:'/usr/bin/chromium-browser'" -xrm "SAS.helpBrowser:'/usr/bin/chromium-browser'" "$@" > /dev/null 2>&1; }
     ```
 
 ## Running SAS job in batch mode

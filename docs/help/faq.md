@@ -9,6 +9,12 @@
     Nine times out of ten, the allegedly missing library is there. The problem is that your application is looking for the version of the library that is compatible with the old system software. It will not help to point your application to the new libraries. They are more than likely to be incompatible with the new system. The correct solution is to reinstall your software. If the problem persists after the reinstallation, then please contact us and we will install standard libraries that are actually missing.
 
 ## File Transfer
+- I cannot connect with SFTP in MobaXterm or other GUI program
+
+??? "Click to expand answer"
+    Because we use multifactor authentication (MFA), you need to configure your GUI program to either expect a prompt for a one time password (OTP) or be able to provide public key information.
+    In MobaXterm, when configuring an SFTP session, you need to check the "2-steps authentication" box under the Advanced Settings tab.
+
 - How do I copy a large directory structure from one place to another? Within the cluster? Into the cluster? Out of the cluster?
 
 ??? "Click to expand answer"
@@ -85,18 +91,57 @@
 ??? "Click to expand answer"
     Those errors are normal. RStudio expects to be run on a computer with an attached display driven by a local graphics processing card and supported by a set of graphics software libraries and device drivers. We don’t have such cards in our rack-mounted systems, nor the software that goes with them.
 
+## SAS
+
+We have a [SAS usage document](../sw/sas.md). Please read it for useful tips.
+
+- When running SAS, an error dialog pops up about Remote Browser
+
+??? "Click to expand answer"
+    When running SAS, you may need to specify options to indicate which browser to use when displaying either help or graphical output. We recommend using the Chromium browser.
+
+    See our [SAS usage document](../sw/sas.md) about how to resolve this issue.
+- When starting SAS in an interactive session with browser support enabled, a stream of error messages appear
+
+??? "Click to expand answer"
+    These can be ignored because the web browser wants to run on a local system with a graphics card, and the our compute nodes don't have such cards or the software to support them.
+
+    See our [SAS usage document](../sw/sas.md#with-browser-support) about redirecting output to resolve this issue.
+
+    Without redirecting standard output and standard error you will see messages similar to ones below:
+    ```
+    [2970887:2970887:1024/152818.092311:ERROR:chrome_browser_cloud_management_controller.cc(163)] Cloud management controller initialization aborted as CBCM is not enabled.
+        [2970887:2971086:1024/152818.161869:ERROR:login_database.cc(922)] Password store database is too new, kCurrentVersionNumber=35, GetCompatibleVersionNumber=39
+        [2970887:2971087:1024/152818.164247:ERROR:login_database.cc(922)] Password store database is too new, kCurrentVersionNumber=35, GetCompatibleVersionNumber=39
+        [2970887:2971086:1024/152818.167534:ERROR:login_database_async_helper.cc(59)] Could not create/open login database.
+        [2970887:2971087:1024/152818.170351:ERROR:login_database_async_helper.cc(59)] Could not create/open login database.
+        [2970887:2970887:1024/152818.626429:ERROR:object_proxy.cc(590)] Failed to call method: org.freedesktop.portal.Settings.Read: object_path= /org/freedesktop/portal/desktop: org.freedesktop.portal.Error.NotFound: Requested setting not found
+    libGL error: No matching fbConfigs or visuals found
+    libGL error: failed to load driver: swrast
+    ```
+
 ## Slurm
 - There is a dedicated [SLURM FAQ](../slurm/slurm-faq.md) document
 
 ## SSH
-- For a variety of questions about ssh - please see our [ssh document](../access/ssh.md).
+- For a variety of questions and information about ssh - please see our [ssh document](../access/ssh.md).
 
 - I’m on a Mac, and the ~C command to interrupt an ssh session isn’t working
+
 ??? "Click to expand answer"
     New versions of MacOS have disabled the ability to send an SSH Escape with `~C` (++tilde++ ++shift+c++). To reenable this, on you Mac, you need to set the `EnableEscapeCommandline` option. You can do this by either running `ssh -o EnableEscapeCommandline=yes . . .` or by editing your `~/.ssh/config` file, and at the top of that file add the line:
     ```
     EnableEscapeCommandline=yes
     ``` 
+- SSH "Bad owner or permissions"
+
+??? "Click to expand answer"
+    If you receive a message like "Bad owner or permissions on ~/.ssh/config" or continue to have to provide your password when ssh'ing to JHPCE when you think you have configured things to not need one, your file owner or permissions may be incorrect. See [this document](../access/ssh.md/#permissions-on-ssh-files) for answers.
+
+## Storage
+- I've deleted files but I'm still restricted by disk quota
+
+See [this document](../storage/quotas.md/#file-deletion-and-delayed-change-in-quota).
 
 ## X11
 - My X11 forwarding stops working after 20 minutes 

@@ -38,7 +38,7 @@ jsrun() { if [ -z ${DISPLAY} ]; then /usr/bin/srun --pty "$@" bash; else /usr/bi
 jxrun() { /usr/bin/srun --pty "$@" bash; }
 ```
 
-These examples inclue `$@` symbols, which are replaced by any additional arguments you provide. The srun command requires bash or another program to come last, which is one of the reasons why a simple shell alias can't be used. You have to create either a shell script or a routine.
+These examples include `$@` symbols, which are replaced by any additional arguments you provide. The srun command requires bash or another program to come last, which is one of the reasons why a simple shell alias can't be used. You have to create either a shell script or a routine.
 
 So you can use these functions like a normal srun command, e.g.
 
