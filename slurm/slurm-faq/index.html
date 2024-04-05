@@ -3776,7 +3776,7 @@ You can also submit jobs with <a href="https://slurm.schedmd.com/sbatch.html#OPT
 <li>Your code is doing something that you don't know about</li>
 </ul>
 <p>A combination of these two factors are almost always the reason for jobs running more slowly on the cluster than on a different resource.</p>
-<p>One example is Matlab code running on the cluster versus a modern laptop. Matlab implicitly performs some operations in parallel (e.g. matrix operations), spawning multiple thrads to accomplish this parallelization. If your resource request on the cluster only includes 1 or 2 CPU cores, no matter how many threads Matlab spawns, they will be pinned to the cores you were assigned.</p>
+<p>One example is Matlab code running on the cluster versus a modern laptop. Matlab implicitly performs some operations in parallel (e.g. matrix operations), spawning multiple threads to accomplish this parallelization. If your resource request on the cluster only includes 1 or 2 CPU cores, no matter how many threads Matlab spawns, they will be pinned to the cores you were assigned.</p>
 <p>This can lead to a situation where a user's Matlab code is running using all 4 CPU cores on their laptop, but only 1 CPU core on the cluster. This can give the impression that the cluster is slower than a laptop. By requesting 4 or 8 CPU cores in your resource request, Matlab can now run these operations in parallel.</p>
 <p>It is important to understand what the code or application you are using is actually doing when you run your job</p>
 </details>
