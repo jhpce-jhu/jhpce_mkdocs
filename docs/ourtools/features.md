@@ -158,8 +158,6 @@ This third example results in the whole rest of the document wrapped up to the r
 ![Image title](../files/images/dir-stack-push-pop.png){align=left} The text that you want to the right side of image.
 ```
 
-![Image title](../files/images/dir-stack-push-pop.png){align=left} The text that you want to the right side of image.
-
 ## **Keyboard meta keys**
 
 (enabled by the pymdownx.keys extension)
