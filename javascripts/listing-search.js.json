@@ -312,6 +312,30 @@
     "html": "<pre><span></span><code>tar -cbf 20480 - some-directory | ssh myaccount@another-host (cd /destination/place; tar -xbf 20480 -)\"\n</code></pre>"
   },
   {
+    "page_name": "Navigating Deep Directory Trees",
+    "page_url": "../files/deep-paths/",
+    "text": "lrwxr-xr-x\u00a0 1 tunison\u00a0 wheel\u00a0 8 Jan 11 10:12 newname@ -> realfile\n-rw-r--r--\u00a0 1 tunison\u00a0 wheel\u00a0 0 Jan 11 10:11 realfile\n",
+    "html": "<pre><span></span><code>lrwxr-xr-x<span class=\"w\">\u00a0 </span><span class=\"m\">1</span><span class=\"w\"> </span>tunison<span class=\"w\">\u00a0 </span>wheel<span class=\"w\">\u00a0 </span><span class=\"m\">8</span><span class=\"w\"> </span>Jan<span class=\"w\"> </span><span class=\"m\">11</span><span class=\"w\"> </span><span class=\"m\">10</span>:12<span class=\"w\"> </span>newname@<span class=\"w\"> </span>-&gt;<span class=\"w\"> </span>realfile\n-rw-r--r--<span class=\"w\">\u00a0 </span><span class=\"m\">1</span><span class=\"w\"> </span>tunison<span class=\"w\">\u00a0 </span>wheel<span class=\"w\">\u00a0 </span><span class=\"m\">0</span><span class=\"w\"> </span>Jan<span class=\"w\"> </span><span class=\"m\">11</span><span class=\"w\"> </span><span class=\"m\">10</span>:11<span class=\"w\"> </span>realfile\n</code></pre>"
+  },
+  {
+    "page_name": "Navigating Deep Directory Trees",
+    "page_url": "../files/deep-paths/",
+    "text": "mkdir ~/r\ncd ~/r\nln \u2013s /cms01/data/puf-free/VERICRED/2019 v2019\nln \u2013s /cms01/incoming/c-myjhed-98765 in\nln \u2013s ~/mycode/thatlanguage/src/yes-i-wrote-it pride-n-joy\n",
+    "html": "<pre><span></span><code>mkdir<span class=\"w\"> </span>~/r\n<span class=\"nb\">cd</span><span class=\"w\"> </span>~/r\nln<span class=\"w\"> </span>\u2013s<span class=\"w\"> </span>/cms01/data/puf-free/VERICRED/2019<span class=\"w\"> </span>v2019\nln<span class=\"w\"> </span>\u2013s<span class=\"w\"> </span>/cms01/incoming/c-myjhed-98765<span class=\"w\"> </span><span class=\"k\">in</span>\nln<span class=\"w\"> </span>\u2013s<span class=\"w\"> </span>~/mycode/thatlanguage/src/yes-i-wrote-it<span class=\"w\"> </span>pride-n-joy\n</code></pre>"
+  },
+  {
+    "page_name": "Navigating Deep Directory Trees",
+    "page_url": "../files/deep-paths/",
+    "text": "for i in /cms01/data /cms01/outgoing /users/55548 /cms01/incoming; do pushd -n $i 1>/dev/null;done\n",
+    "html": "<pre><span></span><code>for i in /cms01/data /cms01/outgoing /users/55548 /cms01/incoming; do pushd -n $i 1&gt;/dev/null;done\n</code></pre>"
+  },
+  {
+    "page_name": "Navigating Deep Directory Trees",
+    "page_url": "../files/deep-paths/",
+    "text": "[~]$ source .bashrc\n\n[~]$ dirs\n~ /cms01/incoming /users/55548 /cms01/outgoing /cms01/data\n\n[~]$ pushd +2\n/users/55548 /cms01/outgoing /cms01/data ~ /cms01/incoming\n\n[55548]$ pwd\n/users/55548\n\n[55548]$ dirs -v\n 0  /users/55548\n 1  /cms01/outgoing\n 2  /cms01/data\n 3  ~\n 4  /cms01/incoming\n",
+    "html": "<pre><span></span><code><span class=\"o\">[</span>~<span class=\"o\">]</span>$<span class=\"w\"> </span><span class=\"nb\">source</span><span class=\"w\"> </span>.bashrc\n\n<span class=\"o\">[</span>~<span class=\"o\">]</span>$<span class=\"w\"> </span><span class=\"nb\">dirs</span>\n~<span class=\"w\"> </span>/cms01/incoming<span class=\"w\"> </span>/users/55548<span class=\"w\"> </span>/cms01/outgoing<span class=\"w\"> </span>/cms01/data\n\n<span class=\"o\">[</span>~<span class=\"o\">]</span>$<span class=\"w\"> </span><span class=\"nb\">pushd</span><span class=\"w\"> </span>+2\n/users/55548<span class=\"w\"> </span>/cms01/outgoing<span class=\"w\"> </span>/cms01/data<span class=\"w\"> </span>~<span class=\"w\"> </span>/cms01/incoming\n\n<span class=\"o\">[</span><span class=\"m\">55548</span><span class=\"o\">]</span>$<span class=\"w\"> </span><span class=\"nb\">pwd</span>\n/users/55548\n\n<span class=\"o\">[</span><span class=\"m\">55548</span><span class=\"o\">]</span>$<span class=\"w\"> </span><span class=\"nb\">dirs</span><span class=\"w\"> </span>-v\n<span class=\"w\"> </span><span class=\"m\">0</span><span class=\"w\">  </span>/users/55548\n<span class=\"w\"> </span><span class=\"m\">1</span><span class=\"w\">  </span>/cms01/outgoing\n<span class=\"w\"> </span><span class=\"m\">2</span><span class=\"w\">  </span>/cms01/data\n<span class=\"w\"> </span><span class=\"m\">3</span><span class=\"w\">  </span>~\n<span class=\"w\"> </span><span class=\"m\">4</span><span class=\"w\">  </span>/cms01/incoming\n</code></pre>"
+  },
+  {
     "page_name": "Files Overview",
     "page_url": "../files/files-overview/",
     "text": "getconf NAME_MAX /\ngetconf PATH_MAX /\n",
@@ -488,6 +512,12 @@
   {
     "page_name": "Handy Features",
     "page_url": "../ourtools/features/",
+    "text": "cd jhpce_mkdocs\nfind . -type f -name \\*.md -exec grep -il \"www.jhpce.jhu.edu\" {} \\;\nfind . -type f -name \\*.md -exec sed -i '' \"s/www.jhpce.jhu.edu/jhpce-old.jhu.edu/g\" {} \\;\nfind . -type f -name \\*.md -exec grep -il \"jhpce-old.jhu.edu\" {} \\; | xargs git add\n",
+    "html": "<pre><span></span><code><span class=\"nb\">cd</span><span class=\"w\"> </span>jhpce_mkdocs\nfind<span class=\"w\"> </span>.<span class=\"w\"> </span>-type<span class=\"w\"> </span>f<span class=\"w\"> </span>-name<span class=\"w\"> </span><span class=\"se\">\\*</span>.md<span class=\"w\"> </span>-exec<span class=\"w\"> </span>grep<span class=\"w\"> </span>-il<span class=\"w\"> </span><span class=\"s2\">\"www.jhpce.jhu.edu\"</span><span class=\"w\"> </span><span class=\"o\">{}</span><span class=\"w\"> </span><span class=\"se\">\\;</span>\nfind<span class=\"w\"> </span>.<span class=\"w\"> </span>-type<span class=\"w\"> </span>f<span class=\"w\"> </span>-name<span class=\"w\"> </span><span class=\"se\">\\*</span>.md<span class=\"w\"> </span>-exec<span class=\"w\"> </span>sed<span class=\"w\"> </span>-i<span class=\"w\"> </span><span class=\"s1\">''</span><span class=\"w\"> </span><span class=\"s2\">\"s/www.jhpce.jhu.edu/jhpce-old.jhu.edu/g\"</span><span class=\"w\"> </span><span class=\"o\">{}</span><span class=\"w\"> </span><span class=\"se\">\\;</span>\nfind<span class=\"w\"> </span>.<span class=\"w\"> </span>-type<span class=\"w\"> </span>f<span class=\"w\"> </span>-name<span class=\"w\"> </span><span class=\"se\">\\*</span>.md<span class=\"w\"> </span>-exec<span class=\"w\"> </span>grep<span class=\"w\"> </span>-il<span class=\"w\"> </span><span class=\"s2\">\"jhpce-old.jhu.edu\"</span><span class=\"w\"> </span><span class=\"o\">{}</span><span class=\"w\"> </span><span class=\"se\">\\;</span><span class=\"w\"> </span><span class=\"p\">|</span><span class=\"w\"> </span>xargs<span class=\"w\"> </span>git<span class=\"w\"> </span>add\n</code></pre>"
+  },
+  {
+    "page_name": "Handy Features",
+    "page_url": "../ourtools/features/",
     "text": "graph LR\n   A[Your computer] --> B[Login nodes]\n   B[Login nodes] --> C[(Compute nodes)]",
     "html": "<pre class=\"mermaid\"><code>graph LR\n   A[Your computer] --&gt; B[Login nodes]\n   B[Login nodes] --&gt; C[(Compute nodes)]</code></pre>"
   },
@@ -502,6 +532,30 @@
     "page_url": "../ourtools/features/",
     "text": "---\ntags:\n  - done\n  - needs-review\n  - in-progress\n  - needs-improvement-later\n  - contains-refs-to-old-site\n  - last-revised-20240210\n  - jeffrey\n  - mark\n  - jiong\n  - adi\n  - brian\n---\n",
     "html": "<pre><span></span><code>---\ntags:\n  - done\n  - needs-review\n  - in-progress\n  - needs-improvement-later\n  - contains-refs-to-old-site\n  - last-revised-20240210\n  - jeffrey\n  - mark\n  - jiong\n  - adi\n  - brian\n---\n</code></pre>"
+  },
+  {
+    "page_name": "Handy Features",
+    "page_url": "../ourtools/features/",
+    "text": "![Image title](https://dummyimage.com/600x400/eee/aaa){ align=left }\n",
+    "html": "<pre><span></span><code>![<span class=\"nt\">Image title</span>](<span class=\"na\">https://dummyimage.com/600x400/eee/aaa</span>){ align=left }\n</code></pre>"
+  },
+  {
+    "page_name": "Handy Features",
+    "page_url": "../ourtools/features/",
+    "text": "![Image title](../files/images/dir-stack-push-pop.png)\n",
+    "html": "<pre><span></span><code>![Image title](../files/images/dir-stack-push-pop.png)\n</code></pre>"
+  },
+  {
+    "page_name": "Handy Features",
+    "page_url": "../ourtools/features/",
+    "text": "![Image title](../files/images/dir-stack-push-pop.png) The text that you want to the right side of image.\n",
+    "html": "<pre><span></span><code>![Image title](../files/images/dir-stack-push-pop.png) The text that you want to the right side of image.\n</code></pre>"
+  },
+  {
+    "page_name": "Handy Features",
+    "page_url": "../ourtools/features/",
+    "text": "![Image title](../files/images/dir-stack-push-pop.png){align=left} The text that you want to the right side of image.\n",
+    "html": "<pre><span></span><code>![Image title](../files/images/dir-stack-push-pop.png){align=left} The text that you want to the right side of image.\n</code></pre>"
   },
   {
     "page_name": "Handy Features",
@@ -562,6 +616,18 @@
     "page_url": "../ourtools/features/",
     "text": "TypeError: '<' not supported between instances of 'NoneType' and 'str'\nERROR   -  [14:46:28] An error happened during the rebuild. The server will appear\n           stuck until build errors are resolved.\n",
     "html": "<pre><span></span><code>TypeError:<span class=\"w\"> </span><span class=\"s1\">'&lt;'</span><span class=\"w\"> </span>not<span class=\"w\"> </span>supported<span class=\"w\"> </span>between<span class=\"w\"> </span>instances<span class=\"w\"> </span>of<span class=\"w\"> </span><span class=\"s1\">'NoneType'</span><span class=\"w\"> </span>and<span class=\"w\"> </span><span class=\"s1\">'str'</span>\nERROR<span class=\"w\">   </span>-<span class=\"w\">  </span><span class=\"o\">[</span><span class=\"m\">14</span>:46:28<span class=\"o\">]</span><span class=\"w\"> </span>An<span class=\"w\"> </span>error<span class=\"w\"> </span>happened<span class=\"w\"> </span>during<span class=\"w\"> </span>the<span class=\"w\"> </span>rebuild.<span class=\"w\"> </span>The<span class=\"w\"> </span>server<span class=\"w\"> </span>will<span class=\"w\"> </span>appear\n<span class=\"w\">           </span>stuck<span class=\"w\"> </span><span class=\"k\">until</span><span class=\"w\"> </span>build<span class=\"w\"> </span>errors<span class=\"w\"> </span>are<span class=\"w\"> </span>resolved.\n</code></pre>"
+  },
+  {
+    "page_name": "Handy Features",
+    "page_url": "../ourtools/features/",
+    "text": "```\nContents for Mac users\n```\n",
+    "html": "<pre><span></span><code>```\nContents for Mac users\n```\n</code></pre>"
+  },
+  {
+    "page_name": "Handy Features",
+    "page_url": "../ourtools/features/",
+    "text": "```\nContents for Mac users\n```\n",
+    "html": "<pre><span></span><code>```\nContents for Mac users\n```\n</code></pre>"
   },
   {
     "page_name": "Tips & Conventions",
