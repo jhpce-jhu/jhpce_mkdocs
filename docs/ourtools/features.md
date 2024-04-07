@@ -545,9 +545,9 @@ An example idea is to divide up some information into Linux, Mac, and Windows se
 
 Tabs are created with the same syntax as an admonition or detail but use equal signs.
 
-There has to be a blank line before the beginning of (adminiton, detail, tab)
+There has to be a blank line before the beginning of (admonition, detail, tab)
 
-Everything has to be indented FOUR SPACES (not a tab char) inside of (adminiton, detail, tab)
+Everything has to be indented FOUR SPACES (not a tab char) inside of (admonition, detail, tab)
 
 ### Simple example of tabs
 
@@ -568,7 +568,7 @@ This example contains one or two lines of text. The default tab is the left-most
 
 Everything has to be indented FOUR SPACES (not a tab char) inside of the tab you are creating
 
-So when inside of an (adminiton, detail, tab) therefore tab contents are all indented EIGHT spaces. (Yes, you can have tabs inside of tabs.)
+So when inside of an (admonition, detail, tab) therefore tab contents are all indented EIGHT spaces. (Yes, you can have tabs inside of tabs.)
 
 These examples contain code blocks.
 
