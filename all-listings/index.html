@@ -1437,6 +1437,8 @@ storage array. We are working on this issue and will provide updates as the situ
       
         
       
+        
+      
     
     
       
@@ -1546,6 +1548,124 @@ storage array. We are working on this issue and will provide updates as the situ
   
 
       </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1_7_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_1_7_5" id="__nav_1_7_5_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Rsync: A Key File Mgmt Tool
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_1_7_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_1_7_5">
+            <span class="md-nav__icon md-icon"></span>
+            Rsync: A Key File Mgmt Tool
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../files/rsync/" class="md-nav__link">
+        
+  
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0 8a5 5 0 0 1-5-5 5 5 0 0 1 5-5 5 5 0 0 1 5 5 5 5 0 0 1-5 5m0-12.5C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5c-1.73-4.39-6-7.5-11-7.5Z"/></svg>
+  
+  <span class="md-ellipsis">
+    Using Rsync
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../files/rsync-itemize-table/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Itemize Output Key
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../files/rsync-itemize-manpage/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Itemize Manual Page
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
     </li>
   
 
@@ -3699,7 +3819,7 @@ ln<span class="w"> </span>–s<span class="w"> </span>~/mycode/thatlanguage/src/
 <span class="w"> </span><span class="m">4</span><span class="w">  </span>/cms01/incoming
 </code></pre><h2><a class="heading" href="../files/files-overview">Files Overview</a></h2><a class="url" href="../files/files-overview">files/files-overview/</a><pre><span></span><code>getconf NAME_MAX /
 getconf PATH_MAX /
-</code></pre><h2><a class="heading" href="../files/rsync-itemize-manpage">Rsync itemized output manual page section</a></h2><a class="url" href="../files/rsync-itemize-manpage">files/rsync-itemize-manpage/</a><pre><span></span><code>The  "%i"  escape  has a cryptic output that is 11 letters long.
+</code></pre><h2><a class="heading" href="../files/rsync-itemize-manpage">Itemize Manual Page</a></h2><a class="url" href="../files/rsync-itemize-manpage">files/rsync-itemize-manpage/</a><pre><span></span><code>The  "%i"  escape  has a cryptic output that is 11 letters long.
 The general format is like the string YXcstpoguax,  where  Y  is
 replaced  by the type of update being done, X is replaced by the
 file-type, and the other letters represent attributes  that  may
@@ -3791,9 +3911,9 @@ o      The  x  means  that the extended attribute information is
        being changed.
 
 One other output is possible: when deleting files, the "%i" will output  the  string  "*deleting" for each item that is being removed (assuming that you are talking to a  recent  enough  rsync that  it  logs deletions instead of outputting them as a verbose message).
-</code></pre><h2><a class="heading" href="../files/rsync-itemize-table">Meaning of rsync itemized output</a></h2><a class="url" href="../files/rsync-itemize-table">files/rsync-itemize-table/</a><pre><span></span><code>  YXcstpoguax  path/to/file
+</code></pre><h2><a class="heading" href="../files/rsync-itemize-table">Itemize Output Key</a></h2><a class="url" href="../files/rsync-itemize-table">files/rsync-itemize-table/</a><pre><span></span><code>  YXcstpoguax  path/to/file
   |||||||||||
-  `----------- the type of update being done::
+  `----------- the TYPE OF UPDATE being done::
    ||||||||||   &lt;: file is being transferred to the remote host (sent).
    ||||||||||   &gt;: file is being transferred to the local host (received).
    ||||||||||   c: local change/creation for the item, such as:
@@ -3801,13 +3921,12 @@ One other output is possible: when deleting files, the "%i" will output  the  st
    ||||||||||      - the changing of a symlink,
    ||||||||||      - etc.
    ||||||||||   h: the item is a hard link to another item (requires
-  --hard-links).
-   ||||||||||   .: the item is not being updated (though it might have attributes
-  that are being modified).
-   ||||||||||   *: means that the rest of the itemized-output area contains a
-  message (e.g. "deleting").
+  --hard-links). 
+   ||||||||||   "+" - the file is newly created
+   ||||||||||   .: the item is not being updated (though it might have attributes that are being modified).
+   ||||||||||   *: means that the rest of the itemized-output area contains a message (e.g. "deleting").
    ||||||||||
-   `---------- the file type:
+   `---------- the FILE TYPE:
     |||||||||   f for a file,
     |||||||||   d for a directory,
     |||||||||   L for a symlink,
@@ -3815,7 +3934,7 @@ One other output is possible: when deleting files, the "%i" will output  the  st
     |||||||||   S for a special file (e.g. named sockets and fifos).
     |||||||||
     `--------- c: different checksum (for regular files)
-     ||||||||     changed value (for symlink, device, and special file)
+     ||||||||     CHANGED VALUE (for symlink, device, and special file)
      `-------- s: Size is different
       `------- t: Modification time is different
        `------ p: Permission are different
@@ -3823,6 +3942,54 @@ One other output is possible: when deleting files, the "%i" will output  the  st
          `---- g: Group is different
           `--- u: The u slot is reserved for future use.
            `-- a: The ACL information changed
+</code></pre><h2><a class="heading" href="../files/rsync">Using Rsync</a></h2><a class="url" href="../files/rsync">files/rsync/</a><pre><span></span><code>rsync -a --verbose --dryrun --stats /local1 /other2
+</code></pre><pre><span></span><code>rsync -avz --include='*.txt' /src /dest
+</code></pre><pre><span></span><code>rsync -avhAXH --progress --numeric-ids --sparse --one-file-system --stats --delete-after
+</code></pre><pre><span></span><code>--archive, -a            archive mode; equals -rlptgoD (no -H,-A,-X)
+
+--acls, -A               preserve ACLs (implies --perms)
+--xattrs, -X             preserve extended attributes
+--hard-links, -H                       preserve hard links
+
+--exclude-from={'list.txt'}.        there is a corresponding --include-from
+--exclude={'*.txt','dir3','dir4'}   there is a corresponding --include
+
+--dry-run, -n            perform a trial run with no changes made
+--list-only              list the files instead of copying them
+--ignore-existing        don't overwrite existing files, no matter what
+--max-delete=NUM         don't delete more than NUM files (SET TO 0 OR LOW NUMBER FOR SAFETY)
+--one-file-system, -x    ensure that you stay inside the SRC file system 
+
+--atimes -U              preserve access (use) times
+--crtimes, -N            preserve create times (newness)
+--times, -t              preserve modification times
+
+--numeric-ids            don't map uid/gid values by user/group name (more efficient)
+--delete-after           wait until end to process deletes (much more efficient than deleting during)
+--partial                allows you to resume an interrupted transfer
+
+--progress               show which file is being copied (not stored in log file!!)
+--itemize-changes, -i    output a change-summary for all updates 
+                         has complex output. (see below for a link)
+--log-file=FILE          useful when using --itemize
+--verbose, -v            increase verbosity
+--info=FLAGS             fine-grained informational verbosity
+--human-readable, -h     output numbers in a human-readable format
+--stats                  provide statistics at the end
+
+--size-only              skip files that match in size (know what you're doing)
+--ignore-times, -I       don't skip files that match size and time (when in doubt...)
+--checksum -c            skip based on checksums, not mod-time &amp; size
+
+--sparse                 turn sequences of nulls into sparse blocks
+--bwlimit                limit the impact of the rsync on the network (in kb/sec)
+
+--chmod=CHMOD            affect file and/or directory permissions
+--usermap=STRING         custom username mapping 
+--groupmap=STRING        custom groupname mapping (STRING is not simply
+--chown=USER:GROUP       simple username/groupname mapping 
+</code></pre><pre><span></span><code>tar -cbf 20480 - some-directory | (cd /destination/place; tar -xbf 20480 -)
+</code></pre><pre><span></span><code>tar -cbf 20480 - some-directory | ssh myaccount@another-host (cd /destination/place; tar -xbf 20480 -)"
 </code></pre><h2><a class="heading" href="../files/sharing-files">Sharing Files</a></h2><a class="url" href="../files/sharing-files">files/sharing-files/</a><pre><span></span><code><span class="nb">cd</span><span class="w"> </span>into-the-top-of-the-directory-tree
 find<span class="w"> </span>.<span class="w"> </span>-type<span class="w"> </span>d<span class="w"> </span><span class="p">|</span><span class="w"> </span>xargs<span class="w"> </span>chmod<span class="w"> </span>u+rwx,g+rwx,g+s,o-rwx
 find<span class="w"> </span>.<span class="w"> </span>-type<span class="w"> </span>f<span class="w"> </span><span class="p">|</span><span class="w"> </span>xargs<span class="w"> </span>chmod<span class="w"> </span>u+rwx,g+rw,o-rwx

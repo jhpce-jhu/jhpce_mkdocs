@@ -121,6 +121,11 @@
          <changefreq>daily</changefreq>
     </url>
     <url>
+         <loc>https://jhpce.jhu.edu/files/rsync/</loc>
+         <lastmod>2024-04-07</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
          <loc>https://jhpce.jhu.edu/files/sharing-files/</loc>
          <lastmod>2024-04-07</lastmod>
          <changefreq>daily</changefreq>
