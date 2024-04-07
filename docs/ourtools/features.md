@@ -25,10 +25,12 @@ It isn't clear how much caution one should use in consulting MkDocs documents an
 ## Modifying text patterns across the site
 Example of changing all markdown files in a copy of the git repo:
 
-1. cd jhpce_mkdocs
-2. find . -type f -name \*.md -exec grep -il "www.jhpce.jhu.edu" {} \;
-3. find . -type f -name \*.md -exec sed -i '' "s/www.jhpce.jhu.edu/jhpce-old.jhu.edu/g" {} \;
-4. find . -type f -name \*.md -exec grep -il "jhpce-old.jhu.edu" {} \; | xargs git add
+```shell
+cd jhpce_mkdocs
+find . -type f -name \*.md -exec grep -il "www.jhpce.jhu.edu" {} \;
+find . -type f -name \*.md -exec sed -i '' "s/www.jhpce.jhu.edu/jhpce-old.jhu.edu/g" {} \;
+find . -type f -name \*.md -exec grep -il "jhpce-old.jhu.edu" {} \; | xargs git add
+```
 
 ## Diagramming with Mermaid
 
@@ -117,6 +119,40 @@ tags:
 ```
 ## Internal links
 From [this mkdocs](https://www.mkdocs.org/user-guide/writing-your-docs/#writing-with-markdown) page JRT learned that {==you can specify anchor points to document sections by knowing that they are converted to lowercase and white space is replaced by dashes.==} So this very section, named "Internal links" can be specified as a link to "../ourtools/features.md#internal-links" (in a different document) or "#internal-links" (inside the same document).
+
+## Working with image files
+
+Key information for doing things like aligning, adding captions, ...
+
+[https://squidfunk.github.io/mkdocs-material/reference/images/](https://squidfunk.github.io/mkdocs-material/reference/images/)
+
+There is no center alignment. You can fake it by adding a caption to the image (see example in above page)
+
+```markdown title="Alight to the left or right like this"
+![Image title](https://dummyimage.com/600x400/eee/aaa){ align=left }
+```
+Hmmm, if Jeffrey tries to use that syntax then the rest of the text in this document is placed to the right of the image, even including the next section ("Keyboard meta keys"). How do you indicate a break between the text that you want wrapped on the right and the rest of the document?
+
+This first example places the image to the left (without any align option)
+
+```
+![Image title](../files/images/dir-stack-push-pop.png)
+```
+![Image title](../files/images/dir-stack-push-pop.png)
+
+This second example places the image to the left (without any align option), puts the text I want to the right of it (but no more text!!!)
+
+```
+![Image title](../files/images/dir-stack-push-pop.png) The text that you want to the right side of image.
+```
+
+![Image title](../files/images/dir-stack-push-pop.png) The text that you want to the right side of image.
+
+This third example results in the whole rest of the document wrapped up to the right of the image. (So I didn't actually put the live code in the document).
+
+```
+![Image title](../files/images/dir-stack-push-pop.png){align=left} The text that you want to the right side of image.
+```
 
 ## Keyboard meta keys
 
@@ -462,3 +498,58 @@ Does automatic pattern matching for syntax. Includes a command line program to u
 One flaw in this program is that sometimes the source code pane is blank when you open existing documents. The solution is to quit the program and launch it again. The fast workaround is to grow and shrink the document width and the dividing line between the source and rendered document panes.
 
 You can install it by download via the web or with Homebrew with `brew install --cask macdown` Stats on [its page ](https://formulae.brew.sh/cask/macdown)indicate some popularity.
+
+
+## Page Status
+
+You can add icons to pages in two ways by modifying the frontmatter of a page.
+
+Basic documentation for this: https://github.com/squidfunk/mkdocs-material/blob/master/docs/reference/index.md
+
+These show up in the nav bar. Whereas page tags as we are currently using in 04/2004 do not. Would be nice to signal more clearly to users that something was under heavy construction (because they don't necessarily understand the import of the tags, so unless you put in an authoring note at the top...)  Tags are nice to have, too, because they create a sorted list of pages to visit via simple clicks.
+
+
+### Page Icons
+One is by defining an "icon"in the frontmatter for each document
+
+This appears to the left of the page title in the nav bar. I'd rather it be on the right!!!
+
+There are MANY interesting icons you can use.
+
+### Page Status
+
+One is by defining a "status" in the frontmatter for each document
+But the only three icons available are LAME LAME LAME in both resolution and appeal
+
+You can define a new icon to go with a status, but how to do that in the css file isn't clear from the 
+
+docs/stylesheets/extra.css
+
+This page goes the furthest to document exactly how to do this, although they used this to define the word BETA rather than using an icon.
+https://www.starfallprojects.co.uk/blog/material-custom-status/#enable-the-feature
+
+https://squidfunk.github.io/mkdocs-material/customization/#additional-css
+
+## Tabs
+(These don't seem to render correctly in MacDown)
+
+Jeffrey doesn't quite understand **where** we would use these yet. But they're very neat. They make web pages more compact, because you can cover a multipart topic in the same amount of vertical space, and it's intuitive to click on what you need.
+
+[tabs documentation](https://squidfunk.github.io/mkdocs-material/reference/content-tabs/#content-tabs)
+
+An example idea is to divide up some information into Linux, Mac, and Windows sections.
+
+
+Here is an [example](https://squidfunk.github.io/mkdocs-material/reference/content-tabs/#embedded-content-ordered-list) of a pair of tabs _inside_ an admonition.
+
+=== "Mac Way"
+
+    ```
+    Contents for Mac users
+    ```
+
+=== "Windows Way"
+
+    ```
+    Contents for Mac users
+    ```

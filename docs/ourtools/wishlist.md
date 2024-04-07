@@ -6,7 +6,7 @@ This [best-of-mkdocs](https://github.com/mkdocs/catalog) is updated regularly an
 This [page](https://chrieke.medium.com/the-best-mkdocs-plugins-and-customizations-fc820eb19759) has a number of recommendations that I find interesting. As always, one has to consider whether something is the best-in-class. The PDF export link below for example hasn't been updated in years. Is it still the right choice? Maybe.
 Mermaid graph generation plugin, [PDF export](https://github.com/zhaoterryy/mkdocs-pdf-export-plugin), page redirects, exclude and exclude-from-search, Jupyter notebook
 
-## Multi-line column headers
+## Tables: Multi-line column headers
 Maybe this is possible. Would be nice to be able to use more words-per-column without forcing the table to be pushed out and require the use of a scrollbar.
 
 ## Absolute paths
@@ -15,7 +15,7 @@ Right now you have to use relative paths, which is just prone to more errors.
 
 20240317 - JRT noticed that Adi's use of absolute paths for web portal images were rendered on the web site but not when viewed through a "mkdocs serve" session. He changed those links to be relative.
 
-## Sortable tables
+## Tables: Sortable tables
 (Adi has enabled) (but there are other options we might want to enable)
 
 They are possible. Might require an extension or plugin.
@@ -80,12 +80,11 @@ This is enabled by adding a line to the plugins stanza
 `- blog`
 
 ## last-modified dates on documents
+(Adi added this. Jeffrey added the info to the "mkdocs serve" recipe in features.md)
 This might be provided by multiple plugins out in the world.
 The one that might be the most common is "git-revision-date-localized"
 
 ## Glossary
 There's a way to create a document which is automatically updated when people define [abbrieviations](features.md#abbrieviations).
+Jeffrey created a glossary by hand.
 
-## Tabs
-Jeffrey doesn't quite understand where we would use these yet. But they're very neat. [tabs documentation](https://squidfunk.github.io/mkdocs-material/reference/content-tabs/#content-tabs)
-Here is an [example](https://squidfunk.github.io/mkdocs-material/reference/content-tabs/#embedded-content-ordered-list) of a pair of tabs _inside_ an admonition.

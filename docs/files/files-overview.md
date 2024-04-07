@@ -98,3 +98,11 @@ Further information about this topic can be found in [this document](../storage/
 ## Data Protection Policies
 
 We will be publishing information  about cluster and university policies for the protection of certain classes of information in [this document](../files/data-security.md). 
+
+## Navigating Deep Directory Trees
+
+Many researchers use directory and file names to create logical structures of significant complexity to organize their files.  The complexity increases over time as new projects and data sets come along. Long file or directory names are used to make things as self-obvious as possible.
+
+It can be a hassle to move around quickly and efficiently between directories you are frequently using. 
+
+If you have to switch between two directories with long paths, the techniques in [this document](../files/deep-paths.md) can make life better.

@@ -29,6 +29,7 @@ nav:
       - External Guides: help/external.md
       - Glossary: help/glossary-manual.md
       - Tagged Files: ourtools/tags.md
+      - How to read a manual page (pdf): help/images/guide-to-manual-pages.pdf
       - Tools For Site Developers: 
          - Handy Features: ourtools/features.md
          - Tips & Conventions: ourtools/tips-conventions.md
@@ -49,6 +50,7 @@ nav:
       - ACL: files/acl.md
       - Copying within cluster: files/copying-files.md
       - Archive Files: files/archive-files.md
+      - Navigating Deep Directory Trees: files/deep-paths.md
       - Data Security: files/data-security.md
     # should storage be a subsidiary of managing files?
     - Storage:
@@ -77,6 +79,7 @@ nav:
         - R Packages: sw/r-pkg.md
         - Singularity: sw/singularity.md
       - JHPCE-created: sw/locally-written.md
+      - Helpful GUI Programs: sw/gui-tools.md
     - Job scheduler (SLURM): 
       - Getting Started: slurm/getting-started.md
       - Partitions: slurm/partitions.md
@@ -103,9 +106,6 @@ nav:
         - Alphafold: gpu/alphafold.md
       - VS Code: sw/vscode.md
       - Cost Calculator: help/cost-calculator.md
-      - How to read a manual page (pdf): help/images/guide-to-manual-pages.pdf
-      - Navigating Deep Directory Trees (pdf): files/images/pushd-popd-dirs.pdf
-      - Helpful GUI Programs: sw/gui-tools.md
     - Web Portal:
       - GUI Applications: portal/web-apps.md
       - Datacatalog: portal/datacatalog.md
@@ -227,11 +227,13 @@ markdown_extensions:
           format: !!python/name:pymdownx.superfences.fence_code_format
   - pymdownx.details # makes the resulting admonitions call-outs collapsible
   - abbr # Abbreviations and optional glossery
-  - attr_list
+  # https://squidfunk.github.io/mkdocs-material/setup/extensions/python-markdown/#attribute-lists
+  - attr_list # Enable addition of HTML to almost any kind of Markdown element
   - def_list # Definition lists
   - footnotes
+  # https://squidfunk.github.io/mkdocs-material/setup/extensions/python-markdown/#markdown-in-html
   # https://squidfunk.github.io/mkdocs-material/reference/grids/
-  - md_in_html # added to support grids for the home page
+  - md_in_html # added to support grids for the home page. related to attr_list
   - tables
   # TABLE OF CONTENTS
   # https://squidfunk.github.io/mkdocs-material/setup/extensions/python-markdown/#table-of-contents
