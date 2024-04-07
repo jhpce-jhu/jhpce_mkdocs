@@ -1,6 +1,5 @@
 ---
-tags:
-  - in-progress
+icon: material/eye
 ---
 
 # **Navigating Deep Directory Trees**
@@ -12,9 +11,19 @@ It can be a hassle to move around quickly and efficiently between directories yo
 If you have to switch between two directories with long paths, these two techniques can make life better.
 
 ## **(A Nest of) Symbolic Links**
+
+### TL;DR
+
+1. Create a directory with a short name in your home directory
+2. Place symbolic links in that directory to files or directories. The target objects can be located all around the file system.
+3. Use the tilde symbol (++tilde++) and the short directory name to quickly refer to this directory (no matter where you are located in the file system)
+4. Now you can edit a far-away file or cd to a far-away directory using a _very short path_.
+5. You can keep the name you use to refer to the object unchanged even if you change the symbolic link to point to a different object, e.g. `~/r/current-project`
+
+### Explanation and examples
 A symbolic link is a special kind of file which points at another file. Also known as symlinks. The symbolic link takes up almost no space. It is not a copy of the original file.
 
-You can refer to the symbolic link and in most cases* the results will be the same as if you specified the original file. (*=some commands treat symbolic links in ways you might not expect. cp, rm, rsync, tar Their man pages will discuss how they treat symlinks.)
+You can refer to the symbolic link and in most cases the results will be the same as if you specified the original file. (Warning: some commands treat symbolic links in ways you might not expect: cp, rm, rsync, tar Their man pages will discuss how they treat symlinks.)
 
 You create a symlink like this:
 
@@ -42,13 +51,18 @@ Now you can use the symlinks named “v2019”, “in” “pride-n-joy” inste
 You can change directory with `cd ~/r/in` and you will wind up in `/cms01/incoming/c-myjhed-98765` 
 
 Or, You can copy downloaded source code into your home directory with
+
 `cp ~/r/in/pkg-3.2.tar ~/mycode/thatlanguage/src/`
+
+Of course, symbolic links can point to files instead of directories, so you can also place in your "nest" symlinks to files while still leaving the original in the "right" location. This way you don't need to consume the space of having two copies AND you can easily edit the single copy of the file and not have to keep two copies synchronized.
 
 ## **Pushd, Popd and Dirs Commands**
 
 If you’re repeatedly working in several directories and don’t need to open multiple windows to look at them simultaneously, these commands allow you to switch rapidly between them. They use a “stack” data structure. Think of a stack as a pile of plates in a cafeteria. When you want one, you usually take the one from the top. Then a fresh one is exposed. You’ve “popped” a plate from the stack. If you “push” three plates onto the stack, then the stack is deeper. You can access the top plate easily, but in this case you can also get at the third plate down.
 
-dir-stack-push-pop.png
+Here is a representation of pushing elements onto a stack, and then popping them off again:
+
+![Image title](../files/images/dir-stack-push-pop.png)
 
 `pushd directoryname`
 
