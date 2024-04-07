@@ -1,3 +1,7 @@
+---
+icon: material/eye
+---
+
 # WEB SITE TOOLS/ENABLED FEATURES WORTH KNOWING HOW TO USE
 Let's create a visually appealing web site using some of these features!! Use a WYSIWYG editor like [MacDown](features.md#macdown-wysiwyg-editor) and ["mkdocs serve"](features.md/#recipe-for-running-mkdocs-locally) to quickly edit.
 
@@ -154,7 +158,9 @@ This third example results in the whole rest of the document wrapped up to the r
 ![Image title](../files/images/dir-stack-push-pop.png){align=left} The text that you want to the right side of image.
 ```
 
-## Keyboard meta keys
+![Image title](../files/images/dir-stack-push-pop.png){align=left} The text that you want to the right side of image.
+
+## **Keyboard meta keys**
 
 (enabled by the pymdownx.keys extension)
 
