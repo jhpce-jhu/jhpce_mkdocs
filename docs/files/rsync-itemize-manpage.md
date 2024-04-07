@@ -1,5 +1,11 @@
 # Rsync itemized output manual page section
 
+See also:
+
+1. [Main rsync page](../files/rsync.md)
+2. A visual [key to itemized output](../files/rsync-itemize-table.md)
+
+
 ```
 The  "%i"  escape  has a cryptic output that is 11 letters long.
 The general format is like the string YXcstpoguax,  where  Y  is

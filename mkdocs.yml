@@ -49,6 +49,10 @@ nav:
       - Sharing Files: files/sharing-files.md
       - ACL: files/acl.md
       - Copying within cluster: files/copying-files.md
+      - "Rsync: A Key File Mgmt Tool":
+        - Using Rsync: files/rsync.md
+        - Itemize Output Key: files/rsync-itemize-table.md
+        - Itemize Manual Page: files/rsync-itemize-manpage.md
       - Archive Files: files/archive-files.md
       - Navigating Deep Directory Trees: files/deep-paths.md
       - Data Security: files/data-security.md
