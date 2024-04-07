@@ -1,5 +1,9 @@
 # Rsync itemized output manual page section
 
+The `-i` or `--itemize-changes` flag is especially helpful when trying to compare two directory trees. However, it produces a cryptic string 11 letters long for each file or directory. We have copied a useful chart from the Internet that you can consult.
+
+The general format is like the string **YXcstpoguax**
+ 
 See also:
 
 1. [Main rsync page](../files/rsync.md)

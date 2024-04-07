@@ -5,7 +5,7 @@ See also:
 1. [Main rsync page](../files/rsync.md)
 2. [Manual page section for itemized output](../files/rsync-itemize-manpage.md)
 
-The `--itemize-changes` flag is especially helpful when trying to compare two directory trees. However, it produces a cryptic string 11 letters long for each file or directory. We have copied a useful chart from the Internet that you can consult.
+The `-i` or `--itemize-changes` flag is especially helpful when trying to compare two directory trees. However, it produces a cryptic string 11 letters long for each file or directory. We have copied a useful chart from the Internet that you can consult.
 
  The general format is like the string **YXcstpoguax**, where:
  
@@ -25,8 +25,7 @@ The `--itemize-changes` flag is especially helpful when trying to compare two di
    ||||||||||      - the creation of a directory
    ||||||||||      - the changing of a symlink,
    ||||||||||      - etc.
-   ||||||||||   h: the item is a hard link to another item (requires
-  --hard-links). 
+   ||||||||||   h: the item is a hard link to another item (requires --hard-links). 
    ||||||||||   "+" - the file is newly created
    ||||||||||   .: the item is not being updated (though it might have attributes that are being modified).
    ||||||||||   *: means that the rest of the itemized-output area contains a message (e.g. "deleting").
