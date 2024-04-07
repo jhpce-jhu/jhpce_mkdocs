@@ -226,6 +226,8 @@ markdown_extensions:
           class: mermaid
           format: !!python/name:pymdownx.superfences.fence_code_format
   - pymdownx.details # makes the resulting admonitions call-outs collapsible
+  - pymdownx.tabbed: # enables tabs
+      alternate_style: true
   - abbr # Abbreviations and optional glossery
   # https://squidfunk.github.io/mkdocs-material/setup/extensions/python-markdown/#attribute-lists
   - attr_list # Enable addition of HTML to almost any kind of Markdown element

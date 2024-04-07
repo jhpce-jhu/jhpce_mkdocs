@@ -545,17 +545,78 @@ Jeffrey doesn't quite understand **where** we would use these yet. But they're v
 
 An example idea is to divide up some information into Linux, Mac, and Windows sections.
 
+Tabs are created with the same syntax as an admonition or detail but use equal signs.
 
-Here is an [example](https://squidfunk.github.io/mkdocs-material/reference/content-tabs/#embedded-content-ordered-list) of a pair of tabs _inside_ an admonition.
+There has to be a blank line before the beginning of (adminiton, detail, tab)
+
+Everything has to be indented FOUR SPACES (not a tab char) inside of (adminiton, detail, tab)
+
+### Simple example of tabs
+
+This example contains one or two lines of text. The default tab is the left-most, and whichever one you click on becomes rendered in bold font. I fooled around and made the second tab italicized, for contrast.
 
 === "Mac Way"
+    More intuitive and elegant
+    
+=== "*Other Way*"
+    The lesser way
+    
+=== "Pencil and Paper Way"
+    Respect your elders. It was all we had for a LONG TIME.
+    
+    Really, a long time. At least we had calculators instead of slide rules.
+    
+### Tabs inside of admonitions or details
 
-    ```
-    Contents for Mac users
-    ```
+Everything has to be indented FOUR SPACES (not a tab char) inside of the tab you are creating
 
-=== "Windows Way"
+So when inside of an (adminiton, detail, tab) therefore tab contents are all indented EIGHT spaces. (Yes, you can have tabs inside of tabs.)
 
-    ```
-    Contents for Mac users
-    ```
+These examples contain code blocks.
+
+??? example "Details are collapsed by default"
+
+    === "Mac Way"
+
+        ```
+        Contents for Mac users
+        ```
+
+    === "Windows Way"
+
+        ```
+        Contents for Mac users
+        ```
+
+!!! example "Tabs in an admonition"
+    Each tab contains a block of text. Here we've added programming language specifier keywords.
+
+    === "C++"
+        Contents for C++ code
+        ```c++
+        #include <iostream>
+
+        int main() {
+        std::cout << "Hello World!";
+        return 0;
+        }
+        ```
+
+    === "Python"
+
+        ```python
+        print('Hello, world!')
+        ```
+
+    === "Bash"
+        Discussion about bash code
+        ```bash
+        usage()
+        {
+        echo "Usage: $0 [-h] "
+        echo "Displays all defined QOS with nice formatting."
+        echo "Caution, this script may not show all fields relevant/used in future."
+        echo "    -h     |--help        display usage"
+        }
+        ```
+        
