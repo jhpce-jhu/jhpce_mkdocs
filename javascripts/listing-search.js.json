@@ -620,14 +620,32 @@
   {
     "page_name": "Handy Features",
     "page_url": "../ourtools/features/",
-    "text": "```\nContents for Mac users\n```\n",
-    "html": "<pre><span></span><code>```\nContents for Mac users\n```\n</code></pre>"
+    "text": "Contents for Mac users\n",
+    "html": "<pre><span></span><code>Contents for Mac users\n</code></pre>"
   },
   {
     "page_name": "Handy Features",
     "page_url": "../ourtools/features/",
-    "text": "```\nContents for Mac users\n```\n",
-    "html": "<pre><span></span><code>```\nContents for Mac users\n```\n</code></pre>"
+    "text": "Contents for Mac users\n",
+    "html": "<pre><span></span><code>Contents for Mac users\n</code></pre>"
+  },
+  {
+    "page_name": "Handy Features",
+    "page_url": "../ourtools/features/",
+    "text": "#include <iostream>\n\nint main() {\nstd::cout << \"Hello World!\";\nreturn 0;\n}\n",
+    "html": "<pre><span></span><code><span class=\"cp\">#include</span><span class=\"w\"> </span><span class=\"cpf\">&lt;iostream&gt;</span>\n\n<span class=\"kt\">int</span><span class=\"w\"> </span><span class=\"nf\">main</span><span class=\"p\">()</span><span class=\"w\"> </span><span class=\"p\">{</span>\n<span class=\"n\">std</span><span class=\"o\">::</span><span class=\"n\">cout</span><span class=\"w\"> </span><span class=\"o\">&lt;&lt;</span><span class=\"w\"> </span><span class=\"s\">\"Hello World!\"</span><span class=\"p\">;</span>\n<span class=\"k\">return</span><span class=\"w\"> </span><span class=\"mi\">0</span><span class=\"p\">;</span>\n<span class=\"p\">}</span>\n</code></pre>"
+  },
+  {
+    "page_name": "Handy Features",
+    "page_url": "../ourtools/features/",
+    "text": "print('Hello, world!')\n",
+    "html": "<pre><span></span><code><span class=\"nb\">print</span><span class=\"p\">(</span><span class=\"s1\">'Hello, world!'</span><span class=\"p\">)</span>\n</code></pre>"
+  },
+  {
+    "page_name": "Handy Features",
+    "page_url": "../ourtools/features/",
+    "text": "usage()\n{\necho \"Usage: $0 [-h] \"\necho \"Displays all defined QOS with nice formatting.\"\necho \"Caution, this script may not show all fields relevant/used in future.\"\necho \"    -h     |--help        display usage\"\n}\n",
+    "html": "<pre><span></span><code>usage<span class=\"o\">()</span>\n<span class=\"o\">{</span>\n<span class=\"nb\">echo</span><span class=\"w\"> </span><span class=\"s2\">\"Usage: </span><span class=\"nv\">$0</span><span class=\"s2\"> [-h] \"</span>\n<span class=\"nb\">echo</span><span class=\"w\"> </span><span class=\"s2\">\"Displays all defined QOS with nice formatting.\"</span>\n<span class=\"nb\">echo</span><span class=\"w\"> </span><span class=\"s2\">\"Caution, this script may not show all fields relevant/used in future.\"</span>\n<span class=\"nb\">echo</span><span class=\"w\"> </span><span class=\"s2\">\"    -h     |--help        display usage\"</span>\n<span class=\"o\">}</span>\n</code></pre>"
   },
   {
     "page_name": "Tips & Conventions",

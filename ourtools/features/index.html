@@ -1414,6 +1414,30 @@ storage array. We are working on this issue and will provide updates as the situ
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="Tabs">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#simple-example-of-tabs" class="md-nav__link">
+    <span class="md-ellipsis">
+      Simple example of tabs
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tabs-inside-of-admonitions-or-details" class="md-nav__link">
+    <span class="md-ellipsis">
+      Tabs inside of admonitions or details
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
     </ul>
@@ -3941,6 +3965,30 @@ storage array. We are working on this issue and will provide updates as the situ
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="Tabs">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#simple-example-of-tabs" class="md-nav__link">
+    <span class="md-ellipsis">
+      Simple example of tabs
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tabs-inside-of-admonitions-or-details" class="md-nav__link">
+    <span class="md-ellipsis">
+      Tabs inside of admonitions or details
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
     </ul>
@@ -4324,17 +4372,77 @@ https://www.starfallprojects.co.uk/blog/material-custom-status/#enable-the-featu
 <p>Jeffrey doesn't quite understand <strong>where</strong> we would use these yet. But they're very neat. They make web pages more compact, because you can cover a multipart topic in the same amount of vertical space, and it's intuitive to click on what you need.</p>
 <p><a href="https://squidfunk.github.io/mkdocs-material/reference/content-tabs/#content-tabs">tabs documentation</a></p>
 <p>An example idea is to divide up some information into Linux, Mac, and Windows sections.</p>
-<p>Here is an <a href="https://squidfunk.github.io/mkdocs-material/reference/content-tabs/#embedded-content-ordered-list">example</a> of a pair of tabs <em>inside</em> an admonition.</p>
-<p>=== "Mac Way"</p>
-<div class="highlight"><pre><span></span><code>```
-Contents for Mac users
-```
+<p>Tabs are created with the same syntax as an admonition or detail but use equal signs.</p>
+<p>There has to be a blank line before the beginning of (adminiton, detail, tab)</p>
+<p>Everything has to be indented FOUR SPACES (not a tab char) inside of (adminiton, detail, tab)</p>
+<h3 id="simple-example-of-tabs">Simple example of tabs<a class="headerlink" href="#simple-example-of-tabs" title="Anchor link to this section for reference">&para;</a></h3>
+<p>This example contains one or two lines of text. The default tab is the left-most, and whichever one you click on becomes rendered in bold font. I fooled around and made the second tab italicized, for contrast.</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="1:3"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><input id="__tabbed_1_3" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">Mac Way</label><label for="__tabbed_1_2"><em>Other Way</em></label><label for="__tabbed_1_3">Pencil and Paper Way</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<p>More intuitive and elegant</p>
+</div>
+<div class="tabbed-block">
+<p>The lesser way</p>
+</div>
+<div class="tabbed-block">
+<p>Respect your elders. It was all we had for a LONG TIME.</p>
+<p>Really, a long time. At least we had calculators instead of slide rules.</p>
+</div>
+</div>
+</div>
+<h3 id="tabs-inside-of-admonitions-or-details">Tabs inside of admonitions or details<a class="headerlink" href="#tabs-inside-of-admonitions-or-details" title="Anchor link to this section for reference">&para;</a></h3>
+<p>Everything has to be indented FOUR SPACES (not a tab char) inside of the tab you are creating</p>
+<p>So when inside of an (adminiton, detail, tab) therefore tab contents are all indented EIGHT spaces. (Yes, you can have tabs inside of tabs.)</p>
+<p>These examples contain code blocks.</p>
+<details class="example">
+<summary>Details are collapsed by default</summary>
+<div class="tabbed-set tabbed-alternate" data-tabs="2:2"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio" /><input id="__tabbed_2_2" name="__tabbed_2" type="radio" /><div class="tabbed-labels"><label for="__tabbed_2_1">Mac Way</label><label for="__tabbed_2_2">Windows Way</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code>Contents for Mac users
 </code></pre></div>
-<p>=== "Windows Way"</p>
-<div class="highlight"><pre><span></span><code>```
-Contents for Mac users
-```
+</div>
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code>Contents for Mac users
 </code></pre></div>
+</div>
+</div>
+</div>
+</details>
+<div class="admonition example">
+<p class="admonition-title">Tabs in an admonition</p>
+<p>Each tab contains a block of text. Here we've added programming language specifier keywords.</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="3:3"><input checked="checked" id="__tabbed_3_1" name="__tabbed_3" type="radio" /><input id="__tabbed_3_2" name="__tabbed_3" type="radio" /><input id="__tabbed_3_3" name="__tabbed_3" type="radio" /><div class="tabbed-labels"><label for="__tabbed_3_1">C++</label><label for="__tabbed_3_2">Python</label><label for="__tabbed_3_3">Bash</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<p>Contents for C++ code
+<div class="highlight"><pre><span></span><code><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;iostream&gt;</span>
+
+<span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;Hello World!&quot;</span><span class="p">;</span>
+<span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></p>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Hello, world!&#39;</span><span class="p">)</span>
+</code></pre></div>
+</div>
+<div class="tabbed-block">
+<p>Discussion about bash code
+<div class="highlight"><pre><span></span><code>usage<span class="o">()</span>
+<span class="o">{</span>
+<span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Usage: </span><span class="nv">$0</span><span class="s2"> [-h] &quot;</span>
+<span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Displays all defined QOS with nice formatting.&quot;</span>
+<span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Caution, this script may not show all fields relevant/used in future.&quot;</span>
+<span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;    -h     |--help        display usage&quot;</span>
+<span class="o">}</span>
+</code></pre></div></p>
+</div>
+</div>
+</div>
+</div>
 <div class="footnote">
 <hr />
 <ol>
