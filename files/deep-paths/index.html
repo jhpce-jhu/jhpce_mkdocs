@@ -1597,6 +1597,8 @@ storage array. We are working on this issue and will provide updates as the situ
         <label class="md-nav__link md-nav__link--active" for="__toc">
           
   
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0 8a5 5 0 0 1-5-5 5 5 0 0 1 5-5 5 5 0 0 1 5 5 5 5 0 0 1-5 5m0-12.5C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5c-1.73-4.39-6-7.5-11-7.5Z"/></svg>
+  
   <span class="md-ellipsis">
     Navigating Deep Directory Trees
   </span>
@@ -1607,6 +1609,8 @@ storage array. We are working on this issue and will provide updates as the situ
       
       <a href="./" class="md-nav__link md-nav__link--active">
         
+  
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0 8a5 5 0 0 1-5-5 5 5 0 0 1 5-5 5 5 0 0 1 5 5 5 5 0 0 1-5 5m0-12.5C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5c-1.73-4.39-6-7.5-11-7.5Z"/></svg>
   
   <span class="md-ellipsis">
     Navigating Deep Directory Trees
@@ -1636,6 +1640,30 @@ storage array. We are working on this issue and will provide updates as the situ
       (A Nest of) Symbolic Links
     </span>
   </a>
+  
+    <nav class="md-nav" aria-label="(A Nest of) Symbolic Links">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#tldr" class="md-nav__link">
+    <span class="md-ellipsis">
+      TL;DR
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#explanation-and-examples" class="md-nav__link">
+    <span class="md-ellipsis">
+      Explanation and examples
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -3383,6 +3411,30 @@ storage array. We are working on this issue and will provide updates as the situ
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="(A Nest of) Symbolic Links">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#tldr" class="md-nav__link">
+    <span class="md-ellipsis">
+      TL;DR
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#explanation-and-examples" class="md-nav__link">
+    <span class="md-ellipsis">
+      Explanation and examples
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
         <li class="md-nav__item">
@@ -3422,17 +3474,6 @@ storage array. We are working on this issue and will provide updates as the situ
               <article class="md-content__inner md-typeset">
                 
                   
-  
-<nav class="md-tags" >
-  
-    
-    
-    
-      <a href="../../ourtools/tags/#in-progress" class="md-tag">in-progress</a>
-    
-  
-</nav>
-
 
 
 <h1 id="navigating-deep-directory-trees"><strong>Navigating Deep Directory Trees</strong><a class="headerlink" href="#navigating-deep-directory-trees" title="Anchor link to this section for reference">&para;</a></h1>
@@ -3440,8 +3481,17 @@ storage array. We are working on this issue and will provide updates as the situ
 <p>It can be a hassle to move around quickly and efficiently between directories you are frequently using. </p>
 <p>If you have to switch between two directories with long paths, these two techniques can make life better.</p>
 <h2 id="a-nest-of-symbolic-links"><strong>(A Nest of) Symbolic Links</strong><a class="headerlink" href="#a-nest-of-symbolic-links" title="Anchor link to this section for reference">&para;</a></h2>
+<h3 id="tldr">TL;DR<a class="headerlink" href="#tldr" title="Anchor link to this section for reference">&para;</a></h3>
+<ol>
+<li>Create a directory with a short name in your home directory</li>
+<li>Place symbolic links in that directory to files or directories. The target objects can be located all around the file system.</li>
+<li>Use the tilde symbol (<span class="keys"><kbd class="key-tilde">~</kbd></span>) and the short directory name to quickly refer to this directory (no matter where you are located in the file system)</li>
+<li>Now you can edit a far-away file or cd to a far-away directory using a <em>very short path</em>.</li>
+<li>You can keep the name you use to refer to the object unchanged even if you change the symbolic link to point to a different object, e.g. <code>~/r/current-project</code></li>
+</ol>
+<h3 id="explanation-and-examples">Explanation and examples<a class="headerlink" href="#explanation-and-examples" title="Anchor link to this section for reference">&para;</a></h3>
 <p>A symbolic link is a special kind of file which points at another file. Also known as symlinks. The symbolic link takes up almost no space. It is not a copy of the original file.</p>
-<p>You can refer to the symbolic link and in most cases<em> the results will be the same as if you specified the original file. (</em>=some commands treat symbolic links in ways you might not expect. cp, rm, rsync, tar Their man pages will discuss how they treat symlinks.)</p>
+<p>You can refer to the symbolic link and in most cases the results will be the same as if you specified the original file. (Warning: some commands treat symbolic links in ways you might not expect: cp, rm, rsync, tar Their man pages will discuss how they treat symlinks.)</p>
 <p>You create a symlink like this:</p>
 <p><code>ln –s realfile newname</code></p>
 <p>The resulting files when listed with <code>ls –l</code>:</p>
@@ -3457,11 +3507,13 @@ ln<span class="w"> </span>–s<span class="w"> </span>~/mycode/thatlanguage/src/
 </code></pre></div>
 <p>Now you can use the symlinks named “v2019”, “in” “pride-n-joy” instead of the longer real directory names.</p>
 <p>You can change directory with <code>cd ~/r/in</code> and you will wind up in <code>/cms01/incoming/c-myjhed-98765</code> </p>
-<p>Or, You can copy downloaded source code into your home directory with
-<code>cp ~/r/in/pkg-3.2.tar ~/mycode/thatlanguage/src/</code></p>
+<p>Or, You can copy downloaded source code into your home directory with</p>
+<p><code>cp ~/r/in/pkg-3.2.tar ~/mycode/thatlanguage/src/</code></p>
+<p>Of course, symbolic links can point to files instead of directories, so you can also place in your "nest" symlinks to files while still leaving the original in the "right" location. This way you don't need to consume the space of having two copies AND you can easily edit the single copy of the file and not have to keep two copies synchronized.</p>
 <h2 id="pushd-popd-and-dirs-commands"><strong>Pushd, Popd and Dirs Commands</strong><a class="headerlink" href="#pushd-popd-and-dirs-commands" title="Anchor link to this section for reference">&para;</a></h2>
 <p>If you’re repeatedly working in several directories and don’t need to open multiple windows to look at them simultaneously, these commands allow you to switch rapidly between them. They use a “stack” data structure. Think of a stack as a pile of plates in a cafeteria. When you want one, you usually take the one from the top. Then a fresh one is exposed. You’ve “popped” a plate from the stack. If you “push” three plates onto the stack, then the stack is deeper. You can access the top plate easily, but in this case you can also get at the third plate down.</p>
-<p>dir-stack-push-pop.png</p>
+<p>Here is a representation of pushing elements onto a stack, and then popping them off again:</p>
+<p><img alt="Image title" src="../images/dir-stack-push-pop.png" /></p>
 <p><code>pushd directoryname</code></p>
 <p>changes your directory from the current one to directoryname, and creates a stack of two directories.</p>
 <p><code>dirs -v</code></p>
