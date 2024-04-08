@@ -1,12 +1,12 @@
 ---
 icon: material/eye
 ---
-# Rsync: A Key File Management Tool
+# **Rsync: A Key File Management Tool**
 
-## TL;DR
+## **TL;DR**
 If you need to manage a lot of files, it is well worth your time to learn how to use the `rsync` command. This program is available on UNIX and Mac computers by default. It is increasingly available on Windows as the Windows Subsystem for Linux (WSL) becomes more common.
 
-## Introduction
+## **Introduction**
 
 JHPCE users store petabytes of data on our storage servers. Some of it accumulates as work is done. Much is imported from outside the cluster as source material for research.  Moving around large numbers of files can be done with a variety of methods.  Many users default to `cp` or `mv`
 
@@ -18,7 +18,7 @@ What is the state of your copy if `cp` or `mv` attempts fail mid-stream? In the 
 
 For example, consider what happens if a program has a limitation where it cannot handle file paths longer than 1024 characters. You would be unlikely to experience a problem using that program to copy files around unless they are `/stored/in/directory/trees/with/many/entries/YYYY-MM-DD-MM-SS/long-filename-with-details-embedded-in-its-name.dat`  Such paths are common in the sciences and become more common as time passes and data accumulates.
 
-## Rsync
+## **Rsync**
 
 Rsync is a powerful command for copying large numbers of files between a SOURCE (aka SRC) and a DESTINATION (aka DEST), within a single computer or between computers. 
 
@@ -29,22 +29,22 @@ There are MANY arguments which control how the copying will occur. So you can do
 
 The most common flag used with `rsync` is `-a` for "archive". This provides a recursive copy, preserving symbolic links, timestamps, file permissions, user & group ownership. It does NOT preserve ACLs or hard links.
 
-## Use the appropriate resources
+## **Use the appropriate resources**
 When transferring files **within** the cluster, please use compute nodes when copying more than a few files.
 
 When transferring files **into and out of** the cluster, please use the transfer node. The various tools for that work are described in this [document](../access/file-transfer.md). The rsync information on this page can be useful for such transfers.
 
-### Example rsync SLURM batch job
+## **Example rsync SLURM batch job**
 
 Is shown [here](../slurm/crafting-jobs.md#copying-data-within-cluster).
 
-### SOURCE and DESTINATION
+## **SOURCE and DESTINATION**
 
 Multiple items can be listed as SRC material. Of course there can only be one DEST.
 
 Rsync never updates the SRC location. Changes, if any, only occur in the DEST.
 
-Files in DEST but not SRC will not be deleted unless you specify one of the delete flags.
+Files in DEST but not SRC **will not be deleted** unless you specify one of the delete flags.
 
 SRC and DEST can be paths or hostnames with colons and paths or a combination. rsync will use ssh to send files between hosts, so you can even specify a different username for one of the SRC and DEST.
 
@@ -59,7 +59,10 @@ Access via remote shell:
 : Push:
                  `rsync [OPTION...] SRC... [USER@]HOST:DEST`
 
-### Mind the trailing slash!
+## **Rsync servers**
+One can configure an rsync server which is always listening for desired transactions. Very few people do that. JHPCE doesn't run any.  This is being mentioned because some of the language in the manual page can be confusing if you don't know about this.
+
+## **Mind the trailing slash!**
 
 If the SOURCE represents a directory then adding a trailing forward slash to it will cause the contents of the directory to be copied into DESTINATION. If there is no trailing forward slash, then the SOURCE  directory itself will be copied into DESTINATION.
 
@@ -73,15 +76,20 @@ Example
 
 This behavior is also found with the old standard `cp` program when using the `-R` recursive flag!!!
 
-### Rsync Examples
+## Rsync Examples
 
 It pays to be cautious when running commands which can cause many changes in short order.
 
-Rsync can be used to compare two directory trees without updating anything. If both possibly have unique data, then you want to be careful and run preliminary `--dryrun` commands with a variety of informational flags. 
+Rsync can be used to compare two directory trees without updating anything. If both possibly have unique data, then you want to be careful and run preliminary `--dry-run` commands with a variety of informational flags. 
 
-Show what would be done by make no changes:
+Show what would be done but make no changes:
 ```
-rsync -a --verbose --dryrun --stats /local1 /other2
+rsync -a --verbose --dry-run --stats /local1 /other2
+```
+
+Determine what would be done in more detail (but make no changes):
+```
+rsync -a --verbose --dry-run --stats --itemize-changes /local1 /other2
 ```
 
 Only copy files ending in ".txt"
@@ -89,13 +97,31 @@ Only copy files ending in ".txt"
 rsync -avz --include='*.txt' /src /dest
 ```
 
-A good combination.
+A good combination to consider using. Includes options to try to be complete, safe, and efficient. 
 ```
 rsync -avhAXH --progress --numeric-ids --sparse --one-file-system --stats --delete-after
 ```
 
+!!! tip
+    To compare two directory trees, you can use a number of flags together to see what is different. Remember that rsync is unidirectional, so you would have to run it twice to compare in both directions. It might be true that each directory tree contains many duplicates but also some unique items. Direct the output into a text file for easier viewing and comparing.
+    
+    These include: `--dry-run --itemize-changes --delete --stats
+    
+    `--dry-run`
+    : don't change anything
+    
+    `--itemize-changes`
+    : show what would be modified about each file
+    
+    `--delete-after`
+    : identify any extra files found in DEST that aren't in SRC using the efficient choice for large collections of files
+    
+    `--stats` flags
+    : and produce a summary of file numbers
+    
+    However, `--itemize-changes` produces a cryptic 11 character string for each file or directory. We have copied a useful chart from the Internet that you can consult. See [this page](../files/rsync-itemize-table.md) for the key and [this page](../files/rsync-itemize-manpge.md) for the manual page section.
 
-### Rsync Flags You May Want To Use
+## **Rsync Flags You May Want To Use**
 
 Rsync is _very_ flexible. The manual page is long. Here are some useful arguments to know about, organized somewhat by purpose. 
 
@@ -147,9 +173,7 @@ Most flags have two forms you can choose between, a short one consisting of a si
 
 ```
 
-The `--itemize-changes` flag is especially helpful when trying to compare two directory trees. However, it produces a cryptic string for each file or directory. We have copied a useful chart from the Internet that you can consult. See [this page](../files/rsync-itemize-table.md)
-
-## Archive tools moving data through a pipe
+## **Archive tools moving data through a pipe**
 
 Rsync is usually the best method. But rsync wasn't always available in the past, or it didn't support copying one or another attribute that more basic tools did.  Different kinds of file permissions, data forks, etc.
 

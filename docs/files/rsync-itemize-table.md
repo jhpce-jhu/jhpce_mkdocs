@@ -5,7 +5,9 @@ See also:
 1. [Main rsync page](../files/rsync.md)
 2. [Manual page section for itemized output](../files/rsync-itemize-manpage.md)
 
-The `-i` or `--itemize-changes` flag is especially helpful when trying to compare two directory trees. However, it produces a cryptic string 11 letters long for each file or directory. We have copied a useful chart from the Internet that you can consult.
+The `-i` or `--itemize-changes` flag is especially helpful when trying to compare two directory trees when used with the `-n` or `--dry-run` argument. Or to document what was changed during a copy (direct the output into a text file since there can be a lot of info flying past you).
+
+However, it produces a cryptic string 11 letters long for each file or directory. We have copied a useful chart from the Internet that you can consult.
 
  The general format is like the string **YXcstpoguax**, where:
  
@@ -18,7 +20,7 @@ The `-i` or `--itemize-changes` flag is especially helpful when trying to compar
 ```
   YXcstpoguax  path/to/file
   |||||||||||
-  `----------- the TYPE OF UPDATE being done::
+  `-------------------------- the TYPE OF UPDATE:
    ||||||||||   <: file is being transferred to the remote host (sent).
    ||||||||||   >: file is being transferred to the local host (received).
    ||||||||||   c: local change/creation for the item, such as:
@@ -30,7 +32,7 @@ The `-i` or `--itemize-changes` flag is especially helpful when trying to compar
    ||||||||||   .: the item is not being updated (though it might have attributes that are being modified).
    ||||||||||   *: means that the rest of the itemized-output area contains a message (e.g. "deleting").
    ||||||||||
-   `---------- the FILE TYPE:
+   `----------------------------- the FILE TYPE:
     |||||||||   f for a file,
     |||||||||   d for a directory,
     |||||||||   L for a symlink,
