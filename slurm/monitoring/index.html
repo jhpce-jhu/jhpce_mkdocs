@@ -2942,9 +2942,9 @@ storage array. We are working on this issue and will provide updates as the situ
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#seff-output" class="md-nav__link">
+  <a href="#seff-slurm-efficiency-output" class="md-nav__link">
     <span class="md-ellipsis">
-      seff output
+      seff (Slurm EFFiciency) output
     </span>
   </a>
   
@@ -3759,9 +3759,9 @@ storage array. We are working on this issue and will provide updates as the situ
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#seff-output" class="md-nav__link">
+  <a href="#seff-slurm-efficiency-output" class="md-nav__link">
     <span class="md-ellipsis">
-      seff output
+      seff (Slurm EFFiciency) output
     </span>
   </a>
   
@@ -3958,12 +3958,17 @@ storage array. We are working on this issue and will provide updates as the situ
 <li>Look at their output and error files</li>
 <li>Look at files they wrote to</li>
 <li>The command <code>seff jobid</code> for a given jobid will report on RAM and CPU efficiency. </li>
-<li>Use <code>sacct</code> to inspect parameters about the job, including their exitcode</li>
+<li>Use <code>sacct</code> to inspect parameters about the job, including their "exitcode"</li>
 </ol>
-<p>Exit codes are poorly documented, unfortunately.</p>
+<p>Exit codes are poorly documented, unfortunately. See <a href="../tips-sacct/#exit-error-codes">this section</a> of the sacct tips page for what is known.</p>
 <p><code>scontrol show job</code> doesn't work for completed jobs.</p>
-<h4 id="seff-output"><code>seff</code> output<a class="headerlink" href="#seff-output" title="Anchor link to this section for reference">&para;</a></h4>
-<p>CPU efficiency indicates how frequently allocated CPUs were busy.</p>
+<h4 id="seff-slurm-efficiency-output"><code>seff</code> (Slurm EFFiciency) output<a class="headerlink" href="#seff-slurm-efficiency-output" title="Anchor link to this section for reference">&para;</a></h4>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>seff output might not be correct for some jobs. If you need to double-check its output, gather the raw info with sacct.</p>
+</div>
+<p>CPU efficiency indicates how frequently allocated CPUs were busy. The more CPU-bound a job is, the closer to 100% this will be. The more input/output-bound a job is, the closer this will be to 0.</p>
+<p>Memory efficiency indicates the proportion of requested memory used at the high-water mark. Values over 100% are not uncommon. It seems that such cases represent cases where the way in which shared memory (such as dynamically-linked code libraries) are counted, perhaps against multiple threads running on one CPU.</p>
 <div class="highlight"><pre><span></span><code>Job ID: 3946128
 Array Job ID: 3560537_102
 Cluster: jhpce3

@@ -2739,6 +2739,21 @@ storage array. We are working on this issue and will provide updates as the situ
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="Command Options of Note">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#sorting-or-processing-output" class="md-nav__link">
+    <span class="md-ellipsis">
+      Sorting or processing output
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
         <li class="md-nav__item">
@@ -3639,6 +3654,21 @@ storage array. We are working on this issue and will provide updates as the situ
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="Command Options of Note">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#sorting-or-processing-output" class="md-nav__link">
+    <span class="md-ellipsis">
+      Sorting or processing output
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
         <li class="md-nav__item">
@@ -3857,8 +3887,24 @@ That database needs to be modified constantly as jobs start and complete, so we 
 <li><code>-K</code> <em>maximum time</em> - looking for jobs with time limits in a range</li>
 <li><code>-q</code> <em>qoslist</em> - list of qos used</li>
 </ul>
+<h3 id="sorting-or-processing-output">Sorting or processing output<a class="headerlink" href="#sorting-or-processing-output" title="Anchor link to this section for reference">&para;</a></h3>
+<p><code>sacct</code> can output with other delimiters if you specify either <code>-p</code> or <code>-P</code> and <code>--delimiter=&lt;characters&gt;</code></p>
+<p><code>sacct</code> does not have a sort option. You need to sort its output by other methods. If you want to change the order of the information, specify the field names in the desired order.</p>
+<p>This is a prime example of where it is kindest to the SLURM master daemon if you run your query such that you store the results in a text file, then work with the text file contents. Rather than running many variations of a command pipeline
+beginning with <code>sacct</code> when you already have all of the desired output option fields and are just trying to figure out the right text-processing logic.</p>
+<div class="highlight"><span class="filename">sort failed jobs by exitcode</span><pre><span></span><code>sacct<span class="w"> </span>-X<span class="w"> </span>-a<span class="w"> </span>-s<span class="w"> </span>F<span class="w"> </span>-o<span class="w"> </span><span class="s2">&quot;user,jobid,state,nodelist,exitcode&quot;</span><span class="w"> </span>-S<span class="w"> </span>noon<span class="w"> </span>-E<span class="w"> </span>now<span class="p">|</span>sort<span class="w"> </span>-k5<span class="p">|</span><span class="w"> </span>less
+</code></pre></div>
+<div class="highlight"><span class="filename">sort failed jobs by exitcode, then by nodelist</span><pre><span></span><code>sacct<span class="w"> </span>-X<span class="w"> </span>-a<span class="w"> </span>-s<span class="w"> </span>F<span class="w"> </span>-o<span class="w"> </span><span class="s2">&quot;user,jobid,state,nodelist,exitcode&quot;</span><span class="w"> </span>-S<span class="w"> </span>noon<span class="w"> </span>-E<span class="w"> </span>now<span class="p">|</span>sort<span class="w"> </span>-k5,5<span class="w"> </span>-k4,4<span class="p">|</span><span class="w"> </span>less
+</code></pre></div>
+<p>Useful sort options:</p>
+<ol>
+<li><code>-kKEYDEF</code> or <code>--key=KEYDEF</code> Given just a number as the KEYDEF, it sorts by column</li>
+<li><code>-r</code>or <code>--reverse</code></li>
+<li><code>-n</code> or <code>--numeric-sort</code> </li>
+</ol>
+<p>See the sort manual page for other options, including multiple kinds of numeric sorts, as well as the syntax of KEYDEF.</p>
 <h2 id="start-and-end-times">Start and End Times<a class="headerlink" href="#start-and-end-times" title="Anchor link to this section for reference">&para;</a></h2>
-<p>It is best to use always specify a <code>-S</code> start time and a <code>-E</code> end time.</p>
+<p><mark class="critic">It is best to use always specify a <code>-S</code> start time and a <code>-E</code> end time.</mark></p>
 <p>Special time words: <strong>today</strong>, <strong>midnight</strong>, <strong>noon</strong>, <strong>now</strong></p>
 <p>now[{+|-}count[seconds(default)|minutes|hours|days|weeks]]</p>
 <dl>
@@ -3968,7 +4014,7 @@ The start and end field widths show below are suitable for the time format shown
 <p>Virtual Memory Size (VMSize) is the total memory size of a job. It includes both memory actually in RAM (the RSS) and parts of executabilities which were not needed to be read in off of disk into RAM. Because, for example, routines in dynamically linked libraries were never called, so those libraries were not loaded. </p>
 <p>RSS - resident set size (RSS) is the portion of memory (measured in megabytes) occupied by a job that is held in main memory (RAM). The rest of the memory required by the job exists in the swap space or file system, either because some parts of the occupied memory were paged out, or because some parts of the executable were never loaded.</p>
 <h2 id="exit-error-codes">Exit Error Codes<a class="headerlink" href="#exit-error-codes" title="Anchor link to this section for reference">&para;</a></h2>
-<p>In addition to the job's "state", SLURM also records error codes. Unfortunately their <a href="https://slurm.schedmd.com/job_exit_code.html">Job Exit Codes</a> page doesn't provide a meaning for the numerical values.</p>
+<p>In addition to the job's "state", SLURM also records error codes. Unfortunately the vendor's <a href="https://slurm.schedmd.com/job_exit_code.html">Job Exit Codes</a> page doesn't provide a meaning for the numerical values.</p>
 <p>Error <code>0:53</code> often means that something wasn't readable or writable. For example, job output or error files couldn't be written in the directory in which the job ran (or where you told SLURM to put them with a directive).</p>
 <div class="highlight"><pre><span></span><code>a guide for exit codes:
 
@@ -4024,7 +4070,7 @@ Enter man signal for more information
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1-2.1-2M12.5 7v5.2l4 2.4-1 1L11 13V7h1.5M11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2v1.8Z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">April 5, 2024</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">April 8, 2024</span>
   </span>
 
     
