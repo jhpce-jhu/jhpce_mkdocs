@@ -2589,6 +2589,15 @@ storage array. We are working on this issue and will provide updates as the situ
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#defaults" class="md-nav__link">
+    <span class="md-ellipsis">
+      Defaults
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#jobs" class="md-nav__link">
     <span class="md-ellipsis">
       Jobs
@@ -2597,6 +2606,15 @@ storage array. We are working on this issue and will provide updates as the situ
   
     <nav class="md-nav" aria-label="Jobs">
       <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#job-notation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Job notation
+    </span>
+  </a>
+  
+</li>
         
           <li class="md-nav__item">
   <a href="#jobs-have-multiple-steps" class="md-nav__link">
@@ -3490,6 +3508,15 @@ storage array. We are working on this issue and will provide updates as the situ
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#defaults" class="md-nav__link">
+    <span class="md-ellipsis">
+      Defaults
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#jobs" class="md-nav__link">
     <span class="md-ellipsis">
       Jobs
@@ -3498,6 +3525,15 @@ storage array. We are working on this issue and will provide updates as the situ
   
     <nav class="md-nav" aria-label="Jobs">
       <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#job-notation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Job notation
+    </span>
+  </a>
+  
+</li>
         
           <li class="md-nav__item">
   <a href="#jobs-have-multiple-steps" class="md-nav__link">
@@ -3558,10 +3594,17 @@ storage array. We are working on this issue and will provide updates as the situ
 <li>check out other SLURM-related pages on this web site. There is already some great information here. The <a href="../slurm-commands-ref/">commands tip and reference</a> document contains links to both manual pages and pages we've written with guidance and examples.</li>
 <li>If you can't find what you are looking for here, we have a collection of good documentation from other clusters <a href="../user-guide-collection/">here</a>. SLURM is a popular tool, so Google searches will also be productive.</li>
 </ol>
+<h2 id="defaults">Defaults<a class="headerlink" href="#defaults" title="Anchor link to this section for reference">&para;</a></h2>
+<p>By default, if you do not request RAM or CPU, your job will receive:</p>
+<ul>
+<li>1 CPU</li>
+<li>5G of memory</li>
+<li>1 day of run time (on public <a href="../partitions/">partitions</a>)</li>
+</ul>
 <h2 id="jobs">Jobs<a class="headerlink" href="#jobs" title="Anchor link to this section for reference">&para;</a></h2>
 <p>If you are curious, the SLURM vendor describes how jobs are started and terminated in <a href="https://slurm.schedmd.com/job_launch.html">this document</a>.</p>
 <p>Jobs can be submitted on any SLURM node, although usually this is done on one of the login nodes.  If the job is accepted, it is assigned a unique number. When the scheduler starts a job running, the job will be assigned one or more nodes (depending on the job submission directives). The first node is called "node zero" for the job. All of the nodes associated with a job are contained in a "nodelist" </p>
-<p>Job notation </p>
+<h3 id="job-notation">Job notation<a class="headerlink" href="#job-notation" title="Anchor link to this section for reference">&para;</a></h3>
 <div class="highlight"><pre><span></span><code>&lt;job_array&gt;_&lt;job_id&gt;.&lt;step_id&gt;
 </code></pre></div>
 <h3 id="jobs-have-multiple-steps">Jobs Have Multiple Steps<a class="headerlink" href="#jobs-have-multiple-steps" title="Anchor link to this section for reference">&para;</a></h3>
@@ -3592,7 +3635,7 @@ storage array. We are working on this issue and will provide updates as the situ
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1-2.1-2M12.5 7v5.2l4 2.4-1 1L11 13V7h1.5M11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2v1.8Z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">April 4, 2024</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">April 8, 2024</span>
   </span>
 
     
