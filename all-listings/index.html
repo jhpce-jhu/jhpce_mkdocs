@@ -3913,20 +3913,19 @@ o      The  x  means  that the extended attribute information is
 One other output is possible: when deleting files, the "%i" will output  the  string  "*deleting" for each item that is being removed (assuming that you are talking to a  recent  enough  rsync that  it  logs deletions instead of outputting them as a verbose message).
 </code></pre><h2><a class="heading" href="../files/rsync-itemize-table">Itemize Output Key</a></h2><a class="url" href="../files/rsync-itemize-table">files/rsync-itemize-table/</a><pre><span></span><code>  YXcstpoguax  path/to/file
   |||||||||||
-  `----------- the TYPE OF UPDATE being done::
+  `-------------------------- the TYPE OF UPDATE:
    ||||||||||   &lt;: file is being transferred to the remote host (sent).
    ||||||||||   &gt;: file is being transferred to the local host (received).
    ||||||||||   c: local change/creation for the item, such as:
    ||||||||||      - the creation of a directory
    ||||||||||      - the changing of a symlink,
    ||||||||||      - etc.
-   ||||||||||   h: the item is a hard link to another item (requires
-  --hard-links). 
+   ||||||||||   h: the item is a hard link to another item (requires --hard-links). 
    ||||||||||   "+" - the file is newly created
    ||||||||||   .: the item is not being updated (though it might have attributes that are being modified).
    ||||||||||   *: means that the rest of the itemized-output area contains a message (e.g. "deleting").
    ||||||||||
-   `---------- the FILE TYPE:
+   `----------------------------- the FILE TYPE:
     |||||||||   f for a file,
     |||||||||   d for a directory,
     |||||||||   L for a symlink,
@@ -3942,7 +3941,8 @@ One other output is possible: when deleting files, the "%i" will output  the  st
          `---- g: Group is different
           `--- u: The u slot is reserved for future use.
            `-- a: The ACL information changed
-</code></pre><h2><a class="heading" href="../files/rsync">Using Rsync</a></h2><a class="url" href="../files/rsync">files/rsync/</a><pre><span></span><code>rsync -a --verbose --dryrun --stats /local1 /other2
+</code></pre><h2><a class="heading" href="../files/rsync">Using Rsync</a></h2><a class="url" href="../files/rsync">files/rsync/</a><pre><span></span><code>rsync -a --verbose --dry-run --stats /local1 /other2
+</code></pre><pre><span></span><code>rsync -a --verbose --dry-run --stats --itemize-changes /local1 /other2
 </code></pre><pre><span></span><code>rsync -avz --include='*.txt' /src /dest
 </code></pre><pre><span></span><code>rsync -avhAXH --progress --numeric-ids --sparse --one-file-system --stats --delete-after
 </code></pre><pre><span></span><code>--archive, -a            archive mode; equals -rlptgoD (no -H,-A,-X)
