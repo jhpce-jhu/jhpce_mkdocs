@@ -119,7 +119,7 @@ rsync -avhAXH --progress --numeric-ids --sparse --one-file-system --stats --dele
     `--stats` flags
     : and produce a summary of file numbers
     
-    However, `--itemize-changes` produces a cryptic 11 character string for each file or directory. We have copied a useful chart from the Internet that you can consult. See [this page](../files/rsync-itemize-table.md) for the key and [this page](../files/rsync-itemize-manpge.md) for the manual page section.
+    However, `--itemize-changes` produces a cryptic 11 character string for each file or directory. We have copied a useful chart from the Internet that you can consult. See [this page](../files/rsync-itemize-table.md) for the key and [this page](../files/rsync-itemize-manpage.md) for the manual page section.
 
 ## **Rsync Flags You May Want To Use**
 

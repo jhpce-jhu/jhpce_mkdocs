@@ -278,7 +278,7 @@ This is put here as a tool for system administrators needing to do maintenance w
 
 ### **Running Multiple Jobs From One Script**
 
-[Using srun inside of sbatch scripts,](https://hpc.llnl.gov/banks-jobs/running-jobs/slurm#MultipleJobs) in serial and parallel. Remember to include the `wait` bash command at the end of your batch file so the job doesn't end before all of the tasks inside of it.
+[Using srun inside of sbatch scripts,](https://hpc.llnl.gov/banks-jobs/running-jobs/slurm#MultipleJobs) in serial and parallel. Remember to include the `wait` bash command at the end of your batch file so the job doesn't end before all of the tasks inside of it. You may need to specify the amount of memory each `srun` command needs (out of the total allocated to the overall job) so the first `srun` isn't given all of the RAM.
 
 
 

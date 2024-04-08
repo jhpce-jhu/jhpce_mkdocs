@@ -549,6 +549,8 @@ There has to be a blank line before the beginning of (admonition, detail, tab)
 
 Everything has to be indented FOUR SPACES (not a tab char) inside of (admonition, detail, tab)
 
+You MUST enclose the title of the tab in double quotes even if it is a single word (it seems to Jeffrey)
+
 ### Simple example of tabs
 
 This example contains one or two lines of text. The default tab is the left-most, and whichever one you click on becomes rendered in bold font. I fooled around and made the second tab italicized, for contrast.
@@ -572,7 +574,7 @@ So when inside of an (admonition, detail, tab) therefore tab contents are all in
 
 These examples contain code blocks.
 
-??? example "Details are collapsed by default"
+??? example "Details are collapsed (by default)"
 
     === "Mac Way"
 
@@ -586,7 +588,7 @@ These examples contain code blocks.
         Contents for Mac users
         ```
 
-!!! example "Tabs in an admonition"
+!!! example "Admonitions are always expanded"
     Each tab contains a block of text. Here we've added programming language specifier keywords.
 
     === "C++"

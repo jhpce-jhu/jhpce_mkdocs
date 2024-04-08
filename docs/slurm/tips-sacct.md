@@ -3,7 +3,7 @@ tags:
   - done
   - slurm
 ---
-# sacct useful command examples
+# **sacct useful command examples**
     
 !!! Example
     ```Shell title="Show my failed jobs between noon and now" linenums="0"
@@ -24,20 +24,21 @@ sacct will show all submitted jobs but cannot, of course, provide data for a num
 Examples below use angle brackets ++less++ ++greater++  to indicate where you are supposed to replace argumements with your values.
     
     
-## sacct basics
+## **sacct basics**
 
 1. By default only your own jobs are displayed. Use the `--allusers` or `-a` flag if necessary.
 2. Only jobs from a certain time window are displayed by default. That window varies in a confusing manner depending the arguments you provide. See [this section](https://slurm.schedmd.com/archive/slurm-22.05.9/sacct.html#lbAH) of the manual page. Therefore it is recommended to **always** provide start (`-S`) and end (`-E`) times to be sure that you are seeing what you expect.
-3. You can choose output fields and control their width. 
+3. You can choose output fields and control their [width](#formatting-fields). 
 4. Even the simplest of batch jobs contain multiple "steps" as far as SLURM is concerned. One of them, named "extern" represents the ssh to the compute node on behalf of your job. Job records consist of a primary entry for the job as a whole  as  well as entries for job steps. The [Job Launch](https://slurm.schedmd.com/archive/slurm-22.05.9/job_launch.html#job_record) page has a more detailed description of each type of job step. You may find the `-X` flag helpful to omit clutter.
 5. Regular jobs are in the form: **JobID[.JobStep]**
 6. Array jobs are in the form: **ArrayJobID_ArrayTaskID**
+7. Jobs have multiple steps!! (Explained [here](../slurm/getting-started.md#jobs-have-multiple-steps).)
 
 !!! Warning
     Sacct retrieves data from a SQL database. Be careful when creating your sacct commands to limit the queries to the information you need. Narrow the search as much as possible. 
     That database needs to be modified constantly as jobs start and complete, so we don't want it tied up answering sacct queries. If you want to look at a large amount of data in a variety of ways, consider saving the output to a text file and then working with that file.
 
-## Command Options of Note
+## **Command Options of Note**
 
 Check the [man page](https://slurm.schedmd.com/archive/slurm-22.05.9/sacct.html). There are other useful options.
 
@@ -56,7 +57,7 @@ Check the [man page](https://slurm.schedmd.com/archive/slurm-22.05.9/sacct.html)
 - `-K` *maximum time* - looking for jobs with time limits in a range
 - `-q` *qoslist* - list of qos used
 
-### Sorting or processing output
+### **Sorting or processing output**
 `sacct` can output with other delimiters if you specify either `-p` or `-P` and `--delimiter=<characters>`
 
 `sacct` does not have a sort option. You need to sort its output by other methods. If you want to change the order of the information, specify the field names in the desired order.
@@ -81,7 +82,7 @@ Useful sort options:
 
 See the sort manual page for other options, including multiple kinds of numeric sorts, as well as the syntax of KEYDEF.
 
-## Start and End Times
+## **Start and End Times**
 {==It is best to use always specify a `-S` start time and a `-E` end time.==}
 
 Special time words: **today**, **midnight**, **noon**, **now**
@@ -100,7 +101,7 @@ Valid time formats are:
                    MM/DD[/YY][-HH:MM[:SS]]
                    YYYY-MM-DD[THH:MM[:SS]]
 
-## Job State Values
+## **Job State Values**
 Using the `-s <state>` option, you can prune your search by looking for only jobs which match the state you need, such as F for failed. (All of these work: f, failed, F, FAILED)
 
 !!! Warning
@@ -130,14 +131,16 @@ sacct -e
 sacct -o ALL -j <jobid>
 ```
 
-## Formatting fields
+## **Formatting fields**
 
-You can put a %NUMBER after a field name to specify how many characters should be printed, e.g.
+By default fields are 20 characters wide. That is often insufficient.
+
+You can put a "%NUMBER" after a field name to specify how many characters should be printed, e.g.
    
 - format=name%30 will print 30 characters of field name right justified.  
 - format=name%-30 will print 30 characters left justified.
 
-## Using Environment Variables
+## **Using Environment Variables**
 
 You can define environment variables in your shell to reduce the complexity of issuing sacct commands. You can also set these in shell scripts. Command line options will always override these settings.
 
@@ -145,7 +148,7 @@ SACCT_FORMAT
 
 SLURM_TIME_FORMAT
 
-#### Formatting Dates/Times
+#### **Formatting Dates/Times**
 You can use most variables defined by the STRFTIME(3) system call. [This web page](https://strftime.org) is a starting point, but what SLURM has chosen to implement may not match.
 
 * %a - abbrieviated name of day of the week
@@ -164,51 +167,83 @@ The start and end field widths show below are suitable for the time format shown
 export SACCT_FORMAT="user,jobid,jobname,nodelist%12,start%-20,end%-20,state%20,reqtres%40,TRESUsageInTot%200"
 ```
 
-## Output Fields of Interest
+## **Output Fields of Interest**
 
-These fields are probably the ones you'll want. See [this section](https://slurm.schedmd.com/archive/slurm-22.05.9/sacct.html#lbAF) of the manual page for the list and their meaning. Capitalization does not matter; it is used for readability.
+??? Note "All sacct fields (output of sacct -e)"
+    ```
+    Account             AdminComment        AllocCPUS           AllocNodes         
+    AllocTRES           AssocID             AveCPU              AveCPUFreq         
+    AveDiskRead         AveDiskWrite        AvePages            AveRSS             
+    AveVMSize           BlockID             Cluster             Comment            
+    Constraints         ConsumedEnergy      ConsumedEnergyRaw   Container          
+    CPUTime             CPUTimeRAW          DBIndex             DerivedExitCode    
+    Elapsed             ElapsedRaw          Eligible            End                
+    ExitCode            Flags               GID                 Group              
+    JobID               JobIDRaw            JobName             Layout             
+    MaxDiskRead         MaxDiskReadNode     MaxDiskReadTask     MaxDiskWrite       
+    MaxDiskWriteNode    MaxDiskWriteTask    MaxPages            MaxPagesNode       
+    MaxPagesTask        MaxRSS              MaxRSSNode          MaxRSSTask         
+    MaxVMSize           MaxVMSizeNode       MaxVMSizeTask       McsLabel           
+    MinCPU              MinCPUNode          MinCPUTask          NCPUS              
+    NNodes              NodeList            NTasks              Partition          
+    Priority            QOS                 QOSRAW              Reason             
+    ReqCPUFreq          ReqCPUFreqGov       ReqCPUFreqMax       ReqCPUFreqMin      
+    ReqCPUS             ReqMem              ReqNodes            ReqTRES            
+    Reservation         ReservationId       Reserved            ResvCPU            
+    ResvCPURAW          Start               State               Submit             
+    SubmitLine          Suspended           SystemComment       SystemCPU          
+    Timelimit           TimelimitRaw        TotalCPU            TRESUsageInAve     
+    TRESUsageInMax      TRESUsageInMaxNode  TRESUsageInMaxTask  TRESUsageInMin     
+    TRESUsageInMinNode  TRESUsageInMinTask  TRESUsageInTot      TRESUsageOutAve    
+    TRESUsageOutMax     TRESUsageOutMaxNode TRESUsageOutMaxTask TRESUsageOutMin    
+    TRESUsageOutMinNode TRESUsageOutMinTask TRESUsageOutTot     UID                
+    User                UserCPU             WCKey               WCKeyID
+    ```
+
+The following fields are probably the ones you'll want. See [this section](https://slurm.schedmd.com/archive/slurm-22.05.9/sacct.html#lbAF) of the manual page for the list and their meaning. Capitalization does not matter; it is used for readability.
 
 - TRES means Trackable RESources, such as RAM and CPUs.
 - A number of fields (not listed) are available to tell you on which node a maximum occurred. Similarly there are fields to tell you minimum, average and maximum values for some items.
 
-### Basics
-- User
-- JobId
-- JobName
-- Partition
-- State
-- ExitCode
+=== "Basics"
+    - User
+    - JobiId
+    - JobName
+    - Partition
+    - State
+    - ExitCode
 
-### Times
-- Submit
-- Start
-- Elapsed - in format [DD-[HH:]]MM:SS
-- End
+=== "Times"
+    - Submit
+    - Start
+    - Elapsed
+    - End
 
-### Nodes
-- AllocCPUS
-- AllocNodes
-- NNodes - number of nodes requested/used
-- NodeList - 
+=== "Nodes"
+    - AllocNodes
+    - NNodes - number of nodes
+    - NodeList
 
-### Resources Requested
-- ReqTRES # this is what you will be billed for
-- ReqNodes
-- ReqCPUS
+=== "Resources Requested"
+    - ReqTRES # this is what you will be billed for
+    - ReqNodes
+    - ReqCPUS
 
-### Resources Consumed
-- TRESUsageInTot
-- CPUTime - (elapsed)*(AllocCPU) in HH:MM:SS format
-- MaxRSS - Max resident set of all tasks in job
-- MaxVMSize - Max virtual memory of all tasks in job
-- MaxDiskRead - Number bytes read by all tasks in job
-- MaxDiskWrite - Number bytes written by all tasks in job
+=== "Resources Consumed"
+    - TRESUsageInTot
+    - CPUTime - (elapsed)*(AllocCPU) in HH:MM:SS format
+    - MaxRSS - Max resident set of all tasks in job
+    - MaxVMSize - Max virtual memory of all tasks in job
+    - MaxDiskRead - Number bytes read by all tasks in job
+    - MaxDiskWrite - Number bytes written by all tasks in job
 
-Virtual Memory Size (VMSize) is the total memory size of a job. It includes both memory actually in RAM (the RSS) and parts of executabilities which were not needed to be read in off of disk into RAM. Because, for example, routines in dynamically linked libraries were never called, so those libraries were not loaded. 
+## **About Memory Fields**
 
-RSS - resident set size (RSS) is the portion of memory (measured in megabytes) occupied by a job that is held in main memory (RAM). The rest of the memory required by the job exists in the swap space or file system, either because some parts of the occupied memory were paged out, or because some parts of the executable were never loaded.
+**Virtual Memory Size (VMSize)** is the total memory size of a job. It includes both memory actually in RAM (the RSS) and parts of executabilities which were not needed to be read in off of disk into RAM. Because, for example, routines in dynamically linked libraries were never called, so those libraries were not loaded. 
 
-## Exit Error Codes
+**Resident set size (RSS)** is the portion of memory (measured in megabytes) occupied by a job that is held in main memory (RAM). The rest of the memory required by the job exists in the swap space or file system, either because some parts of the occupied memory were paged out, or because some parts of the executable were never loaded.
+
+## **Exit Error Codes**
 In addition to the job's "state", SLURM also records error codes. Unfortunately the vendor's [Job Exit Codes](https://slurm.schedmd.com/job_exit_code.html) page doesn't provide a meaning for the numerical values.
 
 Error `0:53` often means that something wasn't readable or writable. For example, job output or error files couldn't be written in the directory in which the job ran (or where you told SLURM to put them with a directive).
@@ -231,7 +266,7 @@ Enter kill -l to list signal codes
 Enter man signal for more information
 ```
 
-## Diagnostic Arguments
+## **Diagnostic Arguments**
 
 These can be useful to double-check what someone actually did.
 
