@@ -68,3 +68,7 @@ Example number =  96
 Example number =  85
 Example number =  72
 ```
+
+## Installing Your Own Packages
+
+Please see [this document](../sw/python-pkg.md)

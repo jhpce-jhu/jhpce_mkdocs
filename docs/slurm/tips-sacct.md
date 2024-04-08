@@ -56,8 +56,33 @@ Check the [man page](https://slurm.schedmd.com/archive/slurm-22.05.9/sacct.html)
 - `-K` *maximum time* - looking for jobs with time limits in a range
 - `-q` *qoslist* - list of qos used
 
+### Sorting or processing output
+`sacct` can output with other delimiters if you specify either `-p` or `-P` and `--delimiter=<characters>`
+
+`sacct` does not have a sort option. You need to sort its output by other methods. If you want to change the order of the information, specify the field names in the desired order.
+
+This is a prime example of where it is kindest to the SLURM master daemon if you run your query such that you store the results in a text file, then work with the text file contents. Rather than running many variations of a command pipeline
+beginning with `sacct` when you already have all of the desired output option fields and are just trying to figure out the right text-processing logic.
+
+
+```shell title="sort failed jobs by exitcode"
+sacct -X -a -s F -o "user,jobid,state,nodelist,exitcode" -S noon -E now|sort -k5| less
+```
+
+```shell title="sort failed jobs by exitcode, then by nodelist"
+sacct -X -a -s F -o "user,jobid,state,nodelist,exitcode" -S noon -E now|sort -k5,5 -k4,4| less
+```
+
+Useful sort options:
+
+1. `-kKEYDEF` or `--key=KEYDEF` Given just a number as the KEYDEF, it sorts by column
+2. `-r`or `--reverse`
+3. `-n` or `--numeric-sort` 
+
+See the sort manual page for other options, including multiple kinds of numeric sorts, as well as the syntax of KEYDEF.
+
 ## Start and End Times
-It is best to use always specify a `-S` start time and a `-E` end time.
+{==It is best to use always specify a `-S` start time and a `-E` end time.==}
 
 Special time words: **today**, **midnight**, **noon**, **now**
 
@@ -184,7 +209,7 @@ Virtual Memory Size (VMSize) is the total memory size of a job. It includes both
 RSS - resident set size (RSS) is the portion of memory (measured in megabytes) occupied by a job that is held in main memory (RAM). The rest of the memory required by the job exists in the swap space or file system, either because some parts of the occupied memory were paged out, or because some parts of the executable were never loaded.
 
 ## Exit Error Codes
-In addition to the job's "state", SLURM also records error codes. Unfortunately their [Job Exit Codes](https://slurm.schedmd.com/job_exit_code.html) page doesn't provide a meaning for the numerical values.
+In addition to the job's "state", SLURM also records error codes. Unfortunately the vendor's [Job Exit Codes](https://slurm.schedmd.com/job_exit_code.html) page doesn't provide a meaning for the numerical values.
 
 Error `0:53` often means that something wasn't readable or writable. For example, job output or error files couldn't be written in the directory in which the job ran (or where you told SLURM to put them with a directive).
 

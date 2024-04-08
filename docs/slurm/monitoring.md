@@ -68,14 +68,20 @@ If you want or need to get more information about your jobs, you should add "ins
 1. Look at their output and error files
 2. Look at files they wrote to
 3. The command `seff jobid` for a given jobid will report on RAM and CPU efficiency. 
-4. Use `sacct` to inspect parameters about the job, including their exitcode
+4. Use `sacct` to inspect parameters about the job, including their "exitcode"
 
-Exit codes are poorly documented, unfortunately.
+Exit codes are poorly documented, unfortunately. See [this section](../slurm/tips-sacct.md#exit-error-codes) of the sacct tips page for what is known.
 
 `scontrol show job` doesn't work for completed jobs.
 
-#### `seff` output
-CPU efficiency indicates how frequently allocated CPUs were busy.
+#### `seff` (Slurm EFFiciency) output
+
+!!! Warning
+    seff output might not be correct for some jobs. If you need to double-check its output, gather the raw info with sacct.
+    
+CPU efficiency indicates how frequently allocated CPUs were busy. The more CPU-bound a job is, the closer to 100% this will be. The more input/output-bound a job is, the closer this will be to 0.
+
+Memory efficiency indicates the proportion of requested memory used at the high-water mark. Values over 100% are not uncommon. It seems that such cases represent cases where the way in which shared memory (such as dynamically-linked code libraries) are counted, perhaps against multiple threads running on one CPU.
 
 ```
 Job ID: 3946128
