@@ -4,14 +4,14 @@ tags:
   - slurm
 ---
 
-# Monitoring SLURM Jobs
+# **Monitoring SLURM Jobs**
 
-## Overview
+## **Overview**
 Has my job ended? Why did my job fail? How much memory did my sample job use so I can use memory efficiently in future similar jobs?[^1] There are a number of ways in which you can learn the answers to these questions. The state of the job will determine which tools and techniques you use.
 
 [^1]: Making sure your jobs request the right amount of RAM and the right number of CPUs helps you and others using the clusters use these resources more efficiently, and in turn get more work done more quickly.
 
-## JOB STATES
+## **JOB STATES**
 
 Until we draw a nice diagram, a written description will have to suffice. Here we focus on batch jobs and common states. Job states have short names consisting of one or two capitalized letters, and a full name. Short names are introduced in parentheses below. We have placed a copy of the list in `/jhpce/shared/jhpce/docs/job-states.txt`.
 
@@ -32,59 +32,83 @@ Batch jobs consist of several job steps, two at minimum ("batch"[^2] and "extern
 9. RUNNING jobs can run correctly, switch to COMPLETING (CG) as processes are quitting, and then COMPLETED (CD).
 
 
-## PENDING JOBS
+## **PENDING JOBS**
+
+!!! Note "Authoring Note"
+    Need to insert here the most common reasons and their explanations.
 
 Jobs waiting to run will sit "in the queue." They will be shown to have a "Reason"
 
-### Tools for pending jobs
+### **Tools for pending jobs**
 `squeue --me`
+
+`squeue --me --start`
 
 `scontrol show job` - this only works for pending and running jobs.
 
-## RUNNING JOBS
+## **RUNNING JOBS**
 
-### How to get information about running jobs?
+### **How to get information about running jobs?**
 If you want or need to get more information about your jobs, you should add "instrumentation" to them. Instrumentation is any of a number of techniques which gather and save or print information for you to inspect. A trivial example is adding a command in your batch file script that echoes "I'm running on node" and then runs the hostname command.
 
 1. `scontrol show job`
 2. Look at their output and error files
 2. Look at files they are writing to
-3. Use sstat to inspect parameters SLURM has collected for the job
-2. Use sattach to connect to the input/output of your script on the leading node of a job.
+3. Use `sstat` to inspect parameters SLURM has collected for the job
+2. Use `sattach` to connect to the input/output of your script on the leading node of a job. (For advanced users. Using the `tail -f` command on job output files as the job runs is probably much more useful.)
 3. Log into a node and inspect system state with commands like `ps` or `htop`
 
 
-## COMPLETED JOBS
+## **COMPLETED JOBS**
 Here we mean jobs that are no longer running, whether they succeeded or failed for some reason.
 
-### How to get information about completed jobs?
+### **How to get information about completed jobs?**
 If you want or need to get more information about your jobs, you should add "instrumentation" to them. Instrumentation is any of a number of techniques which gather and save or print information for you to inspect. A trivial example is adding a command in your batch file script that echoes "I'm running on node" and then runs the hostname command.
 
 1. Look at their output and error files
 2. Look at files they wrote to
-3. Use sacct to inspect parameters about the job, including their exitcode
+3. The command `seff jobid` for a given jobid will report on RAM and CPU efficiency. 
+4. Use `sacct` to inspect parameters about the job, including their exitcode
 
 Exit codes are poorly documented, unfortunately.
 
 `scontrol show job` doesn't work for completed jobs.
 
-## INVESTIGATING FAILURES
+#### `seff` output
+CPU efficiency indicates how frequently allocated CPUs were busy.
+
+```
+Job ID: 3946128
+Array Job ID: 3560537_102
+Cluster: jhpce3
+User/Group: jmuschel/biostats
+State: COMPLETED (exit code 0)
+Cores: 1
+CPU Utilized: 2-12:47:05
+CPU Efficiency: 99.94% of 2-12:49:12 core-walltime
+Job Wall-clock time: 2-12:49:12
+Memory Utilized: 15.34 GB
+Memory Efficiency: 76.71% of 20.00 GB
+```
+
+
+## **INVESTIGATING FAILURES**
 
 !!! Note "Authoring Note"
-    This might warrant a dedicated page.
+    This might warrant a dedicated page. THERE IS IMPORTANT INFO TO ADD -- regarding techniques, approaches. 
 
-### Exit codes
+### **Exit codes**
 In addition to the STATE of jobs and job steps, you can get an exit code and sometimes an extended error code with the `sacct` command.
 
 The exit code of a job is captured by Slurm and saved as part of the job record. For sbatch jobs the exit code of the batch script is captured. For srun, the exit code will be the return value of the executed command. Any non-zero exit code is considered a job failure, and results in job state of FAILED. When a signal was responsible for a job/step termination, the signal number will also be captured, and displayed after the exit code (separated by a colon).
 
 Depending on the execution order of the commands in the batch script, it is possible that a specific command fails but the batch script will return zero indicating success.
 
-## TOOL SET
+## **TOOL SET**
 
 Here is a list of tools and techniques. You may use the same command to look at jobs in different states so we've gathered details here rather than repeating them in every section above.
 
-### Email Notification
+### **Email Notification**
 
 You can direct SLURM to send you email when various things happen with your job. These directives can be given on the command line, in batch job scripts, and set in your SLURM defaults file. You can even modify running jobs to set or change their notification settings (see the [scontrol tips](tips-scontrol.md) page).
 
@@ -108,36 +132,36 @@ The mail arguments are shown in the [sbatch](https://slurm.schedmd.com/archive/s
     - ALL (equivalent to BEGIN, END, FAIL, INVALID_DEPEND, REQUEUE, and STAGE_OUT)
     - TIME_LIMIT, TIME_LIMIT_90 (reached 90 percent of time limit), TIME_LIMIT_80 (reached 80 percent of time limit), TIME_LIMIT_50 (reached 50 percent of time limit)
 
-### Output and error files
+### **Output and error files**
 By default your job will store an output file named "slurm-%j.out" where the "%j" is replaced by the job ID containing job output and errors in the same directory in which your job ran. You can direct SLURM to put the file(s) elsewhere and change their names.
 
 For job arrays, the default file name is "slurm-%A_%a.out", "%A" is replaced by the job ID and "%a" with the array index. 
 
 If you add echo statements in your job batch file then you can inspect the job output/error files for clues as to its status.
 
-### squeue
+### **squeue**
 [squeue](https://slurm.schedmd.com/archive/slurm-22.05.9/squeue.html) - Display information about pending and running jobs.
 
-### sstat 
+### **sstat** 
 Display process statistics of a running job/step. Some of the advice given for `sacct` (below) applies to `sstat`.
 
 https://slurm.schedmd.com/archive/slurm-22.05.9/sstat.html
 
-### scontrol show job
+### **scontrol show job**
 The `scontrol` command has many uses. Before a job ends you can get detailed information with `scontrol`.
 
 !!! YAY
     We have written a document describing frequent uses of scontrol. See [this page](tips-scontrol.md).
  
-### sacct
+### **sacct**
     
-sacct - Display accounting data for running and completed jobs in the Slurm database.
+`sacct` - Display accounting data for running and completed jobs in the Slurm database.
 
 !!! YAY
     We have written a document describing key elements of using sacct. See [this page](tips-sacct.md).
 
-## Suggestions to a user
-
+## **Suggestions to a user
+**
 !!! Note
     The following was sent to a user who was having SAS jobs fail with errors indicating a problem with space or quota.
 

@@ -8,6 +8,7 @@ written a page with advice about using the command, use the {==(LOCAL TIPS)==} l
 
 ## Locally Written Tools
 * **slurmpic**: An **essential** program for getting cluster status info. Use -h option to see essential usage details. (no man page yet)
+* **slurmuser**: Displays a per-user set of details about what the running jobs are using in terms of cores and RAM. Like most commands we create, using the “-h” argument will reveal useful usage information.
 * **smem**: Displays memory used by your currently running jobs. If given a jobid number, it will display info about the memory usage of that job. (no man page yet)
 * memory reporting script - puts per-user output daily into directories under /jhpce/shared/jhpce/jhpce-log/
 
