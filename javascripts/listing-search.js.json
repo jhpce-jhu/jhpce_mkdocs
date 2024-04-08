@@ -788,6 +788,12 @@
   {
     "page_name": "Monitoring Your Jobs",
     "page_url": "../slurm/monitoring/",
+    "text": "Job ID: 3946128\nArray Job ID: 3560537_102\nCluster: jhpce3\nUser/Group: jmuschel/biostats\nState: COMPLETED (exit code 0)\nCores: 1\nCPU Utilized: 2-12:47:05\nCPU Efficiency: 99.94% of 2-12:49:12 core-walltime\nJob Wall-clock time: 2-12:49:12\nMemory Utilized: 15.34 GB\nMemory Efficiency: 76.71% of 20.00 GB\n",
+    "html": "<pre><span></span><code>Job ID: 3946128\nArray Job ID: 3560537_102\nCluster: jhpce3\nUser/Group: jmuschel/biostats\nState: COMPLETED (exit code 0)\nCores: 1\nCPU Utilized: 2-12:47:05\nCPU Efficiency: 99.94% of 2-12:49:12 core-walltime\nJob Wall-clock time: 2-12:49:12\nMemory Utilized: 15.34 GB\nMemory Efficiency: 76.71% of 20.00 GB\n</code></pre>"
+  },
+  {
+    "page_name": "Monitoring Your Jobs",
+    "page_url": "../slurm/monitoring/",
     "text": "--mail-user=<email-address>\n",
     "html": "<pre><span></span><code>--mail-user<span class=\"o\">=</span>&lt;email-address&gt;\n</code></pre>"
   },

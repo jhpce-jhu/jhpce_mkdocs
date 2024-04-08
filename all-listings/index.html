@@ -4497,7 +4497,18 @@ sbatch --job-name=${A}.${b}.run --output=${A}.${b}.out --export=D=${A},f=${b} sc
 </code></pre><h2><a class="heading" href="../slurm/getting-started">Getting Started</a></h2><a class="url" href="../slurm/getting-started">slurm/getting-started/</a><pre><span></span><code>&lt;job_array&gt;_&lt;job_id&gt;.&lt;step_id&gt;
 </code></pre><h2><a class="heading" href="../slurm/interactive-jobs">Interactive Jobs</a></h2><a class="url" href="../slurm/interactive-jobs">slurm/interactive-jobs/</a><pre><span></span><code>jsrun() { if [ -z ${DISPLAY} ]; then /usr/bin/srun --pty "$@" bash; else /usr/bin/srun --pty --x11 "$@" bash; fi }
 </code></pre><pre><span></span><code>jxrun() { /usr/bin/srun --pty "$@" bash; }
-</code></pre><h2><a class="heading" href="../slurm/monitoring">Monitoring Your Jobs</a></h2><a class="url" href="../slurm/monitoring">slurm/monitoring/</a><pre><span></span><code>--mail-user<span class="o">=</span>&lt;email-address&gt;
+</code></pre><h2><a class="heading" href="../slurm/monitoring">Monitoring Your Jobs</a></h2><a class="url" href="../slurm/monitoring">slurm/monitoring/</a><pre><span></span><code>Job ID: 3946128
+Array Job ID: 3560537_102
+Cluster: jhpce3
+User/Group: jmuschel/biostats
+State: COMPLETED (exit code 0)
+Cores: 1
+CPU Utilized: 2-12:47:05
+CPU Efficiency: 99.94% of 2-12:49:12 core-walltime
+Job Wall-clock time: 2-12:49:12
+Memory Utilized: 15.34 GB
+Memory Efficiency: 76.71% of 20.00 GB
+</code></pre><pre><span></span><code>--mail-user<span class="o">=</span>&lt;email-address&gt;
 </code></pre><pre><span></span><code>--mail-type<span class="o">=</span>&lt;list-of-types&gt;<span class="w">  </span><span class="c1"># comma-separated</span>
 </code></pre><h2><a class="heading" href="../slurm/node-features">Node Features</a></h2><a class="url" href="../slurm/node-features">slurm/node-features/</a><pre><span></span><code>      3 bdver1
       7 bdver2

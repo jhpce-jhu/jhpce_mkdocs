@@ -2938,6 +2938,21 @@ storage array. We are working on this issue and will provide updates as the situ
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="How to get information about completed jobs?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#seff-output" class="md-nav__link">
+    <span class="md-ellipsis">
+      seff output
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
         
       </ul>
@@ -3041,7 +3056,7 @@ storage array. We are working on this issue and will provide updates as the situ
         <li class="md-nav__item">
   <a href="#suggestions-to-a-user" class="md-nav__link">
     <span class="md-ellipsis">
-      Suggestions to a user
+      **Suggestions to a user
     </span>
   </a>
   
@@ -3740,6 +3755,21 @@ storage array. We are working on this issue and will provide updates as the situ
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="How to get information about completed jobs?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#seff-output" class="md-nav__link">
+    <span class="md-ellipsis">
+      seff output
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
         
       </ul>
@@ -3843,7 +3873,7 @@ storage array. We are working on this issue and will provide updates as the situ
         <li class="md-nav__item">
   <a href="#suggestions-to-a-user" class="md-nav__link">
     <span class="md-ellipsis">
-      Suggestions to a user
+      **Suggestions to a user
     </span>
   </a>
   
@@ -3881,10 +3911,10 @@ storage array. We are working on this issue and will provide updates as the situ
 
 
 
-<h1 id="monitoring-slurm-jobs">Monitoring SLURM Jobs<a class="headerlink" href="#monitoring-slurm-jobs" title="Anchor link to this section for reference">&para;</a></h1>
-<h2 id="overview">Overview<a class="headerlink" href="#overview" title="Anchor link to this section for reference">&para;</a></h2>
+<h1 id="monitoring-slurm-jobs"><strong>Monitoring SLURM Jobs</strong><a class="headerlink" href="#monitoring-slurm-jobs" title="Anchor link to this section for reference">&para;</a></h1>
+<h2 id="overview"><strong>Overview</strong><a class="headerlink" href="#overview" title="Anchor link to this section for reference">&para;</a></h2>
 <p>Has my job ended? Why did my job fail? How much memory did my sample job use so I can use memory efficiently in future similar jobs?<sup id="fnref:1"><a class="footnote-ref" href="#fn:1">1</a></sup> There are a number of ways in which you can learn the answers to these questions. The state of the job will determine which tools and techniques you use.</p>
-<h2 id="job-states">JOB STATES<a class="headerlink" href="#job-states" title="Anchor link to this section for reference">&para;</a></h2>
+<h2 id="job-states"><strong>JOB STATES</strong><a class="headerlink" href="#job-states" title="Anchor link to this section for reference">&para;</a></h2>
 <p>Until we draw a nice diagram, a written description will have to suffice. Here we focus on batch jobs and common states. Job states have short names consisting of one or two capitalized letters, and a full name. Short names are introduced in parentheses below. We have placed a copy of the list in <code>/jhpce/shared/jhpce/docs/job-states.txt</code>.</p>
 <p>Batch jobs consist of several job steps, two at minimum ("batch"<sup id="fnref:2"><a class="footnote-ref" href="#fn:2">2</a></sup> and "extern"<sup id="fnref:3"><a class="footnote-ref" href="#fn:3">3</a></sup>). The overall job and each step has its own job state code. They often differ. The <code>-X</code> flag to sacct will show you only the overall job state, such as FAILED, but some times you need to check the state of all of a jobs steps in order to see that a "batch" step ran OUT_OF_MEMORY.</p>
 <ol>
@@ -3899,45 +3929,65 @@ storage array. We are working on this issue and will provide updates as the situ
 <li>RUNNING jobs can run correctly but run into their wall-clock time limit and become DEADLINE (DL) or FAILED.</li>
 <li>RUNNING jobs can run correctly, switch to COMPLETING (CG) as processes are quitting, and then COMPLETED (CD).</li>
 </ol>
-<h2 id="pending-jobs">PENDING JOBS<a class="headerlink" href="#pending-jobs" title="Anchor link to this section for reference">&para;</a></h2>
+<h2 id="pending-jobs"><strong>PENDING JOBS</strong><a class="headerlink" href="#pending-jobs" title="Anchor link to this section for reference">&para;</a></h2>
+<div class="admonition note">
+<p class="admonition-title">Authoring Note</p>
+<p>Need to insert here the most common reasons and their explanations.</p>
+</div>
 <p>Jobs waiting to run will sit "in the queue." They will be shown to have a "Reason"</p>
-<h3 id="tools-for-pending-jobs">Tools for pending jobs<a class="headerlink" href="#tools-for-pending-jobs" title="Anchor link to this section for reference">&para;</a></h3>
+<h3 id="tools-for-pending-jobs"><strong>Tools for pending jobs</strong><a class="headerlink" href="#tools-for-pending-jobs" title="Anchor link to this section for reference">&para;</a></h3>
 <p><code>squeue --me</code></p>
+<p><code>squeue --me --start</code></p>
 <p><code>scontrol show job</code> - this only works for pending and running jobs.</p>
-<h2 id="running-jobs">RUNNING JOBS<a class="headerlink" href="#running-jobs" title="Anchor link to this section for reference">&para;</a></h2>
-<h3 id="how-to-get-information-about-running-jobs">How to get information about running jobs?<a class="headerlink" href="#how-to-get-information-about-running-jobs" title="Anchor link to this section for reference">&para;</a></h3>
+<h2 id="running-jobs"><strong>RUNNING JOBS</strong><a class="headerlink" href="#running-jobs" title="Anchor link to this section for reference">&para;</a></h2>
+<h3 id="how-to-get-information-about-running-jobs"><strong>How to get information about running jobs?</strong><a class="headerlink" href="#how-to-get-information-about-running-jobs" title="Anchor link to this section for reference">&para;</a></h3>
 <p>If you want or need to get more information about your jobs, you should add "instrumentation" to them. Instrumentation is any of a number of techniques which gather and save or print information for you to inspect. A trivial example is adding a command in your batch file script that echoes "I'm running on node" and then runs the hostname command.</p>
 <ol>
 <li><code>scontrol show job</code></li>
 <li>Look at their output and error files</li>
 <li>Look at files they are writing to</li>
-<li>Use sstat to inspect parameters SLURM has collected for the job</li>
-<li>Use sattach to connect to the input/output of your script on the leading node of a job.</li>
+<li>Use <code>sstat</code> to inspect parameters SLURM has collected for the job</li>
+<li>Use <code>sattach</code> to connect to the input/output of your script on the leading node of a job. (For advanced users. Using the <code>tail -f</code> command on job output files as the job runs is probably much more useful.)</li>
 <li>Log into a node and inspect system state with commands like <code>ps</code> or <code>htop</code></li>
 </ol>
-<h2 id="completed-jobs">COMPLETED JOBS<a class="headerlink" href="#completed-jobs" title="Anchor link to this section for reference">&para;</a></h2>
+<h2 id="completed-jobs"><strong>COMPLETED JOBS</strong><a class="headerlink" href="#completed-jobs" title="Anchor link to this section for reference">&para;</a></h2>
 <p>Here we mean jobs that are no longer running, whether they succeeded or failed for some reason.</p>
-<h3 id="how-to-get-information-about-completed-jobs">How to get information about completed jobs?<a class="headerlink" href="#how-to-get-information-about-completed-jobs" title="Anchor link to this section for reference">&para;</a></h3>
+<h3 id="how-to-get-information-about-completed-jobs"><strong>How to get information about completed jobs?</strong><a class="headerlink" href="#how-to-get-information-about-completed-jobs" title="Anchor link to this section for reference">&para;</a></h3>
 <p>If you want or need to get more information about your jobs, you should add "instrumentation" to them. Instrumentation is any of a number of techniques which gather and save or print information for you to inspect. A trivial example is adding a command in your batch file script that echoes "I'm running on node" and then runs the hostname command.</p>
 <ol>
 <li>Look at their output and error files</li>
 <li>Look at files they wrote to</li>
-<li>Use sacct to inspect parameters about the job, including their exitcode</li>
+<li>The command <code>seff jobid</code> for a given jobid will report on RAM and CPU efficiency. </li>
+<li>Use <code>sacct</code> to inspect parameters about the job, including their exitcode</li>
 </ol>
 <p>Exit codes are poorly documented, unfortunately.</p>
 <p><code>scontrol show job</code> doesn't work for completed jobs.</p>
-<h2 id="investigating-failures">INVESTIGATING FAILURES<a class="headerlink" href="#investigating-failures" title="Anchor link to this section for reference">&para;</a></h2>
+<h4 id="seff-output"><code>seff</code> output<a class="headerlink" href="#seff-output" title="Anchor link to this section for reference">&para;</a></h4>
+<p>CPU efficiency indicates how frequently allocated CPUs were busy.</p>
+<div class="highlight"><pre><span></span><code>Job ID: 3946128
+Array Job ID: 3560537_102
+Cluster: jhpce3
+User/Group: jmuschel/biostats
+State: COMPLETED (exit code 0)
+Cores: 1
+CPU Utilized: 2-12:47:05
+CPU Efficiency: 99.94% of 2-12:49:12 core-walltime
+Job Wall-clock time: 2-12:49:12
+Memory Utilized: 15.34 GB
+Memory Efficiency: 76.71% of 20.00 GB
+</code></pre></div>
+<h2 id="investigating-failures"><strong>INVESTIGATING FAILURES</strong><a class="headerlink" href="#investigating-failures" title="Anchor link to this section for reference">&para;</a></h2>
 <div class="admonition note">
 <p class="admonition-title">Authoring Note</p>
-<p>This might warrant a dedicated page.</p>
+<p>This might warrant a dedicated page. THERE IS IMPORTANT INFO TO ADD -- regarding techniques, approaches. </p>
 </div>
-<h3 id="exit-codes">Exit codes<a class="headerlink" href="#exit-codes" title="Anchor link to this section for reference">&para;</a></h3>
+<h3 id="exit-codes"><strong>Exit codes</strong><a class="headerlink" href="#exit-codes" title="Anchor link to this section for reference">&para;</a></h3>
 <p>In addition to the STATE of jobs and job steps, you can get an exit code and sometimes an extended error code with the <code>sacct</code> command.</p>
 <p>The exit code of a job is captured by Slurm and saved as part of the job record. For sbatch jobs the exit code of the batch script is captured. For srun, the exit code will be the return value of the executed command. Any non-zero exit code is considered a job failure, and results in job state of FAILED. When a signal was responsible for a job/step termination, the signal number will also be captured, and displayed after the exit code (separated by a colon).</p>
 <p>Depending on the execution order of the commands in the batch script, it is possible that a specific command fails but the batch script will return zero indicating success.</p>
-<h2 id="tool-set">TOOL SET<a class="headerlink" href="#tool-set" title="Anchor link to this section for reference">&para;</a></h2>
+<h2 id="tool-set"><strong>TOOL SET</strong><a class="headerlink" href="#tool-set" title="Anchor link to this section for reference">&para;</a></h2>
 <p>Here is a list of tools and techniques. You may use the same command to look at jobs in different states so we've gathered details here rather than repeating them in every section above.</p>
-<h3 id="email-notification">Email Notification<a class="headerlink" href="#email-notification" title="Anchor link to this section for reference">&para;</a></h3>
+<h3 id="email-notification"><strong>Email Notification</strong><a class="headerlink" href="#email-notification" title="Anchor link to this section for reference">&para;</a></h3>
 <p>You can direct SLURM to send you email when various things happen with your job. These directives can be given on the command line, in batch job scripts, and set in your SLURM defaults file. You can even modify running jobs to set or change their notification settings (see the <a href="../tips-scontrol/">scontrol tips</a> page).</p>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
@@ -3957,28 +4007,29 @@ storage array. We are working on this issue and will provide updates as the situ
 <li>TIME_LIMIT, TIME_LIMIT_90 (reached 90 percent of time limit), TIME_LIMIT_80 (reached 80 percent of time limit), TIME_LIMIT_50 (reached 50 percent of time limit)</li>
 </ul>
 </details>
-<h3 id="output-and-error-files">Output and error files<a class="headerlink" href="#output-and-error-files" title="Anchor link to this section for reference">&para;</a></h3>
+<h3 id="output-and-error-files"><strong>Output and error files</strong><a class="headerlink" href="#output-and-error-files" title="Anchor link to this section for reference">&para;</a></h3>
 <p>By default your job will store an output file named "slurm-%j.out" where the "%j" is replaced by the job ID containing job output and errors in the same directory in which your job ran. You can direct SLURM to put the file(s) elsewhere and change their names.</p>
 <p>For job arrays, the default file name is "slurm-%A_%a.out", "%A" is replaced by the job ID and "%a" with the array index. </p>
 <p>If you add echo statements in your job batch file then you can inspect the job output/error files for clues as to its status.</p>
-<h3 id="squeue">squeue<a class="headerlink" href="#squeue" title="Anchor link to this section for reference">&para;</a></h3>
+<h3 id="squeue"><strong>squeue</strong><a class="headerlink" href="#squeue" title="Anchor link to this section for reference">&para;</a></h3>
 <p><a href="https://slurm.schedmd.com/archive/slurm-22.05.9/squeue.html">squeue</a> - Display information about pending and running jobs.</p>
-<h3 id="sstat">sstat<a class="headerlink" href="#sstat" title="Anchor link to this section for reference">&para;</a></h3>
+<h3 id="sstat"><strong>sstat</strong><a class="headerlink" href="#sstat" title="Anchor link to this section for reference">&para;</a></h3>
 <p>Display process statistics of a running job/step. Some of the advice given for <code>sacct</code> (below) applies to <code>sstat</code>.</p>
 <p>https://slurm.schedmd.com/archive/slurm-22.05.9/sstat.html</p>
-<h3 id="scontrol-show-job">scontrol show job<a class="headerlink" href="#scontrol-show-job" title="Anchor link to this section for reference">&para;</a></h3>
+<h3 id="scontrol-show-job"><strong>scontrol show job</strong><a class="headerlink" href="#scontrol-show-job" title="Anchor link to this section for reference">&para;</a></h3>
 <p>The <code>scontrol</code> command has many uses. Before a job ends you can get detailed information with <code>scontrol</code>.</p>
 <div class="admonition yay">
 <p class="admonition-title">Yay</p>
 <p>We have written a document describing frequent uses of scontrol. See <a href="../tips-scontrol/">this page</a>.</p>
 </div>
-<h3 id="sacct">sacct<a class="headerlink" href="#sacct" title="Anchor link to this section for reference">&para;</a></h3>
-<p>sacct - Display accounting data for running and completed jobs in the Slurm database.</p>
+<h3 id="sacct"><strong>sacct</strong><a class="headerlink" href="#sacct" title="Anchor link to this section for reference">&para;</a></h3>
+<p><code>sacct</code> - Display accounting data for running and completed jobs in the Slurm database.</p>
 <div class="admonition yay">
 <p class="admonition-title">Yay</p>
 <p>We have written a document describing key elements of using sacct. See <a href="../tips-sacct/">this page</a>.</p>
 </div>
-<h2 id="suggestions-to-a-user">Suggestions to a user<a class="headerlink" href="#suggestions-to-a-user" title="Anchor link to this section for reference">&para;</a></h2>
+<h2 id="suggestions-to-a-user">**Suggestions to a user<a class="headerlink" href="#suggestions-to-a-user" title="Anchor link to this section for reference">&para;</a></h2>
+<p>**</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>The following was sent to a user who was having SAS jobs fail with errors indicating a problem with space or quota.</p>
@@ -4023,7 +4074,7 @@ storage array. We are working on this issue and will provide updates as the situ
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1-2.1-2M12.5 7v5.2l4 2.4-1 1L11 13V7h1.5M11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2v1.8Z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">March 24, 2024</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">April 8, 2024</span>
   </span>
 
     
