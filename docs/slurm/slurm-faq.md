@@ -16,6 +16,10 @@ Note that the information in these pages will include details which do not apply
 
 [CECI](https://support.ceci-hpc.be/doc/_contents/SubmittingJobs/SlurmFAQ.html)
 
+## What are the default job resources?
+
+??? "Click to open"
+    Jobs that do not specify CPUs, RAM, or duration receive 1 CPU, 5G of RAM, and, on [public partitions](../slurm/partitions.md##public-partitions), a [time limit](../slurm/time-limits.md) of 1 day. 
 
 ## When will my job start?
 
