@@ -4425,10 +4425,21 @@ Currently Loaded Modules:
   - search
 </code></pre><pre><span></span><code>plugins:
   - blog
-</code></pre><h2><a class="heading" href="../slurm/about-jobs">About Jobs</a></h2><a class="url" href="../slurm/about-jobs">slurm/about-jobs/</a><pre><span></span><code>&lt;job_id&gt;
-&lt;job_id&gt;.&lt;step_id&gt;
-&lt;job_array&gt;_&lt;job_id&gt;
-&lt;job_array&gt;_&lt;job_id&gt;.&lt;step_id&gt;
+</code></pre><h2><a class="heading" href="../slurm/about-jobs">About Jobs</a></h2><a class="url" href="../slurm/about-jobs">slurm/about-jobs/</a><pre><span></span><code>
+</code></pre><pre><span></span><code>&lt;job id&gt;
+&lt;job id&gt;.&lt;step id&gt;
+&lt;job array&gt;_&lt;job id&gt;
+&lt;job array&gt;_&lt;job id&gt;.&lt;step id&gt;
+</code></pre><pre><span></span><code><span class="w">  </span>JobID<span class="w">           </span>JobName<span class="w">  </span>Partition<span class="w">    </span>Account<span class="w">  </span>AllocCPUS<span class="w">      </span>State<span class="w"> </span>ExitCode<span class="w"> </span>
+<span class="w">  </span>------------<span class="w"> </span>----------<span class="w"> </span>----------<span class="w"> </span>----------<span class="w"> </span>----------<span class="w"> </span>----------<span class="w"> </span>--------<span class="w"> </span>
+
+<span class="w">  </span><span class="m">1922948</span><span class="w">            </span>bash<span class="w">        </span>cee<span class="w">      </span>jhpce<span class="w">         </span><span class="m">24</span><span class="w">    </span>RUNNING<span class="w">      </span><span class="m">0</span>:0<span class="w"> </span>
+<span class="w">  </span><span class="m">1922948</span>.ext+<span class="w">     </span>extern<span class="w">                 </span>jhpce<span class="w">         </span><span class="m">24</span><span class="w">    </span>RUNNING<span class="w">      </span><span class="m">0</span>:0<span class="w"> </span>
+<span class="w">  </span><span class="m">1922948</span>.0<span class="w">          </span>bash<span class="w">                 </span>jhpce<span class="w">         </span><span class="m">24</span><span class="w">    </span>RUNNING<span class="w">      </span><span class="m">0</span>:0<span class="w"> </span>
+</code></pre><pre><span></span><code><span class="w">  </span>JobID<span class="w">           </span>JobName<span class="w">  </span>Partition<span class="w">    </span>Account<span class="w">  </span>AllocCPUS<span class="w">      </span>State<span class="w"> </span>ExitCode<span class="w"> </span>
+<span class="w">  </span>------------<span class="w"> </span>----------<span class="w"> </span>----------<span class="w"> </span>----------<span class="w"> </span>----------<span class="w"> </span>----------<span class="w"> </span>--------<span class="w"> </span>
+<span class="w">  </span><span class="m">1542874</span><span class="w">            </span>bash<span class="w">     </span>shared<span class="w">      </span>jhpce<span class="w">          </span><span class="m">2</span><span class="w">    </span>RUNNING<span class="w">      </span><span class="m">0</span>:0<span class="w"> </span>
+<span class="w">  </span><span class="m">1542874</span>.ext+<span class="w">     </span>extern<span class="w">                 </span>jhpce<span class="w">          </span><span class="m">2</span><span class="w">    </span>RUNNING<span class="w">      </span><span class="m">0</span>:0<span class="w"> </span>
 </code></pre><h2><a class="heading" href="../slurm/crafting-jobs">Crafting Batch Jobs</a></h2><a class="url" href="../slurm/crafting-jobs">slurm/crafting-jobs/</a><pre><span></span><code>You could use your 1TB of fastscratch space for this. So your SLURM script could use commands like:
 
 module load conda_R

@@ -746,8 +746,26 @@
   {
     "page_name": "About Jobs",
     "page_url": "../slurm/about-jobs/",
-    "text": "<job_id>\n<job_id>.<step_id>\n<job_array>_<job_id>\n<job_array>_<job_id>.<step_id>\n",
-    "html": "<pre><span></span><code>&lt;job_id&gt;\n&lt;job_id&gt;.&lt;step_id&gt;\n&lt;job_array&gt;_&lt;job_id&gt;\n&lt;job_array&gt;_&lt;job_id&gt;.&lt;step_id&gt;\n</code></pre>"
+    "text": "\n",
+    "html": "<pre><span></span><code>\n</code></pre>"
+  },
+  {
+    "page_name": "About Jobs",
+    "page_url": "../slurm/about-jobs/",
+    "text": "<job id>\n<job id>.<step id>\n<job array>_<job id>\n<job array>_<job id>.<step id>\n",
+    "html": "<pre><span></span><code>&lt;job id&gt;\n&lt;job id&gt;.&lt;step id&gt;\n&lt;job array&gt;_&lt;job id&gt;\n&lt;job array&gt;_&lt;job id&gt;.&lt;step id&gt;\n</code></pre>"
+  },
+  {
+    "page_name": "About Jobs",
+    "page_url": "../slurm/about-jobs/",
+    "text": "  JobID           JobName  Partition    Account  AllocCPUS      State ExitCode \n  ------------ ---------- ---------- ---------- ---------- ---------- -------- \n\n  1922948            bash        cee      jhpce         24    RUNNING      0:0 \n  1922948.ext+     extern                 jhpce         24    RUNNING      0:0 \n  1922948.0          bash                 jhpce         24    RUNNING      0:0 \n",
+    "html": "<pre><span></span><code><span class=\"w\">  </span>JobID<span class=\"w\">           </span>JobName<span class=\"w\">  </span>Partition<span class=\"w\">    </span>Account<span class=\"w\">  </span>AllocCPUS<span class=\"w\">      </span>State<span class=\"w\"> </span>ExitCode<span class=\"w\"> </span>\n<span class=\"w\">  </span>------------<span class=\"w\"> </span>----------<span class=\"w\"> </span>----------<span class=\"w\"> </span>----------<span class=\"w\"> </span>----------<span class=\"w\"> </span>----------<span class=\"w\"> </span>--------<span class=\"w\"> </span>\n\n<span class=\"w\">  </span><span class=\"m\">1922948</span><span class=\"w\">            </span>bash<span class=\"w\">        </span>cee<span class=\"w\">      </span>jhpce<span class=\"w\">         </span><span class=\"m\">24</span><span class=\"w\">    </span>RUNNING<span class=\"w\">      </span><span class=\"m\">0</span>:0<span class=\"w\"> </span>\n<span class=\"w\">  </span><span class=\"m\">1922948</span>.ext+<span class=\"w\">     </span>extern<span class=\"w\">                 </span>jhpce<span class=\"w\">         </span><span class=\"m\">24</span><span class=\"w\">    </span>RUNNING<span class=\"w\">      </span><span class=\"m\">0</span>:0<span class=\"w\"> </span>\n<span class=\"w\">  </span><span class=\"m\">1922948</span>.0<span class=\"w\">          </span>bash<span class=\"w\">                 </span>jhpce<span class=\"w\">         </span><span class=\"m\">24</span><span class=\"w\">    </span>RUNNING<span class=\"w\">      </span><span class=\"m\">0</span>:0<span class=\"w\"> </span>\n</code></pre>"
+  },
+  {
+    "page_name": "About Jobs",
+    "page_url": "../slurm/about-jobs/",
+    "text": "  JobID           JobName  Partition    Account  AllocCPUS      State ExitCode \n  ------------ ---------- ---------- ---------- ---------- ---------- -------- \n  1542874            bash     shared      jhpce          2    RUNNING      0:0 \n  1542874.ext+     extern                 jhpce          2    RUNNING      0:0 \n",
+    "html": "<pre><span></span><code><span class=\"w\">  </span>JobID<span class=\"w\">           </span>JobName<span class=\"w\">  </span>Partition<span class=\"w\">    </span>Account<span class=\"w\">  </span>AllocCPUS<span class=\"w\">      </span>State<span class=\"w\"> </span>ExitCode<span class=\"w\"> </span>\n<span class=\"w\">  </span>------------<span class=\"w\"> </span>----------<span class=\"w\"> </span>----------<span class=\"w\"> </span>----------<span class=\"w\"> </span>----------<span class=\"w\"> </span>----------<span class=\"w\"> </span>--------<span class=\"w\"> </span>\n<span class=\"w\">  </span><span class=\"m\">1542874</span><span class=\"w\">            </span>bash<span class=\"w\">     </span>shared<span class=\"w\">      </span>jhpce<span class=\"w\">          </span><span class=\"m\">2</span><span class=\"w\">    </span>RUNNING<span class=\"w\">      </span><span class=\"m\">0</span>:0<span class=\"w\"> </span>\n<span class=\"w\">  </span><span class=\"m\">1542874</span>.ext+<span class=\"w\">     </span>extern<span class=\"w\">                 </span>jhpce<span class=\"w\">          </span><span class=\"m\">2</span><span class=\"w\">    </span>RUNNING<span class=\"w\">      </span><span class=\"m\">0</span>:0<span class=\"w\"> </span>\n</code></pre>"
   },
   {
     "page_name": "Crafting Batch Jobs",
