@@ -266,6 +266,11 @@
          <changefreq>daily</changefreq>
     </url>
     <url>
+         <loc>https://jhpce.jhu.edu/slurm/about-jobs/</loc>
+         <lastmod>2024-04-09</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
          <loc>https://jhpce.jhu.edu/slurm/crafting-jobs/</loc>
          <lastmod>2024-04-09</lastmod>
          <changefreq>daily</changefreq>
@@ -352,6 +357,11 @@
     </url>
     <url>
          <loc>https://jhpce.jhu.edu/slurm/whenstart/</loc>
+         <lastmod>2024-04-09</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://jhpce.jhu.edu/slurm/images/job-states/</loc>
          <lastmod>2024-04-09</lastmod>
          <changefreq>daily</changefreq>
     </url>

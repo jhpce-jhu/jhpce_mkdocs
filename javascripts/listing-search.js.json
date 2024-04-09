@@ -632,14 +632,20 @@
   {
     "page_name": "Handy Features",
     "page_url": "../ourtools/features/",
-    "text": "\n",
-    "html": "<pre><span></span><code>\n</code></pre>"
+    "text": "def fn():\npass\n",
+    "html": "<pre><span></span><code><span class=\"k\">def</span> <span class=\"nf\">fn</span><span class=\"p\">():</span>\n<span class=\"k\">pass</span>\n</code></pre>"
   },
   {
     "page_name": "Handy Features",
     "page_url": "../ourtools/features/",
-    "text": "def fn():\npass\n",
-    "html": "<pre><span></span><code><span class=\"k\">def</span> <span class=\"nf\">fn</span><span class=\"p\">():</span>\n<span class=\"k\">pass</span>\n</code></pre>"
+    "text": "  - pymdownx.snippets: # adds the ability to embed content from arbitrary files into a document\n      check_paths: false # if true, if snippets cannot be found, the site cannot be rebuilt!!!\n      base_path: docs\n",
+    "html": "<pre><span></span><code><span class=\"w\">  </span><span class=\"p p-Indicator\">-</span><span class=\"w\"> </span><span class=\"nt\">pymdownx.snippets</span><span class=\"p\">:</span><span class=\"w\"> </span><span class=\"c1\"># adds the ability to embed content from arbitrary files into a document</span>\n<span class=\"w\">      </span><span class=\"nt\">check_paths</span><span class=\"p\">:</span><span class=\"w\"> </span><span class=\"l l-Scalar l-Scalar-Plain\">false</span><span class=\"w\"> </span><span class=\"c1\"># if true, if snippets cannot be found, the site cannot be rebuilt!!!</span>\n<span class=\"w\">      </span><span class=\"nt\">base_path</span><span class=\"p\">:</span><span class=\"w\"> </span><span class=\"l l-Scalar l-Scalar-Plain\">docs</span>\n</code></pre>"
+  },
+  {
+    "page_name": "Handy Features",
+    "page_url": "../ourtools/features/",
+    "text": "# System-wide .bashrc file for interactive bash(1) shells.\nif [ -z \"$PS1\" ]; then\n     return\nfi\n",
+    "html": "<pre><span></span><code># System-wide .bashrc file for interactive bash(1) shells.\nif [ -z \"$PS1\" ]; then\n     return\nfi\n</code></pre>"
   },
   {
     "page_name": "Handy Features",
@@ -736,6 +742,12 @@
     "page_url": "../ourtools/wishlist/",
     "text": "plugins:\n  - blog\n",
     "html": "<pre><span></span><code>plugins:\n  - blog\n</code></pre>"
+  },
+  {
+    "page_name": "About Jobs",
+    "page_url": "../slurm/about-jobs/",
+    "text": "<job_id>\n<job_id>.<step_id>\n<job_array>_<job_id>\n<job_array>_<job_id>.<step_id>\n",
+    "html": "<pre><span></span><code>&lt;job_id&gt;\n&lt;job_id&gt;.&lt;step_id&gt;\n&lt;job_array&gt;_&lt;job_id&gt;\n&lt;job_array&gt;_&lt;job_id&gt;.&lt;step_id&gt;\n</code></pre>"
   },
   {
     "page_name": "Crafting Batch Jobs",

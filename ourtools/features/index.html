@@ -1300,9 +1300,9 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#code-block-titles-including-other-files" class="md-nav__link">
+  <a href="#code-block-titles" class="md-nav__link">
     <span class="md-ellipsis">
-      code block titles &amp; including other files
+      code block titles
     </span>
   </a>
   
@@ -1326,6 +1326,15 @@
   <a href="#highlighting-text" class="md-nav__link">
     <span class="md-ellipsis">
       Highlighting text
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#snippets-including-other-files" class="md-nav__link">
+    <span class="md-ellipsis">
+      Snippets: Including other files
     </span>
   </a>
   
@@ -2855,6 +2864,8 @@
       
         
       
+        
+      
     
     
       
@@ -2897,6 +2908,27 @@
   
   <span class="md-ellipsis">
     Getting Started
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../slurm/about-jobs/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    About Jobs
   </span>
   
 
@@ -2976,10 +3008,10 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1_10_4" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1_10_5" >
         
           
-          <label class="md-nav__link" for="__nav_1_10_4" id="__nav_1_10_4_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_1_10_5" id="__nav_1_10_5_label" tabindex="0">
             
   
   <span class="md-ellipsis">
@@ -2990,8 +3022,8 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_1_10_4_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_1_10_4">
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_1_10_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_1_10_5">
             <span class="md-nav__icon md-icon"></span>
             Command tips & reference
           </label>
@@ -3971,9 +4003,9 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#code-block-titles-including-other-files" class="md-nav__link">
+  <a href="#code-block-titles" class="md-nav__link">
     <span class="md-ellipsis">
-      code block titles &amp; including other files
+      code block titles
     </span>
   </a>
   
@@ -3997,6 +4029,15 @@
   <a href="#highlighting-text" class="md-nav__link">
     <span class="md-ellipsis">
       Highlighting text
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#snippets-including-other-files" class="md-nav__link">
+    <span class="md-ellipsis">
+      Snippets: Including other files
     </span>
   </a>
   
@@ -4364,11 +4405,8 @@ If you provide a valid keyword <em>immediately</em> after the backticks (no spac
 <p>If line numbers are disasbled by default, you can enable them for a specific code block by adding after the beginning three back ticks a space, then a <code>linenums="N"</code> where N is a (?positive?) integer other than zero.</p>
 <p>If you have multiple code blocks and want the line numbers to continue in second and later blocks, you can replace that "N" with a specific number.</p>
 <p>You can highlight specific line numbers within the block by adding after the beginning three back ticks a space, then a <code>hl_lines="2 3"</code></p>
-<h3 id="code-block-titles-including-other-files">code block titles &amp; including other files<a class="headerlink" href="#code-block-titles-including-other-files" title="Anchor link to this section for reference">&para;</a></h3>
+<h3 id="code-block-titles">code block titles<a class="headerlink" href="#code-block-titles" title="Anchor link to this section for reference">&para;</a></h3>
 <p>Add a title by following leading 3 backticks with a space and <code>title=".browserslistrc"</code></p>
-<p>When Snippets is enabled, content from other files (including source files) can be embedded by using the <code>--8&lt;--</code> notation directly from within a code block to pull in a file via a relative path, in this case <code>includes/sample-bashrc</code></p>
-<div class="highlight"><span class="filename">sample bashrc</span><pre><span></span><code>
-</code></pre></div>
 <h3 id="code-block-formatting-by-programming-language">code block formatting by programming language<a class="headerlink" href="#code-block-formatting-by-programming-language" title="Anchor link to this section for reference">&para;</a></h3>
 <p>!!! note:
     The language keywords are not the same as in github -- there is overlap but also differences. See this list for the  <a href="https://pygments.org/docs/lexers/">language keywords</a> for the Pygments
@@ -4408,6 +4446,25 @@ possible <span class="critic comment">and comments can be added inline</span>.</
 <p><span class="keys"><kbd class="key-brace-left">{</kbd></span> <span class="keys"><kbd class="key-greater">&gt;</kbd></span> <span class="keys"><kbd class="key-greater">&gt;</kbd></span></p>
 <p>and ending with</p>
 <p><span class="keys"><kbd class="key-less">&lt;</kbd></span> <span class="keys"><kbd class="key-less">&lt;</kbd></span> <span class="keys"><kbd class="key-brace-right">}</kbd></span></p>
+<h2 id="snippets-including-other-files">Snippets: Including other files<a class="headerlink" href="#snippets-including-other-files" title="Anchor link to this section for reference">&para;</a></h2>
+<details class="note">
+<summary>Required to enable this feature</summary>
+<p>Added stanza to mkdocs.yml:
+<div class="highlight"><pre><span></span><code><span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">pymdownx.snippets</span><span class="p">:</span><span class="w"> </span><span class="c1"># adds the ability to embed content from arbitrary files into a document</span>
+<span class="w">      </span><span class="nt">check_paths</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span><span class="w"> </span><span class="c1"># if true, if snippets cannot be found, the site cannot be rebuilt!!!</span>
+<span class="w">      </span><span class="nt">base_path</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">docs</span>
+</code></pre></div></p>
+</details>
+<p>When Snippets is enabled, content from other files (including source files) can be embedded by using the <code>--8&lt;--</code> (scissors) notation directly from within a code block to pull in a file via a relative path (starting inside of docs/, not relative to the document doing the including), in this case <code>ourtools/includes/sample-bashrc</code></p>
+<p><div class="highlight"><span class="filename">sample bashrc</span><pre><span></span><code># System-wide .bashrc file for interactive bash(1) shells.
+if [ -z &quot;$PS1&quot; ]; then
+     return
+fi
+</code></pre></div>
+For more details about snippets, including ability to pull in only certain sections of other documents, or to append a file to every page in the web site, see <a href="https://facelessuser.github.io/pymdown-extensions/extensions/snippets/">https://facelessuser.github.io/pymdown-extensions/extensions/snippets/</a></p>
+<p>This warning says to not enable snippets for security reasons.
+I cannot discern the threat level to us in our usage.
+<a href="https://github.com/facelessuser/pymdown-extensions/security/advisories/GHSA-jh85-wwv9-24hv">https://github.com/facelessuser/pymdown-extensions/security/advisories/GHSA-jh85-wwv9-24hv</a></p>
 <h2 id="recipe-for-running-mkdocs-locally">Recipe for Running Mkdocs Locally<a class="headerlink" href="#recipe-for-running-mkdocs-locally" title="Anchor link to this section for reference">&para;</a></h2>
 <p>As of 20240401 these steps are needed to build a local Material for MkDocs server that will run a browser at <code>http://127.0.0.1:8000/</code></p>
 <div class="admonition warning">
@@ -4575,7 +4632,7 @@ https://www.starfallprojects.co.uk/blog/material-custom-status/#enable-the-featu
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1-2.1-2M12.5 7v5.2l4 2.4-1 1L11 13V7h1.5M11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2v1.8Z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">April 8, 2024</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">April 9, 2024</span>
   </span>
 
     
