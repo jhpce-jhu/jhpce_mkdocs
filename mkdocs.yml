@@ -86,6 +86,7 @@ nav:
       - Helpful GUI Programs: sw/gui-tools.md
     - Job scheduler (SLURM): 
       - Getting Started: slurm/getting-started.md
+      - About Jobs: slurm/about-jobs.md
       - Partitions: slurm/partitions.md
       - Time Limits: slurm/time-limits.md
       - "Command tips & reference":
@@ -218,6 +219,8 @@ plugins:
 # Python MarkDown Extensions
 #
 # https://squidfunk.github.io/mkdocs-material/setup/extensions/python-markdown-extensions/
+# But sometimes you may need more detailed info, in which case you go to this
+# URL: https://facelessuser.github.io/pymdown-extensions/
 markdown_extensions:
   # JRT says following three lines are ALL needed to enable admonition
   # Then to the superfences line I added the info needed for mermaid 
@@ -261,8 +264,11 @@ markdown_extensions:
                      # add linenums="1" after the initial three backticks)
   - pymdownx.inlinehilite
   - pymdownx.keys # keyboard meta keys displayed e.g. ++ctrl++
-  # JRT included this because someone else did. Investigate.
-  - pymdownx.snippets # adds the ability to embed content from arbitrary files into a document
+  # To include a file you have to specify the full relative path to it starting inside of
+  # docs/ and define base_path: docs
+  - pymdownx.snippets: # adds the ability to embed content from arbitrary files into a document
+      check_paths: false # if true, if snippets cannot be found, the site cannot be rebuilt!!!
+      base_path: docs
   - pymdownx.tasklist:
       custom_checkbox: true
 #

@@ -357,14 +357,8 @@ If you have multiple code blocks and want the line numbers to continue in second
 
 You can highlight specific line numbers within the block by adding after the beginning three back ticks a space, then a `hl_lines="2 3"`
 
-### code block titles & including other files
+### code block titles
 Add a title by following leading 3 backticks with a space and `title=".browserslistrc"`
-
-When Snippets is enabled, content from other files (including source files) can be embedded by using the `--8<--` notation directly from within a code block to pull in a file via a relative path, in this case `includes/sample-bashrc`
-
-``` title="sample bashrc"
---8<-- "includes/sample-bashrc"
-```
 
 ### code block formatting by programming language
 !!! note:
@@ -439,6 +433,26 @@ and ending with
 
 ++less++ ++less++ ++brace-right++
 
+## Snippets: Including other files
+ 
+??? Note "Required to enable this feature"
+    Added stanza to mkdocs.yml:
+    ```yaml
+      - pymdownx.snippets: # adds the ability to embed content from arbitrary files into a document
+          check_paths: false # if true, if snippets cannot be found, the site cannot be rebuilt!!!
+          base_path: docs
+    ```
+    
+When Snippets is enabled, content from other files (including source files) can be embedded by using the `--8<--` (scissors) notation directly from within a code block to pull in a file via a relative path (starting inside of docs/, not relative to the document doing the including), in this case `ourtools/includes/sample-bashrc`
+
+``` title="sample bashrc"
+--8<-- "ourtools/includes/sample-bashrc"
+```
+For more details about snippets, including ability to pull in only certain sections of other documents, or to append a file to every page in the web site, see [https://facelessuser.github.io/pymdown-extensions/extensions/snippets/](https://facelessuser.github.io/pymdown-extensions/extensions/snippets/)
+
+This warning says to not enable snippets for security reasons.
+I cannot discern the threat level to us in our usage.
+[https://github.com/facelessuser/pymdown-extensions/security/advisories/GHSA-jh85-wwv9-24hv](https://github.com/facelessuser/pymdown-extensions/security/advisories/GHSA-jh85-wwv9-24hv)
 
 ## Recipe for Running Mkdocs Locally
 As of 20240401 these steps are needed to build a local Material for MkDocs server that will run a browser at `http://127.0.0.1:8000/`
