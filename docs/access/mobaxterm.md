@@ -65,11 +65,53 @@ jhpce01 "Saved Session", and you should then be prompted for
 
 ## Configuring SFTP Sessions
 
-!!! Note "Authoring Note"
-    This needs to be written.
-    
-The main thing to know is that you need to, when configuring a session, check a box related to verification being used by the remote server.
+If you use MobaXterm to access the JHPCE cluster, and you want to transfer
+large files to ofr from the cluster, you should set up a separate SFTP session
+in MobaXterm using the “jhpce-transfer01.jhsph.edu” data transfer node, rather
+than the“jhpce03.jhsph.edu” login node. The “jhpce03.jhsph.edu” node is only
+meant to be used for logging into the cluster, and not transferring large
+files. The “jhpce03.jhsph.edu” node only has a 1 Gb/s network connection to the
+JHU network, whereas the “jhpce-transfer01.jhsph.edu” node has a 40 Gb/s
+connection. While an individual file transfers would not be able to achieve the
+full 40Gb/s speed, it will be significantly faster than using the 1Gb/s
+connection on the “jhpce03.jhsph.edu”
 
+You can set up an SFTP session in MobaXterm using the following steps.
+
+1. Startup MobaXterm.  You likely already have a “jhpce03.jhsph.edu” session
+configured for logging into the JHPCE cluster
+![mobasftp-step01](images/moba-sftp-step01.png)
+2. Click on the “Session” icon in the upper left corner.  This will bring up a
+   window where you can create new sessions.
+![mobasftp-step02](images/moba-sftp-step02.png)
+3. Select “SFTP”
+![mobasftp-step03](images/moba-sftp-step03.png)
+4. In the “Remote host” field, enter jhpce-transfer01.jhsph.edu.  In the
+   “Username” field, enter your JHPCE user ID.
+![mobasftp-step04](images/moba-sftp-step04.png)
+5. Click on the “Advanced Sftp Setting” tab.
+![mobasftp-step05](images/moba-sftp-step05.png)
+6. Check the box marked “2-steps authentication”.  Optionally, if you have an
+   SSH key, you can check the “Use private key” box, and then enter the path to
+your private key.
+![mobasftp-step06](images/moba-sftp-step06.png)
+7. When you click “OK”, you will be prompted for you “Verification Code” (which
+   will be from Google Authenticator) and “Password”.  After you enter your
+password, you will be prompted to “Save Password?”, and be sure to respond
+“No’.
+![mobasftp-step07](images/moba-sftp-step07.png)
+![mobasftp-step08](images/moba-sftp-step08.png)
+8. You should now see the list of files your home directory from the JHPCE
+   cluster displayed on the screen.  You can transfer files to and from the
+JHPCE cluster by dragging-and-dropping them onto this file list.
+![mobasftp-step09](images/moba-sftp-step09.png)
+9. To access you scratch space, you can enter the path
+   “/fastscratch/myscratch/USERID” (where USERID is your JHPCE cluster user id.
+10. When you are done with your sftp session, you can close the session by
+    clicking on the red X on the “jhpce-transfer01” tab.  This red X will show
+up when you hover your cursor over the right hand side of the tab.
+
+    
 ## OPTIONAL -- Setting up SSH Keys in MobaXterm:
 To make logging in more streamlined and avoid the pop-up windows when
 you login, you can create an SSH key pair in MobaXterm. Before
