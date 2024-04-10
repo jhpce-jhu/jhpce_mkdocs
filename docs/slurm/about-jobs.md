@@ -122,7 +122,7 @@ The main job states you will see:
 --8<-- "slurm/includes/common-job-states.md"
 
 ??? Note "Click for a complete list of job states"
-    --8<-- "slurm/images/job-states.md"
+    --8<-- "slurm/includes/all-job-states.md"
 
 That complete list comes from [this section](https://slurm.schedmd.com/archive/slurm-22.05.9/sacct.html#lbAG) of the `sacct` manual page, which has also been saved to a text file you can copy for your own reference: `/jhpce/shared/jhpce/slurm/docs/job-states.txt`
 
