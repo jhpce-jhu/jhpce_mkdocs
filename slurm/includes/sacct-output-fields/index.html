@@ -8,28 +8,24 @@
       
       
       
-        <link rel="canonical" href="https://jhpce.jhu.edu/slurm/tips-sacct/">
+        <link rel="canonical" href="https://jhpce.jhu.edu/slurm/includes/sacct-output-fields/">
       
       
-        <link rel="prev" href="../slurm-commands-ref/">
       
       
-        <link rel="next" href="../tips-sacctmgr/">
-      
-      
-      <link rel="icon" href="../../assets/images/favicon.png">
+      <link rel="icon" href="../../../assets/images/favicon.png">
       <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.5.17">
     
     
       
-        <title>sacct tips - JHPCE</title>
+        <title>Sacct output fields - JHPCE</title>
       
     
     
-      <link rel="stylesheet" href="../../assets/stylesheets/main.bcfcd587.min.css">
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.bcfcd587.min.css">
       
         
-        <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.06af60db.min.css">
       
       
 
@@ -48,9 +44,9 @@
       
     
     
-      <link rel="stylesheet" href="../../stylesheets/extra.css">
+      <link rel="stylesheet" href="../../../stylesheets/extra.css">
     
-    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
   
@@ -85,11 +81,6 @@
     <label class="md-overlay" for="__drawer"></label>
     <div data-md-component="skip">
       
-        
-        <a href="#sacct-useful-command-examples" class="md-skip">
-          Skip to content
-        </a>
-      
     </div>
     <div data-md-component="announce">
       
@@ -102,9 +93,9 @@
 
 <header class="md-header md-header--shadow" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
-    <a href="../.." title="JHPCE" class="md-header__button md-logo" aria-label="JHPCE" data-md-component="logo">
+    <a href="../../.." title="JHPCE" class="md-header__button md-logo" aria-label="JHPCE" data-md-component="logo">
       
-  <img src="../../images/sph-logo.svg" alt="logo">
+  <img src="../../../images/sph-logo.svg" alt="logo">
 
     </a>
     <label class="md-header__button md-icon" for="__drawer">
@@ -121,7 +112,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              sacct tips
+              Sacct output fields
             
           </span>
         </div>
@@ -222,9 +213,9 @@
 
 <nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="../.." title="JHPCE" class="md-nav__button md-logo" aria-label="JHPCE" data-md-component="logo">
+    <a href="../../.." title="JHPCE" class="md-nav__button md-logo" aria-label="JHPCE" data-md-component="logo">
       
-  <img src="../../images/sph-logo.svg" alt="logo">
+  <img src="../../../images/sph-logo.svg" alt="logo">
 
     </a>
     JHPCE
@@ -236,8 +227,6 @@
       
   
   
-    
-  
   
   
     
@@ -279,16 +268,16 @@
       
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1" >
         
           
           
           <div class="md-nav__link md-nav__container">
-            <a href="../.." class="md-nav__link ">
+            <a href="../../.." class="md-nav__link ">
               
   
   <span class="md-ellipsis">
@@ -305,7 +294,7 @@
             
           </div>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_1_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_1_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_1">
             <span class="md-nav__icon md-icon"></span>
             Home
@@ -364,7 +353,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../aboutus/model/" class="md-nav__link">
+      <a href="../../../aboutus/model/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -385,7 +374,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../aboutus/staff/" class="md-nav__link">
+      <a href="../../../aboutus/staff/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -450,7 +439,7 @@
           
           
           <div class="md-nav__link md-nav__container">
-            <a href="../../joinus/" class="md-nav__link ">
+            <a href="../../../joinus/" class="md-nav__link ">
               
   
   <span class="md-ellipsis">
@@ -483,7 +472,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../joinus/intro/" class="md-nav__link">
+      <a href="../../../joinus/intro/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -504,7 +493,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../joinus/new-users-form/" class="md-nav__link">
+      <a href="../../../joinus/new-users-form/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -568,7 +557,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../joinus/new-pi/" class="md-nav__link">
+      <a href="../../../joinus/new-pi/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -589,7 +578,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../joinus/new-pi-form/" class="md-nav__link">
+      <a href="../../../joinus/new-pi-form/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -663,7 +652,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../orient/orientation-overview/" class="md-nav__link">
+      <a href="../../../orient/orientation-overview/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -684,7 +673,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../orient/images/latest-orient.pdf" class="md-nav__link">
+      <a href="../../../orient/images/latest-orient.pdf" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -705,7 +694,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../orient/images/latest-csub-orient.pdf" class="md-nav__link">
+      <a href="../../../orient/images/latest-csub-orient.pdf" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -734,7 +723,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../joinus/leaving/" class="md-nav__link">
+      <a href="../../../joinus/leaving/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -755,7 +744,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../csub/new-csub-users/" class="md-nav__link">
+      <a href="../../../csub/new-csub-users/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -776,7 +765,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../joinus/policies/" class="md-nav__link">
+      <a href="../../../joinus/policies/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -797,7 +786,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../joinus/hipaa/" class="md-nav__link">
+      <a href="../../../joinus/hipaa/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -879,7 +868,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../help/help-basics/" class="md-nav__link">
+      <a href="../../../help/help-basics/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -900,7 +889,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../help/good-query/" class="md-nav__link">
+      <a href="../../../help/good-query/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -921,7 +910,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../help/external/" class="md-nav__link">
+      <a href="../../../help/external/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -942,7 +931,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../help/glossary-manual/" class="md-nav__link">
+      <a href="../../../help/glossary-manual/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -963,7 +952,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../ourtools/tags/" class="md-nav__link">
+      <a href="../../../ourtools/tags/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -984,7 +973,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../help/images/guide-to-manual-pages.pdf" class="md-nav__link">
+      <a href="../../../help/images/guide-to-manual-pages.pdf" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1050,7 +1039,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../ourtools/features/" class="md-nav__link">
+      <a href="../../../ourtools/features/" class="md-nav__link">
         
   
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0 8a5 5 0 0 1-5-5 5 5 0 0 1 5-5 5 5 0 0 1 5 5 5 5 0 0 1-5 5m0-12.5C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5c-1.73-4.39-6-7.5-11-7.5Z"/></svg>
@@ -1073,7 +1062,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../ourtools/tips-conventions/" class="md-nav__link">
+      <a href="../../../ourtools/tips-conventions/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1094,7 +1083,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../ourtools/wishlist/" class="md-nav__link">
+      <a href="../../../ourtools/wishlist/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1131,7 +1120,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../help/faq/" class="md-nav__link">
+      <a href="../../../help/faq/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1201,7 +1190,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../access/access-overview/" class="md-nav__link">
+      <a href="../../../access/access-overview/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1222,7 +1211,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../access/ssh/" class="md-nav__link">
+      <a href="../../../access/ssh/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1243,7 +1232,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../access/x11/" class="md-nav__link">
+      <a href="../../../access/x11/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1264,7 +1253,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../access/mobaxterm/" class="md-nav__link">
+      <a href="../../../access/mobaxterm/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1330,7 +1319,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../access/file-transfer/" class="md-nav__link">
+      <a href="../../../access/file-transfer/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1351,7 +1340,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../access/globus/" class="md-nav__link">
+      <a href="../../../access/globus/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1372,7 +1361,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../access/onedrive/" class="md-nav__link">
+      <a href="../../../access/onedrive/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1464,7 +1453,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../files/files-overview/" class="md-nav__link">
+      <a href="../../../files/files-overview/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1485,7 +1474,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../files/sharing-files/" class="md-nav__link">
+      <a href="../../../files/sharing-files/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1506,7 +1495,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../files/acl/" class="md-nav__link">
+      <a href="../../../files/acl/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1527,7 +1516,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../files/copying-files/" class="md-nav__link">
+      <a href="../../../files/copying-files/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1593,7 +1582,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../files/rsync/" class="md-nav__link">
+      <a href="../../../files/rsync/" class="md-nav__link">
         
   
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0 8a5 5 0 0 1-5-5 5 5 0 0 1 5-5 5 5 0 0 1 5 5 5 5 0 0 1-5 5m0-12.5C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5c-1.73-4.39-6-7.5-11-7.5Z"/></svg>
@@ -1616,7 +1605,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../files/rsync-itemize-table/" class="md-nav__link">
+      <a href="../../../files/rsync-itemize-table/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1637,7 +1626,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../files/rsync-itemize-manpage/" class="md-nav__link">
+      <a href="../../../files/rsync-itemize-manpage/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1666,7 +1655,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../files/archive-files/" class="md-nav__link">
+      <a href="../../../files/archive-files/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1687,7 +1676,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../files/deep-paths/" class="md-nav__link">
+      <a href="../../../files/deep-paths/" class="md-nav__link">
         
   
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0 8a5 5 0 0 1-5-5 5 5 0 0 1 5-5 5 5 0 0 1 5 5 5 5 0 0 1-5 5m0-12.5C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5c-1.73-4.39-6-7.5-11-7.5Z"/></svg>
@@ -1710,7 +1699,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../files/data-security/" class="md-nav__link">
+      <a href="../../../files/data-security/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1792,7 +1781,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../storage/stg-overview/" class="md-nav__link">
+      <a href="../../../storage/stg-overview/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1813,7 +1802,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../storage/quotas/" class="md-nav__link">
+      <a href="../../../storage/quotas/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1834,7 +1823,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../storage/buying-in/" class="md-nav__link">
+      <a href="../../../storage/buying-in/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1855,7 +1844,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../storage/storage/" class="md-nav__link">
+      <a href="../../../storage/storage/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1876,7 +1865,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../storage/fastscratch/" class="md-nav__link">
+      <a href="../../../storage/fastscratch/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1897,7 +1886,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../files/copying-files/" class="md-nav__link">
+      <a href="../../../files/copying-files/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1918,7 +1907,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../storage/backups-restores/" class="md-nav__link">
+      <a href="../../../storage/backups-restores/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1998,7 +1987,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../sw/sw-overview/" class="md-nav__link">
+      <a href="../../../sw/sw-overview/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2072,7 +2061,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../sw/matlab/" class="md-nav__link">
+      <a href="../../../sw/matlab/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2093,7 +2082,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../sw/python/" class="md-nav__link">
+      <a href="../../../sw/python/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2114,7 +2103,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../sw/r/" class="md-nav__link">
+      <a href="../../../sw/r/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2135,7 +2124,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../sw/r-studio/" class="md-nav__link">
+      <a href="../../../sw/r-studio/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2156,7 +2145,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../sw/rstudio-server/" class="md-nav__link">
+      <a href="../../../sw/rstudio-server/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2177,7 +2166,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../sw/sas/" class="md-nav__link">
+      <a href="../../../sw/sas/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2198,7 +2187,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../sw/stata/" class="md-nav__link">
+      <a href="../../../sw/stata/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2227,7 +2216,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../sw/modules/" class="md-nav__link">
+      <a href="../../../sw/modules/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2297,7 +2286,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../sw/building-from-src/" class="md-nav__link">
+      <a href="../../../sw/building-from-src/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2318,7 +2307,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../sw/conda/" class="md-nav__link">
+      <a href="../../../sw/conda/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2339,7 +2328,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../sw/python-pkg/" class="md-nav__link">
+      <a href="../../../sw/python-pkg/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2360,7 +2349,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../sw/r-pkg/" class="md-nav__link">
+      <a href="../../../sw/r-pkg/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2381,7 +2370,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../sw/singularity/" class="md-nav__link">
+      <a href="../../../sw/singularity/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2410,7 +2399,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../sw/locally-written/" class="md-nav__link">
+      <a href="../../../sw/locally-written/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2431,7 +2420,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../sw/gui-tools/" class="md-nav__link">
+      <a href="../../../sw/gui-tools/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2457,10 +2446,8 @@
                 
   
   
-    
   
   
-  
     
     
       
@@ -2497,11 +2484,11 @@
       
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1_10" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1_10" >
         
           
           <label class="md-nav__link" for="__nav_1_10" id="__nav_1_10_label" tabindex="0">
@@ -2515,7 +2502,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_1_10_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_1_10_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_1_10">
             <span class="md-nav__icon md-icon"></span>
             Job scheduler (SLURM)
@@ -2529,7 +2516,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../getting-started/" class="md-nav__link">
+      <a href="../../getting-started/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2550,7 +2537,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../about-jobs/" class="md-nav__link">
+      <a href="../../about-jobs/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2571,7 +2558,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../partitions/" class="md-nav__link">
+      <a href="../../partitions/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2592,7 +2579,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../time-limits/" class="md-nav__link">
+      <a href="../../time-limits/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2610,10 +2597,8 @@
                 
   
   
-    
   
   
-  
     
     
       
@@ -2632,11 +2617,11 @@
       
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1_10_5" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1_10_5" >
         
           
           <label class="md-nav__link" for="__nav_1_10_5" id="__nav_1_10_5_label" tabindex="0">
@@ -2650,7 +2635,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_1_10_5_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_1_10_5_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_1_10_5">
             <span class="md-nav__icon md-icon"></span>
             Command tips & reference
@@ -2664,7 +2649,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../slurm-commands-ref/" class="md-nav__link">
+      <a href="../../slurm-commands-ref/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2682,32 +2667,10 @@
                 
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0 8a5 5 0 0 1-5-5 5 5 0 0 1 5-5 5 5 0 0 1 5 5 5 5 0 0 1-5 5m0-12.5C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5c-1.73-4.39-6-7.5-11-7.5Z"/></svg>
-  
-  <span class="md-ellipsis">
-    sacct tips
-  </span>
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../../tips-sacct/" class="md-nav__link">
         
   
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0 8a5 5 0 0 1-5-5 5 5 0 0 1 5-5 5 5 0 0 1 5 5 5 5 0 0 1-5 5m0-12.5C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5c-1.73-4.39-6-7.5-11-7.5Z"/></svg>
@@ -2718,179 +2681,6 @@
   
 
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#sacct-overview" class="md-nav__link">
-    <span class="md-ellipsis">
-      Sacct Overview
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#sacct-basics" class="md-nav__link">
-    <span class="md-ellipsis">
-      sacct basics
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#command-options-of-note" class="md-nav__link">
-    <span class="md-ellipsis">
-      Command Options of Note
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Command Options of Note">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#sorting-or-processing-output" class="md-nav__link">
-    <span class="md-ellipsis">
-      Sorting or processing output
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#start-and-end-times" class="md-nav__link">
-    <span class="md-ellipsis">
-      Start and End Times
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#job-limit" class="md-nav__link">
-    <span class="md-ellipsis">
-      Job Limit
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#job-state-values" class="md-nav__link">
-    <span class="md-ellipsis">
-      Job State Values
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#output-fields-of-interest" class="md-nav__link">
-    <span class="md-ellipsis">
-      Output Fields of Interest
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Output Fields of Interest">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#about-memory-fields" class="md-nav__link">
-    <span class="md-ellipsis">
-      About Memory Fields
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#formatting-fields" class="md-nav__link">
-    <span class="md-ellipsis">
-      Formatting fields
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#using-environment-variables" class="md-nav__link">
-    <span class="md-ellipsis">
-      Using Environment Variables
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Using Environment Variables">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#formatting-datestimes" class="md-nav__link">
-    <span class="md-ellipsis">
-      Formatting Dates/Times
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#exit-error-codes" class="md-nav__link">
-    <span class="md-ellipsis">
-      Exit Error Codes
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#diagnostic-arguments" class="md-nav__link">
-    <span class="md-ellipsis">
-      Diagnostic Arguments
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#examples" class="md-nav__link">
-    <span class="md-ellipsis">
-      Examples
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -2903,7 +2693,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../tips-sacctmgr/" class="md-nav__link">
+      <a href="../../tips-sacctmgr/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2924,7 +2714,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../tips-scontrol/" class="md-nav__link">
+      <a href="../../tips-scontrol/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2945,7 +2735,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../tips-squeue/" class="md-nav__link">
+      <a href="../../tips-squeue/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2974,7 +2764,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../interactive-jobs/" class="md-nav__link">
+      <a href="../../interactive-jobs/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2995,7 +2785,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../crafting-jobs/" class="md-nav__link">
+      <a href="../../crafting-jobs/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -3016,7 +2806,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../monitoring/" class="md-nav__link">
+      <a href="../../monitoring/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -3037,7 +2827,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../whenstart/" class="md-nav__link">
+      <a href="../../whenstart/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -3058,7 +2848,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../qos/" class="md-nav__link">
+      <a href="../../qos/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -3079,7 +2869,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../environment/" class="md-nav__link">
+      <a href="../../environment/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -3100,7 +2890,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../node-features/" class="md-nav__link">
+      <a href="../../node-features/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -3121,7 +2911,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../user-guide-collection/" class="md-nav__link">
+      <a href="../../user-guide-collection/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -3142,7 +2932,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../slurm-faq/" class="md-nav__link">
+      <a href="../../slurm-faq/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -3240,7 +3030,7 @@
           
           
           <div class="md-nav__link md-nav__container">
-            <a href="../../gpu/" class="md-nav__link ">
+            <a href="../../../gpu/" class="md-nav__link ">
               
   
   <span class="md-ellipsis">
@@ -3273,7 +3063,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../gpu/gpu-info/" class="md-nav__link">
+      <a href="../../../gpu/gpu-info/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -3294,7 +3084,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../gpu/alphafold/" class="md-nav__link">
+      <a href="../../../gpu/alphafold/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -3323,7 +3113,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../sw/vscode/" class="md-nav__link">
+      <a href="../../../sw/vscode/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -3344,7 +3134,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../help/cost-calculator/" class="md-nav__link">
+      <a href="../../../help/cost-calculator/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -3418,7 +3208,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../portal/web-apps/" class="md-nav__link">
+      <a href="../../../portal/web-apps/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -3439,7 +3229,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../portal/datacatalog/" class="md-nav__link">
+      <a href="../../../portal/datacatalog/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -3460,7 +3250,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../portal/web-reset/" class="md-nav__link">
+      <a href="../../../portal/web-reset/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -3534,7 +3324,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../csub/csub-overview/" class="md-nav__link">
+      <a href="../../../csub/csub-overview/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -3555,7 +3345,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../csub/new-csub-users/" class="md-nav__link">
+      <a href="../../../csub/new-csub-users/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -3576,7 +3366,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../orient/images/latest-csub-orient.pdf" class="md-nav__link">
+      <a href="../../../orient/images/latest-csub-orient.pdf" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -3622,169 +3412,6 @@
   
   
   
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#sacct-overview" class="md-nav__link">
-    <span class="md-ellipsis">
-      Sacct Overview
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#sacct-basics" class="md-nav__link">
-    <span class="md-ellipsis">
-      sacct basics
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#command-options-of-note" class="md-nav__link">
-    <span class="md-ellipsis">
-      Command Options of Note
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Command Options of Note">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#sorting-or-processing-output" class="md-nav__link">
-    <span class="md-ellipsis">
-      Sorting or processing output
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#start-and-end-times" class="md-nav__link">
-    <span class="md-ellipsis">
-      Start and End Times
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#job-limit" class="md-nav__link">
-    <span class="md-ellipsis">
-      Job Limit
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#job-state-values" class="md-nav__link">
-    <span class="md-ellipsis">
-      Job State Values
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#output-fields-of-interest" class="md-nav__link">
-    <span class="md-ellipsis">
-      Output Fields of Interest
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Output Fields of Interest">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#about-memory-fields" class="md-nav__link">
-    <span class="md-ellipsis">
-      About Memory Fields
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#formatting-fields" class="md-nav__link">
-    <span class="md-ellipsis">
-      Formatting fields
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#using-environment-variables" class="md-nav__link">
-    <span class="md-ellipsis">
-      Using Environment Variables
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Using Environment Variables">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#formatting-datestimes" class="md-nav__link">
-    <span class="md-ellipsis">
-      Formatting Dates/Times
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#exit-error-codes" class="md-nav__link">
-    <span class="md-ellipsis">
-      Exit Error Codes
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#diagnostic-arguments" class="md-nav__link">
-    <span class="md-ellipsis">
-      Diagnostic Arguments
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#examples" class="md-nav__link">
-    <span class="md-ellipsis">
-      Examples
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
   
 </nav>
                   </div>
@@ -3797,234 +3424,10 @@
               <article class="md-content__inner md-typeset">
                 
                   
-  
-<nav class="md-tags" >
-  
-    
-    
-    
-      <a href="../../ourtools/tags/#slurm" class="md-tag">slurm</a>
-    
-  
-</nav>
 
 
+  <h1>Sacct output fields</h1>
 
-<h1 id="sacct-useful-command-examples"><strong>sacct useful command examples</strong><a class="headerlink" href="#sacct-useful-command-examples" title="Anchor link to this section for reference">&para;</a></h1>
-<div class="admonition caution">
-<p class="admonition-title">Caution</p>
-<p>If you have not already read about basic job facts like job notation, steps, names and states, please first visit the "About SLURM Jobs" document <a href="../about-jobs/">here</a>.</p>
-</div>
-<h2 id="sacct-overview"><strong>Sacct Overview</strong><a class="headerlink" href="#sacct-overview" title="Anchor link to this section for reference">&para;</a></h2>
-<div class="admonition example">
-<p class="admonition-title">Example</p>
-<div class="highlight"><span class="filename">Show my failed jobs between noon and now</span><pre><span></span><code>sacct<span class="w"> </span>-s<span class="w"> </span>F<span class="w"> </span>-o<span class="w"> </span><span class="s2">&quot;user,jobid,state,nodelist,start,end,exitcode&quot;</span><span class="w"> </span>-S<span class="w"> </span>noon<span class="w"> </span>-E<span class="w"> </span>now
-</code></pre></div>
-</div>
-<p><a href="https://slurm.schedmd.com/archive/slurm-22.05.9/sacct.html">sacct</a> is a command used to display information about jobs. It has a number of subtleties, such as the time window reported on and the formatting of output. We hope that this page will help you get the information you need.</p>
-<p><code>sacct</code> can be used to investigate jobs' resource usage, nodes used, and exit codes. It can point to important information, such as jobs dying on a particular node but working on other nodes<sup id="fnref:1"><a class="footnote-ref" href="#fn:1">1</a></sup>.</p>
-<p>sacct will show all submitted jobs but cannot, of course, provide data for a number of fields until the job has finished. Use the <a href="https://slurm.schedmd.com/archive/slurm-22.05.9/sstat.html">sstat</a> command to get information about running programs. "Instrumenting" your jobs to gather information about them can include adding one or more <code>sstat</code> commands to batch jobs in multiple places.</p>
-<div class="admonition tip">
-<p class="admonition-title">Tip</p>
-<p>Much of the information on this page can be used with <code>sstat</code>, but there are differences, particularly in available output fields (compare the output of <code>sacct -e</code> and <code>sstat -e</code>).</p>
-</div>
-<p>Examples below use angle brackets <span class="keys"><kbd class="key-less">&lt;</kbd></span> <span class="keys"><kbd class="key-greater">&gt;</kbd></span>  to indicate where you are supposed to replace argumements with your values.</p>
-<h2 id="sacct-basics"><strong>sacct basics</strong><a class="headerlink" href="#sacct-basics" title="Anchor link to this section for reference">&para;</a></h2>
-<ol>
-<li>By default only your own jobs are displayed. Use the <code>--allusers</code> or <code>-a</code> flag if necessary.</li>
-<li>Only jobs from a certain time window are displayed by default. That window varies in a confusing manner depending the arguments you provide. See <a href="https://slurm.schedmd.com/archive/slurm-22.05.9/sacct.html#lbAH">this section</a> of the manual page. Therefore it is recommended to <strong>always</strong> provide start (<code>-S</code>) and end (<code>-E</code>) times to be sure that you are seeing what you expect.</li>
-<li>You can choose output fields and control their <a href="#formatting-fields">width</a>. </li>
-<li>Even the simplest of batch jobs contain multiple "steps" as far as SLURM is concerned. One of them, named "extern" represents the ssh to the compute node on behalf of your job. Job records consist of a primary entry for the job as a whole  as  well as entries for job steps. The <a href="https://slurm.schedmd.com/archive/slurm-22.05.9/job_launch.html#job_record">Job Launch</a> page has a more detailed description of each type of job step. You may find the <code>-X</code> flag helpful to omit clutter.</li>
-<li>Regular jobs are in the form: <strong>JobID[.JobStep]</strong></li>
-<li>Array jobs are in the form: <strong>ArrayJobID_ArrayTaskID</strong></li>
-<li>Jobs have multiple steps!! (Explained <a href="../about-jobs/#jobs-have-multiple-steps">here</a>.)</li>
-</ol>
-<div class="admonition warning">
-<p class="admonition-title">Warning</p>
-<p>Sacct retrieves data from a SQL database. Be careful when creating your sacct commands to limit the queries to the information you need. Narrow the search as much as possible. 
-That database needs to be modified constantly as jobs start and complete, so we don't want it tied up answering sacct queries. If you want to look at a large amount of data in a variety of ways, consider saving the output to a text file and then working with that file.</p>
-</div>
-<h2 id="command-options-of-note"><strong>Command Options of Note</strong><a class="headerlink" href="#command-options-of-note" title="Anchor link to this section for reference">&para;</a></h2>
-<p>Check the <a href="https://slurm.schedmd.com/archive/slurm-22.05.9/sacct.html">man page</a>. There are other useful options.</p>
-<ul>
-<li><code>-X</code>  show stats for the job allocation itself, ignoring steps (try it)</li>
-<li><code>-R</code> <em>reasonlist</em>  show jobs not scheduled for given reason</li>
-<li><code>-a</code>  allusers</li>
-<li><code>-N</code> <em>nodelist</em>  only show jobs which ran on this/these nodes</li>
-<li><code>-u</code> <em>userlist</em>  only show jobs which ran by this/these users</li>
-<li><code>--name=</code><em>namelist</em> - only show jobs with this list of names</li>
-<li><code>-n</code>  noheader</li>
-<li><code>-p</code>  parsable  puts a | between fields and at end of line</li>
-<li><code>-P</code>  parsable2  does not put a | at end of line</li>
-<li><code>--delimeter</code> <char> - use that char instead of | for <code>-p</code> or <code>-P</code></li>
-<li><code>--units=[KMGTP]</code> - display in this unit</li>
-<li><code>-k</code> <em>minimum time</em> - looking for jobs with time limits in a range</li>
-<li><code>-K</code> <em>maximum time</em> - looking for jobs with time limits in a range</li>
-<li><code>-q</code> <em>qoslist</em> - list of qos used</li>
-</ul>
-<h3 id="sorting-or-processing-output"><strong>Sorting or processing output</strong><a class="headerlink" href="#sorting-or-processing-output" title="Anchor link to this section for reference">&para;</a></h3>
-<p><code>sacct</code> can output with other delimiters if you specify either <code>-p</code> or <code>-P</code> and <code>--delimiter=&lt;characters&gt;</code></p>
-<p><code>sacct</code> does not have a sort option. You need to sort its output by other methods. If you want to change the order of the information, specify the field names in the desired order.</p>
-<p>This is a prime example of where it is kindest to the SLURM master daemon if you run your query such that you store the results in a text file, then work with the text file contents. Rather than running many variations of a command pipeline
-beginning with <code>sacct</code> when you already have all of the desired output option fields and are just trying to figure out the right text-processing logic.</p>
-<div class="highlight"><span class="filename">sort failed jobs by exitcode</span><pre><span></span><code>sacct<span class="w"> </span>-X<span class="w"> </span>-a<span class="w"> </span>-s<span class="w"> </span>F<span class="w"> </span>-o<span class="w"> </span><span class="s2">&quot;user,jobid,state,nodelist,exitcode&quot;</span><span class="w"> </span>-S<span class="w"> </span>noon<span class="w"> </span>-E<span class="w"> </span>now<span class="p">|</span>sort<span class="w"> </span>-k5<span class="p">|</span><span class="w"> </span>less
-</code></pre></div>
-<div class="highlight"><span class="filename">sort failed jobs by exitcode, then by nodelist</span><pre><span></span><code>sacct<span class="w"> </span>-X<span class="w"> </span>-a<span class="w"> </span>-s<span class="w"> </span>F<span class="w"> </span>-o<span class="w"> </span><span class="s2">&quot;user,jobid,state,nodelist,exitcode&quot;</span><span class="w"> </span>-S<span class="w"> </span>noon<span class="w"> </span>-E<span class="w"> </span>now<span class="p">|</span>sort<span class="w"> </span>-k5,5<span class="w"> </span>-k4,4<span class="p">|</span><span class="w"> </span>less
-</code></pre></div>
-<p>Useful sort options:</p>
-<ol>
-<li><code>-kKEYDEF</code> or <code>--key=KEYDEF</code> Given just a number as the KEYDEF, it sorts by column</li>
-<li><code>-r</code>or <code>--reverse</code></li>
-<li><code>-n</code> or <code>--numeric-sort</code> </li>
-</ol>
-<p>See the sort manual page for other options, including multiple kinds of numeric sorts, as well as the syntax of KEYDEF.</p>
-<h2 id="start-and-end-times"><strong>Start and End Times</strong><a class="headerlink" href="#start-and-end-times" title="Anchor link to this section for reference">&para;</a></h2>
-<p><mark class="critic">It is best to use always specify a <code>-S</code> start time and a <code>-E</code> end time.</mark></p>
-<p>Special time words: <strong>today</strong>, <strong>midnight</strong>, <strong>noon</strong>, <strong>now</strong></p>
-<p>Positive and negative deltas from now can be used, which is very handy, but remember to use the full unit word ("days" not "d" or "day")!!!</p>
-<p>now[{+|-}count[seconds(default)|minutes|hours|days|weeks]]</p>
-<dl>
-<dt>Examples:</dt>
-<dd><code>now-3days</code></dd>
-<dd><code>now-2hours</code></dd>
-</dl>
-<p>Valid time formats are (spare brackets indicate optional elements):</p>
-<div class="highlight"><pre><span></span><code>               HH:MM[:SS][AM|PM]
-               MMDD[YY][-HH:MM[:SS]]
-               MM.DD[.YY][-HH:MM[:SS]]
-               MM/DD[/YY][-HH:MM[:SS]]
-               YYYY-MM-DD[THH:MM[:SS]]
-</code></pre></div>
-<dl>
-<dt>Examples:</dt>
-<dd>0408  # April 8th</dd>
-<dd>09:15 # 9:15am (24-hour time is assumed)</dd>
-<dd>09:15pm # 9:15pm</dd>
-<dd><code>-S $(date -d '21 days ago' +%D-%R) -E $(date -d '17 day ago' +%D-%R)</code> # the date command can interpret many human-readable expressions, then express them using the format mentioned afterwards. Cool, eh!!!</dd>
-<dd>04/15  # the bash shell will probably have problems with the forward slash unless you surround the string with double quotes</dd>
-</dl>
-<h2 id="job-limit">Job Limit<a class="headerlink" href="#job-limit" title="Anchor link to this section for reference">&para;</a></h2>
-<p>If you want to filter for jobs with a certain time limit, use the <code>-k/--timelimit-min</code> and <code>-K/--timelimit-max</code> flags. To show only jobs with time limit between 48 and 72 hours that ran between 4 and 8 weeks ago:</p>
-<p><code>sacct -S $(date -d '8 weeks ago' +%D-%R) -E $(date -d '4 weeks ago' +%D-%R) -k 48:00 -K 72:00</code></p>
-<p>If you know the exact time limit of the jobs you are looking for, set both min and max time limit to the same value. For jobs with a time limit of 30 minutes that ran in the last month:</p>
-<p><code>sacct -S $(date -d 'last month' +%D-%R) --timelimit-min 30 --timelimit-max 30</code></p>
-<h2 id="job-state-values"><strong>Job State Values</strong><a class="headerlink" href="#job-state-values" title="Anchor link to this section for reference">&para;</a></h2>
-<p>Using the <code>-s &lt;states&gt;</code> option, you can prune your search by looking for only jobs which match the state you need, such as F for failed. (All of these work: f, failed, F, FAILED). You can specify more than one state if you separate them with commas. Note that you use a different flag for state with the <code>squeue</code> command, <code>-t &lt;states&gt;</code>.</p>
-<p>Job states have short names consisting of one or two letters, and a full name.  You can use either form when working with SLURM commands. They are shown here capitalized for emphasis but can be specified as lower-case.</p>
-<div class="admonition warning">
-<p class="admonition-title">Warning</p>
-<p>Different steps of a job can have different end states. For example the "extern" step is often COMPLETED when the "batch" and overall steps are FAILED. The <code>-X</code> flag to <code>sacct</code> will show you only the overall job state, such as FAILED, which is useful for most cases. However, <em>sometimes you need to check the state of all of a jobs steps</em> in order to see that a "batch" step ran OUT_OF_MEMORY.</p>
-</div>
-<p>Primary job states of interest:</p>
-<table>
-<thead>
-<tr>
-<th>Short Name</th>
-<th>Long Name</th>
-<th>Explanation</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>PD</td>
-<td>PENDING</td>
-<td>Job is waiting to start</td>
-</tr>
-<tr>
-<td>R</td>
-<td>RUNNING</td>
-<td>Job is currently running</td>
-</tr>
-<tr>
-<td>CG</td>
-<td>COMPLETING</td>
-<td>Job has ended, clean-up has begun</td>
-</tr>
-<tr>
-<td>CD</td>
-<td>COMPLETED</td>
-<td>Job finished normally, with exit code 0</td>
-</tr>
-<tr>
-<td>F</td>
-<td>FAILED</td>
-<td>Job finished abnormally, with a non-zero exit code</td>
-</tr>
-<tr>
-<td>CA</td>
-<td>CANCELLED</td>
-<td>Job was cancelled by the user or a sysadmin</td>
-</tr>
-<tr>
-<td>OOM</td>
-<td>OUT_OF_MEMORY</td>
-<td>Job was killed for exceeding its memory allocation</td>
-</tr>
-<tr>
-<td>TO</td>
-<td>TIMEOUT</td>
-<td>Job was killed for exceeding its time limit</td>
-</tr>
-</tbody>
-</table>
-<details class="note">
-<summary>Click for a complete list of job states</summary>
-<p>FROM https://slurm.schedmd.com/squeue.html#lbAG</p>
-<dl>
-<dt>BF BOOT_FAIL</dt>
-<dd>Job terminated due to launch failure, typically due to a hardware failure (e.g. unable to boot the node or block and the job can not be requeued).</dd>
-<dt>CA CANCELLED</dt>
-<dd>Job was explicitly cancelled by the user or system administrator. The job may or may not have been initiated.</dd>
-<dt>CD COMPLETED</dt>
-<dd>Job has terminated all processes on all nodes with an exit code of zero.</dd>
-<dt>CF CONFIGURING</dt>
-<dd>Job has been allocated resources, but are waiting for them to become ready for use (e.g. booting).</dd>
-<dt>CG COMPLETING</dt>
-<dd>Job is in the process of completing. Some processes on some nodes may still be active.</dd>
-<dt>DL DEADLINE</dt>
-<dd>Job terminated on deadline.</dd>
-<dt>F FAILED</dt>
-<dd>Job terminated with non-zero exit code or other failure condition.</dd>
-<dt>NF NODE_FAIL</dt>
-<dd>Job terminated due to failure of one or more allocated nodes.</dd>
-<dt>OOM OUT_OF_MEMORY</dt>
-<dd>Job experienced out of memory error.</dd>
-<dt>PD PENDING</dt>
-<dd>Job is awaiting resource allocation.</dd>
-<dt>PR PREEMPTED</dt>
-<dd>Job terminated due to preemption.</dd>
-<dt>R RUNNING</dt>
-<dd>Job currently has an allocation.</dd>
-<dt>RD RESV_DEL_HOLD</dt>
-<dd>Job is being held after requested reservation was deleted.</dd>
-<dt>RF REQUEUE_FED</dt>
-<dd>Job is being requeued by a federation.</dd>
-<dt>RH REQUEUE_HOLD</dt>
-<dd>Held job is being requeued.</dd>
-<dt>RQ REQUEUED</dt>
-<dd>Completing job is being requeued.</dd>
-<dt>RS RESIZING</dt>
-<dd>Job is about to change size.</dd>
-<dt>RV REVOKED</dt>
-<dd>Sibling was removed from cluster due to other cluster starting the job.</dd>
-<dt>SI SIGNALING</dt>
-<dd>Job is being signaled.</dd>
-<dt>SE SPECIAL_EXIT</dt>
-<dd>The job was requeued in a special state. This state can be set by users, typically in EpilogSlurmctld, if the job has terminated with a particular exit value.</dd>
-<dt>SO STAGE_OUT</dt>
-<dd>Job is staging out files.</dd>
-<dt>ST STOPPED</dt>
-<dd>Job has an allocation, but execution has been stopped with SIGSTOP signal. CPUS have been retained by this job.</dd>
-<dt>S SUSPENDED</dt>
-<dd>Job has an allocation, but execution has been suspended and CPUs have been released for other jobs.</dd>
-<dt>TO TIMEOUT</dt>
-<dd>Job terminated upon reaching its time limit.</dd>
-</dl>
-</details>
-<p>That complete list comes from <a href="https://slurm.schedmd.com/archive/slurm-22.05.9/sacct.html#lbAG">this section</a> of the <code>sacct</code> manual page, which has also been saved to a text file you can copy for your own reference: <code>/jhpce/shared/jhpce/slurm/docs/job-states.txt</code></p>
-<h2 id="output-fields-of-interest"><strong>Output Fields of Interest</strong><a class="headerlink" href="#output-fields-of-interest" title="Anchor link to this section for reference">&para;</a></h2>
-<details class="note">
-<summary>All sacct fields (output of sacct -e)</summary>
 <div class="highlight"><pre><span></span><code>Account             AdminComment        AllocCPUS           AllocNodes         
 AllocTRES           AssocID             AveCPU              AveCPUFreq         
 AveDiskRead         AveDiskWrite        AvePages            AveRSS             
@@ -4053,132 +3456,6 @@ TRESUsageOutMax     TRESUsageOutMaxNode TRESUsageOutMaxTask TRESUsageOutMin
 TRESUsageOutMinNode TRESUsageOutMinTask TRESUsageOutTot     UID                
 User                UserCPU             WCKey               WCKeyID
 </code></pre></div>
-</details>
-<div class="highlight"><span class="filename">What output fields are available?</span><pre><span></span><code>sacct<span class="w"> </span>-e
-</code></pre></div>
-<div class="highlight"><span class="filename">See all fields for a job</span><pre><span></span><code>sacct<span class="w"> </span>-o<span class="w"> </span>ALL<span class="w"> </span>-j<span class="w"> </span>&lt;jobid&gt;
-</code></pre></div>
-<p>The following fields are probably the ones you'll want. See <a href="https://slurm.schedmd.com/archive/slurm-22.05.9/sacct.html#lbAF">this section</a> of the manual page for the list and their meaning. Capitalization does not matter; it is used for readability.</p>
-<ul>
-<li>TRES means Trackable RESources, such as RAM and CPUs.</li>
-<li>A number of fields (not listed) are available to tell you on which node a maximum occurred. Similarly there are fields to tell you minimum, average and maximum values for some items.</li>
-</ul>
-<div class="tabbed-set tabbed-alternate" data-tabs="1:5"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><input id="__tabbed_1_3" name="__tabbed_1" type="radio" /><input id="__tabbed_1_4" name="__tabbed_1" type="radio" /><input id="__tabbed_1_5" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">Basics</label><label for="__tabbed_1_2">Times</label><label for="__tabbed_1_3">Nodes</label><label for="__tabbed_1_4">Resources Requested</label><label for="__tabbed_1_5">Resources Consumed</label></div>
-<div class="tabbed-content">
-<div class="tabbed-block">
-<ul>
-<li>User</li>
-<li>JobiId</li>
-<li>JobName</li>
-<li>Partition</li>
-<li>State</li>
-<li>ExitCode</li>
-</ul>
-</div>
-<div class="tabbed-block">
-<ul>
-<li>Submit</li>
-<li>Start</li>
-<li>Elapsed</li>
-<li>End</li>
-</ul>
-</div>
-<div class="tabbed-block">
-<ul>
-<li>AllocNodes</li>
-<li>NNodes - number of nodes</li>
-<li>NodeList</li>
-</ul>
-</div>
-<div class="tabbed-block">
-<ul>
-<li>ReqTRES # this is what you will be billed for</li>
-<li>ReqNodes</li>
-<li>ReqCPUS</li>
-</ul>
-</div>
-<div class="tabbed-block">
-<ul>
-<li>TRESUsageInTot</li>
-<li>CPUTime - (elapsed)*(AllocCPU) in HH:MM:SS format</li>
-<li>MaxRSS - Max resident set of all tasks in job</li>
-<li>MaxVMSize - Max virtual memory of all tasks in job</li>
-<li>MaxDiskRead - Number bytes read by all tasks in job</li>
-<li>MaxDiskWrite - Number bytes written by all tasks in job</li>
-</ul>
-</div>
-</div>
-</div>
-<h3 id="about-memory-fields"><strong>About Memory Fields</strong><a class="headerlink" href="#about-memory-fields" title="Anchor link to this section for reference">&para;</a></h3>
-<p><strong>Virtual Memory Size (VMSize)</strong> is the total memory size of a job. It includes both memory actually in RAM (the RSS) and parts of executabilities which were not needed to be read in off of disk into RAM. Because, for example, routines in dynamically linked libraries were never called, so those libraries were not loaded. </p>
-<p><strong>Resident set size (RSS)</strong> is the portion of memory (measured in megabytes) occupied by a job that is held in main memory (RAM). The rest of the memory required by the job exists in the swap space or file system, either because some parts of the occupied memory were paged out, or because some parts of the executable were never loaded.</p>
-<h2 id="formatting-fields"><strong>Formatting fields</strong><a class="headerlink" href="#formatting-fields" title="Anchor link to this section for reference">&para;</a></h2>
-<p>By default fields are 20 characters wide. That is often insufficient.</p>
-<p>You can put a "%NUMBER" after a field name to specify how many characters should be printed, e.g.</p>
-<ul>
-<li>format=name%30 will print 30 characters of field name right justified.  </li>
-<li>format=name%-30 will print 30 characters left justified.</li>
-</ul>
-<p>You can specify your format on the command line or define an environment variable to hold the desired string (see below).</p>
-<h2 id="using-environment-variables"><strong>Using Environment Variables</strong><a class="headerlink" href="#using-environment-variables" title="Anchor link to this section for reference">&para;</a></h2>
-<p>You can define environment variables in your shell to reduce the complexity of issuing sacct commands. You can also set these in shell scripts. Command line options will always override these settings.</p>
-<p>SACCT_FORMAT</p>
-<p>SLURM_TIME_FORMAT</p>
-<h4 id="formatting-datestimes"><strong>Formatting Dates/Times</strong><a class="headerlink" href="#formatting-datestimes" title="Anchor link to this section for reference">&para;</a></h4>
-<p>You can use most variables defined by the STRFTIME(3) system call. <a href="https://strftime.org">This web page</a> is a starting point, but what SLURM has chosen to implement may not match.</p>
-<ul>
-<li>%a - abbrieviated name of day of the week</li>
-<li>%m - month as decimal, 01 to 12</li>
-<li>%d - day of month as decimal</li>
-<li>%H - hour as decimal in 24-hour notation</li>
-<li>%M - minute as decimal, 00 to 59</li>
-<li>%T - time in 24-hour notation (%H:%M:%S)</li>
-</ul>
-<p><div class="highlight"><span class="filename">Day of week MM-DD HH:MM</span><pre><span></span><code><span class="nb">export</span><span class="w"> </span><span class="nv">SLURM_TIME_FORMAT</span><span class="o">=</span><span class="s2">&quot;%a %m-%d %H:%M&quot;</span><span class="w"> </span>
-</code></pre></div>
-The start and end field widths show below are suitable for the time format shown above.</p>
-<div class="highlight"><span class="filename">Resources requested, used</span><pre><span></span><code><span class="nb">export</span><span class="w"> </span><span class="nv">SACCT_FORMAT</span><span class="o">=</span><span class="s2">&quot;user,jobid,jobname,nodelist%12,start%-20,end%-20,state%20,reqtres%40,TRESUsageInTot%200&quot;</span>
-</code></pre></div>
-<h2 id="exit-error-codes"><strong>Exit Error Codes</strong><a class="headerlink" href="#exit-error-codes" title="Anchor link to this section for reference">&para;</a></h2>
-<p>In addition to the job's "state", SLURM also records error codes. Unfortunately the vendor's <a href="https://slurm.schedmd.com/job_exit_code.html">Job Exit Codes</a> page doesn't provide a meaning for the numerical values.</p>
-<p>Error <code>0:53</code> often means that something wasn't readable or writable. For example, job output or error files couldn't be written in the directory in which the job ran (or where you told SLURM to put them with a directive).</p>
-<div class="highlight"><pre><span></span><code>a guide for exit codes:
-
-0 → success
-non-zero → failure
-Exit code 1 indicates a general failure
-Exit code 2 indicates incorrect use of shell builtins
-Exit codes 3-124 indicate some error in job (check software exit codes)
-Exit code 125 indicates out of memory
-Exit code 126 indicates command cannot execute
-Exit code 127 indicates command not found
-Exit code 128 indicates invalid argument to exit
-Exit codes 129-192 indicate jobs terminated by Linux signals
-For these, subtract 128 from the number and match to signal code
-Enter kill -l to list signal codes
-Enter man signal for more information
-</code></pre></div>
-<h2 id="diagnostic-arguments"><strong>Diagnostic Arguments</strong><a class="headerlink" href="#diagnostic-arguments" title="Anchor link to this section for reference">&para;</a></h2>
-<p>These can be useful to double-check what someone actually did.</p>
-<div class="highlight"><span class="filename">See the full command issued to submit the job</span><pre><span></span><code>sacct<span class="w"> </span>-o<span class="w"> </span>SubmitLine%250<span class="w"> </span>-j<span class="w"> </span>&lt;jobid&gt;<span class="w"> </span><span class="c1"># may need to increase field width</span>
-</code></pre></div>
-<div class="highlight"><span class="filename">See batch file used</span><pre><span></span><code>sacct<span class="w"> </span>-B<span class="w"> </span>-j<span class="w"> </span>&lt;jobid&gt;
-</code></pre></div>
-<div class="highlight"><span class="filename">Directory used by the job to execute commands</span><pre><span></span><code>sacct<span class="w"> </span>-o<span class="w"> </span>WorkDir<span class="w"> </span>-j<span class="w"> </span>&lt;jobid&gt;
-</code></pre></div>
-<div class="highlight"><span class="filename">See jobs given a time limit btwn 1min & 1 day</span><pre><span></span><code>sacct<span class="w"> </span>-k<span class="w"> </span><span class="m">00</span>:01<span class="w"> </span>-K<span class="w"> </span><span class="m">1</span>-0
-</code></pre></div>
-<h2 id="examples"><strong>Examples</strong><a class="headerlink" href="#examples" title="Anchor link to this section for reference">&para;</a></h2>
-<p>all jobs for username bob that ran with a wall time of at least 2 days and were killed for running out of memory in the past 3 months:</p>
-<p><code>sacct --user bob --starttime $(date -d '3 months ago' +%D-%R) --state OUT_OF_MEMORY --timelimit-min 2-00:00:00 --format JobID,JobName,Elapsed,NCPUs,TotalCPU,CPUTime,ReqMem,MaxRSS,MaxDiskRead,MaxDiskWrite,State,ExitCode</code></p>
-<div class="footnote">
-<hr />
-<ol>
-<li id="fn:1">
-<p>In which case you can add the directive <code>--exclude=compute-xxx</code> to your job submission, then notify us via bitsupport so we can fix that node.&#160;<a class="footnote-backref" href="#fnref:1" title="Jump back to footnote 1 in the text">&#8617;</a></p>
-</li>
-</ol>
-</div>
 
 
 
@@ -4288,44 +3565,6 @@ Enter man signal for more information
         <footer class="md-footer">
   
     
-      
-      <nav class="md-footer__inner md-grid" aria-label="Footer" >
-        
-          
-          <a href="../slurm-commands-ref/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Cmd tips &amp; reference">
-            <div class="md-footer__button md-icon">
-              
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
-            </div>
-            <div class="md-footer__title">
-              <span class="md-footer__direction">
-                Previous
-              </span>
-              <div class="md-ellipsis">
-                Cmd tips & reference
-              </div>
-            </div>
-          </a>
-        
-        
-          
-          <a href="../tips-sacctmgr/" class="md-footer__link md-footer__link--next" aria-label="Next: sacctmgr tips">
-            <div class="md-footer__title">
-              <span class="md-footer__direction">
-                Next
-              </span>
-              <div class="md-ellipsis">
-                sacctmgr tips
-              </div>
-            </div>
-            <div class="md-footer__button md-icon">
-              
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4Z"/></svg>
-            </div>
-          </a>
-        
-      </nav>
-    
   
   <div class="md-footer-meta md-typeset">
     <div class="md-footer-meta__inner md-grid">
@@ -4348,16 +3587,16 @@ Enter man signal for more information
     </div>
     
     
-    <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.sections", "toc.follow", "announce.dismiss", "navigation.top", "header.autohide", "navigation.footer", "navigation.indexes", "content.code.copy", "content.code.annotate"], "search": "../../assets/javascripts/workers/search.b8dbb3d2.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.sections", "toc.follow", "announce.dismiss", "navigation.top", "header.autohide", "navigation.footer", "navigation.indexes", "content.code.copy", "content.code.annotate"], "search": "../../../assets/javascripts/workers/search.b8dbb3d2.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
     
     
-      <script src="../../assets/javascripts/bundle.1e8ae164.min.js"></script>
+      <script src="../../../assets/javascripts/bundle.1e8ae164.min.js"></script>
       
         <script src="https://unpkg.com/tablesort@5.3.0/dist/tablesort.min.js"></script>
       
-        <script src="../../javascripts/tablesort.js"></script>
+        <script src="../../../javascripts/tablesort.js"></script>
       
-        <script src="../../js/open_in_new_tab.js"></script>
+        <script src="../../../js/open_in_new_tab.js"></script>
       
     
   </body>

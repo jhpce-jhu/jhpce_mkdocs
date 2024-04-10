@@ -2680,6 +2680,8 @@
       <a href="../slurm/tips-sacct/" class="md-nav__link">
         
   
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0 8a5 5 0 0 1-5-5 5 5 0 0 1 5-5 5 5 0 0 1 5 5 5 5 0 0 1-5 5m0-12.5C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5c-1.73-4.39-6-7.5-11-7.5Z"/></svg>
+  
   <span class="md-ellipsis">
     sacct tips
   </span>
@@ -3751,53 +3753,7 @@ less /tmp/cache-list.txt
 </code></pre><pre><span></span><code>touch -t 201909111200 911-noon
 find somedirofmine -newer 911-noon -print0
 </code></pre><pre><span></span><code>find . \( \( -type d -name Library -prune \) -o \( -type d -name .dropbox -prune \) \) -o -newer 911 -depth 4 -print0 
-</code></pre><h2><a class="heading" href="../files/copying-files">Copying within cluster</a></h2><a class="url" href="../files/copying-files">files/copying-files/</a><pre><span></span><code>rsync -a --verbose --dryrun --stats /local1 /other2
-</code></pre><pre><span></span><code>rsync -avz --include='*.txt' /src /dest
-</code></pre><pre><span></span><code>rsync -avhAXH --progress --numeric-ids --sparse --one-file-system --stats --delete-after
-</code></pre><pre><span></span><code>--archive, -a            archive mode; equals -rlptgoD (no -H,-A,-X)
-
---acls, -A               preserve ACLs (implies --perms)
---xattrs, -X             preserve extended attributes
---hard-links, -H                       preserve hard links
-
---exclude-from={'list.txt'}.        there is a corresponding --include-from
---exclude={'*.txt','dir3','dir4'}   there is a corresponding --include
-
---dry-run, -n            perform a trial run with no changes made
---list-only              list the files instead of copying them
---ignore-existing        don't overwrite existing files, no matter what
---max-delete=NUM         don't delete more than NUM files (SET TO 0 OR LOW NUMBER FOR SAFETY)
---one-file-system, -x    ensure that you stay inside the SRC file system 
-
---atimes -U              preserve access (use) times
---crtimes, -N            preserve create times (newness)
---times, -t              preserve modification times
-
---numeric-ids            don't map uid/gid values by user/group name (more efficient)
---delete-after           wait until end to process deletes (much more efficient than deleting during)
---partial                allows you to resume an interrupted transfer
-
---progress               show which file is being copied (not stored in log file!!)
---itemize-changes, -i    output a change-summary for all updates 
-                         has complex output. (see below for a link)
---log-file=FILE          useful when using --itemize
---verbose, -v            increase verbosity
---info=FLAGS             fine-grained informational verbosity
---human-readable, -h     output numbers in a human-readable format
---stats                  provide statistics at the end
-
---size-only              skip files that match in size (know what you're doing)
---ignore-times, -I       don't skip files that match size and time (when in doubt...)
---checksum -c            skip based on checksums, not mod-time &amp; size
-
---sparse                 turn sequences of nulls into sparse blocks
---bwlimit                limit the impact of the rsync on the network (in kb/sec)
-
---chmod=CHMOD            affect file and/or directory permissions
---usermap=STRING         custom username mapping 
---groupmap=STRING        custom groupname mapping (STRING is not simply
---chown=USER:GROUP       simple username/groupname mapping 
-</code></pre><pre><span></span><code>tar -cbf 20480 - some-directory | (cd /destination/place; tar -xbf 20480 -)
+</code></pre><h2><a class="heading" href="../files/copying-files">Copying within cluster</a></h2><a class="url" href="../files/copying-files">files/copying-files/</a><pre><span></span><code>tar -cbf 20480 - some-directory | (cd /destination/place; tar -xbf 20480 -)
 </code></pre><pre><span></span><code>tar -cbf 20480 - some-directory | ssh myaccount@another-host (cd /destination/place; tar -xbf 20480 -)"
 </code></pre><h2><a class="heading" href="../files/deep-paths">Navigating Deep Directory Trees</a></h2><a class="url" href="../files/deep-paths">files/deep-paths/</a><pre><span></span><code>lrwxr-xr-x<span class="w">  </span><span class="m">1</span><span class="w"> </span>tunison<span class="w">  </span>wheel<span class="w">  </span><span class="m">8</span><span class="w"> </span>Jan<span class="w"> </span><span class="m">11</span><span class="w"> </span><span class="m">10</span>:12<span class="w"> </span>newname@<span class="w"> </span>-&gt;<span class="w"> </span>realfile
 -rw-r--r--<span class="w">  </span><span class="m">1</span><span class="w"> </span>tunison<span class="w">  </span>wheel<span class="w">  </span><span class="m">0</span><span class="w"> </span>Jan<span class="w"> </span><span class="m">11</span><span class="w"> </span><span class="m">10</span>:11<span class="w"> </span>realfile
@@ -4591,10 +4547,6 @@ CANCELLED AT 2024-02-13T12:03:27 DUE TO TIME LIMIT ***
                MM.DD[.YY][-HH:MM[:SS]]
                MM/DD[/YY][-HH:MM[:SS]]
                YYYY-MM-DD[THH:MM[:SS]]
-</code></pre><pre><span></span><code>sacct<span class="w"> </span>-e
-</code></pre><pre><span></span><code>sacct<span class="w"> </span>-o<span class="w"> </span>ALL<span class="w"> </span>-j<span class="w"> </span>&lt;jobid&gt;
-</code></pre><pre><span></span><code><span class="nb">export</span><span class="w"> </span><span class="nv">SLURM_TIME_FORMAT</span><span class="o">=</span><span class="s2">"%a %m-%d %H:%M"</span><span class="w"> </span>
-</code></pre><pre><span></span><code><span class="nb">export</span><span class="w"> </span><span class="nv">SACCT_FORMAT</span><span class="o">=</span><span class="s2">"user,jobid,jobname,nodelist%12,start%-20,end%-20,state%20,reqtres%40,TRESUsageInTot%200"</span>
 </code></pre><pre><span></span><code>Account             AdminComment        AllocCPUS           AllocNodes         
 AllocTRES           AssocID             AveCPU              AveCPUFreq         
 AveDiskRead         AveDiskWrite        AvePages            AveRSS             
@@ -4622,6 +4574,10 @@ TRESUsageInMinNode  TRESUsageInMinTask  TRESUsageInTot      TRESUsageOutAve
 TRESUsageOutMax     TRESUsageOutMaxNode TRESUsageOutMaxTask TRESUsageOutMin    
 TRESUsageOutMinNode TRESUsageOutMinTask TRESUsageOutTot     UID                
 User                UserCPU             WCKey               WCKeyID
+</code></pre><pre><span></span><code>sacct<span class="w"> </span>-e
+</code></pre><pre><span></span><code>sacct<span class="w"> </span>-o<span class="w"> </span>ALL<span class="w"> </span>-j<span class="w"> </span>&lt;jobid&gt;
+</code></pre><pre><span></span><code><span class="nb">export</span><span class="w"> </span><span class="nv">SLURM_TIME_FORMAT</span><span class="o">=</span><span class="s2">"%a %m-%d %H:%M"</span><span class="w"> </span>
+</code></pre><pre><span></span><code><span class="nb">export</span><span class="w"> </span><span class="nv">SACCT_FORMAT</span><span class="o">=</span><span class="s2">"user,jobid,jobname,nodelist%12,start%-20,end%-20,state%20,reqtres%40,TRESUsageInTot%200"</span>
 </code></pre><pre><span></span><code>a guide for exit codes:
 
 0 → success
@@ -4740,6 +4696,33 @@ Enter man signal for more information
 </code></pre><pre><span></span><code>sprio<span class="w"> </span>-S<span class="w"> </span>-y,p,u<span class="w"> </span><span class="p">|</span><span class="w"> </span>less
 </code></pre><pre><span></span><code>sprio<span class="w"> </span>-o<span class="w"> </span><span class="s2">"%.15i %9r %.8u %.10Y %.10A %.10F %.10P"</span><span class="w"> </span>-S<span class="w"> </span>-y,p,u
 </code></pre><pre><span></span><code>sshare<span class="w"> </span>-a<span class="w"> </span><span class="p">|</span><span class="w"> </span>sort<span class="w"> </span>-k7nr<span class="w"> </span><span class="p">|</span><span class="w"> </span>less
+</code></pre><h2><a class="heading" href="../slurm/includes/sacct-output-fields">Sacct output fields</a></h2><a class="url" href="../slurm/includes/sacct-output-fields">slurm/includes/sacct-output-fields/</a><pre><span></span><code>Account             AdminComment        AllocCPUS           AllocNodes         
+AllocTRES           AssocID             AveCPU              AveCPUFreq         
+AveDiskRead         AveDiskWrite        AvePages            AveRSS             
+AveVMSize           BlockID             Cluster             Comment            
+Constraints         ConsumedEnergy      ConsumedEnergyRaw   Container          
+CPUTime             CPUTimeRAW          DBIndex             DerivedExitCode    
+Elapsed             ElapsedRaw          Eligible            End                
+ExitCode            Flags               GID                 Group              
+JobID               JobIDRaw            JobName             Layout             
+MaxDiskRead         MaxDiskReadNode     MaxDiskReadTask     MaxDiskWrite       
+MaxDiskWriteNode    MaxDiskWriteTask    MaxPages            MaxPagesNode       
+MaxPagesTask        MaxRSS              MaxRSSNode          MaxRSSTask         
+MaxVMSize           MaxVMSizeNode       MaxVMSizeTask       McsLabel           
+MinCPU              MinCPUNode          MinCPUTask          NCPUS              
+NNodes              NodeList            NTasks              Partition          
+Priority            QOS                 QOSRAW              Reason             
+ReqCPUFreq          ReqCPUFreqGov       ReqCPUFreqMax       ReqCPUFreqMin      
+ReqCPUS             ReqMem              ReqNodes            ReqTRES            
+Reservation         ReservationId       Reserved            ResvCPU            
+ResvCPURAW          Start               State               Submit             
+SubmitLine          Suspended           SystemComment       SystemCPU          
+Timelimit           TimelimitRaw        TotalCPU            TRESUsageInAve     
+TRESUsageInMax      TRESUsageInMaxNode  TRESUsageInMaxTask  TRESUsageInMin     
+TRESUsageInMinNode  TRESUsageInMinTask  TRESUsageInTot      TRESUsageOutAve    
+TRESUsageOutMax     TRESUsageOutMaxNode TRESUsageOutMaxTask TRESUsageOutMin    
+TRESUsageOutMinNode TRESUsageOutMinTask TRESUsageOutTot     UID                
+User                UserCPU             WCKey               WCKeyID
 </code></pre><h2><a class="heading" href="../storage/backups-restores">Backups &amp; Restores</a></h2><a class="url" href="../storage/backups-restores">storage/backups-restores/</a><pre><span></span><code>cd /users/.zfs/snapshot
 ls -ld */your-userid/bob/frank/susan
 cp -p 2024-02-16-23:00/your-userid/bob/frank/susan $HOME/restored-susan

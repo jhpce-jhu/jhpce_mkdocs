@@ -361,7 +361,17 @@
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://jhpce.jhu.edu/slurm/images/job-states/</loc>
+         <loc>https://jhpce.jhu.edu/slurm/includes/all-job-states/</loc>
+         <lastmod>2024-04-10</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://jhpce.jhu.edu/slurm/includes/common-job-states/</loc>
+         <lastmod>2024-04-10</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://jhpce.jhu.edu/slurm/includes/sacct-output-fields/</loc>
          <lastmod>2024-04-10</lastmod>
          <changefreq>daily</changefreq>
     </url>

@@ -8,7 +8,7 @@
       
       
       
-        <link rel="canonical" href="https://jhpce.jhu.edu/slurm/images/job-states/">
+        <link rel="canonical" href="https://jhpce.jhu.edu/slurm/includes/common-job-states/">
       
       
       
@@ -18,7 +18,7 @@
     
     
       
-        <title>Job states - JHPCE</title>
+        <title>Common job states - JHPCE</title>
       
     
     
@@ -112,7 +112,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Job states
+              Common job states
             
           </span>
         </div>
@@ -2673,6 +2673,8 @@
       <a href="../../tips-sacct/" class="md-nav__link">
         
   
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0 8a5 5 0 0 1-5-5 5 5 0 0 1 5-5 5 5 0 0 1 5 5 5 5 0 0 1-5 5m0-12.5C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5c-1.73-4.39-6-7.5-11-7.5Z"/></svg>
+  
   <span class="md-ellipsis">
     sacct tips
   </span>
@@ -3424,59 +3426,59 @@
                   
 
 
-  <h1>Job states</h1>
+  <h1>Common job states</h1>
 
-<p>FROM https://slurm.schedmd.com/squeue.html#lbAG</p>
-<dl>
-<dt>BF BOOT_FAIL</dt>
-<dd>Job terminated due to launch failure, typically due to a hardware failure (e.g. unable to boot the node or block and the job can not be requeued).</dd>
-<dt>CA CANCELLED</dt>
-<dd>Job was explicitly cancelled by the user or system administrator. The job may or may not have been initiated.</dd>
-<dt>CD COMPLETED</dt>
-<dd>Job has terminated all processes on all nodes with an exit code of zero.</dd>
-<dt>CF CONFIGURING</dt>
-<dd>Job has been allocated resources, but are waiting for them to become ready for use (e.g. booting).</dd>
-<dt>CG COMPLETING</dt>
-<dd>Job is in the process of completing. Some processes on some nodes may still be active.</dd>
-<dt>DL DEADLINE</dt>
-<dd>Job terminated on deadline.</dd>
-<dt>F FAILED</dt>
-<dd>Job terminated with non-zero exit code or other failure condition.</dd>
-<dt>NF NODE_FAIL</dt>
-<dd>Job terminated due to failure of one or more allocated nodes.</dd>
-<dt>OOM OUT_OF_MEMORY</dt>
-<dd>Job experienced out of memory error.</dd>
-<dt>PD PENDING</dt>
-<dd>Job is awaiting resource allocation.</dd>
-<dt>PR PREEMPTED</dt>
-<dd>Job terminated due to preemption.</dd>
-<dt>R RUNNING</dt>
-<dd>Job currently has an allocation.</dd>
-<dt>RD RESV_DEL_HOLD</dt>
-<dd>Job is being held after requested reservation was deleted.</dd>
-<dt>RF REQUEUE_FED</dt>
-<dd>Job is being requeued by a federation.</dd>
-<dt>RH REQUEUE_HOLD</dt>
-<dd>Held job is being requeued.</dd>
-<dt>RQ REQUEUED</dt>
-<dd>Completing job is being requeued.</dd>
-<dt>RS RESIZING</dt>
-<dd>Job is about to change size.</dd>
-<dt>RV REVOKED</dt>
-<dd>Sibling was removed from cluster due to other cluster starting the job.</dd>
-<dt>SI SIGNALING</dt>
-<dd>Job is being signaled.</dd>
-<dt>SE SPECIAL_EXIT</dt>
-<dd>The job was requeued in a special state. This state can be set by users, typically in EpilogSlurmctld, if the job has terminated with a particular exit value.</dd>
-<dt>SO STAGE_OUT</dt>
-<dd>Job is staging out files.</dd>
-<dt>ST STOPPED</dt>
-<dd>Job has an allocation, but execution has been stopped with SIGSTOP signal. CPUS have been retained by this job.</dd>
-<dt>S SUSPENDED</dt>
-<dd>Job has an allocation, but execution has been suspended and CPUs have been released for other jobs.</dd>
-<dt>TO TIMEOUT</dt>
-<dd>Job terminated upon reaching its time limit.</dd>
-</dl>
+<table>
+<thead>
+<tr>
+<th>Short Name</th>
+<th>Long Name</th>
+<th>Explanation</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>PD</td>
+<td>PENDING</td>
+<td>Job is waiting to start</td>
+</tr>
+<tr>
+<td>R</td>
+<td>RUNNING</td>
+<td>Job is currently running</td>
+</tr>
+<tr>
+<td>CG</td>
+<td>COMPLETING</td>
+<td>Job has ended, clean-up has begun</td>
+</tr>
+<tr>
+<td>CD</td>
+<td>COMPLETED</td>
+<td>Job finished normally, with exit code 0</td>
+</tr>
+<tr>
+<td>F</td>
+<td>FAILED</td>
+<td>Job finished abnormally, with a non-zero exit code</td>
+</tr>
+<tr>
+<td>CA</td>
+<td>CANCELLED</td>
+<td>Job was cancelled by the user or a sysadmin</td>
+</tr>
+<tr>
+<td>OOM</td>
+<td>OUT_OF_MEMORY</td>
+<td>Job was killed for exceeding its memory allocation</td>
+</tr>
+<tr>
+<td>TO</td>
+<td>TIMEOUT</td>
+<td>Job was killed for exceeding its time limit</td>
+</tr>
+</tbody>
+</table>
 
 
 
@@ -3497,7 +3499,7 @@
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1-2.1-2M12.5 7v5.2l4 2.4-1 1L11 13V7h1.5M11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2v1.8Z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">April 9, 2024</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">April 10, 2024</span>
   </span>
 
     

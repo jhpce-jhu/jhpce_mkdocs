@@ -2792,6 +2792,8 @@
       <a href="../tips-sacct/" class="md-nav__link">
         
   
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0 8a5 5 0 0 1-5-5 5 5 0 0 1 5-5 5 5 0 0 1 5 5 5 5 0 0 1-5 5m0-12.5C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5c-1.73-4.39-6-7.5-11-7.5Z"/></svg>
+  
   <span class="md-ellipsis">
     sacct tips
   </span>
@@ -3708,6 +3710,57 @@ When specifying a job to a SLURM program like <code>scontrol</code> or reading o
 <p><mark class="critic">The overall job and each step has its own job state code.</mark> They often differ!! </p>
 <p>Job states have short names consisting of one or two letters, and a full name.  You can use either form when working with SLURM commands. They are shown here capitalized for emphasis but can be specified as lower-case.</p>
 <p>The main job states you will see:</p>
+<table>
+<thead>
+<tr>
+<th>Short Name</th>
+<th>Long Name</th>
+<th>Explanation</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>PD</td>
+<td>PENDING</td>
+<td>Job is waiting to start</td>
+</tr>
+<tr>
+<td>R</td>
+<td>RUNNING</td>
+<td>Job is currently running</td>
+</tr>
+<tr>
+<td>CG</td>
+<td>COMPLETING</td>
+<td>Job has ended, clean-up has begun</td>
+</tr>
+<tr>
+<td>CD</td>
+<td>COMPLETED</td>
+<td>Job finished normally, with exit code 0</td>
+</tr>
+<tr>
+<td>F</td>
+<td>FAILED</td>
+<td>Job finished abnormally, with a non-zero exit code</td>
+</tr>
+<tr>
+<td>CA</td>
+<td>CANCELLED</td>
+<td>Job was cancelled by the user or a sysadmin</td>
+</tr>
+<tr>
+<td>OOM</td>
+<td>OUT_OF_MEMORY</td>
+<td>Job was killed for exceeding its memory allocation</td>
+</tr>
+<tr>
+<td>TO</td>
+<td>TIMEOUT</td>
+<td>Job was killed for exceeding its time limit</td>
+</tr>
+</tbody>
+</table>
 <details class="note">
 <summary>Click for a complete list of job states</summary>
 <p>FROM https://slurm.schedmd.com/squeue.html#lbAG</p>
