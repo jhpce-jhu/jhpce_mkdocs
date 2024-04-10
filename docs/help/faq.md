@@ -1,3 +1,6 @@
+## Orientation/Cluster Basics
+Please download the latest [orientation document (pdf)](../orient/images/latest-orient.pdf) (C-SUB users go [here](../orient/images/latest-csub-orient.pdf) instead (pdf).)
+
 ## Compatibility
 - My script is giving odd error messages about `\r` or `^M`.
 

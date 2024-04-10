@@ -2,11 +2,11 @@
 tags:
   - slurm
 ---
-    
+
 # **All About SLURM Jobs**
 Well, maybe not ALL.
 
-Here we try to describe some basic facts about jobs. We will point to this document in the other places in the web site where we mention some of these core facts.
+Here we try to describe some basic facts about jobs. We will point to this document in the other places in the web site where we mention some of these core facts. There are links to some of these other web pages in this document, but see the navigation bar for a complete list of pages.
 
 SLURM is popular because it is flexible and supports many different computational needs. Users do complex things on various clusters, and the way you normally use SLURM may not at all match the way someone else does.
 
@@ -24,17 +24,35 @@ A job consists of
 
 [^2]: (It is unclear to the author whether an interactive job officially has a step. No steps are listed for them in the sacct output, but he suspects that, technically, in the vendor's documentation, it does have a step. Because tasks are implemented by job steps.)
 
-**Directives** can come from a variety of sources, including, in [order of preference](../slurm/crafting-jobs.md/#slurm-directive-order-of-precendence): on the command line, from environment variables, embedded in a batch file script on `#SBATCH` lines, or from a personal `~/.slurm/defaults` file. If you don't specify a directive, them some default value will be used. Often that default is one, as in one task, one CPU core, one compute node, ...
+**Interactive jobs** provide a shell interface on a single compute node. There you can run programs interactively, including ones with GUI interfaces that display via the X11 protocal. For more information, see our page [here](../slurm/interactive-jobs.md).
+
+**Batch jobs** are handled by a job scheduler within SLURM, and start when they can get access to one or more compute nodes providing sufficient resources. These jobs do their work unattended. For more information, see our page [here](../slurm/crafting-jobs.md).
+
+**Array jobs** are one type of batch job. They consist of 2 or more jobs spawned by a single batch script. For more information, see this section of our batch job page [here](../slurm/crafting-jobs.md#job-arrays).
+
+**Directives** can come from a variety of sources, including, in [order of preference](../slurm/crafting-jobs.md/#slurm-directive-order-of-precendence): on the command line, from environment variables, embedded in a batch file script on `#SBATCH` lines, or from a personal `~/.slurm/defaults` file. If you don't specify a directive, them some default value will be used. Often that default is one, as in one task, one CPU core, one compute node, ...  The default partition is `shared`. 5 gigabytes is the default amount of RAM per job.
+
+Directives consist of:
+
+1. requests for resources (time, partition, memory, CPU)
+2. instructions to SLURM
+
+You will find directives described in the `sbatch` [manual page](https://slurm.schedmd.com/archive/slurm-22.05.9/sbatch.html).
 
 A job aims to complete one or more ***tasks***.
 
 Tasks are requested at the job level with `--ntasks` or `--ntasks-per-node`, or at the step level with  `--ntasks`. CPUs are requested per task with `--cpus-per-task`.
 
-A **task** is executed on a single ***compute node*** in a job step, using one or more CPU units and a non-zero amount of memory (5 gigabytes if you don't specify -- you can request less than 5G!! -- the less memory your job needs, the more likely it will be able to run).
+A **task** is executed on a single ***compute node*** in a job step, using one or more CPU cores and a non-zero amount of memory (5 gigabytes if you don't specify -- you can request less than 5G!! -- the less memory your job needs, the more likely it will be able to run).
 
 If there are multiple tasks, then each uses a subset of the resources of the overall job.  Multiple tasks can run on a single compute node or on multiple nodes. The resources used by any one task cannot exceed what is found on a single node.
 
 Jobs execute on a set of one or more compute nodes called a ***nodelist***. The first node in that set is called the ***0th node***.[^3]
+
+Compute nodes are grouped together into ***partitions***. For more information about partitions, see our page [here](../slurm/partitions.md).
+
+!!! Warning
+    If a job exceeds its [time limit](../slurm/time-limits.md) or memory, it will be killed before it finishes doing its work.
 
 [^3]: If there are more than one nodes, one should look on the 0th node for  information about the job in /var/log/slurm/slurmd.log file when troubleshooting.
 
@@ -49,7 +67,7 @@ Underscores ++underscore++ divide **job arrays** from **job ids**
 
 Periods ++period++ divide **job ids** from **step ids**.
 
-Sometimes you can use a job_array number where the documentation says job_id, as when cancelling the whole job array with `scancel` as opposed to cancelling just one of its job elements.
+Sometimes you can use a job array number where the documentation says job id, as when cancelling the whole job array with `scancel` as opposed to cancelling just one of its job elements.
 
 ```
 <job id>
@@ -60,14 +78,14 @@ Sometimes you can use a job_array number where the documentation says job_id, as
 
 ## **JOB HAVE MULTIPLE STEPS**
 
-You will notice in the output of `sacct` commands that each job has multiple entries, including one for the overall job. Each entry has a STATE code (e.g. COMPLETED, FAILED, CANCELLED) and an EXITCODE (e.g. 0:0).  Keep in mind when viewing state information whether you are looking at the overall job state or that of a component.
-
 The average job will have two or more steps of these types: 
 
 * **external step** - the connection from the node on which you submitted the job and the leading node of your nodelist. This step normally succeeds whether or not your overall job does.
 * **batch step** - created for jobs submitted with `sbatch`  The exit code of this script impacts the final STATE of this step.
 * **interactive step** - created for jobs submitted with `srun` (outside of a batch job)
 * **normal step** - a batch job can have multiple normal steps, which will appear in accounting output as `<job_id>.<step_id>` Each step will be created by an `srun` command. Step numbers start at 0. Interactive jobs do not have any normal steps.
+
+You will notice in the output of `sacct` commands that each job has multiple entries, including one for the overall job. Each entry has a STATE code (e.g. COMPLETED, FAILED, CANCELLED) and an EXITCODE (e.g. 0:0).  Keep in mind when viewing state information whether you are looking at the overall job state or that of a component step.
 
 ### **JOB NAMES**
 You can give a job a ***job name***. This explicit name can be used with some commands instead of jobids.
@@ -77,7 +95,7 @@ You can give a job a ***job name***. This explicit name can be used with some co
 * The name of a *batch job's normal step(s)* will _always_ be "bash"
 * The default overall name of an *interactive job* will be "bash"
 
-The `sacct` command is an important one to know how to use. We have a document explaining how to use it [here](../slurm/tips-sacct.md). Please read it, because **_you need to know_** how to look up information about your jobs. By default it prints fields only 20 characters wide. It will display a ++plus++ when there is more information beyond 20 char, as seen below for the external steps.
+The `sacct` command is an important one to know how to use. We have a document explaining how to use it [here](../slurm/tips-sacct.md). Please read it, because **_you need to know_** how to look up information about your jobs. By default it prints fields only 20 characters wide. It will display a ++plus++ when there is more information beyond 20 char, as seen below for the external steps. (See our document for instructions on changing the output format.)
 
 ```bash title="Example of a batch job"
   JobID           JobName  Partition    Account  AllocCPUS      State ExitCode 
@@ -95,30 +113,26 @@ The `sacct` command is an important one to know how to use. We have a document e
 ```
 
 ## **JOB STATES**
+{==The overall job and each step has its own job state code.==} They often differ!! 
 
-If you are curious, the SLURM vendor describes how jobs are started and terminated in [this document](https://slurm.schedmd.com/job_launch.html).
+Job states have short names consisting of one or two letters, and a full name.  You can use either form when working with SLURM commands. They are shown here capitalized for emphasis but can be specified as lower-case.
 
-Until we draw a nice diagram, a written description will have to suffice. Here we focus on batch jobs and common states. Job states have short names consisting of one or two capitalized letters, and a full name. Short names are introduced in parentheses below. We have placed a copy of the list in `/jhpce/shared/jhpce/slurm/docs/job-states.txt`.
+The main job states you will see:
+
+--8<-- "slurm/includes/common-job-states.md"
 
 ??? Note "Click for a complete list of job states"
     --8<-- "slurm/images/job-states.md"
 
-The main job states you will see:
+That complete list comes from [this section](https://slurm.schedmd.com/archive/slurm-22.05.9/sacct.html#lbAG) of the `sacct` manual page, which has also been saved to a text file you can copy for your own reference: `/jhpce/shared/jhpce/slurm/docs/job-states.txt`
 
-|Short Name|Long Name|
-|-----|----|
-|PD|PENDING|
-|R|RUNNING|
-|CG|COMPLETING|
-|CD|COMPLETED|
-|F|FAILED|
-|CA|CANCELLED|
-|OOM|OUT_OF_MEMORY|
-|TO|TIMEOUT|
+!!! Warning
+    The overall job and each step has its own job state code. They often differ!!  The `-X` flag to `sacct` will show you only the overall job state, such as FAILED, which is useful for most cases. However, _sometimes you need to check the state of all of a jobs steps_ in order to see that a "batch" step ran OUT_OF_MEMORY.
 
-{==The overall job and each step has its own job state code.==} They often differ!!  The `-X` flag to `sacct` will show you only the overall job state, such as FAILED, but _sometimes you need to check the state of all of a jobs steps_ in order to see that a "batch" step ran OUT_OF_MEMORY.
 
 ### LIFE OF A JOB AND ASSOCIATED STATES
+
+Until we draw a nice diagram, a written description will have to suffice. Short names are specified in parentheses below.
 
 1. User submits job
 2. SLURM evaluates syntax and resource requests.
@@ -130,5 +144,7 @@ The main job states you will see:
 7. RUNNING jobs can run correctly but then exceed their memory allocation and become OUT_OF_MEMORY (OOM).
 8. RUNNING jobs can run correctly but run into their wall-clock time limit and become DEADLINE (DL) or FAILED.
 9. RUNNING jobs can run correctly, switch to COMPLETING (CG) as processes are quitting, and then COMPLETED (CD).
+
+If you are very curious, the SLURM vendor describes how jobs are started and terminated in [this document](https://slurm.schedmd.com/job_launch.html).
 
 

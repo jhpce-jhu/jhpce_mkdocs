@@ -114,6 +114,16 @@ Depending on the execution order of the commands in the batch script, it is poss
 
 Here is a list of tools and techniques. You may use the same command to look at jobs in different states so we've gathered details here rather than repeating them in every section above.
 
+### ***sview, a GUI Interface***
+Sview is an X11 program which will display information about the cluster. You can see information about jobs, nodes, partitions, and reservations.  Double-clicking on an object usually launches a pop-up window with more details.
+
+It is not the slickest interface, and has quirks. It does not remember all of your choices for the basic items to display, for example (click on the tab labeled "visible tabs" to check the ones you want to see).
+
+The `sview` manual page is available [here](https://slurm.schedmd.com/archive/slurm-22.05.9/sview.html
+
+!!! Warning
+    Do **NOT** set its refresh interval to 1 second. It defaults to 5 seconds, which is already quite bad enough. Sview contacts the master SLURM daemon running the entire cluster every *interval* seconds and requests a _ton_ of information. If enough people run it, it will slow down processing of everyone's jobs and accounting records and ... Do you really need to know about changes every five seconds? How will that change what you do?
+
 ### **Email Notification**
 
 You can direct SLURM to send you email when various things happen with your job. These directives can be given on the command line, in batch job scripts, and set in your SLURM defaults file. You can even modify running jobs to set or change their notification settings (see the [scontrol tips](tips-scontrol.md) page).

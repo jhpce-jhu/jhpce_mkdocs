@@ -1,10 +1,13 @@
 ---
 tags:
-  - done
   - slurm
 ---
 # **sacct useful command examples**
-    
+ 
+!!! Caution
+    If you have not already read about basic job facts like job notation, steps, names and states, please first visit the "About SLURM Jobs" document [here](../slurm/about-jobs.md).
+ 
+## **Sacct Overview**   
 !!! Example
     ```Shell title="Show my failed jobs between noon and now" linenums="0"
     sacct -s F -o "user,jobid,state,nodelist,start,end,exitcode" -S noon -E now
@@ -16,14 +19,14 @@ tags:
 
 [^1]: In which case you can add the directive `--exclude=compute-xxx` to your job submission, then notify us via bitsupport so we can fix that node.
 
-sacct will show all submitted jobs but cannot, of course, provide data for a number of fields until the job has finished. Use the [sstat](https://slurm.schedmd.com/archive/slurm-22.05.9/sstat.html) command to get information about running programs. "Instrumenting" your jobs to gather information about them can include adding one or more sstat commands to batch jobs in multiple places.
+sacct will show all submitted jobs but cannot, of course, provide data for a number of fields until the job has finished. Use the [sstat](https://slurm.schedmd.com/archive/slurm-22.05.9/sstat.html) command to get information about running programs. "Instrumenting" your jobs to gather information about them can include adding one or more `sstat` commands to batch jobs in multiple places.
 
 !!! Tip
     Much of the information on this page can be used with `sstat`, but there are differences, particularly in available output fields (compare the output of `sacct -e` and `sstat -e`).
 
 Examples below use angle brackets ++less++ ++greater++  to indicate where you are supposed to replace argumements with your values.
-    
-    
+
+
 ## **sacct basics**
 
 1. By default only your own jobs are displayed. Use the `--allusers` or `-a` flag if necessary.
@@ -32,7 +35,7 @@ Examples below use angle brackets ++less++ ++greater++  to indicate where you ar
 4. Even the simplest of batch jobs contain multiple "steps" as far as SLURM is concerned. One of them, named "extern" represents the ssh to the compute node on behalf of your job. Job records consist of a primary entry for the job as a whole  as  well as entries for job steps. The [Job Launch](https://slurm.schedmd.com/archive/slurm-22.05.9/job_launch.html#job_record) page has a more detailed description of each type of job step. You may find the `-X` flag helpful to omit clutter.
 5. Regular jobs are in the form: **JobID[.JobStep]**
 6. Array jobs are in the form: **ArrayJobID_ArrayTaskID**
-7. Jobs have multiple steps!! (Explained [here](../slurm/getting-started.md#jobs-have-multiple-steps).)
+7. Jobs have multiple steps!! (Explained [here](../slurm/about-jobs.md#jobs-have-multiple-steps).)
 
 !!! Warning
     Sacct retrieves data from a SQL database. Be careful when creating your sacct commands to limit the queries to the information you need. Narrow the search as much as possible. 
@@ -87,13 +90,15 @@ See the sort manual page for other options, including multiple kinds of numeric 
 
 Special time words: **today**, **midnight**, **noon**, **now**
 
+Positive and negative deltas from now can be used, which is very handy, but remember to use the full unit word ("days" not "d" or "day")!!!
+
 now[{+|-}count[seconds(default)|minutes|hours|days|weeks]]
 
 Examples:
-: `now-3day`
-: `now-2hr`
+: `now-3days`
+: `now-2hours`
 
-Valid time formats are:
+Valid time formats are (spare brackets indicate optional elements):
 
                    HH:MM[:SS][AM|PM]
                    MMDD[YY][-HH:MM[:SS]]
@@ -101,23 +106,29 @@ Valid time formats are:
                    MM/DD[/YY][-HH:MM[:SS]]
                    YYYY-MM-DD[THH:MM[:SS]]
 
+Examples:
+: 0408  # April 8th
+: 09:15 # 9:15am (24-hour time is assumed)
+: 09:15pm # 9:15pm
+: `-S $(date -d '21 days ago' +%D-%R) -E $(date -d '17 day ago' +%D-%R)` # the date command can interpret many human-readable expressions, then express them using the format mentioned afterwards. Cool, eh!!!
+: 04/15  # the bash shell will probably have problems with the forward slash unless you surround the string with double quotes
+
 ## **Job State Values**
-Using the `-s <state>` option, you can prune your search by looking for only jobs which match the state you need, such as F for failed. (All of these work: f, failed, F, FAILED)
+Using the `-s <states>` option, you can prune your search by looking for only jobs which match the state you need, such as F for failed. (All of these work: f, failed, F, FAILED). You can specify more than one state if you separate them with commas. Note that you use a different flag for state with the `squeue` command, `-t <states>`.
+
+Job states have short names consisting of one or two letters, and a full name.  You can use either form when working with SLURM commands. They are shown here capitalized for emphasis but can be specified as lower-case.
 
 !!! Warning
-    Different steps of a job can have different end states. For example the "extern" step is often COMPLETED when the "batch" and overall steps are FAILED
-
-See [this section](https://slurm.schedmd.com/archive/slurm-22.05.9/sacct.html#lbAG) of the manual page, which has also been saved to a text file you can copy for your own reference `/jhpce/shared/jhpce/slurm/docs/job-states.txt`
+    Different steps of a job can have different end states. For example the "extern" step is often COMPLETED when the "batch" and overall steps are FAILED. The `-X` flag to `sacct` will show you only the overall job state, such as FAILED, which is useful for most cases. However, _sometimes you need to check the state of all of a jobs steps_ in order to see that a "batch" step ran OUT_OF_MEMORY.
 
 Primary job states of interest:
 
-- CA CANCELLED
-- CD COMPLETED
-- F FAILED
-- OOM OUT_OF_MEMORY
-- PD PENDING
-- R RUNNING
-- TO TIMEOUT
+--8<-- "slurm/includes/common-job-states.md"
+
+??? Note "Click for a complete list of job states"
+    --8<-- "slurm/images/job-states.md"
+
+That complete list comes from [this section](https://slurm.schedmd.com/archive/slurm-22.05.9/sacct.html#lbAG) of the `sacct` manual page, which has also been saved to a text file you can copy for your own reference: `/jhpce/shared/jhpce/slurm/docs/job-states.txt`
 
 ## Available fields
 

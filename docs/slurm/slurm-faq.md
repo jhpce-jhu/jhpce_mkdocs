@@ -19,7 +19,7 @@ Note that the information in these pages will include details which do not apply
 ## What are the default job resources?
 
 ??? "Click to open"
-    Jobs that do not specify CPUs, RAM, or duration receive 1 CPU, 5G of RAM, and, on [public partitions](../slurm/partitions.md##public-partitions), a [time limit](../slurm/time-limits.md) of 1 day. 
+    Jobs that do not specify CPUs, RAM, or duration, or partition receive 1 CPU, 5G of RAM, assignment to the `shared` partition, and, because shared is a [public partition](../slurm/partitions.md##public-partitions), a [time limit](../slurm/time-limits.md) of 1 day. 
 
 ## When will my job start?
 
@@ -27,6 +27,10 @@ Note that the information in these pages will include details which do not apply
     See [this document](whenstart.md) for a description of factors affecting when jobs start.  Of course the load on the cluster impacts job start times. Please consult the output of `slurmpic` for information about the state of the cluster and its available resources. Note that your job cannot start until a match is found for the resources you specified. There may be a lot of unused CPUs on a node, for example, but if someone has allocated all of the RAM on that node your job won't fit there.
     
     If the Reason given for a pending job is `QOSMaxMemoryPerUser` or `QOSMaxCpuPerUserLimit` then you can read about Quality of Service in our document [here](../slurm/qos.md).
+    
+## How will I know if my job ended?
+See [this document](monitoring.md) for information about monitoring pending, running and completed jobs. You can specify directives requesting email notfication when jobs start, fail, etc.
+
 
 ## Help! My job is going to run out of time!
 
@@ -41,9 +45,6 @@ Note that the information in these pages will include details which do not apply
     The default partition is "shared". By default `slurmpic` describes the state of this partition. (Run `slurmpic -h` to see a list of options, including the flag to show other partitions.)
 
     See [this document](partitions.md) for a description of partitions and their purposes and limits.
-
-## How will I know if my job ended?
-See [this document](monitoring.md) for information about monitoring pending, running and completed jobs.
 
 ## How do I cancel a job?
 
