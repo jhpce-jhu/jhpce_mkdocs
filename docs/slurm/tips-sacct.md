@@ -1,4 +1,5 @@
 ---
+icon: material/eye
 tags:
   - slurm
 ---
@@ -113,6 +114,15 @@ Examples:
 : `-S $(date -d '21 days ago' +%D-%R) -E $(date -d '17 day ago' +%D-%R)` # the date command can interpret many human-readable expressions, then express them using the format mentioned afterwards. Cool, eh!!!
 : 04/15  # the bash shell will probably have problems with the forward slash unless you surround the string with double quotes
 
+## Job Limit
+If you want to filter for jobs with a certain time limit, use the `-k/--timelimit-min` and `-K/--timelimit-max` flags. To show only jobs with time limit between 48 and 72 hours that ran between 4 and 8 weeks ago:
+
+`sacct -S $(date -d '8 weeks ago' +%D-%R) -E $(date -d '4 weeks ago' +%D-%R) -k 48:00 -K 72:00`
+
+If you know the exact time limit of the jobs you are looking for, set both min and max time limit to the same value. For jobs with a time limit of 30 minutes that ran in the last month:
+
+`sacct -S $(date -d 'last month' +%D-%R) --timelimit-min 30 --timelimit-max 30`
+
 ## **Job State Values**
 Using the `-s <states>` option, you can prune your search by looking for only jobs which match the state you need, such as F for failed. (All of these work: f, failed, F, FAILED). You can specify more than one state if you separate them with commas. Note that you use a different flag for state with the `squeue` command, `-t <states>`.
 
@@ -130,9 +140,10 @@ Primary job states of interest:
 
 That complete list comes from [this section](https://slurm.schedmd.com/archive/slurm-22.05.9/sacct.html#lbAG) of the `sacct` manual page, which has also been saved to a text file you can copy for your own reference: `/jhpce/shared/jhpce/slurm/docs/job-states.txt`
 
-## Available fields
+## **Output Fields of Interest**
 
-Field meanings are explained in [this section](https://slurm.schedmd.com/archive/slurm-22.05.9/sacct.html#lbAF) of the manual page.
+??? Note "All sacct fields (output of sacct -e)"
+    --8<-- "slurm/includes/sacct-output-fields.md"
 
 ```Shell title="What output fields are available?" linenums="0"
 sacct -e
@@ -141,75 +152,6 @@ sacct -e
 ```Shell title="See all fields for a job" linenums="0"
 sacct -o ALL -j <jobid>
 ```
-
-## **Formatting fields**
-
-By default fields are 20 characters wide. That is often insufficient.
-
-You can put a "%NUMBER" after a field name to specify how many characters should be printed, e.g.
-   
-- format=name%30 will print 30 characters of field name right justified.  
-- format=name%-30 will print 30 characters left justified.
-
-## **Using Environment Variables**
-
-You can define environment variables in your shell to reduce the complexity of issuing sacct commands. You can also set these in shell scripts. Command line options will always override these settings.
-
-SACCT_FORMAT
-
-SLURM_TIME_FORMAT
-
-#### **Formatting Dates/Times**
-You can use most variables defined by the STRFTIME(3) system call. [This web page](https://strftime.org) is a starting point, but what SLURM has chosen to implement may not match.
-
-* %a - abbrieviated name of day of the week
-* %m - month as decimal, 01 to 12
-* %d - day of month as decimal
-* %H - hour as decimal in 24-hour notation
-* %M - minute as decimal, 00 to 59
-* %T - time in 24-hour notation (%H:%M:%S)
-
-```Shell title="Day of week MM-DD HH:MM" linenums="0"
-export SLURM_TIME_FORMAT="%a %m-%d %H:%M" 
-```
-The start and end field widths show below are suitable for the time format shown above.
-
-```Shell title="Resources requested, used" linenums="0"
-export SACCT_FORMAT="user,jobid,jobname,nodelist%12,start%-20,end%-20,state%20,reqtres%40,TRESUsageInTot%200"
-```
-
-## **Output Fields of Interest**
-
-??? Note "All sacct fields (output of sacct -e)"
-    ```
-    Account             AdminComment        AllocCPUS           AllocNodes         
-    AllocTRES           AssocID             AveCPU              AveCPUFreq         
-    AveDiskRead         AveDiskWrite        AvePages            AveRSS             
-    AveVMSize           BlockID             Cluster             Comment            
-    Constraints         ConsumedEnergy      ConsumedEnergyRaw   Container          
-    CPUTime             CPUTimeRAW          DBIndex             DerivedExitCode    
-    Elapsed             ElapsedRaw          Eligible            End                
-    ExitCode            Flags               GID                 Group              
-    JobID               JobIDRaw            JobName             Layout             
-    MaxDiskRead         MaxDiskReadNode     MaxDiskReadTask     MaxDiskWrite       
-    MaxDiskWriteNode    MaxDiskWriteTask    MaxPages            MaxPagesNode       
-    MaxPagesTask        MaxRSS              MaxRSSNode          MaxRSSTask         
-    MaxVMSize           MaxVMSizeNode       MaxVMSizeTask       McsLabel           
-    MinCPU              MinCPUNode          MinCPUTask          NCPUS              
-    NNodes              NodeList            NTasks              Partition          
-    Priority            QOS                 QOSRAW              Reason             
-    ReqCPUFreq          ReqCPUFreqGov       ReqCPUFreqMax       ReqCPUFreqMin      
-    ReqCPUS             ReqMem              ReqNodes            ReqTRES            
-    Reservation         ReservationId       Reserved            ResvCPU            
-    ResvCPURAW          Start               State               Submit             
-    SubmitLine          Suspended           SystemComment       SystemCPU          
-    Timelimit           TimelimitRaw        TotalCPU            TRESUsageInAve     
-    TRESUsageInMax      TRESUsageInMaxNode  TRESUsageInMaxTask  TRESUsageInMin     
-    TRESUsageInMinNode  TRESUsageInMinTask  TRESUsageInTot      TRESUsageOutAve    
-    TRESUsageOutMax     TRESUsageOutMaxNode TRESUsageOutMaxTask TRESUsageOutMin    
-    TRESUsageOutMinNode TRESUsageOutMinTask TRESUsageOutTot     UID                
-    User                UserCPU             WCKey               WCKeyID
-    ```
 
 The following fields are probably the ones you'll want. See [this section](https://slurm.schedmd.com/archive/slurm-22.05.9/sacct.html#lbAF) of the manual page for the list and their meaning. Capitalization does not matter; it is used for readability.
 
@@ -248,11 +190,49 @@ The following fields are probably the ones you'll want. See [this section](https
     - MaxDiskRead - Number bytes read by all tasks in job
     - MaxDiskWrite - Number bytes written by all tasks in job
 
-## **About Memory Fields**
+### **About Memory Fields**
 
 **Virtual Memory Size (VMSize)** is the total memory size of a job. It includes both memory actually in RAM (the RSS) and parts of executabilities which were not needed to be read in off of disk into RAM. Because, for example, routines in dynamically linked libraries were never called, so those libraries were not loaded. 
 
 **Resident set size (RSS)** is the portion of memory (measured in megabytes) occupied by a job that is held in main memory (RAM). The rest of the memory required by the job exists in the swap space or file system, either because some parts of the occupied memory were paged out, or because some parts of the executable were never loaded.
+
+## **Formatting fields**
+
+By default fields are 20 characters wide. That is often insufficient.
+
+You can put a "%NUMBER" after a field name to specify how many characters should be printed, e.g.
+   
+- format=name%30 will print 30 characters of field name right justified.  
+- format=name%-30 will print 30 characters left justified.
+
+You can specify your format on the command line or define an environment variable to hold the desired string (see below).
+
+## **Using Environment Variables**
+
+You can define environment variables in your shell to reduce the complexity of issuing sacct commands. You can also set these in shell scripts. Command line options will always override these settings.
+
+SACCT_FORMAT
+
+SLURM_TIME_FORMAT
+
+#### **Formatting Dates/Times**
+You can use most variables defined by the STRFTIME(3) system call. [This web page](https://strftime.org) is a starting point, but what SLURM has chosen to implement may not match.
+
+* %a - abbrieviated name of day of the week
+* %m - month as decimal, 01 to 12
+* %d - day of month as decimal
+* %H - hour as decimal in 24-hour notation
+* %M - minute as decimal, 00 to 59
+* %T - time in 24-hour notation (%H:%M:%S)
+
+```Shell title="Day of week MM-DD HH:MM" linenums="0"
+export SLURM_TIME_FORMAT="%a %m-%d %H:%M" 
+```
+The start and end field widths show below are suitable for the time format shown above.
+
+```Shell title="Resources requested, used" linenums="0"
+export SACCT_FORMAT="user,jobid,jobname,nodelist%12,start%-20,end%-20,state%20,reqtres%40,TRESUsageInTot%200"
+```
 
 ## **Exit Error Codes**
 In addition to the job's "state", SLURM also records error codes. Unfortunately the vendor's [Job Exit Codes](https://slurm.schedmd.com/job_exit_code.html) page doesn't provide a meaning for the numerical values.
@@ -296,3 +276,9 @@ sacct -o WorkDir -j <jobid>
 ```Shell title="See jobs given a time limit btwn 1min & 1 day" linenums="0"
 sacct -k 00:01 -K 1-0
 ```
+
+## **Examples**
+
+all jobs for username bob that ran with a wall time of at least 2 days and were killed for running out of memory in the past 3 months:
+
+`sacct --user bob --starttime $(date -d '3 months ago' +%D-%R) --state OUT_OF_MEMORY --timelimit-min 2-00:00:00 --format JobID,JobName,Elapsed,NCPUs,TotalCPU,CPUTime,ReqMem,MaxRSS,MaxDiskRead,MaxDiskWrite,State,ExitCode`
