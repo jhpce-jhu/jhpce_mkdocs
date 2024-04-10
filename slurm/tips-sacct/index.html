@@ -2731,6 +2731,15 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#sacct-overview" class="md-nav__link">
+    <span class="md-ellipsis">
+      Sacct Overview
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#sacct-basics" class="md-nav__link">
     <span class="md-ellipsis">
       sacct basics
@@ -3604,6 +3613,15 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#sacct-overview" class="md-nav__link">
+    <span class="md-ellipsis">
+      Sacct Overview
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#sacct-basics" class="md-nav__link">
     <span class="md-ellipsis">
       sacct basics
@@ -3751,12 +3769,6 @@
     
     
     
-      <a href="../../ourtools/tags/#done" class="md-tag">done</a>
-    
-  
-    
-    
-    
       <a href="../../ourtools/tags/#slurm" class="md-tag">slurm</a>
     
   
@@ -3765,6 +3777,11 @@
 
 
 <h1 id="sacct-useful-command-examples"><strong>sacct useful command examples</strong><a class="headerlink" href="#sacct-useful-command-examples" title="Anchor link to this section for reference">&para;</a></h1>
+<div class="admonition caution">
+<p class="admonition-title">Caution</p>
+<p>If you have not already read about basic job facts like job notation, steps, names and states, please first visit the "About SLURM Jobs" document <a href="../about-jobs/">here</a>.</p>
+</div>
+<h2 id="sacct-overview"><strong>Sacct Overview</strong><a class="headerlink" href="#sacct-overview" title="Anchor link to this section for reference">&para;</a></h2>
 <div class="admonition example">
 <p class="admonition-title">Example</p>
 <div class="highlight"><span class="filename">Show my failed jobs between noon and now</span><pre><span></span><code>sacct<span class="w"> </span>-s<span class="w"> </span>F<span class="w"> </span>-o<span class="w"> </span><span class="s2">&quot;user,jobid,state,nodelist,start,end,exitcode&quot;</span><span class="w"> </span>-S<span class="w"> </span>noon<span class="w"> </span>-E<span class="w"> </span>now
@@ -3772,7 +3789,7 @@
 </div>
 <p><a href="https://slurm.schedmd.com/archive/slurm-22.05.9/sacct.html">sacct</a> is a command used to display information about jobs. It has a number of subtleties, such as the time window reported on and the formatting of output. We hope that this page will help you get the information you need.</p>
 <p><code>sacct</code> can be used to investigate jobs' resource usage, nodes used, and exit codes. It can point to important information, such as jobs dying on a particular node but working on other nodes<sup id="fnref:1"><a class="footnote-ref" href="#fn:1">1</a></sup>.</p>
-<p>sacct will show all submitted jobs but cannot, of course, provide data for a number of fields until the job has finished. Use the <a href="https://slurm.schedmd.com/archive/slurm-22.05.9/sstat.html">sstat</a> command to get information about running programs. "Instrumenting" your jobs to gather information about them can include adding one or more sstat commands to batch jobs in multiple places.</p>
+<p>sacct will show all submitted jobs but cannot, of course, provide data for a number of fields until the job has finished. Use the <a href="https://slurm.schedmd.com/archive/slurm-22.05.9/sstat.html">sstat</a> command to get information about running programs. "Instrumenting" your jobs to gather information about them can include adding one or more <code>sstat</code> commands to batch jobs in multiple places.</p>
 <div class="admonition tip">
 <p class="admonition-title">Tip</p>
 <p>Much of the information on this page can be used with <code>sstat</code>, but there are differences, particularly in available output fields (compare the output of <code>sacct -e</code> and <code>sstat -e</code>).</p>
@@ -3786,7 +3803,7 @@
 <li>Even the simplest of batch jobs contain multiple "steps" as far as SLURM is concerned. One of them, named "extern" represents the ssh to the compute node on behalf of your job. Job records consist of a primary entry for the job as a whole  as  well as entries for job steps. The <a href="https://slurm.schedmd.com/archive/slurm-22.05.9/job_launch.html#job_record">Job Launch</a> page has a more detailed description of each type of job step. You may find the <code>-X</code> flag helpful to omit clutter.</li>
 <li>Regular jobs are in the form: <strong>JobID[.JobStep]</strong></li>
 <li>Array jobs are in the form: <strong>ArrayJobID_ArrayTaskID</strong></li>
-<li>Jobs have multiple steps!! (Explained <a href="../getting-started/#jobs-have-multiple-steps">here</a>.)</li>
+<li>Jobs have multiple steps!! (Explained <a href="../about-jobs/#jobs-have-multiple-steps">here</a>.)</li>
 </ol>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
@@ -3830,36 +3847,91 @@ beginning with <code>sacct</code> when you already have all of the desired outpu
 <h2 id="start-and-end-times"><strong>Start and End Times</strong><a class="headerlink" href="#start-and-end-times" title="Anchor link to this section for reference">&para;</a></h2>
 <p><mark class="critic">It is best to use always specify a <code>-S</code> start time and a <code>-E</code> end time.</mark></p>
 <p>Special time words: <strong>today</strong>, <strong>midnight</strong>, <strong>noon</strong>, <strong>now</strong></p>
+<p>Positive and negative deltas from now can be used, which is very handy, but remember to use the full unit word ("days" not "d" or "day")!!!</p>
 <p>now[{+|-}count[seconds(default)|minutes|hours|days|weeks]]</p>
 <dl>
 <dt>Examples:</dt>
-<dd><code>now-3day</code></dd>
-<dd><code>now-2hr</code></dd>
+<dd><code>now-3days</code></dd>
+<dd><code>now-2hours</code></dd>
 </dl>
-<p>Valid time formats are:</p>
+<p>Valid time formats are (spare brackets indicate optional elements):</p>
 <div class="highlight"><pre><span></span><code>               HH:MM[:SS][AM|PM]
                MMDD[YY][-HH:MM[:SS]]
                MM.DD[.YY][-HH:MM[:SS]]
                MM/DD[/YY][-HH:MM[:SS]]
                YYYY-MM-DD[THH:MM[:SS]]
 </code></pre></div>
+<dl>
+<dt>Examples:</dt>
+<dd>0408  # April 8th</dd>
+<dd>09:15 # 9:15am (24-hour time is assumed)</dd>
+<dd>09:15pm # 9:15pm</dd>
+<dd><code>-S $(date -d '21 days ago' +%D-%R) -E $(date -d '17 day ago' +%D-%R)</code> # the date command can interpret many human-readable expressions, then express them using the format mentioned afterwards. Cool, eh!!!</dd>
+<dd>04/15  # the bash shell will probably have problems with the forward slash unless you surround the string with double quotes</dd>
+</dl>
 <h2 id="job-state-values"><strong>Job State Values</strong><a class="headerlink" href="#job-state-values" title="Anchor link to this section for reference">&para;</a></h2>
-<p>Using the <code>-s &lt;state&gt;</code> option, you can prune your search by looking for only jobs which match the state you need, such as F for failed. (All of these work: f, failed, F, FAILED)</p>
+<p>Using the <code>-s &lt;states&gt;</code> option, you can prune your search by looking for only jobs which match the state you need, such as F for failed. (All of these work: f, failed, F, FAILED). You can specify more than one state if you separate them with commas. Note that you use a different flag for state with the <code>squeue</code> command, <code>-t &lt;states&gt;</code>.</p>
+<p>Job states have short names consisting of one or two letters, and a full name.  You can use either form when working with SLURM commands. They are shown here capitalized for emphasis but can be specified as lower-case.</p>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
-<p>Different steps of a job can have different end states. For example the "extern" step is often COMPLETED when the "batch" and overall steps are FAILED</p>
+<p>Different steps of a job can have different end states. For example the "extern" step is often COMPLETED when the "batch" and overall steps are FAILED. The <code>-X</code> flag to <code>sacct</code> will show you only the overall job state, such as FAILED, which is useful for most cases. However, <em>sometimes you need to check the state of all of a jobs steps</em> in order to see that a "batch" step ran OUT_OF_MEMORY.</p>
 </div>
-<p>See <a href="https://slurm.schedmd.com/archive/slurm-22.05.9/sacct.html#lbAG">this section</a> of the manual page, which has also been saved to a text file you can copy for your own reference <code>/jhpce/shared/jhpce/slurm/docs/job-states.txt</code></p>
 <p>Primary job states of interest:</p>
-<ul>
-<li>CA CANCELLED</li>
-<li>CD COMPLETED</li>
-<li>F FAILED</li>
-<li>OOM OUT_OF_MEMORY</li>
-<li>PD PENDING</li>
-<li>R RUNNING</li>
-<li>TO TIMEOUT</li>
-</ul>
+<details class="note">
+<summary>Click for a complete list of job states</summary>
+<p>FROM https://slurm.schedmd.com/squeue.html#lbAG</p>
+<dl>
+<dt>BF BOOT_FAIL</dt>
+<dd>Job terminated due to launch failure, typically due to a hardware failure (e.g. unable to boot the node or block and the job can not be requeued).</dd>
+<dt>CA CANCELLED</dt>
+<dd>Job was explicitly cancelled by the user or system administrator. The job may or may not have been initiated.</dd>
+<dt>CD COMPLETED</dt>
+<dd>Job has terminated all processes on all nodes with an exit code of zero.</dd>
+<dt>CF CONFIGURING</dt>
+<dd>Job has been allocated resources, but are waiting for them to become ready for use (e.g. booting).</dd>
+<dt>CG COMPLETING</dt>
+<dd>Job is in the process of completing. Some processes on some nodes may still be active.</dd>
+<dt>DL DEADLINE</dt>
+<dd>Job terminated on deadline.</dd>
+<dt>F FAILED</dt>
+<dd>Job terminated with non-zero exit code or other failure condition.</dd>
+<dt>NF NODE_FAIL</dt>
+<dd>Job terminated due to failure of one or more allocated nodes.</dd>
+<dt>OOM OUT_OF_MEMORY</dt>
+<dd>Job experienced out of memory error.</dd>
+<dt>PD PENDING</dt>
+<dd>Job is awaiting resource allocation.</dd>
+<dt>PR PREEMPTED</dt>
+<dd>Job terminated due to preemption.</dd>
+<dt>R RUNNING</dt>
+<dd>Job currently has an allocation.</dd>
+<dt>RD RESV_DEL_HOLD</dt>
+<dd>Job is being held after requested reservation was deleted.</dd>
+<dt>RF REQUEUE_FED</dt>
+<dd>Job is being requeued by a federation.</dd>
+<dt>RH REQUEUE_HOLD</dt>
+<dd>Held job is being requeued.</dd>
+<dt>RQ REQUEUED</dt>
+<dd>Completing job is being requeued.</dd>
+<dt>RS RESIZING</dt>
+<dd>Job is about to change size.</dd>
+<dt>RV REVOKED</dt>
+<dd>Sibling was removed from cluster due to other cluster starting the job.</dd>
+<dt>SI SIGNALING</dt>
+<dd>Job is being signaled.</dd>
+<dt>SE SPECIAL_EXIT</dt>
+<dd>The job was requeued in a special state. This state can be set by users, typically in EpilogSlurmctld, if the job has terminated with a particular exit value.</dd>
+<dt>SO STAGE_OUT</dt>
+<dd>Job is staging out files.</dd>
+<dt>ST STOPPED</dt>
+<dd>Job has an allocation, but execution has been stopped with SIGSTOP signal. CPUS have been retained by this job.</dd>
+<dt>S SUSPENDED</dt>
+<dd>Job has an allocation, but execution has been suspended and CPUs have been released for other jobs.</dd>
+<dt>TO TIMEOUT</dt>
+<dd>Job terminated upon reaching its time limit.</dd>
+</dl>
+</details>
+<p>That complete list comes from <a href="https://slurm.schedmd.com/archive/slurm-22.05.9/sacct.html#lbAG">this section</a> of the <code>sacct</code> manual page, which has also been saved to a text file you can copy for your own reference: <code>/jhpce/shared/jhpce/slurm/docs/job-states.txt</code></p>
 <h2 id="available-fields">Available fields<a class="headerlink" href="#available-fields" title="Anchor link to this section for reference">&para;</a></h2>
 <p>Field meanings are explained in <a href="https://slurm.schedmd.com/archive/slurm-22.05.9/sacct.html#lbAF">this section</a> of the manual page.</p>
 <div class="highlight"><span class="filename">What output fields are available?</span><pre><span></span><code>sacct<span class="w"> </span>-e
@@ -4035,7 +4107,7 @@ Enter man signal for more information
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1-2.1-2M12.5 7v5.2l4 2.4-1 1L11 13V7h1.5M11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2v1.8Z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">April 8, 2024</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">April 10, 2024</span>
   </span>
 
     

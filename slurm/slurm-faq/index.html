@@ -3025,6 +3025,15 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#how-will-i-know-if-my-job-ended" class="md-nav__link">
+    <span class="md-ellipsis">
+      How will I know if my job ended?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#help-my-job-is-going-to-run-out-of-time" class="md-nav__link">
     <span class="md-ellipsis">
       Help! My job is going to run out of time!
@@ -3037,15 +3046,6 @@
   <a href="#what-partitions-exist" class="md-nav__link">
     <span class="md-ellipsis">
       What partitions exist?
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#how-will-i-know-if-my-job-ended" class="md-nav__link">
-    <span class="md-ellipsis">
-      How will I know if my job ended?
     </span>
   </a>
   
@@ -3677,6 +3677,15 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#how-will-i-know-if-my-job-ended" class="md-nav__link">
+    <span class="md-ellipsis">
+      How will I know if my job ended?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#help-my-job-is-going-to-run-out-of-time" class="md-nav__link">
     <span class="md-ellipsis">
       Help! My job is going to run out of time!
@@ -3689,15 +3698,6 @@
   <a href="#what-partitions-exist" class="md-nav__link">
     <span class="md-ellipsis">
       What partitions exist?
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#how-will-i-know-if-my-job-ended" class="md-nav__link">
-    <span class="md-ellipsis">
-      How will I know if my job ended?
     </span>
   </a>
   
@@ -3844,7 +3844,7 @@
 <h2 id="what-are-the-default-job-resources">What are the default job resources?<a class="headerlink" href="#what-are-the-default-job-resources" title="Anchor link to this section for reference">&para;</a></h2>
 <details>
 <summary>Click to open</summary>
-<p>Jobs that do not specify CPUs, RAM, or duration receive 1 CPU, 5G of RAM, and, on <a href="../partitions/##public-partitions">public partitions</a>, a <a href="../time-limits/">time limit</a> of 1 day. </p>
+<p>Jobs that do not specify CPUs, RAM, or duration, or partition receive 1 CPU, 5G of RAM, assignment to the <code>shared</code> partition, and, because shared is a <a href="../partitions/##public-partitions">public partition</a>, a <a href="../time-limits/">time limit</a> of 1 day. </p>
 </details>
 <h2 id="when-will-my-job-start">When will my job start?<a class="headerlink" href="#when-will-my-job-start" title="Anchor link to this section for reference">&para;</a></h2>
 <details>
@@ -3852,6 +3852,8 @@
 <p>See <a href="../whenstart/">this document</a> for a description of factors affecting when jobs start.  Of course the load on the cluster impacts job start times. Please consult the output of <code>slurmpic</code> for information about the state of the cluster and its available resources. Note that your job cannot start until a match is found for the resources you specified. There may be a lot of unused CPUs on a node, for example, but if someone has allocated all of the RAM on that node your job won't fit there.</p>
 <p>If the Reason given for a pending job is <code>QOSMaxMemoryPerUser</code> or <code>QOSMaxCpuPerUserLimit</code> then you can read about Quality of Service in our document <a href="../qos/">here</a>.</p>
 </details>
+<h2 id="how-will-i-know-if-my-job-ended">How will I know if my job ended?<a class="headerlink" href="#how-will-i-know-if-my-job-ended" title="Anchor link to this section for reference">&para;</a></h2>
+<p>See <a href="../monitoring/">this document</a> for information about monitoring pending, running and completed jobs. You can specify directives requesting email notfication when jobs start, fail, etc.</p>
 <h2 id="help-my-job-is-going-to-run-out-of-time">Help! My job is going to run out of time!<a class="headerlink" href="#help-my-job-is-going-to-run-out-of-time" title="Anchor link to this section for reference">&para;</a></h2>
 <details>
 <summary>Click to open</summary>
@@ -3865,8 +3867,6 @@ You can add "mailtype" and "mailuser" directives when submitting a job, while it
 <p>The default partition is "shared". By default <code>slurmpic</code> describes the state of this partition. (Run <code>slurmpic -h</code> to see a list of options, including the flag to show other partitions.)</p>
 <p>See <a href="../partitions/">this document</a> for a description of partitions and their purposes and limits.</p>
 </details>
-<h2 id="how-will-i-know-if-my-job-ended">How will I know if my job ended?<a class="headerlink" href="#how-will-i-know-if-my-job-ended" title="Anchor link to this section for reference">&para;</a></h2>
-<p>See <a href="../monitoring/">this document</a> for information about monitoring pending, running and completed jobs.</p>
 <h2 id="how-do-i-cancel-a-job">How do I cancel a job?<a class="headerlink" href="#how-do-i-cancel-a-job" title="Anchor link to this section for reference">&para;</a></h2>
 <details>
 <summary>Click to open</summary>
@@ -3972,7 +3972,7 @@ You can also submit jobs with <a href="https://slurm.schedmd.com/sbatch.html#OPT
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1-2.1-2M12.5 7v5.2l4 2.4-1 1L11 13V7h1.5M11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2v1.8Z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">April 9, 2024</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">April 10, 2024</span>
   </span>
 
     

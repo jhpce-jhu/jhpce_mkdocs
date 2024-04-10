@@ -3002,6 +3002,15 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
+  <a href="#sview-a-gui-interface" class="md-nav__link">
+    <span class="md-ellipsis">
+      sview, a GUI Interface
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#email-notification" class="md-nav__link">
     <span class="md-ellipsis">
       Email Notification
@@ -3819,6 +3828,15 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
+  <a href="#sview-a-gui-interface" class="md-nav__link">
+    <span class="md-ellipsis">
+      sview, a GUI Interface
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#email-notification" class="md-nav__link">
     <span class="md-ellipsis">
       Email Notification
@@ -3999,6 +4017,14 @@ Memory Efficiency: 76.71% of 20.00 GB
 <p>Depending on the execution order of the commands in the batch script, it is possible that a specific command fails but the batch script will return zero indicating success.</p>
 <h2 id="tool-set"><strong>TOOL SET</strong><a class="headerlink" href="#tool-set" title="Anchor link to this section for reference">&para;</a></h2>
 <p>Here is a list of tools and techniques. You may use the same command to look at jobs in different states so we've gathered details here rather than repeating them in every section above.</p>
+<h3 id="sview-a-gui-interface"><strong><em>sview, a GUI Interface</em></strong><a class="headerlink" href="#sview-a-gui-interface" title="Anchor link to this section for reference">&para;</a></h3>
+<p>Sview is an X11 program which will display information about the cluster. You can see information about jobs, nodes, partitions, and reservations.  Double-clicking on an object usually launches a pop-up window with more details.</p>
+<p>It is not the slickest interface, and has quirks. It does not remember all of your choices for the basic items to display, for example (click on the tab labeled "visible tabs" to check the ones you want to see).</p>
+<p>The <code>sview</code> manual page is available [here](https://slurm.schedmd.com/archive/slurm-22.05.9/sview.html</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Do <strong>NOT</strong> set its refresh interval to 1 second. It defaults to 5 seconds, which is already quite bad enough. Sview contacts the master SLURM daemon running the entire cluster every <em>interval</em> seconds and requests a <em>ton</em> of information. If enough people run it, it will slow down processing of everyone's jobs and accounting records and ... Do you really need to know about changes every five seconds? How will that change what you do?</p>
+</div>
 <h3 id="email-notification"><strong>Email Notification</strong><a class="headerlink" href="#email-notification" title="Anchor link to this section for reference">&para;</a></h3>
 <p>You can direct SLURM to send you email when various things happen with your job. These directives can be given on the command line, in batch job scripts, and set in your SLURM defaults file. You can even modify running jobs to set or change their notification settings (see the <a href="../tips-scontrol/">scontrol tips</a> page).</p>
 <div class="admonition warning">
@@ -4086,7 +4112,7 @@ Memory Efficiency: 76.71% of 20.00 GB
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1-2.1-2M12.5 7v5.2l4 2.4-1 1L11 13V7h1.5M11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2v1.8Z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">April 8, 2024</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">April 10, 2024</span>
   </span>
 
     

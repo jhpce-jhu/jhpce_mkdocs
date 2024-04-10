@@ -3630,11 +3630,9 @@
 
 
 
-<div class="highlight"><pre><span></span><code>
-</code></pre></div>
 <h1 id="all-about-slurm-jobs"><strong>All About SLURM Jobs</strong><a class="headerlink" href="#all-about-slurm-jobs" title="Anchor link to this section for reference">&para;</a></h1>
 <p>Well, maybe not ALL.</p>
-<p>Here we try to describe some basic facts about jobs. We will point to this document in the other places in the web site where we mention some of these core facts.</p>
+<p>Here we try to describe some basic facts about jobs. We will point to this document in the other places in the web site where we mention some of these core facts. There are links to some of these other web pages in this document, but see the navigation bar for a complete list of pages.</p>
 <p>SLURM is popular because it is flexible and supports many different computational needs. Users do complex things on various clusters, and the way you normally use SLURM may not at all match the way someone else does.</p>
 <h2 id="what-is-a-slurm-job"><strong>WHAT IS A SLURM JOB?</strong><a class="headerlink" href="#what-is-a-slurm-job" title="Anchor link to this section for reference">&para;</a></h2>
 <p>A <strong><em>job</em></strong> can span multiple compute nodes and is the sum of all task resources.</p>
@@ -3644,26 +3642,39 @@
 <li>a command to run, either bash (for an interactive job) or a shell script<sup id="fnref:1"><a class="footnote-ref" href="#fn:1">1</a></sup> (for a batch job)</li>
 <li>one or more <strong><em>steps</em></strong>, numbered starting from 0.<sup id="fnref:2"><a class="footnote-ref" href="#fn:2">2</a></sup></li>
 </ol>
-<p><strong>Directives</strong> can come from a variety of sources, including, in <a href="../crafting-jobs/#slurm-directive-order-of-precendence">order of preference</a>: on the command line, from environment variables, embedded in a batch file script on <code>#SBATCH</code> lines, or from a personal <code>~/.slurm/defaults</code> file. If you don't specify a directive, them some default value will be used. Often that default is one, as in one task, one CPU core, one compute node, ...</p>
+<p><strong>Interactive jobs</strong> provide a shell interface on a single compute node. There you can run programs interactively, including ones with GUI interfaces that display via the X11 protocal. For more information, see our page <a href="../interactive-jobs/">here</a>.</p>
+<p><strong>Batch jobs</strong> are handled by a job scheduler within SLURM, and start when they can get access to one or more compute nodes providing sufficient resources. These jobs do their work unattended. For more information, see our page <a href="../crafting-jobs/">here</a>.</p>
+<p><strong>Array jobs</strong> are one type of batch job. They consist of 2 or more jobs spawned by a single batch script. For more information, see this section of our batch job page <a href="../crafting-jobs/#job-arrays">here</a>.</p>
+<p><strong>Directives</strong> can come from a variety of sources, including, in <a href="../crafting-jobs/#slurm-directive-order-of-precendence">order of preference</a>: on the command line, from environment variables, embedded in a batch file script on <code>#SBATCH</code> lines, or from a personal <code>~/.slurm/defaults</code> file. If you don't specify a directive, them some default value will be used. Often that default is one, as in one task, one CPU core, one compute node, ...  The default partition is <code>shared</code>. 5 gigabytes is the default amount of RAM per job.</p>
+<p>Directives consist of:</p>
+<ol>
+<li>requests for resources (time, partition, memory, CPU)</li>
+<li>instructions to SLURM</li>
+</ol>
+<p>You will find directives described in the <code>sbatch</code> <a href="https://slurm.schedmd.com/archive/slurm-22.05.9/sbatch.html">manual page</a>.</p>
 <p>A job aims to complete one or more <strong><em>tasks</em></strong>.</p>
 <p>Tasks are requested at the job level with <code>--ntasks</code> or <code>--ntasks-per-node</code>, or at the step level with  <code>--ntasks</code>. CPUs are requested per task with <code>--cpus-per-task</code>.</p>
-<p>A <strong>task</strong> is executed on a single <strong><em>compute node</em></strong> in a job step, using one or more CPU units and a non-zero amount of memory (5 gigabytes if you don't specify -- you can request less than 5G!! -- the less memory your job needs, the more likely it will be able to run).</p>
+<p>A <strong>task</strong> is executed on a single <strong><em>compute node</em></strong> in a job step, using one or more CPU cores and a non-zero amount of memory (5 gigabytes if you don't specify -- you can request less than 5G!! -- the less memory your job needs, the more likely it will be able to run).</p>
 <p>If there are multiple tasks, then each uses a subset of the resources of the overall job.  Multiple tasks can run on a single compute node or on multiple nodes. The resources used by any one task cannot exceed what is found on a single node.</p>
 <p>Jobs execute on a set of one or more compute nodes called a <strong><em>nodelist</em></strong>. The first node in that set is called the <strong><em>0th node</em></strong>.<sup id="fnref:3"><a class="footnote-ref" href="#fn:3">3</a></sup></p>
+<p>Compute nodes are grouped together into <strong><em>partitions</em></strong>. For more information about partitions, see our page <a href="../partitions/">here</a>.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>If a job exceeds its <a href="../time-limits/">time limit</a> or memory, it will be killed before it finishes doing its work.</p>
+</div>
 <h2 id="job-notation"><strong>JOB NOTATION</strong><a class="headerlink" href="#job-notation" title="Anchor link to this section for reference">&para;</a></h2>
 <p>Once jobs are submitted and accepted, they are given a <strong>job id</strong> number.
 When specifying a job to a SLURM program like <code>scontrol</code> or reading output from a SLURM program like <code>sacct</code>, you will see a variety of forms of identification numbers.</p>
 <p>In our documentation and email, we often say simply "job" or "jobid" with the expectation that you will determine the right value to use in the situation.</p>
 <p>Underscores <span class="keys"><kbd class="key-underscore">_</kbd></span> divide <strong>job arrays</strong> from <strong>job ids</strong></p>
 <p>Periods <span class="keys"><kbd class="key-period">.</kbd></span> divide <strong>job ids</strong> from <strong>step ids</strong>.</p>
-<p>Sometimes you can use a job_array number where the documentation says job_id, as when cancelling the whole job array with <code>scancel</code> as opposed to cancelling just one of its job elements.</p>
+<p>Sometimes you can use a job array number where the documentation says job id, as when cancelling the whole job array with <code>scancel</code> as opposed to cancelling just one of its job elements.</p>
 <div class="highlight"><pre><span></span><code>&lt;job id&gt;
 &lt;job id&gt;.&lt;step id&gt;
 &lt;job array&gt;_&lt;job id&gt;
 &lt;job array&gt;_&lt;job id&gt;.&lt;step id&gt;
 </code></pre></div>
 <h2 id="job-have-multiple-steps"><strong>JOB HAVE MULTIPLE STEPS</strong><a class="headerlink" href="#job-have-multiple-steps" title="Anchor link to this section for reference">&para;</a></h2>
-<p>You will notice in the output of <code>sacct</code> commands that each job has multiple entries, including one for the overall job. Each entry has a STATE code (e.g. COMPLETED, FAILED, CANCELLED) and an EXITCODE (e.g. 0:0).  Keep in mind when viewing state information whether you are looking at the overall job state or that of a component.</p>
 <p>The average job will have two or more steps of these types: </p>
 <ul>
 <li><strong>external step</strong> - the connection from the node on which you submitted the job and the leading node of your nodelist. This step normally succeeds whether or not your overall job does.</li>
@@ -3671,6 +3682,7 @@ When specifying a job to a SLURM program like <code>scontrol</code> or reading o
 <li><strong>interactive step</strong> - created for jobs submitted with <code>srun</code> (outside of a batch job)</li>
 <li><strong>normal step</strong> - a batch job can have multiple normal steps, which will appear in accounting output as <code>&lt;job_id&gt;.&lt;step_id&gt;</code> Each step will be created by an <code>srun</code> command. Step numbers start at 0. Interactive jobs do not have any normal steps.</li>
 </ul>
+<p>You will notice in the output of <code>sacct</code> commands that each job has multiple entries, including one for the overall job. Each entry has a STATE code (e.g. COMPLETED, FAILED, CANCELLED) and an EXITCODE (e.g. 0:0).  Keep in mind when viewing state information whether you are looking at the overall job state or that of a component step.</p>
 <h3 id="job-names"><strong>JOB NAMES</strong><a class="headerlink" href="#job-names" title="Anchor link to this section for reference">&para;</a></h3>
 <p>You can give a job a <strong><em>job name</em></strong>. This explicit name can be used with some commands instead of jobids.</p>
 <ul>
@@ -3679,7 +3691,7 @@ When specifying a job to a SLURM program like <code>scontrol</code> or reading o
 <li>The name of a <em>batch job's normal step(s)</em> will <em>always</em> be "bash"</li>
 <li>The default overall name of an <em>interactive job</em> will be "bash"</li>
 </ul>
-<p>The <code>sacct</code> command is an important one to know how to use. We have a document explaining how to use it <a href="../tips-sacct/">here</a>. Please read it, because <strong><em>you need to know</em></strong> how to look up information about your jobs. By default it prints fields only 20 characters wide. It will display a <span class="keys"><kbd class="key-plus">+</kbd></span> when there is more information beyond 20 char, as seen below for the external steps.</p>
+<p>The <code>sacct</code> command is an important one to know how to use. We have a document explaining how to use it <a href="../tips-sacct/">here</a>. Please read it, because <strong><em>you need to know</em></strong> how to look up information about your jobs. By default it prints fields only 20 characters wide. It will display a <span class="keys"><kbd class="key-plus">+</kbd></span> when there is more information beyond 20 char, as seen below for the external steps. (See our document for instructions on changing the output format.)</p>
 <p><div class="highlight"><span class="filename">Example of a batch job</span><pre><span></span><code><span class="w">  </span>JobID<span class="w">           </span>JobName<span class="w">  </span>Partition<span class="w">    </span>Account<span class="w">  </span>AllocCPUS<span class="w">      </span>State<span class="w"> </span>ExitCode<span class="w"> </span>
 <span class="w">  </span>------------<span class="w"> </span>----------<span class="w"> </span>----------<span class="w"> </span>----------<span class="w"> </span>----------<span class="w"> </span>----------<span class="w"> </span>--------<span class="w"> </span>
 
@@ -3693,8 +3705,9 @@ When specifying a job to a SLURM program like <code>scontrol</code> or reading o
 <span class="w">  </span><span class="m">1542874</span>.ext+<span class="w">     </span>extern<span class="w">                 </span>jhpce<span class="w">          </span><span class="m">2</span><span class="w">    </span>RUNNING<span class="w">      </span><span class="m">0</span>:0<span class="w"> </span>
 </code></pre></div></p>
 <h2 id="job-states"><strong>JOB STATES</strong><a class="headerlink" href="#job-states" title="Anchor link to this section for reference">&para;</a></h2>
-<p>If you are curious, the SLURM vendor describes how jobs are started and terminated in <a href="https://slurm.schedmd.com/job_launch.html">this document</a>.</p>
-<p>Until we draw a nice diagram, a written description will have to suffice. Here we focus on batch jobs and common states. Job states have short names consisting of one or two capitalized letters, and a full name. Short names are introduced in parentheses below. We have placed a copy of the list in <code>/jhpce/shared/jhpce/slurm/docs/job-states.txt</code>.</p>
+<p><mark class="critic">The overall job and each step has its own job state code.</mark> They often differ!! </p>
+<p>Job states have short names consisting of one or two letters, and a full name.  You can use either form when working with SLURM commands. They are shown here capitalized for emphasis but can be specified as lower-case.</p>
+<p>The main job states you will see:</p>
 <details class="note">
 <summary>Click for a complete list of job states</summary>
 <p>FROM https://slurm.schedmd.com/squeue.html#lbAG</p>
@@ -3749,51 +3762,13 @@ When specifying a job to a SLURM program like <code>scontrol</code> or reading o
 <dd>Job terminated upon reaching its time limit.</dd>
 </dl>
 </details>
-<p>The main job states you will see:</p>
-<table>
-<thead>
-<tr>
-<th>Short Name</th>
-<th>Long Name</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>PD</td>
-<td>PENDING</td>
-</tr>
-<tr>
-<td>R</td>
-<td>RUNNING</td>
-</tr>
-<tr>
-<td>CG</td>
-<td>COMPLETING</td>
-</tr>
-<tr>
-<td>CD</td>
-<td>COMPLETED</td>
-</tr>
-<tr>
-<td>F</td>
-<td>FAILED</td>
-</tr>
-<tr>
-<td>CA</td>
-<td>CANCELLED</td>
-</tr>
-<tr>
-<td>OOM</td>
-<td>OUT_OF_MEMORY</td>
-</tr>
-<tr>
-<td>TO</td>
-<td>TIMEOUT</td>
-</tr>
-</tbody>
-</table>
-<p><mark class="critic">The overall job and each step has its own job state code.</mark> They often differ!!  The <code>-X</code> flag to <code>sacct</code> will show you only the overall job state, such as FAILED, but <em>sometimes you need to check the state of all of a jobs steps</em> in order to see that a "batch" step ran OUT_OF_MEMORY.</p>
+<p>That complete list comes from <a href="https://slurm.schedmd.com/archive/slurm-22.05.9/sacct.html#lbAG">this section</a> of the <code>sacct</code> manual page, which has also been saved to a text file you can copy for your own reference: <code>/jhpce/shared/jhpce/slurm/docs/job-states.txt</code></p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>The overall job and each step has its own job state code. They often differ!!  The <code>-X</code> flag to <code>sacct</code> will show you only the overall job state, such as FAILED, which is useful for most cases. However, <em>sometimes you need to check the state of all of a jobs steps</em> in order to see that a "batch" step ran OUT_OF_MEMORY.</p>
+</div>
 <h3 id="life-of-a-job-and-associated-states">LIFE OF A JOB AND ASSOCIATED STATES<a class="headerlink" href="#life-of-a-job-and-associated-states" title="Anchor link to this section for reference">&para;</a></h3>
+<p>Until we draw a nice diagram, a written description will have to suffice. Short names are specified in parentheses below.</p>
 <ol>
 <li>User submits job</li>
 <li>SLURM evaluates syntax and resource requests.</li>
@@ -3806,6 +3781,7 @@ When specifying a job to a SLURM program like <code>scontrol</code> or reading o
 <li>RUNNING jobs can run correctly but run into their wall-clock time limit and become DEADLINE (DL) or FAILED.</li>
 <li>RUNNING jobs can run correctly, switch to COMPLETING (CG) as processes are quitting, and then COMPLETED (CD).</li>
 </ol>
+<p>If you are very curious, the SLURM vendor describes how jobs are started and terminated in <a href="https://slurm.schedmd.com/job_launch.html">this document</a>.</p>
 <div class="footnote">
 <hr />
 <ol>
@@ -3840,7 +3816,7 @@ When specifying a job to a SLURM program like <code>scontrol</code> or reading o
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1-2.1-2M12.5 7v5.2l4 2.4-1 1L11 13V7h1.5M11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2v1.8Z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">April 9, 2024</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">April 10, 2024</span>
   </span>
 
     
