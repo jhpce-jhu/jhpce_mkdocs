@@ -16,6 +16,9 @@ Note that the information in these pages will include details which do not apply
 
 [CECI](https://support.ceci-hpc.be/doc/_contents/SubmittingJobs/SlurmFAQ.html)
 
+## Where can I learn more about SLURM-related commands?
+Start with [this document](../slurm/slurm-commands-ref.md) which describes commands and provides links to more information. Commands documented include both those written by SLURM's vendor, but also ones we have created.
+
 ## What are the default job resources?
 
 ??? "Click to open"
