@@ -235,7 +235,7 @@ Host jhpce01 j1 jhpce01.jhsph.edu
 
 Optional.
 
-```Shell title="Per-host definitions for convenience"
+```Shell title="Host-related definitions for all hosts not explicitly mentioned earlier"
 Host *
     ForwardX11 no
     IdentityFile ~/.ssh/id_rsa.my-general-key
