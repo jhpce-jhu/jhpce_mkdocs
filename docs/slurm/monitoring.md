@@ -74,30 +74,6 @@ Exit codes are poorly documented, unfortunately. See [this section](../slurm/tip
 
 `scontrol show job` doesn't work for completed jobs.
 
-#### `seff` (Slurm EFFiciency) output
-
-!!! Warning
-    seff output might not be correct for some jobs. If you need to double-check its output, gather the raw info with sacct.
-    
-CPU efficiency indicates how frequently allocated CPUs were busy. The more CPU-bound a job is, the closer to 100% this will be. The more input/output-bound a job is, the closer this will be to 0.
-
-Memory efficiency indicates the proportion of requested memory used at the high-water mark. Values over 100% are not uncommon. It seems that such cases represent cases where the way in which shared memory (such as dynamically-linked code libraries) are counted, perhaps against multiple threads running on one CPU.
-
-```
-Job ID: 3946128
-Array Job ID: 3560537_102
-Cluster: jhpce3
-User/Group: jmuschel/biostats
-State: COMPLETED (exit code 0)
-Cores: 1
-CPU Utilized: 2-12:47:05
-CPU Efficiency: 99.94% of 2-12:49:12 core-walltime
-Job Wall-clock time: 2-12:49:12
-Memory Utilized: 15.34 GB
-Memory Efficiency: 76.71% of 20.00 GB
-```
-
-
 ## **INVESTIGATING FAILURES**
 
 !!! Note "Authoring Note"
@@ -110,14 +86,36 @@ The exit code of a job is captured by Slurm and saved as part of the job record.
 
 Depending on the execution order of the commands in the batch script, it is possible that a specific command fails but the batch script will return zero indicating success.
 
+## **INVESTIGATING RESOURCE CONSUMPTION**
+
+!!! Note "Authoring Note"
+    This might warrant a dedicated page. THERE IS IMPORTANT INFO TO ADD -- regarding techniques, approaches. 
+
+People are primarily interested in reducing the amount of memory required to run a job, as memory contention is normally high in the cluster.
+
+Until this section is further developed, see the sections below on the [seff](#seff-slurm-efficiency-output), [sstat](#sstat), and [sacct](#sacct) commands.
+
 ## **TOOL SET**
 
 Here is a list of tools and techniques. You may use the same command to look at jobs in different states so we've gathered details here rather than repeating them in every section above.
 
-### ***sview, a GUI Interface***
+### **Output and error files**
+By default your job will create, in the same working directory where your job was submitted, an output file named "slurm-%j.out" (where the "%j" is replaced by the job ID) containing _both_ job output and error messages.
+
+You can inspect this file during job execution. The `tail` command has a useful option `-f` which will print new lines as they appear.
+
+You can direct SLURM to seperate normal output from error messages by specifying   the directives `-o` or `--output` and `-e` or `--error`. These directives also allow you to specify the desired location of these file(s) elsewhere and change their names.
+
+For job arrays, the default file name is "slurm-%A_%a.out", "%A" is replaced by the job ID and "%a" with the array index. 
+
+If you add `echo` statements in your job batch file at different points, then you can inspect the job output/error files for clues as to its status/progress.
+
+### **sview, a GUI Interface**
 Sview is an X11 program which will display information about the cluster. You can see information about jobs, nodes, partitions, and reservations.  Double-clicking on an object usually launches a pop-up window with more details.
 
-It is not the slickest interface, and has quirks. It does not remember all of your choices for the basic items to display, for example (click on the tab labeled "visible tabs" to check the ones you want to see).
+It is not the slickest interface, and has quirks. It does not remember all of your choices for the basic items to display, for example (click on the tab labeled "visible tabs" to check the ones you want to see). Hopefully some of these issues will be addressed when we upgrade to a newer version of SLURM.
+
+Explore the options available in various menus. Double-click on various objects to see what happens.
 
 The `sview` manual page is available [here](https://slurm.schedmd.com/archive/slurm-22.05.9/sview.html
 
@@ -148,20 +146,13 @@ The mail arguments are shown in the [sbatch](https://slurm.schedmd.com/archive/s
     - ALL (equivalent to BEGIN, END, FAIL, INVALID_DEPEND, REQUEUE, and STAGE_OUT)
     - TIME_LIMIT, TIME_LIMIT_90 (reached 90 percent of time limit), TIME_LIMIT_80 (reached 80 percent of time limit), TIME_LIMIT_50 (reached 50 percent of time limit)
 
-### **Output and error files**
-By default your job will store an output file named "slurm-%j.out" where the "%j" is replaced by the job ID containing job output and errors in the same directory in which your job ran. You can direct SLURM to put the file(s) elsewhere and change their names.
-
-For job arrays, the default file name is "slurm-%A_%a.out", "%A" is replaced by the job ID and "%a" with the array index. 
-
-If you add echo statements in your job batch file then you can inspect the job output/error files for clues as to its status.
-
 ### **squeue**
 [squeue](https://slurm.schedmd.com/archive/slurm-22.05.9/squeue.html) - Display information about pending and running jobs.
 
 ### **sstat** 
 Display process statistics of a running job/step. Some of the advice given for `sacct` (below) applies to `sstat`.
 
-https://slurm.schedmd.com/archive/slurm-22.05.9/sstat.html
+The manual page is at [https://slurm.schedmd.com/archive/slurm-22.05.9/sstat.html](https://slurm.schedmd.com/archive/slurm-22.05.9/sstat.html)
 
 ### **scontrol show job**
 The `scontrol` command has many uses. Before a job ends you can get detailed information with `scontrol`.
@@ -175,6 +166,29 @@ The `scontrol` command has many uses. Before a job ends you can get detailed inf
 
 !!! YAY
     We have written a document describing key elements of using sacct. See [this page](tips-sacct.md).
+
+### `seff` (Slurm EFFiciency)
+
+!!! Warning
+    seff output might not be correct for some jobs. If you need to double-check its output, gather the raw info with sacct.
+    
+CPU efficiency indicates how frequently allocated CPUs were busy. The more CPU-bound a job is, the closer to 100% this will be. The more input/output-bound a job is, the closer this will be to 0.
+
+Memory efficiency indicates the proportion of requested memory used at the high-water mark. Values over 100% are not uncommon. It seems that such cases represent cases where the way in which shared memory (such as dynamically-linked code libraries) are counted, perhaps against multiple threads running on one CPU.
+
+```
+Job ID: 3946128
+Array Job ID: 3560537_102
+Cluster: jhpce3
+User/Group: jmuschel/biostats
+State: COMPLETED (exit code 0)
+Cores: 1
+CPU Utilized: 2-12:47:05
+CPU Efficiency: 99.94% of 2-12:49:12 core-walltime
+Job Wall-clock time: 2-12:49:12
+Memory Utilized: 15.34 GB
+Memory Efficiency: 76.71% of 20.00 GB
+```
 
 ## **Suggestions to a user
 **
