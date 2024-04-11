@@ -2947,21 +2947,6 @@
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="How to get information about completed jobs?">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#seff-slurm-efficiency-output" class="md-nav__link">
-    <span class="md-ellipsis">
-      seff (Slurm EFFiciency) output
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
 </li>
         
       </ul>
@@ -2994,6 +2979,15 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#investigating-resource-consumption" class="md-nav__link">
+    <span class="md-ellipsis">
+      INVESTIGATING RESOURCE CONSUMPTION
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#tool-set" class="md-nav__link">
     <span class="md-ellipsis">
       TOOL SET
@@ -3002,6 +2996,15 @@
   
     <nav class="md-nav" aria-label="TOOL SET">
       <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#output-and-error-files" class="md-nav__link">
+    <span class="md-ellipsis">
+      Output and error files
+    </span>
+  </a>
+  
+</li>
         
           <li class="md-nav__item">
   <a href="#sview-a-gui-interface" class="md-nav__link">
@@ -3016,15 +3019,6 @@
   <a href="#email-notification" class="md-nav__link">
     <span class="md-ellipsis">
       Email Notification
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#output-and-error-files" class="md-nav__link">
-    <span class="md-ellipsis">
-      Output and error files
     </span>
   </a>
   
@@ -3061,6 +3055,15 @@
   <a href="#sacct" class="md-nav__link">
     <span class="md-ellipsis">
       sacct
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#seff-slurm-efficiency" class="md-nav__link">
+    <span class="md-ellipsis">
+      seff (Slurm EFFiciency)
     </span>
   </a>
   
@@ -3773,21 +3776,6 @@
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="How to get information about completed jobs?">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#seff-slurm-efficiency-output" class="md-nav__link">
-    <span class="md-ellipsis">
-      seff (Slurm EFFiciency) output
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
 </li>
         
       </ul>
@@ -3820,6 +3808,15 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#investigating-resource-consumption" class="md-nav__link">
+    <span class="md-ellipsis">
+      INVESTIGATING RESOURCE CONSUMPTION
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#tool-set" class="md-nav__link">
     <span class="md-ellipsis">
       TOOL SET
@@ -3828,6 +3825,15 @@
   
     <nav class="md-nav" aria-label="TOOL SET">
       <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#output-and-error-files" class="md-nav__link">
+    <span class="md-ellipsis">
+      Output and error files
+    </span>
+  </a>
+  
+</li>
         
           <li class="md-nav__item">
   <a href="#sview-a-gui-interface" class="md-nav__link">
@@ -3842,15 +3848,6 @@
   <a href="#email-notification" class="md-nav__link">
     <span class="md-ellipsis">
       Email Notification
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#output-and-error-files" class="md-nav__link">
-    <span class="md-ellipsis">
-      Output and error files
     </span>
   </a>
   
@@ -3887,6 +3884,15 @@
   <a href="#sacct" class="md-nav__link">
     <span class="md-ellipsis">
       sacct
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#seff-slurm-efficiency" class="md-nav__link">
+    <span class="md-ellipsis">
+      seff (Slurm EFFiciency)
     </span>
   </a>
   
@@ -3989,25 +3995,6 @@
 </ol>
 <p>Exit codes are poorly documented, unfortunately. See <a href="../tips-sacct/#exit-error-codes">this section</a> of the sacct tips page for what is known.</p>
 <p><code>scontrol show job</code> doesn't work for completed jobs.</p>
-<h4 id="seff-slurm-efficiency-output"><code>seff</code> (Slurm EFFiciency) output<a class="headerlink" href="#seff-slurm-efficiency-output" title="Anchor link to this section for reference">&para;</a></h4>
-<div class="admonition warning">
-<p class="admonition-title">Warning</p>
-<p>seff output might not be correct for some jobs. If you need to double-check its output, gather the raw info with sacct.</p>
-</div>
-<p>CPU efficiency indicates how frequently allocated CPUs were busy. The more CPU-bound a job is, the closer to 100% this will be. The more input/output-bound a job is, the closer this will be to 0.</p>
-<p>Memory efficiency indicates the proportion of requested memory used at the high-water mark. Values over 100% are not uncommon. It seems that such cases represent cases where the way in which shared memory (such as dynamically-linked code libraries) are counted, perhaps against multiple threads running on one CPU.</p>
-<div class="highlight"><pre><span></span><code>Job ID: 3946128
-Array Job ID: 3560537_102
-Cluster: jhpce3
-User/Group: jmuschel/biostats
-State: COMPLETED (exit code 0)
-Cores: 1
-CPU Utilized: 2-12:47:05
-CPU Efficiency: 99.94% of 2-12:49:12 core-walltime
-Job Wall-clock time: 2-12:49:12
-Memory Utilized: 15.34 GB
-Memory Efficiency: 76.71% of 20.00 GB
-</code></pre></div>
 <h2 id="investigating-failures"><strong>INVESTIGATING FAILURES</strong><a class="headerlink" href="#investigating-failures" title="Anchor link to this section for reference">&para;</a></h2>
 <div class="admonition note">
 <p class="admonition-title">Authoring Note</p>
@@ -4017,11 +4004,25 @@ Memory Efficiency: 76.71% of 20.00 GB
 <p>In addition to the STATE of jobs and job steps, you can get an exit code and sometimes an extended error code with the <code>sacct</code> command.</p>
 <p>The exit code of a job is captured by Slurm and saved as part of the job record. For sbatch jobs the exit code of the batch script is captured. For srun, the exit code will be the return value of the executed command. Any non-zero exit code is considered a job failure, and results in job state of FAILED. When a signal was responsible for a job/step termination, the signal number will also be captured, and displayed after the exit code (separated by a colon).</p>
 <p>Depending on the execution order of the commands in the batch script, it is possible that a specific command fails but the batch script will return zero indicating success.</p>
+<h2 id="investigating-resource-consumption"><strong>INVESTIGATING RESOURCE CONSUMPTION</strong><a class="headerlink" href="#investigating-resource-consumption" title="Anchor link to this section for reference">&para;</a></h2>
+<div class="admonition note">
+<p class="admonition-title">Authoring Note</p>
+<p>This might warrant a dedicated page. THERE IS IMPORTANT INFO TO ADD -- regarding techniques, approaches. </p>
+</div>
+<p>People are primarily interested in reducing the amount of memory required to run a job, as memory contention is normally high in the cluster.</p>
+<p>Until this section is further developed, see the sections below on the <a href="#seff-slurm-efficiency-output">seff</a>, <a href="#sstat">sstat</a>, and <a href="#sacct">sacct</a> commands.</p>
 <h2 id="tool-set"><strong>TOOL SET</strong><a class="headerlink" href="#tool-set" title="Anchor link to this section for reference">&para;</a></h2>
 <p>Here is a list of tools and techniques. You may use the same command to look at jobs in different states so we've gathered details here rather than repeating them in every section above.</p>
-<h3 id="sview-a-gui-interface"><strong><em>sview, a GUI Interface</em></strong><a class="headerlink" href="#sview-a-gui-interface" title="Anchor link to this section for reference">&para;</a></h3>
+<h3 id="output-and-error-files"><strong>Output and error files</strong><a class="headerlink" href="#output-and-error-files" title="Anchor link to this section for reference">&para;</a></h3>
+<p>By default your job will create, in the same working directory where your job was submitted, an output file named "slurm-%j.out" (where the "%j" is replaced by the job ID) containing <em>both</em> job output and error messages.</p>
+<p>You can inspect this file during job execution. The <code>tail</code> command has a useful option <code>-f</code> which will print new lines as they appear.</p>
+<p>You can direct SLURM to seperate normal output from error messages by specifying   the directives <code>-o</code> or <code>--output</code> and <code>-e</code> or <code>--error</code>. These directives also allow you to specify the desired location of these file(s) elsewhere and change their names.</p>
+<p>For job arrays, the default file name is "slurm-%A_%a.out", "%A" is replaced by the job ID and "%a" with the array index. </p>
+<p>If you add <code>echo</code> statements in your job batch file at different points, then you can inspect the job output/error files for clues as to its status/progress.</p>
+<h3 id="sview-a-gui-interface"><strong>sview, a GUI Interface</strong><a class="headerlink" href="#sview-a-gui-interface" title="Anchor link to this section for reference">&para;</a></h3>
 <p>Sview is an X11 program which will display information about the cluster. You can see information about jobs, nodes, partitions, and reservations.  Double-clicking on an object usually launches a pop-up window with more details.</p>
-<p>It is not the slickest interface, and has quirks. It does not remember all of your choices for the basic items to display, for example (click on the tab labeled "visible tabs" to check the ones you want to see).</p>
+<p>It is not the slickest interface, and has quirks. It does not remember all of your choices for the basic items to display, for example (click on the tab labeled "visible tabs" to check the ones you want to see). Hopefully some of these issues will be addressed when we upgrade to a newer version of SLURM.</p>
+<p>Explore the options available in various menus. Double-click on various objects to see what happens.</p>
 <p>The <code>sview</code> manual page is available [here](https://slurm.schedmd.com/archive/slurm-22.05.9/sview.html</p>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
@@ -4047,15 +4048,11 @@ Memory Efficiency: 76.71% of 20.00 GB
 <li>TIME_LIMIT, TIME_LIMIT_90 (reached 90 percent of time limit), TIME_LIMIT_80 (reached 80 percent of time limit), TIME_LIMIT_50 (reached 50 percent of time limit)</li>
 </ul>
 </details>
-<h3 id="output-and-error-files"><strong>Output and error files</strong><a class="headerlink" href="#output-and-error-files" title="Anchor link to this section for reference">&para;</a></h3>
-<p>By default your job will store an output file named "slurm-%j.out" where the "%j" is replaced by the job ID containing job output and errors in the same directory in which your job ran. You can direct SLURM to put the file(s) elsewhere and change their names.</p>
-<p>For job arrays, the default file name is "slurm-%A_%a.out", "%A" is replaced by the job ID and "%a" with the array index. </p>
-<p>If you add echo statements in your job batch file then you can inspect the job output/error files for clues as to its status.</p>
 <h3 id="squeue"><strong>squeue</strong><a class="headerlink" href="#squeue" title="Anchor link to this section for reference">&para;</a></h3>
 <p><a href="https://slurm.schedmd.com/archive/slurm-22.05.9/squeue.html">squeue</a> - Display information about pending and running jobs.</p>
 <h3 id="sstat"><strong>sstat</strong><a class="headerlink" href="#sstat" title="Anchor link to this section for reference">&para;</a></h3>
 <p>Display process statistics of a running job/step. Some of the advice given for <code>sacct</code> (below) applies to <code>sstat</code>.</p>
-<p>https://slurm.schedmd.com/archive/slurm-22.05.9/sstat.html</p>
+<p>The manual page is at <a href="https://slurm.schedmd.com/archive/slurm-22.05.9/sstat.html">https://slurm.schedmd.com/archive/slurm-22.05.9/sstat.html</a></p>
 <h3 id="scontrol-show-job"><strong>scontrol show job</strong><a class="headerlink" href="#scontrol-show-job" title="Anchor link to this section for reference">&para;</a></h3>
 <p>The <code>scontrol</code> command has many uses. Before a job ends you can get detailed information with <code>scontrol</code>.</p>
 <div class="admonition yay">
@@ -4068,6 +4065,25 @@ Memory Efficiency: 76.71% of 20.00 GB
 <p class="admonition-title">Yay</p>
 <p>We have written a document describing key elements of using sacct. See <a href="../tips-sacct/">this page</a>.</p>
 </div>
+<h3 id="seff-slurm-efficiency"><code>seff</code> (Slurm EFFiciency)<a class="headerlink" href="#seff-slurm-efficiency" title="Anchor link to this section for reference">&para;</a></h3>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>seff output might not be correct for some jobs. If you need to double-check its output, gather the raw info with sacct.</p>
+</div>
+<p>CPU efficiency indicates how frequently allocated CPUs were busy. The more CPU-bound a job is, the closer to 100% this will be. The more input/output-bound a job is, the closer this will be to 0.</p>
+<p>Memory efficiency indicates the proportion of requested memory used at the high-water mark. Values over 100% are not uncommon. It seems that such cases represent cases where the way in which shared memory (such as dynamically-linked code libraries) are counted, perhaps against multiple threads running on one CPU.</p>
+<div class="highlight"><pre><span></span><code>Job ID: 3946128
+Array Job ID: 3560537_102
+Cluster: jhpce3
+User/Group: jmuschel/biostats
+State: COMPLETED (exit code 0)
+Cores: 1
+CPU Utilized: 2-12:47:05
+CPU Efficiency: 99.94% of 2-12:49:12 core-walltime
+Job Wall-clock time: 2-12:49:12
+Memory Utilized: 15.34 GB
+Memory Efficiency: 76.71% of 20.00 GB
+</code></pre></div>
 <h2 id="suggestions-to-a-user">**Suggestions to a user<a class="headerlink" href="#suggestions-to-a-user" title="Anchor link to this section for reference">&para;</a></h2>
 <p>**</p>
 <div class="admonition note">
@@ -4114,7 +4130,7 @@ Memory Efficiency: 76.71% of 20.00 GB
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1-2.1-2M12.5 7v5.2l4 2.4-1 1L11 13V7h1.5M11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2v1.8Z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">April 10, 2024</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">April 11, 2024</span>
   </span>
 
     
