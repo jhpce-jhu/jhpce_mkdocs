@@ -134,14 +134,8 @@
   {
     "page_name": "ACL",
     "page_url": "../files/acl/",
-    "text": "[alice@compute-123 ~]$ mkdir test1\n[alice@compute-123 ~]$ umask\n0022\n[alice@compute-123 ~]$ nfs4_setfacl -a A:gfdi:hpscc@cm.cluster:RWX test1\n[alice@compute-123 ~]$ touch test1/f1\n[alice@compute-123 ~]$ nfs4_getfacl test1/f1\n\n# file: test1/f1\nA::OWNER@:rwatTcCy\nA::GROUP@:rtcy\nA:g:hpscc@cm.cluster:rtcy\nA::EVERYONE@:rtcy\n[alice@compute-123 ~]$ umask 0002\n[alice@compute-123 ~]$ touch test1/f2\n[alice@compute-123 ~]$ nfs4_getfacl test1/f2\n\n# file: test1/f2\nA::OWNER@:rwatTcCy\nA::GROUP@:rwatcy\nA:g:hpscc@cm.cluster:rwatcy\nA::EVERYONE@:rtcy\n",
-    "html": "<pre><span></span><code>[alice@compute-123 ~]$ mkdir test1\n[alice@compute-123 ~]$ umask\n0022\n[alice@compute-123 ~]$ nfs4_setfacl -a A:gfdi:hpscc@cm.cluster:RWX test1\n[alice@compute-123 ~]$ touch test1/f1\n[alice@compute-123 ~]$ nfs4_getfacl test1/f1\n\n# file: test1/f1\nA::OWNER@:rwatTcCy\nA::GROUP@:rtcy\nA:g:hpscc@cm.cluster:rtcy\nA::EVERYONE@:rtcy\n[alice@compute-123 ~]$ umask 0002\n[alice@compute-123 ~]$ touch test1/f2\n[alice@compute-123 ~]$ nfs4_getfacl test1/f2\n\n# file: test1/f2\nA::OWNER@:rwatTcCy\nA::GROUP@:rwatcy\nA:g:hpscc@cm.cluster:rwatcy\nA::EVERYONE@:rtcy\n</code></pre>"
-  },
-  {
-    "page_name": "ACL",
-    "page_url": "../files/acl/",
-    "text": "[alice@compute-123 ~]$ pwd\n/users/alice\n[alice@compute-123 ~]$ nfs4_getfacl .\n# file: .\nA::OWNER@:rwaDxtTcCy\nA::GROUP@:tcy\nA::EVERYONE@:tcy\n",
-    "html": "<pre><span></span><code>[alice@compute-123 ~]$ pwd\n/users/alice\n[alice@compute-123 ~]$ nfs4_getfacl .\n# file: .\nA::OWNER@:rwaDxtTcCy\nA::GROUP@:tcy\nA::EVERYONE@:tcy\n</code></pre>"
+    "text": "[alice@compute-123 ~]$ pwd\n/users/alice\n[alice@compute-123 ~]$ ls -ld .\ndrwx------ 63 alice users 134 Apr 12 14:36 ./\n[alice@compute-123 ~]$ nfs4_getfacl .\n# file: .\nA::OWNER@:rwaDxtTcCy\nA::GROUP@:tcy\nA::EVERYONE@:tcy\n",
+    "html": "<pre><span></span><code>[alice@compute-123 ~]$ pwd\n/users/alice\n[alice@compute-123 ~]$ ls -ld .\ndrwx------ 63 alice users 134 Apr 12 14:36 ./\n[alice@compute-123 ~]$ nfs4_getfacl .\n# file: .\nA::OWNER@:rwaDxtTcCy\nA::GROUP@:tcy\nA::EVERYONE@:tcy\n</code></pre>"
   },
   {
     "page_name": "ACL",
@@ -166,6 +160,12 @@
     "page_url": "../files/acl/",
     "text": "[alice@compute-123 ~]$ mkdir shared\n[alice@compute-123 ~]$ nfs4_setfacl -a A:g:hpscc@cm.cluster:RWX shared\n[alice@compute-123 ~]$ nfs4_getfacl shared\nnfs4_getfacl shared-data.txt\n# file: shared-data.txt\nA::OWNER@:rwatTcCy\nA::GROUP@:rtcy\nA:g:hpscc@cm.cluster:rwaDxtcy\nA::EVERYONE@:rtcy\nTo set a Group Inherited ACL, you need to add the \u201cgfdi\u201d option to the \u201cnfs4_getfacl\u201d command. With this inherited group ACL set, all new files and directories will inherit the group settings.\n\n[alice@compute-123 ~]$ nfs4_setfacl -a A:gfdi:swdev@cm.cluster:RWX shared\n[alice@compute-123 ~]$ nfs4_setfacl -a A:fdi:OWNER@:RWX shared\n[alice@compute-123 ~]$ nfs4_setfacl -a A:fdi:GROUP@:RWX shared\n[alice@compute-123 ~]$ nfs4_getfacl shared\n\n# file: shared\nA::OWNER@:rwaDxtTcCy\nA::GROUP@:rwaDxtcy\nA:g:hpscc@cm.cluster:rwaDxtcy\nA::EVERYONE@:rxtcy\nA:fdi:OWNER@:rwaDxtTcCy\nA:fdi:GROUP@:rwaDxtcy\nA:fdig:swdev@cm.cluster:rwaDxtcy\nA:fdi:EVERYONE@:tcy\n",
     "html": "<pre><span></span><code>[alice@compute-123 ~]$ mkdir shared\n[alice@compute-123 ~]$ nfs4_setfacl -a A:g:hpscc@cm.cluster:RWX shared\n[alice@compute-123 ~]$ nfs4_getfacl shared\nnfs4_getfacl shared-data.txt\n# file: shared-data.txt\nA::OWNER@:rwatTcCy\nA::GROUP@:rtcy\nA:g:hpscc@cm.cluster:rwaDxtcy\nA::EVERYONE@:rtcy\nTo set a Group Inherited ACL, you need to add the \u201cgfdi\u201d option to the \u201cnfs4_getfacl\u201d command. With this inherited group ACL set, all new files and directories will inherit the group settings.\n\n[alice@compute-123 ~]$ nfs4_setfacl -a A:gfdi:swdev@cm.cluster:RWX shared\n[alice@compute-123 ~]$ nfs4_setfacl -a A:fdi:OWNER@:RWX shared\n[alice@compute-123 ~]$ nfs4_setfacl -a A:fdi:GROUP@:RWX shared\n[alice@compute-123 ~]$ nfs4_getfacl shared\n\n# file: shared\nA::OWNER@:rwaDxtTcCy\nA::GROUP@:rwaDxtcy\nA:g:hpscc@cm.cluster:rwaDxtcy\nA::EVERYONE@:rxtcy\nA:fdi:OWNER@:rwaDxtTcCy\nA:fdi:GROUP@:rwaDxtcy\nA:fdig:swdev@cm.cluster:rwaDxtcy\nA:fdi:EVERYONE@:tcy\n</code></pre>"
+  },
+  {
+    "page_name": "ACL",
+    "page_url": "../files/acl/",
+    "text": "[alice@compute-123 ~]$ nfs4_setfacl -a A:gfdi:hpscc@cm.cluster:RWX test1\n[alice@compute-123 ~]$ touch test1/f1\n[alice@compute-123 ~]$ nfs4_getfacl test1/f1\n\n# file: test1/f1\nA::OWNER@:rwatTcCy\nA::GROUP@:rtcy\nA:g:hpscc@cm.cluster:rtcy\nA::EVERYONE@:rtcy\n[alice@compute-123 ~]$ umask 0002\n[alice@compute-123 ~]$ touch test1/f2\n[alice@compute-123 ~]$ nfs4_getfacl test1/f2\n\n# file: test1/f2\nA::OWNER@:rwatTcCy\nA::GROUP@:rwatcy\nA:g:hpscc@cm.cluster:rwatcy\nA::EVERYONE@:rtcy\n",
+    "html": "<pre><span></span><code>[alice@compute-123 ~]$ nfs4_setfacl -a A:gfdi:hpscc@cm.cluster:RWX test1\n[alice@compute-123 ~]$ touch test1/f1\n[alice@compute-123 ~]$ nfs4_getfacl test1/f1\n\n# file: test1/f1\nA::OWNER@:rwatTcCy\nA::GROUP@:rtcy\nA:g:hpscc@cm.cluster:rtcy\nA::EVERYONE@:rtcy\n[alice@compute-123 ~]$ umask 0002\n[alice@compute-123 ~]$ touch test1/f2\n[alice@compute-123 ~]$ nfs4_getfacl test1/f2\n\n# file: test1/f2\nA::OWNER@:rwatTcCy\nA::GROUP@:rwatcy\nA:g:hpscc@cm.cluster:rwatcy\nA::EVERYONE@:rtcy\n</code></pre>"
   },
   {
     "page_name": "ACL",

@@ -1572,11 +1572,44 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#notes-and-suggestions" class="md-nav__link">
+  <a href="#important-big-picture-notes-and-suggestions" class="md-nav__link">
     <span class="md-ellipsis">
-      Notes and suggestions
+      Important Big-Picture Notes and Suggestions
     </span>
   </a>
+  
+    <nav class="md-nav" aria-label="Important Big-Picture Notes and Suggestions">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#acl-facts" class="md-nav__link">
+    <span class="md-ellipsis">
+      ACL Facts
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#suggestions" class="md-nav__link">
+    <span class="md-ellipsis">
+      Suggestions
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#default-or-inherited-acls-on-directories" class="md-nav__link">
+    <span class="md-ellipsis">
+      Default or inherited ACLs on Directories
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -3691,11 +3724,44 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#notes-and-suggestions" class="md-nav__link">
+  <a href="#important-big-picture-notes-and-suggestions" class="md-nav__link">
     <span class="md-ellipsis">
-      Notes and suggestions
+      Important Big-Picture Notes and Suggestions
     </span>
   </a>
+  
+    <nav class="md-nav" aria-label="Important Big-Picture Notes and Suggestions">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#acl-facts" class="md-nav__link">
+    <span class="md-ellipsis">
+      ACL Facts
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#suggestions" class="md-nav__link">
+    <span class="md-ellipsis">
+      Suggestions
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#default-or-inherited-acls-on-directories" class="md-nav__link">
+    <span class="md-ellipsis">
+      Default or inherited ACLs on Directories
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -3903,18 +3969,14 @@
 
 
 <h1 id="acl-access-control-lists">ACL - Access Control Lists<a class="headerlink" href="#acl-access-control-lists" title="Anchor link to this section for reference">&para;</a></h1>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>This document is under construction. Mainly the information is being reviewed and refined.</p>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>Before defining ACLs, you should first read <a href="../sharing-files/">our document about sharing files</a> for necessary background concepts and skills.</p>
 </div>
 <p>Traditional Unix file and group permissions can be used to share
 access to files and directories.  However, there can be times when
 more fine-grained control of shared access is needed. To accomplish
 this, Access Control Lists (ACLs) can be used. They <em>add</em> to the normal permissions, not replace them. ACLs and permissions can interact in unexpected ways.</p>
-<div class="admonition tip">
-<p class="admonition-title">Tip</p>
-<p>Before defining ACLs, you should first read <a href="../sharing-files/">our document about sharing files</a> for necessary background concepts and skills.</p>
-</div>
 <details>
 <summary>ZFS versus Lustre: If you are working in /dcl02/ click here...</summary>
 <p>JHPCE uses two kinds of file systems on its large storage servers: <strong>ZFS</strong> and <strong>Lustre</strong>. A different pair of ACL commands is used for each type.</p>
@@ -3923,7 +3985,7 @@ this, Access Control Lists (ACLs) can be used. They <em>add</em> to the normal p
 <p>Instructions for Lustre file systems are found <a href="./#directories-in-lustre-file-systems">later in this document</a>.</p>
 </details>
 <h2 id="acl-commands"><strong>ACL Commands</strong><a class="headerlink" href="#acl-commands" title="Anchor link to this section for reference">&para;</a></h2>
-<p>An Access Control List is a series of Access Control Entry (ACE) rules associated with a file or directory.</p>
+<p>An Access Control List is a series of <strong><em>Access Control Entry</em></strong> (ACE) rules associated with a file or directory.</p>
 <p>These rules are displayed and manipulated by two commands:</p>
 <dl>
 <dt><strong>nfs4_getfacl</strong></dt>
@@ -3934,12 +3996,12 @@ this, Access Control Lists (ACLs) can be used. They <em>add</em> to the normal p
 <ul>
 <li><strong>-a</strong> - Add an ACE</li>
 <li><strong>-x</strong> - Remove an ACE (must exactly match the ACE to work)</li>
-<li><strong>-e</strong> - Enter an editor to edit all of the ACEs in the ACL (don't use unless you have defined the environment variable EDITOR<sup id="fnref:1"><a class="footnote-ref" href="#fn:1">1</a></sup>)</li>
+<li><strong>-e</strong> - Enter an editor to edit all of the ACEs in the ACL (don't use unless you have defined the environment variable EDITOR<sup id="fnref2:1"><a class="footnote-ref" href="#fn:1">1</a></sup>)</li>
 <li><strong>--test</strong> - Display the results of applying, but do not actually change</li>
 <li><strong>-R</strong> - Appy the command recursively<sup id="fnref:2"><a class="footnote-ref" href="#fn:2">2</a></sup></li>
 </ul>
 <h2 id="access-control-entry-ace"><strong>Access Control Entry (ACE)</strong><a class="headerlink" href="#access-control-entry-ace" title="Anchor link to this section for reference">&para;</a></h2>
-<p>An ACE, or Access Control Entry, is a single control statement, indicating the access of a specific entity (usually a user or group). Thus, an Access Control List (ACL) is a list of ACEs. We here discuss some simple and common options for an ACE, but for a full description see the nfs4_acl(5) man page. A <a href="#ace-flags-explained">later section</a> of this page gives the meaning for each of the single characters that are combined in ACEs to create cryptic strings like "rwaDxtTcCy"</p>
+<p>An <strong><em>ACE</em></strong>, or <strong><em>Access Control Entry</em></strong>, is a single control statement, indicating the access of a specific entity (usually a user or group). Thus, an Access Control List (ACL) is a list of ACEs. We here discuss some simple and common options for an ACE, but for a full description see the nfs4_acl(5) man page. A <a href="#ace-flags-explained">later section</a> of this page gives the meaning for each of the single characters that are combined in ACEs to create cryptic strings like "rwaDxtTcCy"</p>
 <p>We will begin with the structure of an ACE:</p>
 <div class="highlight"><pre><span></span><code>access type:[flags]:principal:permissions
 </code></pre></div>
@@ -3959,68 +4021,60 @@ this, Access Control Lists (ACLs) can be used. They <em>add</em> to the normal p
 <dd><strong>EVERYONE@</strong> – This is a special catch-all principal which applies to any entity that is not matched by any of the above. Think of this as equivalent to “other” (aka “world”) in the traditional UNIX/Linux permissions model.</dd>
 </dl>
 <p><strong>permissions</strong></p>
-<h2 id="notes-and-suggestions"><strong>Notes and suggestions</strong><a class="headerlink" href="#notes-and-suggestions" title="Anchor link to this section for reference">&para;</a></h2>
-<p>Some common notes that are applicable to both types of ACL commands:</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Needs to be written</p>
+</div>
+<h2 id="important-big-picture-notes-and-suggestions"><strong>Important Big-Picture Notes and Suggestions</strong><a class="headerlink" href="#important-big-picture-notes-and-suggestions" title="Anchor link to this section for reference">&para;</a></h2>
+<h3 id="acl-facts">ACL Facts<a class="headerlink" href="#acl-facts" title="Anchor link to this section for reference">&para;</a></h3>
 <ul>
-<li>ACLs can be used on both files and directories.</li>
-<li>You can tell that a file or directory has an ACL defined by the presence of a <span class="keys"><kbd class="key-plus">+</kbd></span> symbol in the output of <code>ls -l</code></li>
+<li>ACLs can be used on both files and directories. As with normal permissions, settings on files can have different impacts than those on directories (e.g. the X execute bit or default inheritance settings).</li>
+<li>You can tell that a file or directory has an ACL defined by the presence of a <span class="keys"><kbd class="key-plus">+</kbd></span> symbol in the output of <code>ls -l</code> or <code>ls -ld</code></li>
+<li>Every file or directory appears to have an ACL if inspected with <code>nfs4+getfacl</code>.  This is just a representation of the basic UNIX ownership and permissions. When we speak in this document about adding an ACL we're talking about adding an ACE to those default values.</li>
+<li>Making changes with normal commands like <code>chmod</code> and <code>chown</code> will impact what you see if you inspect the ACL afterwards.</li>
+<li>If you want to change something about the special principals <code>OWNER@</code>, <code>GROUP@</code>, and <code>EVERYONE@</code>you probably want to do that with normal commands, not <code>nfs4_setfacl</code></li>
+<li><mark class="critic">User's <em>umask</em> settings impact the permissions assigned to files and directories being created</mark> whether you are using traditional UNIX permissions or ACLs.</li>
+<li>Setting an ACL on a directory does not change existing files and directories inside it unless you use the <code>-R</code> recursive option to the ACL command.</li>
+<li>For users to be able to work with a file stored several layer deep in the directory structure, they must be able <em>to get to it</em>. <mark class="critic">That requires that they need sufficient permissions, via either normal UNIX permissions or ACLs (or both), to "read" and "execute" (aka "search") <strong>all of the directories above the final file or directory</strong></mark>. For example, if you are wanting to enable access to the directory <code>/dcs07/bob/data/project1/shared</code>, you would need to provide <code>READ-EXECUTE</code> access on <code>/dcs07/bob/data/project1</code>, <code>/dcs07/bob/data</code>, and <code>/dcs07/bob</code>. <mark class="critic">Use UNIX permissions where appropriate, and ACLs where necessary.</mark></li>
+<li>ACLs can be set on files and directories located in file systems of types other than <a href="https://en.wikipedia.org/wiki/Network_File_System">NFS</a>. That is not what JHPCE users do. Trying to use an nfs4_*acl command in somewhere like /tmp will throw off an error like this: <code>Operation to request attribute not supported: test1</code></li>
+</ul>
+<h3 id="suggestions">Suggestions<a class="headerlink" href="#suggestions" title="Anchor link to this section for reference">&para;</a></h3>
+<ul>
 <li><strong>Use normal UNIX permissions where possible.</strong> ACLs can be complex to manage. Use ACLs to <em>extend</em> normal permissions.</li>
-<li>User's <em>umask</em> settings impact the permissions assigned to files and directories being created whether you are using traditional UNIX permissions or ACLs.</li>
-<li>Check the values of files and directories before, during, and after changing their permissions or defining ACLs. Test what happens afterwards. Don't change many files at once until you are confident that your commands are correct. You can capture the original configuration using commands like <code>ls -lR directoryname &gt; saved-listing.txt</code> for normal UNIX permissions and <code>nfs4_getfacl --recursive directoryname &gt; saved-acls.txt</code></li>
 <li>ACLs should use the security notion of “least privilege”, meaning that ACLs should give only the needed access and nothing more.</li>
 <li>By default if an ACL does not allow something, that permission is denied. ACEs that start with an "A" are "Allow ACEs", those that start with a "D" are "Deny ACEs". Avoid using "Deny ACEs" -- they increase the chances of something not working as expected.</li>
-<li>For users to be able to work with a file stored several layer deep in the directory structure, they must be able <em>to get to it</em>. <mark class="critic">That requires that they need sufficient permissions, via either normal UNIX permissions or ACLs (or both), to "read" and "execute" (aka "search") <strong>all of the directories above the final file or directory</strong></mark>. For example, if you are wanting to enable access to the directory <code>/dcs07/bob/data/project1/shared</code>, you would need to provide <code>READ-EXECUTE</code> access on <code>/dcs07/bob/data/project1</code>, <code>/dcs07/bob/data</code>, and <code>/dcs07/bob</code>. Using UNIX permissions where appropriate, and ACLs where necessary.</li>
-<li>
-<p>Setting an ACL on a directory does not change existing files and directories inside it unless you use the <code>recursive</code> option to the ACL command.</p>
-</li>
-<li>
-<p>"Default" ACLs can be set on a directory, and this ACL will be <em>inherited</em> into the directory structure as new files and subdirectories are created. You might need to create different "default" ACLs to control the creation of new files and others to control the creation of new subdirectories.</p>
-</li>
-<li>With "default" or "inherited" ACLs, the individual user’s <code>umask</code> setting is important in assuring that future new files and directories being created have the correct permissions set. The <code>umask</code> setting will take precedence over the ACL, so <em>it must be more permissive than the ACL</em>. For example, if you want to set a default group ACL where the group has write access, you need to make sure that your umask is set to <code>0002</code> rather than <code>0022</code>, as the “2” in the group umask bit will prevent the group write capability.</li>
-<li>Like any operation, running ACL commands on large numbers of files should be run on a compute node and not a login node. Long-running recursive ACL commands on large directory trees may be done via interactive sessions or submitted batch job scripts.</li>
+<li>Like any operation, commands modifying ACL commands on large numbers of files should be run on a compute node and not a login node. Long-running recursive ACL commands on large directory trees may be done via interactive sessions or submitted batch job scripts.</li>
+<li>Check the values of files and directories before, during, and after changing their permissions or defining ACLs. Use both <code>ls -l</code> and <code>nfs4_getfacl</code> to get the full picture. Test what happens afterwards. Don't change many files at once until you are confident that your commands are correct. You can capture the original configuration using commands like <code>ls -lR directoryname &gt; saved-listing.txt</code> for normal UNIX permissions and <code>nfs4_getfacl --recursive directoryname &gt; saved-acls.txt</code></li>
 </ul>
-<p>Example usage:</p>
-<div class="highlight"><pre><span></span><code>[alice@compute-123 ~]$ mkdir test1
-[alice@compute-123 ~]$ umask
-0022
-[alice@compute-123 ~]$ nfs4_setfacl -a A:gfdi:hpscc@cm.cluster:RWX test1
-[alice@compute-123 ~]$ touch test1/f1
-[alice@compute-123 ~]$ nfs4_getfacl test1/f1
-
-# file: test1/f1
-A::OWNER@:rwatTcCy
-A::GROUP@:rtcy
-A:g:hpscc@cm.cluster:rtcy
-A::EVERYONE@:rtcy
-[alice@compute-123 ~]$ umask 0002
-[alice@compute-123 ~]$ touch test1/f2
-[alice@compute-123 ~]$ nfs4_getfacl test1/f2
-
-# file: test1/f2
-A::OWNER@:rwatTcCy
-A::GROUP@:rwatcy
-A:g:hpscc@cm.cluster:rwatcy
-A::EVERYONE@:rtcy
-</code></pre></div>
+<h3 id="default-or-inherited-acls-on-directories">Default or inherited ACLs on Directories<a class="headerlink" href="#default-or-inherited-acls-on-directories" title="Anchor link to this section for reference">&para;</a></h3>
+<ul>
+<li>"Default" ACLs can be set on a directory, and this ACL will be <em>inherited</em> into the directory structure as new files and subdirectories are created. You might need to create different "default" ACLs to control the creation of new files and others to control the creation of new subdirectories.</li>
+<li>With "default" or "inherited" ACLs, the individual user’s <code>umask</code> setting is important in assuring that future new files and directories being created have the correct permissions set. The <code>umask</code> setting will take precedence over the ACL, so <em>it must be more permissive than the ACL</em>. For example, if you want to set a default group ACL where the group has write access, you need to make sure that your umask is set to <code>0002</code> rather than <code>0022</code>, as the “2” in the group umask bit will prevent the group write capability.</li>
+</ul>
 <h2 id="acls-in-zfs-file-systems"><strong>ACLs in ZFS File Systems</strong><a class="headerlink" href="#acls-in-zfs-file-systems" title="Anchor link to this section for reference">&para;</a></h2>
 <h3 id="basic-commands">Basic commands<a class="headerlink" href="#basic-commands" title="Anchor link to this section for reference">&para;</a></h3>
+<p>There are 2 commands for dealing with ACLs in file systems like <code>/users</code>, <code>/dcl01</code>, <code>/dcs04</code>, <code>/dcs05</code>, <code>/dcs06</code>, and <code>/dcs07</code>. </p>
 <ul>
-<li>There are 2 commands for dealing with ACLs on <code>/users</code>, <code>/dcs04</code>, <code>/dcs05</code>, <code>/dcs06</code>, and <code>/dcs07</code>. </li>
-<li>The <code>nfs4_getfacl</code> command will display current ACL setting for a file or directory</li>
-<li>The <code>nfs4_setfacl</code> command is used to modify ACLs.  </li>
-<li>With ACLs you can grant different kinds of access on directories or files to specific users and groups, in addition to the normal group associated with the object, and in addition to "other".</li>
-<li>The simplest permissions to use in ACLs are R for read access, W for write access, and X for execute and directory access. For detailed description of fine-grained permissions that can be set, please see (<a href="https://www.osc.edu/book/export/html/4523">https://www.osc.edu/book/export/html/4523</a>).</li>
-<li>By default, one’s home directory is only accessible to the
-owner, and the original ACL should reflect this. For example, for the user alice, the ACL on their home directory would look like:</li>
+<li><code>nfs4_getfacl</code> - display current ACL setting</li>
+<li><code>nfs4_setfacl</code> - modify ACLs.  </li>
 </ul>
+<p>With ACLs you can grant different kinds of access on directories or files to specific users and groups, in addition to the normal group associated with the object, and in addition to "other".</p>
+<p>The simplest permissions to use in ACLs are R for read access, W for write access, and X for execute and directory access. </p>
+<p>A <a href="#ace-flags-explained">later section</a> of this page gives the meaning for each of the single characters that are combined in ACEs to create cryptic strings like "rwaDxtTcCy"</p>
+<p>These strings contain so many elements because ACLs can be used to create fine-grained permissions.</p>
+<p>By default, one’s home directory is only accessible to the owner. This is accomplished with basic UNIX permissions, not ACLs.<sup id="fnref:1"><a class="footnote-ref" href="#fn:1">1</a></sup> The original ACL reflects this. For the user alice, the ACL on their home directory would look like:</p>
 <div class="highlight"><pre><span></span><code>[alice@compute-123 ~]$ pwd
 /users/alice
+[alice@compute-123 ~]$ ls -ld .
+drwx------ 63 alice users 134 Apr 12 14:36 ./
 [alice@compute-123 ~]$ nfs4_getfacl .
 # file: .
 A::OWNER@:rwaDxtTcCy
 A::GROUP@:tcy
 A::EVERYONE@:tcy
 </code></pre></div>
+<p>If you see the string "tcy", that means "no access".</p>
+<p>If you see the string "fdi", that indicates that the ACE is a "default" or "inherited" one.</p>
 <h3 id="read-permisions"><strong>Read permisions</strong><a class="headerlink" href="#read-permisions" title="Anchor link to this section for reference">&para;</a></h3>
 <ul>
 <li>Now, if alice wanted to grant read-only access to their home
@@ -4095,7 +4149,7 @@ A:fdi:GROUP@:rwaDxtcy
 A:fdi:EVERYONE@:tcy
 </code></pre></div>
 <p>To set a Group ACL, you need to add the <code>g</code> option to the <code>nfs4_getfacl</code> command.</p>
-<div class="highlight"><pre><span></span><code>[alice@compute-123 ~]$ mkdir shared
+<p><div class="highlight"><pre><span></span><code>[alice@compute-123 ~]$ mkdir shared
 [alice@compute-123 ~]$ nfs4_setfacl -a A:g:hpscc@cm.cluster:RWX shared
 [alice@compute-123 ~]$ nfs4_getfacl shared
 nfs4_getfacl shared-data.txt
@@ -4121,8 +4175,28 @@ A:fdi:GROUP@:rwaDxtcy
 A:fdig:swdev@cm.cluster:rwaDxtcy
 A:fdi:EVERYONE@:tcy
 </code></pre></div>
+Example showing the impact of adding a default (or inherited) ACE to a directory which provides read, write, and execute permissions for the UNIX group "hpscc"  Then, depending on the umask in force, files created inside this directory will be created with different permissions.</p>
+<div class="highlight"><pre><span></span><code>[alice@compute-123 ~]$ nfs4_setfacl -a A:gfdi:hpscc@cm.cluster:RWX test1
+[alice@compute-123 ~]$ touch test1/f1
+[alice@compute-123 ~]$ nfs4_getfacl test1/f1
+
+# file: test1/f1
+A::OWNER@:rwatTcCy
+A::GROUP@:rtcy
+A:g:hpscc@cm.cluster:rtcy
+A::EVERYONE@:rtcy
+[alice@compute-123 ~]$ umask 0002
+[alice@compute-123 ~]$ touch test1/f2
+[alice@compute-123 ~]$ nfs4_getfacl test1/f2
+
+# file: test1/f2
+A::OWNER@:rwatTcCy
+A::GROUP@:rwatcy
+A:g:hpscc@cm.cluster:rwatcy
+A::EVERYONE@:rtcy
+</code></pre></div>
 <h3 id="removing-an-acl"><strong>Removing an ACL</strong><a class="headerlink" href="#removing-an-acl" title="Anchor link to this section for reference">&para;</a></h3>
-<p>If you want to remove an ACE from an ACL, you can use the <code>-x</code> option to <code>nfs4_setfacl</code>. Please note that you need to use the full ACE, and not the <code>RWX</code> shortcuts.</p>
+<p>Use the <code>-x</code> option to <code>nfs4_setfacl</code> to remove an ACE from an ACL. Please note that you need to use the full (and exact) ACE, and not the <code>RWX</code> shortcuts.</p>
 <div class="highlight"><pre><span></span><code>[alice@compute-123 ~]$ nfs4_setfacl -x A::bob@cm.cluster:rwaxtcy shared
 [alice@compute-123 ~]$ nfs4_getfacl shared
 nfs4_getfacl shared-data.txt
@@ -4132,7 +4206,8 @@ A::GROUP@:rtcy
 A::EVERYONE@:rtcy
 </code></pre></div>
 <h3 id="applying-acls-recursively"><strong>Applying ACLs Recursively</strong><a class="headerlink" href="#applying-acls-recursively" title="Anchor link to this section for reference">&para;</a></h3>
-<p>You can use the <code>-R</code> flag to <code>nfs4_setfacl</code> to apply your changes recursively. Sometimes you want to set a rule only on files or on directories. You can use the <code>find</code> command to generate lists of each type of object which are then passed to the <code>xargs</code> command, which runs the command it is given on each object. By default <code>find</code> starts at the path you give it and, if it is a directory, descends into it recursively.  Note that this example adds arguements to <code>find</code> and <code>xargs</code> which handle the case where files or directory names contain evil, no-good, awful characters like white space, quote marks, or backslashes:</p>
+<p>You can use the <code>-R</code> flag to <code>nfs4_setfacl</code> to apply your changes recursively.</p>
+<p>Sometimes you want to set a rule only on files or on directories. You can use the <code>find</code> command to generate lists of each type of object which are then passed to the <code>xargs</code> command, which runs the command it is given on each object. By default <code>find</code> starts at the path you give it and, if it is a directory, descends into it recursively.  Note that this example adds arguements to <code>find</code> and <code>xargs</code> which handle the case where files or directory names contain evil, no-good, awful characters like white space, quote marks, or backslashes:</p>
 <div class="highlight"><pre><span></span><code><span class="nb">cd</span><span class="w"> </span>into-the-top-of-the-directory-tree
 find<span class="w"> </span>.<span class="w"> </span>-type<span class="w"> </span>d<span class="w"> </span>-print0<span class="w"> </span><span class="p">|</span><span class="w"> </span>xargs<span class="w"> </span>--null<span class="w"> </span>nfs4_setfacl<span class="w"> </span>-a<span class="w"> </span>A::bob@cm.cluster:RWX
 find<span class="w"> </span>.<span class="w"> </span>-type<span class="w"> </span>f<span class="w"> </span>-print0<span class="w"> </span><span class="p">|</span><span class="w"> </span>xargs<span class="w"> </span>--null<span class="w"> </span>nfs4_setfacl<span class="w"> </span>-a<span class="w"> </span>A::bob@cm.cluster:R
@@ -4404,7 +4479,7 @@ other::r-x
 <hr />
 <ol>
 <li id="fn:1">
-<p>The editor <code>vi</code> will be used unless you set a variable to specify a different one, e.g. <code>export EDITOR /usr/bin/nanon</code> (which you can add to your ~/.bashrc file for the future). Many people don't know how to use <code>vi</code> If you need to quit from vi, use these keystrokes in order: <span class="keys"><kbd class="key-escape">Esc</kbd></span> <span class="keys"><kbd class="key-colon">:</kbd></span> q <span class="keys"><kbd class="key-enter">Enter</kbd></span>&#160;<a class="footnote-backref" href="#fnref:1" title="Jump back to footnote 1 in the text">&#8617;</a></p>
+<p>Not true in the C-SUB, where home directories are protected with ACLs.&#160;<a class="footnote-backref" href="#fnref:1" title="Jump back to footnote 1 in the text">&#8617;</a><a class="footnote-backref" href="#fnref2:1" title="Jump back to footnote 1 in the text">&#8617;</a></p>
 </li>
 <li id="fn:2">
 <p>You may not want to apply some ACEs recursively, because files and directories can need different rules. See <a href="#applying-acls-recursively">this section</a> for a technique to apply changes to only files or only directories.&#160;<a class="footnote-backref" href="#fnref:2" title="Jump back to footnote 2 in the text">&#8617;</a></p>
@@ -4431,7 +4506,7 @@ other::r-x
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1-2.1-2M12.5 7v5.2l4 2.4-1 1L11 13V7h1.5M11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2v1.8Z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">April 5, 2024</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">April 12, 2024</span>
   </span>
 
     

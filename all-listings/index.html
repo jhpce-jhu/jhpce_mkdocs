@@ -3542,29 +3542,10 @@ ServerAliveCountMax<span class="w"> </span><span class="m">30</span>
 <span class="w">    </span>ForwardX11<span class="w"> </span>no
 <span class="w">    </span>IdentityFile<span class="w"> </span>~/.ssh/id_rsa.my-general-key
 </code></pre><h2><a class="heading" href="../files/acl">ACL</a></h2><a class="url" href="../files/acl">files/acl/</a><pre><span></span><code>access type:[flags]:principal:permissions
-</code></pre><pre><span></span><code>[alice@compute-123 ~]$ mkdir test1
-[alice@compute-123 ~]$ umask
-0022
-[alice@compute-123 ~]$ nfs4_setfacl -a A:gfdi:hpscc@cm.cluster:RWX test1
-[alice@compute-123 ~]$ touch test1/f1
-[alice@compute-123 ~]$ nfs4_getfacl test1/f1
-
-# file: test1/f1
-A::OWNER@:rwatTcCy
-A::GROUP@:rtcy
-A:g:hpscc@cm.cluster:rtcy
-A::EVERYONE@:rtcy
-[alice@compute-123 ~]$ umask 0002
-[alice@compute-123 ~]$ touch test1/f2
-[alice@compute-123 ~]$ nfs4_getfacl test1/f2
-
-# file: test1/f2
-A::OWNER@:rwatTcCy
-A::GROUP@:rwatcy
-A:g:hpscc@cm.cluster:rwatcy
-A::EVERYONE@:rtcy
 </code></pre><pre><span></span><code>[alice@compute-123 ~]$ pwd
 /users/alice
+[alice@compute-123 ~]$ ls -ld .
+drwx------ 63 alice users 134 Apr 12 14:36 ./
 [alice@compute-123 ~]$ nfs4_getfacl .
 # file: .
 A::OWNER@:rwaDxtTcCy
@@ -3643,6 +3624,24 @@ A:fdi:OWNER@:rwaDxtTcCy
 A:fdi:GROUP@:rwaDxtcy
 A:fdig:swdev@cm.cluster:rwaDxtcy
 A:fdi:EVERYONE@:tcy
+</code></pre><pre><span></span><code>[alice@compute-123 ~]$ nfs4_setfacl -a A:gfdi:hpscc@cm.cluster:RWX test1
+[alice@compute-123 ~]$ touch test1/f1
+[alice@compute-123 ~]$ nfs4_getfacl test1/f1
+
+# file: test1/f1
+A::OWNER@:rwatTcCy
+A::GROUP@:rtcy
+A:g:hpscc@cm.cluster:rtcy
+A::EVERYONE@:rtcy
+[alice@compute-123 ~]$ umask 0002
+[alice@compute-123 ~]$ touch test1/f2
+[alice@compute-123 ~]$ nfs4_getfacl test1/f2
+
+# file: test1/f2
+A::OWNER@:rwatTcCy
+A::GROUP@:rwatcy
+A:g:hpscc@cm.cluster:rwatcy
+A::EVERYONE@:rtcy
 </code></pre><pre><span></span><code>[alice@compute-123 ~]$ nfs4_setfacl -x A::bob@cm.cluster:rwaxtcy shared
 [alice@compute-123 ~]$ nfs4_getfacl shared
 nfs4_getfacl shared-data.txt
