@@ -5,16 +5,13 @@ tags:
 ---
 # ACL - Access Control Lists
 
-!!! Note
-    This document is under construction. Mainly the information is being reviewed and refined.
+!!! Tip
+    Before defining ACLs, you should first read [our document about sharing files](..//files/sharing-files.md) for necessary background concepts and skills.
 
 Traditional Unix file and group permissions can be used to share
 access to files and directories.  However, there can be times when
 more fine-grained control of shared access is needed. To accomplish
 this, Access Control Lists (ACLs) can be used. They *add* to the normal permissions, not replace them. ACLs and permissions can interact in unexpected ways.
-
-!!! Tip
-    Before defining ACLs, you should first read [our document about sharing files](..//files/sharing-files.md) for necessary background concepts and skills.
 
 ??? "ZFS versus Lustre: If you are working in /dcl02/ click here..."
     JHPCE uses two kinds of file systems on its large storage servers: **ZFS** and **Lustre**. A different pair of ACL commands is used for each type.
@@ -27,7 +24,7 @@ this, Access Control Lists (ACLs) can be used. They *add* to the normal permissi
 
 ## **ACL Commands**
 
-An Access Control List is a series of Access Control Entry (ACE) rules associated with a file or directory.
+An Access Control List is a series of ***Access Control Entry*** (ACE) rules associated with a file or directory.
 
 These rules are displayed and manipulated by two commands:
 
@@ -49,7 +46,7 @@ These rules are displayed and manipulated by two commands:
 
 ## **Access Control Entry (ACE)**
 
-An ACE, or Access Control Entry, is a single control statement, indicating the access of a specific entity (usually a user or group). Thus, an Access Control List (ACL) is a list of ACEs. We here discuss some simple and common options for an ACE, but for a full description see the nfs4_acl(5) man page. A [later section](#ace-flags-explained) of this page gives the meaning for each of the single characters that are combined in ACEs to create cryptic strings like "rwaDxtTcCy"
+An ***ACE***, or ***Access Control Entry***, is a single control statement, indicating the access of a specific entity (usually a user or group). Thus, an Access Control List (ACL) is a list of ACEs. We here discuss some simple and common options for an ACE, but for a full description see the nfs4_acl(5) man page. A [later section](#ace-flags-explained) of this page gives the meaning for each of the single characters that are combined in ACEs to create cryptic strings like "rwaDxtTcCy"
 
 We will begin with the structure of an ACE:
 
@@ -74,74 +71,73 @@ All parts are required for every operation, though the `[flags]` section may be 
 : **GROUP@** – This special principal refers to the default group of a file. It must always be present. This means every file must have an GROUP@ ACE in its ACL.
 : **EVERYONE@** – This is a special catch-all principal which applies to any entity that is not matched by any of the above. Think of this as equivalent to “other” (aka “world”) in the traditional UNIX/Linux permissions model.
 
-
 **permissions**
+!!! Note
+    Needs to be written
 
-## **Notes and suggestions**
+## **Important Big-Picture Notes and Suggestions**
 
-Some common notes that are applicable to both types of ACL commands:
+### ACL Facts
 
-+ ACLs can be used on both files and directories.
-+ You can tell that a file or directory has an ACL defined by the presence of a ++plus++ symbol in the output of `ls -l`
++ ACLs can be used on both files and directories. As with normal permissions, settings on files can have different impacts than those on directories (e.g. the X execute bit or default inheritance settings).
++ You can tell that a file or directory has an ACL defined by the presence of a ++plus++ symbol in the output of `ls -l` or `ls -ld`
++ Every file or directory appears to have an ACL if inspected with `nfs4+getfacl`.  This is just a representation of the basic UNIX ownership and permissions. When we speak in this document about adding an ACL we're talking about adding an ACE to those default values.
++ Making changes with normal commands like `chmod` and `chown` will impact what you see if you inspect the ACL afterwards.
++ If you want to change something about the special principals `OWNER@`, `GROUP@`, and `EVERYONE@`you probably want to do that with normal commands, not `nfs4_setfacl`
++ {==User's *umask* settings impact the permissions assigned to files and directories being created==} whether you are using traditional UNIX permissions or ACLs.
++ Setting an ACL on a directory does not change existing files and directories inside it unless you use the `-R` recursive option to the ACL command.
++  For users to be able to work with a file stored several layer deep in the directory structure, they must be able _to get to it_. {==That requires that they need sufficient permissions, via either normal UNIX permissions or ACLs (or both), to "read" and "execute" (aka "search") **all of the directories above the final file or directory**==}. For example, if you are wanting to enable access to the directory `/dcs07/bob/data/project1/shared`, you would need to provide `READ-EXECUTE` access on `/dcs07/bob/data/project1`, `/dcs07/bob/data`, and `/dcs07/bob`. {==Use UNIX permissions where appropriate, and ACLs where necessary.==}
++ ACLs can be set on files and directories located in file systems of types other than [NFS](https://en.wikipedia.org/wiki/Network_File_System). That is not what JHPCE users do. Trying to use an nfs4_*acl command in somewhere like /tmp will throw off an error like this: `Operation to request attribute not supported: test1`
+
+
+### Suggestions
+
 + **Use normal UNIX permissions where possible.** ACLs can be complex to manage. Use ACLs to *extend* normal permissions.
-+ User's *umask* settings impact the permissions assigned to files and directories being created whether you are using traditional UNIX permissions or ACLs.
-+ Check the values of files and directories before, during, and after changing their permissions or defining ACLs. Test what happens afterwards. Don't change many files at once until you are confident that your commands are correct. You can capture the original configuration using commands like `ls -lR directoryname > saved-listing.txt` for normal UNIX permissions and `nfs4_getfacl --recursive directoryname > saved-acls.txt`
 + ACLs should use the security notion of “least privilege”, meaning that ACLs should give only the needed access and nothing more.
 + By default if an ACL does not allow something, that permission is denied. ACEs that start with an "A" are "Allow ACEs", those that start with a "D" are "Deny ACEs". Avoid using "Deny ACEs" -- they increase the chances of something not working as expected.
-+  For users to be able to work with a file stored several layer deep in the directory structure, they must be able _to get to it_. {==That requires that they need sufficient permissions, via either normal UNIX permissions or ACLs (or both), to "read" and "execute" (aka "search") **all of the directories above the final file or directory**==}. For example, if you are wanting to enable access to the directory `/dcs07/bob/data/project1/shared`, you would need to provide `READ-EXECUTE` access on `/dcs07/bob/data/project1`, `/dcs07/bob/data`, and `/dcs07/bob`. Using UNIX permissions where appropriate, and ACLs where necessary.
-+ Setting an ACL on a directory does not change existing files and directories inside it unless you use the `recursive` option to the ACL command.
++ Like any operation, commands modifying ACL commands on large numbers of files should be run on a compute node and not a login node. Long-running recursive ACL commands on large directory trees may be done via interactive sessions or submitted batch job scripts.
++ Check the values of files and directories before, during, and after changing their permissions or defining ACLs. Use both `ls -l` and `nfs4_getfacl` to get the full picture. Test what happens afterwards. Don't change many files at once until you are confident that your commands are correct. You can capture the original configuration using commands like `ls -lR directoryname > saved-listing.txt` for normal UNIX permissions and `nfs4_getfacl --recursive directoryname > saved-acls.txt`
 
+### Default or inherited ACLs on Directories
 + "Default" ACLs can be set on a directory, and this ACL will be _inherited_ into the directory structure as new files and subdirectories are created. You might need to create different "default" ACLs to control the creation of new files and others to control the creation of new subdirectories.
 + With "default" or "inherited" ACLs, the individual user’s `umask` setting is important in assuring that future new files and directories being created have the correct permissions set. The `umask` setting will take precedence over the ACL, so *it must be more permissive than the ACL*. For example, if you want to set a default group ACL where the group has write access, you need to make sure that your umask is set to `0002` rather than `0022`, as the “2” in the group umask bit will prevent the group write capability.
-+ Like any operation, running ACL commands on large numbers of files should be run on a compute node and not a login node. Long-running recursive ACL commands on large directory trees may be done via interactive sessions or submitted batch job scripts.
-
-
-Example usage:
-
-```
-[alice@compute-123 ~]$ mkdir test1
-[alice@compute-123 ~]$ umask
-0022
-[alice@compute-123 ~]$ nfs4_setfacl -a A:gfdi:hpscc@cm.cluster:RWX test1
-[alice@compute-123 ~]$ touch test1/f1
-[alice@compute-123 ~]$ nfs4_getfacl test1/f1
-
-# file: test1/f1
-A::OWNER@:rwatTcCy
-A::GROUP@:rtcy
-A:g:hpscc@cm.cluster:rtcy
-A::EVERYONE@:rtcy
-[alice@compute-123 ~]$ umask 0002
-[alice@compute-123 ~]$ touch test1/f2
-[alice@compute-123 ~]$ nfs4_getfacl test1/f2
-
-# file: test1/f2
-A::OWNER@:rwatTcCy
-A::GROUP@:rwatcy
-A:g:hpscc@cm.cluster:rwatcy
-A::EVERYONE@:rtcy
-```
 
 ## **ACLs in ZFS File Systems**
 
 ### Basic commands
-+ There are 2 commands for dealing with ACLs on `/users`, `/dcs04`, `/dcs05`, `/dcs06`, and `/dcs07`. 
-+ The `nfs4_getfacl` command will display current ACL setting for a file or directory
-+ The `nfs4_setfacl` command is used to modify ACLs.  
-+ With ACLs you can grant different kinds of access on directories or files to specific users and groups, in addition to the normal group associated with the object, and in addition to "other".
-+ The simplest permissions to use in ACLs are R for read access, W for write access, and X for execute and directory access. For detailed description of fine-grained permissions that can be set, please see ([https://www.osc.edu/book/export/html/4523](https://www.osc.edu/book/export/html/4523)).
-+ By default, one’s home directory is only accessible to the
-owner, and the original ACL should reflect this. For example, for the user alice, the ACL on their home directory would look like:
+There are 2 commands for dealing with ACLs in file systems like `/users`, `/dcl01`, `/dcs04`, `/dcs05`, `/dcs06`, and `/dcs07`. 
+
++ `nfs4_getfacl` - display current ACL setting
++ `nfs4_setfacl` - modify ACLs.  
+
+With ACLs you can grant different kinds of access on directories or files to specific users and groups, in addition to the normal group associated with the object, and in addition to "other".
+
+The simplest permissions to use in ACLs are R for read access, W for write access, and X for execute and directory access. 
+
+A [later section](#ace-flags-explained) of this page gives the meaning for each of the single characters that are combined in ACEs to create cryptic strings like "rwaDxtTcCy"
+
+These strings contain so many elements because ACLs can be used to create fine-grained permissions.
+
+By default, one’s home directory is only accessible to the owner. This is accomplished with basic UNIX permissions, not ACLs.[^1] The original ACL reflects this. For the user alice, the ACL on their home directory would look like:
+
+[^1]: Not true in the C-SUB, where home directories are protected with ACLs.
 
 ```
 [alice@compute-123 ~]$ pwd
 /users/alice
+[alice@compute-123 ~]$ ls -ld .
+drwx------ 63 alice users 134 Apr 12 14:36 ./
 [alice@compute-123 ~]$ nfs4_getfacl .
 # file: .
 A::OWNER@:rwaDxtTcCy
 A::GROUP@:tcy
 A::EVERYONE@:tcy
+
 ```
+
+If you see the string "tcy", that means "no access".
+
+If you see the string "fdi", that indicates that the ACE is a "default" or "inherited" one.
 
 ### **Read permisions**
 
@@ -251,9 +247,31 @@ A:fdi:GROUP@:rwaDxtcy
 A:fdig:swdev@cm.cluster:rwaDxtcy
 A:fdi:EVERYONE@:tcy
 ```
+Example showing the impact of adding a default (or inherited) ACE to a directory which provides read, write, and execute permissions for the UNIX group "hpscc"  Then, depending on the umask in force, files created inside this directory will be created with different permissions.
+
+```
+[alice@compute-123 ~]$ nfs4_setfacl -a A:gfdi:hpscc@cm.cluster:RWX test1
+[alice@compute-123 ~]$ touch test1/f1
+[alice@compute-123 ~]$ nfs4_getfacl test1/f1
+
+# file: test1/f1
+A::OWNER@:rwatTcCy
+A::GROUP@:rtcy
+A:g:hpscc@cm.cluster:rtcy
+A::EVERYONE@:rtcy
+[alice@compute-123 ~]$ umask 0002
+[alice@compute-123 ~]$ touch test1/f2
+[alice@compute-123 ~]$ nfs4_getfacl test1/f2
+
+# file: test1/f2
+A::OWNER@:rwatTcCy
+A::GROUP@:rwatcy
+A:g:hpscc@cm.cluster:rwatcy
+A::EVERYONE@:rtcy
+```
 
 ### **Removing an ACL**
-If you want to remove an ACE from an ACL, you can use the `-x` option to `nfs4_setfacl`. Please note that you need to use the full ACE, and not the `RWX` shortcuts.
+Use the `-x` option to `nfs4_setfacl` to remove an ACE from an ACL. Please note that you need to use the full (and exact) ACE, and not the `RWX` shortcuts.
 
 ```
 [alice@compute-123 ~]$ nfs4_setfacl -x A::bob@cm.cluster:rwaxtcy shared
@@ -266,7 +284,9 @@ A::EVERYONE@:rtcy
 ```
 ### **Applying ACLs Recursively**
 
-You can use the `-R` flag to `nfs4_setfacl` to apply your changes recursively. Sometimes you want to set a rule only on files or on directories. You can use the `find` command to generate lists of each type of object which are then passed to the `xargs` command, which runs the command it is given on each object. By default `find` starts at the path you give it and, if it is a directory, descends into it recursively.  Note that this example adds arguements to `find` and `xargs` which handle the case where files or directory names contain evil, no-good, awful characters like white space, quote marks, or backslashes:
+You can use the `-R` flag to `nfs4_setfacl` to apply your changes recursively.
+
+Sometimes you want to set a rule only on files or on directories. You can use the `find` command to generate lists of each type of object which are then passed to the `xargs` command, which runs the command it is given on each object. By default `find` starts at the path you give it and, if it is a directory, descends into it recursively.  Note that this example adds arguements to `find` and `xargs` which handle the case where files or directory names contain evil, no-good, awful characters like white space, quote marks, or backslashes:
 
 ```Shell
 cd into-the-top-of-the-directory-tree

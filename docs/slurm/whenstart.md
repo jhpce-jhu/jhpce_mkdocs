@@ -16,7 +16,11 @@ How does it choose which of a set of pending jobs to start in what order on whic
 There are a number of vendor documents which document scheduling. See the "Workload Prioritization" and "Slurm Scheduling" sections at this [site](https://slurm.schedmd.com/documentation.html).
 
 ## TL;DR
-Your jobs will start faster if you request the fewest resources required for their success, including duration. Smaller jobs "fit" into more slots between other jobs than larger jobs, so consider whether you can divide up your work. You should also direct your job to the most appropriate partition. For example, we have an interactive partition for small jobs.
+If you have used a lot of resources in [public partitions](../slurm/partitions.md) recently, (in the last week, especially over the last three days), your jobs will have a lower priority than someone who has been idle.
+
+***No matter what priority is assigned or why, your jobs will start faster if you request the fewest resources required for their success, including duration.***
+
+Smaller jobs "fit" into more slots between other jobs than larger jobs, so consider whether you can divide up your work. You should also direct your job to the most appropriate partition. For example, we have an interactive partition for small jobs.
 
 If the scheduler has been able to determine an estimated start date for your job, it will be shown in the output of
 
