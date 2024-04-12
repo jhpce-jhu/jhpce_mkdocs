@@ -137,7 +137,7 @@ ENDSAS;
 ```
 
 2. Write a submit job script (e.g. sas-demo1.sh)
-```
+```bash
 #!/bin/bash
 
 #SBATCH --partition=sas
@@ -155,7 +155,7 @@ Submitted batch job 3178475
 ```
 
 4. Monitor the job status
-```
+```bash
 [test@login31 ~]$ squeue --me
              JOBID PARTITION     NAME     USER ST       TIME  NODES NODELIST(REASON)
             3178475       sas sas-demo    test R       0:01      1 compute-101
@@ -181,3 +181,9 @@ Submitted batch job 3178475
                            -----------------------------------------------------------------------------
 
 ```
+
+## Tips for Using The SAS Editor
+
+Duke's Sociology department has a page titled [Giving the SAS Program Editor Under Linux A Windows Look and Feel](https://computing.soc.duke.edu/computing/Giving(20)the(20)SAS(20)Program(20)Editor(20)Under(20)Linux(20)a(20)Windows(20)Look(20)and(20)Feel.html)
+
+Other advice can be found in [this presentation](https://www.lexjansen.com/phuse/2015/is/iS07_ppt.pdf) for Windows users transitioning to using SAS in a Linux environment.
