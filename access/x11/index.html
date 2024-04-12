@@ -1327,6 +1327,24 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#copying-and-pasting-in-x" class="md-nav__link">
+    <span class="md-ellipsis">
+      Copying and Pasting in X
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#x11-forwarding-and-authentication" class="md-nav__link">
+    <span class="md-ellipsis">
+      X11 Forwarding and Authentication
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#troubleshooting-x-connections" class="md-nav__link">
     <span class="md-ellipsis">
       Troubleshooting X Connections
@@ -3571,6 +3589,24 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#copying-and-pasting-in-x" class="md-nav__link">
+    <span class="md-ellipsis">
+      Copying and Pasting in X
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#x11-forwarding-and-authentication" class="md-nav__link">
+    <span class="md-ellipsis">
+      X11 Forwarding and Authentication
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#troubleshooting-x-connections" class="md-nav__link">
     <span class="md-ellipsis">
       Troubleshooting X Connections
@@ -3650,6 +3686,12 @@
 <p class="admonition-title">Authoringnote</p>
 <p>The SSH document points to this one for ALL of the information needed to use X11. So this section needs to be complete. Pointing to the <a href="../mobaxterm/">MobaXterm</a> document of course, for Windows users.</p>
 </div>
+<h2 id="copying-and-pasting-in-x">Copying and Pasting in X<a class="headerlink" href="#copying-and-pasting-in-x" title="Anchor link to this section for reference">&para;</a></h2>
+<p>Copying and pasting into and out of X11 environments is often more challenging than doing that using native Windows or macOS programs. You may need to use different key combinations and/or modify the settings of your X11 program (XQuartz or MobaXterm).</p>
+<p>The historical default meta key used for copying and pasting is the <span class="keys"><kbd class="key-control">Ctrl</kbd></span> key. Windows copied that usage, but macOS users are used to using the <span class="keys"><kbd class="key-command">Cmd</kbd></span> key. Depending on the settings of your X software, you may need to use <span class="keys"><kbd class="key-control">Ctrl</kbd></span> or a different key combination. (And you can often change those settings to something else that you prefer for any reason.)</p>
+<p>An additional complication is that X11 was developed in a world where you were expected to have a three-button mouse. You could select, copy and paste using different button combinations. That knowledge will help you understand any references you may come across in documentation or program settings about things like "MIDDLE BUTTON"</p>
+<h2 id="x11-forwarding-and-authentication">X11 Forwarding and Authentication<a class="headerlink" href="#x11-forwarding-and-authentication" title="Anchor link to this section for reference">&para;</a></h2>
+<p>See this excellent <a href="../images/x11-forwarding-from-teleport.pdf">article from Teleport</a> (pdf) for quite a lot of good information and diagrams!!! (Saved as a PDF from https://goteleport.com/blog/x11-forwarding/)</p>
 <h2 id="troubleshooting-x-connections">Troubleshooting X Connections<a class="headerlink" href="#troubleshooting-x-connections" title="Anchor link to this section for reference">&para;</a></h2>
 <div class="admonition authoringnote">
 <p class="admonition-title">Authoringnote</p>
@@ -3676,7 +3718,7 @@ srun: error: No DISPLAY variable set, cannot setup x11 forwarding.</p>
 <p>help/faq/#x11
 slurm/slurm-faq/#x11-related-errors</p>
 <h3 id="algorithm">Algorithm<a class="headerlink" href="#algorithm" title="Anchor link to this section for reference">&para;</a></h3>
-<p>If X11 isn’t working for you, consider taking the following steps, and if you cannot figure out how to resolve the problem, let us know where in the process you come upon an error, and what it is.</p>
+<p>If X11 isn’t working for you, consider taking the following steps, and if you cannot figure out how to resolve the problem, let us know what happened when you followed these steps, so we know what worked and where in the process you reached an error, and what it is.</p>
 <ol>
 <li>
 <p>Log out of the cluster.</p>

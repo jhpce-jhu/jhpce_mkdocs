@@ -5054,19 +5054,19 @@ PROC PLOT;
      PLOT WEIGHT*HEIGHT;
 ENDSAS;
 ;
-</code></pre><pre><span></span><code>#!/bin/bash
+</code></pre><pre><span></span><code><span class="ch">#!/bin/bash</span>
 
-#SBATCH --partition=sas
-#SBATCH --mem=2G
-#SBATCH --time=2:00
+<span class="c1">#SBATCH --partition=sas</span>
+<span class="c1">#SBATCH --mem=2G</span>
+<span class="c1">#SBATCH --time=2:00</span>
 
-module load sas
-sas class-info.sas
+module<span class="w"> </span>load<span class="w"> </span>sas
+sas<span class="w"> </span>class-info.sas
 </code></pre><pre><span></span><code>[test@login31 ~]$ sbatch sas-demo1.sh
 Submitted batch job 3178475
-</code></pre><pre><span></span><code>[test@login31 ~]$ squeue --me
-             JOBID PARTITION     NAME     USER ST       TIME  NODES NODELIST(REASON)
-            3178475       sas sas-demo    test R       0:01      1 compute-101
+</code></pre><pre><span></span><code><span class="o">[</span>test@login31<span class="w"> </span>~<span class="o">]</span>$<span class="w"> </span>squeue<span class="w"> </span>--me
+<span class="w">             </span>JOBID<span class="w"> </span>PARTITION<span class="w">     </span>NAME<span class="w">     </span>USER<span class="w"> </span>ST<span class="w">       </span>TIME<span class="w">  </span>NODES<span class="w"> </span>NODELIST<span class="o">(</span>REASON<span class="o">)</span>
+<span class="w">            </span><span class="m">3178475</span><span class="w">       </span>sas<span class="w"> </span>sas-demo<span class="w">    </span><span class="nb">test</span><span class="w"> </span>R<span class="w">       </span><span class="m">0</span>:01<span class="w">      </span><span class="m">1</span><span class="w"> </span>compute-101
 </code></pre><pre><span></span><code>-rw-r--r-- 1 test test    0 Mar 13 16:49 slurm-3178475.out
 -rw-r--r-- 1 test test 2108 Mar 13 16:49 class-info.lst
 </code></pre><pre><span></span><code>[test@login31 ~]$ cat class-info.lst

@@ -1575,7 +1575,7 @@
     "page_name": "SAS",
     "page_url": "../sw/sas/",
     "text": "#!/bin/bash\n\n#SBATCH --partition=sas\n#SBATCH --mem=2G\n#SBATCH --time=2:00\n\nmodule load sas\nsas class-info.sas\n",
-    "html": "<pre><span></span><code>#!/bin/bash\n\n#SBATCH --partition=sas\n#SBATCH --mem=2G\n#SBATCH --time=2:00\n\nmodule load sas\nsas class-info.sas\n</code></pre>"
+    "html": "<pre><span></span><code><span class=\"ch\">#!/bin/bash</span>\n\n<span class=\"c1\">#SBATCH --partition=sas</span>\n<span class=\"c1\">#SBATCH --mem=2G</span>\n<span class=\"c1\">#SBATCH --time=2:00</span>\n\nmodule<span class=\"w\"> </span>load<span class=\"w\"> </span>sas\nsas<span class=\"w\"> </span>class-info.sas\n</code></pre>"
   },
   {
     "page_name": "SAS",
@@ -1587,7 +1587,7 @@
     "page_name": "SAS",
     "page_url": "../sw/sas/",
     "text": "[test@login31 ~]$ squeue --me\n             JOBID PARTITION     NAME     USER ST       TIME  NODES NODELIST(REASON)\n            3178475       sas sas-demo    test R       0:01      1 compute-101\n",
-    "html": "<pre><span></span><code>[test@login31 ~]$ squeue --me\n             JOBID PARTITION     NAME     USER ST       TIME  NODES NODELIST(REASON)\n            3178475       sas sas-demo    test R       0:01      1 compute-101\n</code></pre>"
+    "html": "<pre><span></span><code><span class=\"o\">[</span>test@login31<span class=\"w\"> </span>~<span class=\"o\">]</span>$<span class=\"w\"> </span>squeue<span class=\"w\"> </span>--me\n<span class=\"w\">             </span>JOBID<span class=\"w\"> </span>PARTITION<span class=\"w\">     </span>NAME<span class=\"w\">     </span>USER<span class=\"w\"> </span>ST<span class=\"w\">       </span>TIME<span class=\"w\">  </span>NODES<span class=\"w\"> </span>NODELIST<span class=\"o\">(</span>REASON<span class=\"o\">)</span>\n<span class=\"w\">            </span><span class=\"m\">3178475</span><span class=\"w\">       </span>sas<span class=\"w\"> </span>sas-demo<span class=\"w\">    </span><span class=\"nb\">test</span><span class=\"w\"> </span>R<span class=\"w\">       </span><span class=\"m\">0</span>:01<span class=\"w\">      </span><span class=\"m\">1</span><span class=\"w\"> </span>compute-101\n</code></pre>"
   },
   {
     "page_name": "SAS",
