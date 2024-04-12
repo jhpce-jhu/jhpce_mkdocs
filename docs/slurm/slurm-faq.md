@@ -133,7 +133,16 @@ See [this document](monitoring.md) for information about monitoring pending, run
 
     It is important to understand what the code or application you are using is actually doing when you run your job
 
-## srun: error: _half_duplex
+## X11-related errors
+
+See also our [general X11 document](../access/x11.md) for other information.
+
+### Can't open display
+
+??? "Click to open"
+    If you are on a compute node in an interactive session and get a message like `Error: Can't open display: localhost:12.0` when launching an X11 program, something went wrong while other things went okay. (Normally if there is an X11 problem you don't wind up having a DISPLAY variable set.) So far this error has appeared after an `srun: error: _half_duplex: read error -1 Connection reset by peer` error. See that entry in this FAQ.
+
+### srun: error: _half_duplex
 
 ??? "Click to open"
     `srun: error: _half_duplex: read error -1 Connection reset by peer`
@@ -144,13 +153,13 @@ See [this document](monitoring.md) for information about monitoring pending, run
 
     If you do intend to use X11 programs, when that error appears the only solution we have found is to *abandon* that whole interactive session to the compute node by typing “exit” to quit the shell. Back on the login node, verify that basic X11 functionality works by starting a simple X11 command, such as the `xterm` or `xclock` programs. If that works, start a new srun command to get back onto a compute node. Once on a compute node, verify that basic X11 functionality works by starting either the xterm or xclock programs. If they did, then try your X11 program again.
 
-## srun: error: Ignoring --x11 option
+### srun: error: Ignoring --x11 option
 ??? "Click to open"
     `srun: error: Ignoring --x11 option for a job step within an existing job. Set x11 options at job allocation time.`
     
     This error is issued because the srun command was run after already logging into a compute node via an interactive job. In other words, it is an srun inside of an srun.  `Srun` can be issued inside of *resource allocations* created by the `salloc` or `sbatch commands`, but not inside of other srun’s.
 
-## srun-related error: Could not retrieve magic cookie
+### srun-related error: Could not retrieve magic cookie
 
 ??? "Click to open"
     `Could not retrieve magic cookie. Cannot use X11 forwarding`
