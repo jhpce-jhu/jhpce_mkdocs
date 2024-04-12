@@ -3141,6 +3141,25 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#x11-related-errors" class="md-nav__link">
+    <span class="md-ellipsis">
+      X11-related errors
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="X11-related errors">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#cant-open-display" class="md-nav__link">
+    <span class="md-ellipsis">
+      Can't open display
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#srun-error-_half_duplex" class="md-nav__link">
     <span class="md-ellipsis">
       srun: error: _half_duplex
@@ -3148,8 +3167,8 @@
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
+        
+          <li class="md-nav__item">
   <a href="#srun-error-ignoring-x11-option" class="md-nav__link">
     <span class="md-ellipsis">
       srun: error: Ignoring --x11 option
@@ -3157,13 +3176,18 @@
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
+        
+          <li class="md-nav__item">
   <a href="#srun-related-error-could-not-retrieve-magic-cookie" class="md-nav__link">
     <span class="md-ellipsis">
       srun-related error: Could not retrieve magic cookie
     </span>
   </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -3802,6 +3826,25 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#x11-related-errors" class="md-nav__link">
+    <span class="md-ellipsis">
+      X11-related errors
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="X11-related errors">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#cant-open-display" class="md-nav__link">
+    <span class="md-ellipsis">
+      Can't open display
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#srun-error-_half_duplex" class="md-nav__link">
     <span class="md-ellipsis">
       srun: error: _half_duplex
@@ -3809,8 +3852,8 @@
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
+        
+          <li class="md-nav__item">
   <a href="#srun-error-ignoring-x11-option" class="md-nav__link">
     <span class="md-ellipsis">
       srun: error: Ignoring --x11 option
@@ -3818,13 +3861,18 @@
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
+        
+          <li class="md-nav__item">
   <a href="#srun-related-error-could-not-retrieve-magic-cookie" class="md-nav__link">
     <span class="md-ellipsis">
       srun-related error: Could not retrieve magic cookie
     </span>
   </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -3954,7 +4002,14 @@ You can also submit jobs with <a href="https://slurm.schedmd.com/sbatch.html#OPT
 <p>This can lead to a situation where a user's Matlab code is running using all 4 CPU cores on their laptop, but only 1 CPU core on the cluster. This can give the impression that the cluster is slower than a laptop. By requesting 4 or 8 CPU cores in your resource request, Matlab can now run these operations in parallel.</p>
 <p>It is important to understand what the code or application you are using is actually doing when you run your job</p>
 </details>
-<h2 id="srun-error-_half_duplex">srun: error: _half_duplex<a class="headerlink" href="#srun-error-_half_duplex" title="Anchor link to this section for reference">&para;</a></h2>
+<h2 id="x11-related-errors">X11-related errors<a class="headerlink" href="#x11-related-errors" title="Anchor link to this section for reference">&para;</a></h2>
+<p>See also our <a href="../../access/x11/">general X11 document</a> for other information.</p>
+<h3 id="cant-open-display">Can't open display<a class="headerlink" href="#cant-open-display" title="Anchor link to this section for reference">&para;</a></h3>
+<details>
+<summary>Click to open</summary>
+<p>If you are on a compute node in an interactive session and get a message like <code>Error: Can't open display: localhost:12.0</code> when launching an X11 program, something went wrong while other things went okay. (Normally if there is an X11 problem you don't wind up having a DISPLAY variable set.) So far this error has appeared after an <code>srun: error: _half_duplex: read error -1 Connection reset by peer</code> error. See that entry in this FAQ.</p>
+</details>
+<h3 id="srun-error-_half_duplex">srun: error: _half_duplex<a class="headerlink" href="#srun-error-_half_duplex" title="Anchor link to this section for reference">&para;</a></h3>
 <details>
 <summary>Click to open</summary>
 <p><code>srun: error: _half_duplex: read error -1 Connection reset by peer</code></p>
@@ -3962,13 +4017,13 @@ You can also submit jobs with <a href="https://slurm.schedmd.com/sbatch.html#OPT
 <p>If you do not intend to run any X11 programs during your interactive session, then you can log out of that session and start a new one without the <code>--x11</code> flag.</p>
 <p>If you do intend to use X11 programs, when that error appears the only solution we have found is to <em>abandon</em> that whole interactive session to the compute node by typing “exit” to quit the shell. Back on the login node, verify that basic X11 functionality works by starting a simple X11 command, such as the <code>xterm</code> or <code>xclock</code> programs. If that works, start a new srun command to get back onto a compute node. Once on a compute node, verify that basic X11 functionality works by starting either the xterm or xclock programs. If they did, then try your X11 program again.</p>
 </details>
-<h2 id="srun-error-ignoring-x11-option">srun: error: Ignoring --x11 option<a class="headerlink" href="#srun-error-ignoring-x11-option" title="Anchor link to this section for reference">&para;</a></h2>
+<h3 id="srun-error-ignoring-x11-option">srun: error: Ignoring --x11 option<a class="headerlink" href="#srun-error-ignoring-x11-option" title="Anchor link to this section for reference">&para;</a></h3>
 <details>
 <summary>Click to open</summary>
 <p><code>srun: error: Ignoring --x11 option for a job step within an existing job. Set x11 options at job allocation time.</code></p>
 <p>This error is issued because the srun command was run after already logging into a compute node via an interactive job. In other words, it is an srun inside of an srun.  <code>Srun</code> can be issued inside of <em>resource allocations</em> created by the <code>salloc</code> or <code>sbatch commands</code>, but not inside of other srun’s.</p>
 </details>
-<h2 id="srun-related-error-could-not-retrieve-magic-cookie">srun-related error: Could not retrieve magic cookie<a class="headerlink" href="#srun-related-error-could-not-retrieve-magic-cookie" title="Anchor link to this section for reference">&para;</a></h2>
+<h3 id="srun-related-error-could-not-retrieve-magic-cookie">srun-related error: Could not retrieve magic cookie<a class="headerlink" href="#srun-related-error-could-not-retrieve-magic-cookie" title="Anchor link to this section for reference">&para;</a></h3>
 <details>
 <summary>Click to open</summary>
 <p><code>Could not retrieve magic cookie. Cannot use X11 forwarding</code></p>
@@ -3994,7 +4049,7 @@ You can also submit jobs with <a href="https://slurm.schedmd.com/sbatch.html#OPT
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1-2.1-2M12.5 7v5.2l4 2.4-1 1L11 13V7h1.5M11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2v1.8Z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">April 10, 2024</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">April 12, 2024</span>
   </span>
 
     

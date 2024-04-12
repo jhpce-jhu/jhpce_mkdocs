@@ -1333,6 +1333,21 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="Troubleshooting X Connections">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#algorithm" class="md-nav__link">
+    <span class="md-ellipsis">
+      Algorithm
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
     </ul>
@@ -3562,6 +3577,21 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="Troubleshooting X Connections">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#algorithm" class="md-nav__link">
+    <span class="md-ellipsis">
+      Algorithm
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
     </ul>
@@ -3643,6 +3673,33 @@ srun: error: No DISPLAY variable set, cannot setup x11 forwarding.</p>
 </ul>
 <p>Is <code>ForwardX11Timeout 0</code> better in 2024 than specifying a particular time in hours?</p>
 <p>http://jhpce-old.jhu.edu/question/my-x11-forwarding-stops-working-after-20-minutes/</p>
+<p>help/faq/#x11
+slurm/slurm-faq/#x11-related-errors</p>
+<h3 id="algorithm">Algorithm<a class="headerlink" href="#algorithm" title="Anchor link to this section for reference">&para;</a></h3>
+<p>If X11 isn’t working for you, consider taking the following steps, and if you cannot figure out how to resolve the problem, let us know where in the process you come upon an error, and what it is.</p>
+<ol>
+<li>
+<p>Log out of the cluster.</p>
+</li>
+<li>
+<p>Log back in: <code>ssh -X USER@jhpce03.jhsph.edu</code></p>
+</li>
+<li>
+<p>On the login node, run <code>printenv DISPLAY</code>  You should see a string like <code>localhost53:0</code> The first number (here "53" will vary, as it needs to be unique for all currently-logged in users.</p>
+</li>
+<li>If you do not have a DISPLAY variable defined, then you won't be able to run any X11 commands. You need to figure out why this variable is not being set.</li>
+<li>If you have a DISPLAY variable defined, then:</li>
+<li>try to run a simple X11 program to see if it works: <code>xclock</code> should bring up a new clock window on your screen.</li>
+<li>You should be able to find a program named <code>xauth</code> in your path (try commands <code>which xauth</code> and/or <code>whereis xauth</code>). What output does <code>xauth list</code> produce? </li>
+<li>Close the <code>xlock</code> window by clicking in the right button in the upper left corner of its window.</li>
+<li>So now we've established that you have a working X11 environment on the login node.</li>
+<li>Connect to a compute node asking for X11 forwarding support (you can use additional options if needed): <code>srun --pty --x11 bash</code></li>
+<li>On the compute node, run <code>printenv DISPLAY</code>.</li>
+<li>If you do not have a DISPLAY variable defined on the compute node, then you won't be able to run any X11 commands on the compute node. You need to figure out why this variable is not being set.</li>
+<li>If you have a DISPLAY variable defined on the compute node, then run a simple X11 program to see if it works: <code>xclock</code> should bring up a new clock window on your screen.</li>
+<li>If you receive an error then see <a href="../../slurm/slurm-faq/#x11-related-errors">the X11-related entries</a> in the SLURM FAQ.</li>
+<li>Now close the <code>xclock</code> and try to run your application again.</li>
+</ol>
 <div class="footnote">
 <hr />
 <ol>
@@ -3671,7 +3728,7 @@ srun: error: No DISPLAY variable set, cannot setup x11 forwarding.</p>
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1-2.1-2M12.5 7v5.2l4 2.4-1 1L11 13V7h1.5M11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2v1.8Z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">April 3, 2024</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">April 12, 2024</span>
   </span>
 
     
