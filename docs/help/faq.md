@@ -147,6 +147,12 @@ We have a [SAS usage document](../sw/sas.md). Please read it for useful tips.
 See [this document](../storage/quotas.md/#file-deletion-and-delayed-change-in-quota).
 
 ## X11
+
+- There is a dedicated [X11](../access/x11.md) document
+- X11 Forwarding and Authentication
+
+  See this excellent [article from Teleport](../access/images/x11-forwarding-from-teleport.pdf) (pdf) for quite a lot of good information and diagrams!!! (Saved as a PDF from https://goteleport.com/blog/x11-forwarding/)
+
 - My X11 forwarding stops working after 20 minutes 
 ??? "Click to expand answer"
     This error comes from the `ForwardX11Timeout` variable, which is set by default to 20 minutes.  To avoid this issue, you can specify a value of 0 which completely disables the timeout. Or you can set a larger timeout to, say, 336 hours (2 weeks). This value can be supplied by changing your SSH configuration (see our [SSH document](../access/ssh.md)) or for each connection on the command line like this:
