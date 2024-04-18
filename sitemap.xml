@@ -131,11 +131,6 @@
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://jhpce.jhu.edu/gpu/</loc>
-         <lastmod>2024-04-18</lastmod>
-         <changefreq>daily</changefreq>
-    </url>
-    <url>
          <loc>https://jhpce.jhu.edu/gpu/alphafold/</loc>
          <lastmod>2024-04-18</lastmod>
          <changefreq>daily</changefreq>

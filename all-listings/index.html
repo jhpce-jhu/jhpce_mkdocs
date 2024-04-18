@@ -3027,10 +3027,6 @@
     
       
         
-          
-        
-      
-        
       
         
       
@@ -3046,24 +3042,16 @@
         <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1_11_1" >
         
           
-          
-          <div class="md-nav__link md-nav__container">
-            <a href="../gpu/" class="md-nav__link ">
-              
+          <label class="md-nav__link" for="__nav_1_11_1" id="__nav_1_11_1_label" tabindex="0">
+            
   
   <span class="md-ellipsis">
     GPU
   </span>
   
 
-            </a>
-            
-              
-              <label class="md-nav__link " for="__nav_1_11_1" id="__nav_1_11_1_label" tabindex="0">
-                <span class="md-nav__icon md-icon"></span>
-              </label>
-            
-          </div>
+            <span class="md-nav__icon md-icon"></span>
+          </label>
         
         <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_1_11_1_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_1_11_1">
@@ -3071,8 +3059,6 @@
             GPU
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
-            
-              
             
               
                 
@@ -3983,10 +3969,6 @@ drwxr-s--- 10 c-rwu32-55548    c-55548 13 Nov  8 10:31 mltss_duals/
 drwxrws---  4 c-yyang279-55548 c-55548  4 Nov 30 10:13 shen_yang/
 drwxr-s---  2 c-ykuang6-55548  c-55548  4 Jan 30 12:13 test/
 drwxr-s---  2 c-jlevy33-55548  c-55548  3 Aug 29 15:19 toofull/
-</code></pre><h2><a class="heading" href="../gpu">Index</a></h2><a class="url" href="../gpu">gpu/</a><pre><span></span><code>$<span class="w"> </span>module<span class="w"> </span>load<span class="w"> </span>alphafold/4.3.1
-$<span class="w"> </span>srun<span class="w"> </span>--pty<span class="w"> </span>--x11<span class="w"> </span>--mem<span class="o">=</span>100G<span class="w"> </span>--cpus-per-task<span class="o">=</span><span class="m">8</span><span class="w"> </span>--partition<span class="w"> </span>gpu<span class="w"> </span>--gpus<span class="o">=</span><span class="m">1</span><span class="w"> </span>bash
-<span class="o">[</span>compute-123<span class="o">]</span>$<span class="w"> </span>module<span class="w"> </span>load<span class="w"> </span>alphafold
-<span class="o">(</span>alphafold-gpu<span class="o">)</span><span class="w"> </span><span class="o">[</span>compute-123<span class="o">]</span>$<span class="w"> </span>run_alphafold.sh<span class="w"> </span>-d<span class="w"> </span>/legacy/alphafold/data<span class="w"> </span>-f<span class="w"> </span>./test.fasta<span class="w"> </span>-o<span class="w"> </span>.<span class="w"> </span>-t<span class="w"> </span><span class="m">2020</span>-05-14<span class="w"> </span>-n<span class="w"> </span><span class="m">8</span>
 </code></pre><h2><a class="heading" href="../gpu/alphafold">Alphafold</a></h2><a class="url" href="../gpu/alphafold">gpu/alphafold/</a><pre><span></span><code><span class="o">[</span>login31<span class="w"> </span>/users/mmill116/alpha1<span class="o">]</span>$<span class="w"> </span>srun<span class="w"> </span>--pty<span class="w"> </span>--x11<span class="w"> </span>--mem<span class="o">=</span>100G<span class="w"> </span>--cpus-per-task<span class="o">=</span><span class="m">8</span><span class="w"> </span>--partition<span class="w"> </span>gpu<span class="w"> </span>--gpus<span class="o">=</span><span class="m">1</span><span class="w"> </span>bash
 <span class="o">[</span>compute-126<span class="w"> </span>/users/mmill116/alpha1<span class="o">]</span>$<span class="w"> </span>module<span class="w"> </span>load<span class="w"> </span>alphafold
 <span class="o">(</span>alphafold-gpu<span class="o">)</span><span class="w"> </span><span class="o">[</span>compute-126<span class="w"> </span>/users/mmill116/alpha1<span class="o">]</span>$<span class="w"> </span>nvidia-smi<span class="w">    </span><span class="o">(</span>this<span class="w"> </span>is<span class="w"> </span>to<span class="w"> </span>verify<span class="w"> </span>that<span class="w"> </span>you<span class="w"> </span>are<span class="w"> </span>assigned<span class="w"> </span>a<span class="w"> </span>GPU<span class="o">)</span>
@@ -4051,6 +4033,35 @@ JobID           JobName  Partition                                AllocTRES  Max
 2907783            bash        gpu billing=102410,cpu=8,gres/gpu:tesa100=1+                                  COMPLETED 
 2907783.ext+     extern            billing=102410,cpu=8,gres/gpu:tesa100=1+          0          0            COMPLETED 
 2907783.0          bash            cpu=8,gres/gpu:tesa100=1,gres/gpu=1,mem+    109.65G     34.30G            COMPLETED 
+</code></pre><pre><span></span><code>[login31 /users/mmill116/alphafold]$ cat alpha1.sh
+#!/bin/sh
+#SBATCH --mem=100G
+#SBATCH --cpus-per-task=8
+#SBATCH --gpus=1
+#SBATCH --partition=gpu
+
+date
+module load conda
+conda activate alphafold-gpu
+mkdir /tmp/mm-alphfold1 
+run_alphafold.sh -d /legacy/alphafold/data -o /tmp/mm-alphfold1 -f ./test.fasta 
+-t 2020-05-14 -n 8
+date
+</code></pre><pre><span></span><code>[login31 /users/mmill116/alphafold]$ sbatch --gres=gpu:tesa100:1 alpha1.sh
+Submitted batch job 4679334
+[login31 /users/mmill116/alphafold]$ squeue --me
+             JOBID PARTITION     NAME     USER ST       TIME  NODES NODELIST(REASON)
+           4679334       gpu alpha1.s mmill116  R       0:02      1 compute-126
+[login31 /users/mmill116/alphafold]$ cat slurm-4679334.out
+Thu Apr 18 03:20:24 PM EDT 2024
+I0418 15:22:46.104061 140350337955648 templates.py:857] Using precomputed obsolete pdbs /legacy/alphafold/data/pdb_mmcif/obsolete.dat.
+I0418 15:22:48.993710 140350337955648 xla_bridge.py:353] Unable to initialize backend 'tpu_driver': NOT_FOUND: Unable to find driver in registry given worker: 
+
+ . . .
+
+I0418 15:23:01.681938 140350337955648 run_alphafold.py:161] Predicting test
+I0418 15:23:01.682810 140350337955648 jackhmmer.py:133] Launching subprocess "/jhpce/shared/jhpce/core/conda/miniconda3-23.3.1/envs/alphafold-gpu/bin/jackhmmer -o /dev/null -A /tmp/tmpfcl3sb6v/output.sto --noali --F1 0.0005 --F2 5e-05 --F3 5e-07 --incE 0.0001 -E 0.0001 --cpu 8 -N 1 ./test.fasta /legacy/alphafold/data/uniref90/uniref90.fasta"
+I0418 15:23:01.998645 140350337955648 utils.py:36] Started Jackhmmer (uniref90.fasta) query
 </code></pre><h2><a class="heading" href="../gpu/gpu-info">Using GPUs on JHPCE</a></h2><a class="url" href="../gpu/gpu-info">gpu/gpu-info/</a><pre><code>[login31 /users/mmill116]$ <strong>srun --pty --x11 --partition gpu --gpus=1 --mem=20G bash </strong>
 [compute-117 /users/mmill116]$ <strong>nvidia-smi</strong> 
  Tue Nov 28 08:39:23 2023       

@@ -3035,10 +3035,6 @@
     
       
         
-          
-        
-      
-        
       
         
       
@@ -3054,24 +3050,16 @@
         <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1_11_1" checked>
         
           
-          
-          <div class="md-nav__link md-nav__container">
-            <a href="../" class="md-nav__link ">
-              
+          <label class="md-nav__link" for="__nav_1_11_1" id="__nav_1_11_1_label" tabindex="0">
+            
   
   <span class="md-ellipsis">
     GPU
   </span>
   
 
-            </a>
-            
-              
-              <label class="md-nav__link " for="__nav_1_11_1" id="__nav_1_11_1_label" tabindex="0">
-                <span class="md-nav__icon md-icon"></span>
-              </label>
-            
-          </div>
+            <span class="md-nav__icon md-icon"></span>
+          </label>
         
         <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_1_11_1_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_1_11_1">
@@ -3079,8 +3067,6 @@
             GPU
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
-            
-              
             
               
                 
@@ -3591,6 +3577,40 @@ JobID           JobName  Partition                                AllocTRES  Max
 2907783.ext+     extern            billing=102410,cpu=8,gres/gpu:tesa100=1+          0          0            COMPLETED 
 2907783.0          bash            cpu=8,gres/gpu:tesa100=1,gres/gpu=1,mem+    109.65G     34.30G            COMPLETED 
 </code></pre></div>
+<p>To submit an alphafold job, you would create a SLURM batch file:</p>
+<p><div class="highlight"><pre><span></span><code>[login31 /users/mmill116/alphafold]$ cat alpha1.sh
+#!/bin/sh
+#SBATCH --mem=100G
+#SBATCH --cpus-per-task=8
+#SBATCH --gpus=1
+#SBATCH --partition=gpu
+
+date
+module load conda
+conda activate alphafold-gpu
+mkdir /tmp/mm-alphfold1 
+run_alphafold.sh -d /legacy/alphafold/data -o /tmp/mm-alphfold1 -f ./test.fasta 
+-t 2020-05-14 -n 8
+date
+</code></pre></div>
+You would then submit the job with "sbatch", perhaps adding additional GPU
+options
+<div class="highlight"><pre><span></span><code>[login31 /users/mmill116/alphafold]$ sbatch --gres=gpu:tesa100:1 alpha1.sh
+Submitted batch job 4679334
+[login31 /users/mmill116/alphafold]$ squeue --me
+             JOBID PARTITION     NAME     USER ST       TIME  NODES NODELIST(REASON)
+           4679334       gpu alpha1.s mmill116  R       0:02      1 compute-126
+[login31 /users/mmill116/alphafold]$ cat slurm-4679334.out
+Thu Apr 18 03:20:24 PM EDT 2024
+I0418 15:22:46.104061 140350337955648 templates.py:857] Using precomputed obsolete pdbs /legacy/alphafold/data/pdb_mmcif/obsolete.dat.
+I0418 15:22:48.993710 140350337955648 xla_bridge.py:353] Unable to initialize backend &#39;tpu_driver&#39;: NOT_FOUND: Unable to find driver in registry given worker: 
+
+ . . .
+
+I0418 15:23:01.681938 140350337955648 run_alphafold.py:161] Predicting test
+I0418 15:23:01.682810 140350337955648 jackhmmer.py:133] Launching subprocess &quot;/jhpce/shared/jhpce/core/conda/miniconda3-23.3.1/envs/alphafold-gpu/bin/jackhmmer -o /dev/null -A /tmp/tmpfcl3sb6v/output.sto --noali --F1 0.0005 --F2 5e-05 --F3 5e-07 --incE 0.0001 -E 0.0001 --cpu 8 -N 1 ./test.fasta /legacy/alphafold/data/uniref90/uniref90.fasta&quot;
+I0418 15:23:01.998645 140350337955648 utils.py:36] Started Jackhmmer (uniref90.fasta) query
+</code></pre></div></p>
 
 
 
@@ -3611,7 +3631,7 @@ JobID           JobName  Partition                                AllocTRES  Max
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1-2.1-2M12.5 7v5.2l4 2.4-1 1L11 13V7h1.5M11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2v1.8Z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">March 25, 2024</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">April 18, 2024</span>
   </span>
 
     

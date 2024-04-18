@@ -11,7 +11,7 @@
         <link rel="canonical" href="https://jhpce.jhu.edu/gpu/gpu-info/">
       
       
-        <link rel="prev" href="../">
+        <link rel="prev" href="../../slurm/slurm-faq/">
       
       
         <link rel="next" href="../alphafold/">
@@ -3030,10 +3030,6 @@
     
       
         
-          
-        
-      
-        
       
         
       
@@ -3049,24 +3045,16 @@
         <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1_11_1" checked>
         
           
-          
-          <div class="md-nav__link md-nav__container">
-            <a href="../" class="md-nav__link ">
-              
+          <label class="md-nav__link" for="__nav_1_11_1" id="__nav_1_11_1_label" tabindex="0">
+            
   
   <span class="md-ellipsis">
     GPU
   </span>
   
 
-            </a>
-            
-              
-              <label class="md-nav__link " for="__nav_1_11_1" id="__nav_1_11_1_label" tabindex="0">
-                <span class="md-nav__icon md-icon"></span>
-              </label>
-            
-          </div>
+            <span class="md-nav__icon md-icon"></span>
+          </label>
         
         <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_1_11_1_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_1_11_1">
@@ -3074,8 +3062,6 @@
             GPU
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
-            
-              
             
               
                 
@@ -3527,6 +3513,14 @@ the various models of GPUS:</p>
 <tr><td>Nvidia V100S with 32GB RAM</td><td>tesv100s</td></tr>
 <tr><td>Nvidia A100 with 80GB RAM</td><td>tesa100</td></tr>
 <p></table></center></p>
+<p>You can see what GPUs are available by running the <code>slurmpic -g</code> command.
+The GPUS column will show how many GPUs are in use and how many are available
+on each node:</p>
+<p><img alt="" src="../images/slurmpic1.png" /></p>
+<p>You will also notice that there are several partitions with GPUs in them.  By
+default all users should only access the "gpu" partition. The other partitions
+ar PI-specific partitions for groups that have purchases GPUs for the JHPCE
+cluster.</p>
 <p>So, in order request a particular model of GPU you would use the value in the
 &#8220;GRES Option&#8221; column above to srun or sbatch. In general it is
 better to allow the cluster to assign an available gpu to you rather than
@@ -3751,7 +3745,7 @@ python nvidia-test.py
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1-2.1-2M12.5 7v5.2l4 2.4-1 1L11 13V7h1.5M11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2v1.8Z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">March 25, 2024</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">April 18, 2024</span>
   </span>
 
     
@@ -3844,7 +3838,7 @@ python nvidia-test.py
       <nav class="md-footer__inner md-grid" aria-label="Footer" >
         
           
-          <a href="../" class="md-footer__link md-footer__link--prev" aria-label="Previous: Index">
+          <a href="../../slurm/slurm-faq/" class="md-footer__link md-footer__link--prev" aria-label="Previous: SLURM FAQ">
             <div class="md-footer__button md-icon">
               
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
@@ -3854,7 +3848,7 @@ python nvidia-test.py
                 Previous
               </span>
               <div class="md-ellipsis">
-                Index
+                SLURM FAQ
               </div>
             </div>
           </a>
