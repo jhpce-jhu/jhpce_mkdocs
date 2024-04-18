@@ -72,6 +72,16 @@ the various models of GPUS:
 <tr><td>Nvidia A100 with 80GB RAM</td><td>tesa100</td></tr>
 </table></center>
 
+You can see what GPUs are available by running the ```slurmpic -g``` command.
+The GPUS column will show how many GPUs are in use and how many are available
+on each node:
+
+![](images/slurmpic1.png)
+
+You will also notice that there are several partitions with GPUs in them.  By
+default all users should only access the "gpu" partition. The other partitions
+ar PI-specific partitions for groups that have purchases GPUs for the JHPCE
+cluster.
 
 
 So, in order request a particular model of GPU you would use the value in the

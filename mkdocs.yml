@@ -106,7 +106,6 @@ nav:
       - SLURM FAQ: slurm/slurm-faq.md
     - User Guides/Tutorials:
       - GPU: 
-        - gpu/index.md
         - Using GPUs on JHPCE: gpu/gpu-info.md
         - Alphafold: gpu/alphafold.md
       - VS Code: sw/vscode.md

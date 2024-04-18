@@ -84,3 +84,43 @@ JobID           JobName  Partition                                AllocTRES  Max
 2907783.ext+     extern            billing=102410,cpu=8,gres/gpu:tesa100=1+          0          0            COMPLETED 
 2907783.0          bash            cpu=8,gres/gpu:tesa100=1,gres/gpu=1,mem+    109.65G     34.30G            COMPLETED 
 ``` 
+
+To submit an alphafold job, you would create a SLURM batch file:
+
+```
+[login31 /users/mmill116/alphafold]$ cat alpha1.sh
+#!/bin/sh
+#SBATCH --mem=100G
+#SBATCH --cpus-per-task=8
+#SBATCH --gpus=1
+#SBATCH --partition=gpu
+
+date
+module load conda
+conda activate alphafold-gpu
+mkdir /tmp/mm-alphfold1 
+run_alphafold.sh -d /legacy/alphafold/data -o /tmp/mm-alphfold1 -f ./test.fasta 
+-t 2020-05-14 -n 8
+date
+```
+You would then submit the job with "sbatch", perhaps adding additional GPU
+options
+```
+[login31 /users/mmill116/alphafold]$ sbatch --gres=gpu:tesa100:1 alpha1.sh
+Submitted batch job 4679334
+[login31 /users/mmill116/alphafold]$ squeue --me
+             JOBID PARTITION     NAME     USER ST       TIME  NODES NODELIST(REASON)
+           4679334       gpu alpha1.s mmill116  R       0:02      1 compute-126
+[login31 /users/mmill116/alphafold]$ cat slurm-4679334.out
+Thu Apr 18 03:20:24 PM EDT 2024
+I0418 15:22:46.104061 140350337955648 templates.py:857] Using precomputed obsolete pdbs /legacy/alphafold/data/pdb_mmcif/obsolete.dat.
+I0418 15:22:48.993710 140350337955648 xla_bridge.py:353] Unable to initialize backend 'tpu_driver': NOT_FOUND: Unable to find driver in registry given worker: 
+
+ . . .
+
+I0418 15:23:01.681938 140350337955648 run_alphafold.py:161] Predicting test
+I0418 15:23:01.682810 140350337955648 jackhmmer.py:133] Launching subprocess "/jhpce/shared/jhpce/core/conda/miniconda3-23.3.1/envs/alphafold-gpu/bin/jackhmmer -o /dev/null -A /tmp/tmpfcl3sb6v/output.sto --noali --F1 0.0005 --F2 5e-05 --F3 5e-07 --incE 0.0001 -E 0.0001 --cpu 8 -N 1 ./test.fasta /legacy/alphafold/data/uniref90/uniref90.fasta"
+I0418 15:23:01.998645 140350337955648 utils.py:36] Started Jackhmmer (uniref90.fasta) query
+
+```
+

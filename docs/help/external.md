@@ -28,6 +28,10 @@ We also have a [document](../slurm/slurm-commands-ref.md) with links to not only
 + [Lieber Institute RStats club](https://research.libd.org/rstatsclub/)
 + [Leo Collado Torres YouTube Channel](https://www.youtube.com/c/LeonardoColladoTorres/playlists) including [JHPCE playlist](https://www.youtube.com/playlist?list=PLNNI62fcZPdAslHFllqv0-2iZqby1h0CV) - note that the JHPCE playlist starts off with videos featuring the Sung Grid Engine job scheduler, which has been replaced by SLURM in 2023. The data science contents of the SGE-containing videos may still be of interest.
 + [Lieber Institute module config](https://github.com/LieberInstitute/jhpce_module_config) and [Lieber Institute module source code](https://github.com/LieberInstitute/jhpce_module_source) - Lieber has generously built and maintains many software modules for JHPCE users
++ Youtube videos from Lieber RSTATS club on laptop setup:
+    + macOS: [https://youtu.be/8tuI-ZAlZ1Y](https://youtu.be/8tuI-ZAlZ1Y)
+    + winOS: [https://youtu.be/qtn3eTwFlZI](https://youtu.be/qtn3eTwFlZI)
+
 
 ## JHPCE Tutorials
 
