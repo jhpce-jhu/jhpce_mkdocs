@@ -32,30 +32,5 @@ You can use the command `which cmd` to be told where "cmd" comes from.
 
 ## SLURM-related
 
-### Information about cluster and jobs
-!!! Warning
-    **Do not frequently[^1] run slurmpic, squeue, sacct or other Slurm client commands using loops in shell scripts or other programs.** 
-
-    These commands all send remote procedure calls to slurmctld, the main SLURM control and scheduling daemon, They may also perform look-ups in the accounting database. That process and the database need to be *highly responsive* to the input/output caused by running jobs.
-
-    Ensure that programs limit calls to slurmctld to the minimum necessary for the information you are trying to gather. Add arguments to limit to needed partitions or users or job data fields, etcetera.
-
-[^1]: Frequently meaning more than once every **five minutes**. Do you REALLY **need** to know something sooner than that? If you want to know when a job finishes, use email notification settings. You can add them to pending and running jobs using [scontrol](../slurm/tips-scontrol.md).
-
-* **slurmpic**: ***An essential program for getting cluster status info.*** Use -h option to see essential usage details.
-* **jobson**: Displays running jobs running on a node when given a three digit node number.
-* **showjob**: Displays job information when given a jobid. Only works for pending or running jobs. Currently simply a shortcut for `scontrol show job jobid --details` but hopefully in the future will produce more readable output.
-* **showqos**: Displays list of our [QOS definitions](../slurm/qos.md) in a readable format. (no man page yet)
-* **slurmuser**: Displays per-user summary usage of RAM & CPU across the cluster. Can display by partition or for a specific user.
-* **smem**: Displays memory used by your currently running jobs. If given a jobid number, it will display info about the memory usage of that job. (no man page yet)
-* memory reporting script - puts per-user output daily into directories under `/jhpce/shared/jhpce/jhpce-log/`
-
-
-
-### Submitting Jobs
-None yet.
-
-### Contributed SLURM Programs We've Installed
-* **seff**: Display efficiency of CPU and RAM usage of a completed job. (no man page yet)
-* **[slurm-mail:](https://github.com/neilmunday/slurm-mail)** Tool used to add details to mail sent to you. Not something you can modify. Listed for completeness.
+We are creating a growing number of scripts and resources. They are found in [this document](../slurm/slurm-commands-ref.md/#locally-written-tools).
 

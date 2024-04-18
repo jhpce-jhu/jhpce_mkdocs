@@ -7,21 +7,42 @@ Here are links to online copies of the manual pages for commands. If we've
 written a page with advice about using the command, use the {==(LOCAL TIPS)==} link.
 
 ## Locally Written Tools
-* **slurmpic**: An **essential** program for getting cluster status info. Use -h option to see essential usage details. (no man page yet)
-* **slurmuser**: Displays a per-user set of details about what the running jobs are using in terms of cores and RAM. Like most commands we create, using the “-h” argument will reveal useful usage information.
-* **smem**: Displays memory used by your currently running jobs. If given a jobid number, it will display info about the memory usage of that job. (no man page yet)
-* memory reporting script - puts per-user output daily into directories under /jhpce/shared/jhpce/jhpce-log/
 
-## Contributed Programs We've Installed
-* **seff**: Display efficiency of CPU and RAM usage of a completed job. (no man page yet)
+### Information about cluster and jobs
+!!! Warning
+    **Do not frequently[^1] run slurmpic, squeue, sacct or other Slurm client commands using loops in shell scripts or other programs.** 
+
+    These commands all send remote procedure calls to slurmctld, the main SLURM control and scheduling daemon, They may also perform look-ups in the accounting database. That process and the database need to be *highly responsive* to the input/output caused by running jobs.
+
+    Ensure that programs limit calls to slurmctld to the minimum necessary for the information you are trying to gather. Add arguments to limit to needed partitions or users or job data fields, etcetera.
+
+[^1]: Frequently meaning more than once every **five minutes**. Do you REALLY **need** to know something sooner than that? If you want to know when a job finishes, use email notification settings. You can add them to pending and running jobs using [scontrol](../slurm/tips-scontrol.md).
+
+* **slurmpic**: ***An essential program for getting cluster status info.*** Use -h option to see essential usage details.
+* **jobson**: Displays running jobs running on a node when given a three digit node number.
+* **qoverview**: Quick view into number of running, pending jobs. Also jobs in "abnormal" job states (such as failed)
+* **showjob**: Displays job information when given a jobid. Only works for pending or running jobs. Currently simply a shortcut for `scontrol show job jobid --details` but hopefully in the future will produce more readable output.
+* **showqos**: Displays list of our [QOS definitions](../slurm/qos.md) in a readable format. (no man page yet)
+* **showreason**: Show the Reason line from `showjob` for nodes that are in DRAIN or DOWN etc.
+* **slurm-hist-all-cores**: Histogram of core consumption for whole cluster
+* **slurm-hist-all-mem**: Histogram of RAM consumption for whole cluster
+* **slurm-hist-shared-cores**: Histogram of core consumption for only the shared partition
+* **slurm-hist-shared-mem**: Histogram of RAM consumption for only the shared partition
+* **slurmuser**: Displays per-user summary usage of RAM & CPU across the cluster. Can display by partition or for a specific user.
+* **smem**: Displays memory used by your currently running jobs. If given a jobid number, it will display info about the memory usage of that job. (no man page yet)
+* memory reporting script - puts per-user output daily into directories under `/jhpce/shared/jhpce/jhpce-log/`
+* **useron**: List nodes where a user has running jobs.
+
+### Contributed SLURM Programs We've Installed
+* **reportseff**: Very handy tool! Displays efficiency of CPU and RAM usage for jobs, job array elements. Can be given many options to control output.
+* **seff**: Display efficiency of CPU and RAM usage of a single completed job. (no man page yet)
 * **[slurm-mail:](https://github.com/neilmunday/slurm-mail)** Tool used to add details to mail sent to you. Not something you can modify. Listed for completeness.
- 
+
 ## Provided with Slurm
 
 All of the manual pages are [here](https://slurm.schedmd.com/archive/slurm-22.05.9/man_index.html), including those for the configuration files found in /etc/slurm/
 
 ### Submitting Jobs
-
 
 * [salloc](https://slurm.schedmd.com/archive/slurm-22.05.9/salloc.html): request an interactive job allocation (doesn't start any processes anywhere)
 * [sbatch](https://slurm.schedmd.com/archive/slurm-22.05.9/sbatch.html): submit a batch script to Slurm to create an allocation and run processes

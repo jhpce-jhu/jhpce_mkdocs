@@ -4,9 +4,9 @@ tags:
 ---
 
 # **All About SLURM Jobs**
-Well, maybe not ALL.
+Well, maybe not ALL. :smile:
 
-Here we try to describe some basic facts about jobs. We will point to this document in the other places in the web site where we mention some of these core facts. There are links to some of these other web pages in this document, but see the navigation bar for a complete list of pages.
+Here we try to describe some basic facts about jobs. We will point to this document in the other places in the web site where we mention some of these core facts. There are links to some of these other web pages in this document, but see the navigation bar for a complete list of SLURM topics/pages.
 
 SLURM is popular because it is flexible and supports many different computational needs. Users do complex things on various clusters, and the way you normally use SLURM may not at all match the way someone else does.
 
