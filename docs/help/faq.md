@@ -125,6 +125,7 @@ We have a [SAS usage document](../sw/sas.md). Please read it for useful tips.
 
 ## Slurm
 - There is a dedicated [SLURM FAQ](../slurm/slurm-faq.md) document
+- Commands related to SLURM can be found in [this document](../slurm/slurm-commands-ref.md) 
 
 ## SSH
 - For a variety of questions and information about ssh - please see our [ssh document](../access/ssh.md).
