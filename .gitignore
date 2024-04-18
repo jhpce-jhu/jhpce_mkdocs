@@ -8,3 +8,7 @@ drafts
 .cache
 jhpce_docs/holdingpen
 jhpce_docs/holdingpen/docs.md
+*.swp
+*.swo
+*.swn
+*.swm
