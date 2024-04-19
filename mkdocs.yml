@@ -61,7 +61,9 @@ nav:
       - Quotas: storage/quotas.md
       - Getting More Space: storage/buying-in.md
       - Old Stg Page: storage/storage.md
+      - Storage Tips: storage/stg-tips.md
       - Fastscratch: storage/fastscratch.md
+      - Encrypting filesystems with ENCFS: storage/encfs.md
       - Copying within cluster: files/copying-files.md
       - Backups & Restores: storage/backups-restores.md
     - Software:

@@ -1,89 +1,160 @@
----
-tags:
-  - topic-overview
-  - needs-major-revision
----
 
 # STORAGE OVERVIEW
-!!! Warning
-    Document under heavy-duty construction
-
-Previous [stg page](storage.md) has some text that should move into this one.
 
 ## Types of storage
-There are three basic categories of data storage you can write to.
+There are three types of data storage spaces available on the JHPCE cluster.
 
+<style>
+    table, th, td {
+      border: 1px solid black;
+      border-collapse: collapse;
+    }
 
-|Type|Example Path|Quota?|Use|
-|-------|-------------|:----:|---|
-|Home directory|/users/*yourusername*|Yes|Store your environment|
-|Project space|/dcs07/*grpname*/data|Yes|Research data|
-|Scratch space|/fastscratch/|No|Application temporary files|
+    .heatMap {
+        width: 100%;
+        text-align: center;
+        align: left;
+    }
+    .heatMap th {
+        background: lightgrey;
+        word-wrap: break-word;
+        text-align: center;
+    }
+    .heatMap tr:nth-child(1) { background: PowderBlue   ; }
+    .heatMap tr:nth-child(2) { background: CornflowerBlue }
+    .heatMap tr:nth-child(3) { background: PaleTurquoise; }
+    .heatMap tr:nth-child(4) { background: LightSteelBlue   ; }
+    .heatMap tr:nth-child(5) { background: CornflowerBlue ; }
+    .heatMap tr:nth-child(6) { background: SkyBlue; }
+    .heatMap tr:nth-child(7) { background: PaleTurquoise    ; }
+</style>
 
+<div class="heatMap">
+<TABLE align="left">
+<TR><TH>Type</TH><TH>Example Path</TH><TH>Quota?</TH><TH>Use</TH><TH>Cost</TH></TR>
+<TR><TD>Home directory</TD><TD>/users/USERID</TD><TD>100GB</TD><TD>Small datasets, Programs, Applications</TD><TD>$350/TB/yr - max $35/yr if 100GB used</TD></TR>
+<TR><TD>Project space</TD><TD>/dcs0?/*grpname*/data</TD><TD>Purchased Allocation</TD><TD>Research data</TD><TD>Between $25/TB/yr and $40/TB/yr</TD></TR>
+<TR><TD>Scratch space</TD><TD>$MYSCRATCH</TD><TD>1TB</TD><TD>Temporary files</TD><TD>Free</TD></TR>
 
-Characteristics, best uses of each.
-
-Speed differences between SSD (dcs06, fastscratch) and spinning hard drives (dcs04, dsc05, dcs06).
-
-## Specific File Systems You Need To Know About
-Make a table for each of the three types of storage. Instead of one large table. Be consistent in dealing with the three types of stg.
-
-In each table, include
-
-* Name or form (/dcs0N/group/data)
-* the environment variable you can use to refer to it, e.g. $HOME $FASTSCRATCH (JRT doesn't know of a SLURM variable for where your job starts. There's SLURM_SUBMIT_DIR but it doesn't reflect any usage of --chdir)
-
-## Don't fill up /tmp
-What about compute node's /tmp? Users need to know about it, because they may not know that software often writes there, and they need to understand that it is a shared limited resource. if they are explicitly writing to /tmp they need to know to limit their usage and clean up after themselves
+</TABLE>
+</div>
 
 ## Home directories
-How to learn how much you're using. How often updated?
-Disk quotas - only hard, no soft (so no warning)
-Issue with snapshots preventing you from being able to immediately reduce usage. Ask for increase in disk quota while overhang is being deleted?
-See [this document](buying-in.md) to request increases in /users quota?
+All users have access to their own personal home directory space.  The path
+to your home directory space is /users/USERID.  By default, only you have
+access to you home directory.
 
-## Buying additional storage space
-Periodic offerings.
-How paid for (and therefore length of committment)
+Home directories can be used for storing programs you write, data that
+you will be working with, or applications that you need to run.  In a Linux
+shell, your home directory can be referred to by ~ or $HOME
+
+All home directories have a 100 GB quota.  You can see how much space you
+are using by running the "hquota" command.  This informaiton is also shown
+to you each time you login to the cluster.
+If you are finding that you need more space than the 100GB provided, please
+email us at bitsupport@lists.jhu.edu. We will work with you to find additional
+available space to use. This may include utilizing your 1TB of temporary
+scratch space 
+
+Home directories are backed up, but other storage areas are probably not. So
+if you are working in another directory, and you are generating unique
+data, you should copy it to your home directory, or copy it off of the JHPCE
+cluster.
+
+For home directory space you are only charged for the actual storage you are
+using at a rate of $0.35/GB/yr.  As you add or remove files, your charge will
+increase or decrease based on your usage.
+
+## Project Spaces
+
+Every 12 - 18 months, a new large storage array is purchased for
+the JHPCE cluster, and allocations for these storage spaces are sold to 
+the various PIs or groups that need storage space.  As part of the planning
+process for bringing a new storage array online, we will reach out to all
+active PIs on the cluster, and surey them for their expected storage needs.
+We will then size the new storage array based on those needs.
+
+Our last large storage build was in 2023, for the DCS07 storage array.  We
+do still have some unsold capacity on this array, so please reach out to
+us at bitsupport@lists.jhu.edu if you have a need for additional storage.
+
+As of 2024-05-01, the currect project storage arrays in places are:
+<div class="heatMap">
+<TABLE align="left">
+<TR><TH>Storage Name</TH><TH>Year Built</TH><TH># of Disks</TH><TH>Disk Size</TH><TH># of JBODs</TH><TH>Useable Space</TH><TH>Cost</TH><TH>Cost per TB</TH></TR>
+<TR><TD>DCL02</TD><TD>2018</TD><TD>440</TD><TD>8TB</TD><TD>10</TD><TD>2.4PB</TD><TD>$164,870.14</TD><TD>$66.57</TD></TR>
+<TR><TD>DCS04<sup>1</sup></TD><TD>2020</TD><TD>720</TD><TD>12TB</TD><TD>10</TD><TD>5.0PB</TD><TD>$202,451.29</TD><TD>$40.45</TD></TR>
+<TR><TD>DCS05<sup>2</sup></TD><TD>2021</TD><TD>480</TD><TD>20TB</TD><TD>8</TD><TD>6.2PB</TD><TD>$240,881.36</TD><TD>$38.83</TD></TR>
+<TR><TD>DCS06<sup>3</sup></TD><TD>2021</TD><TD>16</TD><TD>7.68</TD><TD>1</TD><TD>88TB</TD><TD>$34,207.00</TD><TD>$305.17</TD></TR>
+<TR><TD>DCS07</TD><TD>2023</TD><TD>300</TD><TD>22TB</TD><TD>5</TD><TD>4.8PB</TD><TD>$145,453.99</TD><TD>$30.61</TD></TR>
+</TABLE>
+</div>
+[^1]: Part of DCS04 was used for legacy-dcs01 space
+[^2]: Part of DCS05 was used for legacy-dcl01 space
+[^3]: SSD-based array used by CSUB cluster
+
+Other Storage Arrays currently in use on the JHPCE cluster:
+
+<div class="heatMap">
+<TABLE align="left">
+<TR><TH>Storage Name</TH><TH>Use</TH><TH>Year Built</TH><TH># of Disks</TH><TH>Disk Size</TH><TH># of JBODs</TH><TH>Useable Space</TH><TH>Cost</TH><TH>Cost per TB</TH></TR>
+<TR><TD>DCS02</TD><TD>/home,/jhpce,/legacy</TD><TD>2016</TD><TD>40</TD><TD>6TB</TD><TD>1</TD><TD>172TB</TD><TD>$21,168.50</TD><TD>$122.50</TD></TR>
+<TR><TD>DCS03</TD><TD>Backups</TD><TD>2017</TD><TD>450</TD><TD>4TB,6TB</TD><TD>10</TD><TD>2.1PB</TD><TD>$136,919.94</TD><TD>$62.55</TD></TR>
+<TR><TD>Fastscratch</TD><TD>Scratch</TD><TD>2018</TD><TD>24</TD><TD>1TB</TD><TD>1</TD><TD>24TB</TD><TD>$17,983.45</TD><TD>$749.29</TD></TR>
+</TABLE>
+</div>
+These storage arrays are built on the Dirt Cheap Storage and Dirt Cheap Lustre
+architecutre, hence the "DCS" and "DCL" names, as described in
+[this paper](docs/greenDirtCheapStorage.pdf) from 2013. The storage arrays have
+been historically built on commodity servers and large JBODS
+(Just a Bunch Of Disks) from Supermicro, and run [ZFS](https://zfsonlinux.org/)
+with [Lustre](https://www.lustre.org/) on top of it in the case of the DCL
+arrays.
+
+## Scratch Space
+
+We have a "Fastscratch" storage array that can be used by all users for
+storing files for less than 30 days. This storage array is in place to provide
+an additional 1TB of temporary storage space beyond the 100GB of home directory
+space. It is not for long-term storage of data, and all files older than 30
+days are purged from this "Fastscratch" space.  More information about
+using Fastscratch, including important restrictions, can be
+found [here](fastscratch.md).
 
 ## Backing up storage
 You need to ensure that you have copies of your most vital files located somewhere else.
 See [this document](backups-restores.md) for more information.
 
-## Getting information about storage
-* du -sh
-* df -h
-* df -h .
-
-Consider potential impact of running certain commands that will cause lots of I/O. Not crossing file system boundaries is an option found on a number of UNIX commands that is good to use.
-
-## JUST YANKED OUT OF KNOWLEDGEBASE DOC - PUT SOMEWHERE
-
-## Disk Storage Space on the JHPCE Cluster
-+ There are several types of storage on the JHPCE cluster. 
-  + Some space is for permanent storage of files, and other spaces can be used for short term storage of data.
-  + For long term storage of files, most users make use of their 100GB of space in their home directory. 
-  + For those groups needing more, we have large storage arrays and sell allocations on these large arrays. [Storage docs](https://jhpce-jhu.github.io/jhpce_mkdocs/storage/).
-  + We build a new storage array about every 18 months; so if you are interested in purchasing an allocation please email bitsupport@lists.jhu.edu. 
-  + In addition to these long-term storage offerings, there are scratch space areas for short-term data storage. 
-    + Scratch space tends to be faster. Using scratch space avoids taking up space in your home or project storage space.
-  + The best area used for scratch is the `fastscratch` array on the cluster. The fastscratch array provides 22TB of space that is built on faster SSD drives, vs traditional hard drives used for project space and home directories. All users have a 1TB quota for scratch space, and data older than 30 days is purged.
-  + Traditionally in Unix/Linux, `/tmp` or `/var/tmp` directories are used for storing temporary files. On the JHPCE cluster, this is strongly discouraged as these directories are small. 
-  + In R, the `tmpdir()` setting will dictate where temporary files are stored. If you are generating 10s of GB of temporary files, change `tmpdir()` to `fastscratch`.
-  + In SAS, the default `WORK` directory will be located under your `fastscratch` directory.
-  + In Stata, the default `tempfile` location is under `/tmp`. This can be changed by setting the `STATATMP` environment variable.
-
 ## Encrypted filesystem
-
-!!! Hopefully
-    We can just delete this info because we're getting rid of Lustre ASAP
-    
-+ The JHPCE Cluster currently supports the following mechanisms for
-using encrypted filesystems.
-+ Encrypted filesystem are used to provide “Encryption At Rest”, meaning that the data on disk will be safely
+ 
+Encrypted filesystem are used to
+provide “Encryption At Rest”, meaning that the data on disk will be safely
 stored in an encrypted format, and only available in an unencrypted
-state when the data is accessed by an approved user.
-+ Userspace encrypted filesystems using `encfs` `ZFS/Lustre` encrypted
-filesystems.
-+ The `DCL02` storage array is built on encrypted disk
-devices.
+state when the data is accessed by an approved user. This may be desireable
+when working with more sensitive data sources, or where Data Use Agreements
+require “Encryption At Rest”.
+
+The JHPCE Cluster currently supports the following mechanisms for
+providing encrypted filesystems:
+
+  + Userspace encrypted filesystems using encfs. See [ENCFS on JHPCE](encfs.md).
+  + If need be, a Project Storage space can be encrypted with ZFS encryption.
+  + The `DCL02` storage array is built on encrypted disk devices.
+
+## Deprecated Storage Arrays:
+For historicla purposes, these are the storage arrays that have been used over 
+time on the JHPCE cluster:
+<br><sup>information deemed reliable but not guaranteed</sup>
+
+|Storage Name|Year Built|Year Decom.|# of Disks|Disk Size|# of JBODs|Total Useable Space|Cost|Cost per TB|
+|---|---|---|---|---|---|---|---|---|
+|DCL01+exp|2015|2023|440|8TB|20|3.4PB|$164,870.14|$66.57|
+|DCS01|2013|2021|360|3TB|8|688TB|$109,961.00|$159.82|
+|amber03|2012|2020|72|2TB|2|100TB|$64,861.00|$648.61|
+|amber02|2011|2016|24|1TB|1|16TB|$14,730.00|$920.62|
+|dexter|2011|2016|12|1TB|1|30TB|$13,690.00|$456.33|
+|thumper02|2010|2016|24|500G|1|16TB|$21,025.00|$1314.06|
+|amber01 (/home)|2009|2016|96|500GB+1TB|2|72TB|$92,984.00|$1291.44|
+|nexsan2|2009|2016|12|2TB|1|12TB|$14,436.00|$1203.00|
+|thumper01|2008|2016|24|500G|1|16TB|$17,079.00|$1067.00|
+|nexsan1|2006|2016|12|1TB|1|6TB|$19,060.00|$3176.66|
