@@ -62,9 +62,4 @@ There is no reporting system currently available to display fastscratch disk usa
 cd $MYSCRATCH
 du -sh .
 ```
-
-### Fastscratch automated cleaning
-
-Files which have not been modified in the last 30 days are automatically deleted by a daily process.
-
-If you extract files from an archive and maintain their original creation date, they may be deleted sooner than you expect. 
+For more information on using fastscratch, please see [This page](fastscratch.md)

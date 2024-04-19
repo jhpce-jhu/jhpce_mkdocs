@@ -60,7 +60,6 @@ nav:
       - Copying within cluster: files/copying-files.md
     - Storage Policies and Practices: 
       - storage/index.md
-      - Getting More Space: storage/buying-in.md
       - Backups and Restores: storage/backups-restores.md
       - Quotas: storage/quotas.md
       - Fastscratch: storage/fastscratch.md
