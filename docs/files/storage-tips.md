@@ -203,6 +203,6 @@ backed up.
 
 If not, you should be sure to copy any unique or difficult-to-repoduce
 results to your home directory, or transfer them off of the JHPCE cluster, so
-that you have a backup of the files.  See [this document](backups-restores.md)
+that you have a backup of the files.  See [this document](../storage/backups-restores.md)
 for more information.
 
