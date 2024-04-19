@@ -137,7 +137,7 @@ require “Encryption At Rest”.
 The JHPCE Cluster currently supports the following mechanisms for
 providing encrypted filesystems:
 
-  + Userspace encrypted filesystems using encfs. See [ENCFS on JHPCE](encfs.md).
+  + Userspace encrypted filesystems using encfs. See [ENCFS on JHPCE](../files/encfs.md).
   + If need be, a Project Storage space can be encrypted with ZFS encryption.
   + The `DCL02` storage array is built on encrypted disk devices.
 

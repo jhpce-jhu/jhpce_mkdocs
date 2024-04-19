@@ -55,17 +55,15 @@ nav:
       - Archive Files: files/archive-files.md
       - Navigating Deep Directory Trees: files/deep-paths.md
       - Data Security: files/data-security.md
-    # should storage be a subsidiary of managing files?
-    - Storage:
-      - Storage Overview: storage/stg-overview.md
-      - Quotas: storage/quotas.md
-      - Getting More Space: storage/buying-in.md
-      - Old Stg Page: storage/storage.md
-      - Storage Tips: storage/stg-tips.md
-      - Fastscratch: storage/fastscratch.md
-      - Encrypting filesystems with ENCFS: storage/encfs.md
+      - Encrypting filesystems with ENCFS: files/encfs.md
+      - Storage Tips: files/storage-tips.md
       - Copying within cluster: files/copying-files.md
-      - Backups & Restores: storage/backups-restores.md
+    - Storage Policies and Practices:
+      - Storage Overview: storage/storage-overview.md
+      - Getting More Space: storage/buying-in.md
+      - Backups and Restores: storage/backups-restores.md
+      - Quotas: storage/quotas.md
+      - Fastscratch: storage/fastscratch.md
     - Software:
       - Overview: sw/sw-overview.md
       - Local Software:
