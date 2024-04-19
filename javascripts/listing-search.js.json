@@ -1272,6 +1272,66 @@
     "html": "<pre><span></span><code>cd /users/.zfs/snapshot\nls -ld */your-userid/bob/frank/susan\ncp -p 2024-02-16-23:00/your-userid/bob/frank/susan $HOME/restored-susan\n</code></pre>"
   },
   {
+    "page_name": "Encrypting filesystems with ENCFS",
+    "page_url": "../storage/encfs/",
+    "text": "[jhpce01 /users/bob]$ srun --pty --x11 bash\nLast login: Thu Nov  3 14:33:05 2016 from jhpce01.cm.cluster\n[compute-070 /users/bob]$ mkdir ENCRYPTED\n[compute-070 /users/bob]$ mkdir UNENCRYPTED\n",
+    "html": "<pre><span></span><code>[jhpce01 /users/bob]$ srun --pty --x11 bash\nLast login: Thu Nov  3 14:33:05 2016 from jhpce01.cm.cluster\n[compute-070 /users/bob]$ mkdir ENCRYPTED\n[compute-070 /users/bob]$ mkdir UNENCRYPTED\n</code></pre>"
+  },
+  {
+    "page_name": "Encrypting filesystems with ENCFS",
+    "page_url": "../storage/encfs/",
+    "text": "[compute-070 /users/bob/]$ module load encfs\n[compute-070 /users/bob/]$ \nencfs /users/bob/ENCRYPTED /users/bob/UNENCRYPTED\nCreating new encrypted volume.\nPlease choose from one of the following options:\n enter \"x\" for expert configuration mode,\n enter \"p\" for pre-configured paranoia mode,\n anything else, or an empty line will select standard mode.\n?> (just hit enter here)\n\nStandard configuration selected.\n\nConfiguration finished.  The filesystem to be created has\nthe following properties:\nFilesystem cipher: \"ssl/aes\", version 3:0:2\nFilename encoding: \"nameio/block\", version 3:0:1\nKey Size: 192 bits\nBlock Size: 1024 bytes\nEach file contains 8 byte header with unique IV data.\nFilenames encoded using IV chaining mode.\nFile holes passed through to ciphertext.\n\nNow you will need to enter a password for your filesystem.\nYou will need to remember this password, as there is absolutely\nno recovery mechanism.  However, the password can be changed\nlater using encfsctl.\n\nNew Encfs Password: (enter password)\nVerify Encfs Password: (re-enter password)\n[compute-070 /users/bob]$ df -h\n...\nencfs                  50T   17T   33T  34% /users/bob/UNENCRYPTED\n",
+    "html": "<pre><span></span><code>[compute-070 /users/bob/]$ module load encfs\n[compute-070 /users/bob/]$ \nencfs /users/bob/ENCRYPTED /users/bob/UNENCRYPTED\nCreating new encrypted volume.\nPlease choose from one of the following options:\n enter \"x\" for expert configuration mode,\n enter \"p\" for pre-configured paranoia mode,\n anything else, or an empty line will select standard mode.\n?&gt; (just hit enter here)\n\nStandard configuration selected.\n\nConfiguration finished.  The filesystem to be created has\nthe following properties:\nFilesystem cipher: \"ssl/aes\", version 3:0:2\nFilename encoding: \"nameio/block\", version 3:0:1\nKey Size: 192 bits\nBlock Size: 1024 bytes\nEach file contains 8 byte header with unique IV data.\nFilenames encoded using IV chaining mode.\nFile holes passed through to ciphertext.\n\nNow you will need to enter a password for your filesystem.\nYou will need to remember this password, as there is absolutely\nno recovery mechanism.  However, the password can be changed\nlater using encfsctl.\n\nNew Encfs Password: (enter password)\nVerify Encfs Password: (re-enter password)\n[compute-070 /users/bob]$ df -h\n...\nencfs                  50T   17T   33T  34% /users/bob/UNENCRYPTED\n</code></pre>"
+  },
+  {
+    "page_name": "Encrypting filesystems with ENCFS",
+    "page_url": "../storage/encfs/",
+    "text": "[compute-070 /users/bob]$ ls ENCRYPTED\n[compute-070 /users/bob]$ ls UNENCRYPTED\n[compute-070 /users/bob]$ cd UNENCRYPTED\n[compute-070 /users/bob/UNENCRYPTED]$ echo \"This is a test\" > file1\n[compute-070 /users/bob/UNENCRYPTED]$ cd ..\n[compute-070 /users/bob]$ ls -l UNENCRYPTED\n-rw-r----- 1 bob mmi 15 Jan 27 16:34 file1\n[compute-070 /users/bob]$ ls -l ENCRYPTED\n-rw-r----- 1 bob mmi   23 Jan 27 16:34 Fng4AKmAzYP6OrpOrCPH3J,x\n[compute-070 /users/bob]$ cat UNENCRYPTED/file1\nThis is a test\n[compute-070 /users/bob]$ cat ENCRYPTED/Fng4AKmAzYP6OrpOrCPH3J,x \n?tS?$??#?q?%o\ub741?\n[compute-070 /users/bob]$ fusermount -u /users/bob/UNENCRYPTED\n[compute-070 /users/bob]$ ls -l UNENCRYPTED\n[compute-070 /users/bob]$ ls -l ENCRYPTED\n-rw-r----- 1 bob mmi   23 Jan 27 16:34 Fng4AKmAzYP6OrpOrCPH3J,x\n[compute-070 /users/bob]$ exit\nConnection to compute-070.cm.cluster closed.\n",
+    "html": "<pre><span></span><code>[compute-070 /users/bob]$ ls ENCRYPTED\n[compute-070 /users/bob]$ ls UNENCRYPTED\n[compute-070 /users/bob]$ cd UNENCRYPTED\n[compute-070 /users/bob/UNENCRYPTED]$ echo \"This is a test\" &gt; file1\n[compute-070 /users/bob/UNENCRYPTED]$ cd ..\n[compute-070 /users/bob]$ ls -l UNENCRYPTED\n-rw-r----- 1 bob mmi 15 Jan 27 16:34 file1\n[compute-070 /users/bob]$ ls -l ENCRYPTED\n-rw-r----- 1 bob mmi   23 Jan 27 16:34 Fng4AKmAzYP6OrpOrCPH3J,x\n[compute-070 /users/bob]$ cat UNENCRYPTED/file1\nThis is a test\n[compute-070 /users/bob]$ cat ENCRYPTED/Fng4AKmAzYP6OrpOrCPH3J,x \n?tS?$??#?q?%o\ub741?\n[compute-070 /users/bob]$ fusermount -u /users/bob/UNENCRYPTED\n[compute-070 /users/bob]$ ls -l UNENCRYPTED\n[compute-070 /users/bob]$ ls -l ENCRYPTED\n-rw-r----- 1 bob mmi   23 Jan 27 16:34 Fng4AKmAzYP6OrpOrCPH3J,x\n[compute-070 /users/bob]$ exit\nConnection to compute-070.cm.cluster closed.\n</code></pre>"
+  },
+  {
+    "page_name": "Encrypting filesystems with ENCFS",
+    "page_url": "../storage/encfs/",
+    "text": "[jhpce01 /users/bob]$ srun --pty --x11 bash\nLast login: Fri Jan 27 16:10:27 2017 from jhpce01.cm.cluster\n[compute-097 /users/bob]$ ls -l UNENCRYPTED\n[compute-097 /users/bob]$ ls -l ENCRYPTED\n-rw-r----- 1 bob mmi   23 Jan 27 16:34 Fng4AKmAzYP6OrpOrCPH3J,x\n[compute-097 /users/bob]$ module load encfs\n[compute-097 /users/bob]$ \nencfs /users/bob/ENCRYPTED /users/bob/UNENCRYPTED\nEncFS Password: (reenter the password you used to encrypt the data)\n[compute-097 /users/bob]$ ls -l UNENCRYPTED\n-rw-r----- 1 bob mmi 15 Jan 27 16:34 file1\n[compute-097 /users/bob]$ cd UNENCRYPTED\n[compute-097 /users/bob/UNENCRYPTED]$ cat file1\nThis is a test\n",
+    "html": "<pre><span></span><code>[jhpce01 /users/bob]$ srun --pty --x11 bash\nLast login: Fri Jan 27 16:10:27 2017 from jhpce01.cm.cluster\n[compute-097 /users/bob]$ ls -l UNENCRYPTED\n[compute-097 /users/bob]$ ls -l ENCRYPTED\n-rw-r----- 1 bob mmi   23 Jan 27 16:34 Fng4AKmAzYP6OrpOrCPH3J,x\n[compute-097 /users/bob]$ module load encfs\n[compute-097 /users/bob]$ \nencfs /users/bob/ENCRYPTED /users/bob/UNENCRYPTED\nEncFS Password: (reenter the password you used to encrypt the data)\n[compute-097 /users/bob]$ ls -l UNENCRYPTED\n-rw-r----- 1 bob mmi 15 Jan 27 16:34 file1\n[compute-097 /users/bob]$ cd UNENCRYPTED\n[compute-097 /users/bob/UNENCRYPTED]$ cat file1\nThis is a test\n</code></pre>"
+  },
+  {
+    "page_name": "Encrypting filesystems with ENCFS",
+    "page_url": "../storage/encfs/",
+    "text": "[compute-097 /users/bob/UNENCRYPTED]$ cd ..\n[compute-097 /users/bob]$ fusermount -u /users/bob/UNENCRYPTED\n[compute-097 /users/bob]$ ls -l /users/bob/UNENCRYPTED\n[compute-097 /users/bob]$ ls -l ENCRYPTED\n-rw-r----- 1 bob mmi   23 Jan 27 16:34 Fng4AKmAzYP6OrpOrCPH3J,x\n[compute-097 /users/bob]$ exit\nConnection to compute-097.cm.cluster closed.\n",
+    "html": "<pre><span></span><code>[compute-097 /users/bob/UNENCRYPTED]$ cd ..\n[compute-097 /users/bob]$ fusermount -u /users/bob/UNENCRYPTED\n[compute-097 /users/bob]$ ls -l /users/bob/UNENCRYPTED\n[compute-097 /users/bob]$ ls -l ENCRYPTED\n-rw-r----- 1 bob mmi   23 Jan 27 16:34 Fng4AKmAzYP6OrpOrCPH3J,x\n[compute-097 /users/bob]$ exit\nConnection to compute-097.cm.cluster closed.\n</code></pre>"
+  },
+  {
+    "page_name": "Encrypting filesystems with ENCFS",
+    "page_url": "../storage/encfs/",
+    "text": "[jhpce01 /users/bob]$ srun --pty --x11 bash\nLast login: Fri Jan 27 17:12:11 2017 from jhpce01.cm.cluster\n[compute-108 /users/bob]$ module load encfs\n[compute-108 /users/bob]$ \nencfs /users/bob/ENCRYPTED /users/bob/UNENCRYPTED\nEncFS Password: (reenter the password you used to encrypt the data)\n[compute-108 /users/bob]$ setfacl -m user:chuck:rx .\n[compute-108 /users/bob]$ setfacl -m user:chuck:rwx UNENCRYPTED\n",
+    "html": "<pre><span></span><code>[jhpce01 /users/bob]$ srun --pty --x11 bash\nLast login: Fri Jan 27 17:12:11 2017 from jhpce01.cm.cluster\n[compute-108 /users/bob]$ module load encfs\n[compute-108 /users/bob]$ \nencfs /users/bob/ENCRYPTED /users/bob/UNENCRYPTED\nEncFS Password: (reenter the password you used to encrypt the data)\n[compute-108 /users/bob]$ setfacl -m user:chuck:rx .\n[compute-108 /users/bob]$ setfacl -m user:chuck:rwx UNENCRYPTED\n</code></pre>"
+  },
+  {
+    "page_name": "Encrypting filesystems with ENCFS",
+    "page_url": "../storage/encfs/",
+    "text": "[jhpce01 /users/chuck]$ srun --pty --x11 bash\nLast login: Fri Jan 27 15:44:11 2017 from jhpce01.cm.cluster\n[compute-049 /users/chuck]$ module load encfs\n[compute-049 /users/chuck]$ mkdir UNENCRYPTED\n[compute-049 /users/chuck]$ \nencfs /users/bob/ENCRYPTED /users/chuck/UNENCRYPTED\nEncFS Password: (reenter the password you used to encrypt the data)\n[compute-049 /users/chuck]$ cd UNENCRYPTED\n[compute-049 /users/chuck/UNENCRYPTED]$ ls -l\n-rw-r----- 1 bob mmi 15 Jan 27 16:34 file1\n[compute-049 /users/chuck/UNENCRYPTED]$ echo \"This is chuck\" > file2\n[compute-049 /users/chuck/UNENCRYPTED]$ ls -l\n-rw-r----- 1 bob   mmi 15 Jan 27 16:34 file1\n-rw-r----- 1 chuck mmi 14 Jan 27 17:24 file2\n",
+    "html": "<pre><span></span><code>[jhpce01 /users/chuck]$ srun --pty --x11 bash\nLast login: Fri Jan 27 15:44:11 2017 from jhpce01.cm.cluster\n[compute-049 /users/chuck]$ module load encfs\n[compute-049 /users/chuck]$ mkdir UNENCRYPTED\n[compute-049 /users/chuck]$ \nencfs /users/bob/ENCRYPTED /users/chuck/UNENCRYPTED\nEncFS Password: (reenter the password you used to encrypt the data)\n[compute-049 /users/chuck]$ cd UNENCRYPTED\n[compute-049 /users/chuck/UNENCRYPTED]$ ls -l\n-rw-r----- 1 bob mmi 15 Jan 27 16:34 file1\n[compute-049 /users/chuck/UNENCRYPTED]$ echo \"This is chuck\" &gt; file2\n[compute-049 /users/chuck/UNENCRYPTED]$ ls -l\n-rw-r----- 1 bob   mmi 15 Jan 27 16:34 file1\n-rw-r----- 1 chuck mmi 14 Jan 27 17:24 file2\n</code></pre>"
+  },
+  {
+    "page_name": "Encrypting filesystems with ENCFS",
+    "page_url": "../storage/encfs/",
+    "text": "[compute-108 /users/bob]$ ls -l /users/bob/UNENCRYPTED\n-rw-r----- 1 bob   mmi 15 Jan 27 16:34 file1\n-rw-r----- 1 chuck mmi 15 Jan 27 17:24 file2\n",
+    "html": "<pre><span></span><code>[compute-108 /users/bob]$ ls -l /users/bob/UNENCRYPTED\n-rw-r----- 1 bob   mmi 15 Jan 27 16:34 file1\n-rw-r----- 1 chuck mmi 15 Jan 27 17:24 file2\n</code></pre>"
+  },
+  {
+    "page_name": "Encrypting filesystems with ENCFS",
+    "page_url": "../storage/encfs/",
+    "text": "[compute-108 /users/bob]$ fusermount -u /users/bob/UNENCRYPTED\n[compute-108 /users/bob]$ exit\n",
+    "html": "<pre><span></span><code>[compute-108 /users/bob]$ fusermount -u /users/bob/UNENCRYPTED\n[compute-108 /users/bob]$ exit\n</code></pre>"
+  },
+  {
+    "page_name": "Encrypting filesystems with ENCFS",
+    "page_url": "../storage/encfs/",
+    "text": "[compute-049 /users/chuck/UNENCRYPTED]$ cd ..\n[compute-049 /users/chuck] fusermount -u /users/chuck/UNENCRYPTED\n[compute-049 /users/chuck] exit\n",
+    "html": "<pre><span></span><code>[compute-049 /users/chuck/UNENCRYPTED]$ cd ..\n[compute-049 /users/chuck] fusermount -u /users/chuck/UNENCRYPTED\n[compute-049 /users/chuck] exit\n</code></pre>"
+  },
+  {
     "page_name": "Quotas",
     "page_url": "../storage/quotas/",
     "text": "cd\ndu -sh .\n",

@@ -381,6 +381,11 @@
          <changefreq>daily</changefreq>
     </url>
     <url>
+         <loc>https://jhpce.jhu.edu/storage/encfs/</loc>
+         <lastmod>2024-04-19</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
          <loc>https://jhpce.jhu.edu/storage/fastscratch/</loc>
          <lastmod>2024-04-19</lastmod>
          <changefreq>daily</changefreq>
@@ -392,6 +397,11 @@
     </url>
     <url>
          <loc>https://jhpce.jhu.edu/storage/stg-overview/</loc>
+         <lastmod>2024-04-19</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://jhpce.jhu.edu/storage/stg-tips/</loc>
          <lastmod>2024-04-19</lastmod>
          <changefreq>daily</changefreq>
     </url>

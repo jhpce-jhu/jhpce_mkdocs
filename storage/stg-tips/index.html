@@ -8,9 +8,13 @@
       
       
       
-        <link rel="canonical" href="https://jhpce.jhu.edu/sw/adding-pkgs/">
+        <link rel="canonical" href="https://jhpce.jhu.edu/storage/stg-tips/">
       
       
+        <link rel="prev" href="../storage/">
+      
+      
+        <link rel="next" href="../fastscratch/">
       
       
       <link rel="icon" href="../../assets/images/favicon.png">
@@ -18,7 +22,7 @@
     
     
       
-        <title>Adding Your Own Python and R Libraries - JHPCE</title>
+        <title>Storage Tips - JHPCE</title>
       
     
     
@@ -82,7 +86,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#adding-your-own-python-and-r-libraries" class="md-skip">
+        <a href="#storage-overview" class="md-skip">
           Skip to content
         </a>
       
@@ -117,7 +121,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Adding Your Own Python and R Libraries
+              Storage Tips
             
           </span>
         </div>
@@ -232,6 +236,8 @@
       
   
   
+    
+  
   
   
     
@@ -273,11 +279,11 @@
       
     
     
-    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1" checked>
         
           
           
@@ -299,7 +305,7 @@
             
           </div>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_1_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_1_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_1">
             <span class="md-nav__icon md-icon"></span>
             Home
@@ -1716,8 +1722,10 @@
                 
   
   
+    
   
   
+  
     
     
       
@@ -1744,11 +1752,11 @@
       
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1_8" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1_8" checked>
         
           
           <label class="md-nav__link" for="__nav_1_8" id="__nav_1_8_label" tabindex="0">
@@ -1762,7 +1770,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_1_8_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_1_8_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_1_8">
             <span class="md-nav__icon md-icon"></span>
             Storage
@@ -1776,7 +1784,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../storage/stg-overview/" class="md-nav__link">
+      <a href="../stg-overview/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1797,7 +1805,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../storage/quotas/" class="md-nav__link">
+      <a href="../quotas/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1818,7 +1826,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../storage/buying-in/" class="md-nav__link">
+      <a href="../buying-in/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1839,7 +1847,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../storage/storage/" class="md-nav__link">
+      <a href="../storage/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1857,10 +1865,30 @@
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../../storage/stg-tips/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Storage Tips
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   <span class="md-ellipsis">
@@ -1869,6 +1897,116 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#types-of-storage" class="md-nav__link">
+    <span class="md-ellipsis">
+      Types of storage
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#specific-file-systems-you-need-to-know-about" class="md-nav__link">
+    <span class="md-ellipsis">
+      Specific File Systems You Need To Know About
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#dont-fill-up-tmp" class="md-nav__link">
+    <span class="md-ellipsis">
+      Don't fill up /tmp
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#home-directories" class="md-nav__link">
+    <span class="md-ellipsis">
+      Home directories
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#buying-additional-storage-space" class="md-nav__link">
+    <span class="md-ellipsis">
+      Buying additional storage space
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#backing-up-storage" class="md-nav__link">
+    <span class="md-ellipsis">
+      Backing up storage
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#getting-information-about-storage" class="md-nav__link">
+    <span class="md-ellipsis">
+      Getting information about storage
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#just-yanked-out-of-knowledgebase-doc-put-somewhere" class="md-nav__link">
+    <span class="md-ellipsis">
+      JUST YANKED OUT OF KNOWLEDGEBASE DOC - PUT SOMEWHERE
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#disk-storage-space-on-the-jhpce-cluster" class="md-nav__link">
+    <span class="md-ellipsis">
+      Disk Storage Space on the JHPCE Cluster
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#encrypted-filesystem" class="md-nav__link">
+    <span class="md-ellipsis">
+      Encrypted filesystem
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -1881,7 +2019,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../storage/fastscratch/" class="md-nav__link">
+      <a href="../fastscratch/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1902,7 +2040,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../storage/encfs/" class="md-nav__link">
+      <a href="../encfs/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1944,7 +2082,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../storage/backups-restores/" class="md-nav__link">
+      <a href="../backups-restores/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2024,7 +2162,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../sw-overview/" class="md-nav__link">
+      <a href="../../sw/sw-overview/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2098,7 +2236,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../matlab/" class="md-nav__link">
+      <a href="../../sw/matlab/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2119,7 +2257,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../python/" class="md-nav__link">
+      <a href="../../sw/python/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2140,7 +2278,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../r/" class="md-nav__link">
+      <a href="../../sw/r/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2161,7 +2299,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../r-studio/" class="md-nav__link">
+      <a href="../../sw/r-studio/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2182,7 +2320,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../rstudio-server/" class="md-nav__link">
+      <a href="../../sw/rstudio-server/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2203,7 +2341,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../sas/" class="md-nav__link">
+      <a href="../../sw/sas/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2224,7 +2362,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../stata/" class="md-nav__link">
+      <a href="../../sw/stata/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2253,7 +2391,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../modules/" class="md-nav__link">
+      <a href="../../sw/modules/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2323,7 +2461,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../building-from-src/" class="md-nav__link">
+      <a href="../../sw/building-from-src/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2344,7 +2482,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../conda/" class="md-nav__link">
+      <a href="../../sw/conda/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2365,7 +2503,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../python-pkg/" class="md-nav__link">
+      <a href="../../sw/python-pkg/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2386,7 +2524,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../r-pkg/" class="md-nav__link">
+      <a href="../../sw/r-pkg/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2407,7 +2545,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../singularity/" class="md-nav__link">
+      <a href="../../sw/singularity/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2436,7 +2574,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../locally-written/" class="md-nav__link">
+      <a href="../../sw/locally-written/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2457,7 +2595,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../gui-tools/" class="md-nav__link">
+      <a href="../../sw/gui-tools/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -3161,7 +3299,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../vscode/" class="md-nav__link">
+      <a href="../../sw/vscode/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -3470,27 +3608,90 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#how-to-add-your-own-packages-to-r-and-python" class="md-nav__link">
+  <a href="#types-of-storage" class="md-nav__link">
     <span class="md-ellipsis">
-      How to add your own packages to R and python
+      Types of storage
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#r" class="md-nav__link">
+  <a href="#specific-file-systems-you-need-to-know-about" class="md-nav__link">
     <span class="md-ellipsis">
-      R
+      Specific File Systems You Need To Know About
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#python" class="md-nav__link">
+  <a href="#dont-fill-up-tmp" class="md-nav__link">
     <span class="md-ellipsis">
-      Python
+      Don't fill up /tmp
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#home-directories" class="md-nav__link">
+    <span class="md-ellipsis">
+      Home directories
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#buying-additional-storage-space" class="md-nav__link">
+    <span class="md-ellipsis">
+      Buying additional storage space
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#backing-up-storage" class="md-nav__link">
+    <span class="md-ellipsis">
+      Backing up storage
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#getting-information-about-storage" class="md-nav__link">
+    <span class="md-ellipsis">
+      Getting information about storage
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#just-yanked-out-of-knowledgebase-doc-put-somewhere" class="md-nav__link">
+    <span class="md-ellipsis">
+      JUST YANKED OUT OF KNOWLEDGEBASE DOC - PUT SOMEWHERE
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#disk-storage-space-on-the-jhpce-cluster" class="md-nav__link">
+    <span class="md-ellipsis">
+      Disk Storage Space on the JHPCE Cluster
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#encrypted-filesystem" class="md-nav__link">
+    <span class="md-ellipsis">
+      Encrypted filesystem
     </span>
   </a>
   
@@ -3515,45 +3716,120 @@
     
     
     
-      <a href="../../ourtools/tags/#needs-to-be-written" class="md-tag">needs-to-be-written</a>
+      <a href="../../ourtools/tags/#topic-overview" class="md-tag">topic-overview</a>
+    
+  
+    
+    
+    
+      <a href="../../ourtools/tags/#needs-major-revision" class="md-tag">needs-major-revision</a>
     
   
 </nav>
 
 
 
-<h1 id="adding-your-own-python-and-r-libraries">Adding Your Own Python and R Libraries<a class="headerlink" href="#adding-your-own-python-and-r-libraries" title="Anchor link to this section for reference">&para;</a></h1>
-<h2 id="how-to-add-your-own-packages-to-r-and-python">How to add your own packages to R and python<a class="headerlink" href="#how-to-add-your-own-packages-to-r-and-python" title="Anchor link to this section for reference">&para;</a></h2>
-<div class="admonition note">
-<p class="admonition-title">Authoring Note</p>
-<p>Should this document be split into ones for R and Python?</p>
-<p>I think our user community would welcome instructions on how to add pkgs to R and python, at the minimum.</p>
-<p>There are right and wrong ways to do this.</p>
-<p>There are implications of loading modules in which order before doing things.</p>
-<p>Do you create a conda environment first, or a python virtual environment?</p>
-<p>WHAT DO YOU DO WHEN YOU WANT TO RUN A DIFFERENT VERSION OF A LIBRARY THAT IS FOUND IN CONDA_R?</p>
-<p>What information do other HPC sites deem important to tell their users? Are there examples among the pages for listed TOWARDS THE BOTTOM in <a href="https://github.com/jhpce-jhu/jhpce/issues/764">this github issue</a>?</p>
-<p>A GOOD EXAMPLE
-Example from <a href="https://support.ceci-hpc.be/doc/_contents/UsingSoftwareAndLibraries/InstallingSoftwareByYourself/index.html">C.E.C.I</a></p>
+<h1 id="storage-overview">STORAGE OVERVIEW<a class="headerlink" href="#storage-overview" title="Anchor link to this section for reference">&para;</a></h1>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Document under heavy-duty construction</p>
 </div>
-<h2 id="r">R<a class="headerlink" href="#r" title="Anchor link to this section for reference">&para;</a></h2>
-<p>FIRST YOU MUST LOAD R MODULE
-<code>module load R</code></p>
-<p>If you try to load a library and it is not found, then you can install one in your home directory.</p>
-<div class="highlight"><pre><span></span><code><span class="o">&gt;</span><span class="w"> </span><span class="nf">install.packages</span><span class="p">(</span><span class="s">&quot;sf&quot;</span><span class="p">)</span>
-<span class="o">&gt;</span><span class="w"> </span><span class="nf">install.packages</span><span class="p">(</span><span class="s">&#39;terra&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">repos</span><span class="o">=</span><span class="s">&#39;https://rspatial.r-universe.dev&#39;</span><span class="p">)</span>
-<span class="o">&gt;</span><span class="w"> </span><span class="nf">library</span><span class="p">(</span><span class="s">&#39;sf&#39;</span><span class="p">)</span>
-<span class="o">&gt;</span><span class="w"> </span><span class="nf">library</span><span class="p">(</span><span class="s">&#39;terra&#39;</span><span class="p">)</span>
-</code></pre></div>
-<p>You should recompile your libraries when the version of R changes.</p>
-<p>How do you recompile instead of install?</p>
-<p>When installing R packages from source with compiled programs, you can add custom compiler flags in ~/.R/Makevars. Adding optimization flags may provide a boost in performance for some packages. 
-<div class="highlight"><pre><span></span><code>STDFLAGS = -O2 -pipe -Wall 
-</code></pre></div></p>
-<p>We have a wide variety of CPU architecture across the cluster, so you probably don't want to add to STDFLAGS <code>-march=</code> and <code>-mtune=</code> arguments.</p>
-<h2 id="python">Python<a class="headerlink" href="#python" title="Anchor link to this section for reference">&para;</a></h2>
-<p>C.E.C.I <a href="https://support.ceci-hpc.be/doc/_contents/UsingSoftwareAndLibraries/InstallingSoftwareByYourself/index.html">has a page</a> with what I think might be useful info:</p>
-<p>It is important when you install a package that you load the correct Python module, and use the Pip option --no-binary :all: to recompile from source rather than install pre-compiled binaries whenever possible. See more information in the PIP documentation </p>
+<p>Previous <a href="../storage/">stg page</a> has some text that should move into this one.</p>
+<h2 id="types-of-storage">Types of storage<a class="headerlink" href="#types-of-storage" title="Anchor link to this section for reference">&para;</a></h2>
+<p>There are three basic categories of data storage you can write to.</p>
+<table>
+<thead>
+<tr>
+<th>Type</th>
+<th>Example Path</th>
+<th style="text-align: center;">Quota?</th>
+<th>Use</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Home directory</td>
+<td>/users/<em>yourusername</em></td>
+<td style="text-align: center;">Yes</td>
+<td>Store your environment</td>
+</tr>
+<tr>
+<td>Project space</td>
+<td>/dcs07/<em>grpname</em>/data</td>
+<td style="text-align: center;">Yes</td>
+<td>Research data</td>
+</tr>
+<tr>
+<td>Scratch space</td>
+<td>/fastscratch/</td>
+<td style="text-align: center;">No</td>
+<td>Application temporary files</td>
+</tr>
+</tbody>
+</table>
+<p>Characteristics, best uses of each.</p>
+<p>Speed differences between SSD (dcs06, fastscratch) and spinning hard drives (dcs04, dsc05, dcs06).</p>
+<h2 id="specific-file-systems-you-need-to-know-about">Specific File Systems You Need To Know About<a class="headerlink" href="#specific-file-systems-you-need-to-know-about" title="Anchor link to this section for reference">&para;</a></h2>
+<p>Make a table for each of the three types of storage. Instead of one large table. Be consistent in dealing with the three types of stg.</p>
+<p>In each table, include</p>
+<ul>
+<li>Name or form (/dcs0N/group/data)</li>
+<li>the environment variable you can use to refer to it, e.g. $HOME $FASTSCRATCH (JRT doesn't know of a SLURM variable for where your job starts. There's SLURM_SUBMIT_DIR but it doesn't reflect any usage of --chdir)</li>
+</ul>
+<h2 id="dont-fill-up-tmp">Don't fill up /tmp<a class="headerlink" href="#dont-fill-up-tmp" title="Anchor link to this section for reference">&para;</a></h2>
+<p>What about compute node's /tmp? Users need to know about it, because they may not know that software often writes there, and they need to understand that it is a shared limited resource. if they are explicitly writing to /tmp they need to know to limit their usage and clean up after themselves</p>
+<h2 id="home-directories">Home directories<a class="headerlink" href="#home-directories" title="Anchor link to this section for reference">&para;</a></h2>
+<p>How to learn how much you're using. How often updated?
+Disk quotas - only hard, no soft (so no warning)
+Issue with snapshots preventing you from being able to immediately reduce usage. Ask for increase in disk quota while overhang is being deleted?
+See <a href="../buying-in/">this document</a> to request increases in /users quota?</p>
+<h2 id="buying-additional-storage-space">Buying additional storage space<a class="headerlink" href="#buying-additional-storage-space" title="Anchor link to this section for reference">&para;</a></h2>
+<p>Periodic offerings.
+How paid for (and therefore length of committment)</p>
+<h2 id="backing-up-storage">Backing up storage<a class="headerlink" href="#backing-up-storage" title="Anchor link to this section for reference">&para;</a></h2>
+<p>You need to ensure that you have copies of your most vital files located somewhere else.
+See <a href="../backups-restores/">this document</a> for more information.</p>
+<h2 id="getting-information-about-storage">Getting information about storage<a class="headerlink" href="#getting-information-about-storage" title="Anchor link to this section for reference">&para;</a></h2>
+<ul>
+<li>du -sh</li>
+<li>df -h</li>
+<li>df -h .</li>
+</ul>
+<p>Consider potential impact of running certain commands that will cause lots of I/O. Not crossing file system boundaries is an option found on a number of UNIX commands that is good to use.</p>
+<h2 id="just-yanked-out-of-knowledgebase-doc-put-somewhere">JUST YANKED OUT OF KNOWLEDGEBASE DOC - PUT SOMEWHERE<a class="headerlink" href="#just-yanked-out-of-knowledgebase-doc-put-somewhere" title="Anchor link to this section for reference">&para;</a></h2>
+<h2 id="disk-storage-space-on-the-jhpce-cluster">Disk Storage Space on the JHPCE Cluster<a class="headerlink" href="#disk-storage-space-on-the-jhpce-cluster" title="Anchor link to this section for reference">&para;</a></h2>
+<ul>
+<li>There are several types of storage on the JHPCE cluster. </li>
+<li>Some space is for permanent storage of files, and other spaces can be used for short term storage of data.</li>
+<li>For long term storage of files, most users make use of their 100GB of space in their home directory. </li>
+<li>For those groups needing more, we have large storage arrays and sell allocations on these large arrays. <a href="https://jhpce-jhu.github.io/jhpce_mkdocs/storage/">Storage docs</a>.</li>
+<li>We build a new storage array about every 18 months; so if you are interested in purchasing an allocation please email bitsupport@lists.jhu.edu. </li>
+<li>In addition to these long-term storage offerings, there are scratch space areas for short-term data storage. <ul>
+<li>Scratch space tends to be faster. Using scratch space avoids taking up space in your home or project storage space.</li>
+</ul>
+</li>
+<li>The best area used for scratch is the <code>fastscratch</code> array on the cluster. The fastscratch array provides 22TB of space that is built on faster SSD drives, vs traditional hard drives used for project space and home directories. All users have a 1TB quota for scratch space, and data older than 30 days is purged.</li>
+<li>Traditionally in Unix/Linux, <code>/tmp</code> or <code>/var/tmp</code> directories are used for storing temporary files. On the JHPCE cluster, this is strongly discouraged as these directories are small. </li>
+<li>In R, the <code>tmpdir()</code> setting will dictate where temporary files are stored. If you are generating 10s of GB of temporary files, change <code>tmpdir()</code> to <code>fastscratch</code>.</li>
+<li>In SAS, the default <code>WORK</code> directory will be located under your <code>fastscratch</code> directory.</li>
+<li>In Stata, the default <code>tempfile</code> location is under <code>/tmp</code>. This can be changed by setting the <code>STATATMP</code> environment variable.</li>
+</ul>
+<h2 id="encrypted-filesystem">Encrypted filesystem<a class="headerlink" href="#encrypted-filesystem" title="Anchor link to this section for reference">&para;</a></h2>
+<div class="admonition hopefully">
+<p class="admonition-title">Hopefully</p>
+<p>We can just delete this info because we're getting rid of Lustre ASAP</p>
+</div>
+<ul>
+<li>The JHPCE Cluster currently supports the following mechanisms for
+using encrypted filesystems.</li>
+<li>Encrypted filesystem are used to provide “Encryption At Rest”, meaning that the data on disk will be safely
+stored in an encrypted format, and only available in an unencrypted
+state when the data is accessed by an approved user.</li>
+<li>Userspace encrypted filesystems using <code>encfs</code> <code>ZFS/Lustre</code> encrypted
+filesystems.</li>
+<li>The <code>DCL02</code> storage array is built on encrypted disk
+devices.</li>
+</ul>
 
 
 
@@ -3574,7 +3850,7 @@ Example from <a href="https://support.ceci-hpc.be/doc/_contents/UsingSoftwareAnd
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1-2.1-2M12.5 7v5.2l4 2.4-1 1L11 13V7h1.5M11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2v1.8Z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">March 12, 2024</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">April 19, 2024</span>
   </span>
 
     
@@ -3590,7 +3866,7 @@ Example from <a href="https://support.ceci-hpc.be/doc/_contents/UsingSoftwareAnd
     </span>
     <nav>
       
-        <a href="mailto:tunison@jhu.edu">jeffreytunison</a>
+        <a href="mailto:marcus@jhu.edu">Mark Miller</a>
     </nav>
   </span>
 
@@ -3662,6 +3938,44 @@ Example from <a href="https://support.ceci-hpc.be/doc/_contents/UsingSoftwareAnd
       
         <footer class="md-footer">
   
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Footer" >
+        
+          
+          <a href="../storage/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Old Stg Page">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              <div class="md-ellipsis">
+                Old Stg Page
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../fastscratch/" class="md-footer__link md-footer__link--next" aria-label="Next: Fastscratch">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              <div class="md-ellipsis">
+                Fastscratch
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4Z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
     
   
   <div class="md-footer-meta md-typeset">

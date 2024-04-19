@@ -1737,6 +1737,10 @@
       
         
       
+        
+      
+        
+      
     
     
       
@@ -1858,11 +1862,53 @@
   
   
     <li class="md-nav__item">
+      <a href="../storage/stg-tips/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Storage Tips
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../storage/fastscratch/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
     Fastscratch
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../storage/encfs/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Encrypting filesystems with ENCFS
   </span>
   
 
@@ -4875,6 +4921,112 @@ User                UserCPU             WCKey               WCKeyID
 </code></pre><h2><a class="heading" href="../storage/backups-restores">Backups &amp; Restores</a></h2><a class="url" href="../storage/backups-restores">storage/backups-restores/</a><pre><span></span><code>cd /users/.zfs/snapshot
 ls -ld */your-userid/bob/frank/susan
 cp -p 2024-02-16-23:00/your-userid/bob/frank/susan $HOME/restored-susan
+</code></pre><h2><a class="heading" href="../storage/encfs">Encrypting filesystems with ENCFS</a></h2><a class="url" href="../storage/encfs">storage/encfs/</a><pre><span></span><code>[jhpce01 /users/bob]$ srun --pty --x11 bash
+Last login: Thu Nov  3 14:33:05 2016 from jhpce01.cm.cluster
+[compute-070 /users/bob]$ mkdir ENCRYPTED
+[compute-070 /users/bob]$ mkdir UNENCRYPTED
+</code></pre><pre><span></span><code>[compute-070 /users/bob/]$ module load encfs
+[compute-070 /users/bob/]$ 
+encfs /users/bob/ENCRYPTED /users/bob/UNENCRYPTED
+Creating new encrypted volume.
+Please choose from one of the following options:
+ enter "x" for expert configuration mode,
+ enter "p" for pre-configured paranoia mode,
+ anything else, or an empty line will select standard mode.
+?&gt; (just hit enter here)
+
+Standard configuration selected.
+
+Configuration finished.  The filesystem to be created has
+the following properties:
+Filesystem cipher: "ssl/aes", version 3:0:2
+Filename encoding: "nameio/block", version 3:0:1
+Key Size: 192 bits
+Block Size: 1024 bytes
+Each file contains 8 byte header with unique IV data.
+Filenames encoded using IV chaining mode.
+File holes passed through to ciphertext.
+
+Now you will need to enter a password for your filesystem.
+You will need to remember this password, as there is absolutely
+no recovery mechanism.  However, the password can be changed
+later using encfsctl.
+
+New Encfs Password: (enter password)
+Verify Encfs Password: (re-enter password)
+[compute-070 /users/bob]$ df -h
+...
+encfs                  50T   17T   33T  34% /users/bob/UNENCRYPTED
+</code></pre><pre><span></span><code>[compute-070 /users/bob]$ ls ENCRYPTED
+[compute-070 /users/bob]$ ls UNENCRYPTED
+[compute-070 /users/bob]$ cd UNENCRYPTED
+[compute-070 /users/bob/UNENCRYPTED]$ echo "This is a test" &gt; file1
+[compute-070 /users/bob/UNENCRYPTED]$ cd ..
+[compute-070 /users/bob]$ ls -l UNENCRYPTED
+-rw-r----- 1 bob mmi 15 Jan 27 16:34 file1
+[compute-070 /users/bob]$ ls -l ENCRYPTED
+-rw-r----- 1 bob mmi   23 Jan 27 16:34 Fng4AKmAzYP6OrpOrCPH3J,x
+[compute-070 /users/bob]$ cat UNENCRYPTED/file1
+This is a test
+[compute-070 /users/bob]$ cat ENCRYPTED/Fng4AKmAzYP6OrpOrCPH3J,x 
+?tS?$??#?q?%o띁?
+[compute-070 /users/bob]$ fusermount -u /users/bob/UNENCRYPTED
+[compute-070 /users/bob]$ ls -l UNENCRYPTED
+[compute-070 /users/bob]$ ls -l ENCRYPTED
+-rw-r----- 1 bob mmi   23 Jan 27 16:34 Fng4AKmAzYP6OrpOrCPH3J,x
+[compute-070 /users/bob]$ exit
+Connection to compute-070.cm.cluster closed.
+</code></pre><pre><span></span><code>[jhpce01 /users/bob]$ srun --pty --x11 bash
+Last login: Fri Jan 27 16:10:27 2017 from jhpce01.cm.cluster
+[compute-097 /users/bob]$ ls -l UNENCRYPTED
+[compute-097 /users/bob]$ ls -l ENCRYPTED
+-rw-r----- 1 bob mmi   23 Jan 27 16:34 Fng4AKmAzYP6OrpOrCPH3J,x
+[compute-097 /users/bob]$ module load encfs
+[compute-097 /users/bob]$ 
+encfs /users/bob/ENCRYPTED /users/bob/UNENCRYPTED
+EncFS Password: (reenter the password you used to encrypt the data)
+[compute-097 /users/bob]$ ls -l UNENCRYPTED
+-rw-r----- 1 bob mmi 15 Jan 27 16:34 file1
+[compute-097 /users/bob]$ cd UNENCRYPTED
+[compute-097 /users/bob/UNENCRYPTED]$ cat file1
+This is a test
+</code></pre><pre><span></span><code>[compute-097 /users/bob/UNENCRYPTED]$ cd ..
+[compute-097 /users/bob]$ fusermount -u /users/bob/UNENCRYPTED
+[compute-097 /users/bob]$ ls -l /users/bob/UNENCRYPTED
+[compute-097 /users/bob]$ ls -l ENCRYPTED
+-rw-r----- 1 bob mmi   23 Jan 27 16:34 Fng4AKmAzYP6OrpOrCPH3J,x
+[compute-097 /users/bob]$ exit
+Connection to compute-097.cm.cluster closed.
+</code></pre><pre><span></span><code>[jhpce01 /users/bob]$ srun --pty --x11 bash
+Last login: Fri Jan 27 17:12:11 2017 from jhpce01.cm.cluster
+[compute-108 /users/bob]$ module load encfs
+[compute-108 /users/bob]$ 
+encfs /users/bob/ENCRYPTED /users/bob/UNENCRYPTED
+EncFS Password: (reenter the password you used to encrypt the data)
+[compute-108 /users/bob]$ setfacl -m user:chuck:rx .
+[compute-108 /users/bob]$ setfacl -m user:chuck:rwx UNENCRYPTED
+</code></pre><pre><span></span><code>[jhpce01 /users/chuck]$ srun --pty --x11 bash
+Last login: Fri Jan 27 15:44:11 2017 from jhpce01.cm.cluster
+[compute-049 /users/chuck]$ module load encfs
+[compute-049 /users/chuck]$ mkdir UNENCRYPTED
+[compute-049 /users/chuck]$ 
+encfs /users/bob/ENCRYPTED /users/chuck/UNENCRYPTED
+EncFS Password: (reenter the password you used to encrypt the data)
+[compute-049 /users/chuck]$ cd UNENCRYPTED
+[compute-049 /users/chuck/UNENCRYPTED]$ ls -l
+-rw-r----- 1 bob mmi 15 Jan 27 16:34 file1
+[compute-049 /users/chuck/UNENCRYPTED]$ echo "This is chuck" &gt; file2
+[compute-049 /users/chuck/UNENCRYPTED]$ ls -l
+-rw-r----- 1 bob   mmi 15 Jan 27 16:34 file1
+-rw-r----- 1 chuck mmi 14 Jan 27 17:24 file2
+</code></pre><pre><span></span><code>[compute-108 /users/bob]$ ls -l /users/bob/UNENCRYPTED
+-rw-r----- 1 bob   mmi 15 Jan 27 16:34 file1
+-rw-r----- 1 chuck mmi 15 Jan 27 17:24 file2
+</code></pre><pre><span></span><code>[compute-108 /users/bob]$ fusermount -u /users/bob/UNENCRYPTED
+[compute-108 /users/bob]$ exit
+</code></pre><pre><span></span><code>[compute-049 /users/chuck/UNENCRYPTED]$ cd ..
+[compute-049 /users/chuck] fusermount -u /users/chuck/UNENCRYPTED
+[compute-049 /users/chuck] exit
 </code></pre><h2><a class="heading" href="../storage/quotas">Quotas</a></h2><a class="url" href="../storage/quotas">storage/quotas/</a><pre><span></span><code><span class="nb">cd</span>
 du<span class="w"> </span>-sh<span class="w"> </span>.
 </code></pre><pre><span></span><code><span class="nb">cd</span><span class="w"> </span><span class="nv">$MYSCRATCH</span>
