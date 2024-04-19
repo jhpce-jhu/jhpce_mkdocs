@@ -101,6 +101,11 @@
          <changefreq>daily</changefreq>
     </url>
     <url>
+         <loc>https://jhpce.jhu.edu/files/encfs/</loc>
+         <lastmod>2024-04-19</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
          <loc>https://jhpce.jhu.edu/files/files-overview/</loc>
          <lastmod>2024-04-19</lastmod>
          <changefreq>daily</changefreq>
@@ -127,6 +132,11 @@
     </url>
     <url>
          <loc>https://jhpce.jhu.edu/files/sharing-files/</loc>
+         <lastmod>2024-04-19</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://jhpce.jhu.edu/files/storage-tips/</loc>
          <lastmod>2024-04-19</lastmod>
          <changefreq>daily</changefreq>
     </url>
@@ -177,6 +187,11 @@
     </url>
     <url>
          <loc>https://jhpce.jhu.edu/help/help-basics/</loc>
+         <lastmod>2024-04-19</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://jhpce.jhu.edu/joinus/</loc>
          <lastmod>2024-04-19</lastmod>
          <changefreq>daily</changefreq>
     </url>
@@ -371,17 +386,17 @@
          <changefreq>daily</changefreq>
     </url>
     <url>
+         <loc>https://jhpce.jhu.edu/storage/</loc>
+         <lastmod>2024-04-19</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
          <loc>https://jhpce.jhu.edu/storage/backups-restores/</loc>
          <lastmod>2024-04-19</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://jhpce.jhu.edu/storage/buying-in/</loc>
-         <lastmod>2024-04-19</lastmod>
-         <changefreq>daily</changefreq>
-    </url>
-    <url>
-         <loc>https://jhpce.jhu.edu/storage/encfs/</loc>
          <lastmod>2024-04-19</lastmod>
          <changefreq>daily</changefreq>
     </url>
@@ -396,17 +411,7 @@
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://jhpce.jhu.edu/storage/stg-overview/</loc>
-         <lastmod>2024-04-19</lastmod>
-         <changefreq>daily</changefreq>
-    </url>
-    <url>
-         <loc>https://jhpce.jhu.edu/storage/stg-tips/</loc>
-         <lastmod>2024-04-19</lastmod>
-         <changefreq>daily</changefreq>
-    </url>
-    <url>
-         <loc>https://jhpce.jhu.edu/storage/storage/</loc>
+         <loc>https://jhpce.jhu.edu/storage/storage-overview/</loc>
          <lastmod>2024-04-19</lastmod>
          <changefreq>daily</changefreq>
     </url>
