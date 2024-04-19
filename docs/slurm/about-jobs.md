@@ -30,6 +30,7 @@ A job consists of
 
 **Array jobs** are one type of batch job. They consist of 2 or more jobs spawned by a single batch script. For more information, see this section of our batch job page [here](../slurm/crafting-jobs.md#job-arrays).
 
+### DIRECTIVES
 **Directives** can come from a variety of sources, including, in [order of preference](../slurm/crafting-jobs.md/#slurm-directive-order-of-precendence): on the command line, from environment variables, embedded in a batch file script on `#SBATCH` lines, or from a personal `~/.slurm/defaults` file. If you don't specify a directive, them some default value will be used. Often that default is one, as in one task, one CPU core, one compute node, ...  The default partition is `shared`. 5 gigabytes is the default amount of RAM per job.
 
 Directives consist of:
@@ -39,6 +40,7 @@ Directives consist of:
 
 You will find directives described in the `sbatch` [manual page](https://slurm.schedmd.com/archive/slurm-22.05.9/sbatch.html).
 
+###TASKS
 A job aims to complete one or more ***tasks***.
 
 Tasks are requested at the job level with `--ntasks` or `--ntasks-per-node`, or at the step level with  `--ntasks`. CPUs are requested per task with `--cpus-per-task`.
@@ -47,6 +49,7 @@ A **task** is executed on a single ***compute node*** in a job step, using one o
 
 If there are multiple tasks, then each uses a subset of the resources of the overall job.  Multiple tasks can run on a single compute node or on multiple nodes. The resources used by any one task cannot exceed what is found on a single node.
 
+###NODES and PARTITONS
 Jobs execute on a set of one or more compute nodes called a ***nodelist***. The first node in that set is called the ***0th node***.[^3]
 
 Compute nodes are grouped together into ***partitions***. For more information about partitions, see our page [here](../slurm/partitions.md).
@@ -132,7 +135,7 @@ That complete list comes from [this section](https://slurm.schedmd.com/archive/s
 
 ### LIFE OF A JOB AND ASSOCIATED STATES
 
-Until we draw a nice diagram, a written description will have to suffice. Short names are specified in parentheses below.
+Until we draw a nice diagram, a written description will have to suffice. Short job state names are specified in parentheses below.
 
 1. User submits job
 2. SLURM evaluates syntax and resource requests.

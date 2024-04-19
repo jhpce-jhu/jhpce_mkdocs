@@ -4,7 +4,7 @@ tags:
   - slurm
 ---
 
-# Crafting SLURM Jobs
+# Crafting SLURM Bach Jobs
 
 !!! Note "Authoring Note"
     This document is accumulating information which might best be split into several more-focused documents. There are many aspects of creating jobs.
@@ -24,8 +24,8 @@ Here at JHPCE we have been using `srun` primarily as way to start interactive se
 
 Be careful using `salloc` that you don't leave allocated resources unused. One way to use salloc is to request resources and launch a new bash shell. Those resources are not released until that bash shell is ended.
 
-## **Sbatch Rules**
-1. First characters in batch file need to be: `#!/bin/bash` (although you can use an interpreter other than bash)
+## **Basic Sbatch Rules**
+1. First characters in the batch file need to be: `#!/bin/bash` (although you can use an interpreter other than bash)
 2. `#SBATCH` directives need to appear as the first characters on their lines.
 3. `#SBATCH` directives need to appear before **_any_** shell commands.
 4. You can put comments after # symbols.
