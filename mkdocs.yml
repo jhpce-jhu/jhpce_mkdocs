@@ -9,7 +9,7 @@ nav:
       - JHPCE Model: aboutus/model.md
       - Staff: aboutus/staff.md
     - Getting Started:
-      - Introduction: joinus/intro.md
+      - joinus/index.md
       - New user form: joinus/new-users-form.md
       - New PI information and form: 
          - New PI Information: joinus/new-pi.md
@@ -58,8 +58,8 @@ nav:
       - Encrypting filesystems with ENCFS: files/encfs.md
       - Storage Tips: files/storage-tips.md
       - Copying within cluster: files/copying-files.md
-    - Storage Policies and Practices:
-      - Storage Overview: storage/storage-overview.md
+    - Storage Policies and Practices: 
+      - storage/index.md
       - Getting More Space: storage/buying-in.md
       - Backups and Restores: storage/backups-restores.md
       - Quotas: storage/quotas.md
@@ -155,7 +155,7 @@ theme:
     - navigation.top # works. Displays "Back to top" button when one scrolls upwards
     - header.autohide # hides header if scroll far enough down. More content visable
     - navigation.footer # provides place to display copyright
-    # indexes:
+    #indexes:
     #   Do you want a topic header line to represent a document?
     #   If this is enabled, you can, BUT IT HAS TO BE NAMED index.md (or README.md)
     #   Whether it is defined or not, you are NOT allowed to specify a document
