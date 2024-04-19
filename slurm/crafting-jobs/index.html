@@ -86,7 +86,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#crafting-slurm-jobs" class="md-skip">
+        <a href="#crafting-slurm-bach-jobs" class="md-skip">
           Skip to content
         </a>
       
@@ -2864,9 +2864,9 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#sbatch-rules" class="md-nav__link">
+  <a href="#basic-sbatch-rules" class="md-nav__link">
     <span class="md-ellipsis">
-      Sbatch Rules
+      Basic Sbatch Rules
     </span>
   </a>
   
@@ -3685,9 +3685,9 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#sbatch-rules" class="md-nav__link">
+  <a href="#basic-sbatch-rules" class="md-nav__link">
     <span class="md-ellipsis">
-      Sbatch Rules
+      Basic Sbatch Rules
     </span>
   </a>
   
@@ -3911,7 +3911,7 @@
 
 
 
-<h1 id="crafting-slurm-jobs">Crafting SLURM Jobs<a class="headerlink" href="#crafting-slurm-jobs" title="Anchor link to this section for reference">&para;</a></h1>
+<h1 id="crafting-slurm-bach-jobs">Crafting SLURM Bach Jobs<a class="headerlink" href="#crafting-slurm-bach-jobs" title="Anchor link to this section for reference">&para;</a></h1>
 <div class="admonition note">
 <p class="admonition-title">Authoring Note</p>
 <p>This document is accumulating information which might best be split into several more-focused documents. There are many aspects of creating jobs.</p>
@@ -3926,9 +3926,9 @@
 <p>There are three commands used to request resources from SLURM. You will find all three discussed in the <a href="../slurm-commands-ref/">linked documentation</a>.</p>
 <p>Here at JHPCE we have been using <code>srun</code> primarily as way to start interactive sessions. However it can also be used after allocating resources with <code>salloc</code> and inside of <code>sbatch</code> scripts. See web site <a href="./#running-multiple-jobs-from-one-script">below</a> for examples.</p>
 <p>Be careful using <code>salloc</code> that you don't leave allocated resources unused. One way to use salloc is to request resources and launch a new bash shell. Those resources are not released until that bash shell is ended.</p>
-<h2 id="sbatch-rules"><strong>Sbatch Rules</strong><a class="headerlink" href="#sbatch-rules" title="Anchor link to this section for reference">&para;</a></h2>
+<h2 id="basic-sbatch-rules"><strong>Basic Sbatch Rules</strong><a class="headerlink" href="#basic-sbatch-rules" title="Anchor link to this section for reference">&para;</a></h2>
 <ol>
-<li>First characters in batch file need to be: <code>#!/bin/bash</code> (although you can use an interpreter other than bash)</li>
+<li>First characters in the batch file need to be: <code>#!/bin/bash</code> (although you can use an interpreter other than bash)</li>
 <li><code>#SBATCH</code> directives need to appear as the first characters on their lines.</li>
 <li><code>#SBATCH</code> directives need to appear before <strong><em>any</em></strong> shell commands.</li>
 <li>You can put comments after # symbols.</li>
@@ -4163,7 +4163,7 @@ fi
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1-2.1-2M12.5 7v5.2l4 2.4-1 1L11 13V7h1.5M11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2v1.8Z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">April 8, 2024</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">April 19, 2024</span>
   </span>
 
     

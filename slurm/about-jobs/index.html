@@ -2588,6 +2588,39 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="WHAT IS A SLURM JOB?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#directives" class="md-nav__link">
+    <span class="md-ellipsis">
+      DIRECTIVES
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tasks" class="md-nav__link">
+    <span class="md-ellipsis">
+      TASKS
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#nodes-and-partitons" class="md-nav__link">
+    <span class="md-ellipsis">
+      NODES and PARTITONS
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
         <li class="md-nav__item">
@@ -3544,6 +3577,39 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="WHAT IS A SLURM JOB?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#directives" class="md-nav__link">
+    <span class="md-ellipsis">
+      DIRECTIVES
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tasks" class="md-nav__link">
+    <span class="md-ellipsis">
+      TASKS
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#nodes-and-partitons" class="md-nav__link">
+    <span class="md-ellipsis">
+      NODES and PARTITONS
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
         <li class="md-nav__item">
@@ -3644,6 +3710,7 @@
 <p><strong>Interactive jobs</strong> provide a shell interface on a single compute node. There you can run programs interactively, including ones with GUI interfaces that display via the X11 protocal. For more information, see our page <a href="../interactive-jobs/">here</a>.</p>
 <p><strong>Batch jobs</strong> are handled by a job scheduler within SLURM, and start when they can get access to one or more compute nodes providing sufficient resources. These jobs do their work unattended. For more information, see our page <a href="../crafting-jobs/">here</a>.</p>
 <p><strong>Array jobs</strong> are one type of batch job. They consist of 2 or more jobs spawned by a single batch script. For more information, see this section of our batch job page <a href="../crafting-jobs/#job-arrays">here</a>.</p>
+<h3 id="directives">DIRECTIVES<a class="headerlink" href="#directives" title="Anchor link to this section for reference">&para;</a></h3>
 <p><strong>Directives</strong> can come from a variety of sources, including, in <a href="../crafting-jobs/#slurm-directive-order-of-precendence">order of preference</a>: on the command line, from environment variables, embedded in a batch file script on <code>#SBATCH</code> lines, or from a personal <code>~/.slurm/defaults</code> file. If you don't specify a directive, them some default value will be used. Often that default is one, as in one task, one CPU core, one compute node, ...  The default partition is <code>shared</code>. 5 gigabytes is the default amount of RAM per job.</p>
 <p>Directives consist of:</p>
 <ol>
@@ -3651,10 +3718,12 @@
 <li>instructions to SLURM</li>
 </ol>
 <p>You will find directives described in the <code>sbatch</code> <a href="https://slurm.schedmd.com/archive/slurm-22.05.9/sbatch.html">manual page</a>.</p>
+<h3 id="tasks">TASKS<a class="headerlink" href="#tasks" title="Anchor link to this section for reference">&para;</a></h3>
 <p>A job aims to complete one or more <strong><em>tasks</em></strong>.</p>
 <p>Tasks are requested at the job level with <code>--ntasks</code> or <code>--ntasks-per-node</code>, or at the step level with  <code>--ntasks</code>. CPUs are requested per task with <code>--cpus-per-task</code>.</p>
 <p>A <strong>task</strong> is executed on a single <strong><em>compute node</em></strong> in a job step, using one or more CPU cores and a non-zero amount of memory (5 gigabytes if you don't specify -- you can request less than 5G!! -- the less memory your job needs, the more likely it will be able to run).</p>
 <p>If there are multiple tasks, then each uses a subset of the resources of the overall job.  Multiple tasks can run on a single compute node or on multiple nodes. The resources used by any one task cannot exceed what is found on a single node.</p>
+<h3 id="nodes-and-partitons">NODES and PARTITONS<a class="headerlink" href="#nodes-and-partitons" title="Anchor link to this section for reference">&para;</a></h3>
 <p>Jobs execute on a set of one or more compute nodes called a <strong><em>nodelist</em></strong>. The first node in that set is called the <strong><em>0th node</em></strong>.<sup id="fnref:3"><a class="footnote-ref" href="#fn:3">3</a></sup></p>
 <p>Compute nodes are grouped together into <strong><em>partitions</em></strong>. For more information about partitions, see our page <a href="../partitions/">here</a>.</p>
 <div class="admonition warning">
@@ -3818,7 +3887,7 @@ When specifying a job to a SLURM program like <code>scontrol</code> or reading o
 <p>The overall job and each step has its own job state code. They often differ!!  The <code>-X</code> flag to <code>sacct</code> will show you only the overall job state, such as FAILED, which is useful for most cases. However, <em>sometimes you need to check the state of all of a jobs steps</em> in order to see that a "batch" step ran OUT_OF_MEMORY.</p>
 </div>
 <h3 id="life-of-a-job-and-associated-states">LIFE OF A JOB AND ASSOCIATED STATES<a class="headerlink" href="#life-of-a-job-and-associated-states" title="Anchor link to this section for reference">&para;</a></h3>
-<p>Until we draw a nice diagram, a written description will have to suffice. Short names are specified in parentheses below.</p>
+<p>Until we draw a nice diagram, a written description will have to suffice. Short job state names are specified in parentheses below.</p>
 <ol>
 <li>User submits job</li>
 <li>SLURM evaluates syntax and resource requests.</li>
@@ -3866,7 +3935,7 @@ When specifying a job to a SLURM program like <code>scontrol</code> or reading o
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1-2.1-2M12.5 7v5.2l4 2.4-1 1L11 13V7h1.5M11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2v1.8Z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">April 18, 2024</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">April 19, 2024</span>
   </span>
 
     
