@@ -82,6 +82,12 @@ Please download the latest [orientation document (pdf)](../orient/images/latest-
     fi
     ```
 
+## OpenSSL
+- OpenSSL version mismatch error (e.g. Built against 30000070, you have 30100050)
+
+??? "Click to expand answer"
+    Please unload conda_R
+
 ## Resources
 - What is the SAFE desktop?
 
