@@ -1822,6 +1822,8 @@
       
         
       
+        
+      
     
     
       
@@ -1937,6 +1939,27 @@
   
   <span class="md-ellipsis">
     Fastscratch
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../files/storage-tips/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Storage Tips
   </span>
   
 
@@ -5146,30 +5169,6 @@ Example number = 1
 Example number = 2
 Example number = 3
 Example number = 4
-</code></pre><h2><a class="heading" href="../sw/modules-old">Environment modules</a></h2><a class="url" href="../sw/modules-old">sw/modules-old/</a><pre><span></span><code>module list
-</code></pre><pre><span></span><code>module list                 # list your currently loaded modules
-module load   &lt;MODULEFILE&gt;  # configures your environment according to modulefile 
-module unload &lt;MODULEFILE&gt;  # rolls back the configuration performed by the associated load
-module avail                # shows what modules are available for loading
-module help                 # 
-module spider               # lists all modules, including ones not in your MODULEPATH
-module spider &lt;NAME&gt;        # search for a module whose name includes &lt;NAME&gt;
-module save &lt;NAME&gt;.         # save currently-loaded modules to "default" or optionally to &lt;NAME&gt;
-module restore &lt;NAME&gt;.      # load the saved collection
-</code></pre><pre><span></span><code>JHPCE_ROCKY9_DEFAULT_ENV
-JHPCE_tools/3.0
-</code></pre><pre><span></span><code><span class="c1"># Always source the global bashrc</span>
-<span class="k">if</span><span class="w"> </span><span class="o">[</span><span class="w"> </span>-f<span class="w"> </span>/etc/bashrc<span class="w"> </span><span class="o">]</span><span class="p">;</span><span class="w"> </span><span class="k">then</span>
-.<span class="w"> </span>/etc/bashrc
-<span class="k">fi</span>
-
-<span class="c1"># If I prefer gcc/4.8.1 as my default compiler</span>
-module<span class="w"> </span>load<span class="w"> </span>gcc/4.8.1
-</code></pre><pre><span></span><code>Description Maintainer  Documentation
-R   Kasper Hansen   Documentation
-Perl    Jiong Yang  Documentation
-Python  Alyssa Frazee   Documentation
-ShortRead Tools Kasper Hansen   Documentation
 </code></pre><h2><a class="heading" href="../sw/modules">Modules</a></h2><a class="url" href="../sw/modules">sw/modules/</a><pre><code>[test@compute-107 ~]$ <span style="background-color:yellow">module list</span>
 
 Currently Loaded Modules:
@@ -5194,6 +5193,24 @@ Currently Loaded Modules:
 </code></pre><pre><span></span><code>[test@compute-107 ~]$ module help
 Usage: module [options] sub-command [args ...]
 ...
+</code></pre><pre><span></span><code>module list                 # list your currently loaded modules
+module load   &lt;MODULEFILE&gt;  # configures your environment according to modulefile 
+module unload &lt;MODULEFILE&gt;  # rolls back the configuration performed by the associated load
+module avail                # shows what modules are available for loading
+module help                 # 
+module spider               # lists all modules, including ones not in your MODULEPATH
+module spider &lt;NAME&gt;        # search for a module whose name includes &lt;NAME&gt;
+module save &lt;NAME&gt;.         # save currently-loaded modules to "default" or optionally to &lt;NAME&gt;
+module restore &lt;NAME&gt;.      # load the saved collection
+</code></pre><pre><span></span><code>JHPCE_ROCKY9_DEFAULT_ENV
+JHPCE_tools/3.0
+</code></pre><pre><span></span><code><span class="c1"># Always source the global bashrc</span>
+<span class="k">if</span><span class="w"> </span><span class="o">[</span><span class="w"> </span>-f<span class="w"> </span>/etc/bashrc<span class="w"> </span><span class="o">]</span><span class="p">;</span><span class="w"> </span><span class="k">then</span>
+.<span class="w"> </span>/etc/bashrc
+<span class="k">fi</span>
+
+<span class="c1"># If I prefer gcc/4.8.1 as my default compiler</span>
+module<span class="w"> </span>load<span class="w"> </span>gcc/4.8.1
 </code></pre><h2><a class="heading" href="../sw/python-pkg">Python Packages</a></h2><a class="url" href="../sw/python-pkg">sw/python-pkg/</a><pre><span></span><code>[test@compute-107 ~]$ module load python
 [test@compute-107 ~]$ python3 --version
 Python 3.9.14

@@ -1566,36 +1566,6 @@
     "html": "<pre><span></span><code>[test@login31 ~]$ cat slurm.compute-100.3110505.test.out\n                                May 25, 2023\n\nFor online documentation, see https://www.mathworks.com/support\nFor product information, visit www.mathworks.com.\n\nExample number = 1\nExample number = 2\nExample number = 3\nExample number = 4\n</code></pre>"
   },
   {
-    "page_name": "Environment modules",
-    "page_url": "../sw/modules-old/",
-    "text": "module list\n",
-    "html": "<pre><span></span><code>module list\n</code></pre>"
-  },
-  {
-    "page_name": "Environment modules",
-    "page_url": "../sw/modules-old/",
-    "text": "module list                 # list your currently loaded modules\nmodule load   <MODULEFILE>  # configures your environment according to modulefile \nmodule unload <MODULEFILE>  # rolls back the configuration performed by the associated load\nmodule avail                # shows what modules are available for loading\nmodule help                 # \nmodule spider               # lists all modules, including ones not in your MODULEPATH\nmodule spider <NAME>        # search for a module whose name includes <NAME>\nmodule save <NAME>.         # save currently-loaded modules to \"default\" or optionally to <NAME>\nmodule restore <NAME>.      # load the saved collection\n",
-    "html": "<pre><span></span><code>module list                 # list your currently loaded modules\nmodule load   &lt;MODULEFILE&gt;  # configures your environment according to modulefile \nmodule unload &lt;MODULEFILE&gt;  # rolls back the configuration performed by the associated load\nmodule avail                # shows what modules are available for loading\nmodule help                 # \nmodule spider               # lists all modules, including ones not in your MODULEPATH\nmodule spider &lt;NAME&gt;        # search for a module whose name includes &lt;NAME&gt;\nmodule save &lt;NAME&gt;.         # save currently-loaded modules to \"default\" or optionally to &lt;NAME&gt;\nmodule restore &lt;NAME&gt;.      # load the saved collection\n</code></pre>"
-  },
-  {
-    "page_name": "Environment modules",
-    "page_url": "../sw/modules-old/",
-    "text": "JHPCE_ROCKY9_DEFAULT_ENV\nJHPCE_tools/3.0\n",
-    "html": "<pre><span></span><code>JHPCE_ROCKY9_DEFAULT_ENV\nJHPCE_tools/3.0\n</code></pre>"
-  },
-  {
-    "page_name": "Environment modules",
-    "page_url": "../sw/modules-old/",
-    "text": "# Always source the global bashrc\nif [ -f /etc/bashrc ]; then\n. /etc/bashrc\nfi\n\n# If I prefer gcc/4.8.1 as my default compiler\nmodule load gcc/4.8.1\n",
-    "html": "<pre><span></span><code><span class=\"c1\"># Always source the global bashrc</span>\n<span class=\"k\">if</span><span class=\"w\"> </span><span class=\"o\">[</span><span class=\"w\"> </span>-f<span class=\"w\"> </span>/etc/bashrc<span class=\"w\"> </span><span class=\"o\">]</span><span class=\"p\">;</span><span class=\"w\"> </span><span class=\"k\">then</span>\n.<span class=\"w\"> </span>/etc/bashrc\n<span class=\"k\">fi</span>\n\n<span class=\"c1\"># If I prefer gcc/4.8.1 as my default compiler</span>\nmodule<span class=\"w\"> </span>load<span class=\"w\"> </span>gcc/4.8.1\n</code></pre>"
-  },
-  {
-    "page_name": "Environment modules",
-    "page_url": "../sw/modules-old/",
-    "text": "Description Maintainer  Documentation\nR   Kasper Hansen   Documentation\nPerl    Jiong Yang  Documentation\nPython  Alyssa Frazee   Documentation\nShortRead Tools Kasper Hansen   Documentation\n",
-    "html": "<pre><span></span><code>Description Maintainer  Documentation\nR   Kasper Hansen   Documentation\nPerl    Jiong Yang  Documentation\nPython  Alyssa Frazee   Documentation\nShortRead Tools Kasper Hansen   Documentation\n</code></pre>"
-  },
-  {
     "page_name": "Modules",
     "page_url": "../sw/modules/",
     "text": "[test@compute-107 ~]$ module list\n\nCurrently Loaded Modules:\n  1) JHPCE_ROCKY9_DEFAULT_ENV   2) JHPCE_tools/3.0\n",
@@ -1630,6 +1600,24 @@
     "page_url": "../sw/modules/",
     "text": "[test@compute-107 ~]$ module help\nUsage: module [options] sub-command [args ...]\n...\n",
     "html": "<pre><span></span><code>[test@compute-107 ~]$ module help\nUsage: module [options] sub-command [args ...]\n...\n</code></pre>"
+  },
+  {
+    "page_name": "Modules",
+    "page_url": "../sw/modules/",
+    "text": "module list                 # list your currently loaded modules\nmodule load   <MODULEFILE>  # configures your environment according to modulefile \nmodule unload <MODULEFILE>  # rolls back the configuration performed by the associated load\nmodule avail                # shows what modules are available for loading\nmodule help                 # \nmodule spider               # lists all modules, including ones not in your MODULEPATH\nmodule spider <NAME>        # search for a module whose name includes <NAME>\nmodule save <NAME>.         # save currently-loaded modules to \"default\" or optionally to <NAME>\nmodule restore <NAME>.      # load the saved collection\n",
+    "html": "<pre><span></span><code>module list                 # list your currently loaded modules\nmodule load   &lt;MODULEFILE&gt;  # configures your environment according to modulefile \nmodule unload &lt;MODULEFILE&gt;  # rolls back the configuration performed by the associated load\nmodule avail                # shows what modules are available for loading\nmodule help                 # \nmodule spider               # lists all modules, including ones not in your MODULEPATH\nmodule spider &lt;NAME&gt;        # search for a module whose name includes &lt;NAME&gt;\nmodule save &lt;NAME&gt;.         # save currently-loaded modules to \"default\" or optionally to &lt;NAME&gt;\nmodule restore &lt;NAME&gt;.      # load the saved collection\n</code></pre>"
+  },
+  {
+    "page_name": "Modules",
+    "page_url": "../sw/modules/",
+    "text": "JHPCE_ROCKY9_DEFAULT_ENV\nJHPCE_tools/3.0\n",
+    "html": "<pre><span></span><code>JHPCE_ROCKY9_DEFAULT_ENV\nJHPCE_tools/3.0\n</code></pre>"
+  },
+  {
+    "page_name": "Modules",
+    "page_url": "../sw/modules/",
+    "text": "# Always source the global bashrc\nif [ -f /etc/bashrc ]; then\n. /etc/bashrc\nfi\n\n# If I prefer gcc/4.8.1 as my default compiler\nmodule load gcc/4.8.1\n",
+    "html": "<pre><span></span><code><span class=\"c1\"># Always source the global bashrc</span>\n<span class=\"k\">if</span><span class=\"w\"> </span><span class=\"o\">[</span><span class=\"w\"> </span>-f<span class=\"w\"> </span>/etc/bashrc<span class=\"w\"> </span><span class=\"o\">]</span><span class=\"p\">;</span><span class=\"w\"> </span><span class=\"k\">then</span>\n.<span class=\"w\"> </span>/etc/bashrc\n<span class=\"k\">fi</span>\n\n<span class=\"c1\"># If I prefer gcc/4.8.1 as my default compiler</span>\nmodule<span class=\"w\"> </span>load<span class=\"w\"> </span>gcc/4.8.1\n</code></pre>"
   },
   {
     "page_name": "Python Packages",

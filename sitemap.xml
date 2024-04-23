@@ -451,11 +451,6 @@
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://jhpce.jhu.edu/sw/modules-old/</loc>
-         <lastmod>2024-04-23</lastmod>
-         <changefreq>daily</changefreq>
-    </url>
-    <url>
          <loc>https://jhpce.jhu.edu/sw/modules/</loc>
          <lastmod>2024-04-23</lastmod>
          <changefreq>daily</changefreq>
