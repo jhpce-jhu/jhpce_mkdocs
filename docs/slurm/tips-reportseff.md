@@ -6,7 +6,7 @@ tags:
 ---
 # **reportseff useful command examples**
  
-!!! Caution
+!!! Warning
     This file is under heavy construction. It was created by copying an existing page for sacct. Duplicate material will be removed before it is finished.
     
     If you have not already read about basic job facts like job notation, steps, names and states, please first visit the "About SLURM Jobs" document [here](../slurm/about-jobs.md).
