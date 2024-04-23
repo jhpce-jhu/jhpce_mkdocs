@@ -3614,7 +3614,7 @@
 <p>It can be a hassle to move around quickly and efficiently between directories you are frequently using. </p>
 <p>If you have to switch between two directories with long paths, these two techniques can make life better.</p>
 <h2 id="a-nest-of-symbolic-links"><strong>(A Nest of) Symbolic Links</strong><a class="headerlink" href="#a-nest-of-symbolic-links" title="Anchor link to this section for reference">&para;</a></h2>
-<h3 id="tldr">TL;DR<a class="headerlink" href="#tldr" title="Anchor link to this section for reference">&para;</a></h3>
+<h3 id="tldr"><strong>TL;DR</strong><a class="headerlink" href="#tldr" title="Anchor link to this section for reference">&para;</a></h3>
 <ol>
 <li>Create a directory with a short name in your home directory</li>
 <li>Place symbolic links in that directory to files or directories. The target objects can be located all around the file system.</li>
@@ -3622,7 +3622,7 @@
 <li>Now you can edit a far-away file or cd to a far-away directory using a <em>very short path</em>.</li>
 <li>You can keep the name you use to refer to the object unchanged even if you change the symbolic link to point to a different object, e.g. <code>~/r/current-project</code></li>
 </ol>
-<h3 id="explanation-and-examples">Explanation and examples<a class="headerlink" href="#explanation-and-examples" title="Anchor link to this section for reference">&para;</a></h3>
+<h3 id="explanation-and-examples"><strong>Explanation and examples</strong><a class="headerlink" href="#explanation-and-examples" title="Anchor link to this section for reference">&para;</a></h3>
 <p>A symbolic link is a special kind of file which points at another file. Also known as symlinks. The symbolic link takes up almost no space. It is not a copy of the original file.</p>
 <p>You can refer to the symbolic link and in most cases the results will be the same as if you specified the original file. (Warning: some commands treat symbolic links in ways you might not expect: cp, rm, rsync, tar Their man pages will discuss how they treat symlinks.)</p>
 <p>You create a symlink like this:</p>
@@ -3654,13 +3654,21 @@ ln<span class="w"> </span>–s<span class="w"> </span>~/mycode/thatlanguage/src/
 <p><code>pushd</code></p>
 <p>by itself will switch you between the current directory and the top one in the stack. This is often the main way I use it.</p>
 <p><code>pushd +2</code></p>
-<p>will switch you between the current directory and the third down into the stack. (third because the index into the stack starts with 0 not 1)</p>
+<p>will switch you between the current directory and the third down into the stack (third because the index into the stack starts with zero not one).</p>
 <p><code>popd</code></p>
 <p>will cd back to the top directory in the stack while removing your current directory from the stack.</p>
+<details class="tip">
+<summary>Create aliases for an even sweeter experience</summary>
+<p>The <code>-v</code> option to dirs is so handy for figuring out what number to use with <code>pushd</code> that you may want to make that the default by adding an alias to your <code>$HOME/.bashrc file</code>. The author uses these aliases to make using these commands even better:</p>
+<div class="highlight"><pre><span></span><code>alias dirs=&#39;dirs -v&#39;
+alias pu=&#39;pushd&#39;
+alias po=&#39;popd&#39;
+</code></pre></div>
+</details>
 <h3 id="create-a-default-directory-stack"><strong>Create a default directory stack</strong><a class="headerlink" href="#create-a-default-directory-stack" title="Anchor link to this section for reference">&para;</a></h3>
 <p>You can create a stack ahead of time using the –n option to pushd. That option adds the directory to the stack but does not change to it.</p>
 <p>So if you used the nano text editor to add this to your .bashrc file, it would create a set of directories you can pushd between every time you log in!!!</p>
-<p>Set up directory stack. Note that they appear in stack in reverse order than listed here!!!</p>
+<p>Set up directory stack. <strong>Note that they appear in stack in reverse order than listed here!!!</strong></p>
 <p><code>dirs -v</code> will show their order (and index number)</p>
 <div class="highlight"><pre><span></span><code>for i in /cms01/data /cms01/outgoing /users/55548 /cms01/incoming; do pushd -n $i 1&gt;/dev/null;done
 </code></pre></div>
@@ -3703,7 +3711,7 @@ ln<span class="w"> </span>–s<span class="w"> </span>~/mycode/thatlanguage/src/
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1-2.1-2M12.5 7v5.2l4 2.4-1 1L11 13V7h1.5M11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2v1.8Z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">April 7, 2024</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">April 23, 2024</span>
   </span>
 
     

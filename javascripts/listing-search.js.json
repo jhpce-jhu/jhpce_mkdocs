@@ -302,6 +302,12 @@
   {
     "page_name": "Navigating Deep Directory Trees",
     "page_url": "../files/deep-paths/",
+    "text": "alias dirs='dirs -v'\nalias pu='pushd'\nalias po='popd'\n",
+    "html": "<pre><span></span><code>alias dirs='dirs -v'\nalias pu='pushd'\nalias po='popd'\n</code></pre>"
+  },
+  {
+    "page_name": "Navigating Deep Directory Trees",
+    "page_url": "../files/deep-paths/",
     "text": "for i in /cms01/data /cms01/outgoing /users/55548 /cms01/incoming; do pushd -n $i 1>/dev/null;done\n",
     "html": "<pre><span></span><code>for i in /cms01/data /cms01/outgoing /users/55548 /cms01/incoming; do pushd -n $i 1&gt;/dev/null;done\n</code></pre>"
   },
