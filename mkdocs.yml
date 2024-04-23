@@ -65,6 +65,7 @@ nav:
       - Backups and Restores: storage/backups-restores.md
       - Quotas: storage/quotas.md
       - Fastscratch: storage/fastscratch.md
+      - Storage Tips: files/storage-tips.md
     - Software:
       - Overview: sw/sw-overview.md
       - Local Software:
