@@ -12,26 +12,47 @@ tags:
     If you have not already read about basic job facts like job notation, steps, names and states, please first visit the "About SLURM Jobs" document [here](../slurm/about-jobs.md).
  
 ## **Reportseff Overview** 
-  
+
+caution: you may not be able to see other user's job info unless you add `--extra-args -a `
+
 !!! Example
     ```Shell title="Show my COMPLETED jobs between noon and now" linenums="0"
     module load reportseff
     export LESS="-R"
-    reportseff --since noon --until now -s CD -o "user,jobid,state,nodelist,start,end,exitcode"
+    reportseff --since noon --until now -s CD --format "user,jobid,state,nodelist,start,end,cpueff,memeff"
+    ```
+`seff` is a program which looks up accounting data using the `sacct command to show some stats for a ***single*** completed job.
+
+??? Example "Example seff output"
+    ```
+    Job ID: 9709
+    Cluster: cms
+    User/Group: ttotoj/users
+    State: COMPLETED (exit code 0)
+    Cores: 1
+    CPU Utilized: 00:47:34
+    CPU Efficiency: 97.74% of 00:48:40 core-walltime
+    Job Wall-clock time: 00:48:40
+    Memory Utilized: 67.40 GB
+    Memory Efficiency: 22.47% of 300.00 GB
     ```
 
-```
-login31:~% reportseff --help
-Usage: reportseff [OPTIONS] [JOBS]...
+`Reportseff` is a python script which makes displaying job efficiency easier for other cases such as "all of a user's jobs for a time period" or "all of the elements of an array job". It also uses `sacct` to retrieve information.  It was written so that you could use syntax like pass other arguments to `sacct` if desired.
 
-  Main entry point for reportseff.
+??? Example "Reportseff arguments, complete list"
 
-Options:
-  --modified-sort                 If set, will sort outputs by modified time
+    ```
+    login31:~% reportseff --help
+    Usage: reportseff [OPTIONS] [JOBS]...
+
+    Main entry point for reportseff.
+
+    Options:
+      --modified-sort                 If set, will sort outputs by modified time
                                   of files
-  --color / --no-color            Force color output. No color will use click
+      --color / --no-color            Force color output. No color will use click
                                   defaults
-  --format TEXT                   Comma-separated list of columns to include.
+      --format TEXT                   Comma-separated list of columns to include.
                                   Options are any valid sacct input along with
                                   CPUEff, MemEff, Energy, and TimeEff.  In
                                   systems with jobstat caching, GPU usage can
@@ -48,7 +69,7 @@ Options:
                                   suppress the header line. Wrap in quotes to
                                   pass a string literal, otherwise alignment
                                   may be misinterpreted.
-  --slurm-format TEXT             Filename pattern passed to sbatch.  By
+      --slurm-format TEXT             Filename pattern passed to sbatch.  By
                                   default, will handle patterns like
                                   slurm_%j.out, %x_%j, or slurm_%A_%a.  In
                                   particular, the jobid is expected to start
@@ -56,38 +77,38 @@ Options:
                                   used in sbatch will allow parsing slurm
                                   outputs like `1234.out`.  Array jobs must
                                   have %A_%a to properly interface with sacct.
-  --debug                         Print raw db query to stderr
-  -u, --user TEXT                 Ignore jobs, return all jobs in last week
+      --debug                         Print raw db query to stderr
+      -u, --user TEXT                 Ignore jobs, return all jobs in last week
                                   from user
-  --partition TEXT                Only include jobs with the specified
+      --partition TEXT                Only include jobs with the specified
                                   partition
-  --extra-args TEXT               Extra arguments to forward to sacct
-  -s, --state TEXT                Only include jobs with the specified states
-  -S, --not-state TEXT            Include jobs without the specified states
-  --since TEXT                    Only include jobs after this time. Can be
+      --extra-args TEXT               Extra arguments to forward to sacct
+      -s, --state TEXT                Only include jobs with the specified states
+      -S, --not-state TEXT            Include jobs without the specified states
+      --since TEXT                    Only include jobs after this time. Can be
                                   valid sacct or as a comma separated list of
                                   time deltas, e.g. d=2,h=1 means 2 days, 1
                                   hour before current time. Weeks, days,
                                   hours, and minutes can use case-insensitive
                                   abbreviations. Minutes is the minimum
                                   resolution, while weeks is the coarsest.
-  --until TEXT                    Only include jobs before this time. Can be
+      --until TEXT                    Only include jobs before this time. Can be
                                   valid sacct or as a comma separated list of
                                   time deltas, e.g. d=2,h=1 means 2 days, 1
                                   hour before current time. Weeks, days,
                                   hours, and minutes can use case-insensitive
                                   abbreviations. Minutes is the minimum
                                   resolution, while weeks is the coarsest.
-  -n, --node / -N, --no-node      Report node-level statistics. Adds `jobid`
+      -n, --node / -N, --no-node      Report node-level statistics. Adds `jobid`
                                   to format for proper display.
-  -g, --node-and-gpu / -G, --no-node-gpu
+      -g, --node-and-gpu / -G, --no-node-gpu
                                   Report each GPU for each node. Sets `node`
                                   and adds `GPU` to format automatically.
-  -p, --parsable                  Output will be '|' delmited without a '|' at
+      -p, --parsable                  Output will be '|' delmited without a '|' at
                                   the end.
-  --version                       Show the version and exit.
-  --help                          Show this message and exit.
-```
+      --version                       Show the version and exit.
+      --help                          Show this message and exit.
+    ```
   
 [sacct](https://slurm.schedmd.com/archive/slurm-22.05.9/sacct.html) is a command used to display information about jobs. It has a number of subtleties, such as the time window reported on and the formatting of output. We hope that this page will help you get the information you need.
 

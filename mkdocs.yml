@@ -10,6 +10,7 @@ nav:
       - Staff: aboutus/staff.md
     - Getting Started:
       - joinus/index.md
+      - Getting Started Overview: joinus/index.md
       - New user form: joinus/new-users-form.md
       - New PI information and form: 
          - New PI Information: joinus/new-pi.md
@@ -60,6 +61,7 @@ nav:
       - Copying within cluster: files/copying-files.md
     - Storage Policies and Practices: 
       - storage/index.md
+      - Storage Overview: storage/index.md
       - Backups and Restores: storage/backups-restores.md
       - Quotas: storage/quotas.md
       - Fastscratch: storage/fastscratch.md
@@ -89,7 +91,7 @@ nav:
       - Time Limits: slurm/time-limits.md
       - "Command tips & reference":
         - "Cmd tips & reference": slurm/slurm-commands-ref.md
-        - reportseff tips: slurm/tips-reportseff.md
+        # - reportseff tips: slurm/tips-reportseff.md
         - sacct tips: slurm/tips-sacct.md
         - sacctmgr tips: slurm/tips-sacctmgr.md
         - scontrol tips: slurm/tips-scontrol.md
