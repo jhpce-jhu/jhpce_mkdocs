@@ -12,7 +12,7 @@ If you have to switch between two directories with long paths, these two techniq
 
 ## **(A Nest of) Symbolic Links**
 
-### TL;DR
+### **TL;DR**
 
 1. Create a directory with a short name in your home directory
 2. Place symbolic links in that directory to files or directories. The target objects can be located all around the file system.
@@ -20,7 +20,7 @@ If you have to switch between two directories with long paths, these two techniq
 4. Now you can edit a far-away file or cd to a far-away directory using a _very short path_.
 5. You can keep the name you use to refer to the object unchanged even if you change the symbolic link to point to a different object, e.g. `~/r/current-project`
 
-### Explanation and examples
+### **Explanation and examples**
 A symbolic link is a special kind of file which points at another file. Also known as symlinks. The symbolic link takes up almost no space. It is not a copy of the original file.
 
 You can refer to the symbolic link and in most cases the results will be the same as if you specified the original file. (Warning: some commands treat symbolic links in ways you might not expect: cp, rm, rsync, tar Their man pages will discuss how they treat symlinks.)
@@ -78,11 +78,20 @@ by itself will switch you between the current directory and the top one in the s
 
 `pushd +2`
 
-will switch you between the current directory and the third down into the stack. (third because the index into the stack starts with 0 not 1)
+will switch you between the current directory and the third down into the stack (third because the index into the stack starts with zero not one).
 
 `popd`
 
 will cd back to the top directory in the stack while removing your current directory from the stack.
+
+??? Tip "Create aliases for an even sweeter experience"
+    The `-v` option to dirs is so handy for figuring out what number to use with `pushd` that you may want to make that the default by adding an alias to your `$HOME/.bashrc file`. The author uses these aliases to make using these commands even better:
+
+    ```
+    alias dirs='dirs -v'
+    alias pu='pushd'
+    alias po='popd'
+    ```
 
 ### **Create a default directory stack**
 
@@ -90,7 +99,7 @@ You can create a stack ahead of time using the –n option to pushd. That option
  
 So if you used the nano text editor to add this to your .bashrc file, it would create a set of directories you can pushd between every time you log in!!!
  
-Set up directory stack. Note that they appear in stack in reverse order than listed here!!!
+Set up directory stack. **Note that they appear in stack in reverse order than listed here!!!**
 
 `dirs -v` will show their order (and index number)
 

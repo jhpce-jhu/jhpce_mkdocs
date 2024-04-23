@@ -1,5 +1,5 @@
 ## Orientation/Cluster Basics
-Please download the latest [orientation document (pdf)](../orient/images/latest-orient.pdf) (C-SUB users go [here](../orient/images/latest-csub-orient.pdf) instead (pdf).)
+Please download the latest [orientation document (pdf)](../orient/images/latest-orient.pdf) (C-SUB users go [here](../orient/images/latest-csub-orient.pdf) instead (pdf).)  We update these periodically. The version date can be found on the first page in the lower right corner.
 
 ## Compatibility
 - My script is giving odd error messages about `\r` or `^M`.
@@ -149,6 +149,10 @@ We have a [SAS usage document](../sw/sas.md). Please read it for useful tips.
     If you receive a message like "Bad owner or permissions on ~/.ssh/config" or continue to have to provide your password when ssh'ing to JHPCE when you think you have configured things to not need one, your file owner or permissions may be incorrect. See [this document](../access/ssh.md/#permissions-on-ssh-files) for answers.
 
 ## Storage
+- How much space does a directory use? How much is available?
+
+See [this page](../files/storage-tips.md) for information about evaluating disk space consumption.
+
 - I've deleted files but I'm still restricted by disk quota
 
 See [this document](../storage/quotas.md/#file-deletion-and-delayed-change-in-quota).

@@ -63,11 +63,11 @@ Please keep that in mind when reading JHPCE documentation or asking for help via
   - except for programs which run out of containers like RStudio Server
 
 ### Differences
-- Different user accounts
-- Different SLURM server, partitions and nodes
-- File transfer in and out is VERY different
-- Home directory locations
-- Common file sharing areas among DUA members (e.g. /users/55548/shared/)
+- Different user accounts (all have the form of "c-<JHEDID>-<DUA-NUMBER>")
+- Different SLURM server, partitions and nodes (cluster name is "cms" instead of "jhpce3")
+- File transfer in and out is VERY different (see orientation pdf)
+- Home directory locations (under `/users/<DUA-NUMBER>/` instead of just `/users/`)
+- Common group-writable file sharing areas among DUA members (e.g. /users/55548/shared/)
 
 ## Getting Help
 Many of the pages on this web site will be useful to C-SUB users. However they will need to interpret what they read and think about whether applying it in the C-SUB requires any modification or re-interpretation.

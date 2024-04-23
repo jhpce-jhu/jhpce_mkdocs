@@ -1,6 +1,6 @@
 # STORAGE TIPS
 
-## How much disk space are my files using?
+## **How much disk space are my files using?**
 
 There are several ways to get information about the amount of disk space used
 by files and directories in a Linux environment.
@@ -85,7 +85,7 @@ When data is accessed from a storage array, it is cached in the node's RAM
 for a while so that subsequent access to the same data will be done more
 efficiently.
 
-### Another example of the effect of compression
+### **Another example of the effect of compression**
 
 As mentioned above, we have compression enabled on the storage arrays on the
 JHPCE cluster.  An extreme example of compression at work can be seen if we
@@ -114,7 +114,7 @@ option, we can see how compression makes a difference.
 9.8G    /fastscratch/myscratch/mmill116/zero-file-rand
 ```
 
-## How much space do I have available?
+## **How much space do I have available?**
 
 As you're working on the JHPCE cluster, you may come across situations where
 your job reports that it is out of disk space.  There are 2 main limiting
@@ -122,7 +122,7 @@ factors to space usage on the JHPCE cluster.  One is the user quotas that are
 in place on home directories and fastscratch. The other is the size of the
 filesystem that you're working in.
 
-### Home directory quota
+### **Home directory quota**
 
 If you are working out of your home directory, and receive a message that you 
 are out of disk space, you can see how much if your 100GB quota you are using
@@ -137,7 +137,7 @@ directory to free up some space.  Note that the ``hquota`` information is update
 every 15 minutes, so if you delete files, it may take some time for the change
 to be reflected in the ``hquota`` output.
 
-### Fastscratch quota
+### **Fastscratch quota**
 All users have a 1TB quota on their fastscratch space.  To see how much space
 you are using in your fastscratch space, you can use the ``du`` command.
 
@@ -146,7 +146,7 @@ you are using in your fastscratch space, you can use the ``du`` command.
 9.9G    /fastscratch/myscratch/mmill116
 ```
 
-### Filesystem Usage - project space
+### **Filesystem Usage - project space**
 
 If you are working in a project storage space and you receive an error that
 you are out of disk space, you can check the amount of available storage by
@@ -161,7 +161,7 @@ people using that space will need to delete some files to free up space. You
 may want to check with your PI to see if they have another space available.
 If you need more space, please reach out to us at bitsupport@lists.jhu.edu.
 
-### Filesystem Usage - /tmp space
+### **Filesystem Usage - /tmp space**
 Many programs by default will use /tmp for storing temporary files.  While
 this is fine for a single-use system, in
 a shared environment where multiple users are accessing and utilizing /tmp
@@ -196,13 +196,9 @@ is how some commonly used applicaiotn on JHPCE set their temporary location.
   + In Stata, the default `tempfile` location is under `/tmp`. This can be
     changed by setting the `STATATMP` environment variable.
 
-# Backing up storage
-Home directory spaces get backed up nightly, however other project spaces may
-not.  You should check with your PI to see if your project space is getting
-backed up.
+# **Backing up storage**
+Home directory spaces get backed up nightly, however other project spaces may not.  You should check with your PI to see if your project space is getting backed up.
 
 If not, you should be sure to copy any unique or difficult-to-repoduce
-results to your home directory, or transfer them off of the JHPCE cluster, so
-that you have a backup of the files.  See [this document](../storage/backups-restores.md)
-for more information.
+results to your home directory, or transfer them off of the JHPCE cluster, so that you have a backup of the files.  See [this document](../storage/backups-restores.md) for more information.
 
