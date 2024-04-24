@@ -31,7 +31,7 @@ We also have a [document](../slurm/slurm-commands-ref.md) with links to not only
 + Youtube videos from Lieber RSTATS club on laptop setup:
     + macOS: [https://youtu.be/8tuI-ZAlZ1Y](https://youtu.be/8tuI-ZAlZ1Y)
     + winOS: [https://youtu.be/qtn3eTwFlZI](https://youtu.be/qtn3eTwFlZI)
-
++ Another Lieber video about JHPCE [https://twitter.com/lcolladotor/status/1779209787340681678](https://twitter.com/lcolladotor/status/1779209787340681678)
 
 ## JHPCE Tutorials
 
