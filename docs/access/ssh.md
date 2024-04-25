@@ -108,11 +108,11 @@ using MobaXterm, please use the steps at the bottom of our [MobaXterm
 configuration page](mobaxterm.md).
 
 ## Permissions on SSH Files
-SSH is **_very_** strict about the permissions found on your files on the remote end of a connection. These files are found on JHPCE in your home directory inside the directory `.ssh`  Because this directory's name begins with a period, it is not listed when you use the `ls` program.
+SSH is **_very_** strict about the permissions found on your ssh-related files on **both ends** of a connection. These files are found on JHPCE in your home directory inside the directory `.ssh`  Because this directory's name begins with a period, it is not listed when you use the `ls` program -- you have to use `ls -a` or `ls -ld ~/.ssh` to see it.
 
-The primary symptom of there being a file permissions problem is that ssh is still asking for a password when you think it should not.
+The primary symptom of there being a file permissions problem is that ssh is still asking for a password when you think it should not. Sometimes you get a helpful error message `Bad owner or permissions on <a specific ssh-related file>`
 
-These rules are normally found to be broken on the remote side of a connection, but the permissions on your computer also matter.
+These rules are normally found to be broken on the remote side of a connection, but the permissions on your computer also matter. Different SSH programs may keep ssh-related files in different places, especially if they are on Windows computers.
 
 ALL OF THESE FILES NEED TO BE OWNED BY YOUR ACCOUNT.
 
