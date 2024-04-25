@@ -212,6 +212,8 @@ plugins:
       listings_file: all-listings.md
       placeholder: JHPCE_PLACEHOLDER_FOR_THE_LISTINGS_PLUGIN
       javascript_search_file: javascripts/listing-search.js
+  # JRT added https://timvink.github.io/mkdocs-table-reader-plugin/
+  - table-reader
   # TAGS
   - tags:
       tags_file: ourtools/tags.md

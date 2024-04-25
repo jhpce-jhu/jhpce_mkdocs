@@ -1,9 +1,15 @@
 ---
 tags:
-  - needs-major-revision
+  - gui-tools
 ---
 
+We have installed a number of text editors, file managers, graphics viewers and editors, etc with Graphic User Interfaces (GUI). You may find these useful.
 
-[This chart](images/helpful-gui-example.pdf) is C-SUB specific.
+## JHPCE Cluster
 
-JRT thinks JHPCE users would benefit from seeing a chart that is correct for that cluster. (A Github issue exists about considering installing some of these C-SUB-only tools onto main cluster.)
+[This chart](../sw/images/jhpce-3.0-gui-pkg-inventory.pdf) (pdf) is for the main cluster.
+
+## C-SUB Cluste
+
+[This chart](../sw/images/c-sub-gui-pkg-inventory.pdf) (pdf) is C-SUB specific.
+

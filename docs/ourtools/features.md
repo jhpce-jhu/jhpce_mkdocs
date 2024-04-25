@@ -443,7 +443,9 @@ and ending with
           base_path: docs
     ```
     
-When Snippets is enabled, content from other files (including source files) can be embedded by using the `--8<--` (scissors) notation directly from within a code block to pull in a file via a relative path (starting inside of docs/, not relative to the document doing the including), in this case `ourtools/includes/sample-bashrc`
+When Snippets is enabled, HTML or Markdown content from other files (including source files) can be embedded by using the `--8<--` (scissors) notation directly from within a code block to pull in a file via a relative path (starting inside of docs/, not relative to the document doing the including), in this case `ourtools/includes/sample-bashrc`
+
+It can be extremely frustrating figuring out what path to use to make a snippet actually display. If you get it wrong in certain ways it will prevent the rebuilding of the whole site.
 
 ``` title="sample bashrc"
 --8<-- "ourtools/includes/sample-bashrc"
