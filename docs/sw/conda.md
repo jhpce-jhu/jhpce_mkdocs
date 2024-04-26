@@ -50,3 +50,6 @@ conda install package-name
 conda install conda-forge::numpy
 ```
 
+## Mamba
+
+[Mamba](https://mamba.readthedocs.io/en/latest/index.html) is a package manager that is fully compatible with conda but performs better on certain tasks such as resolving requirements.
