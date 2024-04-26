@@ -7,7 +7,7 @@ tags:
 # Environment modules
 
 !!! Note "Authoring Note"
-    The [last section](modules.md/#community-maintained-applications) needs to be updated for 2024. LIBD is not mentioned, documentation is not linked correctly anymore, etc. Convert to a Markdown table?
+    The [last section](#community-maintained-applications) needs to be updated for 2024. LIBD is not mentioned, documentation is not linked correctly anymore, etc. Convert to a Markdown table?
 
 ## Introduction
 

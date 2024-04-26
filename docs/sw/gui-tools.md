@@ -13,3 +13,4 @@ We have installed a number of text editors, file managers, graphics viewers and 
 
 [This chart](../sw/images/c-sub-gui-pkg-inventory.pdf) (pdf) is C-SUB specific.
 
+{{ read_xlsx('sw/images/c-sub-gui-pkg-inventory.xlsx') }}
