@@ -11,16 +11,8 @@ tags:
     
     If you have not already read about basic job facts like job notation, steps, names and states, please first visit the "About SLURM Jobs" document [here](../slurm/about-jobs.md).
  
-## **Reportseff Overview** 
+## **Reportseff Overview**
 
-caution: you may not be able to see other user's job info unless you add `--extra-args -a `
-
-!!! Example
-    ```Shell title="Show my COMPLETED jobs between noon and now" linenums="0"
-    module load reportseff
-    export LESS="-R"
-    reportseff --since noon --until now -s CD --format "user,jobid,state,nodelist,start,end,cpueff,memeff"
-    ```
 `seff` is a program which looks up accounting data using the `sacct command to show some stats for a ***single*** completed job.
 
 ??? Example "Example seff output"
@@ -37,9 +29,58 @@ caution: you may not be able to see other user's job info unless you add `--extr
     Memory Efficiency: 22.47% of 300.00 GB
     ```
 
-`Reportseff` is a python script which makes displaying job efficiency easier for other cases such as "all of a user's jobs for a time period" or "all of the elements of an array job". It also uses `sacct` to retrieve information.  It was written so that you could use syntax like pass other arguments to `sacct` if desired.
+`Reportseff` is a python script which makes displaying job efficiency easier for other cases such as "all of a user's jobs for a time period" or "all of the elements of an array job". It also uses `sacct` to retrieve information.  It was written so that you could use the same kinds of syntax as you would with `sacct`. For example when indicating time ranges or asking for changes to the output format. You can also pass other arguments straight to `sacct` if desired.
 
-??? Example "Reportseff arguments, complete list"
+Home page for more information: https://github.com/troycomi/reportseff
+
+!!! Example "Example reportseff output"
+    ``` title="Show my COMPLETED jobs between noon and now, adding a field"
+    module load reportseff
+    export LESS="-R"
+    
+    reportseff --since noon --until now -s CD --format +user
+    
+        JobID    State         Elapsed  TimeEff   CPUEff   MemEff     User   
+       5011394  COMPLETED      19:16:18   40.1%    99.5%    130.4%    mnagle
+       5013943  COMPLETED      14:27:08   30.1%    99.9%    127.9%    mnagle
+       5016834  COMPLETED      07:48:51   16.3%    98.4%    124.0%    mnagle
+       5024400  COMPLETED      05:54:33   24.6%     8.0%    60.3%    enorton
+       5025014  COMPLETED      04:28:52   18.7%     9.2%     3.4%    jzhang5
+       5025583  COMPLETED      03:57:29   16.5%    89.4%    26.1%      sli1
+       5025584  COMPLETED      04:11:32   17.5%    89.1%    26.9%      sli1
+       5025586  COMPLETED      03:55:38   16.4%    82.8%    26.4%      sli1
+    ```
+
+!!! Info "There are two ways to use reportseff:"
+    ??? Note "As a module:"
+        ```
+        module load reportseff
+        export LESS="-R"  # to provide colorized output
+        ```
+    ??? Note "As a bash function:"
+        ```
+        Define an alias on the command line or in your .bashrc
+        
+        rs() { export LESS="-R";export PYTHONPATH=/jhpce/shared/jhpce/core/reportseff/2.3.2/;export PATH=/jhpce/shared/jhpce/core/reportseff/2.3.2/bin:$PATH; reportseff "$@"; }
+        ```        
+
+
+!!! Examples
+    ```Shell title="Show my COMPLETED jobs between noon and now" linenums="0"
+    module load reportseff
+    export LESS="-R"
+    reportseff --since noon --until now -s CD -u $USER
+    reportseff --since noon --until now -s CD -u $USER --format "user,jobid,state,nodelist,start,end,cpueff,memeff"
+    
+    reportseff --since noon --until now -s CD -u $USER --format "+user,nodelist,start,end,cpueff,memeff"
+    ```
+
+you can define environment variables as you do with sacct to change your formatting. See [here](../slurm/tips-sacct/#using-environment-variables)
+
+!!! Caution
+    you may not be able to see other user's job info unless you add `--extra-args -a `
+
+??? Example "Reportseff arguments, click for complete list"
 
     ```
     login31:~% reportseff --help
@@ -120,10 +161,7 @@ sacct will show all submitted jobs but cannot, of course, provide data for a num
 
 Examples below use angle brackets ++less++ ++greater++  to indicate where you are supposed to replace argumements with your values.
 
-### ACCESS OUTSIDE OF THE MODULE SYSTEM
-I added this bash routine to my /root/.bashrc.jrt file so I could use it as root:
 
-rs() { export PYTHONPATH=/jhpce/shared/jhpce/core/reportseff/2.3.2/;export PATH=/jhpce/shared/jhpce/core/reportseff/2.3.2/bin:$PATH; reportseff "$@"; }
 
 ### ARGUMENTS
 One of the appeals of this tool is that it uses sacct of course but allows you to pass extra sacct args. And it uses the same syntax for time that sacct does. 
@@ -351,49 +389,6 @@ The start and end field widths show below are suitable for the time format shown
 
 ```Shell title="Resources requested, used" linenums="0"
 export SACCT_FORMAT="user,jobid,jobname,nodelist%12,start%-20,end%-20,state%20,reqtres%40,TRESUsageInTot%200"
-```
-
-## **Exit Error Codes**
-In addition to the job's "state", SLURM also records error codes. Unfortunately the vendor's [Job Exit Codes](https://slurm.schedmd.com/job_exit_code.html) page doesn't provide a meaning for the numerical values.
-
-Error `0:53` often means that something wasn't readable or writable. For example, job output or error files couldn't be written in the directory in which the job ran (or where you told SLURM to put them with a directive).
-
-```
-a guide for exit codes:
-
-0 → success
-non-zero → failure
-Exit code 1 indicates a general failure
-Exit code 2 indicates incorrect use of shell builtins
-Exit codes 3-124 indicate some error in job (check software exit codes)
-Exit code 125 indicates out of memory
-Exit code 126 indicates command cannot execute
-Exit code 127 indicates command not found
-Exit code 128 indicates invalid argument to exit
-Exit codes 129-192 indicate jobs terminated by Linux signals
-For these, subtract 128 from the number and match to signal code
-Enter kill -l to list signal codes
-Enter man signal for more information
-```
-
-## **Diagnostic Arguments**
-
-These can be useful to double-check what someone actually did.
-
-```Shell title="See the full command issued to submit the job" linenums="0"
-sacct -o SubmitLine%250 -j <jobid> # may need to increase field width
-```
-
-```Shell title="See batch file used" linenums="0"
-sacct -B -j <jobid>
-```
-
-```Shell title="Directory used by the job to execute commands" linenums="0"
-sacct -o WorkDir -j <jobid>
-```
-
-```Shell title="See jobs given a time limit btwn 1min & 1 day" linenums="0"
-sacct -k 00:01 -K 1-0
 ```
 
 ## **Examples**

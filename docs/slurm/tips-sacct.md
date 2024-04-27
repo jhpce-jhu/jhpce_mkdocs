@@ -13,6 +13,7 @@ tags:
     ```Shell title="Show my failed jobs between noon and now" linenums="0"
     sacct -s F -o "user,jobid,state,nodelist,start,end,exitcode" -S noon -E now
     ```
+More examples can be found throughout this document, as well as [at the end](#examples).
 
 [sacct](https://slurm.schedmd.com/archive/slurm-22.05.9/sacct.html) is a command used to display information about jobs. It has a number of subtleties, such as the time window reported on and the formatting of output. We hope that this page will help you get the information you need.
 
@@ -91,7 +92,7 @@ See the sort manual page for other options, including multiple kinds of numeric 
 
 Special time words: **today**, **midnight**, **noon**, **now**
 
-Positive and negative deltas from now can be used, which is very handy, but remember to use the full unit word ("days" not "d" or "day")!!!
+Positive and negative deltas from now can be used, which is very handy, but {==remember to use the full unit word==} (e.g. "days" not "d" or "day")!!!
 
 now[{+|-}count[seconds(default)|minutes|hours|days|weeks]]
 
@@ -114,8 +115,8 @@ Examples:
 : `-S $(date -d '21 days ago' +%D-%R) -E $(date -d '17 day ago' +%D-%R)` # the date command can interpret many human-readable expressions, then express them using the format mentioned afterwards. Cool, eh!!!
 : 04/15  # the bash shell will probably have problems with the forward slash unless you surround the string with double quotes
 
-## Job Limit
-If you want to filter for jobs with a certain time limit, use the `-k/--timelimit-min` and `-K/--timelimit-max` flags. To show only jobs with time limit between 48 and 72 hours that ran between 4 and 8 weeks ago:
+## Job Time Limit
+If you want to filter for jobs with a certain time limit, use one or both of the `-k/--timelimit-min` and `-K/--timelimit-max` flags. To show only jobs with time limit between 48 and 72 hours that ran between 4 and 8 weeks ago:
 
 `sacct -S $(date -d '8 weeks ago' +%D-%R) -E $(date -d '4 weeks ago' +%D-%R) -k 48:00 -K 72:00`
 
@@ -279,6 +280,20 @@ sacct -k 00:01 -K 1-0
 
 ## **Examples**
 
-all jobs for username bob that ran with a wall time of at least 2 days and were killed for running out of memory in the past 3 months:
+!!! Example "All jobs for username bob that (ran with a wall time of at least 2 days) and (were killed for running out of memory) in the past 3 months:"
 
-`sacct --user bob --starttime $(date -d '3 months ago' +%D-%R) --state OUT_OF_MEMORY --timelimit-min 2-00:00:00 --format JobID,JobName,Elapsed,NCPUs,TotalCPU,CPUTime,ReqMem,MaxRSS,MaxDiskRead,MaxDiskWrite,State,ExitCode`
+    ```
+    sacct --user bob --starttime $(date -d '3 months ago' +%D-%R) --state OUT_OF_MEMORY --timelimit-min 2-00:00:00 --format JobID,JobName,Elapsed,NCPUs,TotalCPU,CPUTime,ReqMem,MaxRSS,MaxDiskRead,MaxDiskWrite,State,ExitCode
+    ```
+
+!!! Example "HOW MANY JOBS FAILED WITH OUT-OF-MEMORY ERRORS IN THE LAST TWO WEEKS?""
+    ```
+    sacct -n -S now-14days -E now -X -s OOM | wc -l
+    ```
+
+!!! Example "HOW MANY JOBS FAILED WITH OTHER KINDS OF ERRORS IN THE LAST TWO WEEKS?""
+    ```
+    sacct -n -S now-14days -E now -X -s F | wc -l
+    ```
+!!! Example "CPU & RAM expended by jobs dying from out-of-memory errors in last 2 hours"
+    sacct -n -S now-2hours -E now -u jzhou1 -X -s OOM -o cputimeraw,reqmem --units=G|  awk '{timesum+=$1;ramsum+=$2} END{printf "%s (CPU hrs) \t%s (GB)\n",timesum/60, ramsum}'

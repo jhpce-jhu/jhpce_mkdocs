@@ -6,9 +6,6 @@ tags:
 Here is information about SLURM-related commands, whether from the vendor or created by JHPCE staff members. Links are provided to online copies of the manual pages for commands. If we've
 written a page with advice about using the command, use the {==(LOCAL TIPS)==} link.
 
-## Locally Written Tools
-
-### Information about cluster and jobs
 !!! Warning
     **Do not frequently[^1] run slurmpic, squeue, sacct or other Slurm client commands using loops in shell scripts or other programs.** 
 
@@ -17,6 +14,10 @@ written a page with advice about using the command, use the {==(LOCAL TIPS)==} l
     Ensure that programs limit calls to slurmctld to the minimum necessary for the information you are trying to gather. Add arguments to limit to needed partitions or users or job data fields, etcetera.
 
 [^1]: Frequently meaning more than once every **five minutes**. Do you REALLY **need** to know something sooner than that? If you want to know when a job finishes, use email notification settings. You can add them to pending and running jobs using [scontrol](../slurm/tips-scontrol.md).
+
+## Locally Written Tools
+
+### Information about cluster and jobs
 
 * **slurmpic**: ***An essential program for getting cluster status info.*** Use -h option to see key usage details.
 * **jobson**: Displays running jobs running on a node when given a three digit node number.
