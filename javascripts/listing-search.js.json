@@ -986,14 +986,32 @@
   {
     "page_name": "reportseff useful command examples",
     "page_url": "../slurm/tips-reportseff/",
-    "text": "module load reportseff\nexport LESS=\"-R\"\nreportseff --since noon --until now -s CD --format \"user,jobid,state,nodelist,start,end,cpueff,memeff\"\n",
-    "html": "<pre><span></span><code>module<span class=\"w\"> </span>load<span class=\"w\"> </span>reportseff\n<span class=\"nb\">export</span><span class=\"w\"> </span><span class=\"nv\">LESS</span><span class=\"o\">=</span><span class=\"s2\">\"-R\"</span>\nreportseff<span class=\"w\"> </span>--since<span class=\"w\"> </span>noon<span class=\"w\"> </span>--until<span class=\"w\"> </span>now<span class=\"w\"> </span>-s<span class=\"w\"> </span>CD<span class=\"w\"> </span>--format<span class=\"w\"> </span><span class=\"s2\">\"user,jobid,state,nodelist,start,end,cpueff,memeff\"</span>\n</code></pre>"
+    "text": "Job ID: 9709\nCluster: cms\nUser/Group: ttotoj/users\nState: COMPLETED (exit code 0)\nCores: 1\nCPU Utilized: 00:47:34\nCPU Efficiency: 97.74% of 00:48:40 core-walltime\nJob Wall-clock time: 00:48:40\nMemory Utilized: 67.40 GB\nMemory Efficiency: 22.47% of 300.00 GB\n",
+    "html": "<pre><span></span><code>Job ID: 9709\nCluster: cms\nUser/Group: ttotoj/users\nState: COMPLETED (exit code 0)\nCores: 1\nCPU Utilized: 00:47:34\nCPU Efficiency: 97.74% of 00:48:40 core-walltime\nJob Wall-clock time: 00:48:40\nMemory Utilized: 67.40 GB\nMemory Efficiency: 22.47% of 300.00 GB\n</code></pre>"
   },
   {
     "page_name": "reportseff useful command examples",
     "page_url": "../slurm/tips-reportseff/",
-    "text": "Job ID: 9709\nCluster: cms\nUser/Group: ttotoj/users\nState: COMPLETED (exit code 0)\nCores: 1\nCPU Utilized: 00:47:34\nCPU Efficiency: 97.74% of 00:48:40 core-walltime\nJob Wall-clock time: 00:48:40\nMemory Utilized: 67.40 GB\nMemory Efficiency: 22.47% of 300.00 GB\n",
-    "html": "<pre><span></span><code>Job ID: 9709\nCluster: cms\nUser/Group: ttotoj/users\nState: COMPLETED (exit code 0)\nCores: 1\nCPU Utilized: 00:47:34\nCPU Efficiency: 97.74% of 00:48:40 core-walltime\nJob Wall-clock time: 00:48:40\nMemory Utilized: 67.40 GB\nMemory Efficiency: 22.47% of 300.00 GB\n</code></pre>"
+    "text": "module load reportseff\nexport LESS=\"-R\"\n\nreportseff --since noon --until now -s CD --format +user\n\n    JobID    State         Elapsed  TimeEff   CPUEff   MemEff     User   \n   5011394  COMPLETED      19:16:18   40.1%    99.5%    130.4%    mnagle\n   5013943  COMPLETED      14:27:08   30.1%    99.9%    127.9%    mnagle\n   5016834  COMPLETED      07:48:51   16.3%    98.4%    124.0%    mnagle\n   5024400  COMPLETED      05:54:33   24.6%     8.0%    60.3%    enorton\n   5025014  COMPLETED      04:28:52   18.7%     9.2%     3.4%    jzhang5\n   5025583  COMPLETED      03:57:29   16.5%    89.4%    26.1%      sli1\n   5025584  COMPLETED      04:11:32   17.5%    89.1%    26.9%      sli1\n   5025586  COMPLETED      03:55:38   16.4%    82.8%    26.4%      sli1\n",
+    "html": "<pre><span></span><code>module load reportseff\nexport LESS=\"-R\"\n\nreportseff --since noon --until now -s CD --format +user\n\n    JobID    State         Elapsed  TimeEff   CPUEff   MemEff     User   \n   5011394  COMPLETED      19:16:18   40.1%    99.5%    130.4%    mnagle\n   5013943  COMPLETED      14:27:08   30.1%    99.9%    127.9%    mnagle\n   5016834  COMPLETED      07:48:51   16.3%    98.4%    124.0%    mnagle\n   5024400  COMPLETED      05:54:33   24.6%     8.0%    60.3%    enorton\n   5025014  COMPLETED      04:28:52   18.7%     9.2%     3.4%    jzhang5\n   5025583  COMPLETED      03:57:29   16.5%    89.4%    26.1%      sli1\n   5025584  COMPLETED      04:11:32   17.5%    89.1%    26.9%      sli1\n   5025586  COMPLETED      03:55:38   16.4%    82.8%    26.4%      sli1\n</code></pre>"
+  },
+  {
+    "page_name": "reportseff useful command examples",
+    "page_url": "../slurm/tips-reportseff/",
+    "text": "module load reportseff\nexport LESS=\"-R\"  # to provide colorized output\n",
+    "html": "<pre><span></span><code>module load reportseff\nexport LESS=\"-R\"  # to provide colorized output\n</code></pre>"
+  },
+  {
+    "page_name": "reportseff useful command examples",
+    "page_url": "../slurm/tips-reportseff/",
+    "text": "Define an alias on the command line or in your .bashrc\n\nrs() { export LESS=\"-R\";export PYTHONPATH=/jhpce/shared/jhpce/core/reportseff/2.3.2/;export PATH=/jhpce/shared/jhpce/core/reportseff/2.3.2/bin:$PATH; reportseff \"$@\"; }\n",
+    "html": "<pre><span></span><code>Define an alias on the command line or in your .bashrc\n\nrs() { export LESS=\"-R\";export PYTHONPATH=/jhpce/shared/jhpce/core/reportseff/2.3.2/;export PATH=/jhpce/shared/jhpce/core/reportseff/2.3.2/bin:$PATH; reportseff \"$@\"; }\n</code></pre>"
+  },
+  {
+    "page_name": "reportseff useful command examples",
+    "page_url": "../slurm/tips-reportseff/",
+    "text": "module load reportseff\nexport LESS=\"-R\"\nreportseff --since noon --until now -s CD -u $USER\nreportseff --since noon --until now -s CD -u $USER --format \"user,jobid,state,nodelist,start,end,cpueff,memeff\"\n\nreportseff --since noon --until now -s CD -u $USER --format \"+user,nodelist,start,end,cpueff,memeff\"\n",
+    "html": "<pre><span></span><code>module<span class=\"w\"> </span>load<span class=\"w\"> </span>reportseff\n<span class=\"nb\">export</span><span class=\"w\"> </span><span class=\"nv\">LESS</span><span class=\"o\">=</span><span class=\"s2\">\"-R\"</span>\nreportseff<span class=\"w\"> </span>--since<span class=\"w\"> </span>noon<span class=\"w\"> </span>--until<span class=\"w\"> </span>now<span class=\"w\"> </span>-s<span class=\"w\"> </span>CD<span class=\"w\"> </span>-u<span class=\"w\"> </span><span class=\"nv\">$USER</span>\nreportseff<span class=\"w\"> </span>--since<span class=\"w\"> </span>noon<span class=\"w\"> </span>--until<span class=\"w\"> </span>now<span class=\"w\"> </span>-s<span class=\"w\"> </span>CD<span class=\"w\"> </span>-u<span class=\"w\"> </span><span class=\"nv\">$USER</span><span class=\"w\"> </span>--format<span class=\"w\"> </span><span class=\"s2\">\"user,jobid,state,nodelist,start,end,cpueff,memeff\"</span>\n\nreportseff<span class=\"w\"> </span>--since<span class=\"w\"> </span>noon<span class=\"w\"> </span>--until<span class=\"w\"> </span>now<span class=\"w\"> </span>-s<span class=\"w\"> </span>CD<span class=\"w\"> </span>-u<span class=\"w\"> </span><span class=\"nv\">$USER</span><span class=\"w\"> </span>--format<span class=\"w\"> </span><span class=\"s2\">\"+user,nodelist,start,end,cpueff,memeff\"</span>\n</code></pre>"
   },
   {
     "page_name": "reportseff useful command examples",
@@ -1048,36 +1066,6 @@
     "page_url": "../slurm/tips-reportseff/",
     "text": "export SACCT_FORMAT=\"user,jobid,jobname,nodelist%12,start%-20,end%-20,state%20,reqtres%40,TRESUsageInTot%200\"\n",
     "html": "<pre><span></span><code><span class=\"nb\">export</span><span class=\"w\"> </span><span class=\"nv\">SACCT_FORMAT</span><span class=\"o\">=</span><span class=\"s2\">\"user,jobid,jobname,nodelist%12,start%-20,end%-20,state%20,reqtres%40,TRESUsageInTot%200\"</span>\n</code></pre>"
-  },
-  {
-    "page_name": "reportseff useful command examples",
-    "page_url": "../slurm/tips-reportseff/",
-    "text": "a guide for exit codes:\n\n0 \u2192 success\nnon-zero \u2192 failure\nExit code 1 indicates a general failure\nExit code 2 indicates incorrect use of shell builtins\nExit codes 3-124 indicate some error in job (check software exit codes)\nExit code 125 indicates out of memory\nExit code 126 indicates command cannot execute\nExit code 127 indicates command not found\nExit code 128 indicates invalid argument to exit\nExit codes 129-192 indicate jobs terminated by Linux signals\nFor these, subtract 128 from the number and match to signal code\nEnter kill -l to list signal codes\nEnter man signal for more information\n",
-    "html": "<pre><span></span><code>a guide for exit codes:\n\n0 \u2192 success\nnon-zero \u2192 failure\nExit code 1 indicates a general failure\nExit code 2 indicates incorrect use of shell builtins\nExit codes 3-124 indicate some error in job (check software exit codes)\nExit code 125 indicates out of memory\nExit code 126 indicates command cannot execute\nExit code 127 indicates command not found\nExit code 128 indicates invalid argument to exit\nExit codes 129-192 indicate jobs terminated by Linux signals\nFor these, subtract 128 from the number and match to signal code\nEnter kill -l to list signal codes\nEnter man signal for more information\n</code></pre>"
-  },
-  {
-    "page_name": "reportseff useful command examples",
-    "page_url": "../slurm/tips-reportseff/",
-    "text": "sacct -o SubmitLine%250 -j <jobid> # may need to increase field width\n",
-    "html": "<pre><span></span><code>sacct<span class=\"w\"> </span>-o<span class=\"w\"> </span>SubmitLine%250<span class=\"w\"> </span>-j<span class=\"w\"> </span>&lt;jobid&gt;<span class=\"w\"> </span><span class=\"c1\"># may need to increase field width</span>\n</code></pre>"
-  },
-  {
-    "page_name": "reportseff useful command examples",
-    "page_url": "../slurm/tips-reportseff/",
-    "text": "sacct -B -j <jobid>\n",
-    "html": "<pre><span></span><code>sacct<span class=\"w\"> </span>-B<span class=\"w\"> </span>-j<span class=\"w\"> </span>&lt;jobid&gt;\n</code></pre>"
-  },
-  {
-    "page_name": "reportseff useful command examples",
-    "page_url": "../slurm/tips-reportseff/",
-    "text": "sacct -o WorkDir -j <jobid>\n",
-    "html": "<pre><span></span><code>sacct<span class=\"w\"> </span>-o<span class=\"w\"> </span>WorkDir<span class=\"w\"> </span>-j<span class=\"w\"> </span>&lt;jobid&gt;\n</code></pre>"
-  },
-  {
-    "page_name": "reportseff useful command examples",
-    "page_url": "../slurm/tips-reportseff/",
-    "text": "sacct -k 00:01 -K 1-0\n",
-    "html": "<pre><span></span><code>sacct<span class=\"w\"> </span>-k<span class=\"w\"> </span><span class=\"m\">00</span>:01<span class=\"w\"> </span>-K<span class=\"w\"> </span><span class=\"m\">1</span>-0\n</code></pre>"
   },
   {
     "page_name": "sacct tips",
@@ -1162,6 +1150,24 @@
     "page_url": "../slurm/tips-sacct/",
     "text": "sacct -k 00:01 -K 1-0\n",
     "html": "<pre><span></span><code>sacct<span class=\"w\"> </span>-k<span class=\"w\"> </span><span class=\"m\">00</span>:01<span class=\"w\"> </span>-K<span class=\"w\"> </span><span class=\"m\">1</span>-0\n</code></pre>"
+  },
+  {
+    "page_name": "sacct tips",
+    "page_url": "../slurm/tips-sacct/",
+    "text": "sacct --user bob --starttime $(date -d '3 months ago' +%D-%R) --state OUT_OF_MEMORY --timelimit-min 2-00:00:00 --format JobID,JobName,Elapsed,NCPUs,TotalCPU,CPUTime,ReqMem,MaxRSS,MaxDiskRead,MaxDiskWrite,State,ExitCode\n",
+    "html": "<pre><span></span><code>sacct --user bob --starttime $(date -d '3 months ago' +%D-%R) --state OUT_OF_MEMORY --timelimit-min 2-00:00:00 --format JobID,JobName,Elapsed,NCPUs,TotalCPU,CPUTime,ReqMem,MaxRSS,MaxDiskRead,MaxDiskWrite,State,ExitCode\n</code></pre>"
+  },
+  {
+    "page_name": "sacct tips",
+    "page_url": "../slurm/tips-sacct/",
+    "text": "sacct -n -S now-14days -E now -X -s OOM | wc -l\n",
+    "html": "<pre><span></span><code>sacct -n -S now-14days -E now -X -s OOM | wc -l\n</code></pre>"
+  },
+  {
+    "page_name": "sacct tips",
+    "page_url": "../slurm/tips-sacct/",
+    "text": "sacct -n -S now-14days -E now -X -s F | wc -l\n",
+    "html": "<pre><span></span><code>sacct -n -S now-14days -E now -X -s F | wc -l\n</code></pre>"
   },
   {
     "page_name": "sacctmgr tips",
