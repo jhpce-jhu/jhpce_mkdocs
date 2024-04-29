@@ -1,6 +1,5 @@
 ---
 tags:
-  - done
   - slurm
 ---
 # scontrol useful command examples

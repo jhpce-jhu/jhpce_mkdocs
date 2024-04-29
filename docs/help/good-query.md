@@ -1,7 +1,3 @@
----
-tags:
-   - done
----
 # Helpful Hints For Asking Questions or Reporting Problems
 
 This page describes how to write a good help request email.

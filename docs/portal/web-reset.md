@@ -1,7 +1,3 @@
----
-tags:
-  - done
----
 # JHPCE User Account Tools
 
 Our [web portal](https://jhpce-app02.jhsph.edu/) has several sections.

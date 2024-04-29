@@ -1,8 +1,3 @@
----
-tags:
-  - done
----
-
 # Fastscratch
 
 A 22TB file system created from fast Solid State Disk is available for your use. This provides a fast place to store input or output files for your compute jobs. There is no cost for using your personal scratch space.

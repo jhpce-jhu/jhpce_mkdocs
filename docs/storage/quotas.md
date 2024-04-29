@@ -1,7 +1,3 @@
----
-tags:
-  - done
----
 # Disk Quotas
 
 Disk quotas are used to control disk space for certain file systems. We use "hard" quotas. You are not allowed to use more than your quota.  
