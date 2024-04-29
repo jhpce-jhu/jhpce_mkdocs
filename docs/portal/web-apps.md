@@ -50,14 +50,4 @@ Our [web portal](https://jhpce-app02.jhsph.edu/) has several sections. ==You wil
   
 </div>
 
-!!! Note "Authoring Note"
-    What do users need to know about using this service in practice?
-    
-    How long do sessions run if you don't connect to them?
-    Do they automatically time out?
-    
-    Do users need to do anything to clean up if they change their mind or cannot connect to it or things freeze up? (`squeue --me` and `scancel jobid`?)
-    
-    Can you disconnect from and then reconnect to any of these apps?
-
 
