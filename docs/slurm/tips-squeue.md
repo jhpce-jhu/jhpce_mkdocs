@@ -7,6 +7,7 @@ tags:
 # squeue useful command examples
    
 !!! Warning
+    AS OF 04/30/2024 THIS DOCUMENT CONTAINS NO UNIQUE/USEFUL INFO.
     This document started as a copy of that for the sacct command. Because formatting output is similar, etc. It will be pruned and modified.
  
 !!! Example
