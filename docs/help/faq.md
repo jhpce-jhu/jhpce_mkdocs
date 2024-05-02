@@ -86,7 +86,7 @@ Please download the latest [orientation document (pdf)](../orient/images/latest-
 - OpenSSL version mismatch error (e.g. Built against 30000070, you have 30100050)
 
 ??? "Click to expand answer"
-    Please unload conda_R
+    Please unload the conda_R module before doing your `git clone` or other ssh-related command. That module contains its own OpenSSL libraries which conflict with the system-provided one.
 
 ## Resources
 - What is the SAFE desktop?
