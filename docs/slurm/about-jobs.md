@@ -142,7 +142,7 @@ Until we draw a nice diagram, a written description will have to suffice. Short 
 3. If problems found, then job is rejected immediately.
 4. Otherwise it is accepted and becomes PENDING (PD).
 5. SLURM's scheduler algorithms begin testing where your job will "fit" in its planning process for the future. There will be more slots where smaller jobs (in RAM, CPU and duration) will fit than larger ones.
-5. PENDING jobs can be held, CANCELLED (CA) or be dispatched to compute node(s) to start RUNNING (R).
+5. PENDING jobs can remain pending (see [reasons](#pending-job-reasons) below), CANCELLED (CA) or be dispatched to compute node(s) to start RUNNING (R).
 6. RUNNING jobs can immediately run into a problem due to coding errors and become FAILED (F).
 7. RUNNING jobs can run correctly but then exceed their memory allocation and become OUT_OF_MEMORY (OOM).
 8. RUNNING jobs can run correctly but run into their wall-clock time limit and become DEADLINE (DL) or FAILED.
@@ -150,4 +150,15 @@ Until we draw a nice diagram, a written description will have to suffice. Short 
 
 If you are very curious, the SLURM vendor describes how jobs are started and terminated in [this document](https://slurm.schedmd.com/job_launch.html).
 
+## PENDING JOB REASONS
 
+These codes identify the reason that a job is waiting for execution. A job may be waiting for more than one reason, in which case only one of those reasons is displayed. These reasons are seen in the output of `squeue` and `scontrol show job <jobid>`
+
+The main pending reasons you will see:
+
+--8<-- "slurm/includes/common-pending-reasons.md"
+
+??? Note "Click for a mostly-complete list of pending reasons"
+    --8<-- "slurm/includes/all-pending-reasons.md"
+    
+That mostly-complete list comes from [this section](https://slurm.schedmd.com/archive/slurm-22.05.9/squeue.html#lbAF) which refers to yet another page for THE complete list [here](https://slurm.schedmd.com/resource_limits.html#reasons)
