@@ -37,7 +37,7 @@ On the "Session settings" screen, click on "SSH"
 
 ![mobaxterm4](images/mobaxterm4.gif)
 
-Enter "jhpce01.jhsph.edu" as the "Remote host". Click on the "Specify
+Enter "jhpce03.jhsph.edu" as the "Remote host". Click on the "Specify
 username" checkbox, and enter your JHPCE username in the next
 field. Then click the "OK" button.
 
@@ -57,9 +57,9 @@ a couple of steps).
 At this point you should be logged into the JHPCE cluster and sitting
 at a shell prompt.
 
-After you exit out of the JHPCE cluster, a "jhpce01" session will be
+After you exit out of the JHPCE cluster, a "jhpce03" session will be
 saved as a "Saved Sessions".  To login again, double-click on the
-jhpce01 "Saved Session", and you should then be prompted for
+jhpce03 "Saved Session", and you should then be prompted for
 "Verification Code" (which will come from Google Authenticator) and
 "Password:"
 
@@ -192,8 +192,8 @@ your passphrase for your private key.
 
 The final step will be to add your key to the JHPCE session in the
 MobaXerm application. On the left pane of MobaXterm, you should see a
-list of "Saved sessions", including a session for the "jhpce01" login
-node. Right-Click on the "jhpce01" session, and select "Edit Session".
+list of "Saved sessions", including a session for the "jhpce03" login
+node. Right-Click on the "jhpce03" session, and select "Edit Session".
 This will open a window that looks like:
 
 ![moba-advanced-settings](images/moba-advanced-settings.gif)
@@ -208,11 +208,11 @@ the location of your "private key" file.
 
 + Click OK to save your changes.
 + Now, in the left pane of Saved Sessions, you should be able to
-double click on the "jhpce01" session, and a new tab should open up,
+double click on the "jhpce03" session, and a new tab should open up,
 and log you into the JHPCE cluster without having to enter a password
 or Google Authenticator PIN.
 + Once you have verified that you can login, exit out of all of your
 SSH sessions, and close the MobaXterm app.  Reopen the MobaXterm
-application, double click on the "jhpce01" session.  As before, a new
+application, double click on the "jhpce03" session.  As before, a new
 tab should open up, and log you into the JHPCE cluster without having
 to enter a password or Google Authenticator PIN. 
