@@ -968,6 +968,12 @@
   {
     "page_name": "Time Limits",
     "page_url": "../slurm/time-limits/",
+    "text": "srun:*:time=5-00\nsbatch:*:time=10-00\n",
+    "html": "<pre><span></span><code>srun:*:time=5-00\nsbatch:*:time=10-00\n</code></pre>"
+  },
+  {
+    "page_name": "Time Limits",
+    "page_url": "../slurm/time-limits/",
     "text": "scontrol update jobid=<jobid> mailtype=time_limit_80\n",
     "html": "<pre><span></span><code>scontrol<span class=\"w\"> </span>update<span class=\"w\"> </span><span class=\"nv\">jobid</span><span class=\"o\">=</span>&lt;jobid&gt;<span class=\"w\"> </span><span class=\"nv\">mailtype</span><span class=\"o\">=</span>time_limit_80\n</code></pre>"
   },
