@@ -159,10 +159,9 @@ See [this document](../storage/quotas.md/#file-deletion-and-delayed-change-in-qu
 
 ## X11
 
-- There is a dedicated [X11](../access/x11.md) document
-- X11 Forwarding and Authentication
-
-  See this excellent [article from Teleport](../access/images/x11-forwarding-from-teleport.pdf) (pdf) for quite a lot of good information and diagrams!!! (Saved as a PDF from https://goteleport.com/blog/x11-forwarding/)
+- There is a dedicated document about X11 and troubleshooting connections [here](../access/x11.md)
+- X11 Forwarding and Authentication - See this excellent [article from Teleport](../access/images/x11-forwarding-from-teleport.pdf) (pdf) for quite a lot of good information and diagrams!!! (Saved as a PDF from https://goteleport.com/blog/x11-forwarding/)
+- If you are using MobaXterm and NOT using its Sessions to do SSH or SFTP, STOP using the built-in terminal window and START using an SSH or SFTP Session. The MobaXterm terminal window doesn't work reliably. See the [MobaXterm](../access/mobaxterm.md) document for instructions.
 
 - My X11 forwarding stops working after 20 minutes 
 ??? "Click to expand answer"
