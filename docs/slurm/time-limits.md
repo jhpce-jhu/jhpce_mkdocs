@@ -18,7 +18,7 @@ One crucial aspect of job management in SLURM is setting time limits for job exe
 Setting time limits is essential for maintaining a balanced workload on an HPC system. By specifying a maximum runtime for each job, users prevent inefficient use of resources and minimize delays for others waiting to run their tasks. Time limits also aid in preventing runaway or stuck jobs that may consume resources indefinitely. This proactive approach to job management promotes fairness and improves the overall system efficiency, making it more accessible to a larger number of users.
 
 ## Syntax for Setting Time Limits:
-In SLURM, users can set time limits using the --time or -t option when submitting a job. 
+In SLURM, users can set time limits using the --time or -t options when submitting a job. 
 
 The time limit is specified in the format **days-hours:minutes:seconds**. For example, to request a job with a maximum runtime of 2 days, the following command can be used:
 
@@ -33,7 +33,14 @@ To request an srun session with at 4 hour time limit you would run:
 
 `srun --pty --x11 -t 4:00:00 bash`
 
-Note that the “-t” option should be followed by a space and the “–time” option should be followed by an “=”. This syntax allows users to tailor the time limit to the specific requirements of their jobs, balancing the need for computational resources with fair usage practices.
+Note that the “-t” option should be followed by a space and the `–-time` option should be followed by an “=” and a time, with no spaces.
+
+You can specify a default time in your ~/.slurm/defaults file. As documented in [this page](../slurm/crafting-jobs.md/#slurm-directive-order-of-precendence) you can override such defaults with directives in your batch file or via the command line options.
+
+``` title="Examples of 5 and 10 days for interactive & batch jobs"
+srun:*:time=5-00
+sbatch:*:time=10-00
+```
 
 ## JHPCE Cluster Time Limit Policies:
 On the JHPCE cluster, specific time limit policies are in place to balance the needs of diverse users. The default time limit for job execution on the [public partitions](../slurm/partitions.md) (shared, interactive and gpu partitions) is set to 1 day, ensuring that shorter tasks do not face unnecessary delays. 
