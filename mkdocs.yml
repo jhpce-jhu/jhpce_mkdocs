@@ -9,8 +9,7 @@ nav:
       - JHPCE Model: aboutus/model.md
       - Staff: aboutus/staff.md
     - Getting Started:
-      - joinus/index.md
-      - Getting Started Overview: joinus/index.md
+      - Getting Started Overview: joinus/joinus-overview.md
       - New user form: joinus/new-users-form.md
       - New PI information and form: 
          - New PI Information: joinus/new-pi.md
@@ -60,8 +59,7 @@ nav:
       - Storage Tips: files/storage-tips.md
       - Copying within cluster: files/copying-files.md
     - Storage Policies and Practices: 
-      - storage/index.md
-      - Storage Overview: storage/index.md
+      - Storage Overview: storage/storage-overview.md
       - Backups and Restores: storage/backups-restores.md
       - Quotas: storage/quotas.md
       - Fastscratch: storage/fastscratch.md
