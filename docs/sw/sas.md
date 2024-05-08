@@ -23,7 +23,7 @@ personal computer, you might want to register for this free service.
 Many of our SAS users work with this licensed database.
 
 ### How To Get Permission To Access It
-Contact Jill Curran <jcurra14@jhmi.edu> in the Center for Drug Safety and Effectiveness.
+Contact  Xuya (Rayna) Xiao  <xxiao14@jhmi.edu> in the Epidemiology Department.
 Her group controls the access to the Marketscan data on the JHPCE cluster.  They have some
 good guides on how the data is organized on the cluster.  She will then ask us to add you to
 the "alexander" UNIX group so you can see the database's files.
