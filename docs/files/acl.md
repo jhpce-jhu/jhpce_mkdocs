@@ -20,7 +20,7 @@ this, Access Control Lists (ACLs) can be used. They *add* to the normal permissi
     
     For *everything else*, use **nfs4_getfacl** and **nfs4_setfacl**. (All of the files originally found on the Lustre file server named DCL01 have been copied off to live on other, ZFS-using file servers. But the name /dcl01 has been preserved, for convenience.)
 
-    Instructions for Lustre file systems are found [later in this document](../files/acl.md#directories-in-lustre-file-systems).
+    Instructions for Lustre file systems are found [later in this document](../files/acl.md#acls-in-lustre-file-systems).
 
 ## **ACL Commands**
 
