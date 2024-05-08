@@ -191,12 +191,12 @@
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://jhpce.jhu.edu/joinus/hipaa/</loc>
+         <loc>https://jhpce.jhu.edu/joinus/</loc>
          <lastmod>2024-05-08</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://jhpce.jhu.edu/joinus/joinus-overview/</loc>
+         <loc>https://jhpce.jhu.edu/joinus/hipaa/</loc>
          <lastmod>2024-05-08</lastmod>
          <changefreq>daily</changefreq>
     </url>
@@ -386,6 +386,11 @@
          <changefreq>daily</changefreq>
     </url>
     <url>
+         <loc>https://jhpce.jhu.edu/storage/</loc>
+         <lastmod>2024-05-08</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
          <loc>https://jhpce.jhu.edu/storage/backups-restores/</loc>
          <lastmod>2024-05-08</lastmod>
          <changefreq>daily</changefreq>
@@ -397,11 +402,6 @@
     </url>
     <url>
          <loc>https://jhpce.jhu.edu/storage/quotas/</loc>
-         <lastmod>2024-05-08</lastmod>
-         <changefreq>daily</changefreq>
-    </url>
-    <url>
-         <loc>https://jhpce.jhu.edu/storage/storage-overview/</loc>
          <lastmod>2024-05-08</lastmod>
          <changefreq>daily</changefreq>
     </url>
