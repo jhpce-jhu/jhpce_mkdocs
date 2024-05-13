@@ -75,7 +75,7 @@ Home page for more information: https://github.com/troycomi/reportseff
     reportseff --since noon --until now -s CD -u $USER --format "+user,nodelist,start,end,cpueff,memeff"
     ```
 
-you can define environment variables as you do with sacct to change your formatting. See [here](../slurm/tips-sacct/#using-environment-variables)
+you can define environment variables as you do with sacct to change your formatting. See [here](../slurm/tips-sacct.md/#using-environment-variables)
 
 !!! Caution
     you may not be able to see other user's job info unless you add `--extra-args -a `

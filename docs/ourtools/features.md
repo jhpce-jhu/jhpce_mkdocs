@@ -165,6 +165,8 @@ This third example results in the whole rest of the document wrapped up to the r
 keyboard meta keys displayed e.g. ++ctrl++
 by using two plus characters, the keyword like "ctrl", then two more plus characters
 
+{==DO NOT USE CAPITAL LETTERS or the symbol will not display, just the word you typed==}
+
 ++plus++ ++plus++ ++ctrl++ ++plus++ ++plus++
 
 You can create a meta-key sequence by surrounding the sequence with plus symbols but only using single plus symbols in between the keywords.
@@ -175,7 +177,7 @@ You can create a meta-key sequence by surrounding the sequence with plus symbols
 
 A backtick ++grave++ is called a grave, by the way. As in the French "accent grave" 
 
-Example keywords are: dblquote, cmd, ctrl, esc, tab, del, arrow-up, pipe, windows. All of the symbols you could desire are listed here!!!! [https://facelessuser.github.io/pymdown-extensions/extensions/keys/
+Example keywords are: enter, shift, dblquote, cmd, ctrl, esc, tab, del, arrow-up, pipe, windows. All of the symbols you could desire are listed here!!!! [https://facelessuser.github.io/pymdown-extensions/extensions/keys/
 ](https://facelessuser.github.io/pymdown-extensions/extensions/keys/)
 
 To create the vertical pipe or bar symbol, you can use ++plus++ ++plus++ bar ++plus++ ++plus++

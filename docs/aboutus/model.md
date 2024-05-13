@@ -15,7 +15,7 @@ all Johns Hopkins affiliated researchers.
 ### JHPCE
 The larger HPC environmnet is for general HPC computing on non-HIPAA data.
 We generally refer to this as the "J H P C E" cluster (each letter pronounced). 
-Informaion on the JHPCE cluster can be found at the [Introduction](../joinus/intro.md)
+Informaion on the JHPCE cluster can be found at the [Introduction](../joinus/index.md)
 link.
 
 ### CSUB
