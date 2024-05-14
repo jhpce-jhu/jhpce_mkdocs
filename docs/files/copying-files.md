@@ -1,9 +1,17 @@
 # Copying Files Within The Cluster
 
+When transferring files **into and out of** the cluster, please use the transfer node. The various tools for that work are described in this [document](../access/file-transfer.md).
+
+When working with files **already within** the cluster, please use the information in this document. 
+
 ## TL;DR
 
-1. Please do your file copying on compute nodes, not login nodes.
-2. If you need to manage a lot of files, it is well worth your time to learn how to use the `rsync` command. This program is available on UNIX and Mac computers by default. It is increasingly available on Windows as the Windows Subsystem for Linux (WSL) becomes more common.
+1. When trying to copy or move files around between file systems inside the cluster, you do not need to use the transfer node or the `scp` command.
+2. Please do your file management work on compute nodes, not login nodes.
+3. Understand what you are doing in big-picture terms. Are you trying to move data around within the same file system? Copy data between file systems? How large is the total amount of data that you are manipulating?  For tips on these kinds of things see [storage tips](../files.md/storage-tips)
+4. Before initiating large copies you should check that you have enough space in the destination. 
+5. It is safer to copy files between different file systems than to `mv` them. But copying files between locations within the same file system duplicates files and can lead to confusion.
+6. If you need to manage a lot of files, it is well worth your time to learn how to use the `rsync` command. It can be used to compare directory trees, create log files of its actions, and do other important things not found in more frequently used programs like `cp` or `scp`
 
 ## Introduction
 

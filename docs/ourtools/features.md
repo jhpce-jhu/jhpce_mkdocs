@@ -158,31 +158,49 @@ This third example results in the whole rest of the document wrapped up to the r
 ![Image title](../files/images/dir-stack-push-pop.png){align=left} The text that you want to the right side of image.
 ```
 
-## **Keyboard meta keys**
+## **Symbols for keyboard keys**
 
 (enabled by the pymdownx.keys extension)
 
-keyboard meta keys displayed e.g. ++ctrl++
-by using two plus characters, the keyword like "ctrl", then two more plus characters
+You can create images of keyboard keys, such as meta keys like ++ctrl++ or ++cmd++ by {==surrounding a keyword such as "ctrl" with two plus characters==}
 
-{==DO NOT USE CAPITAL LETTERS or the symbol will not display, just the word you typed==}
+++plus++ ++plus++ ctrl ++plus++ ++plus++ will create ++ctrl++
 
-++plus++ ++plus++ ++ctrl++ ++plus++ ++plus++
+This can be useful when trying to draw attention to important small characters like back ticks, exclamation marks or vertical pipe symbols. You can also use them as tags like ++mail++ some-address@bob.edu or ++help++ some-URL
 
-You can create a meta-key sequence by surrounding the sequence with plus symbols but only using single plus symbols in between the keywords.
+DO NOT USE ANY CAPITAL LETTERS or the symbol will not display, only the word you typed.  "Ctrl" will fail, "ctrl" will succeed.
 
-++ctrl+alt+delete++
+EXAMPLES:
+++context-menu++
+++arrow-up++
+++bracket-left++ ++bracket-right++
+++caps-lock++
+++eject++
+++fn++
+++f4++
 
-++plus++ ++plus++ ctrl ++plus++ alt ++plus++ delete ++plus++ ++plus++
+### **Key sequences**
+You can create a meta-key **sequence** by adding a single ++plus++ between the keywords. (So you surround the sequence with two plus symbols but only use a single plus symbols in between the keywords.)
+
+++ctrl+alt+delete++ is created with ++plus++ ++plus++ ctrl ++plus++ alt ++plus++ delete ++plus++ ++plus++
+
+### **List of keywords**
+
+Example keywords are: **bar, pipe, enter, shift, dblquote, ctrl, esc, tab, space, del, arrow-up, single-quote, brace-left, bracket-right, cmd, windows**.
 
 A backtick ++grave++ is called a grave, by the way. As in the French "accent grave" 
 
-Example keywords are: enter, shift, dblquote, cmd, ctrl, esc, tab, del, arrow-up, pipe, windows. All of the symbols you could desire are listed here!!!! [https://facelessuser.github.io/pymdown-extensions/extensions/keys/
-](https://facelessuser.github.io/pymdown-extensions/extensions/keys/)
+All of the symbols you could desire are listed in the following web page, ({==except for some reason the vertical "pipe" or "bar" symbol -- use ++plus++ ++plus++ pipe ++plus++ ++plus++ to create that==}):
 
-To create the vertical pipe or bar symbol, you can use ++plus++ ++plus++ bar ++plus++ ++plus++
+[https://facelessuser.github.io/pymdown-extensions/extensions/keys/](https://facelessuser.github.io/pymdown-extensions/extensions/keys/)
 
-You can create a key with any wording you want ++plus++ ++plus++ ++dblquote++ Your Wording Here ++dblquote++ ++plus++ ++plus++ to create ++"Your Wording Here"++
+### **CUSTOM "KEYS"**
+You can create a key (or key combo) with any wording you want by adding double quotes around your text, for example
+
+++plus++ ++plus++ ++dblquote++ Your Wording Here ++dblquote++ ++plus++ ++plus++ to create ++"Your Wording Here"++
+
+This can be useful to make a series of steps users need to follow more clear. ++"Do this first"+"Then do this second"++
+
 
 ## Abbreviations
 Abbreviations can be defined by using a syntax similar to URLs and footnotes, starting with an asterisk immediately followed by the term to be associated in square brackets.
