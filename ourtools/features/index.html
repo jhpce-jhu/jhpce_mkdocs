@@ -1182,11 +1182,44 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#keyboard-meta-keys" class="md-nav__link">
+  <a href="#symbols-for-keyboard-keys" class="md-nav__link">
     <span class="md-ellipsis">
-      Keyboard meta keys
+      Symbols for keyboard keys
     </span>
   </a>
+  
+    <nav class="md-nav" aria-label="Symbols for keyboard keys">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#key-sequences" class="md-nav__link">
+    <span class="md-ellipsis">
+      Key sequences
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#list-of-keywords" class="md-nav__link">
+    <span class="md-ellipsis">
+      List of keywords
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#custom-keys" class="md-nav__link">
+    <span class="md-ellipsis">
+      CUSTOM "KEYS"
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -3893,11 +3926,44 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#keyboard-meta-keys" class="md-nav__link">
+  <a href="#symbols-for-keyboard-keys" class="md-nav__link">
     <span class="md-ellipsis">
-      Keyboard meta keys
+      Symbols for keyboard keys
     </span>
   </a>
+  
+    <nav class="md-nav" aria-label="Symbols for keyboard keys">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#key-sequences" class="md-nav__link">
+    <span class="md-ellipsis">
+      Key sequences
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#list-of-keywords" class="md-nav__link">
+    <span class="md-ellipsis">
+      List of keywords
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#custom-keys" class="md-nav__link">
+    <span class="md-ellipsis">
+      CUSTOM "KEYS"
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -4270,20 +4336,32 @@ Hmmm, if Jeffrey tries to use that syntax then the rest of the text in this docu
 <p>This third example results in the whole rest of the document wrapped up to the right of the image. (So I didn't actually put the live code in the document).</p>
 <div class="highlight"><pre><span></span><code>![Image title](../files/images/dir-stack-push-pop.png){align=left} The text that you want to the right side of image.
 </code></pre></div>
-<h2 id="keyboard-meta-keys"><strong>Keyboard meta keys</strong><a class="headerlink" href="#keyboard-meta-keys" title="Anchor link to this section for reference">&para;</a></h2>
+<h2 id="symbols-for-keyboard-keys"><strong>Symbols for keyboard keys</strong><a class="headerlink" href="#symbols-for-keyboard-keys" title="Anchor link to this section for reference">&para;</a></h2>
 <p>(enabled by the pymdownx.keys extension)</p>
-<p>keyboard meta keys displayed e.g. <span class="keys"><kbd class="key-control">Ctrl</kbd></span>
-by using two plus characters, the keyword like "ctrl", then two more plus characters</p>
-<p><mark class="critic">DO NOT USE CAPITAL LETTERS or the symbol will not display, just the word you typed</mark></p>
-<p><span class="keys"><kbd class="key-plus">+</kbd></span> <span class="keys"><kbd class="key-plus">+</kbd></span> <span class="keys"><kbd class="key-control">Ctrl</kbd></span> <span class="keys"><kbd class="key-plus">+</kbd></span> <span class="keys"><kbd class="key-plus">+</kbd></span></p>
-<p>You can create a meta-key sequence by surrounding the sequence with plus symbols but only using single plus symbols in between the keywords.</p>
-<p><span class="keys"><kbd class="key-control">Ctrl</kbd><span>+</span><kbd class="key-alt">Alt</kbd><span>+</span><kbd class="key-delete">Del</kbd></span></p>
-<p><span class="keys"><kbd class="key-plus">+</kbd></span> <span class="keys"><kbd class="key-plus">+</kbd></span> ctrl <span class="keys"><kbd class="key-plus">+</kbd></span> alt <span class="keys"><kbd class="key-plus">+</kbd></span> delete <span class="keys"><kbd class="key-plus">+</kbd></span> <span class="keys"><kbd class="key-plus">+</kbd></span></p>
+<p>You can create images of keyboard keys, such as meta keys like <span class="keys"><kbd class="key-control">Ctrl</kbd></span> or <span class="keys"><kbd class="key-command">Cmd</kbd></span> by <mark class="critic">surrounding a keyword such as "ctrl" with two plus characters</mark></p>
+<p><span class="keys"><kbd class="key-plus">+</kbd></span> <span class="keys"><kbd class="key-plus">+</kbd></span> ctrl <span class="keys"><kbd class="key-plus">+</kbd></span> <span class="keys"><kbd class="key-plus">+</kbd></span> will create <span class="keys"><kbd class="key-control">Ctrl</kbd></span></p>
+<p>This can be useful when trying to draw attention to important small characters like back ticks, exclamation marks or vertical pipe symbols. You can also use them as tags like <span class="keys"><kbd class="key-mail">Mail</kbd></span> some-address@bob.edu or <span class="keys"><kbd class="key-help">Help</kbd></span> some-URL</p>
+<p>DO NOT USE ANY CAPITAL LETTERS or the symbol will not display, only the word you typed.  "Ctrl" will fail, "ctrl" will succeed.</p>
+<p>EXAMPLES:
+<span class="keys"><kbd class="key-context-menu">Menu</kbd></span>
+<span class="keys"><kbd class="key-arrow-up">Up</kbd></span>
+<span class="keys"><kbd class="key-bracket-left">[</kbd></span> <span class="keys"><kbd class="key-bracket-right">]</kbd></span>
+<span class="keys"><kbd class="key-caps-lock">Caps Lock</kbd></span>
+<span class="keys"><kbd class="key-eject">Eject</kbd></span>
+<span class="keys"><kbd class="key-function">Fn</kbd></span>
+<span class="keys"><kbd class="key-f4">F4</kbd></span></p>
+<h3 id="key-sequences"><strong>Key sequences</strong><a class="headerlink" href="#key-sequences" title="Anchor link to this section for reference">&para;</a></h3>
+<p>You can create a meta-key <strong>sequence</strong> by adding a single <span class="keys"><kbd class="key-plus">+</kbd></span> between the keywords. (So you surround the sequence with two plus symbols but only use a single plus symbols in between the keywords.)</p>
+<p><span class="keys"><kbd class="key-control">Ctrl</kbd><span>+</span><kbd class="key-alt">Alt</kbd><span>+</span><kbd class="key-delete">Del</kbd></span> is created with <span class="keys"><kbd class="key-plus">+</kbd></span> <span class="keys"><kbd class="key-plus">+</kbd></span> ctrl <span class="keys"><kbd class="key-plus">+</kbd></span> alt <span class="keys"><kbd class="key-plus">+</kbd></span> delete <span class="keys"><kbd class="key-plus">+</kbd></span> <span class="keys"><kbd class="key-plus">+</kbd></span></p>
+<h3 id="list-of-keywords"><strong>List of keywords</strong><a class="headerlink" href="#list-of-keywords" title="Anchor link to this section for reference">&para;</a></h3>
+<p>Example keywords are: <strong>bar, pipe, enter, shift, dblquote, ctrl, esc, tab, space, del, arrow-up, single-quote, brace-left, bracket-right, cmd, windows</strong>.</p>
 <p>A backtick <span class="keys"><kbd class="key-grave">`</kbd></span> is called a grave, by the way. As in the French "accent grave" </p>
-<p>Example keywords are: enter, shift, dblquote, cmd, ctrl, esc, tab, del, arrow-up, pipe, windows. All of the symbols you could desire are listed here!!!! <a href="https://facelessuser.github.io/pymdown-extensions/extensions/keys/">https://facelessuser.github.io/pymdown-extensions/extensions/keys/
-</a></p>
-<p>To create the vertical pipe or bar symbol, you can use <span class="keys"><kbd class="key-plus">+</kbd></span> <span class="keys"><kbd class="key-plus">+</kbd></span> bar <span class="keys"><kbd class="key-plus">+</kbd></span> <span class="keys"><kbd class="key-plus">+</kbd></span></p>
-<p>You can create a key with any wording you want <span class="keys"><kbd class="key-plus">+</kbd></span> <span class="keys"><kbd class="key-plus">+</kbd></span> <span class="keys"><kbd class="key-double-quote">"</kbd></span> Your Wording Here <span class="keys"><kbd class="key-double-quote">"</kbd></span> <span class="keys"><kbd class="key-plus">+</kbd></span> <span class="keys"><kbd class="key-plus">+</kbd></span> to create <span class="keys"><kbd>Your Wording Here</kbd></span></p>
+<p>All of the symbols you could desire are listed in the following web page, (<mark class="critic">except for some reason the vertical "pipe" or "bar" symbol -- use <span class="keys"><kbd class="key-plus">+</kbd></span> <span class="keys"><kbd class="key-plus">+</kbd></span> pipe <span class="keys"><kbd class="key-plus">+</kbd></span> <span class="keys"><kbd class="key-plus">+</kbd></span> to create that</mark>):</p>
+<p><a href="https://facelessuser.github.io/pymdown-extensions/extensions/keys/">https://facelessuser.github.io/pymdown-extensions/extensions/keys/</a></p>
+<h3 id="custom-keys"><strong>CUSTOM "KEYS"</strong><a class="headerlink" href="#custom-keys" title="Anchor link to this section for reference">&para;</a></h3>
+<p>You can create a key (or key combo) with any wording you want by adding double quotes around your text, for example</p>
+<p><span class="keys"><kbd class="key-plus">+</kbd></span> <span class="keys"><kbd class="key-plus">+</kbd></span> <span class="keys"><kbd class="key-double-quote">"</kbd></span> Your Wording Here <span class="keys"><kbd class="key-double-quote">"</kbd></span> <span class="keys"><kbd class="key-plus">+</kbd></span> <span class="keys"><kbd class="key-plus">+</kbd></span> to create <span class="keys"><kbd>Your Wording Here</kbd></span></p>
+<p>This can be useful to make a series of steps users need to follow more clear. <span class="keys"><kbd>Do this first</kbd><span>+</span><kbd>Then do this second</kbd></span></p>
 <h2 id="abbreviations">Abbreviations<a class="headerlink" href="#abbreviations" title="Anchor link to this section for reference">&para;</a></h2>
 <p>Abbreviations can be defined by using a syntax similar to URLs and footnotes, starting with an asterisk immediately followed by the term to be associated in square brackets.</p>
 <p>This code creates the sentence that follows. You can hover over "<abbr title="Hyper Text Markup Language">HTML</abbr>" and see the definition appear.</p>
@@ -4648,7 +4726,7 @@ https://www.starfallprojects.co.uk/blog/material-custom-status/#enable-the-featu
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1-2.1-2M12.5 7v5.2l4 2.4-1 1L11 13V7h1.5M11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2v1.8Z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">May 13, 2024</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">May 14, 2024</span>
   </span>
 
     

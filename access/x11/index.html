@@ -3705,14 +3705,14 @@
 <h2 id="x11-forwarding-and-authentication">X11 Forwarding and Authentication<a class="headerlink" href="#x11-forwarding-and-authentication" title="Anchor link to this section for reference">&para;</a></h2>
 <p>See this excellent <a href="../images/x11-forwarding-from-teleport.pdf">article from Teleport</a> (pdf) for quite a lot of good information and diagrams!!! (Saved as a PDF from https://goteleport.com/blog/x11-forwarding/)</p>
 <h2 id="troubleshooting-x-connections">Troubleshooting X Connections<a class="headerlink" href="#troubleshooting-x-connections" title="Anchor link to this section for reference">&para;</a></h2>
-<div class="admonition authoringnote">
-<p class="admonition-title">Authoringnote</p>
+<div class="admonition caution">
+<p class="admonition-title">Authoring Note</p>
 <p>This section should include pointers to FAQ items or vice versa. We shouldn't rewrite the same information twice!!!</p>
 </div>
 <ul>
 <li>When -X ?</li>
 <li>
-<p>When -Y ?</p>
+<p>When -Y ? Probably only on old macOS systems such as 10.13</p>
 </li>
 <li>
 <p>printenv DISPLAY or echo $DISPLAY</p>
@@ -3730,28 +3730,39 @@ srun: error: No DISPLAY variable set, cannot setup x11 forwarding.</p>
 <p>help/faq/#x11
 slurm/slurm-faq/#x11-related-errors</p>
 <h3 id="algorithm">Algorithm<a class="headerlink" href="#algorithm" title="Anchor link to this section for reference">&para;</a></h3>
-<p>If X11 isn’t working for you, consider taking the following steps, and if you cannot figure out how to resolve the problem, let us know what happened when you followed these steps, so we know what worked and where in the process you reached an error, and what it is.</p>
+<p>If X11 isn’t working for you, consider taking the following steps, and if you cannot figure out how to resolve the problem, let us know what happened when you followed these steps, so we know what worked and <strong>where in the process</strong> you reached an error, and exactly what it was.</p>
 <ol>
+<li>Log out of the cluster.</li>
 <li>
-<p>Log out of the cluster.</p>
+<p>If you are on a Mac, test that XQuartz works on that Mac at the very most basic level. No network connections, no SSH, no remote authentication, just local X11 functionality.</p>
+<ol>
+<li>start XQuartz if not already running</li>
+<li>start a new <code>xterm</code> window from the <span class="keys"><kbd>Applications</kbd></span> menu</li>
+<li>start a second test program from that <code>xterm</code> like <code>xcalc</code></li>
+<li>run <code>xauth list</code> to (slowly) list previously-added entries to your <code>~/.Xauthority</code> file. (You can <span class="keys"><kbd class="key-control">Ctrl</kbd><span>+</span><kbd class="key-c">C</kbd></span> to cancel the <code>xauth</code>.)</li>
+<li>If you have any problems doing these things then STOP and find a solution. NOTHING WILL WORK IN TERMS OF X11 ON THE CLUSTER if it won't work at this level on your Mac. If you've just installed XQuartz, did you forget to reboot?</li>
+</ol>
 </li>
 <li>
-<p>Log back in: <code>ssh -X USER@jhpce03.jhsph.edu</code></p>
+<p>Log back into the cluster: <code>ssh -X USER@jhpce03.jhsph.edu</code></p>
 </li>
 <li>
-<p>On the login node, run <code>printenv DISPLAY</code>  You should see a string like <code>localhost53:0</code> The first number (here "53" will vary, as it needs to be unique for all currently-logged in users.</p>
+<p>On the login node, run <code>printenv DISPLAY</code>  You should see a string like <code>localhost53:0</code> The first number (here "53") will vary, as it needs to be unique for all currently-logged in users.</p>
 </li>
 <li>If you do not have a DISPLAY variable defined, then you won't be able to run any X11 commands. You need to figure out why this variable is not being set.</li>
-<li>If you have a DISPLAY variable defined, then:</li>
-<li>try to run a simple X11 program to see if it works: <code>xclock</code> should bring up a new clock window on your screen.</li>
-<li>You should be able to find a program named <code>xauth</code> in your path (try commands <code>which xauth</code> and/or <code>whereis xauth</code>). What output does <code>xauth list</code> produce? </li>
-<li>Close the <code>xlock</code> window by clicking in the right button in the upper left corner of its window.</li>
-<li>So now we've established that you have a working X11 environment on the login node.</li>
-<li>Connect to a compute node asking for X11 forwarding support (you can use additional options if needed): <code>srun --pty --x11 bash</code></li>
-<li>On the compute node, run <code>printenv DISPLAY</code>.</li>
+<li>If do you have a DISPLAY variable defined, then:<ol>
+<li>try to run a simple X11 program to see if it works: <code>xclock</code> should bring up a new clock window on your screen. Close the <code>xlock</code> window by clicking in the right button in the upper left corner of its window or by typing <span class="keys"><kbd class="key-control">Ctrl</kbd><span>+</span><kbd class="key-c">C</kbd></span> in the original terminal.</li>
+<li>run <code>xauth list</code> to (slowly) list previously-added entries to your ~/.Xauthority file.  (You can <span class="keys"><kbd class="key-control">Ctrl</kbd><span>+</span><kbd class="key-c">C</kbd></span> to cancel the <code>xauth</code> but you should probably let it finish to ensure that your ~/.Xauthority file is not corrupt.)</li>
+<li>If you are told "xauth: Command not found" then your PATH environment variable is incorrect in an important way. <code>xauth</code> is found in JHPCE at <code>/usr/bin/xauth</code>  Your <code>~/.bashrc</code> file is nonstandard or your <code>module</code> usage has messed things up.  The commands <code>which xauth</code> and/or <code>whereis xauth</code> should show you where in the list of directories contained in the PATH environment variable xauth is found. What is the output of <code>echo $PATH</code>?</li>
+<li>If you have any problems doing these things then STOP and find a solution. NOTHING WILL WORK IN TERMS OF X11 ON A COMPUTE NODE IN THE CLUSTER if it won't work at this level on the login node.</li>
+</ol>
+</li>
+<li>So now we've established that you have a working X11 environment <strong>on the login node</strong>.</li>
+<li>Connect to a compute node asking for X11 forwarding support: <code>srun --pty --x11 bash</code></li>
+<li>If you receive an error then see <a href="../../slurm/slurm-faq/#x11-related-errors">the X11-related entries</a> in the SLURM FAQ.</li>
+<li>On the compute node, run <code>printenv DISPLAY</code></li>
 <li>If you do not have a DISPLAY variable defined on the compute node, then you won't be able to run any X11 commands on the compute node. You need to figure out why this variable is not being set.</li>
 <li>If you have a DISPLAY variable defined on the compute node, then run a simple X11 program to see if it works: <code>xclock</code> should bring up a new clock window on your screen.</li>
-<li>If you receive an error then see <a href="../../slurm/slurm-faq/#x11-related-errors">the X11-related entries</a> in the SLURM FAQ.</li>
 <li>Now close the <code>xclock</code> and try to run your application again.</li>
 </ol>
 <div class="footnote">
@@ -3782,7 +3793,7 @@ slurm/slurm-faq/#x11-related-errors</p>
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1-2.1-2M12.5 7v5.2l4 2.4-1 1L11 13V7h1.5M11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2v1.8Z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">April 12, 2024</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">May 14, 2024</span>
   </span>
 
     
