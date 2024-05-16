@@ -151,7 +151,7 @@ We have a [SAS usage document](../sw/sas.md). Please read it for useful tips.
 ## Storage
 - How much space does a directory use? How much is available?
 
-See [this page](../files/storage-tips.md) for information about evaluating disk space consumption.
+See [this page](../storage/storage-tips.md) for information about evaluating disk space consumption.
 
 - I've deleted files but I'm still restricted by disk quota
 

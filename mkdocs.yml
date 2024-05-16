@@ -58,7 +58,7 @@ nav:
       - Navigating Deep Directory Trees: files/deep-paths.md
       - Data Security: files/data-security.md
       - Encrypting filesystems with ENCFS: files/encfs.md
-      - Storage Tips: files/storage-tips.md
+      - Storage Tips: storage/storage-tips.md
       - Copying within cluster: files/copying-files.md
     - Storage Policies and Practices: 
       - storage/index.md
@@ -66,7 +66,7 @@ nav:
       - Backups and Restores: storage/backups-restores.md
       - Quotas: storage/quotas.md
       - Fastscratch: storage/fastscratch.md
-      - Storage Tips: files/storage-tips.md
+      - Storage Tips: storage/storage-tips.md
     - Software:
       - Overview: sw/sw-overview.md
       - Local Software:

@@ -206,15 +206,15 @@ You can put a "%NUMBER" after a field name to specify how many characters should
 - format=name%30 will print 30 characters of field name right justified.  
 - format=name%-30 will print 30 characters left justified.
 
-You can specify your format on the command line or define an environment variable to hold the desired string (see below).
+You can specify your format on the command line or define an environment variable to hold the desired string (see below). (Or you can do both, and the command line will overrule what is in the environment variable. So you can define SACCT_FORMAT to be what you normally want to see but still see what you need to using the CLI.)
 
 ## **Using Environment Variables**
 
-You can define environment variables in your shell to reduce the complexity of issuing sacct commands. You can also set these in shell scripts. Command line options will always override these settings.
+You can define environment variables in your shell to reduce the complexity of issuing sacct commands. You can also set these in shell scripts so that the `sacct` commands inside the script will use those values Command line options will always override these settings. Put the one you use most often into your `~/.bashrc` file.
 
-SACCT_FORMAT
+**SACCT_FORMAT**
 
-SLURM_TIME_FORMAT
+**SLURM_TIME_FORMAT**
 
 #### **Formatting Dates/Times**
 You can use most variables defined by the STRFTIME(3) system call. [This web page](https://strftime.org) is a starting point, but what SLURM has chosen to implement may not match.
@@ -280,6 +280,8 @@ sacct -k 00:01 -K 1-0
 
 ## **Examples**
 
+**Please try to specify what you need so you don't tax the system and also have less output to inspect.**
+
 !!! Example "All jobs for username bob that (ran with a wall time of at least 2 days) and (were killed for running out of memory) in the past 3 months:"
 
     ```
@@ -295,5 +297,56 @@ sacct -k 00:01 -K 1-0
     ```
     sacct -n -S now-14days -E now -X -s F | wc -l
     ```
+    ??? Caution "If you have a lot of questions about the last 2 weeks worth of jobs..."
+        If you were wanting to look at the data for a lot of jobs, do SLURM users a favor and save the information to a text file. Then use normal UNIX commands like `grep` to work with the text file contents. Rather than keep asking the SLURM accounting database for variations of the information. Because doing that interrupts the master SLURM demon which manages **everything**.
+
 !!! Example "CPU & RAM expended by jobs dying from out-of-memory errors in last 2 hours"
-    sacct -n -S now-2hours -E now -u jzhou1 -X -s OOM -o cputimeraw,reqmem --units=G|  awk '{timesum+=$1;ramsum+=$2} END{printf "%s (CPU hrs) \t%s (GB)\n",timesum/60, ramsum}'
+    ```
+    sacct -n -S now-2hours -E now -u jzhou1 -X -s OOM -o cputimeraw,reqmem --units=G |  awk '{timesum+=$1;ramsum+=$2} END{printf "%s (CPU hrs) \t%s (GB)\n",timesum/60, ramsum}'
+    ```
+    
+!!! Example "Some stats don't show up if you use the -X flag!!!!"
+
+    Here we look at jobs in the SAS partition for the last day for a specific user. The job summary line, which is all that you would see if you used the `-X` flag, does NOT include the memory information. (You also don't see that for the RUNNING job--you'd need to use the `sstat` command for that info.) And lastly we note that the state of each job step can differ.
+    
+    ```
+    sacct -ar sas -o user%18,jobid,state,nodelist,maxrss,maxvm,reqmem -S now-1days -E now -u c-egutie16-55548 --units=G
+    ```
+    ??? Note "Click here to see output"
+        ```
+                         User JobID             State        NodeList     MaxRSS  MaxVMSize     ReqMem 
+        ------------------ ------------ ---------- --------------- ---------- ---------- ---------- 
+          c-egutie16-55548 11546            FAILED     compute-132                               5G 
+                       11546.extern  COMPLETED     compute-132          0          0            
+                       11546.0          FAILED     compute-132      1.88G      5.64G            
+          c-egutie16-55548 11565            FAILED     compute-132                               5G 
+                       11565.extern  COMPLETED     compute-132          0          0            
+                       11565.0          FAILED     compute-132      1.86G      5.63G            
+          c-egutie16-55548 11569         COMPLETED     compute-132                               5G 
+                       11569.extern  COMPLETED     compute-132          0          0            
+                       11569.0       COMPLETED     compute-132      1.22G      4.98G            
+          c-egutie16-55548 11589        OUT_OF_ME+     compute-132                              15G 
+                       11589.extern  COMPLETED     compute-132          0          0            
+                       11589.0      OUT_OF_ME+     compute-132     16.49G     16.94G            
+          c-egutie16-55548 11600           RUNNING     compute-132                             400G 
+                       11600.extern    RUNNING     compute-132                                  
+                       11600.0         RUNNING     compute-132
+        ```
+!!! Example "sstat"
+    Here we see the stats **at this moment** for a running job. You can embed multiple `sstat` commands in your batch job files to check on various values over the life of your job. Unfortunately `sstat` doesn't have a `--units` argument. So here we see memory in kilobytes and output writing in bytes.
+    ```
+    sstat -j 11600 -o maxrss,maxvmsize,maxdiskwrite
+    MaxRSS  MaxVMSize MaxDiskWrite 
+    ---------- ---------- ------------ 
+    61259220K 203077796K  55875510365
+    ```
+!!! Example "Using environment variables to control output format"
+    ```Shell title="Day of week MM-DD HH:MM" linenums="0"
+    export SLURM_TIME_FORMAT="%a %m-%d %H:%M" 
+    ```
+
+    The start and end field widths show below are suitable for the time format shown above.
+
+    ```Shell title="Resources requested, used" linenums="0"
+    export SACCT_FORMAT="user,jobid,jobname,nodelist%12,start%-20,end%-20,state%20,reqtres%40,TRESUsageInTot%200"
+    ```
