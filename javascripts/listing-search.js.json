@@ -456,78 +456,6 @@
     "html": "<pre><span></span><code>jhpcecms01:/users/55548/shared# ls -l\ndrwxrwsrwx  7 c-jlevy33-55548  c-55548  7 Dec  5 11:10 biosim_leverage/\ndrwxr-s---  3 c-eblasco1-55548 c-55548  3 Feb  1 14:00 c-eblasco1-55548/\ndrwxr-s---  7 c-tbrow261-10201 c-55548  9 Dec 20 12:17 Elixhauser/\ndrwxr-s---  3 c-ttotoja1-55548 c-55548  3 Feb 16 16:09 forOwen/\ndrwxrwxr-x 16 c-jxu123-10201   c-55548 22 Jul 15  2023 from-yoda/\ndrwxrwsrwx  7 c-jlevy33-55548  c-55548  7 Feb  7 10:54 hipfracture_adrd/\ndrwxr-s---  7 c-jlevy33-55548  c-55548  7 Dec 20 14:03 levy_partd/\ndrwxr-s---  2 c-aliu63-55548   c-55548  6 Feb 19 16:39 MA_partB/\ndrwxr-s---  2 c-aliu63-55548   c-55548  5 Dec 15 14:03 MA_switching/\ndrwxr-s--- 10 c-rwu32-55548    c-55548 13 Nov  8 10:31 mltss_duals/\ndrwxrws---  4 c-yyang279-55548 c-55548  4 Nov 30 10:13 shen_yang/\ndrwxr-s---  2 c-ykuang6-55548  c-55548  4 Jan 30 12:13 test/\ndrwxr-s---  2 c-jlevy33-55548  c-55548  3 Aug 29 15:19 toofull/\n</code></pre>"
   },
   {
-    "page_name": "Storage Tips",
-    "page_url": "../files/storage-tips/",
-    "text": "[login31 /users/mmill116]$ ls -l .bash_history \n-rw------- 1 mmill116 mmi 586047 Apr 19 12:35 .bash_history\n",
-    "html": "<pre><span></span><code>[login31 /users/mmill116]$ ls -l .bash_history \n-rw------- 1 mmill116 mmi 586047 Apr 19 12:35 .bash_history\n</code></pre>"
-  },
-  {
-    "page_name": "Storage Tips",
-    "page_url": "../files/storage-tips/",
-    "text": "[login31 /users/mmill116]$ du .bash_history\n229 .bash_history\n",
-    "html": "<pre><span></span><code>[login31 /users/mmill116]$ du .bash_history\n229 .bash_history\n</code></pre>"
-  },
-  {
-    "page_name": "Storage Tips",
-    "page_url": "../files/storage-tips/",
-    "text": "[login31 /users/mmill116]$ du --apparent-size .bash_history \n573 .bash_history\n",
-    "html": "<pre><span></span><code>[login31 /users/mmill116]$ du --apparent-size .bash_history \n573 .bash_history\n</code></pre>"
-  },
-  {
-    "page_name": "Storage Tips",
-    "page_url": "../files/storage-tips/",
-    "text": "[login31 /users/mmill116]$ du --apparent-size -h .bash_history \n573K    .bash_history\n",
-    "html": "<pre><span></span><code>[login31 /users/mmill116]$ du --apparent-size -h .bash_history \n573K    .bash_history\n</code></pre>"
-  },
-  {
-    "page_name": "Storage Tips",
-    "page_url": "../files/storage-tips/",
-    "text": "[login31 /users/mmill116]$ du -sh --apparent-size R\n^C\n[login31 /users/mmill116]$ srun --pty bash\nsrun: job 4707899 queued and waiting for resources\nsrun: job 4707899 has been allocated resources\n[compute-048 /users/mmill116]$ time du -sh --apparent-size R\n4.9G    R\n\nreal    4m49.219s\nuser    0m0.406s\nsys 0m7.840s\n",
-    "html": "<pre><span></span><code>[login31 /users/mmill116]$ du -sh --apparent-size R\n^C\n[login31 /users/mmill116]$ srun --pty bash\nsrun: job 4707899 queued and waiting for resources\nsrun: job 4707899 has been allocated resources\n[compute-048 /users/mmill116]$ time du -sh --apparent-size R\n4.9G    R\n\nreal    4m49.219s\nuser    0m0.406s\nsys 0m7.840s\n</code></pre>"
-  },
-  {
-    "page_name": "Storage Tips",
-    "page_url": "../files/storage-tips/",
-    "text": "[compute-048 /users/mmill116]$ time du -sh R\n4.2G    R\n\nreal    0m51.687s\nuser    0m0.486s\nsys 0m11.553s\n",
-    "html": "<pre><span></span><code>[compute-048 /users/mmill116]$ time du -sh R\n4.2G    R\n\nreal    0m51.687s\nuser    0m0.486s\nsys 0m11.553s\n</code></pre>"
-  },
-  {
-    "page_name": "Storage Tips",
-    "page_url": "../files/storage-tips/",
-    "text": "[compute-048 /users/mmill116]$ dd if=/dev/zero of=$MYSCRATCH/zero-file bs=1M count=10000\n10000+0 records in\n10000+0 records out\n10485760000 bytes (10 GB, 9.8 GiB) copied, 60.8073 s, 172 MB/s\n[compute-048 /users/mmill116]$ dd if=/dev/urandom of=$MYSCRATCH/zero-file-rand bs=1M count=10000\n10000+0 records in\n10000+0 records out\n10485760000 bytes (10 GB, 9.8 GiB) copied, 181.059 s, 57.9 MB/s\n",
-    "html": "<pre><span></span><code>[compute-048 /users/mmill116]$ dd if=/dev/zero of=$MYSCRATCH/zero-file bs=1M count=10000\n10000+0 records in\n10000+0 records out\n10485760000 bytes (10 GB, 9.8 GiB) copied, 60.8073 s, 172 MB/s\n[compute-048 /users/mmill116]$ dd if=/dev/urandom of=$MYSCRATCH/zero-file-rand bs=1M count=10000\n10000+0 records in\n10000+0 records out\n10485760000 bytes (10 GB, 9.8 GiB) copied, 181.059 s, 57.9 MB/s\n</code></pre>"
-  },
-  {
-    "page_name": "Storage Tips",
-    "page_url": "../files/storage-tips/",
-    "text": "[compute-048 /users/mmill116]$ du -sh $MYSCRATCH/zero-file\n512 /fastscratch/myscratch/mmill116/zero-file\n[compute-048 /users/mmill116]$ du -sh $MYSCRATCH/zero-file-rand\n9.8G    /fastscratch/myscratch/mmill116/zero-file-rand\n[compute-048 /users/mmill116]$ du -sh --apparent-size $MYSCRATCH/zero-file\n9.8G    /fastscratch/myscratch/mmill116/zero-file\n[compute-048 /users/mmill116]$ du -sh --apparent-size $MYSCRATCH/zero-file-rand\n9.8G    /fastscratch/myscratch/mmill116/zero-file-rand\n",
-    "html": "<pre><span></span><code>[compute-048 /users/mmill116]$ du -sh $MYSCRATCH/zero-file\n512 /fastscratch/myscratch/mmill116/zero-file\n[compute-048 /users/mmill116]$ du -sh $MYSCRATCH/zero-file-rand\n9.8G    /fastscratch/myscratch/mmill116/zero-file-rand\n[compute-048 /users/mmill116]$ du -sh --apparent-size $MYSCRATCH/zero-file\n9.8G    /fastscratch/myscratch/mmill116/zero-file\n[compute-048 /users/mmill116]$ du -sh --apparent-size $MYSCRATCH/zero-file-rand\n9.8G    /fastscratch/myscratch/mmill116/zero-file-rand\n</code></pre>"
-  },
-  {
-    "page_name": "Storage Tips",
-    "page_url": "../files/storage-tips/",
-    "text": "[compute-048 /users/mmill116]$ hquota\nUsername     Space Used         Quota     \nmmill116     62G                100G      \n",
-    "html": "<pre><span></span><code>[compute-048 /users/mmill116]$ hquota\nUsername     Space Used         Quota     \nmmill116     62G                100G      \n</code></pre>"
-  },
-  {
-    "page_name": "Storage Tips",
-    "page_url": "../files/storage-tips/",
-    "text": "[compute-048 /users/mmill116]$ du -sh $MYSCRATCH\n9.9G    /fastscratch/myscratch/mmill116\n",
-    "html": "<pre><span></span><code>[compute-048 /users/mmill116]$ du -sh $MYSCRATCH\n9.9G    /fastscratch/myscratch/mmill116\n</code></pre>"
-  },
-  {
-    "page_name": "Storage Tips",
-    "page_url": "../files/storage-tips/",
-    "text": "[compute-048 /users/mmill116]$ df -h /dcs04/proj1/data\nFilesystem                       Size  Used Avail Use% Mounted on\n192.168.11.209:/srv/dcs04/proj1   60T   60T   43G 100% /dcs04/proj1\n",
-    "html": "<pre><span></span><code>[compute-048 /users/mmill116]$ df -h /dcs04/proj1/data\nFilesystem                       Size  Used Avail Use% Mounted on\n192.168.11.209:/srv/dcs04/proj1   60T   60T   43G 100% /dcs04/proj1\n</code></pre>"
-  },
-  {
-    "page_name": "Storage Tips",
-    "page_url": "../files/storage-tips/",
-    "text": "FREETMP=`df -k /tmp | grep tmp | awk '{print $4}'`\nif [ $FREETMP -lt 10000000 ]\nthen\n   echo \"Not enough space in /tmp. Only $FREETMP KB available.\"\n   exit 1\nfi\n",
-    "html": "<pre><span></span><code>FREETMP=`df -k /tmp | grep tmp | awk '{print $4}'`\nif [ $FREETMP -lt 10000000 ]\nthen\n   echo \"Not enough space in /tmp. Only $FREETMP KB available.\"\n   exit 1\nfi\n</code></pre>"
-  },
-  {
     "page_name": "Alphafold",
     "page_url": "../gpu/alphafold/",
     "text": "[login31 /users/mmill116/alpha1]$ srun --pty --x11 --mem=100G --cpus-per-task=8 --partition gpu --gpus=1 bash\n[compute-126 /users/mmill116/alpha1]$ module load alphafold\n(alphafold-gpu) [compute-126 /users/mmill116/alpha1]$ nvidia-smi    (this is to verify that you are assigned a GPU)\n(alphafold-gpu) [compute-126 /users/mmill116/alpha1]$ ls\nquery.fasta\n(alphafold-gpu) [compute-126 /users/mmill116/alpha1]$ cat query.fasta\n>dummy_sequence\nGWSTELEKHREELKEFLKKEGITNVEIRIDNGRLEVRVEGGTERLKRFLEELRQKLEKKGYTVDIKIE\n(alphafold-gpu) [compute-126 /users/mmill116/alpha1]$ run_alphafold.sh -d /legacy/alphafold/data -o . -f query.fasta  -t 2020-05-14 -n 8\nI0305 14:37:51.029889 140001535510336 templates.py:857] Using precomputed obsolete pdbs /legacy/alphafold/data/pdb_mmcif/obsolete.dat.\nI0305 14:37:52.841140 140001535510336 xla_bridge.py:353] Unable to initialize backend 'tpu_driver': NOT_FOUND: Unable to find driver in registry given worker: \nI0305 14:37:52.984758 140001535510336 xla_bridge.py:353] Unable to initialize backend 'rocm': NOT_FOUND: Could not find registered platform with name: \"rocm\". Available platform names are: Interpreter CUDA Host\n\n. . .\n\nI0305 15:27:23.305634 140001535510336 amber_minimize.py:178] alterations info: {'nonstandard_residues': [], 'removed_heterogens': set(), 'missing_residues': {}, 'missing_heavy_atoms': {}, 'missing_terminals': {}, 'Se_in_MET': [], 'removed_chains': {0: []}}\nI0305 15:27:23.643896 140001535510336 amber_minimize.py:500] Iteration completed: Einit 1628.92 Efinal -2082.65 Time 0.49 s num residue violations 0 num residue exclusions 0 \nI0305 15:27:23.721792 140001535510336 run_alphafold.py:277] Final timings for query: {'features': 2523.1148357391357, 'process_features_model_1_pred_0': 2.198369026184082, 'predict_and_compile_model_1_pred_0': 92.24924182891846, 'relax_model_1_pred_0': 5.6730005741119385, 'process_features_model_2_pred_0': 1.1774885654449463, 'predict_and_compile_model_2_pred_0': 95.11810064315796, 'relax_model_2_pred_0': 3.1857430934906006, 'process_features_model_3_pred_0': 0.9210422039031982, 'predict_and_compile_model_3_pred_0': 74.00832223892212, 'relax_model_3_pred_0': 3.2094907760620117, 'process_features_model_4_pred_0': 0.9562208652496338, 'predict_and_compile_model_4_pred_0': 73.54764223098755, 'relax_model_4_pred_0': 3.2828869819641113, 'process_features_model_5_pred_0': 0.9843571186065674, 'predict_and_compile_model_5_pred_0': 72.18165755271912, 'relax_model_5_pred_0': 3.2641286849975586}\n\n(alphafold-gpu) [compute-126 /users/mmill116/alpha1]$ ls\nquery  query.fasta\n(alphafold-gpu) [compute-126 /users/mmill116/alpha1]$ ls query\nfeatures.pkl  ranked_2.pdb        relaxed_model_1_pred_0.pdb  relaxed_model_5_pred_0.pdb  result_model_3_pred_0.pkl  unrelaxed_model_1_pred_0.pdb  unrelaxed_model_5_pred_0.pdb\nmsas          ranked_3.pdb        relaxed_model_2_pred_0.pdb  relax_metrics.json          result_model_4_pred_0.pkl  unrelaxed_model_2_pred_0.pdb\nranked_0.pdb  ranked_4.pdb        relaxed_model_3_pred_0.pdb  result_model_1_pred_0.pkl   result_model_5_pred_0.pkl  unrelaxed_model_3_pred_0.pdb\nranked_1.pdb  ranking_debug.json  relaxed_model_4_pred_0.pdb  result_model_2_pred_0.pkl   timings.json               unrelaxed_model_4_pred_0.pdb\n",
@@ -1176,6 +1104,42 @@
     "html": "<pre><span></span><code>sacct -n -S now-14days -E now -X -s F | wc -l\n</code></pre>"
   },
   {
+    "page_name": "sacct tips",
+    "page_url": "../slurm/tips-sacct/",
+    "text": "sacct -n -S now-2hours -E now -u jzhou1 -X -s OOM -o cputimeraw,reqmem --units=G |  awk '{timesum+=$1;ramsum+=$2} END{printf \"%s (CPU hrs) \\t%s (GB)\\n\",timesum/60, ramsum}'\n",
+    "html": "<pre><span></span><code>sacct -n -S now-2hours -E now -u jzhou1 -X -s OOM -o cputimeraw,reqmem --units=G |  awk '{timesum+=$1;ramsum+=$2} END{printf \"%s (CPU hrs) \\t%s (GB)\\n\",timesum/60, ramsum}'\n</code></pre>"
+  },
+  {
+    "page_name": "sacct tips",
+    "page_url": "../slurm/tips-sacct/",
+    "text": "sacct -ar sas -o user%18,jobid,state,nodelist,maxrss,maxvm,reqmem -S now-1days -E now -u c-egutie16-55548 --units=G\n",
+    "html": "<pre><span></span><code>sacct -ar sas -o user%18,jobid,state,nodelist,maxrss,maxvm,reqmem -S now-1days -E now -u c-egutie16-55548 --units=G\n</code></pre>"
+  },
+  {
+    "page_name": "sacct tips",
+    "page_url": "../slurm/tips-sacct/",
+    "text": "                 User JobID             State        NodeList     MaxRSS  MaxVMSize     ReqMem \n------------------ ------------ ---------- --------------- ---------- ---------- ---------- \n  c-egutie16-55548 11546            FAILED     compute-132                               5G \n               11546.extern  COMPLETED     compute-132          0          0            \n               11546.0          FAILED     compute-132      1.88G      5.64G            \n  c-egutie16-55548 11565            FAILED     compute-132                               5G \n               11565.extern  COMPLETED     compute-132          0          0            \n               11565.0          FAILED     compute-132      1.86G      5.63G            \n  c-egutie16-55548 11569         COMPLETED     compute-132                               5G \n               11569.extern  COMPLETED     compute-132          0          0            \n               11569.0       COMPLETED     compute-132      1.22G      4.98G            \n  c-egutie16-55548 11589        OUT_OF_ME+     compute-132                              15G \n               11589.extern  COMPLETED     compute-132          0          0            \n               11589.0      OUT_OF_ME+     compute-132     16.49G     16.94G            \n  c-egutie16-55548 11600           RUNNING     compute-132                             400G \n               11600.extern    RUNNING     compute-132                                  \n               11600.0         RUNNING     compute-132\n",
+    "html": "<pre><span></span><code>                 User JobID             State        NodeList     MaxRSS  MaxVMSize     ReqMem \n------------------ ------------ ---------- --------------- ---------- ---------- ---------- \n  c-egutie16-55548 11546            FAILED     compute-132                               5G \n               11546.extern  COMPLETED     compute-132          0          0            \n               11546.0          FAILED     compute-132      1.88G      5.64G            \n  c-egutie16-55548 11565            FAILED     compute-132                               5G \n               11565.extern  COMPLETED     compute-132          0          0            \n               11565.0          FAILED     compute-132      1.86G      5.63G            \n  c-egutie16-55548 11569         COMPLETED     compute-132                               5G \n               11569.extern  COMPLETED     compute-132          0          0            \n               11569.0       COMPLETED     compute-132      1.22G      4.98G            \n  c-egutie16-55548 11589        OUT_OF_ME+     compute-132                              15G \n               11589.extern  COMPLETED     compute-132          0          0            \n               11589.0      OUT_OF_ME+     compute-132     16.49G     16.94G            \n  c-egutie16-55548 11600           RUNNING     compute-132                             400G \n               11600.extern    RUNNING     compute-132                                  \n               11600.0         RUNNING     compute-132\n</code></pre>"
+  },
+  {
+    "page_name": "sacct tips",
+    "page_url": "../slurm/tips-sacct/",
+    "text": "sstat -j 11600 -o maxrss,maxvmsize,maxdiskwrite\nMaxRSS  MaxVMSize MaxDiskWrite \n---------- ---------- ------------ \n61259220K 203077796K  55875510365\n",
+    "html": "<pre><span></span><code>sstat -j 11600 -o maxrss,maxvmsize,maxdiskwrite\nMaxRSS  MaxVMSize MaxDiskWrite \n---------- ---------- ------------ \n61259220K 203077796K  55875510365\n</code></pre>"
+  },
+  {
+    "page_name": "sacct tips",
+    "page_url": "../slurm/tips-sacct/",
+    "text": "export SLURM_TIME_FORMAT=\"%a %m-%d %H:%M\" \n",
+    "html": "<pre><span></span><code><span class=\"nb\">export</span><span class=\"w\"> </span><span class=\"nv\">SLURM_TIME_FORMAT</span><span class=\"o\">=</span><span class=\"s2\">\"%a %m-%d %H:%M\"</span><span class=\"w\"> </span>\n</code></pre>"
+  },
+  {
+    "page_name": "sacct tips",
+    "page_url": "../slurm/tips-sacct/",
+    "text": "export SACCT_FORMAT=\"user,jobid,jobname,nodelist%12,start%-20,end%-20,state%20,reqtres%40,TRESUsageInTot%200\"\n",
+    "html": "<pre><span></span><code><span class=\"nb\">export</span><span class=\"w\"> </span><span class=\"nv\">SACCT_FORMAT</span><span class=\"o\">=</span><span class=\"s2\">\"user,jobid,jobname,nodelist%12,start%-20,end%-20,state%20,reqtres%40,TRESUsageInTot%200\"</span>\n</code></pre>"
+  },
+  {
     "page_name": "sacctmgr tips",
     "page_url": "../slurm/tips-sacctmgr/",
     "text": "# See our currently defined QOS in a readable format\nsacctmgr show qos format=Name%20,Priority,Flags%30,MaxWall,MaxTRESPU%20,MaxJobsPU,MaxSubmitPU,MaxTRESPA%25\n\n# See all users database values\nsacctmgr show user withassoc  | less\n\n# See a particular user's database values\nsacctmgr show user withassoc where name=smburke\n\n# WHO HAS EXTRA QOS -- shortens the output width\n#  (but needs improvement to align column entries)\nsacctmgr show user withassoc|grep -v \"normal \"|awk '{printf \"%s\\t\\t%s\\t%s\\t\\t%s%\\n\", $1,$3,$4,$7}'\n",
@@ -1438,6 +1402,78 @@
     "page_url": "../storage/quotas/",
     "text": "cd $MYSCRATCH\ndu -sh .\n",
     "html": "<pre><span></span><code><span class=\"nb\">cd</span><span class=\"w\"> </span><span class=\"nv\">$MYSCRATCH</span>\ndu<span class=\"w\"> </span>-sh<span class=\"w\"> </span>.\n</code></pre>"
+  },
+  {
+    "page_name": "Storage Tips",
+    "page_url": "../storage/storage-tips/",
+    "text": "[login31 /users/mmill116]$ ls -l .bash_history \n-rw------- 1 mmill116 mmi 586047 Apr 19 12:35 .bash_history\n",
+    "html": "<pre><span></span><code>[login31 /users/mmill116]$ ls -l .bash_history \n-rw------- 1 mmill116 mmi 586047 Apr 19 12:35 .bash_history\n</code></pre>"
+  },
+  {
+    "page_name": "Storage Tips",
+    "page_url": "../storage/storage-tips/",
+    "text": "[login31 /users/mmill116]$ du .bash_history\n229 .bash_history\n",
+    "html": "<pre><span></span><code>[login31 /users/mmill116]$ du .bash_history\n229 .bash_history\n</code></pre>"
+  },
+  {
+    "page_name": "Storage Tips",
+    "page_url": "../storage/storage-tips/",
+    "text": "[login31 /users/mmill116]$ du --apparent-size .bash_history \n573 .bash_history\n",
+    "html": "<pre><span></span><code>[login31 /users/mmill116]$ du --apparent-size .bash_history \n573 .bash_history\n</code></pre>"
+  },
+  {
+    "page_name": "Storage Tips",
+    "page_url": "../storage/storage-tips/",
+    "text": "[login31 /users/mmill116]$ du --apparent-size -h .bash_history \n573K    .bash_history\n",
+    "html": "<pre><span></span><code>[login31 /users/mmill116]$ du --apparent-size -h .bash_history \n573K    .bash_history\n</code></pre>"
+  },
+  {
+    "page_name": "Storage Tips",
+    "page_url": "../storage/storage-tips/",
+    "text": "[login31 /users/mmill116]$ du -sh --apparent-size R\n^C\n[login31 /users/mmill116]$ srun --pty bash\nsrun: job 4707899 queued and waiting for resources\nsrun: job 4707899 has been allocated resources\n[compute-048 /users/mmill116]$ time du -sh --apparent-size R\n4.9G    R\n\nreal    4m49.219s\nuser    0m0.406s\nsys 0m7.840s\n",
+    "html": "<pre><span></span><code>[login31 /users/mmill116]$ du -sh --apparent-size R\n^C\n[login31 /users/mmill116]$ srun --pty bash\nsrun: job 4707899 queued and waiting for resources\nsrun: job 4707899 has been allocated resources\n[compute-048 /users/mmill116]$ time du -sh --apparent-size R\n4.9G    R\n\nreal    4m49.219s\nuser    0m0.406s\nsys 0m7.840s\n</code></pre>"
+  },
+  {
+    "page_name": "Storage Tips",
+    "page_url": "../storage/storage-tips/",
+    "text": "[compute-048 /users/mmill116]$ time du -sh R\n4.2G    R\n\nreal    0m51.687s\nuser    0m0.486s\nsys 0m11.553s\n",
+    "html": "<pre><span></span><code>[compute-048 /users/mmill116]$ time du -sh R\n4.2G    R\n\nreal    0m51.687s\nuser    0m0.486s\nsys 0m11.553s\n</code></pre>"
+  },
+  {
+    "page_name": "Storage Tips",
+    "page_url": "../storage/storage-tips/",
+    "text": "[compute-048 /users/mmill116]$ dd if=/dev/zero of=$MYSCRATCH/zero-file bs=1M count=10000\n10000+0 records in\n10000+0 records out\n10485760000 bytes (10 GB, 9.8 GiB) copied, 60.8073 s, 172 MB/s\n[compute-048 /users/mmill116]$ dd if=/dev/urandom of=$MYSCRATCH/zero-file-rand bs=1M count=10000\n10000+0 records in\n10000+0 records out\n10485760000 bytes (10 GB, 9.8 GiB) copied, 181.059 s, 57.9 MB/s\n",
+    "html": "<pre><span></span><code>[compute-048 /users/mmill116]$ dd if=/dev/zero of=$MYSCRATCH/zero-file bs=1M count=10000\n10000+0 records in\n10000+0 records out\n10485760000 bytes (10 GB, 9.8 GiB) copied, 60.8073 s, 172 MB/s\n[compute-048 /users/mmill116]$ dd if=/dev/urandom of=$MYSCRATCH/zero-file-rand bs=1M count=10000\n10000+0 records in\n10000+0 records out\n10485760000 bytes (10 GB, 9.8 GiB) copied, 181.059 s, 57.9 MB/s\n</code></pre>"
+  },
+  {
+    "page_name": "Storage Tips",
+    "page_url": "../storage/storage-tips/",
+    "text": "[compute-048 /users/mmill116]$ du -sh $MYSCRATCH/zero-file\n512 /fastscratch/myscratch/mmill116/zero-file\n[compute-048 /users/mmill116]$ du -sh $MYSCRATCH/zero-file-rand\n9.8G    /fastscratch/myscratch/mmill116/zero-file-rand\n[compute-048 /users/mmill116]$ du -sh --apparent-size $MYSCRATCH/zero-file\n9.8G    /fastscratch/myscratch/mmill116/zero-file\n[compute-048 /users/mmill116]$ du -sh --apparent-size $MYSCRATCH/zero-file-rand\n9.8G    /fastscratch/myscratch/mmill116/zero-file-rand\n",
+    "html": "<pre><span></span><code>[compute-048 /users/mmill116]$ du -sh $MYSCRATCH/zero-file\n512 /fastscratch/myscratch/mmill116/zero-file\n[compute-048 /users/mmill116]$ du -sh $MYSCRATCH/zero-file-rand\n9.8G    /fastscratch/myscratch/mmill116/zero-file-rand\n[compute-048 /users/mmill116]$ du -sh --apparent-size $MYSCRATCH/zero-file\n9.8G    /fastscratch/myscratch/mmill116/zero-file\n[compute-048 /users/mmill116]$ du -sh --apparent-size $MYSCRATCH/zero-file-rand\n9.8G    /fastscratch/myscratch/mmill116/zero-file-rand\n</code></pre>"
+  },
+  {
+    "page_name": "Storage Tips",
+    "page_url": "../storage/storage-tips/",
+    "text": "[compute-048 /users/mmill116]$ hquota\nUsername     Space Used         Quota     \nmmill116     62G                100G      \n",
+    "html": "<pre><span></span><code>[compute-048 /users/mmill116]$ hquota\nUsername     Space Used         Quota     \nmmill116     62G                100G      \n</code></pre>"
+  },
+  {
+    "page_name": "Storage Tips",
+    "page_url": "../storage/storage-tips/",
+    "text": "[compute-048 /users/mmill116]$ du -sh $MYSCRATCH\n9.9G    /fastscratch/myscratch/mmill116\n",
+    "html": "<pre><span></span><code>[compute-048 /users/mmill116]$ du -sh $MYSCRATCH\n9.9G    /fastscratch/myscratch/mmill116\n</code></pre>"
+  },
+  {
+    "page_name": "Storage Tips",
+    "page_url": "../storage/storage-tips/",
+    "text": "[compute-048 /users/mmill116]$ df -h /dcs04/proj1/data\nFilesystem                       Size  Used Avail Use% Mounted on\n192.168.11.209:/srv/dcs04/proj1   60T   60T   43G 100% /dcs04/proj1\n",
+    "html": "<pre><span></span><code>[compute-048 /users/mmill116]$ df -h /dcs04/proj1/data\nFilesystem                       Size  Used Avail Use% Mounted on\n192.168.11.209:/srv/dcs04/proj1   60T   60T   43G 100% /dcs04/proj1\n</code></pre>"
+  },
+  {
+    "page_name": "Storage Tips",
+    "page_url": "../storage/storage-tips/",
+    "text": "FREETMP=`df -k /tmp | grep tmp | awk '{print $4}'`\nif [ $FREETMP -lt 10000000 ]\nthen\n   echo \"Not enough space in /tmp. Only $FREETMP KB available.\"\n   exit 1\nfi\n",
+    "html": "<pre><span></span><code>FREETMP=`df -k /tmp | grep tmp | awk '{print $4}'`\nif [ $FREETMP -lt 10000000 ]\nthen\n   echo \"Not enough space in /tmp. Only $FREETMP KB available.\"\n   exit 1\nfi\n</code></pre>"
   },
   {
     "page_name": "Adding Your Own Python and R Libraries",

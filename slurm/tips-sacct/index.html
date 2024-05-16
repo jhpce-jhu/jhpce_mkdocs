@@ -18,7 +18,7 @@
       
       
       <link rel="icon" href="../../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.6.0, mkdocs-material-9.5.22">
+      <meta name="generator" content="mkdocs-1.6.0, mkdocs-material-9.5.23">
     
     
       
@@ -26,7 +26,7 @@
       
     
     
-      <link rel="stylesheet" href="../../assets/stylesheets/main.732c4fb1.min.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/main.6543a935.min.css">
       
         
         <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
@@ -1764,7 +1764,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../files/storage-tips/" class="md-nav__link">
+      <a href="../../storage/storage-tips/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1944,7 +1944,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../files/storage-tips/" class="md-nav__link">
+      <a href="../../storage/storage-tips/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -4132,11 +4132,11 @@ User                UserCPU             WCKey               WCKeyID
 <li>format=name%30 will print 30 characters of field name right justified.  </li>
 <li>format=name%-30 will print 30 characters left justified.</li>
 </ul>
-<p>You can specify your format on the command line or define an environment variable to hold the desired string (see below).</p>
+<p>You can specify your format on the command line or define an environment variable to hold the desired string (see below). (Or you can do both, and the command line will overrule what is in the environment variable. So you can define SACCT_FORMAT to be what you normally want to see but still see what you need to using the CLI.)</p>
 <h2 id="using-environment-variables"><strong>Using Environment Variables</strong><a class="headerlink" href="#using-environment-variables" title="Anchor link to this section for reference">&para;</a></h2>
-<p>You can define environment variables in your shell to reduce the complexity of issuing sacct commands. You can also set these in shell scripts. Command line options will always override these settings.</p>
-<p>SACCT_FORMAT</p>
-<p>SLURM_TIME_FORMAT</p>
+<p>You can define environment variables in your shell to reduce the complexity of issuing sacct commands. You can also set these in shell scripts so that the <code>sacct</code> commands inside the script will use those values Command line options will always override these settings. Put the one you use most often into your <code>~/.bashrc</code> file.</p>
+<p><strong>SACCT_FORMAT</strong></p>
+<p><strong>SLURM_TIME_FORMAT</strong></p>
 <h4 id="formatting-datestimes"><strong>Formatting Dates/Times</strong><a class="headerlink" href="#formatting-datestimes" title="Anchor link to this section for reference">&para;</a></h4>
 <p>You can use most variables defined by the STRFTIME(3) system call. <a href="https://strftime.org">This web page</a> is a starting point, but what SLURM has chosen to implement may not match.</p>
 <ul>
@@ -4182,6 +4182,7 @@ Enter man signal for more information
 <div class="highlight"><span class="filename">See jobs given a time limit btwn 1min & 1 day</span><pre><span></span><code>sacct<span class="w"> </span>-k<span class="w"> </span><span class="m">00</span>:01<span class="w"> </span>-K<span class="w"> </span><span class="m">1</span>-0
 </code></pre></div>
 <h2 id="examples"><strong>Examples</strong><a class="headerlink" href="#examples" title="Anchor link to this section for reference">&para;</a></h2>
+<p><strong>Please try to specify what you need so you don't tax the system and also have less output to inspect.</strong></p>
 <div class="admonition example">
 <p class="admonition-title">All jobs for username bob that (ran with a wall time of at least 2 days) and (were killed for running out of memory) in the past 3 months:</p>
 <div class="highlight"><pre><span></span><code>sacct --user bob --starttime $(date -d &#39;3 months ago&#39; +%D-%R) --state OUT_OF_MEMORY --timelimit-min 2-00:00:00 --format JobID,JobName,Elapsed,NCPUs,TotalCPU,CPUTime,ReqMem,MaxRSS,MaxDiskRead,MaxDiskWrite,State,ExitCode
@@ -4196,10 +4197,59 @@ Enter man signal for more information
 <p class="admonition-title">HOW MANY JOBS FAILED WITH OTHER KINDS OF ERRORS IN THE LAST TWO WEEKS?"</p>
 <div class="highlight"><pre><span></span><code>sacct -n -S now-14days -E now -X -s F | wc -l
 </code></pre></div>
+<details class="caution">
+<summary>If you have a lot of questions about the last 2 weeks worth of jobs...</summary>
+<p>If you were wanting to look at the data for a lot of jobs, do SLURM users a favor and save the information to a text file. Then use normal UNIX commands like <code>grep</code> to work with the text file contents. Rather than keep asking the SLURM accounting database for variations of the information. Because doing that interrupts the master SLURM demon which manages <strong>everything</strong>.</p>
+</details>
 </div>
 <div class="admonition example">
 <p class="admonition-title">CPU &amp; RAM expended by jobs dying from out-of-memory errors in last 2 hours</p>
-<p>sacct -n -S now-2hours -E now -u jzhou1 -X -s OOM -o cputimeraw,reqmem --units=G|  awk '{timesum+=$1;ramsum+=$2} END{printf "%s (CPU hrs) \t%s (GB)\n",timesum/60, ramsum}'</p>
+<div class="highlight"><pre><span></span><code>sacct -n -S now-2hours -E now -u jzhou1 -X -s OOM -o cputimeraw,reqmem --units=G |  awk &#39;{timesum+=$1;ramsum+=$2} END{printf &quot;%s (CPU hrs) \t%s (GB)\n&quot;,timesum/60, ramsum}&#39;
+</code></pre></div>
+</div>
+<div class="admonition example">
+<p class="admonition-title">Some stats don't show up if you use the -X flag!!!!</p>
+<p>Here we look at jobs in the SAS partition for the last day for a specific user. The job summary line, which is all that you would see if you used the <code>-X</code> flag, does NOT include the memory information. (You also don't see that for the RUNNING job--you'd need to use the <code>sstat</code> command for that info.) And lastly we note that the state of each job step can differ.</p>
+<div class="highlight"><pre><span></span><code>sacct -ar sas -o user%18,jobid,state,nodelist,maxrss,maxvm,reqmem -S now-1days -E now -u c-egutie16-55548 --units=G
+</code></pre></div>
+<details class="note">
+<summary>Click here to see output</summary>
+<div class="highlight"><pre><span></span><code>                 User JobID             State        NodeList     MaxRSS  MaxVMSize     ReqMem 
+------------------ ------------ ---------- --------------- ---------- ---------- ---------- 
+  c-egutie16-55548 11546            FAILED     compute-132                               5G 
+               11546.extern  COMPLETED     compute-132          0          0            
+               11546.0          FAILED     compute-132      1.88G      5.64G            
+  c-egutie16-55548 11565            FAILED     compute-132                               5G 
+               11565.extern  COMPLETED     compute-132          0          0            
+               11565.0          FAILED     compute-132      1.86G      5.63G            
+  c-egutie16-55548 11569         COMPLETED     compute-132                               5G 
+               11569.extern  COMPLETED     compute-132          0          0            
+               11569.0       COMPLETED     compute-132      1.22G      4.98G            
+  c-egutie16-55548 11589        OUT_OF_ME+     compute-132                              15G 
+               11589.extern  COMPLETED     compute-132          0          0            
+               11589.0      OUT_OF_ME+     compute-132     16.49G     16.94G            
+  c-egutie16-55548 11600           RUNNING     compute-132                             400G 
+               11600.extern    RUNNING     compute-132                                  
+               11600.0         RUNNING     compute-132
+</code></pre></div>
+</details>
+</div>
+<div class="admonition example">
+<p class="admonition-title">sstat</p>
+<p>Here we see the stats <strong>at this moment</strong> for a running job. You can embed multiple <code>sstat</code> commands in your batch job files to check on various values over the life of your job. Unfortunately <code>sstat</code> doesn't have a <code>--units</code> argument. So here we see memory in kilobytes and output writing in bytes.
+<div class="highlight"><pre><span></span><code>sstat -j 11600 -o maxrss,maxvmsize,maxdiskwrite
+MaxRSS  MaxVMSize MaxDiskWrite 
+---------- ---------- ------------ 
+61259220K 203077796K  55875510365
+</code></pre></div></p>
+</div>
+<div class="admonition example">
+<p class="admonition-title">Using environment variables to control output format</p>
+<div class="highlight"><span class="filename">Day of week MM-DD HH:MM</span><pre><span></span><code><span class="nb">export</span><span class="w"> </span><span class="nv">SLURM_TIME_FORMAT</span><span class="o">=</span><span class="s2">&quot;%a %m-%d %H:%M&quot;</span><span class="w"> </span>
+</code></pre></div>
+<p>The start and end field widths show below are suitable for the time format shown above.</p>
+<div class="highlight"><span class="filename">Resources requested, used</span><pre><span></span><code><span class="nb">export</span><span class="w"> </span><span class="nv">SACCT_FORMAT</span><span class="o">=</span><span class="s2">&quot;user,jobid,jobname,nodelist%12,start%-20,end%-20,state%20,reqtres%40,TRESUsageInTot%200&quot;</span>
+</code></pre></div>
 </div>
 <div class="footnote">
 <hr />
@@ -4229,7 +4279,7 @@ Enter man signal for more information
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1-2.1-2M12.5 7v5.2l4 2.4-1 1L11 13V7h1.5M11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2v1.8Z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">April 27, 2024</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">May 16, 2024</span>
   </span>
 
     
@@ -4381,7 +4431,7 @@ Enter man signal for more information
     <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.sections", "toc.follow", "announce.dismiss", "navigation.top", "header.autohide", "navigation.footer", "navigation.indexes", "content.code.copy", "content.code.annotate"], "search": "../../assets/javascripts/workers/search.b8dbb3d2.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
     
     
-      <script src="../../assets/javascripts/bundle.5cfa9459.min.js"></script>
+      <script src="../../assets/javascripts/bundle.ebd0bdb7.min.js"></script>
       
         <script src="https://unpkg.com/tablesort@5.3.0/dist/tablesort.min.js"></script>
       

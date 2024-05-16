@@ -11,14 +11,14 @@
         <link rel="canonical" href="https://jhpce.jhu.edu/files/copying-files/">
       
       
-        <link rel="prev" href="../storage-tips/">
+        <link rel="prev" href="../../storage/storage-tips/">
       
       
         <link rel="next" href="../../storage/">
       
       
       <link rel="icon" href="../../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.6.0, mkdocs-material-9.5.22">
+      <meta name="generator" content="mkdocs-1.6.0, mkdocs-material-9.5.23">
     
     
       
@@ -26,7 +26,7 @@
       
     
     
-      <link rel="stylesheet" href="../../assets/stylesheets/main.732c4fb1.min.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/main.6543a935.min.css">
       
         
         <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
@@ -1842,7 +1842,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../storage-tips/" class="md-nav__link">
+      <a href="../../storage/storage-tips/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2098,7 +2098,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../storage-tips/" class="md-nav__link">
+      <a href="../../storage/storage-tips/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -3656,7 +3656,7 @@
 <ol>
 <li>When trying to copy or move files around between file systems inside the cluster, you do not need to use the transfer node or the <code>scp</code> command.</li>
 <li>Please do your file management work on compute nodes, not login nodes.</li>
-<li>Understand what you are doing in big-picture terms. Are you trying to move data around within the same file system? Copy data between file systems? How large is the total amount of data that you are manipulating?  For tips on these kinds of things see <a href="../files.md/storage-tips">storage tips</a></li>
+<li>Understand what you are doing in big-picture terms. Are you trying to move data around within the same file system? Copy data between file systems? How large is the total amount of data that you are manipulating?  For tips on these kinds of things see <a href="../../storage/storage-tips/">storage tips</a></li>
 <li>Before initiating large copies you should check that you have enough space in the destination. </li>
 <li>It is safer to copy files between different file systems than to <code>mv</code> them. But copying files between locations within the same file system duplicates files and can lead to confusion.</li>
 <li>If you need to manage a lot of files, it is well worth your time to learn how to use the <code>rsync</code> command. It can be used to compare directory trees, create log files of its actions, and do other important things not found in more frequently used programs like <code>cp</code> or <code>scp</code></li>
@@ -3703,7 +3703,7 @@ This example extends the technique to copying the data off of your current host 
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1-2.1-2M12.5 7v5.2l4 2.4-1 1L11 13V7h1.5M11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2v1.8Z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">May 14, 2024</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">May 16, 2024</span>
   </span>
 
     
@@ -3796,7 +3796,7 @@ This example extends the technique to copying the data off of your current host 
       <nav class="md-footer__inner md-grid" aria-label="Footer" >
         
           
-          <a href="../storage-tips/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Storage Tips">
+          <a href="../../storage/storage-tips/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Storage Tips">
             <div class="md-footer__button md-icon">
               
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
@@ -3855,7 +3855,7 @@ This example extends the technique to copying the data off of your current host 
     <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.sections", "toc.follow", "announce.dismiss", "navigation.top", "header.autohide", "navigation.footer", "navigation.indexes", "content.code.copy", "content.code.annotate"], "search": "../../assets/javascripts/workers/search.b8dbb3d2.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
     
     
-      <script src="../../assets/javascripts/bundle.5cfa9459.min.js"></script>
+      <script src="../../assets/javascripts/bundle.ebd0bdb7.min.js"></script>
       
         <script src="https://unpkg.com/tablesort@5.3.0/dist/tablesort.min.js"></script>
       
