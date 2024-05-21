@@ -24,7 +24,7 @@ systems (e.g., the Federal Information Security Management Act-FISMA) and meets 
 The JHPCE provides a rich ecosystem of Linux-based statistical and genomics applications, and is specialized to support development in R, python, SAS, and Stata languages.
 
 As of May 2024, the JHPCE CSUB cluster is comprised of a 4-node compute cluster, providing over 500 64-bit cores  and 5 TB of DDR-SDRAM. The storage environment
-for the CSUB is provided by a 100 TB allocation of ZFS encrypted "dirt cheap" storage, and a 50 TB allocaiton of SSD-based storage.
+for the CSUB is provided by a 100 TB allocation of ZFS encrypted "dirt cheap" storage, and a 50 TB allocation of SSD-based storage.
 
 ### JHPCE Acknowledgment Blurb
 
