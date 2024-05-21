@@ -8,7 +8,7 @@ nav:
     - About Us:
       - JHPCE Model: aboutus/model.md
       - Staff: aboutus/staff.md
-      - Grant and Acknowledgment Blurms: aboutus/GrantAndAckBlurbs.md
+      - Grant and Acknowledgment Blurbs: aboutus/GrantAndAckBlurbs.md
     - Getting Started:
       - joinus/index.md
       - Getting Started Overview: joinus/index.md
