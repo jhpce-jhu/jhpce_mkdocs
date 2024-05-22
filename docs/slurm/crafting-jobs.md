@@ -4,7 +4,7 @@ tags:
   - slurm
 ---
 
-# Crafting SLURM Bach Jobs
+# Crafting SLURM Batch Jobs
 
 !!! Note "Authoring Note"
     This document is accumulating information which might best be split into several more-focused documents. There are many aspects of creating jobs.
