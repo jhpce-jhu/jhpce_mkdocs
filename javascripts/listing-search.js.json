@@ -56,6 +56,12 @@
   {
     "page_name": "OneDrive via rclone",
     "page_url": "../access/onedrive/",
+    "text": "[myuser@transfer-01 ~]$ xdg-settings set default-web-browser chromium-browser.desktop\n",
+    "html": "<pre><span></span><code>[myuser@transfer-01 ~]$ xdg-settings set default-web-browser chromium-browser.desktop\n</code></pre>"
+  },
+  {
+    "page_name": "OneDrive via rclone",
+    "page_url": "../access/onedrive/",
     "text": "[compute-113 /users/bob]$ rclone lsd OneDrive:\n          -1 2019-12-21 01:54:32         2 BoxMigration\n          -1 2014-11-05 17:23:32        25 Documents\n          -1 2014-11-05 17:22:55       173 HomeDir\n          -1 2021-01-19 13:12:36         2 JHPCE-Billing-Videos\n          -1 2015-12-03 11:37:36         1 Lustre\n          -1 2019-07-11 17:25:16        10 OLDVMs\n          -1 2014-11-05 15:15:11         1 Shared with Everyone\n          -1 2019-07-11 12:13:21         0 USB\n",
     "html": "<pre><span></span><code><span class=\"gp\">[compute-113 /users/bob]$ </span>rclone<span class=\"w\"> </span>lsd<span class=\"w\"> </span>OneDrive:\n<span class=\"go\">          -1 2019-12-21 01:54:32         2 BoxMigration</span>\n<span class=\"go\">          -1 2014-11-05 17:23:32        25 Documents</span>\n<span class=\"go\">          -1 2014-11-05 17:22:55       173 HomeDir</span>\n<span class=\"go\">          -1 2021-01-19 13:12:36         2 JHPCE-Billing-Videos</span>\n<span class=\"go\">          -1 2015-12-03 11:37:36         1 Lustre</span>\n<span class=\"go\">          -1 2019-07-11 17:25:16        10 OLDVMs</span>\n<span class=\"go\">          -1 2014-11-05 15:15:11         1 Shared with Everyone</span>\n<span class=\"go\">          -1 2019-07-11 12:13:21         0 USB</span>\n</code></pre>"
   },
