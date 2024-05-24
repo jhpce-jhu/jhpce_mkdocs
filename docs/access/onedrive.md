@@ -8,9 +8,13 @@ Below is an example of using rclone to access the OneDrive network resource on t
 
 ## One-time Configuration
 
-Before you start, you will need to have an X11 graphical environment set up either by using [MobaXterm](https://mobaxterm.mobatek.net) on a Windows system or [Xquartz](https://www.xquartz.org) on a Mac.  To start, login to the cluster as normal, and then srun into a compute node with a 10G RAM request (srun –pty –x11 –mem=10G bash ) .  Part of the rclone setup process will involve using a web browser to generate an authentication key, so once you’ve logged into a compute node, run “chromium-browser &“.  The ampersand at the end will cause Firefox to run run in the background.  You may see a steam of warning message about “libGL errors”, but these are because we are using X11 forwarding and not a local graphics card, and assuming the browser stars up acter a few seconds, those messages can be ignored.
+Before you start, you will need to have an X11 graphical environment set up either by using [MobaXterm](https://mobaxterm.mobatek.net) on a Windows system or [Xquartz](https://www.xquartz.org) on a Mac.  To start, login to the cluster as normal, and then srun into a compute node with a 10G RAM request (srun –pty –x11 –mem=10G bash ) .  
 
-![](images/Screenshot-2023-11-13-at-3.13.27-PM.png)
+Part of the rclone setup process will involve using a web browser to generate an authentication key.  Before starting the rclone configuration process, you should set your web browser on the cluster to use Chromium with the ```xdg-settings``` command. By default Firefox is used, but we've found Chromium to be more responsive.  When the browser does start, you may see a steam of warning message about “libGL errors”, but these are because we are using X11 forwarding and not a local graphics card, and assuming the browser stars up acter a few seconds, those messages can be ignored.
+
+```
+[myuser@transfer-01 ~]$ xdg-settings set default-web-browser chromium-browser.desktop
+```
 
 Now, from your srun session, you will need to run “module load go” to load the “go” module, and then run “rclone config” to begin the rclone setup.
 
@@ -39,7 +43,7 @@ At this point you’ll see a URL with “http://127.0.0.1” in the address, and
 
 ![](images/Screen-Shot-2021-03-24-at-10.12.16-AM.png)
 
-Also at this point, the Firefox browser should open a new tab, and start going to the http://127.0.0.1 address, which should redirect you to the Microsoft login page.
+Also at this point, the Chromium browser should open a new tab, and start going to the http://127.0.0.1 address, which should redirect you to the Microsoft login page.
 
 ![](images/Screen-Shot-2021-03-24-at-10.24.30-AM.png)
 
@@ -48,7 +52,7 @@ From here, you should enter “JHEDID@jh.edu”. Where of course you specify you
 ![](images/rclone4.png)
 
 When prompted to “Save your login”, you should select “Don’t Save”.
-You should then see in the Firefox display, a “Success!” message, and in your “srun” session, you should see the message “Got code”, and then a selection of OneDrive site options. You should select option “1” for “onedrive”.
+You should then see in the web browser display, a “Success!” message, and in your “srun” session, you should see the message “Got code”, and then a selection of OneDrive site options. You should select option “1” for “onedrive”.
 
 ![](images/Screen-Shot-2021-03-24-at-10.31.42-AM.png)
 
@@ -57,7 +61,7 @@ You will also get a confirmation message, and you should select “y”.
 
 ![](images/Screen-Shot-2021-03-24-at-10.36.21-AM.png)
 
-At this point a summary of the configuration will be displayed, and you should select “y” to accept the configuration. Finally, you can enter “q” to quit the config process, and you can also close the Firefox browser.
+At this point a summary of the configuration will be displayed, and you should select “y” to accept the configuration. Finally, you can enter “q” to quit the config process, and you can also close the web browser.
 
 ![](images/rclone5.png)
 
