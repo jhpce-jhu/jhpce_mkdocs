@@ -68,7 +68,8 @@ If you want or need to get more information about your jobs, you should add "ins
 1. Look at their output and error files
 2. Look at files they wrote to
 3. The command `seff jobid` for a given jobid will report on RAM and CPU efficiency. 
-4. Use `sacct` to inspect parameters about the job, including their "exitcode"
+4. The `reportseff` command provides a way to inspect multiple jobs that match some criteria. See [our page](../slurm/tips-reportseff.md) about it.
+4. Use `sacct` to inspect parameters about the job, including their "exitcode", memory usage, nodes used, etc. See [our page](../slurm/tips-sacct.md) about it.
 
 Exit codes are poorly documented, unfortunately. See [this section](../slurm/tips-sacct.md#exit-error-codes) of the sacct tips page for what is known.
 
@@ -189,6 +190,10 @@ Job Wall-clock time: 2-12:49:12
 Memory Utilized: 15.34 GB
 Memory Efficiency: 76.71% of 20.00 GB
 ```
+
+### `reportseff`
+
+The `reportseff` command provides a way to inspect multiple jobs that match some criteria. See [our page](../slurm/tips-reportseff.md) about it.
 
 ## **Suggestions to a user
 **
