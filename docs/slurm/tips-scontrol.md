@@ -119,6 +119,8 @@ scontrol show reservation
 scontrol create reservation starttime=now duration=UNLIMITED user=root,tunison,mmill116,jyang flags=maint,ignore_jobs,NO_HOLD_JOBS_AFTER reservation=resv-name nodes=compute-number
 ```
 
+Note that "UNLIMITED" turns out to be one year.
+
 ```Shell title="Delete a reservation" linenums="0"
 scontrol delete reservation=<resv-name>
 ```
