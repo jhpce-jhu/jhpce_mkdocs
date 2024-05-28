@@ -3118,6 +3118,15 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#reportseff" class="md-nav__link">
+    <span class="md-ellipsis">
+      reportseff
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -3933,6 +3942,15 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#reportseff" class="md-nav__link">
+    <span class="md-ellipsis">
+      reportseff
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -4026,7 +4044,8 @@
 <li>Look at their output and error files</li>
 <li>Look at files they wrote to</li>
 <li>The command <code>seff jobid</code> for a given jobid will report on RAM and CPU efficiency. </li>
-<li>Use <code>sacct</code> to inspect parameters about the job, including their "exitcode"</li>
+<li>The <code>reportseff</code> command provides a way to inspect multiple jobs that match some criteria. See <a href="../tips-reportseff/">our page</a> about it.</li>
+<li>Use <code>sacct</code> to inspect parameters about the job, including their "exitcode", memory usage, nodes used, etc. See <a href="../tips-sacct/">our page</a> about it.</li>
 </ol>
 <p>Exit codes are poorly documented, unfortunately. See <a href="../tips-sacct/#exit-error-codes">this section</a> of the sacct tips page for what is known.</p>
 <p><code>scontrol show job</code> doesn't work for completed jobs.</p>
@@ -4119,6 +4138,8 @@ Job Wall-clock time: 2-12:49:12
 Memory Utilized: 15.34 GB
 Memory Efficiency: 76.71% of 20.00 GB
 </code></pre></div>
+<h3 id="reportseff"><code>reportseff</code><a class="headerlink" href="#reportseff" title="Anchor link to this section for reference">&para;</a></h3>
+<p>The <code>reportseff</code> command provides a way to inspect multiple jobs that match some criteria. See <a href="../tips-reportseff/">our page</a> about it.</p>
 <h2 id="suggestions-to-a-user">**Suggestions to a user<a class="headerlink" href="#suggestions-to-a-user" title="Anchor link to this section for reference">&para;</a></h2>
 <p>**</p>
 <div class="admonition note">
@@ -4165,7 +4186,7 @@ Memory Efficiency: 76.71% of 20.00 GB
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1-2.1-2M12.5 7v5.2l4 2.4-1 1L11 13V7h1.5M11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2v1.8Z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">April 11, 2024</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">May 28, 2024</span>
   </span>
 
     
