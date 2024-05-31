@@ -38,7 +38,11 @@ You can tell the scheduler that you **prefer** or **require** features using the
 
 Of course, saying that you **prefer** a feature means that your job might be sent to nodes which lack that feature. If your code **requires** a feature, then this will mean that your job has fewer nodes on which it might run and might stay pending for longer.
 
-See the `--prefer` and `--constraint` sections of the [sbatch](https://slurm.schedmd.com/archive/slurm-22.05.9/sbatch.html) manual page for descriptions of using AND and OR operators to combine features. Sadly it does not seem possible to simply exclude features (so you could say I want any node except ones with these features (because they are too old for my code)).
+### Logical operators
+See the `--prefer` and `--constraint` sections of the [sbatch](https://slurm.schedmd.com/archive/slurm-22.05.9/sbatch.html) manual page for descriptions of using AND and OR operators to combine features.
+
+### Excluding Nodes
+Sadly it does not seem possible to simply exclude features (so you could say I want any node except ones with these features (because they are too old for my code)). However, you can tell `srun` and `sbatch` to exclude one or more hosts with the `--exclude=` directive. You can provide a comma-seperated list of hostnames or a text file name (although this file name needs to include a ++slash++ in it).
 
 !!! Tip
     When specifying multiple features, you may need to enclose them in double quotes. The symbols used for AND, OR and number of matches are all ones which the bash shell will mis-interpret.
