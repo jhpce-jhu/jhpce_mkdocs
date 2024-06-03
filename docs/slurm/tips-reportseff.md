@@ -169,12 +169,12 @@ So I was able to run `rs -u c-yzhou172-57285 --since now-4days`
 I suppose that they chose their argument flags to avoid overlapping with those used by sacct, so you see things like `--since` and `--until` instead of `sacct`'s `-S` and `-E`
 
 ### GPU support?
-Another feature of interest is supposedly the ability to calculate memory use efficiency for GPU jobs. If we discovered that many users were typically not using all of the memory on GPUs, it would open the door to partitioning GPUs into slices and therefore increasing the number of available GPUs for zero dollars.
+Another feature of interest is supposedly the ability to calculate memory use efficiency for GPU jobs. If we discovered that many users were typically not using all of the memory on GPUs, it would open the door to partitioning GPUs into slices and therefore increasing the number of available GPUs for zero dollars. However it may be the case that we would have to install other software to enable the acquisition of GPU usage data. We probably won't have time to do that.
 
 ### COLORIZED OUTPUT
-It seems to use less as its pagination tool by default when output is longer than your terminal's size. Normally it produces colorized output which is very nice, as Borat would say. But the colors go away and you see the ugly escape characters unless you have the LESS environment variable defined to include `-R`.  I grepped for "less" in the python files in the main reportseff subdirectory, hoping to find a place where I could just add the -R so users would benefit. 
+It seems to use `less` as its pagination tool by default when output is longer than your terminal's size. Normally it produces colorized output which is very nice, as Borat would say. But the colors go away and you see the ugly escape characters unless you have the LESS environment variable defined to include `-R`. So you may want to add to your `~/.bashrc` file a command like `export LESS="-i -M -R"` (The `-i` means "do case-insensitive searches, unless a capital is used", `-M` means "make prompt show lines and current byte" and `-R` means "show color text where ESC sequences are present".) 
 
-Adding the flag `--color` did not help. There is a `--no-color` which might be handy for generating reports lacking escape characters.
+Adding the flag `--color` did not help. There is a `--no-color` which might be handy for generating reports lacking escape characters when redirecting the output to a file.
 
 ### MEMORY USE ABOVE 100%
 Like other tools I've used which provide memory efficiency stats, this one shows jobs where efficiency is above 100%. Which I perhaps mistakenly interpret as indicating that the user has exceeded their memory limits. (I think I've also seen this in pure sacct output where no one is trying to combine data and calculate anything.)   DO THESE CASES REPRESENT INSTANCES OF THE USER'S PROCESSES GRABBING MORE MEMORY THAN "ALLOWED" FOR BRIEF-ENOUGH PERIODS THAT CGROUP LIMITS ARE NOT RESULTING IN KILLED PROCESSES? Or some other explanation that doesn't indicate that our understandings about memory stats or cgroups are flawed?
