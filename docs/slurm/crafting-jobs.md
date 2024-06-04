@@ -265,10 +265,13 @@ This is put here as a tool for system administrators needing to do maintenance w
 
 ## **Examples from Elsewhere**
 
+### **Running Multiple Jobs From One Script**
+
+[Using srun inside of sbatch scripts,](https://hpc.llnl.gov/banks-jobs/running-jobs/slurm#MultipleJobs) in serial and parallel. Remember to include the `wait` bash command at the end of your batch file so the job doesn't end before all of the tasks inside of it. You may need to specify the amount of memory each `srun` command needs (out of the total allocated to the overall job) so the first `srun` isn't given all of the RAM.
 
 ### **Workflow**
 
-[This cluster ](https://support.ceci-hpc.be/doc/_contents/SubmittingJobs/WorkflowManagement.html#introduction) has some good material about workflows. It includes references to a number of tools which make managing job arrays easier. Also links to papers about the topic of creating workflows for scientific computing.
+[This cluster ](https://support.ceci-hpc.be/doc/_contents/SubmittingJobs/WorkflowManagement.html#introduction) has some good material about workflows. It includes references to a number of tools which make managing job arrays easier. **Also links to papers about the topic of creating workflows for scientific computing.**
 
 ### **NERSC Examples**
 [Good examples](https://docs.nersc.gov/jobs/examples/).
@@ -276,7 +279,7 @@ This is put here as a tool for system administrators needing to do maintenance w
 ### **USC Examples**
 [Good examples of basic different types of batch jobs](https://www.carc.usc.edu/user-information/user-guides/hpc-basics/slurm-templates)
 
-### Using Snakemake
+### **Using Snakemake**
 A workflow-creation tool for Python users called [snakemake](https://snakemake.github.io) can be used to generate SLURM jobs. Here are some links about using snakemake with SLURM:
 
 1. [vendor doc on snakemake and SLURM clusters](https://snakemake.readthedocs.io/en/v7.19.1/executing/cluster.html)
@@ -285,14 +288,23 @@ A workflow-creation tool for Python users called [snakemake](https://snakemake.g
 3. the [University of Zurich's instructions](https://docs.s3it.uzh.ch/how-to_articles/how_to_run_snakemake/)
 4. a [discussion of snakemake](https://news.ycombinator.com/item?id=36735616#) pros and other tools like Nextflow One group talking there developed their own suite called [SciPipe](https://academic.oup.com/gigascience/article/8/5/giz044/5480570)
 
-### Nextflow
+### **Nextflow**
 Use with SLURM is mentioned [here](https://www.nextflow.io/docs/latest/executor.html)
 
 [Nextflow](https://www.nextflow.io/docs/latest/) is a workflow system for creating scalable, portable, and reproducible workflows. It is based on the dataflow programming model, which greatly simplifies the writing of parallel and distributed pipelines, allowing you to focus on the flow of data and computation. Nextflow can deploy workflows on a variety of execution platforms, including your local machine, HPC schedulers, AWS Batch, Azure Batch, Google Cloud Batch, and Kubernetes. Additionally, it supports many ways to manage your software dependencies, including Conda, Spack, Docker, Podman, Singularity, and more.
 
-### **Running Multiple Jobs From One Script**
+### **Dead Simple Queue**
 
-[Using srun inside of sbatch scripts,](https://hpc.llnl.gov/banks-jobs/running-jobs/slurm#MultipleJobs) in serial and parallel. Remember to include the `wait` bash command at the end of your batch file so the job doesn't end before all of the tasks inside of it. You may need to specify the amount of memory each `srun` command needs (out of the total allocated to the overall job) so the first `srun` isn't given all of the RAM.
+[dSQ](https://github.com/ycrc/dsq) from Yale is a set of tools which aim to make running array jobs easier.
+
+
+`dSQ` itself is a tool that creates batch job scripts for you, and can submit the resulting job. It can create simple jobs but its focus seems to very much be job arrays.
+
+It is written to be used as a module. (Users can create their own modules on JHPCE.)
+
+* You get a simple report of which job ran where and for how long
+* [dSQAutopsy](https://github.com/ycrc/dsq?tab=readme-ov-file#dsqautopsy) can create a new job file that has only the jobs that didn't complete from your last run. See [this spot](https://github.com/ycrc/dsq?tab=readme-ov-file#dsq-output) in the README where it describes how to do that.
+* All you need is Python 2.7+, or Python 3.
 
 
 
