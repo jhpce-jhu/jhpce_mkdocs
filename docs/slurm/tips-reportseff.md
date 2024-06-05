@@ -32,6 +32,30 @@ tags:
 Home page for more information: https://github.com/troycomi/reportseff
 
 !!! Example "Example reportseff output"
+    ``` title="Show my COMPLETED jobs between noon and now, adding 2 fields"
+    module load reportseff
+    export LESS="-R"
+    
+    reportseff  --since now-3days --until now -s CD --format +reqcpus,reqmem
+      JobID    State       Elapsed  TimeEff   CPUEff   MemEff   ReqCPUS   ReqMem 
+      12394  COMPLETED    00:44:58   0.2%     92.3%    113.0%     50      1600G
+      12403  COMPLETED    00:45:12   0.2%     91.2%    115.2%     50      1600G
+      12413  COMPLETED    00:00:04   0.0%      ---      0.0%      70      1800G
+      12415  COMPLETED    00:00:03   0.0%      ---      0.0%      70      1800G
+      12416  COMPLETED    00:00:03   0.0%      ---      0.0%      75      1800G
+      12418  COMPLETED    00:03:04   0.0%      1.8%     0.9%      50      1500G
+      12419  COMPLETED    00:03:24   0.0%      ---      0.0%      50      1500G
+      12435  COMPLETED    00:07:03   0.0%     49.1%    46.5%      20       500G
+      12455  COMPLETED    06:22:15   26.5%     9.6%    38.1%       1       50G
+      12464  COMPLETED    00:01:41   0.0%     16.6%     3.2%      15       350G
+      12468  COMPLETED    00:02:56   0.0%     48.1%    54.0%      10       250G
+      12469  COMPLETED    08:39:19   1.8%     96.3%    97.7%      10       400G
+      12503  COMPLETED    06:10:40   1.3%     91.7%    152.1%     10       380G
+      12531  COMPLETED    03:24:26   0.7%     86.8%    159.9%     10       350G
+      12539  COMPLETED    00:37:51   0.1%      5.1%    46.8%      20       100G
+    ```
+
+??? Example "Second example reportseff output"
     ``` title="Show my COMPLETED jobs between noon and now, adding a field"
     module load reportseff
     export LESS="-R"
@@ -48,7 +72,6 @@ Home page for more information: https://github.com/troycomi/reportseff
        5025584  COMPLETED      04:11:32   17.5%    89.1%    26.9%      sli1
        5025586  COMPLETED      03:55:38   16.4%    82.8%    26.4%      sli1
     ```
-
 !!! Info "There are two ways to use reportseff:"
     ??? Note "As a module:"
         ```
@@ -164,12 +187,14 @@ Examples below use angle brackets ++less++ ++greater++  to indicate where you ar
 ### ARGUMENTS
 One of the appeals of this tool is that it uses sacct of course but allows you to pass extra sacct args. And it uses the same syntax for time that sacct does. 
 
-So I was able to run `rs -u c-yzhou172-57285 --since now-4days`
+So I was able to run `reportseff -u someuser --since now-4days`
 
-I suppose that they chose their argument flags to avoid overlapping with those used by sacct, so you see things like `--since` and `--until` instead of `sacct`'s `-S` and `-E`
+I suppose that they chose their argument flags to avoid overlapping with those used by sacct, so you see things like `--since` and `--until` instead of `sacct`'s `-S` and `-E`  But most `sacct` arguments will work. 
+
+Note that you can add `sacct` fields to `reportseff`'s default ones with a simple `--format +fieldname,otherfield`
 
 ### GPU support?
-Another feature of interest is supposedly the ability to calculate memory use efficiency for GPU jobs. If we discovered that many users were typically not using all of the memory on GPUs, it would open the door to partitioning GPUs into slices and therefore increasing the number of available GPUs for zero dollars. However it may be the case that we would have to install other software to enable the acquisition of GPU usage data. We probably won't have time to do that.
+Another feature of interest is supposedly the ability to calculate memory use efficiency for GPU jobs. If we discovered that many users were typically not using all of the memory on GPUs, it would open the door to partitioning GPUs into slices and therefore increasing the number of available GPUs for zero dollars. However it is the case that we would have to install other software (parts of the Princeton jobstats suite) to enable the acquisition of GPU usage data. We probably won't have time to do that.
 
 ### COLORIZED OUTPUT
 It seems to use `less` as its pagination tool by default when output is longer than your terminal's size. Normally it produces colorized output which is very nice, as Borat would say. But the colors go away and you see the ugly escape characters unless you have the LESS environment variable defined to include `-R`. So you may want to add to your `~/.bashrc` file a command like `export LESS="-i -M -R"` (The `-i` means "do case-insensitive searches, unless a capital is used", `-M` means "make prompt show lines and current byte" and `-R` means "show color text where ESC sequences are present".) 
