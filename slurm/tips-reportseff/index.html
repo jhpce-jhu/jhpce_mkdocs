@@ -3569,6 +3569,30 @@ Memory Efficiency: 22.47% of 300.00 GB
 <p>Home page for more information: https://github.com/troycomi/reportseff</p>
 <div class="admonition example">
 <p class="admonition-title">Example reportseff output</p>
+<div class="highlight"><span class="filename">Show my COMPLETED jobs between noon and now, adding 2 fields</span><pre><span></span><code>module load reportseff
+export LESS=&quot;-R&quot;
+
+reportseff  --since now-3days --until now -s CD --format +reqcpus,reqmem
+  JobID    State       Elapsed  TimeEff   CPUEff   MemEff   ReqCPUS   ReqMem 
+  12394  COMPLETED    00:44:58   0.2%     92.3%    113.0%     50      1600G
+  12403  COMPLETED    00:45:12   0.2%     91.2%    115.2%     50      1600G
+  12413  COMPLETED    00:00:04   0.0%      ---      0.0%      70      1800G
+  12415  COMPLETED    00:00:03   0.0%      ---      0.0%      70      1800G
+  12416  COMPLETED    00:00:03   0.0%      ---      0.0%      75      1800G
+  12418  COMPLETED    00:03:04   0.0%      1.8%     0.9%      50      1500G
+  12419  COMPLETED    00:03:24   0.0%      ---      0.0%      50      1500G
+  12435  COMPLETED    00:07:03   0.0%     49.1%    46.5%      20       500G
+  12455  COMPLETED    06:22:15   26.5%     9.6%    38.1%       1       50G
+  12464  COMPLETED    00:01:41   0.0%     16.6%     3.2%      15       350G
+  12468  COMPLETED    00:02:56   0.0%     48.1%    54.0%      10       250G
+  12469  COMPLETED    08:39:19   1.8%     96.3%    97.7%      10       400G
+  12503  COMPLETED    06:10:40   1.3%     91.7%    152.1%     10       380G
+  12531  COMPLETED    03:24:26   0.7%     86.8%    159.9%     10       350G
+  12539  COMPLETED    00:37:51   0.1%      5.1%    46.8%      20       100G
+</code></pre></div>
+</div>
+<details class="example">
+<summary>Second example reportseff output</summary>
 <div class="highlight"><span class="filename">Show my COMPLETED jobs between noon and now, adding a field</span><pre><span></span><code>module load reportseff
 export LESS=&quot;-R&quot;
 
@@ -3584,7 +3608,7 @@ reportseff --since noon --until now -s CD --format +user
    5025584  COMPLETED      04:11:32   17.5%    89.1%    26.9%      sli1
    5025586  COMPLETED      03:55:38   16.4%    82.8%    26.4%      sli1
 </code></pre></div>
-</div>
+</details>
 <div class="admonition info">
 <p class="admonition-title">There are two ways to use reportseff:</p>
 <details class="note">
@@ -3692,10 +3716,11 @@ Options:
 <p>Examples below use angle brackets <span class="keys"><kbd class="key-less">&lt;</kbd></span> <span class="keys"><kbd class="key-greater">&gt;</kbd></span>  to indicate where you are supposed to replace argumements with your values.</p>
 <h3 id="arguments">ARGUMENTS<a class="headerlink" href="#arguments" title="Anchor link to this section for reference">&para;</a></h3>
 <p>One of the appeals of this tool is that it uses sacct of course but allows you to pass extra sacct args. And it uses the same syntax for time that sacct does. </p>
-<p>So I was able to run <code>rs -u c-yzhou172-57285 --since now-4days</code></p>
-<p>I suppose that they chose their argument flags to avoid overlapping with those used by sacct, so you see things like <code>--since</code> and <code>--until</code> instead of <code>sacct</code>'s <code>-S</code> and <code>-E</code></p>
+<p>So I was able to run <code>reportseff -u someuser --since now-4days</code></p>
+<p>I suppose that they chose their argument flags to avoid overlapping with those used by sacct, so you see things like <code>--since</code> and <code>--until</code> instead of <code>sacct</code>'s <code>-S</code> and <code>-E</code>  But most <code>sacct</code> arguments will work. </p>
+<p>Note that you can add <code>sacct</code> fields to <code>reportseff</code>'s default ones with a simple <code>--format +fieldname,otherfield</code></p>
 <h3 id="gpu-support">GPU support?<a class="headerlink" href="#gpu-support" title="Anchor link to this section for reference">&para;</a></h3>
-<p>Another feature of interest is supposedly the ability to calculate memory use efficiency for GPU jobs. If we discovered that many users were typically not using all of the memory on GPUs, it would open the door to partitioning GPUs into slices and therefore increasing the number of available GPUs for zero dollars. However it may be the case that we would have to install other software to enable the acquisition of GPU usage data. We probably won't have time to do that.</p>
+<p>Another feature of interest is supposedly the ability to calculate memory use efficiency for GPU jobs. If we discovered that many users were typically not using all of the memory on GPUs, it would open the door to partitioning GPUs into slices and therefore increasing the number of available GPUs for zero dollars. However it is the case that we would have to install other software (parts of the Princeton jobstats suite) to enable the acquisition of GPU usage data. We probably won't have time to do that.</p>
 <h3 id="colorized-output">COLORIZED OUTPUT<a class="headerlink" href="#colorized-output" title="Anchor link to this section for reference">&para;</a></h3>
 <p>It seems to use <code>less</code> as its pagination tool by default when output is longer than your terminal's size. Normally it produces colorized output which is very nice, as Borat would say. But the colors go away and you see the ugly escape characters unless you have the LESS environment variable defined to include <code>-R</code>. So you may want to add to your <code>~/.bashrc</code> file a command like <code>export LESS="-i -M -R"</code> (The <code>-i</code> means "do case-insensitive searches, unless a capital is used", <code>-M</code> means "make prompt show lines and current byte" and <code>-R</code> means "show color text where ESC sequences are present".) </p>
 <p>Adding the flag <code>--color</code> did not help. There is a <code>--no-color</code> which might be handy for generating reports lacking escape characters when redirecting the output to a file.</p>
@@ -3731,7 +3756,7 @@ Options:
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1-2.1-2M12.5 7v5.2l4 2.4-1 1L11 13V7h1.5M11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2v1.8Z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">June 3, 2024</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">June 5, 2024</span>
   </span>
 
     
