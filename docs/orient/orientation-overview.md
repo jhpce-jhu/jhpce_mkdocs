@@ -5,7 +5,7 @@ tags:
    - in-progress
    - refers-to-old-website
 ---
-# **All about orientation**
+# **About orientation**
 All new cluster users are required to attend a JHPCE orientation session. These sessions
 are generally held every other Wednesday afternoon via Zoom.
 
@@ -20,14 +20,14 @@ You can download the orientation slides at [JHPCE-Overview](../orient/images/lat
 ## **What to do before the JHPCE Orientation Session**
 Prior to attending the Orientation Session for the JHPCE cluster, you may need to
 install some additional applications on you laptop or smart phone.
-If possible, please install this software prior to attending the JHPCE Cluster 
-Orientation session.
+
+Please install this software prior to attending the JHPCE cluster orientation session.
 
 
-## **Install the 2 Factor Authentication program**
-The JHPCE cluster makes use of &#8220;Google Authenticator&#8221; to provide enhanced security. &nbsp;You can choose to either install an app on your smartphone or, if you do not have an Apple or Android based smart phone, you can install an extension to the Google Chrome browser.&nbsp; <strong>Prior to the Orientation Session, you will only need to download the GoogleAuthenticator app on your smart phone, or install the Authy Chrome extension.</strong> We will be configuring Google Authenticator during the Orientation Session. Please see&nbsp;<a href="http://jhpce-old.jhu.edu/knowledge-base/authentication/2-factor-authentication/#otp">http://jhpce-old.jhu.edu/knowledge-base/authentication/2-factor-authentication/#otp </a>for instructions.</li>
+### **Install the 2 Factor Authentication program**
+The JHPCE cluster makes use of &#8220;Google Authenticator&#8221; to provide enhanced security. &nbsp;You can choose to either install an app on your smartphone or, if you do not have an Apple or Android based smart phone, you can install an extension to the Google Chrome browser.&nbsp; <strong>Prior to the Orientation Session, you will only need to download the Google Authenticator app on your smart phone, or install the Authy Chrome extension.</strong> We will be configuring Google Authenticator _during_ the Orientation Session. Please see&nbsp;<a href="http://jhpce-old.jhu.edu/knowledge-base/authentication/2-factor-authentication/#otp">http://jhpce-old.jhu.edu/knowledge-base/authentication/2-factor-authentication/#otp </a>for instructions.</li>
 
-## **Install required SSH client software**
+### **Install required SSH client software**
 
 You may need to install a couple of programs on your laptop or desktop in order to access the JHPCE Cluster. You will need:
 
@@ -35,14 +35,14 @@ You may need to install a couple of programs on your laptop or desktop in order 
 2. an **SFTP client** for transferring files to and from the cluster, and
 3. an **X11 server** for displaying graphics back from the JHPCE cluster.
 
-The SSH client is a requirement; the SFTP and X11 clients are preferable but optional.
+The SSH client is a requirement; the SFTP and X11 clients are optional. For more information about SSH, see our page [here](https://jhpce.jhu.edu/access/ssh/)
 
-### **Microsoft Windows Users** 
+#### **Microsoft Windows Users** 
 
-We have found that the easiest program to use for accessing the JHPCE cluster is MobaXterm as it combines the functionality of all 3 software packages (SSH, SFTP, and X11) in 1 program.&nbsp; Prior to the Orientation Session, you should install MobaXterm by following the first few steps of <a title="http://mobaxterm.mobatek.net/" href="http://jhpce-old.jhu.edu/knowledge-base/mobaxterm-configuration/">http://jhpce-old.jhu.edu/knowledge-base/mobaxterm-configuration/</a> .&nbsp; Alternatively, if you already use an SSH client, (such as <a title="putty" href=" http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html">putty</a> or <a href="http://x.cygwin.com/">Cygwin) </a>and an SCP client&nbsp; (such as <a href="http://winscp.net/eng/docs/free_sftp_client_for_windows">WinSCP), </a>you can continue using that software.</li>
+We have found that the easiest program to use for accessing the JHPCE cluster is MobaXterm as it combines the functionality of all 3 software packages (SSH, SFTP, and X11) in 1 program.&nbsp; Prior to the Orientation session, you should install MobaXterm by following the first few steps of [https://jhpce.jhu.edu/access/mobaxterm/](https://jhpce.jhu.edu/access/mobaxterm/) .&nbsp; Alternatively, if you already use an SSH client, (such as <a title="putty" href=" http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html">putty</a> or <a href="http://x.cygwin.com/">Cygwin) </a>and an SCP client&nbsp; (such as <a href="http://winscp.net/eng/docs/free_sftp_client_for_windows">WinSCP), </a>you can continue using that software.</li>
 
 
-### **Apple Macintosh Users**
+#### **Apple Macintosh Users**
 
 - SSH Client - There are built in command line tools for ssh and scp that can be run from a Terminal window.&nbsp; The Terminal program can be found in &#8220;Applications -&gt; Utilities&#8221;.&nbsp; From a Terminal window, you would type:
 ```ssh <username>@jhpce03.jhsph.edu```
