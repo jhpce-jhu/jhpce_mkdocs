@@ -2624,15 +2624,6 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#the-basics" class="md-nav__link">
-    <span class="md-ellipsis">
-      The Basics
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#defaults" class="md-nav__link">
     <span class="md-ellipsis">
       Defaults
@@ -2642,9 +2633,27 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#jobs" class="md-nav__link">
+  <a href="#the-basics" class="md-nav__link">
     <span class="md-ellipsis">
-      Jobs
+      The Basics
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#slurm-commands-and-tips-for-using-them" class="md-nav__link">
+    <span class="md-ellipsis">
+      SLURM Commands and Tips For Using Them
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#transition-from-sun-grid-engine-to-slurm" class="md-nav__link">
+    <span class="md-ellipsis">
+      Transition from Sun Grid Engine to SLURM
     </span>
   </a>
   
@@ -3537,15 +3546,6 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#the-basics" class="md-nav__link">
-    <span class="md-ellipsis">
-      The Basics
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#defaults" class="md-nav__link">
     <span class="md-ellipsis">
       Defaults
@@ -3555,9 +3555,27 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#jobs" class="md-nav__link">
+  <a href="#the-basics" class="md-nav__link">
     <span class="md-ellipsis">
-      Jobs
+      The Basics
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#slurm-commands-and-tips-for-using-them" class="md-nav__link">
+    <span class="md-ellipsis">
+      SLURM Commands and Tips For Using Them
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#transition-from-sun-grid-engine-to-slurm" class="md-nav__link">
+    <span class="md-ellipsis">
+      Transition from Sun Grid Engine to SLURM
     </span>
   </a>
   
@@ -3582,19 +3600,7 @@
     
     
     
-      <a href="../../ourtools/tags/#needs-to-be-written" class="md-tag">needs-to-be-written</a>
-    
-  
-    
-    
-    
       <a href="../../ourtools/tags/#slurm" class="md-tag">slurm</a>
-    
-  
-    
-    
-    
-      <a href="../../ourtools/tags/#jeffrey" class="md-tag">jeffrey</a>
     
   
 </nav>
@@ -3602,25 +3608,34 @@
 
 
 <h1 id="introduction-to-slurm">Introduction to SLURM<a class="headerlink" href="#introduction-to-slurm" title="Anchor link to this section for reference">&para;</a></h1>
-<p>Until we write this document, please</p>
-<ol>
-<li>see the latest <a href="../../orient/images/latest-orient.pdf">orientation document (pdf)</a></li>
-<li>check out other SLURM-related pages on this web site. There is already some great information here. The <a href="../slurm-commands-ref/">commands tip and reference</a> document contains links to both manual pages and pages we've written with guidance and examples.</li>
-<li>If you can't find what you are looking for here, we have a collection of good documentation from other clusters <a href="../user-guide-collection/">here</a>. SLURM is a popular tool, so Google searches will also be productive.</li>
-</ol>
-<h2 id="the-basics">The Basics<a class="headerlink" href="#the-basics" title="Anchor link to this section for reference">&para;</a></h2>
-<p>(Needs to be written)</p>
+<p>See the latest <a href="../../orient/images/latest-orient.pdf">orientation document (pdf)</a> for examples of how to use SLURM to run jobs.</p>
+<p>Please check out other SLURM-related pages on this web site. There is already some great information here. </p>
 <h2 id="defaults">Defaults<a class="headerlink" href="#defaults" title="Anchor link to this section for reference">&para;</a></h2>
 <p>By default, if you do not request any specific resources, your job will receive:</p>
 <ul>
-<li>1 CPU</li>
+<li>1 CPU core (with support for two hyperthreads)</li>
 <li>5G of memory</li>
 <li>1 day of run time (on public <a href="../partitions/">partitions</a>)</li>
 <li>assignment to the <code>shared</code> partition.</li>
 </ul>
-<h2 id="jobs">Jobs<a class="headerlink" href="#jobs" title="Anchor link to this section for reference">&para;</a></h2>
-<p>Please visit the "About SLURM Jobs" document <a href="../about-jobs/">here</a> to read about basic SLURM facts like job notation, steps, names and states.</p>
-<p>Jobs can be submitted on any SLURM node, although usually this is done on one of the login nodes.  If the job is accepted, it is assigned a unique number. When the scheduler starts a job running, the job will be assigned one or more nodes (depending on the job submission directives). The first node is called "node zero" for the job. All of the nodes associated with a job are contained in a "nodelist" </p>
+<h2 id="the-basics">The Basics<a class="headerlink" href="#the-basics" title="Anchor link to this section for reference">&para;</a></h2>
+<p>The Slurm Workload Manager, or simply Slurm, formerly known as Simple Linux Utility for Resource Management (SLURM), is a free and open-source job scheduler for UNIX operating systems (Linux is a branch of UNIX). We've continued to capitalize the name in our documentation at JHPCE to help keep the term more visible.</p>
+<p>Job schedulers like SLURM perform a number of functions. At heart, they allow people to manage computing work across many compute nodes.</p>
+<ul>
+<li>Tasks are called <strong><em>jobs</em></strong>.</li>
+<li>Jobs can be submitted on any SLURM node, although usually this is done on one of the <strong><em>login nodes</em></strong>.  If the job is accepted, it is assigned a unique number, the <strong><em>jobid</em></strong>.</li>
+<li>Jobs can be <strong><em>interactive</em></strong>, (run in real time), or <strong><em>batch</em></strong>, which are scheduled for future unattended execution</li>
+<li>Jobs specify resources that they will need, such as the number of CPU cores, amount of RAM (in megabytes) and job duration</li>
+<li>Jobs are submitted to queues or <strong><em>partitions</em></strong> (collections of compute nodes governed by specific rules (such as priorities))</li>
+<li>Jobs are assigned to <strong><em>compute nodes</em></strong> as the CPU and RAM resources required become available in sufficient quantities</li>
+<li>The dispatch of jobs from a pending status to running on compute node(s) can be governed by a number of policy tools, such as <a href="../whenstart/">priorities</a> and <a href="../qos/">Quality of Service</a></li>
+</ul>
+<p>Please visit the <a href="../about-jobs/">About SLURM Jobs</a> document to read about basic SLURM facts like job notation, steps, names and states.</p>
+<h2 id="slurm-commands-and-tips-for-using-them">SLURM Commands and Tips For Using Them<a class="headerlink" href="#slurm-commands-and-tips-for-using-them" title="Anchor link to this section for reference">&para;</a></h2>
+<p>The <a href="../slurm-commands-ref/">commands tip and reference</a> document describes programs and their uses, whether they were written by the vendor or JHPCE staff. That page contains links to both manual pages and pages we've written with guidance and examples.</p>
+<p>If you can't find what you are looking for here, we have a collection of good documentation from other clusters <a href="../user-guide-collection/">here</a>. SLURM is a popular tool, so Google searches will also be productive. Just keep in mind that the documentation for other clusters will include information specific to their hardware, software and policies.</p>
+<h2 id="transition-from-sun-grid-engine-to-slurm">Transition from Sun Grid Engine to SLURM<a class="headerlink" href="#transition-from-sun-grid-engine-to-slurm" title="Anchor link to this section for reference">&para;</a></h2>
+<p>We transitioned from the Sun Grid Engine to SLURM in 2024. We wrote <a href="../../orient/images/transition-sge-2-slurm.pdf">this document</a> for users familiar with SGE who needed to learn some SLURM basics.</p>
 
 
 
@@ -3641,7 +3656,7 @@
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1-2.1-2M12.5 7v5.2l4 2.4-1 1L11 13V7h1.5M11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2v1.8Z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">April 10, 2024</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">June 11, 2024</span>
   </span>
 
     

@@ -326,11 +326,6 @@
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://jhpce.jhu.edu/slurm/slurm/</loc>
-         <lastmod>2024-06-11</lastmod>
-         <changefreq>daily</changefreq>
-    </url>
-    <url>
          <loc>https://jhpce.jhu.edu/slurm/time-limits/</loc>
          <lastmod>2024-06-11</lastmod>
          <changefreq>daily</changefreq>
