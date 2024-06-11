@@ -175,3 +175,7 @@ See [this document](../storage/quotas.md/#file-deletion-and-delayed-change-in-qu
 
 ??? "Click to expand answer"
     With the upgrade to MacOS Sierra, the “-X” option to ssh to enable X11 forwarding may not work. If you receive the message: untrusted X11 forwarding setup failed: xauth key data not generated , you can resolve the issue by add the line ForwardX11Trusted yes to your ~/.ssh/config file on your Mac. You may still see the warning: Warning: No xauth data; using fake authentication data for X11 forwarding. To eliminate this warning, add the line XAuthLocation /usr/X11/bin/xauth to your ~/.ssh/config file on your Mac.
+
+## Sun Grid Engine
+
+We transitioned from the Sun Grid Engine to SLURM in 2024. We wrote [this document](../orient/images/transition-sge-2-slurm.pdf) for users familiar with SGE who needed to learn some SLURM basics.

@@ -17,6 +17,8 @@ in our next session at our [Signup Site]( https://signup.com/go/OYYMAMq)
 ## **Documentation used in orientation**
 You can download the orientation slides at [JHPCE-Overview](../orient/images/latest-orient.pdf)
 
+We transitioned from the Sun Grid Engine to SLURM in 2024. We wrote [this document](../orient/images/transition-sge-2-slurm.pdf) for users familiar with SGE who needed to learn some SLURM basics.
+
 ## **What to do before the JHPCE Orientation Session**
 Prior to attending the Orientation Session for the JHPCE cluster, you may need to
 install some additional applications on you laptop or smart phone.
