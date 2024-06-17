@@ -3775,6 +3775,8 @@ mask::r-x
 other::r-x
 </code></pre><h2><a class="heading" href="../files/archive-files">Archive Files</a></h2><a class="url" href="../files/archive-files">files/archive-files/</a><pre><span></span><code>cd /dcs05/mygroup/data/trial5/experiment8/
 tar -cf /dcs07/mygroup/my-tar-file.tar some-directory other-dir2 file9
+</code></pre><pre><span></span><code>cd /dcs05/mygroup/data/trial5/experiment8/
+tar -cf /dcs07/mygroup/my-tar-file.tar --use-compress-program="pigz -k -p4" some-large-directory
 </code></pre><pre><span></span><code>tar -tzf compressed-archive.tgz | less
 tar -xvzf compressed-archive.tgz
 </code></pre><pre><span></span><code>tar -tf somearchive.tar &gt; mylisting.txt

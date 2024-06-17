@@ -236,6 +236,12 @@
   {
     "page_name": "Archive Files",
     "page_url": "../files/archive-files/",
+    "text": "cd /dcs05/mygroup/data/trial5/experiment8/\ntar -cf /dcs07/mygroup/my-tar-file.tar --use-compress-program=\"pigz -k -p4\" some-large-directory\n",
+    "html": "<pre><span></span><code>cd /dcs05/mygroup/data/trial5/experiment8/\ntar -cf /dcs07/mygroup/my-tar-file.tar --use-compress-program=\"pigz -k -p4\" some-large-directory\n</code></pre>"
+  },
+  {
+    "page_name": "Archive Files",
+    "page_url": "../files/archive-files/",
     "text": "tar -tzf compressed-archive.tgz | less\ntar -xvzf compressed-archive.tgz\n",
     "html": "<pre><span></span><code>tar -tzf compressed-archive.tgz | less\ntar -xvzf compressed-archive.tgz\n</code></pre>"
   },
