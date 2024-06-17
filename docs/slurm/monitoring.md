@@ -81,11 +81,20 @@ Exit codes are poorly documented, unfortunately. See [this section](../slurm/tip
     This might warrant a dedicated page. THERE IS IMPORTANT INFO TO ADD -- regarding techniques, approaches. 
 
 ### **Exit codes**
-In addition to the STATE of jobs and job steps, you can get an exit code and sometimes an extended error code with the `sacct` command.
+In addition to the STATE of jobs and job steps, you can inspect the EXITCODE and a probably rarely useful DERIVEDEXITCODE fields with the `sacct` command.
 
 The exit code of a job is captured by Slurm and saved as part of the job record. For sbatch jobs the exit code of the batch script is captured. For srun, the exit code will be the return value of the executed command. Any non-zero exit code is considered a job failure, and results in job state of FAILED. When a signal was responsible for a job/step termination, the signal number will also be captured, and displayed after the exit code (separated by a colon).
 
-Depending on the execution order of the commands in the batch script, it is possible that a specific command fails but the batch script will return zero indicating success.
+Depending on the execution order of the commands in the batch script, it is possible that a specific command fails but the batch script will return zero indicating success. **ONLY THE STATUS OF THE LAST COMMAND EXECUTED IS USED TO DETERMINE JOB SUCCESS OR FAILURE.**
+
+!!! Caution "The echo command will produce a misleading job status for your-main-command"
+    ```
+    #!/bin/bash
+    ...
+    ...
+    your-main-command < inputfile > outputfile
+    echo "job finished"
+    ```
 
 ## **INVESTIGATING RESOURCE CONSUMPTION**
 
