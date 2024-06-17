@@ -18,7 +18,7 @@
       
       
       <link rel="icon" href="../../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.6.0, mkdocs-material-9.5.26">
+      <meta name="generator" content="mkdocs-1.6.0, mkdocs-material-9.5.27">
     
     
       
@@ -4055,9 +4055,18 @@
 <p>This might warrant a dedicated page. THERE IS IMPORTANT INFO TO ADD -- regarding techniques, approaches. </p>
 </div>
 <h3 id="exit-codes"><strong>Exit codes</strong><a class="headerlink" href="#exit-codes" title="Anchor link to this section for reference">&para;</a></h3>
-<p>In addition to the STATE of jobs and job steps, you can get an exit code and sometimes an extended error code with the <code>sacct</code> command.</p>
+<p>In addition to the STATE of jobs and job steps, you can inspect the EXITCODE and a probably rarely useful DERIVEDEXITCODE fields with the <code>sacct</code> command.</p>
 <p>The exit code of a job is captured by Slurm and saved as part of the job record. For sbatch jobs the exit code of the batch script is captured. For srun, the exit code will be the return value of the executed command. Any non-zero exit code is considered a job failure, and results in job state of FAILED. When a signal was responsible for a job/step termination, the signal number will also be captured, and displayed after the exit code (separated by a colon).</p>
-<p>Depending on the execution order of the commands in the batch script, it is possible that a specific command fails but the batch script will return zero indicating success.</p>
+<p>Depending on the execution order of the commands in the batch script, it is possible that a specific command fails but the batch script will return zero indicating success. <strong>ONLY THE STATUS OF THE LAST COMMAND EXECUTED IS USED TO DETERMINE JOB SUCCESS OR FAILURE.</strong></p>
+<div class="admonition caution">
+<p class="admonition-title">The echo command will produce a misleading job status for your-main-command</p>
+<div class="highlight"><pre><span></span><code>#!/bin/bash
+...
+...
+your-main-command &lt; inputfile &gt; outputfile
+echo &quot;job finished&quot;
+</code></pre></div>
+</div>
 <h2 id="investigating-resource-consumption"><strong>INVESTIGATING RESOURCE CONSUMPTION</strong><a class="headerlink" href="#investigating-resource-consumption" title="Anchor link to this section for reference">&para;</a></h2>
 <div class="admonition note">
 <p class="admonition-title">Authoring Note</p>
@@ -4186,7 +4195,7 @@ Memory Efficiency: 76.71% of 20.00 GB
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1-2.1-2M12.5 7v5.2l4 2.4-1 1L11 13V7h1.5M11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2v1.8Z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">May 28, 2024</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">June 17, 2024</span>
   </span>
 
     

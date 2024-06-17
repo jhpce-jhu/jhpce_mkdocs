@@ -14,7 +14,7 @@
       
       
       <link rel="icon" href="../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.6.0, mkdocs-material-9.5.26">
+      <meta name="generator" content="mkdocs-1.6.0, mkdocs-material-9.5.27">
     
     
       
@@ -4648,7 +4648,12 @@ b='trial-24'
 sbatch --job-name=${A}.${b}.run --output=${A}.${b}.out --export=D=${A},f=${b} script.sh
 </code></pre><h2><a class="heading" href="../slurm/interactive-jobs">Interactive Jobs</a></h2><a class="url" href="../slurm/interactive-jobs">slurm/interactive-jobs/</a><pre><span></span><code>jsrun() { if [ -z ${DISPLAY} ]; then /usr/bin/srun --pty "$@" bash; else /usr/bin/srun --pty --x11 "$@" bash; fi }
 </code></pre><pre><span></span><code>jxrun() { /usr/bin/srun --pty "$@" bash; }
-</code></pre><h2><a class="heading" href="../slurm/monitoring">Monitoring Your Jobs</a></h2><a class="url" href="../slurm/monitoring">slurm/monitoring/</a><pre><span></span><code>--mail-user<span class="o">=</span>&lt;email-address&gt;
+</code></pre><h2><a class="heading" href="../slurm/monitoring">Monitoring Your Jobs</a></h2><a class="url" href="../slurm/monitoring">slurm/monitoring/</a><pre><span></span><code>#!/bin/bash
+...
+...
+your-main-command &lt; inputfile &gt; outputfile
+echo "job finished"
+</code></pre><pre><span></span><code>--mail-user<span class="o">=</span>&lt;email-address&gt;
 </code></pre><pre><span></span><code>--mail-type<span class="o">=</span>&lt;list-of-types&gt;<span class="w">  </span><span class="c1"># comma-separated</span>
 </code></pre><pre><span></span><code>Job ID: 3946128
 Array Job ID: 3560537_102

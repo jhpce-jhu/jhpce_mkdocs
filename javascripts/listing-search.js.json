@@ -860,6 +860,12 @@
   {
     "page_name": "Monitoring Your Jobs",
     "page_url": "../slurm/monitoring/",
+    "text": "#!/bin/bash\n...\n...\nyour-main-command < inputfile > outputfile\necho \"job finished\"\n",
+    "html": "<pre><span></span><code>#!/bin/bash\n...\n...\nyour-main-command &lt; inputfile &gt; outputfile\necho \"job finished\"\n</code></pre>"
+  },
+  {
+    "page_name": "Monitoring Your Jobs",
+    "page_url": "../slurm/monitoring/",
     "text": "--mail-user=<email-address>\n",
     "html": "<pre><span></span><code>--mail-user<span class=\"o\">=</span>&lt;email-address&gt;\n</code></pre>"
   },
