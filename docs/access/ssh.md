@@ -44,8 +44,9 @@ Once configured properly, you can use SSH keys instead of your JHPCE password.
     This material needs to be placed in the right places.
 
 #### Login howto
-+ When ssh-ing into the cluster you will be prompted for 2 pieces of information. 
-  + First you will be prompted for “Verification Code:”, and for this you will enter the 6 digit number from your authenticator app (we recommend Google authenticator).
++ When ssh-ing into the cluster you provide your JHPCE user name as part of the ssh command (Mac or Linux) or ssh session configuration (e.g. in MobaXterm)
++ You will be prompted for 2 additional pieces of information. 
+  + First you will be prompted for “Verification Code:”, and for this you will enter the 6 digit number from your authenticator app (we recommend Google authenticator). See [here](https://jhpce.jhu.edu/access/access-overview/#one-time-passwords) for more on these one-time passwords.
   + Next you will be prompted for “Password:”; this you this will use a traditional password that only you know.  *Note that when entering your Verification Code and Password, your cursor will not move when you type, so it will appear like nothing is happening*.  + If you have never accessed the cluster before, and “Initial Verification Code” and “Initial Password” will be provided to you during your JHPCE Cluster Orientation session.
 + If you only get prompted for “Password” and not “Verification Code”, you are likely using the wrong login ID.  Your login ID is provided to you during the JHPCE orientation; it is not the same as your JHED ID.
 + If you have entered your credentials correctly, you will see a login banner for the JHPCE cluster, and you will be sitting at a shell prompt on the login node.  However, if you are prompted for “Verification Code:” again, you likely mistyped either your password or Verification Code, and you should wait until your Google Authenticator code changes (it changes every 30 seconds) and you will need to try logging in again.
