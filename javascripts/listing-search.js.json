@@ -1208,6 +1208,18 @@
   {
     "page_name": "scontrol tips",
     "page_url": "../slurm/tips-scontrol/",
+    "text": "scontrol update nodename=compute-112 state=resume reason=\"JHPCE: Fixed sssd problem\"\n",
+    "html": "<pre><span></span><code>scontrol<span class=\"w\"> </span>update<span class=\"w\"> </span><span class=\"nv\">nodename</span><span class=\"o\">=</span>compute-112<span class=\"w\"> </span><span class=\"nv\">state</span><span class=\"o\">=</span>resume<span class=\"w\"> </span><span class=\"nv\">reason</span><span class=\"o\">=</span><span class=\"s2\">\"JHPCE: Fixed sssd problem\"</span>\n</code></pre>"
+  },
+  {
+    "page_name": "scontrol tips",
+    "page_url": "../slurm/tips-scontrol/",
+    "text": "scontrol show config\nscontrol show config | grep -i debug # show debug, debugflags\n",
+    "html": "<pre><span></span><code>scontrol<span class=\"w\"> </span>show<span class=\"w\"> </span>config\nscontrol<span class=\"w\"> </span>show<span class=\"w\"> </span>config<span class=\"w\"> </span><span class=\"p\">|</span><span class=\"w\"> </span>grep<span class=\"w\"> </span>-i<span class=\"w\"> </span>debug<span class=\"w\"> </span><span class=\"c1\"># show debug, debugflags</span>\n</code></pre>"
+  },
+  {
+    "page_name": "scontrol tips",
+    "page_url": "../slurm/tips-scontrol/",
     "text": "scontrol setdebug info [nodes=<nodelist>]\n# (info is our normal level, so please return to that after debugging)\n# values in order: quiet,fatal,error,info,verbose,debug,debug2 thru debug5\n",
     "html": "<pre><span></span><code>scontrol<span class=\"w\"> </span>setdebug<span class=\"w\"> </span>info<span class=\"w\"> </span><span class=\"o\">[</span><span class=\"nv\">nodes</span><span class=\"o\">=</span>&lt;nodelist&gt;<span class=\"o\">]</span>\n<span class=\"c1\"># (info is our normal level, so please return to that after debugging)</span>\n<span class=\"c1\"># values in order: quiet,fatal,error,info,verbose,debug,debug2 thru debug5</span>\n</code></pre>"
   },
@@ -1220,20 +1232,8 @@
   {
     "page_name": "scontrol tips",
     "page_url": "../slurm/tips-scontrol/",
-    "text": "scontrol show config\nscontrol show config | grep -i debug # show debug, debugflags\n",
-    "html": "<pre><span></span><code>scontrol<span class=\"w\"> </span>show<span class=\"w\"> </span>config\nscontrol<span class=\"w\"> </span>show<span class=\"w\"> </span>config<span class=\"w\"> </span><span class=\"p\">|</span><span class=\"w\"> </span>grep<span class=\"w\"> </span>-i<span class=\"w\"> </span>debug<span class=\"w\"> </span><span class=\"c1\"># show debug, debugflags</span>\n</code></pre>"
-  },
-  {
-    "page_name": "scontrol tips",
-    "page_url": "../slurm/tips-scontrol/",
     "text": "scontrol update partitionname=interactive allowqos=normal,interactive-default\n",
     "html": "<pre><span></span><code>scontrol<span class=\"w\"> </span>update<span class=\"w\"> </span><span class=\"nv\">partitionname</span><span class=\"o\">=</span>interactive<span class=\"w\"> </span><span class=\"nv\">allowqos</span><span class=\"o\">=</span>normal,interactive-default\n</code></pre>"
-  },
-  {
-    "page_name": "scontrol tips",
-    "page_url": "../slurm/tips-scontrol/",
-    "text": "scontrol update nodename=compute-112 state=resume reason=\"Fixed sssd problem\"\n",
-    "html": "<pre><span></span><code>scontrol<span class=\"w\"> </span>update<span class=\"w\"> </span><span class=\"nv\">nodename</span><span class=\"o\">=</span>compute-112<span class=\"w\"> </span><span class=\"nv\">state</span><span class=\"o\">=</span>resume<span class=\"w\"> </span><span class=\"nv\">reason</span><span class=\"o\">=</span><span class=\"s2\">\"Fixed sssd problem\"</span>\n</code></pre>"
   },
   {
     "page_name": "scontrol tips",
@@ -1244,8 +1244,14 @@
   {
     "page_name": "scontrol tips",
     "page_url": "../slurm/tips-scontrol/",
-    "text": "scontrol create reservation starttime=now duration=UNLIMITED user=root,tunison,mmill116,jyang flags=maint,ignore_jobs,NO_HOLD_JOBS_AFTER reservation=resv-name nodes=compute-number\n",
-    "html": "<pre><span></span><code>scontrol<span class=\"w\"> </span>create<span class=\"w\"> </span>reservation<span class=\"w\"> </span><span class=\"nv\">starttime</span><span class=\"o\">=</span>now<span class=\"w\"> </span><span class=\"nv\">duration</span><span class=\"o\">=</span>UNLIMITED<span class=\"w\"> </span><span class=\"nv\">user</span><span class=\"o\">=</span>root,tunison,mmill116,jyang<span class=\"w\"> </span><span class=\"nv\">flags</span><span class=\"o\">=</span>maint,ignore_jobs,NO_HOLD_JOBS_AFTER<span class=\"w\"> </span><span class=\"nv\">reservation</span><span class=\"o\">=</span>resv-name<span class=\"w\"> </span><span class=\"nv\">nodes</span><span class=\"o\">=</span>compute-number\n</code></pre>"
+    "text": "scontrol create reservation starttime=now duration=UNLIMITED user=root,tunison,mmill116,jyang flags=maint,flex,ignore_jobs,NO_HOLD_JOBS_AFTER reservation=resv-name nodes=compute-number\n",
+    "html": "<pre><span></span><code>scontrol<span class=\"w\"> </span>create<span class=\"w\"> </span>reservation<span class=\"w\"> </span><span class=\"nv\">starttime</span><span class=\"o\">=</span>now<span class=\"w\"> </span><span class=\"nv\">duration</span><span class=\"o\">=</span>UNLIMITED<span class=\"w\"> </span><span class=\"nv\">user</span><span class=\"o\">=</span>root,tunison,mmill116,jyang<span class=\"w\"> </span><span class=\"nv\">flags</span><span class=\"o\">=</span>maint,flex,ignore_jobs,NO_HOLD_JOBS_AFTER<span class=\"w\"> </span><span class=\"nv\">reservation</span><span class=\"o\">=</span>resv-name<span class=\"w\"> </span><span class=\"nv\">nodes</span><span class=\"o\">=</span>compute-number\n</code></pre>"
+  },
+  {
+    "page_name": "scontrol tips",
+    "page_url": "../slurm/tips-scontrol/",
+    "text": "scontrol update reservation=<resv-name> user+=<username>\n",
+    "html": "<pre><span></span><code>scontrol<span class=\"w\"> </span>update<span class=\"w\"> </span><span class=\"nv\">reservation</span><span class=\"o\">=</span>&lt;resv-name&gt;<span class=\"w\"> </span><span class=\"nv\">user</span><span class=\"o\">+=</span>&lt;username&gt;\n</code></pre>"
   },
   {
     "page_name": "scontrol tips",
@@ -1258,12 +1264,6 @@
     "page_url": "../slurm/tips-scontrol/",
     "text": "scontrol update reservation=<resv-name> endtime=now\n",
     "html": "<pre><span></span><code>scontrol<span class=\"w\"> </span>update<span class=\"w\"> </span><span class=\"nv\">reservation</span><span class=\"o\">=</span>&lt;resv-name&gt;<span class=\"w\"> </span><span class=\"nv\">endtime</span><span class=\"o\">=</span>now\n</code></pre>"
-  },
-  {
-    "page_name": "scontrol tips",
-    "page_url": "../slurm/tips-scontrol/",
-    "text": "scontrol update reservation=<resv-name> user+=<username>\n",
-    "html": "<pre><span></span><code>scontrol<span class=\"w\"> </span>update<span class=\"w\"> </span><span class=\"nv\">reservation</span><span class=\"o\">=</span>&lt;resv-name&gt;<span class=\"w\"> </span><span class=\"nv\">user</span><span class=\"o\">+=</span>&lt;username&gt;\n</code></pre>"
   },
   {
     "page_name": "squeue tips",
