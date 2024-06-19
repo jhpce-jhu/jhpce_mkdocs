@@ -99,6 +99,7 @@ nav:
         - sacctmgr tips: slurm/tips-sacctmgr.md
         - scontrol tips: slurm/tips-scontrol.md
         - squeue tips: slurm/tips-squeue.md
+        - reportseff tips: slurm/tips-reportseff.md
       - Interactive Jobs: slurm/interactive-jobs.md
       - Crafting Batch Jobs: slurm/crafting-jobs.md
       - Monitoring Your Jobs: slurm/monitoring.md
