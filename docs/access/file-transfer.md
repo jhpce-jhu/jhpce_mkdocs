@@ -122,30 +122,30 @@ with them.
 Google Drive, and AWS. See [here](../access/onedrive.md) for instructions on using it to connect to Hopkins OneDrive storage.
 
 ### Aspera
-!!! Warning
-    This might be obsolete information as of 20240220 -- that package is no longer visible at the path mentioned below.
-
 
 [Aspera](https://www.ibm.com/products/aspera) is a commercial product from IBM that allows file transfers that are
-reportedly 20 times faster than `ftp`. If you download data from the
+reportedly 20 times faster than `ftp`.  Documentation is available for macOS, Linux and Windows.
+
+Aspera is required to download data from the
 [NCBI Aspera](https://www.ncbi.nlm.nih.gov/home/download/) server or download/upload data from/to JHU CIDR on the
-Bayview campus, then you will use Aspera. The Aspera license does not
-allow us to install the client for our users. You must install it
-yourself. You may either download the linux client from the aspera
-site or else use the client that we already downloaded. If you prefer
-the latter, simply copy the installation script from here:
+Bayview campus.
+
+The Aspera license does not allow us to install the client for our users. You must install it
+yourself. You may either download the linux client from the [Aspera Download site](https://www.ibm.com/aspera/connect/) or else use the client that we already downloaded. (It may be out of date.) If you prefer the latter, simply copy the installation script from here:
 
 ```
-/jhpce/shared/jhpce/core/JHPCE_tools/1.0/packages/aspera-connect-3.6.2.117442-linux-64.sh
+/jhpce/shared/jhpce/core/JHPCE_tools/3.0/packages/ibm-aspera-connect_4.2.10.749_linux_x86_64.sh
 ```
 
 into your home directory, and then run the script:
 
 ```
-bash aspera-connect-3.6.2.117442-linux-64.sh
+bash ibm-aspera-connect_4.2.10.749_linux_x86_64.sh
 ```
 
 This will install the `ascp` command under your home directory at  `~/.aspera/connect/bin`.  You can either add `~/.aspera/connect/bin` to your `PATH`, or use the full path to the `ascp` command to run it.
+
+You may also need to do other steps, such as install an extension to your web browser. Instructions on how to do that for Linux, as an example, are available from IBM [here](https://www.ibm.com/docs/en/aspera-connect/4.2?topic=suc-installation).
 
 
 ### Unison
