@@ -4,27 +4,37 @@ tags:
   - jeffrey
   - slurm
 ---
-# squeue useful command examples
+# **squeue -- useful command examples**
    
 !!! Warning
     AS OF 04/30/2024 THIS DOCUMENT CONTAINS NO UNIQUE/USEFUL INFO.
     This document started as a copy of that for the sacct command. Because formatting output is similar, etc. It will be pruned and modified.
- 
+
 !!! Example
-    ```Shell title="Show my failed jobs between noon and now" linenums="0"
-    sacct -s F -o "user,jobid,state,nodelist,start,end,exitcode" -S noon -E now
+    ```Shell title="Show my pending and running jobs" linenums="0"
+    squeue --me
     ```
 
-[sacct](https://slurm.schedmd.com/archive/slurm-22.05.9/sacct.html) is a command used to display information about jobs. It has a number of subtleties, such as the time window reported on and the formatting of output. We hope that this page will help you get the information you need.
+[sacct](https://slurm.schedmd.com/archive/slurm-22.05.9/squeue.html) is a command used to display information about pending and running jobs. It has a number of subtleties, such as the formatting of output. We hope that this page will help you get the information you need.
 
-`sacct` can be used to investigate jobs' resource usage, nodes used, and exit codes. It can point to important information, such as jobs dying on a particular node but working on other nodes[^1].
+`squeue` can be used to investigate jobs' resource usage, nodes used, and exit codes. It can point to important information, such as jobs dying on a particular node but working on other nodes
 
-[^1]: In which case you can add the directive `--exclude=compute-xxx` to your job submission, then notify us via bitsupport so we can fix that node.
+!!! Example
+    ```squeue --sort=-p,i --states=PD # sort PENDING by partition and job priority
+    ```
 
+Adds columns for: amount of CPU, RAM requested as well as time job limit.
+
+jobid,partition,job name,user,state,time run,time limit,node count,cpu,memory,nodelist or reason
+
+!!! Example
+    ```squeue -S u,-t,p -o "%.6P %.8j %.20u %.2t %.10M %.12l %.4D %.4C %.5m %R"
+    ```
+    A bash shell routine you can add to your .bashrc:
+    ```marksq() { (squeue -O JobArrayID:10" ",username:8" ",partition:7" ",name:10" ",statecompact:3,reason:12" ",reservation,,PendingTime:7" ",tres:20|sed 's/,no.*//' | sed 's/TRES_ALLOC[ ]*$/TRES_ALLOC/') }
+    ```
+    
 sacct will show all submitted jobs but cannot, of course, provide data for a number of fields until the job has finished. Use the [sstat](https://slurm.schedmd.com/archive/slurm-22.05.9/sstat.html) command to get information about running programs. "Instrumenting" your jobs to gather information about them can include adding one or more sstat commands to batch jobs in multiple places.
-
-!!! Tip
-    Much of the information on this page can be used with `sstat`, but there are differences, particularly in available output fields (compare the output of `sacct -e` and `sstat -e`).
 
 Examples below use angle brackets ++less++ ++greater++  to indicate where you are supposed to replace argumements with your values.
     
