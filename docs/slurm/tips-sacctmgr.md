@@ -5,7 +5,7 @@ tags:
 
 # **sacctmgr -- useful command examples**
     
-Sacctmgr is mostly used by systems administrators. Only they are allowed to make changes. Users can use it to view settings.  The basic command for that is `sacctmgr show qos`. This displays all possible QOS fields, and the output field widths are large. So we wrote a shell script called `showqos` that tries to print out only the QOS attributes that we are using and with more readable field widths. Be aware that that script may not show attriutes we add in the future!!
+[Sacctmgr](https://slurm.schedmd.com/archive/slurm-22.05.9/sacctmgr.html) is mostly used by systems administrators. Only they are allowed to make changes. Users can use it to view settings.  The basic command for that is `sacctmgr show qos`. This displays all possible QOS fields, and the output field widths are large. So we wrote a shell script called `showqos` that tries to print out only the QOS attributes that we are using and with more readable field widths. Be aware that that script may not show attriutes we add in the future!!
 
 Note that the output field names displayed are not necessarily the same as the keywords used when modifying, e.g. MaxTRESPerUser is the keyword but the more concise MaxTRESPU is displayed.
 
