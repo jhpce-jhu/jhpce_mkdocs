@@ -4995,6 +4995,9 @@ sacctmgr modify qos cms-larger set MaxWall=1-0
 
 # Limit each group to one running and one pending job, where a user in the group cannot have both a running and a pending job
 sacctmgr modify qos cms-larger set MaxJobsPerUser=1 MaxSubmitJobsPerUser=1 GrpJobs=1 GrpSubmitJobs=2
+
+# You cannot rename a QOS, so you have to delete the old name -- be aware that jobs might be using it!!!
+sacctmgr delete qos qosname
 </code></pre><h2><a class="heading" href="../slurm/tips-scontrol">scontrol tips</a></h2><a class="url" href="../slurm/tips-scontrol">slurm/tips-scontrol/</a><pre><span></span><code>scontrol<span class="w"> </span>show<span class="w"> </span>--details<span class="w"> </span>job<span class="w"> </span>&lt;jobid&gt;
 </code></pre><pre><span></span><code>scontrol<span class="w"> </span>show<span class="w"> </span>node<span class="w"> </span>&lt;nodename&gt;
 </code></pre><pre><span></span><code>scontrol<span class="w"> </span>show<span class="w"> </span>partition<span class="w"> </span>&lt;partitionname&gt;
