@@ -3886,7 +3886,7 @@
 
 
 
-<h1 id="squeue-useful-command-examples">squeue useful command examples<a class="headerlink" href="#squeue-useful-command-examples" title="Anchor link to this section for reference">&para;</a></h1>
+<h1 id="squeue-useful-command-examples"><strong>squeue -- useful command examples</strong><a class="headerlink" href="#squeue-useful-command-examples" title="Anchor link to this section for reference">&para;</a></h1>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
 <p>AS OF 04/30/2024 THIS DOCUMENT CONTAINS NO UNIQUE/USEFUL INFO.
@@ -3894,16 +3894,25 @@ This document started as a copy of that for the sacct command. Because formattin
 </div>
 <div class="admonition example">
 <p class="admonition-title">Example</p>
-<div class="highlight"><span class="filename">Show my failed jobs between noon and now</span><pre><span></span><code>sacct<span class="w"> </span>-s<span class="w"> </span>F<span class="w"> </span>-o<span class="w"> </span><span class="s2">&quot;user,jobid,state,nodelist,start,end,exitcode&quot;</span><span class="w"> </span>-S<span class="w"> </span>noon<span class="w"> </span>-E<span class="w"> </span>now
+<div class="highlight"><span class="filename">Show my pending and running jobs</span><pre><span></span><code>squeue<span class="w"> </span>--me
 </code></pre></div>
 </div>
-<p><a href="https://slurm.schedmd.com/archive/slurm-22.05.9/sacct.html">sacct</a> is a command used to display information about jobs. It has a number of subtleties, such as the time window reported on and the formatting of output. We hope that this page will help you get the information you need.</p>
-<p><code>sacct</code> can be used to investigate jobs' resource usage, nodes used, and exit codes. It can point to important information, such as jobs dying on a particular node but working on other nodes<sup id="fnref:1"><a class="footnote-ref" href="#fn:1">1</a></sup>.</p>
-<p>sacct will show all submitted jobs but cannot, of course, provide data for a number of fields until the job has finished. Use the <a href="https://slurm.schedmd.com/archive/slurm-22.05.9/sstat.html">sstat</a> command to get information about running programs. "Instrumenting" your jobs to gather information about them can include adding one or more sstat commands to batch jobs in multiple places.</p>
-<div class="admonition tip">
-<p class="admonition-title">Tip</p>
-<p>Much of the information on this page can be used with <code>sstat</code>, but there are differences, particularly in available output fields (compare the output of <code>sacct -e</code> and <code>sstat -e</code>).</p>
+<p><a href="https://slurm.schedmd.com/archive/slurm-22.05.9/squeue.html">sacct</a> is a command used to display information about pending and running jobs. It has a number of subtleties, such as the formatting of output. We hope that this page will help you get the information you need.</p>
+<p><code>squeue</code> can be used to investigate jobs' resource usage, nodes used, and exit codes. It can point to important information, such as jobs dying on a particular node but working on other nodes</p>
+<div class="admonition example">
+<p class="admonition-title">Example</p>
+<p><code>squeue --sort=-p,i --states=PD # sort PENDING by partition and job priority</code></p>
 </div>
+<p>Adds columns for: amount of CPU, RAM requested as well as time job limit.</p>
+<p>jobid,partition,job name,user,state,time run,time limit,node count,cpu,memory,nodelist or reason</p>
+<div class="admonition example">
+<p class="admonition-title">Example</p>
+<p>```squeue -S u,-t,p -o "%.6P %.8j %.20u %.2t %.10M %.12l %.4D %.4C %.5m %R"
+<div class="highlight"><pre><span></span><code>A bash shell routine you can add to your .bashrc:
+```marksq() { (squeue -O JobArrayID:10&quot; &quot;,username:8&quot; &quot;,partition:7&quot; &quot;,name:10&quot; &quot;,statecompact:3,reason:12&quot; &quot;,reservation,,PendingTime:7&quot; &quot;,tres:20|sed &#39;s/,no.*//&#39; | sed &#39;s/TRES_ALLOC[ ]*$/TRES_ALLOC/&#39;) }
+</code></pre></div></p>
+</div>
+<p>sacct will show all submitted jobs but cannot, of course, provide data for a number of fields until the job has finished. Use the <a href="https://slurm.schedmd.com/archive/slurm-22.05.9/sstat.html">sstat</a> command to get information about running programs. "Instrumenting" your jobs to gather information about them can include adding one or more sstat commands to batch jobs in multiple places.</p>
 <p>Examples below use angle brackets <span class="keys"><kbd class="key-less">&lt;</kbd></span> <span class="keys"><kbd class="key-greater">&gt;</kbd></span>  to indicate where you are supposed to replace argumements with your values.</p>
 <h2 id="sacct-basics">sacct basics<a class="headerlink" href="#sacct-basics" title="Anchor link to this section for reference">&para;</a></h2>
 <ol>
@@ -4076,14 +4085,6 @@ Enter man signal for more information
 </code></pre></div>
 <div class="highlight"><span class="filename">See jobs given a time limit btwn 1min & 1 day</span><pre><span></span><code>sacct<span class="w"> </span>-k<span class="w"> </span><span class="m">00</span>:01<span class="w"> </span>-K<span class="w"> </span><span class="m">1</span>-0
 </code></pre></div>
-<div class="footnote">
-<hr />
-<ol>
-<li id="fn:1">
-<p>In which case you can add the directive <code>--exclude=compute-xxx</code> to your job submission, then notify us via bitsupport so we can fix that node.&#160;<a class="footnote-backref" href="#fnref:1" title="Jump back to footnote 1 in the text">&#8617;</a></p>
-</li>
-</ol>
-</div>
 
 
 
@@ -4104,7 +4105,7 @@ Enter man signal for more information
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1-2.1-2M12.5 7v5.2l4 2.4-1 1L11 13V7h1.5M11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2v1.8Z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">April 30, 2024</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">June 20, 2024</span>
   </span>
 
     

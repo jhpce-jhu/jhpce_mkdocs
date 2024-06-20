@@ -5017,7 +5017,9 @@ scontrol<span class="w"> </span>show<span class="w"> </span>config<span class="w
 </code></pre><pre><span></span><code>scontrol<span class="w"> </span>update<span class="w"> </span><span class="nv">reservation</span><span class="o">=</span>&lt;resv-name&gt;<span class="w"> </span><span class="nv">user</span><span class="o">+=</span>&lt;username&gt;
 </code></pre><pre><span></span><code>scontrol<span class="w"> </span>delete<span class="w"> </span><span class="nv">reservation</span><span class="o">=</span>&lt;resv-name&gt;
 </code></pre><pre><span></span><code>scontrol<span class="w"> </span>update<span class="w"> </span><span class="nv">reservation</span><span class="o">=</span>&lt;resv-name&gt;<span class="w"> </span><span class="nv">endtime</span><span class="o">=</span>now
-</code></pre><h2><a class="heading" href="../slurm/tips-squeue">squeue tips</a></h2><a class="url" href="../slurm/tips-squeue">slurm/tips-squeue/</a><pre><span></span><code>sacct<span class="w"> </span>-s<span class="w"> </span>F<span class="w"> </span>-o<span class="w"> </span><span class="s2">"user,jobid,state,nodelist,start,end,exitcode"</span><span class="w"> </span>-S<span class="w"> </span>noon<span class="w"> </span>-E<span class="w"> </span>now
+</code></pre><h2><a class="heading" href="../slurm/tips-squeue">squeue tips</a></h2><a class="url" href="../slurm/tips-squeue">slurm/tips-squeue/</a><pre><span></span><code>squeue<span class="w"> </span>--me
+</code></pre><pre><span></span><code>A bash shell routine you can add to your .bashrc:
+```marksq() { (squeue -O JobArrayID:10" ",username:8" ",partition:7" ",name:10" ",statecompact:3,reason:12" ",reservation,,PendingTime:7" ",tres:20|sed 's/,no.*//' | sed 's/TRES_ALLOC[ ]*$/TRES_ALLOC/') }
 </code></pre><pre><span></span><code>               HH:MM[:SS][AM|PM]
                MMDD[YY][-HH:MM[:SS]]
                MM.DD[.YY][-HH:MM[:SS]]
