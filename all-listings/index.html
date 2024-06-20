@@ -4961,6 +4961,8 @@ sacctmgr show user withassoc where name=smburke
 # WHO HAS EXTRA QOS -- shortens the output width
 #  (but needs improvement to align column entries)
 sacctmgr show user withassoc|grep -v "normal "|awk '{printf "%s\t\t%s\t%s\t\t%s%\n", $1,$3,$4,$7}'
+</code></pre><pre><span></span><code># Dump the accounting database
+sacctmgr dump &lt;cluster-name&gt; file=&lt;filename&gt;
 </code></pre><pre><span></span><code># Add a QOS to a user's existing allowed QOS:
 sacctmgr mod user mmill116 set qos+=high-priority
 # or, you can redefine their whole list
@@ -4977,17 +4979,22 @@ sacctmgr -i create user name=$userid cluster=jhpce3 account=jhpce
 
 # How C-SUB users accounts are created in the sacctmgr database on jhpcecms01
 sacctmgr -i create user name=$userid account=generic cluster=cms 
-
-# Define a QOS
+</code></pre><pre><span></span><code># Define a QOS limiting a user to 25 running jobs with a max of 50 pending or running
 sacctmgr add qos job-25run50sub
+
 # You MUST define these flags for the QOS to work as expected
 sacctmgr modify qos job-25run50sub set flags=DenyOnLimit,OverPartQOS
 sacctmgr modify qos job-25run50sub set MaxJobsPerUser=25 MaxSubmitJobsPerUser=50
+sacctmgr delete qos job-25run50sub
 
+# Limit each user to 512GB and 100 CPU:
 sacctmgr modify qos shared-default set MaxTRESPerUser=mem=524288 MaxTRESPerUser=cpu=100
 
-# Dump the database
-sacctmgr dump &lt;cluster-name&gt; file=&lt;filename&gt;
+# Limit maximum job run time to 1 day
+sacctmgr modify qos cms-larger set MaxWall=1-0
+
+# Limit each group to one running and one pending job, where a user in the group cannot have both a running and a pending job
+sacctmgr modify qos cms-larger set MaxJobsPerUser=1 MaxSubmitJobsPerUser=1 GrpJobs=1 GrpSubmitJobs=2
 </code></pre><h2><a class="heading" href="../slurm/tips-scontrol">scontrol tips</a></h2><a class="url" href="../slurm/tips-scontrol">slurm/tips-scontrol/</a><pre><span></span><code>scontrol<span class="w"> </span>show<span class="w"> </span>--details<span class="w"> </span>job<span class="w"> </span>&lt;jobid&gt;
 </code></pre><pre><span></span><code>scontrol<span class="w"> </span>show<span class="w"> </span>node<span class="w"> </span>&lt;nodename&gt;
 </code></pre><pre><span></span><code>scontrol<span class="w"> </span>show<span class="w"> </span>partition<span class="w"> </span>&lt;partitionname&gt;
