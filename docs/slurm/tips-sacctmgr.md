@@ -3,15 +3,17 @@ tags:
   - slurm
 ---
 
-# sacctmgr useful command examples
+# **sacctmgr -- useful command examples**
     
-Sacctmgr is mostly used by systems administrators. Only they are allowed to make changes.
+Sacctmgr is mostly used by systems administrators. Only they are allowed to make changes. Users can use it to view settings.  The basic command for that is `sacctmgr show qos`. This displays all possible QOS fields, and the output field widths are large. So we wrote a shell script called `showqos` that tries to print out only the QOS attributes that we are using and with more readable field widths. Be aware that that script may not show attriutes we add in the future!!
 
-Note that the output field names displayed are not the same as the keywords used when modifying, e.g. MaxTRESPerUser is the keyword but MaxTRESPU is displayed.
+Note that the output field names displayed are not necessarily the same as the keywords used when modifying, e.g. MaxTRESPerUser is the keyword but the more concise MaxTRESPU is displayed.
 
-We currently have two clusters, named "jhpce3" and "cms"
+Also note that by "account" SLURM means the parent object of user accounts. We do not currently put our users into different accounts (many other clusters do).
 
-## Sacctmgr for Users
+We currently have two clusters, named "jhpce3" and "cms" You usually don't have to specify which cluster you want to consult/change, as we have a SLURM server for each cluster.
+
+## **Sacctmgr for Users**
 
 ```
 # See our currently defined QOS in a readable format
@@ -28,7 +30,15 @@ sacctmgr show user withassoc where name=smburke
 sacctmgr show user withassoc|grep -v "normal "|awk '{printf "%s\t\t%s\t%s\t\t%s%\n", $1,$3,$4,$7}'
 ```
 
-## Sacctmgr for Systems Administrators
+## **Sacctmgr for Systems Administrators**
+
+```
+# Dump the accounting database
+sacctmgr dump <cluster-name> file=<filename>
+```
+
+### **Managing QOS for users**
+
 ```
 # Add a QOS to a user's existing allowed QOS:
 sacctmgr mod user mmill116 set qos+=high-priority
@@ -46,15 +56,25 @@ sacctmgr -i create user name=$userid cluster=jhpce3 account=jhpce
 
 # How C-SUB users accounts are created in the sacctmgr database on jhpcecms01
 sacctmgr -i create user name=$userid account=generic cluster=cms 
+```
 
-# Define a QOS
+### **Managing QOS**
+
+```
+# Define a QOS limiting a user to 25 running jobs with a max of 50 pending or running
 sacctmgr add qos job-25run50sub
+
 # You MUST define these flags for the QOS to work as expected
 sacctmgr modify qos job-25run50sub set flags=DenyOnLimit,OverPartQOS
 sacctmgr modify qos job-25run50sub set MaxJobsPerUser=25 MaxSubmitJobsPerUser=50
+sacctmgr delete qos job-25run50sub
 
+# Limit each user to 512GB and 100 CPU:
 sacctmgr modify qos shared-default set MaxTRESPerUser=mem=524288 MaxTRESPerUser=cpu=100
 
-# Dump the database
-sacctmgr dump <cluster-name> file=<filename>
+# Limit maximum job run time to 1 day
+sacctmgr modify qos cms-larger set MaxWall=1-0
+
+# Limit each group to one running and one pending job, where a user in the group cannot have both a running and a pending job
+sacctmgr modify qos cms-larger set MaxJobsPerUser=1 MaxSubmitJobsPerUser=1 GrpJobs=1 GrpSubmitJobs=2
 ```
