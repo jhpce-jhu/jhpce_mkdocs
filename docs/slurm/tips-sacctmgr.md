@@ -77,4 +77,7 @@ sacctmgr modify qos cms-larger set MaxWall=1-0
 
 # Limit each group to one running and one pending job, where a user in the group cannot have both a running and a pending job
 sacctmgr modify qos cms-larger set MaxJobsPerUser=1 MaxSubmitJobsPerUser=1 GrpJobs=1 GrpSubmitJobs=2
+
+# You cannot rename a QOS, so you have to delete the old name -- be aware that jobs might be using it!!!
+sacctmgr delete qos qosname
 ```
