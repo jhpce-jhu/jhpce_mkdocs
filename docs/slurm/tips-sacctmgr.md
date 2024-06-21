@@ -13,6 +13,8 @@ Also note that by "account" SLURM means the parent object of user accounts. We d
 
 We currently have two clusters, named "jhpce3" and "cms" You usually don't have to specify which cluster you want to consult/change, as we have a SLURM server for each cluster.
 
+{== To delete a parameter from a QOS, set it to the value -1 ==}
+
 ## **Sacctmgr for Users**
 
 ```
@@ -60,6 +62,15 @@ sacctmgr -i create user name=$userid account=generic cluster=cms
 
 ### **Managing QOS**
 
+{== You MUST define flags=DenyOnLimit,OverPartQOS for a QOS to work as expected ==}
+
+There are a number of parameters which feature Group or Grp. We cannot use these, because by default our users are all in the same group ("users" in jhpce3 and "c-users" in cms).
+
+There are a number of variants of some parameters -- by user, by account, etc.
+
+`MaxJobs*` means jobs that can be running at one time
+`MaxJobsSubmit*` means jobs that can be both pending and running, altogether, in total
+
 ```
 # Define a QOS limiting a user to 25 running jobs with a max of 50 pending or running
 sacctmgr add qos job-25run50sub
@@ -67,6 +78,11 @@ sacctmgr add qos job-25run50sub
 # You MUST define these flags for the QOS to work as expected
 sacctmgr modify qos job-25run50sub set flags=DenyOnLimit,OverPartQOS
 sacctmgr modify qos job-25run50sub set MaxJobsPerUser=25 MaxSubmitJobsPerUser=50
+
+# Remove one of those parameters
+sacctmgr modify qos job-25run50sub set MaxJobsPerUser=-1
+
+# Delete the QOS (they can't be renamed)
 sacctmgr delete qos job-25run50sub
 
 # Limit each user to 512GB and 100 CPU:
