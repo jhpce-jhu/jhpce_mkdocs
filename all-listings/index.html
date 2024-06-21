@@ -4985,6 +4985,11 @@ sacctmgr add qos job-25run50sub
 # You MUST define these flags for the QOS to work as expected
 sacctmgr modify qos job-25run50sub set flags=DenyOnLimit,OverPartQOS
 sacctmgr modify qos job-25run50sub set MaxJobsPerUser=25 MaxSubmitJobsPerUser=50
+
+# Remove one of those parameters
+sacctmgr modify qos job-25run50sub set MaxJobsPerUser=-1
+
+# Delete the QOS (they can't be renamed)
 sacctmgr delete qos job-25run50sub
 
 # Limit each user to 512GB and 100 CPU:
