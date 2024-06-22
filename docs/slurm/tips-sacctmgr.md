@@ -64,12 +64,16 @@ sacctmgr -i create user name=$userid account=generic cluster=cms
 
 {== You MUST define flags=DenyOnLimit,OverPartQOS for a QOS to work as expected ==}
 
-There are a number of parameters which feature Group or Grp. We cannot use these, because by default our users are all in the same group ("users" in jhpce3 and "c-users" in cms).
-
-There are a number of variants of some parameters -- by user, by account, etc.
+There are a number of variants of some categories of parameters -- by user, by group, by account, etc.
 
 `MaxJobs*` means jobs that can be running at one time
-`MaxJobsSubmit*` means jobs that can be both pending and running, altogether, in total
+`MaxJobsSubmit*` means jobs that can be both pending and running, altogether, in total.
+
+!!! Note
+    There are a number of parameters which feature Group or Account. We cannot use these easily, because for example as far as "Groups" are concerned, by default our users are all in the same group ("users" in jhpce3 and "c-users" in cms). SLURM doesn't look at secondary group membership, only the primary group. AND we don't maintain groups for all of our PI groups. We maintain groups not to give access to computers but to control storage permissions. (In jhpce3 some users DO have primary groups different from "users".)
+    Accounts are similar to groups in that our current model has all user accounts belonging to a single higher-level account object ("jhpce" in jhpce3 and "generic" in cms (for some reason -- there's also a csub account) (and the small number of c-*-10101 users happen to be in the "sysadmin" account)).
+    Note that one _can_ use the fact that all users are in the same account to limit the total number of users in the cluster who can do some things, like submit jobs, or whatever the parameter category is. 
+
 
 ```
 # Define a QOS limiting a user to 25 running jobs with a max of 50 pending or running
