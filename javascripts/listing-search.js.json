@@ -4,7 +4,7 @@
     "page_url": "../access/access-overview/",
     "text": "graph TD\n   A[Your computer] --> B([Login nodes])\n   A[Your computer] -- Only via Hopkins/VPN --> D((Web Portal))\n   A[Your computer] --> C([Transfer node])\n   B([Login nodes]) --> E[Compute node1]\n   D((Web Portal)) --> E[Compute node1]\n   B([Login nodes]) --> F[Compute node2]\n   D((Web Portal)) --> F[Compute node2]\n   B([Login nodes]) --> G[Compute node3]\n   D((Web Portal)) --> G[Compute node3]\n   C([Transfer node]) <--> H[(storage servers)]",
     "html": "<pre class=\"mermaid\"><code>graph TD\n   A[Your computer] --&gt; B([Login nodes])\n   A[Your computer] -- Only via Hopkins/VPN --&gt; D((Web Portal))\n   A[Your computer] --&gt; C([Transfer node])\n   B([Login nodes]) --&gt; E[Compute node1]\n   D((Web Portal)) --&gt; E[Compute node1]\n   B([Login nodes]) --&gt; F[Compute node2]\n   D((Web Portal)) --&gt; F[Compute node2]\n   B([Login nodes]) --&gt; G[Compute node3]\n   D((Web Portal)) --&gt; G[Compute node3]\n   C([Transfer node]) &lt;--&gt; H[(storage servers)]</code></pre>",
-    "language": ""
+    "language": "mermaid"
   },
   {
     "page_name": "Overview",
@@ -725,7 +725,7 @@
     "page_url": "../ourtools/features/",
     "text": "graph LR\n   A[Your computer] --> B[Login nodes]\n   B[Login nodes] --> C[(Compute nodes)]",
     "html": "<pre class=\"mermaid\"><code>graph LR\n   A[Your computer] --&gt; B[Login nodes]\n   B[Login nodes] --&gt; C[(Compute nodes)]</code></pre>",
-    "language": ""
+    "language": "mermaid"
   },
   {
     "page_name": "Handy Features",
