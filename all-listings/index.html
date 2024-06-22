@@ -4998,8 +4998,10 @@ sacctmgr modify qos shared-default set MaxTRESPerUser=mem=524288 MaxTRESPerUser=
 # Limit maximum job run time to 1 day
 sacctmgr modify qos cms-larger set MaxWall=1-0
 
-# Limit each group to one running and one pending job, where a user in the group cannot have both a running and a pending job
-sacctmgr modify qos cms-larger set MaxJobsPerUser=1 MaxSubmitJobsPerUser=1 GrpJobs=1 GrpSubmitJobs=2
+# Limit each user to one of: a pending or running job.
+# Limit whole cluster to running 1 job with up to one more pending
+# This means only one job using this QOS can run in the whole cluster. To put a lid on things.
+sacctmgr modify qos cms-larger set MaxJobsPerUser=1 MaxSubmitJobsPerUser=1 MaxJobsPA=1 MaxSubmitJobsPA=2
 
 # You cannot rename a QOS, so you have to delete the old name -- be aware that jobs might be using it!!!
 sacctmgr delete qos qosname
