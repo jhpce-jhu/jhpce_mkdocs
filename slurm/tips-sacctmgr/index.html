@@ -3720,8 +3720,9 @@ sacctmgr modify qos cms-larger set MaxWall=1-0
 
 # Limit each user to one of: a pending or running job.
 # Limit whole cluster to running 1 job with up to one more pending
-# This means only one job using this QOS can run in the whole cluster. To put a lid on things.
-sacctmgr modify qos cms-larger set MaxJobsPerUser=1 MaxSubmitJobsPerUser=1 MaxJobsPA=1 MaxSubmitJobsPA=2
+# This means only one job using this QOS can run in the whole cluster. To put a lid on things. If you include MaxJobsPA=1 then no second user can submit
+#
+sacctmgr modify qos cms-larger set MaxJobsPerUser=1 MaxSubmitJobsPerUser=1  MaxSubmitJobsPA=2
 
 # You cannot rename a QOS, so you have to delete the old name -- be aware that jobs might be using it!!!
 sacctmgr delete qos qosname
