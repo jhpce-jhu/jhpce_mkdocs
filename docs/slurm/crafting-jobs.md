@@ -7,11 +7,11 @@ tags:
 # Crafting SLURM Batch Jobs
 
 !!! Note "Authoring Note"
-    This document is accumulating information which might best be split into several more-focused documents. There are many aspects of creating jobs.
+    This document is accumulating information which might best be split into several more-focused documents. There are many ways of creating jobs!
 
-There are a variety of techniques one can use to initiate SLURM jobs to accomplish various tasks. Here we will describe important topics and accumulate pointers to documentation written by others for their clusters. Later we will write concrete examples of our own.
+There are a variety of techniques one can use to initiate SLURM jobs to accomplish various tasks. Here we will describe important topics and accumulate pointers to documentation written by others for their clusters. Later we hope to write concrete examples of our own.
 
-In the directories under `/jhpce/shared/jhpce/slurm/` you will find files used during orientation, some accumulated documents and batch examples. 
+In the directories under `/jhpce/shared/jhpce/slurm/` you will find files used during orientation, some accumulated documents and batch examples. This web site probably contains a better set of information, though.
 
 !!! Note
     If you want to submit example batch jobs, or documents describing good workflows for specific tasks, or anything of the kind, we will happily consider adding them to that directory and to this document!!!
@@ -69,11 +69,18 @@ R CMD BATCH myprog.R
 ```
 ## **Job Arrays**
 
-Array jobs allow you to use one job script to run many jobs across a set of samples. That SLURM script (or the program(s) it calls) need(s) to contain syntax that uses SLURM environment variables to assign different work to different task element jobs.
+!!! Tip
+    Excellent set of explanations and examples from [University of Arizona](https://ua-researchcomputing-hpc.github.io/Array-and-Parallel/)!!! (See their [other examples](https://ua-researchcomputing-hpc.github.io))
 
-The underscore character is used in commands and seen in the output of programs like `sacct` as a separator between the job ID number and that of the array task ID number. Output and error files also use underscores in their names.
+Array jobs allow you to use one job script to run many jobs across a set of samples. Each array job spawns subordinate "array task" jobs. The overall job has a jobid, and the individual array task jobs are given their own jobid number by appending an underscore and their index number to the master array jobid.
 
-Controlling your usage:
+That SLURM script (and the program(s) it calls) need(s) to contain syntax that uses shell and SLURM environment variables to assign different work to different task element jobs. And to store the results in files with unique names.  One has to name files the right way to be able to script the input and output processing.
+
+There are a variety of ways to go about creating such scripts and managing the output.  Example scripts are very useful, so we have provided links to other web sites. There are also tools people have written to help manage the overall workflow. These can, for example, make it easier to identify jobs that failed out an array job and to submit them to run again.
+
+The underscore character is used in commands and is seen in the output of programs like `sacct` as a separator between the job ID number and that of the array task ID number. Output and error files also use underscores in their names.
+
+Controlling your usage with "step size"
 
 When you submit an array job you can indicate that you only want a certain number of tasks to be executed at a time. This will allow other users of your partition to be able to access it, or control the disk and network input/output rate to avoid choking a file server.
 
@@ -81,25 +88,32 @@ You can use the `scontrol` command to add or adjust that aspect of the job for p
 
 Vendor docs about job arrays are [here](https://slurm.schedmd.com/job_array.html).
 
+Excellent set of explanations and examples from [University of Arizona](https://ua-researchcomputing-hpc.github.io/Array-and-Parallel/)!!!
+
 New Mexico State University job array section [here](https://hpc.nmsu.edu/discovery/slurm/job-arrays/). Good, compact example document.
 
 Another nice straightforward description is in this [Ronin blog post](https://blog.ronin.cloud/slurm-job-arrays/). 
 
 [USC explanation](https://www.carc.usc.edu/user-information/user-guides/hpc-basics/slurm-templates) of job arrays.
 
-Email notifications: These are handled at the job level, not the individual task element level, unless you provide an extra arguement. Please don't do that, unless you KNOW that your jobs are going to take a long time, so you don't create a mail "storm" of messages.
+### **Job Array Email Notifications**
+ These are handled at the job level, not the individual task element level, _unless_ you provide an extra arguement. Please don't do that, unless you KNOW that your jobs are going to take a long time, so you don't create a mail "storm" of messages.[^1]
+ 
+[^1]: Such storms can get our servers banned by mail administrators, leading to no one getting any job-related email.
 
 ### **Job array-related environment variables**
 
-These variables are only set if this job is part of a job array.
+The ++underscore++ARRAY++underscore++ variables are only set if this job is part of a job array.
 
-| Variable name | Meaning |
-| -----| ----|
-|**SLURM_ARRAY_JOB_ID** | The overall job ID|
-|**SLURM_ARRAY_TASK_ID** | The individual task ID|
-|**SLURM_ARRAY_TASK_STEP**|The step size of task IDs|
-|**SLURM_ARRAY_TASK_MIN**|The minimum task ID|
-|**SLURM_ARRAY_TASK_MAX** | The maximum task ID |
+| Variable name | Meaning | Script variable | Usage | Result |
+| -----| ----|-----|-----|----|
+|**JOB_ID**|Jobid|%J|#SBATCH %J.err|123.err|
+|**SLURM_ARRAY_JOB_ID** | The overall job ID|%A|#SBATCH -o %A.out|123.out|
+|**SLURM_ARRAY_TASK_ID** | The individual task ID|%a|#SBATCH -o %A_%a.out|123_6.out||
+|**SLURM_ARRAY_TASK_STEP**|The optional step size of task IDs|not available|#SBATCH --array 2-15%3|3|
+|**SLURM_ARRAY_INX**|The array index range|not available|#SBATCH --array 2-15|2 15|
+|**SLURM_ARRAY_TASK_MIN**|The minimum task ID|not available|#SBATCH --array 2-15|2|
+|**SLURM_ARRAY_TASK_MAX** | The maximum task ID |not available|#SBATCH --array 2-15|15|
 
 ## **Dependent jobs**
 
