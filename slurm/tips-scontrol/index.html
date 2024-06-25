@@ -3922,12 +3922,17 @@ There is a warning that some debugflags require restarting slurmctld, which mean
 <li>nodes or partitions being reserved</li>
 <li>Resources -- Newer versions of SLURM than 22.05.09 may allow the reservation of <em>both</em> CPU and RAM resources (via TRES arguments). If so you could carve out "space" for a user to run certain jobs on any of the nodes in a partition without locking everyone out of the partition. That would be handy.</li>
 </ol>
-<p><div class="highlight"><span class="filename">Show any reservations</span><pre><span></span><code>scontrol<span class="w"> </span>show<span class="w"> </span>reservation
+<p><div class="highlight"><span class="filename">Show existing reservations</span><pre><span></span><code>scontrol<span class="w"> </span>show<span class="w"> </span>reservation
 </code></pre></div>
 Here is a reservation that prevents normal users from using a node for a year, starting now. System administrators are able to use the reservation to test the node.</p>
 <div class="highlight"><span class="filename">Create a reservation</span><pre><span></span><code>scontrol<span class="w"> </span>create<span class="w"> </span>reservation<span class="w"> </span><span class="nv">starttime</span><span class="o">=</span>now<span class="w"> </span><span class="nv">duration</span><span class="o">=</span>UNLIMITED<span class="w"> </span><span class="nv">user</span><span class="o">=</span>root,tunison,mmill116,jyang<span class="w"> </span><span class="nv">flags</span><span class="o">=</span>maint,flex,ignore_jobs,NO_HOLD_JOBS_AFTER<span class="w"> </span><span class="nv">reservation</span><span class="o">=</span>resv-name<span class="w"> </span><span class="nv">nodes</span><span class="o">=</span>compute-number
 </code></pre></div>
 <div class="highlight"><span class="filename">Add a user to an existing reservation</span><pre><span></span><code>scontrol<span class="w"> </span>update<span class="w"> </span><span class="nv">reservation</span><span class="o">=</span>&lt;resv-name&gt;<span class="w"> </span><span class="nv">user</span><span class="o">+=</span>&lt;username&gt;
+</code></pre></div>
+<div class="highlight"><span class="filename">Create downtime reservations on entire partitions</span><pre><span></span><code><span class="k">for</span><span class="w"> </span>part<span class="w"> </span><span class="k">in</span><span class="w"> </span>shared<span class="w"> </span>interactive<span class="w"> </span>cee<span class="w"> </span>cegs2<span class="w"> </span>transfer<span class="w"> </span>cancergen<span class="w"> </span>sas<span class="w"> </span>bstgpu<span class="w"> </span>gpu<span class="w"> </span>neuron<span class="w"> </span>bader<span class="w"> </span>caracol<span class="w"> </span>chatterjee<span class="w"> </span>echodac<span class="w"> </span>gee<span class="w"> </span>gpu-test<span class="w"> </span>hl<span class="w"> </span>hongkai<span class="w"> </span>stanley<span class="w"> </span>bluejay<span class="p">;</span>
+<span class="k">do</span>
+scontrol<span class="w"> </span>create<span class="w"> </span><span class="nv">reservation</span><span class="o">=</span>power-outage-<span class="nv">$part</span><span class="w"> </span><span class="nv">flags</span><span class="o">=</span>maint,ignore_jobs,part_nodes<span class="w"> </span><span class="nv">starttime</span><span class="o">=</span><span class="m">2024</span>-07-15T17:00<span class="w"> </span><span class="nv">endtime</span><span class="o">=</span><span class="m">2024</span>-07-22T17:00<span class="w"> </span><span class="nv">nodes</span><span class="o">=</span>all<span class="w"> </span><span class="nv">users</span><span class="o">=</span>root<span class="w"> </span><span class="nv">partitionname</span><span class="o">=</span><span class="nv">$part</span>
+<span class="k">done</span>
 </code></pre></div>
 <h4 id="ending-reservations"><strong>Ending Reservations</strong><a class="headerlink" href="#ending-reservations" title="Anchor link to this section for reference">&para;</a></h4>
 <div class="highlight"><span class="filename">Delete a reservation</span><pre><span></span><code>scontrol<span class="w"> </span>delete<span class="w"> </span><span class="nv">reservation</span><span class="o">=</span>&lt;resv-name&gt;
@@ -3941,6 +3946,7 @@ Here is a reservation that prevents normal users from using a node for a year, s
 <li><strong>MAINT</strong> - this is optional. The node's state will include MAINT in addition to other possible states (IDLE, DRAIN, DOWN). The downtime won't be counted by SLURM in stats about cluster uptime. But perhaps more importantly for us: "This reservation is permitted to use resources that are already in another reservation." Although there is also <strong>OVERLAP</strong></li>
 <li><strong>IGNORE_JOBS</strong> - Ignore currently running jobs when creating the reservation. Otherwise you will be prevented from creating the reservation.</li>
 <li><strong>NO_HOLD_JOBS_AFTER</strong> - without it pending jobs requesting a reservation will be changed to "held" if a reservation ends. Held jobs require manual intervention. There are user and system administration holds -- don't know which is used in the case of not using this flag.</li>
+<li><strong>MAGNETIC</strong> - Allows jobs to be considered for this reservation even if they didn't request it. (Would this allow jobs sent to a partition which has a reservation on it to run if the user forgot or didn't know to include a reservation directive?) </li>
 <li><strong>FLEX</strong> - Permit jobs requesting the reservation to begin prior to the reservation's start time, end after the reservation's end time, and use any resources inside and/or outside of the reservation regardless of any constraints possibly set in the reservation. A typical use case is to prevent jobs not explicitly requesting the reservation from using those reserved resources rather than forcing jobs requesting the reservation to use those resources in the time frame reserved. Another use case could be to always have a particular number of nodes with a specific feature reserved for a specific account so users in this account may use this nodes plus possibly other nodes without this feature.</li>
 </ul>
 
@@ -3963,7 +3969,7 @@ Here is a reservation that prevents normal users from using a node for a year, s
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1-2.1-2M12.5 7v5.2l4 2.4-1 1L11 13V7h1.5M11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2v1.8Z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">June 19, 2024</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">June 25, 2024</span>
   </span>
 
     
