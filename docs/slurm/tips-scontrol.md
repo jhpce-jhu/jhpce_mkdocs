@@ -138,7 +138,7 @@ When creating a reservation, you should select:
 5. Resources -- Newer versions of SLURM than 22.05.09 may allow the reservation of _both_ CPU and RAM resources (via TRES arguments). If so you could carve out "space" for a user to run certain jobs on any of the nodes in a partition without locking everyone out of the partition. That would be handy.
 
 
-```Shell title="Show any reservations" linenums="0"
+```Shell title="Show existing reservations" linenums="0"
 scontrol show reservation
 ```
 Here is a reservation that prevents normal users from using a node for a year, starting now. System administrators are able to use the reservation to test the node.
@@ -150,6 +150,14 @@ scontrol create reservation starttime=now duration=UNLIMITED user=root,tunison,m
 ```Shell title="Add a user to an existing reservation" linenums="0"
 scontrol update reservation=<resv-name> user+=<username>
 ```
+
+```Shell title="Create downtime reservations on entire partitions" linenums="0"
+for part in shared interactive cee cegs2 transfer cancergen sas bstgpu gpu neuron bader caracol chatterjee echodac gee gpu-test hl hongkai stanley bluejay;
+do
+scontrol create reservation=power-outage-$part flags=maint,ignore_jobs,part_nodes starttime=2024-07-15T17:00 endtime=2024-07-22T17:00 nodes=all users=root partitionname=$part
+done
+```
+
 #### **Ending Reservations**
 
 ```Shell title="Delete a reservation" linenums="0"
@@ -169,4 +177,5 @@ Some flags are important to include. Capitalized here to make them stand out.
 * **MAINT** - this is optional. The node's state will include MAINT in addition to other possible states (IDLE, DRAIN, DOWN). The downtime won't be counted by SLURM in stats about cluster uptime. But perhaps more importantly for us: "This reservation is permitted to use resources that are already in another reservation." Although there is also **OVERLAP**
 * **IGNORE_JOBS** - Ignore currently running jobs when creating the reservation. Otherwise you will be prevented from creating the reservation.
 * **NO_HOLD_JOBS_AFTER** - without it pending jobs requesting a reservation will be changed to "held" if a reservation ends. Held jobs require manual intervention. There are user and system administration holds -- don't know which is used in the case of not using this flag.
+* **MAGNETIC** - Allows jobs to be considered for this reservation even if they didn't request it. (Would this allow jobs sent to a partition which has a reservation on it to run if the user forgot or didn't know to include a reservation directive?) 
 * **FLEX** - Permit jobs requesting the reservation to begin prior to the reservation's start time, end after the reservation's end time, and use any resources inside and/or outside of the reservation regardless of any constraints possibly set in the reservation. A typical use case is to prevent jobs not explicitly requesting the reservation from using those reserved resources rather than forcing jobs requesting the reservation to use those resources in the time frame reserved. Another use case could be to always have a particular number of nodes with a specific feature reserved for a specific account so users in this account may use this nodes plus possibly other nodes without this feature.
