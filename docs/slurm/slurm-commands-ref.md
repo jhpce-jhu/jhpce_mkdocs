@@ -17,10 +17,14 @@ written a page with advice about using the command, use the {==(LOCAL TIPS)==} l
 
 ## Locally Written Tools
 
+Many of these bash scripts. You can inspect their contents and if desired, make copies of them for yourself that are modified to suit you. There will also soon be bash routines defined in the default environment via either module files or the /etc/profile.d/ directory.  Most scripts have `-h` help options which will reveal more usage information.
+
+The command `which programname` is how you find out where it is located, if it is a program. If it is a bash routine, the same command will display the code of the routine. 
+
 ### Information about cluster and jobs
 
-* **slurmpic**: ***An essential program for getting cluster status info.*** Use -h option to see key usage details.
-* **jobson**: Displays running jobs running on a node when given a three digit node number.
+* **slurmpic**: ***An essential program for getting cluster status info.*** Use -h option to see key usage details. By default, with no arguments, it provides info for the `shared` partition.
+* **slurmuser**: Provides a per-user list of CPU/RAM in use for running jobs and requested for pending jobs (if any). By default this is for all jobs in all partitions.
 * **qoverview**: Quick view into number of running, pending jobs. Also jobs in "abnormal" job states (such as failed)
 * **showjob**: Displays job information when given a jobid. Only works for pending or running jobs. Currently simply a shortcut for `scontrol show job jobid --details` but hopefully in the future will produce more readable output.
 * **showqos**: Displays list of our [QOS definitions](../slurm/qos.md) in a readable format.
@@ -33,8 +37,15 @@ written a page with advice about using the command, use the {==(LOCAL TIPS)==} l
 * **smem**: Displays memory used by your currently running jobs. If given a jobid number, it will display info about the memory usage of that job. (no man page yet)
 * memory reporting script - puts per-user output daily into directories under `/jhpce/shared/jhpce/jhpce-log/`
 * **useron**: List nodes where a user has running jobs.
+* **jobson**: Displays running jobs running on a node when given a three digit node number.
 
-### Contributed SLURM Programs We've Installed
+### Special purpose
+
+* **timeleft**: Produces a SLURM "time_spec" in the format DAYS-HH:MM:SS indicatingt time left before an upcoming announced outage.
+* **jobtimeleft**: Given a jobid, it uses `scontrol` to update the job's time limit using `timeleft`. Useful for jobs that went into pending status instead of running because the user did not specify a job time limit.
+ 
+## Contributed SLURM Programs We've Installed
+
 * **reportseff**: {==([LOCAL TIPS](tips-reportseff.md))==} Very handy tool! Displays efficiency of CPU and RAM usage for jobs, job array elements. Can be given many options to control output.
 * **seff**: Display efficiency of CPU and RAM usage of a single completed job. (no man page yet)
 * **[slurm-mail:](https://github.com/neilmunday/slurm-mail)** Tool used to add details to mail sent to you. Not something you can modify. Listed for completeness.
