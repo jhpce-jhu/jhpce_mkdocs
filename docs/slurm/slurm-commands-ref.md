@@ -25,7 +25,7 @@ The command `which programname` is how you find out where it is located, if it i
 
 * **slurmpic**: ***An essential program for getting cluster status info.*** Use -h option to see key usage details. By default, with no arguments, it provides info for the `shared` partition.
 * **slurmuser**: Provides a per-user list of CPU/RAM in use for running jobs and requested for pending jobs (if any). By default this is for all jobs in all partitions.
-* **qoverview**: Quick view into number of running, pending jobs. Also jobs in "abnormal" job states (such as failed)
+* **qoverview**: Quick view into number of running, pending jobs on the whole cluster. Also counts the pending jobs in some primary reasons.
 * **showjob**: Displays job information when given a jobid. Only works for pending or running jobs. Currently simply a shortcut for `scontrol show job jobid --details` but hopefully in the future will produce more readable output.
 * **showqos**: Displays list of our [QOS definitions](../slurm/qos.md) in a readable format.
 * **showreason**: Show the Reason line from `showjob` for nodes that are in DRAIN or DOWN etc.
@@ -41,7 +41,7 @@ The command `which programname` is how you find out where it is located, if it i
 
 ### Special purpose
 
-* **timeleft**: Produces a SLURM "time_spec" in the format DAYS-HH:MM:SS indicatingt time left before an upcoming announced outage.
+* **timeleft**: Produces a SLURM "time_spec" in the format DAYS-HH:MM:SS indicatingt time left before an upcoming announced outage. Meaningless if there is not an imminent outage.
 * **jobtimeleft**: Given a jobid, it uses `scontrol` to update the job's time limit using `timeleft`. Useful for jobs that went into pending status instead of running because the user did not specify a job time limit.
  
 ## Contributed SLURM Programs We've Installed
