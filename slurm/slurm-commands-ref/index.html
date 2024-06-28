@@ -2798,9 +2798,9 @@ this announcement </a>
 </li>
         
           <li class="md-nav__item">
-  <a href="#contributed-slurm-programs-weve-installed" class="md-nav__link">
+  <a href="#special-purpose" class="md-nav__link">
     <span class="md-ellipsis">
-      Contributed SLURM Programs We've Installed
+      Special purpose
     </span>
   </a>
   
@@ -2808,6 +2808,15 @@ this announcement </a>
         
       </ul>
     </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#contributed-slurm-programs-weve-installed" class="md-nav__link">
+    <span class="md-ellipsis">
+      Contributed SLURM Programs We've Installed
+    </span>
+  </a>
   
 </li>
       
@@ -3658,9 +3667,9 @@ this announcement </a>
 </li>
         
           <li class="md-nav__item">
-  <a href="#contributed-slurm-programs-weve-installed" class="md-nav__link">
+  <a href="#special-purpose" class="md-nav__link">
     <span class="md-ellipsis">
-      Contributed SLURM Programs We've Installed
+      Special purpose
     </span>
   </a>
   
@@ -3668,6 +3677,15 @@ this announcement </a>
         
       </ul>
     </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#contributed-slurm-programs-weve-installed" class="md-nav__link">
+    <span class="md-ellipsis">
+      Contributed SLURM Programs We've Installed
+    </span>
+  </a>
   
 </li>
       
@@ -3758,10 +3776,12 @@ written a page with advice about using the command, use the <mark class="critic"
 <p>Ensure that programs limit calls to slurmctld to the minimum necessary for the information you are trying to gather. Add arguments to limit to needed partitions or users or job data fields, etcetera.</p>
 </div>
 <h2 id="locally-written-tools">Locally Written Tools<a class="headerlink" href="#locally-written-tools" title="Anchor link to this section for reference">&para;</a></h2>
+<p>Many of these bash scripts. You can inspect their contents and if desired, make copies of them for yourself that are modified to suit you. There will also soon be bash routines defined in the default environment via either module files or the /etc/profile.d/ directory.  Most scripts have <code>-h</code> help options which will reveal more usage information.</p>
+<p>The command <code>which programname</code> is how you find out where it is located, if it is a program. If it is a bash routine, the same command will display the code of the routine. </p>
 <h3 id="information-about-cluster-and-jobs">Information about cluster and jobs<a class="headerlink" href="#information-about-cluster-and-jobs" title="Anchor link to this section for reference">&para;</a></h3>
 <ul>
-<li><strong>slurmpic</strong>: <strong><em>An essential program for getting cluster status info.</em></strong> Use -h option to see key usage details.</li>
-<li><strong>jobson</strong>: Displays running jobs running on a node when given a three digit node number.</li>
+<li><strong>slurmpic</strong>: <strong><em>An essential program for getting cluster status info.</em></strong> Use -h option to see key usage details. By default, with no arguments, it provides info for the <code>shared</code> partition.</li>
+<li><strong>slurmuser</strong>: Provides a per-user list of CPU/RAM in use for running jobs and requested for pending jobs (if any). By default this is for all jobs in all partitions.</li>
 <li><strong>qoverview</strong>: Quick view into number of running, pending jobs. Also jobs in "abnormal" job states (such as failed)</li>
 <li><strong>showjob</strong>: Displays job information when given a jobid. Only works for pending or running jobs. Currently simply a shortcut for <code>scontrol show job jobid --details</code> but hopefully in the future will produce more readable output.</li>
 <li><strong>showqos</strong>: Displays list of our <a href="../qos/">QOS definitions</a> in a readable format.</li>
@@ -3774,8 +3794,14 @@ written a page with advice about using the command, use the <mark class="critic"
 <li><strong>smem</strong>: Displays memory used by your currently running jobs. If given a jobid number, it will display info about the memory usage of that job. (no man page yet)</li>
 <li>memory reporting script - puts per-user output daily into directories under <code>/jhpce/shared/jhpce/jhpce-log/</code></li>
 <li><strong>useron</strong>: List nodes where a user has running jobs.</li>
+<li><strong>jobson</strong>: Displays running jobs running on a node when given a three digit node number.</li>
 </ul>
-<h3 id="contributed-slurm-programs-weve-installed">Contributed SLURM Programs We've Installed<a class="headerlink" href="#contributed-slurm-programs-weve-installed" title="Anchor link to this section for reference">&para;</a></h3>
+<h3 id="special-purpose">Special purpose<a class="headerlink" href="#special-purpose" title="Anchor link to this section for reference">&para;</a></h3>
+<ul>
+<li><strong>timeleft</strong>: Produces a SLURM "time_spec" in the format DAYS-HH:MM:SS indicatingt time left before an upcoming announced outage.</li>
+<li><strong>jobtimeleft</strong>: Given a jobid, it uses <code>scontrol</code> to update the job's time limit using <code>timeleft</code>. Useful for jobs that went into pending status instead of running because the user did not specify a job time limit.</li>
+</ul>
+<h2 id="contributed-slurm-programs-weve-installed">Contributed SLURM Programs We've Installed<a class="headerlink" href="#contributed-slurm-programs-weve-installed" title="Anchor link to this section for reference">&para;</a></h2>
 <ul>
 <li><strong>reportseff</strong>: <mark class="critic">(<a href="../tips-reportseff/">LOCAL TIPS</a>)</mark> Very handy tool! Displays efficiency of CPU and RAM usage for jobs, job array elements. Can be given many options to control output.</li>
 <li><strong>seff</strong>: Display efficiency of CPU and RAM usage of a single completed job. (no man page yet)</li>
@@ -3850,7 +3876,7 @@ written a page with advice about using the command, use the <mark class="critic"
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1-2.1-2M12.5 7v5.2l4 2.4-1 1L11 13V7h1.5M11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2v1.8Z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">April 27, 2024</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">June 28, 2024</span>
   </span>
 
     
