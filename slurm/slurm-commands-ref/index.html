@@ -3782,7 +3782,7 @@ written a page with advice about using the command, use the <mark class="critic"
 <ul>
 <li><strong>slurmpic</strong>: <strong><em>An essential program for getting cluster status info.</em></strong> Use -h option to see key usage details. By default, with no arguments, it provides info for the <code>shared</code> partition.</li>
 <li><strong>slurmuser</strong>: Provides a per-user list of CPU/RAM in use for running jobs and requested for pending jobs (if any). By default this is for all jobs in all partitions.</li>
-<li><strong>qoverview</strong>: Quick view into number of running, pending jobs. Also jobs in "abnormal" job states (such as failed)</li>
+<li><strong>qoverview</strong>: Quick view into number of running, pending jobs on the whole cluster. Also counts the pending jobs in some primary reasons.</li>
 <li><strong>showjob</strong>: Displays job information when given a jobid. Only works for pending or running jobs. Currently simply a shortcut for <code>scontrol show job jobid --details</code> but hopefully in the future will produce more readable output.</li>
 <li><strong>showqos</strong>: Displays list of our <a href="../qos/">QOS definitions</a> in a readable format.</li>
 <li><strong>showreason</strong>: Show the Reason line from <code>showjob</code> for nodes that are in DRAIN or DOWN etc.</li>
@@ -3798,7 +3798,7 @@ written a page with advice about using the command, use the <mark class="critic"
 </ul>
 <h3 id="special-purpose">Special purpose<a class="headerlink" href="#special-purpose" title="Anchor link to this section for reference">&para;</a></h3>
 <ul>
-<li><strong>timeleft</strong>: Produces a SLURM "time_spec" in the format DAYS-HH:MM:SS indicatingt time left before an upcoming announced outage.</li>
+<li><strong>timeleft</strong>: Produces a SLURM "time_spec" in the format DAYS-HH:MM:SS indicatingt time left before an upcoming announced outage. Meaningless if there is not an imminent outage.</li>
 <li><strong>jobtimeleft</strong>: Given a jobid, it uses <code>scontrol</code> to update the job's time limit using <code>timeleft</code>. Useful for jobs that went into pending status instead of running because the user did not specify a job time limit.</li>
 </ul>
 <h2 id="contributed-slurm-programs-weve-installed">Contributed SLURM Programs We've Installed<a class="headerlink" href="#contributed-slurm-programs-weve-installed" title="Anchor link to this section for reference">&para;</a></h2>
