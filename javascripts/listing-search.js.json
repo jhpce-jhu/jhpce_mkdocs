@@ -961,8 +961,8 @@
   {
     "page_name": "Crafting Batch Jobs",
     "page_url": "../slurm/crafting-jobs/",
-    "text": "You could use your 1TB of fastscratch space for this. So your SLURM script could use commands like:\n\nmodule load conda_R\nexport TEMPDIR=$MYSCRATCH\nR CMD BATCH myprog.R\n",
-    "html": "<pre><span></span><code>You could use your 1TB of fastscratch space for this. So your SLURM script could use commands like:\n\nmodule load conda_R\nexport TEMPDIR=$MYSCRATCH\nR CMD BATCH myprog.R\n</code></pre>",
+    "text": "You could use your 1TB of fastscratch space for this. So your SLURM script could use commands like:\n\nmodule load conda_R\nexport TMPDIR=$MYSCRATCH\nR CMD BATCH myprog.R\n",
+    "html": "<pre><span></span><code>You could use your 1TB of fastscratch space for this. So your SLURM script could use commands like:\n\nmodule load conda_R\nexport TMPDIR=$MYSCRATCH\nR CMD BATCH myprog.R\n</code></pre>",
     "language": ""
   },
   {

@@ -4612,7 +4612,7 @@ Currently Loaded Modules:
 </code></pre><h2><a class="heading" href="../slurm/crafting-jobs">Crafting Batch Jobs</a></h2><a class="url" href="../slurm/crafting-jobs">slurm/crafting-jobs/</a><pre><span></span><code>You could use your 1TB of fastscratch space for this. So your SLURM script could use commands like:
 
 module load conda_R
-export TEMPDIR=$MYSCRATCH
+export TMPDIR=$MYSCRATCH
 R CMD BATCH myprog.R
 </code></pre><pre><span></span><code><span class="ch">#!/bin/bash</span>
 
