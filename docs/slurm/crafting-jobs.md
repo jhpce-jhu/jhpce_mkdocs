@@ -57,13 +57,13 @@ Some programs have specific variables you can set to indicate where files should
 
 SAS has "WORK" -- is this set to something in the module load process?
 
-R has "TEMPDIR" which defaults to /tmp. We may be changing the module load code to define this to /fastscratch where that is present (which should be everywhere except on C-SUB nodes).
+R has "TMPDIR" which defaults to /tmp. We may be changing the module load code to define this to /fastscratch where that is present (which should be everywhere except on C-SUB nodes).
 
 ```
 You could use your 1TB of fastscratch space for this. So your SLURM script could use commands like:
 
 module load conda_R
-export TEMPDIR=$MYSCRATCH
+export TMPDIR=$MYSCRATCH
 R CMD BATCH myprog.R
 
 ```
