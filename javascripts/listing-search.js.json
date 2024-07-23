@@ -1038,8 +1038,8 @@
   {
     "page_name": "Node Features",
     "page_url": "../slurm/node-features/",
-    "text": "      3 bdver1\n      7 bdver2\n     10 broadwell\n      2 cascadelake\n     11 haswell\n     17 icelake-server\n      5 skylake-avx512\n      4 znver2\n      2 znver3\n",
-    "html": "<pre><span></span><code>      3 bdver1\n      7 bdver2\n     10 broadwell\n      2 cascadelake\n     11 haswell\n     17 icelake-server\n      5 skylake-avx512\n      4 znver2\n      2 znver3\n</code></pre>",
+    "text": "      3 bdver1\n      7 bdver2\n     10 broadwell\n      2 cascadelake\n     11 haswell\n     17 icelake-server\n     16 sapphirerapids\n      5 skylake-avx512\n      4 znver2\n      2 znver3\n",
+    "html": "<pre><span></span><code>      3 bdver1\n      7 bdver2\n     10 broadwell\n      2 cascadelake\n     11 haswell\n     17 icelake-server\n     16 sapphirerapids\n      5 skylake-avx512\n      4 znver2\n      2 znver3\n</code></pre>",
     "language": ""
   },
   {
