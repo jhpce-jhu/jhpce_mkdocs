@@ -100,7 +100,7 @@ If you want to create batch scripts which can switch between binaries at run-tim
 
 ## Frequency By CPU-type
 
-In January 2024, the cluster compute nodes consisted of approximately
+In August 2024, the cluster compute nodes consisted of approximately
 
 ```
       3 bdver1
@@ -109,6 +109,7 @@ In January 2024, the cluster compute nodes consisted of approximately
       2 cascadelake
      11 haswell
      17 icelake-server
+     16 sapphirerapids
       5 skylake-avx512
       4 znver2
       2 znver3
