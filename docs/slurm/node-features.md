@@ -45,7 +45,7 @@ See the `--prefer` and `--constraint` sections of the [sbatch](https://slurm.sch
 Sadly it does not seem possible to simply exclude features (so you could say I want any node except ones with these features (because they are too old for my code)). However, you can tell `srun` and `sbatch` to exclude one or more hosts with the `--exclude=` directive. You can provide a comma-seperated list of hostnames or a text file name (although this file name needs to include a ++slash++ in it).
 
 !!! Tip
-    When specifying multiple features, you may need to enclose them in double quotes. The symbols used for AND, OR and number of matches are all ones which the bash shell will mis-interpret.
+    When specifying multiple features, you may need to enclose them in double quotes. The symbols used for AND, OR and number of matches are all ones which the bash shell will mis-interpret unless told to not process them.
 
 ## Viewing Features
 
