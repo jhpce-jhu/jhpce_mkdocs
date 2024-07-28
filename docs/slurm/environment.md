@@ -16,6 +16,8 @@ tags:
 ### Set by SLURM
 SLURM sets a large number of shell environment variables for jobs to consult if desired.  A good list can be found in the sbatch manual page's [INPUT ENVIRONMENT VARIABLES](https://slurm.schedmd.com/archive/slurm-22.05.9/sbatch.html#lbAJ) and [OUTPUT ENVIRONMENT VARIABLES](https://slurm.schedmd.com/archive/slurm-22.05.9/sbatch.html#lbAK) sections.
 
+For example, you can write your scripts to pull the number of CPUs assigned to that job by having it read `${SLURM_CPUS_PER_TAsK}`
+
 You can see some of them by starting an interactive session and running `printenv | grep -i slurm` (there may be others that are set for jobs depending on their type and arguments -- array jobs, dependent jobs, ???).
 
 ### Managing output of sacct and squeue
