@@ -3718,6 +3718,7 @@
 <h2 id="overview-of-what-might-be-covered-here">Overview of what might be covered here<a class="headerlink" href="#overview-of-what-might-be-covered-here" title="Anchor link to this section for reference">&para;</a></h2>
 <h3 id="set-by-slurm">Set by SLURM<a class="headerlink" href="#set-by-slurm" title="Anchor link to this section for reference">&para;</a></h3>
 <p>SLURM sets a large number of shell environment variables for jobs to consult if desired.  A good list can be found in the sbatch manual page's <a href="https://slurm.schedmd.com/archive/slurm-22.05.9/sbatch.html#lbAJ">INPUT ENVIRONMENT VARIABLES</a> and <a href="https://slurm.schedmd.com/archive/slurm-22.05.9/sbatch.html#lbAK">OUTPUT ENVIRONMENT VARIABLES</a> sections.</p>
+<p>For example, you can write your scripts to pull the number of CPUs assigned to that job by having it read <code>${SLURM_CPUS_PER_TAsK}</code></p>
 <p>You can see some of them by starting an interactive session and running <code>printenv | grep -i slurm</code> (there may be others that are set for jobs depending on their type and arguments -- array jobs, dependent jobs, ???).</p>
 <h3 id="managing-output-of-sacct-and-squeue">Managing output of sacct and squeue<a class="headerlink" href="#managing-output-of-sacct-and-squeue" title="Anchor link to this section for reference">&para;</a></h3>
 <p>The way SLURM commands operate can be influenced by setting some certain environment variables, such as SLURM_TIME_FORMAT, SACCT_FORMAT, SQUEUE_FORMAT, SQUEUE_FORMAT2, SQUEUE_SORT. It can be useful to define these in aliases or shell scripts to format output in ways you need. Simply changing the value of these variables can produce vastly different output for commands like sacct and squeue.</p>
@@ -3770,7 +3771,7 @@ sbatch --job-name=${A}.${b}.run --output=${A}.${b}.out --export=D=${A},f=${b} sc
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1-2.1-2M12.5 7v5.2l4 2.4-1 1L11 13V7h1.5M11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2v1.8Z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">April 10, 2024</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">July 28, 2024</span>
   </span>
 
     
