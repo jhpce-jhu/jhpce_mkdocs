@@ -80,7 +80,6 @@ Limits for CPU cores, RAM and Time (default/maximum)
 | Name | Type | Core | RAM | Time | Notes/Use |
 | ---- | :----: | ---- | ---- | :-------: | ----- |
 | bader | PI | (none) | (none) | (none/90d) | |
-| bluejay | PI | (none) | (none) | (none/90d) | UNIX group |
 | cancergen | PI | (none) | (none) | (none/90d) | |
 | caracol | PI | (none) | (none) | (none/90d) | UNIX group |
 | cee | PI | (none) | (none) | (none/90d) | |
@@ -91,6 +90,7 @@ Limits for CPU cores, RAM and Time (default/maximum)
 | hl | PI | (none) | (none) | (none/90d) | |
 | hpm | PI | (none) | (none) | (none/90d) | not yet defined |
 | hongkai | PI | (none) | (none) | (none/90d) | |
+| katun | PI | (none) | (none) | (none/90d) | UNIX group |
 | mommee | PI | (none) | (none) | (none/90d) | |
 | stanley | PI | (none) | (none) | (none/90d) | UNIX group |
 | sysadmin | admin | (none) | (none) | (none/90d) | For system testing |
