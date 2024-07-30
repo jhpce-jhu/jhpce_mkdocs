@@ -3125,9 +3125,9 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#frequency-by-cpu-type" class="md-nav__link">
+  <a href="#cluster-composition-by-cpu-type" class="md-nav__link">
     <span class="md-ellipsis">
-      Frequency By CPU-type
+      Cluster Composition By CPU-type
     </span>
   </a>
   
@@ -3748,9 +3748,9 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#frequency-by-cpu-type" class="md-nav__link">
+  <a href="#cluster-composition-by-cpu-type" class="md-nav__link">
     <span class="md-ellipsis">
-      Frequency By CPU-type
+      Cluster Composition By CPU-type
     </span>
   </a>
   
@@ -3788,6 +3788,7 @@
 <p>For advanced users who want the highest performance at the expense of possibly waiting longer for jobs to start and maintaining multiple versions of code. We cannot advise you on building optimized code.</p>
 </div>
 <p>JHPCE has a wide variety of compute nodes. Some have GPU processors, some have large amounts of memory, and there are many models of CPUs present. We tend to keep equipment running as long as possible.</p>
+<p>Therefore there is a wide variety of machine configurations, including the kinds of CPUs and the speed of data buses between the CPU and other components such as memory. As an example, our oldest machines use <a href="https://en.wikipedia.org/wiki/DDR3_SDRAM">DDR3 RAM</a> while our latest use <a href="https://en.wikipedia.org/wiki/DDR5_SDRAM">DDR5 RAM</a> (our oldest node has RAM configured to run at 1333 MT/s versus 4400 MT/s on our very newest node). Generally speaking, the later the machine the faster a job (especially those which are CPU-bound (don't do a lot of network I/O)) job can run.  (Of course the load on a node from other people's jobs will impact the performance of your job.)</p>
 <p>SLURM allows for the assignment of keywords to nodes so that users can guide their jobs to appropriate machines. This is, of course, in addition to the other methods of indicating resource needs, such as desired partition(s), amount of memory, and the need for a GPU.</p>
 <p>If you believe that your code will gain a lot from being run on specific kinds of CPUs, you can compile it with optimization flags to perform well on them. Of course, you have then created binaries which might fail to run altogether on older nodes. Please name your binaries in a way which makes their special status apparent to you down the road, in case you forget. That might be a challenging puzzle to figure out.</p>
 <p>One could, at run-time, write batch job scripts which check the features of the node they were assigned, and choose to execute code highly-optimized for that node's CPU.</p>
@@ -3847,8 +3848,8 @@
 1)  If you use <code>-—constraint</code> and your job starts, then (we believe) it will be running on the requested feature. (We haven’t tested to ensure that that is 100% respected. It’s <em>supposed to be</em> (as opposed to using <code>-—prefer</code>). Therefore you can also pass a variable into your job with the <code>-—export</code> flag as explained in <a href="../environment/">this page</a>
 2)  If you  do some output munging with regular expression matching, you can get the info out of your environment at runtime. You DO see the specified feature in the output of <code>scontrol show job $SLURM_JOBID</code> as <code>Features=amd</code> But you have to search for it in the output AND it only shows you the feature you specified, not all of those applicable to that node.
 3) You could also examine the available features of the node on which your shell is running in the <code>ActiveFeatures</code> attribute in the output of <code>scontrol show node $SLURMD_NODENAME</code></p>
-<h2 id="frequency-by-cpu-type">Frequency By CPU-type<a class="headerlink" href="#frequency-by-cpu-type" title="Anchor link to this section for reference">&para;</a></h2>
-<p>In August 2024, the cluster compute nodes consisted of approximately</p>
+<h2 id="cluster-composition-by-cpu-type">Cluster Composition By CPU-type<a class="headerlink" href="#cluster-composition-by-cpu-type" title="Anchor link to this section for reference">&para;</a></h2>
+<p>In August 2024, the cluster compute nodes consisted of approximately, in family name alphabetical order</p>
 <div class="highlight"><pre><span></span><code>      3 bdver1
       7 bdver2
      10 broadwell
@@ -3860,6 +3861,7 @@
       4 znver2
       2 znver3
 </code></pre></div>
+<p>As of August 2024 the oldest family is "bdver1" and the newest is "sapphirerapids".</p>
 <p>The bdver and znver types represent AMD CPUs.</p>
 <p>Perhaps the largest delta in compiler flags is between bdver1 and the rest. bdver1 does not support these gcc flags:
   <strong>-mbmi
@@ -3894,7 +3896,7 @@
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1-2.1-2M12.5 7v5.2l4 2.4-1 1L11 13V7h1.5M11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2v1.8Z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">July 23, 2024</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">July 30, 2024</span>
   </span>
 
     
