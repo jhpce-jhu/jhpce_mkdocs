@@ -74,13 +74,21 @@ See [this document](monitoring.md) for information about monitoring pending, run
 ## How do I control the order my jobs start?
 
 ??? "Click to open"
-    You can rank your jobs with the "nice" and "top" subcommands to `scontrol`.  See the `scontrol` tips document mentioned above.
+    You can rank your jobs with the "nice" and "top" subcommands to `scontrol`.  See the `scontrol` [tips document](tips-scontrol.md).
     You can also submit jobs with [dependency directives](https://slurm.schedmd.com/sbatch.html#OPT_dependency) and also create [heterogenous jobs](https://slurm.schedmd.com/heterogeneous_jobs.html) which spawn other jobs. See [our document](../slurm/crafting-jobs.md/#dependent-jobs) for information about dependent jobs.
 
 ## "Unable to allocate resources"
 
 ??? "Click to open"
-    If the scheduler determines that your job is invalid in some fashion, it will generally reject it immediately instead of putting it into the queue with a pending status. There are a few causes of this. The wording of the error may or may not be clear.
+    If the scheduler determines that your job is invalid in some fashion, it will generally reject it immediately instead of putting it into the queue with a pending status. There are a few causes of this. The wording of the error may or may not be clear. Inspect your job directives. Are you asking for more resources than any node can ever provide?
+    
+## How to run your job on the fastest node
+
+??? "Click to open"
+    JHPCE keeps nodes running until they die. Therefore there is a wide variety of machine configurations, including the kinds of CPUs and the speed of data buses between the CPU and other components such as memory. Generally speaking, the later the machine the faster a CPU-bound job can run.  We have defined a SLURM parameter for each node which lists its "features"  You can specify that your job prefers or requires certain features. [Our page describing how to do this](slurm/node-features.md) includes a list of CPU model names as used by the GNU compiler, in age order.
+    
+    Similarly, you can specify that your job only be allowed to run on specific node or nodes by issuing the `--nodelist=compute-blah1,compute-blah2] directive to your `srun` or `sbatch` commands.  You can also provide a file name to specify a file which contains a list of nodes. See the nodelist info in the [`sbatch` manual page](https://slurm.schedmd.com/sbatch.html)
+
 
 ### User's group not permitted to use this partition
 
@@ -91,7 +99,9 @@ See [this document](monitoring.md) for information about monitoring pending, run
 
     You can see which groups you belong to with the `groups` command.
 
-    You can see which group you need to belong to by looking for the partition in question in the file /etc/slurm/partitions.conf
+    You can see which group you need to belong to by looking for the partition in question in the file `/etc/slurm/partitions.conf`
+    
+    If you feel like you were not included in a group in error, ask the PI to contact bitsupport@lists.jh.edu asking us to add you. 
 
 ### Job violates accounting/QOS policy
 
@@ -105,6 +115,11 @@ See [this document](monitoring.md) for information about monitoring pending, run
     But when more CPUs were requested (instead of too much RAM), the error was different:
 
     `Unable to allocate resources: More processors requested than permitted`
+
+## My job won't run on a particular node
+
+??? "Click to open"
+    If a node is misconfigured and your job runs on other nodes, then please report the problem to bitsupport@lists.jh.edu (see [this document](help/good-query.md)). In the meantime, you can exclude that node from being considered to run your job by supplying the `--exclude=nodename1,nodename2` directive to your `srun` or `sbatch` commands.  You can also provide a file name to specify a file which contains a list of nodes. See the exclude info in the [`sbatch` manual page](https://slurm.schedmd.com/sbatch.html)
 
 ## How many jobs can I run at a time?
 
