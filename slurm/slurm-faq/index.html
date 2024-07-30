@@ -3170,7 +3170,16 @@
     </span>
   </a>
   
-    <nav class="md-nav" aria-label=""Unable to allocate resources"">
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#how-to-run-your-job-on-the-fastest-node" class="md-nav__link">
+    <span class="md-ellipsis">
+      How to run your job on the fastest node
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="How to run your job on the fastest node">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -3193,6 +3202,15 @@
         
       </ul>
     </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#my-job-wont-run-on-a-particular-node" class="md-nav__link">
+    <span class="md-ellipsis">
+      My job won't run on a particular node
+    </span>
+  </a>
   
 </li>
       
@@ -3841,7 +3859,16 @@
     </span>
   </a>
   
-    <nav class="md-nav" aria-label=""Unable to allocate resources"">
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#how-to-run-your-job-on-the-fastest-node" class="md-nav__link">
+    <span class="md-ellipsis">
+      How to run your job on the fastest node
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="How to run your job on the fastest node">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -3864,6 +3891,15 @@
         
       </ul>
     </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#my-job-wont-run-on-a-particular-node" class="md-nav__link">
+    <span class="md-ellipsis">
+      My job won't run on a particular node
+    </span>
+  </a>
   
 </li>
       
@@ -4016,13 +4052,19 @@ You can add "mailtype" and "mailuser" directives when submitting a job, while it
 <h2 id="how-do-i-control-the-order-my-jobs-start">How do I control the order my jobs start?<a class="headerlink" href="#how-do-i-control-the-order-my-jobs-start" title="Anchor link to this section for reference">&para;</a></h2>
 <details>
 <summary>Click to open</summary>
-<p>You can rank your jobs with the "nice" and "top" subcommands to <code>scontrol</code>.  See the <code>scontrol</code> tips document mentioned above.
+<p>You can rank your jobs with the "nice" and "top" subcommands to <code>scontrol</code>.  See the <code>scontrol</code> <a href="../tips-scontrol/">tips document</a>.
 You can also submit jobs with <a href="https://slurm.schedmd.com/sbatch.html#OPT_dependency">dependency directives</a> and also create <a href="https://slurm.schedmd.com/heterogeneous_jobs.html">heterogenous jobs</a> which spawn other jobs. See <a href="../crafting-jobs/#dependent-jobs">our document</a> for information about dependent jobs.</p>
 </details>
 <h2 id="unable-to-allocate-resources">"Unable to allocate resources"<a class="headerlink" href="#unable-to-allocate-resources" title="Anchor link to this section for reference">&para;</a></h2>
 <details>
 <summary>Click to open</summary>
-<p>If the scheduler determines that your job is invalid in some fashion, it will generally reject it immediately instead of putting it into the queue with a pending status. There are a few causes of this. The wording of the error may or may not be clear.</p>
+<p>If the scheduler determines that your job is invalid in some fashion, it will generally reject it immediately instead of putting it into the queue with a pending status. There are a few causes of this. The wording of the error may or may not be clear. Inspect your job directives. Are you asking for more resources than any node can ever provide?</p>
+</details>
+<h2 id="how-to-run-your-job-on-the-fastest-node">How to run your job on the fastest node<a class="headerlink" href="#how-to-run-your-job-on-the-fastest-node" title="Anchor link to this section for reference">&para;</a></h2>
+<details>
+<summary>Click to open</summary>
+<p>JHPCE keeps nodes running until they die. Therefore there is a wide variety of machine configurations, including the kinds of CPUs and the speed of data buses between the CPU and other components such as memory. Generally speaking, the later the machine the faster a CPU-bound job can run.  We have defined a SLURM parameter for each node which lists its "features"  You can specify that your job prefers or requires certain features. <a href="slurm/node-features.md">Our page describing how to do this</a> includes a list of CPU model names as used by the GNU compiler, in age order.</p>
+<p>Similarly, you can specify that your job only be allowed to run on specific node or nodes by issuing the <code>--nodelist=compute-blah1,compute-blah2] directive to your</code>srun<code>or</code>sbatch<code>commands.  You can also provide a file name to specify a file which contains a list of nodes. See the nodelist info in the [</code>sbatch` manual page](https://slurm.schedmd.com/sbatch.html)</p>
 </details>
 <h3 id="users-group-not-permitted-to-use-this-partition">User's group not permitted to use this partition<a class="headerlink" href="#users-group-not-permitted-to-use-this-partition" title="Anchor link to this section for reference">&para;</a></h3>
 <details>
@@ -4030,7 +4072,8 @@ You can also submit jobs with <a href="https://slurm.schedmd.com/sbatch.html#OPT
 <p>Some of our PI partitions have UNIX groups defined to control who can submit jobs to them. If you are not a member of that group and try to submit a job, you'll see an error like this:</p>
 <p><code>srun: error: Unable to allocate resources: User's group not permitted to use this partition</code></p>
 <p>You can see which groups you belong to with the <code>groups</code> command.</p>
-<p>You can see which group you need to belong to by looking for the partition in question in the file /etc/slurm/partitions.conf</p>
+<p>You can see which group you need to belong to by looking for the partition in question in the file <code>/etc/slurm/partitions.conf</code></p>
+<p>If you feel like you were not included in a group in error, ask the PI to contact bitsupport@lists.jh.edu asking us to add you. </p>
 </details>
 <h3 id="job-violates-accountingqos-policy">Job violates accounting/QOS policy<a class="headerlink" href="#job-violates-accountingqos-policy" title="Anchor link to this section for reference">&para;</a></h3>
 <details>
@@ -4040,6 +4083,11 @@ You can also submit jobs with <a href="https://slurm.schedmd.com/sbatch.html#OPT
 <p><code>Unable to allocate resources: Job violates accounting/QOS policy (job submit limit, user's size and/or time limits)</code></p>
 <p>But when more CPUs were requested (instead of too much RAM), the error was different:</p>
 <p><code>Unable to allocate resources: More processors requested than permitted</code></p>
+</details>
+<h2 id="my-job-wont-run-on-a-particular-node">My job won't run on a particular node<a class="headerlink" href="#my-job-wont-run-on-a-particular-node" title="Anchor link to this section for reference">&para;</a></h2>
+<details>
+<summary>Click to open</summary>
+<p>If a node is misconfigured and your job runs on other nodes, then please report the problem to bitsupport@lists.jh.edu (see <a href="help/good-query.md">this document</a>). In the meantime, you can exclude that node from being considered to run your job by supplying the <code>--exclude=nodename1,nodename2</code> directive to your <code>srun</code> or <code>sbatch</code> commands.  You can also provide a file name to specify a file which contains a list of nodes. See the exclude info in the <a href="https://slurm.schedmd.com/sbatch.html"><code>sbatch</code> manual page</a></p>
 </details>
 <h2 id="how-many-jobs-can-i-run-at-a-time">How many jobs can I run at a time?<a class="headerlink" href="#how-many-jobs-can-i-run-at-a-time" title="Anchor link to this section for reference">&para;</a></h2>
 <details>
@@ -4109,7 +4157,7 @@ You can also submit jobs with <a href="https://slurm.schedmd.com/sbatch.html#OPT
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1-2.1-2M12.5 7v5.2l4 2.4-1 1L11 13V7h1.5M11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2v1.8Z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">April 12, 2024</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">July 30, 2024</span>
   </span>
 
     
