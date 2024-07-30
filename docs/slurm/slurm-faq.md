@@ -87,7 +87,7 @@ See [this document](monitoring.md) for information about monitoring pending, run
 ??? "Click to open"
     JHPCE keeps nodes running until they die. Therefore there is a wide variety of machine configurations, including the kinds of CPUs and the speed of data buses between the CPU and other components such as memory. Generally speaking, the later the machine the faster a CPU-bound job can run.  We have defined a SLURM parameter for each node which lists its "features"  You can specify that your job prefers or requires certain features. [Our page describing how to do this](slurm/node-features.md) includes a list of CPU model names as used by the GNU compiler, in age order.
     
-    Similarly, you can specify that your job only be allowed to run on specific node or nodes by issuing the `--nodelist=compute-blah1,compute-blah2] directive to your `srun` or `sbatch` commands.  You can also provide a file name to specify a file which contains a list of nodes. See the nodelist info in the [`sbatch` manual page](https://slurm.schedmd.com/sbatch.html)
+    Similarly, you can specify that your job only be allowed to run on specific node or nodes by issuing the `--nodelist=compute-blah1,compute-blah2]` directive to your `srun` or `sbatch` commands.  You can also provide a file name to specify a file which contains a list of nodes. See the nodelist info in the [`sbatch` manual page](https://slurm.schedmd.com/sbatch.html).
 
 
 ### User's group not permitted to use this partition
