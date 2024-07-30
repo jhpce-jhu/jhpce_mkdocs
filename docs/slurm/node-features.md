@@ -10,6 +10,8 @@ tags:
 
 JHPCE has a wide variety of compute nodes. Some have GPU processors, some have large amounts of memory, and there are many models of CPUs present. We tend to keep equipment running as long as possible.
 
+Therefore there is a wide variety of machine configurations, including the kinds of CPUs and the speed of data buses between the CPU and other components such as memory. As an example, our oldest machines use [DDR3 RAM](https://en.wikipedia.org/wiki/DDR3_SDRAM) while our latest use [DDR5 RAM](https://en.wikipedia.org/wiki/DDR5_SDRAM) (our oldest node has RAM configured to run at 1333 MT/s versus 4400 MT/s on our very newest node). Generally speaking, the later the machine the faster a job (especially those which are CPU-bound (don't do a lot of network I/O)) job can run.  (Of course the load on a node from other people's jobs will impact the performance of your job.)
+
 SLURM allows for the assignment of keywords to nodes so that users can guide their jobs to appropriate machines. This is, of course, in addition to the other methods of indicating resource needs, such as desired partition(s), amount of memory, and the need for a GPU.
 
 If you believe that your code will gain a lot from being run on specific kinds of CPUs, you can compile it with optimization flags to perform well on them. Of course, you have then created binaries which might fail to run altogether on older nodes. Please name your binaries in a way which makes their special status apparent to you down the road, in case you forget. That might be a challenging puzzle to figure out.
@@ -98,9 +100,9 @@ If you want to create batch scripts which can switch between binaries at run-tim
 3) You could also examine the available features of the node on which your shell is running in the `ActiveFeatures` attribute in the output of `scontrol show node $SLURMD_NODENAME`
 
 
-## Frequency By CPU-type
+## Cluster Composition By CPU-type
 
-In August 2024, the cluster compute nodes consisted of approximately
+In August 2024, the cluster compute nodes consisted of approximately, in family name alphabetical order
 
 ```
       3 bdver1
@@ -114,6 +116,8 @@ In August 2024, the cluster compute nodes consisted of approximately
       4 znver2
       2 znver3
 ```
+
+As of August 2024 the oldest family is "bdver1" and the newest is "sapphirerapids".
 
 The bdver and znver types represent AMD CPUs.
 
