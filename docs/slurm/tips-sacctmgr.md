@@ -13,8 +13,6 @@ Also note that by "account" SLURM means the parent object of user accounts. We d
 
 We currently have two clusters, named "jhpce3" and "cms" You usually don't have to specify which cluster you want to consult/change, as we have a SLURM server for each cluster.
 
-{== To delete a parameter from a QOS, set it to the value -1 ==}
-
 ## **Sacctmgr for Users**
 
 ```
@@ -34,12 +32,21 @@ sacctmgr show user withassoc|grep -v "normal "|awk '{printf "%s\t\t%s\t%s\t\t%s%
 
 ## **Sacctmgr for Systems Administrators**
 
+Like many administrative commands, you can just run the command to enter into a shell. Useful if you are exploring some situation, although you cannot paginate output.
+
+### Make A Backup Of Users and Their Settings
 ```
 # Dump the accounting database
 sacctmgr dump <cluster-name> file=<filename>
 ```
 
 ### **Managing QOS for users**
+
+See our [QOS page](slurm/qos.md) for more information.
+
+Our users have no limits on them, at the user account level. The typical account has a default QOS named "normal". If you run `showqos` you will see that "normal" doesn't have any restrictions. Therefore users entitled to run jobs in their private per-research group partitions are not limited in how many of their nodes' resources they can consume. (Users found running jobs on partitions they are not entitled to use will have their jobs killed and have to acknowledge that they understand that they need to use public partitions.)
+
+For public partitions like "shared" and "interactive", the slurm config file /etc/slurm/partitions.conf specifies a default partition QOS of, for example, "shared-default". So  we can control how many CPUs and how much RAM each user can use in public partitions by changing the appropriate single QOS. 
 
 ```
 # Add a QOS to a user's existing allowed QOS:
@@ -53,7 +60,7 @@ sacctmgr mod user where name=tunison set qos-=shared-200-2 # to remove
 # Limit a user's ability to run and submit jobs
 sacctmgr mod user where name=tunison set MaxJobs=100,MaxSubmit=200
 
-# How users accounts are created in the sacctmgr database
+# How JHPCE3 users accounts are created in the sacctmgr database
 sacctmgr -i create user name=$userid cluster=jhpce3 account=jhpce 
 
 # How C-SUB users accounts are created in the sacctmgr database on jhpcecms01
@@ -61,6 +68,8 @@ sacctmgr -i create user name=$userid account=generic cluster=cms
 ```
 
 ### **Managing QOS**
+
+{== To delete a parameter from a QOS, set it to the value -1 ==}
 
 {== You MUST define flags=DenyOnLimit,OverPartQOS for a QOS to work as expected ==}
 
@@ -106,3 +115,50 @@ sacctmgr modify qos cms-larger set MaxJobsPerUser=1 MaxSubmitJobsPerUser=1  MaxS
 # You cannot rename a QOS, so you have to delete the old name -- be aware that jobs might be using it!!!
 sacctmgr delete qos qosname
 ```
+
+### Other Tasks
+
+
+```
+# View the slurmdbd configuration in force
+sacctmgr show Configuration | less
+
+# Perform a self-check of database
+sacctmgr show problems
+
+# Check history of sacctmgr operations - useful to see users added, QOS changes
+# "Modify Clusters" might be slurmctld restarts
+# (Output width is inadequate but most/all cut-off material isn't that useful)
+# (which you can see by running command with -p argument and redirect to a file)
+sacctmgr show transaction | less
+sacctmgr -p show transaction > /tmp/lookatme
+
+# Check RPC statistics (watch out for users with extremely high numbers of RPC)
+# (these stats might be since the last time the slurmctld was restarted??)
+sacctmgr show stats | less
+
+# You can clear the stats and then watch how quickly a suspicuous user racks up RPC calls
+sacctmgr clear stats
+```
+
+```
+# Display TRES (Trackable RESources) (our clusters may not be identical)
+# TRES can be iunvolved in QOS (fewer in version 22.05 than in 24.05)
+sacctmgr show tres
+    Type            Name     ID 
+-------- --------------- ------ 
+     cpu                      1 
+     mem                      2 
+  energy                      3 
+    node                      4 
+ billing                      5 
+      fs            disk      6 
+    vmem                      7 
+   pages                      8 
+    gres             gpu   1001 
+    gres     gpu:tesv100   1002 
+    gres      gpu:titanv   1003 
+    gres     gpu:tesa100   1004 
+    gres    gpu:tesv100s   1005 
+```
+
