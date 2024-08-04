@@ -14,7 +14,7 @@
       
       
       <link rel="icon" href="../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.6.0, mkdocs-material-9.5.30">
+      <meta name="generator" content="mkdocs-1.6.0, mkdocs-material-9.5.31">
     
     
       
@@ -4975,7 +4975,7 @@ sacctmgr mod user where name=tunison set qos-=shared-200-2 # to remove
 # Limit a user's ability to run and submit jobs
 sacctmgr mod user where name=tunison set MaxJobs=100,MaxSubmit=200
 
-# How users accounts are created in the sacctmgr database
+# How JHPCE3 users accounts are created in the sacctmgr database
 sacctmgr -i create user name=$userid cluster=jhpce3 account=jhpce 
 
 # How C-SUB users accounts are created in the sacctmgr database on jhpcecms01
@@ -5007,6 +5007,43 @@ sacctmgr modify qos cms-larger set MaxJobsPerUser=1 MaxSubmitJobsPerUser=1  MaxS
 
 # You cannot rename a QOS, so you have to delete the old name -- be aware that jobs might be using it!!!
 sacctmgr delete qos qosname
+</code></pre><pre><span></span><code># View the slurmdbd configuration in force
+sacctmgr show Configuration | less
+
+# Perform a self-check of database
+sacctmgr show problems
+
+# Check history of sacctmgr operations - useful to see users added, QOS changes
+# "Modify Clusters" might be slurmctld restarts
+# (Output width is inadequate but most/all cut-off material isn't that useful)
+# (which you can see by running command with -p argument and redirect to a file)
+sacctmgr show transaction | less
+sacctmgr -p show transaction &gt; /tmp/lookatme
+
+# Check RPC statistics (watch out for users with extremely high numbers of RPC)
+# (these stats might be since the last time the slurmctld was restarted??)
+sacctmgr show stats | less
+
+# You can clear the stats and then watch how quickly a suspicuous user racks up RPC calls
+sacctmgr clear stats
+</code></pre><pre><span></span><code># Display TRES (Trackable RESources) (our clusters may not be identical)
+# TRES can be iunvolved in QOS (fewer in version 22.05 than in 24.05)
+sacctmgr show tres
+    Type            Name     ID 
+-------- --------------- ------ 
+     cpu                      1 
+     mem                      2 
+  energy                      3 
+    node                      4 
+ billing                      5 
+      fs            disk      6 
+    vmem                      7 
+   pages                      8 
+    gres             gpu   1001 
+    gres     gpu:tesv100   1002 
+    gres      gpu:titanv   1003 
+    gres     gpu:tesa100   1004 
+    gres    gpu:tesv100s   1005 
 </code></pre><h2><a class="heading" href="../slurm/tips-scontrol">scontrol tips</a></h2><a class="url" href="../slurm/tips-scontrol">slurm/tips-scontrol/</a><pre><span></span><code>scontrol<span class="w"> </span>show<span class="w"> </span>--details<span class="w"> </span>job<span class="w"> </span>&lt;jobid&gt;
 </code></pre><pre><span></span><code>scontrol<span class="w"> </span>show<span class="w"> </span>node<span class="w"> </span>&lt;nodename&gt;
 </code></pre><pre><span></span><code>scontrol<span class="w"> </span>show<span class="w"> </span>partition<span class="w"> </span>&lt;partitionname&gt;
