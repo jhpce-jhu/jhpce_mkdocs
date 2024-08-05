@@ -88,8 +88,8 @@ Some SLURM commands such as sacct and squeue can display a wide variety of infor
 * [scontrol](https://slurm.schedmd.com/archive/slurm-22.05.9/scontrol.html): {==([LOCAL TIPS](tips-scontrol.md))==}: display (and modify when permitted) the status of Slurm entities (jobs, nodes, partitions, reservations)
 
 ### For Systems Administrators
-* [sacctmgr](https://slurm.schedmd.com/archive/slurm-22.05.9/sacct.html):
-* [scontrol](https://slurm.schedmd.com/archive/slurm-22.05.9/scontrol.html): {==([LOCAL TIPS](tips-sacctmgr.md))==}: display and modify Slurm account information
+* [sacctmgr](https://slurm.schedmd.com/archive/slurm-22.05.9/sacct.html): {==([LOCAL TIPS](tips-sacctmgr.md))==}: display and modify Slurm account information
+* [scontrol](https://slurm.schedmd.com/archive/slurm-22.05.9/scontrol.html): {==([LOCAL TIPS](tips-scontrol.md))==}: display and modify Slurm jobs and partitions
 * [sdiag](https://slurm.schedmd.com/archive/slurm-22.05.9/sdiag.html): display scheduling statistics and timing parameters
 * [slurmctld](https://slurm.schedmd.com/archive/slurm-22.05.9/slurmctld.html): central management daemon
 * [slurmd](https://slurm.schedmd.com/archive/slurm-22.05.9/slurmd.html): client-side daemon
