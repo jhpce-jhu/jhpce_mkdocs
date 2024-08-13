@@ -42,7 +42,7 @@ sacctmgr dump <cluster-name> file=<filename>
 
 ### **Managing QOS for users**
 
-See our [QOS page](slurm/qos.md) for more information.
+See our [QOS page](../slurm/qos.md) for more information.
 
 Our users have no limits on them, at the user account level. The typical account has a default QOS named "normal". If you run `showqos` you will see that "normal" doesn't have any restrictions. Therefore users entitled to run jobs in their private per-research group partitions are not limited in how many of their nodes' resources they can consume. (Users found running jobs on partitions they are not entitled to use will have their jobs killed and have to acknowledge that they understand that they need to use public partitions.)
 

@@ -59,7 +59,7 @@ We recommend using the Chromium browser. Firefox is also available.
 
 !!! Note "Note"  
     - You may need to accept popups in the chromium/firefox browser that gets started in order to see the windows that SAS is trying to display.
-    - If you do not redirect standard output and standard error data streams, you will see a bunch of error messages. These can be ignored because the browser wants to run on a local system with a graphics card, and the our compute nodes don't have such cards or the software to support them.
+    - If you do not redirect standard output and standard error data streams, you will see a bunch of error messages. These can be ignored because the browser wants to run on a local system with a graphics card, and the our compute nodes don't have such cards or the software to support them. HOWEVER, redirecting all I/O means that if SAS itself emits important error messages, you won't see them. So don't redirect I/O if SAS isn't working as expected!
 
 The initial steps are the same as we used before:
 ```
