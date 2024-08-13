@@ -1,20 +1,15 @@
----
-tags:
-  - in-progress
----
-
 # SAS
 
 ## We Have A SAS Partition
 
-We have a limited number of licenses.
+We have a limited number of licenses. They run on computers with limited amounts of RAM. The command `slurmpic -p sas` will display the current resources used out of total available.
 
 Please use this partition by specifying `-p sas` when submitting your jobs. You can see the available resources in this partition with the command `slurmpic -p sas` If your job will not fit in the partition or you want to run your job in a PI partition you are authorized to use, you can use a different one.
 
 ## Other ways to access SAS
-SAS is available in a virtual Windows environment called SAFE. For small jobs,
-or collaborating with others, or if you don't have SAS installed on your
-personal computer, you might want to register for this free service.
+SAS is available in a virtual Windows environment called SAFE maintained by Hopkins central IT. For small jobs,
+or collaborating on files with private personal information with others, or if you don't have SAS installed on your
+personal computer, you might want to register for this free service (you have to wait for someone to create your account).
 
 [Here is a link](../access/access-overview.md#safe-desktop) to information about SAFE.
 
@@ -32,9 +27,13 @@ the "alexander" UNIX group so you can see the database's files.
 
 As of April 2024 it is located in `/dcl02/alexande/data/MARKETSCAN/`
 
+As of August 2024 the latest version of the data is located in `/dcl02/alexande/data/MARKETSCAN2024/`
+
 ## Using SAS interactively
 
 The amount of memory you request for your interactive session depends on the size of the data you will be manipulating.
+
+If you learn how to work with SAS in batch mode, you can execute jobs without having to wait for slow X11 protocol transmissions of the SAS graphic interface. And you can queue up a series of jobs to run without being present.  See our [SAS batch mode](./sas.md#running-sas-job-in-batch-mode) section below.
 
 ### Without Browser Support
 If you do not intend to do any *plotting* or use the *built-in help*, you can start sas with a simple "sas" command.
@@ -118,8 +117,10 @@ fsas
 
 ## Running SAS job in batch mode
 
+The amount of memory you request for your batch session depends on the size of the data you will be manipulating.
+
 1. Write your sas source in a file with .sas extension (e.g. class-info.sas)
-```
+```SAS
 DATA CLASS;
      INPUT NAME $ 1-8 SEX $ 10 AGE 12-13 HEIGHT 15-16 WEIGHT 18-22;
 CARDS;
