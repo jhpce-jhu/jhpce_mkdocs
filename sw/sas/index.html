@@ -3753,27 +3753,16 @@
               <article class="md-content__inner md-typeset">
                 
                   
-  
-<nav class="md-tags" >
-  
-    
-    
-    
-      <a href="../../ourtools/tags/#in-progress" class="md-tag">in-progress</a>
-    
-  
-</nav>
-
 
 
 <h1 id="sas">SAS<a class="headerlink" href="#sas" title="Anchor link to this section for reference">&para;</a></h1>
 <h2 id="we-have-a-sas-partition">We Have A SAS Partition<a class="headerlink" href="#we-have-a-sas-partition" title="Anchor link to this section for reference">&para;</a></h2>
-<p>We have a limited number of licenses.</p>
+<p>We have a limited number of licenses. They run on computers with limited amounts of RAM. The command <code>slurmpic -p sas</code> will display the current resources used out of total available.</p>
 <p>Please use this partition by specifying <code>-p sas</code> when submitting your jobs. You can see the available resources in this partition with the command <code>slurmpic -p sas</code> If your job will not fit in the partition or you want to run your job in a PI partition you are authorized to use, you can use a different one.</p>
 <h2 id="other-ways-to-access-sas">Other ways to access SAS<a class="headerlink" href="#other-ways-to-access-sas" title="Anchor link to this section for reference">&para;</a></h2>
-<p>SAS is available in a virtual Windows environment called SAFE. For small jobs,
-or collaborating with others, or if you don't have SAS installed on your
-personal computer, you might want to register for this free service.</p>
+<p>SAS is available in a virtual Windows environment called SAFE maintained by Hopkins central IT. For small jobs,
+or collaborating on files with private personal information with others, or if you don't have SAS installed on your
+personal computer, you might want to register for this free service (you have to wait for someone to create your account).</p>
 <p><a href="../../access/access-overview/#safe-desktop">Here is a link</a> to information about SAFE.</p>
 <h2 id="marketscan-database">MarketScan Database<a class="headerlink" href="#marketscan-database" title="Anchor link to this section for reference">&para;</a></h2>
 <p>Many of our SAS users work with this licensed database.</p>
@@ -3784,8 +3773,10 @@ good guides on how the data is organized on the cluster.  She will then ask us t
 the "alexander" UNIX group so you can see the database's files.</p>
 <h3 id="where-is-it-located">Where Is It Located?<a class="headerlink" href="#where-is-it-located" title="Anchor link to this section for reference">&para;</a></h3>
 <p>As of April 2024 it is located in <code>/dcl02/alexande/data/MARKETSCAN/</code></p>
+<p>As of August 2024 the latest version of the data is located in <code>/dcl02/alexande/data/MARKETSCAN2024/</code></p>
 <h2 id="using-sas-interactively">Using SAS interactively<a class="headerlink" href="#using-sas-interactively" title="Anchor link to this section for reference">&para;</a></h2>
 <p>The amount of memory you request for your interactive session depends on the size of the data you will be manipulating.</p>
+<p>If you learn how to work with SAS in batch mode, you can execute jobs without having to wait for slow X11 protocol transmissions of the SAS graphic interface. And you can queue up a series of jobs to run without being present.  See our <a href="./#running-sas-job-in-batch-mode">SAS batch mode</a> section below.</p>
 <h3 id="without-browser-support">Without Browser Support<a class="headerlink" href="#without-browser-support" title="Anchor link to this section for reference">&para;</a></h3>
 <p>If you do not intend to do any <em>plotting</em> or use the <em>built-in help</em>, you can start sas with a simple "sas" command.
 <div class="highlight"><pre><span></span><code>[test@login31 ~]$ srun --partition sas --mem 10G --x11 --pty bash
@@ -3854,23 +3845,24 @@ csas<span class="o">()</span><span class="w"> </span><span class="o">{</span><sp
 </code></pre></div>
 </details>
 <h2 id="running-sas-job-in-batch-mode">Running SAS job in batch mode<a class="headerlink" href="#running-sas-job-in-batch-mode" title="Anchor link to this section for reference">&para;</a></h2>
+<p>The amount of memory you request for your batch session depends on the size of the data you will be manipulating.</p>
 <ol>
 <li>
 <p>Write your sas source in a file with .sas extension (e.g. class-info.sas)
-<div class="highlight"><pre><span></span><code>DATA CLASS;
-     INPUT NAME $ 1-8 SEX $ 10 AGE 12-13 HEIGHT 15-16 WEIGHT 18-22;
-CARDS;
-JOHN     M 12 59 99.5
-JAMES    M 12 57 83.0
-ALFRED   M 14 69 112.5
-ALICE    F 13 56 84.0
+<div class="highlight"><pre><span></span><code><span class="kr">DATA </span>CLASS;
+     <span class="k">INPUT</span> NAME $ <span class="m">1-8</span> SEX $ <span class="m">10</span> AGE <span class="m">12-13</span> HEIGHT <span class="m">15-16</span> WEIGHT <span class="m">18-22</span>;
+<span class="k">CARDS;</span>
+<span class="x">JOHN     M 12 59 99.5</span>
+<span class="x">JAMES    M 12 57 83.0</span>
+<span class="x">ALFRED   M 14 69 112.5</span>
+<span class="x">ALICE    F 13 56 84.0</span>
 
-PROC MEANS;
-     VAR AGE HEIGHT WEIGHT;
-PROC PLOT;
-     PLOT WEIGHT*HEIGHT;
-ENDSAS;
-;
+<span class="x">PROC MEANS;</span>
+<span class="x">     VAR AGE HEIGHT WEIGHT;</span>
+<span class="x">PROC PLOT;</span>
+<span class="x">     PLOT WEIGHT*HEIGHT;</span>
+<span class="x">ENDSAS;</span>
+<span class="x">;</span>
 </code></pre></div></p>
 </li>
 <li>
@@ -3942,7 +3934,7 @@ Submitted batch job 3178475
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1-2.1-2M12.5 7v5.2l4 2.4-1 1L11 13V7h1.5M11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2v1.8Z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">May 8, 2024</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">August 13, 2024</span>
   </span>
 
     

@@ -2173,7 +2173,7 @@
     "page_name": "SAS",
     "page_url": "../sw/sas/",
     "text": "DATA CLASS;\n     INPUT NAME $ 1-8 SEX $ 10 AGE 12-13 HEIGHT 15-16 WEIGHT 18-22;\nCARDS;\nJOHN     M 12 59 99.5\nJAMES    M 12 57 83.0\nALFRED   M 14 69 112.5\nALICE    F 13 56 84.0\n\nPROC MEANS;\n     VAR AGE HEIGHT WEIGHT;\nPROC PLOT;\n     PLOT WEIGHT*HEIGHT;\nENDSAS;\n;\n",
-    "html": "<pre><span></span><code>DATA CLASS;\n     INPUT NAME $ 1-8 SEX $ 10 AGE 12-13 HEIGHT 15-16 WEIGHT 18-22;\nCARDS;\nJOHN     M 12 59 99.5\nJAMES    M 12 57 83.0\nALFRED   M 14 69 112.5\nALICE    F 13 56 84.0\n\nPROC MEANS;\n     VAR AGE HEIGHT WEIGHT;\nPROC PLOT;\n     PLOT WEIGHT*HEIGHT;\nENDSAS;\n;\n</code></pre>",
+    "html": "<pre><span></span><code><span class=\"kr\">DATA </span>CLASS;\n     <span class=\"k\">INPUT</span> NAME $ <span class=\"m\">1-8</span> SEX $ <span class=\"m\">10</span> AGE <span class=\"m\">12-13</span> HEIGHT <span class=\"m\">15-16</span> WEIGHT <span class=\"m\">18-22</span>;\n<span class=\"k\">CARDS;</span>\n<span class=\"x\">JOHN     M 12 59 99.5</span>\n<span class=\"x\">JAMES    M 12 57 83.0</span>\n<span class=\"x\">ALFRED   M 14 69 112.5</span>\n<span class=\"x\">ALICE    F 13 56 84.0</span>\n\n<span class=\"x\">PROC MEANS;</span>\n<span class=\"x\">     VAR AGE HEIGHT WEIGHT;</span>\n<span class=\"x\">PROC PLOT;</span>\n<span class=\"x\">     PLOT WEIGHT*HEIGHT;</span>\n<span class=\"x\">ENDSAS;</span>\n<span class=\"x\">;</span>\n</code></pre>",
     "language": ""
   },
   {

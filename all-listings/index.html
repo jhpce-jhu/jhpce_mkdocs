@@ -5506,20 +5506,20 @@ fsas<span class="o">()</span><span class="w"> </span><span class="o">{</span><sp
 <span class="c1"># If you want to use Chromium-browser as your web browser for SAS:</span>
 <span class="c1">#</span>
 csas<span class="o">()</span><span class="w"> </span><span class="o">{</span><span class="w"> </span>sas<span class="w"> </span>-helpbrowser<span class="w"> </span>SAS<span class="w"> </span>-xrm<span class="w"> </span><span class="s2">"SAS.webBrowser:'/usr/bin/chromium-browser'"</span><span class="w"> </span>-xrm<span class="w"> </span><span class="s2">"SAS.helpBrowser:'/usr/bin/chromium-browser'"</span><span class="w"> </span><span class="s2">"</span><span class="nv">$@</span><span class="s2">"</span><span class="w"> </span>&gt;<span class="w"> </span>/dev/null<span class="w"> </span><span class="m">2</span>&gt;<span class="p">&amp;</span><span class="m">1</span><span class="p">;</span><span class="w"> </span><span class="o">}</span>
-</code></pre><pre><span></span><code>DATA CLASS;
-     INPUT NAME $ 1-8 SEX $ 10 AGE 12-13 HEIGHT 15-16 WEIGHT 18-22;
-CARDS;
-JOHN     M 12 59 99.5
-JAMES    M 12 57 83.0
-ALFRED   M 14 69 112.5
-ALICE    F 13 56 84.0
+</code></pre><pre><span></span><code><span class="kr">DATA </span>CLASS;
+     <span class="k">INPUT</span> NAME $ <span class="m">1-8</span> SEX $ <span class="m">10</span> AGE <span class="m">12-13</span> HEIGHT <span class="m">15-16</span> WEIGHT <span class="m">18-22</span>;
+<span class="k">CARDS;</span>
+<span class="x">JOHN     M 12 59 99.5</span>
+<span class="x">JAMES    M 12 57 83.0</span>
+<span class="x">ALFRED   M 14 69 112.5</span>
+<span class="x">ALICE    F 13 56 84.0</span>
 
-PROC MEANS;
-     VAR AGE HEIGHT WEIGHT;
-PROC PLOT;
-     PLOT WEIGHT*HEIGHT;
-ENDSAS;
-;
+<span class="x">PROC MEANS;</span>
+<span class="x">     VAR AGE HEIGHT WEIGHT;</span>
+<span class="x">PROC PLOT;</span>
+<span class="x">     PLOT WEIGHT*HEIGHT;</span>
+<span class="x">ENDSAS;</span>
+<span class="x">;</span>
 </code></pre><pre><span></span><code><span class="ch">#!/bin/bash</span>
 
 <span class="c1">#SBATCH --partition=sas</span>
