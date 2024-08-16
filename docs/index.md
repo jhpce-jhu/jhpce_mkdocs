@@ -25,7 +25,7 @@ hide:
 
     ---
 
-    The computing and storage systems are optimized for genomics and biomedical research. The cluster has 65 compute nodes, providing about 2800 cores, 30TB of DRAM and over 14 PB of networked mass storage. The network fabric consists of a 10 Gbps ethernet. The facility is connected via a 40Gbps network to the University’s Science DMZ.
+    The computing and storage systems are optimized for genomics and biomedical research. The cluster has 90 compute nodes, providing over 4000 cores, 53TB of DRAM and over 20 PB of networked mass storage. The network fabric consists of a 10/40 Gbps ethernet backbone. The facility is connected via a 40Gbps network to the University’s Science DMZ.
     Networked mass storage uses open-source file systems (ZFS and Lustre-over-ZFS) to provide low cost file systems. We also have a 2PB disk-to-disk backup system off site for backing up more critical data.
     The JHPCE cluster is optimized for the embarrassingly parallel applications that are the bread-and-butter of our stakeholders, e.g., genomics and statistical applications, rather than the tightly-coupled applications that are typical in traditional HPC fields, e.g., physics, fluid-dynamics, quantum simulation etc.  Job scheduling is performed with the Simple Linux Utility for Resource Management ([SLURM](https://slurm.schedmd.com)).
 
