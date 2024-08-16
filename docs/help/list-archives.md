@@ -4,6 +4,8 @@ You can find the answers to questions that people have asked before in the archi
 
 Those archives are stored and presented in a format oriented at individual months of traffic. So to look into the past you have to do a few extra steps.
 
+Please note that the "https://lists.jh.edu" web site is only available on the JHU campus networks, or when connected via JHU VPN.
+
 ## Direct links to the list archives:
 
 * [https://lists.jh.edu/sympa/arc/bithelp](https://lists.jh.edu/sympa/arc/bithelp)
