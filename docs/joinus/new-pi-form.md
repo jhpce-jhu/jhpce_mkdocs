@@ -1,6 +1,6 @@
-For information about becoming a Sponsoring PI, please see <A href=https://https://jhpce.jhu.edu/joinus/new-pi/> Our PI Information Page </A>
-<div style="position: static; overflow: hidden; border: solid 2px #555; width:500px; height:820px;">
+For information about becoming a Sponsoring PI, please see [Our PI Information Page](new-pi.md)
+<div style="position: static; overflow: hidden; border: solid 2px #555; width:800px; height:820px;">
 
-  <iframe src="https://fm.addxt.com/form/?vf=1FAIpQLScMmRGcuD1b_dhw2KmC3LJSkbN2nrzK-EQAvS6qUaEsp9H-OQ" width="500" height="800" frameborder="0" marginheight="0" marginwidth="0">Loading…</iframe>
+  <iframe src="https://fm.addxt.com/form/?vf=1FAIpQLScMmRGcuD1b_dhw2KmC3LJSkbN2nrzK-EQAvS6qUaEsp9H-OQ" width="800" height="800" frameborder="0" marginheight="0" marginwidth="0">Loading…</iframe>
 
 </div>
