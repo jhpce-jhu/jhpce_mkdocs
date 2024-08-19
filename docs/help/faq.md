@@ -195,15 +195,17 @@ See [this document](../storage/quotas.md/#file-deletion-and-delayed-change-in-qu
 
 - I use Filezilla to transfer files from my mac to the cluster. Now it doesn't work
 
-??? "Click to expand answer"
+<details>
+<summary>"Click to expand answer"</summary>
     Update your Filezilla to the latest version.  In Filezilla, create a new Site:
-   <ol>
-   <li>Enter the "Hostname" (eg. jhpce-transfer01.jhsph.edu)</li>
-   <li>Set the "Protocol" to "SFTP"</li>
-   <li>Set the "Logon Type" to "Interactive"</li>
-   <li>Set the "User" to your JHPCE UserID. Do not touch the "Password" and "Account" fields.</li>
+    <ol>
+    <li>Enter the "Hostname" (eg. jhpce-transfer01.jhsph.edu)</li>
+    <li>Set the "Protocol" to "SFTP"</li>
+    <li>Set the "Logon Type" to "Interactive"</li>
+    <li>Set the "User" to your JHPCE UserID. Do not touch the "Password" and "Account" fields.</li>
     <li>Click "Connect". You will be prompted for your "Verification Code", which is the 6 digit number from Google Authenticator, and then "Password", which is your JHPCE Password.</li>
     </ol>
+</details>
 
 ## Sun Grid Engine
 
