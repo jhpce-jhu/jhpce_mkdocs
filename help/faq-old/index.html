@@ -14,7 +14,7 @@
       
       
       <link rel="icon" href="../../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.6.0, mkdocs-material-9.5.31">
+      <meta name="generator" content="mkdocs-1.6.0, mkdocs-material-9.5.32">
     
     
       
@@ -3622,6 +3622,48 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#my-winscp-program-stopped-working" class="md-nav__link">
+    <span class="md-ellipsis">
+      My winscp program stopped working!
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="My winscp program stopped working!">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#the-authy-chrome-plugin-works-on-one-machine-but-not-on-another" class="md-nav__link">
+    <span class="md-ellipsis">
+      The Authy Chrome plugin works on one machine but not on another
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#i-use-cyberduck-to-transfer-files-from-my-mac-to-the-cluster-now-it-doesnt-work-anymore" class="md-nav__link">
+    <span class="md-ellipsis">
+      I use CyberDuck to transfer files from my mac to the cluster. Now it doesn't work anymore.
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#i-use-filezilla-to-transfer-files-from-my-mac-to-the-cluster-now-it-doesnt-work" class="md-nav__link">
+    <span class="md-ellipsis">
+      I use Filezilla to transfer files from my mac to the cluster. Now it doesn't work
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#ive-deleted-files-but-my-quota-hasnt-changed" class="md-nav__link">
     <span class="md-ellipsis">
       I've deleted files but my quota hasn't changed
@@ -3777,6 +3819,34 @@ following lines:</p>
 <span class="k">fi</span>
 module<span class="w"> </span>load<span class="w"> </span>JHPCE_DEFAULT_ENV
 </code></pre></div>
+<h2 id="my-winscp-program-stopped-working">My winscp program stopped working!<a class="headerlink" href="#my-winscp-program-stopped-working" title="Anchor link to this section for reference">&para;</a></h2>
+<details>
+<summary>Click to expand answer</summary>
+</details>
+<p>With 2 Factor Authentication, you need to include you username in the definition for your session</p>
+<h3 id="the-authy-chrome-plugin-works-on-one-machine-but-not-on-another">The Authy Chrome plugin works on one machine but not on another<a class="headerlink" href="#the-authy-chrome-plugin-works-on-one-machine-but-not-on-another" title="Anchor link to this section for reference">&para;</a></h3>
+<details>
+<summary>Click to expand answer</summary>
+</details>
+<p>Check that the time is set correctly on your machine. The six-digit One Time Passwords (OTP) are time-based and are only valid for 30 seconds. So if the time is off on your machine it will not generate the correct OTP for the 30 second interval.</p>
+<h3 id="i-use-cyberduck-to-transfer-files-from-my-mac-to-the-cluster-now-it-doesnt-work-anymore">I use CyberDuck to transfer files from my mac to the cluster. Now it doesn't work anymore.<a class="headerlink" href="#i-use-cyberduck-to-transfer-files-from-my-mac-to-the-cluster-now-it-doesnt-work-anymore" title="Anchor link to this section for reference">&para;</a></h3>
+<details>
+<summary>Click to expand answer</summary>
+</details>
+<p>We have had several people that have still had issues with Cyberduck even after applying the fixes below. We recommend using <a title="https://filezilla-project.org/" href="https://filezilla-project.org/"> Filezilla </a> instead.  You can also try to update your cyberDuck to the latest version.  Please make sure that your password is not saved in the Cyberduck connection.</p>
+<h3 id="i-use-filezilla-to-transfer-files-from-my-mac-to-the-cluster-now-it-doesnt-work">I use Filezilla to transfer files from my mac to the cluster. Now it doesn't work<a class="headerlink" href="#i-use-filezilla-to-transfer-files-from-my-mac-to-the-cluster-now-it-doesnt-work" title="Anchor link to this section for reference">&para;</a></h3>
+<details>
+<summary>Click to expand answer</summary>
+</details>
+<p>Update your Filezilla to the latest version.  In Filezilla, create a new Site:</p>
+<ol>
+<li>Enter the &#8220;Hostname&#8221; (eg. jhpce-transfer01.jhsph.edu)</li>
+<li>Set the &#8220;Protocol&#8221; to &#8220;SFTP&#8221;</li>
+<li>Set the &#8220;Logon Type&#8221; to &#8220;Interactive&#8221;</li>
+<li>Set the &#8220;User&#8221; to your JHPCE UserID. Do not touch the &#8220;Password&#8221; and &#8220;Account&#8221; fields.</li>
+<li>Click &#8220;Connect&#8221;. You will be prompted for your &#8220;Verification Code&#8221;, which is the 6 digit number from Google Authenticator, and then &#8220;Password&#8221;, which is your JHPCE Password.</li>
+</ol>
+
 <h2 id="ive-deleted-files-but-my-quota-hasnt-changed">I've deleted files but my quota hasn't changed<a class="headerlink" href="#ive-deleted-files-but-my-quota-hasnt-changed" title="Anchor link to this section for reference">&para;</a></h2>
 <p>See <a href="../../storage/quotas/#file-deletion-and-delayed-change-in-quota">this document</a>.</p>
 
@@ -3799,7 +3869,7 @@ module<span class="w"> </span>load<span class="w"> </span>JHPCE_DEFAULT_ENV
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1-2.1-2M12.5 7v5.2l4 2.4-1 1L11 13V7h1.5M11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2v1.8Z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">March 18, 2024</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">August 19, 2024</span>
   </span>
 
     
@@ -3913,7 +3983,7 @@ module<span class="w"> </span>load<span class="w"> </span>JHPCE_DEFAULT_ENV
     <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.sections", "toc.follow", "announce.dismiss", "navigation.top", "header.autohide", "navigation.footer", "navigation.indexes", "content.code.copy", "content.code.annotate"], "search": "../../assets/javascripts/workers/search.b8dbb3d2.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
     
     
-      <script src="../../assets/javascripts/bundle.fe8b6f2b.min.js"></script>
+      <script src="../../assets/javascripts/bundle.471ce7a9.min.js"></script>
       
         <script src="https://unpkg.com/tablesort@5.3.0/dist/tablesort.min.js"></script>
       
