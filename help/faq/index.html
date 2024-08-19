@@ -4042,17 +4042,16 @@ libGL error: failed to load driver: swrast
 <li>I use Filezilla to transfer files from my mac to the cluster. Now it doesn't work</li>
 </ul>
 <details>
-<summary>Click to expand answer</summary>
-<p>Update your Filezilla to the latest version.  In Filezilla, create a new Site:
-</p>
-</details>
-<ol>
-   <li>Enter the "Hostname" (eg. jhpce-transfer01.jhsph.edu)</li>
-   <li>Set the "Protocol" to "SFTP"</li>
-   <li>Set the "Logon Type" to "Interactive"</li>
-   <li>Set the "User" to your JHPCE UserID. Do not touch the "Password" and "Account" fields.</li>
+<summary>"Click to expand answer"</summary>
+    Update your Filezilla to the latest version.  In Filezilla, create a new Site:
+    <ol>
+    <li>Enter the "Hostname" (eg. jhpce-transfer01.jhsph.edu)</li>
+    <li>Set the "Protocol" to "SFTP"</li>
+    <li>Set the "Logon Type" to "Interactive"</li>
+    <li>Set the "User" to your JHPCE UserID. Do not touch the "Password" and "Account" fields.</li>
     <li>Click "Connect". You will be prompted for your "Verification Code", which is the 6 digit number from Google Authenticator, and then "Password", which is your JHPCE Password.</li>
     </ol>
+</details>
 
 <h2 id="sun-grid-engine">Sun Grid Engine<a class="headerlink" href="#sun-grid-engine" title="Anchor link to this section for reference">&para;</a></h2>
 <p>We transitioned from the Sun Grid Engine to SLURM in 2024. We wrote <a href="../../orient/images/transition-sge-2-slurm.pdf">this document</a> for users familiar with SGE who needed to learn some SLURM basics.</p>
