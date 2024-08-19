@@ -158,29 +158,6 @@ fi
 module load JHPCE_DEFAULT_ENV
 ```
 
-## My winscp program stopped working!
-??? "Click to expand answer"
-With 2 Factor Authentication, you need to include you username in the definition for your session
-
-### The Authy Chrome plugin works on one machine but not on another
-??? "Click to expand answer"
-Check that the time is set correctly on your machine. The six-digit One Time Passwords (OTP) are time-based and are only valid for 30 seconds. So if the time is off on your machine it will not generate the correct OTP for the 30 second interval.
-
-### I use CyberDuck to transfer files from my mac to the cluster. Now it doesn't work anymore.
-??? "Click to expand answer"
-We have had several people that have still had issues with Cyberduck even after applying the fixes below. We recommend using <a title="https://filezilla-project.org/" href="https://filezilla-project.org/"> Filezilla </a> instead.  You can also try to update your cyberDuck to the latest version.  Please make sure that your password is not saved in the Cyberduck connection.
-
-### I use Filezilla to transfer files from my mac to the cluster. Now it doesn't work
-??? "Click to expand answer"
-Update your Filezilla to the latest version.  In Filezilla, create a new Site:
-<ol>
-<li>Enter the &#8220;Hostname&#8221; (eg. jhpce-transfer01.jhsph.edu)</li>
-<li>Set the &#8220;Protocol&#8221; to &#8220;SFTP&#8221;</li>
-<li>Set the &#8220;Logon Type&#8221; to &#8220;Interactive&#8221;</li>
-<li>Set the &#8220;User&#8221; to your JHPCE UserID. Do not touch the &#8220;Password&#8221; and &#8220;Account&#8221; fields.</li>
-<li>Click &#8220;Connect&#8221;. You will be prompted for your &#8220;Verification Code&#8221;, which is the 6 digit number from Google Authenticator, and then &#8220;Password&#8221;, which is your JHPCE Password.</li>
-</ol>
-
 
 ## I've deleted files but my quota hasn't changed
 
