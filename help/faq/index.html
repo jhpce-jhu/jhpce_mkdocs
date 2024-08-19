@@ -1319,44 +1319,11 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#my-winscp-program-stopped-working" class="md-nav__link">
+  <a href="#2-factor-authentication" class="md-nav__link">
     <span class="md-ellipsis">
-      My winscp program stopped working!
+      2 Factor Authentication
     </span>
   </a>
-  
-    <nav class="md-nav" aria-label="My winscp program stopped working!">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#the-authy-chrome-plugin-works-on-one-machine-but-not-on-another" class="md-nav__link">
-    <span class="md-ellipsis">
-      The Authy Chrome plugin works on one machine but not on another
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#i-use-cyberduck-to-transfer-files-from-my-mac-to-the-cluster-now-it-doesnt-work-anymore" class="md-nav__link">
-    <span class="md-ellipsis">
-      I use CyberDuck to transfer files from my mac to the cluster. Now it doesn't work anymore.
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#i-use-filezilla-to-transfer-files-from-my-mac-to-the-cluster-now-it-doesnt-work" class="md-nav__link">
-    <span class="md-ellipsis">
-      I use Filezilla to transfer files from my mac to the cluster. Now it doesn't work
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
       
@@ -3812,44 +3779,11 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#my-winscp-program-stopped-working" class="md-nav__link">
+  <a href="#2-factor-authentication" class="md-nav__link">
     <span class="md-ellipsis">
-      My winscp program stopped working!
+      2 Factor Authentication
     </span>
   </a>
-  
-    <nav class="md-nav" aria-label="My winscp program stopped working!">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#the-authy-chrome-plugin-works-on-one-machine-but-not-on-another" class="md-nav__link">
-    <span class="md-ellipsis">
-      The Authy Chrome plugin works on one machine but not on another
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#i-use-cyberduck-to-transfer-files-from-my-mac-to-the-cluster-now-it-doesnt-work-anymore" class="md-nav__link">
-    <span class="md-ellipsis">
-      I use CyberDuck to transfer files from my mac to the cluster. Now it doesn't work anymore.
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#i-use-filezilla-to-transfer-files-from-my-mac-to-the-cluster-now-it-doesnt-work" class="md-nav__link">
-    <span class="md-ellipsis">
-      I use Filezilla to transfer files from my mac to the cluster. Now it doesn't work
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
       
@@ -4082,33 +4016,43 @@ libGL error: failed to load driver: swrast
 <summary>Click to expand answer</summary>
 <p>With the upgrade to MacOS Sierra, the “-X” option to ssh to enable X11 forwarding may not work. If you receive the message: untrusted X11 forwarding setup failed: xauth key data not generated , you can resolve the issue by add the line ForwardX11Trusted yes to your ~/.ssh/config file on your Mac. You may still see the warning: Warning: No xauth data; using fake authentication data for X11 forwarding. To eliminate this warning, add the line XAuthLocation /usr/X11/bin/xauth to your ~/.ssh/config file on your Mac.</p>
 </details>
-<h2 id="my-winscp-program-stopped-working">My winscp program stopped working!<a class="headerlink" href="#my-winscp-program-stopped-working" title="Anchor link to this section for reference">&para;</a></h2>
+<h2 id="2-factor-authentication">2 Factor Authentication<a class="headerlink" href="#2-factor-authentication" title="Anchor link to this section for reference">&para;</a></h2>
+<ul>
+<li>My winscp program stopped working!</li>
+</ul>
 <details>
 <summary>Click to expand answer</summary>
-</details>
 <p>With 2 Factor Authentication, you need to include you username in the definition for your session</p>
-<h3 id="the-authy-chrome-plugin-works-on-one-machine-but-not-on-another">The Authy Chrome plugin works on one machine but not on another<a class="headerlink" href="#the-authy-chrome-plugin-works-on-one-machine-but-not-on-another" title="Anchor link to this section for reference">&para;</a></h3>
+</details>
+<ul>
+<li>The Authy Chrome plugin works on one machine but not on another</li>
+</ul>
 <details>
 <summary>Click to expand answer</summary>
-</details>
 <p>Check that the time is set correctly on your machine. The six-digit One Time Passwords (OTP) are time-based and are only valid for 30 seconds. So if the time is off on your machine it will not generate the correct OTP for the 30 second interval.</p>
-<h3 id="i-use-cyberduck-to-transfer-files-from-my-mac-to-the-cluster-now-it-doesnt-work-anymore">I use CyberDuck to transfer files from my mac to the cluster. Now it doesn't work anymore.<a class="headerlink" href="#i-use-cyberduck-to-transfer-files-from-my-mac-to-the-cluster-now-it-doesnt-work-anymore" title="Anchor link to this section for reference">&para;</a></h3>
+</details>
+<ul>
+<li>I use CyberDuck to transfer files from my mac to the cluster. Now it doesn't work anymore.</li>
+</ul>
 <details>
 <summary>Click to expand answer</summary>
-</details>
 <p>We have had several people that have still had issues with Cyberduck even after applying the fixes below. We recommend using <a title="https://filezilla-project.org/" href="https://filezilla-project.org/"> Filezilla </a> instead.  You can also try to update your cyberDuck to the latest version.  Please make sure that your password is not saved in the Cyberduck connection.</p>
-<h3 id="i-use-filezilla-to-transfer-files-from-my-mac-to-the-cluster-now-it-doesnt-work">I use Filezilla to transfer files from my mac to the cluster. Now it doesn't work<a class="headerlink" href="#i-use-filezilla-to-transfer-files-from-my-mac-to-the-cluster-now-it-doesnt-work" title="Anchor link to this section for reference">&para;</a></h3>
+</details>
+<ul>
+<li>I use Filezilla to transfer files from my mac to the cluster. Now it doesn't work</li>
+</ul>
 <details>
 <summary>Click to expand answer</summary>
+<p>Update your Filezilla to the latest version.  In Filezilla, create a new Site:
+</p>
 </details>
-<p>Update your Filezilla to the latest version.  In Filezilla, create a new Site:</p>
 <ol>
-<li>Enter the &#8220;Hostname&#8221; (eg. jhpce-transfer01.jhsph.edu)</li>
-<li>Set the &#8220;Protocol&#8221; to &#8220;SFTP&#8221;</li>
-<li>Set the &#8220;Logon Type&#8221; to &#8220;Interactive&#8221;</li>
-<li>Set the &#8220;User&#8221; to your JHPCE UserID. Do not touch the &#8220;Password&#8221; and &#8220;Account&#8221; fields.</li>
-<li>Click &#8220;Connect&#8221;. You will be prompted for your &#8220;Verification Code&#8221;, which is the 6 digit number from Google Authenticator, and then &#8220;Password&#8221;, which is your JHPCE Password.</li>
-</ol>
+   <li>Enter the "Hostname" (eg. jhpce-transfer01.jhsph.edu)</li>
+   <li>Set the "Protocol" to "SFTP"</li>
+   <li>Set the "Logon Type" to "Interactive"</li>
+   <li>Set the "User" to your JHPCE UserID. Do not touch the "Password" and "Account" fields.</li>
+    <li>Click "Connect". You will be prompted for your "Verification Code", which is the 6 digit number from Google Authenticator, and then "Password", which is your JHPCE Password.</li>
+    </ol>
 
 <h2 id="sun-grid-engine">Sun Grid Engine<a class="headerlink" href="#sun-grid-engine" title="Anchor link to this section for reference">&para;</a></h2>
 <p>We transitioned from the Sun Grid Engine to SLURM in 2024. We wrote <a href="../../orient/images/transition-sge-2-slurm.pdf">this document</a> for users familiar with SGE who needed to learn some SLURM basics.</p>
