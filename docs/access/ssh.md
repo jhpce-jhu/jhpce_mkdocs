@@ -1,7 +1,6 @@
 ---
 tags:
   - in-progress
-  - refers-to-old-website
   - ssh
   - jeffrey
 ---
@@ -52,8 +51,6 @@ Once configured properly, you can use SSH keys instead of your JHPCE password.
 + If you have entered your credentials correctly, you will see a login banner for the JHPCE cluster, and you will be sitting at a shell prompt on the login node.  However, if you are prompted for “Verification Code:” again, you likely mistyped either your password or Verification Code, and you should wait until your Google Authenticator code changes (it changes every 30 seconds) and you will need to try logging in again.
 + If you have tried several times to login, and you try to ssh again and get a “Connection Refused” message, you will need to wait 30 minutes before trying to login again.
 + If you continue to have login issues, please contact bitsupport@lists.jhu.edu.
-
-- [2 Factor Authentication](http://jhpce-old.jhu.edu/knowledge-base/2-factor-authentication/)
 
 
 ### Unix-based machines (linux and mac osx)
