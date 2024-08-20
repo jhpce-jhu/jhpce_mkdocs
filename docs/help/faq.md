@@ -165,11 +165,16 @@ See [this document](../storage/quotas.md/#file-deletion-and-delayed-change-in-qu
 
 - My X11 forwarding stops working after 20 minutes 
 ??? "Click to expand answer"
-    This error comes from the `ForwardX11Timeout` variable, which is set by default to 20 minutes.  To avoid this issue, you can specify a value of 0 which completely disables the timeout. Or you can set a larger timeout to, say, 336 hours (2 weeks). This value can be supplied by changing your SSH configuration (see our [SSH document](../access/ssh.md)) or for each connection on the command line like this:
+    This error comes from the `ForwardX11Timeout` variable, which is set by default to 20 minutes on some versions of MacOS.  To avoid this issue, you can specify a value of 0 which completely disables the timeout. Or you can set a larger timeout to, say, 336 hours (2 weeks). This value can be supplied by changing your SSH configuration (see our [SSH document](../access/ssh.md)) or for each connection on the command line like this:
 
     ```
     $ ssh -X username@jhpce03.jhsph.edu -o ForwardX11Timeout=336h
     ```
+    Alternatively, you can add the line ForwardX11Timeout=0 to your ~/.ssh/config file
+    ```
+    $ head -1 .ssh/config
+    ForwardX11Timeout=0
+    ``` 
 
 - Xauth error messages from MacOS Sierra when using X11 forwarding in SSH
 
