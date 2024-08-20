@@ -4468,6 +4468,8 @@ libGL error: No matching fbConfigs or visuals found
 libGL error: failed to load driver: swrast
 </code></pre><pre><span></span><code>EnableEscapeCommandline=yes
 </code></pre><pre><span></span><code>$ ssh -X username@jhpce03.jhsph.edu -o ForwardX11Timeout=336h
+</code></pre><pre><span></span><code>$ head -1 .ssh/config
+ForwardX11Timeout=0
 </code></pre><h2><a class="heading" href="../ourtools/features">Handy Features</a></h2><a class="url" href="../ourtools/features">ourtools/features/</a><pre><span></span><code><span class="nb">cd</span><span class="w"> </span>jhpce_mkdocs
 find<span class="w"> </span>.<span class="w"> </span>-type<span class="w"> </span>f<span class="w"> </span>-name<span class="w"> </span><span class="se">\*</span>.md<span class="w"> </span>-exec<span class="w"> </span>grep<span class="w"> </span>-il<span class="w"> </span><span class="s2">"www.jhpce.jhu.edu"</span><span class="w"> </span><span class="o">{}</span><span class="w"> </span><span class="se">\;</span>
 find<span class="w"> </span>.<span class="w"> </span>-type<span class="w"> </span>f<span class="w"> </span>-name<span class="w"> </span><span class="se">\*</span>.md<span class="w"> </span>-exec<span class="w"> </span>sed<span class="w"> </span>-i<span class="w"> </span><span class="s1">''</span><span class="w"> </span><span class="s2">"s/www.jhpce.jhu.edu/jhpce-old.jhu.edu/g"</span><span class="w"> </span><span class="o">{}</span><span class="w"> </span><span class="se">\;</span>

@@ -714,6 +714,13 @@
     "language": ""
   },
   {
+    "page_name": "FAQ",
+    "page_url": "../help/faq/",
+    "text": "$ head -1 .ssh/config\nForwardX11Timeout=0\n",
+    "html": "<pre><span></span><code>$ head -1 .ssh/config\nForwardX11Timeout=0\n</code></pre>",
+    "language": ""
+  },
+  {
     "page_name": "Handy Features",
     "page_url": "../ourtools/features/",
     "text": "cd jhpce_mkdocs\nfind . -type f -name \\*.md -exec grep -il \"www.jhpce.jhu.edu\" {} \\;\nfind . -type f -name \\*.md -exec sed -i '' \"s/www.jhpce.jhu.edu/jhpce-old.jhu.edu/g\" {} \\;\nfind . -type f -name \\*.md -exec grep -il \"jhpce-old.jhu.edu\" {} \\; | xargs git add\n",
