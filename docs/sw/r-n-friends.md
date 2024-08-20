@@ -1,7 +1,6 @@
 ---
 tags:
   - in-progress
-  - refers-to-old-website
 ---  
 # R Basics
 * R
