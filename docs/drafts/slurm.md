@@ -15,5 +15,5 @@ also documents and example code files in /jhpce/shared/jhpce/slurm on
 the test nodes.
 
 ## Links
-[GPUs on the JHPCE Cluster under SLURM](http://jhpce-old.jhu.edu/knowledge-base/gpus-on-the-jhpce-cluster-under-slurm/)
+removed link to GPU page on Old JHPCE site.
 
