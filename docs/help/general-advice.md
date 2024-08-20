@@ -1,7 +1,6 @@
 ---
 tags:
   - needs-major-revision
-  - refers-to-old-website
 ---
 
 # General Tips/Requests
@@ -72,9 +71,7 @@ attending the Orientation Session for the CMS Subcluster of the JHPCE
     Orientation Session, you will only need to download the
     GoogleAuthenticator app on your smart phone, or install the Authy
     Chrome extension.** We will be configuring Google Authenticator
-    during the Orientation Session. Please
-    see <http://jhpce-old.jhu.edu/knowledge-base/authentication/2-factor-authentication/#otp>
-    for instructions.
+    during the Orientation Session. 
 2.  **Install required client software.**  You may need to install a
     couple of programs on your laptop or desktop in order to access the
     JHPCE Cluster.  You will need 1) an SSH client for logging in, 2) an
