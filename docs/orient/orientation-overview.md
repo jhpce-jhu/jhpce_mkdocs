@@ -3,7 +3,6 @@ title: "Orientation Overview"
 tags:
    - topic-overview
    - in-progress
-   - refers-to-old-website
 ---
 # **About orientation**
 All new cluster users are required to attend a JHPCE orientation session. These sessions
@@ -27,7 +26,7 @@ Please install this software prior to attending the JHPCE cluster orientation se
 
 
 ### **Install the 2 Factor Authentication program**
-The JHPCE cluster makes use of &#8220;Google Authenticator&#8221; to provide enhanced security. &nbsp;You can choose to either install an app on your smartphone or, if you do not have an Apple or Android based smart phone, you can install an extension to the Google Chrome browser.&nbsp; <strong>Prior to the Orientation Session, you will only need to download the Google Authenticator app on your smart phone, or install the Authy Chrome extension.</strong> We will be configuring Google Authenticator _during_ the Orientation Session. Please see&nbsp;<a href="http://jhpce-old.jhu.edu/knowledge-base/authentication/2-factor-authentication/#otp">http://jhpce-old.jhu.edu/knowledge-base/authentication/2-factor-authentication/#otp </a>for instructions.</li>
+The JHPCE cluster makes use of &#8220;Google Authenticator&#8221; to provide enhanced security. &nbsp;You can choose to either install an app on your smartphone or, if you do not have an Apple or Android based smart phone, you can install an extension to the Google Chrome browser.&nbsp; <strong>Prior to the Orientation Session, you will only need to download the Google Authenticator app on your smart phone, or install the Authy Chrome extension.</strong> We will be configuring Google Authenticator _during_ the Orientation Session.
 
 ### **Install required SSH client software**
 
