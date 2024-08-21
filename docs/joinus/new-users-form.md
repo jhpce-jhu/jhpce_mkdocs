@@ -4,6 +4,8 @@
 
 </div>
 
+Please ignore the below - We're currently testing a new orientation signup process.
+
 Once you have completed the above form, you can sign up for an upcoming orientation session.
 <div style="position: static; overflow: hidden; border: solid 2px #555; width:720px; height:990px;">
 <!-- Google Calendar Appointment Scheduling begin -->
