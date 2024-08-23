@@ -5,6 +5,7 @@ hide:
 
 # Joint HPC Exchange
 ![cluster logo](images/cluster_ai_2.png)
+![cluster usage](images/pct.gif)
 <div class="grid cards" markdown>
   
 -   :material-information-outline:{ .lg .middle } __About Us__
