@@ -7,10 +7,11 @@ Running Rstudio Server on the JHPCE cluster
  
 Rstudio Server is a web based environment for developing R programs.  On the JHPCE cluster we have put together a script called “jhpce-rstudio-server” which will allow you to run your own personal copy of Rstudio Server and access it from a browser on your laptop or desktop.  When the “jhpce-rstudio-server” program is run, it starts an instance of the Rstudio Server web server within a Singularity image on a unique port number, and then provides instructions for setting up an ssh tunnel to allow you to access Rstudio Server from your local system.  
 
-To use Rstudio Server, start by srun-ing into a compute node, then run “jhpce-rstudio-server”, and then follow the  steps displayed. There are several versions of Rstudio Server installed, so you should run the appropriate program to pick the version that corresponds to the version of R that you want to use.  With the migration to SLURM, we currently have one version of R available in “jhpce-rstudio-server”.  If you just run jhpce-rstudio-server, you will be using R 4.3. The versions currently available, as of October 2023, are:
+To use Rstudio Server, start by srun-ing into a compute node, then run “jhpce-rstudio-server”, and then follow the  steps displayed. There are several versions of Rstudio Server installed, so you should run the appropriate program to pick the version that corresponds to the version of R that you want to use.  With the migration to SLURM, we currently have one version of R available in “jhpce-rstudio-server”.  If you just run jhpce-rstudio-server, you will be using R 4.3. The versions currently available, as of August 2024, are:
 
 jhpce-rstudio-server
 jhpce-rstudio-server-R4.3.0
+jhpce-rstudio-server-R4.3.2
 
 For CSUB users, use:
 csub-jhpce-rstudio-server-R4.3.0
@@ -18,14 +19,14 @@ csub-jhpce-rstudio-server-R4.3.0
 An example of running “jhpce-rstudio-server” is provided below.
 
 ```
-\[login31/users/jdoe1\] $ **srun --pty --x11 --mem=10G bash**
+[login31/users/jdoe1] $ **srun --pty --x11 --mem=10G bash**
 Last login: Wed May 1 17:02:29 2019 from login31.cm.cluster
-Loading conda\_R/3.5.x
-\[compute-012 /users/jdoe1\] $ **jhpce-rstudio-server**
+Loading conda_R/3.5.x
+[compute-012 /users/jdoe1] $ **jhpce-rstudio-server**
 ------------
 1) Establish your SSH tunnel.
-\* Windows users see:  https://jhpce.jhu.edu/sw/rstudio-server/
-\* Mac or Linux Desktop users, please type:
+* Windows users see:  https://jhpce.jhu.edu/sw/rstudio-server/
+* Mac or Linux Desktop users, please type:
 ~C
 -L 12345:compute-012:12345
 
@@ -39,7 +40,7 @@ Loading conda\_R/3.5.x
 When you are finished using Rstudio Server, type <CTRL>-C
 
 **~C**
-ssh> **\-L 12345:compute-012:12345**
+ssh> **-L 12345:compute-012:12345**
 Forwarding port.
 ```
 
@@ -91,14 +92,15 @@ Shutting down the Rstudio Server
 
 When you have finished using Rstudio Server, you should close the browser tab or window that you are using to run Rstudio Server, and then return to the ssh session where you ran the “jhpce-rstudio-server” command.  To stop the Rstudio Server, type “^C”.  You will then be given a few additional steps to run to deactivate the port forward. As with the establishment of the tunnel, these steps are for MacOS and Linux based desktops/laptops.  You will again be prompted to type “~C”, and then enter “-KL XXXXX” at the “ssh>” prompt to stop the forwarding (NOTE: you’ll need to hit <enter> once before typing “~C”).  The session should look similar to:
 
-\[login31 /users/jdoe1\] $ srun --pty --x11 --mem=10G bash
+```console
+[login31 /users/jdoe1] $ srun --pty --x11 --mem=10G bash
 Last login: Wed May 1 17:02:29 2019 from login31.cm.cluster
-Loading conda\_R/3.5.x
-\[compute-012 /users/jdoe1\] $ jhpce-rstudio-server
+Loading conda_R/3.5.x
+[compute-012 /users/jdoe1] $ jhpce-rstudio-server
 ------------
 1) Establish your SSH tunnel.
-\* Windows users see: https://jhpce.jhu.edu/sw/rstudio-server/
-\* Mac or Linux Desktop users, please type:
+* Windows users see: https://jhpce.jhu.edu/sw/rstudio-server/
+* Mac or Linux Desktop users, please type:
 ~C
 -L 12345:compute-012:12345
 
@@ -115,18 +117,19 @@ When you are finished using Rstudio Server, type <CTRL>-C
 ssh> -L 12345:compute-012:12345
 Forwarding port.
 
-**^C**Cleaning up...
+****Cleaning up...
 ------------
 Now type:
 ~C
 -KL 41354
 
-\[compute-012 /users/jdoe1\] $
-\[compute-012 /users/jdoe1\] $**~C**
-ssh> **\-KL 12345**
+[compute-012 /users/jdoe1] $
+[compute-012 /users/jdoe1] $**~C**
+ssh> **-KL 12345**
 Canceled forwarding.
-\[compute-012 /users/jdoe1\] $ exit
-\[login31 /users/jdoe1\] $ exit
+[compute-012 /users/jdoe1] $ exit
+[login31 /users/jdoe1] $ exit
+```
 
 For Windows desktops/laptops, you should also use “^C” to terminate the Rstudio Server, but to stop the tunnel you will need to return to the MobaSSHTunnel screen, and use the “Stop” icon [![](https://jhpce.jhu.edu/wp-content/uploads/2019/05/Screen-Shot-2019-05-29-at-1.46.04-PM.png)](https://jhpce.jhu.edu/wp-content/uploads/2019/05/Screen-Shot-2019-05-29-at-1.46.04-PM.png) in the Start/Stop column.  You can keep this tunnel configuration in MobaSSHTunnel, and reuse it the next time you run Rstudio Server, however you will need to edit the tunnel configuration and change the “Remote Server” to match the compute node you are running on.
 
