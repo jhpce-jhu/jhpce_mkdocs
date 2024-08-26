@@ -24,7 +24,7 @@ Loading conda\_R/3.5.x
 \[compute-012 /users/jdoe1\] $ **jhpce-rstudio-server**
 ------------
 1) Establish your SSH tunnel.
-\* Windows users see: https://jhpce.jhu.edu/knowledge-base/rstudio-server
+\* Windows users see:  https://jhpce.jhu.edu/sw/rstudio-server/
 \* Mac or Linux Desktop users, please type:
 ~C
 -L 12345:compute-012:12345
