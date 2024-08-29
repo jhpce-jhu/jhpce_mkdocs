@@ -4467,7 +4467,7 @@ rsync -avzh /users/bob/src /dcs08/bob/dst
 libGL error: No matching fbConfigs or visuals found
 libGL error: failed to load driver: swrast
 </code></pre><pre><span></span><code>EnableEscapeCommandline=yes
-</code></pre><pre><span></span><code>$ ssh -X username@jhpce03.jhsph.edu -o ForwardX11Timeout=336h
+</code></pre><pre><span></span><code>$ ssh -X username@jhpce01.jhsph.edu -o ForwardX11Timeout=336h
 </code></pre><pre><span></span><code>$ head -1 .ssh/config
 ForwardX11Timeout=0
 </code></pre><h2><a class="heading" href="../ourtools/features">Handy Features</a></h2><a class="url" href="../ourtools/features">ourtools/features/</a><pre><span></span><code><span class="nb">cd</span><span class="w"> </span>jhpce_mkdocs
@@ -5448,7 +5448,7 @@ srun: job 3244190 has been allocated resources
 Loading R/4.3
 (4.3)[test@compute-097 ~]$ module load rstudio
 (4.3)[test@compute-097 ~]$ rstudio
-</code></pre><pre><span></span><code>ssh -X yourusername@jhpce03.jhsph.edu
+</code></pre><pre><span></span><code>ssh -X yourusername@jhpce01.jhsph.edu
 </code></pre><h2><a class="heading" href="../sw/rstudio-server">R Studio Server</a></h2><a class="url" href="../sw/rstudio-server">sw/rstudio-server/</a><pre><span></span><code>[login31/users/jdoe1] $ **srun --pty --x11 --mem=10G bash**
 Last login: Wed May 1 17:02:29 2019 from login31.cm.cluster
 Loading conda_R/3.5.x

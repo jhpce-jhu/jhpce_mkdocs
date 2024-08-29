@@ -709,8 +709,8 @@
   {
     "page_name": "FAQ",
     "page_url": "../help/faq/",
-    "text": "$ ssh -X username@jhpce03.jhsph.edu -o ForwardX11Timeout=336h\n",
-    "html": "<pre><span></span><code>$ ssh -X username@jhpce03.jhsph.edu -o ForwardX11Timeout=336h\n</code></pre>",
+    "text": "$ ssh -X username@jhpce01.jhsph.edu -o ForwardX11Timeout=336h\n",
+    "html": "<pre><span></span><code>$ ssh -X username@jhpce01.jhsph.edu -o ForwardX11Timeout=336h\n</code></pre>",
     "language": ""
   },
   {
@@ -2116,8 +2116,8 @@
   {
     "page_name": "R",
     "page_url": "../sw/r/",
-    "text": "ssh -X yourusername@jhpce03.jhsph.edu\n",
-    "html": "<pre><span></span><code>ssh -X yourusername@jhpce03.jhsph.edu\n</code></pre>",
+    "text": "ssh -X yourusername@jhpce01.jhsph.edu\n",
+    "html": "<pre><span></span><code>ssh -X yourusername@jhpce01.jhsph.edu\n</code></pre>",
     "language": ""
   },
   {
