@@ -168,7 +168,7 @@ See [this document](../storage/quotas.md/#file-deletion-and-delayed-change-in-qu
     This error comes from the `ForwardX11Timeout` variable, which is set by default to 20 minutes on some versions of MacOS.  To avoid this issue, you can specify a value of 0 which completely disables the timeout. Or you can set a larger timeout to, say, 336 hours (2 weeks). This value can be supplied by changing your SSH configuration (see our [SSH document](../access/ssh.md)) or for each connection on the command line like this:
 
     ```
-    $ ssh -X username@jhpce03.jhsph.edu -o ForwardX11Timeout=336h
+    $ ssh -X username@jhpce01.jhsph.edu -o ForwardX11Timeout=336h
     ```
     Alternatively, you can add the line ForwardX11Timeout=0 to your ~/.ssh/config file
     ```

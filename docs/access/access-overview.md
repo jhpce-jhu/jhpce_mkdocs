@@ -27,7 +27,7 @@ graph TD
 The login and transfer nodes are accessible to the wider Internet. 
 For security reasons, the web portal is only available to computers on Hopkins networks. If you are not on a Hopkins campus, that means that you need to use the VPN to be able to see that node.
 
-* **login**: Normally jhpce01.jhsph.edu and jhpce02.jhsph.edu (currently {==jhpce03.jhsph.edu==})
+* **login**: Normally jhpce01.jhsph.edu and jhpce02.jhsph.edu
 * **transfer**: {==jhpce-transfer01.jhsph.edu==}
 * **web portal**: {==[jhpce-app02.jhsph.edu](https://jhpce-app02.jhsph.edu)==}
 

@@ -46,7 +46,7 @@ We have found that the easiest program to use for accessing the JHPCE cluster is
 #### **Apple Macintosh Users**
 
 - SSH Client - There are built in command line tools for ssh and scp that can be run from a Terminal window.&nbsp; The Terminal program can be found in &#8220;Applications -&gt; Utilities&#8221;.&nbsp; From a Terminal window, you would type:
-```ssh <username>@jhpce03.jhsph.edu```
+```ssh <username>@jhpce01.jhsph.edu```
 and then login with the login id and the password we provided to you.
 - Graphical Programs, X11 server - In order to run graphical programs on the cluster and have them displayed on your Mac, you will need to install **XQuartz** from <a href="http://xquartz.macosforge.org/landing/">http://xquartz.macosforge.org/landing/</a>.
 - File Transfer - MacOS has a built in ```sftp``` text-based program for doing file transfers to and from the JHPCE cluster. Optionally, you can also install a GUI based SFTP program such as [Cyberduck](https://cyberduck.io/)

@@ -37,7 +37,7 @@ On the "Session settings" screen, click on "SSH"
 
 ![mobaxterm4](images/mobaxterm4.gif)
 
-Enter "jhpce03.jhsph.edu" as the "Remote host". Click on the "Specify
+Enter "jhpce01.jhsph.edu" as the "Remote host". Click on the "Specify
 username" checkbox, and enter your JHPCE username in the next
 field. Then click the "OK" button.
 
@@ -57,9 +57,9 @@ a couple of steps).
 At this point you should be logged into the JHPCE cluster and sitting
 at a shell prompt.
 
-After you exit out of the JHPCE cluster, a "jhpce03" session will be
+After you exit out of the JHPCE cluster, a "jhpce01" session will be
 saved as a "Saved Sessions".  To login again, double-click on the
-jhpce03 "Saved Session", and you should then be prompted for
+jhpce01 "Saved Session", and you should then be prompted for
 "Verification Code" (which will come from Google Authenticator) and
 "Password:"
 
@@ -68,17 +68,17 @@ jhpce03 "Saved Session", and you should then be prompted for
 If you use MobaXterm to access the JHPCE cluster, and you want to transfer
 large files to ofr from the cluster, you should set up a separate SFTP session
 in MobaXterm using the “jhpce-transfer01.jhsph.edu” data transfer node, rather
-than the“jhpce03.jhsph.edu” login node. The “jhpce03.jhsph.edu” node is only
+than the “jhpce01.jhsph.edu” login node. The “jhpce01.jhsph.edu” node is only
 meant to be used for logging into the cluster, and not transferring large
-files. The “jhpce03.jhsph.edu” node only has a 1 Gb/s network connection to the
+files. The “jhpce01.jhsph.edu” node only has a 1 Gb/s network connection to the
 JHU network, whereas the “jhpce-transfer01.jhsph.edu” node has a 40 Gb/s
 connection. While an individual file transfers would not be able to achieve the
 full 40Gb/s speed, it will be significantly faster than using the 1Gb/s
-connection on the “jhpce03.jhsph.edu”
+connection on the “jhpce01.jhsph.edu”
 
 You can set up an SFTP session in MobaXterm using the following steps.
 
-1. Startup MobaXterm.  You likely already have a “jhpce03.jhsph.edu” session
+1. Startup MobaXterm.  You likely already have a “jhpce01.jhsph.edu” session
 configured for logging into the JHPCE cluster
 ![mobasftp-step01](images/moba-sftp-step01.png)
 2. Click on the “Session” icon in the upper left corner.  This will bring up a
@@ -192,8 +192,8 @@ your passphrase for your private key.
 
 The final step will be to add your key to the JHPCE session in the
 MobaXerm application. On the left pane of MobaXterm, you should see a
-list of "Saved sessions", including a session for the "jhpce03" login
-node. Right-Click on the "jhpce03" session, and select "Edit Session".
+list of "Saved sessions", including a session for the "jhpce01" login
+node. Right-Click on the "jhpce01" session, and select "Edit Session".
 This will open a window that looks like:
 
 ![moba-advanced-settings](images/moba-advanced-settings.gif)
@@ -208,11 +208,11 @@ the location of your "private key" file.
 
 + Click OK to save your changes.
 + Now, in the left pane of Saved Sessions, you should be able to
-double click on the "jhpce03" session, and a new tab should open up,
+double click on the "jhpce01" session, and a new tab should open up,
 and log you into the JHPCE cluster without having to enter a password
 or Google Authenticator PIN.
 + Once you have verified that you can login, exit out of all of your
 SSH sessions, and close the MobaXterm app.  Reopen the MobaXterm
-application, double click on the "jhpce03" session.  As before, a new
+application, double click on the "jhpce01" session.  As before, a new
 tab should open up, and log you into the JHPCE cluster without having
 to enter a password or Google Authenticator PIN. 

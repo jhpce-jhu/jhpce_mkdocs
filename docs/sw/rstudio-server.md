@@ -67,7 +67,7 @@ Enter the following in the window:
 *   For “Forwarded Port”, enter the port number displayed (this is 12345 in the example)
 *   For “Remote Server”, enter the compute node (compute-012 in the example)
 *   For “Remote Port”, enter the port number (12345 in the example)
-*   For “SSH Server”, enter “jhpce03.jhsph.edu” if you are on the JHPCE cluster, or “jhpcecms01.jhsph.edu” if you are on the CSUB.
+*   For “SSH Server”, enter “jhpce01.jhsph.edu” if you are on the JHPCE cluster, or “jhpcecms01.jhsph.edu” if you are on the CSUB.
 *   For “SSH Login”, enter your JHPCE cluster login name (jdoe1 in the example)
 *   For “SSH Port”, enter “22”
 

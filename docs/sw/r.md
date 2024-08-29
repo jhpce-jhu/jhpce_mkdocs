@@ -96,7 +96,7 @@ Loading R/4.3
     - For Windows, MobaXterm has an X server built into it  
     - For Mac, you need to have the XQuartz program installed (which requires a reboot), and you need to add the "-X" option to ssh:  
     ```
-    ssh -X yourusername@jhpce03.jhsph.edu
+    ssh -X yourusername@jhpce01.jhsph.edu
     ```
 
 ## Running RStudio via web
