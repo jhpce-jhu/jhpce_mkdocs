@@ -16,7 +16,7 @@ Your environment, including your PATH variable, is created when logging in. A nu
 You can use the command `which cmd` to be told where "cmd" comes from.
 
 ## General
-* **auth_util**: Interface for working with [OTP MFA](../access/access-overview.md/#multi-factor-authentication-mfa) configuration. View and generate verification tokens for Google Authenticator. See [orientation documents](https://docs.google.com/presentation/d/1elMSTUdKws7FLVFK7vVV_AErA4brNSPX/pub) for details on using it to configure your smartphone, etc. (no man page yet)
+* **auth_util**: Interface for working with [OTP MFA](../access/access-overview.md/#multi-factor-authentication-mfa) configuration. View and generate verification tokens for Google Authenticator. See [orientation documents](https://docs.google.com/presentation/d/1elMSTUdKws7FLVFK7vVV_AErA4brNSPX/pub){:target="_blank"} for details on using it to configure your smartphone, etc. (no man page yet)
 
 ## Disk Usage
 * **getquota**: Displays your quota stats (not yet working on C-SUB)
