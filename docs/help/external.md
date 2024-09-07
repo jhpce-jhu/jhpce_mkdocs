@@ -36,7 +36,7 @@ We also have a [document](../slurm/slurm-commands-ref.md) with links to not only
 ## JHPCE Tutorials
 
 + [JHPCE 3.0 Orientation
-Slides](../orient/images/latest-orient.pdf)
+Slides](https://docs.google.com/presentation/d/1elMSTUdKws7FLVFK7vVV_AErA4brNSPX/pub){:target="_blank"}
 -- SLURM scheduler & Rocky 9
 + [C-SUB JHPCE Orientation Slides
 2023](../orient/images/latest-csub-orient.pdf)

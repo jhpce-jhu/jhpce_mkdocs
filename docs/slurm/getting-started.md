@@ -5,7 +5,7 @@ tags:
 
 # Introduction to SLURM
 
-See the latest [orientation document (pdf)](../orient/images/latest-orient.pdf) for examples of how to use SLURM to run jobs.
+See the latest [This Link](https://docs.google.com/presentation/d/1elMSTUdKws7FLVFK7vVV_AErA4brNSPX/pub){:target="_blank"} for examples of how to use SLURM to run jobs.
 
 Please check out other SLURM-related pages on this web site. There is already some great information here. 
 

@@ -58,5 +58,5 @@ All new users are required to attend one of our JHPCE Orientation
 Sessions, during which their account will be set up on the cluster.  The
 Orientation is typically held every other Wednesday afternoon, and lasts for
 about 2 hours.  Prior to attending the orientation, you should review the
-<A HREF="../orient/orientation-overview/">What to do before attending the orientation session</A> page.  The slides for the orientation can be found [here](../orient/images/latest-orient.pdf)
+<A HREF="../orient/orientation-overview/">What to do before attending the orientation session</A> page.  The slides for the orientation can be found [here](https://docs.google.com/presentation/d/1elMSTUdKws7FLVFK7vVV_AErA4brNSPX/pub){:target="_blank"}
 

@@ -40,6 +40,7 @@ Instead of embedding links in our web pages to the actual PDF file, and having t
 ```bash title="Make a target named latest-orient.pdf"
 cd docs/orient/images
 ln -s JHPCE-Overview-CMS-2023-12-2.pdf latest-orient.pdf
+UPDATE - The orientation slides are at [This Link](https://docs.google.com/presentation/d/1elMSTUdKws7FLVFK7vVV_AErA4brNSPX/pub){:target="_blank"}
 ```
 
 ### ***Blank lines are required for some features to work:***
