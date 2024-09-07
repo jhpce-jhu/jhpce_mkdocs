@@ -891,8 +891,8 @@
   {
     "page_name": "Tips & Conventions",
     "page_url": "../ourtools/tips-conventions/",
-    "text": "cd docs/orient/images\nln -s JHPCE-Overview-CMS-2023-12-2.pdf latest-orient.pdf\n",
-    "html": "<pre><span></span><code><span class=\"nb\">cd</span><span class=\"w\"> </span>docs/orient/images\nln<span class=\"w\"> </span>-s<span class=\"w\"> </span>JHPCE-Overview-CMS-2023-12-2.pdf<span class=\"w\"> </span>latest-orient.pdf\n</code></pre>",
+    "text": "cd docs/orient/images\nln -s JHPCE-Overview-CMS-2023-12-2.pdf latest-orient.pdf\nUPDATE - The orientation slides are at [This Link](https://docs.google.com/presentation/d/1elMSTUdKws7FLVFK7vVV_AErA4brNSPX/pub){:target=\"_blank\"}\n",
+    "html": "<pre><span></span><code><span class=\"nb\">cd</span><span class=\"w\"> </span>docs/orient/images\nln<span class=\"w\"> </span>-s<span class=\"w\"> </span>JHPCE-Overview-CMS-2023-12-2.pdf<span class=\"w\"> </span>latest-orient.pdf\nUPDATE<span class=\"w\"> </span>-<span class=\"w\"> </span>The<span class=\"w\"> </span>orientation<span class=\"w\"> </span>slides<span class=\"w\"> </span>are<span class=\"w\"> </span>at<span class=\"w\"> </span><span class=\"o\">[</span>This<span class=\"w\"> </span>Link<span class=\"o\">](</span>https://docs.google.com/presentation/d/1elMSTUdKws7FLVFK7vVV_AErA4brNSPX/pub<span class=\"o\">){</span>:target<span class=\"o\">=</span><span class=\"s2\">\"_blank\"</span><span class=\"o\">}</span>\n</code></pre>",
     "language": ""
   },
   {
