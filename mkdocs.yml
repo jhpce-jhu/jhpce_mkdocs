@@ -18,7 +18,7 @@ nav:
          - New PI Form: joinus/new-pi-form.md
       - Orientation/Logging In:
         - Overview: orient/orientation-overview.md
-        - JHPCE Orientation (PDF): orient/images/latest-orient.pdf
+        - JHPCE Orientation (PDF download): https://docs.google.com/presentation/d/1elMSTUdKws7FLVFK7vVV_AErA4brNSPX/export/pdf
         - C-SUB Orientation (PDF): orient/images/latest-csub-orient.pdf
       - Leaving JHPCE as a User or PI: joinus/leaving.md
       - New C-SUB PI or user?: csub/new-csub-users.md
