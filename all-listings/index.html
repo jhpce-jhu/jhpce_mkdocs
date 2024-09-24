@@ -5332,44 +5332,44 @@ JHPCE_tools/3.0
 
 <span class="c1"># If I prefer gcc/4.8.1 as my default compiler</span>
 module<span class="w"> </span>load<span class="w"> </span>gcc/4.8.1
-</code></pre><h2><a class="heading" href="../sw/python-pkg">Python Packages</a></h2><a class="url" href="../sw/python-pkg">sw/python-pkg/</a><pre><span></span><code><span class="gp">[bob@compute-107 /users/bob]$ </span>module<span class="w"> </span>load<span class="w"> </span>python
-<span class="gp">[bob@compute-107 /users/bob]$ </span>python3<span class="w"> </span>--version
-<span class="go">Python 3.9.14</span>
-</code></pre><pre><span></span><code><span class="gp">[bob@compute-107 /users/bob]$ </span>python3<span class="w"> </span>-m<span class="w"> </span>pip<span class="w"> </span>--version
-<span class="go">pip 23.1.2 from /jhpce/shared/jhpce/core/python/3.9.14/lib/python3.9/site-packages/pip (python 3.9)</span>
-</code></pre><pre><span></span><code><span class="gp">[bob@test@compute-107 /users/bob]$ </span>python3<span class="w"> </span>-m<span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span>--user<span class="w"> </span>cowsay
-</code></pre><pre><span></span><code><span class="gp">[bob@compute-107 /users/bob]$ </span>python3<span class="w"> </span>-m<span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span>--user<span class="w"> </span>cowsay
-<span class="go">Collecting cowsay</span>
-<span class="go">  Downloading cowsay-6.1-py3-none-any.whl (25 kB)</span>
-<span class="go">Installing collected packages: cowsay</span>
+</code></pre><h2><a class="heading" href="../sw/python-pkg">Python Packages</a></h2><a class="url" href="../sw/python-pkg">sw/python-pkg/</a><pre><span></span><code>[bob@compute-107 /users/bob]$ module load python
+[bob@compute-107 /users/bob]$ python3 --version
+Python 3.9.14
+</code></pre><pre><span></span><code>[bob@compute-107 /users/bob]$ python3 -m pip --version
+pip 23.1.2 from /jhpce/shared/jhpce/core/python/3.9.14/lib/python3.9/site-packages/pip (python 3.9)
+</code></pre><pre><span></span><code>[bob@test@compute-107 /users/bob]$ python3 -m pip install --user cowsay
+</code></pre><pre><span></span><code>[bob@compute-107 /users/bob]$ python3 -m pip install --user cowsay
+Collecting cowsay
+  Downloading cowsay-6.1-py3-none-any.whl (25 kB)
+Installing collected packages: cowsay
 
-<span class="go">. . .</span>
+. . .
 
-<span class="go">WARNING: The script cowsay is installed in '/users/bob/.local/bin' which is not on PATH.</span>
-<span class="go">Consider adding this directory to PATH or, if you prefer to suppress this warning, use --no-warn-script-location.</span>
+WARNING: The script cowsay is installed in '/users/bob/.local/bin' which is not on PATH.
+Consider adding this directory to PATH or, if you prefer to suppress this warning, use --no-warn-script-location.
 
-<span class="go">. . .</span>
+. . .
 
-<span class="go">Successfully installed cowsay-6.1</span>
-<span class="gp">[bob@compute-107 /users/bob]$ </span>cowsay<span class="w"> </span>-t<span class="w"> </span><span class="s2">"Hello"</span>
-<span class="go">-bash: cowsay: command not found</span>
-</code></pre><pre><span></span><code><span class="gp">[bob@compute-107 /users/bob]$ </span><span class="nb">echo</span><span class="w"> </span><span class="nv">$PATH</span>
-<span class="go">/jhpce/shared/jhpce/core/JHPCE_tools/3.0/bin:/usr/local/bin:/usr/bin:/usr/local/sbin:/usr/sbin</span>
-<span class="gp">[bob@compute-107 /users/bob]$ </span><span class="nb">export</span><span class="w"> </span><span class="nv">PATH</span><span class="o">=</span><span class="nv">$PATH</span>:<span class="nv">$HOME</span>/.local/bin
-<span class="gp">[bob@compute-107 /users/bob]$ </span>cowsay<span class="w"> </span>-t<span class="w"> </span><span class="s2">"Hello"</span>
-<span class="go">  _____</span>
-<span class="go">| Hello |</span>
-<span class="go">  =====</span>
-<span class="go">     \</span>
-<span class="go">      \</span>
-<span class="go">        ^__^</span>
-<span class="go">        (oo)\_______</span>
-<span class="go">        (__)\       )\/\</span>
-<span class="go">            ||----w |</span>
-<span class="go">            ||     ||</span>
-<span class="gp">[bob@compute-107 /users/bob]$ </span>
-</code></pre><pre><span></span><code><span class="gp">[bob@compute-107 /users/bob]$ </span>cp<span class="w"> </span><span class="nv">$HOME</span>/.bashrc<span class="w"> </span><span class="nv">$HOME</span>/.bashrc-bak
-<span class="gp">[bob@compute-107 /users/bob]$ </span><span class="nb">echo</span><span class="w"> </span><span class="s2">"export PATH=\$PATH:\$HOME/.local/bin"</span><span class="w"> </span>&gt;&gt;<span class="w"> </span><span class="nv">$HOME</span>/.bash_profile
+Successfully installed cowsay-6.1
+[bob@compute-107 /users/bob]$ cowsay -t "Hello"
+-bash: cowsay: command not found
+</code></pre><pre><span></span><code>[bob@compute-107 /users/bob]$ echo $PATH
+/jhpce/shared/jhpce/core/JHPCE_tools/3.0/bin:/usr/local/bin:/usr/bin:/usr/local/sbin:/usr/sbin
+[bob@compute-107 /users/bob]$ export PATH=$PATH:$HOME/.local/bin
+[bob@compute-107 /users/bob]$ cowsay -t "Hello"
+  _____
+| Hello |
+  =====
+     \
+      \
+        ^__^
+        (oo)\_______
+        (__)\       )\/\
+            ||----w |
+            ||     ||
+[bob@compute-107 /users/bob]$ 
+</code></pre><pre><span></span><code>[bob@compute-107 /users/bob]$ cp $HOME/.bashrc $HOME/.bashrc-bak
+[bob@compute-107 /users/bob]$ echo "export PATH=\$PATH:\$HOME/.local/bin" &gt;&gt; $HOME/.bash_profile
 </code></pre><pre><span></span><code>[bob@compute-107 /users/bob]$ python3 -m pip install --user cowsay==5.0
 </code></pre><h2><a class="heading" href="../sw/python">Python</a></h2><a class="url" href="../sw/python">sw/python/</a><pre><span></span><code>[test@login31 ~]$ srun --pty bash
 srun: job 3168742 queued and waiting for resources
