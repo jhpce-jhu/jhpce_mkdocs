@@ -27,9 +27,11 @@ scontrol show partition <partitionname>
 
 ### **Update Jobs**
 
-You can update many aspects of pending jobs, fewer for running jobs. What follows is only a sample!!! Click [here](https://slurm.schedmd.com/scontrol.html#lbAH) for the complete list.
+You can update many aspects of pending jobs, (fewer for running jobs). What follows is only a sample!!! Click [here](https://slurm.schedmd.com/scontrol.html#lbAH) for the complete list.
 
-You can find the commands necessary to add a QOS to your job specification or to update a pending job in our [QOS document](../slurm/qos.md).
+It can be to your benefit to update existing pending jobs rather than `scancel` them and re-submit them. For example, jobs accrue priority points as they sit waiting in the queue.  Those points are lost if you cancel the job.
+
+You can find the commands necessary to add a Quality of Service attribute to a pending job in our [QOS document](../slurm/qos.md).
 
 #### **Pending Jobs**
 
@@ -126,16 +128,21 @@ Reservations can be made for a number of purposes and in a number of ways. See t
 
 Can be used to prevent a node from accepting jobs after reboot. (Our nodes have root cronjobs that try to set their state to RESUME at reboot.)
 
-Another use: A node has file-system mounting issues that cause jobs which try to use a missing file system to die. But the node has running jobs that you want to allow to finish. A reservation prevents the node from accepting new jobs. So would setting the node to DRAIN. The reservation name can be self-documenting as to why the node is in the condition it is. SLURM will set nodes into DRAIN on its own but it doesn't create reservations automatically.
+Can be used to create repeating reservations, which start and expire at certain times. This can be used to ensure that resources are avilable for class sessions. Note though that the scheduler will prevent jobs from starting if their job duration means they will run over into these windows. (The start time will be reset by the scheduler to be right after the reservation will end (unless the job's duration is such that it will end in another instance of this repeating reservation!!!  This might create situations that are hard for both users and sysadmins to understand.)
 
-When creating a reservation, you should select:
+Another use: A node has file-system mounting issues that cause new jobs which try to use a missing file system to die. But the node has running jobs that you want to allow to finish.  You can set the node to DRAIN. You can also create a reservation, which prevents the node from accepting new jobs, and after attempts to fix it, allows you to verify that things are back to normal.  The reservation name can be self-documenting as to why the node is in the condition it is. SLURM will set nodes into DRAIN on its own for some types of problems it can detect, but it doesn't create reservations automatically.
 
-1. a duration -- reservations can expire. Note that "UNLIMITED" turns out to be one year.
-2. a starttime -- you can create reservations that begin into the future to, for example, take nodes out of service for maintenance. (I think that the scheduler will prevent jobs from starting if they would run over into the reserved time.)
-2. a list of users or a group name, if available. You cannot mix users and groups. If a research group name exists it can be easier than listing many users.
-3. a meaningful name -- users will have to specify this name when submitting jobs. Sysadmins have to specify the name to modify or end it.
-4. nodes or partitions being reserved
-5. Resources -- Newer versions of SLURM than 22.05.09 may allow the reservation of _both_ CPU and RAM resources (via TRES arguments). If so you could carve out "space" for a user to run certain jobs on any of the nodes in a partition without locking everyone out of the partition. That would be handy.
+When creating a reservation, you MUST select:
+
+1. a **starttime** -- Reservations have start times. You can create reservations that, for example, take nodes out of service a month from now for a planned maintenance window. (The scheduler will prevent jobs from starting if they would run over into the reserved time.)
+2. a **duration** -- reservation need to expire at some point. (Note that "UNLIMITED" turns out to be one year.)
+3. a **list of users** OR a **group name** -- You cannot mix users and groups. If a research group name exists it can be easier than listing many users.
+4. the **nodes** or **partitions** being reserved
+
+When creating a reservation, you CAN select:
+
+1. a meaningful **name** -- `scontrol` will generate a name mechanically if you don't specify one. That's not very informative. Users will have to specify the name when submitting jobs. Sysadmins have to specify the name to modify or end it. Names cannot contain spaces. Use hyphens to make it more readable.
+2. Resources -- Versions of SLURM newer than 22.05.09 may allow the reservation of CPU, RAM and/or GPU resources (via TRES arguments). If so, you could carve out "space" for a user to run certain jobs on any of the nodes in a partition without locking *everyone* out of the partition. That would be handy.
 
 
 ```Shell title="Show existing reservations" linenums="0"
