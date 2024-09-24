@@ -1983,8 +1983,8 @@
   {
     "page_name": "Python Packages",
     "page_url": "../sw/python-pkg/",
-    "text": "[bob@test@compute-107 /users/bob]$ python3 -m pip install --user cowsay\n",
-    "html": "<pre><span></span><code>[bob@test@compute-107 /users/bob]$ python3 -m pip install --user cowsay\n</code></pre>",
+    "text": "[bob@compute-107 /users/bob]$ python3 -m pip install --user cowsay\n",
+    "html": "<pre><span></span><code>[bob@compute-107 /users/bob]$ python3 -m pip install --user cowsay\n</code></pre>",
     "language": ""
   },
   {

@@ -3839,8 +3839,9 @@
 <div class="highlight"><pre><span></span><code>scontrol<span class="w"> </span>show<span class="w"> </span>partition<span class="w"> </span>&lt;partitionname&gt;
 </code></pre></div>
 <h3 id="update-jobs"><strong>Update Jobs</strong><a class="headerlink" href="#update-jobs" title="Anchor link to this section for reference">&para;</a></h3>
-<p>You can update many aspects of pending jobs, fewer for running jobs. What follows is only a sample!!! Click <a href="https://slurm.schedmd.com/scontrol.html#lbAH">here</a> for the complete list.</p>
-<p>You can find the commands necessary to add a QOS to your job specification or to update a pending job in our <a href="../qos/">QOS document</a>.</p>
+<p>You can update many aspects of pending jobs, (fewer for running jobs). What follows is only a sample!!! Click <a href="https://slurm.schedmd.com/scontrol.html#lbAH">here</a> for the complete list.</p>
+<p>It can be to your benefit to update existing pending jobs rather than <code>scancel</code> them and re-submit them. For example, jobs accrue priority points as they sit waiting in the queue.  Those points are lost if you cancel the job.</p>
+<p>You can find the commands necessary to add a Quality of Service attribute to a pending job in our <a href="../qos/">QOS document</a>.</p>
 <h4 id="pending-jobs"><strong>Pending Jobs</strong><a class="headerlink" href="#pending-jobs" title="Anchor link to this section for reference">&para;</a></h4>
 <div class="highlight"><span class="filename">Place one of your jobs ahead of other of your jobs</span><pre><span></span><code>scontrol<span class="w"> </span>top<span class="w"> </span>&lt;jobid&gt;
 </code></pre></div>
@@ -3894,15 +3895,19 @@ There is a warning that some debugflags require restarting slurmctld, which mean
 <h3 id="reservations"><strong>Reservations</strong><a class="headerlink" href="#reservations" title="Anchor link to this section for reference">&para;</a></h3>
 <p>Reservations can be made for a number of purposes and in a number of ways. See the <code>scontrol</code> manual page for more details - <a href="https://slurm.schedmd.com/archive/slurm-22.05.9/scontrol.html#lbAQ">this section</a> is about reservations. There is also the <a href="https://slurm.schedmd.com/archive/slurm-22.05.9/reservations.html">Advanced Resource Reservation Guide</a></p>
 <p>Can be used to prevent a node from accepting jobs after reboot. (Our nodes have root cronjobs that try to set their state to RESUME at reboot.)</p>
-<p>Another use: A node has file-system mounting issues that cause jobs which try to use a missing file system to die. But the node has running jobs that you want to allow to finish. A reservation prevents the node from accepting new jobs. So would setting the node to DRAIN. The reservation name can be self-documenting as to why the node is in the condition it is. SLURM will set nodes into DRAIN on its own but it doesn't create reservations automatically.</p>
-<p>When creating a reservation, you should select:</p>
+<p>Can be used to create repeating reservations, which start and expire at certain times. This can be used to ensure that resources are avilable for class sessions. Note though that the scheduler will prevent jobs from starting if their job duration means they will run over into these windows. (The start time will be reset by the scheduler to be right after the reservation will end (unless the job's duration is such that it will end in another instance of this repeating reservation!!!  This might create situations that are hard for both users and sysadmins to understand.)</p>
+<p>Another use: A node has file-system mounting issues that cause new jobs which try to use a missing file system to die. But the node has running jobs that you want to allow to finish.  You can set the node to DRAIN. You can also create a reservation, which prevents the node from accepting new jobs, and after attempts to fix it, allows you to verify that things are back to normal.  The reservation name can be self-documenting as to why the node is in the condition it is. SLURM will set nodes into DRAIN on its own for some types of problems it can detect, but it doesn't create reservations automatically.</p>
+<p>When creating a reservation, you MUST select:</p>
 <ol>
-<li>a duration -- reservations can expire. Note that "UNLIMITED" turns out to be one year.</li>
-<li>a starttime -- you can create reservations that begin into the future to, for example, take nodes out of service for maintenance. (I think that the scheduler will prevent jobs from starting if they would run over into the reserved time.)</li>
-<li>a list of users or a group name, if available. You cannot mix users and groups. If a research group name exists it can be easier than listing many users.</li>
-<li>a meaningful name -- users will have to specify this name when submitting jobs. Sysadmins have to specify the name to modify or end it.</li>
-<li>nodes or partitions being reserved</li>
-<li>Resources -- Newer versions of SLURM than 22.05.09 may allow the reservation of <em>both</em> CPU and RAM resources (via TRES arguments). If so you could carve out "space" for a user to run certain jobs on any of the nodes in a partition without locking everyone out of the partition. That would be handy.</li>
+<li>a <strong>starttime</strong> -- Reservations have start times. You can create reservations that, for example, take nodes out of service a month from now for a planned maintenance window. (The scheduler will prevent jobs from starting if they would run over into the reserved time.)</li>
+<li>a <strong>duration</strong> -- reservation need to expire at some point. (Note that "UNLIMITED" turns out to be one year.)</li>
+<li>a <strong>list of users</strong> OR a <strong>group name</strong> -- You cannot mix users and groups. If a research group name exists it can be easier than listing many users.</li>
+<li>the <strong>nodes</strong> or <strong>partitions</strong> being reserved</li>
+</ol>
+<p>When creating a reservation, you CAN select:</p>
+<ol>
+<li>a meaningful <strong>name</strong> -- <code>scontrol</code> will generate a name mechanically if you don't specify one. That's not very informative. Users will have to specify the name when submitting jobs. Sysadmins have to specify the name to modify or end it. Names cannot contain spaces. Use hyphens to make it more readable.</li>
+<li>Resources -- Versions of SLURM newer than 22.05.09 may allow the reservation of CPU, RAM and/or GPU resources (via TRES arguments). If so, you could carve out "space" for a user to run certain jobs on any of the nodes in a partition without locking <em>everyone</em> out of the partition. That would be handy.</li>
 </ol>
 <p><div class="highlight"><span class="filename">Show existing reservations</span><pre><span></span><code>scontrol<span class="w"> </span>show<span class="w"> </span>reservation
 </code></pre></div>
@@ -3951,7 +3956,7 @@ scontrol<span class="w"> </span>create<span class="w"> </span><span class="nv">r
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">June 25, 2024</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">September 24, 2024</span>
   </span>
 
     
