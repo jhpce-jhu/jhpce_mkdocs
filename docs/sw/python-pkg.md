@@ -17,7 +17,7 @@ pip 23.1.2 from /jhpce/shared/jhpce/core/python/3.9.14/lib/python3.9/site-packag
 
 - Installing a package into your own home directory (e.g. the "cowsay" package)
 ```
-[bob@test@compute-107 /users/bob]$ python3 -m pip install --user cowsay
+[bob@compute-107 /users/bob]$ python3 -m pip install --user cowsay
 ```
 
 When you install a python package, the program will be installed into youur local Python bin directory, which by defaul is the directory ".local/bin" under your home directory.  In order to easily use the program, you will want to add this directory to your PATH environment variable.  If you don't have the ".local/bin" in your path, you will likely get a warning message when you "pip install" the program, and also likely get a "command not found" error when trying to run the command.
