@@ -6,6 +6,7 @@
 [bob@compute-107 /users/bob]$ python3 --version
 Python 3.9.14
 ```
+
 !!! Note "Note"
     You can use `module avail python` to see available python versions on the cluster, and load the one you want to use.
     
