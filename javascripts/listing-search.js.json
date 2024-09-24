@@ -1969,29 +1969,50 @@
   {
     "page_name": "Python Packages",
     "page_url": "../sw/python-pkg/",
-    "text": "[test@compute-107 ~]$ module load python\n[test@compute-107 ~]$ python3 --version\nPython 3.9.14\n",
-    "html": "<pre><span></span><code>[test@compute-107 ~]$ module load python\n[test@compute-107 ~]$ python3 --version\nPython 3.9.14\n</code></pre>",
+    "text": "[bob@compute-107 /users/bob]$ module load python\n[bob@compute-107 /users/bob]$ python3 --version\nPython 3.9.14\n",
+    "html": "<pre><span></span><code><span class=\"gp\">[bob@compute-107 /users/bob]$ </span>module<span class=\"w\"> </span>load<span class=\"w\"> </span>python\n<span class=\"gp\">[bob@compute-107 /users/bob]$ </span>python3<span class=\"w\"> </span>--version\n<span class=\"go\">Python 3.9.14</span>\n</code></pre>",
     "language": ""
   },
   {
     "page_name": "Python Packages",
     "page_url": "../sw/python-pkg/",
-    "text": "[compute-107 /users/test]$ python3 -m pip --version\npip 23.1.2 from /jhpce/shared/jhpce/core/python/3.9.14/lib/python3.9/site-packages/pip (python 3.9)\n",
-    "html": "<pre><span></span><code>[compute-107 /users/test]$ python3 -m pip --version\npip 23.1.2 from /jhpce/shared/jhpce/core/python/3.9.14/lib/python3.9/site-packages/pip (python 3.9)\n</code></pre>",
+    "text": "[bob@compute-107 /users/bob]$ python3 -m pip --version\npip 23.1.2 from /jhpce/shared/jhpce/core/python/3.9.14/lib/python3.9/site-packages/pip (python 3.9)\n",
+    "html": "<pre><span></span><code><span class=\"gp\">[bob@compute-107 /users/bob]$ </span>python3<span class=\"w\"> </span>-m<span class=\"w\"> </span>pip<span class=\"w\"> </span>--version\n<span class=\"go\">pip 23.1.2 from /jhpce/shared/jhpce/core/python/3.9.14/lib/python3.9/site-packages/pip (python 3.9)</span>\n</code></pre>",
     "language": ""
   },
   {
     "page_name": "Python Packages",
     "page_url": "../sw/python-pkg/",
-    "text": "[test@compute-107 ~]$ python3 -m pip install --user requests\n",
-    "html": "<pre><span></span><code>[test@compute-107 ~]$ python3 -m pip install --user requests\n</code></pre>",
+    "text": "[bob@test@compute-107 /users/bob]$ python3 -m pip install --user cowsay\n",
+    "html": "<pre><span></span><code><span class=\"gp\">[bob@test@compute-107 /users/bob]$ </span>python3<span class=\"w\"> </span>-m<span class=\"w\"> </span>pip<span class=\"w\"> </span>install<span class=\"w\"> </span>--user<span class=\"w\"> </span>cowsay\n</code></pre>",
     "language": ""
   },
   {
     "page_name": "Python Packages",
     "page_url": "../sw/python-pkg/",
-    "text": "[test@compute-107 ~]$ python3 -m pip install --user requests=2.31.0\n",
-    "html": "<pre><span></span><code>[test@compute-107 ~]$ python3 -m pip install --user requests=2.31.0\n</code></pre>",
+    "text": "[bob@compute-107 /users/bob]$ python3 -m pip install --user cowsay\nCollecting cowsay\n  Downloading cowsay-6.1-py3-none-any.whl (25 kB)\nInstalling collected packages: cowsay\n\n. . .\n\nWARNING: The script cowsay is installed in '/users/bob/.local/bin' which is not on PATH.\nConsider adding this directory to PATH or, if you prefer to suppress this warning, use --no-warn-script-location.\n\n. . .\n\nSuccessfully installed cowsay-6.1\n[bob@compute-107 /users/bob]$ cowsay -t \"Hello\"\n-bash: cowsay: command not found\n",
+    "html": "<pre><span></span><code><span class=\"gp\">[bob@compute-107 /users/bob]$ </span>python3<span class=\"w\"> </span>-m<span class=\"w\"> </span>pip<span class=\"w\"> </span>install<span class=\"w\"> </span>--user<span class=\"w\"> </span>cowsay\n<span class=\"go\">Collecting cowsay</span>\n<span class=\"go\">  Downloading cowsay-6.1-py3-none-any.whl (25 kB)</span>\n<span class=\"go\">Installing collected packages: cowsay</span>\n\n<span class=\"go\">. . .</span>\n\n<span class=\"go\">WARNING: The script cowsay is installed in '/users/bob/.local/bin' which is not on PATH.</span>\n<span class=\"go\">Consider adding this directory to PATH or, if you prefer to suppress this warning, use --no-warn-script-location.</span>\n\n<span class=\"go\">. . .</span>\n\n<span class=\"go\">Successfully installed cowsay-6.1</span>\n<span class=\"gp\">[bob@compute-107 /users/bob]$ </span>cowsay<span class=\"w\"> </span>-t<span class=\"w\"> </span><span class=\"s2\">\"Hello\"</span>\n<span class=\"go\">-bash: cowsay: command not found</span>\n</code></pre>",
+    "language": ""
+  },
+  {
+    "page_name": "Python Packages",
+    "page_url": "../sw/python-pkg/",
+    "text": "[bob@compute-107 /users/bob]$ echo $PATH\n/jhpce/shared/jhpce/core/JHPCE_tools/3.0/bin:/usr/local/bin:/usr/bin:/usr/local/sbin:/usr/sbin\n[bob@compute-107 /users/bob]$ export PATH=$PATH:$HOME/.local/bin\n[bob@compute-107 /users/bob]$ cowsay -t \"Hello\"\n  _____\n| Hello |\n  =====\n     \\\n      \\\n        ^__^\n        (oo)\\_______\n        (__)\\       )\\/\\\n            ||----w |\n            ||     ||\n[bob@compute-107 /users/bob]$ \n",
+    "html": "<pre><span></span><code><span class=\"gp\">[bob@compute-107 /users/bob]$ </span><span class=\"nb\">echo</span><span class=\"w\"> </span><span class=\"nv\">$PATH</span>\n<span class=\"go\">/jhpce/shared/jhpce/core/JHPCE_tools/3.0/bin:/usr/local/bin:/usr/bin:/usr/local/sbin:/usr/sbin</span>\n<span class=\"gp\">[bob@compute-107 /users/bob]$ </span><span class=\"nb\">export</span><span class=\"w\"> </span><span class=\"nv\">PATH</span><span class=\"o\">=</span><span class=\"nv\">$PATH</span>:<span class=\"nv\">$HOME</span>/.local/bin\n<span class=\"gp\">[bob@compute-107 /users/bob]$ </span>cowsay<span class=\"w\"> </span>-t<span class=\"w\"> </span><span class=\"s2\">\"Hello\"</span>\n<span class=\"go\">  _____</span>\n<span class=\"go\">| Hello |</span>\n<span class=\"go\">  =====</span>\n<span class=\"go\">     \\</span>\n<span class=\"go\">      \\</span>\n<span class=\"go\">        ^__^</span>\n<span class=\"go\">        (oo)\\_______</span>\n<span class=\"go\">        (__)\\       )\\/\\</span>\n<span class=\"go\">            ||----w |</span>\n<span class=\"go\">            ||     ||</span>\n<span class=\"gp\">[bob@compute-107 /users/bob]$ </span>\n</code></pre>",
+    "language": ""
+  },
+  {
+    "page_name": "Python Packages",
+    "page_url": "../sw/python-pkg/",
+    "text": "[bob@compute-107 /users/bob]$ cp $HOME/.bashrc $HOME/.bashrc-bak\n[bob@compute-107 /users/bob]$ echo \"export PATH=\\$PATH:\\$HOME/.local/bin\" >> $HOME/.bash_profile\n",
+    "html": "<pre><span></span><code><span class=\"gp\">[bob@compute-107 /users/bob]$ </span>cp<span class=\"w\"> </span><span class=\"nv\">$HOME</span>/.bashrc<span class=\"w\"> </span><span class=\"nv\">$HOME</span>/.bashrc-bak\n<span class=\"gp\">[bob@compute-107 /users/bob]$ </span><span class=\"nb\">echo</span><span class=\"w\"> </span><span class=\"s2\">\"export PATH=\\$PATH:\\$HOME/.local/bin\"</span><span class=\"w\"> </span>&gt;&gt;<span class=\"w\"> </span><span class=\"nv\">$HOME</span>/.bash_profile\n</code></pre>",
+    "language": ""
+  },
+  {
+    "page_name": "Python Packages",
+    "page_url": "../sw/python-pkg/",
+    "text": "[bob@compute-107 /users/bob]$ python3 -m pip install --user cowsay==5.0\n",
+    "html": "<pre><span></span><code>[bob@compute-107 /users/bob]$ python3 -m pip install --user cowsay==5.0\n</code></pre>",
     "language": ""
   },
   {
