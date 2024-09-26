@@ -24,27 +24,29 @@ One could, at run-time, write batch job scripts which check the features of the 
 
 ??? "Click to see feature list as of 20240926:"
     ```
-    NODELIST                  AVAIL_FEATURES                                     GRES
-    compute-048               amd,opteron,bdver1                                 (null)              
-    compute-[113-115]         intel,skylake-avx512,mem750                        (null)              
-    compute-116               intel,skylake-avx512,mem500                        (null)              
-    compute-[124,127]         amd,znver3,mem1000                                 (null)              
-    compute-152               amd,znver3                                         (null)              
-    compute-[119-122]         amd,znver2,mem1000                                 (null)              
-    compute-129               intel,icelake-server,mem2000                       (null)              
-    compute-[140-151,153]     intel,icelake-server,mem500                        (null)              
-    compute-[154-169]         intel,sapphirerapids,mem1000                       (null)              
-    compute-[053-054]         amd,opteron,bdver1,mem500                          (null)              
-    compute-[057-058,062-063, amd,opteron,bdver2                                 (null)              
-    compute-[089-100]         intel,haswell                                      (null)              
-    compute-[101-103,105-112] intel,broadwell                                    (null)              
-    compute-123               intel,cascadelake,gpu,tesv100,gpu-32gb             gpu:tesv100s:4      
-    compute-[126,128]         intel,icelake-server,gpu,tesa100,gpu-80gb          gpu:tesa100:4       
-    compute-170               intel,sapphirerapids,gpu,tesh100,gpu-96gb          gpu:tesh100:2       
-    compute-117               intel,skylake-avx512,gpu,tesv100,titanv,gpu-11gb,g gpu:tesv100:2,gpu:ti
-    compute-118               intel,cascadelake,gpu,tesv100,gpu-32gb             gpu:tesv100:4       
-    compute-125               intel,icelake-server,gpu,tesa100,mem1000,gpu-80gb  gpu:tesa100:4       
-    transfer-01               intel,ivybridge,transfer                           (null) 
+    NODELIST                  AVAIL_FEATURES                                     GRES             
+    compute-[063,070]                   amd,opteron,bdver2,mem500                                        (null)
+    compute-[113-115]                   intel,skylake-avx512,mem750                                      (null)
+    compute-116                         intel,skylake-avx512,mem500                                      (null)
+    compute-[124,127]                   amd,znver3,mem1000                                               (null)
+    compute-152                         amd,znver3,mem250                                                (null)
+    compute-[154-169]                   intel,sapphirerapids,mem1000                                     (null)
+    compute-[119-122]                   amd,znver2,mem1000                                               (null)
+    compute-129                         intel,icelake-server,mem2000                                     (null)
+    compute-[140-151,153]               intel,icelake-server,mem500                                      (null)
+    compute-[053-054]                   amd,opteron,bdver1,mem500                                        (null)
+    compute-[057-058,062,069]           amd,opteron,bdver2,mem250                                        (null)
+    compute-[065,067-068]               amd,opteron,bdver2                                               (null)
+    compute-[089-092,094-096,098-100]   intel,haswell                                                    (null)
+    compute-[093,097]                   intel,haswell,mem250                                             (null)
+    compute-[101-103,105-112]           intel,broadwell                                                  (null)
+    compute-123                         intel,cascadelake,gpu,tesv100,gpu-32gb,mem750                    gpu:tesv100s:4
+    compute-170                         intel,sapphirerapids,gpu,tesh100,gpu-96gb,mem1000                gpu:tesh100:2
+    compute-[126,128]                   intel,icelake-server,gpu,tesa100,gpu-80gb,mem500                 gpu:tesa100:4
+    compute-117                         intel,skylake-avx512,gpu,tesv100,titanv,gpu-11gb,gpu-32gb,mem250 gpu:tesv100:2,gpu:ti
+    compute-118                         intel,cascadelake,gpu,tesv100,gpu-32gb,mem750                    gpu:tesv100:4
+    compute-125                         intel,icelake-server,gpu,tesa100,mem1000,gpu-80gb                gpu:tesa100:4
+    transfer-01                         intel,ivybridge,transfer                                         (null)
     ```
 
 ## Current tag categories
