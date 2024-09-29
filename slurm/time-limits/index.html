@@ -2711,8 +2711,35 @@
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Syntax for Setting Time Limits:">
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#jhpce-cluster-time-limit-policies" class="md-nav__link">
+    <span class="md-ellipsis">
+      JHPCE Cluster Time Limit Policies:
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#best-practices" class="md-nav__link">
+    <span class="md-ellipsis">
+      Best Practices:
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Best Practices:">
       <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#receive-email-notifications" class="md-nav__link">
+    <span class="md-ellipsis">
+      Receive Email Notifications
+    </span>
+  </a>
+  
+</li>
         
           <li class="md-nav__item">
   <a href="#what-chatgpt-wrote" class="md-nav__link">
@@ -3619,8 +3646,35 @@
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Syntax for Setting Time Limits:">
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#jhpce-cluster-time-limit-policies" class="md-nav__link">
+    <span class="md-ellipsis">
+      JHPCE Cluster Time Limit Policies:
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#best-practices" class="md-nav__link">
+    <span class="md-ellipsis">
+      Best Practices:
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Best Practices:">
       <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#receive-email-notifications" class="md-nav__link">
+    <span class="md-ellipsis">
+      Receive Email Notifications
+    </span>
+  </a>
+  
+</li>
         
           <li class="md-nav__item">
   <a href="#what-chatgpt-wrote" class="md-nav__link">
@@ -3703,24 +3757,17 @@
 <p><code>srun --pty --x11 -t 4:00:00 bash</code></p>
 <p>Note that the “-t” option should be followed by a space and the <code>–-time</code> option should be followed by an “=” and a time, with no spaces.</p>
 <p>You can specify a default time in your ~/.slurm/defaults file. As documented in <a href="../crafting-jobs/#slurm-directive-order-of-precendence">this page</a> you can override such defaults with directives in your batch file or via the command line options.</p>
-<p>``` title="Examples of 5 and 10 days for interactive &amp; batch jobs"
-srun:<em>:time=5-00
-sbatch:</em>:time=10-00
-<div class="highlight"><pre><span></span><code>## JHPCE Cluster Time Limit Policies:
-On the JHPCE cluster, specific time limit policies are in place to balance the needs of diverse users. The default time limit for job execution on the [public partitions](../slurm/partitions.md) (shared, interactive and gpu partitions) is set to 1 day, ensuring that shorter tasks do not face unnecessary delays. 
-
-Additionally, users have the flexibility to request a maximum time limit of up to 90 days for longer-running jobs. This range accommodates a variety of computational workloads, offering users the freedom to tailor time limits according to the requirements of their specific tasks. Please note that by default these limits are only set on the [public partitions](../slurm/partitions.md) (shared, interactive and gpu partitions).
-
-## Best Practices:
-
-### Receive Email Notifications
-
-The directives `--mail-user` and `--mail-type` are used to tell SLURM that you want to receive email updates for certain events. One set of events is related to an approaching time limit: TIME_LIMIT_50, TIME_LIMIT_80, TIME_LIMIT_90 and TIME_LIMIT.
-
-If you did not use these directives when submitting your job, you can define or modify them on both pending and running jobs using `scontrol`
-
-```Shell title=&quot;Be notified at 80% of job duration&quot; linenums=&quot;0&quot;
-scontrol update jobid=&lt;jobid&gt; mailtype=time_limit_80
+<div class="highlight"><span class="filename">Examples of 5 and 10 days for interactive & batch jobs</span><pre><span></span><code>srun:*:time=5-00
+sbatch:*:time=10-00
+</code></pre></div>
+<h2 id="jhpce-cluster-time-limit-policies">JHPCE Cluster Time Limit Policies:<a class="headerlink" href="#jhpce-cluster-time-limit-policies" title="Anchor link to this section for reference">&para;</a></h2>
+<p>On the JHPCE cluster, specific time limit policies are in place to balance the needs of diverse users. The default time limit for job execution on the <a href="../partitions/">public partitions</a> (shared, interactive and gpu partitions) is set to 1 day, ensuring that shorter tasks do not face unnecessary delays. </p>
+<p>Additionally, users have the flexibility to request a maximum time limit of up to 90 days for longer-running jobs. This range accommodates a variety of computational workloads, offering users the freedom to tailor time limits according to the requirements of their specific tasks. Please note that by default these limits are only set on the <a href="../partitions/">public partitions</a> (shared, interactive and gpu partitions).</p>
+<h2 id="best-practices">Best Practices:<a class="headerlink" href="#best-practices" title="Anchor link to this section for reference">&para;</a></h2>
+<h3 id="receive-email-notifications">Receive Email Notifications<a class="headerlink" href="#receive-email-notifications" title="Anchor link to this section for reference">&para;</a></h3>
+<p>The directives <code>--mail-user</code> and <code>--mail-type</code> are used to tell SLURM that you want to receive email updates for certain events. One set of events is related to an approaching time limit: TIME_LIMIT_50, TIME_LIMIT_80, TIME_LIMIT_90 and TIME_LIMIT.</p>
+<p>If you did not use these directives when submitting your job, you can define or modify them on both pending and running jobs using <code>scontrol</code></p>
+<p><div class="highlight"><span class="filename">Be notified at 80% of job duration</span><pre><span></span><code>scontrol<span class="w"> </span>update<span class="w"> </span><span class="nv">jobid</span><span class="o">=</span>&lt;jobid&gt;<span class="w"> </span><span class="nv">mailtype</span><span class="o">=</span>time_limit_80
 </code></pre></div>
 <div class="highlight"><span class="filename">But only if you tell it where to send email</span><pre><span></span><code>scontrol<span class="w"> </span>update<span class="w"> </span><span class="nv">jobid</span><span class="o">=</span>&lt;jobid&gt;<span class="w"> </span><span class="nv">mailuser</span><span class="o">=</span>&lt;your-address@jh.edu&gt;
 </code></pre></div></p>

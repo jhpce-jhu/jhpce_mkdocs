@@ -3815,16 +3815,14 @@ Currently Loaded Modules:
 <p>Your next step is choose which SAS command to run and
 which optional arguements to give it to about your files or how you want SAS to behave.</p>
 <p>Choose one of the following variations (note that you can click on the faint pages icon at the right end of the section to copy the contents to your copy-and-paste buffer):</p>
-<p>``` title="Chrome, no I/O redirection"
-sas -helpbrowser SAS -xrm "SAS.webBrowser:'/usr/bin/chromium-browser'" -xrm "SAS.helpBrowser:'/usr/bin/chromium-browser'"
-<div class="highlight"><pre><span></span><code>``` title=&quot;Firefox, no I/O redirection&quot;
-sas -helpbrowser SAS -xrm &quot;SAS.webBrowser:&#39;/usr/bin/firefox&#39;&quot; -xrm &quot;SAS.helpBrowser:&#39;/usr/bin/firefox&#39;&quot;
+<p><div class="highlight"><span class="filename">Chrome, no I/O redirection</span><pre><span></span><code>sas -helpbrowser SAS -xrm &quot;SAS.webBrowser:&#39;/usr/bin/chromium-browser&#39;&quot; -xrm &quot;SAS.helpBrowser:&#39;/usr/bin/chromium-browser&#39;&quot;
+</code></pre></div>
+<div class="highlight"><span class="filename">Firefox, no I/O redirection</span><pre><span></span><code>sas -helpbrowser SAS -xrm &quot;SAS.webBrowser:&#39;/usr/bin/firefox&#39;&quot; -xrm &quot;SAS.helpBrowser:&#39;/usr/bin/firefox&#39;&quot;
 </code></pre></div></p>
-<p>``` title="Chrome, all I/O redirected to a black hole (see tip below)"
-csas
-<div class="highlight"><pre><span></span><code>``` title=&quot;Firefox, all I/O redirected to a black hole (see tip below)&quot;
-fsas
-</code></pre></div></p>
+<div class="highlight"><span class="filename">Chrome, all I/O redirected to a black hole (see tip below)</span><pre><span></span><code>csas
+</code></pre></div>
+<div class="highlight"><span class="filename">Firefox, all I/O redirected to a black hole (see tip below)</span><pre><span></span><code>fsas
+</code></pre></div>
 <details class="tip">
 <summary>Define these handy aliases for a better life</summary>
 <p>Here is some code you can add to your .bashrc file which contain some convenient bash aliases for starting SAS with browser support configured. Once that becomes part of your environment (by sourcing the file (<code>. ~/.bashrc</code>) or by logging out and back in again), after loading the SAS module you can start SAS using either <code>csas</code> or <code>fsas</code> so that it can open the desired web browser if needed. These definitions include $@ symbols, which are replaced by any additional arguments to SAS that you provide. Note that you can click on the faint pages icon at the right end of the section to copy the contents to your copy-and-paste buffer.</p>

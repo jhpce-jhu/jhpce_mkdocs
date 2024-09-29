@@ -3697,10 +3697,10 @@ Memory Efficiency: 22.47% of 300.00 GB
 <p>Home page for more information: https://github.com/troycomi/reportseff</p>
 <div class="admonition example">
 <p class="admonition-title">Example reportseff output</p>
-<p>``` title="Show my COMPLETED jobs between noon and now, adding 2 fields"
-module load reportseff
-export LESS="-R"</p>
-<p>reportseff  --since now-3days --until now -s CD --format +reqcpus,reqmem
+<div class="highlight"><span class="filename">Show my COMPLETED jobs between noon and now, adding 2 fields</span><pre><span></span><code>module load reportseff
+export LESS=&quot;-R&quot;
+
+reportseff  --since now-3days --until now -s CD --format +reqcpus,reqmem
   JobID    State       Elapsed  TimeEff   CPUEff   MemEff   ReqCPUS   ReqMem 
   12394  COMPLETED    00:44:58   0.2%     92.3%    113.0%     50      1600G
   12403  COMPLETED    00:45:12   0.2%     91.2%    115.2%     50      1600G
@@ -3717,17 +3717,17 @@ export LESS="-R"</p>
   12503  COMPLETED    06:10:40   1.3%     91.7%    152.1%     10       380G
   12531  COMPLETED    03:24:26   0.7%     86.8%    159.9%     10       350G
   12539  COMPLETED    00:37:51   0.1%      5.1%    46.8%      20       100G
-```</p>
+</code></pre></div>
 </div>
 <details class="example">
 <summary>Second example reportseff output</summary>
-<p>``` title="Show my COMPLETED jobs between noon and now, adding a field"
-module load reportseff
-export LESS="-R"</p>
-<p>reportseff --since noon --until now -s CD --format +user</p>
-<div class="highlight"><pre><span></span><code>JobID    State         Elapsed  TimeEff   CPUEff   MemEff     User
-</code></pre></div>
-<p>5011394  COMPLETED      19:16:18   40.1%    99.5%    130.4%    mnagle
+<div class="highlight"><span class="filename">Show my COMPLETED jobs between noon and now, adding a field</span><pre><span></span><code>module load reportseff
+export LESS=&quot;-R&quot;
+
+reportseff --since noon --until now -s CD --format +user
+
+    JobID    State         Elapsed  TimeEff   CPUEff   MemEff     User   
+   5011394  COMPLETED      19:16:18   40.1%    99.5%    130.4%    mnagle
    5013943  COMPLETED      14:27:08   30.1%    99.9%    127.9%    mnagle
    5016834  COMPLETED      07:48:51   16.3%    98.4%    124.0%    mnagle
    5024400  COMPLETED      05:54:33   24.6%     8.0%    60.3%    enorton
@@ -3735,7 +3735,7 @@ export LESS="-R"</p>
    5025583  COMPLETED      03:57:29   16.5%    89.4%    26.1%      sli1
    5025584  COMPLETED      04:11:32   17.5%    89.1%    26.9%      sli1
    5025586  COMPLETED      03:55:38   16.4%    82.8%    26.4%      sli1
-```</p>
+</code></pre></div>
 </details>
 <div class="admonition info">
 <p class="admonition-title">There are two ways to use reportseff:</p>

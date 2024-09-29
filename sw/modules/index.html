@@ -2353,9 +2353,27 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#basic-module-commands-for-users" class="md-nav__link">
+    <span class="md-ellipsis">
+      Basic module commands for users
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#defaults" class="md-nav__link">
     <span class="md-ellipsis">
       Defaults
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#configuring-your-bashrc" class="md-nav__link">
+    <span class="md-ellipsis">
+      Configuring your .bashrc
     </span>
   </a>
   
@@ -3604,9 +3622,27 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#basic-module-commands-for-users" class="md-nav__link">
+    <span class="md-ellipsis">
+      Basic module commands for users
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#defaults" class="md-nav__link">
     <span class="md-ellipsis">
       Defaults
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#configuring-your-bashrc" class="md-nav__link">
+    <span class="md-ellipsis">
+      Configuring your .bashrc
     </span>
   </a>
   
@@ -3664,37 +3700,36 @@ Currently Loaded Modules:
 <ul>
 <li>load a module (e.g. R module)</li>
 </ul>
-<p>``` hl_lines="6"
-[test@compute-107 ~]$ module load R
+<div class="highlight"><pre><span></span><code>[test@compute-107 ~]$ module load R
 Loading R/4.3
-(4.3)[test@compute-107 ~]$ module list</p>
-<p>Currently Loaded Modules:
-  1) JHPCE_ROCKY9_DEFAULT_ENV   2) JHPCE_tools/3.0   3) conda/3-23.3.1   4) R/4.3
-<div class="highlight"><pre><span></span><code>  Note: Some software packages depend on other software. Loading module for the package may load modules for the other software as well. In this case, loading R also loads conda module. If you have your own conda environment, please make sure there is no conflicts.
+(4.3)[test@compute-107 ~]$ module list
 
-- unload a module (e.g. when R is no longer needed, you can unload it from your environment)
-</code></pre></div>
-(4.3)[test@compute-107 ~]$ module unload R
+Currently Loaded Modules:
+<span class="hll">  1) JHPCE_ROCKY9_DEFAULT_ENV   2) JHPCE_tools/3.0   3) conda/3-23.3.1   4) R/4.3
+</span></code></pre></div>
+<p>Note: Some software packages depend on other software. Loading module for the package may load modules for the other software as well. In this case, loading R also loads conda module. If you have your own conda environment, please make sure there is no conflicts.</p>
+<ul>
+<li>unload a module (e.g. when R is no longer needed, you can unload it from your environment)</li>
+</ul>
+<p><div class="highlight"><pre><span></span><code>(4.3)[test@compute-107 ~]$ module unload R
 Unloading R/4.3
-[test@compute-107 ~]$ module list</p>
-<p>Currently Loaded Modules:
-  1) JHPCE_ROCKY9_DEFAULT_ENV   2) JHPCE_tools/3.0   3) conda/3-23.3.1</p>
-<p><div class="highlight"><pre><span></span><code>- get help on using module
+[test@compute-107 ~]$ module list
+
+Currently Loaded Modules:
+  1) JHPCE_ROCKY9_DEFAULT_ENV   2) JHPCE_tools/3.0   3) conda/3-23.3.1
 </code></pre></div>
-[test@compute-107 ~]$ module help
+- get help on using module
+<div class="highlight"><pre><span></span><code>[test@compute-107 ~]$ module help
 Usage: module [options] sub-command [args ...]
 ...
-<div class="highlight"><pre><span></span><code>## Basic module commands for users
-
-A module file is a script that sets up the paths and environment
+</code></pre></div></p>
+<h2 id="basic-module-commands-for-users">Basic module commands for users<a class="headerlink" href="#basic-module-commands-for-users" title="Anchor link to this section for reference">&para;</a></h2>
+<p>A module file is a script that sets up the paths and environment
 variables that are needed for a particular application or development
-environment. Most users will just use our modulefiles. But if you want to finely control your shell environment, you can start developing your own custom module files. 
-
-There
-are a few basic commands that users should know:
-
-``` linenums=&quot;0&quot;
-module list                 # list your currently loaded modules
+environment. Most users will just use our modulefiles. But if you want to finely control your shell environment, you can start developing your own custom module files. </p>
+<p>There
+are a few basic commands that users should know:</p>
+<div class="highlight"><pre><span></span><code>module list                 # list your currently loaded modules
 module load   &lt;MODULEFILE&gt;  # configures your environment according to modulefile 
 module unload &lt;MODULEFILE&gt;  # rolls back the configuration performed by the associated load
 module avail                # shows what modules are available for loading
@@ -3703,27 +3738,24 @@ module spider               # lists all modules, including ones not in your MODU
 module spider &lt;NAME&gt;        # search for a module whose name includes &lt;NAME&gt;
 module save &lt;NAME&gt;.         # save currently-loaded modules to &quot;default&quot; or optionally to &lt;NAME&gt;
 module restore &lt;NAME&gt;.      # load the saved collection
-</code></pre></div></p>
+</code></pre></div>
 <h2 id="defaults">Defaults<a class="headerlink" href="#defaults" title="Anchor link to this section for reference">&para;</a></h2>
 <p>By default the following modules are loaded on all compute hosts and the login hosts when you log in</p>
-<p>``` linenums="0"
-JHPCE_ROCKY9_DEFAULT_ENV
+<div class="highlight"><pre><span></span><code>JHPCE_ROCKY9_DEFAULT_ENV
 JHPCE_tools/3.0
-<div class="highlight"><pre><span></span><code>## Configuring your .bashrc
-
-It is critical that your `.bashrc` file sources the system-wide bashrc
+</code></pre></div>
+<h2 id="configuring-your-bashrc">Configuring your .bashrc<a class="headerlink" href="#configuring-your-bashrc" title="Anchor link to this section for reference">&para;</a></h2>
+<p>It is critical that your <code>.bashrc</code> file sources the system-wide bashrc
 file. Otherwise basic programs will not work! After you source the system-wide
-bashrc file you can add code which will modify your environment. For example:
+bashrc file you can add code which will modify your environment. For example:</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># Always source the global bashrc</span>
+<span class="k">if</span><span class="w"> </span><span class="o">[</span><span class="w"> </span>-f<span class="w"> </span>/etc/bashrc<span class="w"> </span><span class="o">]</span><span class="p">;</span><span class="w"> </span><span class="k">then</span>
+.<span class="w"> </span>/etc/bashrc
+<span class="k">fi</span>
 
-```bash linenums=&quot;0&quot;
-# Always source the global bashrc
-if [ -f /etc/bashrc ]; then
-. /etc/bashrc
-fi
-
-# If I prefer gcc/4.8.1 as my default compiler
-module load gcc/4.8.1
-</code></pre></div></p>
+<span class="c1"># If I prefer gcc/4.8.1 as my default compiler</span>
+module<span class="w"> </span>load<span class="w"> </span>gcc/4.8.1
+</code></pre></div>
 
 
 

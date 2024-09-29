@@ -1402,6 +1402,99 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#recipe-for-running-mkdocs-locally" class="md-nav__link">
+    <span class="md-ellipsis">
+      Recipe for Running Mkdocs Locally
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#errors-you-might-run-into-running-mkdocs-locally" class="md-nav__link">
+    <span class="md-ellipsis">
+      Errors You Might Run Into Running Mkdocs Locally
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#macdown-wysiwyg-editor" class="md-nav__link">
+    <span class="md-ellipsis">
+      MacDown WYSIWYG Editor
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#page-status" class="md-nav__link">
+    <span class="md-ellipsis">
+      Page Status
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Page Status">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#page-icons" class="md-nav__link">
+    <span class="md-ellipsis">
+      Page Icons
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#page-status_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Page Status
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tabs" class="md-nav__link">
+    <span class="md-ellipsis">
+      Tabs
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Tabs">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#simple-example-of-tabs" class="md-nav__link">
+    <span class="md-ellipsis">
+      Simple example of tabs
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tabs-inside-of-admonitions-or-details" class="md-nav__link">
+    <span class="md-ellipsis">
+      Tabs inside of admonitions or details
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -4078,6 +4171,99 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#recipe-for-running-mkdocs-locally" class="md-nav__link">
+    <span class="md-ellipsis">
+      Recipe for Running Mkdocs Locally
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#errors-you-might-run-into-running-mkdocs-locally" class="md-nav__link">
+    <span class="md-ellipsis">
+      Errors You Might Run Into Running Mkdocs Locally
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#macdown-wysiwyg-editor" class="md-nav__link">
+    <span class="md-ellipsis">
+      MacDown WYSIWYG Editor
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#page-status" class="md-nav__link">
+    <span class="md-ellipsis">
+      Page Status
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Page Status">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#page-icons" class="md-nav__link">
+    <span class="md-ellipsis">
+      Page Icons
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#page-status_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Page Status
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tabs" class="md-nav__link">
+    <span class="md-ellipsis">
+      Tabs
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Tabs">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#simple-example-of-tabs" class="md-nav__link">
+    <span class="md-ellipsis">
+      Simple example of tabs
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tabs-inside-of-admonitions-or-details" class="md-nav__link">
+    <span class="md-ellipsis">
+      Tabs inside of admonitions or details
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -4412,25 +4598,22 @@ possible <span class="critic comment">and comments can be added inline</span>.</
 </details>
 <p>When Snippets is enabled, <abbr title="Hyper Text Markup Language">HTML</abbr> or Markdown content from other files (including source files) can be embedded by using the <code>--8&lt;--</code> (scissors) notation directly from within a code block to pull in a file via a relative path (starting inside of docs/, not relative to the document doing the including), in this case <code>ourtools/includes/sample-bashrc</code></p>
 <p>It can be extremely frustrating figuring out what path to use to make a snippet actually display. If you get it wrong in certain ways it will prevent the rebuilding of the whole site.</p>
-<p>``` title="sample bashrc"</p>
-<h1 id="system-wide-bashrc-file-for-interactive-bash1-shells">System-wide .bashrc file for interactive bash(1) shells.<a class="headerlink" href="#system-wide-bashrc-file-for-interactive-bash1-shells" title="Anchor link to this section for reference">&para;</a></h1>
-<p>if [ -z "$PS1" ]; then
+<p><div class="highlight"><span class="filename">sample bashrc</span><pre><span></span><code># System-wide .bashrc file for interactive bash(1) shells.
+if [ -z &quot;$PS1&quot; ]; then
      return
 fi
-<div class="highlight"><pre><span></span><code>For more details about snippets, including ability to pull in only certain sections of other documents, or to append a file to every page in the web site, see [https://facelessuser.github.io/pymdown-extensions/extensions/snippets/](https://facelessuser.github.io/pymdown-extensions/extensions/snippets/)
-
-This warning says to not enable snippets for security reasons.
+</code></pre></div>
+For more details about snippets, including ability to pull in only certain sections of other documents, or to append a file to every page in the web site, see <a href="https://facelessuser.github.io/pymdown-extensions/extensions/snippets/">https://facelessuser.github.io/pymdown-extensions/extensions/snippets/</a></p>
+<p>This warning says to not enable snippets for security reasons.
 I cannot discern the threat level to us in our usage.
-[https://github.com/facelessuser/pymdown-extensions/security/advisories/GHSA-jh85-wwv9-24hv](https://github.com/facelessuser/pymdown-extensions/security/advisories/GHSA-jh85-wwv9-24hv)
-
-## Recipe for Running Mkdocs Locally
-As of 20240401 these steps are needed to build a local Material for MkDocs server that will run a browser at `http://127.0.0.1:8000/`
-
-!!! Warning
-    Because our `mkdocs.yml` contains some certain material, JRT thinks, `mkdocs serve` spits out errors if it doesn&#39;t find Git supporting files/directories. But you&#39;re supposed to be able to create stand-alone web pages outside of Git so it would be nice to understand the interdependency.
-
-```ShellSession linenums=&quot;0&quot;
-cd ~/Documents/GitHub/
+<a href="https://github.com/facelessuser/pymdown-extensions/security/advisories/GHSA-jh85-wwv9-24hv">https://github.com/facelessuser/pymdown-extensions/security/advisories/GHSA-jh85-wwv9-24hv</a></p>
+<h2 id="recipe-for-running-mkdocs-locally">Recipe for Running Mkdocs Locally<a class="headerlink" href="#recipe-for-running-mkdocs-locally" title="Anchor link to this section for reference">&para;</a></h2>
+<p>As of 20240401 these steps are needed to build a local Material for MkDocs server that will run a browser at <code>http://127.0.0.1:8000/</code></p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Because our <code>mkdocs.yml</code> contains some certain material, JRT thinks, <code>mkdocs serve</code> spits out errors if it doesn't find Git supporting files/directories. But you're supposed to be able to create stand-alone web pages outside of Git so it would be nice to understand the interdependency.</p>
+</div>
+<div class="highlight"><pre><span></span><code>cd ~/Documents/GitHub/
 
 git clone https://github.com/jhpce-jhu/jhpce_mkdocs
 or you can use the ssh-key method:
@@ -4446,7 +4629,7 @@ pip3 install mkdocs-git-authors-plugin
 pip3 install mkdocs-extract-listings-plugin
 mkdocs build
 mkdocs serve
-</code></pre></div></p>
+</code></pre></div>
 <h2 id="errors-you-might-run-into-running-mkdocs-locally">Errors You Might Run Into Running Mkdocs Locally<a class="headerlink" href="#errors-you-might-run-into-running-mkdocs-locally" title="Anchor link to this section for reference">&para;</a></h2>
 <p>It can sometimes be useful to <span class="keys"><kbd class="key-control">Ctrl</kbd><span>+</span><kbd class="key-c">C</kbd></span> the mkdocs serve program and restart it. Usually this involves significant changes to <code>mkdocs.yml</code> and those will stop over time. However when in doubt give it a try.</p>
 <p>JRT added some instructions to the mkdocs.yml file causing warnings to be issued. JRT has found them very useful.

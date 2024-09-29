@@ -3509,170 +3509,14 @@
    D((Web Portal)) --&gt; F[Compute node2]
    B([Login nodes]) --&gt; G[Compute node3]
    D((Web Portal)) --&gt; G[Compute node3]
-   C([Transfer node]) &lt;--&gt; H[(storage servers)]</code></pre><h2><a class="heading" href="../access/file-transfer">Overview</a></h2><a class="url" href="../access/file-transfer">access/file-transfer/</a><pre><span></span><code>### Batch use of the transfer node/partition
-
-[Here](../slurm/crafting-jobs.md/#copying-data-within-cluster) is a sample SLURM batch job that you can use as a model to do an internal transfer on a compute node using good rsync arguments. You can adapt it to run on the `transfer` partition to perform transfers into or out of the cluster. You can also change it to use some other transfer programs. Usually such batch jobs require care when providing authentication information.
-
-## Common Tools
-
-Many of these transfer protocols have both command-line and graphic user interface programs available.
-
-+ scp or sftp — file transfer via command line
-+ [rsync](../files/copying-files.md) - a **very** useful uni-directional mirroring utility program
-+ GUI for sftp — file transfer by drag and drop from your desktop
-+ GlobusOnline — fast file transfers between GlobusOnline endpoints
-+ Aspera  —  very fast file transfer to and from Aspera servers
-+ OneDrive access with rclone  —  Use “rclone” to access your OneDrive directory (as well as other network drives (AWS buckets, Google Drive…)
-+ Unison — keep directories synced (can be configured to be bi-directional)
-+ Mount remote filesystems — directories at JHPCE mounted on your local host. **IS THIS MATERIAL STILL ACCURATE IN 2024?** Is this [example SSHFS doc](https://hpc-docs.cubi.bihealth.org/connecting/configure-ssh/linux/#file-system-mount-via-sshfs) worth re-using?
-+ ftp (kind of…)
-
-
-## `scp` and `sftp`
-The `scp` and `sftp` command-line tools are the most common tools used for
-transferring data to and from the cluster.  The basic tradeoff is
-between speed (`scp` is faster) and flexibility (`sftp` is more
-flexible).  The `scp` and `sftp` commands are available from the Terminal on a
-MacOS or Linux based laptop/desktop, or from a `CMD` or `Powershell`
-prompt on recent Windows systems.
-
-Although both SCP and SFTP utilize the same SSH encryption during file
-transfer with the same general level of overhead, SCP is usually
-faster than SFTP at transferring files, especially on high latency
-networks.  SFTP should be used when you may need an interactive
-session on the cluster to navigate to a directory before transferring
-the files, whereas SCP should be used when you know the exact path of
-the file you want to transfer.
-
-### `scp`
-The `scp` command can be though of as a `network cp` command.  The command to transfer a file called `data.txt` from your local system to your home directory on the cluster would be:
-</code></pre><pre><span></span><code>where the paths default to your current local directory and home
-directory on the remote. The target filename if omitted will be the
-local filename.
-
-
-If you want to copy a file from the cluster to your local laptop/desktop, you would reverse the arguments. For example to copy `data2.txt` from the cluster to a local file:
-</code></pre><pre><span></span><code>### `sftp`
-
-The `sftp` command is another means of transfering data to and from the cluster.  To use `sftp`, you would run the command:
-</code></pre><pre><span></span><code>Once you’ve connected, you’ll be shown an `sftp&gt;` prompt.  From here you can use
-the shell command `ls` to get a directory listing, and and `cd` to
-change directories.  In addition to `ls` and `cd` you can use the
-`get` command to transfer a file from the cluster it to your local
-system, or the `put` command to transfer a file from your local system
-to the cluster.  Once you are done with `sftp`, you would type `exit` to
-end the session.
-
-
-## GUIs
-If you prefer drag and drop interface rather than using shell
-commands, then an application that presents a window for drag and drop
-is what you want. Depending on which OS you are using, we can
-recommend the following applications:
-
-macOS users might consider [Filezilla](https://en.wikipedia.org/wiki/FileZilla). It 
- is an outstanding application that not only
-provides a GUI browser for FTP, SFTP, but it also allows you to browse
-WebDav, Amazon S3, and OpenStack Swift file systems. It is free to
-download and install.
-
-
-Our recommended application for Windows users accessing the JHPCE cluster is [MobaXterm](http://mobaxterm.mobatek.net/download-home-edition.html).
-You can also use https://en.wikipedia.org/wiki/WinSCP or [Putty](https://en.wikipedia.org/wiki/PuTTY) if you are already familiar
-with them.
-
-### Rclone
-[Rclone](https://en.wikipedia.org/wiki/Rclone) can be used to access network file resources, such as OneDrive,
-Google Drive, and AWS. See [here](../access/onedrive.md) for instructions on using it to connect to Hopkins OneDrive storage.
-
-### Aspera
-
-[Aspera](https://www.ibm.com/products/aspera) is a commercial product from IBM that allows file transfers that are
-reportedly 20 times faster than `ftp`.  Documentation is available for macOS, Linux and Windows.
-
-Aspera is required to download data from the
-[NCBI Aspera](https://www.ncbi.nlm.nih.gov/home/download/) server or download/upload data from/to JHU CIDR on the
-Bayview campus.
-
-The Aspera license does not allow us to install the client for our users. You must install it
-yourself. You may either download the linux client from the [Aspera Download site](https://www.ibm.com/aspera/connect/) or else use the client that we already downloaded. (It may be out of date.) If you prefer the latter, simply copy the installation script from here:
-</code></pre><pre><span></span><code>into your home directory, and then run the script:
-</code></pre><pre><span></span><code>This will install the `ascp` command under your home directory at  `~/.aspera/connect/bin`.  You can either add `~/.aspera/connect/bin` to your `PATH`, or use the full path to the `ascp` command to run it.
-
-You may also need to do other steps, such as install an extension to your web browser. Instructions on how to do that for Linux, as an example, are available from IBM [here](https://www.ibm.com/docs/en/aspera-connect/4.2?topic=suc-installation).
-
-
-### Unison
-
-!!! Warning
-    As of 20240318 we don't have unison installed in the cluster. We will work on adding it. (You can install your own copy of it.)
-
-Using [Unison](https://en.wikipedia.org/wiki/Unison_(software)), you can keep data synchronized between directories, including ones on a single computer or between the cluster and on your local system. Both CLI and GUI versions are available. Unison needs to be installed on both computers if used across a network.
-
-Unison is a synchronization tool. It can be told to update files in both SOURCE and DESTINATION locations according to some rules.
-
-Unison home page is [here](https://github.com/bcpierce00/unison?tab=readme-ov-file#readme) with a [wiki](https://github.com/bcpierce00/unison/wiki) that provides access to documentation and some binaries.
-
-An extensive [tutorial](https://ostechnix.com/how-to-synchronize-files-with-unison-on-linux/) at ostechnix.
-
-A [wiki](https://wiki.archlinux.org/title/unison) about using it from ArchLinux.
-
-[This](https://github.com/jfiksel/cluster-example#how-to-use-unison-for-file-transfer-and-syncing) document written by a previous JHPCE user (Jacob Fiksel) might still be useful.
-
-### Globus
-We have a Globus endpoint. Please see [this document](globus.md).
-
-
-## Mounting virtual file systems
-
-!!! Obsolete
-    This might be obsolete information as of 20240220 - OSXFUSE is now named macFUSE and is [hosted](https://osxfuse.github.io) at a different location than what is described below.
-
-A common use case occurs when a user has a pipeline that is
-periodicially emiting tab delimited files and the user wants to plot
-these files with a favorite plotting or analysis application that runs
-on their local host. In this case it is common to mount the remote
-file system on the local host via NFS or SMB.
-
-Unfortunately, given the size and hetergeneity of our user base (which
-spans the entire medical campus), this is not practical. Instead, we
-recommend that users create a virtual file system on their OSX machine
-with the MACFusion application. MacFusion is free and allows you to
-create a mount point on your local host that looks like just another
-directory in your local file system. So any applications and scripts
-on your local host can access the data in that mount point. From the
-user perspective, it acts just like an SMB or NSF mount point. Data is
-transferred back and forth via an encrypted link.
-
-
-MacFusion requires the installation of an OSX kernel extenstion and
-some associated tools. OSXFuse provides the needed extension. OSXFuse
-implements a so called ” FileSystem in USErspace”. This technology is
-described here. There exist FUSE kernel modules for most flavors of
-unix and linux.  The procedure for installing OSXFuse and MACFusion is
-described below.
-
-+ Downloaded OSXFUSE from sourceforge repository
-+ Install OSXFUSE
-+ Launch the OSXFUSE installer and perform a custom install.  Be sure to select “MacFuse Compatibility Layer” in the Custom Install screen. 
-+ After installing the kernel extension it may, or may not, be necessary to reboot your mac.Screen Shot
-+ Download and install the Macfusion app from: [http://macfusionapp.org](http://macfusionapp.org).
-+ Startup MacFusion, and create an entry for `jhpce-transfer01.jhsph.edu` — enter your login and password.
-+ Select a mount point, e.g. `~/jhpce/myhome/`
-+ Once the drive is mounted, you can cd to the directory in the shell or view it  in a window on your desktop. To do this you need to “Reveal” the drive by pressing Command-R.  Once the directory is revealed, you can drag and drop files into the director in the usual way you drag and drop files into any directory on your mac.
-
-## ftp
-We don’t have the ftp client installed on the cluster.  It is an
-older, less secure, unencrypted channel for transferring files.
-However if you are downloading files from an older site that does not
-support SFTP or one of the other more modern mechanisms, you have a
-couple of options for ftp.
-
-If you want to be able to interactively browse through the ftp site you can use the lynx text based browser command:
-</code></pre><pre><span></span><code>Once connected, you can then use the arrow keys to move around the
-site, and to select a file to download or a directory to descend into.
-
-If you know the exact path to the file you want, you can use the “wget” command:
+   C([Transfer node]) &lt;--&gt; H[(storage servers)]</code></pre><h2><a class="heading" href="../access/file-transfer">Overview</a></h2><a class="url" href="../access/file-transfer">access/file-transfer/</a><pre><span></span><code>jhpce01% srun --pty --x11 -p transfer bash
+</code></pre><pre><span></span><code>scp LOCAL_PATH/data.txt USERID@jhpce-transfer01.jhsph.edu:REMOTE_PATH/REMOTE_TARGET_FILENAME
+</code></pre><pre><span></span><code>scp USERID@jhpce-transfer01.jhsph.edu:REMOTE_PATH/data2.txt LOCAL_PATH/LOCAL_TARGET_FILENAME
+</code></pre><pre><span></span><code>sftp USERID@jhpce-transfer01.jhsph.edu
+</code></pre><pre><span></span><code>/jhpce/shared/jhpce/core/JHPCE_tools/3.0/packages/ibm-aspera-connect_4.2.10.749_linux_x86_64.sh
+</code></pre><pre><span></span><code>bash ibm-aspera-connect_4.2.10.749_linux_x86_64.sh
+</code></pre><pre><span></span><code>lynx ftp://USER@ftp.site.gov
+</code></pre><pre><span></span><code>wget ftp://USER:PASSWORD@ftp.site.gov/path/to/file
 </code></pre><h2><a class="heading" href="../access/onedrive">OneDrive via rclone</a></h2><a class="url" href="../access/onedrive">access/onedrive/</a><pre><span></span><code>[myuser@transfer-01 ~]$ xdg-settings set default-web-browser chromium-browser.desktop
 </code></pre><pre><span></span><code><span class="gp">[compute-113 /users/bob]$ </span>rclone<span class="w"> </span>lsd<span class="w"> </span>OneDrive:
 <span class="go">          -1 2019-12-21 01:54:32         2 BoxMigration</span>
@@ -4670,20 +4514,11 @@ tags:
 </code></pre><pre><span></span><code><span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">pymdownx.snippets</span><span class="p">:</span><span class="w"> </span><span class="c1"># adds the ability to embed content from arbitrary files into a document</span>
 <span class="w">      </span><span class="nt">check_paths</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span><span class="w"> </span><span class="c1"># if true, if snippets cannot be found, the site cannot be rebuilt!!!</span>
 <span class="w">      </span><span class="nt">base_path</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">docs</span>
-</code></pre><pre><span></span><code>For more details about snippets, including ability to pull in only certain sections of other documents, or to append a file to every page in the web site, see [https://facelessuser.github.io/pymdown-extensions/extensions/snippets/](https://facelessuser.github.io/pymdown-extensions/extensions/snippets/)
-
-This warning says to not enable snippets for security reasons.
-I cannot discern the threat level to us in our usage.
-[https://github.com/facelessuser/pymdown-extensions/security/advisories/GHSA-jh85-wwv9-24hv](https://github.com/facelessuser/pymdown-extensions/security/advisories/GHSA-jh85-wwv9-24hv)
-
-## Recipe for Running Mkdocs Locally
-As of 20240401 these steps are needed to build a local Material for MkDocs server that will run a browser at `http://127.0.0.1:8000/`
-
-!!! Warning
-    Because our `mkdocs.yml` contains some certain material, JRT thinks, `mkdocs serve` spits out errors if it doesn't find Git supporting files/directories. But you're supposed to be able to create stand-alone web pages outside of Git so it would be nice to understand the interdependency.
-
-```ShellSession linenums="0"
-cd ~/Documents/GitHub/
+</code></pre><pre><span></span><code># System-wide .bashrc file for interactive bash(1) shells.
+if [ -z "$PS1" ]; then
+     return
+fi
+</code></pre><pre><span></span><code>cd ~/Documents/GitHub/
 
 git clone https://github.com/jhpce-jhu/jhpce_mkdocs
 or you can use the ssh-key method:
@@ -4897,21 +4732,9 @@ transfer-01                         intel,ivybridge,transfer                    
 </code></pre><h2><a class="heading" href="../slurm/partitions">Partitions</a></h2><a class="url" href="../slurm/partitions">slurm/partitions/</a><pre><span></span><code>scontrol<span class="w"> </span>show<span class="w"> </span>partition<span class="w"> </span>partitionname
 </code></pre><h2><a class="heading" href="../slurm/qos">Quality of Service (QOS)</a></h2><a class="url" href="../slurm/qos">slurm/qos/</a><pre><span></span><code>scontrol<span class="w"> </span>show<span class="w"> </span>partition<span class="w"> </span>partitionname<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>-i<span class="w"> </span>qos
 </code></pre><h2><a class="heading" href="../slurm/time-limits">Time Limits</a></h2><a class="url" href="../slurm/time-limits">slurm/time-limits/</a><pre><span></span><code>Note: The following was largely written using ChatGPT.
-</code></pre><pre><span></span><code>## JHPCE Cluster Time Limit Policies:
-On the JHPCE cluster, specific time limit policies are in place to balance the needs of diverse users. The default time limit for job execution on the [public partitions](../slurm/partitions.md) (shared, interactive and gpu partitions) is set to 1 day, ensuring that shorter tasks do not face unnecessary delays. 
-
-Additionally, users have the flexibility to request a maximum time limit of up to 90 days for longer-running jobs. This range accommodates a variety of computational workloads, offering users the freedom to tailor time limits according to the requirements of their specific tasks. Please note that by default these limits are only set on the [public partitions](../slurm/partitions.md) (shared, interactive and gpu partitions).
-
-## Best Practices:
-
-### Receive Email Notifications
-
-The directives `--mail-user` and `--mail-type` are used to tell SLURM that you want to receive email updates for certain events. One set of events is related to an approaching time limit: TIME_LIMIT_50, TIME_LIMIT_80, TIME_LIMIT_90 and TIME_LIMIT.
-
-If you did not use these directives when submitting your job, you can define or modify them on both pending and running jobs using `scontrol`
-
-```Shell title="Be notified at 80% of job duration" linenums="0"
-scontrol update jobid=&lt;jobid&gt; mailtype=time_limit_80
+</code></pre><pre><span></span><code>srun:*:time=5-00
+sbatch:*:time=10-00
+</code></pre><pre><span></span><code>scontrol<span class="w"> </span>update<span class="w"> </span><span class="nv">jobid</span><span class="o">=</span>&lt;jobid&gt;<span class="w"> </span><span class="nv">mailtype</span><span class="o">=</span>time_limit_80
 </code></pre><pre><span></span><code>scontrol<span class="w"> </span>update<span class="w"> </span><span class="nv">jobid</span><span class="o">=</span>&lt;jobid&gt;<span class="w"> </span><span class="nv">mailuser</span><span class="o">=</span>&lt;your-address@jh.edu&gt;
 </code></pre><pre><span></span><code>[mmill116@login31 class-scripts]$ cat script1
  #!/bin/bash
@@ -4956,7 +4779,40 @@ CPU Efficiency: 97.74% of 00:48:40 core-walltime
 Job Wall-clock time: 00:48:40
 Memory Utilized: 67.40 GB
 Memory Efficiency: 22.47% of 300.00 GB
-</code></pre><pre><span></span><code>JobID    State         Elapsed  TimeEff   CPUEff   MemEff     User
+</code></pre><pre><span></span><code>module load reportseff
+export LESS="-R"
+
+reportseff  --since now-3days --until now -s CD --format +reqcpus,reqmem
+  JobID    State       Elapsed  TimeEff   CPUEff   MemEff   ReqCPUS   ReqMem 
+  12394  COMPLETED    00:44:58   0.2%     92.3%    113.0%     50      1600G
+  12403  COMPLETED    00:45:12   0.2%     91.2%    115.2%     50      1600G
+  12413  COMPLETED    00:00:04   0.0%      ---      0.0%      70      1800G
+  12415  COMPLETED    00:00:03   0.0%      ---      0.0%      70      1800G
+  12416  COMPLETED    00:00:03   0.0%      ---      0.0%      75      1800G
+  12418  COMPLETED    00:03:04   0.0%      1.8%     0.9%      50      1500G
+  12419  COMPLETED    00:03:24   0.0%      ---      0.0%      50      1500G
+  12435  COMPLETED    00:07:03   0.0%     49.1%    46.5%      20       500G
+  12455  COMPLETED    06:22:15   26.5%     9.6%    38.1%       1       50G
+  12464  COMPLETED    00:01:41   0.0%     16.6%     3.2%      15       350G
+  12468  COMPLETED    00:02:56   0.0%     48.1%    54.0%      10       250G
+  12469  COMPLETED    08:39:19   1.8%     96.3%    97.7%      10       400G
+  12503  COMPLETED    06:10:40   1.3%     91.7%    152.1%     10       380G
+  12531  COMPLETED    03:24:26   0.7%     86.8%    159.9%     10       350G
+  12539  COMPLETED    00:37:51   0.1%      5.1%    46.8%      20       100G
+</code></pre><pre><span></span><code>module load reportseff
+export LESS="-R"
+
+reportseff --since noon --until now -s CD --format +user
+
+    JobID    State         Elapsed  TimeEff   CPUEff   MemEff     User   
+   5011394  COMPLETED      19:16:18   40.1%    99.5%    130.4%    mnagle
+   5013943  COMPLETED      14:27:08   30.1%    99.9%    127.9%    mnagle
+   5016834  COMPLETED      07:48:51   16.3%    98.4%    124.0%    mnagle
+   5024400  COMPLETED      05:54:33   24.6%     8.0%    60.3%    enorton
+   5025014  COMPLETED      04:28:52   18.7%     9.2%     3.4%    jzhang5
+   5025583  COMPLETED      03:57:29   16.5%    89.4%    26.1%      sli1
+   5025584  COMPLETED      04:11:32   17.5%    89.1%    26.9%      sli1
+   5025586  COMPLETED      03:55:38   16.4%    82.8%    26.4%      sli1
 </code></pre><pre><span></span><code>module load reportseff
 export LESS="-R"  # to provide colorized output
 </code></pre><pre><span></span><code>Define an alias on the command line or in your .bashrc
@@ -5466,21 +5322,22 @@ Currently Loaded Modules:
 <span class="go">Currently Loaded Modules:</span>
 <span class="go">  1) JHPCE_ROCKY9_DEFAULT_ENV   2) JHPCE_tools/3.0</span>
 </code></pre><pre><span></span><code>[test@compute-107 ~]$ module avail
-</code></pre><pre><span></span><code>  Note: Some software packages depend on other software. Loading module for the package may load modules for the other software as well. In this case, loading R also loads conda module. If you have your own conda environment, please make sure there is no conflicts.
+</code></pre><pre><span></span><code>[test@compute-107 ~]$ module load R
+Loading R/4.3
+(4.3)[test@compute-107 ~]$ module list
 
-- unload a module (e.g. when R is no longer needed, you can unload it from your environment)
-</code></pre><pre><span></span><code>- get help on using module
-</code></pre><pre><span></span><code>## Basic module commands for users
+Currently Loaded Modules:
+<span class="hll">  1) JHPCE_ROCKY9_DEFAULT_ENV   2) JHPCE_tools/3.0   3) conda/3-23.3.1   4) R/4.3
+</span></code></pre><pre><span></span><code>(4.3)[test@compute-107 ~]$ module unload R
+Unloading R/4.3
+[test@compute-107 ~]$ module list
 
-A module file is a script that sets up the paths and environment
-variables that are needed for a particular application or development
-environment. Most users will just use our modulefiles. But if you want to finely control your shell environment, you can start developing your own custom module files. 
-
-There
-are a few basic commands that users should know:
-
-``` linenums="0"
-module list                 # list your currently loaded modules
+Currently Loaded Modules:
+  1) JHPCE_ROCKY9_DEFAULT_ENV   2) JHPCE_tools/3.0   3) conda/3-23.3.1
+</code></pre><pre><span></span><code>[test@compute-107 ~]$ module help
+Usage: module [options] sub-command [args ...]
+...
+</code></pre><pre><span></span><code>module list                 # list your currently loaded modules
 module load   &lt;MODULEFILE&gt;  # configures your environment according to modulefile 
 module unload &lt;MODULEFILE&gt;  # rolls back the configuration performed by the associated load
 module avail                # shows what modules are available for loading
@@ -5489,20 +5346,15 @@ module spider               # lists all modules, including ones not in your MODU
 module spider &lt;NAME&gt;        # search for a module whose name includes &lt;NAME&gt;
 module save &lt;NAME&gt;.         # save currently-loaded modules to "default" or optionally to &lt;NAME&gt;
 module restore &lt;NAME&gt;.      # load the saved collection
-</code></pre><pre><span></span><code>## Configuring your .bashrc
+</code></pre><pre><span></span><code>JHPCE_ROCKY9_DEFAULT_ENV
+JHPCE_tools/3.0
+</code></pre><pre><span></span><code><span class="c1"># Always source the global bashrc</span>
+<span class="k">if</span><span class="w"> </span><span class="o">[</span><span class="w"> </span>-f<span class="w"> </span>/etc/bashrc<span class="w"> </span><span class="o">]</span><span class="p">;</span><span class="w"> </span><span class="k">then</span>
+.<span class="w"> </span>/etc/bashrc
+<span class="k">fi</span>
 
-It is critical that your `.bashrc` file sources the system-wide bashrc
-file. Otherwise basic programs will not work! After you source the system-wide
-bashrc file you can add code which will modify your environment. For example:
-
-```bash linenums="0"
-# Always source the global bashrc
-if [ -f /etc/bashrc ]; then
-. /etc/bashrc
-fi
-
-# If I prefer gcc/4.8.1 as my default compiler
-module load gcc/4.8.1
+<span class="c1"># If I prefer gcc/4.8.1 as my default compiler</span>
+module<span class="w"> </span>load<span class="w"> </span>gcc/4.8.1
 </code></pre><h2><a class="heading" href="../sw/python-pkg">Python Packages</a></h2><a class="url" href="../sw/python-pkg">sw/python-pkg/</a><pre><span></span><code>[bob@compute-107 /users/bob]$ module load python
 [bob@compute-107 /users/bob]$ python3 --version
 Python 3.9.14
@@ -5732,10 +5584,10 @@ srun: job 3178287 has been allocated resources
 
 Currently Loaded Modules:
   1) JHPCE_ROCKY9_DEFAULT_ENV   2) JHPCE_tools/3.0   3) sas/9.4
-</code></pre><pre><span></span><code>``` title="Firefox, no I/O redirection"
-sas -helpbrowser SAS -xrm "SAS.webBrowser:'/usr/bin/firefox'" -xrm "SAS.helpBrowser:'/usr/bin/firefox'"
-</code></pre><pre><span></span><code>``` title="Firefox, all I/O redirected to a black hole (see tip below)"
-fsas
+</code></pre><pre><span></span><code>sas -helpbrowser SAS -xrm "SAS.webBrowser:'/usr/bin/chromium-browser'" -xrm "SAS.helpBrowser:'/usr/bin/chromium-browser'"
+</code></pre><pre><span></span><code>sas -helpbrowser SAS -xrm "SAS.webBrowser:'/usr/bin/firefox'" -xrm "SAS.helpBrowser:'/usr/bin/firefox'"
+</code></pre><pre><span></span><code>csas
+</code></pre><pre><span></span><code>fsas
 </code></pre><pre><span></span><code><span class="c1"># SAS routines for __interactive__ sessions where plotting is involved</span>
 <span class="c1"># (because SAS generates HTML for the plots when run in interactive mode)</span>
 <span class="c1"># </span>
