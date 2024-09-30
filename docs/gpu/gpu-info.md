@@ -78,6 +78,9 @@ on each node:
 
 ![](images/slurmpic1.png)
 
+One commonly used option when using GPUs in a SLURM environment is the ```--gpu-bind=closest``
+option. This will make sure the core/CPU that is assigned to your job is the closest one to the controling bus that the GPU is on. So if you are trying to get the most out of the performance of your GPU code, this option may be helpful.  There is a really good description of GPU/CORE binding at [https://pawsey.atlassian.net/wiki/spaces/US/pages/51929056/Example+Slurm+Batch+Scripts+for+Setonix+on+GPU+Compute+Nodes](https://pawsey.atlassian.net/wiki/spaces/US/pages/51929056/Example+Slurm+Batch+Scripts+for+Setonix+on+GPU+Compute+Nodes)
+
 You will also notice that there are several partitions with GPUs in them.  By
 default all users should only access the "gpu" partition. The other partitions
 ar PI-specific partitions for groups that have purchases GPUs for the JHPCE
