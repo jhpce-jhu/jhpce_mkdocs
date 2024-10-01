@@ -3561,8 +3561,8 @@
 <span class="go">       20 plot1.sh</span>
 <span class="go">       83 test1.sh</span>
 <span class="go">        0 zzz-test.txt</span>
-</code></pre><h2><a class="heading" href="../access/ssh">SSH</a></h2><a class="url" href="../access/ssh">access/ssh/</a><pre><span></span><code>ssh-keygen -t rsa
-</code></pre><pre><span></span><code>cat ~/.ssh/id_rsa.pub | ssh &lt;your_userid&gt;@jhpce01.jhsph.edu 'cat &gt;&gt; ~/.ssh/authorized_keys'
+</code></pre><h2><a class="heading" href="../access/ssh">SSH</a></h2><a class="url" href="../access/ssh">access/ssh/</a><pre><span></span><code>ssh-keygen -t ecdsa
+</code></pre><pre><span></span><code>cat ~/.ssh/id_ecdsa.pub | ssh &lt;your_userid&gt;@jhpce01.jhsph.edu 'cat &gt;&gt; ~/.ssh/authorized_keys'
 </code></pre><pre><span></span><code>ssh-add
 ssh-agent
 </code></pre><pre><span></span><code>EnableEscapeCommandline<span class="w"> </span>yes<span class="w"> </span><span class="c1"># Needed for recent macOS if you want to issue an SSH escape,</span>
@@ -3601,7 +3601,7 @@ ServerAliveCountMax<span class="w"> </span><span class="m">30</span>
 <span class="w">    </span>IdentityFile<span class="w"> </span>~/.ssh/id_ecdsa.jhpce
 </code></pre><pre><span></span><code>Host<span class="w"> </span>*
 <span class="w">    </span>ForwardX11<span class="w"> </span>no
-<span class="w">    </span>IdentityFile<span class="w"> </span>~/.ssh/id_rsa.my-general-key
+<span class="w">    </span>IdentityFile<span class="w"> </span>~/.ssh/id_ecdsa.my-general-key
 </code></pre><h2><a class="heading" href="../files/acl">ACL</a></h2><a class="url" href="../files/acl">files/acl/</a><pre><span></span><code>access type:[flags]:principal:permissions
 </code></pre><pre><span></span><code>[alice@compute-123 ~]$ pwd
 /users/alice

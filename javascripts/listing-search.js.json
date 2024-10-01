@@ -93,15 +93,15 @@
   {
     "page_name": "SSH",
     "page_url": "../access/ssh/",
-    "text": "ssh-keygen -t rsa\n",
-    "html": "<pre><span></span><code>ssh-keygen -t rsa\n</code></pre>",
+    "text": "ssh-keygen -t ecdsa\n",
+    "html": "<pre><span></span><code>ssh-keygen -t ecdsa\n</code></pre>",
     "language": ""
   },
   {
     "page_name": "SSH",
     "page_url": "../access/ssh/",
-    "text": "cat ~/.ssh/id_rsa.pub | ssh <your_userid>@jhpce01.jhsph.edu 'cat >> ~/.ssh/authorized_keys'\n",
-    "html": "<pre><span></span><code>cat ~/.ssh/id_rsa.pub | ssh &lt;your_userid&gt;@jhpce01.jhsph.edu 'cat &gt;&gt; ~/.ssh/authorized_keys'\n</code></pre>",
+    "text": "cat ~/.ssh/id_ecdsa.pub | ssh <your_userid>@jhpce01.jhsph.edu 'cat >> ~/.ssh/authorized_keys'\n",
+    "html": "<pre><span></span><code>cat ~/.ssh/id_ecdsa.pub | ssh &lt;your_userid&gt;@jhpce01.jhsph.edu 'cat &gt;&gt; ~/.ssh/authorized_keys'\n</code></pre>",
     "language": ""
   },
   {
@@ -149,8 +149,8 @@
   {
     "page_name": "SSH",
     "page_url": "../access/ssh/",
-    "text": "Host *\n    ForwardX11 no\n    IdentityFile ~/.ssh/id_rsa.my-general-key\n",
-    "html": "<pre><span></span><code>Host<span class=\"w\"> </span>*\n<span class=\"w\">    </span>ForwardX11<span class=\"w\"> </span>no\n<span class=\"w\">    </span>IdentityFile<span class=\"w\"> </span>~/.ssh/id_rsa.my-general-key\n</code></pre>",
+    "text": "Host *\n    ForwardX11 no\n    IdentityFile ~/.ssh/id_ecdsa.my-general-key\n",
+    "html": "<pre><span></span><code>Host<span class=\"w\"> </span>*\n<span class=\"w\">    </span>ForwardX11<span class=\"w\"> </span>no\n<span class=\"w\">    </span>IdentityFile<span class=\"w\"> </span>~/.ssh/id_ecdsa.my-general-key\n</code></pre>",
     "language": ""
   },
   {
