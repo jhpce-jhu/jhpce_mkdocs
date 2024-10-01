@@ -55,22 +55,23 @@ Once configured properly, you can use SSH keys instead of your JHPCE password.
 
 ### Unix-based machines (linux and mac osx)
 
-(((((((IN 2024 DO WE NEED TO SPECIFY A DIFFERENT (STRONGER) ENCRYPTION TYPE???)))))))
+SSH supports different kinds of identity key encryption.  Various algorithms have been developed over the years. As computing power increases and algorithm flaws are discovered, the recommended one to use changes. In the past "rsa" was the default.  That is no longer recommended in 2024. We here show "ecdsa" but you might want to instead use "ed25519". Just be consistent in your use of the string where it shows up in commands or file names.
+
 + First, on your local laptop/desktop, open a terminal and `cd` into your home directory  and invoke the ssh key generator:
 
 ```
-ssh-keygen -t rsa
+ssh-keygen -t ecdsa
 ```
 
 + You will be prompted for a passphrase.  For security reasons, we require that you use a passphrase to protect your key.  This prevents someone who gets access to your private key file from being able to use it!!!!! For the other questions, you can select the default values.
-+ The key generator will put two files in the .ssh subdirectory of your home directory, typically  `~/.ssh/id_rsa` and  `~/.ssh/id_rsa.pub`. 
++ The key generator will put two files in the .ssh subdirectory of your home directory, typically  `~/.ssh/id_ecdsa` and  `~/.ssh/id_ecdsa.pub`. 
 + *You should only ever have to run the ssh key generator once on your local host*.  If you have already configured passwordless login and you run the key generator a second time, it will overwrite your previous public and private key files. This will break all password-less logins that you set up with your previous keys.
 + Next you want to copy your public key file to the remote host and append it to the authorized_keys file in the `.ssh` subdirectory of your home directory on the remote host. 
   + If there is no `~/.ssh` directory in the remote host, you will need to login to the remote host and create one. Note, attempting to connect to another host, like `ssh github.com`, will create one if it isn't there already. 
 + You can perform the copy and append operations in one line as follows;
 
 ```
-cat ~/.ssh/id_rsa.pub | ssh <your_userid>@jhpce01.jhsph.edu 'cat >> ~/.ssh/authorized_keys'
+cat ~/.ssh/id_ecdsa.pub | ssh <your_userid>@jhpce01.jhsph.edu 'cat >> ~/.ssh/authorized_keys'
 ```
 + Where you replace `<your_userid>` with your JHPCE userid and where you enter your JHPCE password when you are prompted for it by ssh.
 + To test that everything is working you should be able to log into the remote host from your local host with the following command`ssh <your_userid>@jhpce01.jhsph.edu`.
@@ -236,5 +237,5 @@ Optional.
 ```Shell title="Host-related definitions for all hosts not explicitly mentioned earlier"
 Host *
     ForwardX11 no
-    IdentityFile ~/.ssh/id_rsa.my-general-key
+    IdentityFile ~/.ssh/id_ecdsa.my-general-key
 ```
