@@ -12,7 +12,6 @@ Before signing up for a sesssion, please be sure that you have completed the [Ne
 and that your PI has approved your account. During the signup process, you will be able to select a
 time for your orientation session.
 
-
 ## **Documentation used in orientation**
 You can download the orientation slides at [This Link](https://docs.google.com/presentation/d/1elMSTUdKws7FLVFK7vVV_AErA4brNSPX/pub){:target="_blank"}
 
