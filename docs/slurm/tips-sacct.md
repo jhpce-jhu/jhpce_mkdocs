@@ -258,11 +258,12 @@ Enter kill -l to list signal codes
 Enter man signal for more information
 ```
 
-We will try to put specific entries here that we see more frequently.
+We will try to put specific entries here that we see more frequently and can identify.
 
 |Exitcode|Probable Meaning|
 |---|----|
 |0:9|cancelled (does it indicate who cancelled - user or slurm?)
+|0:15|cancelled (looks like this is used when either user cancelled or job ran out of time)
 |0:53|Some file or directory was not readable or writable|
 |0:125|Job ran out of memory|
 |1:0|??|
