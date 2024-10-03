@@ -65,10 +65,9 @@ Check the [man page](https://slurm.schedmd.com/archive/slurm-22.05.9/sacct.html)
 ### **Sorting or processing output**
 `sacct` can output with other delimiters if you specify either `-p` or `-P` and `--delimiter=<characters>`
 
-`sacct` does not have a sort option. You need to sort its output by other methods. If you want to change the order of the information, specify the field names in the desired order.
+`sacct` does not have a sort option. You need to sort its output by other methods. If you want to change the order of the information, specify the field names in the desired order. Remember that if you do not include the `-X` option to `sacct`, then the number of output fields might vary between the first of several lines per job and later lines. For example if you request an output format starting with "user", that field is only printed for the first line per job. (shake fist!)
 
-This is a prime example of where it is kindest to the SLURM master daemon if you run your query such that you store the results in a text file, then work with the text file contents. Rather than running many variations of a command pipeline
-beginning with `sacct` when you already have all of the desired output option fields and are just trying to figure out the right text-processing logic.
+This is a prime example of where it is kindest to the SLURM master daemon if you run your query such that you store the results in a text file, then work with the text file contents, rather than running many variations of a command pipeline beginning with `sacct` when you already have all of the desired output option fields and are just trying to figure out the right text-processing logic to deal with the output using sort or awk or what have you. OR do your initial searching in order to produce the right kinds of output using limited date or other ranges.
 
 
 ```shell title="sort failed jobs by exitcode"
@@ -82,6 +81,7 @@ sacct -X -a -s F -o "user,jobid,state,nodelist,exitcode" -S noon -E now|sort -k5
 Useful sort options:
 
 1. `-kKEYDEF` or `--key=KEYDEF` Given just a number as the KEYDEF, it sorts by column
+2. `-k5,5` Repeating the column number prevents multiple words within a column from being considered extra columns (at least the author thinks that is what is going on) (maybe there is a more sophisticated version of KEYDEF that can also prevent that issue)
 2. `-r`or `--reverse`
 3. `-n` or `--numeric-sort` 
 
