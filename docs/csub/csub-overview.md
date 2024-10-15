@@ -63,9 +63,10 @@ Please keep that in mind when reading JHPCE documentation or asking for help via
   - except for programs which run out of containers like RStudio Server
 
 ### Differences
-- Different user accounts (all have the form of `c-<JHEDID>-<DUA-NUMBER>`)
-- Different SLURM server, partitions and nodes (cluster name is "cms" instead of "jhpce3")
-- File transfer in and out is VERY different (see orientation pdf)
+- Different user accounts (all C-SUB have the form of `c-<JHEDID>-<DUA-NUMBER>`)
+- Different login node (C-SUB: jhpcecms01.jhsph.edu, only accessible from JH networks (including the VPN))
+- Different SLURM server, partitions and nodes (cluster name is "cms" instead of "jhpce3"). So job acounting records differ. Default partition for jobs in "jhpce3" is "shared" while in "cms" it is "cms".
+- File transfer in and out is VERY different (see C-SUB orientation pdf)
 - Home directory locations (under `/users/<DUA-NUMBER>/` instead of just `/users/`)
 - Common group-writable file sharing areas among DUA members (e.g. /users/55548/shared/)
 
