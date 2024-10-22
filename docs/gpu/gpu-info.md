@@ -57,7 +57,7 @@ As of November 2024, we have the following GPUs available on the gpu partition:
 <tr>
 <td><strong>compute-126</strong></td>
 <td>One of the Lieber (Collado) GPU node, sharing GPUs with the general gpu queue.<br>The node has 2 Intel(R) Xeon(R) Gold 5317 CPU @ 3.00GHz CPUs and 512GB of RAM</td>
-<td>4 Nvidia A100 GPUs with 80GB RAM<</td>
+<td>4 Nvidia A100 GPUs with 80GB RAM</td>
 </tr>
 
 <tr>
