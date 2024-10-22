@@ -62,13 +62,13 @@ As of November 2024, we have the following GPUs available on the gpu partition:
 
 <tr>
 <td><strong>compute-170</strong></td>
-<td> The second Biostat GPU node, sharing GPUs with the general gpu queue.<br>The node has 2 Intel(R) Xeon(R) Silver 4510R CPUs @ 4.10GHz CPUs and 1TB of RAM</td>
+<td> The second Biostat GPU node, sharing GPUs with the general gpu queue.<br>The node has 1 Intel(R) Xeon(R) Silver 4510R CPUs @ 4.10GHz CPUs and 1TB of RAM</td>
 <td>2 Nvidia H100s GPUs with 96GB RAM</td>
 </tr>
 
 <tr>
 <td><strong>compute-171 - compute-173</strong></td>
-<td>Group of 3 Biostat GPU nodes, sharing GPUs with the general gpu queue.<br>Each node has 2 AMD EPYC 7443P CPUs @ 4.00GHz CPUs and 1TB of RAM</td>
+<td>Group of 3 Biostat GPU nodes, sharing GPUs with the general gpu queue.<br>Each node has 1 AMD EPYC 7443P CPU @ 4.00GHz CPUs and 1TB of RAM</td>
 <td>12 Nvidia L40S GPUs with 46GB RAM - 4 GPUs in each node</td>
 </tr>
 
