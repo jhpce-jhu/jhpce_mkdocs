@@ -34,7 +34,7 @@ request a single GPU on the &#8220;gpu&#8221; partition. You can run
  |  No running processes found                                                           |
  +---------------------------------------------------------------------------------------+
 </pre></code>
-As of November 2023, we have the following GPUs available on the gpu partition:
+As of November 2024, we have the following GPUs available on the gpu partition:
 <table>
 <tr>
 <td><strong>Node Name</strong></td>
@@ -50,7 +50,7 @@ As of November 2023, we have the following GPUs available on the gpu partition:
 
 <tr>
 <td><strong>compute-123</strong></td>
-<td> The Biostat GPU node, sharing GPUs with the general gpu queue.<br>The node has 2 Intel(R) Xeon(R) Silver 4210R CPU @ 2.40GHz CPUs and 768GB of RAM</td>
+<td> The first Biostat GPU node, sharing GPUs with the general gpu queue.<br>The node has 2 Intel(R) Xeon(R) Silver 4210R CPU @ 2.40GHz CPUs and 768GB of RAM</td>
 <td> 4 Nvidia V100s GPUs with 32GB RAM</td>
 </tr>
 
@@ -58,7 +58,21 @@ As of November 2023, we have the following GPUs available on the gpu partition:
 <td><strong>compute-126</strong></td>
 <td>One of the Lieber (Collado) GPU node, sharing GPUs with the general gpu queue.<br>The node has 2 Intel(R) Xeon(R) Gold 5317 CPU @ 3.00GHz CPUs and 512GB of RAM</td>
 <td>4 Nvidia A100 GPUs with 80GB RAM<</td>
-</tr></table>
+</tr>
+
+<tr>
+<td><strong>compute-170</strong></td>
+<td> The second Biostat GPU node, sharing GPUs with the general gpu queue.<br>The node has 2 Intel(R) Xeon(R) Silver 4510R CPUs @ 4.10GHz CPUs and 1TB of RAM</td>
+<td>2 Nvidia H100s GPUs with 96GB RAM</td>
+</tr>
+
+<tr>
+<td><strong>compute-171 - compute-173</strong></td>
+<td>Group of 3 Biostat GPU nodes, sharing GPUs with the general gpu queue.<br>Each node has 2 AMD EPYC 7443P CPUs @ 4.00GHz CPUs and 1TB of RAM</td>
+<td>12 Nvidia L40S GPUs with 46GB RAM - 4 GPUs in each node</td>
+</tr>
+
+</table>
 
 You can request a particular model of GPU using the &#8220;gres&#8221; option
 to srun and sbatch. The following &#8220;gres&#8221; options are available for
@@ -70,6 +84,8 @@ the various models of GPUS:
 <tr><td>Nvidia V100 with 32GB RAM</td><td>tesv100</td></tr>
 <tr><td>Nvidia V100S with 32GB RAM</td><td>tesv100s</td></tr>
 <tr><td>Nvidia A100 with 80GB RAM</td><td>tesa100</td></tr>
+<tr><td>Nvidia H100 with 96GB RAM</td><td>tesh100</td></tr>
+<tr><td>Nvidia L40S with 46GB RAM</td><td>l40s</td></tr>
 </table></center>
 
 You can see what GPUs are available by running the ```slurmpic -g``` command.
