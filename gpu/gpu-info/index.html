@@ -3540,7 +3540,7 @@ request a single GPU on the &#8220;gpu&#8221; partition. You can run
  +---------------------------------------------------------------------------------------+
 </pre>
 <p></code>
-As of November 2023, we have the following GPUs available on the gpu partition:</p>
+As of November 2024, we have the following GPUs available on the gpu partition:</p>
 <table>
 <tr>
 <td><strong>Node Name</strong></td>
@@ -3556,7 +3556,7 @@ As of November 2023, we have the following GPUs available on the gpu partition:<
 
 <tr>
 <td><strong>compute-123</strong></td>
-<td> The Biostat GPU node, sharing GPUs with the general gpu queue.<br>The node has 2 Intel(R) Xeon(R) Silver 4210R CPU @ 2.40GHz CPUs and 768GB of RAM</td>
+<td> The first Biostat GPU node, sharing GPUs with the general gpu queue.<br>The node has 2 Intel(R) Xeon(R) Silver 4210R CPU @ 2.40GHz CPUs and 768GB of RAM</td>
 <td> 4 Nvidia V100s GPUs with 32GB RAM</td>
 </tr>
 
@@ -3564,7 +3564,21 @@ As of November 2023, we have the following GPUs available on the gpu partition:<
 <td><strong>compute-126</strong></td>
 <td>One of the Lieber (Collado) GPU node, sharing GPUs with the general gpu queue.<br>The node has 2 Intel(R) Xeon(R) Gold 5317 CPU @ 3.00GHz CPUs and 512GB of RAM</td>
 <td>4 Nvidia A100 GPUs with 80GB RAM<</td>
-</tr></table>
+</tr>
+
+<tr>
+<td><strong>compute-170</strong></td>
+<td> The second Biostat GPU node, sharing GPUs with the general gpu queue.<br>The node has 2 Intel(R) Xeon(R) Silver 4510R CPUs @ 4.10GHz CPUs and 1TB of RAM</td>
+<td>2 Nvidia H100s GPUs with 96GB RAM</td>
+</tr>
+
+<tr>
+<td><strong>compute-171 - compute-173</strong></td>
+<td>Group of 3 Biostat GPU nodes, sharing GPUs with the general gpu queue.<br>Each node has 2 AMD EPYC 7443P CPUs @ 4.00GHz CPUs and 1TB of RAM</td>
+<td>12 Nvidia L40S GPUs with 46GB RAM - 4 GPUs in each node</td>
+</tr>
+
+</table>
 
 <p>You can request a particular model of GPU using the &#8220;gres&#8221; option
 to srun and sbatch. The following &#8220;gres&#8221; options are available for
@@ -3575,6 +3589,8 @@ the various models of GPUS:</p>
 <tr><td>Nvidia V100 with 32GB RAM</td><td>tesv100</td></tr>
 <tr><td>Nvidia V100S with 32GB RAM</td><td>tesv100s</td></tr>
 <tr><td>Nvidia A100 with 80GB RAM</td><td>tesa100</td></tr>
+<tr><td>Nvidia H100 with 96GB RAM</td><td>tesh100</td></tr>
+<tr><td>Nvidia L40S with 46GB RAM</td><td>l40s</td></tr>
 <p></table></center></p>
 <p>You can see what GPUs are available by running the <code>slurmpic -g</code> command.
 The GPUS column will show how many GPUs are in use and how many are available
@@ -3810,7 +3826,7 @@ python nvidia-test.py
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">September 30, 2024</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">October 22, 2024</span>
   </span>
 
     
