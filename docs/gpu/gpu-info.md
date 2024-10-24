@@ -74,8 +74,8 @@ As of November 2024, we have the following GPUs available on the gpu partition:
 
 </table>
 
-You can request a particular model of GPU using the &#8220;gres&#8221; option
-to srun and sbatch. The following &#8220;gres&#8221; options are available for
+You can request a particular model of GPU using the "GRES" option
+(Generic Resources) to srun and sbatch. The following GRES options are available for
 the various models of GPUS:
 
 <center><table>
@@ -86,6 +86,18 @@ the various models of GPUS:
 <tr><td>Nvidia A100 with 80GB RAM</td><td>tesa100</td></tr>
 <tr><td>Nvidia H100 with 96GB RAM</td><td>tesh100</td></tr>
 <tr><td>Nvidia L40S with 46GB RAM</td><td>l40s</td></tr>
+</table></center>
+
+NVIDIA assigns different "Computing Capability" values to each GPU model. These values can be found [here](https://developer.nvidia.com/cuda-gpus), and help one determine what the GPU is capable of doing. Details can be found [here](https://docs.nvidia.com/cuda/cuda-c-programming-guide/index.html#compute-capabilities). Specific descriptions for each generation as well as some specific CUDA routines to use with each are here: [7.x](https://docs.nvidia.com/cuda/cuda-c-programming-guide/index.html#compute-capability-7-x), [8.x](https://docs.nvidia.com/cuda/cuda-c-programming-guide/index.html#compute-capability-8-x), and [9.x](https://docs.nvidia.com/cuda/cuda-c-programming-guide/index.html#compute-capability-9-0)
+
+<center><table>
+<tr><td><strong>GPU Type</strong></td><td><strong>GRES  Option</strong></td><td><strong>Computing Capability</strong></td></tr>
+<tr><td>Nvidia Titan V with 11GB RAM</td><td>titanv</td><td>7.0</td></tr>
+<tr><td>Nvidia V100 with 32GB RAM</td><td>tesv100</td><td>7.0</td></tr>
+<tr><td>Nvidia V100S with 32GB RAM</td><td>tesv100s</td><td>7.0</td></tr>
+<tr><td>Nvidia A100 with 80GB RAM</td><td>tesa100</td><td>8.0</td></tr>
+<tr><td>Nvidia H100 with 96GB RAM</td><td>tesh100</td><td>9.0</td></tr>
+<tr><td>Nvidia L40S with 46GB RAM</td><td>l40s</td><td>8.9</td></tr>
 </table></center>
 
 You can see what GPUs are available by running the ```slurmpic -g``` command.
