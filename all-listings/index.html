@@ -2535,6 +2535,8 @@
       
         
       
+        
+      
     
     
       
@@ -2635,6 +2637,27 @@
   
   
     <li class="md-nav__item">
+      <a href="../slurm/ram/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Memory Usage
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../slurm/time-limits/" class="md-nav__link">
         
   
@@ -2679,10 +2702,10 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1_10_5" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1_10_6" >
         
           
-          <label class="md-nav__link" for="__nav_1_10_5" id="__nav_1_10_5_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_1_10_6" id="__nav_1_10_6_label" tabindex="0">
             
   
   <span class="md-ellipsis">
@@ -2693,8 +2716,8 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_1_10_5_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_1_10_5">
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_1_10_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_1_10_6">
             <span class="md-nav__icon md-icon"></span>
             Command tips & reference
           </label>
@@ -4731,6 +4754,10 @@ transfer-01                         intel,ivybridge,transfer                    
       2 znver3
 </code></pre><h2><a class="heading" href="../slurm/partitions">Partitions</a></h2><a class="url" href="../slurm/partitions">slurm/partitions/</a><pre><span></span><code>scontrol<span class="w"> </span>show<span class="w"> </span>partition<span class="w"> </span>partitionname
 </code></pre><h2><a class="heading" href="../slurm/qos">Quality of Service (QOS)</a></h2><a class="url" href="../slurm/qos">slurm/qos/</a><pre><span></span><code>scontrol<span class="w"> </span>show<span class="w"> </span>partition<span class="w"> </span>partitionname<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>-i<span class="w"> </span>qos
+</code></pre><h2><a class="heading" href="../slurm/ram">Memory Usage</a></h2><a class="url" href="../slurm/ram">slurm/ram/</a><pre><span></span><code><span class="go">    --mem : memory per node (for all cores used)</span>
+<span class="go">    --mem-per-cpu : memory per core (harder to accurately estimate)</span>
+</code></pre><pre><span></span><code><span class="go">sbatch --mem=10G job1.sh</span>
+</code></pre><pre><span></span><code><span class="go">srun --mem-per-cpu=5G --cpus-per-task=4 --pty --x11 bash</span>
 </code></pre><h2><a class="heading" href="../slurm/time-limits">Time Limits</a></h2><a class="url" href="../slurm/time-limits">slurm/time-limits/</a><pre><span></span><code>Note: The following was largely written using ChatGPT.
 </code></pre><pre><span></span><code>srun:*:time=5-00
 sbatch:*:time=10-00
