@@ -24,6 +24,7 @@ srun --mem-per-cpu=5G --cpus-per-task=4 --pty --x11 bash
 There is, sadly, no easy formula to know ahead of time how much RAM a job will need when working
 with large data. Every program has its own way of dealing with RAM. It may sometimes be an iterative process
 to determine the best value to use for your jobs.  Here are some tips to help find good values for your job:
+
 - You can run a test job on a small subset of data.  From here you should be able to extrapolate the amount
 of RAM your full job will need.
 - One good place to start is to look at the size of the files you will be
@@ -37,5 +38,6 @@ you will need to resubmit your job with a larger RAM request.
 and plan accordingly
 
 Try to make your RAM request slightly higher than your expected usage.
+
    - Too low and your job will get killed for exceeding your request
    - Too high and your job may take longer to get scheduled, plus you’ll be squatting on RAM that others can use.
