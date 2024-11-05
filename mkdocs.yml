@@ -91,6 +91,7 @@ nav:
       - Getting Started: slurm/getting-started.md
       - About Jobs: slurm/about-jobs.md
       - Partitions: slurm/partitions.md
+      - Memory Usage: slurm/ram.md
       - Time Limits: slurm/time-limits.md
       - "Command tips & reference":
         - "Cmd tips & reference": slurm/slurm-commands-ref.md
