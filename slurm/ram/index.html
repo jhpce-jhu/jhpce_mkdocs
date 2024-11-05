@@ -3624,21 +3624,25 @@ Some examples of using these options:
 <h2 id="estimating-ram-usage">Estimating RAM usage<a class="headerlink" href="#estimating-ram-usage" title="Anchor link to this section for reference">&para;</a></h2>
 <p>There is, sadly, no easy formula to know ahead of time how much RAM a job will need when working
 with large data. Every program has its own way of dealing with RAM. It may sometimes be an iterative process
-to determine the best value to use for your jobs.  Here are some tips to help find good values for your job:
-- You can run a test job on a small subset of data.  From here you should be able to extrapolate the amount
-of RAM your full job will need.
-- One good place to start is to look at the size of the files you will be
+to determine the best value to use for your jobs.  Here are some tips to help find good values for your job:</p>
+<ul>
+<li>You can run a test job on a small subset of data.  From here you should be able to extrapolate the amount
+of RAM your full job will need.</li>
+<li>One good place to start is to look at the size of the files you will be
 reading in. Add a bit extra, as a starting point.  So if your job is reading in a 20GB image file, you
-may want to ask for 25GB or RAM.
-- You can run sacct to gather info on a completed job:
-sacct -o JobID,JobName,ReqTRES%40,MaxVMSize,MAXRSS,State%20 -j JOBID
-- If the "STATE" from the above command is "OUT_OF_MEMORY" it means that you job has run out of RAM, and
-you will need to resubmit your job with a larger RAM request.
-- Use <code>slurmpic</code> to see the current core and RAM availability,
-and plan accordingly</p>
-<p>Try to make your RAM request slightly higher than your expected usage.
-   - Too low and your job will get killed for exceeding your request
-   - Too high and your job may take longer to get scheduled, plus you’ll be squatting on RAM that others can use.</p>
+may want to ask for 25GB or RAM.</li>
+<li>You can run sacct to gather info on a completed job:
+sacct -o JobID,JobName,ReqTRES%40,MaxVMSize,MAXRSS,State%20 -j JOBID</li>
+<li>If the "STATE" from the above command is "OUT_OF_MEMORY" it means that you job has run out of RAM, and
+you will need to resubmit your job with a larger RAM request.</li>
+<li>Use <code>slurmpic</code> to see the current core and RAM availability,
+and plan accordingly</li>
+</ul>
+<p>Try to make your RAM request slightly higher than your expected usage.</p>
+<ul>
+<li>Too low and your job will get killed for exceeding your request</li>
+<li>Too high and your job may take longer to get scheduled, plus you’ll be squatting on RAM that others can use.</li>
+</ul>
 
 
 
