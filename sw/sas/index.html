@@ -3815,12 +3815,11 @@ Currently Loaded Modules:
 [test@compute-101 ~]$ sas
 </code></pre></div></p>
 <h3 id="with-browser-support">With Browser Support<a class="headerlink" href="#with-browser-support" title="Anchor link to this section for reference">&para;</a></h3>
-<p>To display either <em>built-in help</em> or <em>graphical output</em> when running SAS, you need to specify options to allow a web browser to be launched if called for.</p>
-<p>We recommend using the Chromium browser. Firefox is also available. </p>
+<p>To display either <em>built-in help</em> or <em>graphical output</em> when running SAS, you need to specify options to allow a web browser to be launched if called for. We recommend using the Chromium browser</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <ul>
-<li>You may need to accept popups in the chromium/firefox browser that gets started in order to see the windows that SAS is trying to display.</li>
+<li>You may need to accept popups in the chromium browser that gets started in order to see the windows that SAS is trying to display.</li>
 <li>If you do not redirect standard output and standard error data streams, you will see a bunch of error messages. These can be ignored because the browser wants to run on a local system with a graphics card, and the our compute nodes don't have such cards or the software to support them. HOWEVER, redirecting all I/O means that if SAS itself emits important error messages, you won't see them. So don't redirect I/O if SAS isn't working as expected!</li>
 </ul>
 </div>
@@ -3838,13 +3837,9 @@ Currently Loaded Modules:
 <p>Your next step is choose which SAS command to run and
 which optional arguements to give it to about your files or how you want SAS to behave.</p>
 <p>Choose one of the following variations (note that you can click on the faint pages icon at the right end of the section to copy the contents to your copy-and-paste buffer):</p>
-<p><div class="highlight"><span class="filename">Chrome, no I/O redirection</span><pre><span></span><code>sas -helpbrowser SAS -xrm &quot;SAS.webBrowser:&#39;/usr/bin/chromium-browser&#39;&quot; -xrm &quot;SAS.helpBrowser:&#39;/usr/bin/chromium-browser&#39;&quot;
+<div class="highlight"><span class="filename">Chrome, no I/O redirection</span><pre><span></span><code>sas -helpbrowser SAS -xrm &quot;SAS.webBrowser:&#39;/usr/bin/chromium-browser&#39;&quot; -xrm &quot;SAS.helpBrowser:&#39;/usr/bin/chromium-browser&#39;&quot;
 </code></pre></div>
-<div class="highlight"><span class="filename">Firefox, no I/O redirection</span><pre><span></span><code>sas -helpbrowser SAS -xrm &quot;SAS.webBrowser:&#39;/usr/bin/firefox&#39;&quot; -xrm &quot;SAS.helpBrowser:&#39;/usr/bin/firefox&#39;&quot;
-</code></pre></div></p>
 <div class="highlight"><span class="filename">Chrome, all I/O redirected to a black hole (see tip below)</span><pre><span></span><code>csas
-</code></pre></div>
-<div class="highlight"><span class="filename">Firefox, all I/O redirected to a black hole (see tip below)</span><pre><span></span><code>fsas
 </code></pre></div>
 <details class="tip">
 <summary>Define these handy aliases for a better life</summary>
@@ -3858,11 +3853,7 @@ which optional arguements to give it to about your files or how you want SAS to 
 <span class="c1"># </span>
 <span class="c1"># (YOU HAVE TO RUN &quot;module load SAS&quot; before calling either of these routines)</span>
 <span class="c1">#</span>
-<span class="c1"># If you want to use Firefox as your web browser for SAS:</span>
-<span class="c1">#</span>
-fsas<span class="o">()</span><span class="w"> </span><span class="o">{</span><span class="w"> </span>sas<span class="w"> </span>-helpbrowser<span class="w"> </span>SAS<span class="w"> </span>-xrm<span class="w"> </span><span class="s2">&quot;SAS.webBrowser:&#39;/usr/bin/firefox&#39;&quot;</span><span class="w"> </span>-xrm<span class="w"> </span><span class="s2">&quot;SAS.helpBrowser:&#39;/usr/bin/firefox&#39;&quot;</span><span class="w"> </span><span class="s2">&quot;</span><span class="nv">$@</span><span class="s2">&quot;</span><span class="w"> </span>&gt;<span class="w"> </span>/dev/null<span class="w"> </span><span class="m">2</span>&gt;<span class="p">&amp;</span><span class="m">1</span><span class="p">;</span><span class="w"> </span><span class="o">}</span>
-<span class="c1">#</span>
-<span class="c1"># If you want to use Chromium-browser as your web browser for SAS:</span>
+<span class="c1"># To use Chromium-browser as your web browser for SAS to display html help files and output:</span>
 <span class="c1">#</span>
 csas<span class="o">()</span><span class="w"> </span><span class="o">{</span><span class="w"> </span>sas<span class="w"> </span>-helpbrowser<span class="w"> </span>SAS<span class="w"> </span>-xrm<span class="w"> </span><span class="s2">&quot;SAS.webBrowser:&#39;/usr/bin/chromium-browser&#39;&quot;</span><span class="w"> </span>-xrm<span class="w"> </span><span class="s2">&quot;SAS.helpBrowser:&#39;/usr/bin/chromium-browser&#39;&quot;</span><span class="w"> </span><span class="s2">&quot;</span><span class="nv">$@</span><span class="s2">&quot;</span><span class="w"> </span>&gt;<span class="w"> </span>/dev/null<span class="w"> </span><span class="m">2</span>&gt;<span class="p">&amp;</span><span class="m">1</span><span class="p">;</span><span class="w"> </span><span class="o">}</span>
 </code></pre></div>
@@ -3957,7 +3948,7 @@ Submitted batch job 3178475
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">August 13, 2024</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">November 8, 2024</span>
   </span>
 
     

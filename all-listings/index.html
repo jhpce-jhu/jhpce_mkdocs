@@ -5612,19 +5612,13 @@ srun: job 3178287 has been allocated resources
 Currently Loaded Modules:
   1) JHPCE_ROCKY9_DEFAULT_ENV   2) JHPCE_tools/3.0   3) sas/9.4
 </code></pre><pre><span></span><code>sas -helpbrowser SAS -xrm "SAS.webBrowser:'/usr/bin/chromium-browser'" -xrm "SAS.helpBrowser:'/usr/bin/chromium-browser'"
-</code></pre><pre><span></span><code>sas -helpbrowser SAS -xrm "SAS.webBrowser:'/usr/bin/firefox'" -xrm "SAS.helpBrowser:'/usr/bin/firefox'"
 </code></pre><pre><span></span><code>csas
-</code></pre><pre><span></span><code>fsas
 </code></pre><pre><span></span><code><span class="c1"># SAS routines for __interactive__ sessions where plotting is involved</span>
 <span class="c1"># (because SAS generates HTML for the plots when run in interactive mode)</span>
 <span class="c1"># </span>
 <span class="c1"># (YOU HAVE TO RUN "module load SAS" before calling either of these routines)</span>
 <span class="c1">#</span>
-<span class="c1"># If you want to use Firefox as your web browser for SAS:</span>
-<span class="c1">#</span>
-fsas<span class="o">()</span><span class="w"> </span><span class="o">{</span><span class="w"> </span>sas<span class="w"> </span>-helpbrowser<span class="w"> </span>SAS<span class="w"> </span>-xrm<span class="w"> </span><span class="s2">"SAS.webBrowser:'/usr/bin/firefox'"</span><span class="w"> </span>-xrm<span class="w"> </span><span class="s2">"SAS.helpBrowser:'/usr/bin/firefox'"</span><span class="w"> </span><span class="s2">"</span><span class="nv">$@</span><span class="s2">"</span><span class="w"> </span>&gt;<span class="w"> </span>/dev/null<span class="w"> </span><span class="m">2</span>&gt;<span class="p">&amp;</span><span class="m">1</span><span class="p">;</span><span class="w"> </span><span class="o">}</span>
-<span class="c1">#</span>
-<span class="c1"># If you want to use Chromium-browser as your web browser for SAS:</span>
+<span class="c1"># To use Chromium-browser as your web browser for SAS to display html help files and output:</span>
 <span class="c1">#</span>
 csas<span class="o">()</span><span class="w"> </span><span class="o">{</span><span class="w"> </span>sas<span class="w"> </span>-helpbrowser<span class="w"> </span>SAS<span class="w"> </span>-xrm<span class="w"> </span><span class="s2">"SAS.webBrowser:'/usr/bin/chromium-browser'"</span><span class="w"> </span>-xrm<span class="w"> </span><span class="s2">"SAS.helpBrowser:'/usr/bin/chromium-browser'"</span><span class="w"> </span><span class="s2">"</span><span class="nv">$@</span><span class="s2">"</span><span class="w"> </span>&gt;<span class="w"> </span>/dev/null<span class="w"> </span><span class="m">2</span>&gt;<span class="p">&amp;</span><span class="m">1</span><span class="p">;</span><span class="w"> </span><span class="o">}</span>
 </code></pre><pre><span></span><code><span class="kr">DATA </span>CLASS;

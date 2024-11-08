@@ -2207,13 +2207,6 @@
   {
     "page_name": "SAS",
     "page_url": "../sw/sas/",
-    "text": "sas -helpbrowser SAS -xrm \"SAS.webBrowser:'/usr/bin/firefox'\" -xrm \"SAS.helpBrowser:'/usr/bin/firefox'\"\n",
-    "html": "<pre><span></span><code>sas -helpbrowser SAS -xrm \"SAS.webBrowser:'/usr/bin/firefox'\" -xrm \"SAS.helpBrowser:'/usr/bin/firefox'\"\n</code></pre>",
-    "language": ""
-  },
-  {
-    "page_name": "SAS",
-    "page_url": "../sw/sas/",
     "text": "csas\n",
     "html": "<pre><span></span><code>csas\n</code></pre>",
     "language": ""
@@ -2221,15 +2214,8 @@
   {
     "page_name": "SAS",
     "page_url": "../sw/sas/",
-    "text": "fsas\n",
-    "html": "<pre><span></span><code>fsas\n</code></pre>",
-    "language": ""
-  },
-  {
-    "page_name": "SAS",
-    "page_url": "../sw/sas/",
-    "text": "# SAS routines for __interactive__ sessions where plotting is involved\n# (because SAS generates HTML for the plots when run in interactive mode)\n# \n# (YOU HAVE TO RUN \"module load SAS\" before calling either of these routines)\n#\n# If you want to use Firefox as your web browser for SAS:\n#\nfsas() { sas -helpbrowser SAS -xrm \"SAS.webBrowser:'/usr/bin/firefox'\" -xrm \"SAS.helpBrowser:'/usr/bin/firefox'\" \"$@\" > /dev/null 2>&1; }\n#\n# If you want to use Chromium-browser as your web browser for SAS:\n#\ncsas() { sas -helpbrowser SAS -xrm \"SAS.webBrowser:'/usr/bin/chromium-browser'\" -xrm \"SAS.helpBrowser:'/usr/bin/chromium-browser'\" \"$@\" > /dev/null 2>&1; }\n",
-    "html": "<pre><span></span><code><span class=\"c1\"># SAS routines for __interactive__ sessions where plotting is involved</span>\n<span class=\"c1\"># (because SAS generates HTML for the plots when run in interactive mode)</span>\n<span class=\"c1\"># </span>\n<span class=\"c1\"># (YOU HAVE TO RUN \"module load SAS\" before calling either of these routines)</span>\n<span class=\"c1\">#</span>\n<span class=\"c1\"># If you want to use Firefox as your web browser for SAS:</span>\n<span class=\"c1\">#</span>\nfsas<span class=\"o\">()</span><span class=\"w\"> </span><span class=\"o\">{</span><span class=\"w\"> </span>sas<span class=\"w\"> </span>-helpbrowser<span class=\"w\"> </span>SAS<span class=\"w\"> </span>-xrm<span class=\"w\"> </span><span class=\"s2\">\"SAS.webBrowser:'/usr/bin/firefox'\"</span><span class=\"w\"> </span>-xrm<span class=\"w\"> </span><span class=\"s2\">\"SAS.helpBrowser:'/usr/bin/firefox'\"</span><span class=\"w\"> </span><span class=\"s2\">\"</span><span class=\"nv\">$@</span><span class=\"s2\">\"</span><span class=\"w\"> </span>&gt;<span class=\"w\"> </span>/dev/null<span class=\"w\"> </span><span class=\"m\">2</span>&gt;<span class=\"p\">&amp;</span><span class=\"m\">1</span><span class=\"p\">;</span><span class=\"w\"> </span><span class=\"o\">}</span>\n<span class=\"c1\">#</span>\n<span class=\"c1\"># If you want to use Chromium-browser as your web browser for SAS:</span>\n<span class=\"c1\">#</span>\ncsas<span class=\"o\">()</span><span class=\"w\"> </span><span class=\"o\">{</span><span class=\"w\"> </span>sas<span class=\"w\"> </span>-helpbrowser<span class=\"w\"> </span>SAS<span class=\"w\"> </span>-xrm<span class=\"w\"> </span><span class=\"s2\">\"SAS.webBrowser:'/usr/bin/chromium-browser'\"</span><span class=\"w\"> </span>-xrm<span class=\"w\"> </span><span class=\"s2\">\"SAS.helpBrowser:'/usr/bin/chromium-browser'\"</span><span class=\"w\"> </span><span class=\"s2\">\"</span><span class=\"nv\">$@</span><span class=\"s2\">\"</span><span class=\"w\"> </span>&gt;<span class=\"w\"> </span>/dev/null<span class=\"w\"> </span><span class=\"m\">2</span>&gt;<span class=\"p\">&amp;</span><span class=\"m\">1</span><span class=\"p\">;</span><span class=\"w\"> </span><span class=\"o\">}</span>\n</code></pre>",
+    "text": "# SAS routines for __interactive__ sessions where plotting is involved\n# (because SAS generates HTML for the plots when run in interactive mode)\n# \n# (YOU HAVE TO RUN \"module load SAS\" before calling either of these routines)\n#\n# To use Chromium-browser as your web browser for SAS to display html help files and output:\n#\ncsas() { sas -helpbrowser SAS -xrm \"SAS.webBrowser:'/usr/bin/chromium-browser'\" -xrm \"SAS.helpBrowser:'/usr/bin/chromium-browser'\" \"$@\" > /dev/null 2>&1; }\n",
+    "html": "<pre><span></span><code><span class=\"c1\"># SAS routines for __interactive__ sessions where plotting is involved</span>\n<span class=\"c1\"># (because SAS generates HTML for the plots when run in interactive mode)</span>\n<span class=\"c1\"># </span>\n<span class=\"c1\"># (YOU HAVE TO RUN \"module load SAS\" before calling either of these routines)</span>\n<span class=\"c1\">#</span>\n<span class=\"c1\"># To use Chromium-browser as your web browser for SAS to display html help files and output:</span>\n<span class=\"c1\">#</span>\ncsas<span class=\"o\">()</span><span class=\"w\"> </span><span class=\"o\">{</span><span class=\"w\"> </span>sas<span class=\"w\"> </span>-helpbrowser<span class=\"w\"> </span>SAS<span class=\"w\"> </span>-xrm<span class=\"w\"> </span><span class=\"s2\">\"SAS.webBrowser:'/usr/bin/chromium-browser'\"</span><span class=\"w\"> </span>-xrm<span class=\"w\"> </span><span class=\"s2\">\"SAS.helpBrowser:'/usr/bin/chromium-browser'\"</span><span class=\"w\"> </span><span class=\"s2\">\"</span><span class=\"nv\">$@</span><span class=\"s2\">\"</span><span class=\"w\"> </span>&gt;<span class=\"w\"> </span>/dev/null<span class=\"w\"> </span><span class=\"m\">2</span>&gt;<span class=\"p\">&amp;</span><span class=\"m\">1</span><span class=\"p\">;</span><span class=\"w\"> </span><span class=\"o\">}</span>\n</code></pre>",
     "language": ""
   },
   {
