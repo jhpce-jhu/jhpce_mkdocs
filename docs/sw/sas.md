@@ -53,12 +53,10 @@ Currently Loaded Modules:
 
 ### With Browser Support
 
-To display either *built-in help* or *graphical output* when running SAS, you need to specify options to allow a web browser to be launched if called for.
-
-We recommend using the Chromium browser. Firefox is also available. 
+To display either *built-in help* or *graphical output* when running SAS, you need to specify options to allow a web browser to be launched if called for. We recommend using the Chromium browser
 
 !!! Note "Note"  
-    - You may need to accept popups in the chromium/firefox browser that gets started in order to see the windows that SAS is trying to display.
+    - You may need to accept popups in the chromium browser that gets started in order to see the windows that SAS is trying to display.
     - If you do not redirect standard output and standard error data streams, you will see a bunch of error messages. These can be ignored because the browser wants to run on a local system with a graphics card, and the our compute nodes don't have such cards or the software to support them. HOWEVER, redirecting all I/O means that if SAS itself emits important error messages, you won't see them. So don't redirect I/O if SAS isn't working as expected!
 
 The initial steps are the same as we used before:
@@ -82,17 +80,12 @@ Choose one of the following variations (note that you can click on the faint pag
 ``` title="Chrome, no I/O redirection"
 sas -helpbrowser SAS -xrm "SAS.webBrowser:'/usr/bin/chromium-browser'" -xrm "SAS.helpBrowser:'/usr/bin/chromium-browser'"
 ```
-``` title="Firefox, no I/O redirection"
-sas -helpbrowser SAS -xrm "SAS.webBrowser:'/usr/bin/firefox'" -xrm "SAS.helpBrowser:'/usr/bin/firefox'"
-```
+
 
 ``` title="Chrome, all I/O redirected to a black hole (see tip below)"
 csas
 ```
 
-``` title="Firefox, all I/O redirected to a black hole (see tip below)"
-fsas
-```
 
 ??? tip "Define these handy aliases for a better life"
     Here is some code you can add to your .bashrc file which contain some convenient bash aliases for starting SAS with browser support configured. Once that becomes part of your environment (by sourcing the file (`. ~/.bashrc`) or by logging out and back in again), after loading the SAS module you can start SAS using either `csas` or `fsas` so that it can open the desired web browser if needed. These definitions include $@ symbols, which are replaced by any additional arguments to SAS that you provide. Note that you can click on the faint pages icon at the right end of the section to copy the contents to your copy-and-paste buffer.
@@ -106,11 +99,7 @@ fsas
     # 
     # (YOU HAVE TO RUN "module load SAS" before calling either of these routines)
     #
-    # If you want to use Firefox as your web browser for SAS:
-    #
-    fsas() { sas -helpbrowser SAS -xrm "SAS.webBrowser:'/usr/bin/firefox'" -xrm "SAS.helpBrowser:'/usr/bin/firefox'" "$@" > /dev/null 2>&1; }
-    #
-    # If you want to use Chromium-browser as your web browser for SAS:
+    # To use Chromium-browser as your web browser for SAS to display html help files and output:
     #
     csas() { sas -helpbrowser SAS -xrm "SAS.webBrowser:'/usr/bin/chromium-browser'" -xrm "SAS.helpBrowser:'/usr/bin/chromium-browser'" "$@" > /dev/null 2>&1; }
     ```
