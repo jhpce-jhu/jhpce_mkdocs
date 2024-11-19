@@ -37,7 +37,7 @@ sacctmgr show user withassoc|grep -v "normal "|awk '{printf "%s\t\t%s\t%s\t\t%s%
 
 ## **Sacctmgr for Systems Administrators**
 
-Like many administrative commands, you can just run the `sacctmgr` command to enter into a shell. Useful if you are exploring some situation, although you cannot paginate output.
+Like many administrative commands, you can just run the `sacctmgr` command to enter into its shell version. Useful if you are exploring some situation, although you cannot paginate output.
 
 We currently have two clusters, named "jhpce3" and "cms" You usually don't have to specify which cluster you want to consult/change, as we have a SLURM server for each cluster.
 
@@ -53,7 +53,9 @@ See our [QOS page](../slurm/qos.md) for more information.
 
 Our users have no limits on them, at the user account level. The typical account has a default QOS named "normal". If you run `showqos` you will see that "normal" doesn't have any restrictions. Therefore users entitled to run jobs in their private per-research group partitions are not limited in how many of their nodes' resources they can consume. (Users found running jobs on partitions they are not entitled to use will have their jobs killed and have to acknowledge that they understand that they need to use public partitions.)
 
-For public partitions like "shared" and "interactive", the slurm config file /etc/slurm/partitions.conf specifies a default partition QOS of, for example, "shared-default". So  we can control how many CPUs and how much RAM each user can use in public partitions by changing the appropriate single QOS. 
+For public partitions like "shared" and "interactive", the slurm config file /etc/slurm/partitions.conf specifies a default partition QOS of, for example, "shared-default". So  we can control how many CPUs and how much RAM each user can use in public partitions by changing the appropriate single QOS.
+
+When changing qos for something only use the '=' operator when wanting to explicitly set the qos to something.  In most cases you will want to use the '+=' or '-=' operator to either add to or remove from the existing qos already in place.
 
 ```
 # Add a QOS to a user's existing allowed QOS:
@@ -90,7 +92,7 @@ There are a number of variants of some categories of parameters -- by user, by g
     
     Accounts are similar to groups in that our current model has all user accounts belonging to a single higher-level account object ("jhpce" in jhpce3 and "generic" in cms (for some reason -- there's also a csub account) (and the small number of c-*-10101 users happen to be in the "sysadmin" account)).
     
-    Note that one _can_ use the fact that all users are in the same account to limit the total number of users in the cluster who can do some things, like submit jobs, or whatever the parameter category is. 
+    Note that one _can_ use the fact that all users are in the same account to limit the total number of users in the cluster who can do some things, like submit jobs, or whatever the parameter category is. But take care to consider whether you are limiting what everyone can do, in aggregate, not individually.
 
 
 ```
@@ -144,7 +146,7 @@ sacctmgr -p show transaction > /tmp/lookatme
 # (these stats might be since the last time the slurmctld was restarted??)
 sacctmgr show stats | less
 
-# You can clear the stats and then watch how quickly a suspicuous user racks up RPC calls
+# You can clear the stats and then watch how quickly a suspicious user racks up RPC calls
 sacctmgr clear stats
 ```
 
