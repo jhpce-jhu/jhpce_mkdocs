@@ -5003,7 +5003,14 @@ MaxRSS  MaxVMSize MaxDiskWrite
 61259220K 203077796K  55875510365
 </code></pre><pre><span></span><code><span class="nb">export</span><span class="w"> </span><span class="nv">SLURM_TIME_FORMAT</span><span class="o">=</span><span class="s2">"%a %m-%d %H:%M"</span><span class="w"> </span>
 </code></pre><pre><span></span><code><span class="nb">export</span><span class="w"> </span><span class="nv">SACCT_FORMAT</span><span class="o">=</span><span class="s2">"user,jobid,jobname,nodelist%12,start%-20,end%-20,state%20,reqtres%40,TRESUsageInTot%200"</span>
-</code></pre><h2><a class="heading" href="../slurm/tips-sacctmgr">sacctmgr tips</a></h2><a class="url" href="../slurm/tips-sacctmgr">slurm/tips-sacctmgr/</a><pre><span></span><code># See our currently defined QOS in a readable format
+</code></pre><h2><a class="heading" href="../slurm/tips-sacctmgr">sacctmgr tips</a></h2><a class="url" href="../slurm/tips-sacctmgr">slurm/tips-sacctmgr/</a><pre><span></span><code># See your entry in the sacctmgr database
+sacctmgr show user withassoc where name=$USER
+
+# See our currently defined QOS in default format
+sacctmgr show qos
+
+# See our currently defined QOS in a readable format
+# (*we put this in the script "showqos")
 sacctmgr show qos format=Name%20,Priority,Flags%30,MaxWall,MaxTRESPU%20,MaxJobsPU,MaxSubmitPU,MaxTRESPA%25
 
 # See all users database values
