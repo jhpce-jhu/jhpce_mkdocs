@@ -5,18 +5,23 @@ tags:
 
 # **sacctmgr -- useful command examples**
     
-[Sacctmgr](https://slurm.schedmd.com/archive/slurm-22.05.9/sacctmgr.html) is mostly used by systems administrators. Only they are allowed to make changes. Users can use it to view settings.  The basic command for that is `sacctmgr show qos`. This displays all possible QOS fields, and the output field widths are large. So we wrote a shell script called `showqos` that tries to print out only the QOS attributes that we are using and with more readable field widths. Be aware that that script may not show attributes we add in the future!!
+[Sacctmgr](https://slurm.schedmd.com/archive/slurm-22.05.9/sacctmgr.html) is mostly used by systems administrators. Only they are allowed to make changes. Users can use it to view settings.
 
 Note that the output field names displayed are not necessarily the same as the keywords used when modifying, e.g. MaxTRESPerUser is the keyword but the more concise MaxTRESPU is displayed.
 
 Also note that by "account" SLURM means the parent object of user accounts. We do not currently put our users into different accounts (many other clusters do).
 
-We currently have two clusters, named "jhpce3" and "cms" You usually don't have to specify which cluster you want to consult/change, as we have a SLURM server for each cluster.
-
 ## **Sacctmgr for Users**
 
 ```
+# See your entry in the sacctmgr database
+sacctmgr show user withassoc where name=$USER
+
+# See our currently defined QOS in default format
+sacctmgr show qos
+
 # See our currently defined QOS in a readable format
+# (*we put this in the script "showqos")
 sacctmgr show qos format=Name%20,Priority,Flags%30,MaxWall,MaxTRESPU%20,MaxJobsPU,MaxSubmitPU,MaxTRESPA%25
 
 # See all users database values
@@ -32,7 +37,9 @@ sacctmgr show user withassoc|grep -v "normal "|awk '{printf "%s\t\t%s\t%s\t\t%s%
 
 ## **Sacctmgr for Systems Administrators**
 
-Like many administrative commands, you can just run the command to enter into a shell. Useful if you are exploring some situation, although you cannot paginate output.
+Like many administrative commands, you can just run the `sacctmgr` command to enter into a shell. Useful if you are exploring some situation, although you cannot paginate output.
+
+We currently have two clusters, named "jhpce3" and "cms" You usually don't have to specify which cluster you want to consult/change, as we have a SLURM server for each cluster.
 
 ### Make A Backup Of Users and Their Settings
 ```
