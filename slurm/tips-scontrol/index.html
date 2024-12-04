@@ -3862,10 +3862,12 @@
 <div class="highlight"><pre><span></span><code>scontrol<span class="w"> </span>show<span class="w"> </span>partition<span class="w"> </span>&lt;partitionname&gt;
 </code></pre></div>
 <h3 id="update-jobs"><strong>Update Jobs</strong><a class="headerlink" href="#update-jobs" title="Anchor link to this section for reference">&para;</a></h3>
-<p>You can update many aspects of pending jobs, (fewer for running jobs). What follows is only a sample!!! Click <a href="https://slurm.schedmd.com/scontrol.html#lbAH">here</a> for the complete list.</p>
+<p>You can update many aspects of pending jobs, (more items than for running jobs). What follows is only a sample!!! Click <a href="https://slurm.schedmd.com/archive/slurm-22.05.9/scontrol.html#lbAH">here</a> for the complete list.</p>
 <p>It can be to your benefit to update existing pending jobs rather than <code>scancel</code> them and re-submit them. For example, jobs accrue priority points as they sit waiting in the queue.  Those points are lost if you cancel the job.</p>
 <p>You can find the commands necessary to add a Quality of Service attribute to a pending job in our <a href="../qos/">QOS document</a>.</p>
 <h4 id="pending-jobs"><strong>Pending Jobs</strong><a class="headerlink" href="#pending-jobs" title="Anchor link to this section for reference">&para;</a></h4>
+<div class="highlight"><span class="filename">Add a reservation to one of your jobs</span><pre><span></span><code>scontrol<span class="w"> </span>update<span class="w"> </span><span class="nv">jobid</span><span class="o">=</span>&lt;jobid&gt;<span class="w"> </span><span class="nv">reservation</span><span class="o">=</span>&lt;reservation-name&gt;
+</code></pre></div>
 <div class="highlight"><span class="filename">Place one of your jobs ahead of other of your jobs</span><pre><span></span><code>scontrol<span class="w"> </span>top<span class="w"> </span>&lt;jobid&gt;
 </code></pre></div>
 <div class="highlight"><span class="filename">Place one of your jobs ahead or behind other of your jobs</span><pre><span></span><code>scontrol<span class="w"> </span>update<span class="w"> </span><span class="nv">jobid</span><span class="o">=</span>&lt;jobid&gt;<span class="w"> </span><span class="nv">nice</span><span class="o">=</span>&lt;adjustment&gt;<span class="w"> </span><span class="c1"># larger #s decrease the priority</span>
@@ -3979,7 +3981,7 @@ scontrol<span class="w"> </span>create<span class="w"> </span><span class="nv">r
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">September 24, 2024</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">December 4, 2024</span>
   </span>
 
     

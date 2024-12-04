@@ -1402,6 +1402,13 @@
   {
     "page_name": "scontrol tips",
     "page_url": "../slurm/tips-scontrol/",
+    "text": "scontrol update jobid=<jobid> reservation=<reservation-name>\n",
+    "html": "<pre><span></span><code>scontrol<span class=\"w\"> </span>update<span class=\"w\"> </span><span class=\"nv\">jobid</span><span class=\"o\">=</span>&lt;jobid&gt;<span class=\"w\"> </span><span class=\"nv\">reservation</span><span class=\"o\">=</span>&lt;reservation-name&gt;\n</code></pre>",
+    "language": ""
+  },
+  {
+    "page_name": "scontrol tips",
+    "page_url": "../slurm/tips-scontrol/",
     "text": "scontrol top <jobid>\n",
     "html": "<pre><span></span><code>scontrol<span class=\"w\"> </span>top<span class=\"w\"> </span>&lt;jobid&gt;\n</code></pre>",
     "language": ""
