@@ -27,13 +27,17 @@ scontrol show partition <partitionname>
 
 ### **Update Jobs**
 
-You can update many aspects of pending jobs, (fewer for running jobs). What follows is only a sample!!! Click [here](https://slurm.schedmd.com/scontrol.html#lbAH) for the complete list.
+You can update many aspects of pending jobs, (more items than for running jobs). What follows is only a sample!!! Click [here](https://slurm.schedmd.com/archive/slurm-22.05.9/scontrol.html#lbAH) for the complete list.
 
 It can be to your benefit to update existing pending jobs rather than `scancel` them and re-submit them. For example, jobs accrue priority points as they sit waiting in the queue.  Those points are lost if you cancel the job.
 
 You can find the commands necessary to add a Quality of Service attribute to a pending job in our [QOS document](../slurm/qos.md).
 
 #### **Pending Jobs**
+
+```Shell title="Add a reservation to one of your jobs" linenums="0"
+scontrol update jobid=<jobid> reservation=<reservation-name>
+```
 
 ```Shell title="Place one of your jobs ahead of other of your jobs" linenums="0"
 scontrol top <jobid>
