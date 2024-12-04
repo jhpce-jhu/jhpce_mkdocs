@@ -38,6 +38,9 @@ You can find the commands necessary to add a Quality of Service attribute to a p
 ```Shell title="Add a reservation to one of your jobs" linenums="0"
 scontrol update jobid=<jobid> reservation=<reservation-name>
 ```
+```Shell title="Remoive a reservation from one of your jobs" linenums="0"
+scontrol update jobid=<jobid> reservation=
+```
 
 ```Shell title="Place one of your jobs ahead of other of your jobs" linenums="0"
 scontrol top <jobid>
