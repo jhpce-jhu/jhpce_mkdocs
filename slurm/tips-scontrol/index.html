@@ -3866,8 +3866,10 @@
 <p>It can be to your benefit to update existing pending jobs rather than <code>scancel</code> them and re-submit them. For example, jobs accrue priority points as they sit waiting in the queue.  Those points are lost if you cancel the job.</p>
 <p>You can find the commands necessary to add a Quality of Service attribute to a pending job in our <a href="../qos/">QOS document</a>.</p>
 <h4 id="pending-jobs"><strong>Pending Jobs</strong><a class="headerlink" href="#pending-jobs" title="Anchor link to this section for reference">&para;</a></h4>
-<div class="highlight"><span class="filename">Add a reservation to one of your jobs</span><pre><span></span><code>scontrol<span class="w"> </span>update<span class="w"> </span><span class="nv">jobid</span><span class="o">=</span>&lt;jobid&gt;<span class="w"> </span><span class="nv">reservation</span><span class="o">=</span>&lt;reservation-name&gt;
+<p><div class="highlight"><span class="filename">Add a reservation to one of your jobs</span><pre><span></span><code>scontrol<span class="w"> </span>update<span class="w"> </span><span class="nv">jobid</span><span class="o">=</span>&lt;jobid&gt;<span class="w"> </span><span class="nv">reservation</span><span class="o">=</span>&lt;reservation-name&gt;
 </code></pre></div>
+<div class="highlight"><span class="filename">Remoive a reservation from one of your jobs</span><pre><span></span><code>scontrol<span class="w"> </span>update<span class="w"> </span><span class="nv">jobid</span><span class="o">=</span>&lt;jobid&gt;<span class="w"> </span><span class="nv">reservation</span><span class="o">=</span>
+</code></pre></div></p>
 <div class="highlight"><span class="filename">Place one of your jobs ahead of other of your jobs</span><pre><span></span><code>scontrol<span class="w"> </span>top<span class="w"> </span>&lt;jobid&gt;
 </code></pre></div>
 <div class="highlight"><span class="filename">Place one of your jobs ahead or behind other of your jobs</span><pre><span></span><code>scontrol<span class="w"> </span>update<span class="w"> </span><span class="nv">jobid</span><span class="o">=</span>&lt;jobid&gt;<span class="w"> </span><span class="nv">nice</span><span class="o">=</span>&lt;adjustment&gt;<span class="w"> </span><span class="c1"># larger #s decrease the priority</span>
