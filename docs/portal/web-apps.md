@@ -1,10 +1,3 @@
----
-tags:
-  - in-progress
-  - adi
-hide:
-  - toc
----
 # JHPCE Web Enabled User Apps
 ---
 
