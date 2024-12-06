@@ -39,6 +39,8 @@ sacctmgr show user withassoc|grep -v "normal "|awk '{printf "%s\t\t%s\t%s\t\t%s%
 
 Like many administrative commands, you can just run the `sacctmgr` command to enter into its shell version. Useful if you are exploring some situation, although you cannot paginate output.
 
+You can add the flag "-i" to avoid the "are-you-sure" 30 second delay and prompt.
+
 We currently have two clusters, named "jhpce3" and "cms" You usually don't have to specify which cluster you want to consult/change, as we have a SLURM server for each cluster.
 
 ### Make A Backup Of Users and Their Settings
@@ -68,15 +70,15 @@ When changing qos for something only use the '=' operator when wanting to explic
 
 ```
 # Add a QOS to a user's existing allowed QOS:
-sacctmgr mod user mmill116 set qos+=high-priority
+sacctmgr -i mod user mmill116 set qos+=high-priority
 # or, you can redefine their whole list
 sacctmgr mod user where name=tunison set qos=normal,shared-200-2
 
 # Remove a QOS from a user's existing allowed QOS:
-sacctmgr mod user where name=tunison set qos-=shared-200-2 # to remove
+sacctmgr -i mod user where name=tunison set qos-=shared-200-2 # to remove
 
 # Limit a user's ability to run and submit jobs
-sacctmgr mod user where name=tunison set MaxJobs=100,MaxSubmit=200
+sacctmgr -i mod user where name=tunison set MaxJobs=100,MaxSubmit=200
 
 # How JHPCE3 users accounts are created in the sacctmgr database
 sacctmgr -i create user name=$userid cluster=jhpce3 account=jhpce 
@@ -106,17 +108,17 @@ There are a number of variants of some categories of parameters -- by user, by g
 
 ```
 # Define a QOS limiting a user to 25 running jobs with a max of 50 pending or running
-sacctmgr add qos job-25run50sub
+sacctmgr -i add qos job-25run50sub
 
 # You MUST define these flags for the QOS to work as expected
-sacctmgr modify qos job-25run50sub set flags=DenyOnLimit,OverPartQOS
-sacctmgr modify qos job-25run50sub set MaxJobsPerUser=25 MaxSubmitJobsPerUser=50
+sacctmgr -i modify qos job-25run50sub set flags=DenyOnLimit,OverPartQOS
+sacctmgr -i modify qos job-25run50sub set MaxJobsPerUser=25 MaxSubmitJobsPerUser=50
 
 # Remove one of those parameters
 sacctmgr modify qos job-25run50sub set MaxJobsPerUser=-1
 
 # Delete the QOS (they can't be renamed)
-sacctmgr delete qos job-25run50sub
+sacctmgr -i delete qos job-25run50sub
 
 # Limit each user to 512GB and 100 CPU:
 sacctmgr modify qos shared-default set MaxTRESPerUser=mem=524288 MaxTRESPerUser=cpu=100
