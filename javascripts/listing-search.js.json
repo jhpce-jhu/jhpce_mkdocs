@@ -1353,6 +1353,13 @@
   {
     "page_name": "sacctmgr tips",
     "page_url": "../slurm/tips-sacctmgr/",
+    "text": "# Dump the QOS definitions\nsacctmgr show qos > qos_backup-date.txt\n",
+    "html": "<pre><span></span><code># Dump the QOS definitions\nsacctmgr show qos &gt; qos_backup-date.txt\n</code></pre>",
+    "language": ""
+  },
+  {
+    "page_name": "sacctmgr tips",
+    "page_url": "../slurm/tips-sacctmgr/",
     "text": "# Add a QOS to a user's existing allowed QOS:\nsacctmgr mod user mmill116 set qos+=high-priority\n# or, you can redefine their whole list\nsacctmgr mod user where name=tunison set qos=normal,shared-200-2\n\n# Remove a QOS from a user's existing allowed QOS:\nsacctmgr mod user where name=tunison set qos-=shared-200-2 # to remove\n\n# Limit a user's ability to run and submit jobs\nsacctmgr mod user where name=tunison set MaxJobs=100,MaxSubmit=200\n\n# How JHPCE3 users accounts are created in the sacctmgr database\nsacctmgr -i create user name=$userid cluster=jhpce3 account=jhpce \n\n# How C-SUB users accounts are created in the sacctmgr database on jhpcecms01\nsacctmgr -i create user name=$userid account=generic cluster=cms \n",
     "html": "<pre><span></span><code># Add a QOS to a user's existing allowed QOS:\nsacctmgr mod user mmill116 set qos+=high-priority\n# or, you can redefine their whole list\nsacctmgr mod user where name=tunison set qos=normal,shared-200-2\n\n# Remove a QOS from a user's existing allowed QOS:\nsacctmgr mod user where name=tunison set qos-=shared-200-2 # to remove\n\n# Limit a user's ability to run and submit jobs\nsacctmgr mod user where name=tunison set MaxJobs=100,MaxSubmit=200\n\n# How JHPCE3 users accounts are created in the sacctmgr database\nsacctmgr -i create user name=$userid cluster=jhpce3 account=jhpce \n\n# How C-SUB users accounts are created in the sacctmgr database on jhpcecms01\nsacctmgr -i create user name=$userid account=generic cluster=cms \n</code></pre>",
     "language": ""
