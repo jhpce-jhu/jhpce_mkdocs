@@ -3732,6 +3732,7 @@ sacctmgr show user withassoc|grep -v &quot;normal &quot;|awk &#39;{printf &quot;
 </code></pre></div>
 <h2 id="sacctmgr-for-systems-administrators"><strong>Sacctmgr for Systems Administrators</strong><a class="headerlink" href="#sacctmgr-for-systems-administrators" title="Anchor link to this section for reference">&para;</a></h2>
 <p>Like many administrative commands, you can just run the <code>sacctmgr</code> command to enter into its shell version. Useful if you are exploring some situation, although you cannot paginate output.</p>
+<p>You can add the flag "-i" to avoid the "are-you-sure" 30 second delay and prompt.</p>
 <p>We currently have two clusters, named "jhpce3" and "cms" You usually don't have to specify which cluster you want to consult/change, as we have a SLURM server for each cluster.</p>
 <h3 id="make-a-backup-of-users-and-their-settings">Make A Backup Of Users and Their Settings<a class="headerlink" href="#make-a-backup-of-users-and-their-settings" title="Anchor link to this section for reference">&para;</a></h3>
 <p>Currently JRT has stored some in <code>/root/slurm/sacctmgr-stuff/sacctmgr-dumps/</code></p>
@@ -3748,15 +3749,15 @@ sacctmgr show qos &gt; qos_backup-date.txt
 <p>For public partitions like "shared" and "interactive", the slurm config file /etc/slurm/partitions.conf specifies a default partition QOS of, for example, "shared-default". So  we can control how many CPUs and how much RAM each user can use in public partitions by changing the appropriate single QOS.</p>
 <p>When changing qos for something only use the '=' operator when wanting to explicitly set the qos to something.  In most cases you will want to use the '+=' or '-=' operator to either add to or remove from the existing qos already in place.</p>
 <div class="highlight"><pre><span></span><code># Add a QOS to a user&#39;s existing allowed QOS:
-sacctmgr mod user mmill116 set qos+=high-priority
+sacctmgr -i mod user mmill116 set qos+=high-priority
 # or, you can redefine their whole list
 sacctmgr mod user where name=tunison set qos=normal,shared-200-2
 
 # Remove a QOS from a user&#39;s existing allowed QOS:
-sacctmgr mod user where name=tunison set qos-=shared-200-2 # to remove
+sacctmgr -i mod user where name=tunison set qos-=shared-200-2 # to remove
 
 # Limit a user&#39;s ability to run and submit jobs
-sacctmgr mod user where name=tunison set MaxJobs=100,MaxSubmit=200
+sacctmgr -i mod user where name=tunison set MaxJobs=100,MaxSubmit=200
 
 # How JHPCE3 users accounts are created in the sacctmgr database
 sacctmgr -i create user name=$userid cluster=jhpce3 account=jhpce 
@@ -3777,17 +3778,17 @@ sacctmgr -i create user name=$userid account=generic cluster=cms
 <p>Note that one <em>can</em> use the fact that all users are in the same account to limit the total number of users in the cluster who can do some things, like submit jobs, or whatever the parameter category is. But take care to consider whether you are limiting what everyone can do, in aggregate, not individually.</p>
 </div>
 <div class="highlight"><pre><span></span><code># Define a QOS limiting a user to 25 running jobs with a max of 50 pending or running
-sacctmgr add qos job-25run50sub
+sacctmgr -i add qos job-25run50sub
 
 # You MUST define these flags for the QOS to work as expected
-sacctmgr modify qos job-25run50sub set flags=DenyOnLimit,OverPartQOS
-sacctmgr modify qos job-25run50sub set MaxJobsPerUser=25 MaxSubmitJobsPerUser=50
+sacctmgr -i modify qos job-25run50sub set flags=DenyOnLimit,OverPartQOS
+sacctmgr -i modify qos job-25run50sub set MaxJobsPerUser=25 MaxSubmitJobsPerUser=50
 
 # Remove one of those parameters
 sacctmgr modify qos job-25run50sub set MaxJobsPerUser=-1
 
 # Delete the QOS (they can&#39;t be renamed)
-sacctmgr delete qos job-25run50sub
+sacctmgr -i delete qos job-25run50sub
 
 # Limit each user to 512GB and 100 CPU:
 sacctmgr modify qos shared-default set MaxTRESPerUser=mem=524288 MaxTRESPerUser=cpu=100
