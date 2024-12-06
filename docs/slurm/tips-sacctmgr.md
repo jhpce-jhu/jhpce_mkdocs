@@ -42,9 +42,18 @@ Like many administrative commands, you can just run the `sacctmgr` command to en
 We currently have two clusters, named "jhpce3" and "cms" You usually don't have to specify which cluster you want to consult/change, as we have a SLURM server for each cluster.
 
 ### Make A Backup Of Users and Their Settings
+
+Currently JRT has stored some in `/root/slurm/sacctmgr-stuff/sacctmgr-dumps/`
+
 ```
 # Dump the accounting database
 sacctmgr dump <cluster-name> file=<filename>
+```
+That backup only contains users. Other things are stored in sacctmgr database(?s?), such as QOS definitions.
+
+```
+# Dump the QOS definitions
+sacctmgr show qos > qos_backup-date.txt
 ```
 
 ### **Managing QOS for users**
