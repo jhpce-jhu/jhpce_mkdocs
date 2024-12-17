@@ -166,9 +166,11 @@ scontrol update reservation=<resv-name> user+=<username>
 ```
 
 ```Shell title="Create downtime reservations on entire partitions" linenums="0"
-for part in shared interactive cee cegs2 transfer cancergen sas bstgpu gpu neuron bader caracol chatterjee echodac gee gpu-test hl hongkai stanley bluejay;
+grep -v "^#" /etc/slurm/partitions.conf|grep PartitionName|grep -v DEFAULT|awk '{print $1}'|cut -c 15- > /tmp/mylist
+
+for part in `cat /tmp/mylist`;
 do
-scontrol create reservation=power-outage-$part flags=maint,ignore_jobs,part_nodes starttime=2024-07-15T17:00 endtime=2024-07-22T17:00 nodes=all users=root partitionname=$part
+scontrol create reservation=power-outage-$part flags=maint,ignore_jobs,part_nodes starttime=2024-07-15T17:00 endtime=2024-07-22T17:00 nodes=all users=root partitionname=${part}
 done
 ```
 
