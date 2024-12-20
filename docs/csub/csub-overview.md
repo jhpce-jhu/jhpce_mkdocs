@@ -14,7 +14,7 @@ The Centers for Medicare and Medicaid Services (CMS) is part of the U.S. Departm
 
 Acquiring and managing sensitive information from the Federal government is time-consuming, and requires on-going administrative and information technology support by groups with specific expertise.
 
-To facilitate research, an effort has been made to create an infrastructure that can provide those resources, as well as a computational facility to store and analyze the data.
+To facilitate research, an effort has been made to create an infrastructure that can provide those resources, as well as a computational facility to store and analyze the data. The C-SUB is built such that it complies with  NIST SP 800-53 protocols, to ensure the protection of this sensitive data. The C-SUB's compliance with NIST SP 800-53 has been reviewed and approved by an external entitiy.
 
 Researchers can leverage this existing infrastructure to more quickly and efficiently start and conduct their work.
 
