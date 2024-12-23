@@ -3522,7 +3522,7 @@
 
 <h1 id="jhpce-documentation-all-search-results">JHPCE Documentation - All search results<a class="headerlink" href="#jhpce-documentation-all-search-results" title="Anchor link to this section for reference">&para;</a></h1>
 <p>You will find here all the search results listings.</p>
-<p><style>a.url { color: gray; font-size: small; display: block; }</style><h2><a class="heading" href="../access/access-overview">Overview</a></h2><a class="url" href="../access/access-overview">access/access-overview/</a><pre class="mermaid"><code>graph TD
+<p><style>a.url { color: gray; font-size: small; display: block; }</style><h2><a class="heading" href="../access/access-overview/">Overview</a></h2><a class="url" href="../access/access-overview/">access/access-overview/</a><pre class="mermaid"><code>graph TD
    A[Your computer] --&gt; B([Login nodes])
    A[Your computer] -- Only via Hopkins/VPN --&gt; D((Web Portal))
    A[Your computer] --&gt; C([Transfer node])
@@ -3532,7 +3532,7 @@
    D((Web Portal)) --&gt; F[Compute node2]
    B([Login nodes]) --&gt; G[Compute node3]
    D((Web Portal)) --&gt; G[Compute node3]
-   C([Transfer node]) &lt;--&gt; H[(storage servers)]</code></pre><h2><a class="heading" href="../access/file-transfer">Overview</a></h2><a class="url" href="../access/file-transfer">access/file-transfer/</a><pre><span></span><code>jhpce01% srun --pty --x11 -p transfer bash
+   C([Transfer node]) &lt;--&gt; H[(storage servers)]</code></pre><h2><a class="heading" href="../access/file-transfer/">Overview</a></h2><a class="url" href="../access/file-transfer/">access/file-transfer/</a><pre><span></span><code>jhpce01% srun --pty --x11 -p transfer bash
 </code></pre><pre><span></span><code>scp LOCAL_PATH/data.txt USERID@jhpce-transfer01.jhsph.edu:REMOTE_PATH/REMOTE_TARGET_FILENAME
 </code></pre><pre><span></span><code>scp USERID@jhpce-transfer01.jhsph.edu:REMOTE_PATH/data2.txt LOCAL_PATH/LOCAL_TARGET_FILENAME
 </code></pre><pre><span></span><code>sftp USERID@jhpce-transfer01.jhsph.edu
@@ -3540,7 +3540,7 @@
 </code></pre><pre><span></span><code>bash ibm-aspera-connect_4.2.10.749_linux_x86_64.sh
 </code></pre><pre><span></span><code>lynx ftp://USER@ftp.site.gov
 </code></pre><pre><span></span><code>wget ftp://USER:PASSWORD@ftp.site.gov/path/to/file
-</code></pre><h2><a class="heading" href="../access/onedrive">OneDrive via rclone</a></h2><a class="url" href="../access/onedrive">access/onedrive/</a><pre><span></span><code>[myuser@transfer-01 ~]$ xdg-settings set default-web-browser chromium-browser.desktop
+</code></pre><h2><a class="heading" href="../access/onedrive/">OneDrive via rclone</a></h2><a class="url" href="../access/onedrive/">access/onedrive/</a><pre><span></span><code>[myuser@transfer-01 ~]$ xdg-settings set default-web-browser chromium-browser.desktop
 </code></pre><pre><span></span><code><span class="gp">[compute-113 /users/bob]$ </span>rclone<span class="w"> </span>lsd<span class="w"> </span>OneDrive:
 <span class="go">          -1 2019-12-21 01:54:32         2 BoxMigration</span>
 <span class="go">          -1 2014-11-05 17:23:32        25 Documents</span>
@@ -3584,7 +3584,7 @@
 <span class="go">       20 plot1.sh</span>
 <span class="go">       83 test1.sh</span>
 <span class="go">        0 zzz-test.txt</span>
-</code></pre><h2><a class="heading" href="../access/ssh">SSH</a></h2><a class="url" href="../access/ssh">access/ssh/</a><pre><span></span><code>ssh-keygen -t ecdsa
+</code></pre><h2><a class="heading" href="../access/ssh/">SSH</a></h2><a class="url" href="../access/ssh/">access/ssh/</a><pre><span></span><code>ssh-keygen -t ecdsa
 </code></pre><pre><span></span><code>cat ~/.ssh/id_ecdsa.pub | ssh &lt;your_userid&gt;@jhpce01.jhsph.edu 'cat &gt;&gt; ~/.ssh/authorized_keys'
 </code></pre><pre><span></span><code>ssh-add
 ssh-agent
@@ -3625,7 +3625,7 @@ ServerAliveCountMax<span class="w"> </span><span class="m">30</span>
 </code></pre><pre><span></span><code>Host<span class="w"> </span>*
 <span class="w">    </span>ForwardX11<span class="w"> </span>no
 <span class="w">    </span>IdentityFile<span class="w"> </span>~/.ssh/id_ecdsa.my-general-key
-</code></pre><h2><a class="heading" href="../files/acl">ACL</a></h2><a class="url" href="../files/acl">files/acl/</a><pre><span></span><code>access type:[flags]:principal:permissions
+</code></pre><h2><a class="heading" href="../files/acl/">ACL</a></h2><a class="url" href="../files/acl/">files/acl/</a><pre><span></span><code>access type:[flags]:principal:permissions
 </code></pre><pre><span></span><code>[alice@compute-123 ~]$ pwd
 /users/alice
 [alice@compute-123 ~]$ ls -ld .
@@ -3821,7 +3821,7 @@ user::rwx
 group::r-x
 mask::r-x
 other::r-x
-</code></pre><h2><a class="heading" href="../files/archive-files">Archive Files</a></h2><a class="url" href="../files/archive-files">files/archive-files/</a><pre><span></span><code>cd /dcs05/mygroup/data/trial5/experiment8/
+</code></pre><h2><a class="heading" href="../files/archive-files/">Archive Files</a></h2><a class="url" href="../files/archive-files/">files/archive-files/</a><pre><span></span><code>cd /dcs05/mygroup/data/trial5/experiment8/
 tar -cf /dcs07/mygroup/my-tar-file.tar some-directory other-dir2 file9
 </code></pre><pre><span></span><code>cd /dcs05/mygroup/data/trial5/experiment8/
 tar -cf /dcs07/mygroup/my-tar-file.tar --use-compress-program="pigz -k -p4" some-large-directory
@@ -3838,9 +3838,9 @@ less /tmp/cache-list.txt
 </code></pre><pre><span></span><code>touch -t 201909111200 911-noon
 find somedirofmine -newer 911-noon -print0
 </code></pre><pre><span></span><code>find . \( \( -type d -name Library -prune \) -o \( -type d -name .dropbox -prune \) \) -o -newer 911 -depth 4 -print0 
-</code></pre><h2><a class="heading" href="../files/copying-files">Copying within cluster</a></h2><a class="url" href="../files/copying-files">files/copying-files/</a><pre><span></span><code>tar -cbf 20480 - some-directory | (cd /destination/place; tar -xbf 20480 -)
+</code></pre><h2><a class="heading" href="../files/copying-files/">Copying within cluster</a></h2><a class="url" href="../files/copying-files/">files/copying-files/</a><pre><span></span><code>tar -cbf 20480 - some-directory | (cd /destination/place; tar -xbf 20480 -)
 </code></pre><pre><span></span><code>tar -cbf 20480 - some-directory | ssh myaccount@another-host (cd /destination/place; tar -xbf 20480 -)"
-</code></pre><h2><a class="heading" href="../files/deep-paths">Navigating Deep Directory Trees</a></h2><a class="url" href="../files/deep-paths">files/deep-paths/</a><pre><span></span><code>lrwxr-xr-x<span class="w">  </span><span class="m">1</span><span class="w"> </span>tunison<span class="w">  </span>wheel<span class="w">  </span><span class="m">8</span><span class="w"> </span>Jan<span class="w"> </span><span class="m">11</span><span class="w"> </span><span class="m">10</span>:12<span class="w"> </span>newname@<span class="w"> </span>-&gt;<span class="w"> </span>realfile
+</code></pre><h2><a class="heading" href="../files/deep-paths/">Navigating Deep Directory Trees</a></h2><a class="url" href="../files/deep-paths/">files/deep-paths/</a><pre><span></span><code>lrwxr-xr-x<span class="w">  </span><span class="m">1</span><span class="w"> </span>tunison<span class="w">  </span>wheel<span class="w">  </span><span class="m">8</span><span class="w"> </span>Jan<span class="w"> </span><span class="m">11</span><span class="w"> </span><span class="m">10</span>:12<span class="w"> </span>newname@<span class="w"> </span>-&gt;<span class="w"> </span>realfile
 -rw-r--r--<span class="w">  </span><span class="m">1</span><span class="w"> </span>tunison<span class="w">  </span>wheel<span class="w">  </span><span class="m">0</span><span class="w"> </span>Jan<span class="w"> </span><span class="m">11</span><span class="w"> </span><span class="m">10</span>:11<span class="w"> </span>realfile
 </code></pre><pre><span></span><code>mkdir<span class="w"> </span>~/r
 <span class="nb">cd</span><span class="w"> </span>~/r
@@ -3868,7 +3868,7 @@ alias po='popd'
 <span class="w"> </span><span class="m">2</span><span class="w">  </span>/cms01/data
 <span class="w"> </span><span class="m">3</span><span class="w">  </span>~
 <span class="w"> </span><span class="m">4</span><span class="w">  </span>/cms01/incoming
-</code></pre><h2><a class="heading" href="../files/encfs">Encrypting filesystems with ENCFS</a></h2><a class="url" href="../files/encfs">files/encfs/</a><pre><span></span><code>[jhpce01 /users/bob]$ srun --pty --x11 bash
+</code></pre><h2><a class="heading" href="../files/encfs/">Encrypting filesystems with ENCFS</a></h2><a class="url" href="../files/encfs/">files/encfs/</a><pre><span></span><code>[jhpce01 /users/bob]$ srun --pty --x11 bash
 Last login: Thu Nov  3 14:33:05 2016 from jhpce01.cm.cluster
 [compute-070 /users/bob]$ mkdir ENCRYPTED
 [compute-070 /users/bob]$ mkdir UNENCRYPTED
@@ -3974,9 +3974,9 @@ EncFS Password: (reenter the password you used to encrypt the data)
 </code></pre><pre><span></span><code>[compute-049 /users/chuck/UNENCRYPTED]$ cd ..
 [compute-049 /users/chuck] fusermount -u /users/chuck/UNENCRYPTED
 [compute-049 /users/chuck] exit
-</code></pre><h2><a class="heading" href="../files/files-overview">Files Overview</a></h2><a class="url" href="../files/files-overview">files/files-overview/</a><pre><span></span><code>getconf NAME_MAX /
+</code></pre><h2><a class="heading" href="../files/files-overview/">Files Overview</a></h2><a class="url" href="../files/files-overview/">files/files-overview/</a><pre><span></span><code>getconf NAME_MAX /
 getconf PATH_MAX /
-</code></pre><h2><a class="heading" href="../files/rsync-itemize-manpage">Itemize Manual Page</a></h2><a class="url" href="../files/rsync-itemize-manpage">files/rsync-itemize-manpage/</a><pre><span></span><code>The  "%i"  escape  has a cryptic output that is 11 letters long.
+</code></pre><h2><a class="heading" href="../files/rsync-itemize-manpage/">Itemize Manual Page</a></h2><a class="url" href="../files/rsync-itemize-manpage/">files/rsync-itemize-manpage/</a><pre><span></span><code>The  "%i"  escape  has a cryptic output that is 11 letters long.
 The general format is like the string YXcstpoguax,  where  Y  is
 replaced  by the type of update being done, X is replaced by the
 file-type, and the other letters represent attributes  that  may
@@ -4068,7 +4068,7 @@ o      The  x  means  that the extended attribute information is
        being changed.
 
 One other output is possible: when deleting files, the "%i" will output  the  string  "*deleting" for each item that is being removed (assuming that you are talking to a  recent  enough  rsync that  it  logs deletions instead of outputting them as a verbose message).
-</code></pre><h2><a class="heading" href="../files/rsync-itemize-table">Itemize Output Key</a></h2><a class="url" href="../files/rsync-itemize-table">files/rsync-itemize-table/</a><pre><span></span><code>  YXcstpoguax  path/to/file
+</code></pre><h2><a class="heading" href="../files/rsync-itemize-table/">Itemize Output Key</a></h2><a class="url" href="../files/rsync-itemize-table/">files/rsync-itemize-table/</a><pre><span></span><code>  YXcstpoguax  path/to/file
   |||||||||||
   `-------------------------- the TYPE OF UPDATE:
    ||||||||||   &lt;: file is being transferred to the remote host (sent).
@@ -4098,7 +4098,7 @@ One other output is possible: when deleting files, the "%i" will output  the  st
          `---- g: Group is different
           `--- u: The u slot is reserved for future use.
            `-- a: The ACL information changed
-</code></pre><h2><a class="heading" href="../files/rsync">Using Rsync</a></h2><a class="url" href="../files/rsync">files/rsync/</a><pre><span></span><code>rsync -a --verbose --dry-run --stats /local1 /other2
+</code></pre><h2><a class="heading" href="../files/rsync/">Using Rsync</a></h2><a class="url" href="../files/rsync/">files/rsync/</a><pre><span></span><code>rsync -a --verbose --dry-run --stats /local1 /other2
 </code></pre><pre><span></span><code>rsync -a --verbose --dry-run --stats --itemize-changes /local1 /other2
 </code></pre><pre><span></span><code>rsync -avz --include='*.txt' /src /dest
 </code></pre><pre><span></span><code>rsync -avhAXH --progress --numeric-ids --sparse --one-file-system --stats --delete-after
@@ -4147,7 +4147,7 @@ One other output is possible: when deleting files, the "%i" will output  the  st
 --chown=USER:GROUP       simple username/groupname mapping 
 </code></pre><pre><span></span><code>tar -cbf 20480 - some-directory | (cd /destination/place; tar -xbf 20480 -)
 </code></pre><pre><span></span><code>tar -cbf 20480 - some-directory | ssh myaccount@another-host (cd /destination/place; tar -xbf 20480 -)"
-</code></pre><h2><a class="heading" href="../files/sharing-files">Sharing Files</a></h2><a class="url" href="../files/sharing-files">files/sharing-files/</a><pre><span></span><code><span class="nb">cd</span><span class="w"> </span>into-the-top-of-the-directory-tree
+</code></pre><h2><a class="heading" href="../files/sharing-files/">Sharing Files</a></h2><a class="url" href="../files/sharing-files/">files/sharing-files/</a><pre><span></span><code><span class="nb">cd</span><span class="w"> </span>into-the-top-of-the-directory-tree
 find<span class="w"> </span>.<span class="w"> </span>-type<span class="w"> </span>d<span class="w"> </span><span class="p">|</span><span class="w"> </span>xargs<span class="w"> </span>chmod<span class="w"> </span>u+rwx,g+rwx,g+s,o-rwx
 find<span class="w"> </span>.<span class="w"> </span>-type<span class="w"> </span>f<span class="w"> </span><span class="p">|</span><span class="w"> </span>xargs<span class="w"> </span>chmod<span class="w"> </span>u+rwx,g+rw,o-rwx
 </code></pre><pre><span></span><code><span class="nb">cd</span><span class="w"> </span>into-the-top-of-the-directory-tree
@@ -4167,7 +4167,7 @@ drwxr-s--- 10 c-rwu32-55548    c-55548 13 Nov  8 10:31 mltss_duals/
 drwxrws---  4 c-yyang279-55548 c-55548  4 Nov 30 10:13 shen_yang/
 drwxr-s---  2 c-ykuang6-55548  c-55548  4 Jan 30 12:13 test/
 drwxr-s---  2 c-jlevy33-55548  c-55548  3 Aug 29 15:19 toofull/
-</code></pre><h2><a class="heading" href="../gpu/alphafold">Alphafold</a></h2><a class="url" href="../gpu/alphafold">gpu/alphafold/</a><pre><span></span><code><span class="o">[</span>login31<span class="w"> </span>/users/mmill116/alpha1<span class="o">]</span>$<span class="w"> </span>srun<span class="w"> </span>--pty<span class="w"> </span>--x11<span class="w"> </span>--mem<span class="o">=</span>100G<span class="w"> </span>--cpus-per-task<span class="o">=</span><span class="m">8</span><span class="w"> </span>--partition<span class="w"> </span>gpu<span class="w"> </span>--gpus<span class="o">=</span><span class="m">1</span><span class="w"> </span>bash
+</code></pre><h2><a class="heading" href="../gpu/alphafold/">Alphafold</a></h2><a class="url" href="../gpu/alphafold/">gpu/alphafold/</a><pre><span></span><code><span class="o">[</span>login31<span class="w"> </span>/users/mmill116/alpha1<span class="o">]</span>$<span class="w"> </span>srun<span class="w"> </span>--pty<span class="w"> </span>--x11<span class="w"> </span>--mem<span class="o">=</span>100G<span class="w"> </span>--cpus-per-task<span class="o">=</span><span class="m">8</span><span class="w"> </span>--partition<span class="w"> </span>gpu<span class="w"> </span>--gpus<span class="o">=</span><span class="m">1</span><span class="w"> </span>bash
 <span class="o">[</span>compute-126<span class="w"> </span>/users/mmill116/alpha1<span class="o">]</span>$<span class="w"> </span>module<span class="w"> </span>load<span class="w"> </span>alphafold
 <span class="o">(</span>alphafold-gpu<span class="o">)</span><span class="w"> </span><span class="o">[</span>compute-126<span class="w"> </span>/users/mmill116/alpha1<span class="o">]</span>$<span class="w"> </span>nvidia-smi<span class="w">    </span><span class="o">(</span>this<span class="w"> </span>is<span class="w"> </span>to<span class="w"> </span>verify<span class="w"> </span>that<span class="w"> </span>you<span class="w"> </span>are<span class="w"> </span>assigned<span class="w"> </span>a<span class="w"> </span>GPU<span class="o">)</span>
 <span class="o">(</span>alphafold-gpu<span class="o">)</span><span class="w"> </span><span class="o">[</span>compute-126<span class="w"> </span>/users/mmill116/alpha1<span class="o">]</span>$<span class="w"> </span>ls
@@ -4260,7 +4260,7 @@ I0418 15:22:48.993710 140350337955648 xla_bridge.py:353] Unable to initialize ba
 I0418 15:23:01.681938 140350337955648 run_alphafold.py:161] Predicting test
 I0418 15:23:01.682810 140350337955648 jackhmmer.py:133] Launching subprocess "/jhpce/shared/jhpce/core/conda/miniconda3-23.3.1/envs/alphafold-gpu/bin/jackhmmer -o /dev/null -A /tmp/tmpfcl3sb6v/output.sto --noali --F1 0.0005 --F2 5e-05 --F3 5e-07 --incE 0.0001 -E 0.0001 --cpu 8 -N 1 ./test.fasta /legacy/alphafold/data/uniref90/uniref90.fasta"
 I0418 15:23:01.998645 140350337955648 utils.py:36] Started Jackhmmer (uniref90.fasta) query
-</code></pre><h2><a class="heading" href="../gpu/gpu-info">Using GPUs on JHPCE</a></h2><a class="url" href="../gpu/gpu-info">gpu/gpu-info/</a><pre><code>[login31 /users/mmill116]$ <strong>srun --pty --x11 --partition gpu --gpus=1 --mem=20G bash </strong>
+</code></pre><h2><a class="heading" href="../gpu/gpu-info/">Using GPUs on JHPCE</a></h2><a class="url" href="../gpu/gpu-info/">gpu/gpu-info/</a><pre><code>[login31 /users/mmill116]$ <strong>srun --pty --x11 --partition gpu --gpus=1 --mem=20G bash </strong>
 [compute-117 /users/mmill116]$ <strong>nvidia-smi</strong> 
  Tue Nov 28 08:39:23 2023       
  +---------------------------------------------------------------------------------------+
@@ -4457,7 +4457,7 @@ python nvidia-test.py
  1875/1875 [==============================] - 4s 2ms/step - loss: 0.0751 - accuracy: 0.9769
  313/313 - 1s - loss: 0.0713 - accuracy: 0.9780 - 600ms/epoch - 2ms/step
  [login31 /users/mmill116/gpu-test]$ 
-</code></pre><h2><a class="heading" href="../help/faq-old">FAQ</a></h2><a class="url" href="../help/faq-old">help/faq-old/</a><pre><span></span><code>bash:<span class="w"> </span>module:<span class="w"> </span><span class="nb">command</span><span class="w"> </span>not<span class="w"> </span>found
+</code></pre><h2><a class="heading" href="../help/faq-old/">FAQ</a></h2><a class="url" href="../help/faq-old/">help/faq-old/</a><pre><span></span><code>bash:<span class="w"> </span>module:<span class="w"> </span><span class="nb">command</span><span class="w"> </span>not<span class="w"> </span>found
 </code></pre><pre><span></span><code><span class="k">if</span><span class="w"> </span><span class="o">[</span><span class="w"> </span>-f<span class="w"> </span>/etc/bashrc<span class="w"> </span><span class="o">]</span><span class="p">;</span><span class="w"> </span><span class="k">then</span>
 .<span class="w"> </span>/etc/bashrc
 <span class="k">fi</span>
@@ -4473,7 +4473,7 @@ python nvidia-test.py
 .<span class="w"> </span>/etc/bashrc
 <span class="k">fi</span>
 module<span class="w"> </span>load<span class="w"> </span>JHPCE_DEFAULT_ENV
-</code></pre><h2><a class="heading" href="../help/faq">FAQ</a></h2><a class="url" href="../help/faq">help/faq/</a><pre><span></span><code>#!/bin/bash
+</code></pre><h2><a class="heading" href="../help/faq/">FAQ</a></h2><a class="url" href="../help/faq/">help/faq/</a><pre><span></span><code>#!/bin/bash
 
 rsync -avzh /users/bob/src /dcs08/bob/dst
 </code></pre><pre><span></span><code>sbatch --mail-type=FAIL,END --mail-user=bob@jhu.edu copy-job
@@ -4493,7 +4493,7 @@ libGL error: failed to load driver: swrast
 </code></pre><pre><span></span><code>$ ssh -X username@jhpce01.jhsph.edu -o ForwardX11Timeout=336h
 </code></pre><pre><span></span><code>$ head -1 .ssh/config
 ForwardX11Timeout=0
-</code></pre><h2><a class="heading" href="../ourtools/features">Handy Features</a></h2><a class="url" href="../ourtools/features">ourtools/features/</a><pre><span></span><code><span class="nb">cd</span><span class="w"> </span>jhpce_mkdocs
+</code></pre><h2><a class="heading" href="../ourtools/features/">Handy Features</a></h2><a class="url" href="../ourtools/features/">ourtools/features/</a><pre><span></span><code><span class="nb">cd</span><span class="w"> </span>jhpce_mkdocs
 find<span class="w"> </span>.<span class="w"> </span>-type<span class="w"> </span>f<span class="w"> </span>-name<span class="w"> </span><span class="se">\*</span>.md<span class="w"> </span>-exec<span class="w"> </span>grep<span class="w"> </span>-il<span class="w"> </span><span class="s2">"www.jhpce.jhu.edu"</span><span class="w"> </span><span class="o">{}</span><span class="w"> </span><span class="se">\;</span>
 find<span class="w"> </span>.<span class="w"> </span>-type<span class="w"> </span>f<span class="w"> </span>-name<span class="w"> </span><span class="se">\*</span>.md<span class="w"> </span>-exec<span class="w"> </span>sed<span class="w"> </span>-i<span class="w"> </span><span class="s1">''</span><span class="w"> </span><span class="s2">"s/www.jhpce.jhu.edu/jhpce-old.jhu.edu/g"</span><span class="w"> </span><span class="o">{}</span><span class="w"> </span><span class="se">\;</span>
 find<span class="w"> </span>.<span class="w"> </span>-type<span class="w"> </span>f<span class="w"> </span>-name<span class="w"> </span><span class="se">\*</span>.md<span class="w"> </span>-exec<span class="w"> </span>grep<span class="w"> </span>-il<span class="w"> </span><span class="s2">"jhpce-old.jhu.edu"</span><span class="w"> </span><span class="o">{}</span><span class="w"> </span><span class="se">\;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>xargs<span class="w"> </span>git<span class="w"> </span>add
@@ -4581,7 +4581,7 @@ ERROR<span class="w">   </span>-<span class="w">  </span><span class="o">[</span
 <span class="nb">echo</span><span class="w"> </span><span class="s2">"Caution, this script may not show all fields relevant/used in future."</span>
 <span class="nb">echo</span><span class="w"> </span><span class="s2">"    -h     |--help        display usage"</span>
 <span class="o">}</span>
-</code></pre><h2><a class="heading" href="../ourtools/tips-conventions">Tips &amp; Conventions</a></h2><a class="url" href="../ourtools/tips-conventions">ourtools/tips-conventions/</a><pre><span></span><code><span class="nb">cd</span><span class="w"> </span>docs/orient/images
+</code></pre><h2><a class="heading" href="../ourtools/tips-conventions/">Tips &amp; Conventions</a></h2><a class="url" href="../ourtools/tips-conventions/">ourtools/tips-conventions/</a><pre><span></span><code><span class="nb">cd</span><span class="w"> </span>docs/orient/images
 ln<span class="w"> </span>-s<span class="w"> </span>JHPCE-Overview-CMS-2023-12-2.pdf<span class="w"> </span>latest-orient.pdf
 UPDATE<span class="w"> </span>-<span class="w"> </span>The<span class="w"> </span>orientation<span class="w"> </span>slides<span class="w"> </span>are<span class="w"> </span>at<span class="w"> </span><span class="o">[</span>This<span class="w"> </span>Link<span class="o">](</span>https://docs.google.com/presentation/d/1elMSTUdKws7FLVFK7vVV_AErA4brNSPX/pub<span class="o">){</span>:target<span class="o">=</span><span class="s2">"_blank"</span><span class="o">}</span>
 </code></pre><pre><code>[test@compute-107 ~]$ <span style="background-color:yellow">module list</span>
@@ -4592,7 +4592,7 @@ Currently Loaded Modules:
 
 <span class="go">Currently Loaded Modules:</span>
 <span class="go">  1) JHPCE_ROCKY9_DEFAULT_ENV   2) JHPCE_tools/3.0</span>
-</code></pre><h2><a class="heading" href="../ourtools/wishlist">Wishlist</a></h2><a class="url" href="../ourtools/wishlist">ourtools/wishlist/</a><pre><span></span><code>{% block announce -%}
+</code></pre><h2><a class="heading" href="../ourtools/wishlist/">Wishlist</a></h2><a class="url" href="../ourtools/wishlist/">ourtools/wishlist/</a><pre><span></span><code>{% block announce -%}
 {%- endblock %}
 </code></pre><pre><span></span><code>.md-banner {
   background-color: #ffcc00;
@@ -4603,7 +4603,7 @@ Currently Loaded Modules:
   - search
 </code></pre><pre><span></span><code>plugins:
   - blog
-</code></pre><h2><a class="heading" href="../slurm/about-jobs">About Jobs</a></h2><a class="url" href="../slurm/about-jobs">slurm/about-jobs/</a><pre><span></span><code>&lt;job id&gt;
+</code></pre><h2><a class="heading" href="../slurm/about-jobs/">About Jobs</a></h2><a class="url" href="../slurm/about-jobs/">slurm/about-jobs/</a><pre><span></span><code>&lt;job id&gt;
 &lt;job id&gt;.&lt;step id&gt;
 &lt;job array&gt;_&lt;job id&gt;
 &lt;job array&gt;_&lt;job id&gt;.&lt;step id&gt;
@@ -4617,7 +4617,7 @@ Currently Loaded Modules:
 <span class="w">  </span>------------<span class="w"> </span>----------<span class="w"> </span>----------<span class="w"> </span>----------<span class="w"> </span>----------<span class="w"> </span>----------<span class="w"> </span>--------<span class="w"> </span>
 <span class="w">  </span><span class="m">1542874</span><span class="w">            </span>bash<span class="w">     </span>shared<span class="w">      </span>jhpce<span class="w">          </span><span class="m">2</span><span class="w">    </span>RUNNING<span class="w">      </span><span class="m">0</span>:0<span class="w"> </span>
 <span class="w">  </span><span class="m">1542874</span>.ext+<span class="w">     </span>extern<span class="w">                 </span>jhpce<span class="w">          </span><span class="m">2</span><span class="w">    </span>RUNNING<span class="w">      </span><span class="m">0</span>:0<span class="w"> </span>
-</code></pre><h2><a class="heading" href="../slurm/crafting-jobs">Crafting Batch Jobs</a></h2><a class="url" href="../slurm/crafting-jobs">slurm/crafting-jobs/</a><pre><span></span><code>You could use your 1TB of fastscratch space for this. So your SLURM script could use commands like:
+</code></pre><h2><a class="heading" href="../slurm/crafting-jobs/">Crafting Batch Jobs</a></h2><a class="url" href="../slurm/crafting-jobs/">slurm/crafting-jobs/</a><pre><span></span><code>You could use your 1TB of fastscratch space for this. So your SLURM script could use commands like:
 
 module load conda_R
 export TMPDIR=$MYSCRATCH
@@ -4692,16 +4692,16 @@ else
                 sbatch --nodelist=${i} "$@"
         done
 fi
-</code></pre><h2><a class="heading" href="../slurm/environment">Job Environment</a></h2><a class="url" href="../slurm/environment">slurm/environment/</a><pre><span></span><code><span class="ch">#!/bin/bash</span>
+</code></pre><h2><a class="heading" href="../slurm/environment/">Job Environment</a></h2><a class="url" href="../slurm/environment/">slurm/environment/</a><pre><span></span><code><span class="ch">#!/bin/bash</span>
 <span class="nb">echo</span><span class="w"> </span><span class="si">${</span><span class="nv">A</span><span class="si">}</span>
 <span class="nb">echo</span><span class="w"> </span><span class="si">${</span><span class="nv">b</span><span class="si">}</span>
 </code></pre><pre><span></span><code>A=70
 b='trial-24'
 
 sbatch --job-name=${A}.${b}.run --output=${A}.${b}.out --export=D=${A},f=${b} script.sh
-</code></pre><h2><a class="heading" href="../slurm/interactive-jobs">Interactive Jobs</a></h2><a class="url" href="../slurm/interactive-jobs">slurm/interactive-jobs/</a><pre><span></span><code>jsrun() { if [ -z ${DISPLAY} ]; then /usr/bin/srun --pty "$@" bash; else /usr/bin/srun --pty --x11 "$@" bash; fi }
+</code></pre><h2><a class="heading" href="../slurm/interactive-jobs/">Interactive Jobs</a></h2><a class="url" href="../slurm/interactive-jobs/">slurm/interactive-jobs/</a><pre><span></span><code>jsrun() { if [ -z ${DISPLAY} ]; then /usr/bin/srun --pty "$@" bash; else /usr/bin/srun --pty --x11 "$@" bash; fi }
 </code></pre><pre><span></span><code>jxrun() { /usr/bin/srun --pty "$@" bash; }
-</code></pre><h2><a class="heading" href="../slurm/monitoring">Monitoring Your Jobs</a></h2><a class="url" href="../slurm/monitoring">slurm/monitoring/</a><pre><span></span><code>#!/bin/bash
+</code></pre><h2><a class="heading" href="../slurm/monitoring/">Monitoring Your Jobs</a></h2><a class="url" href="../slurm/monitoring/">slurm/monitoring/</a><pre><span></span><code>#!/bin/bash
 ...
 ...
 your-main-command &lt; inputfile &gt; outputfile
@@ -4719,7 +4719,7 @@ CPU Efficiency: 99.94% of 2-12:49:12 core-walltime
 Job Wall-clock time: 2-12:49:12
 Memory Utilized: 15.34 GB
 Memory Efficiency: 76.71% of 20.00 GB
-</code></pre><h2><a class="heading" href="../slurm/node-features">Node Features</a></h2><a class="url" href="../slurm/node-features">slurm/node-features/</a><pre><span></span><code>NODELIST                  AVAIL_FEATURES                                     GRES             
+</code></pre><h2><a class="heading" href="../slurm/node-features/">Node Features</a></h2><a class="url" href="../slurm/node-features/">slurm/node-features/</a><pre><span></span><code>NODELIST                  AVAIL_FEATURES                                     GRES             
 compute-[063,070]                   amd,opteron,bdver2,mem500                                        (null)
 compute-[113-115]                   intel,skylake-avx512,mem750                                      (null)
 compute-116                         intel,skylake-avx512,mem500                                      (null)
@@ -4752,13 +4752,13 @@ transfer-01                         intel,ivybridge,transfer                    
       5 skylake-avx512
       4 znver2
       2 znver3
-</code></pre><h2><a class="heading" href="../slurm/partitions">Partitions</a></h2><a class="url" href="../slurm/partitions">slurm/partitions/</a><pre><span></span><code>scontrol<span class="w"> </span>show<span class="w"> </span>partition<span class="w"> </span>partitionname
-</code></pre><h2><a class="heading" href="../slurm/qos">Quality of Service (QOS)</a></h2><a class="url" href="../slurm/qos">slurm/qos/</a><pre><span></span><code>scontrol<span class="w"> </span>show<span class="w"> </span>partition<span class="w"> </span>partitionname<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>-i<span class="w"> </span>qos
-</code></pre><h2><a class="heading" href="../slurm/ram">Memory Usage</a></h2><a class="url" href="../slurm/ram">slurm/ram/</a><pre><span></span><code><span class="go">    --mem : memory per node (for all cores used)</span>
+</code></pre><h2><a class="heading" href="../slurm/partitions/">Partitions</a></h2><a class="url" href="../slurm/partitions/">slurm/partitions/</a><pre><span></span><code>scontrol<span class="w"> </span>show<span class="w"> </span>partition<span class="w"> </span>partitionname
+</code></pre><h2><a class="heading" href="../slurm/qos/">Quality of Service (QOS)</a></h2><a class="url" href="../slurm/qos/">slurm/qos/</a><pre><span></span><code>scontrol<span class="w"> </span>show<span class="w"> </span>partition<span class="w"> </span>partitionname<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>-i<span class="w"> </span>qos
+</code></pre><h2><a class="heading" href="../slurm/ram/">Memory Usage</a></h2><a class="url" href="../slurm/ram/">slurm/ram/</a><pre><span></span><code><span class="go">    --mem : memory per node (for all cores used)</span>
 <span class="go">    --mem-per-cpu : memory per core (harder to accurately estimate)</span>
 </code></pre><pre><span></span><code><span class="go">sbatch --mem=10G job1.sh</span>
 </code></pre><pre><span></span><code><span class="go">srun --mem-per-cpu=5G --cpus-per-task=4 --pty --x11 bash</span>
-</code></pre><h2><a class="heading" href="../slurm/time-limits">Time Limits</a></h2><a class="url" href="../slurm/time-limits">slurm/time-limits/</a><pre><span></span><code>Note: The following was largely written using ChatGPT.
+</code></pre><h2><a class="heading" href="../slurm/time-limits/">Time Limits</a></h2><a class="url" href="../slurm/time-limits/">slurm/time-limits/</a><pre><span></span><code>Note: The following was largely written using ChatGPT.
 </code></pre><pre><span></span><code>srun:*:time=5-00
 sbatch:*:time=10-00
 </code></pre><pre><span></span><code>scontrol<span class="w"> </span>update<span class="w"> </span><span class="nv">jobid</span><span class="o">=</span>&lt;jobid&gt;<span class="w"> </span><span class="nv">mailtype</span><span class="o">=</span>time_limit_80
@@ -4796,7 +4796,7 @@ compute-093.cm.cluster
 Sleeping  71  seconds...
 slurmstepd: error: *** JOB 1980476 ON compute-093 
 CANCELLED AT 2024-02-13T12:03:27 DUE TO TIME LIMIT *** 
-</code></pre><h2><a class="heading" href="../slurm/tips-reportseff">reportseff tips</a></h2><a class="url" href="../slurm/tips-reportseff">slurm/tips-reportseff/</a><pre><span></span><code>Job ID: 9709
+</code></pre><h2><a class="heading" href="../slurm/tips-reportseff/">reportseff tips</a></h2><a class="url" href="../slurm/tips-reportseff/">slurm/tips-reportseff/</a><pre><span></span><code>Job ID: 9709
 Cluster: cms
 User/Group: ttotoj/users
 State: COMPLETED (exit code 0)
@@ -4917,7 +4917,7 @@ Options:
                               the end.
   --version                       Show the version and exit.
   --help                          Show this message and exit.
-</code></pre><h2><a class="heading" href="../slurm/tips-sacct">sacct tips</a></h2><a class="url" href="../slurm/tips-sacct">slurm/tips-sacct/</a><pre><span></span><code>sacct<span class="w"> </span>-s<span class="w"> </span>F<span class="w"> </span>-o<span class="w"> </span><span class="s2">"user,jobid,state,nodelist,start,end,exitcode"</span><span class="w"> </span>-S<span class="w"> </span>noon<span class="w"> </span>-E<span class="w"> </span>now
+</code></pre><h2><a class="heading" href="../slurm/tips-sacct/">sacct tips</a></h2><a class="url" href="../slurm/tips-sacct/">slurm/tips-sacct/</a><pre><span></span><code>sacct<span class="w"> </span>-s<span class="w"> </span>F<span class="w"> </span>-o<span class="w"> </span><span class="s2">"user,jobid,state,nodelist,start,end,exitcode"</span><span class="w"> </span>-S<span class="w"> </span>noon<span class="w"> </span>-E<span class="w"> </span>now
 </code></pre><pre><span></span><code>sacct<span class="w"> </span>-X<span class="w"> </span>-a<span class="w"> </span>-s<span class="w"> </span>F<span class="w"> </span>-o<span class="w"> </span><span class="s2">"user,jobid,state,nodelist,exitcode"</span><span class="w"> </span>-S<span class="w"> </span>noon<span class="w"> </span>-E<span class="w"> </span>now<span class="p">|</span>sort<span class="w"> </span>-k5<span class="p">|</span><span class="w"> </span>less
 </code></pre><pre><span></span><code>sacct<span class="w"> </span>-X<span class="w"> </span>-a<span class="w"> </span>-s<span class="w"> </span>F<span class="w"> </span>-o<span class="w"> </span><span class="s2">"user,jobid,state,nodelist,exitcode"</span><span class="w"> </span>-S<span class="w"> </span>noon<span class="w"> </span>-E<span class="w"> </span>now<span class="p">|</span>sort<span class="w"> </span>-k5,5<span class="w"> </span>-k4,4<span class="p">|</span><span class="w"> </span>less
 </code></pre><pre><span></span><code>               HH:MM[:SS][AM|PM]
@@ -5003,7 +5003,7 @@ MaxRSS  MaxVMSize MaxDiskWrite
 61259220K 203077796K  55875510365
 </code></pre><pre><span></span><code><span class="nb">export</span><span class="w"> </span><span class="nv">SLURM_TIME_FORMAT</span><span class="o">=</span><span class="s2">"%a %m-%d %H:%M"</span><span class="w"> </span>
 </code></pre><pre><span></span><code><span class="nb">export</span><span class="w"> </span><span class="nv">SACCT_FORMAT</span><span class="o">=</span><span class="s2">"user,jobid,jobname,nodelist%12,start%-20,end%-20,state%20,reqtres%40,TRESUsageInTot%200"</span>
-</code></pre><h2><a class="heading" href="../slurm/tips-sacctmgr">sacctmgr tips</a></h2><a class="url" href="../slurm/tips-sacctmgr">slurm/tips-sacctmgr/</a><pre><span></span><code># See your entry in the sacctmgr database
+</code></pre><h2><a class="heading" href="../slurm/tips-sacctmgr/">sacctmgr tips</a></h2><a class="url" href="../slurm/tips-sacctmgr/">slurm/tips-sacctmgr/</a><pre><span></span><code># See your entry in the sacctmgr database
 sacctmgr show user withassoc where name=$USER
 
 # See our currently defined QOS in default format
@@ -5106,7 +5106,7 @@ sacctmgr show tres
     gres      gpu:titanv   1003 
     gres     gpu:tesa100   1004 
     gres    gpu:tesv100s   1005 
-</code></pre><h2><a class="heading" href="../slurm/tips-scontrol">scontrol tips</a></h2><a class="url" href="../slurm/tips-scontrol">slurm/tips-scontrol/</a><pre><span></span><code>scontrol<span class="w"> </span>show<span class="w"> </span>--details<span class="w"> </span>job<span class="w"> </span>&lt;jobid&gt;
+</code></pre><h2><a class="heading" href="../slurm/tips-scontrol/">scontrol tips</a></h2><a class="url" href="../slurm/tips-scontrol/">slurm/tips-scontrol/</a><pre><span></span><code>scontrol<span class="w"> </span>show<span class="w"> </span>--details<span class="w"> </span>job<span class="w"> </span>&lt;jobid&gt;
 </code></pre><pre><span></span><code>scontrol<span class="w"> </span>show<span class="w"> </span>node<span class="w"> </span>&lt;nodename&gt;
 </code></pre><pre><span></span><code>scontrol<span class="w"> </span>show<span class="w"> </span>partition<span class="w"> </span>&lt;partitionname&gt;
 </code></pre><pre><span></span><code>scontrol<span class="w"> </span>update<span class="w"> </span><span class="nv">jobid</span><span class="o">=</span>&lt;jobid&gt;<span class="w"> </span><span class="nv">reservation</span><span class="o">=</span>&lt;reservation-name&gt;
@@ -5143,7 +5143,7 @@ scontrol<span class="w"> </span>create<span class="w"> </span><span class="nv">r
 <span class="k">done</span>
 </code></pre><pre><span></span><code>scontrol<span class="w"> </span>delete<span class="w"> </span><span class="nv">reservation</span><span class="o">=</span>&lt;resv-name&gt;
 </code></pre><pre><span></span><code>scontrol<span class="w"> </span>update<span class="w"> </span><span class="nv">reservation</span><span class="o">=</span>&lt;resv-name&gt;<span class="w"> </span><span class="nv">endtime</span><span class="o">=</span>now
-</code></pre><h2><a class="heading" href="../slurm/tips-squeue">squeue tips</a></h2><a class="url" href="../slurm/tips-squeue">slurm/tips-squeue/</a><pre><span></span><code>squeue<span class="w"> </span>--me
+</code></pre><h2><a class="heading" href="../slurm/tips-squeue/">squeue tips</a></h2><a class="url" href="../slurm/tips-squeue/">slurm/tips-squeue/</a><pre><span></span><code>squeue<span class="w"> </span>--me
 </code></pre><pre><span></span><code>A bash shell routine you can add to your .bashrc:
 ```marksq() { (squeue -O JobArrayID:10" ",username:8" ",partition:7" ",name:10" ",statecompact:3,reason:12" ",reservation,,PendingTime:7" ",tres:20|sed 's/,no.*//' | sed 's/TRES_ALLOC[ ]*$/TRES_ALLOC/') }
 </code></pre><pre><span></span><code>               HH:MM[:SS][AM|PM]
@@ -5174,11 +5174,11 @@ Enter man signal for more information
 </code></pre><pre><span></span><code>sacct<span class="w"> </span>-B<span class="w"> </span>-j<span class="w"> </span>&lt;jobid&gt;
 </code></pre><pre><span></span><code>sacct<span class="w"> </span>-o<span class="w"> </span>WorkDir<span class="w"> </span>-j<span class="w"> </span>&lt;jobid&gt;
 </code></pre><pre><span></span><code>sacct<span class="w"> </span>-k<span class="w"> </span><span class="m">00</span>:01<span class="w"> </span>-K<span class="w"> </span><span class="m">1</span>-0
-</code></pre><h2><a class="heading" href="../slurm/whenstart">When Will My Job Start?</a></h2><a class="url" href="../slurm/whenstart">slurm/whenstart/</a><pre><span></span><code>squeue<span class="w"> </span>--me<span class="w"> </span>--start
+</code></pre><h2><a class="heading" href="../slurm/whenstart/">When Will My Job Start?</a></h2><a class="url" href="../slurm/whenstart/">slurm/whenstart/</a><pre><span></span><code>squeue<span class="w"> </span>--me<span class="w"> </span>--start
 </code></pre><pre><span></span><code>sprio<span class="w"> </span>-S<span class="w"> </span>-y,p,u<span class="w"> </span><span class="p">|</span><span class="w"> </span>less
 </code></pre><pre><span></span><code>sprio<span class="w"> </span>-o<span class="w"> </span><span class="s2">"%.15i %9r %.8u %.10Y %.10A %.10F %.10P"</span><span class="w"> </span>-S<span class="w"> </span>-y,p,u
 </code></pre><pre><span></span><code>sshare<span class="w"> </span>-a<span class="w"> </span><span class="p">|</span><span class="w"> </span>sort<span class="w"> </span>-k7nr<span class="w"> </span><span class="p">|</span><span class="w"> </span>less
-</code></pre><h2><a class="heading" href="../slurm/includes/sacct-output-fields">Sacct output fields</a></h2><a class="url" href="../slurm/includes/sacct-output-fields">slurm/includes/sacct-output-fields/</a><pre><span></span><code>Account             AdminComment        AllocCPUS           AllocNodes         
+</code></pre><h2><a class="heading" href="../slurm/includes/sacct-output-fields/">Sacct output fields</a></h2><a class="url" href="../slurm/includes/sacct-output-fields/">slurm/includes/sacct-output-fields/</a><pre><span></span><code>Account             AdminComment        AllocCPUS           AllocNodes         
 AllocTRES           AssocID             AveCPU              AveCPUFreq         
 AveDiskRead         AveDiskWrite        AvePages            AveRSS             
 AveVMSize           BlockID             Cluster             Comment            
@@ -5205,14 +5205,14 @@ TRESUsageInMinNode  TRESUsageInMinTask  TRESUsageInTot      TRESUsageOutAve
 TRESUsageOutMax     TRESUsageOutMaxNode TRESUsageOutMaxTask TRESUsageOutMin    
 TRESUsageOutMinNode TRESUsageOutMinTask TRESUsageOutTot     UID                
 User                UserCPU             WCKey               WCKeyID
-</code></pre><h2><a class="heading" href="../storage/backups-restores">Backups and Restores</a></h2><a class="url" href="../storage/backups-restores">storage/backups-restores/</a><pre><span></span><code>cd /users/.zfs/snapshot
+</code></pre><h2><a class="heading" href="../storage/backups-restores/">Backups and Restores</a></h2><a class="url" href="../storage/backups-restores/">storage/backups-restores/</a><pre><span></span><code>cd /users/.zfs/snapshot
 ls -ld */your-userid/bob/frank/susan
 cp -p 2024-02-16-23:00/your-userid/bob/frank/susan $HOME/restored-susan
-</code></pre><h2><a class="heading" href="../storage/quotas">Quotas</a></h2><a class="url" href="../storage/quotas">storage/quotas/</a><pre><span></span><code><span class="nb">cd</span>
+</code></pre><h2><a class="heading" href="../storage/quotas/">Quotas</a></h2><a class="url" href="../storage/quotas/">storage/quotas/</a><pre><span></span><code><span class="nb">cd</span>
 du<span class="w"> </span>-sh<span class="w"> </span>.
 </code></pre><pre><span></span><code><span class="nb">cd</span><span class="w"> </span><span class="nv">$MYSCRATCH</span>
 du<span class="w"> </span>-sh<span class="w"> </span>.
-</code></pre><h2><a class="heading" href="../storage/storage-tips">Storage Tips</a></h2><a class="url" href="../storage/storage-tips">storage/storage-tips/</a><pre><span></span><code>[login31 /users/mmill116]$ ls -l .bash_history 
+</code></pre><h2><a class="heading" href="../storage/storage-tips/">Storage Tips</a></h2><a class="url" href="../storage/storage-tips/">storage/storage-tips/</a><pre><span></span><code>[login31 /users/mmill116]$ ls -l .bash_history 
 -rw------- 1 mmill116 mmi 586047 Apr 19 12:35 .bash_history
 </code></pre><pre><span></span><code>[login31 /users/mmill116]$ du .bash_history
 229 .bash_history
@@ -5267,12 +5267,12 @@ then
    echo "Not enough space in /tmp. Only $FREETMP KB available."
    exit 1
 fi
-</code></pre><h2><a class="heading" href="../sw/adding-pkgs">Adding Your Own Python and R Libraries</a></h2><a class="url" href="../sw/adding-pkgs">sw/adding-pkgs/</a><pre><span></span><code><span class="o">&gt;</span><span class="w"> </span><span class="nf">install.packages</span><span class="p">(</span><span class="s">"sf"</span><span class="p">)</span>
+</code></pre><h2><a class="heading" href="../sw/adding-pkgs/">Adding Your Own Python and R Libraries</a></h2><a class="url" href="../sw/adding-pkgs/">sw/adding-pkgs/</a><pre><span></span><code><span class="o">&gt;</span><span class="w"> </span><span class="nf">install.packages</span><span class="p">(</span><span class="s">"sf"</span><span class="p">)</span>
 <span class="o">&gt;</span><span class="w"> </span><span class="nf">install.packages</span><span class="p">(</span><span class="s">'terra'</span><span class="p">,</span><span class="w"> </span><span class="n">repos</span><span class="o">=</span><span class="s">'https://rspatial.r-universe.dev'</span><span class="p">)</span>
 <span class="o">&gt;</span><span class="w"> </span><span class="nf">library</span><span class="p">(</span><span class="s">'sf'</span><span class="p">)</span>
 <span class="o">&gt;</span><span class="w"> </span><span class="nf">library</span><span class="p">(</span><span class="s">'terra'</span><span class="p">)</span>
 </code></pre><pre><span></span><code>STDFLAGS = -O2 -pipe -Wall 
-</code></pre><h2><a class="heading" href="../sw/building-from-src">Compile from Source</a></h2><a class="url" href="../sw/building-from-src">sw/building-from-src/</a><pre><span></span><code>[test@compute-110 ~]$ mkdir download
+</code></pre><h2><a class="heading" href="../sw/building-from-src/">Compile from Source</a></h2><a class="url" href="../sw/building-from-src/">sw/building-from-src/</a><pre><span></span><code>[test@compute-110 ~]$ mkdir download
 [test@compute-110 ~]$ cd download/
 [test@compute-110 download]$ wget http://ftp.gnu.org/gnu/units/units-2.23.tar.gz
 --2024-03-18 11:57:38--  http://ftp.gnu.org/gnu/units/units-2.23.tar.gz
@@ -5305,7 +5305,7 @@ You want: tempC
     23.888889
 You have: exit
 [test@compute-110 ~]$
-</code></pre><h2><a class="heading" href="../sw/conda">Conda Environment</a></h2><a class="url" href="../sw/conda">sw/conda/</a><pre><span></span><code>module load conda
+</code></pre><h2><a class="heading" href="../sw/conda/">Conda Environment</a></h2><a class="url" href="../sw/conda/">sw/conda/</a><pre><span></span><code>module load conda
 </code></pre><pre><span></span><code>module load anaconda
 </code></pre><pre><span></span><code>conda create -n &lt;evn-name&gt;
 </code></pre><pre><span></span><code>conda info --envs
@@ -5314,7 +5314,7 @@ conda install package-name
 </code></pre><pre><span></span><code>conda install package-name=2.3.4
 </code></pre><pre><span></span><code>conda install package-name=2
 </code></pre><pre><span></span><code>conda install conda-forge::numpy
-</code></pre><h2><a class="heading" href="../sw/matlab">Matlab</a></h2><a class="url" href="../sw/matlab">sw/matlab/</a><pre><span></span><code>[test@login31 ~]$ srun --mem 10G --x11 --pty bash
+</code></pre><h2><a class="heading" href="../sw/matlab/">Matlab</a></h2><a class="url" href="../sw/matlab/">sw/matlab/</a><pre><span></span><code>[test@login31 ~]$ srun --mem 10G --x11 --pty bash
 srun: job 3109996 queued and waiting for resources
 srun: job 3109996 has been allocated resources
 [test@compute-152 ~]$ module load matlab
@@ -5353,7 +5353,7 @@ Example number = 1
 Example number = 2
 Example number = 3
 Example number = 4
-</code></pre><h2><a class="heading" href="../sw/modules">Modules</a></h2><a class="url" href="../sw/modules">sw/modules/</a><pre><code>[test@compute-107 ~]$ <span style="background-color:yellow">module list</span>
+</code></pre><h2><a class="heading" href="../sw/modules/">Modules</a></h2><a class="url" href="../sw/modules/">sw/modules/</a><pre><code>[test@compute-107 ~]$ <span style="background-color:yellow">module list</span>
 
 Currently Loaded Modules:
   1) JHPCE_ROCKY9_DEFAULT_ENV   2) JHPCE_tools/3.0
@@ -5395,7 +5395,7 @@ JHPCE_tools/3.0
 
 <span class="c1"># If I prefer gcc/4.8.1 as my default compiler</span>
 module<span class="w"> </span>load<span class="w"> </span>gcc/4.8.1
-</code></pre><h2><a class="heading" href="../sw/python-pkg">Python Packages</a></h2><a class="url" href="../sw/python-pkg">sw/python-pkg/</a><pre><span></span><code>[bob@compute-107 /users/bob]$ module load python
+</code></pre><h2><a class="heading" href="../sw/python-pkg/">Python Packages</a></h2><a class="url" href="../sw/python-pkg/">sw/python-pkg/</a><pre><span></span><code>[bob@compute-107 /users/bob]$ module load python
 [bob@compute-107 /users/bob]$ python3 --version
 Python 3.9.14
 </code></pre><pre><span></span><code>[bob@compute-107 /users/bob]$ python3 -m pip --version
@@ -5434,7 +5434,7 @@ Successfully installed cowsay-6.1
 </code></pre><pre><span></span><code>[bob@compute-107 /users/bob]$ cp $HOME/.bashrc $HOME/.bashrc-bak
 [bob@compute-107 /users/bob]$ echo "export PATH=\$PATH:\$HOME/.local/bin" &gt;&gt; $HOME/.bash_profile
 </code></pre><pre><span></span><code>[bob@compute-107 /users/bob]$ python3 -m pip install --user cowsay==5.0
-</code></pre><h2><a class="heading" href="../sw/python">Python</a></h2><a class="url" href="../sw/python">sw/python/</a><pre><span></span><code>[test@login31 ~]$ srun --pty bash
+</code></pre><h2><a class="heading" href="../sw/python/">Python</a></h2><a class="url" href="../sw/python/">sw/python/</a><pre><span></span><code>[test@login31 ~]$ srun --pty bash
 srun: job 3168742 queued and waiting for resources
 srun: job 3168742 has been allocated resources
 [test@compute-100 ~]$ module load python
@@ -5474,7 +5474,7 @@ Example number =  47
 Example number =  96
 Example number =  85
 Example number =  72
-</code></pre><h2><a class="heading" href="../sw/r-pkg">R Packages</a></h2><a class="url" href="../sw/r-pkg">sw/r-pkg/</a><pre><span></span><code>[test@compute-107 ~]$ module load R
+</code></pre><h2><a class="heading" href="../sw/r-pkg/">R Packages</a></h2><a class="url" href="../sw/r-pkg/">sw/r-pkg/</a><pre><span></span><code>[test@compute-107 ~]$ module load R
 Loading R/4.3
 (4.3)[test@compute-107 ~]$
 </code></pre><pre><span></span><code>(4.3)[test@compute-107 ~]$ R
@@ -5486,7 +5486,7 @@ Platform: x86_64-conda-linux-gnu (64-bit)
 [Previously saved workspace restored]
 
 &gt; install.package("your-package-name")
-</code></pre><h2><a class="heading" href="../sw/r">R</a></h2><a class="url" href="../sw/r">sw/r/</a><pre><span></span><code>[test@login31 ~]$ srun --pty bash
+</code></pre><h2><a class="heading" href="../sw/r/">R</a></h2><a class="url" href="../sw/r/">sw/r/</a><pre><span></span><code>[test@login31 ~]$ srun --pty bash
 srun: job 3176550 queued and waiting for resources
 srun: job 3176550 has been allocated resources
 [test@compute-152 ~]$ module load conda_R
@@ -5545,7 +5545,7 @@ Loading R/4.3
 (4.3)[test@compute-097 ~]$ module load rstudio
 (4.3)[test@compute-097 ~]$ rstudio
 </code></pre><pre><span></span><code>ssh -X yourusername@jhpce01.jhsph.edu
-</code></pre><h2><a class="heading" href="../sw/rstudio-server">R Studio Server</a></h2><a class="url" href="../sw/rstudio-server">sw/rstudio-server/</a><pre><span></span><code>[login31/users/jdoe1] $ **srun --pty --x11 --mem=10G bash**
+</code></pre><h2><a class="heading" href="../sw/rstudio-server/">R Studio Server</a></h2><a class="url" href="../sw/rstudio-server/">sw/rstudio-server/</a><pre><span></span><code>[login31/users/jdoe1] $ **srun --pty --x11 --mem=10G bash**
 Last login: Wed May 1 17:02:29 2019 from login31.cm.cluster
 Loading conda_R/3.5.x
 [compute-012 /users/jdoe1] $ **jhpce-rstudio-server**
@@ -5604,7 +5604,7 @@ Forwarding port.
 <span class="go">Canceled forwarding.</span>
 <span class="gp">[compute-012 /users/jdoe1] $ </span><span class="nb">exit</span>
 <span class="gp">[login31 /users/jdoe1] $ </span><span class="nb">exit</span>
-</code></pre><h2><a class="heading" href="../sw/sas">SAS</a></h2><a class="url" href="../sw/sas">sw/sas/</a><pre><span></span><code>[test@login31 ~]$ srun --partition sas --mem 10G --x11 --pty bash
+</code></pre><h2><a class="heading" href="../sw/sas/">SAS</a></h2><a class="url" href="../sw/sas/">sw/sas/</a><pre><span></span><code>[test@login31 ~]$ srun --partition sas --mem 10G --x11 --pty bash
 srun: job 3178287 queued and waiting for resources
 srun: job 3178287 has been allocated resources
 
@@ -5673,7 +5673,7 @@ Submitted batch job 3178475
                            HEIGHT      4      60.2500000       5.9651767      56.0000000      69.0000000
                            WEIGHT      4      94.7500000      14.0386372      83.0000000     112.5000000
                            -----------------------------------------------------------------------------
-</code></pre><h2><a class="heading" href="../sw/stata">Stata</a></h2><a class="url" href="../sw/stata">sw/stata/</a><pre><span></span><code>[test@login31 ~]$ srun --mem 10G --x11 --pty bash
+</code></pre><h2><a class="heading" href="../sw/stata/">Stata</a></h2><a class="url" href="../sw/stata/">sw/stata/</a><pre><span></span><code>[test@login31 ~]$ srun --mem 10G --x11 --pty bash
 srun: job 3179341 queued and waiting for resources
 srun: job 3179341 has been allocated resources
 [test@compute-092 ~]$ module load stata
@@ -5714,7 +5714,7 @@ Hello There World 123
 
 . 
 end of do-file
-</code></pre><h2><a class="heading" href="../sw/sw-overview">Overview</a></h2><a class="url" href="../sw/sw-overview">sw/sw-overview/</a><pre><span></span><code>[test@compute-110 ~]$ module avail
+</code></pre><h2><a class="heading" href="../sw/sw-overview/">Overview</a></h2><a class="url" href="../sw/sw-overview/">sw/sw-overview/</a><pre><span></span><code>[test@compute-110 ~]$ module avail
 
 --------------------------------------------------------------------------------- /jhpce/shared/jhpce/modulefiles ---------------------------------------------------------------------------------
    JHPCE_ROCKY9_DEFAULT_ENV (L)    bcl2fastq/2.17.1              freesurfer/7.4.1           gmp/6.2.1                 mathematica/13.3        python/3.11.8             stata/17
