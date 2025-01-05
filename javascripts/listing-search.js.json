@@ -815,7 +815,7 @@
     "page_name": "Handy Features",
     "page_url": "../../ourtools/features/",
     "text": "def fn():\npass\n",
-    "html": "<pre><span></span><code><span class=\"k\">def</span> <span class=\"nf\">fn</span><span class=\"p\">():</span>\n<span class=\"k\">pass</span>\n</code></pre>",
+    "html": "<pre><span></span><code><span class=\"k\">def</span><span class=\"w\"> </span><span class=\"nf\">fn</span><span class=\"p\">():</span>\n<span class=\"k\">pass</span>\n</code></pre>",
     "language": ""
   },
   {
