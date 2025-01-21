@@ -8,15 +8,19 @@ tags:
 
 A partition is a logical collections of nodes that comprise different hardware resources and limits to help meet the wide variety of jobs that get scheduled on the cluster. Nodes can belong to more than one partition.
 
-There are several types of partitions:
+There are several *types* of partitions:
 
 * **General access** (e.g. shared, interactive, gpu, transfer)
 * **Application only** (e.g. sas)
 * **GPU** (equipped with GPU cards)
 * **PI-owned** (for use only by members of the PI's group)
 
-## Jobs and Partitions
-Jobs can be submitted to multiple partitions. They will generally start in the first partition that has the required resources. However there are a number of ways in which partitions are configured which may nudge a pending job to one partition over others. Pending jobs in some partitions are evaluated ahead of others. Priorities can be set on some partitions (such as `interactive`) as described [here](../slurm/whenstart.md/#partition-priority).
+## Choosing Partitions For Your Jobs
+Jobs can be submitted to multiple partitions to increase the odds that they will start more quickly. They will generally start in the first partition that has the required resources. This is mainly of use to members of PI partitions where the partition member nodes are busy at the moment.
+
+Simply separate partition names with commas (and no spaces). For example, in a batch job file: `#SBATCH --partition=cancergen,shared`
+
+There are a number of ways in which partitions are configured which may nudge a pending job to one partition over others. Pending jobs in some partitions are evaluated ahead of others. Priorities can be set on some partitions (such as `interactive`) as described [here](../slurm/whenstart.md/#partition-priority).
 
 Array jobs *seem* to be able to dispatch child jobs to any of the partitions specified. We are not 100% sure of this -- they might all be run into the first partition chosen. (If the latter is true, you may not want to tie your array completion to a partition that has many fewer resources than your other option(s).)
 
@@ -48,10 +52,11 @@ Our command `slurmpic` shows information about partitions, including the member 
 
 [^1]: Note that the statistics displayed are for that partition, not the whole cluster. Also, memory and CPU use of nodes that are DOWN or in DRAIN are not included in the stats.
  
-The best way to see the _configuration_ of a partition is with the scontrol command. ([Vendor's scontrol manual page](https://slurm.schedmd.com/archive/slurm-22.05.9/scontrol.html). Our [local scontrol tips](../slurm/tips-scontrol.md) page.)
+The best way to see the _configuration_ of a partition is with the scontrol command. 
 ```bash linenums="0"
 scontrol show partition partitionname
 ```
+(For tips about using `scontrol`, see our [local scontrol tips](../slurm/tips-scontrol.md) page.)
 
 The command [`sinfo`](https://slurm.schedmd.com/archive/slurm-22.05.9/sinfo.html) shows information about all of the partitions. It has many options, so you can also use it to see information about nodes. (Note: Partitions which *require* group membership to submit to are only visible via `sinfo` to members of those groups. Because the local command `slurmpic` uses `sinfo` to retrieve information, the output of `slurmpic -a` (show all nodes) will omit those private PI partitions' nodes.)
 
@@ -59,21 +64,23 @@ The command [`sinfo`](https://slurm.schedmd.com/archive/slurm-22.05.9/sinfo.html
 
 ### Public CPU Partitions
 
-The CPU and RAM limits for `shared` change depending on node availability. We change the QOS `shared-default`up and down to try to keep RAM, in particular, limited to about 20% of the total available in order to assure equitable access to the resources. You can learn more about QOS [here](../slurm/qos.md).
+The CPU and RAM limits for `shared` change depending on node availability. We change the QOS `shared-default` up and down based on usage over the past month or two. We try to keep limits as high as possible to increase the utilization rate of the cluster while not allowing one person to dominate the `shared` partition. You can learn more about QOS [here](../slurm/qos.md) and see the currently defined QOS values with the command `showres`
 
 Limits for CPU cores, RAM and Time (default/maximum)
 
 | Name | Type | Core | RAM | Time | Notes/Use |
 | ---- | :----: | ---- | ---- | :-------: | ----- |
-| shared | public | 100 | 512MB | (1d/90d) | DEFAULT |
+| shared | public | 400 | 2.5TB | (1d/90d) | DEFAULT |
 | interactive | public | 2 | 20gb | (1d/90d) | Small but accessible |
 | gpu | public | (none) | (none) | (1d/90d) | Only for GPU jobs |
 | sas | application | (none) | (none) | (none/90d) | Licensed for SAS |
-| transfer | public | no | (none) | (none) | (none/90d) | Data in or out of cluster via SLURM jobs |
+| transfer | public | (none) | (none) | (none/90d) | Data in or out of cluster via SLURM jobs |
 
 To reduce table width, column names are terse.
 
 ### PI CPU Partitions
+
+To see the member nodes and resources of the any partitions, use `slurmpic -p partitionname`
 
 Limits for CPU cores, RAM and Time (default/maximum)
 
@@ -87,7 +94,7 @@ Limits for CPU cores, RAM and Time (default/maximum)
 | chatterjee | PI | (none) | (none) | (none/90d) | |
 | echodac | PI | (none) | (none) | (none/90d) | |
 | gwas | PI | (none) | (none) | (none/90d) | not yet defined |
-| hl | PI | (none) | (none) | (none/90d) | |
+| hl | PI | (none) | (none) | (none/90d) | hl = hearing loss |
 | hpm | PI | (none) | (none) | (none/90d) | not yet defined |
 | hongkai | PI | (none) | (none) | (none/90d) | |
 | katun | PI | (none) | (none) | (none/90d) | UNIX group |
@@ -97,11 +104,17 @@ Limits for CPU cores, RAM and Time (default/maximum)
 
 
 ## GPU Partitions
+To see the member nodes and resources of the any partitions, use `slurmpic -g`
+
+To learn more about the GPU card types and how to use them, see [https://jhpce.jhu.edu/gpu/gpu-info/](https://jhpce.jhu.edu/gpu/gpu-info/)
+
 Limits for CPU cores, RAM and Time (default/maximum)
 
 | Name | Type | Requires Approval | Core | RAM | GPU | Time | Notes/Use |
 | ---- | :----: | :-----: | ---- | ---- | :-------: | ----- | ------|
-| gpu | public | no | (none) | (none) | (none) | (1d/90d) | |
-| bestgpu | PI | yes | (none) | (none) | (none) | (none/90d) | |
-| caracol | PI | yes | (none) | (none) | (none) | (none/90d) | |
+| gpu | public | no | (none) | (none) | (none) | (1d/90d) | ONLY public GPU resource|
+| caracol | PI | yes | (none) | (none) | (none) | (none/90d) | Lieber |
 | neuron | PI | yes | (none) | (none) | (none) | (none/90d) | |
+| bstgpu | PI | yes | (none) | (none) | (none) | (none/90d) | bst=biostatistics |
+| bstgpu2 | PI | yes | (none) | (none) | (none) | (none/90d) | bst=biostatistics |
+| bstgpu3 | PI | yes | (none) | (none) | (none) | (none/90d) | bst=biostatistics |
