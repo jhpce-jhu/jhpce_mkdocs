@@ -4752,7 +4752,8 @@ transfer-01                         intel,ivybridge,transfer                    
       5 skylake-avx512
       4 znver2
       2 znver3
-</code></pre><h2><a class="heading" href="../slurm/partitions/">Partitions</a></h2><a class="url" href="../slurm/partitions/">slurm/partitions/</a><pre><span></span><code>scontrol<span class="w"> </span>show<span class="w"> </span>partition<span class="w"> </span>partitionname
+</code></pre><h2><a class="heading" href="../slurm/partitions/">Partitions</a></h2><a class="url" href="../slurm/partitions/">slurm/partitions/</a><pre><span></span><code>`#SBATCH --partition=cancergen,shared`
+</code></pre><pre><span></span><code>scontrol<span class="w"> </span>show<span class="w"> </span>partition<span class="w"> </span>partitionname
 </code></pre><h2><a class="heading" href="../slurm/qos/">Quality of Service (QOS)</a></h2><a class="url" href="../slurm/qos/">slurm/qos/</a><pre><span></span><code>scontrol<span class="w"> </span>show<span class="w"> </span>partition<span class="w"> </span>partitionname<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>-i<span class="w"> </span>qos
 </code></pre><h2><a class="heading" href="../slurm/ram/">Memory Usage</a></h2><a class="url" href="../slurm/ram/">slurm/ram/</a><pre><span></span><code><span class="go">    --mem : memory per node (for all cores used)</span>
 <span class="go">    --mem-per-cpu : memory per core (harder to accurately estimate)</span>

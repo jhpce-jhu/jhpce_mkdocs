@@ -3749,8 +3749,11 @@
 <li><strong>PI-owned</strong> (for use only by members of the PI's group)</li>
 </ul>
 <h2 id="choosing-partitions-for-your-jobs">Choosing Partitions For Your Jobs<a class="headerlink" href="#choosing-partitions-for-your-jobs" title="Anchor link to this section for reference">&para;</a></h2>
-<p>Jobs can be submitted to multiple partitions to increase the odds that they will start more quickly. They will generally start in the first partition that has the required resources. This is mainly of use to members of PI partitions where the partition member nodes are busy at the moment.</p>
-<p>Simply separate partition names with commas (and no spaces). For example, in a batch job file: <code>#SBATCH --partition=cancergen,shared</code></p>
+<p>You should only submit jobs to partitions that you are entitled to.</p>
+<p>Jobs can be submitted to multiple partitions to increase the odds that they will start more quickly. They will generally start in the first partition that has the required resources. This is mainly of use to members of PI partitions where their PI partition member nodes are busy at the moment, or they need maximum resources to meet a deadline.</p>
+<p>Simply separate partition names with commas (and no spaces). For example, in a batch job file:</p>
+<div class="highlight"><pre><span></span><code>`#SBATCH --partition=cancergen,shared`
+</code></pre></div>
 <p>There are a number of ways in which partitions are configured which may nudge a pending job to one partition over others. Pending jobs in some partitions are evaluated ahead of others. Priorities can be set on some partitions (such as <code>interactive</code>) as described <a href="../whenstart/#partition-priority">here</a>.</p>
 <p>Array jobs <em>seem</em> to be able to dispatch child jobs to any of the partitions specified. We are not 100% sure of this -- they might all be run into the first partition chosen. (If the latter is true, you may not want to tie your array completion to a partition that has many fewer resources than your other option(s).)</p>
 <h2 id="pi-partitions">PI Partitions<a class="headerlink" href="#pi-partitions" title="Anchor link to this section for reference">&para;</a></h2>
@@ -3768,7 +3771,7 @@
 <p>First it provides surge capacity to stakeholders who temporarily need more compute capacity than they own, and second, it gives provides non-stakeholders access to computing capacity.</p>
 <p>Scheduling polices attempt to harvest unused capacity as efficiently as possible while mitigating the impact on the rights of stakeholders to use their resources. The JHPCE service center does not guarantee that stakeholders will provide sufficient excess capacity to meet non-stakeholders needs, however in practice the cluster is rarely operating at full capacity so there is usually ample computing capacity on the shared queue.</p>
 <h2 id="getting-info-about-partitions">Getting Info About Partitions<a class="headerlink" href="#getting-info-about-partitions" title="Anchor link to this section for reference">&para;</a></h2>
-<p>Our command <code>slurmpic</code> shows information about partitions, including the member nodes, their current utilization, and some summary statistics.<sup id="fnref:1"><a class="footnote-ref" href="#fn:1">1</a></sup> By default it displays the <strong>shared</strong> partition. Specific partitions can be displayed using <code>slurmpic -p partitionname</code>. All of the nodes in all of the GPU partitions can be displayed with <code>slurmpic -g</code>. Run <code>slurmpic -h</code> to see usage notes.</p>
+<p>Our command <code>slurmpic</code> shows information about partitions, including the member nodes, their current utilization, and some summary statistics.<sup id="fnref:1"><a class="footnote-ref" href="#fn:1">1</a></sup> By default it displays the <strong>shared</strong> partition. Specific partitions can be displayed using <code>slurmpic -p partitionname</code>. All of the nodes in all of the GPU partitions can be displayed with <code>slurmpic -g</code>. Run <code>slurmpic -h</code> to see important usage notes!</p>
 <p>The best way to see the <em>configuration</em> of a partition is with the scontrol command. 
 <div class="highlight"><pre><span></span><code>scontrol<span class="w"> </span>show<span class="w"> </span>partition<span class="w"> </span>partitionname
 </code></pre></div>
