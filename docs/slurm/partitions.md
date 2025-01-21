@@ -16,10 +16,16 @@ There are several *types* of partitions:
 * **PI-owned** (for use only by members of the PI's group)
 
 ## Choosing Partitions For Your Jobs
-Jobs can be submitted to multiple partitions to increase the odds that they will start more quickly. They will generally start in the first partition that has the required resources. This is mainly of use to members of PI partitions where the partition member nodes are busy at the moment.
+You should only submit jobs to partitions that you are entitled to.
 
-Simply separate partition names with commas (and no spaces). For example, in a batch job file: `#SBATCH --partition=cancergen,shared`
+Jobs can be submitted to multiple partitions to increase the odds that they will start more quickly. They will generally start in the first partition that has the required resources. This is mainly of use to members of PI partitions where their PI partition member nodes are busy at the moment, or they need maximum resources to meet a deadline.
 
+Simply separate partition names with commas (and no spaces). For example, in a batch job file:
+
+```
+`#SBATCH --partition=cancergen,shared`
+```
+ 
 There are a number of ways in which partitions are configured which may nudge a pending job to one partition over others. Pending jobs in some partitions are evaluated ahead of others. Priorities can be set on some partitions (such as `interactive`) as described [here](../slurm/whenstart.md/#partition-priority).
 
 Array jobs *seem* to be able to dispatch child jobs to any of the partitions specified. We are not 100% sure of this -- they might all be run into the first partition chosen. (If the latter is true, you may not want to tie your array completion to a partition that has many fewer resources than your other option(s).)
@@ -48,7 +54,7 @@ Scheduling polices attempt to harvest unused capacity as efficiently as possible
 
 ## Getting Info About Partitions
 
-Our command `slurmpic` shows information about partitions, including the member nodes, their current utilization, and some summary statistics.[^1] By default it displays the **shared** partition. Specific partitions can be displayed using `slurmpic -p partitionname`. All of the nodes in all of the GPU partitions can be displayed with `slurmpic -g`. Run `slurmpic -h` to see usage notes.
+Our command `slurmpic` shows information about partitions, including the member nodes, their current utilization, and some summary statistics.[^1] By default it displays the **shared** partition. Specific partitions can be displayed using `slurmpic -p partitionname`. All of the nodes in all of the GPU partitions can be displayed with `slurmpic -g`. Run `slurmpic -h` to see important usage notes!
 
 [^1]: Note that the statistics displayed are for that partition, not the whole cluster. Also, memory and CPU use of nodes that are DOWN or in DRAIN are not included in the stats.
  
