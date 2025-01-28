@@ -148,6 +148,14 @@ requesting an Nvidia Titan V GPU.
  +---------------------------------------------------------------------------------------+ 
 </pre></code>
 
+Another option for for requesting a particular GPU model is to use the "--constraints" option to request a particular Node Feature defined for the node.  This is especially helpful when you want to select a number of GPU models that would be acceptible to you to use.  For example, one could run the folloing to request a node with either an l40s, tesv100, or titanv.
+
+<pre><code>
+[mmill116@jhpce01 ~]$ srun --pty -p gpu --gpus=1 --constrain="l40s|tesv100|titanv" bash 
+</code></pre>
+
+You can read more about using features at https://jhpce.jhu.edu/slurm/node-features/
+
 At this point you can start running your GPU specific code. You can either use
 install your own GPU-enabled programs, or use the version of python that is
 installed on the GPU nodes.
