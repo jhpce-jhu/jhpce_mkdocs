@@ -4303,6 +4303,8 @@ I0418 15:23:01.998645 140350337955648 utils.py:36] Started Jackhmmer (uniref90.f
  |=======================================================================================|
  |  No running processes found                                                           |
  +---------------------------------------------------------------------------------------+ 
+</code></pre><pre><code>
+[mmill116@jhpce01 ~]$ srun --pty -p gpu --gpus=1 --constrain="l40s|tesv100|titanv" bash 
 </code></pre><pre><code>[login31 /users/mmill116]$ srun --pty --x11 --partition gpu --gpus=1 --mem=10G bash
 [compute-117 /users/mmill116]$ python
 Python 3.9.16 (main, Dec  8 2022, 00:00:00) 
