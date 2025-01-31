@@ -201,6 +201,10 @@
          <lastmod>2025-01-31</lastmod>
     </url>
     <url>
+         <loc>https://jhpce.jhu.edu/ourtools/tags/</loc>
+         <lastmod>2025-01-31</lastmod>
+    </url>
+    <url>
          <loc>https://jhpce.jhu.edu/ourtools/tips-conventions/</loc>
          <lastmod>2025-01-31</lastmod>
     </url>
@@ -434,10 +438,6 @@
     </url>
     <url>
          <loc>https://jhpce.jhu.edu/sw/vscode/</loc>
-         <lastmod>2025-01-31</lastmod>
-    </url>
-    <url>
-         <loc>https://jhpce.jhu.edu/ourtools/tags/</loc>
          <lastmod>2025-01-31</lastmod>
     </url>
 </urlset>
