@@ -16,7 +16,7 @@ more fine-grained control of shared access is needed. To accomplish
 this, Access Control Lists (ACLs) can be used. They add to the normal permissions.
 
 !!! Tip
-    Before defining ACLs, you should first read this document for necessary background concepts and skills. Our document about ACLs is [here](..//files/sharing-files.md).
+    Before defining ACLs, you should first read and understand this document for necessary background concepts and skills. Then you can proceed to read our document about ACLs is [here](..//files/sharing-files.md).
 
 ## UNIX Ownership & Permissions
 
