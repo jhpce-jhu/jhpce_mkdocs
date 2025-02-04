@@ -151,7 +151,7 @@ You may also need to do other steps, such as install an extension to your web br
 ### Unison
 
 !!! Warning
-    As of 20240318 we don't have unison installed in the cluster. We will work on adding it. (You can install your own copy of it.)
+    We no longer have unison installed in the cluster. You can install your own copy of it.
     
 Using [Unison](https://en.wikipedia.org/wiki/Unison_(software)), you can keep data synchronized between directories, including ones on a single computer or between the cluster and on your local system. Both CLI and GUI versions are available. Unison needs to be installed on both computers if used across a network.
 
@@ -172,7 +172,7 @@ We have a Globus endpoint. Please see [this document](globus.md).
 ## Mounting virtual file systems
 
 !!! Obsolete
-    This might be obsolete information as of 20240220 - OSXFUSE is now named macFUSE and is [hosted](https://osxfuse.github.io) at a different location than what is described below.
+    This is probably obsolete information as of 20240220 - OSXFUSE is now named macFUSE and is [hosted](https://osxfuse.github.io) at a different location than what is described below.
 
 A common use case occurs when a user has a pipeline that is
 periodicially emiting tab delimited files and the user wants to plot
@@ -189,7 +189,6 @@ directory in your local file system. So any applications and scripts
 on your local host can access the data in that mount point. From the
 user perspective, it acts just like an SMB or NSF mount point. Data is
 transferred back and forth via an encrypted link.
-
 
 MacFusion requires the installation of an OSX kernel extenstion and
 some associated tools. OSXFuse provides the needed extension. OSXFuse
