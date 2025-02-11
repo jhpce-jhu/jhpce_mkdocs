@@ -5595,6 +5595,42 @@ Example number =  47
 Example number =  96
 Example number =  85
 Example number =  72
+</code></pre><h2><a class="heading" href="../sw/r-n-friends/">R Basics</a></h2><a class="url" href="../sw/r-n-friends/">sw/r-n-friends/</a><pre><span></span><code><span class="gp">[login31 /users/jdoe1] $ </span>srun<span class="w"> </span>--pty<span class="w"> </span>--x11<span class="w"> </span>--mem<span class="o">=</span>10G<span class="w"> </span>bash
+<span class="go">Last login: Wed May 1 17:02:29 2019 from login31.cm.cluster</span>
+<span class="go">Loading conda_R/3.5.x</span>
+<span class="gp">[compute-012 /users/jdoe1] $ </span>jhpce-rstudio-server
+<span class="go">------------</span>
+<span class="go">1) Establish your SSH tunnel.</span>
+<span class="go">* Windows users see: https://jhpce.jhu.edu/sw/rstudio-server/</span>
+<span class="go">* Mac or Linux Desktop users, please type:</span>
+<span class="go">~C</span>
+<span class="go">-L 12345:compute-012:12345</span>
+
+<span class="go">2) From the browser running on your local system or SAFE desktop, go to:</span>
+
+<span class="go">  http://localhost:12345</span>
+
+<span class="go">3) When prompted for Username, enter your JHPCE ID:  jdoe1</span>
+<span class="go">4) When prompted for Password, enter your JHPCE password.</span>
+
+<span class="go">When you are finished using Rstudio Server, type &lt;CTRL&gt;-C</span>
+
+<span class="go">~C</span>
+<span class="go">ssh&gt; -L 12345:compute-012:12345</span>
+<span class="go">Forwarding port.</span>
+
+<span class="go">****Cleaning up...</span>
+<span class="go">------------</span>
+<span class="go">Now type:</span>
+<span class="go">~C</span>
+<span class="go">-KL 41354</span>
+
+<span class="gp">[compute-012 /users/jdoe1] $</span>
+<span class="gp">[compute-012 /users/jdoe1] $</span>**~C**
+<span class="go">ssh&gt; **-KL 12345**</span>
+<span class="go">Canceled forwarding.</span>
+<span class="gp">[compute-012 /users/jdoe1] $ </span><span class="nb">exit</span>
+<span class="gp">[login31 /users/jdoe1] $ </span><span class="nb">exit</span>
 </code></pre><h2><a class="heading" href="../sw/r-pkg/">R Packages</a></h2><a class="url" href="../sw/r-pkg/">sw/r-pkg/</a><pre><span></span><code>[test@compute-107 ~]$ module load R
 Loading R/4.3
 (4.3)[test@compute-107 ~]$
