@@ -100,12 +100,76 @@ To start, click on the “Tunneling” icon at the top of MobaXterm, and you sho
 
 Click on “New SSH Tunnel”, and you should see:
 
-### Shutting down the Rstudio Server
+![](images/Screen-Shot-2019-05-29-at-11.48.46-AM.png)
 
+Enter the following in the window:
+
+*   For “Forwarded Port”, enter the port number displayed (this is 12345 in the example)
+*   For “Remote Server”, enter the compute node (compute-012 in the example)
+*   For “Remote Port”, enter the port number (12345 in the example)
+*   For “SSH Server”, enter “jhpce01.jhsph.edu” if you are on the JHPCE cluster, or “jhpcecms01.jhsph.edu” if you are on the CSUB.
+*   For “SSH Login”, enter your JHPCE cluster login name (jdoe1 in the example)
+*   For “SSH Port”, enter “22”
+
+Then click “Save”, and you’ll be take back to the “MobaSSHTunnel” screen with your new tunnel displayed.
+
+![](images/Screen-Shot-2019-05-28-at-4.08.55-PM.png)
+
+Next, click on the yellow “Key” icon  [![](https://jhpce.jhu.edu/wp-content/uploads/2019/05/Screen-Shot-2019-05-29-at-12.48.29-PM.png)](https://jhpce.jhu.edu/wp-content/uploads/2019/05/Screen-Shot-2019-05-29-at-12.48.29-PM.png) and browse to the location of your private key (the “.ppk” file).  Now start your tunnel by clicking on the Green triangle icon[![](https://jhpce.jhu.edu/wp-content/uploads/2019/05/Screen-Shot-2019-05-29-at-12.48.20-PM.png)](https://jhpce.jhu.edu/wp-content/uploads/2019/05/Screen-Shot-2019-05-29-at-12.48.20-PM.png) in the “Start/Stop” column.
+
+Now that the tunnel is established, you can then access Rstudio Server from your laptop/desktop by using a web browser, and connecting to the url, **http://localhost:XXXXX** .  Once connected you will be prompted for your login and password, and you will need to enter you your JHPCE login and password at this point.
+
+![](images/Screen-Shot-2019-05-28-at-3.01.05-PM.png)
+
+Once you enter your login and password, you should see Rstudio running in your browser.
+
+![](images/Screen-Shot-2019-05-28-at-3.02.11-PM-1.png)
+
+
+Shutting down the Rstudio Server
+--------------------------------
 
 When you have finished using Rstudio Server, you should close the browser tab or window that you are using to run Rstudio Server, and then return to the ssh session where you ran the “jhpce-rstudio-server” command.  To stop the Rstudio Server, type “^C”.  You will then be given a few additional steps to run to deactivate the port forward. As with the establishment of the tunnel, these steps are for MacOS and Linux based desktops/laptops.  You will again be prompted to type “~C”, and then enter “-KL XXXXX” at the “ssh>” prompt to stop the forwarding (NOTE: you’ll need to hit <enter> once before typing “~C”).  The session should look similar to:
 
-Once you enter your login and password, you should see Rstudio running in your browser.
+```console
+[login31 /users/jdoe1] $ srun --pty --x11 --mem=10G bash
+Last login: Wed May 1 17:02:29 2019 from login31.cm.cluster
+Loading conda_R/3.5.x
+[compute-012 /users/jdoe1] $ jhpce-rstudio-server
+------------
+1) Establish your SSH tunnel.
+* Windows users see: https://jhpce.jhu.edu/sw/rstudio-server/
+* Mac or Linux Desktop users, please type:
+~C
+-L 12345:compute-012:12345
+
+2) From the browser running on your local system or SAFE desktop, go to:
+
+  http://localhost:12345
+
+3) When prompted for Username, enter your JHPCE ID:  jdoe1
+4) When prompted for Password, enter your JHPCE password.
+
+When you are finished using Rstudio Server, type <CTRL>-C
+
+~C
+ssh> -L 12345:compute-012:12345
+Forwarding port.
+
+****Cleaning up...
+------------
+Now type:
+~C
+-KL 41354
+
+[compute-012 /users/jdoe1] $
+[compute-012 /users/jdoe1] $**~C**
+ssh> **-KL 12345**
+Canceled forwarding.
+[compute-012 /users/jdoe1] $ exit
+[login31 /users/jdoe1] $ exit
+```
+
 
 For Windows desktops/laptops, you should also use “^C” to terminate the Rstudio Server, but to stop the tunnel you will need to return to the MobaSSHTunnel screen, and use the “Stop” icon  in the Start/Stop column.  You can keep this tunnel configuration in MobaSSHTunnel, and reuse it the next time you run Rstudio Server, however you will need to edit the tunnel configuration and change the “Remote Server” to match the compute node you are running on.
 
