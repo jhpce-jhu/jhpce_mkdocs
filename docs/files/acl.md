@@ -122,7 +122,7 @@ By default, one’s home directory is only accessible to the owner. This is acco
 
 [^1]: Not true in the C-SUB, where home directories are protected with ACLs.
 
-```
+```Shell
 [alice@compute-123 ~]$ pwd
 /users/alice
 [alice@compute-123 ~]$ ls -ld .
@@ -145,7 +145,7 @@ If you see the string "fdi", that indicates that the ACE is a "default" or "inhe
   directory to the user bob, they would use the `nfs4_setfacl`
   command:
 
-```
+```Shell
 [alice@compute-123 ~]$ nfs4_setfacl -a A::bob@cm.cluster:RX .
 [alice@compute-123 ~]$ getfacl .
 # file: .
@@ -176,7 +176,7 @@ A::EVERYONE@:rtcy
 + Now suppose alice wanted to create a directory that bob could write to. 
 + Alice could create a directory, and grant bob write access to it:
 
-```
+```Shell
 [alice@compute-123 ~]$ mkdir shared
 [alice@compute-123 ~]$ nfs4_setfacl -a A::bob@cm.cluster:RWX shared
 [alice@compute-123 ~]$ nfs4_getfacl shared
@@ -197,14 +197,13 @@ would need to
 1. first give bob the normal ACL permissions, then
 2. add a second set of ACLs that will be inherited using the `fdi` option to the `nfs4_setacl` command.
 
-One
-issue we’ve seen is that a `@USER` and `@GROUP` ACL need to be
-explicitly set for permissions to be properly set:
+{==One issue we’ve seen is that, in addition to the ACE you would expect was needed, you need to also add both a `@USER` and `@GROUP` ACE need to be explicitly set for permissions to be work as expected. ==}
 
-```
+```Shell
 [alice@compute-123 ~]$ nfs4_setfacl -a A:fdi:bob@cm.cluster:RWX shared
 [alice@compute-123 ~]$ nfs4_setfacl -a A:fdi:OWNER@:RWX shared
 [alice@compute-123 ~]$ nfs4_setfacl -a A:fdi:GROUP@:RWX shared
+
 [alice@compute-123 ~]$ nfs4_getfacl shared
 nfs4_getfacl shared-data.txt
 # file: shared-data.txt
@@ -218,9 +217,10 @@ A:fdi:GROUP@:rwaDxtcy
 A:fdi:EVERYONE@:tcy
 ```
 
+
 To set a Group ACL, you need to add the `g` option to the `nfs4_getfacl` command.
 
-```
+```Shell
 [alice@compute-123 ~]$ mkdir shared
 [alice@compute-123 ~]$ nfs4_setfacl -a A:g:hpscc@cm.cluster:RWX shared
 [alice@compute-123 ~]$ nfs4_getfacl shared
@@ -247,9 +247,11 @@ A:fdi:GROUP@:rwaDxtcy
 A:fdig:swdev@cm.cluster:rwaDxtcy
 A:fdi:EVERYONE@:tcy
 ```
+
+
 Example showing the impact of adding a default (or inherited) ACE to a directory which provides read, write, and execute permissions for the UNIX group "hpscc"  Then, depending on the umask in force, files created inside this directory will be created with different permissions.
 
-```
+```Shell
 [alice@compute-123 ~]$ nfs4_setfacl -a A:gfdi:hpscc@cm.cluster:RWX test1
 [alice@compute-123 ~]$ touch test1/f1
 [alice@compute-123 ~]$ nfs4_getfacl test1/f1
@@ -273,7 +275,7 @@ A::EVERYONE@:rtcy
 ### **Removing an ACL**
 Use the `-x` option to `nfs4_setfacl` to remove an ACE from an ACL. Please note that you need to use the full (and exact) ACE, and not the `RWX` shortcuts.
 
-```
+```Shell
 [alice@compute-123 ~]$ nfs4_setfacl -x A::bob@cm.cluster:rwaxtcy shared
 [alice@compute-123 ~]$ nfs4_getfacl shared
 nfs4_getfacl shared-data.txt
@@ -303,7 +305,7 @@ You can copy working ACLs but you must be very careful and check the results. Di
 
 One technique is to save and restore the settings. The second example uses input/output redirection to connect the two commands.
 
-```
+```Shell
 nfs4_getfacl -R source_dir > tmpfile1
 setfacl --restore tmpfile1 destination_dir
 
@@ -377,6 +379,8 @@ o	| change ownership of the file/directory | Danger, Will Robinson! |
 
 ## ACLs in Lustre file systems 
 
+Currently, the only Lustre file system we have is `/dcl02`. So if your files are located anywhere else, you can ignore this section.
+
 There are two commands for dealing with ACLs on the JHPCE cluster for
 directories in Lustre file systems, which start with `/dcl02`.
 
@@ -429,6 +433,7 @@ Now suppose there is a file that alice wants to let bob update. Alice could use 
 user::rw-
 group::r--
 other::r--
+
 [alice@compute-123 ]$ setfacl -m user:bob:rw shared-data.txt 
 [alice@compute-123 ]$ getfacl shared-data.txt
 # file: shared-data.txt
@@ -455,9 +460,10 @@ user::rwx
 user:bob:rwx
 group::r-x
 mask::rwx
-other::r-x
-Now the user bob can copy or save files in the “shared” directory.
+other::r-x 
 ```
+
+Now the user bob can copy or save files in the “shared” directory.
 
 #### Default ACLs
 To set an inherited default ACL that will allow bob access on all new files and directories that get saved into `shared`, you would need to use the `-d` option to the `setacl` command:
@@ -478,8 +484,11 @@ default:user:bob:rwx
 default:group::--x
 default:mask::rwx
 default:other::r-x
+```
+
 If you want to remove and ACL, you can use the “-x” option to setfacl.
 
+```
 [alice@compute-123 ]$ setfacl -x user:bob shared
 [alice@compute-123 ]$ getfacl shared
 # file: shared
@@ -490,3 +499,4 @@ group::r-x
 mask::r-x
 other::r-x
 ```
+****
