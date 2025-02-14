@@ -4262,12 +4262,12 @@ this, Access Control Lists (ACLs) can be used. They <em>add</em> to the normal p
 <p>A <a href="#ace-flags-explained">later section</a> of this page gives the meaning for each of the single characters that are combined in ACEs to create cryptic strings like "rwaDxtTcCy"</p>
 <p>These strings contain so many elements because ACLs can be used to create fine-grained permissions.</p>
 <p>By default, one’s home directory is only accessible to the owner. This is accomplished with basic UNIX permissions, not ACLs.<sup id="fnref:1"><a class="footnote-ref" href="#fn:1">1</a></sup> The original ACL reflects this. For the user alice, the ACL on their home directory would look like:</p>
-<div class="highlight"><pre><span></span><code>[alice@compute-123 ~]$ pwd
+<div class="highlight"><pre><span></span><code><span class="o">[</span>alice@compute-123<span class="w"> </span>~<span class="o">]</span>$<span class="w"> </span><span class="nb">pwd</span>
 /users/alice
-[alice@compute-123 ~]$ ls -ld .
-drwx------ 63 alice users 134 Apr 12 14:36 ./
-[alice@compute-123 ~]$ nfs4_getfacl .
-# file: .
+<span class="o">[</span>alice@compute-123<span class="w"> </span>~<span class="o">]</span>$<span class="w"> </span>ls<span class="w"> </span>-ld<span class="w"> </span>.
+drwx------<span class="w"> </span><span class="m">63</span><span class="w"> </span>alice<span class="w"> </span>users<span class="w"> </span><span class="m">134</span><span class="w"> </span>Apr<span class="w"> </span><span class="m">12</span><span class="w"> </span><span class="m">14</span>:36<span class="w"> </span>./
+<span class="o">[</span>alice@compute-123<span class="w"> </span>~<span class="o">]</span>$<span class="w"> </span>nfs4_getfacl<span class="w"> </span>.
+<span class="c1"># file: .</span>
 A::OWNER@:rwaDxtTcCy
 A::GROUP@:tcy
 A::EVERYONE@:tcy
@@ -4280,26 +4280,26 @@ A::EVERYONE@:tcy
   directory to the user bob, they would use the <code>nfs4_setfacl</code>
   command:</li>
 </ul>
-<div class="highlight"><pre><span></span><code>[alice@compute-123 ~]$ nfs4_setfacl -a A::bob@cm.cluster:RX .
-[alice@compute-123 ~]$ getfacl .
-# file: .
+<div class="highlight"><pre><span></span><code><span class="o">[</span>alice@compute-123<span class="w"> </span>~<span class="o">]</span>$<span class="w"> </span>nfs4_setfacl<span class="w"> </span>-a<span class="w"> </span>A::bob@cm.cluster:RX<span class="w"> </span>.
+<span class="o">[</span>alice@compute-123<span class="w"> </span>~<span class="o">]</span>$<span class="w"> </span>getfacl<span class="w"> </span>.
+<span class="c1"># file: .</span>
 A::OWNER@:rwaDxtTcCy
 A::bob@cm.cluster:xtcy
 A::GROUP@:tcy
 A::EVERYONE@:tcy
-At this point, bob would be able to access alice’s home directory. Now suppose there is a file that alice wants to let bob update. Alice could use ACLs to grant write access to a particular file:
+At<span class="w"> </span>this<span class="w"> </span>point,<span class="w"> </span>bob<span class="w"> </span>would<span class="w"> </span>be<span class="w"> </span>able<span class="w"> </span>to<span class="w"> </span>access<span class="w"> </span>alice’s<span class="w"> </span>home<span class="w"> </span>directory.<span class="w"> </span>Now<span class="w"> </span>suppose<span class="w"> </span>there<span class="w"> </span>is<span class="w"> </span>a<span class="w"> </span>file<span class="w"> </span>that<span class="w"> </span>alice<span class="w"> </span>wants<span class="w"> </span>to<span class="w"> </span><span class="nb">let</span><span class="w"> </span>bob<span class="w"> </span>update.<span class="w"> </span>Alice<span class="w"> </span>could<span class="w"> </span>use<span class="w"> </span>ACLs<span class="w"> </span>to<span class="w"> </span>grant<span class="w"> </span>write<span class="w"> </span>access<span class="w"> </span>to<span class="w"> </span>a<span class="w"> </span>particular<span class="w"> </span>file:
 
-[alice@compute-123 ~]$ ls -l shared-data.txt
--rw-r--r-- 1 alice users 79691776 Feb  2 07:06 shared-data.txt
-[alice@compute-123 ~]$ nfs4_getfacl shared-data.txt
-# file: shared-data.txt
+<span class="o">[</span>alice@compute-123<span class="w"> </span>~<span class="o">]</span>$<span class="w"> </span>ls<span class="w"> </span>-l<span class="w"> </span>shared-data.txt
+-rw-r--r--<span class="w"> </span><span class="m">1</span><span class="w"> </span>alice<span class="w"> </span>users<span class="w"> </span><span class="m">79691776</span><span class="w"> </span>Feb<span class="w">  </span><span class="m">2</span><span class="w"> </span><span class="m">07</span>:06<span class="w"> </span>shared-data.txt
+<span class="o">[</span>alice@compute-123<span class="w"> </span>~<span class="o">]</span>$<span class="w"> </span>nfs4_getfacl<span class="w"> </span>shared-data.txt
+<span class="c1"># file: shared-data.txt</span>
 A::OWNER@:rwatTcCy
 A::GROUP@:rtcy
 A::EVERYONE@:rtcy
-[alice@compute-123 ~]$ nfs4_setfacl -a A::bob@cm.cluster:RWX shared-data.txt 
-[alice@compute-123 ~]$ nfs4_getfacl shared-data.txt
-nfs4_getfacl shared-data.txt
-# file: shared-data.txt
+<span class="o">[</span>alice@compute-123<span class="w"> </span>~<span class="o">]</span>$<span class="w"> </span>nfs4_setfacl<span class="w"> </span>-a<span class="w"> </span>A::bob@cm.cluster:RWX<span class="w"> </span>shared-data.txt<span class="w"> </span>
+<span class="o">[</span>alice@compute-123<span class="w"> </span>~<span class="o">]</span>$<span class="w"> </span>nfs4_getfacl<span class="w"> </span>shared-data.txt
+nfs4_getfacl<span class="w"> </span>shared-data.txt
+<span class="c1"># file: shared-data.txt</span>
 A::OWNER@:rwatTcCy
 A::bob@cm.cluster:rwaxtcy
 A::GROUP@:rtcy
@@ -4310,16 +4310,16 @@ A::EVERYONE@:rtcy
 <li>Now suppose alice wanted to create a directory that bob could write to. </li>
 <li>Alice could create a directory, and grant bob write access to it:</li>
 </ul>
-<div class="highlight"><pre><span></span><code>[alice@compute-123 ~]$ mkdir shared
-[alice@compute-123 ~]$ nfs4_setfacl -a A::bob@cm.cluster:RWX shared
-[alice@compute-123 ~]$ nfs4_getfacl shared
-nfs4_getfacl shared-data.txt
-# file: shared-data.txt
+<div class="highlight"><pre><span></span><code><span class="o">[</span>alice@compute-123<span class="w"> </span>~<span class="o">]</span>$<span class="w"> </span>mkdir<span class="w"> </span>shared
+<span class="o">[</span>alice@compute-123<span class="w"> </span>~<span class="o">]</span>$<span class="w"> </span>nfs4_setfacl<span class="w"> </span>-a<span class="w"> </span>A::bob@cm.cluster:RWX<span class="w"> </span>shared
+<span class="o">[</span>alice@compute-123<span class="w"> </span>~<span class="o">]</span>$<span class="w"> </span>nfs4_getfacl<span class="w"> </span>shared
+nfs4_getfacl<span class="w"> </span>shared-data.txt
+<span class="c1"># file: shared-data.txt</span>
 A::OWNER@:rwatTcCy
 A::bob@cm.cluster:rwaxtcy
 A::GROUP@:rtcy
 A::EVERYONE@:rtcy
-Now the user bob can copy or save files in the “shared” directory.
+Now<span class="w"> </span>the<span class="w"> </span>user<span class="w"> </span>bob<span class="w"> </span>can<span class="w"> </span>copy<span class="w"> </span>or<span class="w"> </span>save<span class="w"> </span>files<span class="w"> </span><span class="k">in</span><span class="w"> </span>the<span class="w"> </span>“shared”<span class="w"> </span>directory.
 </code></pre></div>
 <h3 id="inherited-defaults">Inherited Defaults<a class="headerlink" href="#inherited-defaults" title="Anchor link to this section for reference">&para;</a></h3>
 <p>To set an inherited “default” ACL that will allow bob access on all
@@ -4329,15 +4329,14 @@ would need to</p>
 <li>first give bob the normal ACL permissions, then</li>
 <li>add a second set of ACLs that will be inherited using the <code>fdi</code> option to the <code>nfs4_setacl</code> command.</li>
 </ol>
-<p>One
-issue we’ve seen is that a <code>@USER</code> and <code>@GROUP</code> ACL need to be
-explicitly set for permissions to be properly set:</p>
-<div class="highlight"><pre><span></span><code>[alice@compute-123 ~]$ nfs4_setfacl -a A:fdi:bob@cm.cluster:RWX shared
-[alice@compute-123 ~]$ nfs4_setfacl -a A:fdi:OWNER@:RWX shared
-[alice@compute-123 ~]$ nfs4_setfacl -a A:fdi:GROUP@:RWX shared
-[alice@compute-123 ~]$ nfs4_getfacl shared
-nfs4_getfacl shared-data.txt
-# file: shared-data.txt
+<p><mark class="critic">One issue we’ve seen is that, in addition to the ACE you would expect was needed, you need to also add both a <code>@USER</code> and <code>@GROUP</code> ACE need to be explicitly set for permissions to be work as expected. </mark></p>
+<div class="highlight"><pre><span></span><code><span class="o">[</span>alice@compute-123<span class="w"> </span>~<span class="o">]</span>$<span class="w"> </span>nfs4_setfacl<span class="w"> </span>-a<span class="w"> </span>A:fdi:bob@cm.cluster:RWX<span class="w"> </span>shared
+<span class="o">[</span>alice@compute-123<span class="w"> </span>~<span class="o">]</span>$<span class="w"> </span>nfs4_setfacl<span class="w"> </span>-a<span class="w"> </span>A:fdi:OWNER@:RWX<span class="w"> </span>shared
+<span class="o">[</span>alice@compute-123<span class="w"> </span>~<span class="o">]</span>$<span class="w"> </span>nfs4_setfacl<span class="w"> </span>-a<span class="w"> </span>A:fdi:GROUP@:RWX<span class="w"> </span>shared
+
+<span class="o">[</span>alice@compute-123<span class="w"> </span>~<span class="o">]</span>$<span class="w"> </span>nfs4_getfacl<span class="w"> </span>shared
+nfs4_getfacl<span class="w"> </span>shared-data.txt
+<span class="c1"># file: shared-data.txt</span>
 A::OWNER@:rwatTcCy
 A::bob@cm.cluster:rwaxtcy
 A::GROUP@:rtcy
@@ -4348,23 +4347,23 @@ A:fdi:GROUP@:rwaDxtcy
 A:fdi:EVERYONE@:tcy
 </code></pre></div>
 <p>To set a Group ACL, you need to add the <code>g</code> option to the <code>nfs4_getfacl</code> command.</p>
-<p><div class="highlight"><pre><span></span><code>[alice@compute-123 ~]$ mkdir shared
-[alice@compute-123 ~]$ nfs4_setfacl -a A:g:hpscc@cm.cluster:RWX shared
-[alice@compute-123 ~]$ nfs4_getfacl shared
-nfs4_getfacl shared-data.txt
-# file: shared-data.txt
+<div class="highlight"><pre><span></span><code><span class="o">[</span>alice@compute-123<span class="w"> </span>~<span class="o">]</span>$<span class="w"> </span>mkdir<span class="w"> </span>shared
+<span class="o">[</span>alice@compute-123<span class="w"> </span>~<span class="o">]</span>$<span class="w"> </span>nfs4_setfacl<span class="w"> </span>-a<span class="w"> </span>A:g:hpscc@cm.cluster:RWX<span class="w"> </span>shared
+<span class="o">[</span>alice@compute-123<span class="w"> </span>~<span class="o">]</span>$<span class="w"> </span>nfs4_getfacl<span class="w"> </span>shared
+nfs4_getfacl<span class="w"> </span>shared-data.txt
+<span class="c1"># file: shared-data.txt</span>
 A::OWNER@:rwatTcCy
 A::GROUP@:rtcy
 A:g:hpscc@cm.cluster:rwaDxtcy
 A::EVERYONE@:rtcy
-To set a Group Inherited ACL, you need to add the “gfdi” option to the “nfs4_getfacl” command. With this inherited group ACL set, all new files and directories will inherit the group settings.
+To<span class="w"> </span><span class="nb">set</span><span class="w"> </span>a<span class="w"> </span>Group<span class="w"> </span>Inherited<span class="w"> </span>ACL,<span class="w"> </span>you<span class="w"> </span>need<span class="w"> </span>to<span class="w"> </span>add<span class="w"> </span>the<span class="w"> </span>“gfdi”<span class="w"> </span>option<span class="w"> </span>to<span class="w"> </span>the<span class="w"> </span>“nfs4_getfacl”<span class="w"> </span>command.<span class="w"> </span>With<span class="w"> </span>this<span class="w"> </span>inherited<span class="w"> </span>group<span class="w"> </span>ACL<span class="w"> </span>set,<span class="w"> </span>all<span class="w"> </span>new<span class="w"> </span>files<span class="w"> </span>and<span class="w"> </span>directories<span class="w"> </span>will<span class="w"> </span>inherit<span class="w"> </span>the<span class="w"> </span>group<span class="w"> </span>settings.
 
-[alice@compute-123 ~]$ nfs4_setfacl -a A:gfdi:swdev@cm.cluster:RWX shared
-[alice@compute-123 ~]$ nfs4_setfacl -a A:fdi:OWNER@:RWX shared
-[alice@compute-123 ~]$ nfs4_setfacl -a A:fdi:GROUP@:RWX shared
-[alice@compute-123 ~]$ nfs4_getfacl shared
+<span class="o">[</span>alice@compute-123<span class="w"> </span>~<span class="o">]</span>$<span class="w"> </span>nfs4_setfacl<span class="w"> </span>-a<span class="w"> </span>A:gfdi:swdev@cm.cluster:RWX<span class="w"> </span>shared
+<span class="o">[</span>alice@compute-123<span class="w"> </span>~<span class="o">]</span>$<span class="w"> </span>nfs4_setfacl<span class="w"> </span>-a<span class="w"> </span>A:fdi:OWNER@:RWX<span class="w"> </span>shared
+<span class="o">[</span>alice@compute-123<span class="w"> </span>~<span class="o">]</span>$<span class="w"> </span>nfs4_setfacl<span class="w"> </span>-a<span class="w"> </span>A:fdi:GROUP@:RWX<span class="w"> </span>shared
+<span class="o">[</span>alice@compute-123<span class="w"> </span>~<span class="o">]</span>$<span class="w"> </span>nfs4_getfacl<span class="w"> </span>shared
 
-# file: shared
+<span class="c1"># file: shared</span>
 A::OWNER@:rwaDxtTcCy
 A::GROUP@:rwaDxtcy
 A:g:hpscc@cm.cluster:rwaDxtcy
@@ -4374,21 +4373,21 @@ A:fdi:GROUP@:rwaDxtcy
 A:fdig:swdev@cm.cluster:rwaDxtcy
 A:fdi:EVERYONE@:tcy
 </code></pre></div>
-Example showing the impact of adding a default (or inherited) ACE to a directory which provides read, write, and execute permissions for the UNIX group "hpscc"  Then, depending on the umask in force, files created inside this directory will be created with different permissions.</p>
-<div class="highlight"><pre><span></span><code>[alice@compute-123 ~]$ nfs4_setfacl -a A:gfdi:hpscc@cm.cluster:RWX test1
-[alice@compute-123 ~]$ touch test1/f1
-[alice@compute-123 ~]$ nfs4_getfacl test1/f1
+<p>Example showing the impact of adding a default (or inherited) ACE to a directory which provides read, write, and execute permissions for the UNIX group "hpscc"  Then, depending on the umask in force, files created inside this directory will be created with different permissions.</p>
+<div class="highlight"><pre><span></span><code><span class="o">[</span>alice@compute-123<span class="w"> </span>~<span class="o">]</span>$<span class="w"> </span>nfs4_setfacl<span class="w"> </span>-a<span class="w"> </span>A:gfdi:hpscc@cm.cluster:RWX<span class="w"> </span>test1
+<span class="o">[</span>alice@compute-123<span class="w"> </span>~<span class="o">]</span>$<span class="w"> </span>touch<span class="w"> </span>test1/f1
+<span class="o">[</span>alice@compute-123<span class="w"> </span>~<span class="o">]</span>$<span class="w"> </span>nfs4_getfacl<span class="w"> </span>test1/f1
 
-# file: test1/f1
+<span class="c1"># file: test1/f1</span>
 A::OWNER@:rwatTcCy
 A::GROUP@:rtcy
 A:g:hpscc@cm.cluster:rtcy
 A::EVERYONE@:rtcy
-[alice@compute-123 ~]$ umask 0002
-[alice@compute-123 ~]$ touch test1/f2
-[alice@compute-123 ~]$ nfs4_getfacl test1/f2
+<span class="o">[</span>alice@compute-123<span class="w"> </span>~<span class="o">]</span>$<span class="w"> </span><span class="nb">umask</span><span class="w"> </span><span class="m">0002</span>
+<span class="o">[</span>alice@compute-123<span class="w"> </span>~<span class="o">]</span>$<span class="w"> </span>touch<span class="w"> </span>test1/f2
+<span class="o">[</span>alice@compute-123<span class="w"> </span>~<span class="o">]</span>$<span class="w"> </span>nfs4_getfacl<span class="w"> </span>test1/f2
 
-# file: test1/f2
+<span class="c1"># file: test1/f2</span>
 A::OWNER@:rwatTcCy
 A::GROUP@:rwatcy
 A:g:hpscc@cm.cluster:rwatcy
@@ -4396,10 +4395,10 @@ A::EVERYONE@:rtcy
 </code></pre></div>
 <h3 id="removing-an-acl"><strong>Removing an ACL</strong><a class="headerlink" href="#removing-an-acl" title="Anchor link to this section for reference">&para;</a></h3>
 <p>Use the <code>-x</code> option to <code>nfs4_setfacl</code> to remove an ACE from an ACL. Please note that you need to use the full (and exact) ACE, and not the <code>RWX</code> shortcuts.</p>
-<div class="highlight"><pre><span></span><code>[alice@compute-123 ~]$ nfs4_setfacl -x A::bob@cm.cluster:rwaxtcy shared
-[alice@compute-123 ~]$ nfs4_getfacl shared
-nfs4_getfacl shared-data.txt
-# file: shared-data.txt
+<div class="highlight"><pre><span></span><code><span class="o">[</span>alice@compute-123<span class="w"> </span>~<span class="o">]</span>$<span class="w"> </span>nfs4_setfacl<span class="w"> </span>-x<span class="w"> </span>A::bob@cm.cluster:rwaxtcy<span class="w"> </span>shared
+<span class="o">[</span>alice@compute-123<span class="w"> </span>~<span class="o">]</span>$<span class="w"> </span>nfs4_getfacl<span class="w"> </span>shared
+nfs4_getfacl<span class="w"> </span>shared-data.txt
+<span class="c1"># file: shared-data.txt</span>
 A::OWNER@:rwatTcCy
 A::GROUP@:rtcy
 A::EVERYONE@:rtcy
@@ -4418,11 +4417,11 @@ find<span class="w"> </span>.<span class="w"> </span>-type<span class="w"> </spa
 </div>
 <p>You can copy working ACLs but you must be very careful and check the results. Did your umask contribute an unexpected change to the process?</p>
 <p>One technique is to save and restore the settings. The second example uses input/output redirection to connect the two commands.</p>
-<div class="highlight"><pre><span></span><code>nfs4_getfacl -R source_dir &gt; tmpfile1
-setfacl --restore tmpfile1 destination_dir
+<div class="highlight"><pre><span></span><code>nfs4_getfacl<span class="w"> </span>-R<span class="w"> </span>source_dir<span class="w"> </span>&gt;<span class="w"> </span>tmpfile1
+setfacl<span class="w"> </span>--restore<span class="w"> </span>tmpfile1<span class="w"> </span>destination_dir
 
-nfs4_getfacl -R source_dir |
-setfacl --restore - destination_dir
+nfs4_getfacl<span class="w"> </span>-R<span class="w"> </span>source_dir<span class="w"> </span><span class="p">|</span>
+setfacl<span class="w"> </span>--restore<span class="w"> </span>-<span class="w"> </span>destination_dir
 </code></pre></div>
 <p>You can copy the ACLs on a directory with rsync. You <strong>have to</strong> put trailing slashes on BOTH the source and destination.</p>
 <p><code>rsync -A public-exam1/ /dcs05/somegroup/data/otherdir/</code></p>
@@ -4576,6 +4575,7 @@ A::EVERYONE@:tcy
 </tbody>
 </table>
 <h2 id="acls-in-lustre-file-systems">ACLs in Lustre file systems<a class="headerlink" href="#acls-in-lustre-file-systems" title="Anchor link to this section for reference">&para;</a></h2>
+<p>Currently, the only Lustre file system we have is <code>/dcl02</code>. So if your files are located anywhere else, you can ignore this section.</p>
 <p>There are two commands for dealing with ACLs on the JHPCE cluster for
 directories in Lustre file systems, which start with <code>/dcl02</code>.</p>
 <p>The <code>getfacl</code> command will display
@@ -4619,6 +4619,7 @@ other::---
 user::rw-
 group::r--
 other::r--
+
 [alice@compute-123 ]$ setfacl -m user:bob:rw shared-data.txt 
 [alice@compute-123 ]$ getfacl shared-data.txt
 # file: shared-data.txt
@@ -4642,9 +4643,9 @@ user::rwx
 user:bob:rwx
 group::r-x
 mask::rwx
-other::r-x
-Now the user bob can copy or save files in the “shared” directory.
+other::r-x 
 </code></pre></div>
+<p>Now the user bob can copy or save files in the “shared” directory.</p>
 <h4 id="default-acls">Default ACLs<a class="headerlink" href="#default-acls" title="Anchor link to this section for reference">&para;</a></h4>
 <p>To set an inherited default ACL that will allow bob access on all new files and directories that get saved into <code>shared</code>, you would need to use the <code>-d</code> option to the <code>setacl</code> command:</p>
 <div class="highlight"><pre><span></span><code>[[alice@compute-123 ~]$ setfacl -d -m user:bob:rwx shared
@@ -4662,9 +4663,9 @@ default:user:bob:rwx
 default:group::--x
 default:mask::rwx
 default:other::r-x
-If you want to remove and ACL, you can use the “-x” option to setfacl.
-
-[alice@compute-123 ]$ setfacl -x user:bob shared
+</code></pre></div>
+<p>If you want to remove and ACL, you can use the “-x” option to setfacl.</p>
+<div class="highlight"><pre><span></span><code>[alice@compute-123 ]$ setfacl -x user:bob shared
 [alice@compute-123 ]$ getfacl shared
 # file: shared
 # owner: alice
@@ -4674,6 +4675,7 @@ group::r-x
 mask::r-x
 other::r-x
 </code></pre></div>
+<hr />
 <div class="footnote">
 <hr />
 <ol>
@@ -4705,7 +4707,7 @@ other::r-x
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">May 8, 2024</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">February 14, 2025</span>
   </span>
 
     
