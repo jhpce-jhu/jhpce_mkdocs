@@ -7,7 +7,7 @@ tags:
     
 [Sacctmgr](https://slurm.schedmd.com/archive/slurm-22.05.9/sacctmgr.html) is mostly used by systems administrators. Only they are allowed to make changes. Users can use it to view settings.
 
-Note that the output field names displayed are not necessarily the same as the keywords used when modifying, e.g. MaxTRESPerUser is the keyword but the more concise MaxTRESPU is displayed.
+`sacctmgr` is used by systems administrators to create and modify user accounts as well as QOS (qualities of service).
 
 Also note that by "account" SLURM means the parent object of user accounts. We do not currently put our users into different accounts (many other clusters do).
 
@@ -89,9 +89,16 @@ sacctmgr -i create user name=$userid account=generic cluster=cms
 
 ### **Managing QOS**
 
-{== To delete a parameter from a QOS, set it to the value -1 ==}
+{==To delete a parameter from a QOS, set it to the value -1==}
 
-{== You MUST define flags=DenyOnLimit,OverPartQOS for a QOS to work as expected ==}
+{==You MUST define flags=DenyOnLimit,OverPartQOS for a QOS to work as expected==}
+
+{==We now limit all partitions to 10,000 jobs per user. 
+Therefore every such QOS needs `MaxSubmitJobsPU=10000`==}
+
+{==Note that the output field names displayed are not necessarily the same as the keywords used when modifying, e.g. MaxTRESPerUser is the keyword but the more concise MaxTRESPU is displayed.==}
+
+If you provide the `-i` flag, the operation is immediately implemented. Without it, you have 30 seconds to respond (which doesn't work in scripts).
 
 There are a number of variants of some categories of parameters -- by user, by group, by account, etc.
 
@@ -107,21 +114,29 @@ There are a number of variants of some categories of parameters -- by user, by g
 
 
 ```
-# Define a QOS limiting a user to 25 running jobs with a max of 50 pending or running
+# Define a QOS which will limit a user to 25 running jobs with a max of 25 more pending
+# This QOS won't change any behavior until it is added to a partition or association etc
 sacctmgr -i add qos job-25run50sub
 
 # You MUST define these flags for the QOS to work as expected
+# We limit all partitions to 10,000 jobs per user
 sacctmgr -i modify qos job-25run50sub set flags=DenyOnLimit,OverPartQOS
+sacctmgr -i modify qos job-25run50sub set MaxSubmitJobsPU=10000
+
+# Add the job-limiting arguments 
 sacctmgr -i modify qos job-25run50sub set MaxJobsPerUser=25 MaxSubmitJobsPerUser=50
 
 # Remove one of those parameters
 sacctmgr modify qos job-25run50sub set MaxJobsPerUser=-1
 
-# Delete the QOS (they can't be renamed)
+# Delete the QOS (they can't be renamed!!)
 sacctmgr -i delete qos job-25run50sub
 
-# Limit each user to 512GB and 100 CPU:
+# Limit each user to 100 CPU and 512GB (you must specify RAM in megabytes):
 sacctmgr modify qos shared-default set MaxTRESPerUser=mem=524288 MaxTRESPerUser=cpu=100
+
+# Limit the amount of a Trackable RESource
+sacctmgr modify qos public-gpu-limit set MaxTRESPerUser=gres/gpu=4
 
 # Limit maximum job run time to 1 day
 sacctmgr modify qos cms-larger set MaxWall=1-0
