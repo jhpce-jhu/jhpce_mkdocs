@@ -5162,21 +5162,29 @@ sacctmgr -i create user name=$userid cluster=jhpce3 account=jhpce
 
 # How C-SUB users accounts are created in the sacctmgr database on jhpcecms01
 sacctmgr -i create user name=$userid account=generic cluster=cms 
-</code></pre><pre><span></span><code># Define a QOS limiting a user to 25 running jobs with a max of 50 pending or running
+</code></pre><pre><span></span><code># Define a QOS which will limit a user to 25 running jobs with a max of 25 more pending
+# This QOS won't change any behavior until it is added to a partition or association etc
 sacctmgr -i add qos job-25run50sub
 
 # You MUST define these flags for the QOS to work as expected
+# We limit all partitions to 10,000 jobs per user
 sacctmgr -i modify qos job-25run50sub set flags=DenyOnLimit,OverPartQOS
+sacctmgr -i modify qos job-25run50sub set MaxSubmitJobsPU=10000
+
+# Add the job-limiting arguments 
 sacctmgr -i modify qos job-25run50sub set MaxJobsPerUser=25 MaxSubmitJobsPerUser=50
 
 # Remove one of those parameters
 sacctmgr modify qos job-25run50sub set MaxJobsPerUser=-1
 
-# Delete the QOS (they can't be renamed)
+# Delete the QOS (they can't be renamed!!)
 sacctmgr -i delete qos job-25run50sub
 
-# Limit each user to 512GB and 100 CPU:
+# Limit each user to 100 CPU and 512GB (you must specify RAM in megabytes):
 sacctmgr modify qos shared-default set MaxTRESPerUser=mem=524288 MaxTRESPerUser=cpu=100
+
+# Limit the amount of a Trackable RESource
+sacctmgr modify qos public-gpu-limit set MaxTRESPerUser=gres/gpu=4
 
 # Limit maximum job run time to 1 day
 sacctmgr modify qos cms-larger set MaxWall=1-0
