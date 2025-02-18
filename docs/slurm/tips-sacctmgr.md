@@ -37,11 +37,19 @@ sacctmgr show user withassoc|grep -v "normal "|awk '{printf "%s\t\t%s\t%s\t\t%s%
 
 ## **Sacctmgr for Systems Administrators**
 
-Like many administrative commands, you can just run the `sacctmgr` command to enter into its shell version. Useful if you are exploring some situation, although you cannot paginate output.
+We currently have two clusters, named "jhpce3" and "cms" You don't have to specify which cluster you want to consult/change, as we have a SLURM server for each cluster. And because they aren't connected in any way, you cannot extract data from one when logged into a node in the other cluster.
 
-You can add the flag "-i" to avoid the "are-you-sure" 30 second delay and prompt.
+Like many administrative SLURM commands, you can just run the `sacctmgr` command to enter into its shell version. Useful if you are exploring some situation, although you cannot paginate output. It supports up-arrow to get at previous commands. Issuing the command "verbose" when in the interactive shell may display interesting info.
 
-We currently have two clusters, named "jhpce3" and "cms" You usually don't have to specify which cluster you want to consult/change, as we have a SLURM server for each cluster.
+You can add the flag "-i" to avoid the "are-you-sure" 30 second delay and prompt. Useful when scripting.
+
+
+
+### Seeing database transactions
+
+```
+sacctmgr list transactions
+```
 
 ### Make A Backup Of Users and Their Settings
 
@@ -103,7 +111,7 @@ If you provide the `-i` flag, the operation is immediately implemented. Without 
 There are a number of variants of some categories of parameters -- by user, by group, by account, etc.
 
 `MaxJobs*` means jobs that can be running at one time
-`MaxJobsSubmit*` means jobs that can be both pending and running, altogether, in total.
+`MaxJobsSubmit*` means jobs that can be both pending and running, altogether, in total, e.g. `MaxJobsSubmitPerUser`
 
 !!! Note
     There are a number of parameters which feature Group or Account. We cannot use these easily, because for example as far as "Groups" are concerned, by default our users are all in the same group ("users" in jhpce3 and "c-users" in cms). SLURM doesn't look at secondary group membership, only the primary group. AND we don't maintain groups for all of our PI groups. We maintain groups not to give access to computers but to control storage permissions. (In jhpce3 some users DO have primary groups different from "users".)
@@ -151,34 +159,56 @@ sacctmgr modify qos cms-larger set MaxJobsPerUser=1 MaxSubmitJobsPerUser=1  MaxS
 sacctmgr delete qos qosname
 ```
 
-### Other Tasks
+### Searching for transactions
+
+You can use variants of `sacctmgr list transactions` to inspect the database going back to its founding. The kinds of things you can see:
+* who ran which command that changed the database
+* what commands involved a specific user
+* what commands changed a QOS
+
+#### Output formatting
+
+Output columns are: Time, Action, Actor, Where, Info
+
+"Where" contains things like the names of users and QOS
+
+You can control field width by adding the ++"%"++ character then a field width number value.
+
+You can specify what you want to see with e.g. "format=user,time%10"
+
+#### Actions
+
+Some of the actions you can search for are:
+* Add Users
+* Remove Users
+* Add Associations
+* Add QOS
+* Modify QOS
+* Modify Clusters - I think that this might be `slurmctld` restarts.
+
+The right-most column in the default output is called "Info". It is truncated such that you can't see full QOS definition commands etc. You can see that info by adding format arguments or simply with the `-P` ("parsable 2") flag.
 
 
 ```
-# View the slurmdbd configuration in force
-sacctmgr show Configuration | less
-
-# Perform a self-check of database
-sacctmgr show problems
-
-# Check history of sacctmgr operations - useful to see users added, QOS changes
-# "Modify Clusters" might be slurmctld restarts
-# (Output width is inadequate but most/all cut-off material isn't that useful)
-# (which you can see by running command with -p argument and redirect to a file)
 sacctmgr show transaction | less
-sacctmgr -p show transaction > /tmp/lookatme
 
-# Check RPC statistics (watch out for users with extremely high numbers of RPC)
-# (these stats might be since the last time the slurmctld was restarted??)
-sacctmgr show stats | less
+sacctmgr -P show transaction > /tmp/lookatme
 
-# You can clear the stats and then watch how quickly a suspicious user racks up RPC calls
-sacctmgr clear stats
+# transactions involving cluster user simmons
+sacctmgr list transactions Users=simmons
+
+# Which users were created in January 2025?
+# Here is the version that will produce one user per line
+sacctmgr list transactions Action="Add Users" Start=2025-01-01 End=2025-01-31 format=Where,Time%10
 ```
 
+### TRES
+
+Display TRES (Trackable RESources) (will be different on each cluster be identical)
+
+TRES can be specified in QOS (fewer in version 22.05 than in 24.05)
+
 ```
-# Display TRES (Trackable RESources) (our clusters may not be identical)
-# TRES can be iunvolved in QOS (fewer in version 22.05 than in 24.05)
 sacctmgr show tres
     Type            Name     ID 
 -------- --------------- ------ 
@@ -195,5 +225,25 @@ sacctmgr show tres
     gres      gpu:titanv   1003 
     gres     gpu:tesa100   1004 
     gres    gpu:tesv100s   1005 
+```
+
+### Miscellaneous
+
+
+```
+# View the slurmdbd configuration in force
+sacctmgr show Configuration | less
+
+# Perform a self-check of database
+sacctmgr show problems
+
+# Check RPC statistics (watch out for users with extremely high numbers of RPC)
+# (these stats might be since the last time the slurmctld was restarted??)
+sacctmgr show stats | less
+
+# You can clear the stats and then watch how quickly a suspicious user racks up RPC calls
+sacctmgr clear stats
+```
+
 ```
 
