@@ -2937,6 +2937,15 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
+  <a href="#seeing-database-transactions" class="md-nav__link">
+    <span class="md-ellipsis">
+      Seeing database transactions
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#make-a-backup-of-users-and-their-settings" class="md-nav__link">
     <span class="md-ellipsis">
       Make A Backup Of Users and Their Settings
@@ -2964,9 +2973,51 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#other-tasks" class="md-nav__link">
+  <a href="#searching-for-transactions" class="md-nav__link">
     <span class="md-ellipsis">
-      Other Tasks
+      Searching for transactions
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Searching for transactions">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#output-formatting" class="md-nav__link">
+    <span class="md-ellipsis">
+      Output formatting
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#actions" class="md-nav__link">
+    <span class="md-ellipsis">
+      Actions
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tres" class="md-nav__link">
+    <span class="md-ellipsis">
+      TRES
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#miscellaneous" class="md-nav__link">
+    <span class="md-ellipsis">
+      Miscellaneous
     </span>
   </a>
   
@@ -3755,6 +3806,15 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
+  <a href="#seeing-database-transactions" class="md-nav__link">
+    <span class="md-ellipsis">
+      Seeing database transactions
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#make-a-backup-of-users-and-their-settings" class="md-nav__link">
     <span class="md-ellipsis">
       Make A Backup Of Users and Their Settings
@@ -3782,9 +3842,51 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#other-tasks" class="md-nav__link">
+  <a href="#searching-for-transactions" class="md-nav__link">
     <span class="md-ellipsis">
-      Other Tasks
+      Searching for transactions
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Searching for transactions">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#output-formatting" class="md-nav__link">
+    <span class="md-ellipsis">
+      Output formatting
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#actions" class="md-nav__link">
+    <span class="md-ellipsis">
+      Actions
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tres" class="md-nav__link">
+    <span class="md-ellipsis">
+      TRES
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#miscellaneous" class="md-nav__link">
+    <span class="md-ellipsis">
+      Miscellaneous
     </span>
   </a>
   
@@ -3847,9 +3949,12 @@ sacctmgr show user withassoc where name=smburke
 sacctmgr show user withassoc|grep -v &quot;normal &quot;|awk &#39;{printf &quot;%s\t\t%s\t%s\t\t%s%\n&quot;, $1,$3,$4,$7}&#39;
 </code></pre></div>
 <h2 id="sacctmgr-for-systems-administrators"><strong>Sacctmgr for Systems Administrators</strong><a class="headerlink" href="#sacctmgr-for-systems-administrators" title="Anchor link to this section for reference">&para;</a></h2>
-<p>Like many administrative commands, you can just run the <code>sacctmgr</code> command to enter into its shell version. Useful if you are exploring some situation, although you cannot paginate output.</p>
-<p>You can add the flag "-i" to avoid the "are-you-sure" 30 second delay and prompt.</p>
-<p>We currently have two clusters, named "jhpce3" and "cms" You usually don't have to specify which cluster you want to consult/change, as we have a SLURM server for each cluster.</p>
+<p>We currently have two clusters, named "jhpce3" and "cms" You don't have to specify which cluster you want to consult/change, as we have a SLURM server for each cluster. And because they aren't connected in any way, you cannot extract data from one when logged into a node in the other cluster.</p>
+<p>Like many administrative SLURM commands, you can just run the <code>sacctmgr</code> command to enter into its shell version. Useful if you are exploring some situation, although you cannot paginate output. It supports up-arrow to get at previous commands. Issuing the command "verbose" when in the interactive shell may display interesting info.</p>
+<p>You can add the flag "-i" to avoid the "are-you-sure" 30 second delay and prompt. Useful when scripting.</p>
+<h3 id="seeing-database-transactions">Seeing database transactions<a class="headerlink" href="#seeing-database-transactions" title="Anchor link to this section for reference">&para;</a></h3>
+<div class="highlight"><pre><span></span><code>sacctmgr list transactions
+</code></pre></div>
 <h3 id="make-a-backup-of-users-and-their-settings">Make A Backup Of Users and Their Settings<a class="headerlink" href="#make-a-backup-of-users-and-their-settings" title="Anchor link to this section for reference">&para;</a></h3>
 <p>Currently JRT has stored some in <code>/root/slurm/sacctmgr-stuff/sacctmgr-dumps/</code></p>
 <p><div class="highlight"><pre><span></span><code># Dump the accounting database
@@ -3890,7 +3995,7 @@ Therefore every such QOS needs <code>MaxSubmitJobsPU=10000</code></mark></p>
 <p>If you provide the <code>-i</code> flag, the operation is immediately implemented. Without it, you have 30 seconds to respond (which doesn't work in scripts).</p>
 <p>There are a number of variants of some categories of parameters -- by user, by group, by account, etc.</p>
 <p><code>MaxJobs*</code> means jobs that can be running at one time
-<code>MaxJobsSubmit*</code> means jobs that can be both pending and running, altogether, in total.</p>
+<code>MaxJobsSubmit*</code> means jobs that can be both pending and running, altogether, in total, e.g. <code>MaxJobsSubmitPerUser</code></p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>There are a number of parameters which feature Group or Account. We cannot use these easily, because for example as far as "Groups" are concerned, by default our users are all in the same group ("users" in jhpce3 and "c-users" in cms). SLURM doesn't look at secondary group membership, only the primary group. AND we don't maintain groups for all of our PI groups. We maintain groups not to give access to computers but to control storage permissions. (In jhpce3 some users DO have primary groups different from "users".)</p>
@@ -3933,30 +4038,40 @@ sacctmgr modify qos cms-larger set MaxJobsPerUser=1 MaxSubmitJobsPerUser=1  MaxS
 # You cannot rename a QOS, so you have to delete the old name -- be aware that jobs might be using it!!!
 sacctmgr delete qos qosname
 </code></pre></div>
-<h3 id="other-tasks">Other Tasks<a class="headerlink" href="#other-tasks" title="Anchor link to this section for reference">&para;</a></h3>
-<div class="highlight"><pre><span></span><code># View the slurmdbd configuration in force
-sacctmgr show Configuration | less
+<h3 id="searching-for-transactions">Searching for transactions<a class="headerlink" href="#searching-for-transactions" title="Anchor link to this section for reference">&para;</a></h3>
+<p>You can use variants of <code>sacctmgr list transactions</code> to inspect the database going back to its founding. The kinds of things you can see:
+* who ran which command that changed the database
+* what commands involved a specific user
+* what commands changed a QOS</p>
+<h4 id="output-formatting">Output formatting<a class="headerlink" href="#output-formatting" title="Anchor link to this section for reference">&para;</a></h4>
+<p>Output columns are: Time, Action, Actor, Where, Info</p>
+<p>"Where" contains things like the names of users and QOS</p>
+<p>You can control field width by adding the <span class="keys"><kbd>%</kbd></span> character then a field width number value.</p>
+<p>You can specify what you want to see with e.g. "format=user,time%10"</p>
+<h4 id="actions">Actions<a class="headerlink" href="#actions" title="Anchor link to this section for reference">&para;</a></h4>
+<p>Some of the actions you can search for are:
+* Add Users
+* Remove Users
+* Add Associations
+* Add QOS
+* Modify QOS
+* Modify Clusters - I think that this might be <code>slurmctld</code> restarts.</p>
+<p>The right-most column in the default output is called "Info". It is truncated such that you can't see full QOS definition commands etc. You can see that info by adding format arguments or simply with the <code>-P</code> ("parsable 2") flag.</p>
+<div class="highlight"><pre><span></span><code>sacctmgr show transaction | less
 
-# Perform a self-check of database
-sacctmgr show problems
+sacctmgr -P show transaction &gt; /tmp/lookatme
 
-# Check history of sacctmgr operations - useful to see users added, QOS changes
-# &quot;Modify Clusters&quot; might be slurmctld restarts
-# (Output width is inadequate but most/all cut-off material isn&#39;t that useful)
-# (which you can see by running command with -p argument and redirect to a file)
-sacctmgr show transaction | less
-sacctmgr -p show transaction &gt; /tmp/lookatme
+# transactions involving cluster user simmons
+sacctmgr list transactions Users=simmons
 
-# Check RPC statistics (watch out for users with extremely high numbers of RPC)
-# (these stats might be since the last time the slurmctld was restarted??)
-sacctmgr show stats | less
-
-# You can clear the stats and then watch how quickly a suspicious user racks up RPC calls
-sacctmgr clear stats
+# Which users were created in January 2025?
+# Here is the version that will produce one user per line
+sacctmgr list transactions Action=&quot;Add Users&quot; Start=2025-01-01 End=2025-01-31 format=Where,Time%10
 </code></pre></div>
-<div class="highlight"><pre><span></span><code># Display TRES (Trackable RESources) (our clusters may not be identical)
-# TRES can be iunvolved in QOS (fewer in version 22.05 than in 24.05)
-sacctmgr show tres
+<h3 id="tres">TRES<a class="headerlink" href="#tres" title="Anchor link to this section for reference">&para;</a></h3>
+<p>Display TRES (Trackable RESources) (will be different on each cluster be identical)</p>
+<p>TRES can be specified in QOS (fewer in version 22.05 than in 24.05)</p>
+<div class="highlight"><pre><span></span><code>sacctmgr show tres
     Type            Name     ID 
 -------- --------------- ------ 
      cpu                      1 
@@ -3973,6 +4088,21 @@ sacctmgr show tres
     gres     gpu:tesa100   1004 
     gres    gpu:tesv100s   1005 
 </code></pre></div>
+<h3 id="miscellaneous">Miscellaneous<a class="headerlink" href="#miscellaneous" title="Anchor link to this section for reference">&para;</a></h3>
+<div class="highlight"><pre><span></span><code># View the slurmdbd configuration in force
+sacctmgr show Configuration | less
+
+# Perform a self-check of database
+sacctmgr show problems
+
+# Check RPC statistics (watch out for users with extremely high numbers of RPC)
+# (these stats might be since the last time the slurmctld was restarted??)
+sacctmgr show stats | less
+
+# You can clear the stats and then watch how quickly a suspicious user racks up RPC calls
+sacctmgr clear stats
+</code></pre></div>
+<p>```</p>
 
 
 
@@ -3993,7 +4123,7 @@ sacctmgr show tres
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">February 17, 2025</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">February 18, 2025</span>
   </span>
 
     

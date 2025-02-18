@@ -1367,6 +1367,13 @@
   {
     "page_name": "sacctmgr tips",
     "page_url": "../../slurm/tips-sacctmgr/",
+    "text": "sacctmgr list transactions\n",
+    "html": "<pre><span></span><code>sacctmgr list transactions\n</code></pre>",
+    "language": ""
+  },
+  {
+    "page_name": "sacctmgr tips",
+    "page_url": "../../slurm/tips-sacctmgr/",
     "text": "# Dump the accounting database\nsacctmgr dump <cluster-name> file=<filename>\n",
     "html": "<pre><span></span><code># Dump the accounting database\nsacctmgr dump &lt;cluster-name&gt; file=&lt;filename&gt;\n</code></pre>",
     "language": ""
@@ -1395,15 +1402,22 @@
   {
     "page_name": "sacctmgr tips",
     "page_url": "../../slurm/tips-sacctmgr/",
-    "text": "# View the slurmdbd configuration in force\nsacctmgr show Configuration | less\n\n# Perform a self-check of database\nsacctmgr show problems\n\n# Check history of sacctmgr operations - useful to see users added, QOS changes\n# \"Modify Clusters\" might be slurmctld restarts\n# (Output width is inadequate but most/all cut-off material isn't that useful)\n# (which you can see by running command with -p argument and redirect to a file)\nsacctmgr show transaction | less\nsacctmgr -p show transaction > /tmp/lookatme\n\n# Check RPC statistics (watch out for users with extremely high numbers of RPC)\n# (these stats might be since the last time the slurmctld was restarted??)\nsacctmgr show stats | less\n\n# You can clear the stats and then watch how quickly a suspicious user racks up RPC calls\nsacctmgr clear stats\n",
-    "html": "<pre><span></span><code># View the slurmdbd configuration in force\nsacctmgr show Configuration | less\n\n# Perform a self-check of database\nsacctmgr show problems\n\n# Check history of sacctmgr operations - useful to see users added, QOS changes\n# \"Modify Clusters\" might be slurmctld restarts\n# (Output width is inadequate but most/all cut-off material isn't that useful)\n# (which you can see by running command with -p argument and redirect to a file)\nsacctmgr show transaction | less\nsacctmgr -p show transaction &gt; /tmp/lookatme\n\n# Check RPC statistics (watch out for users with extremely high numbers of RPC)\n# (these stats might be since the last time the slurmctld was restarted??)\nsacctmgr show stats | less\n\n# You can clear the stats and then watch how quickly a suspicious user racks up RPC calls\nsacctmgr clear stats\n</code></pre>",
+    "text": "sacctmgr show transaction | less\n\nsacctmgr -P show transaction > /tmp/lookatme\n\n# transactions involving cluster user simmons\nsacctmgr list transactions Users=simmons\n\n# Which users were created in January 2025?\n# Here is the version that will produce one user per line\nsacctmgr list transactions Action=\"Add Users\" Start=2025-01-01 End=2025-01-31 format=Where,Time%10\n",
+    "html": "<pre><span></span><code>sacctmgr show transaction | less\n\nsacctmgr -P show transaction &gt; /tmp/lookatme\n\n# transactions involving cluster user simmons\nsacctmgr list transactions Users=simmons\n\n# Which users were created in January 2025?\n# Here is the version that will produce one user per line\nsacctmgr list transactions Action=\"Add Users\" Start=2025-01-01 End=2025-01-31 format=Where,Time%10\n</code></pre>",
     "language": ""
   },
   {
     "page_name": "sacctmgr tips",
     "page_url": "../../slurm/tips-sacctmgr/",
-    "text": "# Display TRES (Trackable RESources) (our clusters may not be identical)\n# TRES can be iunvolved in QOS (fewer in version 22.05 than in 24.05)\nsacctmgr show tres\n    Type            Name     ID \n-------- --------------- ------ \n     cpu                      1 \n     mem                      2 \n  energy                      3 \n    node                      4 \n billing                      5 \n      fs            disk      6 \n    vmem                      7 \n   pages                      8 \n    gres             gpu   1001 \n    gres     gpu:tesv100   1002 \n    gres      gpu:titanv   1003 \n    gres     gpu:tesa100   1004 \n    gres    gpu:tesv100s   1005 \n",
-    "html": "<pre><span></span><code># Display TRES (Trackable RESources) (our clusters may not be identical)\n# TRES can be iunvolved in QOS (fewer in version 22.05 than in 24.05)\nsacctmgr show tres\n    Type            Name     ID \n-------- --------------- ------ \n     cpu                      1 \n     mem                      2 \n  energy                      3 \n    node                      4 \n billing                      5 \n      fs            disk      6 \n    vmem                      7 \n   pages                      8 \n    gres             gpu   1001 \n    gres     gpu:tesv100   1002 \n    gres      gpu:titanv   1003 \n    gres     gpu:tesa100   1004 \n    gres    gpu:tesv100s   1005 \n</code></pre>",
+    "text": "sacctmgr show tres\n    Type            Name     ID \n-------- --------------- ------ \n     cpu                      1 \n     mem                      2 \n  energy                      3 \n    node                      4 \n billing                      5 \n      fs            disk      6 \n    vmem                      7 \n   pages                      8 \n    gres             gpu   1001 \n    gres     gpu:tesv100   1002 \n    gres      gpu:titanv   1003 \n    gres     gpu:tesa100   1004 \n    gres    gpu:tesv100s   1005 \n",
+    "html": "<pre><span></span><code>sacctmgr show tres\n    Type            Name     ID \n-------- --------------- ------ \n     cpu                      1 \n     mem                      2 \n  energy                      3 \n    node                      4 \n billing                      5 \n      fs            disk      6 \n    vmem                      7 \n   pages                      8 \n    gres             gpu   1001 \n    gres     gpu:tesv100   1002 \n    gres      gpu:titanv   1003 \n    gres     gpu:tesa100   1004 \n    gres    gpu:tesv100s   1005 \n</code></pre>",
+    "language": ""
+  },
+  {
+    "page_name": "sacctmgr tips",
+    "page_url": "../../slurm/tips-sacctmgr/",
+    "text": "# View the slurmdbd configuration in force\nsacctmgr show Configuration | less\n\n# Perform a self-check of database\nsacctmgr show problems\n\n# Check RPC statistics (watch out for users with extremely high numbers of RPC)\n# (these stats might be since the last time the slurmctld was restarted??)\nsacctmgr show stats | less\n\n# You can clear the stats and then watch how quickly a suspicious user racks up RPC calls\nsacctmgr clear stats\n",
+    "html": "<pre><span></span><code># View the slurmdbd configuration in force\nsacctmgr show Configuration | less\n\n# Perform a self-check of database\nsacctmgr show problems\n\n# Check RPC statistics (watch out for users with extremely high numbers of RPC)\n# (these stats might be since the last time the slurmctld was restarted??)\nsacctmgr show stats | less\n\n# You can clear the stats and then watch how quickly a suspicious user racks up RPC calls\nsacctmgr clear stats\n</code></pre>",
     "language": ""
   },
   {

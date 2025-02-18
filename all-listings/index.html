@@ -5142,6 +5142,7 @@ sacctmgr show user withassoc where name=smburke
 # WHO HAS EXTRA QOS -- shortens the output width
 #  (but needs improvement to align column entries)
 sacctmgr show user withassoc|grep -v "normal "|awk '{printf "%s\t\t%s\t%s\t\t%s%\n", $1,$3,$4,$7}'
+</code></pre><pre><span></span><code>sacctmgr list transactions
 </code></pre><pre><span></span><code># Dump the accounting database
 sacctmgr dump &lt;cluster-name&gt; file=&lt;filename&gt;
 </code></pre><pre><span></span><code># Dump the QOS definitions
@@ -5197,28 +5198,17 @@ sacctmgr modify qos cms-larger set MaxJobsPerUser=1 MaxSubmitJobsPerUser=1  MaxS
 
 # You cannot rename a QOS, so you have to delete the old name -- be aware that jobs might be using it!!!
 sacctmgr delete qos qosname
-</code></pre><pre><span></span><code># View the slurmdbd configuration in force
-sacctmgr show Configuration | less
+</code></pre><pre><span></span><code>sacctmgr show transaction | less
 
-# Perform a self-check of database
-sacctmgr show problems
+sacctmgr -P show transaction &gt; /tmp/lookatme
 
-# Check history of sacctmgr operations - useful to see users added, QOS changes
-# "Modify Clusters" might be slurmctld restarts
-# (Output width is inadequate but most/all cut-off material isn't that useful)
-# (which you can see by running command with -p argument and redirect to a file)
-sacctmgr show transaction | less
-sacctmgr -p show transaction &gt; /tmp/lookatme
+# transactions involving cluster user simmons
+sacctmgr list transactions Users=simmons
 
-# Check RPC statistics (watch out for users with extremely high numbers of RPC)
-# (these stats might be since the last time the slurmctld was restarted??)
-sacctmgr show stats | less
-
-# You can clear the stats and then watch how quickly a suspicious user racks up RPC calls
-sacctmgr clear stats
-</code></pre><pre><span></span><code># Display TRES (Trackable RESources) (our clusters may not be identical)
-# TRES can be iunvolved in QOS (fewer in version 22.05 than in 24.05)
-sacctmgr show tres
+# Which users were created in January 2025?
+# Here is the version that will produce one user per line
+sacctmgr list transactions Action="Add Users" Start=2025-01-01 End=2025-01-31 format=Where,Time%10
+</code></pre><pre><span></span><code>sacctmgr show tres
     Type            Name     ID 
 -------- --------------- ------ 
      cpu                      1 
@@ -5234,6 +5224,18 @@ sacctmgr show tres
     gres      gpu:titanv   1003 
     gres     gpu:tesa100   1004 
     gres    gpu:tesv100s   1005 
+</code></pre><pre><span></span><code># View the slurmdbd configuration in force
+sacctmgr show Configuration | less
+
+# Perform a self-check of database
+sacctmgr show problems
+
+# Check RPC statistics (watch out for users with extremely high numbers of RPC)
+# (these stats might be since the last time the slurmctld was restarted??)
+sacctmgr show stats | less
+
+# You can clear the stats and then watch how quickly a suspicious user racks up RPC calls
+sacctmgr clear stats
 </code></pre><h2><a class="heading" href="../slurm/tips-scontrol/">scontrol tips</a></h2><a class="url" href="../slurm/tips-scontrol/">slurm/tips-scontrol/</a><pre><span></span><code>scontrol<span class="w"> </span>show<span class="w"> </span>--details<span class="w"> </span>job<span class="w"> </span>&lt;jobid&gt;
 </code></pre><pre><span></span><code>scontrol<span class="w"> </span>show<span class="w"> </span>node<span class="w"> </span>&lt;nodename&gt;
 </code></pre><pre><span></span><code>scontrol<span class="w"> </span>show<span class="w"> </span>partition<span class="w"> </span>&lt;partitionname&gt;
