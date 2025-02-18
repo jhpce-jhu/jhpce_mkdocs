@@ -4049,13 +4049,15 @@ sacctmgr delete qos qosname
 <p>You can control field width by adding the <span class="keys"><kbd>%</kbd></span> character then a field width number value.</p>
 <p>You can specify what you want to see with e.g. "format=user,time%10"</p>
 <h4 id="actions">Actions<a class="headerlink" href="#actions" title="Anchor link to this section for reference">&para;</a></h4>
-<p>Some of the actions you can search for are:
-* Add Users
-* Remove Users
-* Add Associations
-* Add QOS
-* Modify QOS
-* Modify Clusters - I think that this might be <code>slurmctld</code> restarts.</p>
+<p>Some of the actions you can search for are:</p>
+<ul>
+<li>Add Users</li>
+<li>Remove Users</li>
+<li>Add Associations</li>
+<li>Add QOS</li>
+<li>Modify QOS</li>
+<li>Modify Clusters - I think that this might be <code>slurmctld</code> restarts.</li>
+</ul>
 <p>The right-most column in the default output is called "Info". It is truncated such that you can't see full QOS definition commands etc. You can see that info by adding format arguments or simply with the <code>-P</code> ("parsable 2") flag.</p>
 <div class="highlight"><pre><span></span><code>sacctmgr show transaction | less
 
@@ -4069,8 +4071,8 @@ sacctmgr list transactions Users=simmons
 sacctmgr list transactions Action=&quot;Add Users&quot; Start=2025-01-01 End=2025-01-31 format=Where,Time%10
 </code></pre></div>
 <h3 id="tres">TRES<a class="headerlink" href="#tres" title="Anchor link to this section for reference">&para;</a></h3>
-<p>Display TRES (Trackable RESources) (will be different on each cluster be identical)</p>
-<p>TRES can be specified in QOS (fewer in version 22.05 than in 24.05)</p>
+<p>Display TRES (Trackable RESources) (will be different on each cluster)</p>
+<p>TRES can be specified in QOS (fewer in version 22.05 than in 24.xx)</p>
 <div class="highlight"><pre><span></span><code>sacctmgr show tres
     Type            Name     ID 
 -------- --------------- ------ 
