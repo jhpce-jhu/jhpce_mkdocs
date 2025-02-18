@@ -179,6 +179,7 @@ You can specify what you want to see with e.g. "format=user,time%10"
 #### Actions
 
 Some of the actions you can search for are:
+
 * Add Users
 * Remove Users
 * Add Associations
@@ -204,9 +205,9 @@ sacctmgr list transactions Action="Add Users" Start=2025-01-01 End=2025-01-31 fo
 
 ### TRES
 
-Display TRES (Trackable RESources) (will be different on each cluster be identical)
+Display TRES (Trackable RESources) (will be different on each cluster)
 
-TRES can be specified in QOS (fewer in version 22.05 than in 24.05)
+TRES can be specified in QOS (fewer in version 22.05 than in 24.xx)
 
 ```
 sacctmgr show tres
