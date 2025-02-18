@@ -13,7 +13,7 @@ Jeffrey likes:
 
 * [admonitions](features.md#admonitions) -- a lot!!
 * {==[highlighting text](features.md/#highlighting-text)==}
-* [keyboard meta keys](features.md/#keyboard-meta-keys) (like ++ctrl++)
+* [keyboard meta keys](features.md/#"Symbols-for-keyboard-keys") (like ++ctrl++)
 * Details [(collapsed blocks of text)](features.md/#details)
 
 Running the mkdocs package installed via python allows you to develop web pages on your local computer. See [the recipe](features.md##recipe-for-running-mkdocs-locally)
