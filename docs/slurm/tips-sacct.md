@@ -8,23 +8,33 @@ tags:
 !!! Caution
     If you have not already read about basic job facts like job notation, steps, names and states, please first visit the "About SLURM Jobs" document [here](../slurm/about-jobs.md).
  
-## **Sacct Overview**   
+## **Sacct Overview**
+
+The [sacct](https://slurm.schedmd.com/archive/slurm-22.05.9/sstat.html) command is used to query the SLURM job accounting database, usually for jobs which have _ended_ (one way or the other). It has a number of subtleties, such as the formatting of output. `sacct` can be used to investigate jobs' resource usage, nodes used, and exit codes. It can point to important information, such as jobs dying on a particular node but working on other nodes[^1].
+
+[^1]: In which case you can add the directive `--exclude=compute-xxx` to your job submission, then notify us via bitsupport@lists.jh.edu so we can fix that node.
+
+The [sstat](https://slurm.schedmd.com/archive/slurm-22.05.9/sstat.html) program is aimed at those who are looking for information about _running_ jobs. Much of the information on this page can be used with `sstat`, but there are differences, particularly in available output fields (compare the output of `sacct -e` and `sstat -e`).
+
+??? Caution "You can use `sstat` to **profile the resource use** of or **instrument** your jobs over their lifetimes."
+    You can do that in a variety of ways: (a) interactively, (b) from within your batch job scripts (although not while some other command is running), adding one or more `sstat` commands to the batch script in multiple places, and (c) from other batch jobs that you craft. (You could specify a very small resource job so it launches immediately, (perhaps using the `interactive` partition), learn how to create a hetrogenous job that spawns both the sstat commands in a timed loop as well as running your real program(s), or maybe reads files you create in the main batch job in order to figure out what jobid sstat should be monitoring.
+    
 !!! Example
     ```Shell title="Show my failed jobs between noon and now" linenums="0"
     sacct -s F -o "user,jobid,state,nodelist,start,end,exitcode" -S noon -E now
+    
+    User JobID             State        NodeList               Start                 End ExitCode 
+    --------- ------------ ---------- --------------- ------------------- ------------------- -------- 
+    tunison 14084984         FAILED     compute-112 2025-02-19T14:30:46 2025-02-19T15:35:09      0:9 
+            14084984.ex+  COMPLETED     compute-112 2025-02-19T14:30:46 2025-02-19T15:35:09      0:0 
+            14084984.0   CANCELLED+     compute-112 2025-02-19T14:30:46 2025-02-19T15:35:09      0:9 
+
     ```
 More examples can be found throughout this document, as well as [at the end](#examples).
 
-[sacct](https://slurm.schedmd.com/archive/slurm-22.05.9/sacct.html) is a command used to display information about jobs. It has a number of subtleties, such as the time window reported on and the formatting of output. We hope that this page will help you get the information you need.
+[sacct](https://slurm.schedmd.com/archive/slurm-22.05.9/sacct.html) is a command used to display information about jobs.
 
-`sacct` can be used to investigate jobs' resource usage, nodes used, and exit codes. It can point to important information, such as jobs dying on a particular node but working on other nodes[^1].
 
-[^1]: In which case you can add the directive `--exclude=compute-xxx` to your job submission, then notify us via bitsupport so we can fix that node.
-
-sacct will show all submitted jobs but cannot, of course, provide data for a number of fields until the job has finished. Use the [sstat](https://slurm.schedmd.com/archive/slurm-22.05.9/sstat.html) command to get information about running programs. "Instrumenting" your jobs to gather information about them can include adding one or more `sstat` commands to batch jobs in multiple places.
-
-!!! Tip
-    Much of the information on this page can be used with `sstat`, but there are differences, particularly in available output fields (compare the output of `sacct -e` and `sstat -e`).
 
 Examples below use angle brackets ++less++ ++greater++  to indicate where you are supposed to replace argumements with your values.
 
@@ -161,7 +171,7 @@ The following fields are probably the ones you'll want. See [this section](https
 
 === "Basics"
     - User
-    - JobiId
+    - JobId
     - JobName
     - Partition
     - State
