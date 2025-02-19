@@ -4015,19 +4015,25 @@
 <p>If you have not already read about basic job facts like job notation, steps, names and states, please first visit the "About SLURM Jobs" document <a href="../about-jobs/">here</a>.</p>
 </div>
 <h2 id="sacct-overview"><strong>Sacct Overview</strong><a class="headerlink" href="#sacct-overview" title="Anchor link to this section for reference">&para;</a></h2>
+<p>The <a href="https://slurm.schedmd.com/archive/slurm-22.05.9/sstat.html">sacct</a> command is used to query the SLURM job accounting database, usually for jobs which have <em>ended</em> (one way or the other). It has a number of subtleties, such as the formatting of output. <code>sacct</code> can be used to investigate jobs' resource usage, nodes used, and exit codes. It can point to important information, such as jobs dying on a particular node but working on other nodes<sup id="fnref:1"><a class="footnote-ref" href="#fn:1">1</a></sup>.</p>
+<p>The <a href="https://slurm.schedmd.com/archive/slurm-22.05.9/sstat.html">sstat</a> program is aimed at those who are looking for information about <em>running</em> jobs. Much of the information on this page can be used with <code>sstat</code>, but there are differences, particularly in available output fields (compare the output of <code>sacct -e</code> and <code>sstat -e</code>).</p>
+<details class="caution">
+<summary>You can use <code>sstat</code> to <strong>profile the resource use</strong> of or <strong>instrument</strong> your jobs over their lifetimes.</summary>
+<p>You can do that in a variety of ways: (a) interactively, (b) from within your batch job scripts (although not while some other command is running), adding one or more <code>sstat</code> commands to the batch script in multiple places, and (c) from other batch jobs that you craft. (You could specify a very small resource job so it launches immediately, (perhaps using the <code>interactive</code> partition), learn how to create a hetrogenous job that spawns both the sstat commands in a timed loop as well as running your real program(s), or maybe reads files you create in the main batch job in order to figure out what jobid sstat should be monitoring.</p>
+</details>
 <div class="admonition example">
 <p class="admonition-title">Example</p>
 <div class="highlight"><span class="filename">Show my failed jobs between noon and now</span><pre><span></span><code>sacct<span class="w"> </span>-s<span class="w"> </span>F<span class="w"> </span>-o<span class="w"> </span><span class="s2">&quot;user,jobid,state,nodelist,start,end,exitcode&quot;</span><span class="w"> </span>-S<span class="w"> </span>noon<span class="w"> </span>-E<span class="w"> </span>now
+
+User<span class="w"> </span>JobID<span class="w">             </span>State<span class="w">        </span>NodeList<span class="w">               </span>Start<span class="w">                 </span>End<span class="w"> </span>ExitCode<span class="w"> </span>
+---------<span class="w"> </span>------------<span class="w"> </span>----------<span class="w"> </span>---------------<span class="w"> </span>-------------------<span class="w"> </span>-------------------<span class="w"> </span>--------<span class="w"> </span>
+tunison<span class="w"> </span><span class="m">14084984</span><span class="w">         </span>FAILED<span class="w">     </span>compute-112<span class="w"> </span><span class="m">2025</span>-02-19T14:30:46<span class="w"> </span><span class="m">2025</span>-02-19T15:35:09<span class="w">      </span><span class="m">0</span>:9<span class="w"> </span>
+<span class="w">        </span><span class="m">14084984</span>.ex+<span class="w">  </span>COMPLETED<span class="w">     </span>compute-112<span class="w"> </span><span class="m">2025</span>-02-19T14:30:46<span class="w"> </span><span class="m">2025</span>-02-19T15:35:09<span class="w">      </span><span class="m">0</span>:0<span class="w"> </span>
+<span class="w">        </span><span class="m">14084984</span>.0<span class="w">   </span>CANCELLED+<span class="w">     </span>compute-112<span class="w"> </span><span class="m">2025</span>-02-19T14:30:46<span class="w"> </span><span class="m">2025</span>-02-19T15:35:09<span class="w">      </span><span class="m">0</span>:9<span class="w"> </span>
 </code></pre></div>
 </div>
 <p>More examples can be found throughout this document, as well as <a href="#examples">at the end</a>.</p>
-<p><a href="https://slurm.schedmd.com/archive/slurm-22.05.9/sacct.html">sacct</a> is a command used to display information about jobs. It has a number of subtleties, such as the time window reported on and the formatting of output. We hope that this page will help you get the information you need.</p>
-<p><code>sacct</code> can be used to investigate jobs' resource usage, nodes used, and exit codes. It can point to important information, such as jobs dying on a particular node but working on other nodes<sup id="fnref:1"><a class="footnote-ref" href="#fn:1">1</a></sup>.</p>
-<p>sacct will show all submitted jobs but cannot, of course, provide data for a number of fields until the job has finished. Use the <a href="https://slurm.schedmd.com/archive/slurm-22.05.9/sstat.html">sstat</a> command to get information about running programs. "Instrumenting" your jobs to gather information about them can include adding one or more <code>sstat</code> commands to batch jobs in multiple places.</p>
-<div class="admonition tip">
-<p class="admonition-title">Tip</p>
-<p>Much of the information on this page can be used with <code>sstat</code>, but there are differences, particularly in available output fields (compare the output of <code>sacct -e</code> and <code>sstat -e</code>).</p>
-</div>
+<p><a href="https://slurm.schedmd.com/archive/slurm-22.05.9/sacct.html">sacct</a> is a command used to display information about jobs.</p>
 <p>Examples below use angle brackets <span class="keys"><kbd class="key-less">&lt;</kbd></span> <span class="keys"><kbd class="key-greater">&gt;</kbd></span>  to indicate where you are supposed to replace argumements with your values.</p>
 <h2 id="sacct-basics"><strong>sacct basics</strong><a class="headerlink" href="#sacct-basics" title="Anchor link to this section for reference">&para;</a></h2>
 <ol>
@@ -4268,7 +4274,7 @@ User                UserCPU             WCKey               WCKeyID
 <div class="tabbed-block">
 <ul>
 <li>User</li>
-<li>JobiId</li>
+<li>JobId</li>
 <li>JobName</li>
 <li>Partition</li>
 <li>State</li>
@@ -4477,7 +4483,7 @@ MaxRSS  MaxVMSize MaxDiskWrite
 <hr />
 <ol>
 <li id="fn:1">
-<p>In which case you can add the directive <code>--exclude=compute-xxx</code> to your job submission, then notify us via bitsupport so we can fix that node.&#160;<a class="footnote-backref" href="#fnref:1" title="Jump back to footnote 1 in the text">&#8617;</a></p>
+<p>In which case you can add the directive <code>--exclude=compute-xxx</code> to your job submission, then notify us via bitsupport@lists.jh.edu so we can fix that node.&#160;<a class="footnote-backref" href="#fnref:1" title="Jump back to footnote 1 in the text">&#8617;</a></p>
 </li>
 </ol>
 </div>
@@ -4501,7 +4507,7 @@ MaxRSS  MaxVMSize MaxDiskWrite
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">October 3, 2024</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">February 19, 2025</span>
   </span>
 
     
