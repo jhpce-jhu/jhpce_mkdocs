@@ -3968,8 +3968,8 @@
 </tbody>
 </table>
 <p>To reduce table width, column names are terse.</p>
-<p><mark class="critic">Experimental <code>interactive-larger</code> partition:</mark> This was created to try to allow people to run interactive jobs a bit larger in size than our smaller <code>interactive</code> partition. </p>
-<p><mark class="critic">Experimental <code>scavenge</code> partition:</mark> This was created to try to "harvest" some usually-unused resources from some specific nodes. You can specify it along with your normal partition, e.g. <code>--partion=shared,scavenge</code> and it will be used if available. If your job's CPU, RAM, or duration parameters exceed those set for <code>scavenge</code> then your job will run on the other partition(s) you specified.</p>
+<p><mark class="critic">Experimental <code>interactive-larger</code> partition:</mark> Our interactive partitions give jobs a higher priority and are evaluated before those in other partitions. This "larger" one was created to try to allow people to run interactive jobs a bit larger in size than our smaller <code>interactive</code> partition. This is meant to help you explore data visually, debug a batch script that has failed by running one command at a time (on a small-enough data set), etc. WE MAY NEED TO REMOVE THE PARTITION OR MODIFY THE ALLOWED PARAMETERS. 20250220</p>
+<p><mark class="critic">Experimental <code>scavenge</code> partition:</mark> This was created to try to "harvest" some usually-unused resources from some specific nodes. You can specify it along with your normal partition, e.g. <code>--partion=shared,scavenge</code> and it will be used if available. If your job's CPU, RAM, or duration parameters exceed those set for <code>scavenge</code> then your job will run on the other partition(s) you specified. WE MAY NEED TO REMOVE THE PARTITION OR MODIFY THE ALLOWED PARAMETERS. 20250220</p>
 <h3 id="pi-cpu-partitions">PI CPU Partitions<a class="headerlink" href="#pi-cpu-partitions" title="Anchor link to this section for reference">&para;</a></h3>
 <p>To see the member nodes and resources of the any partitions, use <code>slurmpic -p partitionname</code></p>
 <p>Limits for CPU cores, RAM and Time (default/maximum)</p>
@@ -4058,14 +4058,6 @@
 <td>hl = hearing loss</td>
 </tr>
 <tr>
-<td>hpm</td>
-<td style="text-align: center;">PI</td>
-<td>(none)</td>
-<td>(none)</td>
-<td style="text-align: center;">(none/90d)</td>
-<td>not yet defined</td>
-</tr>
-<tr>
 <td>hongkai</td>
 <td style="text-align: center;">PI</td>
 <td>(none)</td>
@@ -4110,6 +4102,7 @@
 <h2 id="gpu-partitions">GPU Partitions<a class="headerlink" href="#gpu-partitions" title="Anchor link to this section for reference">&para;</a></h2>
 <p>To see the member nodes and resources of the any partitions, use <code>slurmpic -g</code></p>
 <p>To learn more about the GPU card types and how to use them, see <a href="https://jhpce.jhu.edu/gpu/gpu-info/">https://jhpce.jhu.edu/gpu/gpu-info/</a></p>
+<p>The Biostatistics partions are for anyone who is sponsored by a PI in that department.</p>
 <p>Limits for CPU cores, RAM and Time (default/maximum)</p>
 <table>
 <thead>
