@@ -20,7 +20,7 @@ You should only submit jobs to partitions that you are entitled to use.
 
 Jobs can be submitted to multiple partitions to increase the odds that they will start more quickly. They will generally start in the first partition that has the required resources. This is mainly of use to members of PI partitions where their PI partition member nodes are busy at the moment, or they need maximum resources to meet a deadline.
 
-Simply separate partition names with commas (and no spaces). For example, in a batch job file:
+Simply separate partition names with commas (and no spaces!!). For example, in a batch job file:
 
 ```
 `#SBATCH --partition=cancergen,shared`
@@ -86,8 +86,9 @@ Limits for CPU cores, RAM and Time (default/maximum)
 
 To reduce table width, column names are terse.
 
-{==Experimental==} `interactive-larger` partition: This was created to try to allow people to run interactive jobs a bit larger in size than our smaller `interactive` partition. 
-{==Experimental==} `scavenge` partition: This was created to try to "harvest" some usually-unused resources from some specific nodes.
+{==Experimental `interactive-larger` partition:==} This was created to try to allow people to run interactive jobs a bit larger in size than our smaller `interactive` partition. 
+
+{==Experimental `scavenge` partition:==} This was created to try to "harvest" some usually-unused resources from some specific nodes. You can specify it along with your normal partition, e.g. `--partion=shared,scavenge` and it will be used if available. If your job's CPU, RAM, or duration parameters exceed those set for `scavenge` then your job will run on the other partition(s) you specified.
 
 ### PI CPU Partitions
 
