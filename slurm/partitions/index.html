@@ -3867,7 +3867,7 @@
 <h2 id="choosing-partitions-for-your-jobs">Choosing Partitions For Your Jobs<a class="headerlink" href="#choosing-partitions-for-your-jobs" title="Anchor link to this section for reference">&para;</a></h2>
 <p>You should only submit jobs to partitions that you are entitled to use.</p>
 <p>Jobs can be submitted to multiple partitions to increase the odds that they will start more quickly. They will generally start in the first partition that has the required resources. This is mainly of use to members of PI partitions where their PI partition member nodes are busy at the moment, or they need maximum resources to meet a deadline.</p>
-<p>Simply separate partition names with commas (and no spaces). For example, in a batch job file:</p>
+<p>Simply separate partition names with commas (and no spaces!!). For example, in a batch job file:</p>
 <div class="highlight"><pre><span></span><code>`#SBATCH --partition=cancergen,shared`
 </code></pre></div>
 <p>There are a number of ways in which partitions are configured which may nudge a pending job to one partition over others. Pending jobs in some partitions are evaluated ahead of others. Priorities can be set on some partitions (such as <code>interactive</code>) as described <a href="../whenstart/#partition-priority">here</a>.</p>
@@ -3968,8 +3968,8 @@
 </tbody>
 </table>
 <p>To reduce table width, column names are terse.</p>
-<p><mark class="critic">Experimental</mark> <code>interactive-larger</code> partition: This was created to try to allow people to run interactive jobs a bit larger in size than our smaller <code>interactive</code> partition. 
-<mark class="critic">Experimental</mark> <code>scavenge</code> partition: This was created to try to "harvest" some usually-unused resources from some specific nodes.</p>
+<p><mark class="critic">Experimental <code>interactive-larger</code> partition:</mark> This was created to try to allow people to run interactive jobs a bit larger in size than our smaller <code>interactive</code> partition. </p>
+<p><mark class="critic">Experimental <code>scavenge</code> partition:</mark> This was created to try to "harvest" some usually-unused resources from some specific nodes. You can specify it along with your normal partition, e.g. <code>--partion=shared,scavenge</code> and it will be used if available. If your job's CPU, RAM, or duration parameters exceed those set for <code>scavenge</code> then your job will run on the other partition(s) you specified.</p>
 <h3 id="pi-cpu-partitions">PI CPU Partitions<a class="headerlink" href="#pi-cpu-partitions" title="Anchor link to this section for reference">&para;</a></h3>
 <p>To see the member nodes and resources of the any partitions, use <code>slurmpic -p partitionname</code></p>
 <p>Limits for CPU cores, RAM and Time (default/maximum)</p>
