@@ -18,7 +18,7 @@
       
       
       <link rel="icon" href="../../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.4">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.5">
     
     
       
@@ -3865,7 +3865,7 @@
 <li><strong>PI-owned</strong> (for use only by members of the PI's group)</li>
 </ul>
 <h2 id="choosing-partitions-for-your-jobs">Choosing Partitions For Your Jobs<a class="headerlink" href="#choosing-partitions-for-your-jobs" title="Anchor link to this section for reference">&para;</a></h2>
-<p>You should only submit jobs to partitions that you are entitled to.</p>
+<p>You should only submit jobs to partitions that you are entitled to use.</p>
 <p>Jobs can be submitted to multiple partitions to increase the odds that they will start more quickly. They will generally start in the first partition that has the required resources. This is mainly of use to members of PI partitions where their PI partition member nodes are busy at the moment, or they need maximum resources to meet a deadline.</p>
 <p>Simply separate partition names with commas (and no spaces). For example, in a batch job file:</p>
 <div class="highlight"><pre><span></span><code>`#SBATCH --partition=cancergen,shared`
@@ -3876,23 +3876,23 @@
 <p>JHPCE exists because Primary Investigators worked together to create a cluster. They share their resources via public partitions (see cost recovery descriptions <a href="../../aboutus/model/#cost-recovery">here</a> and <a href="../../joinus/new-pi/">here</a>).</p>
 <p><mark class="critic">Only submit jobs to these partitions if you are a member of the Primary Investigator's research groups or have been given explicit permission to do so.</mark> If you are in doubt, ask before submitting. Jobs from non-group members will be killed and repeated abuse <em>will</em> lead to repercussions.  </p>
 <h2 id="public-partitions">Public Partitions<a class="headerlink" href="#public-partitions" title="Anchor link to this section for reference">&para;</a></h2>
-<p>Partitions <strong>shared</strong>, <strong>interactive</strong>, <strong>gpu</strong>, <strong>sas</strong> and <strong>transfer</strong> are considered public and available to all.</p>
+<p>Partitions <strong>shared</strong>, <strong>interactive</strong>, <strong>interactive-larger</strong>, <strong>gpu</strong>, <strong>sas</strong>, <strong>scavenge</strong> and <strong>transfer</strong> are considered public and available to all.</p>
 <div class="admonition note">
 <p class="admonition-title">Specific use</p>
 <p>Only jobs which require the use of GPU cards should be submitted to the <strong>gpu</strong> partition.</p>
 <p>Only jobs which require the use of the SAS application should be submitted to the <strong>sas</strong> partition.</p>
 <p>Only jobs related to transferring data into or out of the cluster should be submitted to the <strong>transfer</strong> partition.</p>
 </div>
-<p>The public partitions provide low-priority access to unused capacity throughout the cluster. Capacity on the shared queue is provided on a strictly “as-available” basis and serves two purposes.</p>
+<p>The public partitions provide low-priority access to unused capacity throughout the cluster. Capacity on the shared queue is provided on a strictly “as-available” basis and serves two purposes:</p>
 <p>First it provides surge capacity to stakeholders who temporarily need more compute capacity than they own, and second, it gives provides non-stakeholders access to computing capacity.</p>
 <p>Scheduling polices attempt to harvest unused capacity as efficiently as possible while mitigating the impact on the rights of stakeholders to use their resources. The JHPCE service center does not guarantee that stakeholders will provide sufficient excess capacity to meet non-stakeholders needs, however in practice the cluster is rarely operating at full capacity so there is usually ample computing capacity on the shared queue.</p>
 <h2 id="getting-info-about-partitions">Getting Info About Partitions<a class="headerlink" href="#getting-info-about-partitions" title="Anchor link to this section for reference">&para;</a></h2>
-<p>Our command <code>slurmpic</code> shows information about partitions, including the member nodes, their current utilization, and some summary statistics.<sup id="fnref:1"><a class="footnote-ref" href="#fn:1">1</a></sup> By default it displays the <strong>shared</strong> partition. Specific partitions can be displayed using <code>slurmpic -p partitionname</code>. All of the nodes in all of the GPU partitions can be displayed with <code>slurmpic -g</code>. Run <code>slurmpic -h</code> to see important usage notes!</p>
+<p>Our command <code>slurmpic</code> shows information about partitions, including the member nodes, their current utilization, and some summary statistics.<sup id="fnref:1"><a class="footnote-ref" href="#fn:1">1</a></sup> Text is color-coded to try to indicate how fully consumed nodes are. By default it displays the <strong>shared</strong> partition. Specific partitions can be displayed using <code>slurmpic -p partitionname</code>. All of the nodes in all of the GPU partitions can be displayed with <code>slurmpic -g</code>. Individual GPU-containing partitions can be shown with <code>slurmpic -g -p partitionname</code> <mark class="critic">Important:</mark> Run <code>slurmpic -h</code> to see important usage notes!</p>
 <p>The best way to see the <em>configuration</em> of a partition is with the scontrol command. 
 <div class="highlight"><pre><span></span><code>scontrol<span class="w"> </span>show<span class="w"> </span>partition<span class="w"> </span>partitionname
 </code></pre></div>
 (For tips about using <code>scontrol</code>, see our <a href="../tips-scontrol/">local scontrol tips</a> page.)</p>
-<p>The command <a href="https://slurm.schedmd.com/archive/slurm-22.05.9/sinfo.html"><code>sinfo</code></a> shows information about all of the partitions. It has many options, so you can also use it to see information about nodes. (Note: Partitions which <em>require</em> group membership to submit to are only visible via <code>sinfo</code> to members of those groups. Because the local command <code>slurmpic</code> uses <code>sinfo</code> to retrieve information, the output of <code>slurmpic -a</code> (show all nodes) will omit those private PI partitions' nodes.)</p>
+<p><code>slurmpic</code> is based on the SLURM command <a href="https://slurm.schedmd.com/archive/slurm-22.05.9/sinfo.html"><code>sinfo</code></a>, which shows information about nodes and partitions. It has many options, so you can also use it to see information about nodes. (Note: Partitions which <em>require</em> group membership to submit to are only visible via <code>sinfo</code> to members of those groups. Because the local command <code>slurmpic</code> uses <code>sinfo</code> to retrieve information, the output of <code>slurmpic -a</code> (show all nodes) will omit those private PI partitions' nodes.)</p>
 <h2 id="cpu-partitions">CPU Partitions<a class="headerlink" href="#cpu-partitions" title="Anchor link to this section for reference">&para;</a></h2>
 <h3 id="public-cpu-partitions">Public CPU Partitions<a class="headerlink" href="#public-cpu-partitions" title="Anchor link to this section for reference">&para;</a></h3>
 <p>The CPU and RAM limits for <code>shared</code> change depending on node availability. We change the QOS <code>shared-default</code> up and down based on usage over the past month or two. We try to keep limits as high as possible to increase the utilization rate of the cluster while not allowing one person to dominate the <code>shared</code> partition. You can learn more about QOS <a href="../qos/">here</a> and see the currently defined QOS values with the command <code>showres</code></p>
@@ -3926,6 +3926,14 @@
 <td>Small but accessible</td>
 </tr>
 <tr>
+<td>interactive-larger</td>
+<td style="text-align: center;">public</td>
+<td>8</td>
+<td>80gb</td>
+<td style="text-align: center;">(1d/5d)</td>
+<td>Limit 2 jobs per user</td>
+</tr>
+<tr>
 <td>gpu</td>
 <td style="text-align: center;">public</td>
 <td>(none)</td>
@@ -3942,6 +3950,14 @@
 <td>Licensed for SAS</td>
 </tr>
 <tr>
+<td>scavenge</td>
+<td style="text-align: center;">public</td>
+<td>11 per job</td>
+<td>250G per job</td>
+<td style="text-align: center;">(1d/5d)</td>
+<td>See below</td>
+</tr>
+<tr>
 <td>transfer</td>
 <td style="text-align: center;">public</td>
 <td>(none)</td>
@@ -3952,6 +3968,8 @@
 </tbody>
 </table>
 <p>To reduce table width, column names are terse.</p>
+<p><mark class="critic">Experimental</mark> <code>interactive-larger</code> partition: This was created to try to allow people to run interactive jobs a bit larger in size than our smaller <code>interactive</code> partition. 
+<mark class="critic">Experimental</mark> <code>scavenge</code> partition: This was created to try to "harvest" some usually-unused resources from some specific nodes.</p>
 <h3 id="pi-cpu-partitions">PI CPU Partitions<a class="headerlink" href="#pi-cpu-partitions" title="Anchor link to this section for reference">&para;</a></h3>
 <p>To see the member nodes and resources of the any partitions, use <code>slurmpic -p partitionname</code></p>
 <p>Limits for CPU cores, RAM and Time (default/maximum)</p>
@@ -4197,7 +4215,7 @@
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">January 21, 2025</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">February 20, 2025</span>
   </span>
 
     
