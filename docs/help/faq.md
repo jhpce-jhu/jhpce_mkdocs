@@ -1,3 +1,7 @@
+## SLURM FAQ
+
+Questions about using SLURM are covered in their own FAQ [here](https://jhpce.jhu.edu/slurm/slurm-faq/).
+
 ## Orientation/Cluster Basics
 You can access our latest orientation slides at [This Link](https://docs.google.com/presentation/d/1elMSTUdKws7FLVFK7vVV_AErA4brNSPX/pub){:target="_blank"}
 (C-SUB users go [here](../orient/images/latest-csub-orient.pdf) instead (pdf).)  We update these periodically. The version date can be found on the first page in the lower right corner.
