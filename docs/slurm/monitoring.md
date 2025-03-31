@@ -103,7 +103,7 @@ Depending on the execution order of the commands in the batch script, it is poss
 
 People are primarily interested in reducing the amount of memory required to run a job, as memory contention is normally high in the cluster.
 
-Until this section is further developed, see the sections below on the [seff](#seff-slurm-efficiency-output), [sstat](#sstat), and [sacct](#sacct) commands.
+Until this section is further developed, see the sections below on the [seff](#seff-slurm-efficiency), [sstat](#sstat), and [sacct](#sacct) commands.
 
 ## **TOOL SET**
 

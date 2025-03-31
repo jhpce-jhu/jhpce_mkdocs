@@ -1,7 +1,6 @@
 ---
 icon: material/eye
 tags:
-  - in-progress
   - slurm
 ---
 # **reportseff useful command examples**
