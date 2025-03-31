@@ -274,7 +274,7 @@ We will try to put specific entries here that we see more frequently and can ide
 |---|----|
 |0:9|cancelled (does it indicate who cancelled - user or slurm?)
 |0:15|cancelled (looks like this is used when either user cancelled or job ran out of time)
-|0:53|Some file or directory was not readable or writable|
+|0:53|Some file or directory was not readable or writable, ran out of disk space or reached disk quota|
 |0:125|Job ran out of memory|
 |1:0|??|
 |2:0|??|
