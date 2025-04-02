@@ -1,17 +1,24 @@
 ---
 tags:
-  - needs-to-be-written
-  - jeffrey
   - slurm
 ---
 
 # SLURM Job Environments
 
 !!! Warning
-    There are useful things we can document about controlling the job execution environment. This is fairly low priority though, as most things Just Work. 
+    Most things Just Work. But your environment in an interactive session may be different than what your batch jobs "see". By environment, I mean the contents of collectively all of the shell and environment variables, such as which directories are in your PATH. Loading (or not) modules, entering conda or python "environments" ... such things lead to very different set ups.
     
-    
-## Overview of what might be covered here
+### Existing environment
+Are any parts of the environment in the shell you submit a job from copied into the job's environment? This can be (somewhat) controlled with the `--export` argument.
+
+Some clusters strongly advise their users to create batch scripts in which the `#!/bin/bash` first line has a `-l` flag. Because shells like bash process "dot files" (e.g. `.profile` and .`bashrc`) differently for login versus non-interactive shells (see Internet for explanations of how they differ, like [this page](https://unix.stackexchange.com/questions/38175/difference-between-login-shell-and-non-login-shell)). Perhaps this can explain confusing behaviors you notice.
+
+We have not here at JHPCE taught the use of that flag. Perhaps this is more important in some clusters than others because of the way accounts are provisioned with files like `.bashrc` when created.
+
+You can test the difference in environment by submitting trivial test jobs that run a command to save the environment of the job (`printenv > my-jobs-env.txt`) and compare them with what you see in an interactive `srun` session.
+
+!!! Tip
+    To see all variables, simply issue the `set` command. If you want to exclude shell function definitions, use `set -o posix`. To see only shell function definitions, use `declare -f` For just environment variables, use `env` or `printenv`.
 
 ### Set by SLURM
 SLURM sets a large number of shell environment variables for jobs to consult if desired.  A good list can be found in the sbatch manual page's [INPUT ENVIRONMENT VARIABLES](https://slurm.schedmd.com/archive/slurm-22.05.9/sbatch.html#lbAJ) and [OUTPUT ENVIRONMENT VARIABLES](https://slurm.schedmd.com/archive/slurm-22.05.9/sbatch.html#lbAK) sections.
@@ -22,11 +29,6 @@ You can see some of them by starting an interactive session and running `printen
 
 ### Managing output of sacct and squeue
 The way SLURM commands operate can be influenced by setting some certain environment variables, such as SLURM_TIME_FORMAT, SACCT_FORMAT, SQUEUE_FORMAT, SQUEUE_FORMAT2, SQUEUE_SORT. It can be useful to define these in aliases or shell scripts to format output in ways you need. Simply changing the value of these variables can produce vastly different output for commands like sacct and squeue.
-
-### Existing environment
-Are any parts of the environment in the shell you submit a job from copied into the job's environment? This can be controlled with the `--export` argument.
-
-Some clusters strongly advise their users to create batch scripts in which the `#!/bin/bash` first line has a `-l` flag. Because shells like bash process "dot files" (e.g. `.profile` and .`bashrc`) differently for login versus interactive shells. Perhaps this can explain subtle behaviors you notice. Perhaps this is more important in some clusters than others because of the way accounts are provisioned when created. You can test the difference in behavior by submitting trivial test jobs that run a command to save the environment of the job (`printenv > my-env.txt`) and compare them.
 
 ### Passing info into jobs
 
