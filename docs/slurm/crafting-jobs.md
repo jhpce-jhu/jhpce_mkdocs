@@ -294,7 +294,11 @@ This is put here as a tool for system administrators needing to do maintenance w
 
 [Using srun inside of sbatch scripts,](https://hpc.llnl.gov/banks-jobs/running-jobs/slurm#MultipleJobs) in serial and parallel. Remember to include the `wait` bash command at the end of your batch file so the job doesn't end before all of the tasks inside of it. You may need to specify the amount of memory each `srun` command needs (out of the total allocated to the overall job) so the first `srun` isn't given all of the RAM.
 
-### **Workflow**
+## **Workflow**
+
+Researchers have their own workflows, whether they call them that or not. The information below may help you understand workflow concepts and give you a vernacular with which to document what you are doing and/or encourage your research group or collaborators to improve their efficiency. 
+
+Groups have created tools to help manage the processing of jobs. Some go quite far in terms of creating job scripts automatically from some core file which defines the work to be done. All of them have a learning curve. Whether or not you want to use a tool set, these links may help you conceive of ways to use the ideas and accumulated wisdom/insight for your own workflow.
 
 [This cluster ](https://support.ceci-hpc.be/doc/_contents/SubmittingJobs/WorkflowManagement.html#introduction) has some good material about workflows. It includes references to a number of tools which make managing job arrays easier. **Also links to papers about the topic of creating workflows for scientific computing.**
 
@@ -317,6 +321,11 @@ A workflow-creation tool for Python users called [snakemake](https://snakemake.g
 Use with SLURM is mentioned [here](https://www.nextflow.io/docs/latest/executor.html)
 
 [Nextflow](https://www.nextflow.io/docs/latest/) is a workflow system for creating scalable, portable, and reproducible workflows. It is based on the dataflow programming model, which greatly simplifies the writing of parallel and distributed pipelines, allowing you to focus on the flow of data and computation. Nextflow can deploy workflows on a variety of execution platforms, including your local machine, HPC schedulers, AWS Batch, Azure Batch, Google Cloud Batch, and Kubernetes. Additionally, it supports many ways to manage your software dependencies, including Conda, Spack, Docker, Podman, Singularity, and more.
+
+### **Atools**
+
+[atools](https://atools.readthedocs.io/en/latest/) seems to revolve around the use of CSV files to help manage job arrays which perform the same computation on many input files, or
+run an algorithm with many different parameter sets.
 
 ### **Dead Simple Queue**
 
