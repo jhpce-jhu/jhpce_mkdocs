@@ -3177,6 +3177,39 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="Job Environment">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#troubleshooting-mysterious-failures" class="md-nav__link">
+    <span class="md-ellipsis">
+      Troubleshooting mysterious failures
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#keep-in-mind-your-use-of-environments-via-conda-or-python" class="md-nav__link">
+    <span class="md-ellipsis">
+      Keep in mind your use of environments via conda or python
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#where-am-i" class="md-nav__link">
+    <span class="md-ellipsis">
+      Where am I?
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
         <li class="md-nav__item">
@@ -4080,6 +4113,39 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="Job Environment">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#troubleshooting-mysterious-failures" class="md-nav__link">
+    <span class="md-ellipsis">
+      Troubleshooting mysterious failures
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#keep-in-mind-your-use-of-environments-via-conda-or-python" class="md-nav__link">
+    <span class="md-ellipsis">
+      Keep in mind your use of environments via conda or python
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#where-am-i" class="md-nav__link">
+    <span class="md-ellipsis">
+      Where am I?
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
         <li class="md-nav__item">
@@ -4348,12 +4414,18 @@
 </div>
 <p>For now see these <a href="../images/slurm-precendence.pdf">two PDF pages</a> from an orientation document.</p>
 <h2 id="job-environment"><strong>Job Environment</strong><a class="headerlink" href="#job-environment" title="Anchor link to this section for reference">&para;</a></h2>
-<p>By default jobs start in the same directory that was the current working directory when <code>sbatch</code> or <code>srun</code> were used. The directive <code>--chdir=somepath</code> or <code>#SBATCH --chdir=somepath</code> can be used to set the working directory of the job. Whether you choose to use this directive depends on your workflow and typical awareness of where you "are". Would you rather change batch files or set command line arguments to ensure that jobs run in the desired directories or would you rather double-check your location? </p>
-<p>We have a document that describes <a href="../environment/">other aspects of job environments</a>.</p>
+<h3 id="troubleshooting-mysterious-failures">Troubleshooting mysterious failures<a class="headerlink" href="#troubleshooting-mysterious-failures" title="Anchor link to this section for reference">&para;</a></h3>
+<p>The shell that runs your command can have different environments depending on how it was created by the operating system. The "dot files" like <code>.bashrc</code> and <code>.bash_profile</code> (and equivalents in /etc/) are processed in different combinations depending on whether the shell is a (login or non-login) and (interactive vs non-interactive) one.</p>
+<p>This can be extremely confusing! Usually things Just Work, but if you run into problems running batch jobs that you cannot reproduce in interactive debugging sessions, see this important document: <a href="../environment/">other aspects of job environments</a></p>
+<h3 id="keep-in-mind-your-use-of-environments-via-conda-or-python">Keep in mind your use of environments via conda or python<a class="headerlink" href="#keep-in-mind-your-use-of-environments-via-conda-or-python" title="Anchor link to this section for reference">&para;</a></h3>
+<p>You may have dot files which include commands that load named conda environments. If those commands are in the wrong kind of dot file, then they won't be processed during batch jobs.</p>
+<h3 id="where-am-i">Where am I?<a class="headerlink" href="#where-am-i" title="Anchor link to this section for reference">&para;</a></h3>
+<p>By default jobs start in the same directory that was the current working directory where you ran <code>sbatch</code> or <code>srun</code>. The directive <code>--chdir=somepath</code> or <code>#SBATCH --chdir=somepath</code> can be used to set the working directory of the job. Whether you choose to use this directive depends on your workflow and typical awareness of where you "are". Would you rather change batch files or set command line arguments to ensure that jobs run in the desired directories or would you rather double-check your location? </p>
+<p>Another file-location issue is where your SLURM output and error files are created. By default they are created by SLURM in the job's working directory. You may want to make them easier to find and/or keep project directories clear of transient clutter by creating directories in your home directory or file allocation (e.g. <code>/dcs07/my-research-group/data/slurm-output</code>) and use directives (e.g. <code>--output=~/slurmout/%j.out</code>).</p>
 <h2 id="inputoutput-considerations"><strong>Input/output Considerations</strong><a class="headerlink" href="#inputoutput-considerations" title="Anchor link to this section for reference">&para;</a></h2>
 <div class="admonition note">
 <p class="admonition-title">Authoring Note</p>
-<p>Use the same terms as used in the storage overview. We want to be consistent. It helps users, and helps us make links between related articles.</p>
+<p>Use the same terms as used in the storage overview page. We want to be consistent. It helps users, and helps us make links between related articles.</p>
 </div>
 <ul>
 <li>home directory</li>
@@ -4639,7 +4711,7 @@ fi
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="July 1, 2024 16:02:55">July 1, 2024</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="April 2, 2025 19:18:02">April 2, 2025</span>
   </span>
 
     
