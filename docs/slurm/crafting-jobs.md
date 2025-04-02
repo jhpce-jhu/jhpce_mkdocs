@@ -39,14 +39,25 @@ Be careful using `salloc` that you don't leave allocated resources unused. One w
 For now see these [two PDF pages](images/slurm-precendence.pdf) from an orientation document.
 
 ## **Job Environment**
-By default jobs start in the same directory that was the current working directory when `sbatch` or `srun` were used. The directive `--chdir=somepath` or `#SBATCH --chdir=somepath` can be used to set the working directory of the job. Whether you choose to use this directive depends on your workflow and typical awareness of where you "are". Would you rather change batch files or set command line arguments to ensure that jobs run in the desired directories or would you rather double-check your location? 
 
-We have a document that describes [other aspects of job environments](../slurm/environment.md).
+### Troubleshooting mysterious failures
+The shell that runs your command can have different environments depending on how it was created by the operating system. The "dot files" like `.bashrc` and `.bash_profile` (and equivalents in /etc/) are processed in different combinations depending on whether the shell is a (login or non-login) and (interactive vs non-interactive) one.
+
+This can be extremely confusing! Usually things Just Work, but if you run into problems running batch jobs that you cannot reproduce in interactive debugging sessions, see this important document: [other aspects of job environments](../slurm/environment.md)
+
+### Keep in mind your use of environments via conda or python
+You may have dot files which include commands that load named conda environments. If those commands are in the wrong kind of dot file, then they won't be processed during batch jobs.
+
+### Where am I?
+
+By default jobs start in the same directory that was the current working directory where you ran `sbatch` or `srun`. The directive `--chdir=somepath` or `#SBATCH --chdir=somepath` can be used to set the working directory of the job. Whether you choose to use this directive depends on your workflow and typical awareness of where you "are". Would you rather change batch files or set command line arguments to ensure that jobs run in the desired directories or would you rather double-check your location? 
+
+Another file-location issue is where your SLURM output and error files are created. By default they are created by SLURM in the job's working directory. You may want to make them easier to find and/or keep project directories clear of transient clutter by creating directories in your home directory or file allocation (e.g. `/dcs07/my-research-group/data/slurm-output`) and use directives (e.g. `--output=~/slurmout/%j.out`).
     
 ## **Input/output Considerations**
 
 !!! Note "Authoring Note" 
-    Use the same terms as used in the storage overview. We want to be consistent. It helps users, and helps us make links between related articles.
+    Use the same terms as used in the storage overview page. We want to be consistent. It helps users, and helps us make links between related articles.
 
 - home directory
 - project storage
