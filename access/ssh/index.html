@@ -1382,10 +1382,9 @@
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="SSH Basics">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
+</li>
+      
+        <li class="md-nav__item">
   <a href="#ssh-keys" class="md-nav__link">
     <span class="md-ellipsis">
       SSH Keys
@@ -1417,11 +1416,6 @@
     </nav>
   
 </li>
-        
-      </ul>
-    </nav>
-  
-</li>
       
         <li class="md-nav__item">
   <a href="#just-yanked-in-here-from-our-knowledgebase-document" class="md-nav__link">
@@ -1432,15 +1426,6 @@
   
     <nav class="md-nav" aria-label="Just yanked in here from our Knowledgebase document">
       <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#login-howto" class="md-nav__link">
-    <span class="md-ellipsis">
-      Login howto
-    </span>
-  </a>
-  
-</li>
         
           <li class="md-nav__item">
   <a href="#unix-based-machines-linux-and-mac-osx" class="md-nav__link">
@@ -4002,10 +3987,9 @@
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="SSH Basics">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
+</li>
+      
+        <li class="md-nav__item">
   <a href="#ssh-keys" class="md-nav__link">
     <span class="md-ellipsis">
       SSH Keys
@@ -4037,11 +4021,6 @@
     </nav>
   
 </li>
-        
-      </ul>
-    </nav>
-  
-</li>
       
         <li class="md-nav__item">
   <a href="#just-yanked-in-here-from-our-knowledgebase-document" class="md-nav__link">
@@ -4052,15 +4031,6 @@
   
     <nav class="md-nav" aria-label="Just yanked in here from our Knowledgebase document">
       <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#login-howto" class="md-nav__link">
-    <span class="md-ellipsis">
-      Login howto
-    </span>
-  </a>
-  
-</li>
         
           <li class="md-nav__item">
   <a href="#unix-based-machines-linux-and-mac-osx" class="md-nav__link">
@@ -4198,45 +4168,60 @@
                 
                   
 
-  <nav class="md-tags" >
-    
-      
-      
-      
-        <a href="../../ourtools/tags/#tag:in-progress" class="md-tag">in-progress</a>
-      
-    
-      
-      
-      
-        <a href="../../ourtools/tags/#tag:jeffrey" class="md-tag">jeffrey</a>
-      
-    
-      
-      
-      
-        <a href="../../ourtools/tags/#tag:ssh" class="md-tag">ssh</a>
-      
-    
-  </nav>
-
 
 
 <h1 id="ssh-key-information">SSH - Key Information<a class="headerlink" href="#ssh-key-information" title="Anchor link to this section for reference">&para;</a></h1>
-<div class="admonition note">
-<p class="admonition-title">Authoring Note</p>
-<p>This page contains both good information and a bunch that needs to be reviewed, reorganized. Take what you need and leave the rest.
-This page should be organized around SSH usage concepts with the per-OS implementation details contained within the sections.
-Windows users: We're not going to document how to do each thing in Putty, Cygwin, etc. Only MobaXterm. The way to accomplish some of the same goals in MobaXterm would be nice to identify (probably in new sections in the existing <a href="../mobaxterm/">MobaXterm configuration document</a>).
-Material like the section "Mac-specific configuration" describes ssh per-user config file syntax and content. Most of it applies to Linux users as well.  So perhaps rename such material to be "CLI SSH"?</p>
-</div>
 <h2 id="ssh-basics">SSH Basics<a class="headerlink" href="#ssh-basics" title="Anchor link to this section for reference">&para;</a></h2>
 <p>Access to the JHPCE cluster requires the use of SSH. Over time, the ability to launch applications via a web interface will increase, but for the foreseeable future you will need to be able to SSH in and then use command line UNIX skills to do your work.</p>
-<p>SSH stands for Secure SHell. SSH is actually a set of internet standard protocols. Programs implementing these protocols include both command line interface (CLI) tools and those with graphic user interfaces (GUI).  They all enable you to make secure, encrypted connections from one computer to the next.</p>
-<p>Depending on the kind of operating system your computer uses, you may or may not need to install SSH software.</p>
-<p>Apple Macs come with CLI SSH tools pre-installed. You use them by entering commands in the Terminal app.  You can install GUI apps from various vendors, but we will only discuss the CLI tools except for some file transfer GUI programs.</p>
-<p>On a Windows system you will need to install an ssh client.  We recommend the excellent GUI program MobaXterm. <a href="../mobaxterm/">Here is a document</a> describing how to use it. There are other programs, such as the <a href="https://en.wikipedia.org/wiki/PuTTY">PuTTY</a> family of tools and <a href="https://en.wikipedia.org/wiki/WinSCP">WinSCP</a>.</p>
-<h3 id="ssh-keys">SSH Keys<a class="headerlink" href="#ssh-keys" title="Anchor link to this section for reference">&para;</a></h3>
+<p>SSH stands for Secure SHell. SSH is actually a set of internet standard protocols. Programs implementing these protocols include both command line interface (CLI) tools and those with graphic user interfaces (GUI).  They all enable you to make secure, encrypted connections from one computer to the next.  In our case, ssh allows you to create an encrypted connection between you local system and the JHPCE login nodes (jhpce01.jhsph.edu and jhpce03.jhsph.edu), so that you can run a Unix Shell on the JHPCE cluster.</p>
+<p>Depending on the kind of operating system your computer uses, you may or may not need to install SSH software. Apple Macs come with CLI SSH tools pre-installed. You use them by entering commands in the Terminal app.  You can install GUI apps from various vendors, but we will only discuss the CLI tools except for some file transfer GUI programs.  On a Windows system you will need to install an ssh client.  We recommend the excellent GUI program MobaXterm. <a href="../mobaxterm/">Here is a document</a> describing how to use it. There are other programs, such as the <a href="https://en.wikipedia.org/wiki/PuTTY">PuTTY</a> family of tools and <a href="https://en.wikipedia.org/wiki/WinSCP">WinSCP</a>.</p>
+<p>By default, we use "2 Factor Authentication" in order to authenticate you access when you ssh into the JHPCE cluster.  This means that we will ask for 2 pieces of infomation instead of just 1.  Secifically, you will be asked for:</p>
+<p>1) Your Password. Your password will be a secure secret that only you know and is hard for others to guess.
+2) A Verification Code.  Your Verification Code will be a one-time-use code from an App like Google Authenticator.</p>
+<p>As an aside, there are commonly 3 factors that can be used when authenticating in the Cybersecurity world. These are, Something you Know, Something you Have, and Something you Are.  The 2 factors we're using on JHPCE are "Something you Know" (a password), and "Somthing you Have" (your one-time-use code from Google Authenticator). An example of methods that use "Something you Are" would be a fingerprint scanner or the Apple's Face ID.</p>
+<p>You can also allow the use of SSH keys to help smooth the login process with a passwordless process.  Please see <a href="https://jhpce.jhu.edu/access/ssh/#ssh-keys">the section below</a> for more details on SSH keys.</p>
+<p>Here is what a normal ssh connection looks like to login to the jhcpe01.jhsph.edu login node as user "bsmith", coming from his Mac named "Bobs-Mac".</p>
+<pre lang="console"><code>
+[bobsmith@Bobs-Mac ~] $ <b>ssh bsmith@jhpce01.jhsph.edu </b>
+(bsmith@jhpce01.jhsph.edu) Password: <i>Bob types his JHPCE password</i>
+(bsmith@jhpce01.jhsph.edu) Verification code: <i>Bob types the 6-digit code from Google Authenticator</i>
+Last failed login: Mon Apr  7 09:42:08 EDT 2025 from 174.172.134.59 on ssh:notty
+Last login: Mon Apr  7 09:23:33 2025 from 174.172.134.59
+🌸 🌸 🌸 🌸 🌸 🌸 🌸 🌸 🌸 🌸 🌸 🌸 🌸 🌸 🌸 🌸 🌸 🌸 🌸 🌸 🌸 🌸
+Use of this system constitutes agreement to adhere to all
+applicable JHU and JHSPH network and computer use policies.
+🌸 🌸 🌸 🌸 🌸 🌸 🌸 🌸 🌸 🌸 🌸 🌸 🌸 🌸 🌸 🌸 🌸 🌸 🌸 🌸 🌸 🌸
+
+Need Help? bitsupport@lists.jh.edu for SLURM, cluster, storage & login issues
+           bithelp@lists.jh.edu for application issues: R/SAS/python/modules...
+
+The SLURM shared partition is currently at 85% core usage and 70% RAM usage.
+--------------------------------------------------------------------
+DISK: Compression is enabled in our ZFS file systems like /users & /dcs05
+DISK: You don't need to compress your files unless you want to use _very_
+DISK: high compression levels or transfer them outside of the cluster.
+--------------------------------------------------------------------
+--------------------------------------
+     Your Home Directory Usage        
+Username     Space Used         Quota     
+bsmith       21G                100G      
+--------------------------------------
+
+[bsmith@jhpce01 ~]$ 
+</code></pre>
+
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Please note that when typing the "Password" and "Verification Code", the cursor does not move.  This is a security mechanism to prevent someone from watching what you are typing.  The computer is seeing what you are typing even if it isn't being displayed back.</p>
+</div>
+<p>If you have entered your credentials correctly, you will see a login banner for the JHPCE cluster, and you will be sitting at a shell prompt on the login node.  However, if you are prompted for “Password:” again, you likely mistyped either your password or Verification Code, and you should wait until your Google Authenticator code changes (it changes every 30 seconds) and you will need to try logging in again.</p>
+<p>Here are some things to check if you are unable to ssh into the JHPCE cluster:
+- Please make sure that you are using the password for the JHPCE cluster, and not your some other password, like you JHED or laptop password.
+- Please make sure you are using your JHPCE login ID. This is different from your JHED ID.
+- Please make sure you are using the Google Authenticator entry for the JHPCE cluster, and not some other system.</p>
+<p>If you have had several unsuccessful login attempts, your local system will be blocked by the login node.  Further attempts to ssh into the login node will likely give you a “Connection Refused” message, you will need to wait 10 minutes before trying to login again.  It you are certain you are using all of the right information for your login, and don't want to wait 10 minutes, you can try our second login node, jhpce03.jhsph.edu.</p>
+<p>If you continue to have login issues, please contact us at bitsupport@lists.jhu.edu.</p>
+<h2 id="ssh-keys">SSH Keys<a class="headerlink" href="#ssh-keys" title="Anchor link to this section for reference">&para;</a></h2>
 <h4 id="ssh-keys-quickstart">SSH Keys Quickstart:<a class="headerlink" href="#ssh-keys-quickstart" title="Anchor link to this section for reference">&para;</a></h4>
 <p>For Windows users using MobaXterm, please see this <a href="https://jhpce.jhu.edu/access/mobaxterm/#optional-setting-up-ssh-keys-in-mobaxterm">guide on our site in the Mobaxterm section</a></p>
 <p>For Mac or Windows users, you can use the following steps.</p>
@@ -4295,22 +4280,12 @@ applicable JHU and JHSPH network and computer use policies.
 <p>This key pair of files is generated once, and protected with a passphrase. You place a copy of the "public" key file on JHPCE in a particular place with specific permissions. You keep a copy of the "private" key file on your personal device(s). Once you prove to a program (ssh-agent) running on your device that you know the passphrase to your private key file, it will thereafter provide your private key when you run an SSH command.</p>
 <p>Once configured properly, you can use SSH keys instead of your JHPCE password.</p>
 <p><a href="https://hpc-docs.cubi.bihealth.org/connecting/ssh-basics/#ssh-keys">SSH Keys described by another cluster</a></p>
+<p>This is still a means for using 2 Factor Authentication.  The key files themselves are "Something you Have" and these are protected by "Something you Know" in the form of the SSH passphrase, as well as the authentication mechanism used to protect your local system (password/fingerprint scanner)</p>
 <h2 id="just-yanked-in-here-from-our-knowledgebase-document">Just yanked in here from our Knowledgebase document<a class="headerlink" href="#just-yanked-in-here-from-our-knowledgebase-document" title="Anchor link to this section for reference">&para;</a></h2>
 <div class="admonition note">
 <p class="admonition-title">Authoring Note</p>
 <p>This material needs to be placed in the right places.</p>
 </div>
-<h4 id="login-howto">Login howto<a class="headerlink" href="#login-howto" title="Anchor link to this section for reference">&para;</a></h4>
-<ul>
-<li>When ssh-ing into the cluster you provide your JHPCE user name as part of the ssh command (Mac or Linux) or ssh session configuration (e.g. in MobaXterm)</li>
-<li>You will be prompted for 2 additional pieces of information. </li>
-<li>First you will be prompted for “Verification Code:”, and for this you will enter the 6 digit number from your authenticator app (we recommend Google authenticator). See <a href="https://jhpce.jhu.edu/access/access-overview/#one-time-passwords">here</a> for more on these one-time passwords.</li>
-<li>Next you will be prompted for “Password:”; this you this will use a traditional password that only you know.  <em>Note that when entering your Verification Code and Password, your cursor will not move when you type, so it will appear like nothing is happening</em>.  + If you have never accessed the cluster before, and “Initial Verification Code” and “Initial Password” will be provided to you during your JHPCE Cluster Orientation session.</li>
-<li>If you only get prompted for “Password” and not “Verification Code”, you are likely using the wrong login ID.  Your login ID is provided to you during the JHPCE orientation; it is not the same as your JHED ID.</li>
-<li>If you have entered your credentials correctly, you will see a login banner for the JHPCE cluster, and you will be sitting at a shell prompt on the login node.  However, if you are prompted for “Verification Code:” again, you likely mistyped either your password or Verification Code, and you should wait until your Google Authenticator code changes (it changes every 30 seconds) and you will need to try logging in again.</li>
-<li>If you have tried several times to login, and you try to ssh again and get a “Connection Refused” message, you will need to wait 30 minutes before trying to login again.</li>
-<li>If you continue to have login issues, please contact bitsupport@lists.jhu.edu.</li>
-</ul>
 <h3 id="unix-based-machines-linux-and-mac-osx">Unix-based machines (linux and mac osx)<a class="headerlink" href="#unix-based-machines-linux-and-mac-osx" title="Anchor link to this section for reference">&para;</a></h3>
 <p>SSH supports different kinds of identity key encryption.  Various algorithms have been developed over the years. As computing power increases and algorithm flaws are discovered, the recommended one to use changes. In the past "rsa" was the default.  That is no longer recommended in 2024. We here show "ecdsa" but you might want to instead use "ed25519". Just be consistent in your use of the string where it shows up in commands or file names.</p>
 <ul>
@@ -4521,7 +4496,7 @@ ServerAliveCountMax<span class="w"> </span><span class="m">30</span>
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="April 7, 2025 14:20:43">April 7, 2025</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="April 7, 2025 15:04:49">April 7, 2025</span>
   </span>
 
     
@@ -4532,12 +4507,13 @@ ServerAliveCountMax<span class="w"> </span><span class="m">30</span>
   <span class="md-source-file__fact">
     <span class="md-icon" title="Contributors">
       
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 4a4 4 0 0 1 4 4 4 4 0 0 1-4 4 4 4 0 0 1-4-4 4 4 0 0 1 4-4m0 10c4.42 0 8 1.79 8 4v2H4v-2c0-2.21 3.58-4 8-4"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 5.5A3.5 3.5 0 0 1 15.5 9a3.5 3.5 0 0 1-3.5 3.5A3.5 3.5 0 0 1 8.5 9 3.5 3.5 0 0 1 12 5.5M5 8c.56 0 1.08.15 1.53.42-.15 1.43.27 2.85 1.13 3.96C7.16 13.34 6.16 14 5 14a3 3 0 0 1-3-3 3 3 0 0 1 3-3m14 0a3 3 0 0 1 3 3 3 3 0 0 1-3 3c-1.16 0-2.16-.66-2.66-1.62a5.54 5.54 0 0 0 1.13-3.96c.45-.27.97-.42 1.53-.42M5.5 18.25c0-2.07 2.91-3.75 6.5-3.75s6.5 1.68 6.5 3.75V20h-13zM0 20v-1.5c0-1.39 1.89-2.56 4.45-2.9-.59.68-.95 1.62-.95 2.65V20zm24 0h-3.5v-1.75c0-1.03-.36-1.97-.95-2.65 2.56.34 4.45 1.51 4.45 2.9z"/></svg>
       
     </span>
     <nav>
       
-        <a href="mailto:tunison@jhu.edu">jeffreytunison</a>
+        <a href="mailto:tunison@jhu.edu">jeffreytunison</a>, 
+        <a href="mailto:mmill116@jhu.edu">mamiller615</a>
     </nav>
   </span>
 
