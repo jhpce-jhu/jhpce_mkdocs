@@ -93,6 +93,13 @@
   {
     "page_name": "SSH",
     "page_url": "../../access/ssh/",
+    "text": "\n[bobsmith@Bobs-Mac ~] $ ssh-keygen -t ecdsa \nGenerating public/private ecdsa key pair.\nEnter file in which to save the key (/Users/BobSmith/.ssh/id_ecdsa): \nEnter passphrase (empty for no passphrase): Passphrase Entered\nEnter same passphrase again: Passphrase Entered\nYour identification has been saved in /Users/BobSmith/.ssh/id_ecdsa\nYour public key has been saved in /Users/BobSmith/.ssh/id_ecdsa.pub\nThe key fingerprint is:\nSHA256:uyy1HdCMcwNMSHLk2cKsc0Tn bobsmith@Bobs-Mac.local\nThe key's randomart image is:\n+---[ECDSA 256]---+\n| *AB.  .o ..     |\n. . .\n|    o .   .  .   |\n|     .   A.o.    |\n+----[SHA256]-----+\n",
+    "html": "<pre lang=\"console\"><code>\n[bobsmith@Bobs-Mac ~] $ ssh-keygen -t ecdsa \nGenerating public/private ecdsa key pair.\nEnter file in which to save the key (/Users/BobSmith/.ssh/id_ecdsa): \nEnter passphrase (empty for no passphrase): <i>Passphrase Entered</i>\nEnter same passphrase again: <i>Passphrase Entered</i>\nYour identification has been saved in /Users/BobSmith/.ssh/id_ecdsa\nYour public key has been saved in /Users/BobSmith/.ssh/id_ecdsa.pub\nThe key fingerprint is:\nSHA256:uyy1HdCMcwNMSHLk2cKsc0Tn bobsmith@Bobs-Mac.local\nThe key's randomart image is:\n+---[ECDSA 256]---+\n| *AB.  .o ..     |\n. . .\n|    o .   .  .   |\n|     .   A.o.    |\n+----[SHA256]-----+\n<code></code></code></pre>",
+    "language": ""
+  },
+  {
+    "page_name": "SSH",
+    "page_url": "../../access/ssh/",
     "text": "[bobsmith@Bobs-Mac ~] $ ssh-agent\nSSH_AUTH_SOCK=/var/folders/xb/8jxv_1495w7f7ym9w89ksg8m0000gn/T//ssh-IAaQtZb85RG5/agent.63154; export SSH_AUTH_SOCK;\nSSH_AGENT_PID=63155; export SSH_AGENT_PID;\necho Agent pid 63155;\n\n[bobsmith@Bobs-Mac ~] $ ssh-add \nEnter passphrase for /Users/bobsmith/.ssh/id_ecdsa: ***Passphrase Entered***\nIdentity added: /Users/bobsmith/.ssh/id_ecdsa (bobsmith@Bobs-Mac.local)\n",
     "html": "<pre><span></span><code><span class=\"gp\">[bobsmith@Bobs-Mac ~] $ </span>ssh-agent\n<span class=\"go\">SSH_AUTH_SOCK=/var/folders/xb/8jxv_1495w7f7ym9w89ksg8m0000gn/T//ssh-IAaQtZb85RG5/agent.63154; export SSH_AUTH_SOCK;</span>\n<span class=\"go\">SSH_AGENT_PID=63155; export SSH_AGENT_PID;</span>\n<span class=\"go\">echo Agent pid 63155;</span>\n\n<span class=\"gp\">[bobsmith@Bobs-Mac ~] $ </span>ssh-add<span class=\"w\"> </span>\n<span class=\"go\">Enter passphrase for /Users/bobsmith/.ssh/id_ecdsa: ***Passphrase Entered***</span>\n<span class=\"go\">Identity added: /Users/bobsmith/.ssh/id_ecdsa (bobsmith@Bobs-Mac.local)</span>\n</code></pre>",
     "language": ""
