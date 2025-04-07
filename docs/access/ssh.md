@@ -67,7 +67,7 @@ If you continue to have login issues, please contact us at bitsupport@lists.jhu.
 
 ## SSH Keys
 
-#### SSH Keys Quickstart:
+### SSH Keys Quickstart:
 For Windows users using MobaXterm, please see this [guide on our site in the Mobaxterm section](https://jhpce.jhu.edu/access/mobaxterm/#optional-setting-up-ssh-keys-in-mobaxterm)
 
 For Mac or Windows users, you can use the following steps.
@@ -124,7 +124,7 @@ applicable JHU and JHSPH network and computer use policies.
 </code></pre>
 
 
-#### SSH Keys, more info:
+### SSH Keys, more info:
 SSH programs make use of something called [public-key cryptography](https://en.wikipedia.org/wiki/Public-key_cryptography). Basically secure communications can be created by splitting a secret into to parts, and placing one part on each end of a link. This can be extended to an optional pair of files you can generate and distribute such that one is located on the JHPCE cluster and the other is on your computer. Or smartphone!
 
 This key pair of files is generated once, and protected with a passphrase. You place a copy of the "public" key file on JHPCE in a particular place with specific permissions. You keep a copy of the "private" key file on your personal device(s). Once you prove to a program (ssh-agent) running on your device that you know the passphrase to your private key file, it will thereafter provide your private key when you run an SSH command.
@@ -135,16 +135,7 @@ Once configured properly, you can use SSH keys instead of your JHPCE password.
 
 This is still a means for using 2 Factor Authentication.  The key files themselves are "Something you Have" and these are protected by "Something you Know" in the form of the SSH passphrase, as well as the authentication mechanism used to protect your local system (password/fingerprint scanner)
 
-## Just yanked in here from our Knowledgebase document
-
-!!! Note "Authoring Note"
-    This material needs to be placed in the right places.
-
-
-
-
-### Unix-based machines (linux and mac osx)
-
+#### SSH Keys Setup, more detailed info:
 SSH supports different kinds of identity key encryption.  Various algorithms have been developed over the years. As computing power increases and algorithm flaws are discovered, the recommended one to use changes. In the past "rsa" was the default.  That is no longer recommended in 2024. We here show "ecdsa" but you might want to instead use "ed25519". Just be consistent in your use of the string where it shows up in commands or file names.
 
 + First, on your local laptop/desktop, open a terminal and `cd` into your home directory  and invoke the ssh key generator:
@@ -173,14 +164,13 @@ ssh-agent
 ```
 The ssh-agent will remain active for as long as your desktop or laptop is up and running.  If you reboot your desktop/laptop, you will need to rerun the ssh-add and ssh-agent commands.
 
-#### Loging into nodes
+#### SSH Keys Nitty Gritty Details
 
 !!! Warning "Authoring Note"
     (((This isn't true if you use `srun`. Is it even true in JHPCE 3.0 anyway Also, do we want to be suggesting that people log into compute nodes?)))
 
 Logging into a cluster node from a login node requires keypairs. 
- If
-your private key file is in `.ssh/` then it should work, since the
+ If your private key file is in `.ssh/` then it should work, since the
 public key file is in your `authorized_keys` file. If you do not want
 the same private key file to be used to log into nodes as the one used
 to log into the login node, then repeat create a new public private
@@ -190,13 +180,13 @@ do not overwrite the existing file.
 
 Many users set up an alias for the ssh command so they don’t have to type as much to log into the remote host.  You can do this by adding the following line to your `~/.bashrc`, `alias hpc='ssh -X <your_userid>@jhpce01.jhsph.edu'`.
 
-### Windows machines 
+#### Windows machines 
 If your desktop/laptop runs Microsoft Windows then you first need to
 install MobaXterm on your windows machine. If you are
 using MobaXterm, please use the steps at the bottom of our [MobaXterm
 configuration page](mobaxterm.md).
 
-## Permissions on SSH Files
+#### Permissions on SSH Files
 SSH is **_very_** strict about the permissions found on your ssh-related files on **both ends** of a connection. These files are found on JHPCE in your home directory inside the directory `.ssh`  Because this directory's name begins with a period, it is not listed when you use the `ls` program -- you have to use `ls -a` or `ls -ld ~/.ssh` to see it.
 
 The primary symptom of there being a file permissions problem is that ssh is still asking for a password when you think it should not. Sometimes you get a helpful error message `Bad owner or permissions on <a specific ssh-related file>`
