@@ -3835,7 +3835,7 @@
 <span class="go">       83 test1.sh</span>
 <span class="go">        0 zzz-test.txt</span>
 </code></pre><h2><a class="heading" href="../access/ssh/">SSH</a></h2><a class="url" href="../access/ssh/">access/ssh/</a><pre lang="console"><code>
-[bobsmith@Bobs-Mac ~] $ ssh-keygen -t ecdsa 
+[bobsmith@Bobs-Mac ~] $ <b>ssh-keygen -t ecdsa </b>
 Generating public/private ecdsa key pair.
 Enter file in which to save the key (/Users/BobSmith/.ssh/id_ecdsa): 
 Enter passphrase (empty for no passphrase): <i>Passphrase Entered</i>
@@ -3851,27 +3851,30 @@ The key's randomart image is:
 |    o .   .  .   |
 |     .   A.o.    |
 +----[SHA256]-----+
-<code></code></code></pre><pre><span></span><code><span class="gp">[bobsmith@Bobs-Mac ~] $ </span>ssh-agent
-<span class="go">SSH_AUTH_SOCK=/var/folders/xb/8jxv_1495w7f7ym9w89ksg8m0000gn/T//ssh-IAaQtZb85RG5/agent.63154; export SSH_AUTH_SOCK;</span>
-<span class="go">SSH_AGENT_PID=63155; export SSH_AGENT_PID;</span>
-<span class="go">echo Agent pid 63155;</span>
+</code></pre><pre lang="console"><code>
+[bobsmith@Bobs-Mac ~] $ <b>ssh-agent</b>
+SSH_AUTH_SOCK=/var/folders/xb/8jxv_1495w7f7ym9w89ksg8m0000gn/T//ssh-IAaQtZb85RG5/agent.63154; export SSH_AUTH_SOCK;
+SSH_AGENT_PID=63155; export SSH_AGENT_PID;
+echo Agent pid 63155;
 
-<span class="gp">[bobsmith@Bobs-Mac ~] $ </span>ssh-add<span class="w"> </span>
-<span class="go">Enter passphrase for /Users/bobsmith/.ssh/id_ecdsa: ***Passphrase Entered***</span>
-<span class="go">Identity added: /Users/bobsmith/.ssh/id_ecdsa (bobsmith@Bobs-Mac.local)</span>
-</code></pre><pre><span></span><code><span class="gp">[bobsmith@Bobs-Mac ~] $ </span>cat<span class="w"> </span>~/.ssh/id_ecdsa.pub<span class="w"> </span><span class="p">|</span><span class="w"> </span>ssh<span class="w"> </span>bsmith@jhpce01.jhsph.edu<span class="w"> </span><span class="s1">'cat &gt;&gt; ~/.ssh/authorized_keys'</span>
-<span class="gp gp-VirtualEnv">(bsmith@jhpce01.jhsph.edu)</span> <span class="go">Password: ***Enter your JHPCE Password***</span>
-<span class="gp gp-VirtualEnv">(bsmith@jhpce01.jhsph.edu)</span> <span class="go">Verification code: ***Enter your Google Authenticator Code***</span>
-<span class="go">Bobs-Mac$</span>
-</code></pre><pre><span></span><code><span class="gp">[bobsmith@Bobs-Mac ~] $ </span>ssh<span class="w"> </span>bsmith@jhpce01.jhsph.edu<span class="w"> </span>
-<span class="go">Last failed login: Mon Apr  7 09:42:08 EDT 2025 from 174.172.134.59 on ssh:notty</span>
-<span class="go">Last login: Mon Apr  7 09:23:33 2025 from 174.172.134.59</span>
-<span class="go">Use of this system constitutes agreement to adhere to all</span>
-<span class="go">applicable JHU and JHSPH network and computer use policies.</span>
+[bobsmith@Bobs-Mac ~] $ <b>ssh-add </b>
+Enter passphrase for /Users/bobsmith/.ssh/id_ecdsa: ***Passphrase Entered***
+Identity added: /Users/bobsmith/.ssh/id_ecdsa (bobsmith@Bobs-Mac.local)
+</code></pre><pre lang="console"><code>
+[bobsmith@Bobs-Mac ~] $ <b>cat ~/.ssh/id_ecdsa.pub | ssh bsmith@jhpce01.jhsph.edu 'cat &gt;&gt; ~/.ssh/authorized_keys'</b>
+(bsmith@jhpce01.jhsph.edu) Password: <i>Enter your JHPCE Password</i>
+(bsmith@jhpce01.jhsph.edu) Verification code: <i>Enter your Google Authenticator Code</i>
+Bobs-Mac$
+</code></pre><pre lang="console"><code>
+[bobsmith@Bobs-Mac ~] $ <b>ssh bsmith@jhpce01.jhsph.edu </b>
+Last failed login: Mon Apr  7 09:42:08 EDT 2025 from 174.172.134.59 on ssh:notty
+Last login: Mon Apr  7 09:23:33 2025 from 174.172.134.59
+Use of this system constitutes agreement to adhere to all
+applicable JHU and JHSPH network and computer use policies.
 
-<span class="go">. . .</span>
+. . .
 
-<span class="gp">[bsmith@jhpce01 ~]$ </span>
+[bsmith@jhpce01 ~]$ 
 </code></pre><pre><span></span><code>ssh-keygen -t ecdsa
 </code></pre><pre><span></span><code>cat ~/.ssh/id_ecdsa.pub | ssh &lt;your_userid&gt;@jhpce01.jhsph.edu 'cat &gt;&gt; ~/.ssh/authorized_keys'
 </code></pre><pre><span></span><code>ssh-add

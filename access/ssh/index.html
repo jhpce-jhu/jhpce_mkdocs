@@ -4242,7 +4242,7 @@ Material like the section "Mac-specific configuration" describes ssh per-user co
 <p>For Mac or Windows users, you can use the following steps.</p>
 <p>1) Generate your private and public keys on your local system, run "ssh-keygen -t ecdsa".  When asked "Enter file in which to save the key", you should use the default answer. When asked to enter a passphrase, please choose a secure passphrase/password to securely store your keys.</p>
 <pre lang="console"><code>
-[bobsmith@Bobs-Mac ~] $ ssh-keygen -t ecdsa 
+[bobsmith@Bobs-Mac ~] $ <b>ssh-keygen -t ecdsa </b>
 Generating public/private ecdsa key pair.
 Enter file in which to save the key (/Users/BobSmith/.ssh/id_ecdsa): 
 Enter passphrase (empty for no passphrase): <i>Passphrase Entered</i>
@@ -4258,34 +4258,38 @@ The key's randomart image is:
 |    o .   .  .   |
 |     .   A.o.    |
 +----[SHA256]-----+
-<code></code></pre>
-<p>2) Run "ssh-agent" and "ssh-add" to enable ssh-agent on your local system.  This will enble you to use your keys without having to use your Passphrase every time you use them.  You will need to run these 2 commands each time you reboot your local system.
-<div class="highlight"><pre><span></span><code><span class="gp">[bobsmith@Bobs-Mac ~] $ </span>ssh-agent
-<span class="go">SSH_AUTH_SOCK=/var/folders/xb/8jxv_1495w7f7ym9w89ksg8m0000gn/T//ssh-IAaQtZb85RG5/agent.63154; export SSH_AUTH_SOCK;</span>
-<span class="go">SSH_AGENT_PID=63155; export SSH_AGENT_PID;</span>
-<span class="go">echo Agent pid 63155;</span>
+</code></pre>
+<p>2) Run "ssh-agent" and "ssh-add" to enable ssh-agent on your local system.  This will enble you to use your keys without having to use your Passphrase every time you use them.  You will need to run these 2 commands each time you reboot your local system.</p>
+<pre lang="console"><code>
+[bobsmith@Bobs-Mac ~] $ <b>ssh-agent</b>
+SSH_AUTH_SOCK=/var/folders/xb/8jxv_1495w7f7ym9w89ksg8m0000gn/T//ssh-IAaQtZb85RG5/agent.63154; export SSH_AUTH_SOCK;
+SSH_AGENT_PID=63155; export SSH_AGENT_PID;
+echo Agent pid 63155;
 
-<span class="gp">[bobsmith@Bobs-Mac ~] $ </span>ssh-add<span class="w"> </span>
-<span class="go">Enter passphrase for /Users/bobsmith/.ssh/id_ecdsa: ***Passphrase Entered***</span>
-<span class="go">Identity added: /Users/bobsmith/.ssh/id_ecdsa (bobsmith@Bobs-Mac.local)</span>
-</code></pre></div>
-3) Copy your ssh public key up to the JHPCE cluster.  Please be sure to replace the "bsmith" in the example below with your JHPCE login ID.
-<div class="highlight"><pre><span></span><code><span class="gp">[bobsmith@Bobs-Mac ~] $ </span>cat<span class="w"> </span>~/.ssh/id_ecdsa.pub<span class="w"> </span><span class="p">|</span><span class="w"> </span>ssh<span class="w"> </span>bsmith@jhpce01.jhsph.edu<span class="w"> </span><span class="s1">&#39;cat &gt;&gt; ~/.ssh/authorized_keys&#39;</span>
-<span class="gp gp-VirtualEnv">(bsmith@jhpce01.jhsph.edu)</span> <span class="go">Password: ***Enter your JHPCE Password***</span>
-<span class="gp gp-VirtualEnv">(bsmith@jhpce01.jhsph.edu)</span> <span class="go">Verification code: ***Enter your Google Authenticator Code***</span>
-<span class="go">Bobs-Mac$</span>
-</code></pre></div>
-4) Now you should be able to login without having to use your JHPCE password and verification code.
-<div class="highlight"><pre><span></span><code><span class="gp">[bobsmith@Bobs-Mac ~] $ </span>ssh<span class="w"> </span>bsmith@jhpce01.jhsph.edu<span class="w"> </span>
-<span class="go">Last failed login: Mon Apr  7 09:42:08 EDT 2025 from 174.172.134.59 on ssh:notty</span>
-<span class="go">Last login: Mon Apr  7 09:23:33 2025 from 174.172.134.59</span>
-<span class="go">Use of this system constitutes agreement to adhere to all</span>
-<span class="go">applicable JHU and JHSPH network and computer use policies.</span>
+[bobsmith@Bobs-Mac ~] $ <b>ssh-add </b>
+Enter passphrase for /Users/bobsmith/.ssh/id_ecdsa: ***Passphrase Entered***
+Identity added: /Users/bobsmith/.ssh/id_ecdsa (bobsmith@Bobs-Mac.local)
+</code></pre>
+<p>3) Copy your ssh public key up to the JHPCE cluster.  Please be sure to replace the "bsmith" in the example below with your JHPCE login ID.</p>
+<pre lang="console"><code>
+[bobsmith@Bobs-Mac ~] $ <b>cat ~/.ssh/id_ecdsa.pub | ssh bsmith@jhpce01.jhsph.edu 'cat >> ~/.ssh/authorized_keys'</b>
+(bsmith@jhpce01.jhsph.edu) Password: <i>Enter your JHPCE Password</i>
+(bsmith@jhpce01.jhsph.edu) Verification code: <i>Enter your Google Authenticator Code</i>
+Bobs-Mac$
+</code></pre>
+<p>4) Now you should be able to login without having to use your JHPCE password and verification code.</p>
+<pre lang="console"><code>
+[bobsmith@Bobs-Mac ~] $ <b>ssh bsmith@jhpce01.jhsph.edu </b>
+Last failed login: Mon Apr  7 09:42:08 EDT 2025 from 174.172.134.59 on ssh:notty
+Last login: Mon Apr  7 09:23:33 2025 from 174.172.134.59
+Use of this system constitutes agreement to adhere to all
+applicable JHU and JHSPH network and computer use policies.
 
-<span class="go">. . .</span>
+. . .
 
-<span class="gp">[bsmith@jhpce01 ~]$ </span>
-</code></pre></div></p>
+[bsmith@jhpce01 ~]$ 
+</code></pre>
+
 <h4 id="ssh-keys-more-info">SSH Keys, more info:<a class="headerlink" href="#ssh-keys-more-info" title="Anchor link to this section for reference">&para;</a></h4>
 <p>SSH programs make use of something called <a href="https://en.wikipedia.org/wiki/Public-key_cryptography">public-key cryptography</a>. Basically secure communications can be created by splitting a secret into to parts, and placing one part on each end of a link. This can be extended to an optional pair of files you can generate and distribute such that one is located on the JHPCE cluster and the other is on your computer. Or smartphone!</p>
 <p>This key pair of files is generated once, and protected with a passphrase. You place a copy of the "public" key file on JHPCE in a particular place with specific permissions. You keep a copy of the "private" key file on your personal device(s). Once you prove to a program (ssh-agent) running on your device that you know the passphrase to your private key file, it will thereafter provide your private key when you run an SSH command.</p>
@@ -4517,7 +4521,7 @@ ServerAliveCountMax<span class="w"> </span><span class="m">30</span>
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="April 7, 2025 14:15:15">April 7, 2025</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="April 7, 2025 14:20:43">April 7, 2025</span>
   </span>
 
     
