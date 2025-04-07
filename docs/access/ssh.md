@@ -36,7 +36,7 @@ For Mac or Windows users, you can use the following steps.
 1) Generate your private and public keys on your local system, run "ssh-keygen -t ecdsa".  When asked "Enter file in which to save the key", you should use the default answer. When asked to enter a passphrase, please choose a secure passphrase/password to securely store your keys.
 
 <pre lang="console"><code>
-[bobsmith@Bobs-Mac ~] $ ssh-keygen -t ecdsa 
+[bobsmith@Bobs-Mac ~] $ <b>ssh-keygen -t ecdsa </b>
 Generating public/private ecdsa key pair.
 Enter file in which to save the key (/Users/BobSmith/.ssh/id_ecdsa): 
 Enter passphrase (empty for no passphrase): <i>Passphrase Entered</i>
@@ -52,28 +52,28 @@ The key's randomart image is:
 |    o .   .  .   |
 |     .   A.o.    |
 +----[SHA256]-----+
-<code></code></pre>
+</code></pre>
 2) Run "ssh-agent" and "ssh-add" to enable ssh-agent on your local system.  This will enble you to use your keys without having to use your Passphrase every time you use them.  You will need to run these 2 commands each time you reboot your local system.
-```console
-[bobsmith@Bobs-Mac ~] $ ssh-agent
+<pre lang="console"><code>
+[bobsmith@Bobs-Mac ~] $ <b>ssh-agent</b>
 SSH_AUTH_SOCK=/var/folders/xb/8jxv_1495w7f7ym9w89ksg8m0000gn/T//ssh-IAaQtZb85RG5/agent.63154; export SSH_AUTH_SOCK;
 SSH_AGENT_PID=63155; export SSH_AGENT_PID;
 echo Agent pid 63155;
 
-[bobsmith@Bobs-Mac ~] $ ssh-add 
+[bobsmith@Bobs-Mac ~] $ <b>ssh-add </b>
 Enter passphrase for /Users/bobsmith/.ssh/id_ecdsa: ***Passphrase Entered***
 Identity added: /Users/bobsmith/.ssh/id_ecdsa (bobsmith@Bobs-Mac.local)
-```
+</code></pre>
 3) Copy your ssh public key up to the JHPCE cluster.  Please be sure to replace the "bsmith" in the example below with your JHPCE login ID.
-```console
-[bobsmith@Bobs-Mac ~] $ cat ~/.ssh/id_ecdsa.pub | ssh bsmith@jhpce01.jhsph.edu 'cat >> ~/.ssh/authorized_keys'
-(bsmith@jhpce01.jhsph.edu) Password: ***Enter your JHPCE Password***
-(bsmith@jhpce01.jhsph.edu) Verification code: ***Enter your Google Authenticator Code***
+<pre lang="console"><code>
+[bobsmith@Bobs-Mac ~] $ <b>cat ~/.ssh/id_ecdsa.pub | ssh bsmith@jhpce01.jhsph.edu 'cat >> ~/.ssh/authorized_keys'</b>
+(bsmith@jhpce01.jhsph.edu) Password: <i>Enter your JHPCE Password</i>
+(bsmith@jhpce01.jhsph.edu) Verification code: <i>Enter your Google Authenticator Code</i>
 Bobs-Mac$
-```
+</code></pre>
 4) Now you should be able to login without having to use your JHPCE password and verification code.
-```console
-[bobsmith@Bobs-Mac ~] $ ssh bsmith@jhpce01.jhsph.edu 
+<pre lang="console"><code>
+[bobsmith@Bobs-Mac ~] $ <b>ssh bsmith@jhpce01.jhsph.edu </b>
 Last failed login: Mon Apr  7 09:42:08 EDT 2025 from 174.172.134.59 on ssh:notty
 Last login: Mon Apr  7 09:23:33 2025 from 174.172.134.59
 Use of this system constitutes agreement to adhere to all
@@ -82,7 +82,7 @@ applicable JHU and JHSPH network and computer use policies.
 . . .
 
 [bsmith@jhpce01 ~]$ 
-```
+</code></pre>
 
 
 #### SSH Keys, more info:
