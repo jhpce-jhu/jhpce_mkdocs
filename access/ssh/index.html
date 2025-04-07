@@ -1410,44 +1410,24 @@
     </span>
   </a>
   
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#just-yanked-in-here-from-our-knowledgebase-document" class="md-nav__link">
-    <span class="md-ellipsis">
-      Just yanked in here from our Knowledgebase document
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Just yanked in here from our Knowledgebase document">
+    <nav class="md-nav" aria-label="SSH Keys, more info:">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#unix-based-machines-linux-and-mac-osx" class="md-nav__link">
+  <a href="#ssh-keys-setup-more-detailed-info" class="md-nav__link">
     <span class="md-ellipsis">
-      Unix-based machines (linux and mac osx)
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Unix-based machines (linux and mac osx)">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#loging-into-nodes" class="md-nav__link">
-    <span class="md-ellipsis">
-      Loging into nodes
+      SSH Keys Setup, more detailed info:
     </span>
   </a>
   
 </li>
         
-      </ul>
-    </nav>
+          <li class="md-nav__item">
+  <a href="#ssh-keys-nitty-gritty-details" class="md-nav__link">
+    <span class="md-ellipsis">
+      SSH Keys Nitty Gritty Details
+    </span>
+  </a>
   
 </li>
         
@@ -1460,17 +1440,22 @@
   
 </li>
         
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
+          <li class="md-nav__item">
   <a href="#permissions-on-ssh-files" class="md-nav__link">
     <span class="md-ellipsis">
       Permissions on SSH Files
     </span>
   </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -4015,44 +4000,24 @@
     </span>
   </a>
   
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#just-yanked-in-here-from-our-knowledgebase-document" class="md-nav__link">
-    <span class="md-ellipsis">
-      Just yanked in here from our Knowledgebase document
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Just yanked in here from our Knowledgebase document">
+    <nav class="md-nav" aria-label="SSH Keys, more info:">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#unix-based-machines-linux-and-mac-osx" class="md-nav__link">
+  <a href="#ssh-keys-setup-more-detailed-info" class="md-nav__link">
     <span class="md-ellipsis">
-      Unix-based machines (linux and mac osx)
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Unix-based machines (linux and mac osx)">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#loging-into-nodes" class="md-nav__link">
-    <span class="md-ellipsis">
-      Loging into nodes
+      SSH Keys Setup, more detailed info:
     </span>
   </a>
   
 </li>
         
-      </ul>
-    </nav>
+          <li class="md-nav__item">
+  <a href="#ssh-keys-nitty-gritty-details" class="md-nav__link">
+    <span class="md-ellipsis">
+      SSH Keys Nitty Gritty Details
+    </span>
+  </a>
   
 </li>
         
@@ -4065,17 +4030,22 @@
   
 </li>
         
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
+          <li class="md-nav__item">
   <a href="#permissions-on-ssh-files" class="md-nav__link">
     <span class="md-ellipsis">
       Permissions on SSH Files
     </span>
   </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -4222,7 +4192,7 @@ bsmith       21G                100G
 <p>If you have had several unsuccessful login attempts, your local system will be blocked by the login node.  Further attempts to ssh into the login node will likely give you a “Connection Refused” message, you will need to wait 10 minutes before trying to login again.  It you are certain you are using all of the right information for your login, and don't want to wait 10 minutes, you can try our second login node, jhpce03.jhsph.edu.</p>
 <p>If you continue to have login issues, please contact us at bitsupport@lists.jhu.edu.</p>
 <h2 id="ssh-keys">SSH Keys<a class="headerlink" href="#ssh-keys" title="Anchor link to this section for reference">&para;</a></h2>
-<h4 id="ssh-keys-quickstart">SSH Keys Quickstart:<a class="headerlink" href="#ssh-keys-quickstart" title="Anchor link to this section for reference">&para;</a></h4>
+<h3 id="ssh-keys-quickstart">SSH Keys Quickstart:<a class="headerlink" href="#ssh-keys-quickstart" title="Anchor link to this section for reference">&para;</a></h3>
 <p>For Windows users using MobaXterm, please see this <a href="https://jhpce.jhu.edu/access/mobaxterm/#optional-setting-up-ssh-keys-in-mobaxterm">guide on our site in the Mobaxterm section</a></p>
 <p>For Mac or Windows users, you can use the following steps.</p>
 <p>1) Generate your private and public keys on your local system, run "ssh-keygen -t ecdsa".  When asked "Enter file in which to save the key", you should use the default answer. When asked to enter a passphrase, please choose a secure passphrase/password to securely store your keys.</p>
@@ -4275,18 +4245,13 @@ applicable JHU and JHSPH network and computer use policies.
 [bsmith@jhpce01 ~]$ 
 </code></pre>
 
-<h4 id="ssh-keys-more-info">SSH Keys, more info:<a class="headerlink" href="#ssh-keys-more-info" title="Anchor link to this section for reference">&para;</a></h4>
+<h3 id="ssh-keys-more-info">SSH Keys, more info:<a class="headerlink" href="#ssh-keys-more-info" title="Anchor link to this section for reference">&para;</a></h3>
 <p>SSH programs make use of something called <a href="https://en.wikipedia.org/wiki/Public-key_cryptography">public-key cryptography</a>. Basically secure communications can be created by splitting a secret into to parts, and placing one part on each end of a link. This can be extended to an optional pair of files you can generate and distribute such that one is located on the JHPCE cluster and the other is on your computer. Or smartphone!</p>
 <p>This key pair of files is generated once, and protected with a passphrase. You place a copy of the "public" key file on JHPCE in a particular place with specific permissions. You keep a copy of the "private" key file on your personal device(s). Once you prove to a program (ssh-agent) running on your device that you know the passphrase to your private key file, it will thereafter provide your private key when you run an SSH command.</p>
 <p>Once configured properly, you can use SSH keys instead of your JHPCE password.</p>
 <p><a href="https://hpc-docs.cubi.bihealth.org/connecting/ssh-basics/#ssh-keys">SSH Keys described by another cluster</a></p>
 <p>This is still a means for using 2 Factor Authentication.  The key files themselves are "Something you Have" and these are protected by "Something you Know" in the form of the SSH passphrase, as well as the authentication mechanism used to protect your local system (password/fingerprint scanner)</p>
-<h2 id="just-yanked-in-here-from-our-knowledgebase-document">Just yanked in here from our Knowledgebase document<a class="headerlink" href="#just-yanked-in-here-from-our-knowledgebase-document" title="Anchor link to this section for reference">&para;</a></h2>
-<div class="admonition note">
-<p class="admonition-title">Authoring Note</p>
-<p>This material needs to be placed in the right places.</p>
-</div>
-<h3 id="unix-based-machines-linux-and-mac-osx">Unix-based machines (linux and mac osx)<a class="headerlink" href="#unix-based-machines-linux-and-mac-osx" title="Anchor link to this section for reference">&para;</a></h3>
+<h4 id="ssh-keys-setup-more-detailed-info">SSH Keys Setup, more detailed info:<a class="headerlink" href="#ssh-keys-setup-more-detailed-info" title="Anchor link to this section for reference">&para;</a></h4>
 <p>SSH supports different kinds of identity key encryption.  Various algorithms have been developed over the years. As computing power increases and algorithm flaws are discovered, the recommended one to use changes. In the past "rsa" was the default.  That is no longer recommended in 2024. We here show "ecdsa" but you might want to instead use "ed25519". Just be consistent in your use of the string where it shows up in commands or file names.</p>
 <ul>
 <li>First, on your local laptop/desktop, open a terminal and <code>cd</code> into your home directory  and invoke the ssh key generator:</li>
@@ -4310,14 +4275,13 @@ applicable JHU and JHSPH network and computer use policies.
 ssh-agent
 </code></pre></div>
 The ssh-agent will remain active for as long as your desktop or laptop is up and running.  If you reboot your desktop/laptop, you will need to rerun the ssh-add and ssh-agent commands.</p>
-<h4 id="loging-into-nodes">Loging into nodes<a class="headerlink" href="#loging-into-nodes" title="Anchor link to this section for reference">&para;</a></h4>
+<h4 id="ssh-keys-nitty-gritty-details">SSH Keys Nitty Gritty Details<a class="headerlink" href="#ssh-keys-nitty-gritty-details" title="Anchor link to this section for reference">&para;</a></h4>
 <div class="admonition warning">
 <p class="admonition-title">Authoring Note</p>
 <p>(((This isn't true if you use <code>srun</code>. Is it even true in JHPCE 3.0 anyway Also, do we want to be suggesting that people log into compute nodes?)))</p>
 </div>
 <p>Logging into a cluster node from a login node requires keypairs. 
- If
-your private key file is in <code>.ssh/</code> then it should work, since the
+ If your private key file is in <code>.ssh/</code> then it should work, since the
 public key file is in your <code>authorized_keys</code> file. If you do not want
 the same private key file to be used to log into nodes as the one used
 to log into the login node, then repeat create a new public private
@@ -4325,12 +4289,12 @@ key / public key pair on the cluster.  Append the public key to
 your<code>authorized_key</code> file. Note, when appending, add the public key,
 do not overwrite the existing file.</p>
 <p>Many users set up an alias for the ssh command so they don’t have to type as much to log into the remote host.  You can do this by adding the following line to your <code>~/.bashrc</code>, <code>alias hpc='ssh -X &lt;your_userid&gt;@jhpce01.jhsph.edu'</code>.</p>
-<h3 id="windows-machines">Windows machines<a class="headerlink" href="#windows-machines" title="Anchor link to this section for reference">&para;</a></h3>
+<h4 id="windows-machines">Windows machines<a class="headerlink" href="#windows-machines" title="Anchor link to this section for reference">&para;</a></h4>
 <p>If your desktop/laptop runs Microsoft Windows then you first need to
 install MobaXterm on your windows machine. If you are
 using MobaXterm, please use the steps at the bottom of our <a href="../mobaxterm/">MobaXterm
 configuration page</a>.</p>
-<h2 id="permissions-on-ssh-files">Permissions on SSH Files<a class="headerlink" href="#permissions-on-ssh-files" title="Anchor link to this section for reference">&para;</a></h2>
+<h4 id="permissions-on-ssh-files">Permissions on SSH Files<a class="headerlink" href="#permissions-on-ssh-files" title="Anchor link to this section for reference">&para;</a></h4>
 <p>SSH is <strong><em>very</em></strong> strict about the permissions found on your ssh-related files on <strong>both ends</strong> of a connection. These files are found on JHPCE in your home directory inside the directory <code>.ssh</code>  Because this directory's name begins with a period, it is not listed when you use the <code>ls</code> program -- you have to use <code>ls -a</code> or <code>ls -ld ~/.ssh</code> to see it.</p>
 <p>The primary symptom of there being a file permissions problem is that ssh is still asking for a password when you think it should not. Sometimes you get a helpful error message <code>Bad owner or permissions on &lt;a specific ssh-related file&gt;</code></p>
 <p>These rules are normally found to be broken on the remote side of a connection, but the permissions on your computer also matter. Different SSH programs may keep ssh-related files in different places, especially if they are on Windows computers.</p>
@@ -4496,7 +4460,7 @@ ServerAliveCountMax<span class="w"> </span><span class="m">30</span>
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="April 7, 2025 15:04:49">April 7, 2025</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="April 7, 2025 15:48:26">April 7, 2025</span>
   </span>
 
     
