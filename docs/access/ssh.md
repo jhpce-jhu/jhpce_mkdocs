@@ -1,32 +1,71 @@
----
-tags:
-  - in-progress
-  - ssh
-  - jeffrey
----
-
 
 # SSH - Key Information
-
-!!! Note "Authoring Note"
-    This page contains both good information and a bunch that needs to be reviewed, reorganized. Take what you need and leave the rest.
-    This page should be organized around SSH usage concepts with the per-OS implementation details contained within the sections.
-    Windows users: We're not going to document how to do each thing in Putty, Cygwin, etc. Only MobaXterm. The way to accomplish some of the same goals in MobaXterm would be nice to identify (probably in new sections in the existing [MobaXterm configuration document](../access/mobaxterm.md)).
-    Material like the section "Mac-specific configuration" describes ssh per-user config file syntax and content. Most of it applies to Linux users as well.  So perhaps rename such material to be "CLI SSH"?
-    
+   
 ## SSH Basics
 
 Access to the JHPCE cluster requires the use of SSH. Over time, the ability to launch applications via a web interface will increase, but for the foreseeable future you will need to be able to SSH in and then use command line UNIX skills to do your work.
 
-SSH stands for Secure SHell. SSH is actually a set of internet standard protocols. Programs implementing these protocols include both command line interface (CLI) tools and those with graphic user interfaces (GUI).  They all enable you to make secure, encrypted connections from one computer to the next.
+SSH stands for Secure SHell. SSH is actually a set of internet standard protocols. Programs implementing these protocols include both command line interface (CLI) tools and those with graphic user interfaces (GUI).  They all enable you to make secure, encrypted connections from one computer to the next.  In our case, ssh allows you to create an encrypted connection between you local system and the JHPCE login nodes (jhpce01.jhsph.edu and jhpce03.jhsph.edu), so that you can run a Unix Shell on the JHPCE cluster.
 
-Depending on the kind of operating system your computer uses, you may or may not need to install SSH software.
+Depending on the kind of operating system your computer uses, you may or may not need to install SSH software. Apple Macs come with CLI SSH tools pre-installed. You use them by entering commands in the Terminal app.  You can install GUI apps from various vendors, but we will only discuss the CLI tools except for some file transfer GUI programs.  On a Windows system you will need to install an ssh client.  We recommend the excellent GUI program MobaXterm. [Here is a document](mobaxterm.md) describing how to use it. There are other programs, such as the [PuTTY](https://en.wikipedia.org/wiki/PuTTY) family of tools and [WinSCP](https://en.wikipedia.org/wiki/WinSCP).
 
-Apple Macs come with CLI SSH tools pre-installed. You use them by entering commands in the Terminal app.  You can install GUI apps from various vendors, but we will only discuss the CLI tools except for some file transfer GUI programs.
+By default, we use "2 Factor Authentication" in order to authenticate you access when you ssh into the JHPCE cluster.  This means that we will ask for 2 pieces of infomation instead of just 1.  Secifically, you will be asked for:
 
-On a Windows system you will need to install an ssh client.  We recommend the excellent GUI program MobaXterm. [Here is a document](mobaxterm.md) describing how to use it. There are other programs, such as the [PuTTY](https://en.wikipedia.org/wiki/PuTTY) family of tools and [WinSCP](https://en.wikipedia.org/wiki/WinSCP).
+1) Your Password. Your password will be a secure secret that only you know and is hard for others to guess.
+2) A Verification Code.  Your Verification Code will be a one-time-use code from an App like Google Authenticator.
 
-### SSH Keys
+As an aside, there are commonly 3 factors that can be used when authenticating in the Cybersecurity world. These are, Something you Know, Something you Have, and Something you Are.  The 2 factors we're using on JHPCE are "Something you Know" (a password), and "Somthing you Have" (your one-time-use code from Google Authenticator). An example of methods that use "Something you Are" would be a fingerprint scanner or the Apple's Face ID.
+
+You can also allow the use of SSH keys to help smooth the login process with a passwordless process.  Please see [the section below](https://jhpce.jhu.edu/access/ssh/#ssh-keys) for more details on SSH keys.
+
+Here is what a normal ssh connection looks like to login to the jhcpe01.jhsph.edu login node as user "bsmith", coming from his Mac named "Bobs-Mac".
+
+<pre lang="console"><code>
+[bobsmith@Bobs-Mac ~] $ <b>ssh bsmith@jhpce01.jhsph.edu </b>
+(bsmith@jhpce01.jhsph.edu) Password: <i>Bob types his JHPCE password</i>
+(bsmith@jhpce01.jhsph.edu) Verification code: <i>Bob types the 6-digit code from Google Authenticator</i>
+Last failed login: Mon Apr  7 09:42:08 EDT 2025 from 174.172.134.59 on ssh:notty
+Last login: Mon Apr  7 09:23:33 2025 from 174.172.134.59
+🌸 🌸 🌸 🌸 🌸 🌸 🌸 🌸 🌸 🌸 🌸 🌸 🌸 🌸 🌸 🌸 🌸 🌸 🌸 🌸 🌸 🌸
+Use of this system constitutes agreement to adhere to all
+applicable JHU and JHSPH network and computer use policies.
+🌸 🌸 🌸 🌸 🌸 🌸 🌸 🌸 🌸 🌸 🌸 🌸 🌸 🌸 🌸 🌸 🌸 🌸 🌸 🌸 🌸 🌸
+
+Need Help? bitsupport@lists.jh.edu for SLURM, cluster, storage & login issues
+           bithelp@lists.jh.edu for application issues: R/SAS/python/modules...
+
+The SLURM shared partition is currently at 85% core usage and 70% RAM usage.
+--------------------------------------------------------------------
+DISK: Compression is enabled in our ZFS file systems like /users & /dcs05
+DISK: You don't need to compress your files unless you want to use _very_
+DISK: high compression levels or transfer them outside of the cluster.
+--------------------------------------------------------------------
+--------------------------------------
+     Your Home Directory Usage        
+Username     Space Used         Quota     
+bsmith       21G                100G      
+--------------------------------------
+
+[bsmith@jhpce01 ~]$ 
+</code></pre>
+
+!!! Note
+    Please note that when typing the "Password" and "Verification Code", the cursor does not move.  This is a security mechanism to prevent someone from watching what you are typing.  The computer is seeing what you are typing even if it isn't being displayed back.
+
+If you have entered your credentials correctly, you will see a login banner for the JHPCE cluster, and you will be sitting at a shell prompt on the login node.  However, if you are prompted for “Password:” again, you likely mistyped either your password or Verification Code, and you should wait until your Google Authenticator code changes (it changes every 30 seconds) and you will need to try logging in again.
+
+Here are some things to check if you are unable to ssh into the JHPCE cluster:
+- Please make sure that you are using the password for the JHPCE cluster, and not your some other password, like you JHED or laptop password.
+- Please make sure you are using your JHPCE login ID. This is different from your JHED ID.
+- Please make sure you are using the Google Authenticator entry for the JHPCE cluster, and not some other system.
+
+If you have had several unsuccessful login attempts, your local system will be blocked by the login node.  Further attempts to ssh into the login node will likely give you a “Connection Refused” message, you will need to wait 10 minutes before trying to login again.  It you are certain you are using all of the right information for your login, and don't want to wait 10 minutes, you can try our second login node, jhpce03.jhsph.edu.
+
+If you continue to have login issues, please contact us at bitsupport@lists.jhu.edu.
+
+
+
+## SSH Keys
 
 #### SSH Keys Quickstart:
 For Windows users using MobaXterm, please see this [guide on our site in the Mobaxterm section](https://jhpce.jhu.edu/access/mobaxterm/#optional-setting-up-ssh-keys-in-mobaxterm)
@@ -94,20 +133,14 @@ Once configured properly, you can use SSH keys instead of your JHPCE password.
 
 [SSH Keys described by another cluster](https://hpc-docs.cubi.bihealth.org/connecting/ssh-basics/#ssh-keys)
 
+This is still a means for using 2 Factor Authentication.  The key files themselves are "Something you Have" and these are protected by "Something you Know" in the form of the SSH passphrase, as well as the authentication mechanism used to protect your local system (password/fingerprint scanner)
+
 ## Just yanked in here from our Knowledgebase document
 
 !!! Note "Authoring Note"
     This material needs to be placed in the right places.
 
-#### Login howto
-+ When ssh-ing into the cluster you provide your JHPCE user name as part of the ssh command (Mac or Linux) or ssh session configuration (e.g. in MobaXterm)
-+ You will be prompted for 2 additional pieces of information. 
-  + First you will be prompted for “Verification Code:”, and for this you will enter the 6 digit number from your authenticator app (we recommend Google authenticator). See [here](https://jhpce.jhu.edu/access/access-overview/#one-time-passwords) for more on these one-time passwords.
-  + Next you will be prompted for “Password:”; this you this will use a traditional password that only you know.  *Note that when entering your Verification Code and Password, your cursor will not move when you type, so it will appear like nothing is happening*.  + If you have never accessed the cluster before, and “Initial Verification Code” and “Initial Password” will be provided to you during your JHPCE Cluster Orientation session.
-+ If you only get prompted for “Password” and not “Verification Code”, you are likely using the wrong login ID.  Your login ID is provided to you during the JHPCE orientation; it is not the same as your JHED ID.
-+ If you have entered your credentials correctly, you will see a login banner for the JHPCE cluster, and you will be sitting at a shell prompt on the login node.  However, if you are prompted for “Verification Code:” again, you likely mistyped either your password or Verification Code, and you should wait until your Google Authenticator code changes (it changes every 30 seconds) and you will need to try logging in again.
-+ If you have tried several times to login, and you try to ssh again and get a “Connection Refused” message, you will need to wait 30 minutes before trying to login again.
-+ If you continue to have login issues, please contact bitsupport@lists.jhu.edu.
+
 
 
 ### Unix-based machines (linux and mac osx)
