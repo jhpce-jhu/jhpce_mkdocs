@@ -93,6 +93,27 @@
   {
     "page_name": "SSH",
     "page_url": "../../access/ssh/",
+    "text": "[bobsmith@Bobs-Mac ~] $ ssh-agent\nSSH_AUTH_SOCK=/var/folders/xb/8jxv_1495w7f7ym9w89ksg8m0000gn/T//ssh-IAaQtZb85RG5/agent.63154; export SSH_AUTH_SOCK;\nSSH_AGENT_PID=63155; export SSH_AGENT_PID;\necho Agent pid 63155;\n\n[bobsmith@Bobs-Mac ~] $ ssh-add \nEnter passphrase for /Users/bobsmith/.ssh/id_ecdsa: ***Passphrase Entered***\nIdentity added: /Users/bobsmith/.ssh/id_ecdsa (bobsmith@Bobs-Mac.local)\n",
+    "html": "<pre><span></span><code><span class=\"gp\">[bobsmith@Bobs-Mac ~] $ </span>ssh-agent\n<span class=\"go\">SSH_AUTH_SOCK=/var/folders/xb/8jxv_1495w7f7ym9w89ksg8m0000gn/T//ssh-IAaQtZb85RG5/agent.63154; export SSH_AUTH_SOCK;</span>\n<span class=\"go\">SSH_AGENT_PID=63155; export SSH_AGENT_PID;</span>\n<span class=\"go\">echo Agent pid 63155;</span>\n\n<span class=\"gp\">[bobsmith@Bobs-Mac ~] $ </span>ssh-add<span class=\"w\"> </span>\n<span class=\"go\">Enter passphrase for /Users/bobsmith/.ssh/id_ecdsa: ***Passphrase Entered***</span>\n<span class=\"go\">Identity added: /Users/bobsmith/.ssh/id_ecdsa (bobsmith@Bobs-Mac.local)</span>\n</code></pre>",
+    "language": ""
+  },
+  {
+    "page_name": "SSH",
+    "page_url": "../../access/ssh/",
+    "text": "[bobsmith@Bobs-Mac ~] $ cat ~/.ssh/id_ecdsa.pub | ssh bsmith@jhpce01.jhsph.edu 'cat >> ~/.ssh/authorized_keys'\n(bsmith@jhpce01.jhsph.edu) Password: ***Enter your JHPCE Password***\n(bsmith@jhpce01.jhsph.edu) Verification code: ***Enter your Google Authenticator Code***\nBobs-Mac$\n",
+    "html": "<pre><span></span><code><span class=\"gp\">[bobsmith@Bobs-Mac ~] $ </span>cat<span class=\"w\"> </span>~/.ssh/id_ecdsa.pub<span class=\"w\"> </span><span class=\"p\">|</span><span class=\"w\"> </span>ssh<span class=\"w\"> </span>bsmith@jhpce01.jhsph.edu<span class=\"w\"> </span><span class=\"s1\">'cat &gt;&gt; ~/.ssh/authorized_keys'</span>\n<span class=\"gp gp-VirtualEnv\">(bsmith@jhpce01.jhsph.edu)</span> <span class=\"go\">Password: ***Enter your JHPCE Password***</span>\n<span class=\"gp gp-VirtualEnv\">(bsmith@jhpce01.jhsph.edu)</span> <span class=\"go\">Verification code: ***Enter your Google Authenticator Code***</span>\n<span class=\"go\">Bobs-Mac$</span>\n</code></pre>",
+    "language": ""
+  },
+  {
+    "page_name": "SSH",
+    "page_url": "../../access/ssh/",
+    "text": "[bobsmith@Bobs-Mac ~] $ ssh bsmith@jhpce01.jhsph.edu \nLast failed login: Mon Apr  7 09:42:08 EDT 2025 from 174.172.134.59 on ssh:notty\nLast login: Mon Apr  7 09:23:33 2025 from 174.172.134.59\nUse of this system constitutes agreement to adhere to all\napplicable JHU and JHSPH network and computer use policies.\n\n. . .\n\n[bsmith@jhpce01 ~]$ \n",
+    "html": "<pre><span></span><code><span class=\"gp\">[bobsmith@Bobs-Mac ~] $ </span>ssh<span class=\"w\"> </span>bsmith@jhpce01.jhsph.edu<span class=\"w\"> </span>\n<span class=\"go\">Last failed login: Mon Apr  7 09:42:08 EDT 2025 from 174.172.134.59 on ssh:notty</span>\n<span class=\"go\">Last login: Mon Apr  7 09:23:33 2025 from 174.172.134.59</span>\n<span class=\"go\">Use of this system constitutes agreement to adhere to all</span>\n<span class=\"go\">applicable JHU and JHSPH network and computer use policies.</span>\n\n<span class=\"go\">. . .</span>\n\n<span class=\"gp\">[bsmith@jhpce01 ~]$ </span>\n</code></pre>",
+    "language": ""
+  },
+  {
+    "page_name": "SSH",
+    "page_url": "../../access/ssh/",
     "text": "ssh-keygen -t ecdsa\n",
     "html": "<pre><span></span><code>ssh-keygen -t ecdsa\n</code></pre>",
     "language": ""
