@@ -35,7 +35,7 @@ For Mac or Windows users, you can use the following steps.
 
 1) Generate your private and public keys on your local system, run "ssh-keygen -t ecdsa".  When asked "Enter file in which to save the key", you should use the default answer. When asked to enter a passphrase, please choose a secure passphrase/password to securely store your keys.
 
-<pre lang="console">
+<pre lang="console"><code>
 [bobsmith@Bobs-Mac ~] $ ssh-keygen -t ecdsa 
 Generating public/private ecdsa key pair.
 Enter file in which to save the key (/Users/BobSmith/.ssh/id_ecdsa): 
@@ -52,7 +52,7 @@ The key's randomart image is:
 |    o .   .  .   |
 |     .   A.o.    |
 +----[SHA256]-----+
-</pre>
+<code></code></pre>
 2) Run "ssh-agent" and "ssh-add" to enable ssh-agent on your local system.  This will enble you to use your keys without having to use your Passphrase every time you use them.  You will need to run these 2 commands each time you reboot your local system.
 ```console
 [bobsmith@Bobs-Mac ~] $ ssh-agent
