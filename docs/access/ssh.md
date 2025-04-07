@@ -27,9 +27,66 @@ Apple Macs come with CLI SSH tools pre-installed. You use them by entering comma
 On a Windows system you will need to install an ssh client.  We recommend the excellent GUI program MobaXterm. [Here is a document](mobaxterm.md) describing how to use it. There are other programs, such as the [PuTTY](https://en.wikipedia.org/wiki/PuTTY) family of tools and [WinSCP](https://en.wikipedia.org/wiki/WinSCP).
 
 ### SSH Keys
-SSH programs make use of something called [public-key cryptography](https://en.wikipedia.org/wiki/Public-key_cryptography). Basically secure communications can be created by splitting a secret into to parts, and placing one part on each end of a link.
 
-This can be extended to an optional pair of files you can generate and distribute such that one is located on the JHPCE cluster and the other is on your computer. Or smartphone!
+#### SSH Keys Quickstart:
+For Windows users using MobaXterm, please see this [guide on our site in the Mobaxterm section](https://jhpce.jhu.edu/access/mobaxterm/#optional-setting-up-ssh-keys-in-mobaxterm)
+
+For Mac or Windows users, you can use the following steps.
+
+1) Generate your private and public keys on your local system, run "ssh-keygen -t ecdsa".  When asked "Enter file in which to save the key", you should use the default answer. When asked to enter a passphrase, please choose a secure passphrase/password to securely store your keys.
+
+<pre lang="console">
+[bobsmith@Bobs-Mac ~] $ ssh-keygen -t ecdsa 
+Generating public/private ecdsa key pair.
+Enter file in which to save the key (/Users/BobSmith/.ssh/id_ecdsa): 
+Enter passphrase (empty for no passphrase): <i>Passphrase Entered</i>
+Enter same passphrase again: <i>Passphrase Entered</i>
+Your identification has been saved in /Users/BobSmith/.ssh/id_ecdsa
+Your public key has been saved in /Users/BobSmith/.ssh/id_ecdsa.pub
+The key fingerprint is:
+SHA256:uyy1HdCMcwNMSHLk2cKsc0Tn bobsmith@Bobs-Mac.local
+The key's randomart image is:
++---[ECDSA 256]---+
+| *AB.  .o ..     |
+. . .
+|    o .   .  .   |
+|     .   A.o.    |
++----[SHA256]-----+
+</pre>
+2) Run "ssh-agent" and "ssh-add" to enable ssh-agent on your local system.  This will enble you to use your keys without having to use your Passphrase every time you use them.  You will need to run these 2 commands each time you reboot your local system.
+```console
+[bobsmith@Bobs-Mac ~] $ ssh-agent
+SSH_AUTH_SOCK=/var/folders/xb/8jxv_1495w7f7ym9w89ksg8m0000gn/T//ssh-IAaQtZb85RG5/agent.63154; export SSH_AUTH_SOCK;
+SSH_AGENT_PID=63155; export SSH_AGENT_PID;
+echo Agent pid 63155;
+
+[bobsmith@Bobs-Mac ~] $ ssh-add 
+Enter passphrase for /Users/bobsmith/.ssh/id_ecdsa: ***Passphrase Entered***
+Identity added: /Users/bobsmith/.ssh/id_ecdsa (bobsmith@Bobs-Mac.local)
+```
+3) Copy your ssh public key up to the JHPCE cluster.  Please be sure to replace the "bsmith" in the example below with your JHPCE login ID.
+```console
+[bobsmith@Bobs-Mac ~] $ cat ~/.ssh/id_ecdsa.pub | ssh bsmith@jhpce01.jhsph.edu 'cat >> ~/.ssh/authorized_keys'
+(bsmith@jhpce01.jhsph.edu) Password: ***Enter your JHPCE Password***
+(bsmith@jhpce01.jhsph.edu) Verification code: ***Enter your Google Authenticator Code***
+Bobs-Mac$
+```
+4) Now you should be able to login without having to use your JHPCE password and verification code.
+```console
+[bobsmith@Bobs-Mac ~] $ ssh bsmith@jhpce01.jhsph.edu 
+Last failed login: Mon Apr  7 09:42:08 EDT 2025 from 174.172.134.59 on ssh:notty
+Last login: Mon Apr  7 09:23:33 2025 from 174.172.134.59
+Use of this system constitutes agreement to adhere to all
+applicable JHU and JHSPH network and computer use policies.
+
+. . .
+
+[bsmith@jhpce01 ~]$ 
+```
+
+
+#### SSH Keys, more info:
+SSH programs make use of something called [public-key cryptography](https://en.wikipedia.org/wiki/Public-key_cryptography). Basically secure communications can be created by splitting a secret into to parts, and placing one part on each end of a link. This can be extended to an optional pair of files you can generate and distribute such that one is located on the JHPCE cluster and the other is on your computer. Or smartphone!
 
 This key pair of files is generated once, and protected with a passphrase. You place a copy of the "public" key file on JHPCE in a particular place with specific permissions. You keep a copy of the "private" key file on your personal device(s). Once you prove to a program (ssh-agent) running on your device that you know the passphrase to your private key file, it will thereafter provide your private key when you run an SSH command.
 
