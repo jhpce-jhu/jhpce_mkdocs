@@ -108,12 +108,12 @@ Other Storage Arrays currently in use on the JHPCE cluster:
 </TABLE>
 </div>
 These storage arrays are built on the Dirt Cheap Storage and Dirt Cheap Lustre
-architecutre, hence the "DCS" and "DCL" names, as described in
+architecture, hence the "DCS" and "DCL" names, as described in
 [this paper](docs/greenDirtCheapStorage.pdf) from 2013. The storage arrays have
 been historically built on commodity servers and large JBODS
-(Just a Bunch Of Disks) from Supermicro, and run [ZFS](https://zfsonlinux.org/)
-with [Lustre](https://www.lustre.org/) on top of it in the case of the DCL
-arrays.
+(Just a Bunch Of Disks) from Supermicro. We use [ZFS](https://zfsonlinux.org/)
+(with [Lustre](https://www.lustre.org/) on top of it in the case of the DCL
+arrays).
 
 ## Scratch Space
 
