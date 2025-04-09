@@ -37,7 +37,7 @@ There are three types of data storage spaces available on the JHPCE cluster.
 <TABLE align="left">
 <TR><TH>Type</TH><TH>Example Path</TH><TH>Quota?</TH><TH>Use</TH><TH>Cost</TH></TR>
 <TR><TD>Home directory</TD><TD>/users/USERID</TD><TD>100GB</TD><TD>Small datasets, Programs, Applications</TD><TD>$350/TB/yr - max $35/yr if 100GB used</TD></TR>
-<TR><TD>Project space</TD><TD>/dcs0?/*grpname*/data</TD><TD>Purchased Allocation</TD><TD>Research data</TD><TD>Between $25/TB/yr and $40/TB/yr</TD></TR>
+<TR><TD>Project space</TD><TD>/dcs0?/*grpname*/data</TD><TD>Size of the purchased allocation</TD><TD>Research data</TD><TD>Between $25/TB/yr and $40/TB/yr</TD></TR>
 <TR><TD>Scratch space</TD><TD>$MYSCRATCH</TD><TD>1TB</TD><TD>Temporary files</TD><TD>Free</TD></TR>
 
 </TABLE>
@@ -67,7 +67,7 @@ cluster.
 
 For home directory space you are only charged for the actual storage you are
 using at a rate of $0.35/GB/yr.  As you add or remove files, your charge will
-increase or decrease based on your usage.
+increase or decrease based on your usage. Home directory space is already compressed on the storage server, so you won't save any money by compressing your files with `tar -czf` etc.
 
 ## Project Spaces
 
@@ -75,7 +75,7 @@ Every 12 - 18 months, a new large storage array is purchased for
 the JHPCE cluster, and allocations for these storage spaces are sold to 
 the various PIs or groups that need storage space.  As part of the planning
 process for bringing a new storage array online, we will reach out to all
-active PIs on the cluster, and surey them for their expected storage needs.
+active PIs on the cluster, and survey them for their expected storage needs.
 We will then size the new storage array based on those needs.
 
 Our last large storage build was in 2023, for the DCS07 storage array.  We
