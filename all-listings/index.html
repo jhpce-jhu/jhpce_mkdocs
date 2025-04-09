@@ -330,6 +330,8 @@
       
         
       
+        
+      
     
     
     
@@ -399,6 +401,29 @@
   
   <span class="md-ellipsis">
     Staff
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../aboutus/principles/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    JHPCE Constitutional Principles
     
   </span>
   
@@ -3782,14 +3807,298 @@
    D((Web Portal)) --&gt; F[Compute node2]
    B([Login nodes]) --&gt; G[Compute node3]
    D((Web Portal)) --&gt; G[Compute node3]
-   C([Transfer node]) &lt;--&gt; H[(storage servers)]</code></pre><h2><a class="heading" href="../access/file-transfer/">Overview</a></h2><a class="url" href="../access/file-transfer/">access/file-transfer/</a><pre><span></span><code>jhpce01% srun --pty --x11 -p transfer bash
+   C([Transfer node]) &lt;--&gt; H[(storage servers)]</code></pre><h2><a class="heading" href="../access/file-transfer/">Overview</a></h2><a class="url" href="../access/file-transfer/">access/file-transfer/</a><pre><span></span><code>sftp JHPCE-USERID@jhpce-transfer01.jhsph.edu
+</code></pre><pre class="mbash"><code class="mbash">
+MyMac: <b>sftp mmill116@jhpce-transfer01.jhsph.edu</b>
+(mmill116@jhpce-transfer01.jhsph.edu) Verification code: <b>(JHPCE Verification Code Typed In)</b>
+(mmill116@jhpce-transfer01.jhsph.edu) Password: <b>(JHPCE Password Typed In)</b>
+Connected to jhpce-transfer01.jhsph.edu.
+sftp&gt; <b>ls</b>
+10billion                                                                       
+2024-09                                                                         
+500                                                                             
+Bird.jpeg                                                                       
+CITATION                                                                        
+bin                                                                             
+data                                                                            
+jhpce-app                                                                       
+scripts                                                                         
+tmp                                                                             
+sftp&gt; <b>cd tmp</b>
+sftp&gt; <b>ls</b>
+ACL                                     HLA                                     
+a                                       a1                                      
+aaa                                     aaaa                                    
+abc                                     acl-test                                
+shared                                  temp-26800-7554-21111.sam               
+test-rsync                              test1                                   
+test2                                   testhere                                
+tmp                                     tmp2                                    
+tmp3                                    x                                       
+zzz                                     zzzz                                    
+
+sftp&gt; <b>lcd Documents</b>
+sftp&gt; <b>lls</b>
+ACL-CMS.txt
+Screenshot 2024-11-12 at 3.30.24 PM.png
+Screenshot 2025-02-25 at 10.34.09 AM.png
+Screenshot 2025-02-25 at 10.34.18 AM.png
+Screenshot 2025-02-26 at 3.28.57 PM.png
+Zoom
+show-example.txt
+sftp&gt; <b>put show-example.txt</b>
+Uploading show-example.txt to /users/mmill116/tmp/show-example.txt
+show-example.txt                          100% 4798   182.1KB/s   00:00    
+sftp&gt; <b>ls</b>
+ACL                                     HLA                                     
+a                                       a1                                      
+aaa                                     aaaa                                    
+abc                                     acl-test                                
+shared                                  <mark>show-example.txt                    </mark>
+temp-26800-7554-21111.sam               test-rsync                              
+test1                                   test2                                   
+testhere                                tmp                                     
+tmp2                                    tmp3                                    
+x                                       zzz                                     
+zzzz 
+sftp&gt; <b>exit</b>
+MyMac: 
+
 </code></pre><pre><span></span><code>scp LOCAL_PATH/data.txt USERID@jhpce-transfer01.jhsph.edu:REMOTE_PATH/REMOTE_TARGET_FILENAME
 </code></pre><pre><span></span><code>scp USERID@jhpce-transfer01.jhsph.edu:REMOTE_PATH/data2.txt LOCAL_PATH/LOCAL_TARGET_FILENAME
-</code></pre><pre><span></span><code>sftp USERID@jhpce-transfer01.jhsph.edu
-</code></pre><pre><span></span><code>/jhpce/shared/jhpce/core/JHPCE_tools/3.0/packages/ibm-aspera-connect_4.2.10.749_linux_x86_64.sh
-</code></pre><pre><span></span><code>bash ibm-aspera-connect_4.2.10.749_linux_x86_64.sh
-</code></pre><pre><span></span><code>lynx ftp://USER@ftp.site.gov
-</code></pre><pre><span></span><code>wget ftp://USER:PASSWORD@ftp.site.gov/path/to/file
+</code></pre><pre class="mbash"><code class="mbash">
+Mac:[25/04/09 10:13] ~ $ <b>ssh mmill116@jhpce01.jhsph.edu</b>
+Last login: Tue Apr  8 17:04:18 2025 from 174.172.134.59
+🌸 🌸 🌸 🌸 🌸 🌸 🌸 🌸 🌸 🌸 🌸 🌸 🌸 🌸 🌸 🌸 🌸 🌸 🌸 🌸 🌸 🌸
+Use of this system constitutes agreement to adhere to all
+applicable JHU and JHSPH network and computer use policies.
+🌸 🌸 🌸 🌸 🌸 🌸 🌸 🌸 🌸 🌸 🌸 🌸 🌸 🌸 🌸 🌸 🌸 🌸 🌸 🌸 🌸 🌸
+
+Need Help? bitsupport@lists.jh.edu for SLURM, cluster, storage &amp; login issues
+           bithelp@lists.jh.edu for application issues: R/SAS/python/modules...
+
+The SLURM shared partition is currently at 68% core usage and 69% RAM usage.
+--------------------------------------------------------------------
+SLURM: "slurmuser" displays per-user cluster resource usage for running/pending
+SLURM: Run "slurmuser -h" to see important options.
+--------------------------------------------------------------------
+--------------------------------------
+     Your Home Directory Usage        
+Username     Space Used         Quota     
+mmill116     230G               350G      
+--------------------------------------
+[mmill116@jhpce01 ~]$ <b>srun --pty --partition transfer bash</b>
+[mmill116@transfer-01 ~]$ <b>cd /dcs07/smart/data/mmtest/</b>
+[mmill116@transfer-01 mmtest]$ <b>sftp demo@test.rebex.net</b>
+The authenticity of host 'test.rebex.net (<no command="" for="" hostip="" proxy="">)' can't be established.
+ED25519 key fingerprint is SHA256:d7Te2DHmvBNSWJNBWik2KbDTjmWtYHe2bvXTMM9lVg4.
+This key is not known by any other names
+Are you sure you want to continue connecting (yes/no/[fingerprint])? yes
+Warning: Permanently added 'test.rebex.net' (ED25519) to the list of known hosts.
+Welcome to test.rebex.net! See https://test.rebex.net/ for more information.
+(demo@test.rebex.net) Password: 
+Connected to test.rebex.net.
+sftp&gt; <b>ls</b>
+pub          readme.txt   
+sftp&gt; <b>cd pub</b>
+sftp&gt; <b>ls</b>
+example   
+sftp&gt; <b>ls -la </b>
+drwx------ 2 demo users          0 Mar 31  2023 .
+drwx------ 2 demo users          0 Mar 31  2023 ..
+drwx------ 2 demo users          0 Mar 31  2023 example
+sftp&gt; <b>cd example</b>
+sftp&gt; <b>ls -la</b>
+drwx------ 2 demo users          0 Mar 31  2023 .
+drwx------ 2 demo users          0 Mar 31  2023 ..
+-rw------- 1 demo users      36672 Mar 19  2007 KeyGenerator.png
+-rw------- 1 demo users      24029 Mar 19  2007 KeyGeneratorSmall.png
+-rw------- 1 demo users      11546 Mar 19  2007 ResumableTransfer.png
+-rw------- 1 demo users      80000 Mar 19  2007 WinFormClient.png
+-rw------- 1 demo users      17911 Mar 19  2007 WinFormClientSmall.png
+-r-------- 1 demo users      19156 Feb 16  2007 imap-console-client.png
+-r-------- 1 demo users      16471 Feb 16  2007 mail-editor.png
+-r-------- 1 demo users      35414 Feb 16  2007 mail-send-winforms.png
+-r-------- 1 demo users      49011 Feb 16  2007 mime-explorer.png
+-rw------- 1 demo users      58024 Mar 19  2007 pocketftp.png
+-rw------- 1 demo users      20197 Mar 19  2007 pocketftpSmall.png
+-r-------- 1 demo users      20472 Feb 16  2007 pop3-browser.png
+-r-------- 1 demo users      11205 Feb 16  2007 pop3-console-client.png
+-rw------- 1 demo users        379 Sep 19  2023 readme.txt
+-rw------- 1 demo users       2635 Mar 19  2007 winceclient.png
+-rw------- 1 demo users       6146 Mar 19  2007 winceclientSmall.png
+sftp&gt; <b>get readme.txt</b>
+Fetching /pub/example/readme.txt to readme.txt
+readme.txt                                    100%  379     1.8KB/s   00:00    
+sftp&gt; <b>exit</b>
+[mmill116@transfer-01 mmtest]$ <b>ls</b>
+readme.txt  test-file  test-file2  test-file3
+[mmill116@transfer-01 mmtest]$ <b>more readme.txt </b>
+Welcome to test.rebex.net!
+
+You are connected to an FTP or SFTP server used for testing purposes
+by Rebex FTP/SSL or Rebex SFTP sample code. Only read access is allowed.
+
+For information about Rebex FTP/SSL, Rebex SFTP and other Rebex libraries
+for .NET, please visit our website at https://www.rebex.net/
+
+For feedback and support, contact support@rebex.net
+
+Thanks!
+[mmill116@transfer-01 mmtest]$ 
+
+</no></code></pre><pre class="mbash"><code class="mbash">
+[mmill116@transfer-01 mmtest]$ <b>wget https://ftp.ncbi.nlm.nih.gov/genomes/check.txt</b>
+--2025-04-09 15:16:15--  https://ftp.ncbi.nlm.nih.gov/genomes/check.txt
+Resolving ftp.ncbi.nlm.nih.gov (ftp.ncbi.nlm.nih.gov)... 130.14.250.11, 130.14.250.12, 130.14.250.7, ...
+Connecting to ftp.ncbi.nlm.nih.gov (ftp.ncbi.nlm.nih.gov)|130.14.250.11|:443... connected.
+HTTP request sent, awaiting response... 200 OK
+Length: 73071 (71K) [text/plain]
+Saving to: ‘check.txt’
+
+check.txt                100%[=================================&gt;]  71.36K  --.-KB/s    in 0.001s  
+
+2025-04-09 15:16:16 (119 MB/s) - ‘check.txt’ saved [73071/73071]
+
+[mmill116@transfer-01 mmtest]$ <b>ls -al check.txt</b>
+-rw-r--r-- 1 mmill116 smart 73071 Jul  6  2022 check.txt
+
+[mmill116@transfer-01 mmtest]$ <b>curl https://ftp.ncbi.nlm.nih.gov/genomes/species.diff.txt &gt; species.diff.txt</b>
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+100 49453  100 49453    0     0  52834      0 --:--:-- --:--:-- --:--:-- 52778
+[mmill116@transfer-01 mmtest]$ <b>ls -la species.diff.txt</b>
+-rw-r--r-- 1 mmill116 smart 49453 Apr  9 15:16 species.diff.txt
+</code></pre><pre class="mbash"><code class="mbash">
+[mmill116@jhpce01 ~]$ <b>cat wget-example.sh</b>
+#!/bin/bash
+#SBATCH --partition=transfer
+#SBATCH --time=4-00:00:00
+
+wget -O $MYSCRATCH/SRR026674.fastq.gz "https://trace.ncbi.nlm.nih.gov/Traces/sra/sra.cgi?cmd=dload&amp;run_list=SRR026674&amp;format=fastq"
+[mmill116@jhpce01 ~]$ <b>sbatch wget-example.sh</b>
+Submitted batch job 15916781
+[mmill116@jhpce01 ~]$ <b>squeue --me</b>
+             JOBID PARTITION     NAME     USER ST       TIME  NODES NODELIST(REASON)
+[mmill116@jhpce01 ~]$ <b>more slurm-15916781.out </b>
+--2025-04-09 16:15:32--  https://trace.ncbi.nlm.nih.gov/Traces/sra/sra.cgi?cmd=dload&amp;run_list=SRR02
+6674&amp;format=fastq
+Resolving trace.ncbi.nlm.nih.gov (trace.ncbi.nlm.nih.gov)... 130.14.29.113, 2607:f220:41e:4290::113
+Connecting to trace.ncbi.nlm.nih.gov (trace.ncbi.nlm.nih.gov)|130.14.29.113|:443... connected.
+HTTP request sent, awaiting response... 301 Moved Permanently
+Location: /Traces/index.html?cmd=dload&amp;format=fastq&amp;run_list=SRR026674 [following]
+--2025-04-09 16:15:33--  https://trace.ncbi.nlm.nih.gov/Traces/index.html?cmd=dload&amp;format=fastq&amp;ru
+n_list=SRR026674
+Reusing existing connection to trace.ncbi.nlm.nih.gov:443.
+HTTP request sent, awaiting response... 200 OK
+Length: 5713 (5.6K) [text/html]
+Saving to: ‘/fastscratch/myscratch/mmill116/SRR026674.fastq.gz’
+
+     0K .....                                                 100%  134M=0s
+
+2025-04-09 16:15:33 (134 MB/s) - ‘/fastscratch/myscratch/mmill116/SRR026674.fastq.gz’ saved [5713/5
+713]
+
+[mmill116@jhpce01 ~]$ <b>ls -la /fastscratch/myscratch/mmill116/SRR026674.fastq.gz</b>
+-rw-r--r-- 1 mmill116 mmi 5713 Dec 11 11:59 /fastscratch/myscratch/mmill116/SRR026674.fastq.gz
+[mmill116@jhpce01 ~]$ 
+</code></pre><pre><span></span><code>tar xvf ibm-aspera-connect_4.2.13.820_linux_x86_64.tar.gz
+bash ibm-aspera-connect_4.2.13.820_linux_x86_64.sh
+</code></pre><pre class="mbash"><code class="mbash">
+[mmill116@transfer-01 mmtest]$ <b>git clone https://github.com/ruanyf/simple-bash-scripts</b>
+Cloning into 'simple-bash-scripts'...
+remote: Enumerating objects: 344, done.
+remote: Counting objects: 100% (74/74), done.
+remote: Compressing objects: 100% (23/23), done.
+remote: Total 344 (delta 55), reused 54 (delta 51), pack-reused 270 (from 2)
+Receiving objects: 100% (344/344), 69.19 KiB | 13.00 KiB/s, done.
+Resolving deltas: 100% (102/102), done.
+Updating files: 100% (51/51), done.
+[mmill116@transfer-01 mmtest]$ <b>cd simple-bash-scripts</b>
+[mmill116@transfer-01 simple-bash-scripts]$ <b>ls</b>
+README.md  scripts
+[mmill116@transfer-01 simple-bash-scripts]$ <b>cd scripts/</b>
+[mmill116@transfer-01 scripts]$ <b>ls</b>
+addition.sh             directorysize.sh     lowercase.sh        subtraction.sh
+affect.sh               disk-space.sh        multiplication.sh   table.sh
+archive-and-encrypt.sh  division.sh          pomodoro.sh         test-file.sh
+armstrong.sh            encrypt.sh           prime.sh            thumbnail.sh
+binary2decimal.sh       evenodd.sh           process.sh          traps.sh
+calculator.sh           factorial.sh         random-emoji.sh     up.sh
+collectnetworkinfo.sh   fibonacci.sh         randomfile.sh       versioncompare.sh
+color.sh                get-temperature.sh   rang-random.sh      weather.sh
+convertlowercase.sh     hardware_machine.sh  read-menu.sh        whereIP.sh
+count-lines.sh          hello-world.sh       remotebackup.sh     while-menu.sh
+cpu.sh                  hextodec.sh          server-health.sh    while-read.sh
+dec2hex.sh              interactive.sh       simplecalc.sh
+decimal2binary.sh       list-dir.sh          special-pattern.sh
+[mmill116@transfer-01 scripts]$ <b>bash color.sh</b>
+  LOVE  [mmill116@transfer-01 scripts]$ 
+[mmill116@transfer-01 scripts]$ 
+</code></pre><pre><span></span><code>[mmill116@transfer-01 mmtest]$ ftp ftp-air.larc.nasa.gov
+ftp: ftp-air.larc.nasa.gov: Name or service not known
+ftp&gt; exit
+[mmill116@transfer-01 mmtest]$ ftp wuarchive.wustl.edu
+ftp: wuarchive.wustl.edu: Name or service not known
+ftp&gt; exit
+[mmill116@transfer-01 mmtest]$ ftp ftp.ngdc.noaa.gov
+Connected to ftp.ngdc.noaa.gov (140.172.190.215).
+220-                    ----- Notice -----
+220-
+220- You are accessing a U.S. Government information system, which includes:
+220- 1) This computer, 2) This computer network, 3) All computers connected
+220- to this network, and 4) All devices and storage media attached to this
+220- network or to a computer on this network.
+220- 
+220- You understand and consent to the following:
+220- you may access this information system for authorized use only; you have
+220- no reasonable expectation of privacy regarding any communication of data
+220- transiting or stored on this information system; at any time and for any
+220- lawful Government purpose, the Government may monitor, intercept, and
+220- search and seize any communication or data transiting or stored on this
+220- information system; and any communications or data transiting or stored
+220- on this information system may be disclosed or used for any lawful
+220- Government purpose.
+220- 
+220- This information system may contain Controlled Unclassified Information
+220- (CUI) that is subject to safeguarding or dissemination controls in
+220- accordance with law, regulation, or Government-wide policy. Accessing
+220- and using this system indicates your understanding of this warning.
+220-
+220-                    ----- Notice -----
+220-
+220- Questions/Problems should be directed to ncei.webmaster@noaa.gov
+220 
+Name (ftp.ngdc.noaa.gov:mmill116): anonymous
+331 Please specify the password.
+Password:
+230 Login successful.
+Remote system type is UNIX.
+Using binary mode to transfer files.
+ftp&gt; ls
+227 Entering Passive Mode (140,172,190,215,187,166).
+150 Here comes the directory listing.
+drwxrwxr-x   32 ftp      ftp            32 Sep 10  2012 DMSP
+-rw-rw-r--    1 ftp      ftp          1516 Feb 04  2016 INDEX.txt
+-rw-rw-r--    1 ftp      ftp          3766 Feb 09  2018 README.txt
+drwxrwsr-x   26 ftp      ftp            29 Oct 30 20:51 STP
+drwxr-xr-x    2 ftp      ftp             2 Sep 17  2003 Snow_Ice
+drwxrwxr-x    2 ftp      ftp             2 Jun 22  2004 Solid_Earth
+drwxr-xr-x    3 ftp      ftp             3 Aug 07  2017 coastwatch
+drwxr-xr-x    2 ftp      ftp             2 Jul 22  2016 dmsp4alan
+-rw-rw-r--    1 ftp      ftp          9036 Feb 04  2016 ftp.html
+drwxrwsr-x   11 ftp      ftp            11 Dec 19  2017 geomag
+-rw-r--r--    1 ftp      ftp            53 Jul 27  2010 google12c4c939d7b90761.html
+lrwxrwxrwx    1 ftp      ftp             8 Aug 01  2011 index.html -&gt; ftp.html
+drwxr-sr-x    2 ftp      ftp             2 Nov 25  2003 international
+drwxr-xr-x   21 ftp      ftp            21 Jan 03  2022 ionosonde
+drwxrwxr-x    4 ftp      ftp             6 Dec 15  2011 mgg
+drwxrwxr-x    8 ftp      ftp             9 Dec 12  2014 pub
+drwxrwsr-x    4 ftp      ftp             4 Nov 08  2010 wdc
+226 Directory send OK.
+ftp&gt; exit
+221 Goodbye.
+[mmill116@transfer-01 mmtest]$ 
 </code></pre><h2><a class="heading" href="../access/onedrive/">OneDrive via rclone</a></h2><a class="url" href="../access/onedrive/">access/onedrive/</a><pre><span></span><code>[myuser@transfer-01 ~]$ xdg-settings set default-web-browser chromium-browser.desktop
 </code></pre><pre><span></span><code><span class="gp">[compute-113 /users/bob]$ </span>rclone<span class="w"> </span>lsd<span class="w"> </span>OneDrive:
 <span class="go">          -1 2019-12-21 01:54:32         2 BoxMigration</span>
@@ -4876,6 +5185,15 @@ pip3 install mkdocs-git-authors-plugin
 pip3 install mkdocs-extract-listings-plugin
 mkdocs build
 mkdocs serve
+</code></pre><pre><span></span><code>INFO    -  DeprecationWarning: Call to deprecated method findAll. (Replaced by find_all) -- Deprecated since
+           version 4.0.0.
+             File
+           "/Users/mmill116/Library/Python/3.9/lib/python/site-packages/mkdocs_extract_listings_plugin/html_parser.py",
+           line 18, in parse_listings_from_html
+               for pre in soup.findAll('pre'):
+             File "/Users/mmill116/Library/Python/3.9/lib/python/site-packages/bs4/_deprecation.py", line 56,
+           in alias
+               warnings.warn(
 </code></pre><pre><span></span><code><span class="c1"># https://www.mkdocs.org/user-guide/configuration/#validation</span>
 <span class="nt">validation</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">omitted_files</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">warn</span>

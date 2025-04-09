@@ -334,6 +334,8 @@
       
         
       
+        
+      
     
     
     
@@ -403,6 +405,29 @@
   
   <span class="md-ellipsis">
     Staff
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../aboutus/principles/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    JHPCE Constitutional Principles
     
   </span>
   
@@ -4904,6 +4929,18 @@ mkdocs build
 mkdocs serve
 </code></pre></div>
 <h2 id="errors-you-might-run-into-running-mkdocs-locally">Errors You Might Run Into Running Mkdocs Locally<a class="headerlink" href="#errors-you-might-run-into-running-mkdocs-locally" title="Anchor link to this section for reference">&para;</a></h2>
+<p>2025-04-09 - MM found insalling and running "mkdocs serve" using instructions above on Mac gave constant stream of errors:
+<div class="highlight"><pre><span></span><code>INFO    -  DeprecationWarning: Call to deprecated method findAll. (Replaced by find_all) -- Deprecated since
+           version 4.0.0.
+             File
+           &quot;/Users/mmill116/Library/Python/3.9/lib/python/site-packages/mkdocs_extract_listings_plugin/html_parser.py&quot;,
+           line 18, in parse_listings_from_html
+               for pre in soup.findAll(&#39;pre&#39;):
+             File &quot;/Users/mmill116/Library/Python/3.9/lib/python/site-packages/bs4/_deprecation.py&quot;, line 56,
+           in alias
+               warnings.warn(
+</code></pre></div>
+The fix was to edit <code>..../Library/Python/3.9/lib/python/site-packages/mkdocs_extract_listings_plugin/html_parser.py</code> and change the single instance of "findAll" to "find_all".</p>
 <p>It can sometimes be useful to <span class="keys"><kbd class="key-control">Ctrl</kbd><span>+</span><kbd class="key-c">C</kbd></span> the mkdocs serve program and restart it. Usually this involves significant changes to <code>mkdocs.yml</code> and those will stop over time. However when in doubt give it a try.</p>
 <p>JRT added some instructions to the mkdocs.yml file causing warnings to be issued. JRT has found them very useful.
 <div class="highlight"><pre><span></span><code><span class="c1"># https://www.mkdocs.org/user-guide/configuration/#validation</span>
@@ -5047,7 +5084,7 @@ https://www.starfallprojects.co.uk/blog/material-custom-status/#enable-the-featu
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="February 18, 2025 03:40:19">February 18, 2025</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="April 9, 2025 20:53:12">April 9, 2025</span>
   </span>
 
     

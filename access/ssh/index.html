@@ -334,6 +334,8 @@
       
         
       
+        
+      
     
     
     
@@ -403,6 +405,29 @@
   
   <span class="md-ellipsis">
     Staff
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../aboutus/principles/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    JHPCE Constitutional Principles
     
   </span>
   
@@ -1398,6 +1423,15 @@
   <a href="#ssh-keys-quickstart" class="md-nav__link">
     <span class="md-ellipsis">
       SSH Keys Quickstart:
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#jhpce-python-tool-for-ssh-key-setup" class="md-nav__link">
+    <span class="md-ellipsis">
+      JHPCE Python Tool for SSH Key Setup
     </span>
   </a>
   
@@ -3994,6 +4028,15 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#jhpce-python-tool-for-ssh-key-setup" class="md-nav__link">
+    <span class="md-ellipsis">
+      JHPCE Python Tool for SSH Key Setup
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#ssh-keys-more-info" class="md-nav__link">
     <span class="md-ellipsis">
       SSH Keys, more info:
@@ -4245,6 +4288,14 @@ applicable JHU and JHSPH network and computer use policies.
 [bsmith@jhpce01 ~]$ 
 </code></pre>
 
+<h3 id="jhpce-python-tool-for-ssh-key-setup">JHPCE Python Tool for SSH Key Setup<a class="headerlink" href="#jhpce-python-tool-for-ssh-key-setup" title="Anchor link to this section for reference">&para;</a></h3>
+<p>Brian Caffo has written some python tools for managing ssh keys in a git repository at
+https://github.com/jhpce-jhu/jhpce-python. You can install this git repo on your local system and go through the steps at
+<a href="https://github.com/jhpce-jhu/jhpce-python/blob/main/docs/index.md#creating-a-key">https://github.com/jhpce-jhu/jhpce-python/blob/main/docs/index.md#creating-a-key</a>
+for setting up your keys. You can also use this python tool to login to the JHPCE
+cluster and run remote commands there.
+There is also a Colab notbook with an example for setting up ssh keys within Python at
+https://colab.research.google.com/drive/1I8VjmDDO86Qj0jJYMmDlZWrAoZwVLrpj?usp=sharing</p>
 <h3 id="ssh-keys-more-info">SSH Keys, more info:<a class="headerlink" href="#ssh-keys-more-info" title="Anchor link to this section for reference">&para;</a></h3>
 <p>SSH programs make use of something called <a href="https://en.wikipedia.org/wiki/Public-key_cryptography">public-key cryptography</a>. Basically secure communications can be created by splitting a secret into to parts, and placing one part on each end of a link. This can be extended to an optional pair of files you can generate and distribute such that one is located on the JHPCE cluster and the other is on your computer. Or smartphone!</p>
 <p>This key pair of files is generated once, and protected with a passphrase. You place a copy of the "public" key file on JHPCE in a particular place with specific permissions. You keep a copy of the "private" key file on your personal device(s). Once you prove to a program (ssh-agent) running on your device that you know the passphrase to your private key file, it will thereafter provide your private key when you run an SSH command.</p>
@@ -4460,7 +4511,7 @@ ServerAliveCountMax<span class="w"> </span><span class="m">30</span>
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="April 7, 2025 15:48:26">April 7, 2025</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="April 9, 2025 20:53:12">April 9, 2025</span>
   </span>
 
     

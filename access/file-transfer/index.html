@@ -86,7 +86,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#file-transfer-overview" class="md-skip">
+        <a href="#file-transfer-to-and-from-the-jhpce-cluster" class="md-skip">
           Skip to content
         </a>
       
@@ -334,6 +334,8 @@
       
         
       
+        
+      
     
     
     
@@ -403,6 +405,29 @@
   
   <span class="md-ellipsis">
     Staff
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../aboutus/principles/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    JHPCE Constitutional Principles
     
   </span>
   
@@ -1495,19 +1520,193 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#use-the-transfer-node-and-partition" class="md-nav__link">
+  <a href="#transfering-data-from-outside-of-jhpce" class="md-nav__link">
     <span class="md-ellipsis">
-      Use the transfer node and partition
+      Transfering data from outside of JHPCE
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Use the transfer node and partition">
+    <nav class="md-nav" aria-label="Transfering data from outside of JHPCE">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#interactive-use-of-the-transfer-node" class="md-nav__link">
+  <a href="#sftp-secure-file-transfer-program-or-protocol" class="md-nav__link">
     <span class="md-ellipsis">
-      Interactive use of the transfer node
+      SFTP - Secure File Transfer Program (or Protocol)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="SFTP - Secure File Transfer Program (or Protocol)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#text-based-sftp-usage" class="md-nav__link">
+    <span class="md-ellipsis">
+      Text based SFTP usage
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#graphical-sftp-cyberduckmobaxterm" class="md-nav__link">
+    <span class="md-ellipsis">
+      Graphical SFTP - Cyberduck/MobaXterm
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#scp" class="md-nav__link">
+    <span class="md-ellipsis">
+      SCP
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#scp-vs-sftp-choosing-the-right-file-transfer-protocol-per-chatgpt" class="md-nav__link">
+    <span class="md-ellipsis">
+      SCP vs. SFTP: Choosing the Right File Transfer Protocol (per ChatGPT)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="SCP vs. SFTP: Choosing the Right File Transfer Protocol (per ChatGPT)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#what-is-scp" class="md-nav__link">
+    <span class="md-ellipsis">
+      What is SCP?
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="What is SCP?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#key-features-of-scp" class="md-nav__link">
+    <span class="md-ellipsis">
+      Key Features of SCP:
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#when-to-use-scp" class="md-nav__link">
+    <span class="md-ellipsis">
+      When to Use SCP:
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#what-is-sftp" class="md-nav__link">
+    <span class="md-ellipsis">
+      What is SFTP?
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="What is SFTP?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#key-features-of-sftp" class="md-nav__link">
+    <span class="md-ellipsis">
+      Key Features of SFTP:
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#when-to-use-sftp" class="md-nav__link">
+    <span class="md-ellipsis">
+      When to Use SFTP:
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#which-one-should-you-use" class="md-nav__link">
+    <span class="md-ellipsis">
+      Which One Should You Use?
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#rsync" class="md-nav__link">
+    <span class="md-ellipsis">
+      Rsync
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#globus" class="md-nav__link">
+    <span class="md-ellipsis">
+      Globus
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#transfering-data-from-inside-of-jhpce-to-the-outside-world" class="md-nav__link">
+    <span class="md-ellipsis">
+      Transfering data from inside of JHPCE to the outside world
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Transfering data from inside of JHPCE to the outside world">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#sftp-interactive-use-of-the-transfer-partition" class="md-nav__link">
+    <span class="md-ellipsis">
+      SFTP - Interactive use of the transfer partition
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#wget-and-curl" class="md-nav__link">
+    <span class="md-ellipsis">
+      wget and curl
     </span>
   </a>
   
@@ -1522,67 +1721,10 @@
   
 </li>
         
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#common-tools" class="md-nav__link">
-    <span class="md-ellipsis">
-      Common Tools
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#scp-and-sftp" class="md-nav__link">
-    <span class="md-ellipsis">
-      scp and sftp
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="scp and sftp">
-      <ul class="md-nav__list">
-        
           <li class="md-nav__item">
-  <a href="#scp" class="md-nav__link">
+  <a href="#rcloneonedrive" class="md-nav__link">
     <span class="md-ellipsis">
-      scp
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#sftp" class="md-nav__link">
-    <span class="md-ellipsis">
-      sftp
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#guis" class="md-nav__link">
-    <span class="md-ellipsis">
-      GUIs
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="GUIs">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#rclone" class="md-nav__link">
-    <span class="md-ellipsis">
-      Rclone
+      Rclone/Onedrive
     </span>
   </a>
   
@@ -1607,9 +1749,36 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#globus" class="md-nav__link">
+  <a href="#git" class="md-nav__link">
     <span class="md-ellipsis">
-      Globus
+      git
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#rsync_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      rsync
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ftp" class="md-nav__link">
+    <span class="md-ellipsis">
+      ftp
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#write-your-own-programs-in-python-or-perl-or-c-or-r" class="md-nav__link">
+    <span class="md-ellipsis">
+      Write your own programs in python or perl or c or R ....
     </span>
   </a>
   
@@ -1617,24 +1786,6 @@
         
       </ul>
     </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#mounting-virtual-file-systems" class="md-nav__link">
-    <span class="md-ellipsis">
-      Mounting virtual file systems
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#ftp" class="md-nav__link">
-    <span class="md-ellipsis">
-      ftp
-    </span>
-  </a>
   
 </li>
       
@@ -3953,19 +4104,193 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#use-the-transfer-node-and-partition" class="md-nav__link">
+  <a href="#transfering-data-from-outside-of-jhpce" class="md-nav__link">
     <span class="md-ellipsis">
-      Use the transfer node and partition
+      Transfering data from outside of JHPCE
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Use the transfer node and partition">
+    <nav class="md-nav" aria-label="Transfering data from outside of JHPCE">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#interactive-use-of-the-transfer-node" class="md-nav__link">
+  <a href="#sftp-secure-file-transfer-program-or-protocol" class="md-nav__link">
     <span class="md-ellipsis">
-      Interactive use of the transfer node
+      SFTP - Secure File Transfer Program (or Protocol)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="SFTP - Secure File Transfer Program (or Protocol)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#text-based-sftp-usage" class="md-nav__link">
+    <span class="md-ellipsis">
+      Text based SFTP usage
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#graphical-sftp-cyberduckmobaxterm" class="md-nav__link">
+    <span class="md-ellipsis">
+      Graphical SFTP - Cyberduck/MobaXterm
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#scp" class="md-nav__link">
+    <span class="md-ellipsis">
+      SCP
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#scp-vs-sftp-choosing-the-right-file-transfer-protocol-per-chatgpt" class="md-nav__link">
+    <span class="md-ellipsis">
+      SCP vs. SFTP: Choosing the Right File Transfer Protocol (per ChatGPT)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="SCP vs. SFTP: Choosing the Right File Transfer Protocol (per ChatGPT)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#what-is-scp" class="md-nav__link">
+    <span class="md-ellipsis">
+      What is SCP?
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="What is SCP?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#key-features-of-scp" class="md-nav__link">
+    <span class="md-ellipsis">
+      Key Features of SCP:
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#when-to-use-scp" class="md-nav__link">
+    <span class="md-ellipsis">
+      When to Use SCP:
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#what-is-sftp" class="md-nav__link">
+    <span class="md-ellipsis">
+      What is SFTP?
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="What is SFTP?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#key-features-of-sftp" class="md-nav__link">
+    <span class="md-ellipsis">
+      Key Features of SFTP:
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#when-to-use-sftp" class="md-nav__link">
+    <span class="md-ellipsis">
+      When to Use SFTP:
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#which-one-should-you-use" class="md-nav__link">
+    <span class="md-ellipsis">
+      Which One Should You Use?
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#rsync" class="md-nav__link">
+    <span class="md-ellipsis">
+      Rsync
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#globus" class="md-nav__link">
+    <span class="md-ellipsis">
+      Globus
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#transfering-data-from-inside-of-jhpce-to-the-outside-world" class="md-nav__link">
+    <span class="md-ellipsis">
+      Transfering data from inside of JHPCE to the outside world
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Transfering data from inside of JHPCE to the outside world">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#sftp-interactive-use-of-the-transfer-partition" class="md-nav__link">
+    <span class="md-ellipsis">
+      SFTP - Interactive use of the transfer partition
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#wget-and-curl" class="md-nav__link">
+    <span class="md-ellipsis">
+      wget and curl
     </span>
   </a>
   
@@ -3980,67 +4305,10 @@
   
 </li>
         
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#common-tools" class="md-nav__link">
-    <span class="md-ellipsis">
-      Common Tools
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#scp-and-sftp" class="md-nav__link">
-    <span class="md-ellipsis">
-      scp and sftp
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="scp and sftp">
-      <ul class="md-nav__list">
-        
           <li class="md-nav__item">
-  <a href="#scp" class="md-nav__link">
+  <a href="#rcloneonedrive" class="md-nav__link">
     <span class="md-ellipsis">
-      scp
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#sftp" class="md-nav__link">
-    <span class="md-ellipsis">
-      sftp
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#guis" class="md-nav__link">
-    <span class="md-ellipsis">
-      GUIs
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="GUIs">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#rclone" class="md-nav__link">
-    <span class="md-ellipsis">
-      Rclone
+      Rclone/Onedrive
     </span>
   </a>
   
@@ -4065,9 +4333,36 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#globus" class="md-nav__link">
+  <a href="#git" class="md-nav__link">
     <span class="md-ellipsis">
-      Globus
+      git
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#rsync_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      rsync
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ftp" class="md-nav__link">
+    <span class="md-ellipsis">
+      ftp
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#write-your-own-programs-in-python-or-perl-or-c-or-r" class="md-nav__link">
+    <span class="md-ellipsis">
+      Write your own programs in python or perl or c or R ....
     </span>
   </a>
   
@@ -4075,24 +4370,6 @@
         
       </ul>
     </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#mounting-virtual-file-systems" class="md-nav__link">
-    <span class="md-ellipsis">
-      Mounting virtual file systems
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#ftp" class="md-nav__link">
-    <span class="md-ellipsis">
-      ftp
-    </span>
-  </a>
   
 </li>
       
@@ -4110,74 +4387,135 @@
                 
                   
 
-  <nav class="md-tags" >
-    
-      
-      
-      
-        <a href="../../ourtools/tags/#tag:needs-major-revision" class="md-tag">needs-major-revision</a>
-      
-    
-      
-      
-      
-        <a href="../../ourtools/tags/#tag:topic-overview" class="md-tag">topic-overview</a>
-      
-    
-  </nav>
 
 
-
-<div class="admonition warning">
-<p class="admonition-title">Authoring Note</p>
-<p>This document was copied over from the old web site and is being slowly updated.</p>
-</div>
-<h1 id="file-transfer-overview">File Transfer - Overview<a class="headerlink" href="#file-transfer-overview" title="Anchor link to this section for reference">&para;</a></h1>
-<p>A number of options exist for transfering files to-and-fro between
-JHPCE and your local host. Which solution you chose depends on your
-use case.</p>
-<p>Copying files around inside the cluster, between JHPCE file systems, is a different activity.
-We have a document about <a href="../../files/copying-files/">using rsync</a> to copy files. This tool can be used for both internal copies and for moving files into or out of the cluster.</p>
-<h2 id="use-the-transfer-node-and-partition">Use the transfer node and partition<a class="headerlink" href="#use-the-transfer-node-and-partition" title="Anchor link to this section for reference">&para;</a></h2>
-<p>For transferring files to and from the cluster, you should use
-<code>jhpce-transfer01.jhsph.edu</code> rather than a login node.
-This is both significantly faster, as the transfer node has a 40G Ethernet connection to the outside world while the login nodes have 10G connections. In any case, EVERYONE depends on the login nodes, and you should not run ANYTHING on them that occupies them.</p>
-<h3 id="interactive-use-of-the-transfer-node">Interactive use of the transfer node<a class="headerlink" href="#interactive-use-of-the-transfer-node" title="Anchor link to this section for reference">&para;</a></h3>
-<p>You can ssh directly to <code>jhpce-transfer01.jhsph.edu</code> and do your work.</p>
-<p>We have a <code>transfer</code> SLURM <a href="../../slurm/partitions/">partition</a> which uses the same node that you can use for interactive or batch sessions.</p>
-<div class="highlight"><span class="filename">Interactive job</span><pre><span></span><code>jhpce01% srun --pty --x11 -p transfer bash
-</code></pre></div>
-<h3 id="batch-use-of-the-transfer-nodepartition">Batch use of the transfer node/partition<a class="headerlink" href="#batch-use-of-the-transfer-nodepartition" title="Anchor link to this section for reference">&para;</a></h3>
-<p><a href="../../slurm/crafting-jobs/#copying-data-within-cluster">Here</a> is a sample SLURM batch job that you can use as a model to do an internal transfer on a compute node using good rsync arguments. You can adapt it to run on the <code>transfer</code> partition to perform transfers into or out of the cluster. You can also change it to use some other transfer programs. Usually such batch jobs require care when providing authentication information.</p>
-<h2 id="common-tools">Common Tools<a class="headerlink" href="#common-tools" title="Anchor link to this section for reference">&para;</a></h2>
-<p>Many of these transfer protocols have both command-line and graphic user interface programs available.</p>
+<h1 id="file-transfer-to-and-from-the-jhpce-cluster">File Transfer To and From the JHPCE Cluster<a class="headerlink" href="#file-transfer-to-and-from-the-jhpce-cluster" title="Anchor link to this section for reference">&para;</a></h1>
+<p>There are 2 general ways to think about transfering data to and from the JHPCE cluster. </p>
 <ul>
-<li>scp or sftp — file transfer via command line</li>
-<li><a href="../../files/copying-files/">rsync</a> - a <strong>very</strong> useful uni-directional mirroring utility program</li>
-<li>GUI for sftp — file transfer by drag and drop from your desktop</li>
-<li>GlobusOnline — fast file transfers between GlobusOnline endpoints</li>
-<li>Aspera  —  very fast file transfer to and from Aspera servers</li>
-<li>OneDrive access with rclone  —  Use “rclone” to access your OneDrive directory (as well as other network drives (AWS buckets, Google Drive…)</li>
-<li>Unison — keep directories synced (can be configured to be bi-directional)</li>
-<li>Mount remote filesystems — directories at JHPCE mounted on your local host. <strong>IS THIS MATERIAL STILL ACCURATE IN 2024?</strong> Is this <a href="https://hpc-docs.cubi.bihealth.org/connecting/configure-ssh/linux/#file-system-mount-via-sshfs">example SSHFS doc</a> worth re-using?</li>
-<li>ftp (kind of…)</li>
+<li>The most common way to think about tranferring data is where the transfer is initiated from some place outside of the JHPCE cluster, such as one's laptop or some other HPC system external to the cluster. </li>
+<li>The second approach to transferring data is where the connection is initiated from within the JHPCE cluster.  In this case one would have already logged into the cluster, and from within the cluster, one needs to reach out to some external location to copy data from that location into the cluster.</li>
 </ul>
-<h2 id="scp-and-sftp"><code>scp</code> and <code>sftp</code><a class="headerlink" href="#scp-and-sftp" title="Anchor link to this section for reference">&para;</a></h2>
-<p>The <code>scp</code> and <code>sftp</code> command-line tools are the most common tools used for
-transferring data to and from the cluster.  The basic tradeoff is
-between speed (<code>scp</code> is faster) and flexibility (<code>sftp</code> is more
-flexible).  The <code>scp</code> and <code>sftp</code> commands are available from the Terminal on a
-MacOS or Linux based laptop/desktop, or from a <code>CMD</code> or <code>Powershell</code>
-prompt on recent Windows systems.</p>
-<p>Although both SCP and SFTP utilize the same SSH encryption during file
-transfer with the same general level of overhead, SCP is usually
-faster than SFTP at transferring files, especially on high latency
-networks.  SFTP should be used when you may need an interactive
-session on the cluster to navigate to a directory before transferring
-the files, whereas SCP should be used when you know the exact path of
-the file you want to transfer.</p>
-<h3 id="scp"><code>scp</code><a class="headerlink" href="#scp" title="Anchor link to this section for reference">&para;</a></h3>
-<p>The <code>scp</code> command can be though of as a <code>network cp</code> command.  The command to transfer a file called <code>data.txt</code> from your local system to your home directory on the cluster would be:</p>
+<p>In both cases, file transfers should be done through the JHPCE transfer node, and not the login node.  Details about using the transfer node are given below.  Also, in both scenarios, there are a slew ways that data transfer occurs.</p>
+<div class="admonition notice">
+<p class="admonition-title">Transferring files within the cluster</p>
+<p>Copying files around inside the cluster, between JHPCE file systems, is a different activity.
+We have a document about <a href="../../files/copying-files/">using rsync</a> to copy files.
+This tool can be used for both internal copies and for moving files into or out of the cluster.</p>
+</div>
+<h2 id="transfering-data-from-outside-of-jhpce">Transfering data from outside of JHPCE<a class="headerlink" href="#transfering-data-from-outside-of-jhpce" title="Anchor link to this section for reference">&para;</a></h2>
+<p>For transferring files to and from the cluster, you should use the transfer node rather than the login node. The name of the transfer node is <code>jhpce-transfer01.jhsph.edu</code> (compared to the primary login node <code>jhpce01.jhsph.edu</code>).
+The transfer node is significantly faster, as the transfer node has a 40G Ethernet connection to the high-speed JHU ScienceDMZ  while the login nodes have 10G connections. 
+The use of the transfer node also relieves the login node from having to bear the stress of file transfer traffic, which can put a significant load on the network capacity of the node. Since the login node is used by everyone to access the cluster, data transfers through the login node can slow cluster access down for all users, and this makes users grumpy.</p>
+<p>A number of options exist for transfering files to-and-fro between JHPCE and your local host. Which solution you chose depends on your use case.</p>
+<h3 id="sftp-secure-file-transfer-program-or-protocol">SFTP - Secure File Transfer Program (or Protocol)<a class="headerlink" href="#sftp-secure-file-transfer-program-or-protocol" title="Anchor link to this section for reference">&para;</a></h3>
+<p>The most common method for transferring files to and from JHPCE is with sftp.  The sftp command is part of the ssh suite of programs used for interacting securely with remote systems.  The sftp command allows you to transfer files to and from JHPCE over a secure encypted channel.</p>
+<h4 id="text-based-sftp-usage">Text based SFTP usage<a class="headerlink" href="#text-based-sftp-usage" title="Anchor link to this section for reference">&para;</a></h4>
+<p>By default, sftp is a text-baseed interactive program. The "sftp" progam is installed by default on MacOS and Linux desktops, and is availble from running a Terminal on one's local system. 
+To use <code>sftp</code>, you would run the command (substituting JHPCE-USERID with your JHPCE login ID) :</p>
+<p><div class="highlight"><pre><span></span><code>sftp JHPCE-USERID@jhpce-transfer01.jhsph.edu
+</code></pre></div>
+and then proceed to login with your JHPCE password and Google Authenticator.</p>
+<p>Once you’ve connected, you’ll be shown an <code>sftp&gt;</code> prompt.  From here you can use
+the standard shell commands <code>ls</code> to get a directory listing, and <code>cd</code> to
+change directories.  While the <code>ls</code> and <code>cd</code> commands refer to your location on the cluster,
+there are sister commands <code>lls</code> and <code>lcd</code> to navigate on you local system. 
+In addition to the <code>ls</code> and <code>cd</code> commands, there are commands for actually doing the file transfers.</p>
+<ul>
+<li>You can use the <code>get</code> command to transfer a file from the cluster to your local system</li>
+<li>You can uhe <code>put</code> command to transfer a file from your local system to the cluster.</li>
+</ul>
+<p>Once you are done with <code>sftp</code>, you would type <code>exit</code> to end the session.</p>
+<p>Here is an example of using sftp from a terminal running on a MacOS system.</p>
+<pre class="mbash"><code class="mbash">
+MyMac: <b>sftp mmill116@jhpce-transfer01.jhsph.edu</b>
+(mmill116@jhpce-transfer01.jhsph.edu) Verification code: <b>(JHPCE Verification Code Typed In)</b>
+(mmill116@jhpce-transfer01.jhsph.edu) Password: <b>(JHPCE Password Typed In)</b>
+Connected to jhpce-transfer01.jhsph.edu.
+sftp> <b>ls</b>
+10billion                                                                       
+2024-09                                                                         
+500                                                                             
+Bird.jpeg                                                                       
+CITATION                                                                        
+bin                                                                             
+data                                                                            
+jhpce-app                                                                       
+scripts                                                                         
+tmp                                                                             
+sftp> <b>cd tmp</b>
+sftp> <b>ls</b>
+ACL                                     HLA                                     
+a                                       a1                                      
+aaa                                     aaaa                                    
+abc                                     acl-test                                
+shared                                  temp-26800-7554-21111.sam               
+test-rsync                              test1                                   
+test2                                   testhere                                
+tmp                                     tmp2                                    
+tmp3                                    x                                       
+zzz                                     zzzz                                    
+
+sftp> <b>lcd Documents</b>
+sftp> <b>lls</b>
+ACL-CMS.txt
+Screenshot 2024-11-12 at 3.30.24 PM.png
+Screenshot 2025-02-25 at 10.34.09 AM.png
+Screenshot 2025-02-25 at 10.34.18 AM.png
+Screenshot 2025-02-26 at 3.28.57 PM.png
+Zoom
+show-example.txt
+sftp> <b>put show-example.txt</b>
+Uploading show-example.txt to /users/mmill116/tmp/show-example.txt
+show-example.txt                          100% 4798   182.1KB/s   00:00    
+sftp> <b>ls</b>
+ACL                                     HLA                                     
+a                                       a1                                      
+aaa                                     aaaa                                    
+abc                                     acl-test                                
+shared                                  <mark>show-example.txt                    </mark>
+temp-26800-7554-21111.sam               test-rsync                              
+test1                                   test2                                   
+testhere                                tmp                                     
+tmp2                                    tmp3                                    
+x                                       zzz                                     
+zzzz 
+sftp> <b>exit</b>
+MyMac: 
+
+</code></pre>
+
+<h4 id="graphical-sftp-cyberduckmobaxterm">Graphical SFTP - Cyberduck/MobaXterm<a class="headerlink" href="#graphical-sftp-cyberduckmobaxterm" title="Anchor link to this section for reference">&para;</a></h4>
+<p>If you would rather use a graphical SFTP connection, wherein you can drag-and-drop files between your local system
+and the cluster you can use either MobaXterm on a Windows system, or Cyberduck on a Mac system.  We have
+an example of setting up SFTP in MobaXterm at <a href="https://jhpce.jhu.edu/access/mobaxterm/#configuring-sftp-sessions">on this page</a></p>
+<p>For Macos, we recommend Cyberduck from <a href="https://cyberduck.io/">this site</a>.  Cyberduck still uses sftp under the hood,
+but presents files and folders in a graphical window, allowing drag-and-drop operations between your local system and
+the JHPCE cluster.</p>
+<p>Below are the steps to setting up Cyberduck on your local MacOS system:</p>
+<ul>
+<li>Start up the Cyberduck app.</li>
+<li>Click on "+" at bottom left
+<img alt="mobasftp-step01" src="../images/Cyberduck1.png" /></li>
+<li>This will open a new window where you can configure your sftp session</li>
+<li>Select SFTP as the Protocol</li>
+<li>For Label, you can use JHPCE</li>
+<li>For Server, use "jhpce-transfer01.jhsph.edu"</li>
+<li>For "username" put your JHPCE username</li>
+<li>Keep the port as 22</li>
+<li>Do not enter a Password</li>
+<li>If you have an SSH key for the cluster select it in the SSH Private Key dropdown
+<img alt="mobasftp-step01" src="../images/Cyberduck2.png" /></li>
+<li>Close the dialog box by clicking on the Macos red "Close" button in the upper left.</li>
+<li>This will save a session "Bookmark" for you in the Cyberduck application</li>
+<li>You can now double-click on the saved session.</li>
+<li>You will be prompted for your Verification Code and Password</li>
+<li>At this point you will see your JHPCE home directory displayed, and you can drag-and-drop files between your Mac and the JHPCE cluster.</li>
+</ul>
+<p>One last note - we stronly recommend setting up SSH Keys <a href="../ssh/#ssh-keys">SSH key pairs</a>. Without keys, you will 
+be prompted for your verification code and password for each file you transfer.</p>
+<h3 id="scp">SCP<a class="headerlink" href="#scp" title="Anchor link to this section for reference">&para;</a></h3>
+<p>The <code>scp</code> command can be thought of as a <code>network cp</code> command.  Like sftp, scp is part of the ssh suite of products.  The scp command is better for situation where you know exactly which files you want to copy, and don't need to navigate around the filesystems interactively with the sftp command.</p>
+<p>An example of the command to transfer a file called <code>data.txt</code> from your local system to your home directory on the cluster would be:</p>
 <div class="highlight"><pre><span></span><code>scp LOCAL_PATH/data.txt USERID@jhpce-transfer01.jhsph.edu:REMOTE_PATH/REMOTE_TARGET_FILENAME
 </code></pre></div>
 <p>where the paths default to your current local directory and home
@@ -4186,45 +4524,261 @@ local filename.</p>
 <p>If you want to copy a file from the cluster to your local laptop/desktop, you would reverse the arguments. For example to copy <code>data2.txt</code> from the cluster to a local file:</p>
 <div class="highlight"><pre><span></span><code>scp USERID@jhpce-transfer01.jhsph.edu:REMOTE_PATH/data2.txt LOCAL_PATH/LOCAL_TARGET_FILENAME
 </code></pre></div>
-<h3 id="sftp"><code>sftp</code><a class="headerlink" href="#sftp" title="Anchor link to this section for reference">&para;</a></h3>
-<p>The <code>sftp</code> command is another means of transfering data to and from the cluster.  To use <code>sftp</code>, you would run the command:</p>
-<div class="highlight"><pre><span></span><code>sftp USERID@jhpce-transfer01.jhsph.edu
-</code></pre></div>
-<p>Once you’ve connected, you’ll be shown an <code>sftp&gt;</code> prompt.  From here you can use
-the shell command <code>ls</code> to get a directory listing, and and <code>cd</code> to
-change directories.  In addition to <code>ls</code> and <code>cd</code> you can use the
-<code>get</code> command to transfer a file from the cluster it to your local
-system, or the <code>put</code> command to transfer a file from your local system
-to the cluster.  Once you are done with <code>sftp</code>, you would type <code>exit</code> to
-end the session.</p>
-<h2 id="guis">GUIs<a class="headerlink" href="#guis" title="Anchor link to this section for reference">&para;</a></h2>
-<p>If you prefer drag and drop interface rather than using shell
-commands, then an application that presents a window for drag and drop
-is what you want. Depending on which OS you are using, we can
-recommend the following applications:</p>
-<p>macOS users might consider <a href="https://en.wikipedia.org/wiki/FileZilla">Filezilla</a>. It 
- is an outstanding application that not only
-provides a GUI browser for FTP, SFTP, but it also allows you to browse
-WebDav, Amazon S3, and OpenStack Swift file systems. It is free to
-download and install.</p>
-<p>Our recommended application for Windows users accessing the JHPCE cluster is <a href="http://mobaxterm.mobatek.net/download-home-edition.html">MobaXterm</a>.
-You can also use https://en.wikipedia.org/wiki/WinSCP or <a href="https://en.wikipedia.org/wiki/PuTTY">Putty</a> if you are already familiar
-with them.</p>
-<h3 id="rclone">Rclone<a class="headerlink" href="#rclone" title="Anchor link to this section for reference">&para;</a></h3>
+<h3 id="scp-vs-sftp-choosing-the-right-file-transfer-protocol-per-chatgpt">SCP vs. SFTP: Choosing the Right File Transfer Protocol (per ChatGPT)<a class="headerlink" href="#scp-vs-sftp-choosing-the-right-file-transfer-protocol-per-chatgpt" title="Anchor link to this section for reference">&para;</a></h3>
+<p>When transferring files to and from university servers, it's essential to use a secure and efficient method. The two most common protocols are <strong>SCP (Secure Copy Protocol)</strong> and <strong>SFTP (Secure File Transfer Protocol)</strong>. Below, we compare their features, use cases, and best practices.</p>
+<h4 id="what-is-scp">What is SCP?<a class="headerlink" href="#what-is-scp" title="Anchor link to this section for reference">&para;</a></h4>
+<p>SCP is a simple and fast protocol for securely transferring files between computers over SSH (Secure Shell). It is commonly used for one-time transfers when speed is a priority.</p>
+<h5 id="key-features-of-scp">Key Features of SCP:<a class="headerlink" href="#key-features-of-scp" title="Anchor link to this section for reference">&para;</a></h5>
+<ul>
+<li><strong>Fast and efficient</strong> for large files or bulk transfers.</li>
+<li><strong>Encrypts</strong> data and authentication credentials.</li>
+<li><strong>Command-line based</strong>; supports automation via scripts.</li>
+<li><strong>No file management options</strong>—only direct transfers.</li>
+</ul>
+<h5 id="when-to-use-scp">When to Use SCP:<a class="headerlink" href="#when-to-use-scp" title="Anchor link to this section for reference">&para;</a></h5>
+<ul>
+<li>When you need a <strong>quick, one-time file transfer</strong>.</li>
+<li>If you’re working primarily from the <strong>command line</strong>.</li>
+<li>When <strong>speed is more important</strong> than file management.</li>
+</ul>
+<h4 id="what-is-sftp">What is SFTP?<a class="headerlink" href="#what-is-sftp" title="Anchor link to this section for reference">&para;</a></h4>
+<p>SFTP is an SSH-based protocol that offers a more comprehensive solution for secure file transfers, allowing both file transfer and remote file management.</p>
+<h5 id="key-features-of-sftp">Key Features of SFTP:<a class="headerlink" href="#key-features-of-sftp" title="Anchor link to this section for reference">&para;</a></h5>
+<ul>
+<li><strong>Secure and reliable</strong>, with encrypted transfers.</li>
+<li><strong>Supports interactive file management</strong> (rename, delete, list directories).</li>
+<li><strong>Compatible with both command-line and GUI clients</strong>.</li>
+<li><strong>Slower than SCP</strong> for large file transfers due to additional protocol overhead.</li>
+</ul>
+<h5 id="when-to-use-sftp">When to Use SFTP:<a class="headerlink" href="#when-to-use-sftp" title="Anchor link to this section for reference">&para;</a></h5>
+<ul>
+<li>When you need to <strong>browse directories</strong> or <strong>manage files remotely</strong>.</li>
+<li>If you prefer using a <strong>graphical client</strong> like FileZilla or WinSCP.</li>
+<li>When working on <strong>projects that require frequent updates</strong> and file modifications.</li>
+</ul>
+<h4 id="which-one-should-you-use">Which One Should You Use?<a class="headerlink" href="#which-one-should-you-use" title="Anchor link to this section for reference">&para;</a></h4>
+<table>
+<thead>
+<tr>
+<th>Feature</th>
+<th>SCP</th>
+<th>SFTP</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Security</strong></td>
+<td>✅ SSH encryption</td>
+<td>✅ SSH encryption</td>
+</tr>
+<tr>
+<td><strong>Speed</strong></td>
+<td>🚀 Faster for large files</td>
+<td>🐢 Slightly slower</td>
+</tr>
+<tr>
+<td><strong>File Management</strong></td>
+<td>❌ No file operations</td>
+<td>✅ Rename, delete, list, etc.</td>
+</tr>
+<tr>
+<td><strong>Ease of Use</strong></td>
+<td>⚡ Command-line only</td>
+<td>🖥️ GUI support available</td>
+</tr>
+<tr>
+<td><strong>Best for</strong></td>
+<td>Quick transfers</td>
+<td>Ongoing file management</td>
+</tr>
+</tbody>
+</table>
+<h3 id="rsync">Rsync<a class="headerlink" href="#rsync" title="Anchor link to this section for reference">&para;</a></h3>
+<h3 id="globus">Globus<a class="headerlink" href="#globus" title="Anchor link to this section for reference">&para;</a></h3>
+<p>Globus is a web-based interface for transferring files. We have a Globus endpoint on the JHPCE cluster. Please see <a href="../globus/">this document</a>.</p>
+<h2 id="transfering-data-from-inside-of-jhpce-to-the-outside-world">Transfering data from inside of JHPCE to the outside world<a class="headerlink" href="#transfering-data-from-inside-of-jhpce-to-the-outside-world" title="Anchor link to this section for reference">&para;</a></h2>
+<p>The above examples are for initiating transfers from a location outside of the JHPCE cluster.  If though
+you are already on the cluster, and need to pull data from an external site, there are a number of methods for
+doing this.  For all of these methods, you will need to first utilize the JHPCE transfer node via eiher srun or sbatch
+with the "--partition transfer" <a href="../../slurm/partitions/">partition</a> option.</p>
+<h3 id="sftp-interactive-use-of-the-transfer-partition">SFTP - Interactive use of the transfer partition<a class="headerlink" href="#sftp-interactive-use-of-the-transfer-partition" title="Anchor link to this section for reference">&para;</a></h3>
+<p>In addition to using SFTP to initiate transfers from your local system, you can use SFTP from within the JHPCE cluster
+on the transfer node.  For transferring the data from an external site into the JHPCE cluster with sftp, you would need to:</p>
+<ul>
+<li>login to the cluster as normal</li>
+<li>start an srun session on the transfer partition</li>
+<li>cd to the directory on the cluster that you want to store the data</li>
+<li>initiate the sftp to their site, logging in with the credentials they provide</li>
+<li>within sftp, cd to the directory on their site that has the data</li>
+<li>within sftp, use “ls” to get a listing of files on their site</li>
+<li>use “get” or “wget” to transfer the files from their site to the JHPCE cluster</li>
+</ul>
+<p>Here is an example of what this would look like:</p>
+<pre class="mbash"><code class="mbash">
+Mac:[25/04/09 10:13] ~ $ <b>ssh mmill116@jhpce01.jhsph.edu</b>
+Last login: Tue Apr  8 17:04:18 2025 from 174.172.134.59
+🌸 🌸 🌸 🌸 🌸 🌸 🌸 🌸 🌸 🌸 🌸 🌸 🌸 🌸 🌸 🌸 🌸 🌸 🌸 🌸 🌸 🌸
+Use of this system constitutes agreement to adhere to all
+applicable JHU and JHSPH network and computer use policies.
+🌸 🌸 🌸 🌸 🌸 🌸 🌸 🌸 🌸 🌸 🌸 🌸 🌸 🌸 🌸 🌸 🌸 🌸 🌸 🌸 🌸 🌸
+
+Need Help? bitsupport@lists.jh.edu for SLURM, cluster, storage & login issues
+           bithelp@lists.jh.edu for application issues: R/SAS/python/modules...
+
+The SLURM shared partition is currently at 68% core usage and 69% RAM usage.
+--------------------------------------------------------------------
+SLURM: "slurmuser" displays per-user cluster resource usage for running/pending
+SLURM: Run "slurmuser -h" to see important options.
+--------------------------------------------------------------------
+--------------------------------------
+     Your Home Directory Usage        
+Username     Space Used         Quota     
+mmill116     230G               350G      
+--------------------------------------
+[mmill116@jhpce01 ~]$ <b>srun --pty --partition transfer bash</b>
+[mmill116@transfer-01 ~]$ <b>cd /dcs07/smart/data/mmtest/</b>
+[mmill116@transfer-01 mmtest]$ <b>sftp demo@test.rebex.net</b>
+The authenticity of host 'test.rebex.net (<no hostip for proxy command>)' can't be established.
+ED25519 key fingerprint is SHA256:d7Te2DHmvBNSWJNBWik2KbDTjmWtYHe2bvXTMM9lVg4.
+This key is not known by any other names
+Are you sure you want to continue connecting (yes/no/[fingerprint])? yes
+Warning: Permanently added 'test.rebex.net' (ED25519) to the list of known hosts.
+Welcome to test.rebex.net! See https://test.rebex.net/ for more information.
+(demo@test.rebex.net) Password: 
+Connected to test.rebex.net.
+sftp> <b>ls</b>
+pub          readme.txt   
+sftp> <b>cd pub</b>
+sftp> <b>ls</b>
+example   
+sftp> <b>ls -la </b>
+drwx------ 2 demo users          0 Mar 31  2023 .
+drwx------ 2 demo users          0 Mar 31  2023 ..
+drwx------ 2 demo users          0 Mar 31  2023 example
+sftp> <b>cd example</b>
+sftp> <b>ls -la</b>
+drwx------ 2 demo users          0 Mar 31  2023 .
+drwx------ 2 demo users          0 Mar 31  2023 ..
+-rw------- 1 demo users      36672 Mar 19  2007 KeyGenerator.png
+-rw------- 1 demo users      24029 Mar 19  2007 KeyGeneratorSmall.png
+-rw------- 1 demo users      11546 Mar 19  2007 ResumableTransfer.png
+-rw------- 1 demo users      80000 Mar 19  2007 WinFormClient.png
+-rw------- 1 demo users      17911 Mar 19  2007 WinFormClientSmall.png
+-r-------- 1 demo users      19156 Feb 16  2007 imap-console-client.png
+-r-------- 1 demo users      16471 Feb 16  2007 mail-editor.png
+-r-------- 1 demo users      35414 Feb 16  2007 mail-send-winforms.png
+-r-------- 1 demo users      49011 Feb 16  2007 mime-explorer.png
+-rw------- 1 demo users      58024 Mar 19  2007 pocketftp.png
+-rw------- 1 demo users      20197 Mar 19  2007 pocketftpSmall.png
+-r-------- 1 demo users      20472 Feb 16  2007 pop3-browser.png
+-r-------- 1 demo users      11205 Feb 16  2007 pop3-console-client.png
+-rw------- 1 demo users        379 Sep 19  2023 readme.txt
+-rw------- 1 demo users       2635 Mar 19  2007 winceclient.png
+-rw------- 1 demo users       6146 Mar 19  2007 winceclientSmall.png
+sftp> <b>get readme.txt</b>
+Fetching /pub/example/readme.txt to readme.txt
+readme.txt                                    100%  379     1.8KB/s   00:00    
+sftp> <b>exit</b>
+[mmill116@transfer-01 mmtest]$ <b>ls</b>
+readme.txt  test-file  test-file2  test-file3
+[mmill116@transfer-01 mmtest]$ <b>more readme.txt </b>
+Welcome to test.rebex.net!
+
+You are connected to an FTP or SFTP server used for testing purposes
+by Rebex FTP/SSL or Rebex SFTP sample code. Only read access is allowed.
+
+For information about Rebex FTP/SSL, Rebex SFTP and other Rebex libraries
+for .NET, please visit our website at https://www.rebex.net/
+
+For feedback and support, contact support@rebex.net
+
+Thanks!
+[mmill116@transfer-01 mmtest]$ 
+
+</code></pre>
+
+<h3 id="wget-and-curl">wget and curl<a class="headerlink" href="#wget-and-curl" title="Anchor link to this section for reference">&para;</a></h3>
+<p>The wget and curl commands can be used to download files from a web site.  They work in a similar manner, and you will need to know the full URL path to the file.  The main difference is that wget will save the data downloaded to a file, and curl will display the file on standard output, so you'll likely need to redirect the output to a file to save it.</p>
+<p>Here are examples:</p>
+<pre class="mbash"><code class="mbash">
+[mmill116@transfer-01 mmtest]$ <b>wget https://ftp.ncbi.nlm.nih.gov/genomes/check.txt</b>
+--2025-04-09 15:16:15--  https://ftp.ncbi.nlm.nih.gov/genomes/check.txt
+Resolving ftp.ncbi.nlm.nih.gov (ftp.ncbi.nlm.nih.gov)... 130.14.250.11, 130.14.250.12, 130.14.250.7, ...
+Connecting to ftp.ncbi.nlm.nih.gov (ftp.ncbi.nlm.nih.gov)|130.14.250.11|:443... connected.
+HTTP request sent, awaiting response... 200 OK
+Length: 73071 (71K) [text/plain]
+Saving to: ‘check.txt’
+
+check.txt                100%[=================================>]  71.36K  --.-KB/s    in 0.001s  
+
+2025-04-09 15:16:16 (119 MB/s) - ‘check.txt’ saved [73071/73071]
+
+[mmill116@transfer-01 mmtest]$ <b>ls -al check.txt</b>
+-rw-r--r-- 1 mmill116 smart 73071 Jul  6  2022 check.txt
+
+[mmill116@transfer-01 mmtest]$ <b>curl https://ftp.ncbi.nlm.nih.gov/genomes/species.diff.txt > species.diff.txt</b>
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+100 49453  100 49453    0     0  52834      0 --:--:-- --:--:-- --:--:-- 52778
+[mmill116@transfer-01 mmtest]$ <b>ls -la species.diff.txt</b>
+-rw-r--r-- 1 mmill116 smart 49453 Apr  9 15:16 species.diff.txt
+</code></pre>
+
+<h3 id="batch-use-of-the-transfer-nodepartition">Batch use of the transfer node/partition<a class="headerlink" href="#batch-use-of-the-transfer-nodepartition" title="Anchor link to this section for reference">&para;</a></h3>
+<p>In addition to using <code>srun</code> to perform file transfers interactively, you can create a bash shell script with the
+commands needed to perfomr the file transfers, and then use <code>sbatch</code> to submit this as a batch job.  This is especially
+helpful, if not required, for long running file transfers, where an srun session might get interrupted.</p>
+<p>Here is an example of a job that uses "wget" to do a file transfer in batch mode.</p>
+<pre class="mbash"><code class="mbash">
+[mmill116@jhpce01 ~]$ <b>cat wget-example.sh</b>
+#!/bin/bash
+#SBATCH --partition=transfer
+#SBATCH --time=4-00:00:00
+
+wget -O $MYSCRATCH/SRR026674.fastq.gz "https://trace.ncbi.nlm.nih.gov/Traces/sra/sra.cgi?cmd=dload&run_list=SRR026674&format=fastq"
+[mmill116@jhpce01 ~]$ <b>sbatch wget-example.sh</b>
+Submitted batch job 15916781
+[mmill116@jhpce01 ~]$ <b>squeue --me</b>
+             JOBID PARTITION     NAME     USER ST       TIME  NODES NODELIST(REASON)
+[mmill116@jhpce01 ~]$ <b>more slurm-15916781.out </b>
+--2025-04-09 16:15:32--  https://trace.ncbi.nlm.nih.gov/Traces/sra/sra.cgi?cmd=dload&run_list=SRR02
+6674&format=fastq
+Resolving trace.ncbi.nlm.nih.gov (trace.ncbi.nlm.nih.gov)... 130.14.29.113, 2607:f220:41e:4290::113
+Connecting to trace.ncbi.nlm.nih.gov (trace.ncbi.nlm.nih.gov)|130.14.29.113|:443... connected.
+HTTP request sent, awaiting response... 301 Moved Permanently
+Location: /Traces/index.html?cmd=dload&format=fastq&run_list=SRR026674 [following]
+--2025-04-09 16:15:33--  https://trace.ncbi.nlm.nih.gov/Traces/index.html?cmd=dload&format=fastq&ru
+n_list=SRR026674
+Reusing existing connection to trace.ncbi.nlm.nih.gov:443.
+HTTP request sent, awaiting response... 200 OK
+Length: 5713 (5.6K) [text/html]
+Saving to: ‘/fastscratch/myscratch/mmill116/SRR026674.fastq.gz’
+
+     0K .....                                                 100%  134M=0s
+
+2025-04-09 16:15:33 (134 MB/s) - ‘/fastscratch/myscratch/mmill116/SRR026674.fastq.gz’ saved [5713/5
+713]
+
+[mmill116@jhpce01 ~]$ <b>ls -la /fastscratch/myscratch/mmill116/SRR026674.fastq.gz</b>
+-rw-r--r-- 1 mmill116 mmi 5713 Dec 11 11:59 /fastscratch/myscratch/mmill116/SRR026674.fastq.gz
+[mmill116@jhpce01 ~]$ 
+</code></pre>
+
+<h3 id="rcloneonedrive">Rclone/Onedrive<a class="headerlink" href="#rcloneonedrive" title="Anchor link to this section for reference">&para;</a></h3>
 <p><a href="https://en.wikipedia.org/wiki/Rclone">Rclone</a> can be used to access network file resources, such as OneDrive,
 Google Drive, and AWS. See <a href="../onedrive/">here</a> for instructions on using it to connect to Hopkins OneDrive storage.</p>
 <h3 id="aspera">Aspera<a class="headerlink" href="#aspera" title="Anchor link to this section for reference">&para;</a></h3>
-<p><a href="https://www.ibm.com/products/aspera">Aspera</a> is a commercial product from IBM that allows file transfers that are
+<p><a href="https://www.ibm.com/products/aspera">Aspera</a> is a commercial product from IBM that some site used to serve data
+out from their sites.  Aspera (per their marketing) allows file transfers that are
 reportedly 20 times faster than <code>ftp</code>.  Documentation is available for macOS, Linux and Windows.</p>
 <p>Aspera is required to download data from the
 <a href="https://www.ncbi.nlm.nih.gov/home/download/">NCBI Aspera</a> server or download/upload data from/to JHU CIDR on the
-Bayview campus.</p>
+Bayview campus.  Several other companies use Aspera servers for alowing file downloads.</p>
 <p>The Aspera license does not allow us to install the client for our users. You must install it
-yourself. You may either download the linux client from the <a href="https://www.ibm.com/aspera/connect/">Aspera Download site</a> or else use the client that we already downloaded. (It may be out of date.) If you prefer the latter, simply copy the installation script from here:</p>
-<div class="highlight"><pre><span></span><code>/jhpce/shared/jhpce/core/JHPCE_tools/3.0/packages/ibm-aspera-connect_4.2.10.749_linux_x86_64.sh
-</code></pre></div>
-<p>into your home directory, and then run the script:</p>
-<div class="highlight"><pre><span></span><code>bash ibm-aspera-connect_4.2.10.749_linux_x86_64.sh
+yourself. You can download the Aspera Connect Linux Client from the <a href="https://www.ibm.com/aspera/connect/">Aspera Download site</a>. This will download a "tar.gz" file that you can then upload to your account on the JHPCE cluster, with sftp or scp.</p>
+<p>You will then need to extract and run the install script from the tar.gz file.  For example:</p>
+<div class="highlight"><pre><span></span><code>tar xvf ibm-aspera-connect_4.2.13.820_linux_x86_64.tar.gz
+bash ibm-aspera-connect_4.2.13.820_linux_x86_64.sh
 </code></pre></div>
 <p>This will install the <code>ascp</code> command under your home directory at  <code>~/.aspera/connect/bin</code>.  You can either add <code>~/.aspera/connect/bin</code> to your <code>PATH</code>, or use the full path to the <code>ascp</code> command to run it.</p>
 <p>You may also need to do other steps, such as install an extension to your web browser. Instructions on how to do that for Linux, as an example, are available from IBM <a href="https://www.ibm.com/docs/en/aspera-connect/4.2?topic=suc-installation">here</a>.</p>
@@ -4239,58 +4793,120 @@ yourself. You may either download the linux client from the <a href="https://www
 <p>An extensive <a href="https://ostechnix.com/how-to-synchronize-files-with-unison-on-linux/">tutorial</a> at ostechnix.</p>
 <p>A <a href="https://wiki.archlinux.org/title/unison">wiki</a> about using it from ArchLinux.</p>
 <p><a href="https://github.com/jfiksel/cluster-example#how-to-use-unison-for-file-transfer-and-syncing">This</a> document written by a previous JHPCE user (Jacob Fiksel) might still be useful.</p>
-<h3 id="globus">Globus<a class="headerlink" href="#globus" title="Anchor link to this section for reference">&para;</a></h3>
-<p>We have a Globus endpoint. Please see <a href="../globus/">this document</a>.</p>
-<h2 id="mounting-virtual-file-systems">Mounting virtual file systems<a class="headerlink" href="#mounting-virtual-file-systems" title="Anchor link to this section for reference">&para;</a></h2>
-<div class="admonition obsolete">
-<p class="admonition-title">Obsolete</p>
-<p>This is probably obsolete information as of 20240220 - OSXFUSE is now named macFUSE and is <a href="https://osxfuse.github.io">hosted</a> at a different location than what is described below.</p>
-</div>
-<p>A common use case occurs when a user has a pipeline that is
-periodicially emiting tab delimited files and the user wants to plot
-these files with a favorite plotting or analysis application that runs
-on their local host. In this case it is common to mount the remote
-file system on the local host via NFS or SMB.</p>
-<p>Unfortunately, given the size and hetergeneity of our user base (which
-spans the entire medical campus), this is not practical. Instead, we
-recommend that users create a virtual file system on their OSX machine
-with the MACFusion application. MacFusion is free and allows you to
-create a mount point on your local host that looks like just another
-directory in your local file system. So any applications and scripts
-on your local host can access the data in that mount point. From the
-user perspective, it acts just like an SMB or NSF mount point. Data is
-transferred back and forth via an encrypted link.</p>
-<p>MacFusion requires the installation of an OSX kernel extenstion and
-some associated tools. OSXFuse provides the needed extension. OSXFuse
-implements a so called ” FileSystem in USErspace”. This technology is
-described here. There exist FUSE kernel modules for most flavors of
-unix and linux.  The procedure for installing OSXFuse and MACFusion is
-described below.</p>
-<ul>
-<li>Downloaded OSXFUSE from sourceforge repository</li>
-<li>Install OSXFUSE</li>
-<li>Launch the OSXFUSE installer and perform a custom install.  Be sure to select “MacFuse Compatibility Layer” in the Custom Install screen. </li>
-<li>After installing the kernel extension it may, or may not, be necessary to reboot your mac.Screen Shot</li>
-<li>Download and install the Macfusion app from: <a href="http://macfusionapp.org">http://macfusionapp.org</a>.</li>
-<li>Startup MacFusion, and create an entry for <code>jhpce-transfer01.jhsph.edu</code> — enter your login and password.</li>
-<li>Select a mount point, e.g. <code>~/jhpce/myhome/</code></li>
-<li>Once the drive is mounted, you can cd to the directory in the shell or view it  in a window on your desktop. To do this you need to “Reveal” the drive by pressing Command-R.  Once the directory is revealed, you can drag and drop files into the director in the usual way you drag and drop files into any directory on your mac.</li>
-</ul>
-<h2 id="ftp">ftp<a class="headerlink" href="#ftp" title="Anchor link to this section for reference">&para;</a></h2>
-<p>We don’t have the ftp client installed on the cluster.  It is an
-older, less secure, unencrypted channel for transferring files.
+<h3 id="git">git<a class="headerlink" href="#git" title="Anchor link to this section for reference">&para;</a></h3>
+<p>You can clone a git repository from a github site to the JHPCE cluster using the "git" command.  For example</p>
+<pre class="mbash"><code class="mbash">
+[mmill116@transfer-01 mmtest]$ <b>git clone https://github.com/ruanyf/simple-bash-scripts</b>
+Cloning into 'simple-bash-scripts'...
+remote: Enumerating objects: 344, done.
+remote: Counting objects: 100% (74/74), done.
+remote: Compressing objects: 100% (23/23), done.
+remote: Total 344 (delta 55), reused 54 (delta 51), pack-reused 270 (from 2)
+Receiving objects: 100% (344/344), 69.19 KiB | 13.00 KiB/s, done.
+Resolving deltas: 100% (102/102), done.
+Updating files: 100% (51/51), done.
+[mmill116@transfer-01 mmtest]$ <b>cd simple-bash-scripts</b>
+[mmill116@transfer-01 simple-bash-scripts]$ <b>ls</b>
+README.md  scripts
+[mmill116@transfer-01 simple-bash-scripts]$ <b>cd scripts/</b>
+[mmill116@transfer-01 scripts]$ <b>ls</b>
+addition.sh             directorysize.sh     lowercase.sh        subtraction.sh
+affect.sh               disk-space.sh        multiplication.sh   table.sh
+archive-and-encrypt.sh  division.sh          pomodoro.sh         test-file.sh
+armstrong.sh            encrypt.sh           prime.sh            thumbnail.sh
+binary2decimal.sh       evenodd.sh           process.sh          traps.sh
+calculator.sh           factorial.sh         random-emoji.sh     up.sh
+collectnetworkinfo.sh   fibonacci.sh         randomfile.sh       versioncompare.sh
+color.sh                get-temperature.sh   rang-random.sh      weather.sh
+convertlowercase.sh     hardware_machine.sh  read-menu.sh        whereIP.sh
+count-lines.sh          hello-world.sh       remotebackup.sh     while-menu.sh
+cpu.sh                  hextodec.sh          server-health.sh    while-read.sh
+dec2hex.sh              interactive.sh       simplecalc.sh
+decimal2binary.sh       list-dir.sh          special-pattern.sh
+[mmill116@transfer-01 scripts]$ <b>bash color.sh</b>
+  LOVE  [mmill116@transfer-01 scripts]$ 
+[mmill116@transfer-01 scripts]$ 
+</code></pre>
+
+<h3 id="rsync_1">rsync<a class="headerlink" href="#rsync_1" title="Anchor link to this section for reference">&para;</a></h3>
+<p>We have a good document about <a href="../../files/rsync/">using rsync</a> to copy files.</p>
+<h3 id="ftp">ftp<a class="headerlink" href="#ftp" title="Anchor link to this section for reference">&para;</a></h3>
+<p>ftp is an older, less secure, unencrypted channel for transferring files.
 However if you are downloading files from an older site that does not
-support SFTP or one of the other more modern mechanisms, you have a
-couple of options for ftp.</p>
-<p>If you want to be able to interactively browse through the ftp site you can use the lynx text based browser command:</p>
-<div class="highlight"><pre><span></span><code>lynx ftp://USER@ftp.site.gov
+support SFTP or one of the other more modern mechanisms, you can use
+ftp.  Ftp works in a similar interactive manner as sftp - see <a href="#sftp-secure-file-transfer-program-or-protocol">above</a>
+Here is an example of using ftp:</p>
+<div class="highlight"><pre><span></span><code>[mmill116@transfer-01 mmtest]$ ftp ftp-air.larc.nasa.gov
+ftp: ftp-air.larc.nasa.gov: Name or service not known
+ftp&gt; exit
+[mmill116@transfer-01 mmtest]$ ftp wuarchive.wustl.edu
+ftp: wuarchive.wustl.edu: Name or service not known
+ftp&gt; exit
+[mmill116@transfer-01 mmtest]$ ftp ftp.ngdc.noaa.gov
+Connected to ftp.ngdc.noaa.gov (140.172.190.215).
+220-                    ----- Notice -----
+220-
+220- You are accessing a U.S. Government information system, which includes:
+220- 1) This computer, 2) This computer network, 3) All computers connected
+220- to this network, and 4) All devices and storage media attached to this
+220- network or to a computer on this network.
+220- 
+220- You understand and consent to the following:
+220- you may access this information system for authorized use only; you have
+220- no reasonable expectation of privacy regarding any communication of data
+220- transiting or stored on this information system; at any time and for any
+220- lawful Government purpose, the Government may monitor, intercept, and
+220- search and seize any communication or data transiting or stored on this
+220- information system; and any communications or data transiting or stored
+220- on this information system may be disclosed or used for any lawful
+220- Government purpose.
+220- 
+220- This information system may contain Controlled Unclassified Information
+220- (CUI) that is subject to safeguarding or dissemination controls in
+220- accordance with law, regulation, or Government-wide policy. Accessing
+220- and using this system indicates your understanding of this warning.
+220-
+220-                    ----- Notice -----
+220-
+220- Questions/Problems should be directed to ncei.webmaster@noaa.gov
+220 
+Name (ftp.ngdc.noaa.gov:mmill116): anonymous
+331 Please specify the password.
+Password:
+230 Login successful.
+Remote system type is UNIX.
+Using binary mode to transfer files.
+ftp&gt; ls
+227 Entering Passive Mode (140,172,190,215,187,166).
+150 Here comes the directory listing.
+drwxrwxr-x   32 ftp      ftp            32 Sep 10  2012 DMSP
+-rw-rw-r--    1 ftp      ftp          1516 Feb 04  2016 INDEX.txt
+-rw-rw-r--    1 ftp      ftp          3766 Feb 09  2018 README.txt
+drwxrwsr-x   26 ftp      ftp            29 Oct 30 20:51 STP
+drwxr-xr-x    2 ftp      ftp             2 Sep 17  2003 Snow_Ice
+drwxrwxr-x    2 ftp      ftp             2 Jun 22  2004 Solid_Earth
+drwxr-xr-x    3 ftp      ftp             3 Aug 07  2017 coastwatch
+drwxr-xr-x    2 ftp      ftp             2 Jul 22  2016 dmsp4alan
+-rw-rw-r--    1 ftp      ftp          9036 Feb 04  2016 ftp.html
+drwxrwsr-x   11 ftp      ftp            11 Dec 19  2017 geomag
+-rw-r--r--    1 ftp      ftp            53 Jul 27  2010 google12c4c939d7b90761.html
+lrwxrwxrwx    1 ftp      ftp             8 Aug 01  2011 index.html -&gt; ftp.html
+drwxr-sr-x    2 ftp      ftp             2 Nov 25  2003 international
+drwxr-xr-x   21 ftp      ftp            21 Jan 03  2022 ionosonde
+drwxrwxr-x    4 ftp      ftp             6 Dec 15  2011 mgg
+drwxrwxr-x    8 ftp      ftp             9 Dec 12  2014 pub
+drwxrwsr-x    4 ftp      ftp             4 Nov 08  2010 wdc
+226 Directory send OK.
+ftp&gt; exit
+221 Goodbye.
+[mmill116@transfer-01 mmtest]$ 
 </code></pre></div>
-<p>Once connected, you can then use the arrow keys to move around the
-site, and to select a file to download or a directory to descend into.</p>
-<p>If you know the exact path to the file you want, you can use the “wget” command:</p>
-<div class="highlight"><pre><span></span><code>wget ftp://USER:PASSWORD@ftp.site.gov/path/to/file
-</code></pre></div>
-<p>All of these should be done from the <code>transfer</code> queue to make use of our high speed ScienceDMZ network connection.</p>
+<h3 id="write-your-own-programs-in-python-or-perl-or-c-or-r">Write your own programs in python or perl or c or R ....<a class="headerlink" href="#write-your-own-programs-in-python-or-perl-or-c-or-r" title="Anchor link to this section for reference">&para;</a></h3>
+<p>No examples here... but all programming languages provide some function call or library or module to do file downloads from within the code itself.</p>
+<h1 id="old-stuff">Old Stuff<a class="headerlink" href="#old-stuff" title="Anchor link to this section for reference">&para;</a></h1>
+<ul>
+<li>Mount remote filesystems — directories at JHPCE mounted on your local host. <strong>IS THIS MATERIAL STILL ACCURATE IN 2024?</strong> Is this <a href="https://hpc-docs.cubi.bihealth.org/connecting/configure-ssh/linux/#file-system-mount-via-sshfs">example SSHFS doc</a> worth re-using? What about Mountain Duck?</li>
+</ul>
 
 
 
@@ -4311,7 +4927,7 @@ site, and to select a file to download or a directory to descend into.</p>
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="February 4, 2025 20:02:11">February 4, 2025</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="April 9, 2025 20:59:56">April 9, 2025</span>
   </span>
 
     
@@ -4327,7 +4943,7 @@ site, and to select a file to download or a directory to descend into.</p>
     </span>
     <nav>
       
-        <a href="mailto:tunison@jhu.edu">jeffreytunison</a>
+        <a href="mailto:mmill116@marks-macbook-pro.local">Mark Miller</a>
     </nav>
   </span>
 
