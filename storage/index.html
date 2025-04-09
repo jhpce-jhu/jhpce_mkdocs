@@ -3885,7 +3885,7 @@
 <TABLE align="left">
 <TR><TH>Type</TH><TH>Example Path</TH><TH>Quota?</TH><TH>Use</TH><TH>Cost</TH></TR>
 <TR><TD>Home directory</TD><TD>/users/USERID</TD><TD>100GB</TD><TD>Small datasets, Programs, Applications</TD><TD>$350/TB/yr - max $35/yr if 100GB used</TD></TR>
-<TR><TD>Project space</TD><TD>/dcs0?/*grpname*/data</TD><TD>Purchased Allocation</TD><TD>Research data</TD><TD>Between $25/TB/yr and $40/TB/yr</TD></TR>
+<TR><TD>Project space</TD><TD>/dcs0?/*grpname*/data</TD><TD>Size of the purchased allocation</TD><TD>Research data</TD><TD>Between $25/TB/yr and $40/TB/yr</TD></TR>
 <TR><TD>Scratch space</TD><TD>$MYSCRATCH</TD><TD>1TB</TD><TD>Temporary files</TD><TD>Free</TD></TR>
 
 </TABLE>
@@ -3911,13 +3911,13 @@ data, you should copy it to your home directory, or copy it off of the JHPCE
 cluster.</p>
 <p>For home directory space you are only charged for the actual storage you are
 using at a rate of $0.35/GB/yr.  As you add or remove files, your charge will
-increase or decrease based on your usage.</p>
+increase or decrease based on your usage. Home directory space is already compressed on the storage server, so you won't save any money by compressing your files with <code>tar -czf</code> etc.</p>
 <h2 id="project-spaces">Project Spaces<a class="headerlink" href="#project-spaces" title="Anchor link to this section for reference">&para;</a></h2>
 <p>Every 12 - 18 months, a new large storage array is purchased for
 the JHPCE cluster, and allocations for these storage spaces are sold to 
 the various PIs or groups that need storage space.  As part of the planning
 process for bringing a new storage array online, we will reach out to all
-active PIs on the cluster, and surey them for their expected storage needs.
+active PIs on the cluster, and survey them for their expected storage needs.
 We will then size the new storage array based on those needs.</p>
 <p>Our last large storage build was in 2023, for the DCS07 storage array.  We
 do still have some unsold capacity on this array, so please reach out to
@@ -4139,7 +4139,7 @@ time on the JHPCE cluster:
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="May 8, 2024 21:48:37">May 8, 2024</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="April 9, 2025 17:49:47">April 9, 2025</span>
   </span>
 
     
