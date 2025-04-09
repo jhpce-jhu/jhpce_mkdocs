@@ -502,6 +502,21 @@ mkdocs serve
 ```
 
 ## Errors You Might Run Into Running Mkdocs Locally
+
+2025-04-09 - MM found insalling and running "mkdocs serve" using instructions above on Mac gave constant stream of errors:
+```
+INFO    -  DeprecationWarning: Call to deprecated method findAll. (Replaced by find_all) -- Deprecated since
+           version 4.0.0.
+             File
+           "/Users/mmill116/Library/Python/3.9/lib/python/site-packages/mkdocs_extract_listings_plugin/html_parser.py",
+           line 18, in parse_listings_from_html
+               for pre in soup.findAll('pre'):
+             File "/Users/mmill116/Library/Python/3.9/lib/python/site-packages/bs4/_deprecation.py", line 56,
+           in alias
+               warnings.warn(
+```
+The fix was to edit ```..../Library/Python/3.9/lib/python/site-packages/mkdocs_extract_listings_plugin/html_parser.py``` and change the single instance of "findAll" to "find_all".
+
 It can sometimes be useful to ++ctrl+c++ the mkdocs serve program and restart it. Usually this involves significant changes to `mkdocs.yml` and those will stop over time. However when in doubt give it a try.
 
 JRT added some instructions to the mkdocs.yml file causing warnings to be issued. JRT has found them very useful.

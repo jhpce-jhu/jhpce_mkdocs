@@ -8,6 +8,7 @@ nav:
     - About Us:
       - JHPCE Model: aboutus/model.md
       - Staff: aboutus/staff.md
+      - JHPCE Constitutional Principles: aboutus/principles.md
       - Grant and Acknowledgment Blurbs: aboutus/GrantAndAckBlurbs.md
     - Getting Started:
       - joinus/index.md

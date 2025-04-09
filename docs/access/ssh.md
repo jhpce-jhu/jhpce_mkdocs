@@ -123,6 +123,15 @@ applicable JHU and JHSPH network and computer use policies.
 [bsmith@jhpce01 ~]$ 
 </code></pre>
 
+### JHPCE Python Tool for SSH Key Setup
+
+Brian Caffo has written some python tools for managing ssh keys in a git repository at
+https://github.com/jhpce-jhu/jhpce-python. You can install this git repo on your local system and go through the steps at
+[https://github.com/jhpce-jhu/jhpce-python/blob/main/docs/index.md#creating-a-key](https://github.com/jhpce-jhu/jhpce-python/blob/main/docs/index.md#creating-a-key)
+for setting up your keys. You can also use this python tool to login to the JHPCE
+cluster and run remote commands there.
+There is also a Colab notbook with an example for setting up ssh keys within Python at
+https://colab.research.google.com/drive/1I8VjmDDO86Qj0jJYMmDlZWrAoZwVLrpj?usp=sharing
 
 ### SSH Keys, more info:
 SSH programs make use of something called [public-key cryptography](https://en.wikipedia.org/wiki/Public-key_cryptography). Basically secure communications can be created by splitting a secret into to parts, and placing one part on each end of a link. This can be extended to an optional pair of files you can generate and distribute such that one is located on the JHPCE cluster and the other is on your computer. Or smartphone!

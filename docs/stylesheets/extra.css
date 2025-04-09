@@ -14,3 +14,12 @@
   background-color: #ffcc00;
   color: #cc3300;
 }
+
+.mbash {
+  background-color: black;
+  color: #00FF88;
+  font-size: 14px ;
+  font-family: consolas, monospace;
+  display: inline-block;
+} 
+
