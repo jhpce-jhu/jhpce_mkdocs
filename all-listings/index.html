@@ -2430,8 +2430,6 @@
       
         
       
-        
-      
     
     
     
@@ -2547,29 +2545,6 @@
   
   <span class="md-ellipsis">
     R Packages
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../sw/singularity/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    Singularity
     
   </span>
   
@@ -5874,11 +5849,6 @@ then
    echo "Not enough space in /tmp. Only $FREETMP KB available."
    exit 1
 fi
-</code></pre><h2><a class="heading" href="../sw/adding-pkgs/">Adding Your Own Python and R Libraries</a></h2><a class="url" href="../sw/adding-pkgs/">sw/adding-pkgs/</a><pre><span></span><code><span class="o">&gt;</span><span class="w"> </span><span class="nf">install.packages</span><span class="p">(</span><span class="s">"sf"</span><span class="p">)</span>
-<span class="o">&gt;</span><span class="w"> </span><span class="nf">install.packages</span><span class="p">(</span><span class="s">'terra'</span><span class="p">,</span><span class="w"> </span><span class="n">repos</span><span class="o">=</span><span class="s">'https://rspatial.r-universe.dev'</span><span class="p">)</span>
-<span class="o">&gt;</span><span class="w"> </span><span class="nf">library</span><span class="p">(</span><span class="s">'sf'</span><span class="p">)</span>
-<span class="o">&gt;</span><span class="w"> </span><span class="nf">library</span><span class="p">(</span><span class="s">'terra'</span><span class="p">)</span>
-</code></pre><pre><span></span><code>STDFLAGS = -O2 -pipe -Wall 
 </code></pre><h2><a class="heading" href="../sw/building-from-src/">Compile from Source</a></h2><a class="url" href="../sw/building-from-src/">sw/building-from-src/</a><pre><span></span><code>[test@compute-110 ~]$ mkdir download
 [test@compute-110 ~]$ cd download/
 [test@compute-110 download]$ wget http://ftp.gnu.org/gnu/units/units-2.23.tar.gz
@@ -6178,6 +6148,26 @@ Loading R/4.3
 <span class="go">Canceled forwarding.</span>
 <span class="gp">[compute-012 /users/jdoe1] $ </span><span class="nb">exit</span>
 <span class="gp">[login31 /users/jdoe1] $ </span><span class="nb">exit</span>
+</code></pre><pre><span></span><code>[mmill116@compute-112 ~]$ module avail conda_R
+
+--------------------- /jhpce/shared/community/modulefiles ----------------------
+   conda_R/devel    conda_R/4.3.x    conda_R/4.4.x
+   conda_R/test     conda_R/4.3      conda_R/4.4   (D)
+</code></pre><pre><span></span><code><span class="p">[</span><span class="n">mmill116</span><span class="o">@</span><span class="n">jhpce01</span><span class="w"> </span><span class="o">~</span><span class="p">]</span><span class="o">$</span><span class="w"> </span><span class="n">srun</span><span class="w"> </span><span class="o">--</span><span class="n">pty</span><span class="w"> </span><span class="o">--</span><span class="n">X11</span><span class="w"> </span><span class="n">bash</span>
+<span class="p">[</span><span class="n">mmill116</span><span class="o">@</span><span class="n">compute</span><span class="m">-112</span><span class="w"> </span><span class="o">~</span><span class="p">]</span><span class="o">$</span><span class="w"> </span><span class="n">module</span><span class="w"> </span><span class="n">load</span><span class="w"> </span><span class="nf">conda_R</span>
+<span class="p">(</span><span class="o">/</span><span class="n">jhpce</span><span class="o">/</span><span class="n">shared</span><span class="o">/</span><span class="n">community</span><span class="o">/</span><span class="n">core</span><span class="o">/</span><span class="n">conda_R</span><span class="o">/</span><span class="m">4.4</span><span class="p">)</span><span class="w"> </span><span class="p">[</span><span class="n">mmill116</span><span class="o">@</span><span class="n">compute</span><span class="m">-112</span><span class="w"> </span><span class="o">~</span><span class="p">]</span><span class="o">$</span><span class="w"> </span><span class="n">R</span>
+<span class="n">R</span><span class="w"> </span><span class="n">version</span><span class="w"> </span><span class="m">4.4</span><span class="n">.</span><span class="m">0</span><span class="w"> </span><span class="nf">Patched </span><span class="p">(</span><span class="m">2024-05-22</span><span class="w"> </span><span class="n">r86590</span><span class="p">)</span><span class="w"> </span><span class="o">--</span><span class="w"> </span><span class="s">"Puppy Cup"</span>
+<span class="nf">Copyright </span><span class="p">(</span><span class="n">C</span><span class="p">)</span><span class="w"> </span><span class="m">2024</span><span class="w"> </span><span class="n">The</span><span class="w"> </span><span class="n">R</span><span class="w"> </span><span class="n">Foundation</span><span class="w"> </span><span class="kr">for</span><span class="w"> </span><span class="n">Statistical</span><span class="w"> </span><span class="n">Computing</span>
+<span class="n">.</span><span class="w"> </span><span class="n">.</span><span class="w"> </span><span class="n">.</span>
+<span class="o">&gt;</span><span class="w"> </span><span class="nf">install.packages</span><span class="p">(</span><span class="s">"sf"</span><span class="p">)</span>
+<span class="o">&gt;</span><span class="w"> </span><span class="nf">library</span><span class="p">(</span><span class="s">'sf'</span><span class="p">)</span>
+<span class="o">&gt;</span><span class="w"> </span><span class="nf">q</span><span class="p">()</span>
+<span class="p">(</span><span class="o">/</span><span class="n">jhpce</span><span class="o">/</span><span class="n">shared</span><span class="o">/</span><span class="n">community</span><span class="o">/</span><span class="n">core</span><span class="o">/</span><span class="n">conda_R</span><span class="o">/</span><span class="m">4.4</span><span class="p">)</span><span class="w"> </span><span class="p">[</span><span class="n">mmill116</span><span class="o">@</span><span class="n">compute</span><span class="m">-112</span><span class="w"> </span><span class="o">~</span><span class="p">]</span><span class="o">$</span><span class="w"> </span><span class="n">ls</span><span class="w"> </span><span class="o">-</span><span class="n">la</span><span class="w"> </span><span class="n">R</span><span class="o">/</span><span class="m">4.4</span>
+<span class="n">total</span><span class="w"> </span><span class="m">61</span>
+<span class="n">drwxr</span><span class="o">-</span><span class="n">xr</span><span class="o">-</span><span class="n">x</span><span class="w">  </span><span class="m">4</span><span class="w"> </span><span class="n">mmill116</span><span class="w"> </span><span class="n">mmi</span><span class="w">  </span><span class="m">4</span><span class="w"> </span><span class="n">Apr</span><span class="w"> </span><span class="m">10</span><span class="w"> </span><span class="m">10</span><span class="o">:</span><span class="m">58</span><span class="w"> </span><span class="n">.</span>
+<span class="n">drwxr</span><span class="o">-</span><span class="n">xr</span><span class="o">-</span><span class="n">x</span><span class="w"> </span><span class="m">19</span><span class="w"> </span><span class="n">mmill116</span><span class="w"> </span><span class="n">mmi</span><span class="w"> </span><span class="m">20</span><span class="w"> </span><span class="n">May</span><span class="w"> </span><span class="m">15</span><span class="w">  </span><span class="m">2024</span><span class="w"> </span><span class="n">..</span>
+<span class="n">drwxr</span><span class="o">-</span><span class="n">xr</span><span class="o">-</span><span class="n">x</span><span class="w"> </span><span class="m">19</span><span class="w"> </span><span class="n">mmill116</span><span class="w"> </span><span class="n">mmi</span><span class="w"> </span><span class="m">25</span><span class="w"> </span><span class="n">Apr</span><span class="w"> </span><span class="m">10</span><span class="w"> </span><span class="m">10</span><span class="o">:</span><span class="m">58</span><span class="w"> </span><span class="n">sf</span>
+</code></pre><pre><span></span><code>STDFLAGS = -O2 -pipe -Wall 
 </code></pre><h2><a class="heading" href="../sw/r-pkg/">R Packages</a></h2><a class="url" href="../sw/r-pkg/">sw/r-pkg/</a><pre><span></span><code>[test@compute-107 ~]$ module load R
 Loading R/4.3
 (4.3)[test@compute-107 ~]$

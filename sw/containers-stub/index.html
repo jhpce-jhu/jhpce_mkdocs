@@ -8,7 +8,7 @@
       
       
       
-        <link rel="canonical" href="https://jhpce.jhu.edu/sw/jupyter/">
+        <link rel="canonical" href="https://jhpce.jhu.edu/sw/containers-stub/">
       
       
       
@@ -18,7 +18,7 @@
     
     
       
-        <title>Jupyter - JHPCE</title>
+        <title>Containers - JHPCE</title>
       
     
     
@@ -82,7 +82,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#jupyter" class="md-skip">
+        <a href="#containers" class="md-skip">
           Skip to content
         </a>
       
@@ -117,7 +117,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Jupyter
+              Containers
             
           </span>
         </div>
@@ -2428,8 +2428,6 @@
       
         
       
-        
-      
     
     
     
@@ -2545,29 +2543,6 @@
   
   <span class="md-ellipsis">
     R Packages
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../singularity/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    Singularity
     
   </span>
   
@@ -3732,9 +3707,42 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#using-the-web-portal" class="md-nav__link">
+  <a href="#using-our-container-solutions" class="md-nav__link">
     <span class="md-ellipsis">
-      Using the Web Portal
+      Using Our Container Solutions
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#building-your-own-containers" class="md-nav__link">
+    <span class="md-ellipsis">
+      Building Your Own Containers
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Building Your Own Containers">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#how-do-you-run-a-batch-slurm-job-using-a-container" class="md-nav__link">
+    <span class="md-ellipsis">
+      How do you run a batch SLURM job using a container?
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#examples-from-elsewhere" class="md-nav__link">
+    <span class="md-ellipsis">
+      Examples from Elsewhere
     </span>
   </a>
   
@@ -3754,26 +3762,24 @@
                 
                   
 
-  <nav class="md-tags" >
-    
-      
-      
-      
-        <a href="../../ourtools/tags/#tag:needs-to-be-written" class="md-tag">needs-to-be-written</a>
-      
-    
-  </nav>
 
 
-
-<h1 id="jupyter">Jupyter<a class="headerlink" href="#jupyter" title="Anchor link to this section for reference">&para;</a></h1>
-<p>Everything you need to know to get started using Jupyter and related friends.</p>
-<h2 id="using-the-web-portal">Using the Web Portal<a class="headerlink" href="#using-the-web-portal" title="Anchor link to this section for reference">&para;</a></h2>
-<div class="admonition note">
-<p class="admonition-title">Authoring Note</p>
-<p>Put here information about aspects of using this tool. Perhaps a warning that it can take some time to launch.</p>
-</div>
-<p>Please see <a href="../../portal/web-apps/">this document</a> about this service.</p>
+<h1 id="containers">Containers<a class="headerlink" href="#containers" title="Anchor link to this section for reference">&para;</a></h1>
+<h2 id="using-our-container-solutions">Using Our Container Solutions<a class="headerlink" href="#using-our-container-solutions" title="Anchor link to this section for reference">&para;</a></h2>
+<p>We have two solutions that you can use (R Studio Server, JupyterHub). See which documents about using them???</p>
+<p>Maybe this is a good time to at least get credit for the work Mark has done building the singularity containers we now offer.</p>
+<p>What do you need to know about using them? Quitting them? Waiting how long for them to finish starting?</p>
+<p>What verbiage about this can be shared with Web Portal docs?</p>
+<h2 id="building-your-own-containers">Building Your Own Containers<a class="headerlink" href="#building-your-own-containers" title="Anchor link to this section for reference">&para;</a></h2>
+<p>Maybe we can document this later in terms of how users can build them. In the mean time, provide some links??</p>
+<p>They don't have root access, so what is that trick that allows you to make a container image?</p>
+<h3 id="how-do-you-run-a-batch-slurm-job-using-a-container">How do you run a batch SLURM job using a container?<a class="headerlink" href="#how-do-you-run-a-batch-slurm-job-using-a-container" title="Anchor link to this section for reference">&para;</a></h3>
+<p>Where is the best file system to host a container file if you're going to run it in batch mode on multiple nodes? /fastscratch? Does it make a difference?</p>
+<h2 id="examples-from-elsewhere">Examples from Elsewhere<a class="headerlink" href="#examples-from-elsewhere" title="Anchor link to this section for reference">&para;</a></h2>
+<p>The <a href="https://docs.tacc.utexas.edu/hpc/frontera/#containers">Frontera</a> site's section on containers mentions something that users building their own containers on JHPCE need to know to add to their containers -- e.g. which file systems to include.</p>
+<p><a href="https://docs.nersc.gov/development/containers/podman-hpc/podman-beginner-tutorial/">NERSC</a> has a well-written set of pages about using <a href="https://docs.nersc.gov/development/containers/podman-hpc/overview/">podman-hpc</a>, which might serve as an example of just building and using containers even without podman-hpc</p>
+<p>Zurich pages on <a href="https://doc.zih.tu-dresden.de/software/containers/">Singularity</a> and <a href="https://doc.zih.tu-dresden.de/software/singularity_recipe_hints/">Recipes and Hints</a></p>
+<p>USC pages on <a href="https://www.carc.usc.edu/user-information/user-guides/software-and-programming/singularity">Singularity</a></p>
 
 
 
@@ -3794,7 +3800,7 @@
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="March 6, 2024 14:07:46">March 6, 2024</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="April 10, 2025 15:16:58">April 10, 2025</span>
   </span>
 
     

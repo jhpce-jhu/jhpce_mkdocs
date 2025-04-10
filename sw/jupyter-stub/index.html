@@ -8,7 +8,7 @@
       
       
       
-        <link rel="canonical" href="https://jhpce.jhu.edu/sw/adding-pkgs/">
+        <link rel="canonical" href="https://jhpce.jhu.edu/sw/jupyter-stub/">
       
       
       
@@ -18,7 +18,7 @@
     
     
       
-        <title>Adding Your Own Python and R Libraries - JHPCE</title>
+        <title>Jupyter - JHPCE</title>
       
     
     
@@ -82,7 +82,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#adding-your-own-python-and-r-libraries" class="md-skip">
+        <a href="#jupyter" class="md-skip">
           Skip to content
         </a>
       
@@ -117,7 +117,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Adding Your Own Python and R Libraries
+              Jupyter
             
           </span>
         </div>
@@ -2428,8 +2428,6 @@
       
         
       
-        
-      
     
     
     
@@ -2545,29 +2543,6 @@
   
   <span class="md-ellipsis">
     R Packages
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../singularity/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    Singularity
     
   </span>
   
@@ -3732,27 +3707,9 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#how-to-add-your-own-packages-to-r-and-python" class="md-nav__link">
+  <a href="#using-the-web-portal" class="md-nav__link">
     <span class="md-ellipsis">
-      How to add your own packages to R and python
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#r" class="md-nav__link">
-    <span class="md-ellipsis">
-      R
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#python" class="md-nav__link">
-    <span class="md-ellipsis">
-      Python
+      Using the Web Portal
     </span>
   </a>
   
@@ -3772,50 +3729,16 @@
                 
                   
 
-  <nav class="md-tags" >
-    
-      
-      
-      
-        <a href="../../ourtools/tags/#tag:needs-to-be-written" class="md-tag">needs-to-be-written</a>
-      
-    
-  </nav>
 
 
-
-<h1 id="adding-your-own-python-and-r-libraries">Adding Your Own Python and R Libraries<a class="headerlink" href="#adding-your-own-python-and-r-libraries" title="Anchor link to this section for reference">&para;</a></h1>
-<h2 id="how-to-add-your-own-packages-to-r-and-python">How to add your own packages to R and python<a class="headerlink" href="#how-to-add-your-own-packages-to-r-and-python" title="Anchor link to this section for reference">&para;</a></h2>
+<h1 id="jupyter">Jupyter<a class="headerlink" href="#jupyter" title="Anchor link to this section for reference">&para;</a></h1>
+<p>Everything you need to know to get started using Jupyter and related friends.</p>
+<h2 id="using-the-web-portal">Using the Web Portal<a class="headerlink" href="#using-the-web-portal" title="Anchor link to this section for reference">&para;</a></h2>
 <div class="admonition note">
 <p class="admonition-title">Authoring Note</p>
-<p>Should this document be split into ones for R and Python?</p>
-<p>I think our user community would welcome instructions on how to add pkgs to R and python, at the minimum.</p>
-<p>There are right and wrong ways to do this.</p>
-<p>There are implications of loading modules in which order before doing things.</p>
-<p>Do you create a conda environment first, or a python virtual environment?</p>
-<p>WHAT DO YOU DO WHEN YOU WANT TO RUN A DIFFERENT VERSION OF A LIBRARY THAT IS FOUND IN CONDA_R?</p>
-<p>What information do other HPC sites deem important to tell their users? Are there examples among the pages for listed TOWARDS THE BOTTOM in <a href="https://github.com/jhpce-jhu/jhpce/issues/764">this github issue</a>?</p>
-<p>A GOOD EXAMPLE
-Example from <a href="https://support.ceci-hpc.be/doc/_contents/UsingSoftwareAndLibraries/InstallingSoftwareByYourself/index.html">C.E.C.I</a></p>
+<p>Put here information about aspects of using this tool. Perhaps a warning that it can take some time to launch.</p>
 </div>
-<h2 id="r">R<a class="headerlink" href="#r" title="Anchor link to this section for reference">&para;</a></h2>
-<p>FIRST YOU MUST LOAD R MODULE
-<code>module load R</code></p>
-<p>If you try to load a library and it is not found, then you can install one in your home directory.</p>
-<div class="highlight"><pre><span></span><code><span class="o">&gt;</span><span class="w"> </span><span class="nf">install.packages</span><span class="p">(</span><span class="s">&quot;sf&quot;</span><span class="p">)</span>
-<span class="o">&gt;</span><span class="w"> </span><span class="nf">install.packages</span><span class="p">(</span><span class="s">&#39;terra&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">repos</span><span class="o">=</span><span class="s">&#39;https://rspatial.r-universe.dev&#39;</span><span class="p">)</span>
-<span class="o">&gt;</span><span class="w"> </span><span class="nf">library</span><span class="p">(</span><span class="s">&#39;sf&#39;</span><span class="p">)</span>
-<span class="o">&gt;</span><span class="w"> </span><span class="nf">library</span><span class="p">(</span><span class="s">&#39;terra&#39;</span><span class="p">)</span>
-</code></pre></div>
-<p>You should recompile your libraries when the version of R changes.</p>
-<p>How do you recompile instead of install?</p>
-<p>When installing R packages from source with compiled programs, you can add custom compiler flags in ~/.R/Makevars. Adding optimization flags may provide a boost in performance for some packages. 
-<div class="highlight"><pre><span></span><code>STDFLAGS = -O2 -pipe -Wall 
-</code></pre></div></p>
-<p>We have a wide variety of CPU architecture across the cluster, so you probably don't want to add to STDFLAGS <code>-march=</code> and <code>-mtune=</code> arguments.</p>
-<h2 id="python">Python<a class="headerlink" href="#python" title="Anchor link to this section for reference">&para;</a></h2>
-<p>C.E.C.I <a href="https://support.ceci-hpc.be/doc/_contents/UsingSoftwareAndLibraries/InstallingSoftwareByYourself/index.html">has a page</a> with what I think might be useful info:</p>
-<p>It is important when you install a package that you load the correct Python module, and use the Pip option --no-binary :all: to recompile from source rather than install pre-compiled binaries whenever possible. See more information in the PIP documentation </p>
+<p>Please see <a href="../../portal/web-apps/">this document</a> about this service.</p>
 
 
 
@@ -3836,7 +3759,7 @@ Example from <a href="https://support.ceci-hpc.be/doc/_contents/UsingSoftwareAnd
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="March 12, 2024 19:16:16">March 12, 2024</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="April 10, 2025 15:16:58">April 10, 2025</span>
   </span>
 
     

@@ -345,10 +345,6 @@
          <lastmod>2025-04-10</lastmod>
     </url>
     <url>
-         <loc>https://jhpce.jhu.edu/sw/adding-pkgs/</loc>
-         <lastmod>2025-04-10</lastmod>
-    </url>
-    <url>
          <loc>https://jhpce.jhu.edu/sw/building-from-src/</loc>
          <lastmod>2025-04-10</lastmod>
     </url>
@@ -357,7 +353,7 @@
          <lastmod>2025-04-10</lastmod>
     </url>
     <url>
-         <loc>https://jhpce.jhu.edu/sw/containers/</loc>
+         <loc>https://jhpce.jhu.edu/sw/containers-stub/</loc>
          <lastmod>2025-04-10</lastmod>
     </url>
     <url>
@@ -365,7 +361,7 @@
          <lastmod>2025-04-10</lastmod>
     </url>
     <url>
-         <loc>https://jhpce.jhu.edu/sw/jupyter/</loc>
+         <loc>https://jhpce.jhu.edu/sw/jupyter-stub/</loc>
          <lastmod>2025-04-10</lastmod>
     </url>
     <url>
@@ -401,7 +397,7 @@
          <lastmod>2025-04-10</lastmod>
     </url>
     <url>
-         <loc>https://jhpce.jhu.edu/sw/singularity/</loc>
+         <loc>https://jhpce.jhu.edu/sw/singularity-stub/</loc>
          <lastmod>2025-04-10</lastmod>
     </url>
     <url>
