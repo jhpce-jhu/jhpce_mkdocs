@@ -16,7 +16,7 @@ Jeffrey likes:
 * [keyboard meta keys](features.md/#symbols-for-keyboard-keys) (like ++ctrl++)
 * Details [(collapsed blocks of text)](features.md/#details)
 
-Running the mkdocs package installed via python allows you to develop web pages on your local computer. See [the recipe](features.md##recipe-for-running-mkdocs-locally)
+Running the mkdocs package installed via python allows you to develop web pages on your local computer. See [the recipe](features.md#recipe-for-running-mkdocs-locally)
 
 There is another document containing [wishlist](wishlist.md) items that we might want to enable/configure.
 

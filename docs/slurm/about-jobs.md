@@ -79,7 +79,7 @@ Sometimes you can use a job array number where the documentation says job id, as
 <job array>_<job id>.<step id>
 ```
 
-## **JOB HAVE MULTIPLE STEPS**
+## **JOBS HAVE MULTIPLE STEPS**
 
 The average job will have two or more steps of these types: 
 

@@ -87,15 +87,16 @@ As of 2024-05-01, the currect project storage arrays in places are:
 <TABLE align="left">
 <TR><TH>Storage Name</TH><TH>Year Built</TH><TH># of Disks</TH><TH>Disk Size</TH><TH># of JBODs</TH><TH>Useable Space</TH><TH>Cost</TH><TH>Cost per TB</TH></TR>
 <TR><TD>DCL02</TD><TD>2018</TD><TD>440</TD><TD>8TB</TD><TD>10</TD><TD>2.4PB</TD><TD>$164,870.14</TD><TD>$66.57</TD></TR>
-<TR><TD>DCS04<sup>1</sup></TD><TD>2020</TD><TD>720</TD><TD>12TB</TD><TD>10</TD><TD>5.0PB</TD><TD>$202,451.29</TD><TD>$40.45</TD></TR>
-<TR><TD>DCS05<sup>2</sup></TD><TD>2021</TD><TD>480</TD><TD>20TB</TD><TD>8</TD><TD>6.2PB</TD><TD>$240,881.36</TD><TD>$38.83</TD></TR>
-<TR><TD>DCS06<sup>3</sup></TD><TD>2021</TD><TD>16</TD><TD>7.68</TD><TD>1</TD><TD>88TB</TD><TD>$34,207.00</TD><TD>$305.17</TD></TR>
+<TR><TD>DCS04</TD><TD>2020</TD><TD>720</TD><TD>12TB</TD><TD>10</TD><TD>5.0PB</TD><TD>$202,451.29</TD><TD>$40.45</TD></TR>
+<TR><TD>DCS05</TD><TD>2021</TD><TD>480</TD><TD>20TB</TD><TD>8</TD><TD>6.2PB</TD><TD>$240,881.36</TD><TD>$38.83</TD></TR>
+<TR><TD>DCS06</TD><TD>2021</TD><TD>16</TD><TD>7.68</TD><TD>1</TD><TD>88TB</TD><TD>$34,207.00</TD><TD>$305.17</TD></TR>
 <TR><TD>DCS07</TD><TD>2023</TD><TD>300</TD><TD>22TB</TD><TD>5</TD><TD>4.8PB</TD><TD>$145,453.99</TD><TD>$30.61</TD></TR>
 </TABLE>
 </div>
-[^1]: Part of DCS04 was used for legacy-dcs01 space
-[^2]: Part of DCS05 was used for legacy-dcl01 space
-[^3]: SSD-based array used by CSUB cluster
+###### Notes:
+    - Part of DCS04 was used for legacy-dcs01 space
+    - Part of DCS05 was used for legacy-dcl01 space
+    - SSD-based array used by CSUB cluster
 
 Other Storage Arrays currently in use on the JHPCE cluster:
 

@@ -35,6 +35,6 @@ The Joint High Performance Computing Exchange (JHPCE) offers a variety of softwa
 ### Resources for some software
 - [Matlab](matlab.md)
 - [Python](python.md)
-- [R](r.md)
+- [R](r-n-friends.md )
 - [SAS](sas.md)
 - [Stata](stata.md)

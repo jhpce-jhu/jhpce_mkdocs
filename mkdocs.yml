@@ -74,9 +74,7 @@ nav:
       - Local Software:
         - Matlab: sw/matlab.md
         - Python: sw/python.md
-        - R: sw/r.md
-        - R Studio: sw/r-studio.md
-        - R Studio Server : sw/rstudio-server.md
+        - R and RStudio: sw/r-n-friends.md
         - SAS: sw/sas.md
         - Stata: sw/stata.md
       - Modules: sw/modules.md

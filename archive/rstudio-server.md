@@ -52,7 +52,7 @@ To add this tunnel, first type **~C** (while holding dhown SHIFT, press “~” 
 
 **For Windows based laptops/desktops, or from the SAFE Desktop:**
 
-If you connected to the JHPCE cluster with MobaXterm from a Windows-based system or SAFE desktop, you should ignore the first step (running ~C and adding the local tunnel).  Instead, you will need to  add a tunnel from MobaXterm.  Before setting up the tunnel you may find it helpful to set up an SSH key using the steps at [this page about ssh](../access/ssh/#ssh-keys.md) While not a requirement, this will eliminate the need to login using your password and Google Verification Code.  Note that if you are setting up the tunnel for the CSUB, you will not be able to use SSH keys due to the enhanced security of the CSUB.
+If you connected to the JHPCE cluster with MobaXterm from a Windows-based system or SAFE desktop, you should ignore the first step (running ~C and adding the local tunnel).  Instead, you will need to  add a tunnel from MobaXterm.  Before setting up the tunnel you may find it helpful to set up an SSH key using the steps at [this page about ssh](../access/ssh.md#ssh-keys) While not a requirement, this will eliminate the need to login using your password and Google Verification Code.  Note that if you are setting up the tunnel for the CSUB, you will not be able to use SSH keys due to the enhanced security of the CSUB.
 
 To start, click on the “Tunneling” icon at the top of MobaXterm, and you should see the window below:
 

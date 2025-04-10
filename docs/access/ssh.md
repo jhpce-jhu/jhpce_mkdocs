@@ -9,6 +9,7 @@ SSH stands for Secure SHell. SSH is actually a set of internet standard protocol
 
 Depending on the kind of operating system your computer uses, you may or may not need to install SSH software. Apple Macs come with CLI SSH tools pre-installed. You use them by entering commands in the Terminal app.  You can install GUI apps from various vendors, but we will only discuss the CLI tools except for some file transfer GUI programs.  On a Windows system you will need to install an ssh client.  We recommend the excellent GUI program MobaXterm. [Here is a document](mobaxterm.md) describing how to use it. There are other programs, such as the [PuTTY](https://en.wikipedia.org/wiki/PuTTY) family of tools and [WinSCP](https://en.wikipedia.org/wiki/WinSCP).
 
+### One Time Passwords
 By default, we use "2 Factor Authentication" in order to authenticate you access when you ssh into the JHPCE cluster.  This means that we will ask for 2 pieces of infomation instead of just 1.  Secifically, you will be asked for:
 
 1) Your Password. Your password will be a secure secret that only you know and is hard for others to guess.
@@ -16,7 +17,7 @@ By default, we use "2 Factor Authentication" in order to authenticate you access
 
 As an aside, there are commonly 3 factors that can be used when authenticating in the Cybersecurity world. These are, Something you Know, Something you Have, and Something you Are.  The 2 factors we're using on JHPCE are "Something you Know" (a password), and "Somthing you Have" (your one-time-use code from Google Authenticator). An example of methods that use "Something you Are" would be a fingerprint scanner or the Apple's Face ID.
 
-You can also allow the use of SSH keys to help smooth the login process with a passwordless process.  Please see [the section below](https://jhpce.jhu.edu/access/ssh/#ssh-keys) for more details on SSH keys.
+You can also allow the use of SSH keys to help smooth the login process with a passwordless process.  Please see [the section below](https://jhpce.jhu.edu/access/ssh.md#ssh-keys) for more details on SSH keys.
 
 Here is what a normal ssh connection looks like to login to the jhcpe01.jhsph.edu login node as user "bsmith", coming from his Mac named "Bobs-Mac".
 
