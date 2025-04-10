@@ -306,7 +306,7 @@ For the X11 version of Rstudio, you will also be making
 If you find that you have a specific need in R that is not available in our current offerings, you can compile your own
 instance of R in your home directory. We don't have a guide for doing this, but if you are
 at this point, you probably have compiled R before, and know what specific settings and customizations you need, and know what you're doing more than we do :-)
-Here is one example from the (Iowa Biostat Site)[https://iowabiostat.github.io/hpc/12.html]
+Here is one example from the [Iowa Biostat Site](https://iowabiostat.github.io/hpc/12.html)
 
 
 ## From Lieber - Working with SLURM via R and slurmjobs 
