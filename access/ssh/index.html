@@ -1407,6 +1407,21 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="SSH Basics">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#one-time-passwords" class="md-nav__link">
+    <span class="md-ellipsis">
+      One Time Passwords
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
         <li class="md-nav__item">
@@ -2450,10 +2465,6 @@
       
         
       
-        
-      
-        
-      
     
     
     
@@ -2540,58 +2551,12 @@
   
   
     <li class="md-nav__item">
-      <a href="../../sw/r/" class="md-nav__link">
+      <a href="../../sw/r-n-friends/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
-    R
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../sw/r-studio/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    R Studio
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../sw/rstudio-server/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    R Studio Server
+    R and RStudio
     
   </span>
   
@@ -4006,6 +3971,21 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="SSH Basics">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#one-time-passwords" class="md-nav__link">
+    <span class="md-ellipsis">
+      One Time Passwords
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
         <li class="md-nav__item">
@@ -4188,11 +4168,12 @@
 <p>Access to the JHPCE cluster requires the use of SSH. Over time, the ability to launch applications via a web interface will increase, but for the foreseeable future you will need to be able to SSH in and then use command line UNIX skills to do your work.</p>
 <p>SSH stands for Secure SHell. SSH is actually a set of internet standard protocols. Programs implementing these protocols include both command line interface (CLI) tools and those with graphic user interfaces (GUI).  They all enable you to make secure, encrypted connections from one computer to the next.  In our case, ssh allows you to create an encrypted connection between you local system and the JHPCE login nodes (jhpce01.jhsph.edu and jhpce03.jhsph.edu), so that you can run a Unix Shell on the JHPCE cluster.</p>
 <p>Depending on the kind of operating system your computer uses, you may or may not need to install SSH software. Apple Macs come with CLI SSH tools pre-installed. You use them by entering commands in the Terminal app.  You can install GUI apps from various vendors, but we will only discuss the CLI tools except for some file transfer GUI programs.  On a Windows system you will need to install an ssh client.  We recommend the excellent GUI program MobaXterm. <a href="../mobaxterm/">Here is a document</a> describing how to use it. There are other programs, such as the <a href="https://en.wikipedia.org/wiki/PuTTY">PuTTY</a> family of tools and <a href="https://en.wikipedia.org/wiki/WinSCP">WinSCP</a>.</p>
+<h3 id="one-time-passwords">One Time Passwords<a class="headerlink" href="#one-time-passwords" title="Anchor link to this section for reference">&para;</a></h3>
 <p>By default, we use "2 Factor Authentication" in order to authenticate you access when you ssh into the JHPCE cluster.  This means that we will ask for 2 pieces of infomation instead of just 1.  Secifically, you will be asked for:</p>
 <p>1) Your Password. Your password will be a secure secret that only you know and is hard for others to guess.
 2) A Verification Code.  Your Verification Code will be a one-time-use code from an App like Google Authenticator.</p>
 <p>As an aside, there are commonly 3 factors that can be used when authenticating in the Cybersecurity world. These are, Something you Know, Something you Have, and Something you Are.  The 2 factors we're using on JHPCE are "Something you Know" (a password), and "Somthing you Have" (your one-time-use code from Google Authenticator). An example of methods that use "Something you Are" would be a fingerprint scanner or the Apple's Face ID.</p>
-<p>You can also allow the use of SSH keys to help smooth the login process with a passwordless process.  Please see <a href="https://jhpce.jhu.edu/access/ssh/#ssh-keys">the section below</a> for more details on SSH keys.</p>
+<p>You can also allow the use of SSH keys to help smooth the login process with a passwordless process.  Please see <a href="https://jhpce.jhu.edu/access/ssh.md#ssh-keys">the section below</a> for more details on SSH keys.</p>
 <p>Here is what a normal ssh connection looks like to login to the jhcpe01.jhsph.edu login node as user "bsmith", coming from his Mac named "Bobs-Mac".</p>
 <pre lang="console"><code>
 [bobsmith@Bobs-Mac ~] $ <b>ssh bsmith@jhpce01.jhsph.edu </b>
@@ -4511,7 +4492,7 @@ ServerAliveCountMax<span class="w"> </span><span class="m">30</span>
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="April 9, 2025 20:53:12">April 9, 2025</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="April 10, 2025 01:55:55">April 10, 2025</span>
   </span>
 
     

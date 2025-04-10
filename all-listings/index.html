@@ -2234,10 +2234,6 @@
       
         
       
-        
-      
-        
-      
     
     
     
@@ -2324,58 +2320,12 @@
   
   
     <li class="md-nav__item">
-      <a href="../sw/r/" class="md-nav__link">
+      <a href="../sw/r-n-friends/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
-    R
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../sw/r-studio/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    R Studio
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../sw/rstudio-server/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    R Studio Server
+    R and RStudio
     
   </span>
   
@@ -5859,6 +5809,9 @@ TRESUsageInMinNode  TRESUsageInMinTask  TRESUsageInTot      TRESUsageOutAve
 TRESUsageOutMax     TRESUsageOutMaxNode TRESUsageOutMaxTask TRESUsageOutMin    
 TRESUsageOutMinNode TRESUsageOutMinTask TRESUsageOutTot     UID                
 User                UserCPU             WCKey               WCKeyID
+</code></pre><h2><a class="heading" href="../storage/">STORAGE OVERVIEW</a></h2><a class="url" href="../storage/">storage/</a><pre><span></span><code>- Part of DCS04 was used for legacy-dcs01 space
+- Part of DCS05 was used for legacy-dcl01 space
+- SSD-based array used by CSUB cluster
 </code></pre><h2><a class="heading" href="../storage/backups-restores/">Backups and Restores</a></h2><a class="url" href="../storage/backups-restores/">storage/backups-restores/</a><pre><span></span><code>cd /users/.zfs/snapshot
 ls -ld */your-userid/bob/frank/susan
 cp -p 2024-02-16-23:00/your-userid/bob/frank/susan $HOME/restored-susan
@@ -6128,7 +6081,68 @@ Example number =  47
 Example number =  96
 Example number =  85
 Example number =  72
-</code></pre><h2><a class="heading" href="../sw/r-n-friends/">R Basics</a></h2><a class="url" href="../sw/r-n-friends/">sw/r-n-friends/</a><pre><span></span><code><span class="gp">[login31 /users/jdoe1] $ </span>srun<span class="w"> </span>--pty<span class="w"> </span>--x11<span class="w"> </span>--mem<span class="o">=</span>10G<span class="w"> </span>bash
+</code></pre><h2><a class="heading" href="../sw/r-n-friends/">R and RStudio</a></h2><a class="url" href="../sw/r-n-friends/">sw/r-n-friends/</a><pre><span></span><code>[test@login31 ~]$ srun --pty bash
+srun: job 3176550 queued and waiting for resources
+srun: job 3176550 has been allocated resources
+[test@compute-152 ~]$ module load conda_R
+Loading conda_R/4.3.x
+(4.3.x)[test@compute-152 ~]$ module list
+
+Currently Loaded Modules:
+  1) JHPCE_ROCKY9_DEFAULT_ENV   2) JHPCE_tools/3.0   3) conda/3-23.3.1   4) conda_R/4.3.x
+
+(4.3.x)[test@compute-152 ~]$ R
+
+R version 4.3.2 Patched (2024-02-08 r85876) -- "Eye Holes"
+Copyright (C) 2024 The R Foundation for Statistical Computing
+Platform: x86_64-conda-linux-gnu (64-bit)
+...
+Type 'demo()' for some demos, 'help()' for on-line help, or
+'help.start()' for an HTML browser interface to help.
+Type 'q()' to quit R.
+...
+&gt; 
+</code></pre><pre><span></span><code>[test@login31 R-demo]$ cat plot1.r
+# Set output file name
+pdf("plot1-R-results.pdf")
+
+# Define 2 vectors
+cars &lt;- c(1, 3, 6, 4, 9)
+trucks &lt;- c(2, 5, 4, 5, 12)
+
+# Graph cars using a y axis that ranges from 0 to 12
+plot(cars, type="o", col="blue", ylim=c(0,12))
+
+# Graph trucks with red dashed line and square points
+lines(trucks, type="o", pch=22, lty=2, col="red")
+
+# Create a title with a red, bold/italic font
+title(main="Autos", col.main="red", font.main=4)
+</code></pre><pre><span></span><code>[test@login31 R-demo]$ cat plot1.sh 
+#!/bin/bash
+
+#SBATCH --mem=2G
+#SBATCH --time=2:00
+
+module load conda_R
+R CMD BATCH plot1.r
+</code></pre><pre><span></span><code>[test@login31 ~]$ sbatch plot1.sh 
+Submitted batch job 3177833
+</code></pre><pre><span></span><code>[test@login31 ~]$ squeue --me
+             JOBID PARTITION     NAME     USER ST       TIME  NODES NODELIST(REASON)
+           3177833    shared plot1.sh    test  R       0:03      1 compute-095
+</code></pre><pre><span></span><code>-rw-r--r--    1 test test        22 Mar 13 16:29  slurm-3177833.out
+-rw-r--r--    1 test test      4988 Mar 13 16:29  plot1-R-results.pdf
+</code></pre><pre><span></span><code>[test@login31 ~]$ xpdf plot1-R-results.pdf
+</code></pre><pre><span></span><code>ssh -X yourusername@jhpce01.jhsph.edu
+</code></pre><pre><span></span><code>[test@login31 ~]$ srun --mem 10G --x11 --pty bash
+srun: job 3244190 queued and waiting for resources
+srun: job 3244190 has been allocated resources
+[test@compute-097 ~]$ module load R
+Loading R/4.3
+(4.3)[test@compute-097 ~]$ module load rstudio
+(4.3)[test@compute-097 ~]$ rstudio
+</code></pre><pre><span></span><code><span class="gp">[login31 /users/jdoe1] $ </span>srun<span class="w"> </span>--pty<span class="w"> </span>--x11<span class="w"> </span>--mem<span class="o">=</span>10G<span class="w"> </span>bash
 <span class="go">Last login: Wed May 1 17:02:29 2019 from login31.cm.cluster</span>
 <span class="go">Loading conda_R/3.5.x</span>
 <span class="gp">[compute-012 /users/jdoe1] $ </span>jhpce-rstudio-server
@@ -6176,124 +6190,6 @@ Platform: x86_64-conda-linux-gnu (64-bit)
 [Previously saved workspace restored]
 
 &gt; install.package("your-package-name")
-</code></pre><h2><a class="heading" href="../sw/r/">R</a></h2><a class="url" href="../sw/r/">sw/r/</a><pre><span></span><code>[test@login31 ~]$ srun --pty bash
-srun: job 3176550 queued and waiting for resources
-srun: job 3176550 has been allocated resources
-[test@compute-152 ~]$ module load conda_R
-Loading conda_R/4.3.x
-(4.3.x)[test@compute-152 ~]$ module list
-
-Currently Loaded Modules:
-  1) JHPCE_ROCKY9_DEFAULT_ENV   2) JHPCE_tools/3.0   3) conda/3-23.3.1   4) conda_R/4.3.x
-
-(4.3.x)[test@compute-152 ~]$ R
-
-R version 4.3.2 Patched (2024-02-08 r85876) -- "Eye Holes"
-Copyright (C) 2024 The R Foundation for Statistical Computing
-Platform: x86_64-conda-linux-gnu (64-bit)
-...
-Type 'demo()' for some demos, 'help()' for on-line help, or
-'help.start()' for an HTML browser interface to help.
-Type 'q()' to quit R.
-...
-&gt; 
-</code></pre><pre><span></span><code># Set output file name
-pdf("plot1-R-results.pdf")
-
-# Define 2 vectors
-cars &lt;- c(1, 3, 6, 4, 9)
-trucks &lt;- c(2, 5, 4, 5, 12)
-
-# Graph cars using a y axis that ranges from 0 to 12
-plot(cars, type="o", col="blue", ylim=c(0,12))
-
-# Graph trucks with red dashed line and square points
-lines(trucks, type="o", pch=22, lty=2, col="red")
-
-# Create a title with a red, bold/italic font
-title(main="Autos", col.main="red", font.main=4)
-</code></pre><pre><span></span><code>#!/bin/bash
-
-#SBATCH --mem=2G
-#SBATCH --time=2:00
-
-module load conda_R
-R CMD BATCH plot1.r
-</code></pre><pre><span></span><code>[test@login31 ~]$ sbatch plot1.sh 
-Submitted batch job 3177833
-</code></pre><pre><span></span><code>[test@login31 ~]$ squeue --me
-             JOBID PARTITION     NAME     USER ST       TIME  NODES NODELIST(REASON)
-           3177833    shared plot1.sh    test  R       0:03      1 compute-095
-</code></pre><pre><span></span><code>-rw-r--r--    1 test test        22 Mar 13 16:29  slurm-3177833.out
--rw-r--r--    1 test test      4988 Mar 13 16:29  plot1-R-results.pdf
-</code></pre><pre><span></span><code>[test@login31 ~]$ xpdf plot1-R-results.pdf
-</code></pre><pre><span></span><code>[test@login31 ~]$ srun --mem 10G --x11 --pty bash
-srun: job 3244190 queued and waiting for resources
-srun: job 3244190 has been allocated resources
-[test@compute-097 ~]$ module load R
-Loading R/4.3
-(4.3)[test@compute-097 ~]$ module load rstudio
-(4.3)[test@compute-097 ~]$ rstudio
-</code></pre><pre><span></span><code>ssh -X yourusername@jhpce01.jhsph.edu
-</code></pre><h2><a class="heading" href="../sw/rstudio-server/">R Studio Server</a></h2><a class="url" href="../sw/rstudio-server/">sw/rstudio-server/</a><pre><span></span><code>[login31/users/jdoe1] $ **srun --pty --x11 --mem=10G bash**
-Last login: Wed May 1 17:02:29 2019 from login31.cm.cluster
-Loading conda_R/3.5.x
-[compute-012 /users/jdoe1] $ **jhpce-rstudio-server**
-------------
-1) Establish your SSH tunnel.
-* Windows users see:  https://jhpce.jhu.edu/sw/rstudio-server/
-* Mac or Linux Desktop users, please type:
-~C
--L 12345:compute-012:12345
-
-2) From the browser running on your local system or SAFE desktop, go to:
-
-  http://localhost:12345
-
-3) When prompted for Username, enter your JHPCE ID:  jdoe1
-4) When prompted for Password, enter your JHPCE password.
-
-When you are finished using Rstudio Server, type &lt;CTRL&gt;-C
-
-**~C**
-ssh&gt; **-L 12345:compute-012:12345**
-Forwarding port.
-</code></pre><pre><span></span><code><span class="gp">[login31 /users/jdoe1] $ </span>srun<span class="w"> </span>--pty<span class="w"> </span>--x11<span class="w"> </span>--mem<span class="o">=</span>10G<span class="w"> </span>bash
-<span class="go">Last login: Wed May 1 17:02:29 2019 from login31.cm.cluster</span>
-<span class="go">Loading conda_R/3.5.x</span>
-<span class="gp">[compute-012 /users/jdoe1] $ </span>jhpce-rstudio-server
-<span class="go">------------</span>
-<span class="go">1) Establish your SSH tunnel.</span>
-<span class="go">* Windows users see: https://jhpce.jhu.edu/sw/rstudio-server/</span>
-<span class="go">* Mac or Linux Desktop users, please type:</span>
-<span class="go">~C</span>
-<span class="go">-L 12345:compute-012:12345</span>
-
-<span class="go">2) From the browser running on your local system or SAFE desktop, go to:</span>
-
-<span class="go">  http://localhost:12345</span>
-
-<span class="go">3) When prompted for Username, enter your JHPCE ID:  jdoe1</span>
-<span class="go">4) When prompted for Password, enter your JHPCE password.</span>
-
-<span class="go">When you are finished using Rstudio Server, type &lt;CTRL&gt;-C</span>
-
-<span class="go">~C</span>
-<span class="go">ssh&gt; -L 12345:compute-012:12345</span>
-<span class="go">Forwarding port.</span>
-
-<span class="go">****Cleaning up...</span>
-<span class="go">------------</span>
-<span class="go">Now type:</span>
-<span class="go">~C</span>
-<span class="go">-KL 41354</span>
-
-<span class="gp">[compute-012 /users/jdoe1] $</span>
-<span class="gp">[compute-012 /users/jdoe1] $</span>**~C**
-<span class="go">ssh&gt; **-KL 12345**</span>
-<span class="go">Canceled forwarding.</span>
-<span class="gp">[compute-012 /users/jdoe1] $ </span><span class="nb">exit</span>
-<span class="gp">[login31 /users/jdoe1] $ </span><span class="nb">exit</span>
 </code></pre><h2><a class="heading" href="../sw/sas/">SAS</a></h2><a class="url" href="../sw/sas/">sw/sas/</a><pre><span></span><code>[test@login31 ~]$ srun --partition sas --mem 10G --x11 --pty bash
 srun: job 3178287 queued and waiting for resources
 srun: job 3178287 has been allocated resources
