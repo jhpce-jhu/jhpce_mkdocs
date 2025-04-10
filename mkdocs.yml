@@ -83,7 +83,7 @@ nav:
         - Conda Environment: sw/conda.md
         - Python Packages: sw/python-pkg.md
         - R Packages: sw/r-pkg.md
-        - Singularity: sw/singularity.md
+#        - Singularity: sw/singularity.md
       - JHPCE-created: sw/locally-written.md
       - Helpful GUI Programs: sw/gui-tools.md
     - Job scheduler (SLURM): 
@@ -218,8 +218,8 @@ plugins:
   # JRT added https://timvink.github.io/mkdocs-table-reader-plugin/
   - table-reader
   # TAGS
-  - tags:
-      tags_file: ourtools/tags.md
+#  - tags:
+#      tags_file: ourtools/tags.md
 
 #
 # Python MarkDown Extensions
