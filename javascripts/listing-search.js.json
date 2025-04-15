@@ -203,6 +203,13 @@
     "language": ""
   },
   {
+    "page_name": "X11",
+    "page_url": "../../access/x11/",
+    "text": "$ rm .Xauthority-l\n$ rm .Xauthority-c\n",
+    "html": "<pre><span></span><code>$ rm .Xauthority-l\n$ rm .Xauthority-c\n</code></pre>",
+    "language": ""
+  },
+  {
     "page_name": "ACL",
     "page_url": "../../files/acl/",
     "text": "access type:[flags]:principal:permissions\n",
