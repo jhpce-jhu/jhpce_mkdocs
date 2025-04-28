@@ -1,71 +1,138 @@
 ---
 tags:
   - in-progress
+title: Running R in JHPCE
 ---  
-# R Basics
-* R
-* RStudio
-* RStudio Server
+# Running R in JHPCE
 
-!!! Warning "Authoring Note"
-    Jeffrey started copying over RStudio and RStudio Server images and text from the old web site. Then switched to another task. So those sections, especially, need careful review in this document. They may look complete but is not.
-    
-!!! Warning "Authoring Note"
-    Multiple other documents refer to this one. If it is decided to break this document up into multiple documents, those reference links will need to be updated.
+## R Basics
 
-We have a version of R available as a [module](modules.md).
+There are a number of ways to run R on the JHPCE cluster.  There is a text-based version of R which is available as a module.  We also have a way to run rstudio over the X11 interface. We have a way to run Rstudio Server through an ssh tunnel.  Lastly we have a way to run Rstudio Server through our Web Application Server.
 
-This version of R is also known as conda_R. It was built with conda and contains many extra packages commonly used on the cluster.
-
-You can install your own packages to your home directory, as described in [this document about building your own R and python pkgs](adding-pkgs.md). You can also install your own version of R in your home directory, preferably using conda.
-
-## Examples of Running R
-
-During orientation, participants are shown a number of example files stored in a directory copied into new account home directories. There is a copy of the latest set of those in the directory /jhpce/shared/jhpce/class-scripts/
-
-We have one set for users of the main cluster and a second for users of the C-SUB. 
-
-You can copy the latest files into your home directory with this command, replacing "*clustername*" with either "jhpce" or "c-sub"
-`rsync -av /jhpce/shared/jhpce/slurm/class-scripts/clustername/ $HOME/class-scripts`
+During orientation, participants are shown a number of example files stored in a directory copied into new account home directories. There is a copy of the latest set of those in the directory /jhpce/shared/jhpce/class-scripts/.  We have one set for users of the main cluster and a second for users of the C-SUB.  You can copy the latest files into your home directory with this command, replacing "*clustername*" with either "jhpce" or "c-sub"
+`rsync -av /jhpce/shared/jhpce/slurm/class-scripts/clustername/ $HOME/class-scripts/`
 For that rsync command to work correctly, there needs to be a trailing slash on the path to the originals of the class-scripts.
 
-### Running R Interactively
+## Ways to run R on JHPCE
 
-In $HOME/class-scripts/R-demo there are two files, a SLURM batch job file and an R program file. 
+### Using the text-based version of R
 
-- `cd $HOME/class-scripts/R-demo`
-- Inspect the batch job file: `cat plot1.sh`
-- `srun --pty --x11 bash`
-- `module load conda_R`
-- Run plot1.r: `R CMD BATCH plot1.r`
-- Running the program creates a file "plot1-R-results.pdf"
-- You can view it with a program or a web browser:
--  `xpdf plot1-R-results.pdf &`
--  `chromium-browser file:///$HOME/class-scripts/R-demo/plot1-R-results.pdf &`
+There are 2 ways to make use of the text-based version of R on the cluster.  You can either run R interactively, and enter your R code in the R, or you can submit an non-interactive batch program that uses R.
 
-### Running R In A Batch Job
-
-- Inspect the batch job file: `cat plot1.sh`
-- Submit the job to run: `sbatch plot1.sh`
-- See your
-
-## Examples of Running RStudio
-
-### Running from the Command Line
-
-- `srun --pty --x11 --mem=10G bash`
-- `module load conda_R`
-- `module load rstudio`
-- `rstudio &`
-
-### Running via the Web Portal
-
-Please see [our page](../portal/web-apps.md) about using it.
+#### Running R Interactively
 
 
-## Running RStudio Server
+```
+[test@login31 ~]$ srun --pty bash
+srun: job 3176550 queued and waiting for resources
+srun: job 3176550 has been allocated resources
+[test@compute-152 ~]$ module load conda_R
+Loading conda_R/4.3.x
+(4.3.x)[test@compute-152 ~]$ module list
 
-### Running from the Command Line
+Currently Loaded Modules:
+  1) JHPCE_ROCKY9_DEFAULT_ENV   2) JHPCE_tools/3.0   3) conda/3-23.3.1   4) conda_R/4.3.x
+
+(4.3.x)[test@compute-152 ~]$ R
+
+R version 4.3.2 Patched (2024-02-08 r85876) -- "Eye Holes"
+Copyright (C) 2024 The R Foundation for Statistical Computing
+Platform: x86_64-conda-linux-gnu (64-bit)
+...
+Type 'demo()' for some demos, 'help()' for on-line help, or
+'help.start()' for an HTML browser interface to help.
+Type 'q()' to quit R.
+...
+> 
+```
+
+#### Running R in batch mode
+
+In $HOME/class-scripts/R-demo there is an example of submitting an R job on the cluster.  You'll note that there are two files here, a SLURM batch job file and an R program file. Here is an example of running an R session interactively.
+
+1. Write your R source in a file with .r extension (e.g. plot1.r). Here is what the example file looks like:
+```
+[test@login31 R-demo]$ cat plot1.r
+# Set output file name
+pdf("plot1-R-results.pdf")
+
+# Define 2 vectors
+cars <- c(1, 3, 6, 4, 9)
+trucks <- c(2, 5, 4, 5, 12)
+
+# Graph cars using a y axis that ranges from 0 to 12
+plot(cars, type="o", col="blue", ylim=c(0,12))
+
+# Graph trucks with red dashed line and square points
+lines(trucks, type="o", pch=22, lty=2, col="red")
+
+# Create a title with a red, bold/italic font
+title(main="Autos", col.main="red", font.main=4)
+```
+
+2. Write a submit job script (e.g. plot1.sh)
+```
+[test@login31 R-demo]$ cat plot1.sh 
+#!/bin/bash
+
+#SBATCH --mem=2G
+#SBATCH --time=2:00
+
+module load conda_R
+R CMD BATCH plot1.r
+```
+
+3. Submit your R job
+```
+[test@login31 ~]$ sbatch plot1.sh 
+Submitted batch job 3177833
+```
+
+4. Monitor the job status
+```
+[test@login31 ~]$ squeue --me
+             JOBID PARTITION     NAME     USER ST       TIME  NODES NODELIST(REASON)
+           3177833    shared plot1.sh    test  R       0:03      1 compute-095
+```
+
+5. When the job is finished, the output files are created in your Current Working Directory
+```
+-rw-r--r--    1 test test        22 Mar 13 16:29  slurm-3177833.out
+-rw-r--r--    1 test test      4988 Mar 13 16:29  plot1-R-results.pdf
+```
+
+6. Look at the result file, plot1-R-results.pdf; you can use xpdf to view it if you have set X11 forward when login.
+   Otherwise, you need download the file to local machine to view it.
+```
+[test@login31 ~]$ xpdf plot1-R-results.pdf
+```
+
+### Running the X11 version of RStudio
+
+!!! Note "Note"
+    In order to run the X11 version of Rstudio, you need to have X11 setup on your local system.
+    - For Windows, MobaXterm has an X server built into it  
+    - For Mac, you need to have the XQuartz program installed (which requires a reboot), and you need to add the "-X" option to ssh:  
+    ```
+    ssh -X yourusername@jhpce01.jhsph.edu
+    ```
+    See more detailed info on X11 [here](../access/x11.md)
+
+If you prefer the graphical version of R, you can the X11 version of Rstudio. Here is an example of running the X11 version of Rstudio:
+```
+[test@login31 ~]$ srun --mem 10G --x11 --pty bash
+srun: job 3244190 queued and waiting for resources
+srun: job 3244190 has been allocated resources
+[test@compute-097 ~]$ module load R
+Loading R/4.3
+(4.3)[test@compute-097 ~]$ module load rstudio
+(4.3)[test@compute-097 ~]$ rstudio
+```
+
+When you run rstudio, you should see the familiar graphical Rstudio interface come up.
+
+
+### Running RStudio Server
 
 Depending on which cluster you are using, run one of the following two scripts after starting an interactive session and landing on a compute node. (The discussion below assumes that you are on the jhpce cluster.) 
 
@@ -82,17 +149,17 @@ You will need to perform one step to enable access to this Rstudio Server from y
 !!! warning
     However, you DO need to capitalize the letter `c` when trying to send an interrupt signal to the ssh program on Mac or Linux computers. The key combination for an ssh interrupt is `~ SHIFT c` or ++tilde+shift+c++
 
-### For Mac or Linux computers:
+#### For Mac or Linux computers:
 
 To add this tunnel, first type ~C (while holding down SHIFT, press “~” then “C”).  The ~C is used to send an interrupt to your ssh session.  The ~C will likely not show up, but you should see an “ssh>” prompt as a result.  At this “ssh>” prompt you activate the tunnel by typing  -L XXXXX:compute-YYY:XXXXX  .  This will allow your laptop/desktop to access the compute node compute-YYY on port XXXXX (in the above example, the port used was 12345 and the compute node used was compute-012).
 
-### For Windows computers, or from the SAFE Desktop:
+#### For Windows computers, or from the SAFE Desktop:
 
 If you connected to the JHPCE cluster with MobaXterm from a Windows-based system or SAFE desktop, you should ignore the first step (entering ~C and adding the local tunnel). 
 
 Instead, you will need to  add a tunnel from MobaXterm.
 
-Before setting up the tunnel you may find it helpful to set up an SSH key using the steps at [this page about ssh](../access/ssh/#ssh-keys.md)   While not a requirement, this will eliminate the need to login using your password and Google Verification Code.  Note that if you are setting up the tunnel for the C-SUB, you will not be able to use SSH keys due to the enhanced security of the C-SUB.
+Before setting up the tunnel you may find it helpful to set up an SSH key using the steps at [this page about ssh](../access/ssh.md#ssh-keys)   While not a requirement, this will eliminate the need to login using your password and Google Verification Code.  Note that if you are setting up the tunnel for the C-SUB, you will not be able to use SSH keys due to the enhanced security of the C-SUB.
 
 To start, click on the “Tunneling” icon at the top of MobaXterm, and you should see the window below:
 
@@ -126,7 +193,7 @@ Once you enter your login and password, you should see Rstudio running in your b
 ![](images/Screen-Shot-2019-05-28-at-3.02.11-PM-1.png)
 
 
-Shutting down the Rstudio Server
+#### Shutting down the Rstudio Server
 --------------------------------
 
 When you have finished using Rstudio Server, you should close the browser tab or window that you are using to run Rstudio Server, and then return to the ssh session where you ran the “jhpce-rstudio-server” command.  To stop the Rstudio Server, type “^C”.  You will then be given a few additional steps to run to deactivate the port forward. As with the establishment of the tunnel, these steps are for MacOS and Linux based desktops/laptops.  You will again be prompted to type “~C”, and then enter “-KL XXXXX” at the “ssh>” prompt to stop the forwarding (NOTE: you’ll need to hit <enter> once before typing “~C”).  The session should look similar to:
@@ -170,6 +237,91 @@ Canceled forwarding.
 [login31 /users/jdoe1] $ exit
 ```
 
+### Running RStudio Server via web
+You can run RStudio via [JHPCE Application Portal](https://jhpce-app02.jhsph.edu/) by login with your JHED ID and password.
+Please see [our page](../portal/web-apps.md) about using the JHPCE Web Portal.
+
+## R on JHPCE - Common Considerations
+
+### Installing R Packages
+
+In all cases, there are a number of R packages preinstalled in each of the R environments.
+
+When running the text based version of R or the X11 based version of R, you will be making use of
+one of the R modules. This module is named conda_R and is managed by Dr. Kasper Hansen in the
+Biostatistics department in the BSPH.  Dr. Hansen preloads a 
+
+You can see the various version of the conda_R packages that are available (as of April 2025)
+with the "module avail conda_R" command. 
+
+```
+[mmill116@compute-112 ~]$ module avail conda_R
+
+--------------------- /jhpce/shared/community/modulefiles ----------------------
+   conda_R/devel    conda_R/4.3.x    conda_R/4.4.x
+   conda_R/test     conda_R/4.3      conda_R/4.4   (D)
+
+```
+
+Dr. Hansen preinstals a ton of R packages in these R modules.  If you find that you need to
+install your own modules, you can also install your own R packages to your home directory.  By
+deafult, these packages will be installed in the the R directory in your home directory
+
+```R linenums="0"
+[mmill116@jhpce01 ~]$ srun --pty --X11 bash
+[mmill116@compute-112 ~]$ module load conda_R
+(/jhpce/shared/community/core/conda_R/4.4) [mmill116@compute-112 ~]$ R
+R version 4.4.0 Patched (2024-05-22 r86590) -- "Puppy Cup"
+Copyright (C) 2024 The R Foundation for Statistical Computing
+. . .
+> install.packages("sf")
+> library('sf')
+> q()
+(/jhpce/shared/community/core/conda_R/4.4) [mmill116@compute-112 ~]$ ls -la R/4.4
+total 61
+drwxr-xr-x  4 mmill116 mmi  4 Apr 10 10:58 .
+drwxr-xr-x 19 mmill116 mmi 20 May 15  2024 ..
+drwxr-xr-x 19 mmill116 mmi 25 Apr 10 10:58 sf
+
+```
+The same directory is used for both the text-based version of R and the X11 version of Rstuido, since they rely on the same "conda_R" packages.
+
+However for the Rstudio Server options mentioned above the R version will be contained in the
+singularity used to run Rstudio Server.  So, any R packages that were installed under the
+conda_R will need to be reinstalled under the Rstudio Server environment.  Any R packages you
+install will be installed in the directory $HOME/R/packages/singularity-R$VERSION.
+
+In all of the above cases, when you change the version of R that you are using, you will need
+to reinstall any R packages.
+
+When installing R packages from source with compiled programs, you can add custom compiler flags in ~/.R/Makevars. Adding optimization flags may provide a boost in performance for some packages. 
+```
+STDFLAGS = -O2 -pipe -Wall 
+```
+We have a wide variety of CPU architecture across the cluster, so you probably don't want to add to STDFLAGS `-march=` and `-mtune=` arguments.
+
+For the X11 version of Rstudio, you will also be making 
+### Installing your own R 
+
+If you find that you have a specific need in R that is not available in our current offerings, you can compile your own
+instance of R in your home directory. We don't have a guide for doing this, but if you are
+at this point, you probably have compiled R before, and know what specific settings and customizations you need, and know what you're doing more than we do :-)
+Here is one example from the [Iowa Biostat Site](https://iowabiostat.github.io/hpc/12.html)
+
+
+## From Lieber - Working with SLURM via R and slurmjobs 
+
+The Lieber group has put together some tools for working with R on the JHPCE cluster
+
+[slurmjobs](http://research.libd.org/slurmjobs/articles/slurmjobs.html#basics) provides helper functions for interacting with SLURM-managed high-performance-computing environments from R. It includes functions for creating submittable jobs (including array jobs), monitoring partitions, and extracting info about running or complete jobs.
+
+R is an open-source statistical environment which can be easily modified to enhance its functionality via packages. 
+
+slurmjobs is a R package available via the [Bioconductor](http://bioconductor.org/) repository for packages. R can be installed on any operating system from [CRAN](https://cran.r-project.org/) after which you can install slurmjobs 
+
+For more information about slurmjobs, see
+
+[http://research.libd.org/slurmjobs/articles/slurmjobs.html](http://research.libd.org/slurmjobs/articles/slurmjobs.html#basics)
 
 For Windows desktops/laptops, you should also use “^C” to terminate the Rstudio Server, but to stop the tunnel you will need to return to the MobaSSHTunnel screen, and use the “Stop” icon  in the Start/Stop column.  You can keep this tunnel configuration in MobaSSHTunnel, and reuse it the next time you run Rstudio Server, however you will need to edit the tunnel configuration and change the “Remote Server” to match the compute node you are running on.
 

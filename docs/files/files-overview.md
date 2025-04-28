@@ -9,7 +9,7 @@ We all spend a lot of our time manipulating files.  This document attempts to pr
 
 ## Where files live
 
-We have created a Storage topic in this web site. Please visit the [overview](../storage/storage-overview.md) and any other pages of interest.
+We have created a Storage topic in this web site. Please visit the [overview](../storage/index.md) and any other pages of interest.
 
 ## Naming files
 Files are created and manipulated with programs. Those programs are written by many different people and organizations. Some of them attempt to adhere to standards like [POSIX](https://en.wikipedia.org/wiki/POSIX). Files are stored in file systems. Both programs and file systems have rules and limitations -- and bugs. {==It is best to be conservative when naming files.==}

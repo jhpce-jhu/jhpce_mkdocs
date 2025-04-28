@@ -8,6 +8,7 @@ nav:
     - About Us:
       - JHPCE Model: aboutus/model.md
       - Staff: aboutus/staff.md
+      - JHPCE Constitutional Principles: aboutus/principles.md
       - Grant and Acknowledgment Blurbs: aboutus/GrantAndAckBlurbs.md
     - Getting Started:
       - joinus/index.md
@@ -73,9 +74,7 @@ nav:
       - Local Software:
         - Matlab: sw/matlab.md
         - Python: sw/python.md
-        - R: sw/r.md
-        - R Studio: sw/r-studio.md
-        - R Studio Server : sw/rstudio-server.md
+        - R and RStudio: sw/r-n-friends.md
         - SAS: sw/sas.md
         - Stata: sw/stata.md
       - Modules: sw/modules.md
@@ -84,7 +83,7 @@ nav:
         - Conda Environment: sw/conda.md
         - Python Packages: sw/python-pkg.md
         - R Packages: sw/r-pkg.md
-        - Singularity: sw/singularity.md
+#        - Singularity: sw/singularity.md
       - JHPCE-created: sw/locally-written.md
       - Helpful GUI Programs: sw/gui-tools.md
     - Job scheduler (SLURM): 
@@ -219,8 +218,8 @@ plugins:
   # JRT added https://timvink.github.io/mkdocs-table-reader-plugin/
   - table-reader
   # TAGS
-  - tags:
-      tags_file: ourtools/tags.md
+#  - tags:
+#      tags_file: ourtools/tags.md
 
 #
 # Python MarkDown Extensions

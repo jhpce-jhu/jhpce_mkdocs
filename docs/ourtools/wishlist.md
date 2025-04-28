@@ -85,6 +85,6 @@ This might be provided by multiple plugins out in the world.
 The one that might be the most common is "git-revision-date-localized"
 
 ## Glossary
-There's a way to create a document which is automatically updated when people define [abbrieviations](features.md#abbrieviations).
+There's a way to create a document which is automatically updated when people define [abbreviations](features.md#abbreviations).
 Jeffrey created a glossary by hand.
 

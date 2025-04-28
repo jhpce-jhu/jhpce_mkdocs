@@ -22,7 +22,7 @@ Start with [this document](../slurm/slurm-commands-ref.md) which describes comma
 ## What are the default job resources?
 
 ??? "Click to open"
-    Jobs that do not specify CPUs, RAM, or duration, or partition receive 1 CPU, 5G of RAM, assignment to the `shared` partition, and, because shared is a [public partition](../slurm/partitions.md##public-partitions), a [time limit](../slurm/time-limits.md) of 1 day. 
+    Jobs that do not specify CPUs, RAM, or duration, or partition receive 1 CPU, 5G of RAM, assignment to the `shared` partition, and, because shared is a [public partition](../slurm/partitions.md#public-partitions), a [time limit](../slurm/time-limits.md) of 1 day. 
 
 ## When will my job start?
 
