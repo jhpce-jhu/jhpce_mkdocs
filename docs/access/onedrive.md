@@ -7,7 +7,7 @@ Below is an example of using rclone to access the OneDrive network resource on t
 
 Before you start, you will need to have an X11 graphical environment set up either by using [MobaXterm](https://mobaxterm.mobatek.net) on a Windows system or [Xquartz](https://www.xquartz.org) on a Mac.  
 
-To start using rclone to access Onedrive, login to the cluster as normal, and then srun into a compute node with a 10G RAM request (srun –-pty –-x11 –-mem=10G bash ) .  
+To start using rclone to access Onedrive, login to the cluster as normal, and then srun into a compute node with a 10G RAM request (srun --pty --x11 --mem=10G bash ) .  
 
 Part of the rclone setup process will involve using a web browser to generate an authentication key.  Before starting the rclone configuration process, you should set your web browser on the cluster to use Chromium with the ```xdg-settings``` command.  When the browser does start, you may see a stream of warning message about “libGL errors”, but these are because we are using X11 forwarding and not a local graphics card, and assuming the browser starts up acter a few seconds, those messages can be ignored.
 
@@ -18,7 +18,7 @@ Part of the rclone setup process will involve using a web browser to generate an
 Now, from your srun session, you will need to run “module load rclone”, and then run “rclone config” to begin the rclone setup.
 
 ```console
-[jhpce01 /users/bob]$ srun --pty --x11 –-mem=10G bash
+[jhpce01 /users/bob]$ srun --pty --x11 --mem=10G bash
 [compute-113 /users/bob]$ module load rclone
 [compute-113 /users/bob]$ rclone config
 NOTICE: Config file "/users/bob/.config/rclone/rclone.conf" not found - using defaults"
