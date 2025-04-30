@@ -4025,7 +4025,17 @@ ftp&gt; exit
 221 Goodbye.
 [mmill116@transfer-01 mmtest]$ 
 </code></pre><h2><a class="heading" href="../access/onedrive/">OneDrive via rclone</a></h2><a class="url" href="../access/onedrive/">access/onedrive/</a><pre><span></span><code>[myuser@transfer-01 ~]$ xdg-settings set default-web-browser chromium-browser.desktop
-</code></pre><pre><span></span><code><span class="gp">[compute-113 /users/bob]$ </span>rclone<span class="w"> </span>lsd<span class="w"> </span>OneDrive:
+</code></pre><pre><span></span><code><span class="gp">[compute-113 /users/bob]$ </span>module<span class="w"> </span>load<span class="w"> </span>rclone
+<span class="gp">[compute-113 /users/bob]$ </span>rclone<span class="w"> </span>config
+<span class="go">NOTICE: Config file "/users/bob/.config/rclone/rclone.conf" not found - using defaults"</span>
+<span class="go">No remotes found - make a new on</span>
+<span class="go">n) New remote</span>
+<span class="go">s) Set configuration password</span>
+<span class="go">q) Quit config</span>
+<span class="go">n/s/q&gt; n</span>
+</code></pre><pre><span></span><code><span class="gp">[jhpce01 /users/bob]$ </span>srun<span class="w"> </span>--pty<span class="w"> </span>--x11<span class="w"> </span>-p<span class="w"> </span>transfer<span class="w"> </span>bash
+<span class="gp">[transfer-01 /users/bob]$ </span>module<span class="w"> </span>load<span class="w"> </span>rclone
+<span class="gp">[transfer-01 /users/bob]$ </span>rclone<span class="w"> </span>lsd<span class="w"> </span>OneDrive:
 <span class="go">          -1 2019-12-21 01:54:32         2 BoxMigration</span>
 <span class="go">          -1 2014-11-05 17:23:32        25 Documents</span>
 <span class="go">          -1 2014-11-05 17:22:55       173 HomeDir</span>
