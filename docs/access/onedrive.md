@@ -1,7 +1,4 @@
----
-tags:
-  - needs-review
----
+
 # Using rclone to access OneDrive
 
 Below is an example of using rclone to access the OneDrive network resource on the JHPCE cluster.  The initial setup is a bit involved, but [regular operation](#regular-operation) is fairly straightforward.
