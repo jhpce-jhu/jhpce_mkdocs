@@ -79,15 +79,15 @@
   {
     "page_name": "OneDrive via rclone",
     "page_url": "../../access/onedrive/",
-    "text": "[myuser@transfer-01 ~]$ xdg-settings set default-web-browser chromium-browser.desktop\n",
-    "html": "<pre><span></span><code>[myuser@transfer-01 ~]$ xdg-settings set default-web-browser chromium-browser.desktop\n</code></pre>",
+    "text": "[compute-113 /users/bob]$ xdg-settings set default-web-browser chromium-browser.desktop\n",
+    "html": "<pre><span></span><code>[compute-113 /users/bob]$ xdg-settings set default-web-browser chromium-browser.desktop\n</code></pre>",
     "language": ""
   },
   {
     "page_name": "OneDrive via rclone",
     "page_url": "../../access/onedrive/",
-    "text": "[compute-113 /users/bob]$ module load rclone\n[compute-113 /users/bob]$ rclone config\nNOTICE: Config file \"/users/bob/.config/rclone/rclone.conf\" not found - using defaults\"\nNo remotes found - make a new on\nn) New remote\ns) Set configuration password\nq) Quit config\nn/s/q> n\n",
-    "html": "<pre><span></span><code><span class=\"gp\">[compute-113 /users/bob]$ </span>module<span class=\"w\"> </span>load<span class=\"w\"> </span>rclone\n<span class=\"gp\">[compute-113 /users/bob]$ </span>rclone<span class=\"w\"> </span>config\n<span class=\"go\">NOTICE: Config file \"/users/bob/.config/rclone/rclone.conf\" not found - using defaults\"</span>\n<span class=\"go\">No remotes found - make a new on</span>\n<span class=\"go\">n) New remote</span>\n<span class=\"go\">s) Set configuration password</span>\n<span class=\"go\">q) Quit config</span>\n<span class=\"go\">n/s/q&gt; n</span>\n</code></pre>",
+    "text": "[jhpce01 /users/bob]$ srun --pty --x11 bash\n[compute-113 /users/bob]$ module load rclone\n[compute-113 /users/bob]$ rclone config\nNOTICE: Config file \"/users/bob/.config/rclone/rclone.conf\" not found - using defaults\"\nNo remotes found - make a new on\nn) New remote\ns) Set configuration password\nq) Quit config\nn/s/q> n\n",
+    "html": "<pre><span></span><code><span class=\"gp\">[jhpce01 /users/bob]$ </span>srun<span class=\"w\"> </span>--pty<span class=\"w\"> </span>--x11<span class=\"w\"> </span>bash\n<span class=\"gp\">[compute-113 /users/bob]$ </span>module<span class=\"w\"> </span>load<span class=\"w\"> </span>rclone\n<span class=\"gp\">[compute-113 /users/bob]$ </span>rclone<span class=\"w\"> </span>config\n<span class=\"go\">NOTICE: Config file \"/users/bob/.config/rclone/rclone.conf\" not found - using defaults\"</span>\n<span class=\"go\">No remotes found - make a new on</span>\n<span class=\"go\">n) New remote</span>\n<span class=\"go\">s) Set configuration password</span>\n<span class=\"go\">q) Quit config</span>\n<span class=\"go\">n/s/q&gt; n</span>\n</code></pre>",
     "language": ""
   },
   {
