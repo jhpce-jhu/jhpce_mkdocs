@@ -30,7 +30,7 @@ hide:
 
     ---
 
-    The computing and storage systems on the JHPCE cluster are optimized for genomics and biomedical research. The cluster has 87 compute nodes, providing over 4000 cores, 53TB of DRAM and over 20 PB of low-cost networked mass storage (ZFS and Lustre-over-ZFS). The network fabric consists of a 100 Gbps ethernet backbone whith nodes connected via 10 Gbps. The JHPCE cluster also has 7 GPU nodes with 23 Nvidia H100, V100, and A100 GPUs in support of numerous AI, ML, and LLM efforts across the JHU campuses. The facility is connected via a 40Gbps network to the University’s Science DMZ.
+    The computing and storage systems on the JHPCE cluster are optimized for genomics and biomedical research. The cluster has 87 compute nodes, providing over 4000 cores, 53TB of DRAM and over 20 PB of low-cost networked mass storage (ZFS and Lustre-over-ZFS). The network fabric consists of a 100 Gbps ethernet backbone with nodes connected via 10 Gbps. The JHPCE cluster also has 7 GPU nodes with 23 Nvidia H100, V100, and A100 GPUs in support of numerous AI, ML, and LLM efforts across the JHU campuses. The facility is connected via a 40Gbps network to the University’s Science DMZ.
 
     The JHPCE cluster is optimized for the embarrassingly parallel applications that are the bread-and-butter of our stakeholders, e.g., genomics and statistical applications, rather than the tightly-coupled applications that are typical in traditional HPC fields, e.g., physics, fluid-dynamics, quantum simulation etc.  Job scheduling is performed with the Simple Linux Utility for Resource Management ([SLURM](https://slurm.schedmd.com)).
   
