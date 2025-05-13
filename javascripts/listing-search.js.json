@@ -1946,6 +1946,48 @@
     "language": ""
   },
   {
+    "page_name": "Chrome",
+    "page_url": "../../sw/chrome/",
+    "text": "The profile appears to be in use by another Chromium process (199919)\non another computer (compute-102.cm.cluster). Chromium has locked the\nprofile so that it doesn't get corrupted. If you are sure no other \nprocesses are using this profile, you can unlock the profile and\nrelaunch Chromium.\n",
+    "html": "<pre><span></span><code>The profile appears to be in use by another Chromium process (199919)\non another computer (compute-102.cm.cluster). Chromium has locked the\nprofile so that it doesn't get corrupted. If you are sure no other \nprocesses are using this profile, you can unlock the profile and\nrelaunch Chromium.\n</code></pre>",
+    "language": ""
+  },
+  {
+    "page_name": "Chrome",
+    "page_url": "../../sw/chrome/",
+    "text": "mv ~/.config/chromium ~/.config/chromium-locked\n",
+    "html": "<pre><span></span><code>mv<span class=\"w\"> </span>~/.config/chromium<span class=\"w\"> </span>~/.config/chromium-locked\n</code></pre>",
+    "language": ""
+  },
+  {
+    "page_name": "Chrome",
+    "page_url": "../../sw/chrome/",
+    "text": "cd ~/.config/\n/bin/rm -rf chromium\n",
+    "html": "<pre><span></span><code><span class=\"nb\">cd</span><span class=\"w\"> </span>~/.config/\n/bin/rm<span class=\"w\"> </span>-rf<span class=\"w\"> </span>chromium\n</code></pre>",
+    "language": ""
+  },
+  {
+    "page_name": "Chrome",
+    "page_url": "../../sw/chrome/",
+    "text": "cd ~/.config/\n/bin/rm -rf chromium/your-profile-name\n",
+    "html": "<pre><span></span><code><span class=\"nb\">cd</span><span class=\"w\"> </span>~/.config/\n/bin/rm<span class=\"w\"> </span>-rf<span class=\"w\"> </span>chromium/your-profile-name\n</code></pre>",
+    "language": ""
+  },
+  {
+    "page_name": "Chrome",
+    "page_url": "../../sw/chrome/",
+    "text": "On Linux, this directory is named `~/.config/chromium/`\n",
+    "html": "<pre><span></span><code>On Linux, this directory is named `~/.config/chromium/`\n</code></pre>",
+    "language": ""
+  },
+  {
+    "page_name": "Chrome",
+    "page_url": "../../sw/chrome/",
+    "text": "conda activate env-name\nconda install package-name\n",
+    "html": "<pre><span></span><code>conda activate env-name\nconda install package-name\n</code></pre>",
+    "language": ""
+  },
+  {
     "page_name": "Conda Environment",
     "page_url": "../../sw/conda/",
     "text": "module load conda\n",
