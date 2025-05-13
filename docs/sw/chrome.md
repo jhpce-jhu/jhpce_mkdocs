@@ -1,0 +1,142 @@
+## Introduction
+JHPCE has installed the [Google
+Chromium](https://www.chromium.org/chromium-projects/) web browser. This Linux
+software is a version of the Google Chrome web browser found on other operating systems.[^1]
+[^1]:
+(Our web site uses the terms Chrome and Chromium interchangeably. But it is
+actually Chromium. The process names shown in `ps` output include "chromium-browser")
+
+This page describes some solutions and recommendations for our users.
+
+## Locked profiles
+It is not uncommon that cluster users run into the following error message when they try
+to launch Chrome:
+
+```
+The profile appears to be in use by another Chromium process (199919)
+on another computer (compute-102.cm.cluster). Chromium has locked the
+profile so that it doesn't get corrupted. If you are sure no other 
+processes are using this profile, you can unlock the profile and
+relaunch Chromium.
+```
+(The process number and computer name will be different in each case.)
+
+The way to avoid this problem is to always quit Chrome properly before your
+SLURM interactive session ends. 
+
+### Solving the locked profile problem
+
+See the explanation in the next section of why you need to take these actions.
+
+You need to 
+1. quit your Chromium session (if Chromium was launched as a part of starting
+SAS, then quit the SAS session too, because it has created a reference to that
+particular Chromium process)
+2. then rename or delete the files which comprise the "lock". (Deleting will
+delete your browsing history, bookmarks, etc. This is often okay in our environment.)
+with a command like one of these (choose one):
+
+```bash
+mv ~/.config/chromium ~/.config/chromium-locked
+```
+
+```bash
+cd ~/.config/
+/bin/rm -rf chromium
+```
+We haven't tested changing only the profile-specific files, but believe it
+works.
+
+```bash
+cd ~/.config/
+/bin/rm -rf chromium/your-profile-name
+```
+
+There is a possibility that the Chromium process mentioned by the "profile
+locked" error message is still running even though your SLURM interactive job
+has ended. If that happens, then, substituting in your specific process id and 
+compute node name, 
+
+1. Log into that node `srun --pty --nodelist=compute-102 bash`
+2. Look for that process id number `ps -f -p 12345`
+3. If you see a process listing where your name is listed under UID, and
+"chromium-browser" under the CMD header, then you should kill it. If you don't
+see anything, then the process mentioned by the "profile locked" message died.
+4. Kill that process by running `kill -KILL 12345`
+5. After a few seconds delay, do that again.
+6. You should receive the message `12345: No such process"
+
+### What causes this error?
+
+All web browsers maintain, in a user's home directory, an extensive set of files
+supporting bookmarks, browsing history, possibly multiple user profiles, etc.
+
+```
+On Linux, this directory is named `~/.config/chromium/`
+```
+
+By default there is a single profile. The information for that profile is stored
+in a subdirectory of the primary directory, e.g. `~/.config/chromium/Default/`
+
+The UNIX environment at many organizations contain multiple networked computers 
+which share a single user home directory. (That directory is stored on a storage
+server and shared to select other machines.) Therefore, the authors of
+Chromium had to accomodate the possibility that the same home directory would
+be asked to support Chromium use on multiple computers. They chose to support
+use by a single profile on a single computer at a time. 
+
+When Chromium is launched, it creates a lock file within the profile directory
+which records the computer hostname, the process id ("pid") on that computer,
+the date, etc. This lock file is removed if one quits Chrome by choosing Exit
+from Chromium's menu. 
+
+If your interactive session ends unexpectedly (e.g. runs out of memory) or you 
+exit your shell without first quitting Chromium, then the browser process is 
+killed off without it having the time to clean up after itself, by, among other
+things, removing the lock file. That file remains whether or not the processes
+associated with the browser are still running.
+
+### Running multiple concurrent Chromium sessions
+
+If you wanted to do this, then you would launch each session with different command-line
+arguments specifying a different profile name. This places the files for that particular
+session in a different subdirectory of `~/.config/chromium/`
+
+First, in an existing Chromium session, you would create a new profile. Try to
+specify profile names using hyphens instead of spaces, as UNIX does not handle
+spaces in file names without the user enclosing them in quotes or escaping them
+with the backslash character.
+
+Second, you would launch a new browser using that profile with a command like:
+
+`chromium --profile-directory=Profile-1`
+or
+`chromium --profile-directory="Profile 1"`
+or
+`chromium --profile-directory="Profile\ 1"`
+
+
+## Chromium spews out error messages when launched
+
+Web browsers are normally run on a system sitting physically in front of you.
+Those are equipped with a graphics card. Our compute nodes don't have such cards or the software to support them.
+When Chromium launches, it doesn't find that card and software and emits a
+stream of warnings which you can ignore.
+
+You can avoid seeing them if you redirect standard output and standard error
+data streams. This is entirely optional.
+
+!!! Tip "Tip"
+    The active environment is the one with an asterisk (*)
+
+## Handy bash routine to add to your environment
+
+```
+conda activate env-name
+conda install package-name
+```
+
+
+!!! Note "Note"
+    - Conda is a package manager, similar to pip.  
+    - Anaconda is a "batteries included" distribution of Python. It uses Conda as its package manager.
