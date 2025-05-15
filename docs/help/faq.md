@@ -12,7 +12,7 @@ You can access our latest orientation slides at [This Link](https://docs.google.
 - Locked profile error
 
 ??? "Click to expand answer"
-    Properly quit Chrome, always.  Otherwise you risk being unable to start Chrome in the future. The problem and solution are described in [this page](https://jhpce.jhu.edu/sw/chrome.d).
+    Properly quit Chrome, always.  Otherwise you risk being unable to start Chrome in the future. The problem and solution are described in [this page](https://jhpce.jhu.edu/sw/chrome).
 
 ## Compatibility
 - My script is giving odd error messages about `\r` or `^M`.
@@ -120,7 +120,7 @@ We have a [SAS usage document](../sw/sas.md). Please read it for useful tips, in
 - When running SAS, an error dialog pops up about Remote Browser
 
 ??? "Click to expand answer"
-    When running SAS, you may need to specify options to indicate which browser to use when displaying either help or graphical output. We recommend using the Chromium browser.
+    When running SAS, you may need to specify options to indicate which browser to use when displaying either help or graphical output. We recommend using the [Chromium browser](https://jhpce.jhu.edu/sw/chrome).
 
     See our [SAS usage document](../sw/sas.md) about how to resolve this issue.
 - When starting SAS in an interactive session with browser support enabled, a stream of error messages appear
