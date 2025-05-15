@@ -1,10 +1,18 @@
-## SLURM FAQ
+## JHPCE FAQ
+
+### SLURM Questions
 
 Questions about using SLURM are covered in their own FAQ [here](https://jhpce.jhu.edu/slurm/slurm-faq/).
 
 ## Orientation/Cluster Basics
 You can access our latest orientation slides at [This Link](https://docs.google.com/presentation/d/1elMSTUdKws7FLVFK7vVV_AErA4brNSPX/pub){:target="_blank"}
 (C-SUB users go [here](../orient/images/latest-csub-orient.pdf) instead (pdf).)  We update these periodically. The version date can be found on the first page in the lower right corner.
+
+## Chrome
+- Locked profile error
+
+??? "Click to expand answer"
+    Properly quit Chrome, always.  Otherwise you risk being unable to start Chrome in the future. The problem and solution are described in [this page](https://jhpce.jhu.edu/sw/chrome.d).
 
 ## Compatibility
 - My script is giving odd error messages about `\r` or `^M`.
@@ -107,7 +115,7 @@ You can access our latest orientation slides at [This Link](https://docs.google.
 
 ## SAS
 
-We have a [SAS usage document](../sw/sas.md). Please read it for useful tips.
+We have a [SAS usage document](../sw/sas.md). Please read it for useful tips, including dealing with web browser issues. (See also the Chrome item within this FAQ.)
 
 - When running SAS, an error dialog pops up about Remote Browser
 
