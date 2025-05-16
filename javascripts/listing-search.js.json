@@ -1974,20 +1974,6 @@
     "language": ""
   },
   {
-    "page_name": "Chrome",
-    "page_url": "../../sw/chrome/",
-    "text": "cd ~/.config/\n/bin/rm -rf chromium\n",
-    "html": "<pre><span></span><code><span class=\"nb\">cd</span><span class=\"w\"> </span>~/.config/\n/bin/rm<span class=\"w\"> </span>-rf<span class=\"w\"> </span>chromium\n</code></pre>",
-    "language": ""
-  },
-  {
-    "page_name": "Chrome",
-    "page_url": "../../sw/chrome/",
-    "text": "cd ~/.config/\n/bin/rm -rf chromium/your-profile-name\n",
-    "html": "<pre><span></span><code><span class=\"nb\">cd</span><span class=\"w\"> </span>~/.config/\n/bin/rm<span class=\"w\"> </span>-rf<span class=\"w\"> </span>chromium/your-profile-name\n</code></pre>",
-    "language": ""
-  },
-  {
     "page_name": "Conda Environment",
     "page_url": "../../sw/conda/",
     "text": "module load conda\n",
