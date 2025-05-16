@@ -3793,8 +3793,10 @@
 
 <h2 id="introduction">Introduction<a class="headerlink" href="#introduction" title="Anchor link to this section for reference">&para;</a></h2>
 <p>JHPCE has installed the <a href="https://www.chromium.org/chromium-projects/">Google
-Chromium</a> web browser. This Linux
+Chromium</a> web browser. It is launched with the command: <code>chromium-browser</code> This Linux
 software is a version of the Google Chrome web browser found on other operating systems.<sup id="fnref:1"><a class="footnote-ref" href="#fn:1">1</a></sup></p>
+<p>(We removed the Firefox browser from the cluster because it performed very poorly
+in  recent versions of the RHEL 9-based Rocky operating system that we used.)</p>
 <p>This page describes some solutions and recommendations for our users.</p>
 <h2 id="locked-profiles">Locked profiles<a class="headerlink" href="#locked-profiles" title="Anchor link to this section for reference">&para;</a></h2>
 <p>It is not uncommon that cluster users run into the following error message when they try
@@ -3806,10 +3808,10 @@ processes are using this profile, you can unlock the profile and
 relaunch Chromium.
 </code></pre></div>
 (The process number and computer name will be different in each case.)</p>
-<p>The way to avoid this problem is to always quit Chrome properly before your
-SLURM interactive session ends. </p>
+<p><mark class="critic">The way to avoid this problem is to always quit Chrome properly before your
+SLURM interactive session ends.</mark> The way to do that is to choose "Exit" from the drop down menu revealed by clicking on the three vertical dots in upper right corner. See <a href="../images/exiting-chromium-browser.png">this image</a></p>
 <h3 id="solving-the-locked-profile-problem">Solving the locked profile problem<a class="headerlink" href="#solving-the-locked-profile-problem" title="Anchor link to this section for reference">&para;</a></h3>
-<p>See the explanation in the next section of why you need to take these actions.</p>
+<p>See the explanation in the next section if you want to know why you need to take these actions.</p>
 <p>You need to 
 1. quit your Chromium session (if Chromium was launched as a part of starting
 SAS, then quit the SAS session too, because it has created a reference to that
@@ -3843,9 +3845,8 @@ see anything, then the process mentioned by the "profile locked" message died.</
 </ol>
 <h3 id="what-causes-this-error">What causes this error?<a class="headerlink" href="#what-causes-this-error" title="Anchor link to this section for reference">&para;</a></h3>
 <p>All web browsers maintain, in a user's home directory, an extensive set of files
-supporting bookmarks, browsing history, possibly multiple user profiles, etc.</p>
-<div class="highlight"><pre><span></span><code>On Linux, this directory is named `~/.config/chromium/`
-</code></pre></div>
+supporting bookmarks, browsing history, extensions, and possibly multiple user profiles.</p>
+<p>On Linux systems, this directory is named <code>~/.config/chromium/</code></p>
 <p>By default there is a single profile. The information for that profile is stored
 in a subdirectory of the primary directory, e.g. <code>~/.config/chromium/Default/</code></p>
 <p>The UNIX environment at many organizations contain multiple networked computers 
@@ -3857,14 +3858,15 @@ use by a single profile on a single computer at a time. </p>
 <p>When Chromium is launched, it creates a lock file within the profile directory
 which records the computer hostname, the process id ("pid") on that computer,
 the date, etc. This lock file is removed if one quits Chrome by choosing Exit
-from Chromium's menu. </p>
+from Chromium's menu (see <a href="../images/exiting-chromium-browser.png">this image</a>).</p>
 <p>If your interactive session ends unexpectedly (e.g. runs out of memory) or you 
 exit your shell without first quitting Chromium, then the browser process is 
 killed off without it having the time to clean up after itself, by, among other
-things, removing the lock file. That file remains whether or not the processes
+things, removing the lock file. That file remains -- whether or not the processes
 associated with the browser are still running.</p>
 <h3 id="running-multiple-concurrent-chromium-sessions">Running multiple concurrent Chromium sessions<a class="headerlink" href="#running-multiple-concurrent-chromium-sessions" title="Anchor link to this section for reference">&para;</a></h3>
-<p>If you wanted to do this, then you would launch each session with different command-line
+<p>If all you want to do is to have multiple browser windows, you can choose "New Window" from the same drop-down menu that Exit is found on.</p>
+<p>But if you wanted to run Chrome on two different systems simultaneously, then you would need to create a second profile.  Then launch each session with different command-line
 arguments specifying a different profile name. This places the files for that particular
 session in a different subdirectory of <code>~/.config/chromium/</code></p>
 <p>First, in an existing Chromium session, you would create a new profile. Try to
@@ -3884,21 +3886,14 @@ When Chromium launches, it doesn't find that card and software and emits a
 stream of warnings which you can ignore.</p>
 <p>You can avoid seeing them if you redirect standard output and standard error
 data streams. This is entirely optional.</p>
-<div class="admonition tip">
-<p class="admonition-title">Tip</p>
-<p>The active environment is the one with an asterisk (*)</p>
+<p><code>chromium-browser /dev/null 2&gt;&amp;1</code></p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Redirecting all I/O means that if SAS itself emits important error messages, you won't see them. So don't redirect I/O if SAS isn't working as expected! Maybe SAS is trying to tell you that you specified a file name that doesn't exist, for example.</p>
 </div>
 <h2 id="handy-bash-routine-to-add-to-your-environment">Handy bash routine to add to your environment<a class="headerlink" href="#handy-bash-routine-to-add-to-your-environment" title="Anchor link to this section for reference">&para;</a></h2>
-<div class="highlight"><pre><span></span><code>conda activate env-name
-conda install package-name
-</code></pre></div>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<ul>
-<li>Conda is a package manager, similar to pip.  </li>
-<li>Anaconda is a "batteries included" distribution of Python. It uses Conda as its package manager.</li>
-</ul>
-</div>
+<p>Many of our users rely on Chrome to enable functionality in SAS sessions. See <a href="https://jhpce.jhu.edu/sw/sas/#with-browser-support">this section</a> for the command you need to issue. There is also a bash routine named <code>csas</code> that you can add to your <code>~/.bashrc</code> file which will allow you to start SAS with one word. (You can name it whatever you want instead of <code>csas</code>.)</p>
+<p><mark class="critic">To ensure that you avoid the "locked profile" issue, you should explicitly exit Chrome before ending your SAS session, or the interative SLURM session that SAS and the browser are running within.</mark></p>
 <div class="footnote">
 <hr />
 <ol>
@@ -3928,7 +3923,7 @@ actually Chromium. The process names shown in <code>ps</code> output include "ch
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="May 13, 2025 15:55:54">May 13, 2025</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="May 16, 2025 20:36:32">May 16, 2025</span>
   </span>
 
     

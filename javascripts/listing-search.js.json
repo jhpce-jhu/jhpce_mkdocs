@@ -1974,20 +1974,6 @@
     "language": ""
   },
   {
-    "page_name": "Chrome",
-    "page_url": "../../sw/chrome/",
-    "text": "On Linux, this directory is named `~/.config/chromium/`\n",
-    "html": "<pre><span></span><code>On Linux, this directory is named `~/.config/chromium/`\n</code></pre>",
-    "language": ""
-  },
-  {
-    "page_name": "Chrome",
-    "page_url": "../../sw/chrome/",
-    "text": "conda activate env-name\nconda install package-name\n",
-    "html": "<pre><span></span><code>conda activate env-name\nconda install package-name\n</code></pre>",
-    "language": ""
-  },
-  {
     "page_name": "Conda Environment",
     "page_url": "../../sw/conda/",
     "text": "module load conda\n",
