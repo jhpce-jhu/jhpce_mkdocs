@@ -1,10 +1,13 @@
 ## Introduction
 JHPCE has installed the [Google
-Chromium](https://www.chromium.org/chromium-projects/) web browser. This Linux
+Chromium](https://www.chromium.org/chromium-projects/) web browser. It is launched with the command: `chromium-browser` This Linux
 software is a version of the Google Chrome web browser found on other operating systems.[^1]
 [^1]:
 (Our web site uses the terms Chrome and Chromium interchangeably. But it is
 actually Chromium. The process names shown in `ps` output include "chromium-browser")
+
+(We removed the Firefox browser from the cluster because it performed very poorly
+in  recent versions of the RHEL 9-based Rocky operating system that we used.)
 
 This page describes some solutions and recommendations for our users.
 
@@ -21,8 +24,8 @@ relaunch Chromium.
 ```
 (The process number and computer name will be different in each case.)
 
-The way to avoid this problem is to always quit Chrome properly before your
-SLURM interactive session ends. 
+{==The way to avoid this problem is to always quit Chrome properly before your
+SLURM interactive session ends.==} The way to do that is to choose "Exit" from the drop down menu revealed by clicking on the three vertical dots in upper right corner. See [this image](../images/exiting-chromium-browser.png)
 
 ### Solving the locked profile problem
 
@@ -69,11 +72,9 @@ see anything, then the process mentioned by the "profile locked" message died.
 ### What causes this error?
 
 All web browsers maintain, in a user's home directory, an extensive set of files
-supporting bookmarks, browsing history, possibly multiple user profiles, etc.
+supporting bookmarks, browsing history, extensions, and possibly multiple user profiles.
 
-```
-On Linux, this directory is named `~/.config/chromium/`
-```
+On Linux systems, this directory is named `~/.config/chromium/`
 
 By default there is a single profile. The information for that profile is stored
 in a subdirectory of the primary directory, e.g. `~/.config/chromium/Default/`
@@ -88,17 +89,19 @@ use by a single profile on a single computer at a time.
 When Chromium is launched, it creates a lock file within the profile directory
 which records the computer hostname, the process id ("pid") on that computer,
 the date, etc. This lock file is removed if one quits Chrome by choosing Exit
-from Chromium's menu. 
+from Chromium's menu (see [this image](../images/exiting-chromium-browser.png)).
 
 If your interactive session ends unexpectedly (e.g. runs out of memory) or you 
 exit your shell without first quitting Chromium, then the browser process is 
 killed off without it having the time to clean up after itself, by, among other
-things, removing the lock file. That file remains whether or not the processes
+things, removing the lock file. That file remains -- whether or not the processes
 associated with the browser are still running.
 
 ### Running multiple concurrent Chromium sessions
 
-If you wanted to do this, then you would launch each session with different command-line
+If all you want to do is to have multiple browser windows, you can choose "New Window" from the same drop-down menu that Exit is found on.
+
+But if you wanted to run Chrome on two different systems simultaneously, then you would need to create a second profile.  Then launch each session with different command-line
 arguments specifying a different profile name. This places the files for that particular
 session in a different subdirectory of `~/.config/chromium/`
 
@@ -126,17 +129,13 @@ stream of warnings which you can ignore.
 You can avoid seeing them if you redirect standard output and standard error
 data streams. This is entirely optional.
 
-!!! Tip "Tip"
-    The active environment is the one with an asterisk (*)
+`chromium-browser /dev/null 2>&1`
+
+!!! Warning "Warning"
+    Redirecting all I/O means that if SAS itself emits important error messages, you won't see them. So don't redirect I/O if SAS isn't working as expected! Maybe SAS is trying to tell you that you specified a file name that doesn't exist, for example.
 
 ## Handy bash routine to add to your environment
 
-```
-conda activate env-name
-conda install package-name
-```
+Many of our users rely on Chrome to enable functionality in SAS sessions. See [this section](https://jhpce.jhu.edu/sw/sas/#with-browser-support) for the command you need to issue. There is also a bash routine named `csas` that you can add to your `~/.bashrc` file which will allow you to start SAS with one word. (You can name it whatever you want instead of `csas`.)
 
-
-!!! Note "Note"
-    - Conda is a package manager, similar to pip.  
-    - Anaconda is a "batteries included" distribution of Python. It uses Conda as its package manager.
+{==To ensure that you avoid the "locked profile" issue, you should explicitly exit Chrome before ending your SAS session, or the interative SLURM session that SAS and the browser are running within.==}
