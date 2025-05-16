@@ -29,15 +29,37 @@ SLURM interactive session ends.==} The way to do that is to choose "Exit" from t
 
 ### Solving the locked profile problem
 
+??? Caution "Example of the complete error message"
+    compute-115:~% chromium-browser
+    [3207720:3207720:0516/174541.446786:ERROR:process_singleton_posix.cc(353)] The profile appears to be in use by another Chromium process (283897) on another computer (compute-112.cm.cluster). Chromium has locked the profile so that it doesn't get corrupted. If you are sure no other processes are using this profile, you can unlock the profile and relaunch Chromium.
+    [3207720:3207720:0516/174541.450387:ERROR:message_box_dialog.cc(144)] Unable to show a dialog outside the UI thread message loop: Chromium - The profile appears to be in use by another Chromium process (283897) on another computer (compute-112.cm.cluster). Chromium has locked the profile so that it doesn't get corrupted. If you are sure no other processes are using this profile, you can unlock the profile and relaunch Chromium.
+    compute-115:~%
+
 See the explanation in the next section if you want to know why you need to take these actions.
 
 You need to 
-1. quit your Chromium session (if Chromium was launched as a part of starting
-SAS, then quit the SAS session too, because it has created a reference to that
-particular Chromium process)
-2. then rename or delete the files which comprise the "lock". (Deleting will
-delete your browsing history, bookmarks, etc. This is often okay in our environment.)
-with a command like one of these (choose one):
+
+
+1. quit your Chromium session
+2. if Chromium was launched as a part of starting SAS, then quit the SAS application as well, because it has created an internal reference to that particular Chromium process
+3. then delete the three files which comprise the "lock".
+
+```bash
+cd ~/.config/
+/bin/rm chromium/Singleton*
+```
+
+If that does not resolve the problem, then you may need to delete the Chromium directories
+
+```
+/bin/rm -rf ~/.cache/chromium
+/bin/rm -rf ~/.config/chromium
+```
+
+!!! Warning "Warning"
+    Deleting the directory will delete your browsing history, bookmarks, etc. This is often okay in our environment, but you know how you use Chrome. You can instead rename the profile directory if worried about losing material in there. However, if that solved the "profile locked" problem, then retrieving any of the material in the renamed directory and placing it into your new profile's directory may involve some complex steps. If you customize Chrome, you may want to create a specific non-default profile for that.
+
+You can use one of these commands:
 
 ```bash
 mv ~/.config/chromium ~/.config/chromium-locked
