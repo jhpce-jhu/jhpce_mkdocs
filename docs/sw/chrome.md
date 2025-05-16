@@ -29,7 +29,7 @@ SLURM interactive session ends.==} The way to do that is to choose "Exit" from t
 
 ### Solving the locked profile problem
 
-See the explanation in the next section of why you need to take these actions.
+See the explanation in the next section if you want to know why you need to take these actions.
 
 You need to 
 1. quit your Chromium session (if Chromium was launched as a part of starting
