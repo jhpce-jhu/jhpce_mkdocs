@@ -3811,14 +3811,32 @@ relaunch Chromium.
 <p><mark class="critic">The way to avoid this problem is to always quit Chrome properly before your
 SLURM interactive session ends.</mark> The way to do that is to choose "Exit" from the drop down menu revealed by clicking on the three vertical dots in upper right corner. See <a href="../images/exiting-chromium-browser.png">this image</a></p>
 <h3 id="solving-the-locked-profile-problem">Solving the locked profile problem<a class="headerlink" href="#solving-the-locked-profile-problem" title="Anchor link to this section for reference">&para;</a></h3>
+<details class="caution">
+<summary>Example of the complete error message</summary>
+<p>compute-115:~% chromium-browser
+[3207720:3207720:0516/174541.446786:ERROR:process_singleton_posix.cc(353)] The profile appears to be in use by another Chromium process (283897) on another computer (compute-112.cm.cluster). Chromium has locked the profile so that it doesn't get corrupted. If you are sure no other processes are using this profile, you can unlock the profile and relaunch Chromium.
+[3207720:3207720:0516/174541.450387:ERROR:message_box_dialog.cc(144)] Unable to show a dialog outside the UI thread message loop: Chromium - The profile appears to be in use by another Chromium process (283897) on another computer (compute-112.cm.cluster). Chromium has locked the profile so that it doesn't get corrupted. If you are sure no other processes are using this profile, you can unlock the profile and relaunch Chromium.
+compute-115:~%</p>
+</details>
 <p>See the explanation in the next section if you want to know why you need to take these actions.</p>
-<p>You need to 
-1. quit your Chromium session (if Chromium was launched as a part of starting
-SAS, then quit the SAS session too, because it has created a reference to that
-particular Chromium process)
-2. then rename or delete the files which comprise the "lock". (Deleting will
-delete your browsing history, bookmarks, etc. This is often okay in our environment.)
-with a command like one of these (choose one):</p>
+<p>You need to </p>
+<ol>
+<li>quit your Chromium session</li>
+<li>if Chromium was launched as a part of starting SAS, then quit the SAS application as well, because it has created an internal reference to that particular Chromium process</li>
+<li>then delete the three files which comprise the "lock".</li>
+</ol>
+<div class="highlight"><pre><span></span><code><span class="nb">cd</span><span class="w"> </span>~/.config/
+/bin/rm<span class="w"> </span>chromium/Singleton*
+</code></pre></div>
+<p>If that does not resolve the problem, then you may need to delete the Chromium directories</p>
+<div class="highlight"><pre><span></span><code>/bin/rm -rf ~/.cache/chromium
+/bin/rm -rf ~/.config/chromium
+</code></pre></div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Deleting the directory will delete your browsing history, bookmarks, etc. This is often okay in our environment, but you know how you use Chrome. You can instead rename the profile directory if worried about losing material in there. However, if that solved the "profile locked" problem, then retrieving any of the material in the renamed directory and placing it into your new profile's directory may involve some complex steps. If you customize Chrome, you may want to create a specific non-default profile for that.</p>
+</div>
+<p>You can use one of these commands:</p>
 <div class="highlight"><pre><span></span><code>mv<span class="w"> </span>~/.config/chromium<span class="w"> </span>~/.config/chromium-locked
 </code></pre></div>
 <p><div class="highlight"><pre><span></span><code><span class="nb">cd</span><span class="w"> </span>~/.config/
@@ -3923,7 +3941,7 @@ actually Chromium. The process names shown in <code>ps</code> output include "ch
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="May 16, 2025 20:36:32">May 16, 2025</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="May 16, 2025 22:02:54">May 16, 2025</span>
   </span>
 
     

@@ -5900,6 +5900,10 @@ on another computer (compute-102.cm.cluster). Chromium has locked the
 profile so that it doesn't get corrupted. If you are sure no other 
 processes are using this profile, you can unlock the profile and
 relaunch Chromium.
+</code></pre><pre><span></span><code><span class="nb">cd</span><span class="w"> </span>~/.config/
+/bin/rm<span class="w"> </span>chromium/Singleton*
+</code></pre><pre><span></span><code>/bin/rm -rf ~/.cache/chromium
+/bin/rm -rf ~/.config/chromium
 </code></pre><pre><span></span><code>mv<span class="w"> </span>~/.config/chromium<span class="w"> </span>~/.config/chromium-locked
 </code></pre><pre><span></span><code><span class="nb">cd</span><span class="w"> </span>~/.config/
 /bin/rm<span class="w"> </span>-rf<span class="w"> </span>chromium

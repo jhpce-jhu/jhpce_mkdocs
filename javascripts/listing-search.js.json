@@ -1955,6 +1955,20 @@
   {
     "page_name": "Chrome",
     "page_url": "../../sw/chrome/",
+    "text": "cd ~/.config/\n/bin/rm chromium/Singleton*\n",
+    "html": "<pre><span></span><code><span class=\"nb\">cd</span><span class=\"w\"> </span>~/.config/\n/bin/rm<span class=\"w\"> </span>chromium/Singleton*\n</code></pre>",
+    "language": ""
+  },
+  {
+    "page_name": "Chrome",
+    "page_url": "../../sw/chrome/",
+    "text": "/bin/rm -rf ~/.cache/chromium\n/bin/rm -rf ~/.config/chromium\n",
+    "html": "<pre><span></span><code>/bin/rm -rf ~/.cache/chromium\n/bin/rm -rf ~/.config/chromium\n</code></pre>",
+    "language": ""
+  },
+  {
+    "page_name": "Chrome",
+    "page_url": "../../sw/chrome/",
     "text": "mv ~/.config/chromium ~/.config/chromium-locked\n",
     "html": "<pre><span></span><code>mv<span class=\"w\"> </span>~/.config/chromium<span class=\"w\"> </span>~/.config/chromium-locked\n</code></pre>",
     "language": ""
