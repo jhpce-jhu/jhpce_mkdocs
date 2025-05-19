@@ -2436,6 +2436,21 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="Running the X11 version of RStudio">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#resetting-the-rstudio-environment" class="md-nav__link">
+    <span class="md-ellipsis">
+      Resetting the Rstudio environment
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
         
           <li class="md-nav__item">
@@ -3991,6 +4006,21 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="Running the X11 version of RStudio">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#resetting-the-rstudio-environment" class="md-nav__link">
+    <span class="md-ellipsis">
+      Resetting the Rstudio environment
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
         
           <li class="md-nav__item">
@@ -4235,6 +4265,30 @@ Loading R/4.3
 (4.3)[test@compute-097 ~]$ rstudio
 </code></pre></div></p>
 <p>When you run rstudio, you should see the familiar graphical Rstudio interface come up.</p>
+<h4 id="resetting-the-rstudio-environment">Resetting the Rstudio environment<a class="headerlink" href="#resetting-the-rstudio-environment" title="Anchor link to this section for reference">&para;</a></h4>
+<p>We have occasionally seen cases where Rstudio will fail to launch.  This can occur when the Rstudio environment
+either gets to large for your session to handle, or the environment becomes inconsistent in some way. There are 2 approaches to resolving this.</p>
+<p>1.) You can request more RAM for your session.  We recommend 10G to start with, but if you need, say, 20G, you could use the following commands.
+<div class="highlight"><pre><span></span><code>[test@login31 ~]$ srun --mem 20G --x11 --pty bash
+srun: job 3244191 queued and waiting for resources
+srun: job 3244191 has been allocated resources
+[test@compute-143 ~]$ module load R
+Loading R/4.3
+(4.3)[test@compute-143 ~]$ module load rstudio
+(4.3)[test@compute-143 ~]$ rstudio
+</code></pre></div>
+2.) You may need to remove, or rename, the Rstudio environment and cache directories.  This can allow Rstudio to start running with a clean slate, though any saved session information you had will be reset.
+<div class="highlight"><pre><span></span><code>[test@login31 ~]$ srun --mem 20G --x11 --pty bash
+srun: job 3244192 queued and waiting for resources
+srun: job 3244192 has been allocated resources
+[test@compute-065 ~]$ module load R
+Loading R/4.3
+(4.3)[test@compute-065 ~]$ module load rstudio
+(4.3)[test@compute-065 ~]$ mv ~/.local/share/rstudio ~/.local/share/rstudio-backup
+(4.3)[test@compute-065 ~]$ mv ~/.config/rstudio ~/.config/rstudio-backup
+(4.3)[test@compute-065 ~]$ rstudio
+</code></pre></div></p>
+<p>If this resolves the issue, you can remove the ~/.local/share/rstudio-backup and ~/.config/rstudio-backup directories.</p>
 <h3 id="running-rstudio-server">Running RStudio Server<a class="headerlink" href="#running-rstudio-server" title="Anchor link to this section for reference">&para;</a></h3>
 <p>Depending on which cluster you are using, run one of the following two scripts after starting an interactive session and landing on a compute node. (The discussion below assumes that you are on the jhpce cluster.) </p>
 <ul>
@@ -4409,7 +4463,7 @@ Here is one example from the <a href="https://iowabiostat.github.io/hpc/12.html"
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="April 10, 2025 15:36:04">April 10, 2025</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="May 19, 2025 15:01:02">May 19, 2025</span>
   </span>
 
     

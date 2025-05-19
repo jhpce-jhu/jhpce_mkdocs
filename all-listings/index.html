@@ -6135,6 +6135,22 @@ srun: job 3244190 has been allocated resources
 Loading R/4.3
 (4.3)[test@compute-097 ~]$ module load rstudio
 (4.3)[test@compute-097 ~]$ rstudio
+</code></pre><pre><span></span><code>[test@login31 ~]$ srun --mem 20G --x11 --pty bash
+srun: job 3244191 queued and waiting for resources
+srun: job 3244191 has been allocated resources
+[test@compute-143 ~]$ module load R
+Loading R/4.3
+(4.3)[test@compute-143 ~]$ module load rstudio
+(4.3)[test@compute-143 ~]$ rstudio
+</code></pre><pre><span></span><code>[test@login31 ~]$ srun --mem 20G --x11 --pty bash
+srun: job 3244192 queued and waiting for resources
+srun: job 3244192 has been allocated resources
+[test@compute-065 ~]$ module load R
+Loading R/4.3
+(4.3)[test@compute-065 ~]$ module load rstudio
+(4.3)[test@compute-065 ~]$ mv ~/.local/share/rstudio ~/.local/share/rstudio-backup
+(4.3)[test@compute-065 ~]$ mv ~/.config/rstudio ~/.config/rstudio-backup
+(4.3)[test@compute-065 ~]$ rstudio
 </code></pre><pre><span></span><code><span class="gp">[login31 /users/jdoe1] $ </span>srun<span class="w"> </span>--pty<span class="w"> </span>--x11<span class="w"> </span>--mem<span class="o">=</span>10G<span class="w"> </span>bash
 <span class="go">Last login: Wed May 1 17:02:29 2019 from login31.cm.cluster</span>
 <span class="go">Loading conda_R/3.5.x</span>
