@@ -3929,6 +3929,9 @@ Saving to: ‘/fastscratch/myscratch/mmill116/SRR026674.fastq.gz’
 [mmill116@jhpce01 ~]$ 
 </code></pre><pre><span></span><code>tar xvf ibm-aspera-connect_4.2.13.820_linux_x86_64.tar.gz
 bash ibm-aspera-connect_4.2.13.820_linux_x86_64.sh
+</code></pre><pre><span></span><code>srun -p transfer --pty bash
+module load ruby/3.1.2
+ascli --help
 </code></pre><pre class="mbash"><code class="mbash">
 [mmill116@transfer-01 mmtest]$ <b>git clone https://github.com/ruanyf/simple-bash-scripts</b>
 Cloning into 'simple-bash-scripts'...

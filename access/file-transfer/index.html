@@ -4707,6 +4707,11 @@ bash ibm-aspera-connect_4.2.13.820_linux_x86_64.sh
 </code></pre></div>
 <p>This will install the <code>ascp</code> command under your home directory at  <code>~/.aspera/connect/bin</code>.  You can either add <code>~/.aspera/connect/bin</code> to your <code>PATH</code>, or use the full path to the <code>ascp</code> command to run it.</p>
 <p>You may also need to do other steps, such as install an extension to your web browser. Instructions on how to do that for Linux, as an example, are available from IBM <a href="https://www.ibm.com/docs/en/aspera-connect/4.2?topic=suc-installation">here</a>.</p>
+<p><a href="https://github.com/IBM/aspera-cli">aspera-cli</a> is a tool developed by IBM for high-speed, secure data transfer from the command line. You can access it on the cluster using the following steps.</p>
+<div class="highlight"><pre><span></span><code>srun -p transfer --pty bash
+module load ruby/3.1.2
+ascli --help
+</code></pre></div>
 <h3 id="unison">Unison<a class="headerlink" href="#unison" title="Anchor link to this section for reference">&para;</a></h3>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
@@ -4852,7 +4857,7 @@ ftp&gt; exit
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="April 9, 2025 20:59:56 UTC">April 9, 2025</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="May 27, 2025 21:27:49 UTC">May 27, 2025</span>
   </span>
 
     
