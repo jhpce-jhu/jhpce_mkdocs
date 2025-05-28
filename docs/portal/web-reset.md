@@ -18,12 +18,13 @@ After you ssh into the cluster:
 characters: upper-case, lower-case, numerical digits, and special characters.
  
 - If you need to set up your Google Authenticator, you can use the following steps:
-  1. On your smartphone, bring up the "Google Authenticator" app
-  2. On the JHPCE cluster, run `auth_util`
-  3. In `auth_util`, use option "5" to display the QR code (you may need to resize your ssh window - ”view->terminal unzoom” in MobaXterm)
-  4. Scan the QR code with the Google Authenticator app
-  5. Next in `auth_util` use option 2 to display your scratch codes
-  6. In `auth_util`, use option "6" to exit from `auth_util`
+  
+    1. On your smartphone, bring up the "Google Authenticator" app
+    2. On the JHPCE cluster, run `auth_util`
+    3. In `auth_util`, use option "5" to display the QR code (you may need to resize your ssh window - ”view->terminal unzoom” in MobaXterm)
+    4. Scan the QR code with the Google Authenticator app
+    5. Next in `auth_util` use option 2 to display your scratch codes
+    6. In `auth_util`, use option "6" to exit from `auth_util`
  
 Going forward, you would then use the 6 digit code from Google Authenticator when prompted for “Verification Code” when logging into the JHPCE cluster.
 
