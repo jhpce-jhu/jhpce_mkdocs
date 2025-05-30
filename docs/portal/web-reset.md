@@ -8,7 +8,7 @@ The JHPCE User Account Tools section provide the means to:
 * Request Authenticator Code ("One Time Password")
 * Update Contact Information
 ---
-You can visit our [web portal](https://jhpce-app02.jhsph.edu/) which is at [https://jhpce-app02.jhsph.edu](https://jhpce-app02.jhsph.edu/)to get a one-time use verification code and/or reset your password.  This web site is only available on the school's network, so if you are off campus, you will need to login to the JHU VPN first.
+You can visit our [web portal](https://jhpce-app02.jhsph.edu/) which is at [https://jhpce-app02.jhsph.edu](https://jhpce-app02.jhsph.edu/) to get a one-time use verification code and/or reset your password.  This web site is only available on the school's network, so if you are off campus, you will need to login to the JHU VPN first.
 
 You will first log into that web site with your JHED ID and password (so you'll need a valid JHED). Once logged in you should then proceed to the JHPCE Tools section of the site.  In that section you will find options for requesting a verification code or resetting your password.
  
