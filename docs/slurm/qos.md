@@ -17,6 +17,7 @@ QOS definitions for users and partitions are stored in a database.
 
 We have a [document containing useful QOS-related commands](tips-sacctmgr.md). Those commands include ones like this one which allow you to see the value of all defined QOS in a readable format:
 : `sacctmgr show qos format=Name%20,Priority,Flags%30,MaxWall,MaxTRESPU%20,MaxJobsPU,MaxSubmitPU,MaxTRESPA%25`
+For your convenience we've put that command into a shell script called `showqos`
 
 ## Using QOS
 If you need to submit a job with a particular QOS, AND that QOS is in **_both_** your **and** the specified partition's AllowedQOS list (see below sections), then you need to add an extra SLURM directive in your batch job or on the command line.
@@ -32,7 +33,7 @@ Specifying a QOS that you do not have access to or which your specified partitio
 ## Partition QOS
 Job partitions like `shared` have two QOS-related attributes:
 
-1. Qos - If present, this specifies the QOS which by default applies to all jobs submitted. The `interactive` partition has `QoS=interactive-default`
+1. Qos - If present, this specifies the QOS which by default applies to all jobs submitted. The `interactive` partition has `QoS=interactive-default`. The `shared` partition has `QoS=shared-default`.
 
 2. AllowQoS - By default, this value is set to ALL. If set to a comma-separated list, then only those can be used or requested by users. The `interactive` partition has `AllowQos=normal,interactive-default`
 
@@ -46,7 +47,7 @@ scontrol show partition partitionname | grep -i qos
 
 User accounts have two QOS-related attributes:
 
-1. Qos - Our users (currently) all have a QOS value of "normal", (which is inherited from their parent account, named "jhpce").  The "normal" QOS  (currently) has no limits defined for it.
+1. Qos - Our users (currently) all have a QOS value of "normal", (which is inherited from their parent "bank" account, named "jhpce").  The "normal" QOS  (currently) has no limits defined for it. (Therefore any QOS that applies to a user will come from either the partition's default QOS or is specified by the user (because they have access to an enhanced QOS).)
 
 2. Allowed Qos - By default, this value is empty. If set to a comma-separated list, then the user can _choose_ to submit jobs using one of them.  Jobs request a QOS using the "--qos=" option to the sbatch, salloc, and srun commands. (If the partition does not allow a QOS to be used, then your job will be rejected.)
 
@@ -59,6 +60,8 @@ If you submit jobs which together ask for more memory than you are allowed to us
 
 The "Reason" code shown in the output of `squeue --me -t pd` ("show me my pending jobs") will be `QOSMaxMemoryPerUser`for jobs waiting for your running jobs to be using less than the RAM limit defined in the QOS that is impacting you.  The Reason will be `QOSMaxCpuPerUserLimit` for jobs waiting for your core usage to drop below that which is allowed.
 
+You can see jobs running with a specific user-provided QOS with the command `squeue --qos <qos_list>` where qos_list can be one or a comma-separated list.
+
 
 ## HOW WE ARE USING QOS TO DATE...
 
@@ -67,7 +70,7 @@ This is a summary of how QOS is configured at JHPCE.
 Our users all have a QOS value of "normal", which is
 inherited from their parent account, named "jhpce"
 
-(The account jhpce, of the organization jhpce, in the
+(The "bank" account jhpce, of the organization jhpce, in the
 cluster jhpce3 is the parent of all of the users.)
 
 The "normal" QOS  (currently) has no limits defined for it.
