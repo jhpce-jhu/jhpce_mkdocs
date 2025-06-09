@@ -56,7 +56,13 @@ As of November 2024, we have the following GPUs available on the gpu partition:
 
 <tr>
 <td><strong>compute-126</strong></td>
-<td>One of the Lieber (Collado) GPU node<br>2 Intel(R) Xeon(R) Gold 5317 CPUs and 512GB of RAM</td>
+<td>One of the Lieber (Collado) GPU nodes<br>2 Intel(R) Xeon(R) Gold 5317 CPUs and 512GB of RAM</td>
+<td>4 Nvidia A100 GPUs with 80GB RAM</td>
+</tr>
+
+<tr>
+<td><strong>compute-128</strong></td>
+<td>One of the Feinberg Lab (CEGS) GPU nodes<br>2 Intel(R) Xeon(R) Gold 5317 CPUs and 512GB of RAM</td>
 <td>4 Nvidia A100 GPUs with 80GB RAM</td>
 </tr>
 

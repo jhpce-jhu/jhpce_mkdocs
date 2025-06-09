@@ -23,3 +23,7 @@
   display: inline-block;
 } 
 
+.md-content {
+  --md-typeset-a-color: #002D72;
+}
+

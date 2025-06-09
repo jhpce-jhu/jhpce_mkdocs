@@ -1,4 +1,4 @@
-# A repo for a MKDOCS version of the JHPCE documentation site
+# A repo for a MKDOCS version of the JHPCE documentation site 
 
 + The live version of the site is at: [https://jhpce-jhu.github.io/jhpce_mkdocs/index.html](https://jhpce-jhu.github.io/jhpce_mkdocs/index.html)
 + If you make changes/pull requests to the site, use the devel branch.

@@ -8,7 +8,9 @@ The JHPCE User Account Tools section provide the means to:
 * Request Authenticator Code ("One Time Password")
 * Update Contact Information
 ---
-You can visit [web portal](https://jhpce-app02.jhsph.edu/) to get a one-time use verification code and/or reset your password.  You log into that web site with your JHED ID and password, and then you should find a link for requesting a verification code or resetting your password.  This web site is only available on campus, so if you are outside of the school network, you will need login to the JHU VPN first.
+You can visit our [web portal](https://jhpce-app02.jhsph.edu/) which is at [https://jhpce-app02.jhsph.edu](https://jhpce-app02.jhsph.edu/) to get a one-time use verification code and/or reset your password.  This web site is only available on the school's network, so if you are off campus, you will need to login to the JHU VPN first.
+
+You will first log into that web site with your JHED ID and password (so you'll need a valid JHED). Once logged in you should then proceed to the JHPCE Tools section of the site.  In that section you will find options for requesting a verification code or resetting your password.
  
 After you ssh into the cluster:
  
@@ -16,12 +18,13 @@ After you ssh into the cluster:
 characters: upper-case, lower-case, numerical digits, and special characters.
  
 - If you need to set up your Google Authenticator, you can use the following steps:
-  1. On your smartphone, bring up the "Google Authenticator" app
-  2. On the JHPCE cluster, run `auth_util`
-  3. In `auth_util`, use option "5" to display the QR code (you may need to resize your ssh window - ”view->terminal unzoom” in MobaXterm)
-  4. Scan the QR code with the Google Authenticator app
-  5. Next in `auth_util` use option 2 to display your scratch codes
-  6. In `auth_util`, use option "6" to exit from `auth_util`
+  
+    1. On your smartphone, bring up the "Google Authenticator" app
+    2. On the JHPCE cluster, run `auth_util`
+    3. In `auth_util`, use option "5" to display the QR code (you may need to resize your ssh window - ”view->terminal unzoom” in MobaXterm)
+    4. Scan the QR code with the Google Authenticator app
+    5. Next in `auth_util` use option 2 to display your scratch codes
+    6. In `auth_util`, use option "6" to exit from `auth_util`
  
 Going forward, you would then use the 6 digit code from Google Authenticator when prompted for “Verification Code” when logging into the JHPCE cluster.
 

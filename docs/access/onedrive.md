@@ -1,24 +1,34 @@
----
-tags:
-  - needs-review
----
+
 # Using rclone to access OneDrive
 
 Below is an example of using rclone to access the OneDrive network resource on the JHPCE cluster.  The initial setup is a bit involved, but [regular operation](#regular-operation) is fairly straightforward.
 
 ## One-time Configuration
 
-Before you start, you will need to have an X11 graphical environment set up either by using [MobaXterm](https://mobaxterm.mobatek.net) on a Windows system or [Xquartz](https://www.xquartz.org) on a Mac.  To start, login to the cluster as normal, and then srun into a compute node with a 10G RAM request (srun –pty –x11 –mem=10G bash ) .  
+Before you start, you will need to have an X11 graphical environment set up either by using [MobaXterm](https://mobaxterm.mobatek.net) on a Windows system or [Xquartz](https://www.xquartz.org) on a Mac.  
 
-Part of the rclone setup process will involve using a web browser to generate an authentication key.  Before starting the rclone configuration process, you should set your web browser on the cluster to use Chromium with the ```xdg-settings``` command.  When the browser does start, you may see a steam of warning message about “libGL errors”, but these are because we are using X11 forwarding and not a local graphics card, and assuming the browser stars up acter a few seconds, those messages can be ignored.
+To start using rclone to access Onedrive, login to the cluster as normal, and then srun into a compute node with a 10G RAM request (srun --pty --x11 --mem=10G bash ) .  
+
+Part of the rclone setup process will involve using a web browser to generate an authentication key.  Before starting the rclone configuration process, you should set your web browser on the cluster to use Chromium with the ```xdg-settings``` command.  When the browser does start, you may see a stream of warning message about “libGL errors”, but these are because we are using X11 forwarding and not a local graphics card, and assuming the browser starts up acter a few seconds, those messages can be ignored.
 
 ```
-[myuser@transfer-01 ~]$ xdg-settings set default-web-browser chromium-browser.desktop
+[compute-113 /users/bob]$ xdg-settings set default-web-browser chromium-browser.desktop
 ```
 
-Now, from your srun session, you will need to run “module load go” to load the “go” module, and then run “rclone config” to begin the rclone setup.
+Now, from your srun session, you will need to run “module load rclone”, and then run “rclone config” to begin the rclone setup.
 
-![](images/rclone2-1.png)
+```console
+[jhpce01 /users/bob]$ srun --pty --x11 --mem=10G bash
+[compute-113 /users/bob]$ module load rclone
+[compute-113 /users/bob]$ rclone config
+NOTICE: Config file "/users/bob/.config/rclone/rclone.conf" not found - using defaults"
+No remotes found - make a new on
+n) New remote
+s) Set configuration password
+q) Quit config
+n/s/q> n
+
+```
 
 When prompted to “make a new remote”, enter “n” for “new remote”.
 When prompted for a name, enter something descriptive, like “OneDrive”.
@@ -68,13 +78,18 @@ At this point a summary of the configuration will be displayed, and you should s
 At this point your OneDrive connection has been configured, and you can start to access your OneDrive.
 
 ## Regular Operation
-To access your OneDrive, you’ll use the “rclone” command with various options. The most often used commands are “rclone lsd” to list directories, “rclone ls” to recursively list files (this can take a long time if you have a lot of files in OneDrive and you are listing the top lecel directory), and “rclone copy” to copy data between the cluster and your OneDrive.
+To access your OneDrive, you’ll use the “rclone” command with various options. The most often used commands are “rclone lsd” to list directories, “rclone ls” to recursively list files (this can take a long time if you have a lot of files in OneDrive and you are listing the top level directory), and “rclone copy” to copy data between the cluster and your OneDrive.
 
-An example of “rclone lsd” is below. There are a couple of key items to note. First, the name of the argument following “lsd” should be the same name your used for your OneDrive config. You can run “rclone listremotes” to see the name you used. The second item to note is that the name of your remote must end in a colon.
+An example of “rclone lsd” is below. There are a couple of key items to note. 
 
+- First, the name of the argument following “lsd” should be the same name your used for your OneDrive config. You can run “rclone listremotes” to see the name you used. 
+- The second item to note is that the name of your remote must end in a colon.
+- Thirdly, if you will be copying large amounts of data, this should be run from the transfer node, as seen below.
 
 ```console
-[compute-113 /users/bob]$ rclone lsd OneDrive:
+[jhpce01 /users/bob]$ srun --pty --x11 -p transfer bash
+[transfer-01 /users/bob]$ module load rclone
+[transfer-01 /users/bob]$ rclone lsd OneDrive:
           -1 2019-12-21 01:54:32         2 BoxMigration
           -1 2014-11-05 17:23:32        25 Documents
           -1 2014-11-05 17:22:55       173 HomeDir

@@ -416,6 +416,14 @@ This will install the `ascp` command under your home directory at  `~/.aspera/co
 
 You may also need to do other steps, such as install an extension to your web browser. Instructions on how to do that for Linux, as an example, are available from IBM [here](https://www.ibm.com/docs/en/aspera-connect/4.2?topic=suc-installation).
 
+[aspera-cli](https://github.com/IBM/aspera-cli) is a tool developed by IBM for high-speed, secure data transfer from the command line. You can access it on the cluster using the following steps.
+
+```
+srun -p transfer --pty bash
+module load ruby/3.1.2
+ascli --help
+```
+
 ### Unison
 
 !!! Warning

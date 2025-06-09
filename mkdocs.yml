@@ -26,6 +26,7 @@ nav:
       - Policies: joinus/policies.md
       - HIPAA on JHPCE: joinus/hipaa.md
     - Getting Help:
+      - Password Reset/Google Auth: help/password.md
       - Basics: help/help-basics.md
       - Submitting Good Queries: help/good-query.md
       - Support Email List Archives: help/list-archives.md

@@ -8,6 +8,9 @@ tags:
 ## Types of storage
 There are three types of data storage spaces available on the JHPCE cluster.
 
+!!! warning "This page does not describe the JADE cluster"
+    JHPCE manages two clusters -- the main one ("JHPCE") and a second smaller one for protected CMS and dbGaP data ("JADE" (formerly the "C-SUB")).  See the C-SUB Orientation document for descriptions of storage on that cluster.
+
 <style>
     table, th, td {
       border: 1px solid black;

@@ -131,6 +131,35 @@ Loading R/4.3
 
 When you run rstudio, you should see the familiar graphical Rstudio interface come up.
 
+#### Resetting the Rstudio environment
+
+We have occasionally seen cases where Rstudio will fail to launch.  This can occur when the Rstudio environment
+either gets to large for your session to handle, or the environment becomes inconsistent in some way. There are 2 approaches to resolving this.
+
+1.) You can request more RAM for your session.  We recommend 10G to start with, but if you need, say, 20G, you could use the following commands.
+```
+[test@login31 ~]$ srun --mem 20G --x11 --pty bash
+srun: job 3244191 queued and waiting for resources
+srun: job 3244191 has been allocated resources
+[test@compute-143 ~]$ module load R
+Loading R/4.3
+(4.3)[test@compute-143 ~]$ module load rstudio
+(4.3)[test@compute-143 ~]$ rstudio
+```
+2.) You may need to remove, or rename, the Rstudio environment and cache directories.  This can allow Rstudio to start running with a clean slate, though any saved session information you had will be reset.
+```
+[test@login31 ~]$ srun --mem 20G --x11 --pty bash
+srun: job 3244192 queued and waiting for resources
+srun: job 3244192 has been allocated resources
+[test@compute-065 ~]$ module load R
+Loading R/4.3
+(4.3)[test@compute-065 ~]$ module load rstudio
+(4.3)[test@compute-065 ~]$ mv ~/.local/share/rstudio ~/.local/share/rstudio-backup
+(4.3)[test@compute-065 ~]$ mv ~/.config/rstudio ~/.config/rstudio-backup
+(4.3)[test@compute-065 ~]$ rstudio
+```
+
+If this resolves the issue, you can remove the ~/.local/share/rstudio-backup and ~/.config/rstudio-backup directories.
 
 ### Running RStudio Server
 
