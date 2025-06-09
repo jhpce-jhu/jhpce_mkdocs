@@ -3876,7 +3876,8 @@
 <p>QOS definitions for users and partitions are stored in a database.</p>
 <dl>
 <dt>We have a <a href="../tips-sacctmgr/">document containing useful QOS-related commands</a>. Those commands include ones like this one which allow you to see the value of all defined QOS in a readable format:</dt>
-<dd><code>sacctmgr show qos format=Name%20,Priority,Flags%30,MaxWall,MaxTRESPU%20,MaxJobsPU,MaxSubmitPU,MaxTRESPA%25</code></dd>
+<dd><code>sacctmgr show qos format=Name%20,Priority,Flags%30,MaxWall,MaxTRESPU%20,MaxJobsPU,MaxSubmitPU,MaxTRESPA%25</code>
+For your convenience we've put that command into a shell script called <code>showqos</code></dd>
 </dl>
 <h2 id="using-qos">Using QOS<a class="headerlink" href="#using-qos" title="Anchor link to this section for reference">&para;</a></h2>
 <p>If you need to submit a job with a particular QOS, AND that QOS is in <strong><em>both</em></strong> your <strong>and</strong> the specified partition's AllowedQOS list (see below sections), then you need to add an extra SLURM directive in your batch job or on the command line.</p>
@@ -3888,7 +3889,7 @@
 <p>Job partitions like <code>shared</code> have two QOS-related attributes:</p>
 <ol>
 <li>
-<p>Qos - If present, this specifies the QOS which by default applies to all jobs submitted. The <code>interactive</code> partition has <code>QoS=interactive-default</code></p>
+<p>Qos - If present, this specifies the QOS which by default applies to all jobs submitted. The <code>interactive</code> partition has <code>QoS=interactive-default</code>. The <code>shared</code> partition has <code>QoS=shared-default</code>.</p>
 </li>
 <li>
 <p>AllowQoS - By default, this value is set to ALL. If set to a comma-separated list, then only those can be used or requested by users. The <code>interactive</code> partition has <code>AllowQos=normal,interactive-default</code></p>
@@ -3901,7 +3902,7 @@
 <p>User accounts have two QOS-related attributes:</p>
 <ol>
 <li>
-<p>Qos - Our users (currently) all have a QOS value of "normal", (which is inherited from their parent account, named "jhpce").  The "normal" QOS  (currently) has no limits defined for it.</p>
+<p>Qos - Our users (currently) all have a QOS value of "normal", (which is inherited from their parent "bank" account, named "jhpce").  The "normal" QOS  (currently) has no limits defined for it. (Therefore any QOS that applies to a user will come from either the partition's default QOS or is specified by the user (because they have access to an enhanced QOS).)</p>
 </li>
 <li>
 <p>Allowed Qos - By default, this value is empty. If set to a comma-separated list, then the user can <em>choose</em> to submit jobs using one of them.  Jobs request a QOS using the "--qos=" option to the sbatch, salloc, and srun commands. (If the partition does not allow a QOS to be used, then your job will be rejected.)</p>
@@ -3912,11 +3913,12 @@
 <p>The SLURM FAQ includes <a href="../slurm-faq/#job-violates-accountingqos-policy">an entry</a> about the error you receive if you ask for more RAM in a single job than is allowed. </p>
 <p>If you submit jobs which together ask for more memory than you are allowed to use at one time, then ones that "fit" inside the limit will run and the remaining jobs will be waiting in PENDING state. </p>
 <p>The "Reason" code shown in the output of <code>squeue --me -t pd</code> ("show me my pending jobs") will be <code>QOSMaxMemoryPerUser</code>for jobs waiting for your running jobs to be using less than the RAM limit defined in the QOS that is impacting you.  The Reason will be <code>QOSMaxCpuPerUserLimit</code> for jobs waiting for your core usage to drop below that which is allowed.</p>
+<p>You can see jobs running with a specific user-provided QOS with the command <code>squeue --qos &lt;qos_list&gt;</code> where qos_list can be one or a comma-separated list.</p>
 <h2 id="how-we-are-using-qos-to-date">HOW WE ARE USING QOS TO DATE...<a class="headerlink" href="#how-we-are-using-qos-to-date" title="Anchor link to this section for reference">&para;</a></h2>
 <p>This is a summary of how QOS is configured at JHPCE.</p>
 <p>Our users all have a QOS value of "normal", which is
 inherited from their parent account, named "jhpce"</p>
-<p>(The account jhpce, of the organization jhpce, in the
+<p>(The "bank" account jhpce, of the organization jhpce, in the
 cluster jhpce3 is the parent of all of the users.)</p>
 <p>The "normal" QOS  (currently) has no limits defined for it.
 (It is the default QOS defined in SLURM. We didn't create it.)</p>
@@ -3961,7 +3963,7 @@ user’s <strong>default QOS</strong> entries in the database are "normal".</p>
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="March 24, 2024 20:45:15 UTC">March 24, 2024</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="June 9, 2025 20:41:03 UTC">June 9, 2025</span>
   </span>
 
     
