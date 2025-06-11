@@ -82,6 +82,11 @@ See [this document](monitoring.md) for information about monitoring pending, run
 ??? "Click to open"
     If the scheduler determines that your job is invalid in some fashion, it will generally reject it immediately instead of putting it into the queue with a pending status. There are a few causes of this. The wording of the error may or may not be clear. Inspect your job directives. Are you asking for more resources than any node can ever provide?
     
+## "srun: error: Something is wrong with the boot of the nodes."
+
+??? "Click to open"
+    If you see this message, it is likely that the allocated compute node's /tmp/ file system is full. Please cancel your job (scancel -j <jobid>), resubmit it excluding that particular node (add to the job's arguments --exclude=compute-<the-right-number-for-you>), and send an email to bitsupport@lists.jh.edu mentioning the jobid, node involved, and that you received this error messsage.
+    
 ## How to run your job on the fastest node
 
 ??? "Click to open"
@@ -90,7 +95,7 @@ See [this document](monitoring.md) for information about monitoring pending, run
     Similarly, you can specify that your job only be allowed to run on specific node or nodes by issuing the `--nodelist=compute-blah1,compute-blah2]` directive to your `srun` or `sbatch` commands.  You can also provide a file name to specify a file which contains a list of nodes. See the nodelist info in the [sbatch manual page](https://slurm.schedmd.com/sbatch.html).
 
 
-### User's group not permitted to use this partition
+## User's group not permitted to use this partition
 
 ??? "Click to open"
     Some of our PI partitions have UNIX groups defined to control who can submit jobs to them. If you are not a member of that group and try to submit a job, you'll see an error like this:
@@ -103,7 +108,7 @@ See [this document](monitoring.md) for information about monitoring pending, run
     
     If you feel like you were not included in a group in error, ask the PI to contact bitsupport@lists.jh.edu asking us to add you. 
 
-### Job violates accounting/QOS policy
+## Job violates accounting/QOS policy
 
 ??? "Click to open"
     If you ask for more resources than will ever be able to be allocated to you, you might receive one of several error messages.
