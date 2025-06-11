@@ -85,7 +85,7 @@ See [this document](monitoring.md) for information about monitoring pending, run
 ## "srun: error: Something is wrong with the boot of the nodes."
 
 ??? "Click to open"
-    If you see this message, it is likely that the allocated compute node's /tmp/ file system is full. Please cancel your job (scancel -j <jobid>), resubmit it excluding that particular node (add to the job's arguments --exclude=compute-<the-right-number-for-you>), and send an email to bitsupport@lists.jh.edu mentioning the jobid, node involved, and that you received this error messsage.
+    If you see this message, it is likely that the allocated compute node's /tmp/ file system is full. Please cancel your job (`scancel -j <jobid>`), resubmit it excluding that particular node (add to the job's arguments `--exclude=compute-<the-right-number-for-you>`), and send an email to bitsupport@lists.jh.edu mentioning that you received this error message, the failed jobid, and the failed node involved. Thanks!
     
 ## How to run your job on the fastest node
 
