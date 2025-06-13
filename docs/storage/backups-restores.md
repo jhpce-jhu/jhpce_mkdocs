@@ -36,7 +36,9 @@ $20/TB/yr.  If you are interested in backing up your project storage
 space, please email us at bitsupport@lists.jhu.edu.
 
 ### Self Service Restores
-We make snapshots of the /users file system for fourteen days. You can restore files you have deleted recently by changing directory to the appropriate location and then copying the file or files back to your home directory (or anywhere else you desire).
+We make snapshots of the /users file system for fourteen days (currently at 11:30pm). You can restore files you have deleted recently by changing directory to the appropriate location and then copying the file or files back to your home directory (or anywhere else you desire).
+
+Files created and deleted in-between snapshots are not recoverable.
 
 At any one time there are fourteen subdirectories in the path `/users/.zfs/snapshot`
 
@@ -44,8 +46,24 @@ Here is an example of looking through the collection of snapshots to find copies
 
 ```ShellSession
 cd /users/.zfs/snapshot
-ls -ld */your-userid/bob/frank/susan
-cp -p 2024-02-16-23:00/your-userid/bob/frank/susan $HOME/restored-susan
+ls
+2025-05-29-23:30/  2025-06-01-23:30/  2025-06-04-23:30/  2025-06-07-23:30/  2025-06-10-23:30/
+2025-05-30-23:30/  2025-06-02-23:30/  2025-06-05-23:30/  2025-06-08-23:30/  2025-06-11-23:30/
+2025-05-31-23:30/  2025-06-03-23:30/  2025-06-06-23:30/  2025-06-09-23:30/  2025-06-12-23:30/
+
+     HERE YOU RUN YOUR COMMANDS TO POKE AROUND AND IDENTIFY WHAT IS PRESENT
+     IN ANY PARTICULAR SNAPSHOT
+     SUCH AS LOOKING FOR A FILE NAMED "susan" AND CHECKING ON ITS DATE OR SIZE IN THE
+     VARIOUS SNAPSHOTS. (REPLACE "your-userid" WITH YOUR CLUSTER USERNAME.)
+
+ls -ld */your-userid/project1/sample5/susan
+cp -p 2024-02-16-23:00/your-userid/project1/sample5/susan $HOME/restored-susan
 ```
 
-If restoring substantial amounts of data, please do that work on a compute node instead of a login node. Thank you.
+Tips:
+
+- If restoring substantial amounts of data, please do that work on a compute node instead of a login node.
+- Take care not to overwrite existing files in your home directory -- create a restore directory and put stuff in there, for example. Since snapshots are only made once a day, if you nuke files in-between snapshots you cannot get them back.
+- Consider using command options which retain original timestamps or other attributes of a file. For `cp` that is `-p`. For rsync there are a variety of options which impact the copying. The typically-used `-a` ("archive") flag is shorthand for a list of options, including `-t` for timestamps.
+- If your files of restore interest include ones with ACL rules or symbolic links etc, you may need to use additional `rsync` arguments to keep those parameters.
+
