@@ -3912,14 +3912,31 @@ JHPCE quarterly billing process. The cost has historically been about
 $20/TB/yr.  If you are interested in backing up your project storage
 space, please email us at bitsupport@lists.jhu.edu.</p>
 <h3 id="self-service-restores">Self Service Restores<a class="headerlink" href="#self-service-restores" title="Anchor link to this section for reference">&para;</a></h3>
-<p>We make snapshots of the /users file system for fourteen days. You can restore files you have deleted recently by changing directory to the appropriate location and then copying the file or files back to your home directory (or anywhere else you desire).</p>
+<p>We make snapshots of the /users file system for fourteen days (currently at 11:30pm). You can restore files you have deleted recently by changing directory to the appropriate location and then copying the file or files back to your home directory (or anywhere else you desire).</p>
+<p>Files created and deleted in-between snapshots are not recoverable.</p>
 <p>At any one time there are fourteen subdirectories in the path <code>/users/.zfs/snapshot</code></p>
 <p>Here is an example of looking through the collection of snapshots to find copies of a file you want to restore. Let's say that you deleted a file inside your home directory named susan that was stored in the absolute path <code>/users/your-userid/bob/frank/susan</code> You can see from the <code>ls -ld</code> output when the file existed and also the size of the possibly various versions of that file across the collection of snapshots (perhaps you changed it several times in the last two weeks).</p>
 <div class="highlight"><pre><span></span><code>cd /users/.zfs/snapshot
-ls -ld */your-userid/bob/frank/susan
-cp -p 2024-02-16-23:00/your-userid/bob/frank/susan $HOME/restored-susan
+ls
+2025-05-29-23:30/  2025-06-01-23:30/  2025-06-04-23:30/  2025-06-07-23:30/  2025-06-10-23:30/
+2025-05-30-23:30/  2025-06-02-23:30/  2025-06-05-23:30/  2025-06-08-23:30/  2025-06-11-23:30/
+2025-05-31-23:30/  2025-06-03-23:30/  2025-06-06-23:30/  2025-06-09-23:30/  2025-06-12-23:30/
+
+     HERE YOU RUN YOUR COMMANDS TO POKE AROUND AND IDENTIFY WHAT IS PRESENT
+     IN ANY PARTICULAR SNAPSHOT
+     SUCH AS LOOKING FOR A FILE NAMED &quot;susan&quot; AND CHECKING ON ITS DATE OR SIZE IN THE
+     VARIOUS SNAPSHOTS. (REPLACE &quot;your-userid&quot; WITH YOUR CLUSTER USERNAME.)
+
+ls -ld */your-userid/project1/sample5/susan
+cp -p 2024-02-16-23:00/your-userid/project1/sample5/susan $HOME/restored-susan
 </code></pre></div>
-<p>If restoring substantial amounts of data, please do that work on a compute node instead of a login node. Thank you.</p>
+<p>Tips:</p>
+<ul>
+<li>If restoring substantial amounts of data, please do that work on a compute node instead of a login node.</li>
+<li>Take care not to overwrite existing files in your home directory -- create a restore directory and put stuff in there, for example. Since snapshots are only made once a day, if you nuke files in-between snapshots you cannot get them back.</li>
+<li>Consider using command options which retain original timestamps or other attributes of a file. For <code>cp</code> that is <code>-p</code>. For rsync there are a variety of options which impact the copying. The typically-used <code>-a</code> ("archive") flag is shorthand for a list of options, including <code>-t</code> for timestamps.</li>
+<li>If your files of restore interest include ones with ACL rules or symbolic links etc, you may need to use additional <code>rsync</code> arguments to keep those parameters.</li>
+</ul>
 
 
 
@@ -3940,7 +3957,7 @@ cp -p 2024-02-16-23:00/your-userid/bob/frank/susan $HOME/restored-susan
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="April 19, 2024 20:42:51 UTC">April 19, 2024</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="June 13, 2025 17:58:55 UTC">June 13, 2025</span>
   </span>
 
     

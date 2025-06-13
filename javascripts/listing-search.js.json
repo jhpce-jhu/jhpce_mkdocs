@@ -1808,8 +1808,8 @@
   {
     "page_name": "Backups and Restores",
     "page_url": "../../storage/backups-restores/",
-    "text": "cd /users/.zfs/snapshot\nls -ld */your-userid/bob/frank/susan\ncp -p 2024-02-16-23:00/your-userid/bob/frank/susan $HOME/restored-susan\n",
-    "html": "<pre><span></span><code>cd /users/.zfs/snapshot\nls -ld */your-userid/bob/frank/susan\ncp -p 2024-02-16-23:00/your-userid/bob/frank/susan $HOME/restored-susan\n</code></pre>",
+    "text": "cd /users/.zfs/snapshot\nls\n2025-05-29-23:30/  2025-06-01-23:30/  2025-06-04-23:30/  2025-06-07-23:30/  2025-06-10-23:30/\n2025-05-30-23:30/  2025-06-02-23:30/  2025-06-05-23:30/  2025-06-08-23:30/  2025-06-11-23:30/\n2025-05-31-23:30/  2025-06-03-23:30/  2025-06-06-23:30/  2025-06-09-23:30/  2025-06-12-23:30/\n\n     HERE YOU RUN YOUR COMMANDS TO POKE AROUND AND IDENTIFY WHAT IS PRESENT\n     IN ANY PARTICULAR SNAPSHOT\n     SUCH AS LOOKING FOR A FILE NAMED \"susan\" AND CHECKING ON ITS DATE OR SIZE IN THE\n     VARIOUS SNAPSHOTS. (REPLACE \"your-userid\" WITH YOUR CLUSTER USERNAME.)\n\nls -ld */your-userid/project1/sample5/susan\ncp -p 2024-02-16-23:00/your-userid/project1/sample5/susan $HOME/restored-susan\n",
+    "html": "<pre><span></span><code>cd /users/.zfs/snapshot\nls\n2025-05-29-23:30/  2025-06-01-23:30/  2025-06-04-23:30/  2025-06-07-23:30/  2025-06-10-23:30/\n2025-05-30-23:30/  2025-06-02-23:30/  2025-06-05-23:30/  2025-06-08-23:30/  2025-06-11-23:30/\n2025-05-31-23:30/  2025-06-03-23:30/  2025-06-06-23:30/  2025-06-09-23:30/  2025-06-12-23:30/\n\n     HERE YOU RUN YOUR COMMANDS TO POKE AROUND AND IDENTIFY WHAT IS PRESENT\n     IN ANY PARTICULAR SNAPSHOT\n     SUCH AS LOOKING FOR A FILE NAMED \"susan\" AND CHECKING ON ITS DATE OR SIZE IN THE\n     VARIOUS SNAPSHOTS. (REPLACE \"your-userid\" WITH YOUR CLUSTER USERNAME.)\n\nls -ld */your-userid/project1/sample5/susan\ncp -p 2024-02-16-23:00/your-userid/project1/sample5/susan $HOME/restored-susan\n</code></pre>",
     "language": ""
   },
   {

@@ -5829,8 +5829,18 @@ User                UserCPU             WCKey               WCKeyID
 - Part of DCS05 was used for legacy-dcl01 space
 - SSD-based array used by CSUB cluster
 </code></pre><h2><a class="heading" href="../storage/backups-restores/">Backups and Restores</a></h2><a class="url" href="../storage/backups-restores/">storage/backups-restores/</a><pre><span></span><code>cd /users/.zfs/snapshot
-ls -ld */your-userid/bob/frank/susan
-cp -p 2024-02-16-23:00/your-userid/bob/frank/susan $HOME/restored-susan
+ls
+2025-05-29-23:30/  2025-06-01-23:30/  2025-06-04-23:30/  2025-06-07-23:30/  2025-06-10-23:30/
+2025-05-30-23:30/  2025-06-02-23:30/  2025-06-05-23:30/  2025-06-08-23:30/  2025-06-11-23:30/
+2025-05-31-23:30/  2025-06-03-23:30/  2025-06-06-23:30/  2025-06-09-23:30/  2025-06-12-23:30/
+
+     HERE YOU RUN YOUR COMMANDS TO POKE AROUND AND IDENTIFY WHAT IS PRESENT
+     IN ANY PARTICULAR SNAPSHOT
+     SUCH AS LOOKING FOR A FILE NAMED "susan" AND CHECKING ON ITS DATE OR SIZE IN THE
+     VARIOUS SNAPSHOTS. (REPLACE "your-userid" WITH YOUR CLUSTER USERNAME.)
+
+ls -ld */your-userid/project1/sample5/susan
+cp -p 2024-02-16-23:00/your-userid/project1/sample5/susan $HOME/restored-susan
 </code></pre><h2><a class="heading" href="../storage/quotas/">Quotas</a></h2><a class="url" href="../storage/quotas/">storage/quotas/</a><pre><span></span><code><span class="nb">cd</span>
 du<span class="w"> </span>-sh<span class="w"> </span>.
 </code></pre><pre><span></span><code><span class="nb">cd</span><span class="w"> </span><span class="nv">$MYSCRATCH</span>
