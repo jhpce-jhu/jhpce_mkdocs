@@ -69,6 +69,7 @@ nav:
       - Backups and Restores: storage/backups-restores.md
       - Quotas: storage/quotas.md
       - Fastscratch: storage/fastscratch.md
+      - Lustre and DCL02: storage/lustre.md
       - Storage Tips: storage/storage-tips.md
     - Software:
       - Overview: sw/sw-overview.md
