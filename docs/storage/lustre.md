@@ -1,6 +1,6 @@
 # Using Luster filesystems, such as DCL02 
 
-The DCL02 storage array is built on the [Lustre]{https://www.lustre.org/} filesystem.  The Lustre filesystem is a distributed, parallel object-store based filesystem which is used by a large number of HPC environments to provide high-performance storage access to large storage arrays.
+The DCL02 storage array is built on the [Lustre](https://www.lustre.org/) filesystem.  The Lustre filesystem is a distributed, parallel object-store based filesystem which is used by a large number of HPC environments to provide high-performance storage access to large storage arrays.
 
 The Lustre filesystem is optimized to perform well for batch access to large files. Unfortunately, Lustre has the drawback of performing less well when used in interactive sessions or when dealing with lots of small files.  So, if you are making use of space under a /dcl02 directory, here are some tips which can help improve performance when working on DCL02.
 
@@ -12,6 +12,6 @@ The Lustre filesystem is optimized to perform well for batch access to large fil
 
 - Jobs should not be run  you run jobs out of your /dcl02 space. The scripts that you use to submit your job should be in another location, like your home directory, and run from there, with an appropriate “cd” in the script to go to the /dcl02 direcotry you are using.  Slurm will open a output file for your job in the directory from which the job was submitted, and will need to keep this file handle open for the duration of the job.
 
-- The /dcl02 space should not be used for storing small temporary or intermediary files.  If your job is storing temporary files in your /dcl02 space, the performance of your job may suffer.  Rather, you should probably use your 1TB of fastscratch space for these temporary files.  We have instructions for using the fastscratch  space at [this]{ fastscratch.md} link.
+- The /dcl02 space should not be used for storing small temporary or intermediary files.  If your job is storing temporary files in your /dcl02 space, the performance of your job may suffer.  Rather, you should probably use your 1TB of fastscratch space for these temporary files.  We have instructions for using the fastscratch  space at [this link](fastscratch.md) .
 
 
