@@ -3783,7 +3783,7 @@
 
 
 <h1 id="using-luster-filesystems-such-as-dcl02">Using Luster filesystems, such as DCL02<a class="headerlink" href="#using-luster-filesystems-such-as-dcl02" title="Anchor link to this section for reference">&para;</a></h1>
-<p>The DCL02 storage array is built on the [Lustre]{https://www.lustre.org/} filesystem.  The Lustre filesystem is a distributed, parallel object-store based filesystem which is used by a large number of HPC environments to provide high-performance storage access to large storage arrays.</p>
+<p>The DCL02 storage array is built on the <a href="https://www.lustre.org/">Lustre</a> filesystem.  The Lustre filesystem is a distributed, parallel object-store based filesystem which is used by a large number of HPC environments to provide high-performance storage access to large storage arrays.</p>
 <p>The Lustre filesystem is optimized to perform well for batch access to large files. Unfortunately, Lustre has the drawback of performing less well when used in interactive sessions or when dealing with lots of small files.  So, if you are making use of space under a /dcl02 directory, here are some tips which can help improve performance when working on DCL02.</p>
 <ul>
 <li>
@@ -3799,7 +3799,7 @@
 <p>Jobs should not be run  you run jobs out of your /dcl02 space. The scripts that you use to submit your job should be in another location, like your home directory, and run from there, with an appropriate “cd” in the script to go to the /dcl02 direcotry you are using.  Slurm will open a output file for your job in the directory from which the job was submitted, and will need to keep this file handle open for the duration of the job.</p>
 </li>
 <li>
-<p>The /dcl02 space should not be used for storing small temporary or intermediary files.  If your job is storing temporary files in your /dcl02 space, the performance of your job may suffer.  Rather, you should probably use your 1TB of fastscratch space for these temporary files.  We have instructions for using the fastscratch  space at [this]{ fastscratch.md} link.</p>
+<p>The /dcl02 space should not be used for storing small temporary or intermediary files.  If your job is storing temporary files in your /dcl02 space, the performance of your job may suffer.  Rather, you should probably use your 1TB of fastscratch space for these temporary files.  We have instructions for using the fastscratch  space at <a href="../fastscratch/">this link</a> .</p>
 </li>
 </ul>
 
@@ -3822,7 +3822,7 @@
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="June 18, 2025 19:20:21 UTC">June 18, 2025</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="June 18, 2025 19:24:02 UTC">June 18, 2025</span>
   </span>
 
     
