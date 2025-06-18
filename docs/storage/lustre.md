@@ -1,4 +1,4 @@
-# Using Luster filesystems, such as DCL02
+# Using Luster filesystems, such as DCL02 
 
 The DCL02 storage array is built on the [Lustre]{https://www.lustre.org/} filesystem.  The Lustre filesystem is a distributed, parallel object-store based filesystem which is used by a large number of HPC environments to provide high-performance storage access to large storage arrays.
 
