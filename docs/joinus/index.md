@@ -17,18 +17,17 @@ users on the cluster need to have a sponsoring PI that will fund their usage.
 As mentioned above, we do operate as a non-profit JHU Service Center, and do
 charge for **compute** and **storage** usage on the cluster.  
 
-<details>
-<summary>Compute Charges</summary>
-Our fees for compute time are roughly 1 penny per hour for a job using 1 core 
+
+### Compute Charges
+Our fees for compute time have historically been under 1 penny per hour for a job using 1 core 
 and 5GB of RAM.  Costs scale linearly with time and cpu+mem usage, so a job 
-running for 24 hours that used 8 cores and 40GB of RAM would cost about $2.00.
-</details>
-<details>
-  <summary>Storage Charges </summary>
+running for 24 hours that used 8 cores and 40GB of RAM would cost under $2.00 to run.
+
+
+### Storage Charges
   Costs for storage are broken into home directory storage and project storage space. 
 <br>
 1. <b>Home directory Storage:</b> All users are given a personal home directory with a 100GB quota.  For home directory space, we charge $0.45 per GB per year, so this cost would max out at $45 for a year if a user used their entire 100GB of space.
-<br>
 2. <b>Project Storage:</b> If you need several TB of space for storing
 large amounts of data, you can purchase an allocation on one of our large 
 storage arrays.  Every 12 months or so we purchase a new large storage array 
@@ -37,7 +36,6 @@ allocation will be based on the actual cost of the storage, but has been
 decreasing over time.  Our latest storage build worked out to be about $30 
 per TB per year.  There is typically a 10TB minimum buy-in for new storage 
 purchases.
-</details>
 
 We have more information about becoming a Sponsoring PI as both a Stakeholder
 and Non-Stakeholder at [New PI Page](new-pi.md)
