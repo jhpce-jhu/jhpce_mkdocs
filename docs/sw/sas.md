@@ -25,9 +25,7 @@ the "alexander" UNIX group so you can see the database's files.
 
 ### Where Is It Located?
 
-As of April 2024 it is located in `/dcl02/alexande/data/MARKETSCAN/`
-
-As of May 2025 the latest version of the data is located in `/dcl02/alexande/data/MARKETSCAN2025/data`
+As of July 2025 it is located in `/dcs10/alexander/data`
 
 ## Using SAS interactively
 
