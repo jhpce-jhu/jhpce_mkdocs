@@ -9,8 +9,8 @@ the PI is responsible for ensuring that his or her research is conducted in
 compliance with HIPAA Privacy Rule Standards. Fortunately, this is not
 difficult. Formally, PIs are restricted to either
 deidentified datasets or to limited datasets (see links below for details).
-Examples of limited data sets include dbGaP datasets (assuming a data use
-agreement is in place) and deidentified insurance claim data. The latter can
+Examples of limited data sets include NHANES datasets  and deidentified insurance claim data 
+(assuming a data use agreement is in place). The latter can
 include dates such as admission, discharge, service, DOB, DOD; and location
 information such as city, state, five digit or more zip code; and ages in
 years, months or days or hours.
