@@ -1,0 +1,5001 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://jhpce.jhu.edu/files/acl/">
+      
+      
+        <link rel="prev" href="../sharing-files/">
+      
+      
+        <link rel="next" href="../copying-files/">
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.16">
+    
+    
+      
+        <title>ACL - JHPCE</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.7e37652d.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+  
+
+
+  
+  
+
+<script id="__analytics">function __md_analytics(){function e(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],e("js",new Date),e("config","G-G0LK68FDTM"),document.addEventListener("DOMContentLoaded",(function(){document.forms.search&&document.forms.search.query.addEventListener("blur",(function(){this.value&&e("event","search",{search_term:this.value})}));document$.subscribe((function(){var t=document.forms.feedback;if(void 0!==t)for(var a of t.querySelectorAll("[type=submit]"))a.addEventListener("click",(function(a){a.preventDefault();var n=document.location.pathname,d=this.getAttribute("data-md-value");e("event","feedback",{page:n,data:d}),t.firstElementChild.disabled=!0;var r=t.querySelector(".md-feedback__note [data-md-value='"+d+"']");r&&(r.hidden=!1)})),t.hidden=!1})),location$.subscribe((function(t){e("config","G-G0LK68FDTM",{page_path:t.pathname})}))}));var t=document.createElement("script");t.async=!0,t.src="https://www.googletagmanager.com/gtag/js?id=G-G0LK68FDTM",document.getElementById("__analytics").insertAdjacentElement("afterEnd",t)}</script>
+  
+    <script>"undefined"!=typeof __md_analytics&&__md_analytics()</script>
+  
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#acl-access-control-lists" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="JHPCE" class="md-header__button md-logo" aria-label="JHPCE" data-md-component="logo">
+      
+  <img src="../../images/sph-logo.svg" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            JHPCE
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              ACL
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="JHPCE" class="md-nav__button md-logo" aria-label="JHPCE" data-md-component="logo">
+      
+  <img src="../../images/sph-logo.svg" alt="logo">
+
+    </a>
+    JHPCE
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1" checked>
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../.." class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    Home
+    
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_1" id="__nav_1_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_1_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_1">
+            <span class="md-nav__icon md-icon"></span>
+            Home
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_1_2" id="__nav_1_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    About Us
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_1_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_1_2">
+            <span class="md-nav__icon md-icon"></span>
+            About Us
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../aboutus/model/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    JHPCE Model
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../aboutus/staff/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Staff
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../aboutus/principles/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    JHPCE Constitutional Principles
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../aboutus/GrantAndAckBlurbs/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Grant and Acknowledgment Blurbs
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1_3" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../joinus/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    Getting Started
+    
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_1_3" id="__nav_1_3_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_1_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_1_3">
+            <span class="md-nav__icon md-icon"></span>
+            Getting Started
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../joinus/new-users-form/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    New user form
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1_3_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_1_3_4" id="__nav_1_3_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    New PI information and form
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_1_3_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_1_3_4">
+            <span class="md-nav__icon md-icon"></span>
+            New PI information and form
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../joinus/new-pi/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    New PI Information
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../joinus/new-pi-form/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    New PI Form
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1_3_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_1_3_5" id="__nav_1_3_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Orientation/Logging In
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_1_3_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_1_3_5">
+            <span class="md-nav__icon md-icon"></span>
+            Orientation/Logging In
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../orient/orientation-overview/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Overview
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="https://docs.google.com/presentation/d/1elMSTUdKws7FLVFK7vVV_AErA4brNSPX/export/pdf" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    JHPCE Orientation (PDF download)
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../orient/images/latest-csub-orient.pdf" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    C-SUB Orientation (PDF)
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../joinus/leaving/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Leaving JHPCE as a User or PI
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../csub/new-csub-users/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    New C-SUB PI or user?
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../joinus/policies/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Policies
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../joinus/hipaa/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    HIPAA on JHPCE
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_1_4" id="__nav_1_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Getting Help
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_1_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_1_4">
+            <span class="md-nav__icon md-icon"></span>
+            Getting Help
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../help/password/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Password Reset/Google Auth
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../help/help-basics/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Basics
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../help/good-query/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Submitting Good Queries
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../help/list-archives/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Support Email List Archives
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../help/external/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    External Guides
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../help/glossary-manual/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Glossary
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ourtools/tags/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Tagged Files
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../help/images/guide-to-manual-pages.pdf" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    How to read a manual page (pdf)
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1_4_9" >
+        
+          
+          <label class="md-nav__link" for="__nav_1_4_9" id="__nav_1_4_9_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Tools For Site Developers
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_1_4_9_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_1_4_9">
+            <span class="md-nav__icon md-icon"></span>
+            Tools For Site Developers
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ourtools/features/" class="md-nav__link">
+        
+  
+  
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0 8a5 5 0 0 1-5-5 5 5 0 0 1 5-5 5 5 0 0 1 5 5 5 5 0 0 1-5 5m0-12.5C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5c-1.73-4.39-6-7.5-11-7.5"/></svg>
+  
+  <span class="md-ellipsis">
+    Handy Features
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ourtools/tips-conventions/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Tips & Conventions
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ourtools/wishlist/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Wishlist
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../help/faq/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    FAQ
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_1_6" id="__nav_1_6_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Accessing the cluster
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_1_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_1_6">
+            <span class="md-nav__icon md-icon"></span>
+            Accessing the cluster
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../access/access-overview/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Overview
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../access/ssh/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    SSH
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../access/x11/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    X11
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../access/mobaxterm/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    MobaXterm
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1_6_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_1_6_5" id="__nav_1_6_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Transferring files in or out
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_1_6_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_1_6_5">
+            <span class="md-nav__icon md-icon"></span>
+            Transferring files in or out
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../access/file-transfer/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Overview
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../access/globus/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Globus
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../access/onedrive/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    OneDrive via rclone
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1_7" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_1_7" id="__nav_1_7_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Managing Files
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_1_7_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_1_7">
+            <span class="md-nav__icon md-icon"></span>
+            Managing Files
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../files-overview/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Files Overview
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../sharing-files/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Sharing Files
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    ACL
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    ACL
+    
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#acl-commands" class="md-nav__link">
+    <span class="md-ellipsis">
+      ACL Commands
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#access-control-entry-ace" class="md-nav__link">
+    <span class="md-ellipsis">
+      Access Control Entry (ACE)
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#important-big-picture-notes-and-suggestions" class="md-nav__link">
+    <span class="md-ellipsis">
+      Important Big-Picture Notes and Suggestions
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Important Big-Picture Notes and Suggestions">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#acl-facts" class="md-nav__link">
+    <span class="md-ellipsis">
+      ACL Facts
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#suggestions" class="md-nav__link">
+    <span class="md-ellipsis">
+      Suggestions
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#default-or-inherited-acls-on-directories" class="md-nav__link">
+    <span class="md-ellipsis">
+      Default or inherited ACLs on Directories
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#acls-in-zfs-file-systems" class="md-nav__link">
+    <span class="md-ellipsis">
+      ACLs in ZFS File Systems
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="ACLs in ZFS File Systems">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#basic-commands" class="md-nav__link">
+    <span class="md-ellipsis">
+      Basic commands
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#read-permisions" class="md-nav__link">
+    <span class="md-ellipsis">
+      Read permisions
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#write-permissions" class="md-nav__link">
+    <span class="md-ellipsis">
+      Write permissions
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#inherited-defaults" class="md-nav__link">
+    <span class="md-ellipsis">
+      Inherited Defaults
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#removing-an-acl" class="md-nav__link">
+    <span class="md-ellipsis">
+      Removing an ACL
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#applying-acls-recursively" class="md-nav__link">
+    <span class="md-ellipsis">
+      Applying ACLs Recursively
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#duplicating-existing-acls" class="md-nav__link">
+    <span class="md-ellipsis">
+      Duplicating Existing ACLs
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ace-flags-explained" class="md-nav__link">
+    <span class="md-ellipsis">
+      ACE Flags Explained
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="ACE Flags Explained">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#alias-flags" class="md-nav__link">
+    <span class="md-ellipsis">
+      ALIAS FLAGS
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#inheritence-flags" class="md-nav__link">
+    <span class="md-ellipsis">
+      INHERITENCE FLAGS
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#normal-flags" class="md-nav__link">
+    <span class="md-ellipsis">
+      NORMAL FLAGS
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#acls-in-lustre-file-systems" class="md-nav__link">
+    <span class="md-ellipsis">
+      ACLs in Lustre file systems
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="ACLs in Lustre file systems">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#read" class="md-nav__link">
+    <span class="md-ellipsis">
+      Read
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#write" class="md-nav__link">
+    <span class="md-ellipsis">
+      Write
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#creating-a-common-dir" class="md-nav__link">
+    <span class="md-ellipsis">
+      Creating a common dir
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#default-acls" class="md-nav__link">
+    <span class="md-ellipsis">
+      Default ACLs
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../copying-files/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Copying within cluster
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1_7_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_1_7_5" id="__nav_1_7_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Rsync: A Key File Mgmt Tool
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_1_7_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_1_7_5">
+            <span class="md-nav__icon md-icon"></span>
+            Rsync: A Key File Mgmt Tool
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../rsync/" class="md-nav__link">
+        
+  
+  
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0 8a5 5 0 0 1-5-5 5 5 0 0 1 5-5 5 5 0 0 1 5 5 5 5 0 0 1-5 5m0-12.5C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5c-1.73-4.39-6-7.5-11-7.5"/></svg>
+  
+  <span class="md-ellipsis">
+    Using Rsync
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../rsync-itemize-table/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Itemize Output Key
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../rsync-itemize-manpage/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Itemize Manual Page
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../archive-files/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Archive Files
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../deep-paths/" class="md-nav__link">
+        
+  
+  
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0 8a5 5 0 0 1-5-5 5 5 0 0 1 5-5 5 5 0 0 1 5 5 5 5 0 0 1-5 5m0-12.5C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5c-1.73-4.39-6-7.5-11-7.5"/></svg>
+  
+  <span class="md-ellipsis">
+    Navigating Deep Directory Trees
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../data-security/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Data Security
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../encfs/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Encrypting filesystems with ENCFS
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../storage/storage-tips/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Storage Tips
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../copying-files/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Copying within cluster
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1_8" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../storage/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    Storage Policies and Practices
+    
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_1_8" id="__nav_1_8_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_1_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_1_8">
+            <span class="md-nav__icon md-icon"></span>
+            Storage Policies and Practices
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../storage/backups-restores/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Backups and Restores
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../storage/quotas/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Quotas
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../storage/fastscratch/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Fastscratch
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../storage/lustre/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lustre and DCL02
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../storage/storage-tips/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Storage Tips
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1_9" >
+        
+          
+          <label class="md-nav__link" for="__nav_1_9" id="__nav_1_9_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Software
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_1_9_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_1_9">
+            <span class="md-nav__icon md-icon"></span>
+            Software
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../sw/sw-overview/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Overview
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1_9_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_1_9_2" id="__nav_1_9_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Local Software
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_1_9_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_1_9_2">
+            <span class="md-nav__icon md-icon"></span>
+            Local Software
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../sw/matlab/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Matlab
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../sw/python/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Python
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../sw/r-n-friends/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    R and RStudio
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../sw/sas/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    SAS
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../sw/stata/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Stata
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../sw/modules/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Modules
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1_9_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_1_9_4" id="__nav_1_9_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Installing Your Own
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_1_9_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_1_9_4">
+            <span class="md-nav__icon md-icon"></span>
+            Installing Your Own
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../sw/building-from-src/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Compile from Source
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../sw/conda/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Conda Environment
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../sw/python-pkg/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Python Packages
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../sw/r-pkg/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    R Packages
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../sw/locally-written/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    JHPCE-created
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../sw/gui-tools/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Helpful GUI Programs
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1_10" >
+        
+          
+          <label class="md-nav__link" for="__nav_1_10" id="__nav_1_10_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Job scheduler (SLURM)
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_1_10_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_1_10">
+            <span class="md-nav__icon md-icon"></span>
+            Job scheduler (SLURM)
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../slurm/getting-started/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Getting Started
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../slurm/about-jobs/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    About Jobs
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../slurm/partitions/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Partitions
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../slurm/ram/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Memory Usage
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../slurm/time-limits/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Time Limits
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1_10_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_1_10_6" id="__nav_1_10_6_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Command tips & reference
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_1_10_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_1_10_6">
+            <span class="md-nav__icon md-icon"></span>
+            Command tips & reference
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../slurm/slurm-commands-ref/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Cmd tips & reference
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../slurm/tips-sacct/" class="md-nav__link">
+        
+  
+  
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0 8a5 5 0 0 1-5-5 5 5 0 0 1 5-5 5 5 0 0 1 5 5 5 5 0 0 1-5 5m0-12.5C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5c-1.73-4.39-6-7.5-11-7.5"/></svg>
+  
+  <span class="md-ellipsis">
+    sacct tips
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../slurm/tips-sacctmgr/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    sacctmgr tips
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../slurm/tips-scontrol/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    scontrol tips
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../slurm/tips-squeue/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    squeue tips
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../slurm/tips-reportseff/" class="md-nav__link">
+        
+  
+  
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0 8a5 5 0 0 1-5-5 5 5 0 0 1 5-5 5 5 0 0 1 5 5 5 5 0 0 1-5 5m0-12.5C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5c-1.73-4.39-6-7.5-11-7.5"/></svg>
+  
+  <span class="md-ellipsis">
+    reportseff tips
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../slurm/interactive-jobs/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Interactive Jobs
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../slurm/crafting-jobs/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Crafting Batch Jobs
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../slurm/monitoring/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Monitoring Your Jobs
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../slurm/whenstart/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    When Will My Job Start?
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../slurm/qos/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Quality of Service (QOS)
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../slurm/environment/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Job Environment
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../slurm/node-features/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Node Features
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../slurm/user-guide-collection/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Example User Guides
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../slurm/slurm-faq/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    SLURM FAQ
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1_11" >
+        
+          
+          <label class="md-nav__link" for="__nav_1_11" id="__nav_1_11_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    User Guides/Tutorials
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_1_11_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_1_11">
+            <span class="md-nav__icon md-icon"></span>
+            User Guides/Tutorials
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1_11_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_1_11_1" id="__nav_1_11_1_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    GPU
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_1_11_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_1_11_1">
+            <span class="md-nav__icon md-icon"></span>
+            GPU
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../gpu/gpu-info/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Using GPUs on JHPCE
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../gpu/alphafold/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Alphafold
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../sw/vscode/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    VS Code
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../help/cost-calculator/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Cost Calculator
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1_12" >
+        
+          
+          <label class="md-nav__link" for="__nav_1_12" id="__nav_1_12_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Web Portal
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_1_12_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_1_12">
+            <span class="md-nav__icon md-icon"></span>
+            Web Portal
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../portal/web-apps/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    GUI Applications
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../portal/datacatalog/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Datacatalog
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../portal/web-reset/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Self Service MFA, Password Requests
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1_13" >
+        
+          
+          <label class="md-nav__link" for="__nav_1_13" id="__nav_1_13_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    C-SUB
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_1_13_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_1_13">
+            <span class="md-nav__icon md-icon"></span>
+            C-SUB
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../csub/csub-overview/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    What Is The C-SUB?
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../csub/new-csub-users/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    New C-SUB PI or user?
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../orient/images/latest-csub-orient.pdf" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    C-SUB Orientation (PDF)
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#acl-commands" class="md-nav__link">
+    <span class="md-ellipsis">
+      ACL Commands
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#access-control-entry-ace" class="md-nav__link">
+    <span class="md-ellipsis">
+      Access Control Entry (ACE)
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#important-big-picture-notes-and-suggestions" class="md-nav__link">
+    <span class="md-ellipsis">
+      Important Big-Picture Notes and Suggestions
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Important Big-Picture Notes and Suggestions">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#acl-facts" class="md-nav__link">
+    <span class="md-ellipsis">
+      ACL Facts
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#suggestions" class="md-nav__link">
+    <span class="md-ellipsis">
+      Suggestions
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#default-or-inherited-acls-on-directories" class="md-nav__link">
+    <span class="md-ellipsis">
+      Default or inherited ACLs on Directories
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#acls-in-zfs-file-systems" class="md-nav__link">
+    <span class="md-ellipsis">
+      ACLs in ZFS File Systems
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="ACLs in ZFS File Systems">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#basic-commands" class="md-nav__link">
+    <span class="md-ellipsis">
+      Basic commands
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#read-permisions" class="md-nav__link">
+    <span class="md-ellipsis">
+      Read permisions
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#write-permissions" class="md-nav__link">
+    <span class="md-ellipsis">
+      Write permissions
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#inherited-defaults" class="md-nav__link">
+    <span class="md-ellipsis">
+      Inherited Defaults
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#removing-an-acl" class="md-nav__link">
+    <span class="md-ellipsis">
+      Removing an ACL
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#applying-acls-recursively" class="md-nav__link">
+    <span class="md-ellipsis">
+      Applying ACLs Recursively
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#duplicating-existing-acls" class="md-nav__link">
+    <span class="md-ellipsis">
+      Duplicating Existing ACLs
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ace-flags-explained" class="md-nav__link">
+    <span class="md-ellipsis">
+      ACE Flags Explained
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="ACE Flags Explained">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#alias-flags" class="md-nav__link">
+    <span class="md-ellipsis">
+      ALIAS FLAGS
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#inheritence-flags" class="md-nav__link">
+    <span class="md-ellipsis">
+      INHERITENCE FLAGS
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#normal-flags" class="md-nav__link">
+    <span class="md-ellipsis">
+      NORMAL FLAGS
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#acls-in-lustre-file-systems" class="md-nav__link">
+    <span class="md-ellipsis">
+      ACLs in Lustre file systems
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="ACLs in Lustre file systems">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#read" class="md-nav__link">
+    <span class="md-ellipsis">
+      Read
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#write" class="md-nav__link">
+    <span class="md-ellipsis">
+      Write
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#creating-a-common-dir" class="md-nav__link">
+    <span class="md-ellipsis">
+      Creating a common dir
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#default-acls" class="md-nav__link">
+    <span class="md-ellipsis">
+      Default ACLs
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="acl-access-control-lists">ACL - Access Control Lists<a class="headerlink" href="#acl-access-control-lists" title="Anchor link to this section for reference">&para;</a></h1>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>Before defining ACLs, you should first read <a href="../sharing-files/">our document about sharing files</a> for necessary background concepts and skills.</p>
+</div>
+<p>Traditional Unix file and group permissions can be used to share
+access to files and directories.  However, there can be times when
+more fine-grained control of shared access is needed. To accomplish
+this, Access Control Lists (ACLs) can be used. They <em>add</em> to the normal permissions, not replace them. ACLs and permissions can interact in unexpected ways.</p>
+<details>
+<summary>ZFS versus Lustre: If you are working in /dcl02/ click here...</summary>
+<p>JHPCE uses two kinds of file systems on its large storage servers: <strong>ZFS</strong> and <strong>Lustre</strong>. A different pair of ACL commands is used for each type.</p>
+<p>As of March 2024, the only Lustre file systems are those which begin with the path <code>/dcl02/</code> <strong>For these file systems, use getfacl and setfacl.</strong></p>
+<p>For <em>everything else</em>, use <strong>nfs4_getfacl</strong> and <strong>nfs4_setfacl</strong>. (All of the files originally found on the Lustre file server named DCL01 have been copied off to live on other, ZFS-using file servers. But the name /dcl01 has been preserved, for convenience.)</p>
+<p>Instructions for Lustre file systems are found <a href="./#acls-in-lustre-file-systems">later in this document</a>.</p>
+</details>
+<h2 id="acl-commands"><strong>ACL Commands</strong><a class="headerlink" href="#acl-commands" title="Anchor link to this section for reference">&para;</a></h2>
+<p>An Access Control List is a series of <strong><em>Access Control Entry</em></strong> (ACE) rules associated with a file or directory.</p>
+<p>These rules are displayed and manipulated by two commands:</p>
+<dl>
+<dt><strong>nfs4_getfacl</strong></dt>
+<dd>Display the ACL of a file or directory.</dd>
+<dt><strong>nfs4_setfacl</strong></dt>
+<dd>Add, remove or modify ACE entries for an ACL on a file or directory. The main arguments you will use:</dd>
+</dl>
+<ul>
+<li><strong>-a</strong> - Add an ACE</li>
+<li><strong>-x</strong> - Remove an ACE (must exactly match the ACE to work)</li>
+<li><strong>-e</strong> - Enter an editor to edit all of the ACEs in the ACL (don't use unless you have defined the environment variable EDITOR<sup id="fnref2:1"><a class="footnote-ref" href="#fn:1">1</a></sup>)</li>
+<li><strong>--test</strong> - Display the results of applying, but do not actually change</li>
+<li><strong>-R</strong> - Appy the command recursively<sup id="fnref:2"><a class="footnote-ref" href="#fn:2">2</a></sup></li>
+</ul>
+<h2 id="access-control-entry-ace"><strong>Access Control Entry (ACE)</strong><a class="headerlink" href="#access-control-entry-ace" title="Anchor link to this section for reference">&para;</a></h2>
+<p>An <strong><em>ACE</em></strong>, or <strong><em>Access Control Entry</em></strong>, is a single control statement, indicating the access of a specific entity (usually a user or group). Thus, an Access Control List (ACL) is a list of ACEs. We here discuss some simple and common options for an ACE, but for a full description see the nfs4_acl(5) man page. A <a href="#ace-flags-explained">later section</a> of this page gives the meaning for each of the single characters that are combined in ACEs to create cryptic strings like "rwaDxtTcCy"</p>
+<p>We will begin with the structure of an ACE:</p>
+<div class="highlight"><pre><span></span><code>access type:[flags]:principal:permissions
+</code></pre></div>
+<p>All parts are required for every operation, though the <code>[flags]</code> section may be empty. Therefore all of your ACEs will always contain three colons.</p>
+<dl>
+<dt><strong>access type</strong></dt>
+<dd>A (for Allow) (A D (for Deny) can be specified, but it is not needed &amp; leads to trouble.)</dd>
+<dt><strong>flags</strong></dt>
+<dd><strong>g</strong> - If present, this means that this ACE applies to group principals, not user principals.</dd>
+<dd><strong>fdi</strong> - If present, this set of flags mean that the ACE is to be inherited.</dd>
+<dt><strong>principal</strong></dt>
+<dd>The principal is the <em>entity</em> to which the ACE applies.</dd>
+<dd>A key thing to know is that JHPCE uses a <em>Kerberos</em> database to store user and group information, and that our <em>NFSv4</em> (Network File System, version 4) file systems look to that Kerberos database for ownership and permission information. Kerberos databases can hold information for one or more <em>domains</em>. JHPCE only contains one domain and that is "cm.cluster"</dd>
+<dd><strong>entity@domain</strong> – Therefore our user and group principals have the form of <strong>name@cm.cluster</strong> If you fail to provide the full name for a principal, your ACL commands will fail.</dd>
+<dd><strong>OWNER@</strong> – This special principal refers to the owner of the file/directory. It must always be present. This means every file must have an @OWNER ACE in its ACL.</dd>
+<dd><strong>GROUP@</strong> – This special principal refers to the default group of a file. It must always be present. This means every file must have an GROUP@ ACE in its ACL.</dd>
+<dd><strong>EVERYONE@</strong> – This is a special catch-all principal which applies to any entity that is not matched by any of the above. Think of this as equivalent to “other” (aka “world”) in the traditional UNIX/Linux permissions model.</dd>
+</dl>
+<p><strong>permissions</strong></p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Needs to be written</p>
+</div>
+<h2 id="important-big-picture-notes-and-suggestions"><strong>Important Big-Picture Notes and Suggestions</strong><a class="headerlink" href="#important-big-picture-notes-and-suggestions" title="Anchor link to this section for reference">&para;</a></h2>
+<h3 id="acl-facts">ACL Facts<a class="headerlink" href="#acl-facts" title="Anchor link to this section for reference">&para;</a></h3>
+<ul>
+<li>ACLs can be used on both files and directories. As with normal permissions, settings on files can have different impacts than those on directories (e.g. the X execute bit or default inheritance settings).</li>
+<li>You can tell that a file or directory has an ACL defined by the presence of a <span class="keys"><kbd class="key-plus">+</kbd></span> symbol in the output of <code>ls -l</code> or <code>ls -ld</code></li>
+<li>Every file or directory appears to have an ACL if inspected with <code>nfs4+getfacl</code>.  This is just a representation of the basic UNIX ownership and permissions. When we speak in this document about adding an ACL we're talking about adding an ACE to those default values.</li>
+<li>Making changes with normal commands like <code>chmod</code> and <code>chown</code> will impact what you see if you inspect the ACL afterwards.</li>
+<li>If you want to change something about the special principals <code>OWNER@</code>, <code>GROUP@</code>, and <code>EVERYONE@</code>you probably want to do that with normal commands, not <code>nfs4_setfacl</code></li>
+<li><mark class="critic">User's <em>umask</em> settings impact the permissions assigned to files and directories being created</mark> whether you are using traditional UNIX permissions or ACLs.</li>
+<li>Setting an ACL on a directory does not change existing files and directories inside it unless you use the <code>-R</code> recursive option to the ACL command.</li>
+<li>For users to be able to work with a file stored several layer deep in the directory structure, they must be able <em>to get to it</em>. <mark class="critic">That requires that they need sufficient permissions, via either normal UNIX permissions or ACLs (or both), to "read" and "execute" (aka "search") <strong>all of the directories above the final file or directory</strong></mark>. For example, if you are wanting to enable access to the directory <code>/dcs07/bob/data/project1/shared</code>, you would need to provide <code>READ-EXECUTE</code> access on <code>/dcs07/bob/data/project1</code>, <code>/dcs07/bob/data</code>, and <code>/dcs07/bob</code>. <mark class="critic">Use UNIX permissions where appropriate, and ACLs where necessary.</mark></li>
+<li>ACLs can be set on files and directories located in file systems of types other than <a href="https://en.wikipedia.org/wiki/Network_File_System">NFS</a>. That is not what JHPCE users do. Trying to use an nfs4_*acl command in somewhere like /tmp will throw off an error like this: <code>Operation to request attribute not supported: test1</code></li>
+</ul>
+<h3 id="suggestions">Suggestions<a class="headerlink" href="#suggestions" title="Anchor link to this section for reference">&para;</a></h3>
+<ul>
+<li><strong>Use normal UNIX permissions where possible.</strong> ACLs can be complex to manage. Use ACLs to <em>extend</em> normal permissions.</li>
+<li>ACLs should use the security notion of “least privilege”, meaning that ACLs should give only the needed access and nothing more.</li>
+<li>By default if an ACL does not allow something, that permission is denied. ACEs that start with an "A" are "Allow ACEs", those that start with a "D" are "Deny ACEs". Avoid using "Deny ACEs" -- they increase the chances of something not working as expected.</li>
+<li>Like any operation, commands modifying ACL commands on large numbers of files should be run on a compute node and not a login node. Long-running recursive ACL commands on large directory trees may be done via interactive sessions or submitted batch job scripts.</li>
+<li>Check the values of files and directories before, during, and after changing their permissions or defining ACLs. Use both <code>ls -l</code> and <code>nfs4_getfacl</code> to get the full picture. Test what happens afterwards. Don't change many files at once until you are confident that your commands are correct. You can capture the original configuration using commands like <code>ls -lR directoryname &gt; saved-listing.txt</code> for normal UNIX permissions and <code>nfs4_getfacl --recursive directoryname &gt; saved-acls.txt</code></li>
+</ul>
+<h3 id="default-or-inherited-acls-on-directories">Default or inherited ACLs on Directories<a class="headerlink" href="#default-or-inherited-acls-on-directories" title="Anchor link to this section for reference">&para;</a></h3>
+<ul>
+<li>"Default" ACLs can be set on a directory, and this ACL will be <em>inherited</em> into the directory structure as new files and subdirectories are created. You might need to create different "default" ACLs to control the creation of new files and others to control the creation of new subdirectories.</li>
+<li>With "default" or "inherited" ACLs, the individual user’s <code>umask</code> setting is important in assuring that future new files and directories being created have the correct permissions set. The <code>umask</code> setting will take precedence over the ACL, so <em>it must be more permissive than the ACL</em>. For example, if you want to set a default group ACL where the group has write access, you need to make sure that your umask is set to <code>0002</code> rather than <code>0022</code>, as the “2” in the group umask bit will prevent the group write capability.</li>
+</ul>
+<h2 id="acls-in-zfs-file-systems"><strong>ACLs in ZFS File Systems</strong><a class="headerlink" href="#acls-in-zfs-file-systems" title="Anchor link to this section for reference">&para;</a></h2>
+<h3 id="basic-commands">Basic commands<a class="headerlink" href="#basic-commands" title="Anchor link to this section for reference">&para;</a></h3>
+<p>There are 2 commands for dealing with ACLs in file systems like <code>/users</code>, <code>/dcl01</code>, <code>/dcs04</code>, <code>/dcs05</code>, <code>/dcs06</code>, and <code>/dcs07</code>. </p>
+<ul>
+<li><code>nfs4_getfacl</code> - display current ACL setting</li>
+<li><code>nfs4_setfacl</code> - modify ACLs.  </li>
+</ul>
+<p>With ACLs you can grant different kinds of access on directories or files to specific users and groups, in addition to the normal group associated with the object, and in addition to "other".</p>
+<p>The simplest permissions to use in ACLs are R for read access, W for write access, and X for execute and directory access. </p>
+<p>A <a href="#ace-flags-explained">later section</a> of this page gives the meaning for each of the single characters that are combined in ACEs to create cryptic strings like "rwaDxtTcCy"</p>
+<p>These strings contain so many elements because ACLs can be used to create fine-grained permissions.</p>
+<p>By default, one’s home directory is only accessible to the owner. This is accomplished with basic UNIX permissions, not ACLs.<sup id="fnref:1"><a class="footnote-ref" href="#fn:1">1</a></sup> The original ACL reflects this. For the user alice, the ACL on their home directory would look like:</p>
+<div class="highlight"><pre><span></span><code><span class="o">[</span>alice@compute-123<span class="w"> </span>~<span class="o">]</span>$<span class="w"> </span><span class="nb">pwd</span>
+/users/alice
+<span class="o">[</span>alice@compute-123<span class="w"> </span>~<span class="o">]</span>$<span class="w"> </span>ls<span class="w"> </span>-ld<span class="w"> </span>.
+drwx------<span class="w"> </span><span class="m">63</span><span class="w"> </span>alice<span class="w"> </span>users<span class="w"> </span><span class="m">134</span><span class="w"> </span>Apr<span class="w"> </span><span class="m">12</span><span class="w"> </span><span class="m">14</span>:36<span class="w"> </span>./
+<span class="o">[</span>alice@compute-123<span class="w"> </span>~<span class="o">]</span>$<span class="w"> </span>nfs4_getfacl<span class="w"> </span>.
+<span class="c1"># file: .</span>
+A::OWNER@:rwaDxtTcCy
+A::GROUP@:tcy
+A::EVERYONE@:tcy
+</code></pre></div>
+<p>If you see the string "tcy", that means "no access".</p>
+<p>If you see the string "fdi", that indicates that the ACE is a "default" or "inherited" one.</p>
+<h3 id="read-permisions"><strong>Read permisions</strong><a class="headerlink" href="#read-permisions" title="Anchor link to this section for reference">&para;</a></h3>
+<ul>
+<li>Now, if alice wanted to grant read-only access to their home
+  directory to the user bob, they would use the <code>nfs4_setfacl</code>
+  command:</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="o">[</span>alice@compute-123<span class="w"> </span>~<span class="o">]</span>$<span class="w"> </span>nfs4_setfacl<span class="w"> </span>-a<span class="w"> </span>A::bob@cm.cluster:RX<span class="w"> </span>.
+<span class="o">[</span>alice@compute-123<span class="w"> </span>~<span class="o">]</span>$<span class="w"> </span>getfacl<span class="w"> </span>.
+<span class="c1"># file: .</span>
+A::OWNER@:rwaDxtTcCy
+A::bob@cm.cluster:xtcy
+A::GROUP@:tcy
+A::EVERYONE@:tcy
+At<span class="w"> </span>this<span class="w"> </span>point,<span class="w"> </span>bob<span class="w"> </span>would<span class="w"> </span>be<span class="w"> </span>able<span class="w"> </span>to<span class="w"> </span>access<span class="w"> </span>alice’s<span class="w"> </span>home<span class="w"> </span>directory.<span class="w"> </span>Now<span class="w"> </span>suppose<span class="w"> </span>there<span class="w"> </span>is<span class="w"> </span>a<span class="w"> </span>file<span class="w"> </span>that<span class="w"> </span>alice<span class="w"> </span>wants<span class="w"> </span>to<span class="w"> </span><span class="nb">let</span><span class="w"> </span>bob<span class="w"> </span>update.<span class="w"> </span>Alice<span class="w"> </span>could<span class="w"> </span>use<span class="w"> </span>ACLs<span class="w"> </span>to<span class="w"> </span>grant<span class="w"> </span>write<span class="w"> </span>access<span class="w"> </span>to<span class="w"> </span>a<span class="w"> </span>particular<span class="w"> </span>file:
+
+<span class="o">[</span>alice@compute-123<span class="w"> </span>~<span class="o">]</span>$<span class="w"> </span>ls<span class="w"> </span>-l<span class="w"> </span>shared-data.txt
+-rw-r--r--<span class="w"> </span><span class="m">1</span><span class="w"> </span>alice<span class="w"> </span>users<span class="w"> </span><span class="m">79691776</span><span class="w"> </span>Feb<span class="w">  </span><span class="m">2</span><span class="w"> </span><span class="m">07</span>:06<span class="w"> </span>shared-data.txt
+<span class="o">[</span>alice@compute-123<span class="w"> </span>~<span class="o">]</span>$<span class="w"> </span>nfs4_getfacl<span class="w"> </span>shared-data.txt
+<span class="c1"># file: shared-data.txt</span>
+A::OWNER@:rwatTcCy
+A::GROUP@:rtcy
+A::EVERYONE@:rtcy
+<span class="o">[</span>alice@compute-123<span class="w"> </span>~<span class="o">]</span>$<span class="w"> </span>nfs4_setfacl<span class="w"> </span>-a<span class="w"> </span>A::bob@cm.cluster:RWX<span class="w"> </span>shared-data.txt<span class="w"> </span>
+<span class="o">[</span>alice@compute-123<span class="w"> </span>~<span class="o">]</span>$<span class="w"> </span>nfs4_getfacl<span class="w"> </span>shared-data.txt
+nfs4_getfacl<span class="w"> </span>shared-data.txt
+<span class="c1"># file: shared-data.txt</span>
+A::OWNER@:rwatTcCy
+A::bob@cm.cluster:rwaxtcy
+A::GROUP@:rtcy
+A::EVERYONE@:rtcy
+</code></pre></div>
+<h3 id="write-permissions">Write permissions<a class="headerlink" href="#write-permissions" title="Anchor link to this section for reference">&para;</a></h3>
+<ul>
+<li>Now suppose alice wanted to create a directory that bob could write to. </li>
+<li>Alice could create a directory, and grant bob write access to it:</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="o">[</span>alice@compute-123<span class="w"> </span>~<span class="o">]</span>$<span class="w"> </span>mkdir<span class="w"> </span>shared
+<span class="o">[</span>alice@compute-123<span class="w"> </span>~<span class="o">]</span>$<span class="w"> </span>nfs4_setfacl<span class="w"> </span>-a<span class="w"> </span>A::bob@cm.cluster:RWX<span class="w"> </span>shared
+<span class="o">[</span>alice@compute-123<span class="w"> </span>~<span class="o">]</span>$<span class="w"> </span>nfs4_getfacl<span class="w"> </span>shared
+nfs4_getfacl<span class="w"> </span>shared-data.txt
+<span class="c1"># file: shared-data.txt</span>
+A::OWNER@:rwatTcCy
+A::bob@cm.cluster:rwaxtcy
+A::GROUP@:rtcy
+A::EVERYONE@:rtcy
+Now<span class="w"> </span>the<span class="w"> </span>user<span class="w"> </span>bob<span class="w"> </span>can<span class="w"> </span>copy<span class="w"> </span>or<span class="w"> </span>save<span class="w"> </span>files<span class="w"> </span><span class="k">in</span><span class="w"> </span>the<span class="w"> </span>“shared”<span class="w"> </span>directory.
+</code></pre></div>
+<h3 id="inherited-defaults">Inherited Defaults<a class="headerlink" href="#inherited-defaults" title="Anchor link to this section for reference">&para;</a></h3>
+<p>To set an inherited “default” ACL that will allow bob access on all
+new files and directories that get saved into <code>/users/alice/shared</code>, you
+would need to</p>
+<ol>
+<li>first give bob the normal ACL permissions, then</li>
+<li>add a second set of ACLs that will be inherited using the <code>fdi</code> option to the <code>nfs4_setacl</code> command.</li>
+</ol>
+<p><mark class="critic">One issue we’ve seen is that, in addition to the ACE you would expect was needed, you need to also add both a <code>@USER</code> and <code>@GROUP</code> ACE need to be explicitly set for permissions to be work as expected. </mark></p>
+<div class="highlight"><pre><span></span><code><span class="o">[</span>alice@compute-123<span class="w"> </span>~<span class="o">]</span>$<span class="w"> </span>nfs4_setfacl<span class="w"> </span>-a<span class="w"> </span>A:fdi:bob@cm.cluster:RWX<span class="w"> </span>shared
+<span class="o">[</span>alice@compute-123<span class="w"> </span>~<span class="o">]</span>$<span class="w"> </span>nfs4_setfacl<span class="w"> </span>-a<span class="w"> </span>A:fdi:OWNER@:RWX<span class="w"> </span>shared
+<span class="o">[</span>alice@compute-123<span class="w"> </span>~<span class="o">]</span>$<span class="w"> </span>nfs4_setfacl<span class="w"> </span>-a<span class="w"> </span>A:fdi:GROUP@:RWX<span class="w"> </span>shared
+
+<span class="o">[</span>alice@compute-123<span class="w"> </span>~<span class="o">]</span>$<span class="w"> </span>nfs4_getfacl<span class="w"> </span>shared
+nfs4_getfacl<span class="w"> </span>shared-data.txt
+<span class="c1"># file: shared-data.txt</span>
+A::OWNER@:rwatTcCy
+A::bob@cm.cluster:rwaxtcy
+A::GROUP@:rtcy
+A::EVERYONE@:rtcy
+A:fdi:OWNER@:rwaDxtTcCy
+A:fdi:bob@cm.cluster:rwaDxtcy
+A:fdi:GROUP@:rwaDxtcy
+A:fdi:EVERYONE@:tcy
+</code></pre></div>
+<p>To set a Group ACL, you need to add the <code>g</code> option to the <code>nfs4_getfacl</code> command.</p>
+<div class="highlight"><pre><span></span><code><span class="o">[</span>alice@compute-123<span class="w"> </span>~<span class="o">]</span>$<span class="w"> </span>mkdir<span class="w"> </span>shared
+<span class="o">[</span>alice@compute-123<span class="w"> </span>~<span class="o">]</span>$<span class="w"> </span>nfs4_setfacl<span class="w"> </span>-a<span class="w"> </span>A:g:hpscc@cm.cluster:RWX<span class="w"> </span>shared
+<span class="o">[</span>alice@compute-123<span class="w"> </span>~<span class="o">]</span>$<span class="w"> </span>nfs4_getfacl<span class="w"> </span>shared
+nfs4_getfacl<span class="w"> </span>shared-data.txt
+<span class="c1"># file: shared-data.txt</span>
+A::OWNER@:rwatTcCy
+A::GROUP@:rtcy
+A:g:hpscc@cm.cluster:rwaDxtcy
+A::EVERYONE@:rtcy
+To<span class="w"> </span><span class="nb">set</span><span class="w"> </span>a<span class="w"> </span>Group<span class="w"> </span>Inherited<span class="w"> </span>ACL,<span class="w"> </span>you<span class="w"> </span>need<span class="w"> </span>to<span class="w"> </span>add<span class="w"> </span>the<span class="w"> </span>“gfdi”<span class="w"> </span>option<span class="w"> </span>to<span class="w"> </span>the<span class="w"> </span>“nfs4_getfacl”<span class="w"> </span>command.<span class="w"> </span>With<span class="w"> </span>this<span class="w"> </span>inherited<span class="w"> </span>group<span class="w"> </span>ACL<span class="w"> </span>set,<span class="w"> </span>all<span class="w"> </span>new<span class="w"> </span>files<span class="w"> </span>and<span class="w"> </span>directories<span class="w"> </span>will<span class="w"> </span>inherit<span class="w"> </span>the<span class="w"> </span>group<span class="w"> </span>settings.
+
+<span class="o">[</span>alice@compute-123<span class="w"> </span>~<span class="o">]</span>$<span class="w"> </span>nfs4_setfacl<span class="w"> </span>-a<span class="w"> </span>A:gfdi:swdev@cm.cluster:RWX<span class="w"> </span>shared
+<span class="o">[</span>alice@compute-123<span class="w"> </span>~<span class="o">]</span>$<span class="w"> </span>nfs4_setfacl<span class="w"> </span>-a<span class="w"> </span>A:fdi:OWNER@:RWX<span class="w"> </span>shared
+<span class="o">[</span>alice@compute-123<span class="w"> </span>~<span class="o">]</span>$<span class="w"> </span>nfs4_setfacl<span class="w"> </span>-a<span class="w"> </span>A:fdi:GROUP@:RWX<span class="w"> </span>shared
+<span class="o">[</span>alice@compute-123<span class="w"> </span>~<span class="o">]</span>$<span class="w"> </span>nfs4_getfacl<span class="w"> </span>shared
+
+<span class="c1"># file: shared</span>
+A::OWNER@:rwaDxtTcCy
+A::GROUP@:rwaDxtcy
+A:g:hpscc@cm.cluster:rwaDxtcy
+A::EVERYONE@:rxtcy
+A:fdi:OWNER@:rwaDxtTcCy
+A:fdi:GROUP@:rwaDxtcy
+A:fdig:swdev@cm.cluster:rwaDxtcy
+A:fdi:EVERYONE@:tcy
+</code></pre></div>
+<p>Example showing the impact of adding a default (or inherited) ACE to a directory which provides read, write, and execute permissions for the UNIX group "hpscc"  Then, depending on the umask in force, files created inside this directory will be created with different permissions.</p>
+<div class="highlight"><pre><span></span><code><span class="o">[</span>alice@compute-123<span class="w"> </span>~<span class="o">]</span>$<span class="w"> </span>nfs4_setfacl<span class="w"> </span>-a<span class="w"> </span>A:gfdi:hpscc@cm.cluster:RWX<span class="w"> </span>test1
+<span class="o">[</span>alice@compute-123<span class="w"> </span>~<span class="o">]</span>$<span class="w"> </span>touch<span class="w"> </span>test1/f1
+<span class="o">[</span>alice@compute-123<span class="w"> </span>~<span class="o">]</span>$<span class="w"> </span>nfs4_getfacl<span class="w"> </span>test1/f1
+
+<span class="c1"># file: test1/f1</span>
+A::OWNER@:rwatTcCy
+A::GROUP@:rtcy
+A:g:hpscc@cm.cluster:rtcy
+A::EVERYONE@:rtcy
+<span class="o">[</span>alice@compute-123<span class="w"> </span>~<span class="o">]</span>$<span class="w"> </span><span class="nb">umask</span><span class="w"> </span><span class="m">0002</span>
+<span class="o">[</span>alice@compute-123<span class="w"> </span>~<span class="o">]</span>$<span class="w"> </span>touch<span class="w"> </span>test1/f2
+<span class="o">[</span>alice@compute-123<span class="w"> </span>~<span class="o">]</span>$<span class="w"> </span>nfs4_getfacl<span class="w"> </span>test1/f2
+
+<span class="c1"># file: test1/f2</span>
+A::OWNER@:rwatTcCy
+A::GROUP@:rwatcy
+A:g:hpscc@cm.cluster:rwatcy
+A::EVERYONE@:rtcy
+</code></pre></div>
+<h3 id="removing-an-acl"><strong>Removing an ACL</strong><a class="headerlink" href="#removing-an-acl" title="Anchor link to this section for reference">&para;</a></h3>
+<p>Use the <code>-x</code> option to <code>nfs4_setfacl</code> to remove an ACE from an ACL. Please note that you need to use the full (and exact) ACE, and not the <code>RWX</code> shortcuts.</p>
+<div class="highlight"><pre><span></span><code><span class="o">[</span>alice@compute-123<span class="w"> </span>~<span class="o">]</span>$<span class="w"> </span>nfs4_setfacl<span class="w"> </span>-x<span class="w"> </span>A::bob@cm.cluster:rwaxtcy<span class="w"> </span>shared
+<span class="o">[</span>alice@compute-123<span class="w"> </span>~<span class="o">]</span>$<span class="w"> </span>nfs4_getfacl<span class="w"> </span>shared
+nfs4_getfacl<span class="w"> </span>shared-data.txt
+<span class="c1"># file: shared-data.txt</span>
+A::OWNER@:rwatTcCy
+A::GROUP@:rtcy
+A::EVERYONE@:rtcy
+</code></pre></div>
+<h3 id="applying-acls-recursively"><strong>Applying ACLs Recursively</strong><a class="headerlink" href="#applying-acls-recursively" title="Anchor link to this section for reference">&para;</a></h3>
+<p>You can use the <code>-R</code> flag to <code>nfs4_setfacl</code> to apply your changes recursively.</p>
+<p>Sometimes you want to set a rule only on files or on directories. You can use the <code>find</code> command to generate lists of each type of object which are then passed to the <code>xargs</code> command, which runs the command it is given on each object. By default <code>find</code> starts at the path you give it and, if it is a directory, descends into it recursively.  Note that this example adds arguements to <code>find</code> and <code>xargs</code> which handle the case where files or directory names contain evil, no-good, awful characters like white space, quote marks, or backslashes:</p>
+<div class="highlight"><pre><span></span><code><span class="nb">cd</span><span class="w"> </span>into-the-top-of-the-directory-tree
+find<span class="w"> </span>.<span class="w"> </span>-type<span class="w"> </span>d<span class="w"> </span>-print0<span class="w"> </span><span class="p">|</span><span class="w"> </span>xargs<span class="w"> </span>--null<span class="w"> </span>nfs4_setfacl<span class="w"> </span>-a<span class="w"> </span>A::bob@cm.cluster:RWX
+find<span class="w"> </span>.<span class="w"> </span>-type<span class="w"> </span>f<span class="w"> </span>-print0<span class="w"> </span><span class="p">|</span><span class="w"> </span>xargs<span class="w"> </span>--null<span class="w"> </span>nfs4_setfacl<span class="w"> </span>-a<span class="w"> </span>A::bob@cm.cluster:R
+</code></pre></div>
+<h3 id="duplicating-existing-acls"><strong>Duplicating Existing ACLs</strong><a class="headerlink" href="#duplicating-existing-acls" title="Anchor link to this section for reference">&para;</a></h3>
+<div class="admonition caution">
+<p class="admonition-title">This section under development</p>
+<p>The following information needs to be revised and reviewed. It is provided in case it is helpful until then.</p>
+</div>
+<p>You can copy working ACLs but you must be very careful and check the results. Did your umask contribute an unexpected change to the process?</p>
+<p>One technique is to save and restore the settings. The second example uses input/output redirection to connect the two commands.</p>
+<div class="highlight"><pre><span></span><code>nfs4_getfacl<span class="w"> </span>-R<span class="w"> </span>source_dir<span class="w"> </span>&gt;<span class="w"> </span>tmpfile1
+setfacl<span class="w"> </span>--restore<span class="w"> </span>tmpfile1<span class="w"> </span>destination_dir
+
+nfs4_getfacl<span class="w"> </span>-R<span class="w"> </span>source_dir<span class="w"> </span><span class="p">|</span>
+setfacl<span class="w"> </span>--restore<span class="w"> </span>-<span class="w"> </span>destination_dir
+</code></pre></div>
+<p>You can copy the ACLs on a directory with rsync. You <strong>have to</strong> put trailing slashes on BOTH the source and destination.</p>
+<p><code>rsync -A public-exam1/ /dcs05/somegroup/data/otherdir/</code></p>
+<p>While -Ar preserves ACLs, it doesn't preserves ownerships and permissions. Use -Arogp (o=owner, g=group, p=permissions) or shorter and more common -Ara (a=archive) for a better copy of your directory.</p>
+<p>This <a href="https://portal.perforce.com/s/article/12405">page</a> has example scripts for saving and restoring ACLs on many files at once.</p>
+<p>This <a href="https://stackoverflow.com/questions/3450250/is-it-possible-to-create-a-script-to-save-and-restore-permissions">page</a> has different advice for the same goal.</p>
+<h2 id="ace-flags-explained"><strong>ACE Flags Explained</strong><a class="headerlink" href="#ace-flags-explained" title="Anchor link to this section for reference">&para;</a></h2>
+<p>The ACL on a normal directory looks like this:</p>
+<div class="highlight"><pre><span></span><code># file: .
+A::OWNER@:rwaDxtTcCy
+A::GROUP@:tcy
+A::EVERYONE@:tcy
+</code></pre></div>
+<p>What does "tcy" mean? How about "rwaDxtTcCy"?  This section contains the answer, with flags grouped by common occurrence. Copied from <a href="https://www.osc.edu/book/export/html/4523">this page</a>.</p>
+<h3 id="alias-flags">ALIAS FLAGS<a class="headerlink" href="#alias-flags" title="Anchor link to this section for reference">&para;</a></h3>
+<p>Aliases such as 'R', 'W', and 'X' can be used as permissions. These work simlarly to POSIX Read/Write/Execute. </p>
+<table>
+<thead>
+<tr>
+<th>Flag</th>
+<th>Name</th>
+<th>Function</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>R</td>
+<td>Read</td>
+<td>rntcy</td>
+</tr>
+<tr>
+<td>W</td>
+<td>Write</td>
+<td>watTNcCy (with D added to directory ACE's)</td>
+</tr>
+<tr>
+<td>X</td>
+<td>Execute</td>
+<td>xtcy</td>
+</tr>
+</tbody>
+</table>
+<h3 id="inheritence-flags">INHERITENCE FLAGS<a class="headerlink" href="#inheritence-flags" title="Anchor link to this section for reference">&para;</a></h3>
+<p>You will see "fdi" groups of flags in "default" ACLs</p>
+<table>
+<thead>
+<tr>
+<th>Flag</th>
+<th>Name</th>
+<th>Function</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>f</td>
+<td>file-inherit</td>
+<td>New files will have the same ACE minus the inheritence flags</td>
+</tr>
+<tr>
+<td>d</td>
+<td>directory-inherit</td>
+<td>New subdirectories will have the same ACE</td>
+</tr>
+<tr>
+<td>i</td>
+<td>inherit-only</td>
+<td>New files and subdirectories will have this ACE but the ACE for the directory with the flag is null</td>
+</tr>
+<tr>
+<td>n</td>
+<td>no-propogate inherit</td>
+<td>New subdirectories will inherit the ACE minus the inheritence flags</td>
+</tr>
+</tbody>
+</table>
+<h3 id="normal-flags">NORMAL FLAGS<a class="headerlink" href="#normal-flags" title="Anchor link to this section for reference">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Flag</th>
+<th>Name</th>
+<th>Function</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>r</td>
+<td>read-data (files) / list-directory (directories)</td>
+<td>Can you read the object's contents?</td>
+</tr>
+<tr>
+<td>w</td>
+<td>write-data (files) / create-file (directories)</td>
+<td></td>
+</tr>
+<tr>
+<td>a</td>
+<td>append-data (files) / create-subdirectory (directories)</td>
+<td></td>
+</tr>
+<tr>
+<td>x</td>
+<td>execute (files) / pass-through-directory (directories)</td>
+<td>You don't have to read a directory to cd <em>through</em> it into a subdirectory</td>
+</tr>
+<tr>
+<td>d</td>
+<td>delete the file/directory</td>
+<td></td>
+</tr>
+<tr>
+<td>D</td>
+<td>delete-child : remove a file or subdirectory from the given directory (directories only)</td>
+<td></td>
+</tr>
+<tr>
+<td>t</td>
+<td>read the attributes of the file/directory</td>
+<td></td>
+</tr>
+<tr>
+<td>T</td>
+<td>write the attribute of the file/directory</td>
+<td></td>
+</tr>
+<tr>
+<td>n</td>
+<td>read the named attributes of the file/directory</td>
+<td></td>
+</tr>
+<tr>
+<td>N</td>
+<td>write the named attributes of the file/directory</td>
+<td></td>
+</tr>
+<tr>
+<td>c</td>
+<td>read the file/directory ACL</td>
+<td></td>
+</tr>
+<tr>
+<td>C</td>
+<td>write the file/directory ACL</td>
+<td>Danger, Will Robinson!</td>
+</tr>
+<tr>
+<td>o</td>
+<td>change ownership of the file/directory</td>
+<td>Danger, Will Robinson!</td>
+</tr>
+</tbody>
+</table>
+<h2 id="acls-in-lustre-file-systems">ACLs in Lustre file systems<a class="headerlink" href="#acls-in-lustre-file-systems" title="Anchor link to this section for reference">&para;</a></h2>
+<p>Currently, the only Lustre file system we have is <code>/dcl02</code>. So if your files are located anywhere else, you can ignore this section.</p>
+<p>There are two commands for dealing with ACLs on the JHPCE cluster for
+directories in Lustre file systems, which start with <code>/dcl02</code>.</p>
+<p>The <code>getfacl</code> command will display
+current ACL setting for a file or directory, and the <code>setfacl</code> command
+is used to modify ACLs.  With ACLs you can grant either read-only
+access, or read-write access on a directory or file to specific users.</p>
+<p>Let’s say there is a directory <code>/dcl02/project/data/alice</code> that alice
+owns. The <code>getfacl</code> command could be used to see the current ACL set
+on the directory:</p>
+<div class="highlight"><pre><span></span><code>[alice@compute-123 ]$ pwd
+/dcl02/project/data/alice
+[alice@compute-123 ]$ getfacl .
+# file: .
+# owner: alice
+# group: users
+user::rwx
+group::---
+other::---
+</code></pre></div>
+<h4 id="read">Read<a class="headerlink" href="#read" title="Anchor link to this section for reference">&para;</a></h4>
+<p>Now, if alice wanted to grant read-only access to <code>/dcl02/project/data/alice</code> to the user bob, they would use the <code>setfacl</code> command:</p>
+<div class="highlight"><pre><span></span><code>[alice@compute-123 ]$ setfacl -m user:bob:rx .
+[alice@compute-123 ]$ getfacl .
+# file: .
+# owner: alice
+# group: users
+user::rwx
+user:bob:r-x
+group::---
+mask::r-x
+other::---
+</code></pre></div>
+<h4 id="write">Write<a class="headerlink" href="#write" title="Anchor link to this section for reference">&para;</a></h4>
+<p>Now suppose there is a file that alice wants to let bob update. Alice could use ACLs to grant write access to a particular file:</p>
+<div class="highlight"><pre><span></span><code>[alice@compute-123 ]$ ls -l shared-data.txt
+-rw-r--r-- 1 alice users 79691776 Feb  2 07:06 shared-data.txt
+[alice@compute-123 ]$ getfacl shared-data.txt
+# file: shared-data.txt
+# owner: alice
+# group: users
+user::rw-
+group::r--
+other::r--
+
+[alice@compute-123 ]$ setfacl -m user:bob:rw shared-data.txt 
+[alice@compute-123 ]$ getfacl shared-data.txt
+# file: shared-data.txt
+# owner: alice
+# group: users
+user::rw-
+user:bob:rw-
+group::r--
+mask::rwx
+other::r--
+</code></pre></div>
+<h4 id="creating-a-common-dir">Creating a common dir<a class="headerlink" href="#creating-a-common-dir" title="Anchor link to this section for reference">&para;</a></h4>
+<p>Now suppose alice wanted to create a directory that bob could write to. Alice could create a directory, and grant bob write access to it:</p>
+<div class="highlight"><pre><span></span><code>[alice@compute-123 ~]$ mkdir shared
+[alice@compute-123 ]$ setfacl -m user:bob:rwx shared
+[alice@compute-123 ]$ getfacl shared
+# file: shared
+# owner: alice
+# group: users
+user::rwx
+user:bob:rwx
+group::r-x
+mask::rwx
+other::r-x 
+</code></pre></div>
+<p>Now the user bob can copy or save files in the “shared” directory.</p>
+<h4 id="default-acls">Default ACLs<a class="headerlink" href="#default-acls" title="Anchor link to this section for reference">&para;</a></h4>
+<p>To set an inherited default ACL that will allow bob access on all new files and directories that get saved into <code>shared</code>, you would need to use the <code>-d</code> option to the <code>setacl</code> command:</p>
+<div class="highlight"><pre><span></span><code>[[alice@compute-123 ~]$ setfacl -d -m user:bob:rwx shared
+[alice@compute-123 ]$ getfacl shared
+# file: shared
+# owner: alice
+# group: users
+user::rwx
+user:bob:rwx
+group::r-x
+mask::rwx
+other::r-x
+default:user::rwx
+default:user:bob:rwx
+default:group::--x
+default:mask::rwx
+default:other::r-x
+</code></pre></div>
+<p>If you want to remove and ACL, you can use the “-x” option to setfacl.</p>
+<div class="highlight"><pre><span></span><code>[alice@compute-123 ]$ setfacl -x user:bob shared
+[alice@compute-123 ]$ getfacl shared
+# file: shared
+# owner: alice
+# group: users
+user::rwx
+group::r-x
+mask::r-x
+other::r-x
+</code></pre></div>
+<hr />
+<div class="footnote">
+<hr />
+<ol>
+<li id="fn:1">
+<p>Not true in the C-SUB, where home directories are protected with ACLs.&#160;<a class="footnote-backref" href="#fnref:1" title="Jump back to footnote 1 in the text">&#8617;</a><a class="footnote-backref" href="#fnref2:1" title="Jump back to footnote 1 in the text">&#8617;</a></p>
+</li>
+<li id="fn:2">
+<p>You may not want to apply some ACEs recursively, because files and directories can need different rules. See <a href="#applying-acls-recursively">this section</a> for a technique to apply changes to only files or only directories.&#160;<a class="footnote-backref" href="#fnref:2" title="Jump back to footnote 2 in the text">&#8617;</a></p>
+</li>
+</ol>
+</div>
+
+
+
+
+
+
+
+  
+    
+  
+  
+
+
+  <aside class="md-source-file">
+    
+      
+  <span class="md-source-file__fact">
+    <span class="md-icon" title="Last update">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
+    </span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="February 14, 2025 21:01:57 UTC">February 14, 2025</span>
+  </span>
+
+    
+    
+    
+      
+  
+  <span class="md-source-file__fact">
+    <span class="md-icon" title="Contributors">
+      
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 4a4 4 0 0 1 4 4 4 4 0 0 1-4 4 4 4 0 0 1-4-4 4 4 0 0 1 4-4m0 10c4.42 0 8 1.79 8 4v2H4v-2c0-2.21 3.58-4 8-4"/></svg>
+      
+    </span>
+    <nav>
+      
+        <a href="mailto:tunison@jhu.edu">jeffreytunison</a>
+    </nav>
+  </span>
+
+    
+    
+  </aside>
+
+
+  
+
+
+
+  <form class="md-feedback" name="feedback" hidden>
+    <fieldset>
+      <legend class="md-feedback__title">
+        Was this page helpful?
+      </legend>
+      <div class="md-feedback__inner">
+        <div class="md-feedback__list">
+          
+            <button class="md-feedback__icon md-icon" type="submit" title="This page was helpful" data-md-value="1">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 12a8 8 0 0 0-8-8 8 8 0 0 0-8 8 8 8 0 0 0 8 8 8 8 0 0 0 8-8m2 0a10 10 0 0 1-10 10A10 10 0 0 1 2 12 10 10 0 0 1 12 2a10 10 0 0 1 10 10M10 9.5c0 .8-.7 1.5-1.5 1.5S7 10.3 7 9.5 7.7 8 8.5 8s1.5.7 1.5 1.5m7 0c0 .8-.7 1.5-1.5 1.5S14 10.3 14 9.5 14.7 8 15.5 8s1.5.7 1.5 1.5m-5 7.73c-1.75 0-3.29-.73-4.19-1.81L9.23 14c.45.72 1.52 1.23 2.77 1.23s2.32-.51 2.77-1.23l1.42 1.42c-.9 1.08-2.44 1.81-4.19 1.81"/></svg>
+            </button>
+          
+            <button class="md-feedback__icon md-icon" type="submit" title="This page could be improved" data-md-value="0">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 12a8 8 0 0 0-8-8 8 8 0 0 0-8 8 8 8 0 0 0 8 8 8 8 0 0 0 8-8m2 0a10 10 0 0 1-10 10A10 10 0 0 1 2 12 10 10 0 0 1 12 2a10 10 0 0 1 10 10m-6.5-4c.8 0 1.5.7 1.5 1.5s-.7 1.5-1.5 1.5-1.5-.7-1.5-1.5.7-1.5 1.5-1.5M10 9.5c0 .8-.7 1.5-1.5 1.5S7 10.3 7 9.5 7.7 8 8.5 8s1.5.7 1.5 1.5m2 4.5c1.75 0 3.29.72 4.19 1.81l-1.42 1.42C14.32 16.5 13.25 16 12 16s-2.32.5-2.77 1.23l-1.42-1.42C8.71 14.72 10.25 14 12 14"/></svg>
+            </button>
+          
+        </div>
+        <div class="md-feedback__note">
+          
+            <div data-md-value="1" hidden>
+              
+              
+                
+              
+              
+              
+                
+                
+              
+              Thanks for your feedback!
+            </div>
+          
+            <div data-md-value="0" hidden>
+              
+              
+                
+              
+              
+              
+                
+                
+              
+              Thanks for your feedback! Help us improve this page by using our <a href="https://github.com/jhpce-jhu/jhpce_mkdocs/discussions/categories/website-feedback" target="_blank" rel="noopener">website feedback forum</a>.
+            </div>
+          
+        </div>
+      </div>
+    </fieldset>
+  </form>
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Footer" >
+        
+          
+          <a href="../sharing-files/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Sharing Files">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              <div class="md-ellipsis">
+                Sharing Files
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../copying-files/" class="md-footer__link md-footer__link--next" aria-label="Next: Copying within cluster">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              <div class="md-ellipsis">
+                Copying within cluster
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; 2024 - 2028 Joint JHPCE Exchange
+    </div>
+  
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.sections", "toc.follow", "announce.dismiss", "navigation.top", "header.autohide", "navigation.footer", "navigation.indexes", "content.code.copy", "content.code.annotate"], "search": "../../assets/javascripts/workers/search.d50fe291.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.50899def.min.js"></script>
+      
+        <script src="https://unpkg.com/tablesort@5.3.0/dist/tablesort.min.js"></script>
+      
+        <script src="../../javascripts/tablesort.js"></script>
+      
+        <script src="../../js/open_in_new_tab.js"></script>
+      
+    
+  </body>
+</html>
