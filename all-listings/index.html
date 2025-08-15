@@ -5653,15 +5653,6 @@ sacctmgr show user withassoc  | less
 
 # See a particular user's database values
 sacctmgr show user withassoc where name=smburke
-
-# WHO HAS EXTRA QOS -- shortens the output width
-#  (but needs improvement to align column entries)
-sacctmgr show user withassoc|grep -v "normal "|awk '{printf "%s\t\t%s\t%s\t\t%s%\n", $1,$3,$4,$7}'
-</code></pre><pre><span></span><code>sacctmgr list transactions
-</code></pre><pre><span></span><code># Dump the accounting database
-sacctmgr dump &lt;cluster-name&gt; file=&lt;filename&gt;
-</code></pre><pre><span></span><code># Dump the QOS definitions
-sacctmgr show qos &gt; qos_backup-date.txt
 </code></pre><pre><span></span><code># Add a QOS to a user's existing allowed QOS:
 sacctmgr -i mod user mmill116 set qos+=high-priority
 # or, you can redefine their whole list
@@ -5677,7 +5668,37 @@ sacctmgr -i mod user where name=tunison set MaxJobs=100,MaxSubmit=200
 sacctmgr -i create user name=$userid cluster=jhpce3 account=jhpce 
 
 # How C-SUB users accounts are created in the sacctmgr database on jhpcecms01
-sacctmgr -i create user name=$userid account=generic cluster=cms 
+sacctmgr -i create user name=$userid account=generic cluster=cms
+</code></pre><pre><span></span><code># WHO HAS EXTRA ASSOCIATIONS
+
+sacctmgr show user withassoc|grep -v "normal "
+
+produces a sixteen column wide display. Here are the fields
+and their awk field number, in case you want to craft an awk
+command to print only a few columns.
+
+$1 user
+$2 defaccount
+$3 adminpriv
+$4 cluster
+$5 account
+$6 partition
+$7 share
+$8 priority
+$9 maxjobs
+$10 maxnodes
+$11 maxcpus
+$12 maxsubmit
+$13 maxwall
+$14 maxcpumins
+$15 qos
+$16 defaultqos
+
+# This command was an attempt to print only some interesting columns,
+# but it does not behave as expected -- even the column header lines printed
+# do not make sense.
+# The printf args need field width specifications to better align column entries
+sacctmgr show user withassoc|grep -v "normal "|awk '{printf "%s\t\t%s\t%s\t\n", $1,$6,$15}'
 </code></pre><pre><span></span><code># Define a QOS which will limit a user to 25 running jobs with a max of 25 more pending
 # This QOS won't change any behavior until it is added to a partition or association etc
 sacctmgr -i add qos job-25run50sub
@@ -5713,16 +5734,6 @@ sacctmgr modify qos cms-larger set MaxJobsPerUser=1 MaxSubmitJobsPerUser=1  MaxS
 
 # You cannot rename a QOS, so you have to delete the old name -- be aware that jobs might be using it!!!
 sacctmgr delete qos qosname
-</code></pre><pre><span></span><code>sacctmgr show transaction | less
-
-sacctmgr -P show transaction &gt; /tmp/lookatme
-
-# transactions involving cluster user simmons
-sacctmgr list transactions Users=simmons
-
-# Which users were created in January 2025?
-# Here is the version that will produce one user per line
-sacctmgr list transactions Action="Add Users" Start=2025-01-01 End=2025-01-31 format=Where,Time%10
 </code></pre><pre><span></span><code>sacctmgr show tres
     Type            Name     ID 
 -------- --------------- ------ 
@@ -5739,6 +5750,20 @@ sacctmgr list transactions Action="Add Users" Start=2025-01-01 End=2025-01-31 fo
     gres      gpu:titanv   1003 
     gres     gpu:tesa100   1004 
     gres    gpu:tesv100s   1005 
+</code></pre><pre><span></span><code># Dump the accounting database
+sacctmgr dump &lt;cluster-name&gt; file=&lt;filename&gt;
+</code></pre><pre><span></span><code># Dump the QOS definitions
+sacctmgr show qos &gt; qos_backup-date.txt
+</code></pre><pre><span></span><code>sacctmgr show transaction | less
+
+sacctmgr -P show transaction &gt; /tmp/lookatme
+
+# transactions involving cluster user simmons
+sacctmgr list transactions Users=simmons
+
+# Which users were created in January 2025?
+# Here is the version that will produce one user per line
+sacctmgr list transactions Action="Add Users" Start=2025-01-01 End=2025-01-31 format=Where,Time%10
 </code></pre><pre><span></span><code># View the slurmdbd configuration in force
 sacctmgr show Configuration | less
 
