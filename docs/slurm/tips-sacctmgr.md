@@ -7,9 +7,9 @@ tags:
     
 [Sacctmgr](https://slurm.schedmd.com/archive/slurm-22.05.9/sacctmgr.html) is mostly used by systems administrators. Only they are allowed to make changes. Users can use it to view settings.
 
-`sacctmgr` is used by systems administrators to create and modify user accounts as well as QOS (qualities of service).
+`sacctmgr` is used by systems administrators to create and modify user accounts as well as to define QOS (qualities of service -- see our [QOS page](../slurm/qos.md) for more information) and to define TRES (Trackable RESources). Cluster users cannot run SLURM jobs unless they have been correctly defined in the `sacctmgr` database.
 
-Also note that by "account" SLURM means the parent object of user accounts. We do not currently put our users into different accounts (many other clusters do).
+Please note that SLURM and its documentation uses the term "account" to mean the parent object of user accounts. SLURM accounts are meant for gathering user accounts together into entities like departments and PI research groups. We do not currently put our users into different accounts (many other clusters do).
 
 ## **Sacctmgr for Users**
 
@@ -39,15 +39,39 @@ Like many administrative SLURM commands, you can run the `sacctmgr` command to e
 
 You can add the CLI flag "-i" to avoid the "are-you-sure" 30 second prompt and delay. Useful when scripting.
 
+### **Creating SLURM user associations (which are like accounts)**
+
+```
+# How JHPCE3 users accounts are created in the sacctmgr database
+sacctmgr -i create user name=$userid cluster=jhpce3 account=jhpce 
+
+# How C-SUB users accounts are created in the sacctmgr database on jhpcecms01
+sacctmgr -i create user name=$userid account=generic cluster=cms
+```
+
+#### Associations
+
+To see all of the information about a user, you need to add the argument "withassoc" to sacctmgr commands.
+
+Our users normally have a single entry in the sacctmgr database. This is called an association. Associations are 4-tuples of {user, account, cluster, partition}. There are limits in each association, such as maxjobs, maxsubmit(jobs), ....  You will not see those limits unless you use "withassoc"!!!
+
+Each user association has a field called "QOS", which by default contains the string "normal", and another field called "Def QOS", which is empty by default. The "QOS" field is the comma-separated list of QOS' that a user is allowed to specify when submitting jobs.
+
+If you grant access to additional allowed QOS, they will be listed in the user's original allocation.  The same thing is true if you add limits like the maximum number of jobs they are allowed to run at one time. 
+
+However, if you want to set a per-user, per-partition limit, that requires its own association.
+So a small number of users can have multiple associations.
+
+
 ### **Managing QOS for users**
 
 See our [QOS page](../slurm/qos.md) for more information.
 
 Our users have no limits on them, at the user account level, other than a 10,000 job limit. The typical account has a default QOS named "normal". If you run `showqos` you will see that "normal" doesn't have any restrictions other than the 10k job limit. Therefore users entitled to run jobs in their private per-research group partitions are not limited in how many of their nodes' resources they can consume. (Users found running jobs on partitions they are not entitled to use will have their jobs killed and have to acknowledge that they understand that they need to use public partitions.)
 
-For public partitions like "shared" and "interactive", the slurm config file /etc/slurm/partitions.conf specifies a default partition QOS of, for example, "shared-default". We use that to control how many CPUs and how much RAM each user can use in public partitions. We can change that setting for everyone as the cluster's resources shrink or grow by changing the appropriate single QOS.
+For public partitions like "shared" and "interactive", the slurm config file `/etc/slurm/partitions.conf` specifies a default partition QOS of, for example, "shared-default". We use that to control how many CPUs and how much RAM each user can use in public partitions. We can change that setting for everyone as the cluster's resources shrink or grow by changing the appropriate single QOS.
 
-When changing qos for something only use the '=' operator when wanting to explicitly set the qos to something.  In most cases you will want to use the '+=' or '-=' operator to either add to or remove from the existing qos already in place.
+When changing qos, use the '=' operator when intending to explicitly set the qos to what you specify.  In most cases you will want to instead use the '+=' or '-=' operators to either add to, or remove from, the existing qos already in place.
 
 ```
 # Add a QOS to a user's existing allowed QOS:
@@ -61,12 +85,6 @@ sacctmgr -i mod user where name=tunison set qos-=shared-200-2 # to remove
 # Limit a user's ability to run and submit jobs
 sacctmgr -i mod user where name=tunison set MaxJobs=100,MaxSubmit=200
 
-# How JHPCE3 users accounts are created in the sacctmgr database
-sacctmgr -i create user name=$userid cluster=jhpce3 account=jhpce 
-
-# How C-SUB users accounts are created in the sacctmgr database on jhpcecms01
-sacctmgr -i create user name=$userid account=generic cluster=cms
-
 # An example of defining a QOS, then applying it to one user for each of three partitions:
 sacctmgr -i add qos deny-gpu-partition
 sacctmgr -i mod qos deny-gpu-partition set flags=DenyOnLimit,OverPartQOS MaxSubmitJobsPU=0
@@ -75,22 +93,18 @@ sacctmgr -i add user where name=bob cluster=jhpce3 account=jhpce partition=bstgp
 sacctmgr -i add user where name=bob cluster=jhpce3 account=jhpce partition=bstgpu3 set qos=deny-gpu-partition
 ```
 
-#### Associations
+#### Finding users who have been modified
 
-To see all of the information about a user, you need to add the argument "withassoc" to sacctmgr commands.
+Finding users who have any non-standard limits set on them requires looking at all associations and figuring out how to screen for each column. Probably by processing a text file. The "where" operator doesn't seem to be meant for searching in general. 
 
-Our users normally have a single entry in the sacctmgr database. This is called an association. Associations are 4-tuples of {user, account, cluster, partition}. There are limits in each association, such as maxjobs, maxsubmit(jobs), ....  
-
-If you add limits or grant access to additional QOS, the user now has more than one association -- the one called "normal" plus one or more others. When we grant a user the ability to request a QOS, that happens in a new association.  Their QOS field in that association contains a comma-separated list of QOS names. If you want to set a per-partition limit, that requires its own association.
-
-To find "non-standard" users who have more than the "normal" association, you run "sacctmgr show user withassoc" and remove the output lines which contain "normal" in them. 
+Multiple allowed QOS:  To find "non-standard" users who have access to multiple allowed QOS, more than the "normal" association, you run "sacctmgr show user withassoc" and remove the output lines which contain " normal " in them. The space character on either side of the word normal is critical.
 
 Here are tips about looking into the database for "non-standard" users.
 
 ```
 # WHO HAS EXTRA ASSOCIATIONS
 
-sacctmgr show user withassoc|grep -v "normal "
+sacctmgr show user withassoc|grep -v " normal "
 
 produces a sixteen column wide display. Here are the fields
 and their awk field number, in case you want to craft an awk
@@ -127,7 +141,7 @@ sacctmgr show user withassoc|grep -v "normal "|awk '{printf "%s\t\t%s\t%s\t\n", 
 {==You MUST define flags=DenyOnLimit,OverPartQOS for a QOS to work as expected==}
 
 {==We now limit all partitions to 10,000 jobs per user. 
-Therefore every such QOS needs `MaxSubmitJobsPU=10000`==}
+Therefore every QOS needs `MaxSubmitJobsPU=10000`==}
 
 {==Note that the output field names displayed are not necessarily the same as the keywords used when modifying, e.g. MaxTRESPerUser is the keyword but the more concise MaxTRESPU is displayed.==}
 
