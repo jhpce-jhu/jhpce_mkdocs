@@ -5653,6 +5653,11 @@ sacctmgr show user withassoc  | less
 
 # See a particular user's database values
 sacctmgr show user withassoc where name=smburke
+</code></pre><pre><span></span><code># How JHPCE3 users accounts are created in the sacctmgr database
+sacctmgr -i create user name=$userid cluster=jhpce3 account=jhpce 
+
+# How C-SUB users accounts are created in the sacctmgr database on jhpcecms01
+sacctmgr -i create user name=$userid account=generic cluster=cms
 </code></pre><pre><span></span><code># Add a QOS to a user's existing allowed QOS:
 sacctmgr -i mod user mmill116 set qos+=high-priority
 # or, you can redefine their whole list
@@ -5664,12 +5669,6 @@ sacctmgr -i mod user where name=tunison set qos-=shared-200-2 # to remove
 # Limit a user's ability to run and submit jobs
 sacctmgr -i mod user where name=tunison set MaxJobs=100,MaxSubmit=200
 
-# How JHPCE3 users accounts are created in the sacctmgr database
-sacctmgr -i create user name=$userid cluster=jhpce3 account=jhpce 
-
-# How C-SUB users accounts are created in the sacctmgr database on jhpcecms01
-sacctmgr -i create user name=$userid account=generic cluster=cms
-
 # An example of defining a QOS, then applying it to one user for each of three partitions:
 sacctmgr -i add qos deny-gpu-partition
 sacctmgr -i mod qos deny-gpu-partition set flags=DenyOnLimit,OverPartQOS MaxSubmitJobsPU=0
@@ -5678,7 +5677,7 @@ sacctmgr -i add user where name=bob cluster=jhpce3 account=jhpce partition=bstgp
 sacctmgr -i add user where name=bob cluster=jhpce3 account=jhpce partition=bstgpu3 set qos=deny-gpu-partition
 </code></pre><pre><span></span><code># WHO HAS EXTRA ASSOCIATIONS
 
-sacctmgr show user withassoc|grep -v "normal "
+sacctmgr show user withassoc|grep -v " normal "
 
 produces a sixteen column wide display. Here are the fields
 and their awk field number, in case you want to craft an awk

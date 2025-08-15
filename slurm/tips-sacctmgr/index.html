@@ -3040,6 +3040,30 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
+  <a href="#creating-slurm-user-associations-which-are-like-accounts" class="md-nav__link">
+    <span class="md-ellipsis">
+      Creating SLURM user associations (which are like accounts)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Creating SLURM user associations (which are like accounts)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#associations" class="md-nav__link">
+    <span class="md-ellipsis">
+      Associations
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#managing-qos-for-users" class="md-nav__link">
     <span class="md-ellipsis">
       Managing QOS for users
@@ -3050,9 +3074,9 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#associations" class="md-nav__link">
+  <a href="#finding-users-who-have-been-modified" class="md-nav__link">
     <span class="md-ellipsis">
-      Associations
+      Finding users who have been modified
     </span>
   </a>
   
@@ -3945,6 +3969,30 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
+  <a href="#creating-slurm-user-associations-which-are-like-accounts" class="md-nav__link">
+    <span class="md-ellipsis">
+      Creating SLURM user associations (which are like accounts)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Creating SLURM user associations (which are like accounts)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#associations" class="md-nav__link">
+    <span class="md-ellipsis">
+      Associations
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#managing-qos-for-users" class="md-nav__link">
     <span class="md-ellipsis">
       Managing QOS for users
@@ -3955,9 +4003,9 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#associations" class="md-nav__link">
+  <a href="#finding-users-who-have-been-modified" class="md-nav__link">
     <span class="md-ellipsis">
-      Associations
+      Finding users who have been modified
     </span>
   </a>
   
@@ -4060,8 +4108,8 @@
 
 <h1 id="sacctmgr-useful-command-examples"><strong>sacctmgr -- useful command examples</strong><a class="headerlink" href="#sacctmgr-useful-command-examples" title="Anchor link to this section for reference">&para;</a></h1>
 <p><a href="https://slurm.schedmd.com/archive/slurm-22.05.9/sacctmgr.html">Sacctmgr</a> is mostly used by systems administrators. Only they are allowed to make changes. Users can use it to view settings.</p>
-<p><code>sacctmgr</code> is used by systems administrators to create and modify user accounts as well as QOS (qualities of service).</p>
-<p>Also note that by "account" SLURM means the parent object of user accounts. We do not currently put our users into different accounts (many other clusters do).</p>
+<p><code>sacctmgr</code> is used by systems administrators to create and modify user accounts as well as to define QOS (qualities of service -- see our <a href="../qos/">QOS page</a> for more information) and to define TRES (Trackable RESources). Cluster users cannot run SLURM jobs unless they have been correctly defined in the <code>sacctmgr</code> database.</p>
+<p>Please note that SLURM and its documentation uses the term "account" to mean the parent object of user accounts. SLURM accounts are meant for gathering user accounts together into entities like departments and PI research groups. We do not currently put our users into different accounts (many other clusters do).</p>
 <h2 id="sacctmgr-for-users"><strong>Sacctmgr for Users</strong><a class="headerlink" href="#sacctmgr-for-users" title="Anchor link to this section for reference">&para;</a></h2>
 <div class="highlight"><pre><span></span><code># See your entry in the sacctmgr database
 sacctmgr show user withassoc where name=$USER
@@ -4083,11 +4131,25 @@ sacctmgr show user withassoc where name=smburke
 <p>We currently have two clusters, named "jhpce3" and "cms" You don't have to specify which cluster you want to consult/change, as we have a SLURM server for each cluster. And because they aren't connected in any way, you cannot extract data from one when logged into a node in the other cluster.</p>
 <p>Like many administrative SLURM commands, you can run the <code>sacctmgr</code> command to enter into its shell version. This is useful if you are exploring some situation, although you cannot paginate output. It supports up-arrow to get at previous commands. Issuing the command "verbose" when in the interactive shell may display interesting info.</p>
 <p>You can add the CLI flag "-i" to avoid the "are-you-sure" 30 second prompt and delay. Useful when scripting.</p>
+<h3 id="creating-slurm-user-associations-which-are-like-accounts"><strong>Creating SLURM user associations (which are like accounts)</strong><a class="headerlink" href="#creating-slurm-user-associations-which-are-like-accounts" title="Anchor link to this section for reference">&para;</a></h3>
+<div class="highlight"><pre><span></span><code># How JHPCE3 users accounts are created in the sacctmgr database
+sacctmgr -i create user name=$userid cluster=jhpce3 account=jhpce 
+
+# How C-SUB users accounts are created in the sacctmgr database on jhpcecms01
+sacctmgr -i create user name=$userid account=generic cluster=cms
+</code></pre></div>
+<h4 id="associations">Associations<a class="headerlink" href="#associations" title="Anchor link to this section for reference">&para;</a></h4>
+<p>To see all of the information about a user, you need to add the argument "withassoc" to sacctmgr commands.</p>
+<p>Our users normally have a single entry in the sacctmgr database. This is called an association. Associations are 4-tuples of {user, account, cluster, partition}. There are limits in each association, such as maxjobs, maxsubmit(jobs), ....  You will not see those limits unless you use "withassoc"!!!</p>
+<p>Each user association has a field called "QOS", which by default contains the string "normal", and another field called "Def QOS", which is empty by default. The "QOS" field is the comma-separated list of QOS' that a user is allowed to specify when submitting jobs.</p>
+<p>If you grant access to additional allowed QOS, they will be listed in the user's original allocation.  The same thing is true if you add limits like the maximum number of jobs they are allowed to run at one time. </p>
+<p>However, if you want to set a per-user, per-partition limit, that requires its own association.
+So a small number of users can have multiple associations.</p>
 <h3 id="managing-qos-for-users"><strong>Managing QOS for users</strong><a class="headerlink" href="#managing-qos-for-users" title="Anchor link to this section for reference">&para;</a></h3>
 <p>See our <a href="../qos/">QOS page</a> for more information.</p>
 <p>Our users have no limits on them, at the user account level, other than a 10,000 job limit. The typical account has a default QOS named "normal". If you run <code>showqos</code> you will see that "normal" doesn't have any restrictions other than the 10k job limit. Therefore users entitled to run jobs in their private per-research group partitions are not limited in how many of their nodes' resources they can consume. (Users found running jobs on partitions they are not entitled to use will have their jobs killed and have to acknowledge that they understand that they need to use public partitions.)</p>
-<p>For public partitions like "shared" and "interactive", the slurm config file /etc/slurm/partitions.conf specifies a default partition QOS of, for example, "shared-default". We use that to control how many CPUs and how much RAM each user can use in public partitions. We can change that setting for everyone as the cluster's resources shrink or grow by changing the appropriate single QOS.</p>
-<p>When changing qos for something only use the '=' operator when wanting to explicitly set the qos to something.  In most cases you will want to use the '+=' or '-=' operator to either add to or remove from the existing qos already in place.</p>
+<p>For public partitions like "shared" and "interactive", the slurm config file <code>/etc/slurm/partitions.conf</code> specifies a default partition QOS of, for example, "shared-default". We use that to control how many CPUs and how much RAM each user can use in public partitions. We can change that setting for everyone as the cluster's resources shrink or grow by changing the appropriate single QOS.</p>
+<p>When changing qos, use the '=' operator when intending to explicitly set the qos to what you specify.  In most cases you will want to instead use the '+=' or '-=' operators to either add to, or remove from, the existing qos already in place.</p>
 <div class="highlight"><pre><span></span><code># Add a QOS to a user&#39;s existing allowed QOS:
 sacctmgr -i mod user mmill116 set qos+=high-priority
 # or, you can redefine their whole list
@@ -4099,12 +4161,6 @@ sacctmgr -i mod user where name=tunison set qos-=shared-200-2 # to remove
 # Limit a user&#39;s ability to run and submit jobs
 sacctmgr -i mod user where name=tunison set MaxJobs=100,MaxSubmit=200
 
-# How JHPCE3 users accounts are created in the sacctmgr database
-sacctmgr -i create user name=$userid cluster=jhpce3 account=jhpce 
-
-# How C-SUB users accounts are created in the sacctmgr database on jhpcecms01
-sacctmgr -i create user name=$userid account=generic cluster=cms
-
 # An example of defining a QOS, then applying it to one user for each of three partitions:
 sacctmgr -i add qos deny-gpu-partition
 sacctmgr -i mod qos deny-gpu-partition set flags=DenyOnLimit,OverPartQOS MaxSubmitJobsPU=0
@@ -4112,15 +4168,13 @@ sacctmgr -i add user where name=bob cluster=jhpce3 account=jhpce partition=bstgp
 sacctmgr -i add user where name=bob cluster=jhpce3 account=jhpce partition=bstgpu2 set qos=deny-gpu-partition
 sacctmgr -i add user where name=bob cluster=jhpce3 account=jhpce partition=bstgpu3 set qos=deny-gpu-partition
 </code></pre></div>
-<h4 id="associations">Associations<a class="headerlink" href="#associations" title="Anchor link to this section for reference">&para;</a></h4>
-<p>To see all of the information about a user, you need to add the argument "withassoc" to sacctmgr commands.</p>
-<p>Our users normally have a single entry in the sacctmgr database. This is called an association. Associations are 4-tuples of {user, account, cluster, partition}. There are limits in each association, such as maxjobs, maxsubmit(jobs), ....  </p>
-<p>If you add limits or grant access to additional QOS, the user now has more than one association -- the one called "normal" plus one or more others. When we grant a user the ability to request a QOS, that happens in a new association.  Their QOS field in that association contains a comma-separated list of QOS names. If you want to set a per-partition limit, that requires its own association.</p>
-<p>To find "non-standard" users who have more than the "normal" association, you run "sacctmgr show user withassoc" and remove the output lines which contain "normal" in them. </p>
+<h4 id="finding-users-who-have-been-modified">Finding users who have been modified<a class="headerlink" href="#finding-users-who-have-been-modified" title="Anchor link to this section for reference">&para;</a></h4>
+<p>Finding users who have any non-standard limits set on them requires looking at all associations and figuring out how to screen for each column. Probably by processing a text file. The "where" operator doesn't seem to be meant for searching in general. </p>
+<p>Multiple allowed QOS:  To find "non-standard" users who have access to multiple allowed QOS, more than the "normal" association, you run "sacctmgr show user withassoc" and remove the output lines which contain " normal " in them. The space character on either side of the word normal is critical.</p>
 <p>Here are tips about looking into the database for "non-standard" users.</p>
 <div class="highlight"><pre><span></span><code># WHO HAS EXTRA ASSOCIATIONS
 
-sacctmgr show user withassoc|grep -v &quot;normal &quot;
+sacctmgr show user withassoc|grep -v &quot; normal &quot;
 
 produces a sixteen column wide display. Here are the fields
 and their awk field number, in case you want to craft an awk
@@ -4153,7 +4207,7 @@ sacctmgr show user withassoc|grep -v &quot;normal &quot;|awk &#39;{printf &quot;
 <p><mark class="critic">To delete a parameter from a QOS, set it to the value -1</mark></p>
 <p><mark class="critic">You MUST define flags=DenyOnLimit,OverPartQOS for a QOS to work as expected</mark></p>
 <p><mark class="critic">We now limit all partitions to 10,000 jobs per user. 
-Therefore every such QOS needs <code>MaxSubmitJobsPU=10000</code></mark></p>
+Therefore every QOS needs <code>MaxSubmitJobsPU=10000</code></mark></p>
 <p><mark class="critic">Note that the output field names displayed are not necessarily the same as the keywords used when modifying, e.g. MaxTRESPerUser is the keyword but the more concise MaxTRESPU is displayed.</mark></p>
 <p>If you provide the <code>-i</code> flag, the operation is immediately implemented. Without it, you have 30 seconds to respond (which doesn't work in scripts).</p>
 <p>There are a number of variants of some categories of parameters -- by user, by group, by account, etc.</p>
@@ -4300,7 +4354,7 @@ sacctmgr clear stats
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="August 15, 2025 00:24:45 UTC">August 15, 2025</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="August 15, 2025 04:33:38 UTC">August 15, 2025</span>
   </span>
 
     
