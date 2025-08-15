@@ -73,8 +73,7 @@ inherited from their parent account, named "jhpce"
 (The "bank" account jhpce, of the organization jhpce, in the
 cluster jhpce3 is the parent of all of the users.)
 
-The "normal" QOS  (currently) has no limits defined for it.
-(It is the default QOS defined in SLURM. We didn't create it.)
+The "normal" QOS originally had no limits defined for it. We added a limit of 10,000 jobs per user to it. ("normal" is the default QOS defined in SLURM.)
 
 A fundamental element of our current practice is that the
 user’s __default QOS__ entries in the database are "normal".
