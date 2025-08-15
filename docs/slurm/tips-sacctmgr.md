@@ -66,6 +66,13 @@ sacctmgr -i create user name=$userid cluster=jhpce3 account=jhpce
 
 # How C-SUB users accounts are created in the sacctmgr database on jhpcecms01
 sacctmgr -i create user name=$userid account=generic cluster=cms
+
+# An example of defining a QOS, then applying it to one user for each of three partitions:
+sacctmgr -i add qos deny-gpu-partition
+sacctmgr -i mod qos deny-gpu-partition set flags=DenyOnLimit,OverPartQOS MaxSubmitJobsPU=0
+sacctmgr -i add user where name=bob cluster=jhpce3 account=jhpce partition=bstgpu set qos=deny-gpu-partition
+sacctmgr -i add user where name=bob cluster=jhpce3 account=jhpce partition=bstgpu2 set qos=deny-gpu-partition
+sacctmgr -i add user where name=bob cluster=jhpce3 account=jhpce partition=bstgpu3 set qos=deny-gpu-partition
 ```
 
 #### Associations
