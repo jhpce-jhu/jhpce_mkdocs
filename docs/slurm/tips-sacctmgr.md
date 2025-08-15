@@ -29,50 +29,23 @@ sacctmgr show user withassoc  | less
 
 # See a particular user's database values
 sacctmgr show user withassoc where name=smburke
-
-# WHO HAS EXTRA QOS -- shortens the output width
-#  (but needs improvement to align column entries)
-sacctmgr show user withassoc|grep -v "normal "|awk '{printf "%s\t\t%s\t%s\t\t%s%\n", $1,$3,$4,$7}'
 ```
 
 ## **Sacctmgr for Systems Administrators**
 
 We currently have two clusters, named "jhpce3" and "cms" You don't have to specify which cluster you want to consult/change, as we have a SLURM server for each cluster. And because they aren't connected in any way, you cannot extract data from one when logged into a node in the other cluster.
 
-Like many administrative SLURM commands, you can just run the `sacctmgr` command to enter into its shell version. Useful if you are exploring some situation, although you cannot paginate output. It supports up-arrow to get at previous commands. Issuing the command "verbose" when in the interactive shell may display interesting info.
+Like many administrative SLURM commands, you can run the `sacctmgr` command to enter into its shell version. This is useful if you are exploring some situation, although you cannot paginate output. It supports up-arrow to get at previous commands. Issuing the command "verbose" when in the interactive shell may display interesting info.
 
-You can add the flag "-i" to avoid the "are-you-sure" 30 second delay and prompt. Useful when scripting.
-
-
-
-### Seeing database transactions
-
-```
-sacctmgr list transactions
-```
-
-### Make A Backup Of Users and Their Settings
-
-Currently JRT has stored some in `/root/slurm/sacctmgr-stuff/sacctmgr-dumps/`
-
-```
-# Dump the accounting database
-sacctmgr dump <cluster-name> file=<filename>
-```
-That backup only contains users. Other things are stored in sacctmgr database(?s?), such as QOS definitions.
-
-```
-# Dump the QOS definitions
-sacctmgr show qos > qos_backup-date.txt
-```
+You can add the CLI flag "-i" to avoid the "are-you-sure" 30 second prompt and delay. Useful when scripting.
 
 ### **Managing QOS for users**
 
 See our [QOS page](../slurm/qos.md) for more information.
 
-Our users have no limits on them, at the user account level. The typical account has a default QOS named "normal". If you run `showqos` you will see that "normal" doesn't have any restrictions. Therefore users entitled to run jobs in their private per-research group partitions are not limited in how many of their nodes' resources they can consume. (Users found running jobs on partitions they are not entitled to use will have their jobs killed and have to acknowledge that they understand that they need to use public partitions.)
+Our users have no limits on them, at the user account level, other than a 10,000 job limit. The typical account has a default QOS named "normal". If you run `showqos` you will see that "normal" doesn't have any restrictions other than the 10k job limit. Therefore users entitled to run jobs in their private per-research group partitions are not limited in how many of their nodes' resources they can consume. (Users found running jobs on partitions they are not entitled to use will have their jobs killed and have to acknowledge that they understand that they need to use public partitions.)
 
-For public partitions like "shared" and "interactive", the slurm config file /etc/slurm/partitions.conf specifies a default partition QOS of, for example, "shared-default". So  we can control how many CPUs and how much RAM each user can use in public partitions by changing the appropriate single QOS.
+For public partitions like "shared" and "interactive", the slurm config file /etc/slurm/partitions.conf specifies a default partition QOS of, for example, "shared-default". We use that to control how many CPUs and how much RAM each user can use in public partitions. We can change that setting for everyone as the cluster's resources shrink or grow by changing the appropriate single QOS.
 
 When changing qos for something only use the '=' operator when wanting to explicitly set the qos to something.  In most cases you will want to use the '+=' or '-=' operator to either add to or remove from the existing qos already in place.
 
@@ -92,7 +65,52 @@ sacctmgr -i mod user where name=tunison set MaxJobs=100,MaxSubmit=200
 sacctmgr -i create user name=$userid cluster=jhpce3 account=jhpce 
 
 # How C-SUB users accounts are created in the sacctmgr database on jhpcecms01
-sacctmgr -i create user name=$userid account=generic cluster=cms 
+sacctmgr -i create user name=$userid account=generic cluster=cms
+```
+
+#### Associations
+
+To see all of the information about a user, you need to add the argument "withassoc" to sacctmgr commands.
+
+Our users normally have a single entry in the sacctmgr database. This is called an association. Associations are 4-tuples of {user, account, cluster, partition}. There are limits in each association, such as maxjobs, maxsubmit(jobs), ....  
+
+If you add limits or grant access to additional QOS, the user now has more than one association -- the one called "normal" plus one or more others. When we grant a user the ability to request a QOS, that happens in a new association.  Their QOS field in that association contains a comma-separated list of QOS names. If you want to set a per-partition limit, that requires its own association.
+
+To find "non-standard" users who have more than the "normal" association, you run "sacctmgr show user withassoc" and remove the output lines which contain "normal" in them. 
+
+Here are tips about looking into the database for "non-standard" users.
+
+```
+# WHO HAS EXTRA ASSOCIATIONS
+
+sacctmgr show user withassoc|grep -v "normal "
+
+produces a sixteen column wide display. Here are the fields
+and their awk field number, in case you want to craft an awk
+command to print only a few columns.
+
+$1 user
+$2 defaccount
+$3 adminpriv
+$4 cluster
+$5 account
+$6 partition
+$7 share
+$8 priority
+$9 maxjobs
+$10 maxnodes
+$11 maxcpus
+$12 maxsubmit
+$13 maxwall
+$14 maxcpumins
+$15 qos
+$16 defaultqos
+
+# This command was an attempt to print only some interesting columns,
+# but it does not behave as expected -- even the column header lines printed
+# do not make sense.
+# The printf args need field width specifications to better align column entries
+sacctmgr show user withassoc|grep -v "normal "|awk '{printf "%s\t\t%s\t%s\t\n", $1,$6,$15}'
 ```
 
 ### **Managing QOS**
@@ -114,7 +132,7 @@ There are a number of variants of some categories of parameters -- by user, by g
 `MaxJobsSubmit*` means jobs that can be both pending and running, altogether, in total, e.g. `MaxJobsSubmitPerUser`
 
 !!! Note
-    There are a number of parameters which feature Group or Account. We cannot use these easily, because for example as far as "Groups" are concerned, by default our users are all in the same group ("users" in jhpce3 and "c-users" in cms). SLURM doesn't look at secondary group membership, only the primary group. AND we don't maintain groups for all of our PI groups. We maintain groups not to give access to computers but to control storage permissions. (In jhpce3 some users DO have primary groups different from "users".)
+    There are a number of parameters which allow you to place limits based on a user's Group or Account. We cannot use those sets of limits.  We do not place users in Accounts. (In many other organizations, Accounts are created for entities like departments and PIs, and can be given consumable resouce allocations, such as so many CPU hours, which then decline towards zero as they are used. Think of them like bank accounts.) Group is the user's primary UNIX group at the time they were added to the sacctmgr database. A users' SLURM group does not change when their UNIX primary group is changed by systems administrators. JRT believes that you cannot see or modify a sacctmgr user object's group -- you have to delete that user and recreate them.  A user's secondary groups are ignored by SLURM. By default our cluster users are all in the same group ("users" in jhpce3 and "c-users" in cms). SLURM doesn't look at secondary group membership, only the primary group. AND we don't maintain groups for all of our PI groups. In jhpce3, we maintain UNIX user groups primarily to control disk storage permissions. (In jhpce3 some users DO have primary groups different from "users".)
     
     Accounts are similar to groups in that our current model has all user accounts belonging to a single higher-level account object ("jhpce" in jhpce3 and "generic" in cms (for some reason -- there's also a csub account) (and the small number of c-*-10101 users happen to be in the "sysadmin" account)).
     
@@ -159,9 +177,51 @@ sacctmgr modify qos cms-larger set MaxJobsPerUser=1 MaxSubmitJobsPerUser=1  MaxS
 sacctmgr delete qos qosname
 ```
 
-### Searching for transactions
+### TRES
+
+Display TRES (Trackable RESources) (will be different on each cluster).
+We can add TRES items to the default list, and need to do so for, for example, each model of GPU card found in the cluster.
+
+TRES can be specified in QOS (fewer in version 22.05 than in newer versions)
+
+```
+sacctmgr show tres
+    Type            Name     ID 
+-------- --------------- ------ 
+     cpu                      1 
+     mem                      2 
+  energy                      3 
+    node                      4 
+ billing                      5 
+      fs            disk      6 
+    vmem                      7 
+   pages                      8 
+    gres             gpu   1001 
+    gres     gpu:tesv100   1002 
+    gres      gpu:titanv   1003 
+    gres     gpu:tesa100   1004 
+    gres    gpu:tesv100s   1005 
+```
+
+### Backing Up Users and QOS
+
+Currently JRT has stored some in `/root/slurm/sacctmgr-stuff/sacctmgr-dumps/`
+
+```
+# Dump the accounting database
+sacctmgr dump <cluster-name> file=<filename>
+```
+That backup only contains users!!!! Other things are stored in the sacctmgr database, such as QOS definitions.
+
+```
+# Dump the QOS definitions
+sacctmgr show qos > qos_backup-date.txt
+```
+
+### Database Transaction History
 
 You can use variants of `sacctmgr list transactions` to inspect the database going back to its founding. The kinds of things you can see:
+
 * who ran which command that changed the database
 * what commands involved a specific user
 * what commands changed a QOS
@@ -203,33 +263,7 @@ sacctmgr list transactions Users=simmons
 sacctmgr list transactions Action="Add Users" Start=2025-01-01 End=2025-01-31 format=Where,Time%10
 ```
 
-### TRES
-
-Display TRES (Trackable RESources) (will be different on each cluster)
-
-TRES can be specified in QOS (fewer in version 22.05 than in 24.xx)
-
-```
-sacctmgr show tres
-    Type            Name     ID 
--------- --------------- ------ 
-     cpu                      1 
-     mem                      2 
-  energy                      3 
-    node                      4 
- billing                      5 
-      fs            disk      6 
-    vmem                      7 
-   pages                      8 
-    gres             gpu   1001 
-    gres     gpu:tesv100   1002 
-    gres      gpu:titanv   1003 
-    gres     gpu:tesa100   1004 
-    gres    gpu:tesv100s   1005 
-```
-
 ### Miscellaneous
-
 
 ```
 # View the slurmdbd configuration in force
