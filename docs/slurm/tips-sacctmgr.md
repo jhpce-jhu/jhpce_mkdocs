@@ -91,13 +91,16 @@ sacctmgr -i mod qos deny-gpu-partition set flags=DenyOnLimit,OverPartQOS MaxSubm
 sacctmgr -i add user where name=bob cluster=jhpce3 account=jhpce partition=bstgpu set qos=deny-gpu-partition
 sacctmgr -i add user where name=bob cluster=jhpce3 account=jhpce partition=bstgpu2 set qos=deny-gpu-partition
 sacctmgr -i add user where name=bob cluster=jhpce3 account=jhpce partition=bstgpu3 set qos=deny-gpu-partition
+
+# Finding users of a specific QOS:
+sacctmgr list assoc format=user,partition,qos where qos=shared-400-4
 ```
 
 #### Finding users who have been modified
 
 Finding users who have any non-standard limits set on them requires looking at all associations and figuring out how to screen for each column. Probably by processing a text file. The "where" operator doesn't seem to be meant for searching in general. 
 
-Multiple allowed QOS:  To find "non-standard" users who have access to multiple allowed QOS, more than the "normal" association, you run "sacctmgr show user withassoc" and remove the output lines which contain " normal " in them. The space character on either side of the word normal is critical.
+Multiple allowed QOS:  To find "non-standard" users who have access to multiple allowed QOS, more than the "normal" association, you run "sacctmgr show user withassoc" and remove the output lines which contain " normal " in them. (**The space character on either side of the word normal is critical.**)
 
 Here are tips about looking into the database for "non-standard" users.
 
@@ -106,9 +109,11 @@ Here are tips about looking into the database for "non-standard" users.
 
 sacctmgr show user withassoc|grep -v " normal "
 
-produces a sixteen column wide display. Here are the fields
-and their awk field number, in case you want to craft an awk
-command to print only a few columns.
+produces a sixteen column wide display. NOTE: (**The space
+character on either side of the word normal is critical.**)
+
+Here are the fields and their awk field number, in case you
+want to craft an awk command to print only a few columns.
 
 $1 user
 $2 defaccount
@@ -127,11 +132,12 @@ $14 maxcpumins
 $15 qos
 $16 defaultqos
 
-# This command was an attempt to print only some interesting columns,
-# but it does not behave as expected -- even the column header lines printed
-# do not make sense.
-# The printf args need field width specifications to better align column entries
-sacctmgr show user withassoc|grep -v "normal "|awk '{printf "%s\t\t%s\t%s\t\n", $1,$6,$15}'
+# This command was an attempt to print only some interesting
+# columns, but it does not behave as expected -- even the column
+# header lines printed do not make sense.
+# The printf args need field width specifications to better
+# align column entries
+# sacctmgr show user withassoc|grep -v "normal "|awk '{printf "%s\t\t%s\t%s\t\n", $1,$6,$15}'
 ```
 
 ### **Managing QOS**
