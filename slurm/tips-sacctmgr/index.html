@@ -4167,18 +4167,23 @@ sacctmgr -i mod qos deny-gpu-partition set flags=DenyOnLimit,OverPartQOS MaxSubm
 sacctmgr -i add user where name=bob cluster=jhpce3 account=jhpce partition=bstgpu set qos=deny-gpu-partition
 sacctmgr -i add user where name=bob cluster=jhpce3 account=jhpce partition=bstgpu2 set qos=deny-gpu-partition
 sacctmgr -i add user where name=bob cluster=jhpce3 account=jhpce partition=bstgpu3 set qos=deny-gpu-partition
+
+# Finding users of a specific QOS:
+sacctmgr list assoc format=user,partition,qos where qos=shared-400-4
 </code></pre></div>
 <h4 id="finding-users-who-have-been-modified">Finding users who have been modified<a class="headerlink" href="#finding-users-who-have-been-modified" title="Anchor link to this section for reference">&para;</a></h4>
 <p>Finding users who have any non-standard limits set on them requires looking at all associations and figuring out how to screen for each column. Probably by processing a text file. The "where" operator doesn't seem to be meant for searching in general. </p>
-<p>Multiple allowed QOS:  To find "non-standard" users who have access to multiple allowed QOS, more than the "normal" association, you run "sacctmgr show user withassoc" and remove the output lines which contain " normal " in them. The space character on either side of the word normal is critical.</p>
+<p>Multiple allowed QOS:  To find "non-standard" users who have access to multiple allowed QOS, more than the "normal" association, you run "sacctmgr show user withassoc" and remove the output lines which contain " normal " in them. (<strong>The space character on either side of the word normal is critical.</strong>)</p>
 <p>Here are tips about looking into the database for "non-standard" users.</p>
 <div class="highlight"><pre><span></span><code># WHO HAS EXTRA ASSOCIATIONS
 
 sacctmgr show user withassoc|grep -v &quot; normal &quot;
 
-produces a sixteen column wide display. Here are the fields
-and their awk field number, in case you want to craft an awk
-command to print only a few columns.
+produces a sixteen column wide display. NOTE: (**The space
+character on either side of the word normal is critical.**)
+
+Here are the fields and their awk field number, in case you
+want to craft an awk command to print only a few columns.
 
 $1 user
 $2 defaccount
@@ -4197,11 +4202,12 @@ $14 maxcpumins
 $15 qos
 $16 defaultqos
 
-# This command was an attempt to print only some interesting columns,
-# but it does not behave as expected -- even the column header lines printed
-# do not make sense.
-# The printf args need field width specifications to better align column entries
-sacctmgr show user withassoc|grep -v &quot;normal &quot;|awk &#39;{printf &quot;%s\t\t%s\t%s\t\n&quot;, $1,$6,$15}&#39;
+# This command was an attempt to print only some interesting
+# columns, but it does not behave as expected -- even the column
+# header lines printed do not make sense.
+# The printf args need field width specifications to better
+# align column entries
+# sacctmgr show user withassoc|grep -v &quot;normal &quot;|awk &#39;{printf &quot;%s\t\t%s\t%s\t\n&quot;, $1,$6,$15}&#39;
 </code></pre></div>
 <h3 id="managing-qos"><strong>Managing QOS</strong><a class="headerlink" href="#managing-qos" title="Anchor link to this section for reference">&para;</a></h3>
 <p><mark class="critic">To delete a parameter from a QOS, set it to the value -1</mark></p>
@@ -4354,7 +4360,7 @@ sacctmgr clear stats
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="August 15, 2025 04:33:38 UTC">August 15, 2025</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="August 25, 2025 17:13:43 UTC">August 25, 2025</span>
   </span>
 
     
