@@ -4047,8 +4047,8 @@
 <p>A job consists of</p>
 <ol>
 <li>an optional set of <strong><em>directives</em></strong></li>
-<li>a command to run, either bash (for an interactive job) or a shell script<sup id="fnref:1"><a class="footnote-ref" href="#fn:1">1</a></sup> (for a batch job)</li>
-<li>one or more <strong><em>steps</em></strong>, numbered starting from 0.<sup id="fnref:2"><a class="footnote-ref" href="#fn:2">2</a></sup></li>
+<li>a command to run, either bash (for an interactive job) or a shell script<sup id="fnref:1"><a class="footnote-ref" href="#fn:1">2</a></sup> (for a batch job)</li>
+<li>one or more <strong><em>steps</em></strong>, numbered starting from 0.<sup id="fnref:2"><a class="footnote-ref" href="#fn:2">3</a></sup></li>
 </ol>
 <p><strong>Interactive jobs</strong> provide a shell interface on a single compute node. There you can run programs interactively, including ones with GUI interfaces that display via the X11 protocal. For more information, see our page <a href="../interactive-jobs/">here</a>.</p>
 <p><strong>Batch jobs</strong> are handled by a job scheduler within SLURM, and start when they can get access to one or more compute nodes providing sufficient resources. These jobs do their work unattended. For more information, see our page <a href="../crafting-jobs/">here</a>.</p>
@@ -4067,7 +4067,7 @@
 <p>A <strong>task</strong> is executed on a single <strong><em>compute node</em></strong> in a job step, using one or more CPU cores and a non-zero amount of memory (5 gigabytes if you don't specify -- you can request less than 5G!! -- the less memory your job needs, the more likely it will be able to run).</p>
 <p>If there are multiple tasks, then each uses a subset of the resources of the overall job.  Multiple tasks can run on a single compute node or on multiple nodes. The resources used by any one task cannot exceed what is found on a single node.</p>
 <h3 id="nodes-and-partitons">NODES and PARTITONS<a class="headerlink" href="#nodes-and-partitons" title="Anchor link to this section for reference">&para;</a></h3>
-<p>Jobs execute on a set of one or more compute nodes called a <strong><em>nodelist</em></strong>. The first node in that set is called the <strong><em>0th node</em></strong>.<sup id="fnref:3"><a class="footnote-ref" href="#fn:3">3</a></sup></p>
+<p>Jobs execute on a set of one or more compute nodes called a <strong><em>nodelist</em></strong>. The first node in that set is called the <strong><em>0th node</em></strong>.<sup id="fnref:3"><a class="footnote-ref" href="#fn:3">1</a></sup></p>
 <p>Compute nodes are grouped together into <strong><em>partitions</em></strong>. For more information about partitions, see our page <a href="../partitions/">here</a>.</p>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
@@ -4406,14 +4406,14 @@ No reason has been set for this job yet. Waiting for the scheduler to determine 
 <div class="footnote">
 <hr />
 <ol>
+<li id="fn:3">
+<p>If there are more than one nodes, one should look on the 0th node for  information about the job in /var/log/slurm/slurmd.log file when troubleshooting.&#160;<a class="footnote-backref" href="#fnref:3" title="Jump back to footnote 1 in the text">&#8617;</a></p>
+</li>
 <li id="fn:1">
-<p>One does not have to use the bash shell for interactive sessions or to execute your batch script. You can specify other shells or interpreters.&#160;<a class="footnote-backref" href="#fnref:1" title="Jump back to footnote 1 in the text">&#8617;</a></p>
+<p>One does not have to use the bash shell for interactive sessions or to execute your batch script. You can specify other shells or interpreters.&#160;<a class="footnote-backref" href="#fnref:1" title="Jump back to footnote 2 in the text">&#8617;</a></p>
 </li>
 <li id="fn:2">
-<p>(It is unclear to the author whether an interactive job officially has a step. No steps are listed for them in the sacct output, but he suspects that, technically, in the vendor's documentation, it does have a step. Because tasks are implemented by job steps.)&#160;<a class="footnote-backref" href="#fnref:2" title="Jump back to footnote 2 in the text">&#8617;</a></p>
-</li>
-<li id="fn:3">
-<p>If there are more than one nodes, one should look on the 0th node for  information about the job in /var/log/slurm/slurmd.log file when troubleshooting.&#160;<a class="footnote-backref" href="#fnref:3" title="Jump back to footnote 3 in the text">&#8617;</a></p>
+<p>(It is unclear to the author whether an interactive job officially has a step. No steps are listed for them in the sacct output, but he suspects that, technically, in the vendor's documentation, it does have a step. Because tasks are implemented by job steps.)&#160;<a class="footnote-backref" href="#fnref:2" title="Jump back to footnote 3 in the text">&#8617;</a></p>
 </li>
 </ol>
 </div>

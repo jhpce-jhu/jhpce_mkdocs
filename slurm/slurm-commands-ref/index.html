@@ -4015,7 +4015,7 @@
 written a page with advice about using the command, use the <mark class="critic">(LOCAL TIPS)</mark> link.</p>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
-<p><strong>Do not frequently<sup id="fnref2:1"><a class="footnote-ref" href="#fn:1">1</a></sup> run slurmpic, squeue, sacct or other Slurm client commands using loops in shell scripts or other programs.</strong> </p>
+<p><strong>Do not frequently<sup id="fnref:1"><a class="footnote-ref" href="#fn:1">1</a></sup> run slurmpic, squeue, sacct or other Slurm client commands using loops in shell scripts or other programs.</strong> </p>
 <p>These commands all send remote procedure calls to slurmctld, the main SLURM control and scheduling daemon, They may also perform look-ups in the accounting database. That process and the database need to be <em>highly responsive</em> to the input/output caused by running jobs.</p>
 <p>Ensure that programs limit calls to slurmctld to the minimum necessary for the information you are trying to gather. Add arguments to limit to needed partitions or users or job data fields, etcetera.</p>
 </div>
@@ -4062,7 +4062,7 @@ written a page with advice about using the command, use the <mark class="critic"
 <h3 id="information-about-cluster-and-jobs_1">Information about cluster and jobs<a class="headerlink" href="#information-about-cluster-and-jobs_1" title="Anchor link to this section for reference">&para;</a></h3>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
-<p><strong>Do not frequently<sup id="fnref:1"><a class="footnote-ref" href="#fn:1">1</a></sup> run slurmpic, squeue, sacct or other Slurm client commands using loops in shell scripts or other programs.</strong> </p>
+<p><strong>Do not frequently<sup id="fnref2:1"><a class="footnote-ref" href="#fn:1">1</a></sup> run slurmpic, squeue, sacct or other Slurm client commands using loops in shell scripts or other programs.</strong> </p>
 <p>These commands all send remote procedure calls to slurmctld, the main SLURM control and scheduling daemon, They may also perform look-ups in the accounting database. That process and the database need to be <em>highly responsive</em> to the input/output caused by running jobs.</p>
 <p>Ensure that programs limit calls to slurmctld to the minimum necessary for the information you are trying to gather. Add arguments to limit to needed partitions or users or job data fields, etcetera.</p>
 </div>
