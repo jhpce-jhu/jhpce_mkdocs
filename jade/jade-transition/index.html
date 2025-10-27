@@ -8,13 +8,11 @@
       
       
       
-        <link rel="canonical" href="https://jhpce.jhu.edu/slurm/time-limits/">
+        <link rel="canonical" href="https://jhpce.jhu.edu/jade/jade-transition/">
       
       
-        <link rel="prev" href="../ram/">
+        <link rel="prev" href="../../orient/images/latest-csub-orient.pdf">
       
-      
-        <link rel="next" href="../slurm-commands-ref/">
       
       
       <link rel="icon" href="../../assets/images/favicon.png">
@@ -22,7 +20,7 @@
     
     
       
-        <title>Time Limits - JHPCE</title>
+        <title>Jade transition - JHPCE</title>
       
     
     
@@ -86,7 +84,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#time-limits" class="md-skip">
+        <a href="#jade-overview" class="md-skip">
           Skip to content
         </a>
       
@@ -121,7 +119,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Time Limits
+              Jade transition
             
           </span>
         </div>
@@ -2677,10 +2675,8 @@
                 
   
   
-    
   
   
-  
     
     
       
@@ -2720,11 +2716,11 @@
       
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1_10" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1_10" >
         
           
           <label class="md-nav__link" for="__nav_1_10" id="__nav_1_10_label" tabindex="0">
@@ -2740,7 +2736,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_1_10_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_1_10_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_1_10">
             <span class="md-nav__icon md-icon"></span>
             Job scheduler (SLURM)
@@ -2754,7 +2750,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../getting-started/" class="md-nav__link">
+      <a href="../../slurm/getting-started/" class="md-nav__link">
         
   
   
@@ -2777,7 +2773,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../about-jobs/" class="md-nav__link">
+      <a href="../../slurm/about-jobs/" class="md-nav__link">
         
   
   
@@ -2800,7 +2796,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../partitions/" class="md-nav__link">
+      <a href="../../slurm/partitions/" class="md-nav__link">
         
   
   
@@ -2823,7 +2819,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../ram/" class="md-nav__link">
+      <a href="../../slurm/ram/" class="md-nav__link">
         
   
   
@@ -2843,32 +2839,10 @@
                 
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  
-  <span class="md-ellipsis">
-    Time Limits
-    
-  </span>
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../../slurm/time-limits/" class="md-nav__link">
         
   
   
@@ -2879,113 +2853,6 @@
   
 
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#setting-a-time-limit-for-your-slurm-job-on-jhpce" class="md-nav__link">
-    <span class="md-ellipsis">
-      Setting a time limit for your SLURM job on JHPCE
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#importance-of-time-limits" class="md-nav__link">
-    <span class="md-ellipsis">
-      Importance of Time Limits:
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#syntax-for-setting-time-limits" class="md-nav__link">
-    <span class="md-ellipsis">
-      Syntax for Setting Time Limits:
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#jhpce-cluster-time-limit-policies" class="md-nav__link">
-    <span class="md-ellipsis">
-      JHPCE Cluster Time Limit Policies:
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#best-practices" class="md-nav__link">
-    <span class="md-ellipsis">
-      Best Practices:
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Best Practices:">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#receive-email-notifications" class="md-nav__link">
-    <span class="md-ellipsis">
-      Receive Email Notifications
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#what-chatgpt-wrote" class="md-nav__link">
-    <span class="md-ellipsis">
-      What ChatGPT Wrote:
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#backfill-scheduler-strategies" class="md-nav__link">
-    <span class="md-ellipsis">
-      Backfill Scheduler Strategies:
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#conclusion" class="md-nav__link">
-    <span class="md-ellipsis">
-      Conclusion:
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -3052,7 +2919,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../slurm-commands-ref/" class="md-nav__link">
+      <a href="../../slurm/slurm-commands-ref/" class="md-nav__link">
         
   
   
@@ -3075,7 +2942,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../tips-sacct/" class="md-nav__link">
+      <a href="../../slurm/tips-sacct/" class="md-nav__link">
         
   
   
@@ -3100,7 +2967,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../tips-sacctmgr/" class="md-nav__link">
+      <a href="../../slurm/tips-sacctmgr/" class="md-nav__link">
         
   
   
@@ -3123,7 +2990,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../tips-scontrol/" class="md-nav__link">
+      <a href="../../slurm/tips-scontrol/" class="md-nav__link">
         
   
   
@@ -3146,7 +3013,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../tips-squeue/" class="md-nav__link">
+      <a href="../../slurm/tips-squeue/" class="md-nav__link">
         
   
   
@@ -3169,7 +3036,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../tips-reportseff/" class="md-nav__link">
+      <a href="../../slurm/tips-reportseff/" class="md-nav__link">
         
   
   
@@ -3202,7 +3069,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../interactive-jobs/" class="md-nav__link">
+      <a href="../../slurm/interactive-jobs/" class="md-nav__link">
         
   
   
@@ -3225,7 +3092,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../crafting-jobs/" class="md-nav__link">
+      <a href="../../slurm/crafting-jobs/" class="md-nav__link">
         
   
   
@@ -3248,7 +3115,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../monitoring/" class="md-nav__link">
+      <a href="../../slurm/monitoring/" class="md-nav__link">
         
   
   
@@ -3271,7 +3138,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../whenstart/" class="md-nav__link">
+      <a href="../../slurm/whenstart/" class="md-nav__link">
         
   
   
@@ -3294,7 +3161,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../qos/" class="md-nav__link">
+      <a href="../../slurm/qos/" class="md-nav__link">
         
   
   
@@ -3317,7 +3184,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../environment/" class="md-nav__link">
+      <a href="../../slurm/environment/" class="md-nav__link">
         
   
   
@@ -3340,7 +3207,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../node-features/" class="md-nav__link">
+      <a href="../../slurm/node-features/" class="md-nav__link">
         
   
   
@@ -3363,7 +3230,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../user-guide-collection/" class="md-nav__link">
+      <a href="../../slurm/user-guide-collection/" class="md-nav__link">
         
   
   
@@ -3386,7 +3253,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../slurm-faq/" class="md-nav__link">
+      <a href="../../slurm/slurm-faq/" class="md-nav__link">
         
   
   
@@ -3866,8 +3733,10 @@
                 
   
   
+    
   
   
+  
     
     
       
@@ -3879,11 +3748,11 @@
       
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1_14" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1_14" checked>
         
           
           <label class="md-nav__link" for="__nav_1_14" id="__nav_1_14_label" tabindex="0">
@@ -3899,7 +3768,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_1_14_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_1_14_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_1_14">
             <span class="md-nav__icon md-icon"></span>
             JADE
@@ -3910,10 +3779,30 @@
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../../jade/jade-transition/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    Jade transition
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   
@@ -3924,6 +3813,144 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#jade-overview" class="md-nav__link">
+    <span class="md-ellipsis">
+      JADE Overview
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#information-for-users-migrating-to-jade-from-jhpce-or-csub" class="md-nav__link">
+    <span class="md-ellipsis">
+      Information for users migrating to JADE from JHPCE or CSUB
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Information for users migrating to JADE from JHPCE or CSUB">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#changes-in-common-for-both-dbgap-and-cms-users" class="md-nav__link">
+    <span class="md-ellipsis">
+      Changes in common for both dbGaP and CMS users
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#information-specific-to-the-dbgap-community" class="md-nav__link">
+    <span class="md-ellipsis">
+      Information specific to the dbGaP community
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#information-specific-to-the-cms-user-community" class="md-nav__link">
+    <span class="md-ellipsis">
+      Information specific to the CMS user community
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#jade-features-coming-soon" class="md-nav__link">
+    <span class="md-ellipsis">
+      JADE features Coming Soon!
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#motivation-to-create-the-jade-facility" class="md-nav__link">
+    <span class="md-ellipsis">
+      Motivation to create the JADE facility
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#health-policy-management-hpm-component-of-jade" class="md-nav__link">
+    <span class="md-ellipsis">
+      Health Policy &amp; Management (HPM) Component of JADE
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#differences-between-jhpce-c-sub-clusters" class="md-nav__link">
+    <span class="md-ellipsis">
+      Differences between JHPCE &amp; C-SUB Clusters
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Differences between JHPCE &amp; C-SUB Clusters">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#commonalities" class="md-nav__link">
+    <span class="md-ellipsis">
+      Commonalities
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#differences" class="md-nav__link">
+    <span class="md-ellipsis">
+      Differences
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#getting-help" class="md-nav__link">
+    <span class="md-ellipsis">
+      Getting Help
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -3961,8 +3988,6 @@
   
   
   
-    
-  
   
     <label class="md-nav__title" for="__toc">
       <span class="md-nav__icon md-icon"></span>
@@ -3971,64 +3996,55 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#setting-a-time-limit-for-your-slurm-job-on-jhpce" class="md-nav__link">
+  <a href="#jade-overview" class="md-nav__link">
     <span class="md-ellipsis">
-      Setting a time limit for your SLURM job on JHPCE
+      JADE Overview
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#importance-of-time-limits" class="md-nav__link">
+  <a href="#information-for-users-migrating-to-jade-from-jhpce-or-csub" class="md-nav__link">
     <span class="md-ellipsis">
-      Importance of Time Limits:
+      Information for users migrating to JADE from JHPCE or CSUB
     </span>
   </a>
   
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#syntax-for-setting-time-limits" class="md-nav__link">
-    <span class="md-ellipsis">
-      Syntax for Setting Time Limits:
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#jhpce-cluster-time-limit-policies" class="md-nav__link">
-    <span class="md-ellipsis">
-      JHPCE Cluster Time Limit Policies:
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#best-practices" class="md-nav__link">
-    <span class="md-ellipsis">
-      Best Practices:
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Best Practices:">
+    <nav class="md-nav" aria-label="Information for users migrating to JADE from JHPCE or CSUB">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#receive-email-notifications" class="md-nav__link">
+  <a href="#changes-in-common-for-both-dbgap-and-cms-users" class="md-nav__link">
     <span class="md-ellipsis">
-      Receive Email Notifications
+      Changes in common for both dbGaP and CMS users
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#what-chatgpt-wrote" class="md-nav__link">
+  <a href="#information-specific-to-the-dbgap-community" class="md-nav__link">
     <span class="md-ellipsis">
-      What ChatGPT Wrote:
+      Information specific to the dbGaP community
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#information-specific-to-the-cms-user-community" class="md-nav__link">
+    <span class="md-ellipsis">
+      Information specific to the CMS user community
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#jade-features-coming-soon" class="md-nav__link">
+    <span class="md-ellipsis">
+      JADE features Coming Soon!
     </span>
   </a>
   
@@ -4040,18 +4056,60 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#backfill-scheduler-strategies" class="md-nav__link">
+  <a href="#motivation-to-create-the-jade-facility" class="md-nav__link">
     <span class="md-ellipsis">
-      Backfill Scheduler Strategies:
+      Motivation to create the JADE facility
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#conclusion" class="md-nav__link">
+  <a href="#health-policy-management-hpm-component-of-jade" class="md-nav__link">
     <span class="md-ellipsis">
-      Conclusion:
+      Health Policy &amp; Management (HPM) Component of JADE
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#differences-between-jhpce-c-sub-clusters" class="md-nav__link">
+    <span class="md-ellipsis">
+      Differences between JHPCE &amp; C-SUB Clusters
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Differences between JHPCE &amp; C-SUB Clusters">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#commonalities" class="md-nav__link">
+    <span class="md-ellipsis">
+      Commonalities
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#differences" class="md-nav__link">
+    <span class="md-ellipsis">
+      Differences
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#getting-help" class="md-nav__link">
+    <span class="md-ellipsis">
+      Getting Help
     </span>
   </a>
   
@@ -4073,82 +4131,114 @@
 
 
 
-<h1 id="time-limits">Time Limits<a class="headerlink" href="#time-limits" title="Anchor link to this section for reference">&para;</a></h1>
-<div class="highlight"><pre><span></span><code>Note: The following was largely written using ChatGPT.
-</code></pre></div>
-<h2 id="setting-a-time-limit-for-your-slurm-job-on-jhpce">Setting a time limit for your SLURM job on JHPCE<a class="headerlink" href="#setting-a-time-limit-for-your-slurm-job-on-jhpce" title="Anchor link to this section for reference">&para;</a></h2>
-<p>One crucial aspect of job management in SLURM is setting time limits for job execution. Time limits help ensure fair resource allocation, prevent jobs from monopolizing system resources, and facilitate efficient utilization of computing resources.</p>
-<h2 id="importance-of-time-limits">Importance of Time Limits:<a class="headerlink" href="#importance-of-time-limits" title="Anchor link to this section for reference">&para;</a></h2>
-<p>Setting time limits is essential for maintaining a balanced workload on an HPC system. By specifying a maximum runtime for each job, users prevent inefficient use of resources and minimize delays for others waiting to run their tasks. Time limits also aid in preventing runaway or stuck jobs that may consume resources indefinitely. This proactive approach to job management promotes fairness and improves the overall system efficiency, making it more accessible to a larger number of users.</p>
-<h2 id="syntax-for-setting-time-limits">Syntax for Setting Time Limits:<a class="headerlink" href="#syntax-for-setting-time-limits" title="Anchor link to this section for reference">&para;</a></h2>
-<p>In SLURM, users can set time limits using the --time or -t options when submitting a job. </p>
-<p>The time limit is specified in the format <strong>days-hours:minutes:seconds</strong>. For example, to request a job with a maximum runtime of 2 days, the following command can be used:</p>
-<p><code>sbatch --time=2-00:00:00 my_script.sh</code></p>
-<p>Or simply</p>
-<p><code>sbatch --time=2-00 myscript.sh</code></p>
-<p>To request an srun session with at 4 hour time limit you would run:</p>
-<p><code>srun --pty --x11 -t 4:00:00 bash</code></p>
-<p>Note that the “-t” option should be followed by a space and the <code>–-time</code> option should be followed by an “=” and a time, with no spaces.</p>
-<p>You can specify a default time in your ~/.slurm/defaults file. As documented in <a href="../crafting-jobs/#slurm-directive-order-of-precendence">this page</a> you can override such defaults with directives in your batch file or via the command line options.</p>
-<div class="highlight"><span class="filename">Examples of 5 and 10 days for interactive & batch jobs</span><pre><span></span><code>srun:*:time=5-00
-sbatch:*:time=10-00
-</code></pre></div>
-<h2 id="jhpce-cluster-time-limit-policies">JHPCE Cluster Time Limit Policies:<a class="headerlink" href="#jhpce-cluster-time-limit-policies" title="Anchor link to this section for reference">&para;</a></h2>
-<p>On the JHPCE cluster, specific time limit policies are in place to balance the needs of diverse users. The default time limit for job execution on the <a href="../partitions/">public partitions</a> (shared, interactive and gpu partitions) is set to 1 day, ensuring that shorter tasks do not face unnecessary delays. </p>
-<p>Additionally, users have the flexibility to request a maximum time limit of up to 90 days for longer-running jobs. This range accommodates a variety of computational workloads, offering users the freedom to tailor time limits according to the requirements of their specific tasks. Please note that by default these limits are only set on the <a href="../partitions/">public partitions</a> (shared, interactive and gpu partitions).</p>
-<h2 id="best-practices">Best Practices:<a class="headerlink" href="#best-practices" title="Anchor link to this section for reference">&para;</a></h2>
-<h3 id="receive-email-notifications">Receive Email Notifications<a class="headerlink" href="#receive-email-notifications" title="Anchor link to this section for reference">&para;</a></h3>
-<p>The directives <code>--mail-user</code> and <code>--mail-type</code> are used to tell SLURM that you want to receive email updates for certain events. One set of events is related to an approaching time limit: TIME_LIMIT_50, TIME_LIMIT_80, TIME_LIMIT_90 and TIME_LIMIT.</p>
-<p>If you did not use these directives when submitting your job, you can define or modify them on both pending and running jobs using <code>scontrol</code></p>
-<p><div class="highlight"><span class="filename">Be notified at 80% of job duration</span><pre><span></span><code>scontrol<span class="w"> </span>update<span class="w"> </span><span class="nv">jobid</span><span class="o">=</span>&lt;jobid&gt;<span class="w"> </span><span class="nv">mailtype</span><span class="o">=</span>time_limit_80
-</code></pre></div>
-<div class="highlight"><span class="filename">But only if you tell it where to send email</span><pre><span></span><code>scontrol<span class="w"> </span>update<span class="w"> </span><span class="nv">jobid</span><span class="o">=</span>&lt;jobid&gt;<span class="w"> </span><span class="nv">mailuser</span><span class="o">=</span>&lt;your-address@jh.edu&gt;
-</code></pre></div></p>
-<h3 id="what-chatgpt-wrote">What ChatGPT Wrote:<a class="headerlink" href="#what-chatgpt-wrote" title="Anchor link to this section for reference">&para;</a></h3>
-<p>When setting time limits in SLURM, it is crucial to consider the nature of the computational task.
-Jobs with well-defined execution times benefit from precise time limits, while more unpredictable tasks may require a degree of flexibility.
-Regularly reviewing and adjusting time limits based on job characteristics and system performance is a best practice to ensure optimal utilization of resources.
-If you don’t know precisely how long your job will take to run, it is generally better to request a longer time limit than expected, to avoid jobs being terminated prematurely mid-run.
-The time limit on an array job will be applied to each task, rather than the job as a whole.
-You can tell that a job has been terminated due to exceeding its time limit by noting that the “State” in the output of “sacct” is “TIMEOUT”, or noting the a line like “slurmstepd: error: *** JOB 123456 ON compute-123 CANCELLED AT 2024-02-13T12:03:27 DUE TO TIME LIMIT ***” in the SLURM output file.</p>
-<div class="highlight"><pre><span></span><code>[mmill116@login31 class-scripts]$ cat script1
- #!/bin/bash
- # Test script for JHPCE cluster
- date
- echo &quot;I am now running on compute node:&quot;
- hostname
- SLEEPTIME=$((20 + $RANDOM % 60))
- echo &quot;Sleeping &quot; $SLEEPTIME &quot; seconds...&quot;
- sleep $SLEEPTIME
- date
- echo &quot;Done...&quot;
- exit 0 
-[mmill116@login31 class-scripts]$ sbatch -a 1-10%4 -t 00:00:30 script1
-Submitted batch job 1980474 
+  <h1>Jade transition</h1>
 
-[mmill116@login31 class-scripts]$ sacct -j 1980474
- JobID           JobName  Partition    Account  AllocCPUS      State ExitCode 
- ------------ ---------- ---------- ---------- ---------- ---------- -------- 
- 1980474_1       script1     shared      jhpce          2  COMPLETED      0:0 
- 1980474_1.b+      batch                 jhpce          2  COMPLETED      0:0 
- 1980474_1.e+     extern                 jhpce          2  COMPLETED      0:0 
- 1980474_2       script1     shared      jhpce          2    TIMEOUT      0:0 
- 1980474_2.b+      batch                 jhpce          2  CANCELLED     0:15
-
-. . .
-
-[mmill116@login31 class-scripts]$ cat slurm-1980474_2.out
-Tue Feb 13 12:02:19 PM EST 2024
-I am now running on compute node:
-compute-093.cm.cluster
-Sleeping  71  seconds...
-slurmstepd: error: *** JOB 1980476 ON compute-093 
-CANCELLED AT 2024-02-13T12:03:27 DUE TO TIME LIMIT *** 
-</code></pre></div>
-<h2 id="backfill-scheduler-strategies">Backfill Scheduler Strategies:<a class="headerlink" href="#backfill-scheduler-strategies" title="Anchor link to this section for reference">&para;</a></h2>
-<p>SLURM’s backfill scheduler introduces an additional layer of sophistication to job scheduling. Backfilling allows shorter jobs to be scheduled into available resources ahead of longer jobs, provided that the overall system efficiency is not compromised. Time limits play a crucial role in backfill strategies, ensuring that shorter jobs do not overstay their welcome while maximizing resource utilization. The backfill scheduler contributes to improved job throughput, reduced queue times, and enhanced overall system responsiveness.</p>
-<h2 id="conclusion">Conclusion:<a class="headerlink" href="#conclusion" title="Anchor link to this section for reference">&para;</a></h2>
-<p>In conclusion, setting time limits in SLURM is a fundamental practice for efficient job management in HPC environments. It promotes fair resource allocation, prevents runaway jobs, and contributes to the overall effectiveness of the computing cluster. Users should be mindful of their job requirements, system dynamics, and best practices to harness the full potential of SLURM’s capabilities while maintaining a balanced and responsive computing environment.</p>
+<h2 id="jade-overview">JADE Overview<a class="headerlink" href="#jade-overview" title="Anchor link to this section for reference">&para;</a></h2>
+<p>The JHPCE Advanced Data Enclave (JADE) is a secured, NIST 800-171 compliant
+High Performance Compute (HPC) cluster managed by the Joint High Perfomance
+Computing Exchange (JHPCE) organization. The JADE cluster is designed to adhere to
+additional security protocols in order to meet the NIST 800-171 data handling
+requiremtns for Controlled Unclassified Information (CUI) data such as dbGaP.
+The JADE cluster also housed the JHU consolidated Centers for Medicare and Medicaid
+(CMS) data managed by the Health Analytics Research Platform (HARP) service center,
+which was formerly housed on the CSUB cluster</p>
+<h2 id="information-for-users-migrating-to-jade-from-jhpce-or-csub">Information for users migrating to JADE from JHPCE or CSUB<a class="headerlink" href="#information-for-users-migrating-to-jade-from-jhpce-or-csub" title="Anchor link to this section for reference">&para;</a></h2>
+<p>If you are a dbGaP or CMS data user on either the JHPCE or CSUB clusters, the JADE
+cluster will feel very familiar to you.  We use the same SLURM scheduler that is used
+in JHPCE and CSUB, and have the same applications/modules (R/SAS/Python ...) that we
+have on the other clusters.</p>
+<h3 id="changes-in-common-for-both-dbgap-and-cms-users">Changes in  common for both dbGaP and CMS users<a class="headerlink" href="#changes-in-common-for-both-dbgap-and-cms-users" title="Anchor link to this section for reference">&para;</a></h3>
+<ul>
+<li>The login node for the JADE cluster is "jade01.jhsph.edu".  So:<ul>
+<li>If you are on a Windows system, you will need to create a new MobaXterm session for the jade01.jhsph.edu login node. There are notes for doing this on page 18 from the CSUB orientation https://jhpce.jhu.edu/orient/images/latest-csub-orient.pdf, and you would substitute jade01.jhpce.edu for jhpcecms01.jhsph.edu</li>
+<li>If you are on a Mac, you will need to adjust your ssh command to use jade01.jhsph.edu instead of jhpcecms01.jhsph.edu.</li>
+</ul>
+</li>
+<li>The data structure for the various CUI will be centered around the DUA number.  The general directory layout will be /data/cms/c23456/cui
+will facilitate compliance to data handling requirements contained in the various DUAs.</li>
+<li>Data transfers via sftp will be done on ports specific to your community (CMS or dbGap) - More infor to follow</li>
+<li>Your userid will be in the format $COMMUNITY-$JHEDID-$DUA, so d-bsmith34-12345 for dbGaP data users or c-bsmith1-23456 for CMS data users</li>
+<li></li>
+</ul>
+<h3 id="information-specific-to-the-dbgap-community">Information specific to the dbGaP community<a class="headerlink" href="#information-specific-to-the-dbgap-community" title="Anchor link to this section for reference">&para;</a></h3>
+<ul>
+<li>Access to the jade01 login node will only be available via the SAFE desktop. This 
+additional access requirement from NIH and JHU Data Security</li>
+<li>Data will be structure by DUA number, so the path to your data on JADE will
+be /data/dbgap/d$DUA</li>
+<li>TODO - sftp ports</li>
+</ul>
+<h3 id="information-specific-to-the-cms-user-community">Information specific to the CMS user community<a class="headerlink" href="#information-specific-to-the-cms-user-community" title="Anchor link to this section for reference">&para;</a></h3>
+<ul>
+<li>The path to your dat awill change. For example, for DUA 23456 the path will change from /cms01/data/dua/23456 to /data/cms/c23456/cui (but we have made a shortcut to point /data/cms/c23456/cui to /cms01/data/dua/23456 so you can continue to use the old paths for a while</li>
+<li>TODO - sftp ports</li>
+</ul>
+<h3 id="jade-features-coming-soon">JADE features Coming Soon!<a class="headerlink" href="#jade-features-coming-soon" title="Anchor link to this section for reference">&para;</a></h3>
+<ul>
+<li>Open On Demand (OOD) - We are working on standing up an Open On Demand system for the JADE cluster.  This will enable access to various web-based applications, including an interactive shell environemnt, on JADE through a web interface.  This should eliminate the need to login to SAFE desktop in order to meet the DUA and JHU security requirements.</li>
+<li>Globus for file transfers - We are working on standing up a separate Globus transfer
+node to facilitate data transfes to and from the JADE cluster.</li>
+</ul>
+<h2 id="motivation-to-create-the-jade-facility">Motivation to create the JADE facility<a class="headerlink" href="#motivation-to-create-the-jade-facility" title="Anchor link to this section for reference">&para;</a></h2>
+<p>We were happily hosting dbGaP data on the JHPCE cluster, and then NIH was like, "All
+dbGaP data has to be on a NIST 800-171 compliant system!". So we decided that we should
+build one to meet the JHPCE cluster user's needs.</p>
+<h2 id="health-policy-management-hpm-component-of-jade">Health Policy &amp; Management (HPM) Component of JADE<a class="headerlink" href="#health-policy-management-hpm-component-of-jade" title="Anchor link to this section for reference">&para;</a></h2>
+<p>The Health Analytics Research Platform (HARP) provides data services to HBHI- affiliated and HEADS Center-affiliated investigators to facilitate research collaborations advancing HBHI’s strategic pillars.</p>
+<p><strong>HPM Personnel</strong></p>
+<ul>
+<li>HEADS/HARP Director: Dan Polsky </li>
+<li>HEADS/HARP Deputy Director: Matt Eisenberg </li>
+<li>CMS Data Expert: Frank Xu</li>
+</ul>
+<p><strong>Contact</strong></p>
+<p>Please send C-SUB data-specific requests such as</p>
+<ul>
+<li>joining the C-SUB</li>
+<li>exporting files out of the C-SUB</li>
+<li>data inventory – current and desired additions or updates</li>
+</ul>
+<p>to <strong>support@harp-csub.freshdesk.com</strong></p>
+<p><strong>Further Information</strong></p>
+<ul>
+<li>
+<p><a href="https://hbhi.jhu.edu/affiliate-resource/health-analytics-research-platform-harp">Health Analytics Research Platform (HARP)</a></p>
+</li>
+<li>
+<p><a href="https://hbhi.jhu.edu/about-us">Hopkins Business of Health Initiative (HBHI)</a></p>
+</li>
+<li>
+<p><a href="https://publichealth.jhu.edu/hopkins-economics-of-alzheimers-disease-and-services-center">Hopkins Economics of Alzheimer Disease &amp; Services (HEADS)</a></p>
+</li>
+</ul>
+<h2 id="differences-between-jhpce-c-sub-clusters">Differences between JHPCE &amp; C-SUB Clusters<a class="headerlink" href="#differences-between-jhpce-c-sub-clusters" title="Anchor link to this section for reference">&para;</a></h2>
+<p>The CMS subcluster (C-SUB) makes use of some of the resources of the original JHPCE cluster. For example, the scientific software such as STATA and SAS.</p>
+<p>However, in many other ways it operates differently than the rest of the cluster in order to keep CMS data from escaping.</p>
+<p>Please keep that in mind when reading JHPCE documentation or asking for help via the bitsupport &amp; bithelp mailing lists. Mention that you are a C-SUB user.</p>
+<h3 id="commonalities">Commonalities<a class="headerlink" href="#commonalities" title="Anchor link to this section for reference">&para;</a></h3>
+<ul>
+<li>SLURM job scheduler</li>
+<li>Almost all of the software</li>
+<li>use of modules</li>
+<li>except for programs which run out of containers like RStudio Server</li>
+</ul>
+<h3 id="differences">Differences<a class="headerlink" href="#differences" title="Anchor link to this section for reference">&para;</a></h3>
+<ul>
+<li>Different user accounts (all C-SUB have the form of <code>c-&lt;JHEDID&gt;-&lt;DUA-NUMBER&gt;</code>)</li>
+<li>Different login node (C-SUB: jhpcecms01.jhsph.edu, only accessible from JH networks (including the VPN))</li>
+<li>Different SLURM server, partitions and nodes (cluster name is "cms" instead of "jhpce3"). So job acounting records differ. Default partition for jobs in "jhpce3" is "shared" while in "cms" it is "cms".</li>
+<li>File transfer in and out is VERY different (see C-SUB orientation pdf)</li>
+<li>Home directory locations (under <code>/users/&lt;DUA-NUMBER&gt;/</code> instead of just <code>/users/</code>)</li>
+<li>Common group-writable file sharing areas among DUA members (e.g. /users/55548/shared/)</li>
+</ul>
+<h2 id="getting-help">Getting Help<a class="headerlink" href="#getting-help" title="Anchor link to this section for reference">&para;</a></h2>
+<p>Many of the pages on this web site will be useful to C-SUB users. However they will need to interpret what they read and think about whether applying it in the C-SUB requires any modification or re-interpretation.</p>
+<p>Sources of assistance:</p>
+<ul>
+<li>This web site - use the search field</li>
+<li>This web site - see the section titled "Getting Help"</li>
+<li>the <a href="../../orient/images/latest-csub-orient.pdf">orientation slides</a> are improved over time. They contain much information! Because of a lack of staff time, this document will be improved ahead of adding C-SUB-specific information to this web site. There is a version date on the first page. You can use that to compare to the one you used during your orientation.</li>
+</ul>
 
 
 
@@ -4169,7 +4259,7 @@ CANCELLED AT 2024-02-13T12:03:27 DUE TO TIME LIMIT ***
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="May 6, 2024 20:22:24 UTC">May 6, 2024</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="October 27, 2025 20:05:24 UTC">October 27, 2025</span>
   </span>
 
     
@@ -4185,7 +4275,7 @@ CANCELLED AT 2024-02-13T12:03:27 DUE TO TIME LIMIT ***
     </span>
     <nav>
       
-        <a href="mailto:tunison@jhu.edu">jeffreytunison</a>
+        <a href="mailto:mmill116@jhu.edu">mamiller615</a>
     </nav>
   </span>
 
@@ -4272,7 +4362,7 @@ CANCELLED AT 2024-02-13T12:03:27 DUE TO TIME LIMIT ***
       <nav class="md-footer__inner md-grid" aria-label="Footer" >
         
           
-          <a href="../ram/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Memory Usage">
+          <a href="../../orient/images/latest-csub-orient.pdf" class="md-footer__link md-footer__link--prev" aria-label="Previous: C-SUB Orientation (PDF)">
             <div class="md-footer__button md-icon">
               
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
@@ -4282,27 +4372,11 @@ CANCELLED AT 2024-02-13T12:03:27 DUE TO TIME LIMIT ***
                 Previous
               </span>
               <div class="md-ellipsis">
-                Memory Usage
+                C-SUB Orientation (PDF)
               </div>
             </div>
           </a>
         
-        
-          
-          <a href="../slurm-commands-ref/" class="md-footer__link md-footer__link--next" aria-label="Next: Cmd tips &amp; reference">
-            <div class="md-footer__title">
-              <span class="md-footer__direction">
-                Next
-              </span>
-              <div class="md-ellipsis">
-                Cmd tips & reference
-              </div>
-            </div>
-            <div class="md-footer__button md-icon">
-              
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
-            </div>
-          </a>
         
       </nav>
     
