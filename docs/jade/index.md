@@ -15,7 +15,7 @@ The JADE cluster also housed the JHU consolidated Centers for Medicare and Medic
 (CMS) data managed by the Health Analytics Research Platform (HARP) service center,
 which was formerly housed on the CSUB cluster.
 
-For users migrating from JHPCE or CSUB to JADE, please see [this transition document)[jade-transition.md]
+For users migrating from JHPCE or CSUB to JADE, please see [this transition document](jade-transition.md)
 for information about changes in JADE.
 
 
