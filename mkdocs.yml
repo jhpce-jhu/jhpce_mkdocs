@@ -126,7 +126,8 @@ nav:
       - New User: csub/new-csub-users.md
       - C-SUB Orientation (PDF): orient/images/latest-csub-orient.pdf
     - JADE:
-      - jade/jade-transition.md
+      - jade/index.md
+      - JADE Transition: jade/jade-transition.md
 # Example of three-level topic syntax
 #   - Storage:
 #     - slurm/index.md
