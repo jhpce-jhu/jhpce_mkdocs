@@ -11,7 +11,7 @@ High Performance Compute (HPC) cluster managed by the Joint High Perfomance
 Computing Exchange (JHPCE) organization. The JADE cluster is designed to adhere to
 additional security protocols in order to meet the NIST 800-171 data handling
 requirements for Controlled Unclassified Information (CUI) data such as dbGaP.
-The JADE cluster also housed the JHU consolidated Centers for Medicare and Medicaid
+The JADE cluster also houses the JHU consolidated Centers for Medicare and Medicaid
 (CMS) data managed by the Health Analytics Research Platform (HARP) service center,
 which was formerly housed on the CSUB cluster.
 
