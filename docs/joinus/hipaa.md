@@ -20,7 +20,7 @@ The JHPCE cluster may be able to meet the requirements specified by the data
 provider for the handling of PHI data.  There may be additional steps that
 the data analysts will need to go through in order to access the data, but this
 is typically a matter of running a few extra steps to access the data.  If you
-have a dataset with sensitive data, please reach out to us at [bitsupport@jhu.edu](mailto:bitsupport@jhu.edu?subject=HIPAA Inquiry")
+have a dataset with sensitive data, please reach out to us at [bitsupport@lists.jhu.edu](mailto:bitsupport@lists.jhu.edu?subject=HIPAA Inquiry")
 and we can review the data handling requirements to assess whether the JHPCE
 cluster can meet them.
 
