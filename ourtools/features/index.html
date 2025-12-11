@@ -5800,7 +5800,8 @@ For more details about snippets, including ability to pull in only certain secti
 I cannot discern the threat level to us in our usage.
 <a href="https://github.com/facelessuser/pymdown-extensions/security/advisories/GHSA-jh85-wwv9-24hv">https://github.com/facelessuser/pymdown-extensions/security/advisories/GHSA-jh85-wwv9-24hv</a></p>
 <h2 id="recipe-for-running-mkdocs-locally">Recipe for Running Mkdocs Locally<a class="headerlink" href="#recipe-for-running-mkdocs-locally" title="Anchor link to this section for reference">&para;</a></h2>
-<p>As of 20240401 these steps are needed to build a local Material for MkDocs server that will run a browser at <code>http://127.0.0.1:8000/</code></p>
+<p>If you're doing a lot of edits or want to review changes before you commit them to the web site, it is very useful to be able to do that on your local machine.</p>
+<p>As of 20251211 these steps are needed to build and start a local Material for MkDocs server that will run a browser at <code>http://127.0.0.1:8000/</code></p>
 <p>JRT thinks that the OS involved was macOS 12 (Monteray) or 14 (Sonoma).</p>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
@@ -5808,11 +5809,26 @@ I cannot discern the threat level to us in our usage.
 </div>
 <div class="highlight"><pre><span></span><code>cd ~/Documents/GitHub/
 
+# Clone the repo
+# Depending on how you authenticate when pushing files to the repo
+
 git clone https://github.com/jhpce-jhu/jhpce_mkdocs
 # or you can use the ssh-key method:
 git clone git@github.com:jhpce-jhu/jhpce_mkdocs
 
-cd jhpce_mkdocs
+# If you want to use ssh keys, then before you can push you need to:
+# Generate a GitHub-specific key
+# Add that key to your GitHub account (https://github.com/settings/keys)
+# Have that key loaded in your ssh agent
+# Possibly, run this command to define origin correctly:
+# git remote set-url origin git@github.com:jhpce-jhu/jhpce_mkdocs.git
+
+cd jhpce_mkdocs/docs/
+
+# Edit in the docs/ subdirectory, not in sites/ (the latter is where
+# the web pages are built by an Action configured in the repo&#39;s
+# underlying configuration if your commit includes &#39;rebuild-site&#39;)
+cd docs/
 
 pip3 install mkdocs-material
 pip3 install mkdocs-git-revision-date-localized-plugin
@@ -5824,15 +5840,16 @@ pip3 install mkdocs_table_reader_plugin
 mkdocs build
 mkdocs serve
 
-# Edit in the docs/ subdirectory, not in sites/ (that&#39;s where the web pages are built)
-cd docs/
+# For example, create a new directory
 mkdir newsection
 # create a MarkDown document bob.md inside newsection/
+vi newsection/bob.md # or use whatever editor you prefer
+
+# Review your changed document in browser at `http://127.0.0.1:8000/`
+
+# Add revised files and commit them
 git add newsection/bob.md
 git -m &quot;rebuild-site My_descriptive_text&quot;
-
-# If you&#39;re using ssh keys to authenticate, you might need to add the right key
-# to your ssh agent using ssh-add &lt;path_to_private_key&gt;
 
 git push
 
@@ -5996,7 +6013,7 @@ https://www.starfallprojects.co.uk/blog/material-custom-status/#enable-the-featu
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="December 11, 2025 00:02:34 UTC">December 11, 2025</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="December 11, 2025 20:56:00 UTC">December 11, 2025</span>
   </span>
 
     
