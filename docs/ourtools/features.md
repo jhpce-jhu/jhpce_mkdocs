@@ -477,7 +477,9 @@ I cannot discern the threat level to us in our usage.
 [https://github.com/facelessuser/pymdown-extensions/security/advisories/GHSA-jh85-wwv9-24hv](https://github.com/facelessuser/pymdown-extensions/security/advisories/GHSA-jh85-wwv9-24hv)
 
 ## Recipe for Running Mkdocs Locally
-As of 20240401 these steps are needed to build a local Material for MkDocs server that will run a browser at `http://127.0.0.1:8000/`
+If you're doing a lot of edits or want to review changes before you commit them to the web site, it is very useful to be able to do that on your local machine.
+
+As of 20251211 these steps are needed to build and start a local Material for MkDocs server that will run a browser at `http://127.0.0.1:8000/`
 
 JRT thinks that the OS involved was macOS 12 (Monteray) or 14 (Sonoma).
 
@@ -487,11 +489,26 @@ JRT thinks that the OS involved was macOS 12 (Monteray) or 14 (Sonoma).
 ```ShellSession linenums="0"
 cd ~/Documents/GitHub/
 
+# Clone the repo
+# Depending on how you authenticate when pushing files to the repo
+
 git clone https://github.com/jhpce-jhu/jhpce_mkdocs
 # or you can use the ssh-key method:
 git clone git@github.com:jhpce-jhu/jhpce_mkdocs
 
-cd jhpce_mkdocs
+# If you want to use ssh keys, then before you can push you need to:
+# Generate a GitHub-specific key
+# Add that key to your GitHub account (https://github.com/settings/keys)
+# Have that key loaded in your ssh agent
+# Possibly, run this command to define origin correctly:
+# git remote set-url origin git@github.com:jhpce-jhu/jhpce_mkdocs.git
+
+cd jhpce_mkdocs/docs/
+
+# Edit in the docs/ subdirectory, not in sites/ (the latter is where
+# the web pages are built by an Action configured in the repo's
+# underlying configuration if your commit includes 'rebuild-site')
+cd docs/
 
 pip3 install mkdocs-material
 pip3 install mkdocs-git-revision-date-localized-plugin
@@ -503,15 +520,16 @@ pip3 install mkdocs_table_reader_plugin
 mkdocs build
 mkdocs serve
 
-# Edit in the docs/ subdirectory, not in sites/ (that's where the web pages are built)
-cd docs/
+# For example, create a new directory
 mkdir newsection
 # create a MarkDown document bob.md inside newsection/
+vi newsection/bob.md # or use whatever editor you prefer
+
+# Review your changed document in browser at `http://127.0.0.1:8000/`
+
+# Add revised files and commit them
 git add newsection/bob.md
 git -m "rebuild-site My_descriptive_text"
-
-# If you're using ssh keys to authenticate, you might need to add the right key
-# to your ssh agent using ssh-add <path_to_private_key>
 
 git push
 
