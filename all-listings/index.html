@@ -5929,7 +5929,7 @@ fi
 </code></pre><pre><span></span><code>cd ~/Documents/GitHub/
 
 git clone https://github.com/jhpce-jhu/jhpce_mkdocs
-or you can use the ssh-key method:
+# or you can use the ssh-key method:
 git clone git@github.com:jhpce-jhu/jhpce_mkdocs
 
 cd jhpce_mkdocs
@@ -5940,8 +5940,25 @@ pip3 install mkdocs-open-in-new-tab
 pip3 install mkdocs-mermaid2-plugin
 pip3 install mkdocs-git-authors-plugin
 pip3 install mkdocs-extract-listings-plugin
+pip3 install mkdocs_table_reader_plugin
 mkdocs build
 mkdocs serve
+
+# Edit in the docs/ subdirectory, not in sites/ (that's where the web pages are built)
+cd docs/
+mkdir newsection
+# create a MarkDown document bob.md inside newsection/
+git add newsection/bob.md
+git -m "rebuild-site My_descriptive_text"
+
+# If you're using ssh keys to authenticate, you might need to add the right key
+# to your ssh agent using ssh-add &lt;path_to_private_key&gt;
+
+git push
+
+# If you cannot push b/c someone else changed the repo since your last pull
+git pull --rebase
+git push
 </code></pre><pre><span></span><code>INFO    -  DeprecationWarning: Call to deprecated method findAll. (Replaced by find_all) -- Deprecated since
            version 4.0.0.
              File
