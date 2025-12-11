@@ -479,6 +479,8 @@ I cannot discern the threat level to us in our usage.
 ## Recipe for Running Mkdocs Locally
 As of 20240401 these steps are needed to build a local Material for MkDocs server that will run a browser at `http://127.0.0.1:8000/`
 
+JRT thinks that the OS involved was macOS 12 (Monteray) or 14 (Sonoma).
+
 !!! Warning
     Because our `mkdocs.yml` contains some certain material, JRT thinks, `mkdocs serve` spits out errors if it doesn't find Git supporting files/directories. But you're supposed to be able to create stand-alone web pages outside of Git so it would be nice to understand the interdependency.
 
@@ -486,7 +488,7 @@ As of 20240401 these steps are needed to build a local Material for MkDocs serve
 cd ~/Documents/GitHub/
 
 git clone https://github.com/jhpce-jhu/jhpce_mkdocs
-or you can use the ssh-key method:
+# or you can use the ssh-key method:
 git clone git@github.com:jhpce-jhu/jhpce_mkdocs
 
 cd jhpce_mkdocs
@@ -497,8 +499,25 @@ pip3 install mkdocs-open-in-new-tab
 pip3 install mkdocs-mermaid2-plugin
 pip3 install mkdocs-git-authors-plugin
 pip3 install mkdocs-extract-listings-plugin
+pip3 install mkdocs_table_reader_plugin
 mkdocs build
 mkdocs serve
+
+# Edit in the docs/ subdirectory, not in sites/ (that's where the web pages are built)
+cd docs/
+mkdir newsection
+# create a MarkDown document bob.md inside newsection/
+git add newsection/bob.md
+git -m "rebuild-site My_descriptive_text"
+
+# If you're using ssh keys to authenticate, you might need to add the right key
+# to your ssh agent using ssh-add <path_to_private_key>
+
+git push
+
+# If you cannot push b/c someone else changed the repo since your last pull
+git pull --rebase
+git push
 ```
 
 ## Errors You Might Run Into Running Mkdocs Locally
