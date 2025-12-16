@@ -238,7 +238,7 @@ plugins:
   # enable while doing a lot of page-revision work.
   # IF YOU COMMENT THIS OUT, YOU NEED TO also comment out the line for the
   # file in the "nav:" section above.
-  - tags:
+  - tags
       tags_file: ourtools/site-tag-list.md
 
 #
