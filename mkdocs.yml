@@ -32,12 +32,12 @@ nav:
       - Support Email List Archives: help/list-archives.md
       - External Guides: help/external.md
       - Glossary: help/glossary-manual.md
-      - Tagged Files: ourtools/tags.md
       - How to read a manual page (pdf): help/images/guide-to-manual-pages.pdf
       - Tools For Site Developers: 
          - Handy Features: ourtools/features.md
          - Tips & Conventions: ourtools/tips-conventions.md
          - Wishlist: ourtools/wishlist.md
+         - Site Tag List: ourtools/site-tag-list.md
     - FAQ: help/faq.md
     - Accessing the cluster:
       - Overview: access/access-overview.md
@@ -126,8 +126,19 @@ nav:
       - New User: csub/new-csub-users.md
       - C-SUB Orientation (PDF): orient/images/latest-csub-orient.pdf
     - JADE:
-      - jade/index.md
-      - JADE Transition: jade/jade-transition.md
+      - About JADE: jade/jade-overview.md
+      - Transitioning to JADE:
+        - CMS Users: jade/cms-transition/cms-transition.md
+        - dbGaP Users: jade/dbgap-transition/dbgap-transition.md
+      - Accessing JADE: jade/access/overview.md
+        - Overview: jade/access/access-overview.md
+        - SSH: access/ssh.md
+        - X11: access/x11.md
+        - MobaXterm: access/mobaxterm.md
+        - Transferring files in or out: 
+          - Overview: jade/access/file-transfer.md
+          - SFTP: jade/access/onedrive.md
+          - Globus: jade/access/globus.md
 # Example of three-level topic syntax
 #   - Storage:
 #     - slurm/index.md
@@ -223,8 +234,12 @@ plugins:
   # JRT added https://timvink.github.io/mkdocs-table-reader-plugin/
   - table-reader
   # TAGS
-#  - tags:
-#      tags_file: ourtools/tags.md
+  # The tags plugin enables the display of page tags. It can be helpful to
+  # enable while doing a lot of page-revision work.
+  # IF YOU COMMENT THIS OUT, YOU NEED TO also comment out the line for the
+  # file in the "nav:" section above.
+  - tags:
+      tags_file: ourtools/site-tag-list.md
 
 #
 # Python MarkDown Extensions
