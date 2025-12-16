@@ -130,7 +130,7 @@ nav:
       - Transitioning to JADE:
         - CMS Users: jade/cms-transition/cms-transition.md
         - dbGaP Users: jade/dbgap-transition/dbgap-transition.md
-      - Accessing JADE: jade/access/overview.md
+      - Accessing JADE:
         - Overview: jade/access/access-overview.md
         - SSH: access/ssh.md
         - X11: access/x11.md
