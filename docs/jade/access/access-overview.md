@@ -9,7 +9,7 @@ title: "Access JADE Overview"
 
 # Accessing the JADE Cluster: Overview
 
-This page was created by duplicating the [access overview page for the main cluster](access/access-overview.md)
+This page was created by duplicating the [access overview page for the main cluster](../access/access-overview.md)
 and beginning to revise it.
 
 ## Cluster structure overview

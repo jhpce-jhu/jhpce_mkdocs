@@ -93,9 +93,8 @@ nav:
       - Partitions: slurm/partitions.md
       - Memory Usage: slurm/ram.md
       - Time Limits: slurm/time-limits.md
-      - "Command tips & reference":
-        - "Cmd tips & reference": slurm/slurm-commands-ref.md
-        # - reportseff tips: slurm/tips-reportseff.md
+      - Command tips and reference:
+        - Cmd tips and reference: slurm/slurm-commands-ref.md
         - sacct tips: slurm/tips-sacct.md
         - sacctmgr tips: slurm/tips-sacctmgr.md
         - scontrol tips: slurm/tips-scontrol.md
@@ -123,25 +122,34 @@ nav:
     - C-SUB:
       - What Is The C-SUB?: csub/csub-overview.md
       - New User: csub/new-csub-users.md
-      - C-SUB Orientation (PDF): orient/images/latest-csub-orient.pdf
+      - C-SUB Orientation (pdf): orient/images/latest-csub-orient.pdf
     - JADE:
-      - About JADE: jade/jade-overview.md
-      - Transitioning to JADE:
-        - CMS Users:
-           - Overview: jade/transition/cms-transition.md
-           - Path Changes chart (pdf): jade/transition/images/jade-path-summary-table.pdf
-           - Path Changes doc (pdf): jade/transition/images/paths-csub-to-jade.pdf
-        - dbGaP Users:
-      - Overview: jade/transition/dbgap-transition.md
-      - Accessing JADE:
-        - Overview: jade/access/access-overview.md
-        - SSH: access/ssh.md
-        - X11: access/x11.md
-        - MobaXterm: access/mobaxterm.md
-        - Transferring files in or out: 
-          - Overview: jade/access/file-transfer.md
-          - SFTP: jade/access/onedrive.md
-          - Globus: jade/access/globus.md
+      - About: jade/jade-overview.md
+      - Overview: jade/transition/cms-transition.md
+      - Path Changes chart (pdf): jade/transition/images/jade-path-summary-table.pdf
+      - Path Changes doc (pdf): jade/transition/images/paths-csub-to-jade.pdf
+# 20251217 12:40am What follows is the structure I wanted to work. The very same
+# structure works in many places earlier in the nav bar section!!!!!! But as soon
+# as you uncomment the "Transitioning" line the site fails to build. You see the
+# error: ERROR   -  Config value 'nav': Expected nav to be a list, got None
+#        Aborted with 1 configuration errors!
+#
+#     - Transitioning:
+#       - CMS Users:
+#          - Overview: jade/transition/cms-transition.md
+#          - Path Changes chart (pdf): jade/transition/images/jade-path-summary-table.pdf
+#          - Path Changes doc (pdf): jade/transition/images/paths-csub-to-jade.pdf
+#       - dbGaP Users:
+#     - Overview: jade/transition/dbgap-transition.md
+#     - Accessing JADE:
+#       - Overview: jade/access/access-overview.md
+#       - SSH: access/ssh.md
+#       - X11: access/x11.md
+#       - MobaXterm: access/mobaxterm.md
+#       - Transferring files in or out: 
+#         - Overview: jade/access/file-transfer.md
+#         - SFTP: jade/access/onedrive.md
+#         - Globus: jade/access/globus.md
 # Example of three-level topic syntax
 #   - Storage:
 #     - slurm/index.md
@@ -240,8 +248,10 @@ plugins:
   # The tags plugin enables the display of page tags. It can be helpful to
   # enable while doing a lot of page-revision work.
   # IF YOU COMMENT THIS PLUGIN OUT, YOU NEED TO also comment out the line for
-  # any tag-list files in the "nav:" section above.
-  - tags
+  # any tag-list files in the navigation section above.
+  # 20251216 - somehow this next line being present suddenly broke the ability
+  # for the site to be built
+  #- tags
       # This does not work as advertised (no info is dynamically generated)
       # You're supposed to put a special string in there and it will be replaced
       # they say, by all of the tags and pages.

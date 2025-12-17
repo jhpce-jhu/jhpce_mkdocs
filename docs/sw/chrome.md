@@ -25,7 +25,7 @@ relaunch Chromium.
 (The process number and computer name will be different in each case.)
 
 {==The way to avoid this problem is to always quit Chrome properly before your
-SLURM interactive session ends.==} Do that by choosing "Exit" from the drop down menu revealed by clicking on the three vertical dots in upper right corner. See [this image](../images/exiting-chromium-browser.png)
+SLURM interactive session ends.==} Do that by choosing "Exit" from the drop down menu revealed by clicking on the three vertical dots in upper right corner. See [this image](images/exiting-chromium-browser.png)
 
 ### Solving the locked profile problem
 
@@ -94,7 +94,7 @@ use by a single profile on a single computer at a time.
 When Chromium is launched, it creates a lock file within the profile directory
 which records the computer hostname, the process id ("pid") on that computer,
 the date, etc. This lock file is removed if one quits Chrome by choosing Exit
-from Chromium's menu (see [this image](../images/exiting-chromium-browser.png)).
+from Chromium's menu (see [this image](images/exiting-chromium-browser.png)).
 
 If your interactive session ends unexpectedly (e.g. runs out of memory) or you 
 exit your shell without first quitting Chromium, then the browser process is 
@@ -106,7 +106,7 @@ associated with the browser are still running.
 
 If all you want to do is to have multiple browser windows, you can choose "New Window" from the same drop-down menu that Exit is found on.
 
-But if you wanted to run Chrome on two different compute nodes simultaneously, then you would need to create a second profile. [This image](../images/chrome-create-new-profile.png) shows where to do that. Then launch each session with different command-line
+But if you wanted to run Chrome on two different compute nodes simultaneously, then you would need to create a second profile. [This image](images/chrome-create-new-profile.png) shows where to do that. Then launch each session with different command-line
 arguments specifying a different profile name. This places the files for that particular
 session in a different subdirectory of `~/.config/chromium/`
 

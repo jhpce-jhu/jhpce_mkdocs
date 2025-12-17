@@ -109,4 +109,4 @@ Sources of assistance:
 
 - This web site - use the search field
 - This web site - see the section titled "Getting Help"
-- the [orientation slides](../orient/images/latest-csub-orient.pdf) are improved over time. They contain much information! Because of a lack of staff time, this document will be improved ahead of adding C-SUB-specific information to this web site. There is a version date on the first page. You can use that to compare to the one you used during your orientation.
+- the [orientation slides](https://jhpce.jhu.edu/orient/images/latest-csub-orient.pdf) are improved over time. They contain much information! Because of a lack of staff time, this document will be improved ahead of adding C-SUB-specific information to this web site. There is a version date on the first page. You can use that to compare to the one you used during your orientation.
