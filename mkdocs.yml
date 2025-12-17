@@ -37,8 +37,8 @@ nav:
          - Handy Features: ourtools/features.md
          - Tips & Conventions: ourtools/tips-conventions.md
          - Wishlist: ourtools/wishlist.md
-	 # This does not work as advertised (no info is dynamically generated)
-         # - Site Tag List: ourtools/site-tag-list.md
+#	 This does not work as advertised (no info is dynamically generated)
+#        - Site Tag List: ourtools/site-tag-list.md
     - FAQ: help/faq.md
     - Accessing the cluster:
       - Overview: access/access-overview.md
