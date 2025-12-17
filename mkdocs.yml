@@ -37,7 +37,8 @@ nav:
          - Handy Features: ourtools/features.md
          - Tips & Conventions: ourtools/tips-conventions.md
          - Wishlist: ourtools/wishlist.md
-         - Site Tag List: ourtools/site-tag-list.md
+	 # This does not work as advertised (no info is dynamically generated)
+         # - Site Tag List: ourtools/site-tag-list.md
     - FAQ: help/faq.md
     - Accessing the cluster:
       - Overview: access/access-overview.md
@@ -128,8 +129,12 @@ nav:
     - JADE:
       - About JADE: jade/jade-overview.md
       - Transitioning to JADE:
-        - CMS Users: jade/cms-transition/cms-transition.md
-        - dbGaP Users: jade/dbgap-transition/dbgap-transition.md
+        - CMS Users:
+	   - Overview: jade/transition/cms-transition.md
+	   - Path Changes chart (pdf): jade/transition/images/jade-path-summary-table.pdf
+	   - Path Changes doc (pdf): jade/transition/images/paths-csub-to-jade.pdf
+        - dbGaP Users:
+	   - Overview: jade/transition/dbgap-transition.md
       - Accessing JADE:
         - Overview: jade/access/access-overview.md
         - SSH: access/ssh.md
@@ -238,8 +243,10 @@ plugins:
   # enable while doing a lot of page-revision work.
   # IF YOU COMMENT THIS OUT, YOU NEED TO also comment out the line for the
   # file in the "nav:" section above.
-  - tags:
-      tags_file: ourtools/site-tag-list.md
+  - tags
+      # This does not work as advertised (no info is dynamically generated)
+      # If you try add it back, have to add a : to the -tags line above
+      #tags_file: ourtools/site-tag-list.md
 
 #
 # Python MarkDown Extensions
