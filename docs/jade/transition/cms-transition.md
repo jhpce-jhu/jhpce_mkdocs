@@ -1,47 +1,50 @@
 ---
 tags:
   - jade
-  - topic-overview
+  - cms
 ---
 
-# JADE Overview
+# Transition of CMS Users of the C-SUB Cluster to the JADE Cluster
 
 The JHPCE Advanced Data Enclave (JADE) is a secured
 High Performance Compute (HPC) cluster managed by the Joint High Perfomance
 Computing Exchange (JHPCE) organization. The JADE cluster is designed to adhere to
 additional security protocols in order to meet the NIST 800-171 data handling
-requirements for Controlled Unclassified Information (CUI) data such as dbGaP.
-The JADE cluster also houses the JHU consolidated Centers for Medicare and Medicaid
-(CMS) data managed by the Health Analytics Research Platform (HARP) service center,
-which was formerly housed on the CSUB cluster.
+requirements for Controlled Unclassified Information (CUI) data. 800-171 is an
+improvement over an older standard required by the Centers for Medicare and
+Medicaid Services (CMS) that was implmented on the C-SUB.
+CMS data used on the C-SUB is managed by the Health Analytics Research Platform (HARP) service center,
 
-## Information for users migrating to JADE from JHPCE or CSUB
+The JADE cluster also houses data from the Database of Genotypes and Phenotypes (dbGaP)
+organization. So there are two sub-communities sharing JADE, "cms" and "dbgap".
+The JADE design process involved ensuring that data for each community (and DUA
+within each community) is visible only to the correct users.
 
-If you are a dbGaP or CMS data user on either the JHPCE or CSUB clusters, the JADE
-cluster will feel very familiar to you.  We use the same SLURM scheduler that is used
-in JHPCE and CSUB, and have the same applications/modules (R/SAS/Python ...) that we
-have on the other clusters.
+## Information for users migrating to JADE CSUB
 
-### Changes in  common for both dbGaP and CMS users
+If you are a CMS data user on the C-SUB cluster, the JADE cluster will feel very familiar to you. Both clusters use the same technology -- the operating system, the job scheduler SLURM, and the applications/modules (R/SAS/Python ...). JADE uses newer versions of those components, of course, because the C-SUB is several years old. Your username will stay the same (except for the 10201 DUA, who will switch to 10401).
 
-- The login node for the JADE cluster is "jade01.jhsph.edu".  So:
-    - If you are on a Windows system, you will need to create a new MobaXterm session for the jade01.jhsph.edu login node. There are notes for doing this on page 18 from the CSUB orientation https://jhpce.jhu.edu/orient/images/latest-csub-orient.pdf, though you would substitute jade01.jhpce.edu for jhpcecms01.jhsph.edu
-    - If you are on a Mac, you will need to adjust your ssh command to use jade01.jhsph.edu instead of either jhpce01.jhsph.edu or jhpcecms01.jhsph.edu.
+There are a number of changes which require your attention.
+
+### Login node
+
+The login node for the JADE cluster is "jade01.jhsph.edu".  So you'll need to change that component of accessing a cluster, whether by SSH or SFTP. (The port numbers used for SFTP (22011 and 22027) are the same.)
+
+- If you are on a Windows system, you will need to create new MobaXterm SSH and SFTP sessions for the jade01.jhsph.edu login node. There are notes for doing this on page 18 from the C-SUB orientation https://jhpce.jhu.edu/orient/images/latest-csub-orient.pdf, though you will substitute jade01.jhpce.edu for jhpcecms01.jhsph.edu
+
+- If you are on a Mac or Linx computer, you will need to adjust your ssh or sftp commands to use jade01.jhsph.edu instead of jhpcecms01.jhsph.edu.
+
+### Path changes
+
+JADE uses different locations for a number of kinds of files. {==We tried to minimized the impact of those changes by creating symbolic links in the file system so that the most important C-SUB paths will point at the new JADE locations.==}
+
+We have written a paths change document which details all of the JADE data locations and how they correspond to C-SUB ones. 
+
+In both clusters the DUA number is a key component of paths.
+
 - The data structure for the various CUI will be centered around the DUA number.  The general directory layout will be /data/cms/c23456/cui, where the "23456" represents your dua or project number. This structure will facilitate compliance to data handling requirements contained in the various DUAs.
-- Data transfers via sftp will be done on ports specific to your community (CMS or dbGap) - More info to follow.
-- Your userid will be in the format $COMMUNITY-$JHEDID-$DUA, so d-bsmith34-12345 for dbGaP data users or c-bsmith1-23456 for CMS data users.
 
-### Information specific to the dbGaP community
-
-- Access to the jade01 login node will only be available via the SAFE desktop. This 
-additional access requirement is in place to meet the requiremnts from NIH as well as the JHU Data Security group.
-- Data will be structure by DUA number, so the path to your data on JADE will
-be /data/dbgap/d$DUA
-- TODO - sftp ports
-
-### Information specific to the CMS user community
 - The path to your data will change. For example, for DUA 23456 the path will change from /cms01/data/dua/23456 to /data/cms/c23456/cui (but we have made a shortcut to point /data/cms/c23456/cui to /cms01/data/dua/23456 so you can continue to use the old paths for a while
-- TODO - sftp ports
 
 ### JADE features that are Coming Soon!
 
