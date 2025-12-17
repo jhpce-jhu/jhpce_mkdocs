@@ -128,11 +128,11 @@ nav:
       - About JADE: jade/jade-overview.md
       - Transitioning to JADE:
         - CMS Users:
-	   - Overview: jade/transition/cms-transition.md
-	   - Path Changes chart (pdf): jade/transition/images/jade-path-summary-table.pdf
-	   - Path Changes doc (pdf): jade/transition/images/paths-csub-to-jade.pdf
+           - Overview: jade/transition/cms-transition.md
+           - Path Changes chart (pdf): jade/transition/images/jade-path-summary-table.pdf
+           - Path Changes doc (pdf): jade/transition/images/paths-csub-to-jade.pdf
         - dbGaP Users:
-	   - Overview: jade/transition/dbgap-transition.md
+      - Overview: jade/transition/dbgap-transition.md
       - Accessing JADE:
         - Overview: jade/access/access-overview.md
         - SSH: access/ssh.md
@@ -239,10 +239,12 @@ plugins:
   # TAGS
   # The tags plugin enables the display of page tags. It can be helpful to
   # enable while doing a lot of page-revision work.
-  # IF YOU COMMENT THIS OUT, YOU NEED TO also comment out the line for the
-  # file in the "nav:" section above.
+  # IF YOU COMMENT THIS PLUGIN OUT, YOU NEED TO also comment out the line for
+  # any tag-list files in the "nav:" section above.
   - tags
       # This does not work as advertised (no info is dynamically generated)
+      # You're supposed to put a special string in there and it will be replaced
+      # they say, by all of the tags and pages.
       # If you try add it back, have to add a : to the -tags line above
       #tags_file: ourtools/site-tag-list.md
 
