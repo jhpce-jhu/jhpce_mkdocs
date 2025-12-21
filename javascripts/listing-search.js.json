@@ -805,6 +805,34 @@
     "language": ""
   },
   {
+    "page_name": "Change details",
+    "page_url": "../../jade/transition/deltas-cms-details/",
+    "text": "Character       Name\n----------      ---------- \nc               cms\nd               dbgap\ns               sysadmin\n",
+    "html": "<pre><span></span><code>Character<span class=\"w\">       </span>Name\n----------<span class=\"w\">      </span>----------<span class=\"w\"> </span>\nc<span class=\"w\">               </span>cms\nd<span class=\"w\">               </span>dbgap\ns<span class=\"w\">               </span>sysadmin\n</code></pre>",
+    "language": ""
+  },
+  {
+    "page_name": "Change details",
+    "page_url": "../../jade/transition/deltas-cms-details/",
+    "text": "Incoming   `/cms01/incoming/<username>`\nOutgoing   `/cms01/outgoing/<username>`\n",
+    "html": "<pre><span></span><code>Incoming   `/cms01/incoming/&lt;username&gt;`\nOutgoing   `/cms01/outgoing/&lt;username&gt;`\n</code></pre>",
+    "language": ""
+  },
+  {
+    "page_name": "Change details",
+    "page_url": "../../jade/transition/deltas-cms-details/",
+    "text": "Incoming   `/transfer/in/cms/c<dua>/<username>`\nOutgoing   `/transfer/out/cms/c<dua>/<username>`\n\nExample:\nIncoming   `/transfer/in/cms/c55548/c-jxu123-55548`\nOutgoing   `/transfer/out/cms/c55548/c-jxu123-55548`\n",
+    "html": "<pre><span></span><code>Incoming   `/transfer/in/cms/c&lt;dua&gt;/&lt;username&gt;`\nOutgoing   `/transfer/out/cms/c&lt;dua&gt;/&lt;username&gt;`\n\nExample:\nIncoming   `/transfer/in/cms/c55548/c-jxu123-55548`\nOutgoing   `/transfer/out/cms/c55548/c-jxu123-55548`\n</code></pre>",
+    "language": ""
+  },
+  {
+    "page_name": "Change details",
+    "page_url": "../../jade/transition/deltas-cms-details/",
+    "text": "/data/cms/<cdua>/shared/\n",
+    "html": "<pre><span></span><code>/data/cms/&lt;cdua&gt;/shared/\n</code></pre>",
+    "language": ""
+  },
+  {
     "page_name": "Handy Features",
     "page_url": "../../ourtools/features/",
     "text": "cd jhpce_mkdocs\nfind . -type f -name \\*.md -exec grep -il \"www.jhpce.jhu.edu\" {} \\;\nfind . -type f -name \\*.md -exec sed -i '' \"s/www.jhpce.jhu.edu/jhpce-old.jhu.edu/g\" {} \\;\nfind . -type f -name \\*.md -exec grep -il \"jhpce-old.jhu.edu\" {} \\; | xargs git add\n",
@@ -821,8 +849,22 @@
   {
     "page_name": "Handy Features",
     "page_url": "../../ourtools/features/",
-    "text": "---\ntags:\n  - a tag\ntitle: some docs need explicit titles set b/c they can't be correctly guessed\n---\n",
-    "html": "<pre><span></span><code>---\ntags:\n  - a tag\ntitle: some docs need explicit titles set b/c they can't be correctly guessed\n---\n</code></pre>",
+    "text": "sacct -s F -o \"user,jobid,state,nodelist,start,end,exitcode\" -S noon -E now\n",
+    "html": "<pre><span></span><code>sacct<span class=\"w\"> </span>-s<span class=\"w\"> </span>F<span class=\"w\"> </span>-o<span class=\"w\"> </span><span class=\"s2\">\"user,jobid,state,nodelist,start,end,exitcode\"</span><span class=\"w\"> </span>-S<span class=\"w\"> </span>noon<span class=\"w\"> </span>-E<span class=\"w\"> </span>now\n</code></pre>",
+    "language": ""
+  },
+  {
+    "page_name": "Handy Features",
+    "page_url": "../../ourtools/features/",
+    "text": "Nesting:\n",
+    "html": "<pre><span></span><code>Nesting:\n</code></pre>",
+    "language": ""
+  },
+  {
+    "page_name": "Handy Features",
+    "page_url": "../../ourtools/features/",
+    "text": "---\ntags:\n  - a tag\ntoc_depth: 2\ntitle: some docs need explicit titles set b/c they can't be correctly guessed from page content\nhide:\n- toc\n---\n",
+    "html": "<pre><span></span><code>---\ntags:\n  - a tag\ntoc_depth: 2\ntitle: some docs need explicit titles set b/c they can't be correctly guessed from page content\nhide:\n- toc\n---\n</code></pre>",
     "language": ""
   },
   {
@@ -872,13 +914,6 @@
     "page_url": "../../ourtools/features/",
     "text": "`a sample term to define`\n:    The definition you are seeking. (But not the droids.)\n",
     "html": "<pre><span></span><code>`a sample term to define`\n:    The definition you are seeking. (But not the droids.)\n</code></pre>",
-    "language": ""
-  },
-  {
-    "page_name": "Handy Features",
-    "page_url": "../../ourtools/features/",
-    "text": "sacct -s F -o \"user,jobid,state,nodelist,start,end,exitcode\" -S noon -E now\n",
-    "html": "<pre><span></span><code>sacct<span class=\"w\"> </span>-s<span class=\"w\"> </span>F<span class=\"w\"> </span>-o<span class=\"w\"> </span><span class=\"s2\">\"user,jobid,state,nodelist,start,end,exitcode\"</span><span class=\"w\"> </span>-S<span class=\"w\"> </span>noon<span class=\"w\"> </span>-E<span class=\"w\"> </span>now\n</code></pre>",
     "language": ""
   },
   {
