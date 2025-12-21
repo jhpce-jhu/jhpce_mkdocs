@@ -1,24 +1,50 @@
 ---
 icon: material/eye
+toc_depth: 2
 ---
 
-# WEB SITE TOOLS/ENABLED FEATURES WORTH KNOWING HOW TO USE
-Let's create a visually appealing web site using some of these features!! Use a WYSIWYG editor like [MacDown](features.md#macdown-wysiwyg-editor) and ["mkdocs serve"](features.md/#recipe-for-running-mkdocs-locally) to quickly edit.
+WEB SITE TOOLS/ENABLED FEATURES YOU MAY WANT TO KNOW HOW TO USE
 
 **Material for MkDocs is packed with many great features that make technical writing a *joyful* activity.**
 
-Please consult the [Tips and Conventions](../ourtools/tips-conventions.md) page for authoring guidance and tips.
+Let's create a visually appealing web site using some of these features!!
 
-Jeffrey likes:
+Please consult the [Tips and Conventions](../ourtools/tips-conventions.md) page for authoring guidance and tips.
+There is another document containing [wishlist](wishlist.md) items that we might want to enable/configure.
+
+To quickly develop pages, and to review your content before you modify the
+actual web site, you can use a WYSIWYG MarkDown editor and a local copy
+of the MkDocs website generator. You do not have to commit changes until you are
+ready. When you push changes up, your commit comment needs to include
+"rebuild-site".
+
+[MacDown](features.md#macdown-wysiwyg-editor) is an
+Mac editor, and displays standard MarkDown (some of the Material for MkDocs
+functionality is not rendered properly.)  
+
+You can install the mkdocs package via python pip 
+[here is the recipe](features.md#recipe-for-running-mkdocs-locally),
+and run mkdoc _subcommand_ to rebuild a local copy of the web site
+("mkdocs build") and/or serve it with local web server ("mkdocs serve"). When
+you are in "serve" mode, mkdocs will watch for changes in your repository and
+kick off site rebuilds. (Control-C it if you are making many changes, as it
+scurries off to rebuild after every change it notices. It takes most of a
+minute to regenerate our site. So you won't see the final result until after
+the last rebuild, many minutes later.)  Mkdocs very helpful displayes error
+messages it finds in your website definition (mkdocs.yml) and the pages
+themselves.
+
+Jeffrey recommends these features in particular:
 
 * [admonitions](features.md#admonitions) -- a lot!!
+* Details [(collapsed blocks)](features.md/#details-collapsed-blocks)
+* Tabs [present diff info horizontally](features.md/#tabs)
 * {==[highlighting text](features.md/#highlighting-text)==}
+* [Fenced code blocks](features.md/#fenced-code-blocks)
 * [keyboard meta keys](features.md/#symbols-for-keyboard-keys) (like ++ctrl++)
-* Details [(collapsed blocks of text)](features.md/#details)
 
-Running the mkdocs package installed via python allows you to develop web pages on your local computer. See [the recipe](features.md#recipe-for-running-mkdocs-locally)
-
-There is another document containing [wishlist](wishlist.md) items that we might want to enable/configure.
+PAGE TABLE OF CONTENT
+[TOC]
 
 ## Critical Material for MkDocs reference material
 Look here for information about these and other features!!! Just keep in mind that ones marked "insiders" are not available for our use.
@@ -61,35 +87,128 @@ Numerous others, including [pie](https://mermaid.js.org/syntax/pie.html), bar an
 ??? Warning "Only some types officially supported by Material for MkDocs"
     Besides the diagram types listed above, Mermaid.js provides support for pie charts, gantt charts, user journeys, git graphs and requirement diagrams, all of which are not officially supported by Material for MkDocs. Those diagrams should still work as advertised by Mermaid.js, but we don't consider them a good choice, mostly as they don't work well on mobile. While all Mermaid.js features should work out-of-the-box, Material for MkDocs will currently only adjust the fonts and colors for flowcharts, sequence diagrams, class diagrams, state diagrams and entity relationship diagrams.
 
-## Details
+## Admonitions
+(These don't render correctly in MacDown.app)
+
+Admonitions are a kind of code block which begins with three
+++exclamation+exclamation+exclamation++ marks.
+
+These are **sweet**! We should use them frequently. Be aware that they are not
+rendered correctly in the Mac program MacDown.app. This is an example of where it is good to be
+running "mkdocs serve" on your local machine. So you can verify that they are properly constructed
+before you push up your modified markdown file.
+
+Consider whether or not you want the material collapsed or expanded when users
+first visit a page. If you want the information collapsed, create a "detail"
+instead of an "admonition" by using question marks instead of exclamation
+points. Details are described [here](#details-collapsed-blocks).
+
+<a href="https://squidfunk.github.io/mkdocs-material/reference/admonitions/"" target="_blank">Admonition documentation</a>
+
+You add an admonition by
+
+1. Having a blank line preceeding the admonition
+2. starting a line with three ++exclamation++ explanation marks, a space, and a
+keyword (called a "type qualifier") such as note, danger, example, info, tip,
+warning.  Here is a [list](https://squidfunk.github.io/mkdocs-material/reference/admonitions/#supported-types). Certain colors are used for known keywords. If you use your own word or phrase, the color is maybe out of your control.
+3. You can add an optional title for your admonition by adding a double quoted string after the type qualifier.
+4. on the next line(s) start with FOUR spaces. You can have multiple paragraphs inside your admonition by continuing to indent the first line by FOUR SPACES.
+
+
+!!! note
+    Some text using the "note" type qualifier
+
+!!! example
+    admonitions allow setting off info inside colored boxes, e.g. note, tip, warning, danger, example.
+    https://squidfunk.github.io/mkdocs-material/reference/admonitions/#usage
+    
+    All lines indented four spaces are included in your admonition, including fenced code blocks.
+    
+!!! Example "Code block inside of an admonition"
+    ```Shell title="Show my failed jobs between noon and now" linenums="0"
+    sacct -s F -o "user,jobid,state,nodelist,start,end,exitcode" -S noon -E now
+    ```
+
+## Details (collapsed blocks)
+(These don't render correctly in MacDown.app)
+
+Details are a kind of code block which begins with three
+++question+question+question++ marks.
+
 Like an [admonition](#admonitions) but makes pages more readable by collapsing content.
+You can nest details, and choose to display them open or closed.
 Documentation [here](https://facelessuser.github.io/pymdown-extensions/extensions/details/) and also explained in the detail below.
 
 ??? tip "Psst: Click To Expand"
-    You can have it be open by default, too. (Add a ++plus++ after the opening ++question+question+question++). The following "detail" was set in the Markdown to display opened up.
+    Details are by default closed. You can have it rendered to be open -- users
+    can collapse it, if they wish, for example to hide that info after they've
+    read it.  The following "detail" was set in the Markdown to display as already
+    opened up.
 
     ???+ multiple "Syntax to use"
-        Details must contain a blank line before they start. Use ??? to start a details block or ???+ if you want to start a details block whose default state is 'open'. Follow the start of the block with an optional class keyword (like "tip" or "warning") or classes (separated with spaces) and the summary contained in double quotes. Content is placed below the header and must be indented with FOUR SPACES.
-        
-        Another detail can be nested inside by adding another blank line and another detail header line and content block. But this header line needs to start with the word "multiple" So ??? multiple class "Title"
+        Details must contain a blank line before they start. 
 
-You can probably include [code blocks](#fenced-code-blocks) inside of details like you can with admonitions.
+	Usage: ++question+question+question++ [type_qualifier] "Words to display for this detail"
+
+	Use ??? to start a details block or ???+ if you want to start a details block whose default state is 'open'. 
+
+	Follow the start of the block with an optional class keyword (like "tip" or "warning") or classes (separated with spaces) and the summary contained in double quotes.
+
+	After the header line which creates the detail block, add your content.
+
+	Every line of the content must be indented with FOUR SPACES.
+        
+        Nesting: 
+	Another detail can be nested inside the first by adding another
+	blank line, another detail header line and its content block. But {==this
+	header line needs to include the class_keyword "multiple".==}
+
+You can probably include [code blocks](#fenced-code-blocks) inside of detail
+blocks like you can with admonitions.
 
 ## Frontmatter (in document files)
-Tags are the primary use of frontmatter I think we should use at this point. [This](https://squidfunk.github.io/mkdocs-material/reference/) may not be a complete list of directives that one can optionally add within a document. But the basics are that you can add to the top of the document a stanza to set the title of the document, a description of it, a status indicator such as new or deprecated. See [this page](https://squidfunk.github.io/mkdocs-material/reference/#setting-the-page-icon) for how to define an icon for the page.
+Tags are the primary use of frontmatter I think we should use at this point. 
+Tags are a list of keywords which can be used to find pages during searches,
+e.g. "in-progress" or "needs-correcting".
 
-Apparently multiple frontmatter elements, like both tags and a page title, need to exist together inside one pair of three dashed lines. See example:
+The beginning of a document can contain a special section called "frontmatter".
+The directives placed here can impact how the page is rendered
+and how the page is dealt with inside the website. 
+
+An example of changing the appearance of the page is to control how many levels 
+of a page's sections are included in a Table of Contents. An example of changing
+the page's handling in the website is a frontmatter directive which causes an icon
+to be displayed next to the page's name in the website's navigation sidebar. Or
+to not display the page in the websites Table of Contents.
+
+[This documentation](https://squidfunk.github.io/mkdocs-material/reference/) is not a
+complete list of frontmatter directives, but it mentions page icons.
+
+multiple frontmatter elements, like both tags and a page title, need to exist together inside one 
+
+Frontmatter consists of a pair of three dashed lines, with directives between
+them. Example:
 
 ```
 ---
 tags:
   - a tag
-title: some docs need explicit titles set b/c they can't be correctly guessed
+toc_depth: 2
+title: some docs need explicit titles set b/c they can't be correctly guessed from page content
+hide:
+- toc
 ---
 ```
 
+## TOC
+You can add an automatically-generated Table of Contents to a page by inserting
+at any point "[TOC]". The TOC material will also be shown as a new sidebar on the
+right side. An optional directive can be placed in the frontmatter to control how
+many levels of indentation are displayed. (A directive in the mkdocs.yml file
+controls how many levels are shown in the navigation bar.)
+
 ## Tags
-An example of frontmatter is the code to [add tags](https://squidfunk.github.io/mkdocs-material/setup/setting-up-tags/) to documents. 20240211 I tested adding a tag and it works. I also specified in the nav section [a page ](tags.md)for Material for MkDocs to automatically list tags and the pages they are found on.
+An example of frontmatter is the code to [add tags](https://squidfunk.github.io/mkdocs-material/setup/setting-up-tags/) to documents. 20240211 I tested adding a tag and it works. I tried to create a page which made a list of tags and the pages which used them using a particular string. (On 20251220 I cannot remember if it worked or not. I thought that it did work. But we no longer see the tags on pages, so perhaps whatever change hid the tags also prevents the tag-generation code fail.) See comments in mkdocs.yml's nav section for notes.
 
 A lot of optional tag-related settings/capabilities seem to be reserved for paying sponsers as of 20240201. See this [page](https://squidfunk.github.io/mkdocs-material/insiders/). Can users search for documents by tags in the search field?
 
@@ -230,33 +349,6 @@ Example code and result:
 `a sample term to define`
 :    The definition you are seeking. (But not the droids.)
 
-## Admonitions
-These are **sweet**! We should use them frequently. But be aware that they are not rendered correctly in MacDown.app. This is where it is good to be running "mkdocs serve" on your local machine. So you can verify that they are properly constructed before you push up your modified markdown file.
-
-Consider whether or not you want the material collapsed or expanded when users first visit a page. If you want the information collapsed, create a "detail" instead of an "admonition" by using question marks instead of exclamation points. Details are documented [above](#details).
-
-<a href="https://squidfunk.github.io/mkdocs-material/reference/admonitions/"" target="_blank">Admonition documentation</a>
-
-You add an admonition by
-
-1. starting a line with three explanation marks, a space, and a keyword (called a "type qualifier") such as note, danger, example, info, tip, warning. Here is a [list](https://squidfunk.github.io/mkdocs-material/reference/admonitions/#supported-types). Certain colors are used for known keywords. If you use your own word or phrase, the color is maybe out of your control.
-2. You can add an optional title for your admonition by adding a double quoted string after the type qualifier.
-3. on the next line(s) start with FOUR spaces. You can have multiple paragraphs inside your admonition by continuing to indent the first line by FOUR SPACES.
-
-
-!!! note
-    Some text using the "note" type qualifier
-
-!!! example
-    admonitions allow setting off info inside colored boxes, e.g. note, tip, warning, danger, example.
-    https://squidfunk.github.io/mkdocs-material/reference/admonitions/#usage
-    
-    All lines indented four spaces are included in your admonition, including fenced code blocks.
-    
-!!! Example "Code block inside of an admonition"
-    ```Shell title="Show my failed jobs between noon and now" linenums="0"
-    sacct -s F -o "user,jobid,state,nodelist,start,end,exitcode" -S noon -E now
-    ```
 
 ## Open URLs in new tabs
 (Adi has configured the server to always open URLs in new tabs.)
@@ -401,9 +493,12 @@ pass
 ```
 ## Highlighting text
 
-https://squidfunk.github.io/mkdocs-material/reference/code-blocks/
+[code blocks
+docs](https://squidfunk.github.io/mkdocs-material/reference/code-blocks/)
 
-https://squidfunk.github.io/mkdocs-material/setup/extensions/python-markdown-extensions/#highlight
+[https://squidfunk.github.io/mkdocs-material/reference/formatting/#highlighting-text](https://squidfunk.github.io/mkdocs-material/reference/formatting/#highlighting-text)
+
+[https://squidfunk.github.io/mkdocs-material/setup/extensions/python-markdown-extensions/#caret-mark-tilde](https://squidfunk.github.io/mkdocs-material/setup/extensions/python-markdown-extensions/#caret-mark-tilde)
 
 Text can be {--deleted--} and replacement text {++added++}. This can also be
 combined into {~~one~>a single~~} operation. {==Highlighting==} is also
@@ -415,7 +510,9 @@ Formatting can also be applied to blocks by putting the opening and closing tags
 
 ==}
 
-I could not figure out how to quote plain text correctly so it would be displayed instead of rendered. Here I'm going to use the key symbols to defeat that challenge.
+I could not figure out how to escape the characters involved in highlighting so
+they would be displayed instead of rendered. So these are examples of where
+using key symbols in a web page is handy.
 
 {==Highlight==} a passage by starting with
 
@@ -623,19 +720,29 @@ https://www.starfallprojects.co.uk/blog/material-custom-status/#enable-the-featu
 https://squidfunk.github.io/mkdocs-material/customization/#additional-css
 
 ## Tabs
-(These don't seem to render correctly in MacDown)
+(These don't render correctly in MacDown.app)
 
-Jeffrey doesn't quite understand **where** we would use these yet. But they're very neat. They make web pages more compact, because you can cover a multipart topic in the same amount of vertical space, and it's intuitive to click on what you need.
+Tabs are a kind of code block which begins with three
+++equals+equals+equals++ marks.
+
+These are very neat. They allow you to create a horizontal set of headings.
+Clicking on each heading causes a different set of content to appear. This can
+save A LOT of vertical page space.
+
+Let's say you want to describe how to do the same activity on three different
+operating systems. Or show the equivalent code in four different programming
+langues.
+
+You provide different information in the same amount of vertical space, and it's
+intuitive for readers to click on what you need.
 
 [tabs documentation](https://squidfunk.github.io/mkdocs-material/reference/content-tabs/#content-tabs)
 
-An example idea is to divide up some information into Linux, Mac, and Windows sections.
-
-Tabs are created with the same syntax as an admonition or detail but use equal signs.
+Tabs are created with similar syntax as admonitions or details.
 
 There has to be a blank line before the beginning of (admonition, detail, tab)
 
-Everything has to be indented FOUR SPACES (not a tab char) inside of (admonition, detail, tab)
+Everything has to be indented FOUR SPACES (not a tab char!!!) inside of (admonition, detail, tab)
 
 You MUST enclose the title of the tab in double quotes even if it is a single word (it seems to Jeffrey)
 
@@ -658,9 +765,11 @@ This example contains one or two lines of text. The default tab is the left-most
 
 Everything has to be indented FOUR SPACES (not a tab char) inside of the tab you are creating
 
-So when inside of an (admonition, detail, tab) therefore tab contents are all indented EIGHT spaces. (Yes, you can have tabs inside of tabs.)
+So when inside of an (admonition, detail, tab) therefore tab contents are all
+indented EIGHT spaces. (Yes, you can have tab blocks inside of tab blocks. Never
+tab characters though!!!)
 
-These examples contain code blocks.
+These two examples contain tab blocks inside of a detail and an admonition:
 
 ??? example "Details are collapsed (by default)"
 

@@ -2,6 +2,7 @@
 tags:
   - jade
   - cms
+  - transition
 ---
 
 # Transition of CMS Users of the C-SUB Cluster to the JADE Cluster
@@ -26,13 +27,15 @@ If you are a CMS data user on the C-SUB cluster, the JADE cluster will feel very
 
 There are a number of changes which require your attention.
 
-### Login node
+### New login node
+
 
 The login node for the JADE cluster is "jade01.jhsph.edu".  So you'll need to change that component of accessing a cluster, whether by SSH or SFTP. (The port numbers used for SFTP (22011 and 22027) are the same.)
 
-- If you are on a Windows system, you will need to create new MobaXterm SSH and SFTP sessions for the jade01.jhsph.edu login node. There are notes for doing this on page 18 from the C-SUB orientation https://jhpce.jhu.edu/orient/images/latest-csub-orient.pdf, though you will substitute jade01.jhpce.edu for jhpcecms01.jhsph.edu
+??? tip "Click to see details for each operating system"
+    - If you are on a Windows system, you will need to create new MobaXterm SSH and SFTP sessions for the jade01.jhsph.edu login node. There are notes for doing this on page 18 from the C-SUB orientation https://jhpce.jhu.edu/orient/images/latest-csub-orient.pdf, though you will substitute jade01.jhpce.edu for jhpcecms01.jhsph.edu
 
-- If you are on a Mac or Linx computer, you will need to adjust your ssh or sftp commands to use jade01.jhsph.edu instead of jhpcecms01.jhsph.edu.
+    - If you are on a Mac or Linx computer, you will need to adjust your ssh or sftp commands to use jade01.jhsph.edu instead of jhpcecms01.jhsph.edu.
 
 ### Path changes
 
@@ -52,22 +55,13 @@ In both clusters the DUA number is a key component of paths.
 - Globus for file transfers - We are working on standing up a separate Globus transfer
 node to facilitate data transfes to and from the JADE cluster.
 
-# Health Policy & Management (HPM) Component of JADE for CMS data users
-
-The Health Analytics Research Platform (HARP) provides data services to HBHI- affiliated and HEADS Center-affiliated investigators to facilitate research collaborations advancing HBHI’s strategic pillars.
-
-**HPM Personnel**
-
-- HEADS/HARP Director: Dan Polsky 
-- HEADS/HARP Deputy Director: Matt Eisenberg 
-- CMS Data Expert: Frank Xu
-
+# MATERIAL BELOW NOT YET REWRITTEN
 **Contact**
 
-Please send C-SUB data-specific requests such as
+Please send CMS data-specific requests such as
 
 - joining the C-SUB
-- exporting files out of the C-SUB
+- approval to export files out of the C-SUB
 - data inventory – current and desired additions or updates
 
 to **support@harp-csub.freshdesk.com**

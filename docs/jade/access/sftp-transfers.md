@@ -1,11 +1,12 @@
 ---
 tags:
   - in-progress
+  - jade
+---
 
 # SFTP Transfers Into and Out of JADE
 
 ## Overview
-Stub document.
 
 ## Ports
 * 22011

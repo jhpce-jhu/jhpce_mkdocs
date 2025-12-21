@@ -1,5 +1,6 @@
 ---
 tags:
+  - in-progress
   - jade
 ---
 

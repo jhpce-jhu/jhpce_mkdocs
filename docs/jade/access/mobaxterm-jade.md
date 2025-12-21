@@ -1,0 +1,8 @@
+---
+tags:
+  - jade
+  - dbgap
+---
+# THIS IS SIMPLY A PLACEHOLDER PAGE
+
+# DELTA INFO COMPARED TO THE MAIN CLUSTER'S SSH.MD PAGE
