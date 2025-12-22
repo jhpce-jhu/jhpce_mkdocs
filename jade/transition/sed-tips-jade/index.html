@@ -11,6 +11,10 @@
         <link rel="canonical" href="https://jhpce.jhu.edu/jade/transition/sed-tips-jade/">
       
       
+        <link rel="prev" href="../dbgap-transition/">
+      
+      
+        <link rel="next" href="../../access/access-overview/">
       
       
         
@@ -21,7 +25,7 @@
     
     
       
-        <title>THIS IS SIMPLY A PLACEHOLDER PAGE - JHPCE</title>
+        <title>Using sed to modify files - JHPCE</title>
       
     
     
@@ -119,7 +123,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              THIS IS SIMPLY A PLACEHOLDER PAGE
+              Using sed to modify files
             
           </span>
         </div>
@@ -237,6 +241,8 @@
       
   
   
+    
+  
   
   
     
@@ -281,11 +287,11 @@
       
     
     
-    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1" checked>
         
           
           <div class="md-nav__link md-nav__container">
@@ -313,7 +319,7 @@
             
           </div>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_1_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_1_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_1">
             <span class="md-nav__icon md-icon"></span>
             
@@ -4360,8 +4366,10 @@
                 
   
   
+    
   
   
+  
     
     
       
@@ -4377,11 +4385,11 @@
       
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1_14" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1_14" checked>
         
           
           <label class="md-nav__link" for="__nav_1_14" id="__nav_1_14_label" tabindex="0">
@@ -4402,7 +4410,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_1_14_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_1_14_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_1_14">
             <span class="md-nav__icon md-icon"></span>
             
@@ -4445,8 +4453,10 @@
                 
   
   
+    
   
   
+  
     
     
       
@@ -4454,17 +4464,19 @@
       
         
       
+        
+      
     
     
     
       
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1_14_2" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1_14_2" checked>
         
           
           <label class="md-nav__link" for="__nav_1_14_2" id="__nav_1_14_2_label" tabindex="0">
@@ -4485,7 +4497,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_1_14_2_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_1_14_2_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_1_14_2">
             <span class="md-nav__icon md-icon"></span>
             
@@ -4758,6 +4770,44 @@
             
           </ul>
         </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Using sed to modify files
+  
+
+    
+  </span>
+  
+  
+
+      </a>
       
     </li>
   
@@ -5065,7 +5115,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../access/globus.md" class="md-nav__link">
+      <a href="../../access/globus-jade/" class="md-nav__link">
         
   
   
@@ -5156,8 +5206,79 @@
 <h1 id="explanation-of-sed-and-using-it-to-modify-files-in-place">EXPLANATION OF SED AND USING IT TO MODIFY FILES IN PLACE<a class="headerlink" href="#explanation-of-sed-and-using-it-to-modify-files-in-place" title="Anchor link to this section for reference">&para;</a></h1>
 <p>For example, if you want to change a path string in a bunch of batch job
 scripts.</p>
-<p>So include how to generate a list of filenames using find0 and xargs0 being
+<p>Include how to generate a list of filenames using find0 and xargs0 being
 passed to a sed command.</p>
+<p>This is a starting point:</p>
+<div class="highlight"><pre><span></span><code>Sed is a stream editor. It performs requested text transformations on a file or in the middle of a pipeline.   It works one line at a time. Here are some examples:
+
+# Chg a pattern inline in an existing file while making a backup with suffix=.bak
+# Only the first instance of the first string in each line is replaced by the second string
+
+sed -i.bak &#39;s/LogDenied/LogApproved/&#39; filename
+
+The command that sed will execute is provided within the single quotes. In this particular command, the “s” characters means “substitute”  The forward slashes are dividers between the original and the replacement strings.
+
+In the following sed examples, the original file contains:
+
+#!/bin/bash
+# SBATCH --mem=40GB
+# etcetera
+
+cd /cms01/data/55548/deeper/stilldeeper/
+
+for i in sample1 sample3 sample7
+do
+    /users/55548/c-jxu123-55548/bin/myscript ${i}.sas7bdat
+done
+
+# Chg pattern inline in an existing file while making a backup with suffix=bak
+# All instances of the first string are replaced by the second string, b/c a “g” was added to the command
+# Here the “(“ character is used as the divider b/c the pattern to be replaced contains forward slashes
+
+sed -i.bak &#39;s(/users/55548/c-jxu123-55548(~(g&#39; filename
+
+The original file is found as: filename.bak
+
+The resulting file  (named filename) contains:
+
+#!/bin/bash
+# SBATCH --mem=40GB
+# etcetera
+
+cd /cms01/data/55548/deeper/stilldeeper/
+
+for i in sample1 sample3 sample7
+do
+    ~/bin/myscript ${i}.sas7bdat
+done
+
+# This sed runs two separate commands in one pass. Each command is indicated by a “-e” flag
+# All instances of the first string are replaced by the second string, b/c a “g” was added to the command
+
+sed -i.bak -e &#39;s(deeper/stilldeeper/(short/newplace/(&#39; -e &#39;s(/users/55548/c-jxu123-55548(~(g&#39; filename
+
+The original file is found as: filename.bak
+
+The resulting file (named filename) contains:
+
+#!/bin/bash
+# SBATCH --mem=40GB
+# etcetera
+
+cd /cms01/data/55548/short/newplace/
+
+for i in sample1 sample3 sample7
+do
+    ~/bin/myscript ${i}.sas7bdat
+done
+
+# Changing a bunch of files which have the same “badstring” in them
+# This example runs sed on all of the files which have a certain suffix
+# It does not make a backup copy of the files it modifies
+# All instances of the first string are replaced by the second string, b/c a “g” was added to the command
+
+find ~/project1 -name “*.html” -print0 | xargs -0 sed -i &#39;s/badstring/mygoodstring/g&#39;
+</code></pre></div>
 
 
 
@@ -5178,7 +5299,7 @@ passed to a sed command.</p>
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="December 21, 2025 09:02:39 UTC">December 21, 2025</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="December 22, 2025 00:17:29 UTC">December 22, 2025</span>
   </span>
 
     
@@ -5276,6 +5397,44 @@ passed to a sed command.</p>
       
         <footer class="md-footer">
   
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Footer" >
+        
+          
+          <a href="../dbgap-transition/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Overview">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              <div class="md-ellipsis">
+                Overview
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../../access/access-overview/" class="md-footer__link md-footer__link--next" aria-label="Next: Overview">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              <div class="md-ellipsis">
+                Overview
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
     
   
   <div class="md-footer-meta md-typeset">

@@ -4456,6 +4456,8 @@
       
         
       
+        
+      
     
     
     
@@ -4766,6 +4768,34 @@
 
               
             
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../jade/transition/sed-tips-jade/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Using sed to modify files
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
           </ul>
         </nav>
       
@@ -5067,7 +5097,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../jade/access/globus.md" class="md-nav__link">
+      <a href="../jade/access/globus-jade/" class="md-nav__link">
         
   
   
@@ -6505,15 +6535,84 @@ ForwardX11Timeout=0
 c<span class="w">               </span>cms
 d<span class="w">               </span>dbgap
 s<span class="w">               </span>sysadmin
-</code></pre><pre><span></span><code>Incoming   `/cms01/incoming/&lt;username&gt;`
+</code></pre><pre><span></span><code>Incoming   /cms01/incoming/&lt;username&gt;
 Outgoing   `/cms01/outgoing/&lt;username&gt;`
-</code></pre><pre><span></span><code>Incoming   `/transfer/in/cms/c&lt;dua&gt;/&lt;username&gt;`
-Outgoing   `/transfer/out/cms/c&lt;dua&gt;/&lt;username&gt;`
+</code></pre><pre><span></span><code>Incoming   /transfer/in/cms/&lt;cdua&gt;/&lt;username&gt;
+Outgoing   /transfer/out/cms/&lt;cdua&gt;/&lt;username&gt;
 
 Example:
-Incoming   `/transfer/in/cms/c55548/c-jxu123-55548`
-Outgoing   `/transfer/out/cms/c55548/c-jxu123-55548`
+Incoming   /transfer/in/cms/c55548/c-jxu123-55548
+Outgoing   /transfer/out/cms/c55548/c-jxu123-55548
 </code></pre><pre><span></span><code>/data/cms/&lt;cdua&gt;/shared/
+</code></pre><h2><a class="heading" href="../jade/transition/sed-tips-jade/">Using sed to modify files</a></h2><a class="url" href="../jade/transition/sed-tips-jade/">jade/transition/sed-tips-jade/</a><pre><span></span><code>Sed is a stream editor. It performs requested text transformations on a file or in the middle of a pipeline.   It works one line at a time. Here are some examples:
+
+# Chg a pattern inline in an existing file while making a backup with suffix=.bak
+# Only the first instance of the first string in each line is replaced by the second string
+
+sed -i.bak 's/LogDenied/LogApproved/' filename
+
+The command that sed will execute is provided within the single quotes. In this particular command, the “s” characters means “substitute”  The forward slashes are dividers between the original and the replacement strings.
+
+In the following sed examples, the original file contains:
+
+#!/bin/bash
+# SBATCH --mem=40GB
+# etcetera
+
+cd /cms01/data/55548/deeper/stilldeeper/
+
+for i in sample1 sample3 sample7
+do
+    /users/55548/c-jxu123-55548/bin/myscript ${i}.sas7bdat
+done
+
+# Chg pattern inline in an existing file while making a backup with suffix=bak
+# All instances of the first string are replaced by the second string, b/c a “g” was added to the command
+# Here the “(“ character is used as the divider b/c the pattern to be replaced contains forward slashes
+
+sed -i.bak 's(/users/55548/c-jxu123-55548(~(g' filename
+
+The original file is found as: filename.bak
+
+The resulting file  (named filename) contains:
+
+#!/bin/bash
+# SBATCH --mem=40GB
+# etcetera
+
+cd /cms01/data/55548/deeper/stilldeeper/
+
+for i in sample1 sample3 sample7
+do
+    ~/bin/myscript ${i}.sas7bdat
+done
+
+# This sed runs two separate commands in one pass. Each command is indicated by a “-e” flag
+# All instances of the first string are replaced by the second string, b/c a “g” was added to the command
+
+sed -i.bak -e 's(deeper/stilldeeper/(short/newplace/(' -e 's(/users/55548/c-jxu123-55548(~(g' filename
+
+The original file is found as: filename.bak
+
+The resulting file (named filename) contains:
+
+#!/bin/bash
+# SBATCH --mem=40GB
+# etcetera
+
+cd /cms01/data/55548/short/newplace/
+
+for i in sample1 sample3 sample7
+do
+    ~/bin/myscript ${i}.sas7bdat
+done
+
+# Changing a bunch of files which have the same “badstring” in them
+# This example runs sed on all of the files which have a certain suffix
+# It does not make a backup copy of the files it modifies
+# All instances of the first string are replaced by the second string, b/c a “g” was added to the command
+
+find ~/project1 -name “*.html” -print0 | xargs -0 sed -i 's/badstring/mygoodstring/g'
 </code></pre><h2><a class="heading" href="../ourtools/features/">Handy Features</a></h2><a class="url" href="../ourtools/features/">ourtools/features/</a><pre><span></span><code><span class="nb">cd</span><span class="w"> </span>jhpce_mkdocs
 find<span class="w"> </span>.<span class="w"> </span>-type<span class="w"> </span>f<span class="w"> </span>-name<span class="w"> </span><span class="se">\*</span>.md<span class="w"> </span>-exec<span class="w"> </span>grep<span class="w"> </span>-il<span class="w"> </span><span class="s2">"www.jhpce.jhu.edu"</span><span class="w"> </span><span class="o">{}</span><span class="w"> </span><span class="se">\;</span>
 find<span class="w"> </span>.<span class="w"> </span>-type<span class="w"> </span>f<span class="w"> </span>-name<span class="w"> </span><span class="se">\*</span>.md<span class="w"> </span>-exec<span class="w"> </span>sed<span class="w"> </span>-i<span class="w"> </span><span class="s1">''</span><span class="w"> </span><span class="s2">"s/www.jhpce.jhu.edu/jhpce-old.jhu.edu/g"</span><span class="w"> </span><span class="o">{}</span><span class="w"> </span><span class="se">\;</span>
