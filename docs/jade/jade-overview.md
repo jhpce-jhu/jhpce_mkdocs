@@ -8,16 +8,57 @@ tags:
 
 The JHPCE Advanced Data Enclave (JADE) is a secured, NIST 800-171 compliant
 High Performance Compute (HPC) cluster managed by the Joint High Perfomance
-Computing Exchange (JHPCE) organization. The JADE cluster is designed to adhere to
-additional security protocols in order to meet the NIST 800-171 data handling
-requiremtns for Controlled Unclassified Information (CUI) data such as dbGaP.
-The JADE cluster also housed the JHU consolidated Centers for Medicare and Medicaid
-(CMS) data managed by the Health Analytics Research Platform (HARP) service center,
-which was formerly housed on the CSUB cluster.
+Computing Exchange (JHPCE) organization. 
 
-For users migrating from JHPCE or CSUB to JADE, please see [this transition document](jade-transition.md)
-for information about changes in JADE.
+The JADE cluster is designed to provide researchers with a work environment 
+which meets or exceeds the requirements for handling Controlled Unclassified
+Information (CUI) data. The NIH requires NIST 800-171 compliance for 
+[database of Genotypes and Phenotypes](https://dbgap.ncbi.nlm.nih.gov/home/) (dbGaP) datasets.
 
+The JADE cluster also houses the JHU consolidated [Centers for Medicare and
+Medicaid Services](https://www.cms.gov) (CMS) data managed by the 
+[Health Analytics Research Platform]
+(https://hbhi.jhu.edu/affiliate-resource/health-analytics-research-platform-harp)
+(HARP) service center, which was formerly housed on the C-SUB cluster.
+
+## Migration Into JADE
+For users migrating from JHPCE or C-SUB to JADE, please see [the transition
+material](jade-transition.md) for information about changes in JADE.
+
+## Getting Help
+
+### Via email
+
+The JHPCE systems administration team monitors two mailing lists for
+queries, reports of issues and feedback. Please use the appropriate one.
+
+*bitsupport@lists.jh.edu* is for account, SLURM, cluster, storage & login issues
+
+*bithelp@lists.jh.edu* should be used for more complex application issues, such
+as ones involving R, SAS, python, modules, etc. It is watched by not only the
+systems administrators, but also members of the community who have contributed
+tools like modules.
+
+CMS users - please see below for where you should send CMS-specific requests.
+
+### JHPCE web site
+
+The JHPCE Service Center manages 3 HPC computing environments, the original
+"JHPCE" cluster, the C-SUB and now JADE.
+
+The [JHPCE web site](https://jhpce.jhu.edu) was created to describe the original
+HPC cluster. When the C-SUB cluster was built, we added a few pages describing
+some C-SUB-specific topics. Now that JADE exists, we will be adding
+JADE-specific pages. 
+
+The bulk of the web site about the original cluster will be of 
+great use to JADE users, as it describes using the SLURM job scheduler,
+working with various software packages, etc. However, readers will need
+to interpret what they read and consider about whether applying it in JADE
+requires any modification or re-interpretation.
+
+You will find the search field (click on the magnifying lens in the upper right
+corner to be helpful.  Also, see the navigation bar section titled "Getting Help"
 
 ## Health Policy & Management (HPM) Component of JADE
 
@@ -31,10 +72,10 @@ The Health Analytics Research Platform (HARP) provides data services to HBHI- af
 
 **Contact**
 
-Please send C-SUB data-specific requests such as
+Please send CMS data-specific requests such as
 
-- joining the C-SUB
-- exporting files out of the C-SUB
+- joining JADE
+- exporting files out of JADE
 - data inventory – current and desired additions or updates
 
 to **support@harp-csub.freshdesk.com**
@@ -47,33 +88,3 @@ to **support@harp-csub.freshdesk.com**
 
 - [Hopkins Economics of Alzheimer Disease & Services (HEADS)](https://publichealth.jhu.edu/hopkins-economics-of-alzheimers-disease-and-services-center)
 
-## Differences between JHPCE & C-SUB Clusters
-
-The CMS subcluster (C-SUB) makes use of some of the resources of the original JHPCE cluster. For example, the scientific software such as STATA and SAS.
-
-However, in many other ways it operates differently than the rest of the cluster in order to keep CMS data from escaping.
-
-Please keep that in mind when reading JHPCE documentation or asking for help via the bitsupport & bithelp mailing lists. Mention that you are a C-SUB user.
-
-### Commonalities
-- SLURM job scheduler
-- Almost all of the software
-  - use of modules
-  - except for programs which run out of containers like RStudio Server
-
-### Differences
-- Different user accounts (all C-SUB have the form of `c-<JHEDID>-<DUA-NUMBER>`)
-- Different login node (C-SUB: jhpcecms01.jhsph.edu, only accessible from JH networks (including the VPN))
-- Different SLURM server, partitions and nodes (cluster name is "cms" instead of "jhpce3"). So job acounting records differ. Default partition for jobs in "jhpce3" is "shared" while in "cms" it is "cms".
-- File transfer in and out is VERY different (see C-SUB orientation pdf)
-- Home directory locations (under `/users/<DUA-NUMBER>/` instead of just `/users/`)
-- Common group-writable file sharing areas among DUA members (e.g. /users/55548/shared/)
-
-## Getting Help
-Many of the pages on this web site will be useful to C-SUB users. However they will need to interpret what they read and think about whether applying it in the C-SUB requires any modification or re-interpretation.
-
-Sources of assistance:
-
-- This web site - use the search field
-- This web site - see the section titled "Getting Help"
-- the [orientation slides](../orient/images/latest-csub-orient.pdf) are improved over time. They contain much information! Because of a lack of staff time, this document will be improved ahead of adding C-SUB-specific information to this web site. There is a version date on the first page. You can use that to compare to the one you used during your orientation.

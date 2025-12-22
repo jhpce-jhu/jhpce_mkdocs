@@ -10,29 +10,43 @@ Computing group in the department of Molecular Microbiology and
 Immunology. The facility has grown over the years and is open to
 all Johns Hopkins affiliated researchers.
 
-## The JHPCE Service Center manages 2 HPC computing environments.
+## The JHPCE Service Center manages 3 HPC computing environments.
 
 ### JHPCE
-The larger HPC environmnet is for general HPC computing on non-HIPAA data.
+The larger HPC environment is for general HPC computing on non-HIPAA data.
 We generally refer to this as the "J H P C E" cluster (each letter pronounced). 
-Informaion on the JHPCE cluster can be found at the [Introduction](../joinus/index.md)
+Information on the JHPCE cluster can be found at the [Introduction](../joinus/index.md)
 link.
 
 ### C-SUB
-We also manage a smaller sub-cluster for working on CMS Medicare and Medicaid
-data. We refer to this cluster as the C-SUB (CMS Sub) cluster. While the JHPCE
-service cnter manages this HPC cluster, it's operation is overseen by the [HARP](https://hbhi.jhu.edu/affiliate-resource/health-analytics-research-platform-harp)
-organization in JHU. Technical infomation about the C-SUB can be found at the
-[CSUB Overview](../csub/csub-overview.md).
+In 2022 JHPCE staff built a smaller sub-cluster for working on [Medicare and Medicaid
+Services](https://www.cms.gov) (CMS) data. We refer to this cluster as the 
+C-SUB (Cms SUB) cluster. The JHPCE service center manages this HPC
+cluster on behalf of the
+[Health Analytics Research Platform] (https://hbhi.jhu.edu/affiliate-resource/health-analytics-research-platform-harp) (HARP) organization in JHU. 
 
-## Community
+Technical infomation about the C-SUB can be found at the
+[C-SUB Overview](../csub/csub-overview.md).
+
+This cluster will be retired in 2026.
+
+### JADE
+
+In 2025 JHPCE staff built a new cluster, JHPCE Advanced Data Enclave (JADE).
+This is a secured, NIST 800-171 compliant HPC facility, which in 2026 replaced
+the C-SUB for the CMS community and began supporting researchers using 
+[database of Genotypes and Phenotypes](https://dbgap.ncbi.nlm.nih.gov/home/) (dbGaP) datasets.
+
+Technical infomation about JADE can be found at [JADE Overview](../jade/jade-overview.md).
+
+## JHPCE Community
 The facility is used primarily by labs and research groups in the
 Johns Hopkins Bloomberg School of Public Health (SPH), the Johns
 Hopkins School of Medicine (SOM) and the Lieber Institute for Brain
 Development (LIBD). We support the HPC needs of over 2000 user accounts,
 with 300 active users each quarter.
 
-## Cluster Details
+## JHPCE Cluster Details
 As of November, 2024, the computing and storage systems are optimized for genomics and
 biomedical research. The cluster has 84 compute nodes, providing about
 3100 cores, 40TB of DRAM and over 20 PB of networked mass
@@ -52,7 +66,7 @@ physics, fluid-dynamics, quantum simulation etc.  Job scheduling is
 performed with the Simple Linux Utility for Resource Management
 ([SLURM](https://slurm.schedmd.com)).
 
-## Cost Recovery
+## JHPCE Cost Recovery
 The JHPCE operates as a formal Common Pool Resource (CPR) Hierarchy
 with rights to specific resources based on stakeholder ownership of
 resources. To benefit the entire research community, excess computing

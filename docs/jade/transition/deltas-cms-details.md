@@ -33,8 +33,8 @@ You will very quickly master the changes.
     &lt;comm&gt; = for example, cms or dbgap<br>
     &lt;comm_letter&gt; = for example, c or d<br>
     &lt;username&gt; = for example, c-jli89-10201<br>
-    
-    E.g. /transfer/in/\<comm\>/\<cdua\>/\<username\>/
+    <br>
+    E.g. `/transfer/in/<comm>/<cdua>/<username>/`
 
 ??? info "User Communities on JADE"
     {==If you had been using the C-SUB, you are a member of the "CMS community"
@@ -62,7 +62,13 @@ You will very quickly master the changes.
     JADE:	jade01.jhsph.edu
 
     C-SUB:	jhpcecms01.jhsph.edu
-
+    
+    === "Windows users"
+        If you are on a Windows system, you will need to create a new MobaXterm SSH and SFTP Sessions for the jade01.jhsph.edu login node. There are notes for doing this on page 18 from the CSUB orientation https://jhpce.jhu.edu/orient/images/latest-csub-orient.pdf, though you would substitute *jade01.jhpce.edu* for jhpcecms01.jhsph.edu
+        
+    === "Mac & Linux users"
+        You will need to adjust your ssh and sftp commands to use *jade01.jhsph.edu* instead of jhpcecms01.jhsph.edu.
+        
 ??? info "Unchanged: Usernames,verification codes, and passwords (except 10201)"
 
     Most C-SUB users will continue using their usernames, verification codes,
@@ -138,7 +144,7 @@ You will very quickly master the changes.
 
 <!-- ------------------------------------------------------------------------->
 ??? danger "SFTP data transfers"
-    JADE uses the same TCP/IP networking ports as was used on the C-SUB:<br>
+    {==JADE uses the same TCP/IP networking ports as was used on the C-SUB:==}<br><br>
     Data going into the cluster: 22011<br>
     Data coming out of the cluster: 22027
 
@@ -189,10 +195,11 @@ You will very quickly master the changes.
 <!-- ------------------------------------------------------------------------->
 ??? danger "Data moderation process"
 
+    {==Users do not need to change their procedure==}<br>
     {==The data moderation (DM) team needs to use two new paths - where you find
     proposed files and where you put them after approving them.==}
+    
     We cannot create symbolic links to hide this change.
-
     
     Data moderators: After you have reviewed the files users have proposed for
     egress, you copy those files into the user-specific directory where they can
