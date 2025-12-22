@@ -23,7 +23,7 @@ Medicaid Services](https://www.cms.gov) (CMS) data managed by the
 
 ## Migration Into JADE
 For users migrating from JHPCE or C-SUB to JADE, please see [the transition
-material](jade-transition.md) for information about changes in JADE.
+material](transition/jade-transition.md) for information about changes in JADE.
 
 ## Getting Help
 
