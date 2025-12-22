@@ -133,6 +133,7 @@ nav:
            - Path Changes doc (pdf): jade/transition/images/paths-csub-to-jade.pdf
         - dbGaP Users: 
            - Overview: jade/transition/dbgap-transition.md
+        - Using sed to modify files: jade/transition/sed-tips-jade.md
       - Accessing JADE:
         - Overview: jade/access/access-overview.md
         - SSH: jade/access/ssh-jade.md
@@ -141,7 +142,7 @@ nav:
         - Transferring files in or out: 
           - Overview: jade/access/transfer-overview.md
           - SFTP: jade/access/sftp-transfers.md
-          - Globus: jade/access/globus.md
+          - Globus: jade/access/globus-jade.md
 #
 # Example of three-level topic syntax
 #   - Storage:

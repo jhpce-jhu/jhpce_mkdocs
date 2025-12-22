@@ -5,17 +5,36 @@ tags:
   - transition
   - cms
 ---
-# Summary of differences between C-SUB and JADE
+# Guide to differences between C-SUB and JADE
 
-This is a list of topics. Click on one to read more about it (click again to
-close it). We have used three colors of blocks to indicate the likelihood of
-that topic impacting the typical user.  Some items are marked red but only
-require a one word change in your command or changing directory to a different
-location to retrieve your incoming files.
+You will find working in JADE very similar to doing so in the C-SUB.
 
-* red, danger - you must deal with/know about
-* orange, warning - you probably should know about
-* light blue, info - less important changes
+However, there are differences, and we attempt to identify them here.
+Click on a topic to read more about it (and click again to when finished to
+close it). Three colors were used to indicate the likelihood of
+that topic impacting the typical user.
+
+Some items are marked red but only require a one word change in your command
+or changing directory to a different location to retrieve your incoming files.
+You will very quickly master the changes.
+
+!!! tip 
+    * red, danger - You must deal with/know about
+    * orange, warning - You probably should know about
+    * light blue, info - Less impactful changes
+
+!!! tip "Please take note of these path element symbols"
+
+    In this document and others, we show the convention used for some aspect of
+    the cluster, such as the path to expect for this or that purpose.
+
+    &lt;dua&gt; = for example, 59614 or 55548<br>
+    &lt;cdua&gt; = for example, c59614 or c55548<br>
+    &lt;comm&gt; = for example, cms or dbgap<br>
+    &lt;comm_letter&gt; = for example, c or d<br>
+    &lt;username&gt; = for example, c-jli89-10201<br>
+    
+    E.g. /transfer/in/\<comm\>/\<cdua\>/\<username\>/
 
 ??? info "User Communities on JADE"
     {==If you had been using the C-SUB, you are a member of the "CMS community"
@@ -23,8 +42,9 @@ location to retrieve your incoming files.
 
     There are three communities (so far) in JADE. Each one has a unique name
     and a single character equivalent. You will see both appear in cluster
-    configuration, such as the first letter of a username (c-jhedid-dua) and
-    in paths to files (/transfer/in/cms/).
+    configuration, such as the first letter of a username (c-jhedid-dua), 
+    in paths to files (/transfer/in/cms/) and in names of SLURM partitions
+    (c-shared, c-sas).
 
     ```Shell
     Character       Name
@@ -71,7 +91,7 @@ location to retrieve your incoming files.
     
 
 ??? info "Unix group changes"
-    This change should be invisible.
+    {==This change should be invisible.==}
 
     Each C-SUB user has a 'primary' group and one or more 'secondary' groups.
     When users are migrated to JADE, we will change both primary & secondary
@@ -83,7 +103,7 @@ location to retrieve your incoming files.
     will need to modify them so they work on JADE.==}
 
     We have a document explaining how to replace strings in documents
-    [here](jade/transition/sed-tips-jade.md).
+    [here](sed-tips-jade.md).
 
     In C-SUB, the default partition was named "cms" and the SAS one "sas".
 
@@ -97,22 +117,29 @@ location to retrieve your incoming files.
 
     We have added a modification to your home directory to accomodate a change
     in the name of the CMS community's default partition. The file
-    `~/slurm/defaults` contains a line specifying "c-shared" as the default.
+    `~/.slurm/defaults` contains a line specifying "c-shared" as the default.
 
 <!-- ------------------------------------------------------------------------->
-??? info "Your ~/.bashrc file and ~/proposed directory"
-    Explanation
+??? warning "Contents of ~/proposed/ directory are not automatically propagated"
+    {==If you have active files in ~/proposed/ you will need to copy them to a new location.==}
+
+    (The tilde character '~' is a special character in UNIX shells. It represents
+    your home directory.)
+
+    * `~/proposed` -- In the C-SUB this was a directory. In JADE this is a symbolic link to the new location for this type of files. When your account is migrated to JADE, the original ~/proposed is renamed `~/proposed.csub` (you will not lose them!) and a symbolic link is made to point to `/proposed/cms/<cdua>/<username>`. You can continue to use `~/proposed` as if it were a directory, in terms of copying files into it or listing it. {==If you have files being reviewed by data moderators, then you should cp them from `~/proposed.csub/` to `~/proposed/`.==}
 
 <!-- ------------------------------------------------------------------------->
 ??? danger "Incoming/Outgoing files will not be copied from C-SUB to JADE"
-    Files found in /cms01/incoming/ and /cms01/outgoing/ are not going to be
-    copied over to JADE. Please copy any of them that you want to keep into your
+    {==Files found in /cms01/incoming/ and /cms01/outgoing/ are not going to be
+    copied over to JADE.==}
+
+    Please copy any of them that you want to keep into your
     home directory before your group is migrated from the C-SUB to JADE.
 
 <!-- ------------------------------------------------------------------------->
 ??? danger "SFTP data transfers"
-    JADE uses the same TCP/IP networking ports as was used on the C-SUB:
-    Data going into the cluster: 22011
+    JADE uses the same TCP/IP networking ports as was used on the C-SUB:<br>
+    Data going into the cluster: 22011<br>
     Data coming out of the cluster: 22027
 
     JADE uses different paths to store this kind of data. 
@@ -120,17 +147,17 @@ location to retrieve your incoming files.
 
     C-SUB
 
-        Incoming   `/cms01/incoming/<username>`
+        Incoming   /cms01/incoming/<username>
         Outgoing   `/cms01/outgoing/<username>`
 
     JADE
 
-        Incoming   `/transfer/in/cms/c<dua>/<username>`
-        Outgoing   `/transfer/out/cms/c<dua>/<username>`
+        Incoming   /transfer/in/cms/<cdua>/<username>
+        Outgoing   /transfer/out/cms/<cdua>/<username>
 
         Example:
-        Incoming   `/transfer/in/cms/c55548/c-jxu123-55548`
-        Outgoing   `/transfer/out/cms/c55548/c-jxu123-55548`
+        Incoming   /transfer/in/cms/c55548/c-jxu123-55548
+        Outgoing   /transfer/out/cms/c55548/c-jxu123-55548
 
     There are two ways you work with this new path - when inside an SFTP
     transaction and when you are accessing files in the operating system.
@@ -154,10 +181,10 @@ location to retrieve your incoming files.
 
     === "While in the operating system"
         After you transfer files into JADE, you need to use a different path to
-        access them. 
+        access them, whether from your shell prompt or the graphic file manager `thunar`.
         
-        On the C-SUB, you used `/cms01/incoming/&lt;your_username&gt;`
-        On JADE, you will use `/transfer/in/cms/c&lt;your_dua&gt;/&lt;your_username&gt;`
+        On the C-SUB, you used `/cms01/incoming/<username>`
+        On JADE, you will use `/transfer/in/cms/<cdua>/<username>`
 
 <!-- ------------------------------------------------------------------------->
 ??? danger "Data moderation process"
@@ -166,11 +193,6 @@ location to retrieve your incoming files.
     proposed files and where you put them after approving them.==}
     We cannot create symbolic links to hide this change.
 
-    Please take note of these path element symbols:
-
-    &lt;dua&gt; = for example, 59614 or 55548<br>
-    &lt;cdua&gt; = for example, c59614 or c55548<br>
-    &lt;username&gt; = for example, c-jli89-10201<br>
     
     Data moderators: After you have reviewed the files users have proposed for
     egress, you copy those files into the user-specific directory where they can
@@ -207,17 +229,39 @@ location to retrieve your incoming files.
 
 <!-- ------------------------------------------------------------------------->
 ??? info "Mailing lists"
-    Explanation
+    {==The mailing list to reach all CMS users in a cluster has changed.==}
+
+    C-SUB: c-sub-users@lists.jh.edu<br>
+    JADE: jade-cms-users@lists.jh.edu
 
 <!-- ------------------------------------------------------------------------->
-??? info "Operating system version"
-    This change should be invisible.
+??? info "Operating system has been updated"
+    {==This change should be invisible. But you may run into version dependencies.==}
 
     Both clusters use the Rocky 9.x operating system. The C-SUB uses 9.4 while
-    JADE uses 9.6. 
+    JADE uses 9.6.  The Rocky OS is designed to be stable, so dot releases
+    (e.g. .4 to .6) within major releases (e.g. 8.x vs 9.x) add mainly bug
+    fixes. However, they also incorporate some upgrades to components, such as
+    Python going from 3.9.18 to 3.9.21.
 
-??? info "libreoffice program names"
-    Explanation
+    Please notify the systems administration team at bitsupport@lists.jh.edu of
+    issues you find of this type. We will seek workarounds and be better able to
+    help others. Thanks.
+
+??? info "LibreOffice program names have changed"
+    {==Program names have changed slightly==}
+
+    The graphic user interface [LibreOffice](https://www.libreoffice.org) is a 
+    free, open-source office suite.  JADE is using a much newer version than the C-SUB.  
+
+    Many LibreOffice programs have a single letter prefix. In C-SUB that was 'o'
+    while in JADE it has changed to be 's'.  "ooffice" is now "soffice", "ocalc"
+    is now "scalc"
+
+    These LibreOffice programs are found in the /user/local/bin/ directory
+    (which is in your default PATH). You can see a list of them with the
+    command<br>
+    `ls -l /usr/local/bin/ | grep -i libre`
 
 
 # MATERIAL BELOW HAS NOT YET BEEN INCORPORATED OR DELETED YET
