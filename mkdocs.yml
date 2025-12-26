@@ -61,7 +61,6 @@ nav:
       - Data Security: files/data-security.md
       - Encrypting filesystems with ENCFS: files/encfs.md
       - Storage Tips: storage/storage-tips.md
-      - Copying within cluster: files/copying-files.md
     - Storage Policies and Practices: 
       - storage/index.md
       - Storage Overview: storage/index.md
@@ -143,6 +142,8 @@ nav:
           - Overview: jade/access/transfer-overview.md
           - SFTP: jade/access/sftp-transfers.md
           - Globus: jade/access/globus-jade.md
+      - Data Locations:
+        - Path summary chart (pdf): jade/images/jade-path-summary-table.pdf
 #
 # Example of three-level topic syntax
 #   - Storage:

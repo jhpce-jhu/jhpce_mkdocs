@@ -6,8 +6,6 @@ tags:
   - dbgap
 title: Differences between JHPCE and JADE for dbGaP users
 ---
-# 20251225 - This page is under heavy revision
-
 # Guide to differences between JHPCE and JADE for dbGaP users
 
 NIH has mandated that dbGaP data be protected by computers configured to meet
@@ -135,38 +133,23 @@ that topic impacting the typical user.
     [here](sed-tips-jade.md).
 
 <!-- ------------------------------------------------------------------------->
-??? danger "SFTP is used data transfers"
-    {== LEFT OFF EDITING HERE ==}
+??? danger "Transferring data into & out of JADE"
+    {== THIS SECTION IS UNDER DEVELOPMENT 20251226 ==}
     {==JADE uses specific TCP/IP networking ports for data ingress & egress: ==}<br><br>
+
+    JADE is located on a secure network segment maintained by IT@JH. Their
+    firewall is configured to deny everything by default.
+
+    From the inside of JADE, you can initiate connections to the internet using
+    a variety of tools and protocols.
+
+    From outside of JADE, you can initiate SFTP connections to jade01.jhsph.edu,
+    using these non-standard ports:
+
     Data going into the cluster: 22511<br>
     Data coming out of the cluster: 22527
 
-    There are two ways you work with this new path - when inside an SFTP
-    transaction and when you are accessing files in the operating system.
-
-    === "During SFTP"
-        When you connect with SFTP to JADE, the SFTP server program places you
-        inside the directory appropriate for your community. You can only see
-        files below that point.
-
-        So you "start from" either `/transfer/in/cms/` or `/transfer/out/cms/`
-
-        To reach your own files, you need to cd into your group's directory, then
-        into your own personal directory. 
-
-        For example: `cd c55548/c-jxu123-55548`
-
-        If you use the MobaXterm SFTP program, there is a place in the session's
-        settings where you can specify your directory. If you configure that
-        once, you will automatically "land" in your final destination without
-        having to issue any cd commands every time.
-
-    === "While in the operating system"
-        After you transfer files into JADE, you need to use a different path to
-        access them, whether from your shell prompt or the graphic file manager `thunar`.
-        
-        On the C-SUB, you used `/cms01/incoming/<username>`
-        On JADE, you will use `/transfer/in/cms/<cdua>/<username>`
+    (?More description in an jade/access/ page?)
 
 <!-- ------------------------------------------------------------------------->
 ??? info "Mailing lists"
@@ -194,44 +177,3 @@ that topic impacting the typical user.
     help others. Thanks.
 
 <!-- ------------------------------------------------------------------------->
-<!-- ------------------------------------------------------------------------->
-<!-- ------------------------------------------------------------------------->
-<!-- ------------------------------------------------------------------------->
-# MATERIAL BELOW HAS NOT YET BEEN INCORPORATED OR DELETED YET
-
-DUA DATA
-------------------------------------------------------------
-DUA data has been relocated to /data
-We are still working out the details of what part of paths under
-/data/ represent mount points.
-
-JHPCE:	Many diverse file systems
-JADE:	/data/cms/<cdua>/cui/
-	/data/cms/<cdua>/cui/intermediate/
-	/data/cms/<cdua>/cui-intermediate/
-
-Why cui/intermediate/ ? We want groups to be able to keep CUI out of
-/users/ as much as possible. Creating a default location helps keep that
-in mind. When DUAs expire, the CUI is supposed to be deleted. If people
-have a place to put their "near-raw" data then it will make it easier
-for the group later to review files before deletion. Some users will may
-have left -- if they put material in the right locations, then it makes it
-easier for the PI or power users appointed by the PI as data stewards.
-
-	/data/cms/<cdua>/shared/
-
-Why shared?
-The c57285 group wanted a group-writable location adjacent to their CUI
-(the "raw" data from CMS) where they could store large amounts of data
-
-(/cms01/data/dua/57285/ is stored on one of our spinning-hard-drive
-servers, which is cheaper, slower but more capacious. The /users/<dua#>/shared
-directories I created come from our SSD-equipped server, which is fast but
-does not have as much space.)
-
-In JADE, /users/<comm>/<cdua>/shared is stored on our SSD-equipped server.
-
-"Shared" provides a directory under which groups can choose what they want
-place there. If subdirectories are well organized, we can create whole new
-file systems if their current one fills up, or if PIs want to pay extra to
-create a file system on our SSD-equipped server.
