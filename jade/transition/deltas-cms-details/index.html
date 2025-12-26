@@ -88,7 +88,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#guide-to-differences-between-c-sub-and-jade" class="md-skip">
+        <a href="#guide-to-differences-between-c-sub-and-jade-for-cms-users" class="md-skip">
           Skip to content
         </a>
       
@@ -5204,7 +5204,7 @@
 
 
 
-<h1 id="guide-to-differences-between-c-sub-and-jade">Guide to differences between C-SUB and JADE<a class="headerlink" href="#guide-to-differences-between-c-sub-and-jade" title="Anchor link to this section for reference">&para;</a></h1>
+<h1 id="guide-to-differences-between-c-sub-and-jade-for-cms-users">Guide to differences between C-SUB and JADE for CMS users<a class="headerlink" href="#guide-to-differences-between-c-sub-and-jade-for-cms-users" title="Anchor link to this section for reference">&para;</a></h1>
 <p>You will find working in JADE very similar to doing so in the C-SUB.</p>
 <p>However, there are differences, and we attempt to identify them here.
 Click on a topic to read more about it (and click again to when finished to
@@ -5213,6 +5213,7 @@ that topic impacting the typical user.</p>
 <p>Some items are marked red but only require a one word change in your command
 or changing directory to a different location to retrieve your incoming files.
 You will very quickly master the changes.</p>
+<!-- ------------------------------------------------------------------------->
 <div class="admonition tip">
 <p class="admonition-title">Tip</p>
 <ul>
@@ -5221,8 +5222,9 @@ You will very quickly master the changes.</p>
 <li>light blue, info - Less impactful changes</li>
 </ul>
 </div>
-<div class="admonition tip">
-<p class="admonition-title">Please take note of these path element symbols</p>
+<!-- ------------------------------------------------------------------------->
+<details class="tip">
+<summary>Please take note of these path element symbols</summary>
 <p>In this document and others, we show the convention used for some aspect of
 the cluster, such as the path to expect for this or that purpose.</p>
 <p><strong><em>&lt;dua&gt;</em></strong> = for example, 59614 or 55548<br>
@@ -5233,7 +5235,8 @@ the cluster, such as the path to expect for this or that purpose.</p>
 <br>
 E.g. <code>/transfer/in/&lt;comm&gt;/&lt;cdua&gt;/&lt;username&gt;/</code><br>
      `/transfer/in/cms/c55548/c-jxu123-55548</p>
-</div>
+</details>
+<!-- ------------------------------------------------------------------------->
 <details class="info">
 <summary>User Communities on JADE</summary>
 <p><mark class="critic">If you had been using the C-SUB, you are a member of the "CMS community" on JADE.</mark></p>
@@ -5249,33 +5252,51 @@ d<span class="w">               </span>dbgap
 s<span class="w">               </span>sysadmin
 </code></pre></div>
 </details>
+<!-- ------------------------------------------------------------------------->
+<details class="info">
+<summary>Unchanged: Usernames, verification codes, and passwords (except 10201)</summary>
+<p><mark class="critic">Most C-SUB users will continue using their usernames, verification codes,
+and passwords with JADE.</mark></p>
+<p>C-SUB users with 10201 in their usernames will switch to new 10401 accounts.
+For each such user, systems administrators will make a copy of the C-SUB
+10201 home directory and place it into the JADE 10401 home directory with
+the name <code>csub-homedir</code>.</p>
+<p>10401 users can then look through <code>csub-homedir</code>, move files out of it they want
+to keep, and then delete the rest if they want to save disk space. (Some
+directories like ~/.cache/ can contain large amounts of material.)</p>
+</details>
+<!-- ------------------------------------------------------------------------->
 <details class="danger">
 <summary>Login node</summary>
 <p><mark class="critic">You must change your settings or commands to use the JADE login server.</mark></p>
-<p>JADE:   <em>jade01.jhsph.edu</em></p>
-<p>C-SUB:  jhpcecms01.jhsph.edu</p>
+<p>JADE:   <strong>jade01.jhsph.edu</strong><br></p>
 <div class="tabbed-set tabbed-alternate" data-tabs="1:2"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">Windows users</label><label for="__tabbed_1_2">Mac &amp; Linux users</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<p>If you are on a Windows system, you will need to create new MobaXterm SSH and SFTP Sessions for the jade01.jhsph.edu login node. There are notes for doing this on page 18 from the <a href="https://jhpce.jhu.edu/orient/images/latest-csub-orient.pdf">C-SUB orientation</a>, (though you would substitute <em>jade01.jhpce.edu</em> for jhpcecms01.jhsph.edu).</p>
+<p>If you are on a Windows system, you will need to create new MobaXterm SSH and SFTP "Sessions" for the jade01.jhsph.edu login node. There are notes for doing this on page 18 of the <a href="../../../orient/images/latest-csub-orient.pdf">C-SUB orientation</a>, (though you would substitute <strong>jade01.jhpce.edu</strong> for jhpcecms01.jhsph.edu).</p>
 </div>
 <div class="tabbed-block">
-<p>You will need to adjust your ssh and sftp commands to use <em>jade01.jhsph.edu</em> instead of jhpcecms01.jhsph.edu.</p>
+<p>You will need to adjust your ssh and sftp commands to use <strong>jade01.jhsph.edu</strong> instead of jhpcecms01.jhsph.edu.</p>
 </div>
 </div>
 </div>
 </details>
-<details class="info">
-<summary>Unchanged: Usernames, verification codes, and passwords (except 10201)</summary>
-<p>Most C-SUB users will continue using their usernames, verification codes,
-and passwords with JADE.</p>
-<p>C-SUB users with 10201 in their usernames will switch to new 10401 accounts.
-For each such user, systems administrators will make a copy of the C-SUB
-10201 home directory and place it into the JADE 10401 home directory with
-the name "csub-homedir".</p>
-<p>10401 users can then look through "csub-homedir", move files out of it they want
-to keep, and then delete the rest if they want to save disk space. (Some
-directories like ~/.cache/ can contain large amounts of material.)</p>
+<!-- ------------------------------------------------------------------------->
+<details class="danger">
+<summary>Paths have changed</summary>
+<p><mark class="critic">A variety of paths have changed. Please review the details.</mark></p>
+<p>The need to more carefully control data access in JADE, as well as
+reflection upon the design lessons learned from the C-SUB implementation, has
+resulted in a variety of path changes.  We have created symbolic links in
+various locations to allow paths that were valid in the C-SUB to continue
+to work in JADE.</p>
+<p><a href="../images/jade-path-summary-table-cms.pdf">This
+document</a> is a one page summary table.</p>
+<p><a href="../images/paths-csub-to-jade.pdf">This document</a> is longer, and provides details about each kind of data
+locations available in JADE. It describes changes which impact users and data
+moderators.</p>
+<p>We have a document explaining how to replace strings in documents
+<a href="../sed-tips-jade/">here</a>.</p>
 </details>
 <!-- ------------------------------------------------------------------------->
 <details class="warning">
@@ -5284,24 +5305,25 @@ directories like ~/.cache/ can contain large amounts of material.)</p>
 to use, you will need to modify them so they work on JADE.</mark></p>
 <p>Compute nodes in C-SUB had the prefix "compute-" and a suffix in the range
 132 to 139.</p>
-<p>Compute nodes in JADE have the prefix "jcompute-" and a suffix in the range
+<p>Compute nodes in JADE have the prefix <strong>"jcompute-"</strong> and a suffix in the range
 032 and higher.</p>
-<p>There is a direct mapping of C-SUB compute-132 to JADE jcompute-032, etc.</p>
+<p>There is a direct mapping of C-SUB compute-132 to JADE jcompute-032, etc.
+Add a "j" and change "1" to "0".</p>
 </details>
+<!-- ------------------------------------------------------------------------->
 <details class="info">
 <summary>Unix group changes</summary>
 <p><mark class="critic">This change should be invisible.</mark></p>
 <p>Each C-SUB user has a 'primary' group and one or more 'secondary' groups.
 When users are migrated to JADE, we will change both primary &amp; secondary
-group memberships.</p>
+group memberships. Your primary will become <code>j-c-users</code> and your secondary
+will match your account's DUA number, e.g. <code>j-c55548</code>.</p>
 </details>
 <!-- ------------------------------------------------------------------------->
 <details class="warning">
 <summary>SLURM partition name changes</summary>
 <p><mark class="critic">If your batch job scripts specified the name of the partition to use, you
 will need to modify them so they work on JADE.</mark></p>
-<p>We have a document explaining how to replace strings in documents
-<a href="../sed-tips-jade/">here</a>.</p>
 <p>In C-SUB, the default partition was named "cms" and the SAS one "sas".</p>
 <p>In JADE, each community now has its own default partition. The CMS default is
 named "c-shared". Also, "sas" was renamed to be "c-sas".</p>
@@ -5312,6 +5334,12 @@ explicitly specified "cms".</p>
 <p>We have added a modification to your home directory to accomodate a change
 in the name of the CMS community's default partition. The file
 <code>~/.slurm/defaults</code> contains a line specifying "c-shared" as the default.</p>
+<p>The command <code>slurmpic -a</code> will show you all of the currently defined nodes
+and partition names. (<code>scontrol show node &lt;node_name&gt;</code> will show you all of
+the info about a particular node, and <code>scontrol show partition
+&lt;partition_name&gt;</code> will display the full partition definition.)</p>
+<p>We have a document explaining how to replace strings in documents
+<a href="../sed-tips-jade/">here</a>.</p>
 </details>
 <!-- ------------------------------------------------------------------------->
 <details class="warning">
@@ -5585,7 +5613,7 @@ on different types of material !!!!!!</p>
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="December 26, 2025 05:01:37 UTC">December 26, 2025</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="December 26, 2025 21:23:28 UTC">December 26, 2025</span>
   </span>
 
     

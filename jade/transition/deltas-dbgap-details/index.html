@@ -5183,13 +5183,14 @@
 
 
 <h1 id="20251225-this-page-is-under-heavy-revision">20251225 - This page is under heavy revision<a class="headerlink" href="#20251225-this-page-is-under-heavy-revision" title="Anchor link to this section for reference">&para;</a></h1>
-<h1 id="guide-to-differences-between-jhpce-and-jade">Guide to differences between JHPCE and JADE<a class="headerlink" href="#guide-to-differences-between-jhpce-and-jade" title="Anchor link to this section for reference">&para;</a></h1>
+<h1 id="guide-to-differences-between-jhpce-and-jade-for-dbgap-users">Guide to differences between JHPCE and JADE for dbGaP users<a class="headerlink" href="#guide-to-differences-between-jhpce-and-jade-for-dbgap-users" title="Anchor link to this section for reference">&para;</a></h1>
 <p>NIH has mandated that dbGaP data be protected by computers configured to meet
 the stringent NIST 800-171 standard. This means that JADE is configured
 differently from the main JHPCE cluster.  We attempt to identify differences here.</p>
 <p>Click on a topic to read more about it (and click again to when finished to
 close it). Three colors were used to indicate the likelihood of
 that topic impacting the typical user.</p>
+<!-- ------------------------------------------------------------------------->
 <div class="admonition tip">
 <p class="admonition-title">Tip</p>
 <ul>
@@ -5198,8 +5199,9 @@ that topic impacting the typical user.</p>
 <li>light blue, info - Less impactful changes</li>
 </ul>
 </div>
-<div class="admonition tip">
-<p class="admonition-title">Please take note of these path element symbols</p>
+<!-- ------------------------------------------------------------------------->
+<details class="tip">
+<summary>Please take note of these path element symbols</summary>
 <p>In this document and others, we show the convention used for some aspect of
 the cluster, such as the path to expect for this or that purpose.</p>
 <p><strong><em>&lt;dua&gt;</em></strong> = for example, 17293 or 15209<br>
@@ -5209,8 +5211,9 @@ the cluster, such as the path to expect for this or that purpose.</p>
 <strong><em>&lt;username&gt;</em></strong> = for example, d-jli89-10201<br>
 <br>
 E.g. <code>/users/&lt;comm&gt;/&lt;cdua&gt;/&lt;username&gt;/</code><br>
-     <code>/users/dbgap/d17293/wshi13-17293/</code></p>
-</div>
+     <code>/users/dbgap/d17293/d-wshi13-17293/</code></p>
+</details>
+<!-- ------------------------------------------------------------------------->
 <details class="info">
 <summary>User Communities on JADE</summary>
 <p><mark class="critic">Researchers who use dbGaP data are members of the "DBGAP community" on JADE.</mark></p>
@@ -5226,19 +5229,27 @@ d<span class="w">               </span>dbgap
 s<span class="w">               </span>sysadmin
 </code></pre></div>
 </details>
+<!-- ------------------------------------------------------------------------->
 <details class="danger">
 <summary>Login is only allowed from SAFE Desktop</summary>
 <p><mark class="critic">dbGaP users must log into the SAFE Desktop before they can log into JADE.</mark></p>
-<p>One must be connected to a Hopkins network to log into SAFE.</p>
+<p>One must be connected to a Hopkins network to log into SAFE.
+(You can also log into JADE using the newer SAFER Desktop service.)</p>
 </details>
+<!-- ------------------------------------------------------------------------->
 <details class="danger">
-<summary>Login requires OTP; ssh keys are not allowed</summary>
+<summary>Login requires MFA via OTP; ssh keys are not allowed</summary>
 <p><mark class="critic">dbGaP users must use One Time Passwords to log into JADE.</mark></p>
+<p>The local program <code>auth_util</code> allows you to work with your Google
+Authenticator One Time Password configuration.  You will use it to configure
+your smartphone or other OTP apps to generate a stream of valid verification
+codes to use during login.</p>
 </details>
+<!-- ------------------------------------------------------------------------->
 <details class="danger">
 <summary>Login node</summary>
 <p><mark class="critic">You must change your settings or commands to use the JADE login server.</mark></p>
-<p>JADE:   <em>jade01.jhsph.edu</em></p>
+<p>JADE: <strong>jade01.jhsph.edu</strong></p>
 <div class="tabbed-set tabbed-alternate" data-tabs="1:1"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">Windows users</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
@@ -5254,13 +5265,19 @@ s<span class="w">               </span>sysadmin
 </div>
 </div>
 </div>
-<p><em>jade01.jhsph.edu</em> instead of either jhpce01.jhsph.edu or
+<p><strong>jade01.jhsph.edu</strong> instead of either jhpce01.jhsph.edu or
 jhpce03.jhsph.edu.</p>
 </details>
+<!-- ------------------------------------------------------------------------->
 <details class="danger">
 <summary>New accounts are used to access JADE</summary>
 <p><mark class="critic">New usernames, verification codes, and passwords are used.</mark></p>
 <p>You will receive new login credentials when your account is configured.</p>
+<p>JADE uses completely different file systems than JHPCE, including <code>/users/</code>.</p>
+<p>JHPCE: <code>/users/&lt;username&gt;&lt;br&gt;</code>
+       <code>/users/tunison</code></p>
+<p>JADE:  <code>/users/&lt;comm&gt;/&lt;cdua&gt;/&lt;username&gt;&lt;br&gt;</code>
+       <code>/users/dbgap/d17293/d-steward1-17293</code></p>
 </details>
 <!-- ------------------------------------------------------------------------->
 <details class="info">
@@ -5272,17 +5289,22 @@ and one or more 'secondary' groups (e.g. <code>j-d17293</code>).</p>
 <!-- ------------------------------------------------------------------------->
 <details class="warning">
 <summary>SLURM partition name changes</summary>
-<p><mark class="critic">If your batch job scripts specified the name of the partition to use, you
+<p><mark class="critic">If your batch job scripts specify the name of the partition to use, you
 will need to modify them so they work on JADE.</mark></p>
-<p>We have a document explaining how to replace strings in documents
-<a href="../sed-tips-jade/">here</a>.</p>
 <p>In JHPCE, the default partition was named "shared". There were PI specific
 partitions.</p>
 <p>In JADE, each community now has its own default partition. The DBGAP default is
-named "d-shared". There currently are no PI owned partitions.</p>
+named "<strong>d-shared</strong>". There currently are no PI owned partitions.</p>
 <p>When creating dbgap home directories, we have added to your home directory
 the file <code>~/.slurm/defaults</code>. It contains a line specifying "d-shared" as
-the default partition.</p>
+the default partition. That allows you to continue not having to specify a
+specific partition.</p>
+<p>The command <code>slurmpic -a</code> will show you all of the currently defined nodes
+and partition names. (<code>scontrol show node &lt;node_name&gt;</code> will show you all of
+the info about a particular node, and <code>scontrol show partition
+&lt;partition_name&gt;</code> will display the full partition definition.)</p>
+<p>We have a document explaining how to replace strings in documents
+<a href="../sed-tips-jade/">here</a>.</p>
 </details>
 <!-- ------------------------------------------------------------------------->
 <details class="danger">
@@ -5318,163 +5340,37 @@ On JADE, you will use <code>/transfer/in/cms/&lt;cdua&gt;/&lt;username&gt;</code
 </div>
 </details>
 <!-- ------------------------------------------------------------------------->
-<details class="danger">
-<summary>Data moderation process - differs only for moderators</summary>
-<p><mark class="critic">Users do not need to change their procedure</mark><br>
-<mark class="critic">The data moderation (DM) team needs to use two new paths - where you find
-proposed files and where you put them after approving them.</mark></p>
-<p>We cannot create symbolic links to hide this change.</p>
-<p>Data moderators: After you have reviewed the files users have proposed for
-egress, you copy those files into the user-specific directory where they can
-access them from outside.</p>
-<p>On the C-SUB, you <mark class="critic">found user files to review in</mark> <code>/users/&lt;dua&gt;/&lt;username&gt;/proposed/</code><br>
-On JADE, you will find user files to review in <code>/proposed/cms/&lt;cdua&gt;/&lt;username&gt;/</code><br></p>
-<p>On the C-SUB, you <mark class="critic">placed approved files into</mark> <code>/cms01/outgoing/&lt;username&gt;/</code><br>
-On JADE, you will use <code>/transfer/out/cms/&lt;cdua&gt;/&lt;username&gt;/</code><br></p>
-<p><mark class="critic">The data moderation process:</mark></p>
-<ol>
-<li>Users create their files</li>
-<li>Users copy the ones that they want to export out of JADE to a proposed
-directory in their home directory, as they did before. However, in JADE we
-have replaced that actual directory with a symbolic link pointing to the
-actual location: <code>/proposed/cms/&lt;cdua&gt;/&lt;username&gt;/</code> Users can just work within
-<code>~/proposed/</code> as long as they don’t delete the link.  (DM reviewers cannot use
-the “proposed” symbolic links, e.g. they cannot say “cd ~c-tbrow261-55548/proposed”.
-They cannot do that because, in JADE, home directories are unreadable by anyone
-except the user. Which is the way it should be.)</li>
-<li>Users contact DM reviewer team asking for review</li>
-<li>DM reviewer (who is a member of the <code>j-c10401</code> group) changes directory to the
-"/proposed" directory for that user, and does what they do. </li>
-<li>DM reviewer copies the approved files to <code>/transfer/out/cms/&lt;cdua&gt;/&lt;username&gt;/</code></li>
-<li>DM reviewer notifies user</li>
-<li>User, from outside of JADE, <code>sftp -P 22027 &lt;username&gt;@jade01.jhsph.edu</code></li>
-<li>User issues command “cd <cdua>/<username>” and “get file1”</li>
-<li>User quits sftp session.</li>
-<li>Files older than 30 days are automatically deleted from <code>/transfer/out/cms/&lt;cdua&gt;/&lt;username&gt;/</code></li>
-<li>It is up to users to clean up their <code>~/proposed/</code> files.</li>
-</ol>
-</details>
-<!-- ------------------------------------------------------------------------->
 <details class="info">
 <summary>Mailing lists</summary>
-<p><mark class="critic">The mailing list to reach all CMS users in a cluster has changed.</mark></p>
-<p>C-SUB: c-sub-users@lists.jh.edu<br>
-JADE: jade-cms-users@lists.jh.edu</p>
+<p><mark class="critic">We have defined mailing list to reach all DBGAP users in a cluster.</mark></p>
+<p>JADE: jade-dbgap-users@lists.jh.edu</p>
+<p>This is a moderated list. DBGAP users are also members of the
+jhpceuser@lists.jh.edu mailing list.</p>
 </details>
 <!-- ------------------------------------------------------------------------->
 <details class="info">
 <summary>Operating system has been updated</summary>
 <p><mark class="critic">This change should be invisible. But you may run into version dependencies.</mark></p>
-<p>Both clusters use the Rocky 9.x operating system. The C-SUB uses 9.4 while
+<p>Both clusters use the Rocky 9.x operating system. The JHPCE uses 9.4 while
 JADE uses 9.6.  The Rocky OS is designed to be stable, so dot releases
 (e.g. .4 to .6) within major releases (e.g. 8.x vs 9.x) add mainly bug
 fixes. However, they also incorporate some upgrades to components, such as
 Python going from 3.9.18 to 3.9.21.</p>
+<p>JHPCE has a small "rocky96" partition available for testing.</p>
 <p>Please notify the systems administration team at bitsupport@lists.jh.edu of
 issues you find of this type. We will seek workarounds and be better able to
 help others. Thanks.</p>
 </details>
-<details class="info">
-<summary>LibreOffice program names have changed</summary>
-<p><mark class="critic">Program names have changed slightly</mark></p>
-<p>The graphic user interface <a href="https://www.libreoffice.org">LibreOffice</a> is a 
-free, open-source office suite.  JADE is using a much newer version than the C-SUB.  </p>
-<p>Many LibreOffice programs have a single letter prefix. In C-SUB that was 'o'
-while in JADE it has changed to be 's'.  "ooffice" is now "soffice", "ocalc"
-is now "scalc"</p>
-<p>These LibreOffice programs are found in the /user/local/bin/ directory
-(which is in your default PATH). You can see a list of them with the
-command<br>
-<code>ls -l /usr/local/bin/ | grep -i libre</code></p>
-</details>
+<!-- ------------------------------------------------------------------------->
+<!-- ------------------------------------------------------------------------->
+<!-- ------------------------------------------------------------------------->
+<!-- ------------------------------------------------------------------------->
 <h1 id="material-below-has-not-yet-been-incorporated-or-deleted-yet">MATERIAL BELOW HAS NOT YET BEEN INCORPORATED OR DELETED YET<a class="headerlink" href="#material-below-has-not-yet-been-incorporated-or-deleted-yet" title="Anchor link to this section for reference">&para;</a></h1>
-<p>COMMUNITIES</p>
-<p>Shorthand variables you will see used below:</p>
-<p><code>&lt;dua#&gt;</code> = alphanumeric string, typically containing only digits
-  e.g. 55548
-<code>&lt;cdua&gt; = &lt;community-letter&gt;&lt;dua#&gt;</code>
-  e.g. c55548
-  NOTE the "c" in <code>&lt;cdua&gt;</code> does NOT mean "cms", it means "c"ommunity</p>
-<p><code>&lt;username&gt; = c-&lt;jhedid&gt;-&lt;dua#&gt; (for cms users)</code>
-<code>&lt;username&gt; = d-&lt;jhedid&gt;-&lt;dua#&gt; (for dbgap users)</code>
-<code>&lt;username&gt; = s-&lt;jhedid&gt;-&lt;dua#&gt; (for sysadmin users)</code></p>
-<h2 id="login-node">LOGIN NODE<a class="headerlink" href="#login-node" title="Anchor link to this section for reference">&para;</a></h2>
-<p>C-SUB:  jhpcecms01.jhsph.edu
-JADE:   jade01.jhsph.edu</p>
-<h2 id="mailing-lists">MAILING LISTS<a class="headerlink" href="#mailing-lists" title="Anchor link to this section for reference">&para;</a></h2>
-<p>mailing list is jade-cms-users rather than c-sub-users (@lists.jh.edu)</p>
-<h2 id="slurm-partition">SLURM PARTITION<a class="headerlink" href="#slurm-partition" title="Anchor link to this section for reference">&para;</a></h2>
-<p>In the C-SUB, everyone shares a default partition named "cms"
-In JADE, the default partition for the cms community is c-shared.</p>
-<p>Brand new accounts created by my scripts will be given a ~/.slurm/defaults
-file, the last line of which will be a community-specific default partition.
-We'll need to Do The Right Thing as we copy over C-SUB home directories of
-testers and then later migrated users. (First checking that no one has such
-a file, then, if not, copying a default one into place.)</p>
-<h2 id="username">USERNAME<a class="headerlink" href="#username" title="Anchor link to this section for reference">&para;</a></h2>
-<p>The userid remains the same for C-SUB users.</p>
-<h2 id="unix-user-groups">UNIX USER GROUPS<a class="headerlink" href="#unix-user-groups" title="Anchor link to this section for reference">&para;</a></h2>
-<p>We need to add users to new groups.</p>
-<p>Existing groups used in the C-SUB will still be defined, at least for a time.
-I do not know whether having them around will introduce misleading testing
-results or actual problems, during testing or after a DUA group has migrated
-to JADE. This needs to be studied and made part of the recipe for copying
-/cms01/data/dua/<dua#> over into JADE. </p>
-<p>Add users to:
-j-c-users
-This is the group which identifies members of the cms community within JADE
-C-SUB:  c-users   meant basically "all normal human users in the cluster"
-JADE:   j-c-users   means "cms people"</p>
-<p>Add users to:
-j-<cdua>
-This is the group which identifies access to a DUA's files.
-C-SUB:  c-<dua#> e.g. c-55548
-JADE:   j-<cdua> e.g. j-c55548</p>
-<p>Add data moderators to
-j-c-sftp-out
-This group replaces "c-sftp-out" for data moderators
-Data moderators have account names in the 10201 DUA, i.e. c-<jhedid>-10201</p>
-<p>PATHS PATHS PATHS PATHS PATHS
-PATHS PATHS PATHS PATHS PATHS
-PATHS PATHS PATHS PATHS PATHS</p>
-<hr />
-<h2 id="home-directories">HOME DIRECTORIES<a class="headerlink" href="#home-directories" title="Anchor link to this section for reference">&para;</a></h2>
-<p>C-SUB:  /users/<dua#>/<username>
-    /users/10101/c-jtuniso1-10101</p>
-<p>JADE:   /users/<comm>/<cdua>/<username>
-    /users/cms/c77777/c-test1-77777</p>
-<p>I have created symbolic links for each of the DUAs, e.g.
-    /users/10101 -&gt; /users/cms/c10101/</p>
-<p>That will accomodate references to home directories or per-dua shared
-directories.</p>
-<p>However, I think that any new CMS DUA's that come along should not have a
-link created, because the other JADE communities will not have them at all.</p>
-<p>If users want to refer to home directories, as a general practice it is best
-to use $HOME or ~ </p>
-<p>If users want to refer to per-dua shared/ directories, they should use the new
-correct path.</p>
-<h2 id="incoming-sftp-data">INCOMING SFTP DATA<a class="headerlink" href="#incoming-sftp-data" title="Anchor link to this section for reference">&para;</a></h2>
-<p>The port for incoming CMS data, TCP/IP port 22011, will remain unchanged.</p>
-<p>Data will now land in a new path.
-C-SUB:  /cms01/incoming/<userid>/
-JADE:   /transfer/in/<comm>/<cdua>/<userid></p>
-<h2 id="outgoing-sftp-data-after-being-approved-for-egress">OUTGOING SFTP DATA (AFTER BEING APPROVED FOR EGRESS)<a class="headerlink" href="#outgoing-sftp-data-after-being-approved-for-egress" title="Anchor link to this section for reference">&para;</a></h2>
-<p>The port for outgoing CMS data, TCP/IP port 22027, will remain unchanged.</p>
-<p>Data will now be available, after data review, in a new path.
-C-SUB:  /cms01/outgoing/<userid>/
-JADE:   /transfer/out/<comm>/<cdua>/<userid></p>
-<h2 id="proposed-outgoing-sftp-data-before-being-approved-for-egress">PROPOSED OUTGOING SFTP DATA (BEFORE BEING APPROVED FOR EGRESS)<a class="headerlink" href="#proposed-outgoing-sftp-data-before-being-approved-for-egress" title="Anchor link to this section for reference">&para;</a></h2>
-<p>Data needing data review, will go into a new path.
-C-SUB:  /users/<dua#>/<userid>/proposed
-JADE:   /proposed/<comm>/<cdua>/<userid></p>
-<p>This is being done so user home directories can be simpler and also be
-standard across all communities.</p>
-<p>20251013: I have NOT finished tweaking everything for this to work.</p>
 <h2 id="dua-data">DUA DATA<a class="headerlink" href="#dua-data" title="Anchor link to this section for reference">&para;</a></h2>
 <p>DUA data has been relocated to /data
 We are still working out the details of what part of paths under
 /data/ represent mount points.</p>
-<p>C-SUB:  /cms01/data/dua/<dua#><br />
+<p>JHPCE:  Many diverse file systems
 JADE:   /data/cms/<cdua>/cui/
     /data/cms/<cdua>/cui/intermediate/
     /data/cms/<cdua>/cui-intermediate/</p>
@@ -5499,12 +5395,6 @@ does not have as much space.)</p>
 place there. If subdirectories are well organized, we can create whole new
 file systems if their current one fills up, or if PIs want to pay extra to
 create a file system on our SSD-equipped server.</p>
-<p>We could to create some standard items under shared/, such as
-    /data/cms/<cdua>/shared/<userid>
-    /data/cms/<cdua>/shared/tools/
-    /data/cms/<cdua>/shared/refdata/
-SUBDIRECTORIES ARE REQUIRED IF THE GROUP wants to have different permissions
-on different types of material !!!!!!</p>
 
 
 
@@ -5525,7 +5415,7 @@ on different types of material !!!!!!</p>
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="December 26, 2025 05:01:37 UTC">December 26, 2025</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="December 26, 2025 21:23:28 UTC">December 26, 2025</span>
   </span>
 
     

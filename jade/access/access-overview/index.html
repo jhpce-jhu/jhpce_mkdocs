@@ -88,7 +88,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#this-page-is-being-developed" class="md-skip">
+        <a href="#20251226-this-page-is-under-heavy-revision" class="md-skip">
           Skip to content
         </a>
       
@@ -5202,10 +5202,10 @@
 
 
 
-<h1 id="this-page-is-being-developed">THIS PAGE IS BEING DEVELOPED !!!!!!!!!!!!!!<a class="headerlink" href="#this-page-is-being-developed" title="Anchor link to this section for reference">&para;</a></h1>
+<h1 id="20251226-this-page-is-under-heavy-revision">20251226 THIS PAGE IS UNDER HEAVY REVISION !!!!!!!!!!!!!!<a class="headerlink" href="#20251226-this-page-is-under-heavy-revision" title="Anchor link to this section for reference">&para;</a></h1>
 <h1 id="accessing-the-jade-cluster-overview">Accessing the JADE Cluster: Overview<a class="headerlink" href="#accessing-the-jade-cluster-overview" title="Anchor link to this section for reference">&para;</a></h1>
-<p>This page was created by duplicating the <a href="../../../access/access-overview/">access overview page for the main cluster</a>
-and beginning to revise it.</p>
+<p>(This page was created by duplicating the <a href="../../../access/access-overview/">access overview page for the main
+cluster</a> and beginning to revise it.)</p>
 <h2 id="cluster-structure-overview">Cluster structure overview<a class="headerlink" href="#cluster-structure-overview" title="Anchor link to this section for reference">&para;</a></h2>
 <p>JADE can only be accessed from Hopkins networks. JADE serves three user
 communities. The dbGAP users must connect to JADE from the SAFE or SAFER
@@ -5229,9 +5229,9 @@ Desktops. </p>
 <h2 id="multi-factor-authentication-mfa">Multi-factor authentication (MFA)<a class="headerlink" href="#multi-factor-authentication-mfa" title="Anchor link to this section for reference">&para;</a></h2>
 <p>There are two basic "factors" required to log into a computer, whether your
 laptop or a remote UNIX cluster login node -- your username and a password.
-<mark class="critic">JADE requires the use of an additional factor</mark>, a <a href="ssh.md#one-time-passwords">one-time
+<mark class="critic">JADE requires the use of an additional factor</mark>, a <a href="../../../access/ssh/#one-time-passwords">one-time
 password</a> (OTP) six digit code. </p>
-<p>, or the use of <a href="ssh.md#ssh-keys">SSH key pairs</a>. </p>
+<p>The use of <a href="../../../access/ssh/#ssh-keys">SSH key pairs</a> is not allowed.</p>
 <h3 id="one-time-passwords">One Time Passwords<a class="headerlink" href="#one-time-passwords" title="Anchor link to this section for reference">&para;</a></h3>
 <p>When you SSH into JHPCE, you will be prompted for a “Verification Code:” This is your cue to enter in a one-time password six digit code.</p>
 <p>Programs like <code>Google Authenticator</code> and <code>Micrsoft Authenticator</code> generate one-time password codes (OTP). These are only good for a single use, whether you successfully log in or not. Typically they are used to generate a <em>stream</em> of time-based OTPs, or TOTPs. These are only good for one minute, adding another layer of difficulty for someone trying to impersonate you.</p>
@@ -5264,9 +5264,13 @@ For security reasons, the web portal is only available to computers on Hopkins n
 <h2 id="ssh-is-the-primary-method">SSH Is The Primary Method<a class="headerlink" href="#ssh-is-the-primary-method" title="Anchor link to this section for reference">&para;</a></h2>
 <p>Access to the JHPCE cluster requires the use of SSH.</p>
 <p>SSH stands for Secure SHell. SSH is actually a set of internet standard protocols. Programs implementing these protocols include both command line interface (CLI) tools and those with graphic user interfaces (GUI).  They all enable you to make secure, encrypted connections from one computer to the next.</p>
-<p><a href="ssh.md">This document</a> provides more information on SSH.</p>
+<p><a href="../../../access/ssh/">This document</a> provides more information on SSH.</p>
 <h2 id="multi-factor-authentication-mfa_1">Multi-factor authentication (MFA)<a class="headerlink" href="#multi-factor-authentication-mfa_1" title="Anchor link to this section for reference">&para;</a></h2>
-<p>There are two basic "factors" required to log into a computer, whether your laptop or a remote UNIX cluster login node -- your username and a password. <mark class="critic">JHPCE requires the use of an additional factor</mark>, either a <a href="ssh.md#one-time-passwords">one-time password</a> (OTP) six digit code, or the use of <a href="ssh.md#ssh-keys">SSH key pairs</a>. </p>
+<p>There are two basic "factors" required to log into a computer, whether your
+laptop or a remote UNIX cluster login node -- your username and a password.
+<mark class="critic">JHPCE requires the use of an additional factor</mark>, either a <a href="../../../access/ssh/#one-time-passwords">one-time
+password</a> (OTP) six digit code, or the use of
+<a href="../../../access/ssh/#ssh-keys">SSH key pairs</a>. </p>
 <h3 id="one-time-passwords_1">One Time Passwords<a class="headerlink" href="#one-time-passwords_1" title="Anchor link to this section for reference">&para;</a></h3>
 <p>When you SSH into JHPCE, you will be prompted for a “Verification Code:” This is your cue to enter in a one-time password six digit code.</p>
 <p>Programs like <code>Google Authenticator</code> and <code>Micrsoft Authenticator</code> generate one-time password codes (OTP). These are only good for a single use, whether you successfully log in or not. Typically they are used to generate a <em>stream</em> of time-based OTPs, or TOTPs. These are only good for one minute, adding another layer of difficulty for someone trying to impersonate you.</p>
@@ -5277,10 +5281,12 @@ For security reasons, the web portal is only available to computers on Hopkins n
 <p>SSH provides support for tunnelling X11 over an encrypted connection. You may need to tell SSH that you want that service, by, for example, adding the -X flag to an ssh command in a macOS Terminal.</p>
 <ul>
 <li>macOS users need to install <a href="https://en.wikipedia.org/wiki/XQuartz">XQuartz</a> from <a href="https://www.xquartz.org">xquartz.org</a>.</li>
-<li>Windows users need to use a program like MobaXterm (highly recommended) or <a href="https://en.wikipedia.org/wiki/Cygwin">Cygwin</a>. We have a page describing installing and using <a href="mobaxterm.md">MobaXterm</a>.</li>
+<li>Windows users need to use a program like MobaXterm (highly recommended) or
+  <a href="https://en.wikipedia.org/wiki/Cygwin">Cygwin</a>. We have a page describing
+  installing and using <a href="../../../access/mobaxterm/">MobaXterm</a>.</li>
 <li>Linux laptop or desktop users are already using X as their windowing system.</li>
 </ul>
-<p>For more information, see <a href="x11.md">our X11 document</a>.</p>
+<p>For more information, see <a href="../../../access/x11/">our X11 document</a>.</p>
 <!-- 20251215 - are we going to offer a way to change password etc?
 ## Web Portal
 We have a web server named [jhpce-app02.jhsph.edu](https://jhpce-app02.jhsph.edu) configured to offer a growing number of services. Click on the links to learn more.
@@ -5310,7 +5316,8 @@ cloud providers. They offer several different models with varying capabilities.
 The lowest model is free.</p>
 <h2 id="file-transfers">File Transfers<a class="headerlink" href="#file-transfers" title="Anchor link to this section for reference">&para;</a></h2>
 <p>We have a transfer server {==jhpce-transfer01.jhsph.edu</mark> for file transfers into and out of the cluster. It is connected by a 40G Ethernet link to Hopkins networks.
-This computer also offers a Globus Endpoint service (described <a href="globus.md">here</a>) for transfers from personal computers and other institutions.</p>
+This computer also offers a Globus Endpoint service (described
+<a href="../globus-jade/">here</a>) for transfers from personal computers and other institutions.</p>
 <p>Transferring data <em>into or out of the cluster</em> is documented <a href="../../../access/file-transfer/">here</a>.</p>
 <p>The login nodes SHOULD NOT be used for file transfers into and out of the cluster beyond extremely trivial cases. Their connections are four times slower and they are relied upon by all of your peers.</p>
 <p>Please use compute nodes for transfers <em>WITHIN the cluster</em>. For example, copying significant volumes of files from one file system to another, such as <code>/dcs05/a-place/</code> to <code>/dcs07/somewhere-else/</code>. Information about doing that can be found <a href="../../../files/copying-files/">here</a></p>
@@ -5342,7 +5349,7 @@ This computer also offers a Globus Endpoint service (described <a href="globus.m
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="December 21, 2025 09:02:39 UTC">December 21, 2025</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="December 26, 2025 21:23:28 UTC">December 26, 2025</span>
   </span>
 
     
