@@ -19,11 +19,13 @@ Some items are marked red but only require a one word change in your command
 or changing directory to a different location to retrieve your incoming files.
 You will very quickly master the changes.
 
+<!-- ------------------------------------------------------------------------->
 !!! tip 
     * red, danger - You must deal with/know about
     * orange, warning - You probably should know about
     * light blue, info - Less impactful changes
 
+<!-- ------------------------------------------------------------------------->
 !!! tip "Please take note of these path element symbols"
 
     In this document and others, we show the convention used for some aspect of
@@ -38,6 +40,7 @@ You will very quickly master the changes.
     E.g. `/transfer/in/<comm>/<cdua>/<username>/`<br>
          `/transfer/in/cms/c55548/c-jxu123-55548
 
+<!-- ------------------------------------------------------------------------->
 ??? info "User Communities on JADE"
     {==If you had been using the C-SUB, you are a member of the "CMS community" on JADE.==}
 
@@ -55,6 +58,7 @@ You will very quickly master the changes.
     s               sysadmin
     ```
 
+<!-- ------------------------------------------------------------------------->
 ??? danger "Login node"
 
     {==You must change your settings or commands to use the JADE login server.==}
@@ -84,6 +88,26 @@ You will very quickly master the changes.
     directories like ~/.cache/ can contain large amounts of material.)
 
 <!-- ------------------------------------------------------------------------->
+??? danger "Paths have changed"
+    {==A variety of paths have changed. Please review the details.==}
+
+    The need to more carefully control data access in JADE, as well as
+    reflection upon the design lessons learned from the C-SUB implementation, has
+    resulted in a variety of path changes.  We have created symbolic links in
+    various locations to allow paths that were valid in the C-SUB to continue
+    to work in JADE.
+
+    [This
+    document](images/jade-path-summary-table-cms.pdf) is a one page summary table.
+
+    [This document](images/paths-csub-to-jade.md) is longer, and provides details about each kind of data
+    locations available in JADE. It describes changes which impact users and data
+    moderators.
+
+    We have a document explaining how to replace strings in documents
+    [here](sed-tips-jade.md).
+
+<!-- ------------------------------------------------------------------------->
 ??? warning "Compute node names have changed"
     {==If your batch job scripts specify the name of one or more compute nodes 
     to use, you will need to modify them so they work on JADE.==}
@@ -91,26 +115,26 @@ You will very quickly master the changes.
     Compute nodes in C-SUB had the prefix "compute-" and a suffix in the range
     132 to 139.
     
-    Compute nodes in JADE have the prefix "jcompute-" and a suffix in the range
+    Compute nodes in JADE have the prefix **"jcompute-"** and a suffix in the range
     032 and higher.
 
     There is a direct mapping of C-SUB compute-132 to JADE jcompute-032, etc.
+    Add a "j" and change "1" to "0".
     
 
+<!-- ------------------------------------------------------------------------->
 ??? info "Unix group changes"
     {==This change should be invisible.==}
 
     Each C-SUB user has a 'primary' group and one or more 'secondary' groups.
     When users are migrated to JADE, we will change both primary & secondary
-    group memberships.
+    group memberships. Your primary will become `j-c-users` and your secondary
+    will match your account's DUA number, e.g. `j-c55548`.
 
 <!-- ------------------------------------------------------------------------->
 ??? warning "SLURM partition name changes"
     {==If your batch job scripts specified the name of the partition to use, you
     will need to modify them so they work on JADE.==}
-
-    We have a document explaining how to replace strings in documents
-    [here](sed-tips-jade.md).
 
     In C-SUB, the default partition was named "cms" and the SAS one "sas".
 
@@ -125,6 +149,14 @@ You will very quickly master the changes.
     We have added a modification to your home directory to accomodate a change
     in the name of the CMS community's default partition. The file
     `~/.slurm/defaults` contains a line specifying "c-shared" as the default.
+
+    The command `slurmpic -a` will show you all of the currently defined nodes
+    and partition names. (`scontrol show node <node_name>` will show you all of
+    the info about a particular node, and `scontrol show partition
+    <partition_name>` will display the full partition definition.)
+
+    We have a document explaining how to replace strings in documents
+    [here](sed-tips-jade.md).
 
 <!-- ------------------------------------------------------------------------->
 ??? warning "Contents of ~/proposed/ directory are not automatically propagated"

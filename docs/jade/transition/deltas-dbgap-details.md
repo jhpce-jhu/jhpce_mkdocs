@@ -18,11 +18,13 @@ Click on a topic to read more about it (and click again to when finished to
 close it). Three colors were used to indicate the likelihood of
 that topic impacting the typical user.
 
+<!-- ------------------------------------------------------------------------->
 !!! tip 
     * red, danger - You must deal with/know about
     * orange, warning - You probably should know about
     * light blue, info - Less impactful changes
 
+<!-- ------------------------------------------------------------------------->
 !!! tip "Please take note of these path element symbols"
 
     In this document and others, we show the convention used for some aspect of
@@ -37,6 +39,7 @@ that topic impacting the typical user.
     E.g. `/users/<comm>/<cdua>/<username>/`<br>
          `/users/dbgap/d17293/wshi13-17293/`
 
+<!-- ------------------------------------------------------------------------->
 ??? info "User Communities on JADE"
     {==Researchers who use dbGaP data are members of the "DBGAP community" on JADE.==}
 
@@ -54,14 +57,17 @@ that topic impacting the typical user.
     s               sysadmin
     ```
 
+<!-- ------------------------------------------------------------------------->
 ??? danger "Login is only allowed from SAFE Desktop"
     {==dbGaP users must log into the SAFE Desktop before they can log into JADE.==}
 
     One must be connected to a Hopkins network to log into SAFE.
 
+<!-- ------------------------------------------------------------------------->
 ??? danger "Login requires OTP; ssh keys are not allowed"
     {==dbGaP users must use One Time Passwords to log into JADE.==}
 
+<!-- ------------------------------------------------------------------------->
 ??? danger "Login node"
 
     {==You must change your settings or commands to use the JADE login server.==}
@@ -77,10 +83,19 @@ that topic impacting the typical user.
 	*jade01.jhsph.edu* instead of either jhpce01.jhsph.edu or
 	jhpce03.jhsph.edu.
         
+<!-- ------------------------------------------------------------------------->
 ??? danger "New accounts are used to access JADE"
     {==New usernames, verification codes, and passwords are used.==}
 
     You will receive new login credentials when your account is configured.
+
+    JADE uses completely different file systems than JHPCE, including `/users/`.
+
+    JHPCE: /users/<username><br>
+           /users/tunison
+
+    JADE:  /users/<comm>/<cdua>/<username><br>
+           /users/dbgap/d17293/d-steward1-17293
 
 <!-- ------------------------------------------------------------------------->
 ??? info "Unix group changes"
@@ -94,9 +109,6 @@ that topic impacting the typical user.
     {==If your batch job scripts specified the name of the partition to use, you
     will need to modify them so they work on JADE.==}
 
-    We have a document explaining how to replace strings in documents
-    [here](sed-tips-jade.md).
-
     In JHPCE, the default partition was named "shared". There were PI specific
     partitions.
 
@@ -106,6 +118,9 @@ that topic impacting the typical user.
     When creating dbgap home directories, we have added to your home directory
     the file `~/.slurm/defaults`. It contains a line specifying "d-shared" as
     the default partition.
+
+    We have a document explaining how to replace strings in documents
+    [here](sed-tips-jade.md).
 
 <!-- ------------------------------------------------------------------------->
 ??? danger "SFTP is used data transfers"
@@ -142,165 +157,41 @@ that topic impacting the typical user.
         On JADE, you will use `/transfer/in/cms/<cdua>/<username>`
 
 <!-- ------------------------------------------------------------------------->
-??? danger "Data moderation process - differs only for moderators"
-
-    {==Users do not need to change their procedure==}<br>
-    {==The data moderation (DM) team needs to use two new paths - where you find
-    proposed files and where you put them after approving them.==}
-    
-    We cannot create symbolic links to hide this change.
-    
-    Data moderators: After you have reviewed the files users have proposed for
-    egress, you copy those files into the user-specific directory where they can
-    access them from outside.
-
-    On the C-SUB, you {==found user files to review in==} `/users/<dua>/<username>/proposed/`<br>
-    On JADE, you will find user files to review in `/proposed/cms/<cdua>/<username>/`<br>
-
-
-    On the C-SUB, you {==placed approved files into==} `/cms01/outgoing/<username>/`<br>
-    On JADE, you will use `/transfer/out/cms/<cdua>/<username>/`<br>
-
-    {==The data moderation process:==}
-
-    1. Users create their files
-    1. Users copy the ones that they want to export out of JADE to a proposed
-    directory in their home directory, as they did before. However, in JADE we
-    have replaced that actual directory with a symbolic link pointing to the
-    actual location: `/proposed/cms/<cdua>/<username>/` Users can just work within
-    `~/proposed/` as long as they don’t delete the link.  (DM reviewers cannot use
-    the “proposed” symbolic links, e.g. they cannot say “cd ~c-tbrow261-55548/proposed”.
-    They cannot do that because, in JADE, home directories are unreadable by anyone
-    except the user. Which is the way it should be.)
-    1. Users contact DM reviewer team asking for review
-    1. DM reviewer (who is a member of the `j-c10401` group) changes directory to the
-    "/proposed" directory for that user, and does what they do. 
-    1. DM reviewer copies the approved files to `/transfer/out/cms/<cdua>/<username>/`
-    1. DM reviewer notifies user
-    1. User, from outside of JADE, `sftp -P 22027 <username>@jade01.jhsph.edu`
-    1. User issues command “cd <cdua>/<username>” and “get file1”
-    1. User quits sftp session.
-    1. Files older than 30 days are automatically deleted from `/transfer/out/cms/<cdua>/<username>/`
-    1. It is up to users to clean up their `~/proposed/` files.
-
-<!-- ------------------------------------------------------------------------->
 ??? info "Mailing lists"
-    {==The mailing list to reach all CMS users in a cluster has changed.==}
+    {==We have defined mailing list to reach all DBGAP users in a cluster.==}
 
-    C-SUB: c-sub-users@lists.jh.edu<br>
-    JADE: jade-cms-users@lists.jh.edu
+    JADE: jade-dbgap-users@lists.jh.edu
+
+    This is a moderated list. DBGAP users are also members of the
+    jhpceuser@lists.jh.edu mailing list.
 
 <!-- ------------------------------------------------------------------------->
 ??? info "Operating system has been updated"
     {==This change should be invisible. But you may run into version dependencies.==}
 
-    Both clusters use the Rocky 9.x operating system. The C-SUB uses 9.4 while
+    Both clusters use the Rocky 9.x operating system. The JHPCE uses 9.4 while
     JADE uses 9.6.  The Rocky OS is designed to be stable, so dot releases
     (e.g. .4 to .6) within major releases (e.g. 8.x vs 9.x) add mainly bug
     fixes. However, they also incorporate some upgrades to components, such as
     Python going from 3.9.18 to 3.9.21.
 
+    JHPCE has a small "rocky96" partition available for testing.
+
     Please notify the systems administration team at bitsupport@lists.jh.edu of
     issues you find of this type. We will seek workarounds and be better able to
     help others. Thanks.
 
-??? info "LibreOffice program names have changed"
-    {==Program names have changed slightly==}
-
-    The graphic user interface [LibreOffice](https://www.libreoffice.org) is a 
-    free, open-source office suite.  JADE is using a much newer version than the C-SUB.  
-
-    Many LibreOffice programs have a single letter prefix. In C-SUB that was 'o'
-    while in JADE it has changed to be 's'.  "ooffice" is now "soffice", "ocalc"
-    is now "scalc"
-
-    These LibreOffice programs are found in the /user/local/bin/ directory
-    (which is in your default PATH). You can see a list of them with the
-    command<br>
-    `ls -l /usr/local/bin/ | grep -i libre`
-
-
+<!-- ------------------------------------------------------------------------->
+<!-- ------------------------------------------------------------------------->
+<!-- ------------------------------------------------------------------------->
+<!-- ------------------------------------------------------------------------->
 # MATERIAL BELOW HAS NOT YET BEEN INCORPORATED OR DELETED YET
 
-COMMUNITIES
-
-
-Shorthand variables you will see used below:
-
-`<dua#>` = alphanumeric string, typically containing only digits
-  e.g. 55548
-`<cdua> = <community-letter><dua#>`
-  e.g. c55548
-  NOTE the "c" in `<cdua>` does NOT mean "cms", it means "c"ommunity
-
-`<username> = c-<jhedid>-<dua#> (for cms users)`
-`<username> = d-<jhedid>-<dua#> (for dbgap users)`
-`<username> = s-<jhedid>-<dua#> (for sysadmin users)`
-
-LOGIN NODE
----------------------------------------------------------------------------
-C-SUB:	jhpcecms01.jhsph.edu
-JADE:	jade01.jhsph.edu
-
-MAILING LISTS
----------------------------------------------------------------------------
-mailing list is jade-cms-users rather than c-sub-users (@lists.jh.edu)
-
-SLURM PARTITION
----------------------------------------------------------------------------
-In the C-SUB, everyone shares a default partition named "cms"
-In JADE, the default partition for the cms community is c-shared.
-
-Brand new accounts created by my scripts will be given a ~/.slurm/defaults
-file, the last line of which will be a community-specific default partition.
-We'll need to Do The Right Thing as we copy over C-SUB home directories of
-testers and then later migrated users. (First checking that no one has such
-a file, then, if not, copying a default one into place.)
-
-USERNAME
----------------------------------------------------------------------------
-The userid remains the same for C-SUB users.
-
-UNIX USER GROUPS
----------------------------------------------------------------------------
-We need to add users to new groups.
-
-Existing groups used in the C-SUB will still be defined, at least for a time.
-I do not know whether having them around will introduce misleading testing
-results or actual problems, during testing or after a DUA group has migrated
-to JADE. This needs to be studied and made part of the recipe for copying
-/cms01/data/dua/<dua#> over into JADE. 
-
-Add users to:
-j-c-users
-This is the group which identifies members of the cms community within JADE
-C-SUB: 	c-users	  meant basically "all normal human users in the cluster"
-JADE:	j-c-users	means "cms people"
-
-Add users to:
-j-<cdua>
-This is the group which identifies access to a DUA's files.
-C-SUB: 	c-<dua#> e.g. c-55548
-JADE:	j-<cdua> e.g. j-c55548
-
-Add data moderators to
-j-c-sftp-out
-This group replaces "c-sftp-out" for data moderators
-Data moderators have account names in the 10201 DUA, i.e. c-<jhedid>-10201
-
-
-PATHS PATHS PATHS PATHS PATHS
-PATHS PATHS PATHS PATHS PATHS
 PATHS PATHS PATHS PATHS PATHS
 ---------------------------------------------------------------------------
 
 HOME DIRECTORIES
 ------------------------------------------------------------
-C-SUB:	/users/<dua#>/<username>
-	/users/10101/c-jtuniso1-10101
-
-JADE:	/users/<comm>/<cdua>/<username>
-	/users/cms/c77777/c-test1-77777
 
 I have created symbolic links for each of the DUAs, e.g.
 	/users/10101 -> /users/cms/c10101/
