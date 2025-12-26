@@ -3,21 +3,20 @@ tags:
   - in-progress
   - jade
   - transition
-  - cms
-title: Differences between C-SUB and JADE for CMS users
+  - dbgap
+title: Differences between JHPCE and JADE for dbGaP users
 ---
-# Guide to differences between C-SUB and JADE
+# 20251225 - This page is under heavy revision
 
-You will find working in JADE very similar to doing so in the C-SUB.
+# Guide to differences between JHPCE and JADE
 
-However, there are differences, and we attempt to identify them here.
+NIH has mandated that dbGaP data be protected by computers configured to meet
+the stringent NIST 800-171 standard. This means that JADE is configured
+differently from the main JHPCE cluster.  We attempt to identify differences here.
+
 Click on a topic to read more about it (and click again to when finished to
 close it). Three colors were used to indicate the likelihood of
 that topic impacting the typical user.
-
-Some items are marked red but only require a one word change in your command
-or changing directory to a different location to retrieve your incoming files.
-You will very quickly master the changes.
 
 !!! tip 
     * red, danger - You must deal with/know about
@@ -29,23 +28,23 @@ You will very quickly master the changes.
     In this document and others, we show the convention used for some aspect of
     the cluster, such as the path to expect for this or that purpose.
 
-    ***&lt;dua&gt;*** = for example, 59614 or 55548<br>
-    ***&lt;cdua&gt;*** = for example, c59614 or c55548<br>
-    ***&lt;comm&gt;*** = for example, cms or dbgap<br>
-    ***&lt;comm_letter&gt;*** = for example, c or d<br>
-    ***&lt;username&gt;*** = for example, c-jli89-10401<br>
+    ***&lt;dua&gt;*** = for example, 17293 or 15209<br>
+    ***&lt;cdua&gt;*** = for example, d17293 or d41021<br>
+    ***&lt;comm&gt;*** = for example, dbgap or cms<br>
+    ***&lt;comm_letter&gt;*** = for example, d or c<br>
+    ***&lt;username&gt;*** = for example, d-jli89-10201<br>
     <br>
-    E.g. `/transfer/in/<comm>/<cdua>/<username>/`<br>
-         `/transfer/in/cms/c55548/c-jxu123-55548
+    E.g. `/users/<comm>/<cdua>/<username>/`<br>
+         `/users/dbgap/d17293/wshi13-17293/`
 
 ??? info "User Communities on JADE"
-    {==If you had been using the C-SUB, you are a member of the "CMS community" on JADE.==}
+    {==Researchers who use dbGaP data are members of the "DBGAP community" on JADE.==}
 
     There are three communities (so far) in JADE. Each one has a unique name
     and a single character equivalent. You will see both appear in cluster
     configuration, such as the first letter of a username (c-jhedid-dua), 
     in paths to files (/transfer/in/cms/) and in names of SLURM partitions
-    (c-shared, c-sas).
+    (d-shared).
 
     ```Shell
     Character       Name
@@ -55,54 +54,40 @@ You will very quickly master the changes.
     s               sysadmin
     ```
 
+??? danger "Login is only allowed from SAFE Desktop"
+    {==dbGaP users must log into the SAFE Desktop before they can log into JADE.==}
+
+    One must be connected to a Hopkins network to log into SAFE.
+
+??? danger "Login requires OTP; ssh keys are not allowed"
+    {==dbGaP users must use One Time Passwords to log into JADE.==}
+
 ??? danger "Login node"
 
     {==You must change your settings or commands to use the JADE login server.==}
 
     JADE:	*jade01.jhsph.edu*
-
-    C-SUB:	jhpcecms01.jhsph.edu
     
     === "Windows users"
-        If you are on a Windows system, you will need to create new MobaXterm SSH and SFTP Sessions for the jade01.jhsph.edu login node. There are notes for doing this on page 18 from the [C-SUB orientation](https://jhpce.jhu.edu/orient/images/latest-csub-orient.pdf), (though you would substitute *jade01.jhpce.edu* for jhpcecms01.jhsph.edu).
+        If you are on a Windows system, you will need to create new MobaXterm
+	SSH and SFTP Sessions for the jade01.jhsph.edu login node.
         
     === "Mac & Linux users"
-        You will need to adjust your ssh and sftp commands to use *jade01.jhsph.edu* instead of jhpcecms01.jhsph.edu.
+        You will need to adjust your ssh and sftp commands to use
+	*jade01.jhsph.edu* instead of either jhpce01.jhsph.edu or
+	jhpce03.jhsph.edu.
         
-??? info "Unchanged: Usernames, verification codes, and passwords (except 10201)"
+??? danger "New accounts are used to access JADE"
+    {==New usernames, verification codes, and passwords are used.==}
 
-    Most C-SUB users will continue using their usernames, verification codes,
-    and passwords with JADE.
-
-    C-SUB users with 10201 in their usernames will switch to new 10401 accounts.
-    For each such user, systems administrators will make a copy of the C-SUB
-    10201 home directory and place it into the JADE 10401 home directory with
-    the name "csub-homedir".
-
-    10401 users can then look through "csub-homedir", move files out of it they want
-    to keep, and then delete the rest if they want to save disk space. (Some
-    directories like ~/.cache/ can contain large amounts of material.)
+    You will receive new login credentials when your account is configured.
 
 <!-- ------------------------------------------------------------------------->
-??? warning "Compute node names have changed"
-    {==If your batch job scripts specify the name of one or more compute nodes 
-    to use, you will need to modify them so they work on JADE.==}
-
-    Compute nodes in C-SUB had the prefix "compute-" and a suffix in the range
-    132 to 139.
-    
-    Compute nodes in JADE have the prefix "jcompute-" and a suffix in the range
-    032 and higher.
-
-    There is a direct mapping of C-SUB compute-132 to JADE jcompute-032, etc.
-    
-
 ??? info "Unix group changes"
-    {==This change should be invisible.==}
+    {==JADE uses completely separate groups to control data access.==}
 
-    Each C-SUB user has a 'primary' group and one or more 'secondary' groups.
-    When users are migrated to JADE, we will change both primary & secondary
-    group memberships.
+    Each JADE user has a 'primary' group based on their community (`j-d-users`)
+    and one or more 'secondary' groups (e.g. `j-d17293`).
 
 <!-- ------------------------------------------------------------------------->
 ??? warning "SLURM partition name changes"
@@ -112,59 +97,22 @@ You will very quickly master the changes.
     We have a document explaining how to replace strings in documents
     [here](sed-tips-jade.md).
 
-    In C-SUB, the default partition was named "cms" and the SAS one "sas".
+    In JHPCE, the default partition was named "shared". There were PI specific
+    partitions.
 
-    In JADE, each community now has its own default partition. The CMS default is
-    named "c-shared". Also, "sas" was renamed to be "c-sas".
+    In JADE, each community now has its own default partition. The DBGAP default is
+    named "d-shared". There currently are no PI owned partitions.
 
-    If you do not specify a partition when submitting an interactive or batch
-    job, then it is assigned to the cluster's default partition. Because the C-SUB
-    contained very few SLURM partitions, we expect that very few batch jobs
-    explicitly specified "cms".
-
-    We have added a modification to your home directory to accomodate a change
-    in the name of the CMS community's default partition. The file
-    `~/.slurm/defaults` contains a line specifying "c-shared" as the default.
+    When creating dbgap home directories, we have added to your home directory
+    the file `~/.slurm/defaults`. It contains a line specifying "d-shared" as
+    the default partition.
 
 <!-- ------------------------------------------------------------------------->
-??? warning "Contents of ~/proposed/ directory are not automatically propagated"
-    {==If you have active files in ~/proposed/ you will need to copy them to a new location.==}
-
-    (The tilde character '~' is a special character in UNIX shells. It represents
-    your home directory.)
-
-    * `~/proposed` -- In the C-SUB this was a directory. In JADE this is a symbolic link to the new location for this type of files. When your account is migrated to JADE, the original ~/proposed is renamed `~/proposed.csub` (you will not lose them!) and a symbolic link is made to point to `/proposed/cms/<cdua>/<username>`. You can continue to use `~/proposed` as if it were a directory, in terms of copying files into it or listing it. {==If you have files being reviewed by data moderators, then you should cp them from `~/proposed.csub/` to `~/proposed/`.==}
-
-<!-- ------------------------------------------------------------------------->
-??? danger "Incoming/Outgoing files will not be copied from C-SUB to JADE"
-    {==Files found in /cms01/incoming/ and /cms01/outgoing/ are not going to be
-    copied over to JADE.==}
-
-    Please copy any of them that you want to keep into your
-    home directory before your group is migrated from the C-SUB to JADE.
-
-<!-- ------------------------------------------------------------------------->
-??? danger "SFTP data transfers"
-    {==JADE uses the same TCP/IP networking ports as was used on the C-SUB:==}<br><br>
-    Data going into the cluster: 22011<br>
-    Data coming out of the cluster: 22027
-
-    JADE uses different paths to store this kind of data. 
-    We cannot create symbolic links to hide this change.
-
-    C-SUB
-
-        Incoming   /cms01/incoming/<username>
-        Outgoing   `/cms01/outgoing/<username>`
-
-    JADE
-
-        Incoming   /transfer/in/cms/<cdua>/<username>
-        Outgoing   /transfer/out/cms/<cdua>/<username>
-
-        Example:
-        Incoming   /transfer/in/cms/c55548/c-jxu123-55548
-        Outgoing   /transfer/out/cms/c55548/c-jxu123-55548
+??? danger "SFTP is used data transfers"
+    {== LEFT OFF EDITING HERE ==}
+    {==JADE uses specific TCP/IP networking ports for data ingress & egress: ==}<br><br>
+    Data going into the cluster: 22511<br>
+    Data coming out of the cluster: 22527
 
     There are two ways you work with this new path - when inside an SFTP
     transaction and when you are accessing files in the operating system.
