@@ -5,12 +5,12 @@ tags:
 title: "Access JADE Overview"
 ---
 
-# THIS PAGE IS BEING DEVELOPED !!!!!!!!!!!!!!
+# 20251226 THIS PAGE IS UNDER HEAVY REVISION !!!!!!!!!!!!!!
 
 # Accessing the JADE Cluster: Overview
 
-This page was created by duplicating the [access overview page for the main cluster](../../access/access-overview.md)
-and beginning to revise it.
+(This page was created by duplicating the [access overview page for the main
+cluster](../../access/access-overview.md) and beginning to revise it.)
 
 ## Cluster structure overview
 
@@ -38,9 +38,9 @@ TODO: INSERT SCALED IMAGE HERE
 There are two basic "factors" required to log into a computer, whether your
 laptop or a remote UNIX cluster login node -- your username and a password.
 {==JADE requires the use of an additional factor==}, a [one-time
-password](ssh.md#one-time-passwords) (OTP) six digit code. 
+password](../../access/ssh.md#one-time-passwords) (OTP) six digit code. 
 
-, or the use of [SSH key pairs](ssh.md#ssh-keys). 
+The use of [SSH key pairs](../../access/ssh.md#ssh-keys) is not allowed.
 
 ### One Time Passwords
 When you SSH into JHPCE, you will be prompted for a “Verification Code:” This is your cue to enter in a one-time password six digit code.
@@ -85,10 +85,14 @@ Access to the JHPCE cluster requires the use of SSH.
 
 SSH stands for Secure SHell. SSH is actually a set of internet standard protocols. Programs implementing these protocols include both command line interface (CLI) tools and those with graphic user interfaces (GUI).  They all enable you to make secure, encrypted connections from one computer to the next.
 
-[This document](ssh.md) provides more information on SSH.
+[This document](../../access/ssh.md) provides more information on SSH.
 
 ## Multi-factor authentication (MFA)
-There are two basic "factors" required to log into a computer, whether your laptop or a remote UNIX cluster login node -- your username and a password. {==JHPCE requires the use of an additional factor==}, either a [one-time password](ssh.md#one-time-passwords) (OTP) six digit code, or the use of [SSH key pairs](ssh.md#ssh-keys). 
+There are two basic "factors" required to log into a computer, whether your
+laptop or a remote UNIX cluster login node -- your username and a password.
+{==JHPCE requires the use of an additional factor==}, either a [one-time
+password](../../access/ssh.md#one-time-passwords) (OTP) six digit code, or the use of
+[SSH key pairs](../../access/ssh.md#ssh-keys). 
 
 ### One Time Passwords
 When you SSH into JHPCE, you will be prompted for a “Verification Code:” This is your cue to enter in a one-time password six digit code.
@@ -109,10 +113,12 @@ SSH provides support for tunnelling X11 over an encrypted connection. You may ne
 [^2]:Note that X reverses the normal conception of client/server operation, which is that the remote computer is the "server". In X11, the "server" is the program receiving the keyboard and mouse inputs and displaying the output of remote "client" programs.
 
 - macOS users need to install [XQuartz](https://en.wikipedia.org/wiki/XQuartz) from [xquartz.org](https://www.xquartz.org).
-- Windows users need to use a program like MobaXterm (highly recommended) or [Cygwin](https://en.wikipedia.org/wiki/Cygwin). We have a page describing installing and using [MobaXterm](mobaxterm.md).
+- Windows users need to use a program like MobaXterm (highly recommended) or
+  [Cygwin](https://en.wikipedia.org/wiki/Cygwin). We have a page describing
+  installing and using [MobaXterm](../../access/mobaxterm.md).
 - Linux laptop or desktop users are already using X as their windowing system.
 
-For more information, see [our X11 document](x11.md).
+For more information, see [our X11 document](../../access/x11.md).
 
 <!-- 20251215 - are we going to offer a way to change password etc?
 ## Web Portal
@@ -149,7 +155,8 @@ The lowest model is free.
 ## File Transfers
 
 We have a transfer server {==jhpce-transfer01.jhsph.edu==} for file transfers into and out of the cluster. It is connected by a 40G Ethernet link to Hopkins networks.
-This computer also offers a Globus Endpoint service (described [here](globus.md)) for transfers from personal computers and other institutions.
+This computer also offers a Globus Endpoint service (described
+[here](globus-jade.md)) for transfers from personal computers and other institutions.
 
 Transferring data _into or out of the cluster_ is documented [here](../../access/file-transfer.md).
 

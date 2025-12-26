@@ -6,8 +6,7 @@ tags:
   - cms
 title: Differences between C-SUB and JADE for CMS users
 ---
-# Guide to differences between C-SUB and JADE
-
+# Guide to differences between C-SUB and JADE for CMS users
 You will find working in JADE very similar to doing so in the C-SUB.
 
 However, there are differences, and we attempt to identify them here.
@@ -26,7 +25,7 @@ You will very quickly master the changes.
     * light blue, info - Less impactful changes
 
 <!-- ------------------------------------------------------------------------->
-!!! tip "Please take note of these path element symbols"
+??? tip "Please take note of these path element symbols"
 
     In this document and others, we show the convention used for some aspect of
     the cluster, such as the path to expect for this or that purpose.
@@ -57,36 +56,31 @@ You will very quickly master the changes.
     d               dbgap
     s               sysadmin
     ```
-
 <!-- ------------------------------------------------------------------------->
-??? danger "Login node"
-
-    {==You must change your settings or commands to use the JADE login server.==}
-
-    JADE:	*jade01.jhsph.edu*
-
-    C-SUB:	jhpcecms01.jhsph.edu
-    
-    === "Windows users"
-        If you are on a Windows system, you will need to create new MobaXterm SSH and SFTP Sessions for the jade01.jhsph.edu login node. There are notes for doing this on page 18 from the [C-SUB orientation](https://jhpce.jhu.edu/orient/images/latest-csub-orient.pdf), (though you would substitute *jade01.jhpce.edu* for jhpcecms01.jhsph.edu).
-        
-    === "Mac & Linux users"
-        You will need to adjust your ssh and sftp commands to use *jade01.jhsph.edu* instead of jhpcecms01.jhsph.edu.
-        
 ??? info "Unchanged: Usernames, verification codes, and passwords (except 10201)"
 
-    Most C-SUB users will continue using their usernames, verification codes,
-    and passwords with JADE.
+    {==Most C-SUB users will continue using their usernames, verification codes,
+    and passwords with JADE.==}
 
     C-SUB users with 10201 in their usernames will switch to new 10401 accounts.
     For each such user, systems administrators will make a copy of the C-SUB
     10201 home directory and place it into the JADE 10401 home directory with
-    the name "csub-homedir".
+    the name `csub-homedir`.
 
-    10401 users can then look through "csub-homedir", move files out of it they want
+    10401 users can then look through `csub-homedir`, move files out of it they want
     to keep, and then delete the rest if they want to save disk space. (Some
     directories like ~/.cache/ can contain large amounts of material.)
+<!-- ------------------------------------------------------------------------->
+??? danger "Login node"
+    {==You must change your settings or commands to use the JADE login server.==}
 
+    JADE:   **jade01.jhsph.edu**<br>
+    
+    === "Windows users"
+        If you are on a Windows system, you will need to create new MobaXterm SSH and SFTP "Sessions" for the jade01.jhsph.edu login node. There are notes for doing this on page 18 of the [C-SUB orientation](../../orient/images/latest-csub-orient.pdf), (though you would substitute **jade01.jhpce.edu** for jhpcecms01.jhsph.edu).
+        
+    === "Mac & Linux users"
+        You will need to adjust your ssh and sftp commands to use **jade01.jhsph.edu** instead of jhpcecms01.jhsph.edu.
 <!-- ------------------------------------------------------------------------->
 ??? danger "Paths have changed"
     {==A variety of paths have changed. Please review the details.==}
@@ -100,13 +94,12 @@ You will very quickly master the changes.
     [This
     document](images/jade-path-summary-table-cms.pdf) is a one page summary table.
 
-    [This document](images/paths-csub-to-jade.md) is longer, and provides details about each kind of data
+    [This document](images/paths-csub-to-jade.pdf) is longer, and provides details about each kind of data
     locations available in JADE. It describes changes which impact users and data
     moderators.
 
     We have a document explaining how to replace strings in documents
     [here](sed-tips-jade.md).
-
 <!-- ------------------------------------------------------------------------->
 ??? warning "Compute node names have changed"
     {==If your batch job scripts specify the name of one or more compute nodes 
@@ -120,8 +113,6 @@ You will very quickly master the changes.
 
     There is a direct mapping of C-SUB compute-132 to JADE jcompute-032, etc.
     Add a "j" and change "1" to "0".
-    
-
 <!-- ------------------------------------------------------------------------->
 ??? info "Unix group changes"
     {==This change should be invisible.==}
@@ -130,7 +121,6 @@ You will very quickly master the changes.
     When users are migrated to JADE, we will change both primary & secondary
     group memberships. Your primary will become `j-c-users` and your secondary
     will match your account's DUA number, e.g. `j-c55548`.
-
 <!-- ------------------------------------------------------------------------->
 ??? warning "SLURM partition name changes"
     {==If your batch job scripts specified the name of the partition to use, you
@@ -157,7 +147,6 @@ You will very quickly master the changes.
 
     We have a document explaining how to replace strings in documents
     [here](sed-tips-jade.md).
-
 <!-- ------------------------------------------------------------------------->
 ??? warning "Contents of ~/proposed/ directory are not automatically propagated"
     {==If you have active files in ~/proposed/ you will need to copy them to a new location.==}
@@ -166,7 +155,6 @@ You will very quickly master the changes.
     your home directory.)
 
     * `~/proposed` -- In the C-SUB this was a directory. In JADE this is a symbolic link to the new location for this type of files. When your account is migrated to JADE, the original ~/proposed is renamed `~/proposed.csub` (you will not lose them!) and a symbolic link is made to point to `/proposed/cms/<cdua>/<username>`. You can continue to use `~/proposed` as if it were a directory, in terms of copying files into it or listing it. {==If you have files being reviewed by data moderators, then you should cp them from `~/proposed.csub/` to `~/proposed/`.==}
-
 <!-- ------------------------------------------------------------------------->
 ??? danger "Incoming/Outgoing files will not be copied from C-SUB to JADE"
     {==Files found in /cms01/incoming/ and /cms01/outgoing/ are not going to be
@@ -174,7 +162,6 @@ You will very quickly master the changes.
 
     Please copy any of them that you want to keep into your
     home directory before your group is migrated from the C-SUB to JADE.
-
 <!-- ------------------------------------------------------------------------->
 ??? danger "SFTP data transfers"
     {==JADE uses the same TCP/IP networking ports as was used on the C-SUB:==}<br><br>
