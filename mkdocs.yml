@@ -132,6 +132,7 @@ nav:
            - Path Changes doc (pdf): jade/transition/images/paths-csub-to-jade.pdf
         - dbGaP Users: 
            - Overview: jade/transition/dbgap-transition.md
+           - Change details: jade/transition/deltas-dbgap-details.md
         - Using sed to modify files: jade/transition/sed-tips-jade.md
       - Accessing JADE:
         - Overview: jade/access/access-overview.md

@@ -56,8 +56,12 @@ that topic impacting the typical user.
     ```
 
 <!-- ------------------------------------------------------------------------->
-??? danger "Login is only allowed from SAFE Desktop"
+??? danger "Login is only allowed from SAFE or SAFER Desktop"
     {==dbGaP users must log into the SAFE Desktop before they can log into JADE.==}
+
+    SAFE and SAFER Desktop are Windows virtual machines which are described
+    [here](https://researchit.jhu.edu/safer/).  NIST 800-171 data security
+    controls require a variety of services provided by these environments.
 
     One must be connected to a Hopkins network to log into SAFE.
     (You can also log into JADE using the newer SAFER Desktop service.)
