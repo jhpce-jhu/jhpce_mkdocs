@@ -11,7 +11,7 @@
         <link rel="canonical" href="https://jhpce.jhu.edu/jade/transition/sed-tips-jade/">
       
       
-        <link rel="prev" href="../dbgap-transition/">
+        <link rel="prev" href="../deltas-dbgap-details/">
       
       
         <link rel="next" href="../../access/access-overview/">
@@ -88,7 +88,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#this-is-simply-a-placeholder-page" class="md-skip">
+        <a href="#20251226-page-being-revised" class="md-skip">
           Skip to content
         </a>
       
@@ -4670,6 +4670,8 @@
       
         
       
+        
+      
     
     
     
@@ -4727,6 +4729,34 @@
     
   
     Overview
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../deltas-dbgap-details/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Change details
   
 
     
@@ -5263,36 +5293,94 @@
 
 
 
-<h1 id="this-is-simply-a-placeholder-page">THIS IS SIMPLY A PLACEHOLDER PAGE<a class="headerlink" href="#this-is-simply-a-placeholder-page" title="Anchor link to this section for reference">&para;</a></h1>
-<h1 id="explanation-of-sed-and-using-it-to-modify-files-in-place">EXPLANATION OF SED AND USING IT TO MODIFY FILES IN PLACE<a class="headerlink" href="#explanation-of-sed-and-using-it-to-modify-files-in-place" title="Anchor link to this section for reference">&para;</a></h1>
+<h1 id="20251226-page-being-revised">20251226 - PAGE BEING REVISED<a class="headerlink" href="#20251226-page-being-revised" title="Anchor link to this section for reference">&para;</a></h1>
+<h1 id="sed-using-sed-to-modify-files">SED - Using sed to modify files<a class="headerlink" href="#sed-using-sed-to-modify-files" title="Anchor link to this section for reference">&para;</a></h1>
 <p>For example, if you want to change a path string in a bunch of batch job
 scripts.</p>
-<p>Include how to generate a list of filenames using find0 and xargs0 being
+<p>TODO: Include how to generate a list of filenames using find print0 and xargs -0 being
 passed to a sed command.</p>
-<p>This is a starting point:</p>
-<div class="highlight"><pre><span></span><code>Sed is a stream editor. It performs requested text transformations on a file or in the middle of a pipeline.   It works one line at a time. Here are some examples:
+<p>Sed is the Stream EDitor. It performs requested text <em>transformations</em> on a
+stream of input, as part of a shell pipeline. It works one line at a time, so
+you cannot change a string which wraps across multiple lines.  It can also edit
+a file in-place.  </p>
+<p>The transformations are expressed as a pair of basic regular
+expressions. (Use <code>-E</code> to get extended, modern regular expressions. See
+re_format(7) manual page.)</p>
+<!-- ------------------------------------------------------------------------->
+<div class="admonition example">
+<p class="admonition-title">Change name of the day of the week</p>
+<p>Here we see sed operating on its standard input (stdin) to print something different on its standard output (stdout).
+<div class="highlight"><pre><span></span><code>%<span class="w"> </span>date
+Fri<span class="w"> </span>Dec<span class="w"> </span><span class="m">26</span><span class="w"> </span><span class="m">19</span>:28:49<span class="w"> </span>EST<span class="w"> </span><span class="m">2025</span>
 
-# Chg a pattern inline in an existing file while making a backup with suffix=.bak
-# Only the first instance of the first string in each line is replaced by the second string
+%<span class="w"> </span>date<span class="w"> </span><span class="p">|</span><span class="w"> </span>sed<span class="w"> </span>-e<span class="w"> </span><span class="s1">&#39;s/Fri/Friday/&#39;</span>
+Friday<span class="w"> </span>Dec<span class="w"> </span><span class="m">26</span><span class="w"> </span><span class="m">19</span>:29:32<span class="w"> </span>EST<span class="w"> </span><span class="m">2025</span>
+</code></pre></div></p>
+</div>
+<!-- ------------------------------------------------------------------------->
+<details class="example">
+<summary>Change multiple things in one pass</summary>
+<p>Now we see sed making two transformations.  Each <code>-e</code> flag represents a
+separate transformation or program. (The programs are implemented in the
+order specified, so beware of stepping on your toes (creating a new string
+with the first program which then matches in the second.)
+<div class="highlight"><pre><span></span><code>%<span class="w"> </span>date
+Fri<span class="w"> </span>Dec<span class="w"> </span><span class="m">26</span><span class="w"> </span><span class="m">19</span>:28:49<span class="w"> </span>EST<span class="w"> </span><span class="m">2025</span>
 
-sed -i.bak &#39;s/LogDenied/LogApproved/&#39; filename
+%<span class="w"> </span>date<span class="w"> </span><span class="p">|</span><span class="w"> </span>sed<span class="w"> </span>-e<span class="w"> </span><span class="s1">&#39;s/2025/2032/&#39;</span><span class="w"> </span>-e<span class="w"> </span><span class="s1">&#39;s/Fri/Freakday/&#39;</span>
+Freakday<span class="w"> </span>Dec<span class="w"> </span><span class="m">26</span><span class="w"> </span><span class="m">19</span>:37:23<span class="w"> </span>EST<span class="w"> </span><span class="m">2032</span>
+</code></pre></div></p>
+</details>
+<!-- ------------------------------------------------------------------------->
+<div class="admonition info">
+<p class="admonition-title">Structure of the program string</p>
+<p><code>'s/find_pattern/replace_pattern/optional_chars'</code><br><br>
+"s" means substitution<br>
+"/" is the "delimiter character" - this does not need to be forward slash
+"find_pattern" means the regular expression to look for in each line<br>
+"replace_pattern" means the regular expression replace with<br>
+"optional_chars" - an 'I' means case-insensitive, a 'g' means change all matches within a line.<br> </p>
+</div>
+<!-- ------------------------------------------------------------------------->
+<details class="example">
+<summary>Change multiple occurences per line, case-insensitive</summary>
+<p>Each program is executed once, so only the first occurence of a match in a
+line is replaced, unless you add a 'g' after the third delimiter character.
+<div class="highlight"><pre><span></span><code>%<span class="w"> </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Bob susan franky-frank bobby&quot;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>sed<span class="w"> </span>-e<span class="w"> </span><span class="s1">&#39;s/bob/paper/gi&#39;</span>
+paper<span class="w"> </span>susan<span class="w"> </span>franky-frank<span class="w"> </span>paperby
+</code></pre></div></p>
+</details>
+<!-- ------------------------------------------------------------------------->
+<details class="example">
+<summary>Chg a pattern inline in an existing file while making a backup with suffix '.bak'</summary>
+<p>Only the first instance of the first string in each line is replaced by the second string</p>
+<div class="highlight"><pre><span></span><code>%<span class="w"> </span>sed<span class="w"> </span>-i.bak<span class="w"> </span><span class="s1">&#39;s/LogDenied/LogApproved/&#39;</span><span class="w"> </span>filename
 
-The command that sed will execute is provided within the single quotes. In this particular command, the “s” characters means “substitute”  The forward slashes are dividers between the original and the replacement strings.
+The<span class="w"> </span>result<span class="w"> </span>will<span class="w"> </span>be<span class="w"> </span>two<span class="w"> </span>files,<span class="w"> </span>filename.bak<span class="w"> </span>which<span class="w"> </span>contains<span class="w"> </span>the<span class="w"> </span>original
+contents,<span class="w"> </span>and<span class="w"> </span>filename,<span class="w"> </span>which<span class="w"> </span>contains<span class="w"> </span>either<span class="w"> </span>the<span class="w"> </span>original<span class="w"> </span>contents<span class="w"> </span>or
+altered<span class="w"> </span>contents<span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="k">case</span><span class="w"> </span>any<span class="w"> </span>occurrences<span class="w"> </span>of<span class="w"> </span><span class="s2">&quot;LogDenied&quot;</span><span class="w"> </span>were<span class="w"> </span>found.<span class="w"> </span>If<span class="w"> </span>they
+were,<span class="w"> </span>only<span class="w"> </span>the<span class="w"> </span>first<span class="w"> </span>match<span class="w"> </span>on<span class="w"> </span>each<span class="w"> </span>line<span class="w"> </span>was<span class="w"> </span>replaced.
+</code></pre></div>
+</details>
+<!-- ------------------------------------------------------------------------->
+<p>In the following sed examples, the original file contains:</p>
+<div class="highlight"><pre><span></span><code><span class="ch">#!/bin/bash</span>
+<span class="c1"># SBATCH --mem=40GB</span>
+<span class="c1"># SBATCH --partition=sas</span>
 
-In the following sed examples, the original file contains:
+<span class="nb">cd</span><span class="w"> </span>/cms01/data/55548/deeper/stilldeeper/
 
-#!/bin/bash
-# SBATCH --mem=40GB
-# etcetera
+<span class="k">for</span><span class="w"> </span>i<span class="w"> </span><span class="k">in</span><span class="w"> </span>sample1<span class="w"> </span>sample3<span class="w"> </span>sample7
+<span class="k">do</span>
+<span class="w">    </span>/users/55548/c-jxu123-55548/bin/myscript<span class="w"> </span><span class="si">${</span><span class="nv">i</span><span class="si">}</span>.sas7bdat
+<span class="k">done</span>
+</code></pre></div>
+<!-- ------------------------------------------------------------------------->
 
-cd /cms01/data/55548/deeper/stilldeeper/
-
-for i in sample1 sample3 sample7
-do
-    /users/55548/c-jxu123-55548/bin/myscript ${i}.sas7bdat
-done
-
-# Chg pattern inline in an existing file while making a backup with suffix=bak
+<h1 id="left-off-editing-here">LEFT OFF EDITING HERE<a class="headerlink" href="#left-off-editing-here" title="Anchor link to this section for reference">&para;</a></h1>
+<!-- ------------------------------------------------------------------------->
+<p>??? example "Replace one path with another
+<div class="highlight"><pre><span></span><code># Chg pattern inline in an existing file while making a backup with suffix=bak
 # All instances of the first string are replaced by the second string, b/c a “g” was added to the command
 # Here the “(“ character is used as the divider b/c the pattern to be replaced contains forward slashes
 
@@ -5302,9 +5390,10 @@ The original file is found as: filename.bak
 
 The resulting file  (named filename) contains:
 
+```bash
 #!/bin/bash
 # SBATCH --mem=40GB
-# etcetera
+# SBATCH --partition=sas
 
 cd /cms01/data/55548/deeper/stilldeeper/
 
@@ -5312,34 +5401,26 @@ for i in sample1 sample3 sample7
 do
     ~/bin/myscript ${i}.sas7bdat
 done
-
-# This sed runs two separate commands in one pass. Each command is indicated by a “-e” flag
-# All instances of the first string are replaced by the second string, b/c a “g” was added to the command
-
-sed -i.bak -e &#39;s(deeper/stilldeeper/(short/newplace/(&#39; -e &#39;s(/users/55548/c-jxu123-55548(~(g&#39; filename
-
-The original file is found as: filename.bak
-
-The resulting file (named filename) contains:
-
-#!/bin/bash
-# SBATCH --mem=40GB
-# etcetera
-
-cd /cms01/data/55548/short/newplace/
-
-for i in sample1 sample3 sample7
+</code></pre></div></p>
+<h1 id="this-sed-runs-two-separate-commands-in-one-pass-each-command-is-indicated-by-a-e-flag">This sed runs two separate commands in one pass. Each command is indicated by a “-e” flag<a class="headerlink" href="#this-sed-runs-two-separate-commands-in-one-pass-each-command-is-indicated-by-a-e-flag" title="Anchor link to this section for reference">&para;</a></h1>
+<h1 id="all-instances-of-the-first-string-are-replaced-by-the-second-string-bc-a-g-was-added-to-the-command">All instances of the first string are replaced by the second string, b/c a “g” was added to the command<a class="headerlink" href="#all-instances-of-the-first-string-are-replaced-by-the-second-string-bc-a-g-was-added-to-the-command" title="Anchor link to this section for reference">&para;</a></h1>
+<p>sed -i.bak -e 's(deeper/stilldeeper/(short/newplace/(' -e 's(/users/55548/c-jxu123-55548(~(g' filename</p>
+<p>The original file is found as: filename.bak</p>
+<p>The resulting file (named filename) contains:</p>
+<h1 id="binbash">!/bin/bash<a class="headerlink" href="#binbash" title="Anchor link to this section for reference">&para;</a></h1>
+<h1 id="sbatch-mem40gb">SBATCH --mem=40GB<a class="headerlink" href="#sbatch-mem40gb" title="Anchor link to this section for reference">&para;</a></h1>
+<h1 id="etcetera">etcetera<a class="headerlink" href="#etcetera" title="Anchor link to this section for reference">&para;</a></h1>
+<p>cd /cms01/data/55548/short/newplace/</p>
+<p>for i in sample1 sample3 sample7
 do
     ~/bin/myscript ${i}.sas7bdat
-done
-
-# Changing a bunch of files which have the same “badstring” in them
-# This example runs sed on all of the files which have a certain suffix
-# It does not make a backup copy of the files it modifies
-# All instances of the first string are replaced by the second string, b/c a “g” was added to the command
-
-find ~/project1 -name “*.html” -print0 | xargs -0 sed -i &#39;s/badstring/mygoodstring/g&#39;
-</code></pre></div>
+done</p>
+<h1 id="changing-a-bunch-of-files-which-have-the-same-badstring-in-them">Changing a bunch of files which have the same “badstring” in them<a class="headerlink" href="#changing-a-bunch-of-files-which-have-the-same-badstring-in-them" title="Anchor link to this section for reference">&para;</a></h1>
+<h1 id="this-example-runs-sed-on-all-of-the-files-which-have-a-certain-suffix">This example runs sed on all of the files which have a certain suffix<a class="headerlink" href="#this-example-runs-sed-on-all-of-the-files-which-have-a-certain-suffix" title="Anchor link to this section for reference">&para;</a></h1>
+<h1 id="it-does-not-make-a-backup-copy-of-the-files-it-modifies">It does not make a backup copy of the files it modifies<a class="headerlink" href="#it-does-not-make-a-backup-copy-of-the-files-it-modifies" title="Anchor link to this section for reference">&para;</a></h1>
+<h1 id="all-instances-of-the-first-string-are-replaced-by-the-second-string-bc-a-g-was-added-to-the-command_1">All instances of the first string are replaced by the second string, b/c a “g” was added to the command<a class="headerlink" href="#all-instances-of-the-first-string-are-replaced-by-the-second-string-bc-a-g-was-added-to-the-command_1" title="Anchor link to this section for reference">&para;</a></h1>
+<p>find ~/project1 -name “*.html” -print0 | xargs -0 sed -i 's/badstring/mygoodstring/g'
+```</p>
 
 
 
@@ -5360,7 +5441,7 @@ find ~/project1 -name “*.html” -print0 | xargs -0 sed -i &#39;s/badstring/my
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="December 22, 2025 00:17:29 UTC">December 22, 2025</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="December 27, 2025 08:15:06 UTC">December 27, 2025</span>
   </span>
 
     
@@ -5463,7 +5544,7 @@ find ~/project1 -name “*.html” -print0 | xargs -0 sed -i &#39;s/badstring/my
       <nav class="md-footer__inner md-grid" aria-label="Footer" >
         
           
-          <a href="../dbgap-transition/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Overview">
+          <a href="../deltas-dbgap-details/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Change details">
             <div class="md-footer__button md-icon">
               
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
@@ -5473,7 +5554,7 @@ find ~/project1 -name “*.html” -print0 | xargs -0 sed -i &#39;s/badstring/my
                 Previous
               </span>
               <div class="md-ellipsis">
-                Overview
+                Change details
               </div>
             </div>
           </a>
