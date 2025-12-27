@@ -11,7 +11,7 @@ differently from the main JHPCE cluster.
 
 ## Paths/Data Locations
 
-[This one page summary table] (../images/jade-path-summary-table.pdf)
+[This one page summary table](../images/jade-path-summary-table.pdf)
 illustrates the primary paths and their purposes for various kinds of data
 users and groups might want to use.
 
