@@ -6653,42 +6653,42 @@ Freakday<span class="w"> </span>Dec<span class="w"> </span><span class="m">26</s
 </code></pre><pre><span></span><code>%<span class="w"> </span><span class="nb">echo</span><span class="w"> </span><span class="s2">"Bob susan franky-frank bobby"</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>sed<span class="w"> </span>-e<span class="w"> </span><span class="s1">'s/bob/paper/gi'</span>
 paper<span class="w"> </span>susan<span class="w"> </span>franky-frank<span class="w"> </span>paperby
 </code></pre><pre><span></span><code>%<span class="w"> </span>sed<span class="w"> </span>-i.bak<span class="w"> </span><span class="s1">'s/LogDenied/LogApproved/'</span><span class="w"> </span>filename
-
-The<span class="w"> </span>result<span class="w"> </span>will<span class="w"> </span>be<span class="w"> </span>two<span class="w"> </span>files,<span class="w"> </span>filename.bak<span class="w"> </span>which<span class="w"> </span>contains<span class="w"> </span>the<span class="w"> </span>original
-contents,<span class="w"> </span>and<span class="w"> </span>filename,<span class="w"> </span>which<span class="w"> </span>contains<span class="w"> </span>either<span class="w"> </span>the<span class="w"> </span>original<span class="w"> </span>contents<span class="w"> </span>or
-altered<span class="w"> </span>contents<span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="k">case</span><span class="w"> </span>any<span class="w"> </span>occurrences<span class="w"> </span>of<span class="w"> </span><span class="s2">"LogDenied"</span><span class="w"> </span>were<span class="w"> </span>found.<span class="w"> </span>If<span class="w"> </span>they
-were,<span class="w"> </span>only<span class="w"> </span>the<span class="w"> </span>first<span class="w"> </span>match<span class="w"> </span>on<span class="w"> </span>each<span class="w"> </span>line<span class="w"> </span>was<span class="w"> </span>replaced.
 </code></pre><pre><span></span><code><span class="ch">#!/bin/bash</span>
 <span class="c1"># SBATCH --mem=40GB</span>
 <span class="c1"># SBATCH --partition=sas</span>
 
-<span class="nb">cd</span><span class="w"> </span>/cms01/data/55548/deeper/stilldeeper/
+<span class="nb">cd</span><span class="w"> </span>/cms01/data/55548/deeper/stilldeeper/further
 
 <span class="k">for</span><span class="w"> </span>i<span class="w"> </span><span class="k">in</span><span class="w"> </span>sample1<span class="w"> </span>sample3<span class="w"> </span>sample7
 <span class="k">do</span>
 <span class="w">    </span>/users/55548/c-jxu123-55548/bin/myscript<span class="w"> </span><span class="si">${</span><span class="nv">i</span><span class="si">}</span>.sas7bdat
 <span class="k">done</span>
-</code></pre><pre><span></span><code># Chg pattern inline in an existing file while making a backup with suffix=bak
-# All instances of the first string are replaced by the second string, b/c a “g” was added to the command
-# Here the “(“ character is used as the divider b/c the pattern to be replaced contains forward slashes
+</code></pre><pre><span></span><code>sed<span class="w"> </span>-i.bak<span class="w"> </span><span class="s1">'s(/cms01/data/55548/(/data/cms/c55548/cui/(g'</span><span class="w"> </span>sample.sh
+</code></pre><pre><span></span><code><span class="ch">#!/bin/bash</span>
+<span class="c1"># SBATCH --mem=40GB</span>
+<span class="c1"># SBATCH --partition=sas</span>
 
-sed -i.bak 's(/users/55548/c-jxu123-55548(~(g' filename
+<span class="nb">cd</span><span class="w"> </span>/data/cms/c55548/cui/deeper/stilldeeper/further
 
-The original file is found as: filename.bak
+<span class="k">for</span><span class="w"> </span>i<span class="w"> </span><span class="k">in</span><span class="w"> </span>sample1<span class="w"> </span>sample3<span class="w"> </span>sample7
+<span class="k">do</span>
+<span class="w">     </span>/users/55548/c-jxu123-55548/bin/myscript<span class="w"> </span><span class="si">${</span><span class="nv">i</span><span class="si">}</span>.sas7bdat
+<span class="k">done</span>
+</code></pre><pre><span></span><code><span class="w">    </span>sed<span class="w"> </span>-i.bak2<span class="w"> </span><span class="s1">'s(/users/55548/c-jxu123-55548(/users/cms/c55548/c-jxu123-55548(g'</span><span class="w"> </span>sample.sh
+</code></pre><pre><span></span><code><span class="w">    </span>sed<span class="w"> </span>-i.bak2<span class="w"> </span><span class="s1">'s(/users/55548/c-jxu123-55548(~(g'</span><span class="w"> </span>sample.sh
+</code></pre><pre><span></span><code>sed<span class="w"> </span>-i.bak3<span class="s1">'s(--partition=sas(--partition=c-sas('</span><span class="w"> </span>sample.sh
+</code></pre><pre><span></span><code><span class="ch">#!/bin/bash</span>
+<span class="c1"># SBATCH --mem=40GB</span>
+<span class="c1"># SBATCH --partition=c-sas</span>
 
-The resulting file  (named filename) contains:
+<span class="nb">cd</span><span class="w"> </span>/data/cms/c55548/cui/deeper/stilldeeper/further
 
-```bash
-#!/bin/bash
-# SBATCH --mem=40GB
-# SBATCH --partition=sas
-
-cd /cms01/data/55548/deeper/stilldeeper/
-
-for i in sample1 sample3 sample7
-do
-    ~/bin/myscript ${i}.sas7bdat
-done
+<span class="k">for</span><span class="w"> </span>i<span class="w"> </span><span class="k">in</span><span class="w"> </span>sample1<span class="w"> </span>sample3<span class="w"> </span>sample7
+<span class="k">do</span>
+<span class="w">    </span>~/bin/myscript<span class="w"> </span><span class="si">${</span><span class="nv">i</span><span class="si">}</span>.sas7bdat
+<span class="k">done</span>
+</code></pre><pre><span></span><code>%<span class="w"> </span>touch<span class="w"> </span>-t<span class="w"> </span><span class="m">202509111200</span><span class="w"> </span><span class="m">911</span>-noon
+%<span class="w"> </span>find<span class="w"> </span>.<span class="w"> </span>-newer<span class="w"> </span><span class="m">911</span>-noon<span class="w"> </span>-print
 </code></pre><h2><a class="heading" href="../ourtools/features/">Handy Features</a></h2><a class="url" href="../ourtools/features/">ourtools/features/</a><pre><span></span><code><span class="nb">cd</span><span class="w"> </span>jhpce_mkdocs
 find<span class="w"> </span>.<span class="w"> </span>-type<span class="w"> </span>f<span class="w"> </span>-name<span class="w"> </span><span class="se">\*</span>.md<span class="w"> </span>-exec<span class="w"> </span>grep<span class="w"> </span>-il<span class="w"> </span><span class="s2">"www.jhpce.jhu.edu"</span><span class="w"> </span><span class="o">{}</span><span class="w"> </span><span class="se">\;</span>
 find<span class="w"> </span>.<span class="w"> </span>-type<span class="w"> </span>f<span class="w"> </span>-name<span class="w"> </span><span class="se">\*</span>.md<span class="w"> </span>-exec<span class="w"> </span>sed<span class="w"> </span>-i<span class="w"> </span><span class="s1">''</span><span class="w"> </span><span class="s2">"s/www.jhpce.jhu.edu/jhpce-old.jhu.edu/g"</span><span class="w"> </span><span class="o">{}</span><span class="w"> </span><span class="se">\;</span>

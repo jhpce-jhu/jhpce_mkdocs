@@ -863,22 +863,64 @@
   {
     "page_name": "Using sed to modify files",
     "page_url": "../../jade/transition/sed-tips-jade/",
-    "text": "% sed -i.bak 's/LogDenied/LogApproved/' filename\n\nThe result will be two files, filename.bak which contains the original\ncontents, and filename, which contains either the original contents or\naltered contents in case any occurrences of \"LogDenied\" were found. If they\nwere, only the first match on each line was replaced.\n",
-    "html": "<pre><span></span><code>%<span class=\"w\"> </span>sed<span class=\"w\"> </span>-i.bak<span class=\"w\"> </span><span class=\"s1\">'s/LogDenied/LogApproved/'</span><span class=\"w\"> </span>filename\n\nThe<span class=\"w\"> </span>result<span class=\"w\"> </span>will<span class=\"w\"> </span>be<span class=\"w\"> </span>two<span class=\"w\"> </span>files,<span class=\"w\"> </span>filename.bak<span class=\"w\"> </span>which<span class=\"w\"> </span>contains<span class=\"w\"> </span>the<span class=\"w\"> </span>original\ncontents,<span class=\"w\"> </span>and<span class=\"w\"> </span>filename,<span class=\"w\"> </span>which<span class=\"w\"> </span>contains<span class=\"w\"> </span>either<span class=\"w\"> </span>the<span class=\"w\"> </span>original<span class=\"w\"> </span>contents<span class=\"w\"> </span>or\naltered<span class=\"w\"> </span>contents<span class=\"w\"> </span><span class=\"k\">in</span><span class=\"w\"> </span><span class=\"k\">case</span><span class=\"w\"> </span>any<span class=\"w\"> </span>occurrences<span class=\"w\"> </span>of<span class=\"w\"> </span><span class=\"s2\">\"LogDenied\"</span><span class=\"w\"> </span>were<span class=\"w\"> </span>found.<span class=\"w\"> </span>If<span class=\"w\"> </span>they\nwere,<span class=\"w\"> </span>only<span class=\"w\"> </span>the<span class=\"w\"> </span>first<span class=\"w\"> </span>match<span class=\"w\"> </span>on<span class=\"w\"> </span>each<span class=\"w\"> </span>line<span class=\"w\"> </span>was<span class=\"w\"> </span>replaced.\n</code></pre>",
+    "text": "% sed -i.bak 's/LogDenied/LogApproved/' filename\n",
+    "html": "<pre><span></span><code>%<span class=\"w\"> </span>sed<span class=\"w\"> </span>-i.bak<span class=\"w\"> </span><span class=\"s1\">'s/LogDenied/LogApproved/'</span><span class=\"w\"> </span>filename\n</code></pre>",
     "language": ""
   },
   {
     "page_name": "Using sed to modify files",
     "page_url": "../../jade/transition/sed-tips-jade/",
-    "text": "#!/bin/bash\n# SBATCH --mem=40GB\n# SBATCH --partition=sas\n\ncd /cms01/data/55548/deeper/stilldeeper/\n\nfor i in sample1 sample3 sample7\ndo\n    /users/55548/c-jxu123-55548/bin/myscript ${i}.sas7bdat\ndone\n",
-    "html": "<pre><span></span><code><span class=\"ch\">#!/bin/bash</span>\n<span class=\"c1\"># SBATCH --mem=40GB</span>\n<span class=\"c1\"># SBATCH --partition=sas</span>\n\n<span class=\"nb\">cd</span><span class=\"w\"> </span>/cms01/data/55548/deeper/stilldeeper/\n\n<span class=\"k\">for</span><span class=\"w\"> </span>i<span class=\"w\"> </span><span class=\"k\">in</span><span class=\"w\"> </span>sample1<span class=\"w\"> </span>sample3<span class=\"w\"> </span>sample7\n<span class=\"k\">do</span>\n<span class=\"w\">    </span>/users/55548/c-jxu123-55548/bin/myscript<span class=\"w\"> </span><span class=\"si\">${</span><span class=\"nv\">i</span><span class=\"si\">}</span>.sas7bdat\n<span class=\"k\">done</span>\n</code></pre>",
+    "text": "#!/bin/bash\n# SBATCH --mem=40GB\n# SBATCH --partition=sas\n\ncd /cms01/data/55548/deeper/stilldeeper/further\n\nfor i in sample1 sample3 sample7\ndo\n    /users/55548/c-jxu123-55548/bin/myscript ${i}.sas7bdat\ndone\n",
+    "html": "<pre><span></span><code><span class=\"ch\">#!/bin/bash</span>\n<span class=\"c1\"># SBATCH --mem=40GB</span>\n<span class=\"c1\"># SBATCH --partition=sas</span>\n\n<span class=\"nb\">cd</span><span class=\"w\"> </span>/cms01/data/55548/deeper/stilldeeper/further\n\n<span class=\"k\">for</span><span class=\"w\"> </span>i<span class=\"w\"> </span><span class=\"k\">in</span><span class=\"w\"> </span>sample1<span class=\"w\"> </span>sample3<span class=\"w\"> </span>sample7\n<span class=\"k\">do</span>\n<span class=\"w\">    </span>/users/55548/c-jxu123-55548/bin/myscript<span class=\"w\"> </span><span class=\"si\">${</span><span class=\"nv\">i</span><span class=\"si\">}</span>.sas7bdat\n<span class=\"k\">done</span>\n</code></pre>",
     "language": ""
   },
   {
     "page_name": "Using sed to modify files",
     "page_url": "../../jade/transition/sed-tips-jade/",
-    "text": "# Chg pattern inline in an existing file while making a backup with suffix=bak\n# All instances of the first string are replaced by the second string, b/c a \u201cg\u201d was added to the command\n# Here the \u201c(\u201c character is used as the divider b/c the pattern to be replaced contains forward slashes\n\nsed -i.bak 's(/users/55548/c-jxu123-55548(~(g' filename\n\nThe original file is found as: filename.bak\n\nThe resulting file  (named filename) contains:\n\n```bash\n#!/bin/bash\n# SBATCH --mem=40GB\n# SBATCH --partition=sas\n\ncd /cms01/data/55548/deeper/stilldeeper/\n\nfor i in sample1 sample3 sample7\ndo\n    ~/bin/myscript ${i}.sas7bdat\ndone\n",
-    "html": "<pre><span></span><code># Chg pattern inline in an existing file while making a backup with suffix=bak\n# All instances of the first string are replaced by the second string, b/c a \u201cg\u201d was added to the command\n# Here the \u201c(\u201c character is used as the divider b/c the pattern to be replaced contains forward slashes\n\nsed -i.bak 's(/users/55548/c-jxu123-55548(~(g' filename\n\nThe original file is found as: filename.bak\n\nThe resulting file  (named filename) contains:\n\n```bash\n#!/bin/bash\n# SBATCH --mem=40GB\n# SBATCH --partition=sas\n\ncd /cms01/data/55548/deeper/stilldeeper/\n\nfor i in sample1 sample3 sample7\ndo\n    ~/bin/myscript ${i}.sas7bdat\ndone\n</code></pre>",
+    "text": "sed -i.bak 's(/cms01/data/55548/(/data/cms/c55548/cui/(g' sample.sh\n",
+    "html": "<pre><span></span><code>sed<span class=\"w\"> </span>-i.bak<span class=\"w\"> </span><span class=\"s1\">'s(/cms01/data/55548/(/data/cms/c55548/cui/(g'</span><span class=\"w\"> </span>sample.sh\n</code></pre>",
+    "language": ""
+  },
+  {
+    "page_name": "Using sed to modify files",
+    "page_url": "../../jade/transition/sed-tips-jade/",
+    "text": "#!/bin/bash\n# SBATCH --mem=40GB\n# SBATCH --partition=sas\n\ncd /data/cms/c55548/cui/deeper/stilldeeper/further\n\nfor i in sample1 sample3 sample7\ndo\n     /users/55548/c-jxu123-55548/bin/myscript ${i}.sas7bdat\ndone\n",
+    "html": "<pre><span></span><code><span class=\"ch\">#!/bin/bash</span>\n<span class=\"c1\"># SBATCH --mem=40GB</span>\n<span class=\"c1\"># SBATCH --partition=sas</span>\n\n<span class=\"nb\">cd</span><span class=\"w\"> </span>/data/cms/c55548/cui/deeper/stilldeeper/further\n\n<span class=\"k\">for</span><span class=\"w\"> </span>i<span class=\"w\"> </span><span class=\"k\">in</span><span class=\"w\"> </span>sample1<span class=\"w\"> </span>sample3<span class=\"w\"> </span>sample7\n<span class=\"k\">do</span>\n<span class=\"w\">     </span>/users/55548/c-jxu123-55548/bin/myscript<span class=\"w\"> </span><span class=\"si\">${</span><span class=\"nv\">i</span><span class=\"si\">}</span>.sas7bdat\n<span class=\"k\">done</span>\n</code></pre>",
+    "language": ""
+  },
+  {
+    "page_name": "Using sed to modify files",
+    "page_url": "../../jade/transition/sed-tips-jade/",
+    "text": "    sed -i.bak2 's(/users/55548/c-jxu123-55548(/users/cms/c55548/c-jxu123-55548(g' sample.sh\n",
+    "html": "<pre><span></span><code><span class=\"w\">    </span>sed<span class=\"w\"> </span>-i.bak2<span class=\"w\"> </span><span class=\"s1\">'s(/users/55548/c-jxu123-55548(/users/cms/c55548/c-jxu123-55548(g'</span><span class=\"w\"> </span>sample.sh\n</code></pre>",
+    "language": ""
+  },
+  {
+    "page_name": "Using sed to modify files",
+    "page_url": "../../jade/transition/sed-tips-jade/",
+    "text": "    sed -i.bak2 's(/users/55548/c-jxu123-55548(~(g' sample.sh\n",
+    "html": "<pre><span></span><code><span class=\"w\">    </span>sed<span class=\"w\"> </span>-i.bak2<span class=\"w\"> </span><span class=\"s1\">'s(/users/55548/c-jxu123-55548(~(g'</span><span class=\"w\"> </span>sample.sh\n</code></pre>",
+    "language": ""
+  },
+  {
+    "page_name": "Using sed to modify files",
+    "page_url": "../../jade/transition/sed-tips-jade/",
+    "text": "sed -i.bak3's(--partition=sas(--partition=c-sas(' sample.sh\n",
+    "html": "<pre><span></span><code>sed<span class=\"w\"> </span>-i.bak3<span class=\"s1\">'s(--partition=sas(--partition=c-sas('</span><span class=\"w\"> </span>sample.sh\n</code></pre>",
+    "language": ""
+  },
+  {
+    "page_name": "Using sed to modify files",
+    "page_url": "../../jade/transition/sed-tips-jade/",
+    "text": "#!/bin/bash\n# SBATCH --mem=40GB\n# SBATCH --partition=c-sas\n\ncd /data/cms/c55548/cui/deeper/stilldeeper/further\n\nfor i in sample1 sample3 sample7\ndo\n    ~/bin/myscript ${i}.sas7bdat\ndone\n",
+    "html": "<pre><span></span><code><span class=\"ch\">#!/bin/bash</span>\n<span class=\"c1\"># SBATCH --mem=40GB</span>\n<span class=\"c1\"># SBATCH --partition=c-sas</span>\n\n<span class=\"nb\">cd</span><span class=\"w\"> </span>/data/cms/c55548/cui/deeper/stilldeeper/further\n\n<span class=\"k\">for</span><span class=\"w\"> </span>i<span class=\"w\"> </span><span class=\"k\">in</span><span class=\"w\"> </span>sample1<span class=\"w\"> </span>sample3<span class=\"w\"> </span>sample7\n<span class=\"k\">do</span>\n<span class=\"w\">    </span>~/bin/myscript<span class=\"w\"> </span><span class=\"si\">${</span><span class=\"nv\">i</span><span class=\"si\">}</span>.sas7bdat\n<span class=\"k\">done</span>\n</code></pre>",
+    "language": ""
+  },
+  {
+    "page_name": "Using sed to modify files",
+    "page_url": "../../jade/transition/sed-tips-jade/",
+    "text": "% touch -t 202509111200 911-noon\n% find . -newer 911-noon -print\n",
+    "html": "<pre><span></span><code>%<span class=\"w\"> </span>touch<span class=\"w\"> </span>-t<span class=\"w\"> </span><span class=\"m\">202509111200</span><span class=\"w\"> </span><span class=\"m\">911</span>-noon\n%<span class=\"w\"> </span>find<span class=\"w\"> </span>.<span class=\"w\"> </span>-newer<span class=\"w\"> </span><span class=\"m\">911</span>-noon<span class=\"w\"> </span>-print\n</code></pre>",
     "language": ""
   },
   {
