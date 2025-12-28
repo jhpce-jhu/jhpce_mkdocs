@@ -5528,7 +5528,7 @@ will show you whether it finds any matches.</p>
 </div>
 <!-- ------------------------------------------------------------------------->
 <details class="example">
-<summary>Change multiple things with one command  (click to expand this section)</summary>
+<summary>Change multiple things with one command  (click to expand sections like this)</summary>
 <p>In the first example, we see sed making two transformations.</p>
 <p>The programs are implemented in the order specified, so beware of stepping on
 your own toes, where the first program changes strings such that second or
@@ -5663,7 +5663,9 @@ will start a recursive search starting at that point and proceeding downwards. T
 location can be "." if you want to start in the current working directory.</p>
 <p>The following command will change a string, if found, in as many files which
 exist that match the search criteria.</p>
-<p><code>find ~/project1 -type f -name “*.html” -print0 | xargs -0 sed -i.orig 's/badstring/mygoodstring/g'</code></p>
+<blockquote>
+<p>find ~/project1 -type f -name “*.html” -print0 | xargs -0 sed -i.orig 's/badstring/mygoodstring/g'</p>
+</blockquote>
 <p>Breaking it down, left to right:</p>
 <ul>
 <li>start looking at the directory named "project1" inside of your home directory</li>
@@ -5735,7 +5737,7 @@ sed -i -e '5,10d;12d' filename</p>
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="December 28, 2025 06:32:58 UTC">December 28, 2025</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="December 28, 2025 06:42:17 UTC">December 28, 2025</span>
   </span>
 
     
