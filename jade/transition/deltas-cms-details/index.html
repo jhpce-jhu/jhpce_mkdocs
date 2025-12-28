@@ -5363,14 +5363,17 @@
 
 
 <h1 id="guide-to-differences-between-c-sub-and-jade-for-cms-users">Guide to differences between C-SUB and JADE for CMS users<a class="headerlink" href="#guide-to-differences-between-c-sub-and-jade-for-cms-users" title="Anchor link to this section for reference">&para;</a></h1>
-<p>You will find working in JADE very similar to doing so in the C-SUB.</p>
+<p>You will find working in JADE very similar to doing so in the C-SUB. The
+operating system, modules such as SAS or STATA, and SLURM job scheduler are the same.</p>
 <p>However, there are differences, and we attempt to identify them here.
 Click on a topic to read more about it (and click again when finished to
 close it). Three colors were used to indicate the likelihood of
 that topic impacting the typical user.</p>
-<p><mark class="critic">Some items are marked red but only require a one word change in your command
-or your changing directory to a different location to retrieve your incoming files.
-You will very quickly master the changes.</mark></p>
+<p><mark class="critic">Most items marked orange or red require only simple changes on your part,
+or only apply to a subset of users.  The exception is embedded paths in text
+files.  <strong>We have created symbolic links in various locations to allow many
+paths that were valid in the C-SUB to continue to work in JADE.</strong> And we have
+written a document about how to automate changing path strings where necessary.</mark></p>
 <h2 id="resources-for-you">Resources for you<a class="headerlink" href="#resources-for-you" title="Anchor link to this section for reference">&para;</a></h2>
 <p>We are trying to create documentation to put in the JADE section of this web site
 as quickly as we can. Please bear with us.  Because paths to files change in
@@ -5384,9 +5387,9 @@ paths with JADE-appropriate paths.</li>
 chart. A reference document for all JADE users for the long run. Contains summary of what kind of data
 is best for each location. Read this before the next document below.</li>
 <li><a href="../images/jade-path-summary-table-cms.pdf">Summary of path changes for CMS users</a> - one page PDF chart. Side-by-side comparison of C-SUB &amp; JADE. Mentions accommodations to hide most path changes.</li>
-<li><a href="../images/paths-csub-to-jade.pdf">Description of data locations</a>, what to use
-them for, and specific changes users need to make. Only describes paths. Seven pages of text
-(because lots of white space was inserted for readability). Was written first.</li>
+<li><a href="../images/paths-csub-to-jade.pdf">Text description of data locations</a> what to use
+them for, and specific changes C-SUB users need to make. Only describes paths. A
+reference document. Was written first.</li>
 </ul>
 <!-- ------------------------------------------------------------------------->
 <div class="admonition tip">
@@ -5400,6 +5403,7 @@ them for, and specific changes users need to make. Only describes paths. Seven p
 <!-- ------------------------------------------------------------------------->
 <details class="tip">
 <summary>Please take note of these path element symbols</summary>
+<p><a href="" id="key-to-path-elements"></a></p>
 <p>In this document and others, we show the convention used for some aspect of
 the cluster, such as the path to expect for this or that purpose.</p>
 <p><strong><em>&lt;dua&gt;</em></strong> = for example, 59614 or 55548<br>
@@ -5414,7 +5418,8 @@ E.g. <code>/transfer/in/&lt;comm&gt;/&lt;cdua&gt;/&lt;username&gt;/</code><br>
 <!-- ------------------------------------------------------------------------->
 <details class="info">
 <summary>User Communities on JADE</summary>
-<p><mark class="critic">If you had been using the C-SUB, you are a member of the "CMS community" on JADE.</mark></p>
+<p><a href="" id="cms-user-community"></a>
+<mark class="critic">If you had been using the C-SUB, you are a member of the "CMS community" on JADE.</mark></p>
 <p>There are three communities (so far) in JADE. Each one has a unique name
 and a single character equivalent. You will see both appear in cluster
 configuration, such as the first letter of a username (c-jhedid-dua), 
@@ -5430,6 +5435,7 @@ s<span class="w">               </span>sysadmin
 <!-- ------------------------------------------------------------------------->
 <details class="info">
 <summary>Unchanged: Usernames, verification codes, and passwords (except 10201)</summary>
+<p><a href="" id="cms-credentials-unchanged"></a></p>
 <p><mark class="critic">Most C-SUB users will continue using their usernames, verification codes,
 and passwords with JADE.</mark></p>
 <p>C-SUB users with 10201 in their usernames will switch to new 10401 accounts.
@@ -5443,7 +5449,8 @@ directories like ~/.cache/ can contain large amounts of material.)</p>
 <!-- ------------------------------------------------------------------------->
 <details class="danger">
 <summary>Login node</summary>
-<p><mark class="critic">You must change your settings or commands to use the JADE login server.</mark></p>
+<p><a href="" id="login-node"></a>
+<mark class="critic">You must change your settings or commands to use the JADE login server.</mark></p>
 <p>JADE:   <strong>jade01.jhsph.edu</strong><br></p>
 <div class="tabbed-set tabbed-alternate" data-tabs="1:2"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">Windows users</label><label for="__tabbed_1_2">Mac &amp; Linux users</label></div>
 <div class="tabbed-content">
@@ -5459,36 +5466,32 @@ directories like ~/.cache/ can contain large amounts of material.)</p>
 <!-- ------------------------------------------------------------------------->
 <details class="danger">
 <summary>Paths have changed</summary>
-<p><mark class="critic">A variety of paths have changed. Please review the details.</mark></p>
+<p><a href="" id="paths-have-changed"></a>
+<mark class="critic">A variety of paths have changed. Please review the details.</mark></p>
 <p>The need to more carefully control data access in JADE, as well as
 reflection upon the design lessons learned from the C-SUB implementation, has
-resulted in a variety of path changes.  We have created symbolic links in
+resulted in a variety of path changes.  <strong>We have created symbolic links in
 various locations to allow paths that were valid in the C-SUB to continue
-to work in JADE.</p>
+to work in JADE.</strong></p>
 <p><a href="../images/jade-path-summary-table-cms.pdf">This
-document</a> is a one page summary table.</p>
+document</a> is a one page summary
+table describing JADE paths and what kinds of data they are best used for.</p>
+<p><a href="../images/jade-path-summary-table-cms.pdf">This
+document</a> is a one page summary
+table comparing paths on the C-SUB and JADE.</p>
 <p><a href="../images/paths-csub-to-jade.pdf">This document</a> is longer, and provides details about each kind of data
 locations available in JADE. It describes changes which impact users and data
-moderators.</p>
+moderators. The document you are reading now and the summary documents
+mentioned above probably replace the longer document.</p>
 <p>We have a document explaining how to replace strings in documents
-<a href="../sed-tips-jade/">here</a>.</p>
-</details>
-<!-- ------------------------------------------------------------------------->
-<details class="warning">
-<summary>Compute node names have changed</summary>
-<p><mark class="critic">If your batch job scripts specify the name of one or more compute nodes 
-to use, you will need to modify them so they work on JADE.</mark></p>
-<p>Compute nodes in C-SUB had the prefix "compute-" and a suffix in the range
-132 to 139.</p>
-<p>Compute nodes in JADE have the prefix <strong>"jcompute-"</strong> and a suffix in the range
-032 and higher.</p>
-<p>There is a direct mapping of C-SUB compute-132 to JADE jcompute-032, etc.
-Add a "j" and change "1" to "0".</p>
+<a href="../sed-tips-jade/">here</a>. You can use this to modify existing files, such as
+SLURM batch job scripts, so they will work in JADE.</p>
 </details>
 <!-- ------------------------------------------------------------------------->
 <details class="info">
 <summary>Unix group changes</summary>
-<p><mark class="critic">This change should be invisible.</mark></p>
+<p><a href="" id="group-changes"></a>
+<mark class="critic">This change should be invisible.</mark></p>
 <p>Each C-SUB user has a 'primary' group and one or more 'secondary' groups.
 When users are migrated to JADE, we will change both primary &amp; secondary
 group memberships. Your primary will become <code>j-c-users</code> and your secondary
@@ -5497,7 +5500,8 @@ will match your account's DUA number, e.g. <code>j-c55548</code>.</p>
 <!-- ------------------------------------------------------------------------->
 <details class="warning">
 <summary>SLURM partition name changes</summary>
-<p><mark class="critic">If your batch job scripts specified the name of the partition to use, you
+<p><a href="" id="partition-names"></a>
+<mark class="critic">If your batch job scripts specified the name of the partition to use, you
 will need to modify them so they work on JADE.</mark></p>
 <p>In C-SUB, the default partition was named "cms" and the SAS one "sas".</p>
 <p>In JADE, each community now has its own default partition. The CMS default is
@@ -5519,7 +5523,8 @@ the info about a particular node, and <code>scontrol show partition
 <!-- ------------------------------------------------------------------------->
 <details class="warning">
 <summary>Contents of ~/proposed/ directory are not automatically propagated</summary>
-<p><mark class="critic">If you have active files in ~/proposed/ you will need to copy them to a new location.</mark></p>
+<p><a href="" id="proposed-not-migrated"></a>
+<mark class="critic">If you have active files in ~/proposed/ you will need to copy them to a new location.</mark></p>
 <p>(The tilde character '~' is a special character in UNIX shells. It represents
 your home directory.)</p>
 <ul>
@@ -5529,17 +5534,19 @@ your home directory.)</p>
 <!-- ------------------------------------------------------------------------->
 <details class="danger">
 <summary>Incoming/Outgoing files will not be copied from C-SUB to JADE</summary>
-<p><mark class="critic">Files found in /cms01/incoming/ and /cms01/outgoing/ are not going to be
+<p><a href="" id="transfer-files-not-migrated"></a>
+<mark class="critic">Files found in /cms01/incoming/ and /cms01/outgoing/ are not going to be
 copied over to JADE.</mark></p>
 <p>Please copy any of them that you want to keep into your
 home directory before your group is migrated from the C-SUB to JADE.</p>
 </details>
 <!-- ------------------------------------------------------------------------->
 <details class="danger">
-<summary>SFTP data transfers</summary>
-<p><mark class="critic">JADE uses the same TCP/IP networking ports as was used on the C-SUB:</mark><br><br>
-Data going into the cluster: 22011<br>
-Data coming out of the cluster: 22027</p>
+<summary>SFTP data transfers - path changes</summary>
+<p><a href="" id="sftp-changes"></a>
+<mark class="critic">JADE uses the same TCP/IP networking ports as was used on the C-SUB:</mark><br><br>
+Data going <strong>into</strong> the cluster: <strong>22011</strong><br>
+Data coming <strong>out of</strong> the cluster: <strong>22027</strong></p>
 <p>JADE uses different paths to store this kind of data. 
 We cannot create symbolic links to hide this change.</p>
 <p>C-SUB</p>
@@ -5554,8 +5561,9 @@ Example:
 Incoming   /transfer/in/cms/c55548/c-jxu123-55548
 Outgoing   /transfer/out/cms/c55548/c-jxu123-55548
 </code></pre></div>
-<p>There are two ways you work with this new path - when inside an SFTP
-transaction and when you are accessing files in the operating system.</p>
+<p><strong>There are two ways you work with this new path - when inside an SFTP
+transaction and when you are accessing files in the operating system.</strong>
+Click on each tab below.</p>
 <div class="tabbed-set tabbed-alternate" data-tabs="2:2"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio" /><input id="__tabbed_2_2" name="__tabbed_2" type="radio" /><div class="tabbed-labels"><label for="__tabbed_2_1">During SFTP</label><label for="__tabbed_2_2">While in the operating system</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
@@ -5583,6 +5591,7 @@ On JADE, you will use <code>/transfer/in/cms/&lt;cdua&gt;/&lt;username&gt;</code
 <!-- ------------------------------------------------------------------------->
 <details class="danger">
 <summary>Data moderation process - differs only for moderators</summary>
+<p><a href="" id="moderation-process"></a></p>
 <p><mark class="critic">Users do not need to change their procedure</mark><br>
 <mark class="critic">The data moderation (DM) team needs to use two new paths - where you find
 proposed files and where you put them after approving them.</mark></p>
@@ -5620,14 +5629,16 @@ except the user. Which is the way it should be.)</li>
 <!-- ------------------------------------------------------------------------->
 <details class="info">
 <summary>Mailing lists</summary>
-<p><mark class="critic">The mailing list to reach all CMS users in a cluster has changed.</mark></p>
+<p><a href="" id="mailing-lists"></a>
+<mark class="critic">The mailing list to reach all CMS users in a cluster has changed.</mark></p>
 <p>C-SUB: c-sub-users@lists.jh.edu<br>
 JADE: jade-cms-users@lists.jh.edu</p>
 </details>
 <!-- ------------------------------------------------------------------------->
 <details class="info">
 <summary>Operating system has been updated</summary>
-<p><mark class="critic">This change should be invisible. But you may run into version dependencies.</mark></p>
+<p><a href="" id="os-updated"></a>
+<mark class="critic">This change should be invisible. But you may run into version dependencies.</mark></p>
 <p>Both clusters use the Rocky 9.x operating system. The C-SUB uses 9.4 while
 JADE uses 9.6.  The Rocky OS is designed to be stable, so dot releases
 (e.g. .4 to .6) within major releases (e.g. 8.x vs 9.x) add mainly bug
@@ -5650,6 +5661,19 @@ is now "scalc", etc.</p>
 command<br>
 <code>ls -l /usr/local/bin/ | grep -i libre</code></p>
 </details>
+<!-- ------------------------------------------------------------------------->
+<details class="warning">
+<summary>Compute node names have changed</summary>
+<p><a href="" id="compute-node-names"></a>
+<mark class="critic">If your batch job scripts specify the name of one or more compute nodes 
+to use, you will need to modify them so they work on JADE.</mark></p>
+<p>Compute nodes in C-SUB had the prefix "compute-" and a suffix in the range
+132 to 139.</p>
+<p>Compute nodes in JADE have the prefix <strong>"jcompute-"</strong> and a suffix in the range
+032 and higher.</p>
+<p>There is a direct mapping of C-SUB compute-132 to JADE jcompute-032, etc.
+Add a "j" and change "1" to "0".</p>
+</details>
 
 
 
@@ -5670,7 +5694,7 @@ command<br>
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="December 28, 2025 21:18:32 UTC">December 28, 2025</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="December 28, 2025 23:14:49 UTC">December 28, 2025</span>
   </span>
 
     
