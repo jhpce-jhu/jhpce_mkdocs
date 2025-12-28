@@ -77,7 +77,7 @@ here](https://www.gnu.org/software/sed/manual/html_node/Text-search-across-multi
     will show you whether it finds any matches.
     
 <!-- ------------------------------------------------------------------------->
-??? example "Change multiple things with one command  (click to expand this section)"
+??? example "Change multiple things with one command  (click to expand sections like this)"
     In the first example, we see sed making two transformations.
 
     The programs are implemented in the order specified, so beware of stepping on
@@ -231,7 +231,7 @@ location can be "." if you want to start in the current working directory.
 The following command will change a string, if found, in as many files which
 exist that match the search criteria.
 
-`find ~/project1 -type f -name “*.html” -print0 | xargs -0 sed -i.orig 's/badstring/mygoodstring/g'`
+>find ~/project1 -type f -name “*.html” -print0 | xargs -0 sed -i.orig 's/badstring/mygoodstring/g'
 
 Breaking it down, left to right:
 
