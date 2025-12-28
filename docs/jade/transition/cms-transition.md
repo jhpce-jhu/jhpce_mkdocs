@@ -5,6 +5,8 @@ tags:
   - transition
 ---
 
+# This is a draft version - much revision remains to be done
+
 # Transition of CMS Users of the C-SUB Cluster to the JADE Cluster
 
 The JHPCE Advanced Data Enclave (JADE) is a secured
@@ -28,7 +30,6 @@ If you are a CMS data user on the C-SUB cluster, the JADE cluster will feel very
 There are a number of changes which require your attention.
 
 ### New login node
-
 
 The login node for the JADE cluster is "jade01.jhsph.edu".  So you'll need to change that component of accessing a cluster, whether by SSH or SFTP. (The port numbers used for SFTP (22011 and 22027) are the same.)
 

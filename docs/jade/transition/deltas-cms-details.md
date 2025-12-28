@@ -1,25 +1,42 @@
 ---
 tags:
-  - in-progress
   - jade
   - transition
   - cms
-title: Differences between C-SUB and JADE for CMS users
+title: Guide to differences between C-SUB and JADE for CMS users
 ---
 # Guide to differences between C-SUB and JADE for CMS users
 You will find working in JADE very similar to doing so in the C-SUB.
 
 However, there are differences, and we attempt to identify them here.
-Click on a topic to read more about it (and click again to when finished to
+Click on a topic to read more about it (and click again when finished to
 close it). Three colors were used to indicate the likelihood of
 that topic impacting the typical user.
 
-Some items are marked red but only require a one word change in your command
-or changing directory to a different location to retrieve your incoming files.
-You will very quickly master the changes.
+{==Some items are marked red but only require a one word change in your command
+or your changing directory to a different location to retrieve your incoming files.
+You will very quickly master the changes.==}
+
+## Resources for you
+
+We are trying to create documentation to put in the JADE section of this web site
+as quickly as we can. Please bear with us.  Because paths to files change in
+JADE, there are multiple documents about that which attempt to present similar
+information but in different layouts. Here are the key documents:
+
+* This document contains vital information.
+* Instructions on [changing existing text files](sed-tips-jade.md) to replace C-SUB-appropriate
+paths with JADE-appropriate paths.
+* [Summary of JADE paths & their purposes](../images/jade-path-summary-table.pdf) - one page PDF
+chart. A reference document for all JADE users for the long run. Contains summary of what kind of data
+is best for each location. Read this before the next document below.
+* [Summary of path changes for CMS users](images/jade-path-summary-table-cms.pdf) - one page PDF chart. Side-by-side comparison of C-SUB & JADE. Mentions accommodations to hide most path changes.
+* [Description of data locations](images/paths-csub-to-jade.pdf), what to use
+them for, and specific changes users need to make. Only describes paths. Seven pages of text
+(because lots of white space was inserted for readability). Was written first.
 
 <!-- ------------------------------------------------------------------------->
-!!! tip 
+!!! tip "Color codes used for each topic"
     * red, danger - You must deal with/know about
     * orange, warning - You probably should know about
     * light blue, info - Less impactful changes
@@ -276,185 +293,17 @@ You will very quickly master the changes.
     help others. Thanks.
 
 ??? info "LibreOffice program names have changed"
-    {==Program names have changed slightly==}
+    {==Program names have changed slightly; much newer version is installed.==}
 
     The graphic user interface [LibreOffice](https://www.libreoffice.org) is a 
     free, open-source office suite.  JADE is using a much newer version than the C-SUB.  
 
     Many LibreOffice programs have a single letter prefix. In C-SUB that was 'o'
     while in JADE it has changed to be 's'.  "ooffice" is now "soffice", "ocalc"
-    is now "scalc"
+    is now "scalc", etc.
 
     These LibreOffice programs are found in the /user/local/bin/ directory
     (which is in your default PATH). You can see a list of them with the
     command<br>
     `ls -l /usr/local/bin/ | grep -i libre`
 
-
-# MATERIAL BELOW HAS NOT YET BEEN INCORPORATED OR DELETED YET
-
-COMMUNITIES
-
-
-Shorthand variables you will see used below:
-
-`<dua#>` = alphanumeric string, typically containing only digits
-  e.g. 55548
-`<cdua> = <community-letter><dua#>`
-  e.g. c55548
-  NOTE the "c" in `<cdua>` does NOT mean "cms", it means "c"ommunity
-
-`<username> = c-<jhedid>-<dua#> (for cms users)`
-`<username> = d-<jhedid>-<dua#> (for dbgap users)`
-`<username> = s-<jhedid>-<dua#> (for sysadmin users)`
-
-LOGIN NODE
----------------------------------------------------------------------------
-C-SUB:	jhpcecms01.jhsph.edu
-JADE:	jade01.jhsph.edu
-
-MAILING LISTS
----------------------------------------------------------------------------
-mailing list is jade-cms-users rather than c-sub-users (@lists.jh.edu)
-
-SLURM PARTITION
----------------------------------------------------------------------------
-In the C-SUB, everyone shares a default partition named "cms"
-In JADE, the default partition for the cms community is c-shared.
-
-Brand new accounts created by my scripts will be given a ~/.slurm/defaults
-file, the last line of which will be a community-specific default partition.
-We'll need to Do The Right Thing as we copy over C-SUB home directories of
-testers and then later migrated users. (First checking that no one has such
-a file, then, if not, copying a default one into place.)
-
-USERNAME
----------------------------------------------------------------------------
-The userid remains the same for C-SUB users.
-
-UNIX USER GROUPS
----------------------------------------------------------------------------
-We need to add users to new groups.
-
-Existing groups used in the C-SUB will still be defined, at least for a time.
-I do not know whether having them around will introduce misleading testing
-results or actual problems, during testing or after a DUA group has migrated
-to JADE. This needs to be studied and made part of the recipe for copying
-/cms01/data/dua/<dua#> over into JADE. 
-
-Add users to:
-j-c-users
-This is the group which identifies members of the cms community within JADE
-C-SUB: 	c-users	  meant basically "all normal human users in the cluster"
-JADE:	j-c-users	means "cms people"
-
-Add users to:
-j-<cdua>
-This is the group which identifies access to a DUA's files.
-C-SUB: 	c-<dua#> e.g. c-55548
-JADE:	j-<cdua> e.g. j-c55548
-
-Add data moderators to
-j-c-sftp-out
-This group replaces "c-sftp-out" for data moderators
-Data moderators have account names in the 10201 DUA, i.e. c-<jhedid>-10201
-
-
-PATHS PATHS PATHS PATHS PATHS
-PATHS PATHS PATHS PATHS PATHS
-PATHS PATHS PATHS PATHS PATHS
----------------------------------------------------------------------------
-
-HOME DIRECTORIES
-------------------------------------------------------------
-C-SUB:	/users/<dua#>/<username>
-	/users/10101/c-jtuniso1-10101
-
-JADE:	/users/<comm>/<cdua>/<username>
-	/users/cms/c77777/c-test1-77777
-
-I have created symbolic links for each of the DUAs, e.g.
-	/users/10101 -> /users/cms/c10101/
-
-That will accomodate references to home directories or per-dua shared
-directories.
-
-However, I think that any new CMS DUA's that come along should not have a
-link created, because the other JADE communities will not have them at all.
-
-If users want to refer to home directories, as a general practice it is best
-to use $HOME or ~ 
-
-If users want to refer to per-dua shared/ directories, they should use the new
-correct path.
-
-INCOMING SFTP DATA
-------------------------------------------------------------
-The port for incoming CMS data, TCP/IP port 22011, will remain unchanged.
-
-Data will now land in a new path.
-C-SUB: 	/cms01/incoming/<userid>/
-JADE:	/transfer/in/<comm>/<cdua>/<userid>
-
-OUTGOING SFTP DATA (AFTER BEING APPROVED FOR EGRESS)
-------------------------------------------------------------
-The port for outgoing CMS data, TCP/IP port 22027, will remain unchanged.
-
-Data will now be available, after data review, in a new path.
-C-SUB: 	/cms01/outgoing/<userid>/
-JADE:	/transfer/out/<comm>/<cdua>/<userid>
-
-PROPOSED OUTGOING SFTP DATA (BEFORE BEING APPROVED FOR EGRESS)
-------------------------------------------------------------
-Data needing data review, will go into a new path.
-C-SUB: 	/users/<dua#>/<userid>/proposed
-JADE:	/proposed/<comm>/<cdua>/<userid>
-
-This is being done so user home directories can be simpler and also be
-standard across all communities.
-
-20251013: I have NOT finished tweaking everything for this to work.
-
-DUA DATA
-------------------------------------------------------------
-DUA data has been relocated to /data
-We are still working out the details of what part of paths under
-/data/ represent mount points.
-
-C-SUB:	/cms01/data/dua/<dua#>	
-JADE:	/data/cms/<cdua>/cui/
-	/data/cms/<cdua>/cui/intermediate/
-	/data/cms/<cdua>/cui-intermediate/
-
-Why cui/intermediate/ ? We want groups to be able to keep CUI out of
-/users/ as much as possible. Creating a default location helps keep that
-in mind. When DUAs expire, the CUI is supposed to be deleted. If people
-have a place to put their "near-raw" data then it will make it easier
-for the group later to review files before deletion. Some users will may
-have left -- if they put material in the right locations, then it makes it
-easier for the PI or power users appointed by the PI as data stewards.
-
-	/data/cms/<cdua>/shared/
-
-Why shared?
-The c57285 group wanted a group-writable location adjacent to their CUI
-(the "raw" data from CMS) where they could store large amounts of data
-
-(/cms01/data/dua/57285/ is stored on one of our spinning-hard-drive
-servers, which is cheaper, slower but more capacious. The /users/<dua#>/shared
-directories I created come from our SSD-equipped server, which is fast but
-does not have as much space.)
-
-In JADE, /users/<comm>/<cdua>/shared is stored on our SSD-equipped server.
-
-"Shared" provides a directory under which groups can choose what they want
-place there. If subdirectories are well organized, we can create whole new
-file systems if their current one fills up, or if PIs want to pay extra to
-create a file system on our SSD-equipped server.
-
-We could to create some standard items under shared/, such as
-	/data/cms/<cdua>/shared/<userid>
-	/data/cms/<cdua>/shared/tools/
-	/data/cms/<cdua>/shared/refdata/
-SUBDIRECTORIES ARE REQUIRED IF THE GROUP wants to have different permissions
-on different types of material !!!!!!
