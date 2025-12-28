@@ -827,13 +827,6 @@
   },
   {
     "page_name": "Change details",
-    "page_url": "../../jade/transition/deltas-cms-details/",
-    "text": "/data/cms/<cdua>/shared/\n",
-    "html": "<pre><span></span><code>/data/cms/&lt;cdua&gt;/shared/\n</code></pre>",
-    "language": ""
-  },
-  {
-    "page_name": "Change details",
     "page_url": "../../jade/transition/deltas-dbgap-details/",
     "text": "Character       Name\n----------      ---------- \nc               cms\nd               dbgap\ns               sysadmin\n",
     "html": "<pre><span></span><code>Character<span class=\"w\">       </span>Name\n----------<span class=\"w\">      </span>----------<span class=\"w\"> </span>\nc<span class=\"w\">               </span>cms\nd<span class=\"w\">               </span>dbgap\ns<span class=\"w\">               </span>sysadmin\n</code></pre>",
