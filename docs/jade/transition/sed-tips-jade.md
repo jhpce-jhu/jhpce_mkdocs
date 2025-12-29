@@ -194,12 +194,21 @@ In JADE, each community's partitions' names begin with their community letter an
     ```bash
     sed -i.bak3's(--partition=sas(--partition=c-sas(' sample.sh
     ``` 
-    {==We always recommend making backups of files you modify with sed, but
+    {==We always recommend your making backups of files you modify with sed, but
     you'll need to be conscious of what you're doing so you can go back to the
-    desired point in time. Here I changed the suffix so you would have copies of
-    the file before each change. If you know that you've already made a backup
-    of the original file, you can drop the file suffix from second and later sed
-    commands.==}
+    desired point in time. In this series of sed commands, I changed the suffix
+    each time so you would have copies of the file before each change. If I had
+    always used the same suffix, you would wind up with only the file before
+    the last run.
+
+    If you know that you've already made a backup of the original file, you can
+    drop the file suffix to `-i` from second and later sed commands.
+
+    Note!! Using the `-i` argument will always result in updating files 
+    modification times, whether the file contained a matching pattern or not.
+    So even files which whose content was not actually modified wind up looking
+    changed according to an `ls -l` command.==}
+
 
 <!-- ------------------------------------------------------------------------->
 If you applied the three sed commands mentioned above, you would wind up with:
@@ -221,7 +230,41 @@ do
     ~/bin/myscript ${i}.sas7bdat
 done
 ``` 
-## Modifying many files
+## Modifying many files at once
+
+### Using a list of files found in a text file
+
+You can make a list of file pathnames and process them with `sed`
+using a `for` loop. This allows you to be certain about the files
+you might change.
+
+??? example "How to do that"
+    Create a plain text file with one file on each line. The path to that file
+    needs to either be absolute or, if relative, be correct relative to the
+    directory in which you execute your `for` loop command.
+
+    ```
+    ./myproj/sample15/dog.R
+    /data/cms/c34345/joe/sample97/deer.R
+    ./myproj/sample15/mouse.sh
+    ```
+    Send the file names to `sed`:
+    ```bash
+    % for i in `cat myinput.txt` ; do echo $i ; sed -i.orig 's/pat1/pat2/gi' ${i};done
+    ```
+
+You can also use other commands to create a list of files in a file,
+then edit that list to include only the files you want to modify. Or simply
+verify for yourself that you're listing only the right type of files.
+
+??? example "How to do that"
+    ```bash
+    ls -1 */script* journey/*.scr > myinput.txt
+    nano myinput.txt
+    % for i in `cat myinput.txt` ; do echo $i ; sed -i.orig 's/pat1/pat2/gi' ${i};done
+    ```
+
+### Using the find command
 
 The `find` command will print the names of files which match the criteria you
 specify. Find's first argument is a location in the file system. By default find
@@ -231,7 +274,27 @@ location can be "." if you want to start in the current working directory.
 The following command will change a string, if found, in as many files which
 exist that match the search criteria.
 
->find ~/project1 -type f -name “*.html” -print0 | xargs -0 sed -i.orig 's/badstring/mygoodstring/g'
+`find ~/project1 -type f -name “*\.html” -print0 | \`<br>
+`   xargs -0 sed -i.orig 's/badstring/mygoodstring/g'`
+
+That long command is broken down into two lines to improve readability using
+an escape character.
+
+??? tip "Escaping special characters"
+    The `bash` shell you use gives certain characters special meanings. If you want
+    to prevent them from being interpreted in the normal fashion, usually you 
+    preceed that character with a ++backslash++. This is called "escaping" a
+    character.
+
+    The ++return++ key is one of those special characters. If you escape that key,
+    then bash will allow you to continue a command onto the next line of the
+    terminal window, where you indicate to bash that it should execute the
+    command now with a final ++return++.
+
+    You also need to escape characters inside of regular expressions, which has
+    it's ***own*** list of special characters, include ++period++  The string
+    "*\.html" includes a backslash to escape the period, which in REs stands
+    for "any single character", not a period!
 
 Breaking it down, left to right:
 
@@ -239,11 +302,22 @@ Breaking it down, left to right:
 * only consider files (not directories)
 * only consider files ending in ".html"
 * print names of matching files, in a way that works better with names containing spaces
-* passes those names to the `xargs` program
-* with the "-0" flag which works with the `find` program's "-print0" flag
+* pass those names to the `xargs` program
+* with the "-0" flag, which works with the `find` program's "-print0" flag
 * and execute the sed program.
 * Because the sed flag "-i.orig" is given, changes will be made to the named files
 where they are located. Backups will be made of each file processed.
+
+!!! tip "Find all bash scripts matching certain criteria, and fix a path"
+
+    `find ~/project1 -type f -iname "run_test*" -print0 | xargs -0 file | \`<br>
+    `  grep -i Bourne-Again | sed -e 's(: .*((' | \`<br>
+    `  xargs sed -i 's(/cms01/incoming(/transfer/in/cms(g'`
+    
+    This example finds some files using a case-insensitive name, runs the `file`
+    command on them, searches for ones that `find` reports to be Bourne-Again,
+    uses sed to trim off everything `file` printed after the file name, then 
+    has `xargs` execute the final `sed`
 
 ### Find command examples
 
@@ -251,10 +325,10 @@ You might find combinations of these useful when trying to identify the files yo
 with sed, or control which files are considered.
 
 Print out the names of bash scripts in your home directory<br>
+Note that this command does NOT correctly deal with filenames containing spaces!
+You should use instead the example above where "find -print0" feeds into "xargs
+-0"
 `find ~ -type f -exec file {} \; | grep -i Bourne-Again | sed -e 's(: .*(('`
-
-Fix the path in bash scripts in your home directory<br>
-`find ~ -type f -exec file {} \; | grep -i Bourne-Again | sed -e 's(: .*((' | sed -i 's(/cms01/incoming(/transfer/in/cms(g'`
 
 Print out the sizes of SLURM job output files owned by user c-jxu123-55548:<br>
 `find /users/cms/c55548/shared -type f -name "*.out" -exec du -sh {} \;`
@@ -269,7 +343,10 @@ Print the names of files _modified_ in February of this year:<br>
 `find . -newermt "2025-02-01" -a ! -newermt "2025-02-28" -print`
 
 Print the names of files _created_ in February of this year:<br>
-`find . -newerct "2025-02-01" -a ! -newerct "2025-02-28" -print`
+`find . -newerct "2025-02-01" -a \! -newerct "2025-02-28" -print`
+
+Print the names of executable files _modified_ in the last 24 hours:<br>
+`find . -mtime 0 -executable`
 
 Print out the names of files containing either "School" or "semester":<br>
 `find . -name "*School*" -o -name "*semester*" -print`
@@ -278,13 +355,16 @@ Print out the names of files containing both "School" and "semester":<br>
 `find . -name "*School*" -a -name "*semester*" -print`
 
 Print out the names of files containing either "School" or "semester" but NOT susyq:<br>
-`find . \( -name "*School*" -o -name "*semester*" \) -a ! -name 'susyq' -print`
+`find . \( -name "*School*" -o -name "*semester*" \) -a \! -name 'susyq' -print`
 
 Print the names of files except those found in directories named "bak":<br>
 `find . \( -type d -name bak -prune \) -o -type f -print`
 
 Print out the names of every directory in your home directory down to the third level:<br>
-`find ~ -type d -depth 3`
+`find ~ -type d -maxdepth 3`
+
+Print out the names of every immediate subdirectory of your home directory:<br>
+`find ~ -type d -maxdepth 1`
 
 Print the names of files named doghouse using a case-insensitive form of -name:<br>
 `find /some_dir/susy -iname doghouse -print`
@@ -296,8 +376,17 @@ For grins, in case any of them strike your interest.
 Delete completely blank lines<br>
 sed '/^$/d' 
 
-Delete white space<br>
+Delete commented-out lines (only where # is the first character of a line)<br>
+sed '/^#/d' 
+
+Delete commented-out lines (where # is the first non-whitespace character of a line)<br>
+sed '/^[[:space:]]*#/d' 
+
+Delete white space (spaces and tabs)<br>
 sed '/^[[:space:]]*$/d' 
+
+Convert tabs into 6 spaces<br>
+sed '/\t/      /' 
 
 Delete the first seven line<br>
 sed '7d'
