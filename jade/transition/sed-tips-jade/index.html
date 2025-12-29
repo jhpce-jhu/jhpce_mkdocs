@@ -4867,16 +4867,38 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#modifying-many-files" class="md-nav__link">
+  <a href="#modifying-many-files-at-once" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Modifying many files
+        Modifying many files at once
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Modifying many files">
+    <nav class="md-nav" aria-label="Modifying many files at once">
       <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#using-a-list-of-files-found-in-a-text-file" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Using a list of files found in a text file
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#using-the-find-command" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Using the find command
+      
+    </span>
+  </a>
+  
+</li>
         
           <li class="md-nav__item">
   <a href="#find-command-examples" class="md-nav__link">
@@ -5405,16 +5427,38 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#modifying-many-files" class="md-nav__link">
+  <a href="#modifying-many-files-at-once" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Modifying many files
+        Modifying many files at once
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Modifying many files">
+    <nav class="md-nav" aria-label="Modifying many files at once">
       <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#using-a-list-of-files-found-in-a-text-file" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Using a list of files found in a text file
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#using-the-find-command" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Using the find command
+      
+    </span>
+  </a>
+  
+</li>
         
           <li class="md-nav__item">
   <a href="#find-command-examples" class="md-nav__link">
@@ -5633,12 +5677,18 @@ The resulting <code>sample.sh</code> would contain <br>
 <summary>Correct the partition name to be <code>c-sas</code></summary>
 <p><div class="highlight"><pre><span></span><code>sed<span class="w"> </span>-i.bak3<span class="s1">&#39;s(--partition=sas(--partition=c-sas(&#39;</span><span class="w"> </span>sample.sh
 </code></pre></div>
-<mark class="critic">We always recommend making backups of files you modify with sed, but
+<mark class="critic">We always recommend your making backups of files you modify with sed, but
 you'll need to be conscious of what you're doing so you can go back to the
-desired point in time. Here I changed the suffix so you would have copies of
-the file before each change. If you know that you've already made a backup
-of the original file, you can drop the file suffix from second and later sed
-commands.</mark></p>
+desired point in time. In this series of sed commands, I changed the suffix
+each time so you would have copies of the file before each change. If I had
+always used the same suffix, you would wind up with only the file before
+the last run.</p>
+<p>If you know that you've already made a backup of the original file, you can
+drop the file suffix to <code>-i</code> from second and later sed commands.</p>
+<p>Note!! Using the <code>-i</code> argument will always result in updating files 
+modification times, whether the file contained a matching pattern or not.
+So even files which whose content was not actually modified wind up looking
+changed according to an <code>ls -l</code> command.</mark></p>
 </details>
 <!-- ------------------------------------------------------------------------->
 <p>If you applied the three sed commands mentioned above, you would wind up with:</p>
@@ -5656,35 +5706,90 @@ files are named <code>sample.sh.bak2</code> and <code>sample.sh.bak3</code></p>
 <span class="w">    </span>~/bin/myscript<span class="w"> </span><span class="si">${</span><span class="nv">i</span><span class="si">}</span>.sas7bdat
 <span class="k">done</span>
 </code></pre></div>
-<h2 id="modifying-many-files">Modifying many files<a class="headerlink" href="#modifying-many-files" title="Anchor link to this section for reference">&para;</a></h2>
+<h2 id="modifying-many-files-at-once">Modifying many files at once<a class="headerlink" href="#modifying-many-files-at-once" title="Anchor link to this section for reference">&para;</a></h2>
+<h3 id="using-a-list-of-files-found-in-a-text-file">Using a list of files found in a text file<a class="headerlink" href="#using-a-list-of-files-found-in-a-text-file" title="Anchor link to this section for reference">&para;</a></h3>
+<p>You can make a list of file pathnames and process them with <code>sed</code>
+using a <code>for</code> loop. This allows you to be certain about the files
+you might change.</p>
+<details class="example">
+<summary>How to do that</summary>
+<p>Create a plain text file with one file on each line. The path to that file
+needs to either be absolute or, if relative, be correct relative to the
+directory in which you execute your <code>for</code> loop command.</p>
+<p><div class="highlight"><pre><span></span><code>./myproj/sample15/dog.R
+/data/cms/c34345/joe/sample97/deer.R
+./myproj/sample15/mouse.sh
+</code></pre></div>
+Send the file names to <code>sed</code>:
+<div class="highlight"><pre><span></span><code>%<span class="w"> </span><span class="k">for</span><span class="w"> </span>i<span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="sb">`</span>cat<span class="w"> </span>myinput.txt<span class="sb">`</span><span class="w"> </span><span class="p">;</span><span class="w"> </span><span class="k">do</span><span class="w"> </span><span class="nb">echo</span><span class="w"> </span><span class="nv">$i</span><span class="w"> </span><span class="p">;</span><span class="w"> </span>sed<span class="w"> </span>-i.orig<span class="w"> </span><span class="s1">&#39;s/pat1/pat2/gi&#39;</span><span class="w"> </span><span class="si">${</span><span class="nv">i</span><span class="si">}</span><span class="p">;</span><span class="k">done</span>
+</code></pre></div></p>
+</details>
+<p>You can also use other commands to create a list of files in a file,
+then edit that list to include only the files you want to modify. Or simply
+verify for yourself that you're listing only the right type of files.</p>
+<details class="example">
+<summary>How to do that</summary>
+<div class="highlight"><pre><span></span><code>ls<span class="w"> </span>-1<span class="w"> </span>*/script*<span class="w"> </span>journey/*.scr<span class="w"> </span>&gt;<span class="w"> </span>myinput.txt
+nano<span class="w"> </span>myinput.txt
+%<span class="w"> </span><span class="k">for</span><span class="w"> </span>i<span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="sb">`</span>cat<span class="w"> </span>myinput.txt<span class="sb">`</span><span class="w"> </span><span class="p">;</span><span class="w"> </span><span class="k">do</span><span class="w"> </span><span class="nb">echo</span><span class="w"> </span><span class="nv">$i</span><span class="w"> </span><span class="p">;</span><span class="w"> </span>sed<span class="w"> </span>-i.orig<span class="w"> </span><span class="s1">&#39;s/pat1/pat2/gi&#39;</span><span class="w"> </span><span class="si">${</span><span class="nv">i</span><span class="si">}</span><span class="p">;</span><span class="k">done</span>
+</code></pre></div>
+</details>
+<h3 id="using-the-find-command">Using the find command<a class="headerlink" href="#using-the-find-command" title="Anchor link to this section for reference">&para;</a></h3>
 <p>The <code>find</code> command will print the names of files which match the criteria you
 specify. Find's first argument is a location in the file system. By default find
 will start a recursive search starting at that point and proceeding downwards. That 
 location can be "." if you want to start in the current working directory.</p>
 <p>The following command will change a string, if found, in as many files which
 exist that match the search criteria.</p>
-<blockquote>
-<p>find ~/project1 -type f -name “*.html” -print0 | xargs -0 sed -i.orig 's/badstring/mygoodstring/g'</p>
-</blockquote>
+<p><code>find ~/project1 -type f -name “*\.html” -print0 | \</code><br>
+<code>xargs -0 sed -i.orig 's/badstring/mygoodstring/g'</code></p>
+<p>That long command is broken down into two lines to improve readability using
+an escape character.</p>
+<details class="tip">
+<summary>Escaping special characters</summary>
+<p>The <code>bash</code> shell you use gives certain characters special meanings. If you want
+to prevent them from being interpreted in the normal fashion, usually you 
+preceed that character with a <span class="keys"><kbd class="key-backslash">\</kbd></span>. This is called "escaping" a
+character.</p>
+<p>The <span class="keys"><kbd class="key-enter">Enter</kbd></span> key is one of those special characters. If you escape that key,
+then bash will allow you to continue a command onto the next line of the
+terminal window, where you indicate to bash that it should execute the
+command now with a final <span class="keys"><kbd class="key-enter">Enter</kbd></span>.</p>
+<p>You also need to escape characters inside of regular expressions, which has
+it's <strong><em>own</em></strong> list of special characters, include <span class="keys"><kbd class="key-period">.</kbd></span>  The string
+"*.html" includes a backslash to escape the period, which in REs stands
+for "any single character", not a period!</p>
+</details>
 <p>Breaking it down, left to right:</p>
 <ul>
 <li>start looking at the directory named "project1" inside of your home directory</li>
 <li>only consider files (not directories)</li>
 <li>only consider files ending in ".html"</li>
 <li>print names of matching files, in a way that works better with names containing spaces</li>
-<li>passes those names to the <code>xargs</code> program</li>
-<li>with the "-0" flag which works with the <code>find</code> program's "-print0" flag</li>
+<li>pass those names to the <code>xargs</code> program</li>
+<li>with the "-0" flag, which works with the <code>find</code> program's "-print0" flag</li>
 <li>and execute the sed program.</li>
 <li>Because the sed flag "-i.orig" is given, changes will be made to the named files
 where they are located. Backups will be made of each file processed.</li>
 </ul>
+<div class="admonition tip">
+<p class="admonition-title">Find all bash scripts matching certain criteria, and fix a path</p>
+<p><code>find ~/project1 -type f -iname "run_test*" -print0 | xargs -0 file | \</code><br>
+<code>grep -i Bourne-Again | sed -e 's(: .*((' | \</code><br>
+<code>xargs sed -i 's(/cms01/incoming(/transfer/in/cms(g'</code></p>
+<p>This example finds some files using a case-insensitive name, runs the <code>file</code>
+command on them, searches for ones that <code>find</code> reports to be Bourne-Again,
+uses sed to trim off everything <code>file</code> printed after the file name, then 
+has <code>xargs</code> execute the final <code>sed</code></p>
+</div>
 <h3 id="find-command-examples">Find command examples<a class="headerlink" href="#find-command-examples" title="Anchor link to this section for reference">&para;</a></h3>
 <p>You might find combinations of these useful when trying to identify the files you want to modify
 with sed, or control which files are considered.</p>
 <p>Print out the names of bash scripts in your home directory<br>
+Note that this command does NOT correctly deal with filenames containing spaces!
+You should use instead the example above where "find -print0" feeds into "xargs
+-0"
 <code>find ~ -type f -exec file {} \; | grep -i Bourne-Again | sed -e 's(: .*(('</code></p>
-<p>Fix the path in bash scripts in your home directory<br>
-<code>find ~ -type f -exec file {} \; | grep -i Bourne-Again | sed -e 's(: .*((' | sed -i 's(/cms01/incoming(/transfer/in/cms(g'</code></p>
 <p>Print out the sizes of SLURM job output files owned by user c-jxu123-55548:<br>
 <code>find /users/cms/c55548/shared -type f -name "*.out" -exec du -sh {} \;</code></p>
 <p>Print the names of files modified after noon of 9/11/2025<br>
@@ -5694,25 +5799,35 @@ with sed, or control which files are considered.</p>
 <p>Print the names of files <em>modified</em> in February of this year:<br>
 <code>find . -newermt "2025-02-01" -a ! -newermt "2025-02-28" -print</code></p>
 <p>Print the names of files <em>created</em> in February of this year:<br>
-<code>find . -newerct "2025-02-01" -a ! -newerct "2025-02-28" -print</code></p>
+<code>find . -newerct "2025-02-01" -a \! -newerct "2025-02-28" -print</code></p>
+<p>Print the names of executable files <em>modified</em> in the last 24 hours:<br>
+<code>find . -mtime 0 -executable</code></p>
 <p>Print out the names of files containing either "School" or "semester":<br>
 <code>find . -name "*School*" -o -name "*semester*" -print</code></p>
 <p>Print out the names of files containing both "School" and "semester":<br>
 <code>find . -name "*School*" -a -name "*semester*" -print</code></p>
 <p>Print out the names of files containing either "School" or "semester" but NOT susyq:<br>
-<code>find . \( -name "*School*" -o -name "*semester*" \) -a ! -name 'susyq' -print</code></p>
+<code>find . \( -name "*School*" -o -name "*semester*" \) -a \! -name 'susyq' -print</code></p>
 <p>Print the names of files except those found in directories named "bak":<br>
 <code>find . \( -type d -name bak -prune \) -o -type f -print</code></p>
 <p>Print out the names of every directory in your home directory down to the third level:<br>
-<code>find ~ -type d -depth 3</code></p>
+<code>find ~ -type d -maxdepth 3</code></p>
+<p>Print out the names of every immediate subdirectory of your home directory:<br>
+<code>find ~ -type d -maxdepth 1</code></p>
 <p>Print the names of files named doghouse using a case-insensitive form of -name:<br>
 <code>find /some_dir/susy -iname doghouse -print</code></p>
 <h2 id="useful-sed-commands">Useful sed commands<a class="headerlink" href="#useful-sed-commands" title="Anchor link to this section for reference">&para;</a></h2>
 <p>For grins, in case any of them strike your interest.</p>
 <p>Delete completely blank lines<br>
 sed '/^$/d' </p>
-<p>Delete white space<br>
+<p>Delete commented-out lines (only where # is the first character of a line)<br>
+sed '/^#/d' </p>
+<p>Delete commented-out lines (where # is the first non-whitespace character of a line)<br>
+sed '/^[[:space:]]*#/d' </p>
+<p>Delete white space (spaces and tabs)<br>
 sed '/^[[:space:]]*$/d' </p>
+<p>Convert tabs into 6 spaces<br>
+sed '/\t/      /' </p>
 <p>Delete the first seven line<br>
 sed '7d'</p>
 <p>Delete specified lines (5 thru 10, and 12)<br>
@@ -5737,7 +5852,7 @@ sed -i -e '5,10d;12d' filename</p>
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="December 28, 2025 06:42:17 UTC">December 28, 2025</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="December 29, 2025 05:08:07 UTC">December 29, 2025</span>
   </span>
 
     

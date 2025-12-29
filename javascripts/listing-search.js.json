@@ -912,6 +912,27 @@
   {
     "page_name": "Using sed to modify files",
     "page_url": "../../jade/transition/sed-tips-jade/",
+    "text": "./myproj/sample15/dog.R\n/data/cms/c34345/joe/sample97/deer.R\n./myproj/sample15/mouse.sh\n",
+    "html": "<pre><span></span><code>./myproj/sample15/dog.R\n/data/cms/c34345/joe/sample97/deer.R\n./myproj/sample15/mouse.sh\n</code></pre>",
+    "language": ""
+  },
+  {
+    "page_name": "Using sed to modify files",
+    "page_url": "../../jade/transition/sed-tips-jade/",
+    "text": "% for i in `cat myinput.txt` ; do echo $i ; sed -i.orig 's/pat1/pat2/gi' ${i};done\n",
+    "html": "<pre><span></span><code>%<span class=\"w\"> </span><span class=\"k\">for</span><span class=\"w\"> </span>i<span class=\"w\"> </span><span class=\"k\">in</span><span class=\"w\"> </span><span class=\"sb\">`</span>cat<span class=\"w\"> </span>myinput.txt<span class=\"sb\">`</span><span class=\"w\"> </span><span class=\"p\">;</span><span class=\"w\"> </span><span class=\"k\">do</span><span class=\"w\"> </span><span class=\"nb\">echo</span><span class=\"w\"> </span><span class=\"nv\">$i</span><span class=\"w\"> </span><span class=\"p\">;</span><span class=\"w\"> </span>sed<span class=\"w\"> </span>-i.orig<span class=\"w\"> </span><span class=\"s1\">'s/pat1/pat2/gi'</span><span class=\"w\"> </span><span class=\"si\">${</span><span class=\"nv\">i</span><span class=\"si\">}</span><span class=\"p\">;</span><span class=\"k\">done</span>\n</code></pre>",
+    "language": ""
+  },
+  {
+    "page_name": "Using sed to modify files",
+    "page_url": "../../jade/transition/sed-tips-jade/",
+    "text": "ls -1 */script* journey/*.scr > myinput.txt\nnano myinput.txt\n% for i in `cat myinput.txt` ; do echo $i ; sed -i.orig 's/pat1/pat2/gi' ${i};done\n",
+    "html": "<pre><span></span><code>ls<span class=\"w\"> </span>-1<span class=\"w\"> </span>*/script*<span class=\"w\"> </span>journey/*.scr<span class=\"w\"> </span>&gt;<span class=\"w\"> </span>myinput.txt\nnano<span class=\"w\"> </span>myinput.txt\n%<span class=\"w\"> </span><span class=\"k\">for</span><span class=\"w\"> </span>i<span class=\"w\"> </span><span class=\"k\">in</span><span class=\"w\"> </span><span class=\"sb\">`</span>cat<span class=\"w\"> </span>myinput.txt<span class=\"sb\">`</span><span class=\"w\"> </span><span class=\"p\">;</span><span class=\"w\"> </span><span class=\"k\">do</span><span class=\"w\"> </span><span class=\"nb\">echo</span><span class=\"w\"> </span><span class=\"nv\">$i</span><span class=\"w\"> </span><span class=\"p\">;</span><span class=\"w\"> </span>sed<span class=\"w\"> </span>-i.orig<span class=\"w\"> </span><span class=\"s1\">'s/pat1/pat2/gi'</span><span class=\"w\"> </span><span class=\"si\">${</span><span class=\"nv\">i</span><span class=\"si\">}</span><span class=\"p\">;</span><span class=\"k\">done</span>\n</code></pre>",
+    "language": ""
+  },
+  {
+    "page_name": "Using sed to modify files",
+    "page_url": "../../jade/transition/sed-tips-jade/",
     "text": "% touch -t 202509111200 911-noon\n% find . -newer 911-noon -print\n",
     "html": "<pre><span></span><code>%<span class=\"w\"> </span>touch<span class=\"w\"> </span>-t<span class=\"w\"> </span><span class=\"m\">202509111200</span><span class=\"w\"> </span><span class=\"m\">911</span>-noon\n%<span class=\"w\"> </span>find<span class=\"w\"> </span>.<span class=\"w\"> </span>-newer<span class=\"w\"> </span><span class=\"m\">911</span>-noon<span class=\"w\"> </span>-print\n</code></pre>",
     "language": ""
