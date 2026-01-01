@@ -117,7 +117,7 @@ reference document. Was written first.
     to work in JADE.**
 
     [This
-    document](images/jade-path-summary-table-cms.pdf) is a one page summary
+    document](../images/jade-path-summary-table.pdf) is a one page summary
     table describing JADE paths and what kinds of data they are best used for.
 
     [This
@@ -129,9 +129,14 @@ reference document. Was written first.
     moderators. The document you are reading now and the summary documents
     mentioned above probably replace the longer document.
 
-    We have a document explaining how to replace strings in documents
-    [here](sed-tips-jade.md). You can use this to modify existing files, such as
-    SLURM batch job scripts, so they will work in JADE.
+    We have a document explaining how to replace strings in files
+    [here, about the sed utility](sed-tips-jade.md). You can use this info
+    to modify existing files, such as SLURM batch job scripts, so they will work in JADE.
+
+    There are four things you might need to change in those SLURM batch job
+    scripts: (1) paths involving data, (2) the SAS partition name, (3) paths
+    involving your home directory, and (4) optionally changing standard output
+    and error paths [described here](#slurmout).
 <!-- ------------------------------------------------------------------------->
 ??? info "Unix group changes"
     [](){#group-changes}
@@ -185,6 +190,27 @@ reference document. Was written first.
 
     Please copy any of them that you want to keep into your
     home directory before your group is migrated from the C-SUB to JADE.
+<!-- ------------------------------------------------------------------------->
+??? info "~/slurmout/ - a place for your transient SLURM output files"
+    [](){#slurmout}
+    JADE home directories are equipped with a ~/slurmout/ subdirectory. You can
+    choose to use this or delete it. The concept is that using it allows you to
+    look in one place for all output files.
+
+    By default, SLURM will create a file for each job containing its output,
+    named "slurm-<jobID>.out" in the directory from which the job was
+    submitted.  That file contains both the "standard output" and the "standard
+    error" content.  You can change the default behavior using the following 
+    `#SBATCH` directives in your job script or command-line options when 
+    submitting jobs: `--output=<filename_pattern>` and, if you want to break out
+    output from error, `--error=<filename_pattern>`.
+
+    You can specify your choices in three places, in ascending priority: 
+
+    1. ~/.slurm/defaults -- with a line like:
+      `sbatch:*:output=~/slurmout/%j.out` (%j is replaced with the jobID)
+    2. in a batch script -- using `#SBATCH --output=<filename_pattern>`
+    3. on the command line -- as mentioned above
 <!-- ------------------------------------------------------------------------->
 ??? danger "SFTP data transfers - path changes"
     [](){#sftp-changes}
