@@ -38,7 +38,7 @@ that topic impacting the typical user.
          `/users/dbgap/d17293/d-wshi13-17293/`
 
 <!-- ------------------------------------------------------------------------->
-??? info "User Communities on JADE"
+??? tip "User Communities on JADE"
     {==Researchers who use dbGaP data are members of the "DBGAP community" on JADE.==}
 
     There are three communities (so far) in JADE. Each one has a unique name
@@ -106,11 +106,23 @@ that topic impacting the typical user.
            `/users/dbgap/d17293/d-steward1-17293`
 
 <!-- ------------------------------------------------------------------------->
-??? info "Unix group changes"
-    {==JADE uses completely separate groups to control data access.==}
+??? example "Transferring data into & out of JADE"
+    {== THIS SECTION IS UNDER DEVELOPMENT 20251226 ==}
+    {==JADE uses specific TCP/IP networking ports for data ingress & egress: ==}<br><br>
 
-    Each JADE user has a 'primary' group based on their community (`j-d-users`)
-    and one or more 'secondary' groups (e.g. `j-d17293`).
+    JADE is located on a secure network segment maintained by IT@JH. Their
+    firewall is configured to deny everything by default.
+
+    From the inside of JADE, you can initiate connections to the internet using
+    a variety of tools and protocols.
+
+    From outside of JADE, you can initiate SFTP connections to jade01.jhsph.edu,
+    using these non-standard ports:
+
+    Data going into the cluster: 22511<br>
+    Data coming out of the cluster: 22527
+
+    (?More description in an jade/access/ page?)
 
 <!-- ------------------------------------------------------------------------->
 ??? warning "SLURM partition name changes"
@@ -136,24 +148,14 @@ that topic impacting the typical user.
     We have a document explaining how to replace strings in documents
     [here](sed-tips-jade.md).
 
+
+	
 <!-- ------------------------------------------------------------------------->
-??? example "Transferring data into & out of JADE"
-    {== THIS SECTION IS UNDER DEVELOPMENT 20251226 ==}
-    {==JADE uses specific TCP/IP networking ports for data ingress & egress: ==}<br><br>
+??? info "Unix group changes"
+    {==JADE uses completely separate groups to control data access.==}
 
-    JADE is located on a secure network segment maintained by IT@JH. Their
-    firewall is configured to deny everything by default.
-
-    From the inside of JADE, you can initiate connections to the internet using
-    a variety of tools and protocols.
-
-    From outside of JADE, you can initiate SFTP connections to jade01.jhsph.edu,
-    using these non-standard ports:
-
-    Data going into the cluster: 22511<br>
-    Data coming out of the cluster: 22527
-
-    (?More description in an jade/access/ page?)
+    Each JADE user has a 'primary' group based on their community (`j-d-users`)
+    and one or more 'secondary' groups (e.g. `j-d17293`).
 
 <!-- ------------------------------------------------------------------------->
 ??? info "Mailing lists"
