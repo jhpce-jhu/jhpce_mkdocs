@@ -18,7 +18,7 @@ that topic impacting the typical user.
 
 <!-- ------------------------------------------------------------------------->
 !!! tip 
-    * red, danger - You must deal with/know about
+    * purple, important - You must deal with/know about
     * orange, warning - You probably should know about
     * light blue, info - Less impactful changes
 
@@ -56,7 +56,7 @@ that topic impacting the typical user.
     ```
 
 <!-- ------------------------------------------------------------------------->
-??? danger "Login is only allowed from SAFE or SAFER Desktop"
+??? example "Login is only allowed from SAFE or SAFER Desktop"
     {==dbGaP users must log into the SAFE Desktop before they can log into JADE.==}
 
     SAFE and SAFER Desktop are Windows virtual machines which are described
@@ -67,7 +67,7 @@ that topic impacting the typical user.
     (You can also log into JADE using the newer SAFER Desktop service.)
 
 <!-- ------------------------------------------------------------------------->
-??? danger "Login requires MFA via OTP; ssh keys are not allowed"
+??? example "Login requires MFA via OTP; ssh keys are not allowed"
     {==dbGaP users must use One Time Passwords to log into JADE.==}
 
     The local program `auth_util` allows you to work with your Google
@@ -76,7 +76,7 @@ that topic impacting the typical user.
     codes to use during login.
 
 <!-- ------------------------------------------------------------------------->
-??? danger "Login node"
+??? example "Login node"
 
     {==You must change your settings or commands to use the JADE login server.==}
 
@@ -92,7 +92,7 @@ that topic impacting the typical user.
 	jhpce03.jhsph.edu.
         
 <!-- ------------------------------------------------------------------------->
-??? danger "New accounts are used to access JADE"
+??? example "New accounts are used to access JADE"
     {==New usernames, verification codes, and passwords are used.==}
 
     You will receive new login credentials when your account is configured.
@@ -137,7 +137,7 @@ that topic impacting the typical user.
     [here](sed-tips-jade.md).
 
 <!-- ------------------------------------------------------------------------->
-??? danger "Transferring data into & out of JADE"
+??? example "Transferring data into & out of JADE"
     {== THIS SECTION IS UNDER DEVELOPMENT 20251226 ==}
     {==JADE uses specific TCP/IP networking ports for data ingress & egress: ==}<br><br>
 
