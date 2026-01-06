@@ -49,6 +49,7 @@ nav:
         - OneDrive via rclone: access/onedrive.md
     - Managing Files:
       - Files Overview: files/files-overview.md
+      - Storage Tips: storage/storage-tips.md
       - Sharing Files: files/sharing-files.md
       - ACL: files/acl.md
       - Copying within cluster: files/copying-files.md
@@ -58,9 +59,9 @@ nav:
         - Itemize Manual Page: files/rsync-itemize-manpage.md
       - Archive Files: files/archive-files.md
       - Navigating Deep Directory Trees: files/deep-paths.md
+      - Modifying Files en Masse: files/sed-tips.md
       - Data Security: files/data-security.md
       - Encrypting filesystems with ENCFS: files/encfs.md
-      - Storage Tips: storage/storage-tips.md
     - Storage Policies and Practices: 
       - storage/index.md
       - Storage Overview: storage/index.md
@@ -114,6 +115,8 @@ nav:
         - Alphafold: gpu/alphafold.md
       - VS Code: sw/vscode.md
       - Cost Calculator: help/cost-calculator.md
+      - Navigating Deep Directory Trees: files/deep-paths.md
+      - Modifying Files en Masse: files/sed-tips.md
     - Web Portal:
       - GUI Applications: portal/web-apps.md
       - Datacatalog: portal/datacatalog.md
