@@ -59,7 +59,7 @@ nav:
         - Itemize Manual Page: files/rsync-itemize-manpage.md
       - Archive Files: files/archive-files.md
       - Navigating Deep Directory Trees: files/deep-paths.md
-      - Modifying Files en Masse: files/sed-tips.md
+      - SED Modifying Files en Masse: files/sed-tips.md
       - Data Security: files/data-security.md
       - Encrypting filesystems with ENCFS: files/encfs.md
     - Storage Policies and Practices: 
@@ -116,7 +116,7 @@ nav:
       - VS Code: sw/vscode.md
       - Cost Calculator: help/cost-calculator.md
       - Navigating Deep Directory Trees: files/deep-paths.md
-      - Modifying Files en Masse: files/sed-tips.md
+      - SED Modifying Files en Masse: files/sed-tips.md
     - Web Portal:
       - GUI Applications: portal/web-apps.md
       - Datacatalog: portal/datacatalog.md
