@@ -602,6 +602,111 @@
     "language": ""
   },
   {
+    "page_name": "SED Modifying Files en Masse",
+    "page_url": "../../files/sed-tips/",
+    "text": "% date\nFri Dec 26 19:28:49 EST 2025\n\n% date | sed -e 's/Fri/Friday/'\nFriday Dec 26 19:29:32 EST 2025\n",
+    "html": "<pre><span></span><code>%<span class=\"w\"> </span>date\nFri<span class=\"w\"> </span>Dec<span class=\"w\"> </span><span class=\"m\">26</span><span class=\"w\"> </span><span class=\"m\">19</span>:28:49<span class=\"w\"> </span>EST<span class=\"w\"> </span><span class=\"m\">2025</span>\n\n%<span class=\"w\"> </span>date<span class=\"w\"> </span><span class=\"p\">|</span><span class=\"w\"> </span>sed<span class=\"w\"> </span>-e<span class=\"w\"> </span><span class=\"s1\">'s/Fri/Friday/'</span>\nFriday<span class=\"w\"> </span>Dec<span class=\"w\"> </span><span class=\"m\">26</span><span class=\"w\"> </span><span class=\"m\">19</span>:29:32<span class=\"w\"> </span>EST<span class=\"w\"> </span><span class=\"m\">2025</span>\n</code></pre>",
+    "language": ""
+  },
+  {
+    "page_name": "SED Modifying Files en Masse",
+    "page_url": "../../files/sed-tips/",
+    "text": "% date\nFri Dec 26 19:28:49 EST 2025\n\n% date | sed -e 's/2025/2032/' -e 's/Fri/Freakday/'\nFreakday Dec 26 19:37:23 EST 2032\n",
+    "html": "<pre><span></span><code>%<span class=\"w\"> </span>date\nFri<span class=\"w\"> </span>Dec<span class=\"w\"> </span><span class=\"m\">26</span><span class=\"w\"> </span><span class=\"m\">19</span>:28:49<span class=\"w\"> </span>EST<span class=\"w\"> </span><span class=\"m\">2025</span>\n\n%<span class=\"w\"> </span>date<span class=\"w\"> </span><span class=\"p\">|</span><span class=\"w\"> </span>sed<span class=\"w\"> </span>-e<span class=\"w\"> </span><span class=\"s1\">'s/2025/2032/'</span><span class=\"w\"> </span>-e<span class=\"w\"> </span><span class=\"s1\">'s/Fri/Freakday/'</span>\nFreakday<span class=\"w\"> </span>Dec<span class=\"w\"> </span><span class=\"m\">26</span><span class=\"w\"> </span><span class=\"m\">19</span>:37:23<span class=\"w\"> </span>EST<span class=\"w\"> </span><span class=\"m\">2032</span>\n</code></pre>",
+    "language": ""
+  },
+  {
+    "page_name": "SED Modifying Files en Masse",
+    "page_url": "../../files/sed-tips/",
+    "text": "% echo \"Bob susan franky-frank bobby\" | sed -e 's/bob/paper/gi'\npaper susan franky-frank paperby\n",
+    "html": "<pre><span></span><code>%<span class=\"w\"> </span><span class=\"nb\">echo</span><span class=\"w\"> </span><span class=\"s2\">\"Bob susan franky-frank bobby\"</span><span class=\"w\"> </span><span class=\"p\">|</span><span class=\"w\"> </span>sed<span class=\"w\"> </span>-e<span class=\"w\"> </span><span class=\"s1\">'s/bob/paper/gi'</span>\npaper<span class=\"w\"> </span>susan<span class=\"w\"> </span>franky-frank<span class=\"w\"> </span>paperby\n</code></pre>",
+    "language": ""
+  },
+  {
+    "page_name": "SED Modifying Files en Masse",
+    "page_url": "../../files/sed-tips/",
+    "text": "% sed -i.bak 's/LogDenied/LogApproved/' filename\n",
+    "html": "<pre><span></span><code>%<span class=\"w\"> </span>sed<span class=\"w\"> </span>-i.bak<span class=\"w\"> </span><span class=\"s1\">'s/LogDenied/LogApproved/'</span><span class=\"w\"> </span>filename\n</code></pre>",
+    "language": ""
+  },
+  {
+    "page_name": "SED Modifying Files en Masse",
+    "page_url": "../../files/sed-tips/",
+    "text": "#!/bin/bash\n# SBATCH --mem=40GB\n# SBATCH --partition=sas\n\ncd /cms01/data/55548/deeper/stilldeeper/further\n\nfor i in sample1 sample3 sample7\ndo\n    /users/55548/c-jxu123-55548/bin/myscript ${i}.sas7bdat\ndone\n",
+    "html": "<pre><span></span><code><span class=\"ch\">#!/bin/bash</span>\n<span class=\"c1\"># SBATCH --mem=40GB</span>\n<span class=\"c1\"># SBATCH --partition=sas</span>\n\n<span class=\"nb\">cd</span><span class=\"w\"> </span>/cms01/data/55548/deeper/stilldeeper/further\n\n<span class=\"k\">for</span><span class=\"w\"> </span>i<span class=\"w\"> </span><span class=\"k\">in</span><span class=\"w\"> </span>sample1<span class=\"w\"> </span>sample3<span class=\"w\"> </span>sample7\n<span class=\"k\">do</span>\n<span class=\"w\">    </span>/users/55548/c-jxu123-55548/bin/myscript<span class=\"w\"> </span><span class=\"si\">${</span><span class=\"nv\">i</span><span class=\"si\">}</span>.sas7bdat\n<span class=\"k\">done</span>\n</code></pre>",
+    "language": ""
+  },
+  {
+    "page_name": "SED Modifying Files en Masse",
+    "page_url": "../../files/sed-tips/",
+    "text": "sed -i.bak 's(/cms01/data/55548/(/data/cms/c55548/cui/(g' sample.sh\n",
+    "html": "<pre><span></span><code>sed<span class=\"w\"> </span>-i.bak<span class=\"w\"> </span><span class=\"s1\">'s(/cms01/data/55548/(/data/cms/c55548/cui/(g'</span><span class=\"w\"> </span>sample.sh\n</code></pre>",
+    "language": ""
+  },
+  {
+    "page_name": "SED Modifying Files en Masse",
+    "page_url": "../../files/sed-tips/",
+    "text": "#!/bin/bash\n# SBATCH --mem=40GB\n# SBATCH --partition=sas\n\ncd /data/cms/c55548/cui/deeper/stilldeeper/further\n\nfor i in sample1 sample3 sample7\ndo\n     /users/55548/c-jxu123-55548/bin/myscript ${i}.sas7bdat\ndone\n",
+    "html": "<pre><span></span><code><span class=\"ch\">#!/bin/bash</span>\n<span class=\"c1\"># SBATCH --mem=40GB</span>\n<span class=\"c1\"># SBATCH --partition=sas</span>\n\n<span class=\"nb\">cd</span><span class=\"w\"> </span>/data/cms/c55548/cui/deeper/stilldeeper/further\n\n<span class=\"k\">for</span><span class=\"w\"> </span>i<span class=\"w\"> </span><span class=\"k\">in</span><span class=\"w\"> </span>sample1<span class=\"w\"> </span>sample3<span class=\"w\"> </span>sample7\n<span class=\"k\">do</span>\n<span class=\"w\">     </span>/users/55548/c-jxu123-55548/bin/myscript<span class=\"w\"> </span><span class=\"si\">${</span><span class=\"nv\">i</span><span class=\"si\">}</span>.sas7bdat\n<span class=\"k\">done</span>\n</code></pre>",
+    "language": ""
+  },
+  {
+    "page_name": "SED Modifying Files en Masse",
+    "page_url": "../../files/sed-tips/",
+    "text": "    sed -i.bak2 's(/users/55548/c-jxu123-55548(/users/cms/c55548/c-jxu123-55548(g' sample.sh\n",
+    "html": "<pre><span></span><code><span class=\"w\">    </span>sed<span class=\"w\"> </span>-i.bak2<span class=\"w\"> </span><span class=\"s1\">'s(/users/55548/c-jxu123-55548(/users/cms/c55548/c-jxu123-55548(g'</span><span class=\"w\"> </span>sample.sh\n</code></pre>",
+    "language": ""
+  },
+  {
+    "page_name": "SED Modifying Files en Masse",
+    "page_url": "../../files/sed-tips/",
+    "text": "    sed -i.bak2 's(/users/55548/c-jxu123-55548(~(g' sample.sh\n",
+    "html": "<pre><span></span><code><span class=\"w\">    </span>sed<span class=\"w\"> </span>-i.bak2<span class=\"w\"> </span><span class=\"s1\">'s(/users/55548/c-jxu123-55548(~(g'</span><span class=\"w\"> </span>sample.sh\n</code></pre>",
+    "language": ""
+  },
+  {
+    "page_name": "SED Modifying Files en Masse",
+    "page_url": "../../files/sed-tips/",
+    "text": "sed -i.bak3's(--partition=sas(--partition=c-sas(' sample.sh\n",
+    "html": "<pre><span></span><code>sed<span class=\"w\"> </span>-i.bak3<span class=\"s1\">'s(--partition=sas(--partition=c-sas('</span><span class=\"w\"> </span>sample.sh\n</code></pre>",
+    "language": ""
+  },
+  {
+    "page_name": "SED Modifying Files en Masse",
+    "page_url": "../../files/sed-tips/",
+    "text": "#!/bin/bash\n# SBATCH --mem=40GB\n# SBATCH --partition=c-sas\n\ncd /data/cms/c55548/cui/deeper/stilldeeper/further\n\nfor i in sample1 sample3 sample7\ndo\n    ~/bin/myscript ${i}.sas7bdat\ndone\n",
+    "html": "<pre><span></span><code><span class=\"ch\">#!/bin/bash</span>\n<span class=\"c1\"># SBATCH --mem=40GB</span>\n<span class=\"c1\"># SBATCH --partition=c-sas</span>\n\n<span class=\"nb\">cd</span><span class=\"w\"> </span>/data/cms/c55548/cui/deeper/stilldeeper/further\n\n<span class=\"k\">for</span><span class=\"w\"> </span>i<span class=\"w\"> </span><span class=\"k\">in</span><span class=\"w\"> </span>sample1<span class=\"w\"> </span>sample3<span class=\"w\"> </span>sample7\n<span class=\"k\">do</span>\n<span class=\"w\">    </span>~/bin/myscript<span class=\"w\"> </span><span class=\"si\">${</span><span class=\"nv\">i</span><span class=\"si\">}</span>.sas7bdat\n<span class=\"k\">done</span>\n</code></pre>",
+    "language": ""
+  },
+  {
+    "page_name": "SED Modifying Files en Masse",
+    "page_url": "../../files/sed-tips/",
+    "text": "./myproj/sample15/dog.R\n/data/cms/c34345/joe/sample97/deer.R\n./myproj/sample15/mouse.sh\n",
+    "html": "<pre><span></span><code>./myproj/sample15/dog.R\n/data/cms/c34345/joe/sample97/deer.R\n./myproj/sample15/mouse.sh\n</code></pre>",
+    "language": ""
+  },
+  {
+    "page_name": "SED Modifying Files en Masse",
+    "page_url": "../../files/sed-tips/",
+    "text": "% for i in `cat myinput.txt` ; do echo $i ; sed -i.orig 's/pat1/pat2/gi' ${i};done\n",
+    "html": "<pre><span></span><code>%<span class=\"w\"> </span><span class=\"k\">for</span><span class=\"w\"> </span>i<span class=\"w\"> </span><span class=\"k\">in</span><span class=\"w\"> </span><span class=\"sb\">`</span>cat<span class=\"w\"> </span>myinput.txt<span class=\"sb\">`</span><span class=\"w\"> </span><span class=\"p\">;</span><span class=\"w\"> </span><span class=\"k\">do</span><span class=\"w\"> </span><span class=\"nb\">echo</span><span class=\"w\"> </span><span class=\"nv\">$i</span><span class=\"w\"> </span><span class=\"p\">;</span><span class=\"w\"> </span>sed<span class=\"w\"> </span>-i.orig<span class=\"w\"> </span><span class=\"s1\">'s/pat1/pat2/gi'</span><span class=\"w\"> </span><span class=\"si\">${</span><span class=\"nv\">i</span><span class=\"si\">}</span><span class=\"p\">;</span><span class=\"k\">done</span>\n</code></pre>",
+    "language": ""
+  },
+  {
+    "page_name": "SED Modifying Files en Masse",
+    "page_url": "../../files/sed-tips/",
+    "text": "ls -1 */script* journey/*.scr > myinput.txt\nnano myinput.txt\n% for i in `cat myinput.txt` ; do echo $i ; sed -i.orig 's/pat1/pat2/gi' ${i};done\n",
+    "html": "<pre><span></span><code>ls<span class=\"w\"> </span>-1<span class=\"w\"> </span>*/script*<span class=\"w\"> </span>journey/*.scr<span class=\"w\"> </span>&gt;<span class=\"w\"> </span>myinput.txt\nnano<span class=\"w\"> </span>myinput.txt\n%<span class=\"w\"> </span><span class=\"k\">for</span><span class=\"w\"> </span>i<span class=\"w\"> </span><span class=\"k\">in</span><span class=\"w\"> </span><span class=\"sb\">`</span>cat<span class=\"w\"> </span>myinput.txt<span class=\"sb\">`</span><span class=\"w\"> </span><span class=\"p\">;</span><span class=\"w\"> </span><span class=\"k\">do</span><span class=\"w\"> </span><span class=\"nb\">echo</span><span class=\"w\"> </span><span class=\"nv\">$i</span><span class=\"w\"> </span><span class=\"p\">;</span><span class=\"w\"> </span>sed<span class=\"w\"> </span>-i.orig<span class=\"w\"> </span><span class=\"s1\">'s/pat1/pat2/gi'</span><span class=\"w\"> </span><span class=\"si\">${</span><span class=\"nv\">i</span><span class=\"si\">}</span><span class=\"p\">;</span><span class=\"k\">done</span>\n</code></pre>",
+    "language": ""
+  },
+  {
+    "page_name": "SED Modifying Files en Masse",
+    "page_url": "../../files/sed-tips/",
+    "text": "% touch -t 202509111200 911-noon\n% find . -newer 911-noon -print\n",
+    "html": "<pre><span></span><code>%<span class=\"w\"> </span>touch<span class=\"w\"> </span>-t<span class=\"w\"> </span><span class=\"m\">202509111200</span><span class=\"w\"> </span><span class=\"m\">911</span>-noon\n%<span class=\"w\"> </span>find<span class=\"w\"> </span>.<span class=\"w\"> </span>-newer<span class=\"w\"> </span><span class=\"m\">911</span>-noon<span class=\"w\"> </span>-print\n</code></pre>",
+    "language": ""
+  },
+  {
     "page_name": "Sharing Files",
     "page_url": "../../files/sharing-files/",
     "text": "cd into-the-top-of-the-directory-tree\nfind . -type d | xargs chmod u+rwx,g+rwx,g+s,o-rwx\nfind . -type f | xargs chmod u+rwx,g+rw,o-rwx\n",

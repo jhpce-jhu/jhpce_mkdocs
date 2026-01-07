@@ -8,9 +8,13 @@
       
       
       
-        <link rel="canonical" href="https://jhpce.jhu.edu/sw/containers-stub/">
+        <link rel="canonical" href="https://jhpce.jhu.edu/files/sed-tips/">
       
       
+        <link rel="prev" href="../deep-paths/">
+      
+      
+        <link rel="next" href="../../portal/web-apps/">
       
       
         
@@ -21,7 +25,7 @@
     
     
       
-        <title>Containers - JHPCE</title>
+        <title>SED Modifying Files en Masse - JHPCE</title>
       
     
     
@@ -84,7 +88,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#containers" class="md-skip">
+        <a href="#sed-using-sed-to-modify-files" class="md-skip">
           Skip to content
         </a>
       
@@ -119,7 +123,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Containers
+              SED Modifying Files en Masse
             
           </span>
         </div>
@@ -237,6 +241,8 @@
       
   
   
+    
+  
   
   
     
@@ -281,11 +287,11 @@
       
     
     
-    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1" checked>
         
           
           <div class="md-nav__link md-nav__container">
@@ -313,7 +319,7 @@
             
           </div>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_1_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_1_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_1">
             <span class="md-nav__icon md-icon"></span>
             
@@ -1863,7 +1869,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../files/files-overview/" class="md-nav__link">
+      <a href="../files-overview/" class="md-nav__link">
         
   
   
@@ -1919,7 +1925,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../files/sharing-files/" class="md-nav__link">
+      <a href="../sharing-files/" class="md-nav__link">
         
   
   
@@ -1947,7 +1953,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../files/acl/" class="md-nav__link">
+      <a href="../acl/" class="md-nav__link">
         
   
   
@@ -1975,7 +1981,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../files/copying-files/" class="md-nav__link">
+      <a href="../copying-files/" class="md-nav__link">
         
   
   
@@ -2060,7 +2066,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../files/rsync/" class="md-nav__link">
+      <a href="../rsync/" class="md-nav__link">
         
   
   
@@ -2090,7 +2096,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../files/rsync-itemize-table/" class="md-nav__link">
+      <a href="../rsync-itemize-table/" class="md-nav__link">
         
   
   
@@ -2118,7 +2124,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../files/rsync-itemize-manpage/" class="md-nav__link">
+      <a href="../rsync-itemize-manpage/" class="md-nav__link">
         
   
   
@@ -2154,7 +2160,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../files/archive-files/" class="md-nav__link">
+      <a href="../archive-files/" class="md-nav__link">
         
   
   
@@ -2182,7 +2188,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../files/deep-paths/" class="md-nav__link">
+      <a href="../deep-paths/" class="md-nav__link">
         
   
   
@@ -2209,10 +2215,37 @@
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../../files/sed-tips/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    SED Modifying Files en Masse
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   
@@ -2228,6 +2261,109 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#overview-and-introduction" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Overview and Introduction
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#modifying-slurm-batch-job-scripts-with-sed" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Modifying SLURM batch job scripts with sed
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#modifying-many-files-at-once" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Modifying many files at once
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Modifying many files at once">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#using-a-list-of-files-found-in-a-text-file" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Using a list of files found in a text file
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#using-the-find-command" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Using the find command
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#find-command-examples" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Find command examples
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#useful-sed-commands" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Useful sed commands
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -2240,7 +2376,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../files/data-security/" class="md-nav__link">
+      <a href="../data-security/" class="md-nav__link">
         
   
   
@@ -2268,7 +2404,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../files/encfs/" class="md-nav__link">
+      <a href="../encfs/" class="md-nav__link">
         
   
   
@@ -2593,7 +2729,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../sw-overview/" class="md-nav__link">
+      <a href="../../sw/sw-overview/" class="md-nav__link">
         
   
   
@@ -2682,7 +2818,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../matlab/" class="md-nav__link">
+      <a href="../../sw/matlab/" class="md-nav__link">
         
   
   
@@ -2710,7 +2846,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../python/" class="md-nav__link">
+      <a href="../../sw/python/" class="md-nav__link">
         
   
   
@@ -2738,7 +2874,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../r-n-friends/" class="md-nav__link">
+      <a href="../../sw/r-n-friends/" class="md-nav__link">
         
   
   
@@ -2766,7 +2902,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../sas/" class="md-nav__link">
+      <a href="../../sw/sas/" class="md-nav__link">
         
   
   
@@ -2794,7 +2930,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../stata/" class="md-nav__link">
+      <a href="../../sw/stata/" class="md-nav__link">
         
   
   
@@ -2830,7 +2966,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../modules/" class="md-nav__link">
+      <a href="../../sw/modules/" class="md-nav__link">
         
   
   
@@ -2917,7 +3053,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../building-from-src/" class="md-nav__link">
+      <a href="../../sw/building-from-src/" class="md-nav__link">
         
   
   
@@ -2945,7 +3081,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../conda/" class="md-nav__link">
+      <a href="../../sw/conda/" class="md-nav__link">
         
   
   
@@ -2973,7 +3109,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../python-pkg/" class="md-nav__link">
+      <a href="../../sw/python-pkg/" class="md-nav__link">
         
   
   
@@ -3001,7 +3137,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../r-pkg/" class="md-nav__link">
+      <a href="../../sw/r-pkg/" class="md-nav__link">
         
   
   
@@ -3037,7 +3173,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../locally-written/" class="md-nav__link">
+      <a href="../../sw/locally-written/" class="md-nav__link">
         
   
   
@@ -3065,7 +3201,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../gui-tools/" class="md-nav__link">
+      <a href="../../sw/gui-tools/" class="md-nav__link">
         
   
   
@@ -3822,8 +3958,10 @@
                 
   
   
+    
   
   
+  
     
     
       
@@ -3843,11 +3981,11 @@
       
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1_11" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1_11" checked>
         
           
           <label class="md-nav__link" for="__nav_1_11" id="__nav_1_11_label" tabindex="0">
@@ -3868,7 +4006,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_1_11_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_1_11_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_1_11">
             <span class="md-nav__icon md-icon"></span>
             
@@ -4005,7 +4143,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../vscode/" class="md-nav__link">
+      <a href="../../sw/vscode/" class="md-nav__link">
         
   
   
@@ -4061,7 +4199,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../files/deep-paths/" class="md-nav__link">
+      <a href="../deep-paths/" class="md-nav__link">
         
   
   
@@ -4088,10 +4226,37 @@
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../../files/sed-tips/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    SED Modifying Files en Masse
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   
@@ -4107,6 +4272,109 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#overview-and-introduction" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Overview and Introduction
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#modifying-slurm-batch-job-scripts-with-sed" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Modifying SLURM batch job scripts with sed
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#modifying-many-files-at-once" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Modifying many files at once
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Modifying many files at once">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#using-a-list-of-files-found-in-a-text-file" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Using a list of files found in a text file
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#using-the-find-command" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Using the find command
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#find-command-examples" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Find command examples
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#useful-sed-commands" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Useful sed commands
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -5357,10 +5625,10 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#using-our-container-solutions" class="md-nav__link">
+  <a href="#overview-and-introduction" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Using Our Container Solutions
+        Overview and Introduction
       
     </span>
   </a>
@@ -5368,22 +5636,55 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#building-your-own-containers" class="md-nav__link">
+  <a href="#modifying-slurm-batch-job-scripts-with-sed" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Building Your Own Containers
+        Modifying SLURM batch job scripts with sed
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Building Your Own Containers">
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#modifying-many-files-at-once" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Modifying many files at once
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Modifying many files at once">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#how-do-you-run-a-batch-slurm-job-using-a-container" class="md-nav__link">
+  <a href="#using-a-list-of-files-found-in-a-text-file" class="md-nav__link">
     <span class="md-ellipsis">
       
-        How do you run a batch SLURM job using a container?
+        Using a list of files found in a text file
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#using-the-find-command" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Using the find command
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#find-command-examples" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Find command examples
       
     </span>
   </a>
@@ -5396,10 +5697,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#examples-from-elsewhere" class="md-nav__link">
+  <a href="#useful-sed-commands" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Examples from Elsewhere
+        Useful sed commands
       
     </span>
   </a>
@@ -5423,22 +5724,334 @@
 
 
 
-<h1 id="containers">Containers<a class="headerlink" href="#containers" title="Anchor link to this section for reference">&para;</a></h1>
-<h2 id="using-our-container-solutions">Using Our Container Solutions<a class="headerlink" href="#using-our-container-solutions" title="Anchor link to this section for reference">&para;</a></h2>
-<p>We have two solutions that you can use (R Studio Server, JupyterHub). See which documents about using them???</p>
-<p>Maybe this is a good time to at least get credit for the work Mark has done building the singularity containers we now offer.</p>
-<p>What do you need to know about using them? Quitting them? Waiting how long for them to finish starting?</p>
-<p>What verbiage about this can be shared with Web Portal docs?</p>
-<h2 id="building-your-own-containers">Building Your Own Containers<a class="headerlink" href="#building-your-own-containers" title="Anchor link to this section for reference">&para;</a></h2>
-<p>Maybe we can document this later in terms of how users can build them. In the mean time, provide some links??</p>
-<p>They don't have root access, so what is that trick that allows you to make a container image?</p>
-<h3 id="how-do-you-run-a-batch-slurm-job-using-a-container">How do you run a batch SLURM job using a container?<a class="headerlink" href="#how-do-you-run-a-batch-slurm-job-using-a-container" title="Anchor link to this section for reference">&para;</a></h3>
-<p>Where is the best file system to host a container file if you're going to run it in batch mode on multiple nodes? /fastscratch? Does it make a difference?</p>
-<h2 id="examples-from-elsewhere">Examples from Elsewhere<a class="headerlink" href="#examples-from-elsewhere" title="Anchor link to this section for reference">&para;</a></h2>
-<p>The <a href="https://docs.tacc.utexas.edu/hpc/frontera/#containers">Frontera</a> site's section on containers mentions something that users building their own containers on JHPCE need to know to add to their containers -- e.g. which file systems to include.</p>
-<p><a href="https://docs.nersc.gov/development/containers/podman-hpc/podman-beginner-tutorial/">NERSC</a> has a well-written set of pages about using <a href="https://docs.nersc.gov/development/containers/podman-hpc/overview/">podman-hpc</a>, which might serve as an example of just building and using containers even without podman-hpc</p>
-<p>Zurich pages on <a href="https://doc.zih.tu-dresden.de/software/containers/">Singularity</a> and <a href="https://doc.zih.tu-dresden.de/software/singularity_recipe_hints/">Recipes and Hints</a></p>
-<p>USC pages on <a href="https://www.carc.usc.edu/user-information/user-guides/software-and-programming/singularity">Singularity</a></p>
+<h1 id="sed-using-sed-to-modify-files">SED - Using sed to modify files<a class="headerlink" href="#sed-using-sed-to-modify-files" title="Anchor link to this section for reference">&para;</a></h1>
+<h2 id="overview-and-introduction">Overview and Introduction<a class="headerlink" href="#overview-and-introduction" title="Anchor link to this section for reference">&para;</a></h2>
+<p>Sed is the <strong>S</strong>tream <strong>ED</strong>itor. It performs requested text <em>transformations</em> on a
+stream of input, as part of a shell pipeline.  (It can also edit a file in-place.)</p>
+<p>UNIX offers many text manipulation utilities, such as <code>sed</code>, <code>tr</code>, and <code>awk</code>. Sed can
+be extremely useful if you can identify a string which you would like to transform.</p>
+<p><mark class="critic">If you have a dozen SLURM batch job scripts which contain a file path string,
+sed can be used to easily modify that path string to conform to a new
+reality.</mark></p>
+<p><strong>The purpose of this document is to teach you how to do that specific task.</strong></p>
+<p>You can modify a whole mass of files in a directory tree by using other
+UNIX utilities like <code>find</code> and <code>xargs</code> to create a list of files for sed to work
+on.</p>
+<p>Sed's primary limitation is that it works one line at a time, so you cannot
+easily change a string which wraps across multiple lines (unless you know that the
+string is split in a consistent fashion). It IS possible but requires a
+significant amount of regular expression knowledge -- <a href="https://www.gnu.org/software/sed/manual/html_node/Text-search-across-multiple-lines.html">see
+here</a></p>
+<!-- ------------------------------------------------------------------------->
+<div class="admonition example">
+<p class="admonition-title">Change name of the day of the week</p>
+<p>Here we see sed operating in a pipeline, reading material from its standard
+input (stdin), possibly modifying it if a match is found, and printing the
+result to its standard output (stdout). (If no match is found, sed simply
+prints what was passed to it.)</p>
+<div class="highlight"><pre><span></span><code>%<span class="w"> </span>date
+Fri<span class="w"> </span>Dec<span class="w"> </span><span class="m">26</span><span class="w"> </span><span class="m">19</span>:28:49<span class="w"> </span>EST<span class="w"> </span><span class="m">2025</span>
+
+%<span class="w"> </span>date<span class="w"> </span><span class="p">|</span><span class="w"> </span>sed<span class="w"> </span>-e<span class="w"> </span><span class="s1">&#39;s/Fri/Friday/&#39;</span>
+Friday<span class="w"> </span>Dec<span class="w"> </span><span class="m">26</span><span class="w"> </span><span class="m">19</span>:29:32<span class="w"> </span>EST<span class="w"> </span><span class="m">2025</span>
+</code></pre></div>
+</div>
+<!-- ------------------------------------------------------------------------->
+<div class="admonition info">
+<p class="admonition-title">Structure of a sed program string</p>
+<p><code>-e 's/find_pattern/replace_pattern/optional_chars'</code>
+<br><br></p>
+<ul>
+<li>"-e" means a program will follow</li>
+<li>'programs need to be surrounded by single quote marks'</li>
+<li>"s" means substitution<br></li>
+<li>"/" is the "delimiter character" (this does not need to be a forward * slash)<br></li>
+<li>"find_pattern" is the regular expression (RE) to look for in each line<br></li>
+<li>"replace_pattern" is the replacement RE<br></li>
+<li>"optional_chars" - a variety of letters, which can be combined to indicate
+actions to take or modifiers for the transformation process. Examples:<ul>
+<li>'i' means case-insensitive</li>
+<li>'g' means change all matches found within a line</li>
+</ul>
+</li>
+</ul>
+<p><mark class="critic">Sed can be given a <em>large</em> number of combinations of arguments and
+programs. The above program string is just one form, and we describe it
+because it is how you can use sed to modify file path strings.</mark></p>
+<p>Sed works with regular expressions (RE). RE's are <em>formulas</em> which follow
+certain rules. Some characters represent themselves, while others, such as
+square brackets [ ], ^ and $ have special meanings.</p>
+<p>Sed uses basic regular expressions (BRE) unless you specify
+the <code>-E</code> flag. Then sed works with extended, modern regular expressions.
+(For details, see the <a href="https://www.gnu.org/software/sed/manual/sed.html#sed-regular-expressions">GNU sed manual's RE
+section</a>.)
+An excellent resource for Regular Expressions is
+<a href="https://regex101.com">https://regex101.com</a>, which includes a test
+interpreter. You can provide sample text and a regular expression, and it
+will show you whether it finds any matches.</p>
+</div>
+<!-- ------------------------------------------------------------------------->
+<details class="example">
+<summary>Change multiple things with one command  (click to expand sections like this)</summary>
+<p>In the first example, we see sed making two transformations.</p>
+<p>The programs are implemented in the order specified, so beware of stepping on
+your own toes, where the first program changes strings such that second or
+third programs then fail to do what you expect.</p>
+<div class="highlight"><pre><span></span><code>%<span class="w"> </span>date
+Fri<span class="w"> </span>Dec<span class="w"> </span><span class="m">26</span><span class="w"> </span><span class="m">19</span>:28:49<span class="w"> </span>EST<span class="w"> </span><span class="m">2025</span>
+
+%<span class="w"> </span>date<span class="w"> </span><span class="p">|</span><span class="w"> </span>sed<span class="w"> </span>-e<span class="w"> </span><span class="s1">&#39;s/2025/2032/&#39;</span><span class="w"> </span>-e<span class="w"> </span><span class="s1">&#39;s/Fri/Freakday/&#39;</span>
+Freakday<span class="w"> </span>Dec<span class="w"> </span><span class="m">26</span><span class="w"> </span><span class="m">19</span>:37:23<span class="w"> </span>EST<span class="w"> </span><span class="m">2032</span>
+</code></pre></div>
+<div class="admonition example">
+<p class="admonition-title">Change multiple occurences per line, case-insensitive</p>
+<p>Each program is executed once, so only the first occurence of a match in a
+line is replaced, unless you add a 'g' after the third delimiter character.
+<div class="highlight"><pre><span></span><code>%<span class="w"> </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Bob susan franky-frank bobby&quot;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>sed<span class="w"> </span>-e<span class="w"> </span><span class="s1">&#39;s/bob/paper/gi&#39;</span>
+paper<span class="w"> </span>susan<span class="w"> </span>franky-frank<span class="w"> </span>paperby
+</code></pre></div></p>
+</div>
+</details>
+<!-- ------------------------------------------------------------------------->
+<details class="example">
+<summary>Chg a pattern inline in a file while making a backup with suffix '.bak'</summary>
+<p><div class="highlight"><pre><span></span><code>%<span class="w"> </span>sed<span class="w"> </span>-i.bak<span class="w"> </span><span class="s1">&#39;s/LogDenied/LogApproved/&#39;</span><span class="w"> </span>filename
+</code></pre></div>
+The result will be two files: <code>filename.bak</code> which contains the original
+contents, and <code>filename</code>, which contains either the original contents or
+altered contents if any occurrences of "LogDenied" were found. (If they
+were found, only the first match on each line was replaced because there is
+no trailing 'g'.)</p>
+<p><mark class="critic">Note: there are no spaces between the "-i" and the ".bak" suffix name.</mark></p>
+</details>
+<!-- ------------------------------------------------------------------------->
+<h2 id="modifying-slurm-batch-job-scripts-with-sed">Modifying SLURM batch job scripts with sed<a class="headerlink" href="#modifying-slurm-batch-job-scripts-with-sed" title="Anchor link to this section for reference">&para;</a></h2>
+<p>In the following sed examples, the original file is named <code>sample.sh</code> and contains:</p>
+<div class="highlight"><pre><span></span><code><span class="ch">#!/bin/bash</span>
+<span class="c1"># SBATCH --mem=40GB</span>
+<span class="c1"># SBATCH --partition=sas</span>
+
+<span class="nb">cd</span><span class="w"> </span>/cms01/data/55548/deeper/stilldeeper/further
+
+<span class="k">for</span><span class="w"> </span>i<span class="w"> </span><span class="k">in</span><span class="w"> </span>sample1<span class="w"> </span>sample3<span class="w"> </span>sample7
+<span class="k">do</span>
+<span class="w">    </span>/users/55548/c-jxu123-55548/bin/myscript<span class="w"> </span><span class="si">${</span><span class="nv">i</span><span class="si">}</span>.sas7bdat
+<span class="k">done</span>
+</code></pre></div>
+<p>This C-SUB script contains three things which need to be modified to work in
+JADE:</p>
+<ul>
+<li>In the C-SUB, Controlled Unclassified Information (CUI) was stored in <code>/cms01/data/&lt;dua&gt;/</code><br>
+In JADE, CMS CUI is stored in <code>/data/cms/&lt;cdua&gt;/cui/</code></li>
+<li>In the C-SUB, home directories had the form <code>/users/&lt;dua&gt;/&lt;username&gt;/</code><br>
+In JADE, they have the form <code>/users/&lt;comm&gt;/&lt;cdua&gt;/&lt;username&gt;/</code></li>
+<li>In the C-SUB, the SAS program only ran if it were launched in a "sas" job * partition.<br>
+In JADE, each community's partitions' names begin with their community letter and a dash, so the CMS SAS partition is named <code>c-sas</code>.</li>
+</ul>
+<!-- ------------------------------------------------------------------------->
+<details class="example">
+<summary>Replace <code>/cms01/data/55548/</code> with <code>/data/cms/c55548/cui/</code></summary>
+<p><mark class="critic">Those strings contain forward slashes, so we change our sed program delimiter character to “(“.</mark>
+<div class="highlight"><pre><span></span><code>sed<span class="w"> </span>-i.bak<span class="w"> </span><span class="s1">&#39;s(/cms01/data/55548/(/data/cms/c55548/cui/(g&#39;</span><span class="w"> </span>sample.sh
+</code></pre></div>
+The original file is found as: <code>sample.sh.bak</code></p>
+<p>The modified resulting file (named <code>sample.sh</code>) contains:</p>
+<div class="highlight"><pre><span></span><code><span class="ch">#!/bin/bash</span>
+<span class="c1"># SBATCH --mem=40GB</span>
+<span class="c1"># SBATCH --partition=sas</span>
+
+<span class="nb">cd</span><span class="w"> </span>/data/cms/c55548/cui/deeper/stilldeeper/further
+
+<span class="k">for</span><span class="w"> </span>i<span class="w"> </span><span class="k">in</span><span class="w"> </span>sample1<span class="w"> </span>sample3<span class="w"> </span>sample7
+<span class="k">do</span>
+<span class="w">     </span>/users/55548/c-jxu123-55548/bin/myscript<span class="w"> </span><span class="si">${</span><span class="nv">i</span><span class="si">}</span>.sas7bdat
+<span class="k">done</span>
+</code></pre></div>
+</details>
+<!-- ------------------------------------------------------------------------->
+<details class="example">
+<summary>Correct the home directory path</summary>
+<p>We can correct the home directory path in two ways -- give its exact full
+path, or hide the leading path elements using the <span class="keys"><kbd class="key-tilde">~</kbd></span> character. </p>
+<p>In UNIX, <span class="keys"><kbd class="key-tilde">~</kbd></span> is replaced by the shell with the path to someone's home
+directory. If used for yourself, you can say either <code>~</code> or include your
+username, e.g.  <code>~c-jxu123-55548</code>. If used for someone else's home directory,
+then you always need to include their username, e.g. <code>~that-bob-guy</code></p>
+<div class="admonition example">
+<p class="admonition-title">Use the full path</p>
+</div>
+<p><div class="highlight"><pre><span></span><code><span class="w">    </span>sed<span class="w"> </span>-i.bak2<span class="w"> </span><span class="s1">&#39;s(/users/55548/c-jxu123-55548(/users/cms/c55548/c-jxu123-55548(g&#39;</span><span class="w"> </span>sample.sh
+</code></pre></div>
+The resulting <code>sample.sh</code> would contain <br>
+     <code>/users/cms/c55548/c-jxu123-55548/bin/myscript ${i}.sas7bdat</code></p>
+<div class="admonition example">
+<p class="admonition-title">Use a tilde</p>
+</div>
+<p><div class="highlight"><pre><span></span><code><span class="w">    </span>sed<span class="w"> </span>-i.bak2<span class="w"> </span><span class="s1">&#39;s(/users/55548/c-jxu123-55548(~(g&#39;</span><span class="w"> </span>sample.sh
+</code></pre></div>
+The resulting <code>sample.sh</code> would contain <br>
+     <code>~/bin/myscript ${i}.sas7bdat</code></p>
+</details>
+<!-- ------------------------------------------------------------------------->
+<details class="example">
+<summary>Correct the partition name to be <code>c-sas</code></summary>
+<p><div class="highlight"><pre><span></span><code>sed<span class="w"> </span>-i.bak3<span class="s1">&#39;s(--partition=sas(--partition=c-sas(&#39;</span><span class="w"> </span>sample.sh
+</code></pre></div>
+<mark class="critic">We always recommend your making backups of files you modify with sed, but
+you'll need to be conscious of what you're doing so you can go back to the
+desired point in time. In this series of sed commands, I changed the suffix
+each time so you would have copies of the file before each change. If I had
+always used the same suffix, you would wind up with only the file before
+the last run.</p>
+<p>If you know that you've already made a backup of the original file, you can
+drop the file suffix to <code>-i</code> from second and later sed commands.</p>
+<p>Note!! Using the <code>-i</code> argument will always result in updating files 
+modification times, whether the file contained a matching pattern or not.
+So even files which whose content was not actually modified wind up looking
+changed according to an <code>ls -l</code> command.</mark></p>
+</details>
+<!-- ------------------------------------------------------------------------->
+<p>If you applied the three sed commands mentioned above, you would wind up with:</p>
+<p>The original, unmodified file is found at <code>sample.sh.bak</code> while modified intermediate
+files are named <code>sample.sh.bak2</code> and <code>sample.sh.bak3</code></p>
+<p>The final <code>sample.sh</code> contains:</p>
+<div class="highlight"><pre><span></span><code><span class="ch">#!/bin/bash</span>
+<span class="c1"># SBATCH --mem=40GB</span>
+<span class="c1"># SBATCH --partition=c-sas</span>
+
+<span class="nb">cd</span><span class="w"> </span>/data/cms/c55548/cui/deeper/stilldeeper/further
+
+<span class="k">for</span><span class="w"> </span>i<span class="w"> </span><span class="k">in</span><span class="w"> </span>sample1<span class="w"> </span>sample3<span class="w"> </span>sample7
+<span class="k">do</span>
+<span class="w">    </span>~/bin/myscript<span class="w"> </span><span class="si">${</span><span class="nv">i</span><span class="si">}</span>.sas7bdat
+<span class="k">done</span>
+</code></pre></div>
+<h2 id="modifying-many-files-at-once">Modifying many files at once<a class="headerlink" href="#modifying-many-files-at-once" title="Anchor link to this section for reference">&para;</a></h2>
+<h3 id="using-a-list-of-files-found-in-a-text-file">Using a list of files found in a text file<a class="headerlink" href="#using-a-list-of-files-found-in-a-text-file" title="Anchor link to this section for reference">&para;</a></h3>
+<p>You can make a list of file pathnames and process them with <code>sed</code>
+using a <code>for</code> loop. This allows you to be certain about the files
+you might change.</p>
+<details class="example">
+<summary>How to do that</summary>
+<p>Create a plain text file with one file on each line. The path to that file
+needs to either be absolute or, if relative, be correct relative to the
+directory in which you execute your <code>for</code> loop command.</p>
+<p><div class="highlight"><pre><span></span><code>./myproj/sample15/dog.R
+/data/cms/c34345/joe/sample97/deer.R
+./myproj/sample15/mouse.sh
+</code></pre></div>
+Send the file names to <code>sed</code>:
+<div class="highlight"><pre><span></span><code>%<span class="w"> </span><span class="k">for</span><span class="w"> </span>i<span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="sb">`</span>cat<span class="w"> </span>myinput.txt<span class="sb">`</span><span class="w"> </span><span class="p">;</span><span class="w"> </span><span class="k">do</span><span class="w"> </span><span class="nb">echo</span><span class="w"> </span><span class="nv">$i</span><span class="w"> </span><span class="p">;</span><span class="w"> </span>sed<span class="w"> </span>-i.orig<span class="w"> </span><span class="s1">&#39;s/pat1/pat2/gi&#39;</span><span class="w"> </span><span class="si">${</span><span class="nv">i</span><span class="si">}</span><span class="p">;</span><span class="k">done</span>
+</code></pre></div></p>
+</details>
+<p>You can also use other commands to create a list of files in a file,
+then edit that list to include only the files you want to modify. Or simply
+verify for yourself that you're listing only the right type of files.</p>
+<details class="example">
+<summary>How to do that</summary>
+<div class="highlight"><pre><span></span><code>ls<span class="w"> </span>-1<span class="w"> </span>*/script*<span class="w"> </span>journey/*.scr<span class="w"> </span>&gt;<span class="w"> </span>myinput.txt
+nano<span class="w"> </span>myinput.txt
+%<span class="w"> </span><span class="k">for</span><span class="w"> </span>i<span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="sb">`</span>cat<span class="w"> </span>myinput.txt<span class="sb">`</span><span class="w"> </span><span class="p">;</span><span class="w"> </span><span class="k">do</span><span class="w"> </span><span class="nb">echo</span><span class="w"> </span><span class="nv">$i</span><span class="w"> </span><span class="p">;</span><span class="w"> </span>sed<span class="w"> </span>-i.orig<span class="w"> </span><span class="s1">&#39;s/pat1/pat2/gi&#39;</span><span class="w"> </span><span class="si">${</span><span class="nv">i</span><span class="si">}</span><span class="p">;</span><span class="k">done</span>
+</code></pre></div>
+</details>
+<h3 id="using-the-find-command">Using the find command<a class="headerlink" href="#using-the-find-command" title="Anchor link to this section for reference">&para;</a></h3>
+<p>The <code>find</code> command will print the names of files which match the criteria you
+specify. Find's first argument is a location in the file system. By default find
+will start a recursive search starting at that point and proceeding downwards. That 
+location can be "." if you want to start in the current working directory.</p>
+<p>The following command will change a string, if found, in as many files which
+exist that match the search criteria.</p>
+<p><code>find ~/project1 -type f -name “*\.html” -print0 | \</code><br>
+<code>xargs -0 sed -i.orig 's/badstring/mygoodstring/g'</code></p>
+<p>That long command is broken down into two lines to improve readability using
+an escape character.</p>
+<details class="tip">
+<summary>Escaping special characters</summary>
+<p>The <code>bash</code> shell you use gives certain characters special meanings. If you want
+to prevent them from being interpreted in the normal fashion, usually you 
+preceed that character with a <span class="keys"><kbd class="key-backslash">\</kbd></span>. This is called "escaping" a
+character.</p>
+<p>The <span class="keys"><kbd class="key-enter">Enter</kbd></span> key is one of those special characters. If you escape that key,
+then bash will allow you to continue a command onto the next line of the
+terminal window, where you indicate to bash that it should execute the
+command now with a final <span class="keys"><kbd class="key-enter">Enter</kbd></span>.</p>
+<p>You also need to escape characters inside of regular expressions, which has
+it's <strong><em>own</em></strong> list of special characters, include <span class="keys"><kbd class="key-period">.</kbd></span>  The string
+"*.html" includes a backslash to escape the period, which in REs stands
+for "any single character", not a period!</p>
+</details>
+<p>Breaking it down, left to right:</p>
+<ul>
+<li>start looking at the directory named "project1" inside of your home directory</li>
+<li>only consider files (not directories)</li>
+<li>only consider files ending in ".html"</li>
+<li>print names of matching files, in a way that works better with names containing spaces</li>
+<li>pass those names to the <code>xargs</code> program</li>
+<li>with the "-0" flag, which works with the <code>find</code> program's "-print0" flag</li>
+<li>and execute the sed program.</li>
+<li>Because the sed flag "-i.orig" is given, changes will be made to the named files
+where they are located. Backups will be made of each file processed.</li>
+</ul>
+<div class="admonition tip">
+<p class="admonition-title">Find all bash scripts matching certain criteria, and fix a path</p>
+<p><code>find ~/project1 -type f -iname "run_test*" -print0 | xargs -0 file | \</code><br>
+<code>grep -i Bourne-Again | sed -e 's(: .*((' | \</code><br>
+<code>xargs sed -i 's(/cms01/incoming(/transfer/in/cms(g'</code></p>
+<p>This example finds some files using a case-insensitive name, runs the <code>file</code>
+command on them, searches for ones that <code>find</code> reports to be Bourne-Again,
+uses sed to trim off everything <code>file</code> printed after the file name, then 
+has <code>xargs</code> execute the final <code>sed</code></p>
+</div>
+<h3 id="find-command-examples">Find command examples<a class="headerlink" href="#find-command-examples" title="Anchor link to this section for reference">&para;</a></h3>
+<p>You might find combinations of these useful when trying to identify the files you want to modify
+with sed, or control which files are considered.</p>
+<p>Print out the names of bash scripts in your home directory<br>
+Note that this command does NOT correctly deal with filenames containing spaces!
+You should use instead the example above where "find -print0" feeds into "xargs
+-0"
+<code>find ~ -type f -exec file {} \; | grep -i Bourne-Again | sed -e 's(: .*(('</code></p>
+<p>Print out the sizes of SLURM job output files owned by user c-jxu123-55548:<br>
+<code>find /users/cms/c55548/shared -type f -name "*.out" -exec du -sh {} \;</code></p>
+<p>Print the names of files modified after noon of 9/11/2025<br>
+<div class="highlight"><pre><span></span><code>%<span class="w"> </span>touch<span class="w"> </span>-t<span class="w"> </span><span class="m">202509111200</span><span class="w"> </span><span class="m">911</span>-noon
+%<span class="w"> </span>find<span class="w"> </span>.<span class="w"> </span>-newer<span class="w"> </span><span class="m">911</span>-noon<span class="w"> </span>-print
+</code></pre></div></p>
+<p>Print the names of files <em>modified</em> in February of this year:<br>
+<code>find . -newermt "2025-02-01" -a ! -newermt "2025-02-28" -print</code></p>
+<p>Print the names of files <em>created</em> in February of this year:<br>
+<code>find . -newerct "2025-02-01" -a \! -newerct "2025-02-28" -print</code></p>
+<p>Print the names of executable files <em>modified</em> in the last 24 hours:<br>
+<code>find . -mtime 0 -executable</code></p>
+<p>Print out the names of files containing either "School" or "semester":<br>
+<code>find . -name "*School*" -o -name "*semester*" -print</code></p>
+<p>Print out the names of files containing both "School" and "semester":<br>
+<code>find . -name "*School*" -a -name "*semester*" -print</code></p>
+<p>Print out the names of files containing either "School" or "semester" but NOT susyq:<br>
+<code>find . \( -name "*School*" -o -name "*semester*" \) -a \! -name 'susyq' -print</code></p>
+<p>Print the names of files except those found in directories named "bak":<br>
+<code>find . \( -type d -name bak -prune \) -o -type f -print</code></p>
+<p>Print out the names of every directory in your home directory down to the third level:<br>
+<code>find ~ -type d -maxdepth 3</code></p>
+<p>Print out the names of every immediate subdirectory of your home directory:<br>
+<code>find ~ -type d -maxdepth 1</code></p>
+<p>Print the names of files named doghouse using a case-insensitive form of -name:<br>
+<code>find /some_dir/susy -iname doghouse -print</code></p>
+<h2 id="useful-sed-commands">Useful sed commands<a class="headerlink" href="#useful-sed-commands" title="Anchor link to this section for reference">&para;</a></h2>
+<p>For grins, in case any of them strike your interest.</p>
+<p>Delete completely blank lines<br>
+sed '/^$/d' </p>
+<p>Delete commented-out lines (only where # is the first character of a line)<br>
+sed '/^#/d' </p>
+<p>Delete commented-out lines (where # is the first non-whitespace character of a line)<br>
+sed '/^[[:space:]]*#/d' </p>
+<p>Delete white space (spaces and tabs)<br>
+sed '/^[[:space:]]*$/d' </p>
+<p>Convert tabs into 6 spaces<br>
+sed '/\t/      /' </p>
+<p>Delete the first seven line<br>
+sed '7d'</p>
+<p>Delete specified lines (5 thru 10, and 12)<br>
+sed -i -e '5,10d;12d' filename</p>
 
 
 
@@ -5459,7 +6072,7 @@
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="April 2, 2024 04:38:53 UTC">April 2, 2024</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="January 7, 2026 20:39:35 UTC">January 7, 2026</span>
   </span>
 
     
@@ -5557,6 +6170,44 @@
       
         <footer class="md-footer">
   
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Footer" >
+        
+          
+          <a href="../deep-paths/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Navigating Deep Directory Trees">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              <div class="md-ellipsis">
+                Navigating Deep Directory Trees
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../../portal/web-apps/" class="md-footer__link md-footer__link--next" aria-label="Next: GUI Applications">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              <div class="md-ellipsis">
+                GUI Applications
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
     
   
   <div class="md-footer-meta md-typeset">

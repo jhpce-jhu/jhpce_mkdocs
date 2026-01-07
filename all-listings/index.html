@@ -2214,14 +2214,14 @@
   
   
     <li class="md-nav__item">
-      <a href="../files/sed-tips.md" class="md-nav__link">
+      <a href="../files/sed-tips/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    Modifying Files en Masse
+    SED Modifying Files en Masse
   
 
     
@@ -4093,14 +4093,14 @@
   
   
     <li class="md-nav__item">
-      <a href="../files/sed-tips.md" class="md-nav__link">
+      <a href="../files/sed-tips/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    Modifying Files en Masse
+    SED Modifying Files en Masse
   
 
     
@@ -6365,6 +6365,62 @@ One other output is possible: when deleting files, the "%i" will output  the  st
 --chown=USER:GROUP       simple username/groupname mapping 
 </code></pre><pre><span></span><code>tar -cbf 20480 - some-directory | (cd /destination/place; tar -xbf 20480 -)
 </code></pre><pre><span></span><code>tar -cbf 20480 - some-directory | ssh myaccount@another-host (cd /destination/place; tar -xbf 20480 -)"
+</code></pre><h2><a class="heading" href="../files/sed-tips/">SED Modifying Files en Masse</a></h2><a class="url" href="../files/sed-tips/">files/sed-tips/</a><pre><span></span><code>%<span class="w"> </span>date
+Fri<span class="w"> </span>Dec<span class="w"> </span><span class="m">26</span><span class="w"> </span><span class="m">19</span>:28:49<span class="w"> </span>EST<span class="w"> </span><span class="m">2025</span>
+
+%<span class="w"> </span>date<span class="w"> </span><span class="p">|</span><span class="w"> </span>sed<span class="w"> </span>-e<span class="w"> </span><span class="s1">'s/Fri/Friday/'</span>
+Friday<span class="w"> </span>Dec<span class="w"> </span><span class="m">26</span><span class="w"> </span><span class="m">19</span>:29:32<span class="w"> </span>EST<span class="w"> </span><span class="m">2025</span>
+</code></pre><pre><span></span><code>%<span class="w"> </span>date
+Fri<span class="w"> </span>Dec<span class="w"> </span><span class="m">26</span><span class="w"> </span><span class="m">19</span>:28:49<span class="w"> </span>EST<span class="w"> </span><span class="m">2025</span>
+
+%<span class="w"> </span>date<span class="w"> </span><span class="p">|</span><span class="w"> </span>sed<span class="w"> </span>-e<span class="w"> </span><span class="s1">'s/2025/2032/'</span><span class="w"> </span>-e<span class="w"> </span><span class="s1">'s/Fri/Freakday/'</span>
+Freakday<span class="w"> </span>Dec<span class="w"> </span><span class="m">26</span><span class="w"> </span><span class="m">19</span>:37:23<span class="w"> </span>EST<span class="w"> </span><span class="m">2032</span>
+</code></pre><pre><span></span><code>%<span class="w"> </span><span class="nb">echo</span><span class="w"> </span><span class="s2">"Bob susan franky-frank bobby"</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>sed<span class="w"> </span>-e<span class="w"> </span><span class="s1">'s/bob/paper/gi'</span>
+paper<span class="w"> </span>susan<span class="w"> </span>franky-frank<span class="w"> </span>paperby
+</code></pre><pre><span></span><code>%<span class="w"> </span>sed<span class="w"> </span>-i.bak<span class="w"> </span><span class="s1">'s/LogDenied/LogApproved/'</span><span class="w"> </span>filename
+</code></pre><pre><span></span><code><span class="ch">#!/bin/bash</span>
+<span class="c1"># SBATCH --mem=40GB</span>
+<span class="c1"># SBATCH --partition=sas</span>
+
+<span class="nb">cd</span><span class="w"> </span>/cms01/data/55548/deeper/stilldeeper/further
+
+<span class="k">for</span><span class="w"> </span>i<span class="w"> </span><span class="k">in</span><span class="w"> </span>sample1<span class="w"> </span>sample3<span class="w"> </span>sample7
+<span class="k">do</span>
+<span class="w">    </span>/users/55548/c-jxu123-55548/bin/myscript<span class="w"> </span><span class="si">${</span><span class="nv">i</span><span class="si">}</span>.sas7bdat
+<span class="k">done</span>
+</code></pre><pre><span></span><code>sed<span class="w"> </span>-i.bak<span class="w"> </span><span class="s1">'s(/cms01/data/55548/(/data/cms/c55548/cui/(g'</span><span class="w"> </span>sample.sh
+</code></pre><pre><span></span><code><span class="ch">#!/bin/bash</span>
+<span class="c1"># SBATCH --mem=40GB</span>
+<span class="c1"># SBATCH --partition=sas</span>
+
+<span class="nb">cd</span><span class="w"> </span>/data/cms/c55548/cui/deeper/stilldeeper/further
+
+<span class="k">for</span><span class="w"> </span>i<span class="w"> </span><span class="k">in</span><span class="w"> </span>sample1<span class="w"> </span>sample3<span class="w"> </span>sample7
+<span class="k">do</span>
+<span class="w">     </span>/users/55548/c-jxu123-55548/bin/myscript<span class="w"> </span><span class="si">${</span><span class="nv">i</span><span class="si">}</span>.sas7bdat
+<span class="k">done</span>
+</code></pre><pre><span></span><code><span class="w">    </span>sed<span class="w"> </span>-i.bak2<span class="w"> </span><span class="s1">'s(/users/55548/c-jxu123-55548(/users/cms/c55548/c-jxu123-55548(g'</span><span class="w"> </span>sample.sh
+</code></pre><pre><span></span><code><span class="w">    </span>sed<span class="w"> </span>-i.bak2<span class="w"> </span><span class="s1">'s(/users/55548/c-jxu123-55548(~(g'</span><span class="w"> </span>sample.sh
+</code></pre><pre><span></span><code>sed<span class="w"> </span>-i.bak3<span class="s1">'s(--partition=sas(--partition=c-sas('</span><span class="w"> </span>sample.sh
+</code></pre><pre><span></span><code><span class="ch">#!/bin/bash</span>
+<span class="c1"># SBATCH --mem=40GB</span>
+<span class="c1"># SBATCH --partition=c-sas</span>
+
+<span class="nb">cd</span><span class="w"> </span>/data/cms/c55548/cui/deeper/stilldeeper/further
+
+<span class="k">for</span><span class="w"> </span>i<span class="w"> </span><span class="k">in</span><span class="w"> </span>sample1<span class="w"> </span>sample3<span class="w"> </span>sample7
+<span class="k">do</span>
+<span class="w">    </span>~/bin/myscript<span class="w"> </span><span class="si">${</span><span class="nv">i</span><span class="si">}</span>.sas7bdat
+<span class="k">done</span>
+</code></pre><pre><span></span><code>./myproj/sample15/dog.R
+/data/cms/c34345/joe/sample97/deer.R
+./myproj/sample15/mouse.sh
+</code></pre><pre><span></span><code>%<span class="w"> </span><span class="k">for</span><span class="w"> </span>i<span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="sb">`</span>cat<span class="w"> </span>myinput.txt<span class="sb">`</span><span class="w"> </span><span class="p">;</span><span class="w"> </span><span class="k">do</span><span class="w"> </span><span class="nb">echo</span><span class="w"> </span><span class="nv">$i</span><span class="w"> </span><span class="p">;</span><span class="w"> </span>sed<span class="w"> </span>-i.orig<span class="w"> </span><span class="s1">'s/pat1/pat2/gi'</span><span class="w"> </span><span class="si">${</span><span class="nv">i</span><span class="si">}</span><span class="p">;</span><span class="k">done</span>
+</code></pre><pre><span></span><code>ls<span class="w"> </span>-1<span class="w"> </span>*/script*<span class="w"> </span>journey/*.scr<span class="w"> </span>&gt;<span class="w"> </span>myinput.txt
+nano<span class="w"> </span>myinput.txt
+%<span class="w"> </span><span class="k">for</span><span class="w"> </span>i<span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="sb">`</span>cat<span class="w"> </span>myinput.txt<span class="sb">`</span><span class="w"> </span><span class="p">;</span><span class="w"> </span><span class="k">do</span><span class="w"> </span><span class="nb">echo</span><span class="w"> </span><span class="nv">$i</span><span class="w"> </span><span class="p">;</span><span class="w"> </span>sed<span class="w"> </span>-i.orig<span class="w"> </span><span class="s1">'s/pat1/pat2/gi'</span><span class="w"> </span><span class="si">${</span><span class="nv">i</span><span class="si">}</span><span class="p">;</span><span class="k">done</span>
+</code></pre><pre><span></span><code>%<span class="w"> </span>touch<span class="w"> </span>-t<span class="w"> </span><span class="m">202509111200</span><span class="w"> </span><span class="m">911</span>-noon
+%<span class="w"> </span>find<span class="w"> </span>.<span class="w"> </span>-newer<span class="w"> </span><span class="m">911</span>-noon<span class="w"> </span>-print
 </code></pre><h2><a class="heading" href="../files/sharing-files/">Sharing Files</a></h2><a class="url" href="../files/sharing-files/">files/sharing-files/</a><pre><span></span><code><span class="nb">cd</span><span class="w"> </span>into-the-top-of-the-directory-tree
 find<span class="w"> </span>.<span class="w"> </span>-type<span class="w"> </span>d<span class="w"> </span><span class="p">|</span><span class="w"> </span>xargs<span class="w"> </span>chmod<span class="w"> </span>u+rwx,g+rwx,g+s,o-rwx
 find<span class="w"> </span>.<span class="w"> </span>-type<span class="w"> </span>f<span class="w"> </span><span class="p">|</span><span class="w"> </span>xargs<span class="w"> </span>chmod<span class="w"> </span>u+rwx,g+rw,o-rwx
