@@ -1,4 +1,5 @@
 ---
+icon: material/eye
 tags:
   - in-progress
   - jade

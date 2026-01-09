@@ -1,4 +1,5 @@
 ---
+icon: material/eye
 tags:
   - jade
   - transition
@@ -25,11 +26,12 @@ written a document about how to automate changing path strings where necessary.=
 We are trying to create documentation to put in the JADE section of this web site
 as quickly as we can. Please bear with us.  Because paths to files change in
 JADE, there are multiple documents about that which attempt to present similar
-information but in different layouts. Here are the key documents:
+information but in different layouts. Here are some key documents:
 
 * This document contains vital information.
 * Instructions on [changing existing text files](sed-tips-jade.md) to replace C-SUB-appropriate
-paths with JADE-appropriate paths.
+paths with JADE-appropriate paths. (You can also use a text editor to do search
+and replace operations, but that has to be done one file at a time.)
 * [Summary of JADE paths & their purposes](../images/jade-path-summary-table.pdf) - one page PDF
 chart. A reference document for all JADE users for the long run. Contains summary of what kind of data
 is best for each location. Read this before the next document below.
@@ -48,8 +50,9 @@ reference document. Was written first.
 ??? tip "Please take note of these path element symbols"
     [](){#key-to-path-elements}
 
-    In this document and others, we show the convention used for some aspect of
-    the cluster, such as the path to expect for this or that purpose.
+    In this document and others, we use the terms shown below when describing
+    conventions about aspects of the cluster, such as the path to expect for
+    this or that purpose.
 
     ***&lt;dua&gt;*** = for example, 59614 or 55548<br>
     ***&lt;cdua&gt;*** = for example, c59614 or c55548<br>
@@ -63,7 +66,7 @@ reference document. Was written first.
 <!-- ------------------------------------------------------------------------->
 ??? info "User Communities on JADE"
     [](){#cms-user-community}
-    {==If you had been using the C-SUB, you are a member of the "CMS community" on JADE.==}
+    {==If you have been using the C-SUB, you are a member of the "CMS community" on JADE.==}
 
     There are three communities (so far) in JADE. Each one has a unique name
     and a single character equivalent. You will see both appear in cluster
@@ -113,30 +116,42 @@ reference document. Was written first.
     The need to more carefully control data access in JADE, as well as
     reflection upon the design lessons learned from the C-SUB implementation, has
     resulted in a variety of path changes.  **We have created symbolic links in
-    various locations to allow paths that were valid in the C-SUB to continue
-    to work in JADE.**
+    various locations to allow many (but not all) paths that were valid in the C-SUB
+    to continue to work in JADE.**
+
+    There are four things you might need to change in SLURM batch job scripts:
+    (1) paths involving data,<br>
+    (2) paths involving your home directory,<br> 
+    (2) SLURM partition names (i.e. "sas" to "c-sas" or "lau" to "c-lau"),<br>
+    (4) optionally changing standard output and error paths [described here](#slurmout).
+
+    {==We have a document explaining how to replace strings in files
+    programmatically, on the command line, using [the sed
+    utility](sed-tips-jade.md).==}
+
+    When you need to modify existing files, such as SLURM batch job scripts, you
+    can do it one at a time in a text editor. The value of learning some sed
+    commands is that you can implement changes across many files at a time
+    so they will work in JADE.
+
+    [This
+    document](images/jade-path-summary-table-cms.pdf) is a one page summary
+    table comparing paths on the C-SUB and JADE. {==You will need to read
+    this.==}
 
     [This
     document](../images/jade-path-summary-table.pdf) is a one page summary
     table describing JADE paths and what kinds of data they are best used for.
 
-    [This
-    document](images/jade-path-summary-table-cms.pdf) is a one page summary
-    table comparing paths on the C-SUB and JADE.
-
-    [This document](images/paths-csub-to-jade.pdf) is longer, and provides details about each kind of data
-    locations available in JADE. It describes changes which impact users and data
+    [This document](images/paths-csub-to-jade.pdf) is longer, and provides details
+    about each kind of data
+    location available in JADE. It describes changes which impact CMS users and data
     moderators. The document you are reading now and the summary documents
-    mentioned above probably replace the longer document.
+    mentioned above probably replace the longer document. The longer document
+    does include more text *explaining the motivation for creating each
+    location.*
 
-    We have a document explaining how to replace strings in files
-    [here, about the sed utility](sed-tips-jade.md). You can use this info
-    to modify existing files, such as SLURM batch job scripts, so they will work in JADE.
 
-    There are four things you might need to change in those SLURM batch job
-    scripts: (1) paths involving data, (2) the SAS partition name, (3) paths
-    involving your home directory, and (4) optionally changing standard output
-    and error paths [described here](#slurmout).
 <!-- ------------------------------------------------------------------------->
 ??? info "Unix group changes"
     [](){#group-changes}
@@ -152,18 +167,20 @@ reference document. Was written first.
     {==If your batch job scripts specified the name of the partition to use, you
     will need to modify them so they work on JADE.==}
 
-    In C-SUB, the default partition was named "cms" and the SAS one "sas".
+    In C-SUB, the default partition was named "cms", the SAS one "sas", and a
+    PI-specific private partition was named "lau".
 
     In JADE, each community now has its own default partition. The CMS default is
-    named "c-shared". Also, "sas" was renamed to be "c-sas".
+    named "c-shared". Also, "sas" was renamed to be "c-sas" and "lau" was
+    renamed to be "c-lau".
 
     If you do not specify a partition when submitting an interactive or batch
     job, then it is assigned to the cluster's default partition. Because the C-SUB
     contained very few SLURM partitions, we expect that very few batch jobs
     explicitly specified "cms".
 
-    We have added a modification to your home directory to accomodate a change
-    in the name of the CMS community's default partition. The file
+    {==We have added a modification to your home directory to accomodate the change
+    in the name of the CMS community's default partition.==} The file
     `~/.slurm/defaults` contains a line specifying "c-shared" as the default.
 
     The command `slurmpic -a` will show you all of the currently defined nodes
@@ -179,9 +196,18 @@ reference document. Was written first.
     {==If you have active files in ~/proposed/ you will need to copy them to a new location.==}
 
     (The tilde character '~' is a special character in UNIX shells. It represents
-    your home directory.)
+    your home directory. Symbolic links are special "alias" files.)
 
-    * `~/proposed` -- In the C-SUB this was a directory. In JADE this is a symbolic link to the new location for this type of files. When your account is migrated to JADE, the original ~/proposed is renamed `~/proposed.csub` (you will not lose them!) and a symbolic link is made to point to `/proposed/cms/<cdua>/<username>`. You can continue to use `~/proposed` as if it were a directory, in terms of copying files into it or listing it. {==If you have files being reviewed by data moderators, then you should cp them from `~/proposed.csub/` to `~/proposed/`.==}
+    `~/proposed` -- In the C-SUB this was a directory. In JADE this is a
+    symbolic link to the new location for this type of files.  (See the [Summary
+    of path changes for CMS users](images/jade-path-summary-table-cms.pdf)
+    document.)
+
+    When your account is migrated to JADE, the original ~/proposed directory is renamed
+    `~/proposed.csub` (you will not lose those files !) and a symbolic link is
+    created which points to `/proposed/cms/<cdua>/<username>`.
+
+    You can continue to use `~/proposed` as if it were a directory, in terms of copying files into it or listing it. {==If you have files being reviewed by data moderators, then you should cp them from `~/proposed.csub/` to `~/proposed/`.==}
 <!-- ------------------------------------------------------------------------->
 ??? danger "Incoming/Outgoing files will not be copied from C-SUB to JADE"
     [](){#transfer-files-not-migrated}
@@ -194,12 +220,12 @@ reference document. Was written first.
 ??? info "~/slurmout/ - a place for your transient SLURM output files"
     [](){#slurmout}
     JADE home directories are equipped with a ~/slurmout/ subdirectory. You can
-    choose to use this or delete it. The concept is that using it allows you to
-    look in one place for all output files.
+    choose to use this or ignore or delete it. The motivation for creating it is
+    that using it allows you to look in one place for all output files.
 
     By default, SLURM will create a file for each job containing its output,
-    named "slurm-<jobID>.out" in the directory from which the job was
-    submitted.  That file contains both the "standard output" and the "standard
+    named "slurm-<jobID>.out" *in the directory from which the job was
+    submitted.*  That file contains both the "standard output" and the "standard
     error" content.  You can change the default behavior using the following 
     `#SBATCH` directives in your job script or command-line options when 
     submitting jobs: `--output=<filename_pattern>` and, if you want to break out
@@ -211,10 +237,15 @@ reference document. Was written first.
       `sbatch:*:output=~/slurmout/%j.out` (%j is replaced with the jobID)
     2. in a batch script -- using `#SBATCH --output=<filename_pattern>`
     3. on the command line -- as mentioned above
+
+    You may want your output/error files to appear next to the data files, as a
+    form of documentation. But you have to have write ability on the enclosing
+    directory, and you may also view these files as transient. The `~/slurmout/`
+    directory might be useful to you, at least for some jobs.
 <!-- ------------------------------------------------------------------------->
 ??? danger "SFTP data transfers - path changes"
     [](){#sftp-changes}
-    {==JADE uses the same TCP/IP networking ports as was used on the C-SUB:==}<br><br>
+    {==JADE uses the same TCP/IP networking ports as were used on the C-SUB:==}<br><br>
     Data going **into** the cluster: **22011**<br>
     Data coming **out of** the cluster: **22027**
 
@@ -224,7 +255,7 @@ reference document. Was written first.
     C-SUB
 
         Incoming   /cms01/incoming/<username>
-        Outgoing   `/cms01/outgoing/<username>`
+        Outgoing   /cms01/outgoing/<username>
 
     JADE
 
@@ -235,9 +266,9 @@ reference document. Was written first.
         Incoming   /transfer/in/cms/c55548/c-jxu123-55548
         Outgoing   /transfer/out/cms/c55548/c-jxu123-55548
 
-    **There are two ways you work with this new path - when inside an SFTP
+    **There are two ways you work with these new paths - when inside an SFTP
     transaction and when you are accessing files in the operating system.**
-    Click on each tab below.
+    Click on each tab below to learn more.
 
     === "During SFTP"
         When you connect with SFTP to JADE, the SFTP server program places you
@@ -246,8 +277,8 @@ reference document. Was written first.
 
         So you "start from" either `/transfer/in/cms/` or `/transfer/out/cms/`
 
-        To reach your own files, you need to cd into your group's directory, then
-        into your own personal directory. 
+        ** To reach your own files, you need to cd into your group's directory, then
+        into your own personal directory. **
 
         For example: `cd c55548/c-jxu123-55548`
 
@@ -258,10 +289,11 @@ reference document. Was written first.
 
     === "While in the operating system"
         After you transfer files into JADE, you need to use a different path to
-        access them, whether from your shell prompt or the graphic file manager `thunar`.
+        access them, whether from your shell prompt or a graphic interface, such
+	as the file manager `thunar`.
         
-        On the C-SUB, you used `/cms01/incoming/<username>`
-        On JADE, you will use `/transfer/in/cms/<cdua>/<username>`
+        {==On the C-SUB, you used `/cms01/incoming/<username>`<br>
+        On JADE, you will use `/transfer/in/cms/<cdua>/<username>`==}
 
 <!-- ------------------------------------------------------------------------->
 ??? danger "Data moderation process - differs only for moderators"
@@ -330,14 +362,15 @@ reference document. Was written first.
     help others. Thanks.
 
 ??? info "LibreOffice program names have changed"
-    {==Program names have changed slightly; much newer version is installed.==}
+    {==Program names have changed slightly; a much newer version is installed.==}
 
     The graphic user interface [LibreOffice](https://www.libreoffice.org) is a 
     free, open-source office suite.  JADE is using a much newer version than the C-SUB.  
 
     Many LibreOffice programs have a single letter prefix. In C-SUB that was 'o'
-    while in JADE it has changed to be 's'.  "ooffice" is now "soffice", "ocalc"
-    is now "scalc", etc.
+    while in JADE it has changed to be 's'.
+
+    "ooffice" is now "soffice", "ocalc" is now "scalc", etc.
 
     These LibreOffice programs are found in the /user/local/bin/ directory
     (which is in your default PATH). You can see a list of them with the
@@ -356,5 +389,5 @@ reference document. Was written first.
     032 and higher.
 
     There is a direct mapping of C-SUB compute-132 to JADE jcompute-032, etc.
-    Add a "j" and change "1" to "0".
+    To convert, add a "j" and change the leading "1" to "0".
 
