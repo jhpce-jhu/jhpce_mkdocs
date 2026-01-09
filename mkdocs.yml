@@ -127,6 +127,8 @@ nav:
       - C-SUB Orientation (pdf): orient/images/latest-csub-orient.pdf
     - JADE:
       - About: jade/jade-overview.md
+      - New JADE User Form: jade/new-users-form.md
+      - New JADE DUA Form: jade/new-dua-form.md
       - Transitioning to JADE:
         - CMS Users:
            - Overview: jade/transition/cms-transition.md

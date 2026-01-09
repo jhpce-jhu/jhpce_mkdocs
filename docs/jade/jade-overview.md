@@ -21,6 +21,10 @@ Medicaid Services](https://www.cms.gov) (CMS) data managed by the
 (https://hbhi.jhu.edu/affiliate-resource/health-analytics-research-platform-harp)
 (HARP) service center, which was formerly housed on the C-SUB cluster.
 
+If you would like an account on the JADE cluster, where there is an existing DUA on JADE, please complete the [New Jade User Form](new-users-form.md)
+
+If you have a new DUA that you would like to have hosted on on JADE, please complete the [New DUA Form](new-dua-form.md)
+
 ## Migration Into JADE
 For users migrating from JHPCE or C-SUB to JADE, please see [the transition
 material](transition/jade-transition.md) for information about changes in JADE.
