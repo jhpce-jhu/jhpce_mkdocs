@@ -4741,6 +4741,8 @@
           
   
   
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0 8a5 5 0 0 1-5-5 5 5 0 0 1 5-5 5 5 0 0 1 5 5 5 5 0 0 1-5 5m0-12.5C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5c-1.73-4.39-6-7.5-11-7.5"/></svg>
+  
   <span class="md-ellipsis">
     
   
@@ -4758,6 +4760,8 @@
       <a href="./" class="md-nav__link md-nav__link--active">
         
   
+  
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0 8a5 5 0 0 1-5-5 5 5 0 0 1 5-5 5 5 0 0 1 5 5 5 5 0 0 1-5 5m0-12.5C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5c-1.73-4.39-6-7.5-11-7.5"/></svg>
   
   <span class="md-ellipsis">
     
@@ -4964,6 +4968,8 @@
       <a href="../deltas-dbgap-details/" class="md-nav__link">
         
   
+  
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0 8a5 5 0 0 1-5-5 5 5 0 0 1 5-5 5 5 0 0 1 5 5 5 5 0 0 1-5 5m0-12.5C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5c-1.73-4.39-6-7.5-11-7.5"/></svg>
   
   <span class="md-ellipsis">
     
@@ -5530,11 +5536,12 @@ written a document about how to automate changing path strings where necessary.<
 <p>We are trying to create documentation to put in the JADE section of this web site
 as quickly as we can. Please bear with us.  Because paths to files change in
 JADE, there are multiple documents about that which attempt to present similar
-information but in different layouts. Here are the key documents:</p>
+information but in different layouts. Here are some key documents:</p>
 <ul>
 <li>This document contains vital information.</li>
 <li>Instructions on <a href="../sed-tips-jade/">changing existing text files</a> to replace C-SUB-appropriate
-paths with JADE-appropriate paths.</li>
+paths with JADE-appropriate paths. (You can also use a text editor to do search
+and replace operations, but that has to be done one file at a time.)</li>
 <li><a href="../../images/jade-path-summary-table.pdf">Summary of JADE paths &amp; their purposes</a> - one page PDF
 chart. A reference document for all JADE users for the long run. Contains summary of what kind of data
 is best for each location. Read this before the next document below.</li>
@@ -5556,8 +5563,9 @@ reference document. Was written first.</li>
 <details class="tip">
 <summary>Please take note of these path element symbols</summary>
 <p><a href="" id="key-to-path-elements"></a></p>
-<p>In this document and others, we show the convention used for some aspect of
-the cluster, such as the path to expect for this or that purpose.</p>
+<p>In this document and others, we use the terms shown below when describing
+conventions about aspects of the cluster, such as the path to expect for
+this or that purpose.</p>
 <p><strong><em>&lt;dua&gt;</em></strong> = for example, 59614 or 55548<br>
 <strong><em>&lt;cdua&gt;</em></strong> = for example, c59614 or c55548<br>
 <strong><em>&lt;comm&gt;</em></strong> = for example, cms or dbgap<br>
@@ -5571,7 +5579,7 @@ E.g. <code>/transfer/in/&lt;comm&gt;/&lt;cdua&gt;/&lt;username&gt;/</code><br>
 <details class="info">
 <summary>User Communities on JADE</summary>
 <p><a href="" id="cms-user-community"></a>
-<mark class="critic">If you had been using the C-SUB, you are a member of the "CMS community" on JADE.</mark></p>
+<mark class="critic">If you have been using the C-SUB, you are a member of the "CMS community" on JADE.</mark></p>
 <p>There are three communities (so far) in JADE. Each one has a unique name
 and a single character equivalent. You will see both appear in cluster
 configuration, such as the first letter of a username (c-jhedid-dua), 
@@ -5623,25 +5631,34 @@ directories like ~/.cache/ can contain large amounts of material.)</p>
 <p>The need to more carefully control data access in JADE, as well as
 reflection upon the design lessons learned from the C-SUB implementation, has
 resulted in a variety of path changes.  <strong>We have created symbolic links in
-various locations to allow paths that were valid in the C-SUB to continue
-to work in JADE.</strong></p>
+various locations to allow many (but not all) paths that were valid in the C-SUB
+to continue to work in JADE.</strong></p>
+<p>There are four things you might need to change in SLURM batch job scripts:
+(1) paths involving data,<br>
+(2) paths involving your home directory,<br> 
+(2) SLURM partition names (i.e. "sas" to "c-sas" or "lau" to "c-lau"),<br>
+(4) optionally changing standard output and error paths <a href="#slurmout">described here</a>.</p>
+<p><mark class="critic">We have a document explaining how to replace strings in files
+programmatically, on the command line, using <a href="../sed-tips-jade/">the sed
+utility</a>.</mark></p>
+<p>When you need to modify existing files, such as SLURM batch job scripts, you
+can do it one at a time in a text editor. The value of learning some sed
+commands is that you can implement changes across many files at a time
+so they will work in JADE.</p>
+<p><a href="../images/jade-path-summary-table-cms.pdf">This
+document</a> is a one page summary
+table comparing paths on the C-SUB and JADE. <mark class="critic">You will need to read
+this.</mark></p>
 <p><a href="../../images/jade-path-summary-table.pdf">This
 document</a> is a one page summary
 table describing JADE paths and what kinds of data they are best used for.</p>
-<p><a href="../images/jade-path-summary-table-cms.pdf">This
-document</a> is a one page summary
-table comparing paths on the C-SUB and JADE.</p>
-<p><a href="../images/paths-csub-to-jade.pdf">This document</a> is longer, and provides details about each kind of data
-locations available in JADE. It describes changes which impact users and data
+<p><a href="../images/paths-csub-to-jade.pdf">This document</a> is longer, and provides details
+about each kind of data
+location available in JADE. It describes changes which impact CMS users and data
 moderators. The document you are reading now and the summary documents
-mentioned above probably replace the longer document.</p>
-<p>We have a document explaining how to replace strings in files
-<a href="../sed-tips-jade/">here, about the sed utility</a>. You can use this info
-to modify existing files, such as SLURM batch job scripts, so they will work in JADE.</p>
-<p>There are four things you might need to change in those SLURM batch job
-scripts: (1) paths involving data, (2) the SAS partition name, (3) paths
-involving your home directory, and (4) optionally changing standard output
-and error paths <a href="#slurmout">described here</a>.</p>
+mentioned above probably replace the longer document. The longer document
+does include more text <em>explaining the motivation for creating each
+location.</em></p>
 </details>
 <!-- ------------------------------------------------------------------------->
 <details class="info">
@@ -5659,15 +5676,17 @@ will match your account's DUA number, e.g. <code>j-c55548</code>.</p>
 <p><a href="" id="partition-names"></a>
 <mark class="critic">If your batch job scripts specified the name of the partition to use, you
 will need to modify them so they work on JADE.</mark></p>
-<p>In C-SUB, the default partition was named "cms" and the SAS one "sas".</p>
+<p>In C-SUB, the default partition was named "cms", the SAS one "sas", and a
+PI-specific private partition was named "lau".</p>
 <p>In JADE, each community now has its own default partition. The CMS default is
-named "c-shared". Also, "sas" was renamed to be "c-sas".</p>
+named "c-shared". Also, "sas" was renamed to be "c-sas" and "lau" was
+renamed to be "c-lau".</p>
 <p>If you do not specify a partition when submitting an interactive or batch
 job, then it is assigned to the cluster's default partition. Because the C-SUB
 contained very few SLURM partitions, we expect that very few batch jobs
 explicitly specified "cms".</p>
-<p>We have added a modification to your home directory to accomodate a change
-in the name of the CMS community's default partition. The file
+<p><mark class="critic">We have added a modification to your home directory to accomodate the change
+in the name of the CMS community's default partition.</mark> The file
 <code>~/.slurm/defaults</code> contains a line specifying "c-shared" as the default.</p>
 <p>The command <code>slurmpic -a</code> will show you all of the currently defined nodes
 and partition names. (<code>scontrol show node &lt;node_name&gt;</code> will show you all of
@@ -5682,10 +5701,15 @@ the info about a particular node, and <code>scontrol show partition
 <p><a href="" id="proposed-not-migrated"></a>
 <mark class="critic">If you have active files in ~/proposed/ you will need to copy them to a new location.</mark></p>
 <p>(The tilde character '~' is a special character in UNIX shells. It represents
-your home directory.)</p>
-<ul>
-<li><code>~/proposed</code> -- In the C-SUB this was a directory. In JADE this is a symbolic link to the new location for this type of files. When your account is migrated to JADE, the original ~/proposed is renamed <code>~/proposed.csub</code> (you will not lose them!) and a symbolic link is made to point to <code>/proposed/cms/&lt;cdua&gt;/&lt;username&gt;</code>. You can continue to use <code>~/proposed</code> as if it were a directory, in terms of copying files into it or listing it. <mark class="critic">If you have files being reviewed by data moderators, then you should cp them from <code>~/proposed.csub/</code> to <code>~/proposed/</code>.</mark></li>
-</ul>
+your home directory. Symbolic links are special "alias" files.)</p>
+<p><code>~/proposed</code> -- In the C-SUB this was a directory. In JADE this is a
+symbolic link to the new location for this type of files.  (See the <a href="../images/jade-path-summary-table-cms.pdf">Summary
+of path changes for CMS users</a>
+document.)</p>
+<p>When your account is migrated to JADE, the original ~/proposed directory is renamed
+<code>~/proposed.csub</code> (you will not lose those files !) and a symbolic link is
+created which points to <code>/proposed/cms/&lt;cdua&gt;/&lt;username&gt;</code>.</p>
+<p>You can continue to use <code>~/proposed</code> as if it were a directory, in terms of copying files into it or listing it. <mark class="critic">If you have files being reviewed by data moderators, then you should cp them from <code>~/proposed.csub/</code> to <code>~/proposed/</code>.</mark></p>
 </details>
 <!-- ------------------------------------------------------------------------->
 <details class="danger">
@@ -5701,11 +5725,11 @@ home directory before your group is migrated from the C-SUB to JADE.</p>
 <summary>~/slurmout/ - a place for your transient SLURM output files</summary>
 <p><a href="" id="slurmout"></a>
 JADE home directories are equipped with a ~/slurmout/ subdirectory. You can
-choose to use this or delete it. The concept is that using it allows you to
-look in one place for all output files.</p>
+choose to use this or ignore or delete it. The motivation for creating it is
+that using it allows you to look in one place for all output files.</p>
 <p>By default, SLURM will create a file for each job containing its output,
-named "slurm-<jobID>.out" in the directory from which the job was
-submitted.  That file contains both the "standard output" and the "standard
+named "slurm-<jobID>.out" <em>in the directory from which the job was
+submitted.</em>  That file contains both the "standard output" and the "standard
 error" content.  You can change the default behavior using the following 
 <code>#SBATCH</code> directives in your job script or command-line options when 
 submitting jobs: <code>--output=&lt;filename_pattern&gt;</code> and, if you want to break out
@@ -5717,19 +5741,23 @@ output from error, <code>--error=&lt;filename_pattern&gt;</code>.</p>
 <li>in a batch script -- using <code>#SBATCH --output=&lt;filename_pattern&gt;</code></li>
 <li>on the command line -- as mentioned above</li>
 </ol>
+<p>You may want your output/error files to appear next to the data files, as a
+form of documentation. But you have to have write ability on the enclosing
+directory, and you may also view these files as transient. The <code>~/slurmout/</code>
+directory might be useful to you, at least for some jobs.</p>
 </details>
 <!-- ------------------------------------------------------------------------->
 <details class="danger">
 <summary>SFTP data transfers - path changes</summary>
 <p><a href="" id="sftp-changes"></a>
-<mark class="critic">JADE uses the same TCP/IP networking ports as was used on the C-SUB:</mark><br><br>
+<mark class="critic">JADE uses the same TCP/IP networking ports as were used on the C-SUB:</mark><br><br>
 Data going <strong>into</strong> the cluster: <strong>22011</strong><br>
 Data coming <strong>out of</strong> the cluster: <strong>22027</strong></p>
 <p>JADE uses different paths to store this kind of data. 
 We cannot create symbolic links to hide this change.</p>
 <p>C-SUB</p>
 <div class="highlight"><pre><span></span><code>Incoming   /cms01/incoming/&lt;username&gt;
-Outgoing   `/cms01/outgoing/&lt;username&gt;`
+Outgoing   /cms01/outgoing/&lt;username&gt;
 </code></pre></div>
 <p>JADE</p>
 <div class="highlight"><pre><span></span><code>Incoming   /transfer/in/cms/&lt;cdua&gt;/&lt;username&gt;
@@ -5739,9 +5767,9 @@ Example:
 Incoming   /transfer/in/cms/c55548/c-jxu123-55548
 Outgoing   /transfer/out/cms/c55548/c-jxu123-55548
 </code></pre></div>
-<p><strong>There are two ways you work with this new path - when inside an SFTP
+<p><strong>There are two ways you work with these new paths - when inside an SFTP
 transaction and when you are accessing files in the operating system.</strong>
-Click on each tab below.</p>
+Click on each tab below to learn more.</p>
 <div class="tabbed-set tabbed-alternate" data-tabs="2:2"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio" /><input id="__tabbed_2_2" name="__tabbed_2" type="radio" /><div class="tabbed-labels"><label for="__tabbed_2_1">During SFTP</label><label for="__tabbed_2_2">While in the operating system</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
@@ -5749,8 +5777,8 @@ Click on each tab below.</p>
 inside the directory appropriate for your community. You can only see
 files below that point.</p>
 <p>So you "start from" either <code>/transfer/in/cms/</code> or <code>/transfer/out/cms/</code></p>
-<p>To reach your own files, you need to cd into your group's directory, then
-into your own personal directory. </p>
+<p>** To reach your own files, you need to cd into your group's directory, then
+into your own personal directory. **</p>
 <p>For example: <code>cd c55548/c-jxu123-55548</code></p>
 <p>If you use the MobaXterm SFTP program, there is a place in the session's
 settings where you can specify your directory. If you configure that
@@ -5759,12 +5787,14 @@ having to issue any cd commands every time.</p>
 </div>
 <div class="tabbed-block">
 <p>After you transfer files into JADE, you need to use a different path to
-access them, whether from your shell prompt or the graphic file manager <code>thunar</code>.</p>
-<p>On the C-SUB, you used <code>/cms01/incoming/&lt;username&gt;</code>
-On JADE, you will use <code>/transfer/in/cms/&lt;cdua&gt;/&lt;username&gt;</code></p>
+access them, whether from your shell prompt or a graphic interface, such</p>
 </div>
 </div>
 </div>
+<p>as the file manager <code>thunar</code>.</p>
+<div class="highlight"><pre><span></span><code><mark class="critic">On the C-SUB, you used `/cms01/incoming/&lt;username&gt;`&lt;br&gt;
+On JADE, you will use `/transfer/in/cms/&lt;cdua&gt;/&lt;username&gt;`</mark>
+</code></pre></div>
 </details>
 <!-- ------------------------------------------------------------------------->
 <details class="danger">
@@ -5828,12 +5858,12 @@ help others. Thanks.</p>
 </details>
 <details class="info">
 <summary>LibreOffice program names have changed</summary>
-<p><mark class="critic">Program names have changed slightly; much newer version is installed.</mark></p>
+<p><mark class="critic">Program names have changed slightly; a much newer version is installed.</mark></p>
 <p>The graphic user interface <a href="https://www.libreoffice.org">LibreOffice</a> is a 
 free, open-source office suite.  JADE is using a much newer version than the C-SUB.  </p>
 <p>Many LibreOffice programs have a single letter prefix. In C-SUB that was 'o'
-while in JADE it has changed to be 's'.  "ooffice" is now "soffice", "ocalc"
-is now "scalc", etc.</p>
+while in JADE it has changed to be 's'.</p>
+<p>"ooffice" is now "soffice", "ocalc" is now "scalc", etc.</p>
 <p>These LibreOffice programs are found in the /user/local/bin/ directory
 (which is in your default PATH). You can see a list of them with the
 command<br>
@@ -5850,7 +5880,7 @@ to use, you will need to modify them so they work on JADE.</mark></p>
 <p>Compute nodes in JADE have the prefix <strong>"jcompute-"</strong> and a suffix in the range
 032 and higher.</p>
 <p>There is a direct mapping of C-SUB compute-132 to JADE jcompute-032, etc.
-Add a "j" and change "1" to "0".</p>
+To convert, add a "j" and change the leading "1" to "0".</p>
 </details>
 
 
@@ -5872,7 +5902,7 @@ Add a "j" and change "1" to "0".</p>
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="January 1, 2026 05:11:19 UTC">January 1, 2026</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="January 9, 2026 22:45:55 UTC">January 9, 2026</span>
   </span>
 
     
