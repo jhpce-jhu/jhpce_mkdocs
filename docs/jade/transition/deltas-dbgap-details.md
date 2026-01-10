@@ -151,6 +151,11 @@ that topic impacting the typical user.
     result files can be stored away from the CUI files, easing the task of
     groups having to examine and relocate files before some are deleted.
 
+    {==A [longer paths document](images/paths-csub-to-jade.pdf) is available
+    which discusses the design in more detail.  It was written for the CMS
+    community, but the the descriptions of the standard data locations are more
+    fully fleshed out.==}
+
     **Resource**
     {==We have a document explaining how to replace strings in files 
     programmatically, on the command line, using [the sed utility](sed-tips-jade.md).==}
