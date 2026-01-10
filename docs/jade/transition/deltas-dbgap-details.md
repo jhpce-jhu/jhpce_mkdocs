@@ -151,6 +151,15 @@ that topic impacting the typical user.
     result files can be stored away from the CUI files, easing the task of
     groups having to examine and relocate files before some are deleted.
 
+    **Resource**
+    {==We have a document explaining how to replace strings in files 
+    programmatically, on the command line, using [the sed utility](sed-tips-jade.md).==}
+
+    When you need to modify existing files, such as SLURM batch job scripts, you
+    can do it one at a time in a text editor. The value of learning some sed
+    commands is that you can implement changes across many files at a time
+    so they will work in JADE.
+
 <!-- ------------------------------------------------------------------------->
 ??? example "Transferring data into & out of JADE"
     {== THIS SECTION & RELATED WEB PAGES ARE UNDER HEAVY DEVELOPMENT 202601210 ==}<br>
