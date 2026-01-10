@@ -30,15 +30,15 @@ you are in "serve" mode, mkdocs will watch for changes in your repository and
 kick off site rebuilds. (Control-C it if you are making many changes, as it
 scurries off to rebuild after every change it notices. It takes most of a
 minute to regenerate our site. So you won't see the final result until after
-the last rebuild, many minutes later.)  Mkdocs very helpful displayes error
+the last rebuild, many minutes later.)  Mkdocs very helpful displays error
 messages it finds in your website definition (mkdocs.yml) and the pages
 themselves.
 
 Jeffrey recommends these features in particular:
 
-* [admonitions](features.md#admonitions) -- a lot!!
+* [Admonitions](features.md#admonitions) -- a lot!!
 * Details [(collapsed blocks)](features.md/#details-collapsed-blocks)
-* Tabs [present diff info horizontally](features.md/#tabs)
+* Content Tabs [present diff info horizontally](features.md/#tabs)
 * {==[highlighting text](features.md/#highlighting-text)==}
 * [Fenced code blocks](features.md/#fenced-code-blocks)
 * [keyboard meta keys](features.md/#symbols-for-keyboard-keys) (like ++ctrl++)
@@ -165,6 +165,105 @@ Documentation [here](https://facelessuser.github.io/pymdown-extensions/extension
 
 You can probably include [code blocks](#fenced-code-blocks) inside of detail
 blocks like you can with admonitions.
+
+## Content Tabs
+(These don't render correctly in MacDown.app)
+
+Tabs are a kind of code block which begins with three
+++equals+equals+equals++ marks.
+
+These are very neat. They allow you to create a horizontal set of headings.
+Clicking on each heading causes a different set of content to appear. This can
+save A LOT of vertical page space.
+
+Let's say you want to describe how to do the same activity on three different
+operating systems. Or show the equivalent code in four different programming
+langues.
+
+You provide different information in the same amount of vertical space, and it's
+intuitive for readers to click on what you need.
+
+[tabs documentation](https://squidfunk.github.io/mkdocs-material/reference/content-tabs/#content-tabs)
+
+Tabs are created with similar syntax as admonitions or details.
+
+There has to be a blank line before the beginning of (admonition, detail, tab)
+
+Everything has to be indented FOUR SPACES (not a tab char!!!) inside of (admonition, detail, tab)
+
+You MUST enclose the title of the tab in double quotes even if it is a single word (it seems to Jeffrey)
+
+### Simple example of content tabs
+
+This example contains one or two lines of text. The default tab is the left-most, and whichever one you click on becomes rendered in bold font. I fooled around and made the second tab italicized, for contrast.
+
+=== "Mac Way"
+    More intuitive and elegant
+    
+=== "*Other Way*"
+    The lesser way
+    
+=== "Pencil and Paper Way"
+    Respect your elders. It was all we had for a LONG TIME.
+    
+    Really, a long time. At least we had calculators instead of slide rules.
+    
+### Content tabs inside of admonitions or details
+
+Everything has to be indented FOUR SPACES (not a tab char) inside of the tab you are creating
+
+So when inside of an (admonition, detail, tab) therefore tab contents are all
+indented EIGHT spaces. (Yes, you can have tab blocks inside of tab blocks. Never
+tab characters though!!!)
+
+These two examples contain tab blocks inside of a detail and an admonition:
+
+??? example "Details are collapsed (by default)"
+
+    === "Mac Way"
+
+        ```
+        Contents for Mac users
+        ```
+
+    === "Windows Way"
+
+        ```
+        Contents for Mac users
+        ```
+
+!!! example "Admonitions are always expanded"
+    Each tab contains a block of text. Here we've added programming language specifier keywords.
+
+    === "C++"
+        Contents for C++ code
+        ```c++
+        #include <iostream>
+
+        int main() {
+        std::cout << "Hello World!";
+        return 0;
+        }
+        ```
+
+    === "Python"
+
+        ```python
+        print('Hello, world!')
+        ```
+
+    === "Bash"
+        Discussion about bash code
+        ```bash
+        usage()
+        {
+        echo "Usage: $0 [-h] "
+        echo "Displays all defined QOS with nice formatting."
+        echo "Caution, this script may not show all fields relevant/used in future."
+        echo "    -h     |--help        display usage"
+        }
+        ```
+        
 
 ## Frontmatter (in document files)
 Tags are the primary use of frontmatter I think we should use at this point. 
@@ -719,101 +818,3 @@ https://www.starfallprojects.co.uk/blog/material-custom-status/#enable-the-featu
 
 https://squidfunk.github.io/mkdocs-material/customization/#additional-css
 
-## Tabs
-(These don't render correctly in MacDown.app)
-
-Tabs are a kind of code block which begins with three
-++equals+equals+equals++ marks.
-
-These are very neat. They allow you to create a horizontal set of headings.
-Clicking on each heading causes a different set of content to appear. This can
-save A LOT of vertical page space.
-
-Let's say you want to describe how to do the same activity on three different
-operating systems. Or show the equivalent code in four different programming
-langues.
-
-You provide different information in the same amount of vertical space, and it's
-intuitive for readers to click on what you need.
-
-[tabs documentation](https://squidfunk.github.io/mkdocs-material/reference/content-tabs/#content-tabs)
-
-Tabs are created with similar syntax as admonitions or details.
-
-There has to be a blank line before the beginning of (admonition, detail, tab)
-
-Everything has to be indented FOUR SPACES (not a tab char!!!) inside of (admonition, detail, tab)
-
-You MUST enclose the title of the tab in double quotes even if it is a single word (it seems to Jeffrey)
-
-### Simple example of tabs
-
-This example contains one or two lines of text. The default tab is the left-most, and whichever one you click on becomes rendered in bold font. I fooled around and made the second tab italicized, for contrast.
-
-=== "Mac Way"
-    More intuitive and elegant
-    
-=== "*Other Way*"
-    The lesser way
-    
-=== "Pencil and Paper Way"
-    Respect your elders. It was all we had for a LONG TIME.
-    
-    Really, a long time. At least we had calculators instead of slide rules.
-    
-### Tabs inside of admonitions or details
-
-Everything has to be indented FOUR SPACES (not a tab char) inside of the tab you are creating
-
-So when inside of an (admonition, detail, tab) therefore tab contents are all
-indented EIGHT spaces. (Yes, you can have tab blocks inside of tab blocks. Never
-tab characters though!!!)
-
-These two examples contain tab blocks inside of a detail and an admonition:
-
-??? example "Details are collapsed (by default)"
-
-    === "Mac Way"
-
-        ```
-        Contents for Mac users
-        ```
-
-    === "Windows Way"
-
-        ```
-        Contents for Mac users
-        ```
-
-!!! example "Admonitions are always expanded"
-    Each tab contains a block of text. Here we've added programming language specifier keywords.
-
-    === "C++"
-        Contents for C++ code
-        ```c++
-        #include <iostream>
-
-        int main() {
-        std::cout << "Hello World!";
-        return 0;
-        }
-        ```
-
-    === "Python"
-
-        ```python
-        print('Hello, world!')
-        ```
-
-    === "Bash"
-        Discussion about bash code
-        ```bash
-        usage()
-        {
-        echo "Usage: $0 [-h] "
-        echo "Displays all defined QOS with nice formatting."
-        echo "Caution, this script may not show all fields relevant/used in future."
-        echo "    -h     |--help        display usage"
-        }
-        ```
-        

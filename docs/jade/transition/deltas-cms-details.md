@@ -35,10 +35,12 @@ and replace operations, but that has to be done one file at a time.)
 * [Summary of JADE paths & their purposes](../images/jade-path-summary-table.pdf) - one page PDF
 chart. A reference document for all JADE users for the long run. Contains summary of what kind of data
 is best for each location. Read this before the next document below.
-* [Summary of path changes for CMS users](images/jade-path-summary-table-cms.pdf) - one page PDF chart. Side-by-side comparison of C-SUB & JADE. Mentions accommodations to hide most path changes.
+* [Summary of path changes for CMS users](images/jade-path-summary-table-cms.pdf) - one page PDF chart. Side-by-side comparison of C-SUB & JADE. Mentions accommodations to hide most path changes. {==You will need to read
+    this.==}
 * [Text description of data locations](images/paths-csub-to-jade.pdf) what to use
 them for, and specific changes C-SUB users need to make. Only describes paths. A
-reference document. Was written first.
+reference document. Was written first. Best description of why locations were
+created.
 
 <!-- ------------------------------------------------------------------------->
 !!! tip "Color codes used for each topic"
@@ -70,9 +72,9 @@ reference document. Was written first.
 
     There are three communities (so far) in JADE. Each one has a unique name
     and a single character equivalent. You will see both appear in cluster
-    configuration, such as the first letter of a username (c-jhedid-dua), 
-    in paths to files (/transfer/in/cms/) and in names of SLURM partitions
-    (c-shared, c-sas).
+    configuration, such as the first letter of a username (`c-jhedid-dua`), 
+    in paths to files (`/transfer/in/cms/`) and in names of SLURM partitions
+    (`c-shared`, `c-sas`).
 
     ```Shell
     Character       Name
@@ -119,11 +121,13 @@ reference document. Was written first.
     various locations to allow many (but not all) paths that were valid in the C-SUB
     to continue to work in JADE.**
 
-    There are four things you might need to change in SLURM batch job scripts:
+    There are four things you might need to change in SLURM batch job
+    scripts:<br>
     (1) paths involving data,<br>
     (2) paths involving your home directory,<br> 
-    (2) SLURM partition names (i.e. "sas" to "c-sas" or "lau" to "c-lau"),<br>
-    (4) optionally changing standard output and error paths [described here](#slurmout).
+    (2) SLURM partition names (i.e. "sas" to "c-sas" or "lau" to "c-lau"),
+    [described here](#partition-names), <br>
+    (4) optionally changing SLURM standard output and error paths [described here](#slurmout).
 
     {==We have a document explaining how to replace strings in files
     programmatically, on the command line, using [the sed
@@ -174,21 +178,27 @@ reference document. Was written first.
     named "c-shared". Also, "sas" was renamed to be "c-sas" and "lau" was
     renamed to be "c-lau".
 
+    | C-SUB | JADE |
+    | ----- | ---- |
+    | cms | c-shared |
+    | sas | c-sas |
+    | lau | c-lau |
+
     If you do not specify a partition when submitting an interactive or batch
     job, then it is assigned to the cluster's default partition. Because the C-SUB
     contained very few SLURM partitions, we expect that very few batch jobs
     explicitly specified "cms".
 
     {==We have added a modification to your home directory to accomodate the change
-    in the name of the CMS community's default partition.==} The file
-    `~/.slurm/defaults` contains a line specifying "c-shared" as the default.
+    in the name of the CMS community's default partition.==} **The file
+    `~/.slurm/defaults` contains a line specifying "c-shared" as the default.**
 
     The command `slurmpic -a` will show you all of the currently defined nodes
     and partition names. (`scontrol show node <node_name>` will show you all of
     the info about a particular node, and `scontrol show partition
     <partition_name>` will display the full partition definition.)
 
-    We have a document explaining how to replace strings in documents
+    We have a document explaining how to replace strings in documents using `sed`
     [here](sed-tips-jade.md).
 <!-- ------------------------------------------------------------------------->
 ??? warning "Contents of ~/proposed/ directory are not automatically propagated"
@@ -231,6 +241,10 @@ reference document. Was written first.
     submitting jobs: `--output=<filename_pattern>` and, if you want to break out
     output from error, `--error=<filename_pattern>`.
 
+    You may want your output/error files to appear next to the data files, as a
+    form of documentation. But you have to have write ability on the enclosing
+    directory, and you may also view these files as transient. The `~/slurmout/`
+    directory might be useful to you, at least for some jobs.
     You can specify your choices in three places, in ascending priority: 
 
     1. ~/.slurm/defaults -- with a line like:
@@ -238,10 +252,6 @@ reference document. Was written first.
     2. in a batch script -- using `#SBATCH --output=<filename_pattern>`
     3. on the command line -- as mentioned above
 
-    You may want your output/error files to appear next to the data files, as a
-    form of documentation. But you have to have write ability on the enclosing
-    directory, and you may also view these files as transient. The `~/slurmout/`
-    directory might be useful to you, at least for some jobs.
 <!-- ------------------------------------------------------------------------->
 ??? danger "SFTP data transfers - path changes"
     [](){#sftp-changes}
@@ -345,6 +355,8 @@ reference document. Was written first.
 
     C-SUB: c-sub-users@lists.jh.edu<br>
     JADE: jade-cms-users@lists.jh.edu
+
+    This is a moderated list. CMS users are also members of the jhpceuser@lists.jh.edu mailing list.
 
 <!-- ------------------------------------------------------------------------->
 ??? info "Operating system has been updated"
