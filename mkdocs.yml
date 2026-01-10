@@ -121,10 +121,6 @@ nav:
       - GUI Applications: portal/web-apps.md
       - Datacatalog: portal/datacatalog.md
       - Self Service MFA, Password Requests : portal/web-reset.md
-    - C-SUB:
-      - What Is The C-SUB?: csub/csub-overview.md
-      - New User: csub/new-csub-users.md
-      - C-SUB Orientation (pdf): orient/images/latest-csub-orient.pdf
     - JADE:
       - About: jade/jade-overview.md
       - New JADE User Form: jade/new-users-form.md
@@ -150,6 +146,10 @@ nav:
           - Globus: jade/access/globus-jade.md
       - Data Locations:
         - Path summary chart (pdf): jade/images/jade-path-summary-table.pdf
+    - C-SUB:
+      - What Is The C-SUB?: csub/csub-overview.md
+      - New User: csub/new-csub-users.md
+      - C-SUB Orientation (pdf): orient/images/latest-csub-orient.pdf
 #
 # Example of three-level topic syntax
 #   - Storage:
