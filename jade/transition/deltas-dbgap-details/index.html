@@ -5470,8 +5470,9 @@ that topic impacting the typical user.</p>
 <!-- ------------------------------------------------------------------------->
 <details class="tip">
 <summary>Please take note of these path element symbols</summary>
-<p>In this document and others, we show the convention used for some aspect of
-the cluster, such as the path to expect for this or that purpose.</p>
+<p>In this document and others, we use the terms shown below when describing
+conventions about aspects of the cluster, such as the path to expect for this
+or that purpose.</p>
 <p><strong><em>&lt;dua&gt;</em></strong> = for example, 17293 or 15209<br>
 <strong><em>&lt;cdua&gt;</em></strong> = for example, d17293 or d41021<br>
 <strong><em>&lt;comm&gt;</em></strong> = for example, dbgap or cms<br>
@@ -5487,9 +5488,9 @@ E.g. <code>/users/&lt;comm&gt;/&lt;cdua&gt;/&lt;username&gt;/</code><br>
 <p><mark class="critic">Researchers who use dbGaP data are members of the "DBGAP community" on JADE.</mark></p>
 <p>There are three communities (so far) in JADE. Each one has a unique name
 and a single character equivalent. You will see both appear in cluster
-configuration, such as the first letter of a username (c-jhedid-dua), 
-in paths to files (/transfer/in/cms/) and in names of SLURM partitions
-(d-shared).</p>
+configuration, such as the first letter of a username (<code>c-jhedid-dua</code>),
+in paths to files (<code>/data/dbgap/</code>) and in names of SLURM partitions
+(<code>d-shared</code>).</p>
 <div class="highlight"><pre><span></span><code>Character<span class="w">       </span>Name
 ----------<span class="w">      </span>----------<span class="w"> </span>
 c<span class="w">               </span>cms
@@ -5521,23 +5522,16 @@ codes to use during login.</p>
 <summary>Login node</summary>
 <p><mark class="critic">You must change your settings or commands to use the JADE login server.</mark></p>
 <p>JADE: <strong>jade01.jhsph.edu</strong></p>
-<div class="tabbed-set tabbed-alternate" data-tabs="1:1"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">Windows users</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="1:2"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">Windows users</label><label for="__tabbed_1_2">Mac &amp; Linux users</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<p>If you are on a Windows system, you will need to create new MobaXterm</p>
+<p>If you are on a Windows system, you will need to create new MobaXterm SSH and SFTP Sessions for the jade01.jhsph.edu login node.</p>
 </div>
-</div>
-</div>
-<p>SSH and SFTP Sessions for the jade01.jhsph.edu login node.</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="2:1"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio" /><div class="tabbed-labels"><label for="__tabbed_2_1">Mac &amp; Linux users</label></div>
-<div class="tabbed-content">
 <div class="tabbed-block">
-<p>You will need to adjust your ssh and sftp commands to use</p>
+<p>You will need to adjust your ssh and sftp commands to use <strong>jade01.jhsph.edu</strong> instead of either jhpce01.jhsph.edu or jhpce03.jhsph.edu.</p>
 </div>
 </div>
 </div>
-<p><strong>jade01.jhsph.edu</strong> instead of either jhpce01.jhsph.edu or
-jhpce03.jhsph.edu.</p>
 </details>
 <!-- ------------------------------------------------------------------------->
 <details class="example">
@@ -5545,25 +5539,78 @@ jhpce03.jhsph.edu.</p>
 <p><mark class="critic">New usernames, verification codes, and passwords are used.</mark></p>
 <p>You will receive new login credentials when your account is configured.</p>
 <p>JADE uses completely different file systems than JHPCE, including <code>/users/</code>.</p>
-<p>JHPCE: <code>/users/&lt;username&gt;&lt;br&gt;</code>
-       <code>/users/tunison</code></p>
-<p>JADE:  <code>/users/&lt;comm&gt;/&lt;cdua&gt;/&lt;username&gt;&lt;br&gt;</code>
-       <code>/users/dbgap/d17293/d-steward1-17293</code></p>
+<p>JHPCE: /users/<username><br>
+       E.g. /users/tunison</p>
+<p>JADE:  /users/<comm>/<cdua>/<username><br>
+       E.g. /users/dbgap/d17293/d-steward1-17293</p>
+<p>Consider replacing any explicit paths to your home directory in files such
+as SLURM batch job scripts with the tilde (<span class="keys"><kbd class="key-tilde">~</kbd></span>) symbol.</p>
+</details>
+<!-- ------------------------------------------------------------------------->
+<details class="example">
+<summary>Paths - Data is stored in specific locations in JADE</summary>
+<p><mark class="critic">JADE is designed to monitor and control access to sensitive data. This
+impacts data storage. JADE is not as open as JHPCE. That is due to JADE
+having to meet the NIST standard 800-171.</mark></p>
+<p><strong>The TL;DR:</strong> </p>
+<p>Files downloaded from dbGaP are considered Controlled
+Unclassified Information (CUI). In JADE those files will live in 
+consistently-named places which follow the convention of:<br>
+<code>/data/dbgap/d&lt;dua&gt;/cui/</code>
+The file system is meant to be mostly static, with files users generate
+being kept elsewhere. Files and directories in that location will be 
+writable by a "data steward" account, used by one or two group members
+designated by the PI.</p>
+<p><strong>Motivation:</strong></p>
+<p>In JHPCE, data has been stored in very unstructured locations which have
+accreted over time. For JADE, we have characterized a number of data types used
+by research groups and created conventions for where each type should be stored.
+<mark class="critic">This one page PDF is a <a href="../../images/jade-path-summary-table.pdf">summary of JADE paths &amp; their
+purposes</a>.</mark> The right-hand column
+describes what kind of data should be considered for that location, and
+mentions aspects of the storage that provides that location - fast vs slow,
+capacious vs constrained, cheaper vs more expensive.</p>
+<p>This design attempts to provide improvements over previous practices, such
+as enhancing our ability to add new file systems in consistent fashions as
+data grows and new DUAs are added to the cluster, place those file systems
+on future file servers without requiring users to embed file path strings in
+their scripts which include file server names (e.g. <code>/dcs07</code>). (We regularly
+retire file servers after several years. Sometimes we can retain the path
+name, sometimes we cannot.)</p>
+<p>The design aids researchers by helping them consider where to store files
+generated over the life cycle of their projects.  Users come and go, and
+files they share with others often need to remain accessible to the group.
+When DUA agreements expire, the CUI data and files containing "too much"
+of that CUI have to be deleted. Our design provides locations so research
+result files can be stored away from the CUI files, easing the task of
+groups having to examine and relocate files before some are deleted.</p>
 </details>
 <!-- ------------------------------------------------------------------------->
 <details class="example">
 <summary>Transferring data into &amp; out of JADE</summary>
-<p><mark class="critic"> THIS SECTION IS UNDER DEVELOPMENT 20251226 </mark>
-<mark class="critic">JADE uses specific TCP/IP networking ports for data ingress &amp; egress: </mark><br><br></p>
+<p><mark class="critic"> THIS SECTION &amp; RELATED WEB PAGES ARE UNDER HEAVY DEVELOPMENT 202601210 </mark><br>
+<mark class="critic">JADE is designed to monitor and control access to sensitive data. This
+impacts data movement. JADE is not as open as JHPCE. That is due to JADE
+having to meet the NIST standard 800-171.</mark></p>
+<p>In general, it is hard to "push" data <em>into</em> JADE. It is much easier to "pull"
+data <em>from inside</em> JADE. </p>
 <p>JADE is located on a secure network segment maintained by IT@JH. Their
-firewall is configured to deny everything by default.</p>
+firewall is configured to deny everything by default.  JHPCE will work
+with IT@JH to get the firewall rules "in front of" JADE configured to
+meet your needs, where possible.</p>
+<p><strong><em>(We are working on transfer-related web documentation.)</em></strong></p>
+<p>If you run into issues, please reach out to bitsupport@lists.jh.edu. To help
+us help you more effectively, please provide relevant details -- where in
+the Internet did you try to initiate a connection, using what software
+commands, to what other point (computer)? <a href="../../../help/good-query/">This
+page</a> has some prompts and suggestions for you.</p>
 <p>From the inside of JADE, you can initiate connections to the internet using
 a variety of tools and protocols.</p>
-<p>From outside of JADE, you can initiate SFTP connections to jade01.jhsph.edu,
+<p>From outside of JADE, on a SAFE or SAFER Desktop or from the DISCOVERY
+cluster, you can initiate SFTP connections to jade01.jhsph.edu,
 using these non-standard ports:</p>
-<p>Data going into the cluster: 22511<br>
-Data coming out of the cluster: 22527</p>
-<p>(?More description in an jade/access/ page?)</p>
+<p>Data going into the cluster (pushed): 22511<br>
+Data coming out of the cluster (pulled): 22527</p>
 </details>
 <!-- ------------------------------------------------------------------------->
 <details class="warning">
@@ -5573,17 +5620,21 @@ will need to modify them so they work on JADE.</mark></p>
 <p>In JHPCE, the default partition was named "shared". There were PI specific
 partitions.</p>
 <p>In JADE, each community now has its own default partition. The DBGAP default is
-named "<strong>d-shared</strong>". There currently are no PI owned partitions.</p>
-<p>When creating dbgap home directories, we have added to your home directory
+named "<strong>d-shared</strong>". (There currently are no PI-owned dbGaP partitions.)</p>
+<p><mark class="critic">When creating dbgap home directories, we have added to your home directory
 the file <code>~/.slurm/defaults</code>. It contains a line specifying "d-shared" as
 the default partition. That allows you to continue not having to specify a
-specific partition.</p>
+specific partition.</mark></p>
 <p>The command <code>slurmpic -a</code> will show you all of the currently defined nodes
 and partition names. (<code>scontrol show node &lt;node_name&gt;</code> will show you all of
 the info about a particular node, and <code>scontrol show partition
 &lt;partition_name&gt;</code> will display the full partition definition.)</p>
-<p>We have a document explaining how to replace strings in documents
-<a href="../sed-tips-jade/">here</a>.</p>
+<p><mark class="critic">We have a document explaining how to replace strings in files 
+programmatically, on the command line, using <a href="../sed-tips-jade/">the sed utility</a>.</mark></p>
+<p>When you need to modify existing files, such as SLURM batch job scripts, you
+can do it one at a time in a text editor. The value of learning some sed
+commands is that you can implement changes across many files at a time
+so they will work in JADE.</p>
 </details>
 <!-- ------------------------------------------------------------------------->
 <details class="info">
@@ -5595,7 +5646,7 @@ and one or more 'secondary' groups (e.g. <code>j-d17293</code>).</p>
 <!-- ------------------------------------------------------------------------->
 <details class="info">
 <summary>Mailing lists</summary>
-<p><mark class="critic">We have defined mailing list to reach all DBGAP users in a cluster.</mark></p>
+<p><mark class="critic">We have defined mailing list to reach all DBGAP users in the cluster.</mark></p>
 <p>JADE: jade-dbgap-users@lists.jh.edu</p>
 <p>This is a moderated list. DBGAP users are also members of the
 jhpceuser@lists.jh.edu mailing list.</p>
@@ -5635,7 +5686,7 @@ help others. Thanks.</p>
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="January 9, 2026 22:45:55 UTC">January 9, 2026</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="January 10, 2026 05:23:27 UTC">January 10, 2026</span>
   </span>
 
     

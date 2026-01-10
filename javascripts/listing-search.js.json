@@ -1080,6 +1080,41 @@
   {
     "page_name": "Handy Features",
     "page_url": "../../ourtools/features/",
+    "text": "Contents for Mac users\n",
+    "html": "<pre><span></span><code>Contents for Mac users\n</code></pre>",
+    "language": ""
+  },
+  {
+    "page_name": "Handy Features",
+    "page_url": "../../ourtools/features/",
+    "text": "Contents for Mac users\n",
+    "html": "<pre><span></span><code>Contents for Mac users\n</code></pre>",
+    "language": ""
+  },
+  {
+    "page_name": "Handy Features",
+    "page_url": "../../ourtools/features/",
+    "text": "#include <iostream>\n\nint main() {\nstd::cout << \"Hello World!\";\nreturn 0;\n}\n",
+    "html": "<pre><span></span><code><span class=\"cp\">#include</span><span class=\"w\"> </span><span class=\"cpf\">&lt;iostream&gt;</span>\n\n<span class=\"kt\">int</span><span class=\"w\"> </span><span class=\"nf\">main</span><span class=\"p\">()</span><span class=\"w\"> </span><span class=\"p\">{</span>\n<span class=\"n\">std</span><span class=\"o\">::</span><span class=\"n\">cout</span><span class=\"w\"> </span><span class=\"o\">&lt;&lt;</span><span class=\"w\"> </span><span class=\"s\">\"Hello World!\"</span><span class=\"p\">;</span>\n<span class=\"k\">return</span><span class=\"w\"> </span><span class=\"mi\">0</span><span class=\"p\">;</span>\n<span class=\"p\">}</span>\n</code></pre>",
+    "language": ""
+  },
+  {
+    "page_name": "Handy Features",
+    "page_url": "../../ourtools/features/",
+    "text": "print('Hello, world!')\n",
+    "html": "<pre><span></span><code><span class=\"nb\">print</span><span class=\"p\">(</span><span class=\"s1\">'Hello, world!'</span><span class=\"p\">)</span>\n</code></pre>",
+    "language": ""
+  },
+  {
+    "page_name": "Handy Features",
+    "page_url": "../../ourtools/features/",
+    "text": "usage()\n{\necho \"Usage: $0 [-h] \"\necho \"Displays all defined QOS with nice formatting.\"\necho \"Caution, this script may not show all fields relevant/used in future.\"\necho \"    -h     |--help        display usage\"\n}\n",
+    "html": "<pre><span></span><code>usage<span class=\"o\">()</span>\n<span class=\"o\">{</span>\n<span class=\"nb\">echo</span><span class=\"w\"> </span><span class=\"s2\">\"Usage: </span><span class=\"nv\">$0</span><span class=\"s2\"> [-h] \"</span>\n<span class=\"nb\">echo</span><span class=\"w\"> </span><span class=\"s2\">\"Displays all defined QOS with nice formatting.\"</span>\n<span class=\"nb\">echo</span><span class=\"w\"> </span><span class=\"s2\">\"Caution, this script may not show all fields relevant/used in future.\"</span>\n<span class=\"nb\">echo</span><span class=\"w\"> </span><span class=\"s2\">\"    -h     |--help        display usage\"</span>\n<span class=\"o\">}</span>\n</code></pre>",
+    "language": ""
+  },
+  {
+    "page_name": "Handy Features",
+    "page_url": "../../ourtools/features/",
     "text": "---\ntags:\n  - a tag\ntoc_depth: 2\ntitle: some docs need explicit titles set b/c they can't be correctly guessed from page content\nhide:\n- toc\n---\n",
     "html": "<pre><span></span><code>---\ntags:\n  - a tag\ntoc_depth: 2\ntitle: some docs need explicit titles set b/c they can't be correctly guessed from page content\nhide:\n- toc\n---\n</code></pre>",
     "language": ""
@@ -1194,41 +1229,6 @@
     "page_url": "../../ourtools/features/",
     "text": "TypeError: '<' not supported between instances of 'NoneType' and 'str'\nERROR   -  [14:46:28] An error happened during the rebuild. The server will appear\n           stuck until build errors are resolved.\n",
     "html": "<pre><span></span><code>TypeError:<span class=\"w\"> </span><span class=\"s1\">'&lt;'</span><span class=\"w\"> </span>not<span class=\"w\"> </span>supported<span class=\"w\"> </span>between<span class=\"w\"> </span>instances<span class=\"w\"> </span>of<span class=\"w\"> </span><span class=\"s1\">'NoneType'</span><span class=\"w\"> </span>and<span class=\"w\"> </span><span class=\"s1\">'str'</span>\nERROR<span class=\"w\">   </span>-<span class=\"w\">  </span><span class=\"o\">[</span><span class=\"m\">14</span>:46:28<span class=\"o\">]</span><span class=\"w\"> </span>An<span class=\"w\"> </span>error<span class=\"w\"> </span>happened<span class=\"w\"> </span>during<span class=\"w\"> </span>the<span class=\"w\"> </span>rebuild.<span class=\"w\"> </span>The<span class=\"w\"> </span>server<span class=\"w\"> </span>will<span class=\"w\"> </span>appear\n<span class=\"w\">           </span>stuck<span class=\"w\"> </span><span class=\"k\">until</span><span class=\"w\"> </span>build<span class=\"w\"> </span>errors<span class=\"w\"> </span>are<span class=\"w\"> </span>resolved.\n</code></pre>",
-    "language": ""
-  },
-  {
-    "page_name": "Handy Features",
-    "page_url": "../../ourtools/features/",
-    "text": "Contents for Mac users\n",
-    "html": "<pre><span></span><code>Contents for Mac users\n</code></pre>",
-    "language": ""
-  },
-  {
-    "page_name": "Handy Features",
-    "page_url": "../../ourtools/features/",
-    "text": "Contents for Mac users\n",
-    "html": "<pre><span></span><code>Contents for Mac users\n</code></pre>",
-    "language": ""
-  },
-  {
-    "page_name": "Handy Features",
-    "page_url": "../../ourtools/features/",
-    "text": "#include <iostream>\n\nint main() {\nstd::cout << \"Hello World!\";\nreturn 0;\n}\n",
-    "html": "<pre><span></span><code><span class=\"cp\">#include</span><span class=\"w\"> </span><span class=\"cpf\">&lt;iostream&gt;</span>\n\n<span class=\"kt\">int</span><span class=\"w\"> </span><span class=\"nf\">main</span><span class=\"p\">()</span><span class=\"w\"> </span><span class=\"p\">{</span>\n<span class=\"n\">std</span><span class=\"o\">::</span><span class=\"n\">cout</span><span class=\"w\"> </span><span class=\"o\">&lt;&lt;</span><span class=\"w\"> </span><span class=\"s\">\"Hello World!\"</span><span class=\"p\">;</span>\n<span class=\"k\">return</span><span class=\"w\"> </span><span class=\"mi\">0</span><span class=\"p\">;</span>\n<span class=\"p\">}</span>\n</code></pre>",
-    "language": ""
-  },
-  {
-    "page_name": "Handy Features",
-    "page_url": "../../ourtools/features/",
-    "text": "print('Hello, world!')\n",
-    "html": "<pre><span></span><code><span class=\"nb\">print</span><span class=\"p\">(</span><span class=\"s1\">'Hello, world!'</span><span class=\"p\">)</span>\n</code></pre>",
-    "language": ""
-  },
-  {
-    "page_name": "Handy Features",
-    "page_url": "../../ourtools/features/",
-    "text": "usage()\n{\necho \"Usage: $0 [-h] \"\necho \"Displays all defined QOS with nice formatting.\"\necho \"Caution, this script may not show all fields relevant/used in future.\"\necho \"    -h     |--help        display usage\"\n}\n",
-    "html": "<pre><span></span><code>usage<span class=\"o\">()</span>\n<span class=\"o\">{</span>\n<span class=\"nb\">echo</span><span class=\"w\"> </span><span class=\"s2\">\"Usage: </span><span class=\"nv\">$0</span><span class=\"s2\"> [-h] \"</span>\n<span class=\"nb\">echo</span><span class=\"w\"> </span><span class=\"s2\">\"Displays all defined QOS with nice formatting.\"</span>\n<span class=\"nb\">echo</span><span class=\"w\"> </span><span class=\"s2\">\"Caution, this script may not show all fields relevant/used in future.\"</span>\n<span class=\"nb\">echo</span><span class=\"w\"> </span><span class=\"s2\">\"    -h     |--help        display usage\"</span>\n<span class=\"o\">}</span>\n</code></pre>",
     "language": ""
   },
   {

@@ -5545,10 +5545,12 @@ and replace operations, but that has to be done one file at a time.)</li>
 <li><a href="../../images/jade-path-summary-table.pdf">Summary of JADE paths &amp; their purposes</a> - one page PDF
 chart. A reference document for all JADE users for the long run. Contains summary of what kind of data
 is best for each location. Read this before the next document below.</li>
-<li><a href="../images/jade-path-summary-table-cms.pdf">Summary of path changes for CMS users</a> - one page PDF chart. Side-by-side comparison of C-SUB &amp; JADE. Mentions accommodations to hide most path changes.</li>
+<li><a href="../images/jade-path-summary-table-cms.pdf">Summary of path changes for CMS users</a> - one page PDF chart. Side-by-side comparison of C-SUB &amp; JADE. Mentions accommodations to hide most path changes. <mark class="critic">You will need to read
+    this.</mark></li>
 <li><a href="../images/paths-csub-to-jade.pdf">Text description of data locations</a> what to use
 them for, and specific changes C-SUB users need to make. Only describes paths. A
-reference document. Was written first.</li>
+reference document. Was written first. Best description of why locations were
+created.</li>
 </ul>
 <!-- ------------------------------------------------------------------------->
 <div class="admonition tip">
@@ -5582,9 +5584,9 @@ E.g. <code>/transfer/in/&lt;comm&gt;/&lt;cdua&gt;/&lt;username&gt;/</code><br>
 <mark class="critic">If you have been using the C-SUB, you are a member of the "CMS community" on JADE.</mark></p>
 <p>There are three communities (so far) in JADE. Each one has a unique name
 and a single character equivalent. You will see both appear in cluster
-configuration, such as the first letter of a username (c-jhedid-dua), 
-in paths to files (/transfer/in/cms/) and in names of SLURM partitions
-(c-shared, c-sas).</p>
+configuration, such as the first letter of a username (<code>c-jhedid-dua</code>), 
+in paths to files (<code>/transfer/in/cms/</code>) and in names of SLURM partitions
+(<code>c-shared</code>, <code>c-sas</code>).</p>
 <div class="highlight"><pre><span></span><code>Character<span class="w">       </span>Name
 ----------<span class="w">      </span>----------<span class="w"> </span>
 c<span class="w">               </span>cms
@@ -5633,11 +5635,13 @@ reflection upon the design lessons learned from the C-SUB implementation, has
 resulted in a variety of path changes.  <strong>We have created symbolic links in
 various locations to allow many (but not all) paths that were valid in the C-SUB
 to continue to work in JADE.</strong></p>
-<p>There are four things you might need to change in SLURM batch job scripts:
+<p>There are four things you might need to change in SLURM batch job
+scripts:<br>
 (1) paths involving data,<br>
 (2) paths involving your home directory,<br> 
-(2) SLURM partition names (i.e. "sas" to "c-sas" or "lau" to "c-lau"),<br>
-(4) optionally changing standard output and error paths <a href="#slurmout">described here</a>.</p>
+(2) SLURM partition names (i.e. "sas" to "c-sas" or "lau" to "c-lau"),
+<a href="#partition-names">described here</a>, <br>
+(4) optionally changing SLURM standard output and error paths <a href="#slurmout">described here</a>.</p>
 <p><mark class="critic">We have a document explaining how to replace strings in files
 programmatically, on the command line, using <a href="../sed-tips-jade/">the sed
 utility</a>.</mark></p>
@@ -5681,18 +5685,40 @@ PI-specific private partition was named "lau".</p>
 <p>In JADE, each community now has its own default partition. The CMS default is
 named "c-shared". Also, "sas" was renamed to be "c-sas" and "lau" was
 renamed to be "c-lau".</p>
+<table>
+<thead>
+<tr>
+<th>C-SUB</th>
+<th>JADE</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>cms</td>
+<td>c-shared</td>
+</tr>
+<tr>
+<td>sas</td>
+<td>c-sas</td>
+</tr>
+<tr>
+<td>lau</td>
+<td>c-lau</td>
+</tr>
+</tbody>
+</table>
 <p>If you do not specify a partition when submitting an interactive or batch
 job, then it is assigned to the cluster's default partition. Because the C-SUB
 contained very few SLURM partitions, we expect that very few batch jobs
 explicitly specified "cms".</p>
 <p><mark class="critic">We have added a modification to your home directory to accomodate the change
-in the name of the CMS community's default partition.</mark> The file
-<code>~/.slurm/defaults</code> contains a line specifying "c-shared" as the default.</p>
+in the name of the CMS community's default partition.</mark> <strong>The file
+<code>~/.slurm/defaults</code> contains a line specifying "c-shared" as the default.</strong></p>
 <p>The command <code>slurmpic -a</code> will show you all of the currently defined nodes
 and partition names. (<code>scontrol show node &lt;node_name&gt;</code> will show you all of
 the info about a particular node, and <code>scontrol show partition
 &lt;partition_name&gt;</code> will display the full partition definition.)</p>
-<p>We have a document explaining how to replace strings in documents
+<p>We have a document explaining how to replace strings in documents using <code>sed</code>
 <a href="../sed-tips-jade/">here</a>.</p>
 </details>
 <!-- ------------------------------------------------------------------------->
@@ -5734,17 +5760,17 @@ error" content.  You can change the default behavior using the following
 <code>#SBATCH</code> directives in your job script or command-line options when 
 submitting jobs: <code>--output=&lt;filename_pattern&gt;</code> and, if you want to break out
 output from error, <code>--error=&lt;filename_pattern&gt;</code>.</p>
-<p>You can specify your choices in three places, in ascending priority: </p>
+<p>You may want your output/error files to appear next to the data files, as a
+form of documentation. But you have to have write ability on the enclosing
+directory, and you may also view these files as transient. The <code>~/slurmout/</code>
+directory might be useful to you, at least for some jobs.
+You can specify your choices in three places, in ascending priority: </p>
 <ol>
 <li>~/.slurm/defaults -- with a line like:
   <code>sbatch:*:output=~/slurmout/%j.out</code> (%j is replaced with the jobID)</li>
 <li>in a batch script -- using <code>#SBATCH --output=&lt;filename_pattern&gt;</code></li>
 <li>on the command line -- as mentioned above</li>
 </ol>
-<p>You may want your output/error files to appear next to the data files, as a
-form of documentation. But you have to have write ability on the enclosing
-directory, and you may also view these files as transient. The <code>~/slurmout/</code>
-directory might be useful to you, at least for some jobs.</p>
 </details>
 <!-- ------------------------------------------------------------------------->
 <details class="danger">
@@ -5841,6 +5867,7 @@ except the user. Which is the way it should be.)</li>
 <mark class="critic">The mailing list to reach all CMS users in a cluster has changed.</mark></p>
 <p>C-SUB: c-sub-users@lists.jh.edu<br>
 JADE: jade-cms-users@lists.jh.edu</p>
+<p>This is a moderated list. CMS users are also members of the jhpceuser@lists.jh.edu mailing list.</p>
 </details>
 <!-- ------------------------------------------------------------------------->
 <details class="info">
@@ -5902,7 +5929,7 @@ To convert, add a "j" and change the leading "1" to "0".</p>
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="January 9, 2026 22:45:55 UTC">January 9, 2026</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="January 10, 2026 05:23:27 UTC">January 10, 2026</span>
   </span>
 
     
