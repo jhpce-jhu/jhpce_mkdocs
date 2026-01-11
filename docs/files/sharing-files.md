@@ -36,20 +36,24 @@ Here are some other tutorials you can read:
 Out of the basic information on this topic, these are some particular details you should understand. 
 
 **umask**
-: umask is a variable which controls the permissions assigned to files and directories that you create. You have a default umask, which can be changed for future logins if you change your `.bashrc` file. You can change the current umask at any time before you do run some commands. More guidance is included later in this document. The Wikipedia page for [umask](https://en.wikipedia.org/wiki/Umask) is helpful. 
+: The `umask` command is used to manipulate this variable's value. One's *umask* is a variable which controls the permissions assigned to files and directories that you create. You have a default umask, which can be changed for future logins if you change your `.bashrc` file. You can change the current umask at any time before you do run some commands. (That setting disappears when you exit your shell, by, say, logging out.) More guidance is included later in this document. The Wikipedia page for [umask](https://en.wikipedia.org/wiki/Umask) is helpful. 
+
+**permission bits**
+: The `chmod` command is used to manipulate these file attributes. There are nine basic permission "bits" for files and directories. There is a group of three each for *owner*, *group*, and *other*. The common values for these bits are the characters 'r' for *read*, 'w' for *write*, and 'x' for either *execute*"* (on a file) or *search* (on a directory). There are octal (base 8) number equivalents for these values (4, 2 and 1 respectively), which can be added together to create a single number which represents the values of all of the three bits. A file which is readable (4) & writable (2) would have a value of 6.
+
+![The Basics](images/unix-permissions.png)
 
 **re-use of permission bits**
-: There are nine basic permission bits for files and directories. Three each for owner, group, and other. As UNIX developed and new capabilities were needed, the authors added one more bit (used for setuid and setgid), then started adding multiple meanings to some bits. This is shown by the letter (and its capitalization) used to represent it in the output of the `ls -l` command.
-
-: 
+: As UNIX developed and new capabilities were needed, the authors added one more bit (used for setuid and setgid), then started adding multiple meanings to some bits. This is shown by the letter (and its capitalization) used to represent it in the output of the `ls -l` command.
 
 **read and execute bits on directories**
-: The role of the read and execute bits on directories is somewhat different than that on files.  A directory is essentially a special kind of file, containing details about its contents. So you need to be able to read the directory in order to list its contents. On a directory, the execute bit means "search" or "traverse"
+: The role of the read and execute bits on directories is somewhat different than that on files.  A directory is essentially a special kind of file, containing details about the files within it. Having *read* permissions on a directory allows you to list the files therein, even if you cannot read them. Having *execute* permissions on a directory allows you to traverse or descend through the directory into subdirectories. 
 
-: Users _must_ have appropriate permissions on ALL of the parts of a path needed to reach a final file or directory. They don't need to be able to modify all of the parent directories, but they have to be able to descend through the tree of directories.
+**Permissions on the entire absolute path matter**
+: An *absolute path* is one that begins with the forward slash. {==Users _must_ have appropriate permissions on ALL of the parts of a path needed to reach a final file or directory.==} They don't need to be able to modify any or all of the parent directories, but they have to be able to descend through the tree of directories. Every parent directory 
 
-: **/dcs07/somegroup/data/src/compile.py**
-: An example absolute path composed of four directories and a file. You cannot read the file unless the four directories and the file have appropriate permissions and group memberships. You can only modify the file if you have write permission on it. You can create other files in the same directory only if the `src` directory has the necessary writable bit enabled.
+**/dcs07/somegroup/data/src/compile.py**
+: An example *absolute path* composed of four directories and a file. You cannot read the file unless the four directories and the file have appropriate permissions and group memberships. You can only modify the file if you have write permission on it. You can create other files in the same directory as `compile.py` only if the `src` directory has the necessary writable bit enabled.
 
 ### UNIX Commands To Know
 
@@ -77,7 +81,7 @@ Only some of the arguments needed are shown in this table.
 
 ## Access Control Lists - ACLs
 
-Sometimes you want to give access to an individual or a group in ways that the traditional UNIX permissions and ownership model do not allow. You can use an ACL to grant those permissions, including 
+Sometimes you want to give access to an individual or a group in ways that the traditional UNIX permissions and ownership model do not allow. You can use an ACL to grant those permissions. 
 
 See [this document](acl.md) for details on how to do this.
 
@@ -110,9 +114,6 @@ If you and your recipient are members of some common group other than the defaul
 
 
 ### Group Writable Directories
-
-!!! Warning "Authoring Note"
-    Most remaining work on this page lies below this point. Above here what is missing is mainly some example command output.
     
 Every file or directory has an owner and a group. Every user has a primary group, and can belong to one or more secondary groups.
 
@@ -128,7 +129,7 @@ find . -type d | xargs chmod u+rwx,g+rwx,g+s,o-rwx
 find . -type f | xargs chmod u+rwx,g+rw,o-rwx
 ```
 
-This version adds arguements to `find` and `xargs` which handle the case where files or directory names contain evil, no-good, awful characters like white space, quote marks, or backslashes:
+This version adds arguements to `find` and `xargs` which handle the case where files or directory names contain evil, no-good, awful characters like white space, quote marks, or backslashes. macOS and Windows encourage the use of such characters in filenames. Using them in UNIX only creates an endless set of challenges for yourself.
 
 ```Shell
 cd into-the-top-of-the-directory-tree

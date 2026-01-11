@@ -87,7 +87,7 @@ Numerous others, including [pie](https://mermaid.js.org/syntax/pie.html), bar an
 ??? Warning "Only some types officially supported by Material for MkDocs"
     Besides the diagram types listed above, Mermaid.js provides support for pie charts, gantt charts, user journeys, git graphs and requirement diagrams, all of which are not officially supported by Material for MkDocs. Those diagrams should still work as advertised by Mermaid.js, but we don't consider them a good choice, mostly as they don't work well on mobile. While all Mermaid.js features should work out-of-the-box, Material for MkDocs will currently only adjust the fonts and colors for flowcharts, sequence diagrams, class diagrams, state diagrams and entity relationship diagrams.
 
-## Admonitions
+## Admonitions (vertically open-by-default colored blocks)
 (These don't render correctly in MacDown.app)
 
 Admonitions are a kind of code block which begins with three
@@ -129,7 +129,7 @@ warning.  Here is a [list](https://squidfunk.github.io/mkdocs-material/reference
     sacct -s F -o "user,jobid,state,nodelist,start,end,exitcode" -S noon -E now
     ```
 
-## Details (collapsed blocks)
+## Details (vertically collapsed-by-default colored blocks)
 (These don't render correctly in MacDown.app)
 
 Details are a kind of code block which begins with three
@@ -166,7 +166,7 @@ Documentation [here](https://facelessuser.github.io/pymdown-extensions/extension
 You can probably include [code blocks](#fenced-code-blocks) inside of detail
 blocks like you can with admonitions.
 
-## Content Tabs
+## Content Tabs (horizontally collapsed colored tabs)
 (These don't render correctly in MacDown.app)
 
 Tabs are a kind of code block which begins with three
@@ -272,7 +272,7 @@ e.g. "in-progress" or "needs-correcting".
 
 The beginning of a document can contain a special section called "frontmatter".
 The directives placed here can impact how the page is rendered
-and how the page is dealt with inside the website. 
+and how the page is dealt with inside the website. (Frontmatter is not a MarkDown standard, it was added as an enhancement.)
 
 An example of changing the appearance of the page is to control how many levels 
 of a page's sections are included in a Table of Contents. An example of changing
@@ -291,7 +291,7 @@ them. Example:
 ```
 ---
 tags:
-  - a tag
+  - a-tag
 toc_depth: 2
 title: some docs need explicit titles set b/c they can't be correctly guessed from page content
 hide:
@@ -304,7 +304,7 @@ You can add an automatically-generated Table of Contents to a page by inserting
 at any point "[TOC]". The TOC material will also be shown as a new sidebar on the
 right side. An optional directive can be placed in the frontmatter to control how
 many levels of indentation are displayed. (A directive in the mkdocs.yml file
-controls how many levels are shown in the navigation bar.)
+controls how many levels are shown in the navigation bar. Entries can be made in the *frontmatter* section to control how toc's are handled, such as hiding them or specifying a document-specific depth level.)
 
 ## Tags
 An example of frontmatter is the code to [add tags](https://squidfunk.github.io/mkdocs-material/setup/setting-up-tags/) to documents. 20240211 I tested adding a tag and it works. I tried to create a page which made a list of tags and the pages which used them using a particular string. (On 20251220 I cannot remember if it worked or not. I thought that it did work. But we no longer see the tags on pages, so perhaps whatever change hid the tags also prevents the tag-generation code fail.) See comments in mkdocs.yml's nav section for notes.
@@ -436,7 +436,7 @@ The HTML specification is maintained by the W3C.
 ## Glossary
 There's a way to create a document which is automatically updated when people define abbrieviations. See the wishlist document for details. Currently we have a manually written glossary, because that was quicker, and allows for the explanation to be longer than many page authors would probably provide in their individual pages.
 
-## Definition List
+## Definition List (Indenting blocks of text for a topic)
 You can create an indented block of text using a colon followed by FOUR space characters.
 
 Example code and result:
