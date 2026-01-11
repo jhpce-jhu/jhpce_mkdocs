@@ -1115,8 +1115,8 @@
   {
     "page_name": "Handy Features",
     "page_url": "../../ourtools/features/",
-    "text": "---\ntags:\n  - a tag\ntoc_depth: 2\ntitle: some docs need explicit titles set b/c they can't be correctly guessed from page content\nhide:\n- toc\n---\n",
-    "html": "<pre><span></span><code>---\ntags:\n  - a tag\ntoc_depth: 2\ntitle: some docs need explicit titles set b/c they can't be correctly guessed from page content\nhide:\n- toc\n---\n</code></pre>",
+    "text": "---\ntags:\n  - a-tag\ntoc_depth: 2\ntitle: some docs need explicit titles set b/c they can't be correctly guessed from page content\nhide:\n- toc\n---\n",
+    "html": "<pre><span></span><code>---\ntags:\n  - a-tag\ntoc_depth: 2\ntitle: some docs need explicit titles set b/c they can't be correctly guessed from page content\nhide:\n- toc\n---\n</code></pre>",
     "language": ""
   },
   {
