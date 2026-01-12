@@ -1929,6 +1929,8 @@
         
   
   
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0 8a5 5 0 0 1-5-5 5 5 0 0 1 5-5 5 5 0 0 1 5 5 5 5 0 0 1-5 5m0-12.5C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5c-1.73-4.39-6-7.5-11-7.5"/></svg>
+  
   <span class="md-ellipsis">
     
   
@@ -2252,15 +2254,15 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#a-nest-of-symbolic-links" class="md-nav__link">
+  <a href="#a-nest-of-redirecting-symbolic-links" class="md-nav__link">
     <span class="md-ellipsis">
       
-        (A Nest of) Symbolic Links
+        (A Nest of) Redirecting Symbolic Links
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="(A Nest of) Symbolic Links">
+    <nav class="md-nav" aria-label="(A Nest of) Redirecting Symbolic Links">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -2291,15 +2293,15 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#pushd-popd-and-dirs-commands" class="md-nav__link">
+  <a href="#the-pushd-popd-and-dirs-commands" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Pushd, Popd and Dirs Commands
+        The Pushd, Popd and Dirs Commands
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Pushd, Popd and Dirs Commands">
+    <nav class="md-nav" aria-label="The Pushd, Popd and Dirs Commands">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -4249,15 +4251,15 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#a-nest-of-symbolic-links" class="md-nav__link">
+  <a href="#a-nest-of-redirecting-symbolic-links" class="md-nav__link">
     <span class="md-ellipsis">
       
-        (A Nest of) Symbolic Links
+        (A Nest of) Redirecting Symbolic Links
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="(A Nest of) Symbolic Links">
+    <nav class="md-nav" aria-label="(A Nest of) Redirecting Symbolic Links">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -4288,15 +4290,15 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#pushd-popd-and-dirs-commands" class="md-nav__link">
+  <a href="#the-pushd-popd-and-dirs-commands" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Pushd, Popd and Dirs Commands
+        The Pushd, Popd and Dirs Commands
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Pushd, Popd and Dirs Commands">
+    <nav class="md-nav" aria-label="The Pushd, Popd and Dirs Commands">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -5661,15 +5663,15 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#a-nest-of-symbolic-links" class="md-nav__link">
+  <a href="#a-nest-of-redirecting-symbolic-links" class="md-nav__link">
     <span class="md-ellipsis">
       
-        (A Nest of) Symbolic Links
+        (A Nest of) Redirecting Symbolic Links
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="(A Nest of) Symbolic Links">
+    <nav class="md-nav" aria-label="(A Nest of) Redirecting Symbolic Links">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -5700,15 +5702,15 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#pushd-popd-and-dirs-commands" class="md-nav__link">
+  <a href="#the-pushd-popd-and-dirs-commands" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Pushd, Popd and Dirs Commands
+        The Pushd, Popd and Dirs Commands
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Pushd, Popd and Dirs Commands">
+    <nav class="md-nav" aria-label="The Pushd, Popd and Dirs Commands">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -5745,40 +5747,71 @@
 
 
 <h1 id="navigating-deep-directory-trees"><strong>Navigating Deep Directory Trees</strong><a class="headerlink" href="#navigating-deep-directory-trees" title="Anchor link to this section for reference">&para;</a></h1>
-<p>Many researchers use directory and file names to create logical structures of significant complexity to organize their files.  The complexity increases over time as new projects and data sets come along. Long file or directory names are used to make things as self-obvious as possible.</p>
-<p>It can be a hassle to move around quickly and efficiently between directories you are frequently using. </p>
-<p>If you have to switch between two directories with long paths, these two techniques can make life better.</p>
-<h2 id="a-nest-of-symbolic-links"><strong>(A Nest of) Symbolic Links</strong><a class="headerlink" href="#a-nest-of-symbolic-links" title="Anchor link to this section for reference">&para;</a></h2>
-<h3 id="tldr"><strong>TL;DR</strong><a class="headerlink" href="#tldr" title="Anchor link to this section for reference">&para;</a></h3>
+<p>Everyone on a computer use directory and file names to create logical structures
+to hold their files. Researchers can create complex and/or numerous directories
+to organize their files as new projects and data sets come along. Long file or
+directory names are used to make things as self-obvious as possible.</p>
+<p>Over time one winds up needing to work with files in widely scattered directories.</p>
+<p>It can be a hassle to move around quickly and efficiently between
+frequently-used directories with long names. Typing everything out every time is
+tiresome and error-prone.</p>
+<p>These two techniques can make life on the command line better:</p>
 <ol>
-<li>Create a directory with a short name in your home directory</li>
+<li>A "redirect" directory of symbolic links</li>
+<li>The commands <code>pushd</code>, <code>popd</code> and <code>dirs</code></li>
+</ol>
+<h2 id="a-nest-of-redirecting-symbolic-links"><strong>(A Nest of) Redirecting Symbolic Links</strong><a class="headerlink" href="#a-nest-of-redirecting-symbolic-links" title="Anchor link to this section for reference">&para;</a></h2>
+<h3 id="tldr"><strong>TL;DR</strong><a class="headerlink" href="#tldr" title="Anchor link to this section for reference">&para;</a></h3>
+<p>Create a directory of aliases pointing to far-flung files or directories.</p>
+<ol>
+<li>Create a directory with a short name in your home directory.</li>
 <li>Place symbolic links in that directory to files or directories. The target objects can be located all around the file system.</li>
-<li>Use the tilde symbol (<span class="keys"><kbd class="key-tilde">~</kbd></span>) and the short directory name to quickly refer to this directory (no matter where you are located in the file system)</li>
+<li>Use the tilde symbol (<span class="keys"><kbd class="key-tilde">~</kbd></span>), a forward slash, and your short redirect
+directory name to quickly refer to this directory (no matter where you are
+currently located in the file system), e.g. <code>~/redir/</code></li>
 <li>Now you can edit a far-away file or cd to a far-away directory using a <em>very short path</em>.</li>
-<li>You can keep the name you use to refer to the object unchanged even if you change the symbolic link to point to a different object, e.g. <code>~/r/current-project</code></li>
+<li>You can keep the name you use to refer to the object unchanged even if you
+change the symbolic link to point to a different object, e.g. <code>~/redir/my-current-project</code></li>
 </ol>
 <h3 id="explanation-and-examples"><strong>Explanation and examples</strong><a class="headerlink" href="#explanation-and-examples" title="Anchor link to this section for reference">&para;</a></h3>
-<p>A symbolic link is a special kind of file which points at another file. Also known as symlinks. The symbolic link takes up almost no space. It is not a copy of the original file.</p>
-<p>You can refer to the symbolic link and in most cases the results will be the same as if you specified the original file. (Warning: some commands treat symbolic links in ways you might not expect: cp, rm, rsync, tar Their man pages will discuss how they treat symlinks.)</p>
+<p>A <em>symbolic link</em> is a special kind of file which points at another file or a
+directory. Also known as symlinks. The symbolic link takes up almost no space.
+It is not a copy of the original file. Deleting the symlink does not delete the
+file being pointed to. This alias does not have to have the same name as the
+target object.</p>
+<p>You can refer to the symbolic link and in most cases the results will be the
+same as if you specified the original file. The most frequent change you will
+need to make in your normal habits is, if you want to list the contents of
+a symbolic link which points to a directory, you will need to add a trailing
+forward slash. (Warning: some commands treat symbolic links in ways you might
+not expect: cp, rm, rsync, tar. They may or may not by default operate on the
+symbolic link itself, or on the target object. Each of their
+man pages will discuss how they treat symlinks.)</p>
 <p>You create a symlink like this:</p>
 <p><code>ln –s realfile newname</code></p>
 <p>The resulting files when listed with <code>ls –l</code>:</p>
 <div class="highlight"><pre><span></span><code>lrwxr-xr-x<span class="w">  </span><span class="m">1</span><span class="w"> </span>tunison<span class="w">  </span>wheel<span class="w">  </span><span class="m">8</span><span class="w"> </span>Jan<span class="w"> </span><span class="m">11</span><span class="w"> </span><span class="m">10</span>:12<span class="w"> </span>newname@<span class="w"> </span>-&gt;<span class="w"> </span>realfile
--rw-r--r--<span class="w">  </span><span class="m">1</span><span class="w"> </span>tunison<span class="w">  </span>wheel<span class="w">  </span><span class="m">0</span><span class="w"> </span>Jan<span class="w"> </span><span class="m">11</span><span class="w"> </span><span class="m">10</span>:11<span class="w"> </span>realfile
+-rw-r--r--<span class="w">  </span><span class="m">1</span><span class="w"> </span>tunison<span class="w">  </span>wheel<span class="w">  </span><span class="m">1386</span><span class="w"> </span>Jan<span class="w"> </span><span class="m">11</span><span class="w"> </span><span class="m">10</span>:11<span class="w"> </span>realfile
 </code></pre></div>
-<p>So a way to make use of symlinks is to create a directory of them, and refer to those when doing things like changing directories. I use the following scheme myself. You can name your directory whatever you want, such as “redirect” instead of the shorter ”r”.</p>
+<p>So a way to make use of symlinks is to create a directory of them, and refer to
+those when doing things like changing directories. I use the following scheme
+myself. You can name your directory whatever you want, such as "redir" or “redirect”
+instead of the shorter ”r” shown here.</p>
 <div class="highlight"><pre><span></span><code>mkdir<span class="w"> </span>~/r
 <span class="nb">cd</span><span class="w"> </span>~/r
 ln<span class="w"> </span>–s<span class="w"> </span>/cms01/data/puf-free/VERICRED/2019<span class="w"> </span>v2019
-ln<span class="w"> </span>–s<span class="w"> </span>/cms01/incoming/c-myjhed-98765<span class="w"> </span><span class="k">in</span>
-ln<span class="w"> </span>–s<span class="w"> </span>~/mycode/thatlanguage/src/yes-i-wrote-it<span class="w"> </span>pride-n-joy
+ln<span class="w"> </span>–s<span class="w"> </span>/transfer/in/c-myjhed-98765<span class="w"> </span>incoming
+ln<span class="w"> </span>–s<span class="w"> </span>~/mycode/thatlanguage/src/analyze-cancer<span class="w"> </span>mynobelprize
+ln<span class="w"> </span>–s<span class="w"> </span>~/notes/2026/fall-semester/september-worklog.txt<span class="w"> </span>worklog.txt
 </code></pre></div>
-<p>Now you can use the symlinks named “v2019”, “in” “pride-n-joy” instead of the longer real directory names.</p>
-<p>You can change directory with <code>cd ~/r/in</code> and you will wind up in <code>/cms01/incoming/c-myjhed-98765</code> </p>
-<p>Or, You can copy downloaded source code into your home directory with</p>
-<p><code>cp ~/r/in/pkg-3.2.tar ~/mycode/thatlanguage/src/</code></p>
-<p>Of course, symbolic links can point to files instead of directories, so you can also place in your "nest" symlinks to files while still leaving the original in the "right" location. This way you don't need to consume the space of having two copies AND you can easily edit the single copy of the file and not have to keep two copies synchronized.</p>
-<h2 id="pushd-popd-and-dirs-commands"><strong>Pushd, Popd and Dirs Commands</strong><a class="headerlink" href="#pushd-popd-and-dirs-commands" title="Anchor link to this section for reference">&para;</a></h2>
+<p>Now you can use these names in your commands instead of the longer real directory names:
+<div class="highlight"><pre><span></span><code>cd ~/r/v2019
+vi ~/r/worklog.txt
+</code></pre></div>
+And, when October 2026 rolls around, you can delete the symlink
+<code>~/r/worklog.txt</code> and point it at the new file (because in this example you're trying to keep
+your lab notes in single month increments).</p>
+<h2 id="the-pushd-popd-and-dirs-commands"><strong>The Pushd, Popd and Dirs Commands</strong><a class="headerlink" href="#the-pushd-popd-and-dirs-commands" title="Anchor link to this section for reference">&para;</a></h2>
 <p>If you’re repeatedly working in several directories and don’t need to open multiple windows to look at them simultaneously, these commands allow you to switch rapidly between them. They use a “stack” data structure. Think of a stack as a pile of plates in a cafeteria. When you want one, you usually take the one from the top. Then a fresh one is exposed. You’ve “popped” a plate from the stack. If you “push” three plates onto the stack, then the stack is deeper. You can access the top plate easily, but in this case you can also get at the third plate down.</p>
 <p>Here is a representation of pushing elements onto a stack, and then popping them off again:</p>
 <p><img alt="Image title" src="../images/dir-stack-push-pop.png" /></p>
@@ -5846,7 +5879,7 @@ alias po=&#39;popd&#39;
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="April 23, 2024 16:22:00 UTC">April 23, 2024</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="January 12, 2026 03:56:19 UTC">January 12, 2026</span>
   </span>
 
     

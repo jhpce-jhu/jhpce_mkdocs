@@ -429,15 +429,22 @@
   {
     "page_name": "Navigating Deep Directory Trees",
     "page_url": "../../files/deep-paths/",
-    "text": "lrwxr-xr-x\u00a0 1 tunison\u00a0 wheel\u00a0 8 Jan 11 10:12 newname@ -> realfile\n-rw-r--r--\u00a0 1 tunison\u00a0 wheel\u00a0 0 Jan 11 10:11 realfile\n",
-    "html": "<pre><span></span><code>lrwxr-xr-x<span class=\"w\">\u00a0 </span><span class=\"m\">1</span><span class=\"w\"> </span>tunison<span class=\"w\">\u00a0 </span>wheel<span class=\"w\">\u00a0 </span><span class=\"m\">8</span><span class=\"w\"> </span>Jan<span class=\"w\"> </span><span class=\"m\">11</span><span class=\"w\"> </span><span class=\"m\">10</span>:12<span class=\"w\"> </span>newname@<span class=\"w\"> </span>-&gt;<span class=\"w\"> </span>realfile\n-rw-r--r--<span class=\"w\">\u00a0 </span><span class=\"m\">1</span><span class=\"w\"> </span>tunison<span class=\"w\">\u00a0 </span>wheel<span class=\"w\">\u00a0 </span><span class=\"m\">0</span><span class=\"w\"> </span>Jan<span class=\"w\"> </span><span class=\"m\">11</span><span class=\"w\"> </span><span class=\"m\">10</span>:11<span class=\"w\"> </span>realfile\n</code></pre>",
+    "text": "lrwxr-xr-x\u00a0 1 tunison\u00a0 wheel\u00a0 8 Jan 11 10:12 newname@ -> realfile\n-rw-r--r--\u00a0 1 tunison\u00a0 wheel\u00a0 1386 Jan 11 10:11 realfile\n",
+    "html": "<pre><span></span><code>lrwxr-xr-x<span class=\"w\">\u00a0 </span><span class=\"m\">1</span><span class=\"w\"> </span>tunison<span class=\"w\">\u00a0 </span>wheel<span class=\"w\">\u00a0 </span><span class=\"m\">8</span><span class=\"w\"> </span>Jan<span class=\"w\"> </span><span class=\"m\">11</span><span class=\"w\"> </span><span class=\"m\">10</span>:12<span class=\"w\"> </span>newname@<span class=\"w\"> </span>-&gt;<span class=\"w\"> </span>realfile\n-rw-r--r--<span class=\"w\">\u00a0 </span><span class=\"m\">1</span><span class=\"w\"> </span>tunison<span class=\"w\">\u00a0 </span>wheel<span class=\"w\">\u00a0 </span><span class=\"m\">1386</span><span class=\"w\"> </span>Jan<span class=\"w\"> </span><span class=\"m\">11</span><span class=\"w\"> </span><span class=\"m\">10</span>:11<span class=\"w\"> </span>realfile\n</code></pre>",
     "language": ""
   },
   {
     "page_name": "Navigating Deep Directory Trees",
     "page_url": "../../files/deep-paths/",
-    "text": "mkdir ~/r\ncd ~/r\nln \u2013s /cms01/data/puf-free/VERICRED/2019 v2019\nln \u2013s /cms01/incoming/c-myjhed-98765 in\nln \u2013s ~/mycode/thatlanguage/src/yes-i-wrote-it pride-n-joy\n",
-    "html": "<pre><span></span><code>mkdir<span class=\"w\"> </span>~/r\n<span class=\"nb\">cd</span><span class=\"w\"> </span>~/r\nln<span class=\"w\"> </span>\u2013s<span class=\"w\"> </span>/cms01/data/puf-free/VERICRED/2019<span class=\"w\"> </span>v2019\nln<span class=\"w\"> </span>\u2013s<span class=\"w\"> </span>/cms01/incoming/c-myjhed-98765<span class=\"w\"> </span><span class=\"k\">in</span>\nln<span class=\"w\"> </span>\u2013s<span class=\"w\"> </span>~/mycode/thatlanguage/src/yes-i-wrote-it<span class=\"w\"> </span>pride-n-joy\n</code></pre>",
+    "text": "mkdir ~/r\ncd ~/r\nln \u2013s /cms01/data/puf-free/VERICRED/2019 v2019\nln \u2013s /transfer/in/c-myjhed-98765 incoming\nln \u2013s ~/mycode/thatlanguage/src/analyze-cancer mynobelprize\nln \u2013s ~/notes/2026/fall-semester/september-worklog.txt worklog.txt\n",
+    "html": "<pre><span></span><code>mkdir<span class=\"w\"> </span>~/r\n<span class=\"nb\">cd</span><span class=\"w\"> </span>~/r\nln<span class=\"w\"> </span>\u2013s<span class=\"w\"> </span>/cms01/data/puf-free/VERICRED/2019<span class=\"w\"> </span>v2019\nln<span class=\"w\"> </span>\u2013s<span class=\"w\"> </span>/transfer/in/c-myjhed-98765<span class=\"w\"> </span>incoming\nln<span class=\"w\"> </span>\u2013s<span class=\"w\"> </span>~/mycode/thatlanguage/src/analyze-cancer<span class=\"w\"> </span>mynobelprize\nln<span class=\"w\"> </span>\u2013s<span class=\"w\"> </span>~/notes/2026/fall-semester/september-worklog.txt<span class=\"w\"> </span>worklog.txt\n</code></pre>",
+    "language": ""
+  },
+  {
+    "page_name": "Navigating Deep Directory Trees",
+    "page_url": "../../files/deep-paths/",
+    "text": "cd ~/r/v2019\nvi ~/r/worklog.txt\n",
+    "html": "<pre><span></span><code>cd ~/r/v2019\nvi ~/r/worklog.txt\n</code></pre>",
     "language": ""
   },
   {
