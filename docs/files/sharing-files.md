@@ -41,19 +41,39 @@ Out of the basic information on this topic, these are some particular details yo
 **permission bits**
 : The `chmod` command is used to manipulate these file attributes. There are nine basic permission "bits" for files and directories. There is a group of three each for *owner*, *group*, and *other*. The common values for these bits are the characters 'r' for *read*, 'w' for *write*, and 'x' for either *execute*"* (on a file) or *search* (on a directory). There are octal (base 8) number equivalents for these values (4, 2 and 1 respectively), which can be added together to create a single number which represents the values of all of the three bits. A file which is readable (4) & writable (2) would have a value of 6.
 
-![The Basics](images/unix-permissions.png)
+![The Basics](images/unix-permissions-small.png)
 
 **re-use of permission bits**
 : As UNIX developed and new capabilities were needed, the authors added one more bit (used for setuid and setgid), then started adding multiple meanings to some bits. This is shown by the letter (and its capitalization) used to represent it in the output of the `ls -l` command.
 
 **read and execute bits on directories**
-: The role of the read and execute bits on directories is somewhat different than that on files.  A directory is essentially a special kind of file, containing details about the files within it. Having *read* permissions on a directory allows you to list the files therein, even if you cannot read them. Having *execute* permissions on a directory allows you to traverse or descend through the directory into subdirectories. 
+: The role of the read and execute bits on directories is different than that on
+files.  A directory is essentially a special kind of file, containing details
+about the files within it (file metadata). <br><br> Having **read** permissions on a
+directory allows you to list the files therein, whether or not you can read them
+(because of their individual permissions).  You cannot `cd` into the
+directory.<br><br> Having **execute** permissions on a directory allows you to enter
+the directory, as well as traverse or descend through the directory into
+subdirectories.<br><br> Having **write** permissions on a directory allows you
+to create, rename or delete files within it, but only if the execute bit is set.
 
 **Permissions on the entire absolute path matter**
-: An *absolute path* is one that begins with the forward slash. {==Users _must_ have appropriate permissions on ALL of the parts of a path needed to reach a final file or directory.==} They don't need to be able to modify any or all of the parent directories, but they have to be able to descend through the tree of directories. Every parent directory 
+: An *absolute path* is one that begins with the forward slash. {==Users _must_
+have appropriate permissions on ALL of the parts of a path needed to reach a
+final file or directory.==} They don't need to be able to modify any or all of
+the parent directories, but they have to be able to descend through the tree of
+directories. Every parent directory needs to have its *execute* bit set. The
+immediate parent directory containing the file you want to inspect has to be
+readable by your account. Of course, directories should normally have both
+*reade* and *execute* bits set for the owner, group, or other.
 
-**/dcs07/somegroup/data/src/compile.py**
-: An example *absolute path* composed of four directories and a file. You cannot read the file unless the four directories and the file have appropriate permissions and group memberships. You can only modify the file if you have write permission on it. You can create other files in the same directory as `compile.py` only if the `src` directory has the necessary writable bit enabled.
+**Example absolute path - /dcs07/somegroup/data/src/compile.py**
+: This example is composed of four directories and a file. You cannot read the
+file `compile.py` unless the four directories and the file have appropriate
+permissions and group memberships. You can only modify the file if you have
+write permission on it. You can create other files in the same directory as
+`compile.py` only if the `src` directory has the necessary writable and
+executable bits enabled.
 
 ### UNIX Commands To Know
 

@@ -347,7 +347,9 @@ extra:
 # This follows the .gitignore pattern format
 # (https://www.mkdocs.org/user-guide/configuration/#exclude_docs)
 # (https://git-scm.com/docs/gitignore#_pattern_format)
-exclude_docs: drafts
+exclude_docs: |
+  drafts
+  file/images/drafts
 #
 # https://www.mkdocs.org/user-guide/configuration/#validation
 validation:
