@@ -24,7 +24,7 @@ Where members of each community can login from:
     Hopkins VPN & campus networks
 
 === "dbGaP Users"
-    [SAFE Desktop](#SAFE-desktop) or [SAFER Desktop](#safer-desktop)
+    [SAFE Desktop](#safe-desktop) or [SAFER Desktop](#safer-desktop)
 
 === "Sysadmin Users"
     Hopkins VPN & campus networks & SAFE
