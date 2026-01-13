@@ -123,7 +123,7 @@ We have a web server named [jhpce-app02.jhsph.edu](https://jhpce-app02.jhsph.edu
 * Inspect a catalog of research databases (under development) ([learn more](../../portal/datacatalog.md))
 -->
 
-## SAFE and SAFER Desktops
+## SAFE Desktops
 The SAFE Desktop was created by the School of Medicine to enable secure
 computing that involved sensitive (PHI, PII) information. The [Research
 IT](https://researchit.jhu.edu/about-rit/) group has been creating a more secure
