@@ -24,7 +24,7 @@ Where members of each community can login from:
     Hopkins VPN & campus networks
 
 === "dbGaP Users"
-    [SAFE Desktop](#safe-desktop) or [SAFER Desktop](#safer-desktop)
+    [SAFE Desktop](#SAFE-desktop) or [SAFER Desktop](#safer-desktop)
 
 === "Sysadmin Users"
     Hopkins VPN & campus networks & SAFE
@@ -123,7 +123,7 @@ We have a web server named [jhpce-app02.jhsph.edu](https://jhpce-app02.jhsph.edu
 * Inspect a catalog of research databases (under development) ([learn more](../../portal/datacatalog.md))
 -->
 
-## SAFE Desktops
+## SAFE Desktop
 The SAFE Desktop was created by the School of Medicine to enable secure
 computing that involved sensitive (PHI, PII) information. The [Research
 IT](https://researchit.jhu.edu/about-rit/) group has been creating a more secure
@@ -141,6 +141,7 @@ SAFE (the [Secure Analytic Framework
 Environment](https://researchit.jhu.edu/safer/) is free (students need faculty
 sponsorship), and comes with 100GB of disk space. You can complete the [SAFE User form](https://johnshopkins.service-now.com/serviceportal?id=sc_cat_item&sys_id=61fa28a26ffb220088e1f13f5d3ee45e) to request an account. We recommend using the "Request a SAFE Desktop (no storage) option if you will be just using the SAFE desktop to access JHPCE or JADE.
 
+## SAFER Desktop
 SAFER (the [Secure Analytic Framework Environment for
 Research](https://researchit.jhu.edu/safer/)) is provisioned using commercial
 cloud providers. They offer several different models with varying capabilities.
