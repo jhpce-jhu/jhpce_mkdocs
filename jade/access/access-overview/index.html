@@ -5469,7 +5469,7 @@ Desktops. </p>
 <p><a href="#safe-desktop">SAFE Desktop</a> or <a href="#safer-desktop">SAFER Desktop</a></p>
 </div>
 <div class="tabbed-block">
-<p>Hopkins VPN &amp; campus networks</p>
+<p>Hopkins VPN &amp; campus networks &amp; SAFE</p>
 </div>
 </div>
 </div>
@@ -5487,13 +5487,12 @@ password</a> (OTP) six digit code. </p>
 <p>These programs are usually used on smartphones, but there are programs available to create them on laptops and desktops. The key with using ANY OTP program is to get it from a trusted source. We will default to mentioning the <code>Google Authenticator</code>.</p>
 <p>After you log into JHPCE for the first time, you should immediately configure your OTP program using a "secret" accessible to you on the cluster via the <code>auth_util</code> program. Instructions for doing that are found in the <a href="https://docs.google.com/presentation/d/1elMSTUdKws7FLVFK7vVV_AErA4brNSPX/pub" target="_blank">orientation documents</a>.</p>
 <p>cluster consists of some public-facing hosts with the remaining computers "behind them" on private networks. An incomplete and very oversimplified approximation:</p>
-<p><pre class="mermaid"><code>graph TD
+<pre class="mermaid"><code>graph TD
    U[CMS User - Your computer] --&gt; D[Hopkins/VPN] --&gt; B[Login nodes]
    V[dbGaP User - Your computer] --&gt; S[SAFE Desktop] --&gt; B[Login nodes]
    B([Login nodes]) --&gt; E[Compute node1]
    B([Login nodes]) --&gt; F[Compute node2]
    B([Login nodes]) --&gt; G[Compute node3]</code></pre>
----!&gt;</p>
 <h2 id="public-facing-login-and-transfer">Public-facing: Login and Transfer<a class="headerlink" href="#public-facing-login-and-transfer" title="Anchor link to this section for reference">&para;</a></h2>
 <p>The login and transfer nodes are accessible to the wider Internet. 
 For security reasons, the web portal is only available to computers on Hopkins networks. If you are not on a Hopkins campus, that means that you need to use the VPN to be able to see that node.</p>
@@ -5590,7 +5589,7 @@ This computer also offers a Globus Endpoint service (described
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="January 13, 2026 21:01:39 UTC">January 13, 2026</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="January 13, 2026 21:11:20 UTC">January 13, 2026</span>
   </span>
 
     
