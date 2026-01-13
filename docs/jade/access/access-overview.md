@@ -54,22 +54,16 @@ After you log into JHPCE for the first time, you should immediately configure yo
 
 cluster consists of some public-facing hosts with the remaining computers "behind them" on private networks. An incomplete and very oversimplified approximation:
 
-<!--
 
 ```mermaid
 graph TD
-   A[Your computer] --> B([Login nodes])
-   A[Your computer] -- Only via Hopkins/VPN --> D((Web Portal))
-   A[Your computer] --> C([Transfer node])
+   U[CMS User - Your computer] --> D[Hopkins/VPN] --> B[Login nodes]
+   V[dbGaP User - Your computer] --> S[SAFE Desktop] --> B[Login nodes]
    B([Login nodes]) --> E[Compute node1]
-   D((Web Portal)) --> E[Compute node1]
    B([Login nodes]) --> F[Compute node2]
-   D((Web Portal)) --> F[Compute node2]
    B([Login nodes]) --> G[Compute node3]
-   D((Web Portal)) --> G[Compute node3]
-   C([Transfer node]) <--> H[(storage servers)]
 ```
--->
+---!>
 
 ## Public-facing: Login and Transfer 
 The login and transfer nodes are accessible to the wider Internet. 
@@ -145,7 +139,7 @@ days before the request is fulfilled, so please plan ahead.
 
 SAFE (the [Secure Analytic Framework
 Environment](https://researchit.jhu.edu/safer/) is free (students need faculty
-sponsorship), and comes with 100GB of disk space.
+sponsorship), and comes with 100GB of disk space. You can complete the [SAFE User form](https://johnshopkins.service-now.com/serviceportal?id=sc_cat_item&sys_id=61fa28a26ffb220088e1f13f5d3ee45e) to request an account. We recommend using the "Request a SAFE Desktop (no storage) option if you will be just using the SAFE desktop to access JHPCE or JADE.
 
 SAFER (the [Secure Analytic Framework Environment for
 Research](https://researchit.jhu.edu/safer/)) is provisioned using commercial
