@@ -6838,7 +6838,12 @@ libGL error: failed to load driver: swrast
 </code></pre><pre><span></span><code>$ ssh -X username@jhpce01.jhsph.edu -o ForwardX11Timeout=336h
 </code></pre><pre><span></span><code>$ head -1 .ssh/config
 ForwardX11Timeout=0
-</code></pre><h2><a class="heading" href="../jade/transition/deltas-cms-details/">Change details</a></h2><a class="url" href="../jade/transition/deltas-cms-details/">jade/transition/deltas-cms-details/</a><pre><span></span><code>Character<span class="w">       </span>Name
+</code></pre><h2><a class="heading" href="../jade/access/access-overview/">Overview</a></h2><a class="url" href="../jade/access/access-overview/">jade/access/access-overview/</a><pre class="mermaid"><code>graph TD
+   U[CMS User - Your computer] --&gt; D[Hopkins/VPN] --&gt; B[Login nodes]
+   V[dbGaP User - Your computer] --&gt; S[SAFE Desktop] --&gt; B[Login nodes]
+   B([Login nodes]) --&gt; E[Compute node1]
+   B([Login nodes]) --&gt; F[Compute node2]
+   B([Login nodes]) --&gt; G[Compute node3]</code></pre><h2><a class="heading" href="../jade/transition/deltas-cms-details/">Change details</a></h2><a class="url" href="../jade/transition/deltas-cms-details/">jade/transition/deltas-cms-details/</a><pre><span></span><code>Character<span class="w">       </span>Name
 ----------<span class="w">      </span>----------<span class="w"> </span>
 c<span class="w">               </span>cms
 d<span class="w">               </span>dbgap

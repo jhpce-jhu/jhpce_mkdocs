@@ -917,6 +917,13 @@
     "language": ""
   },
   {
+    "page_name": "Overview",
+    "page_url": "../../jade/access/access-overview/",
+    "text": "graph TD\n   U[CMS User - Your computer] --> D[Hopkins/VPN] --> B[Login nodes]\n   V[dbGaP User - Your computer] --> S[SAFE Desktop] --> B[Login nodes]\n   B([Login nodes]) --> E[Compute node1]\n   B([Login nodes]) --> F[Compute node2]\n   B([Login nodes]) --> G[Compute node3]",
+    "html": "<pre class=\"mermaid\"><code>graph TD\n   U[CMS User - Your computer] --&gt; D[Hopkins/VPN] --&gt; B[Login nodes]\n   V[dbGaP User - Your computer] --&gt; S[SAFE Desktop] --&gt; B[Login nodes]\n   B([Login nodes]) --&gt; E[Compute node1]\n   B([Login nodes]) --&gt; F[Compute node2]\n   B([Login nodes]) --&gt; G[Compute node3]</code></pre>",
+    "language": "mermaid"
+  },
+  {
     "page_name": "Change details",
     "page_url": "../../jade/transition/deltas-cms-details/",
     "text": "Character       Name\n----------      ---------- \nc               cms\nd               dbgap\ns               sysadmin\n",
