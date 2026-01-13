@@ -27,7 +27,7 @@ Where members of each community can login from:
     [SAFE Desktop](#safe-desktop) or [SAFER Desktop](#safer-desktop)
 
 === "Sysadmin Users"
-    Hopkins VPN & campus networks
+    Hopkins VPN & campus networks & SAFE
 
 
 ## Network Diagram
@@ -63,7 +63,7 @@ graph TD
    B([Login nodes]) --> F[Compute node2]
    B([Login nodes]) --> G[Compute node3]
 ```
----!>
+
 
 ## Public-facing: Login and Transfer 
 The login and transfer nodes are accessible to the wider Internet. 
