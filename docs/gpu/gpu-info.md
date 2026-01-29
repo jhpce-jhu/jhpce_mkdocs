@@ -94,6 +94,8 @@ the various models of GPUS:
 <tr><td>Nvidia L40S with 46GB RAM</td><td>l40s</td></tr>
 </table></center>
 
+There are also different time limits set on the various GPU partitions that you should be aware of, as outlined in [our partitions page](/slurm/partitions/#gpu-partitions).
+
 NVIDIA assigns different "Computing Capability" values to each GPU model. These values can be found [here](https://developer.nvidia.com/cuda-gpus), and help one determine what the GPU is capable of doing. Details can be found [here](https://docs.nvidia.com/cuda/cuda-c-programming-guide/index.html#compute-capabilities). Specific descriptions for each generation as well as some specific CUDA routines to use with each are here: [7.x](https://docs.nvidia.com/cuda/cuda-c-programming-guide/index.html#compute-capability-7-x), [8.x](https://docs.nvidia.com/cuda/cuda-c-programming-guide/index.html#compute-capability-8-x), and [9.x](https://docs.nvidia.com/cuda/cuda-c-programming-guide/index.html#compute-capability-9-0)
 
 <center><table>
