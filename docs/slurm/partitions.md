@@ -129,5 +129,5 @@ Limits for CPU cores, RAM and Time (default/maximum)
 | caracol | PI | yes | (none) | (none) | (none) | (none/90d) | Lieber |
 | neuron | PI | yes | (none) | (none) | (none) | (none/90d) | |
 | bstgpu | PI | yes | (none) | (none) | (none) | (none/90d) | bst=biostatistics |
-| bstgpu2 | PI | yes | (none) | (none) | (none) | (none/90d) | bst=biostatistics |
+| bstgpu2 | PI | yes | (none) | (none) | (none) | (1d/7d) | bst=biostatistics |
 | bstgpu3 | PI | yes | (none) | (none) | (none) | (none/90d) | bst=biostatistics |
