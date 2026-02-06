@@ -9,24 +9,32 @@ tags:
     Before defining ACLs, you should first read [our document about sharing files](..//files/sharing-files.md) for necessary background concepts and skills.
 
 Traditional Unix file and group permissions can be used to share
-access to files and directories.  However, there can be times when
-more fine-grained control of shared access is needed. To accomplish
-this, Access Control Lists (ACLs) can be used. They *add* to the normal permissions, not replace them. ACLs and permissions can interact in unexpected ways.
+access to files and directories.  However, there are often times when
+finer-grained control of shared access is needed. Access Control Lists (ACLs) can be used to provide the necessary access. ACL's *add* to the normal permissions, not replace them. 
+
+Permissions and ACLs of all of the directories **"above"** any level will, of course, impact the ability of a user to get down to a file or directory you're focused upon.
+
+ACLs and permissions can interact in unexpected ways, for example depending on the order in which they were applied. Careful inspection & testing is always required. 
+
+Examples are provided later in this document. Any single command is meaningless unless viewed in context provided by inspecting files/directories with `ls -ld` and `nfs4_getfacl` commands.
+    
+## **ACL Commands**
 
 ??? "ZFS versus Lustre: If you are working in /dcl02/ click here..."
-    JHPCE uses two kinds of file systems on its large storage servers: **ZFS** and **Lustre**. A different pair of ACL commands is used for each type.
+    JHPCE historically used two kinds of file systems on its large storage servers: **ZFS** and **Lustre**. A different pair of ACL commands is used for each type.
 
-    As of March 2024, the only Lustre file systems are those which begin with the path `/dcl02/` **For these file systems, use getfacl and setfacl.**
+    ** As of February 2026, we have retired `/dcl01/` and `/dcl02/` Lustre file systems and all users should use **nfs4_getfacl** and **nfs4_setfacl**. **
     
-    For *everything else*, use **nfs4_getfacl** and **nfs4_setfacl**. (All of the files originally found on the Lustre file server named DCL01 have been copied off to live on other, ZFS-using file servers. But the name /dcl01 has been preserved, for convenience.)
+    Lustre file systems required the use of `getfacl` and `setfacl`.
+    
+    Now all Lustre `/dcl01/` and `/dcl02/` file systems have been migrated to non-Lustre ZFS file systems which begin with `/legacy-dcl0*`.
+    
+    Historical instructions for Lustre file systems are found [later in this document](../files/acl.md#acls-in-lustre-file-systems).
 
-    Instructions for Lustre file systems are found [later in this document](../files/acl.md#acls-in-lustre-file-systems).
-
-## **ACL Commands**
 
 An Access Control List is a series of ***Access Control Entry*** (ACE) rules associated with a file or directory.
 
-These rules are displayed and manipulated by two commands:
+These ACE rules are displayed and manipulated by two commands:
 
 **nfs4_getfacl**
 : Display the ACL of a file or directory.
@@ -40,7 +48,7 @@ These rules are displayed and manipulated by two commands:
 * **--test** - Display the results of applying, but do not actually change
 * **-R** - Appy the command recursively[^2]
 
-[^1]: The editor `vi` will be used unless you set a variable to specify a different one, e.g. `export EDITOR /usr/bin/nanon` (which you can add to your ~/.bashrc file for the future). Many people don't know how to use `vi` If you need to quit from vi, use these keystrokes in order: ++escape++ ++colon++ q ++enter++
+[^1]: The command line editor `vi` will be used unless you set a variable to specify a different one, e.g. `export EDITOR /usr/bin/nano` for a command line editor or `export EDITOR /usr/bin/gedit` for a graphic user interface editor. Many people don't know how to use `vi`. If you need to quit from vi, use these keystrokes in order: ++escape++ ++colon++ q ++enter++
 
 [^2]: You may not want to apply some ACEs recursively, because files and directories can need different rules. See [this section](#applying-acls-recursively) for a technique to apply changes to only files or only directories.
 
@@ -64,16 +72,15 @@ All parts are required for every operation, though the `[flags]` section may be 
 : **fdi** - If present, this set of flags mean that the ACE is to be inherited.
 
 **principal**
-: The principal is the *entity* to which the ACE applies.
-: A key thing to know is that JHPCE uses a *Kerberos* database to store user and group information, and that our *NFSv4* (Network File System, version 4) file systems look to that Kerberos database for ownership and permission information. Kerberos databases can hold information for one or more *domains*. JHPCE only contains one domain and that is "cm.cluster"
+: The principal is the *entity* to which the ACE applies. These include user, group and everyone, either specific (a username) or generic (`OWNER@`). See below.
+: A key thing to know is that JHPCE uses a *Kerberos* database to store user and group information for all of our clusters, and that our *NFSv4* (Network File System, version 4) file systems look to that Kerberos database for ownership and permission information. Kerberos databases can hold information for one or more *domains*. JHPCE-maintained clusters only contains one domain and that is "cm.cluster"
 : **entity@domain** – Therefore our user and group principals have the form of **name@cm.cluster** If you fail to provide the full name for a principal, your ACL commands will fail.
 : **OWNER@** – This special principal refers to the owner of the file/directory. It must always be present. This means every file must have an @OWNER ACE in its ACL.
 : **GROUP@** – This special principal refers to the default group of a file. It must always be present. This means every file must have an GROUP@ ACE in its ACL.
 : **EVERYONE@** – This is a special catch-all principal which applies to any entity that is not matched by any of the above. Think of this as equivalent to “other” (aka “world”) in the traditional UNIX/Linux permissions model.
 
 **permissions**
-!!! Note
-    Needs to be written
+These can be combinations of the capitalized letters R, W, and X, or combinations of single letters like "rwaDxtTcCy", which are described in[this section](#ace-flags-explained). 
 
 ## **Important Big-Picture Notes and Suggestions**
 
@@ -81,7 +88,7 @@ All parts are required for every operation, though the `[flags]` section may be 
 
 + ACLs can be used on both files and directories. As with normal permissions, settings on files can have different impacts than those on directories (e.g. the X execute bit or default inheritance settings).
 + You can tell that a file or directory has an ACL defined by the presence of a ++plus++ symbol in the output of `ls -l` or `ls -ld`
-+ Every file or directory appears to have an ACL if inspected with `nfs4+getfacl`.  This is just a representation of the basic UNIX ownership and permissions. When we speak in this document about adding an ACL we're talking about adding an ACE to those default values.
++ Every file or directory appears to have an ACL if inspected with `nfs4_getfacl`.  This is just a representation of the basic UNIX ownership and permissions. When we speak in this document about adding an ACL we're talking about adding an ACE to those default values.
 + Making changes with normal commands like `chmod` and `chown` will impact what you see if you inspect the ACL afterwards.
 + If you want to change something about the special principals `OWNER@`, `GROUP@`, and `EVERYONE@`you probably want to do that with normal commands, not `nfs4_setfacl`
 + {==User's *umask* settings impact the permissions assigned to files and directories being created==} whether you are using traditional UNIX permissions or ACLs.
@@ -93,10 +100,11 @@ All parts are required for every operation, though the `[flags]` section may be 
 ### Suggestions
 
 + **Use normal UNIX permissions where possible.** ACLs can be complex to manage. Use ACLs to *extend* normal permissions.
++ Before making any changes, we urge you to strongly consider capturing the original configuration using commands like `ls -lR directoryname > saved-listing.txt` for normal UNIX permissions and `nfs4_getfacl --recursive directoryname > saved-acls.txt`  Run these on the directory above where you intend to begin making changes.
 + ACLs should use the security notion of “least privilege”, meaning that ACLs should give only the needed access and nothing more.
 + By default if an ACL does not allow something, that permission is denied. ACEs that start with an "A" are "Allow ACEs", those that start with a "D" are "Deny ACEs". Avoid using "Deny ACEs" -- they increase the chances of something not working as expected.
 + Like any operation, commands modifying ACL commands on large numbers of files should be run on a compute node and not a login node. Long-running recursive ACL commands on large directory trees may be done via interactive sessions or submitted batch job scripts.
-+ Check the values of files and directories before, during, and after changing their permissions or defining ACLs. Use both `ls -l` and `nfs4_getfacl` to get the full picture. Test what happens afterwards. Don't change many files at once until you are confident that your commands are correct. You can capture the original configuration using commands like `ls -lR directoryname > saved-listing.txt` for normal UNIX permissions and `nfs4_getfacl --recursive directoryname > saved-acls.txt`
++ Check the values of files and directories before, during, and after changing their permissions or defining ACLs. Use both `ls -ld` and `nfs4_getfacl` to get the full picture. Test what happens afterwards. Don't change many files at once until you are confident that your commands are correct.
 
 ### Default or inherited ACLs on Directories
 + "Default" ACLs can be set on a directory, and this ACL will be _inherited_ into the directory structure as new files and subdirectories are created. You might need to create different "default" ACLs to control the creation of new files and others to control the creation of new subdirectories.
@@ -105,7 +113,7 @@ All parts are required for every operation, though the `[flags]` section may be 
 ## **ACLs in ZFS File Systems**
 
 ### Basic commands
-There are 2 commands for dealing with ACLs in file systems like `/users`, `/dcl01`, `/dcs04`, `/dcs05`, `/dcs06`, and `/dcs07`. 
+There are 2 commands for dealing with ACLs in file systems like `/users`, `/dcs04`, `/dcs05`, `/dcs06`, etcetera.
 
 + `nfs4_getfacl` - display current ACL setting
 + `nfs4_setfacl` - modify ACLs.  
@@ -147,7 +155,7 @@ If you see the string "fdi", that indicates that the ACE is a "default" or "inhe
 
 ```Shell
 [alice@compute-123 ~]$ nfs4_setfacl -a A::bob@cm.cluster:RX .
-[alice@compute-123 ~]$ getfacl .
+[alice@compute-123 ~]$ nfs4_getfacl .
 # file: .
 A::OWNER@:rwaDxtTcCy
 A::bob@cm.cluster:xtcy
