@@ -1,5 +1,5 @@
 
-FY2026Q2 compute rates
+FY2026Q2 compute rates per queue/partition
 ```
                queue rate $/GBhr
               bstgpu   0.009500
