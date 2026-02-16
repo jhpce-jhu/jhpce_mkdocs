@@ -1,5 +1,19 @@
 [
   {
+    "page_name": "FY2026Q2 Rates",
+    "page_url": "../../aboutus/FY2026Q2-Rates/",
+    "text": "               queue rate $/GBhr\n              bstgpu   0.009500\n             bstgpu2   0.348383\n             bstgpu3   0.021246\n           cancergen   0.015340\n                 cee   0.002740\n                 cms   0.029435\n                 gee   0.042140\n                 gpu   0.023292\n            gpu-test   0.016318\n             hongkai   0.014177\n         interactive   0.178071\n  interactive-larger   0.018221\n               katun   0.021532\n                 lau   0.009510\n               momme   0.004371\n              neuron   0.005008\n             rocky96   0.122510\n                 sas   0.061865\n            scavenge   0.008873\n              shared   0.011499\n                 sql   1.432010\n             stanley   0.039102\n            sysadmin  16.655000\n            transfer   0.000000\n",
+    "html": "<pre><span></span><code>               queue rate $/GBhr\n              bstgpu   0.009500\n             bstgpu2   0.348383\n             bstgpu3   0.021246\n           cancergen   0.015340\n                 cee   0.002740\n                 cms   0.029435\n                 gee   0.042140\n                 gpu   0.023292\n            gpu-test   0.016318\n             hongkai   0.014177\n         interactive   0.178071\n  interactive-larger   0.018221\n               katun   0.021532\n                 lau   0.009510\n               momme   0.004371\n              neuron   0.005008\n             rocky96   0.122510\n                 sas   0.061865\n            scavenge   0.008873\n              shared   0.011499\n                 sql   1.432010\n             stanley   0.039102\n            sysadmin  16.655000\n            transfer   0.000000\n</code></pre>",
+    "language": ""
+  },
+  {
+    "page_name": "FY2026Q2 Rates",
+    "page_url": "../../aboutus/FY2026Q2-Rates/",
+    "text": "dcs04-legacy      17.80\ndcs04             29.00\ndcs05             23.60\ndcs05-legacy      10.40\ndcs07             25.40\ndcs08   /users/  418.40\ndcs10-legacy       7.90\ndcs10             23.60\n",
+    "html": "<pre><span></span><code>dcs04-legacy      17.80\ndcs04             29.00\ndcs05             23.60\ndcs05-legacy      10.40\ndcs07             25.40\ndcs08   /users/  418.40\ndcs10-legacy       7.90\ndcs10             23.60\n</code></pre>",
+    "language": ""
+  },
+  {
     "page_name": "Overview",
     "page_url": "../../access/access-overview/",
     "text": "graph TD\n   A[Your computer] --> B([Login nodes])\n   A[Your computer] -- Only via Hopkins/VPN --> D((Web Portal))\n   A[Your computer] --> C([Transfer node])\n   B([Login nodes]) --> E[Compute node1]\n   D((Web Portal)) --> E[Compute node1]\n   B([Login nodes]) --> F[Compute node2]\n   D((Web Portal)) --> F[Compute node2]\n   B([Login nodes]) --> G[Compute node3]\n   D((Web Portal)) --> G[Compute node3]\n   C([Transfer node]) <--> H[(storage servers)]",
