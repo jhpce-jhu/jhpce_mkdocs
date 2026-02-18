@@ -5171,6 +5171,17 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#transfer-file-system" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        /transfer file system
+      
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -5525,6 +5536,17 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#transfer-file-system" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        /transfer file system
+      
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -5544,15 +5566,22 @@
 
 <h1 id="sftp-transfers-into-and-out-of-jade">SFTP Transfers Into and Out of JADE<a class="headerlink" href="#sftp-transfers-into-and-out-of-jade" title="Anchor link to this section for reference">&para;</a></h1>
 <h2 id="overview">Overview<a class="headerlink" href="#overview" title="Anchor link to this section for reference">&para;</a></h2>
+<p>A primary directive for JADE is that Controlled Unclassified Information (CUI) is not allowed to leave the cluster unless we can log the essential details, which are: which user transferred which file at what time.</p>
+<p>SFTP was chosen as the primary command to allow because we can configure allowed data locations, control which commands are executed, and log transfers at the appropriate level. JADE serves multiple communities, each of which can have unique data movement requirements. (In particular, the "cms" community must have specific users approve each outbound file on behalf of the file's owner.)</p>
+<p>SFTP transfers are only allowed to be initiated from outside of JADE (so the connections are controlled by the SSH configuration files on the JADE server). Therefore the <code>scp</code> and <code>sftp</code> programs are not executable by users. This does not prevent users from installing their own copies. Any user who does so then bears the legal responsibility of the consequences if CUI files are found out on the Internet which came from JADE.</p>
 <h2 id="ports">Ports<a class="headerlink" href="#ports" title="Anchor link to this section for reference">&para;</a></h2>
+<p>JADE supports multiple communities of users. To date we have been assigning two specific TCP/IP ports to each community, one for inbound and one for outbound transfers. (This is required to implement the aforementioned SSH configuration options.)</p>
 <ul>
-<li>22011</li>
-<li>22027</li>
-<li>22311</li>
-<li>22327</li>
-<li>22511</li>
-<li>22527</li>
+<li>port number - community, direction</li>
+<li>22011 - cms, inbound</li>
+<li>22027 - cms, outbound</li>
+<li>22311 - sysadmin, inbound</li>
+<li>22327 - sysadmin, outbound</li>
+<li>22511 - dbgap, inbound</li>
+<li>22527 - dbgap, outbound</li>
 </ul>
+<h2 id="transfer-file-system">/transfer file system<a class="headerlink" href="#transfer-file-system" title="Anchor link to this section for reference">&para;</a></h2>
+<p>CMS users connecting to their ports, are placed by the SFTP server configuration, in specific directories: <code>/transfer/in/cms/</code> and <code>/transfer/out/cms/</code>.  Their directories are found below that starting point.</p>
 
 
 
@@ -5573,7 +5602,7 @@
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="December 21, 2025 09:02:39 UTC">December 21, 2025</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="February 18, 2026 00:46:15 UTC">February 18, 2026</span>
   </span>
 
     
