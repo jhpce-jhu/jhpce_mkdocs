@@ -19,6 +19,10 @@ JADE supports multiple communities of users. To date we have been assigning two 
 * port number - community, direction
 * 22011 - cms, inbound
 * 22027 - cms, outbound
+* 22111 - misc, inbound
+* 22127 - misc, outbound
+* 22211 - nist800171, inbound
+* 22227 - nist800171, outbound
 * 22311 - sysadmin, inbound
 * 22327 - sysadmin, outbound
 * 22511 - dbgap, inbound
