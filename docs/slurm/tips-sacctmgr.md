@@ -169,12 +169,16 @@ There are a number of variants of some categories of parameters -- by user, by g
 ```
 # Define a QOS which will limit a user to 25 running jobs with a max of 25 more pending
 # This QOS won't change any behavior until it is added to a partition or association etc
+# JADE: Always start a QOS name with the letter of the community it is to apply to.
 sacctmgr -i add qos job-25run50sub
 
 # You MUST define these flags for the QOS to work as expected
 # We limit all partitions to 10,000 jobs per user
 sacctmgr -i modify qos job-25run50sub set flags=DenyOnLimit,OverPartQOS
 sacctmgr -i modify qos job-25run50sub set MaxSubmitJobsPU=10000
+
+# Limit each user to 100 CPU and 512GB (you must specify RAM in megabytes):
+sacctmgr modify qos shared-default set MaxTRESPerUser=mem=524288 MaxTRESPerUser=cpu=100
 
 # Add the job-limiting arguments 
 sacctmgr -i modify qos job-25run50sub set MaxJobsPerUser=25 MaxSubmitJobsPerUser=50
@@ -185,9 +189,6 @@ sacctmgr modify qos job-25run50sub set MaxJobsPerUser=-1
 # Delete the QOS (they can't be renamed!!)
 sacctmgr -i delete qos job-25run50sub
 
-# Limit each user to 100 CPU and 512GB (you must specify RAM in megabytes):
-sacctmgr modify qos shared-default set MaxTRESPerUser=mem=524288 MaxTRESPerUser=cpu=100
-
 # Limit the amount of a Trackable RESource
 sacctmgr modify qos public-gpu-limit set MaxTRESPerUser=gres/gpu=4
 
@@ -196,15 +197,19 @@ sacctmgr modify qos cms-larger set MaxWall=1-0
 
 # Limit each user to one of: a pending or running job.
 # Limit whole cluster to running 1 job with up to one more pending
-# This means only one job using this QOS can run in the whole cluster. To put a lid on things. If you include MaxJobsPA=1 then no second user can submit
-#
+# This means only one job using this QOS can run in the whole cluster. To put a lid
+# on things. If you include MaxJobsPA=1 then no second user can submit
+# JADE: Note that this cluster has one account per community, so we can now
+# control how many jobs a community can run
 sacctmgr modify qos cms-larger set MaxJobsPerUser=1 MaxSubmitJobsPerUser=1  MaxSubmitJobsPA=2
 
-# You cannot rename a QOS, so you have to delete the old name -- be aware that jobs might be using it!!!
-sacctmgr delete qos qosname
+# You cannot rename a QOS, so you have to delete the old name -- be aware that jobs might
+# be using it!!! (You also may not be allowed to delete it while it is still included in
+# a `partitions.conf` configuration.)
+sacctmgr delete qos <qosname>
 ```
 
-### TRES
+### TRES (Trackable RESources)
 
 Display TRES (Trackable RESources) (will be different on each cluster).
 We can add TRES items to the default list, and need to do so for, for example, each model of GPU card found in the cluster.
