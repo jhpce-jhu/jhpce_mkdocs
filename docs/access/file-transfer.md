@@ -139,8 +139,11 @@ Below are the steps to setting up Cyberduck on your local MacOS system:
 - You will be prompted for your Verification Code and Password
 - At this point you will see your JHPCE home directory displayed, and you can drag-and-drop files between your Mac and the JHPCE cluster.
 
-One last note - we stronly recommend setting up SSH Keys [SSH key pairs](ssh.md#ssh-keys). Without keys, you will 
-be prompted for your verification code and password for each file you transfer.
+One last note - we stronly recommend setting up SSH Keys [SSH key pairs](ssh.md#ssh-keys). Without keys, you will be prompted for your verification code and password for each file you transfer.
+
+Update 2026-03-03: There is a way to configure Cyberduck so that it will not prompt you for each transfer without keys. You can go into Cyberduck settings, and under Transfers->General, set the "Transfer Files" option to "Use browser connection" instead of "Open Multiple Connections"
+![cyberduck-transfer-without-keys](images/Cyberduck3.png)
+
 
 ### SCP
 
