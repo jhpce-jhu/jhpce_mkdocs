@@ -141,7 +141,7 @@ Below are the steps to setting up Cyberduck on your local MacOS system:
 
 One last note - we stronly recommend setting up SSH Keys [SSH key pairs](ssh.md#ssh-keys). Without keys, you will be prompted for your verification code and password for each file you transfer.
 
-Update 2026-03-03: There is a way to configure Cyberduck so that it will not prompt you for each transfer without keys. You can go into Cyberduck settings, and under Transfers->General, set the "Transfer Files" option to "Use browser connection" instead of "Open Multiple Connections"
+**Update 2026-03-03:** There is a way to configure Cyberduck so that it will not prompt you for each transfer without keys. You can go into Cyberduck settings, and under Transfers->General, set the "Transfer Files" option to "Use browser connection" instead of "Open Multiple Connections"
 ![cyberduck-transfer-without-keys](images/Cyberduck3.png)
 
 
