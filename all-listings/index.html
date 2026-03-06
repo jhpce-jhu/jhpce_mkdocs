@@ -2548,6 +2548,8 @@
       
         
       
+        
+      
     
     
     
@@ -3077,6 +3079,34 @@
     
   
     Helpful GUI Programs
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../sw/codex/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Using OpenAI codex
   
 
     
@@ -7887,7 +7917,7 @@ relaunch Chromium.
 </code></pre><pre><span></span><code>/bin/rm -rf ~/.cache/chromium
 /bin/rm -rf ~/.config/chromium
 </code></pre><pre><span></span><code>mv<span class="w"> </span>~/.config/chromium<span class="w"> </span>~/.config/chromium-locked
-</code></pre><h2><a class="heading" href="../sw/codex/">Codex Session Transcript</a></h2><a class="url" href="../sw/codex/">sw/codex/</a><pre><span></span><code><span class="gp">[user@jhpce01 ~]$ </span>srun<span class="w"> </span>--pty<span class="w"> </span>--x11<span class="w"> </span>bash
+</code></pre><h2><a class="heading" href="../sw/codex/">Using OpenAI codex</a></h2><a class="url" href="../sw/codex/">sw/codex/</a><pre><span></span><code><span class="gp">[user@jhpce01 ~]$ </span>srun<span class="w"> </span>--pty<span class="w"> </span>--x11<span class="w"> </span>bash
 <span class="gp">[user@compute-120 ~]$ </span>module<span class="w"> </span>load<span class="w"> </span>node
 <span class="gp">[user@compute-120 ~]$ </span>codex
 <span class="go">╭─────────────────────────────────────────────────╮</span>
@@ -7909,7 +7939,7 @@ relaunch Chromium.
 <span class="go">› </span>
 </code></pre><pre><span></span><code><span class="k">for</span> <span class="n">number</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">11</span><span class="p">):</span>
     <span class="nb">print</span><span class="p">(</span><span class="n">number</span><span class="p">)</span>
-</code></pre><pre><span></span><code>sbatch<span class="w"> </span>--wrap<span class="w"> </span><span class="s2">"python /users/mmill116/count.py"</span>
+</code></pre><pre><span></span><code>sbatch<span class="w"> </span>--wrap<span class="w"> </span><span class="s2">"python /users/user1/count.py"</span>
 </code></pre><pre><span></span><code>squeue<span class="w"> </span>-j<span class="w"> </span><span class="m">29465151</span>
 </code></pre><pre><span></span><code>cat<span class="w"> </span>slurm-29465151.out
 </code></pre><pre><span></span><code>1
