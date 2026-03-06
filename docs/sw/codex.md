@@ -11,9 +11,9 @@ This page captures a Codex CLI session that walks through creating a simple Pyth
 - To running codex, you will need to srun into a compute node, load the "node" module, and run the "codex" command.
 .
 ```console
-[user@jhpce01 ~]$ srun --pty --x11 bash
-[user@compute-120 ~]$ module load node
-[user@compute-120 ~]$ codex
+[user1@jhpce01 ~]$ srun --pty --x11 bash
+[user1@compute-120 ~]$ module load node
+[user1@compute-120 ~]$ codex
 ╭─────────────────────────────────────────────────╮
 │ >_ OpenAI Codex (v0.63.0)                       │
 │                                                 │
