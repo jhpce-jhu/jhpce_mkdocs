@@ -87,6 +87,7 @@ nav:
 #        - Singularity: sw/singularity.md
       - JHPCE-created: sw/locally-written.md
       - Helpful GUI Programs: sw/gui-tools.md
+      - Using OpenAI codex: sw/codex.md
     - Job scheduler (SLURM): 
       - Getting Started: slurm/getting-started.md
       - About Jobs: slurm/about-jobs.md

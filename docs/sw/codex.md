@@ -4,7 +4,7 @@ This page captures a Codex CLI session that walks through creating a simple Pyth
 
 ## Environment Notes
 
-- Session ran inside `/users/mmill116` with workspace-write sandboxing and restricted network access.
+- Session ran inside `/users/user1` with workspace-write sandboxing and restricted network access.
 - No permission prompts or sandbox escalations were needed; every command executed inside the default sandbox.
 - Prior to running this, an OpenAI license will be needed. One way to do this is to request an API key. The JHU Engineering department has a site to request an OPENAI API key [here](https://engineering.jhu.edu/cmts/jhu-openai-platform-api-request/) 
 - Once you have a key, you can enter it when prompted after you first run "codex", or add it into the file ~/.codex/auth.json
@@ -45,7 +45,7 @@ for number in range(1, 11):
     print(number)
 ```
 
-*Explanation:* Codex wrote a simple loop that prints integers 1 through 10 and stored it at `/users/mmill116/count.py`.
+*Explanation:* Codex wrote a simple loop that prints integers 1 through 10 and stored it at `/users/user1/count.py`.
 
 ## 2. Submit the Program as a Slurm Job
 
@@ -53,7 +53,7 @@ for number in range(1, 11):
 **Codex Response:** After confirming permission to run `sbatch`, Codex submitted:
 
 ```bash
-sbatch --wrap "python /users/mmill116/count.py"
+sbatch --wrap "python /users/user1/count.py"
 ```
 
 *Output:* `Submitted batch job 29465151`  
