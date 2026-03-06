@@ -21,7 +21,7 @@
       
       
       <link rel="icon" href="../../../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.3">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.4">
     
     
       
@@ -88,7 +88,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#data-transfers-into-and-out-of-jade" class="md-skip">
+        <a href="#data-transfers-into-out-of-within-jade" class="md-skip">
           Skip to content
         </a>
       
@@ -5130,7 +5130,18 @@
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Overview">
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#transfer-tools" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Transfer tools
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Transfer tools">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -5138,6 +5149,17 @@
     <span class="md-ellipsis">
       
         SFTP
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#curl" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Curl
       
     </span>
   </a>
@@ -5155,8 +5177,41 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#rsync" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        rsync
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#scp" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        scp
+      
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-transfer-file-system" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The /transfer file system
+      
+    </span>
+  </a>
   
 </li>
       
@@ -5529,7 +5584,18 @@
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Overview">
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#transfer-tools" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Transfer tools
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Transfer tools">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -5537,6 +5603,17 @@
     <span class="md-ellipsis">
       
         SFTP
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#curl" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Curl
       
     </span>
   </a>
@@ -5554,8 +5631,41 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#rsync" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        rsync
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#scp" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        scp
+      
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-transfer-file-system" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The /transfer file system
+      
+    </span>
+  </a>
   
 </li>
       
@@ -5576,10 +5686,52 @@
 
 
 
-<h1 id="data-transfers-into-and-out-of-jade">Data Transfers Into and Out of JADE<a class="headerlink" href="#data-transfers-into-and-out-of-jade" title="Anchor link to this section for reference">&para;</a></h1>
+<h1 id="data-transfers-into-out-of-within-jade">Data Transfers Into, Out of &amp; Within JADE<a class="headerlink" href="#data-transfers-into-out-of-within-jade" title="Anchor link to this section for reference">&para;</a></h1>
+<div class="admonition note">
+<p class="admonition-title">SFTP Is The Supported Method</p>
+<p>Currently (March 2026) the primary supported mechanism is SFTP transfers done through the login node, <code>jade01.jhsph.edu</code>. They must be initiated from outside the JADE cluster, using specific TCP/IP port numbers configured in your SFTP client software. See <a href="../sftp-transfers/">details here</a>.</p>
+</div>
 <h2 id="overview">Overview<a class="headerlink" href="#overview" title="Anchor link to this section for reference">&para;</a></h2>
+<p>A primary directive for JADE is that Controlled Unclassified Information (CUI) is not allowed to leave the cluster unless we can log the essential details, which are: <strong>which user</strong> transferred <strong>which file</strong> at <strong>what time</strong> in which <strong>direction</strong>.</p>
+<div class="admonition warning">
+<p class="admonition-title">Ultimately Protecting CUI Is Your Responsibility</p>
+<p>The system administrators have attempted to configure the cluster to do the things required by NIST 800-171. Users can bypass some of these measures if they wish to, by, for example, installing their own binaries or using R or Python routines/libraries. Our changes include some meant to make it harder for a user to use undesirable commands (e.g. <code>scp</code>) to copy data out, whether unintentionally by force of habit or by reading some Google suggestion.</p>
+<p>Any user who bypasses the supported SFTP method then bears the legal responsibility of the consequences if CUI files are found out on the Internet which came from JADE. We audit every access to CUI files so we will be able to provide Hopkins Legal with forensic data.</p>
+</div>
+<details class="tip">
+<summary>Future Transfer Server</summary>
+<p>Later in 2026 we will create a server named <code>jade-transfer01</code> which will take over SFTP duties from <code>jade01</code>. It will also offer a <code>Globus Endpoint Server</code> equipped with <code>High Assurance</code> software. We will announce when the new server is available.</p>
+</details>
+<div class="admonition warning">
+<p class="admonition-title">Some Programs Have Been Modified</p>
+<p>We have modified programs which can be used to transfer data out of the cluster. See details below.</p>
+</div>
+<h2 id="transfer-tools">Transfer tools<a class="headerlink" href="#transfer-tools" title="Anchor link to this section for reference">&para;</a></h2>
+<p>Here is a run down of common UNIX built-in commands used for transferring files. The primary tool to use is running SFTP on a computer outside of JADE.</p>
 <h3 id="sftp">SFTP<a class="headerlink" href="#sftp" title="Anchor link to this section for reference">&para;</a></h3>
+<p>Each community has been assigned a pair of specific TCP/IP port numbers, one for inbound data and one for outbound data. Users must configure their SFTP client software with the appropriate port numbers.</p>
+<div class="admonition warning">
+<p class="admonition-title">SFTP Should Be Initiated From Outside JADE</p>
+<p>You cannot use sftp from inside the cluster. The binary is not executable by normal users.</p>
+</div>
+<p>SFTP was chosen as the primary command to allow because we can configure allowed data locations, control which commands are executed, and log transfers at the appropriate level. JADE serves multiple communities, each of which can have unique data movement requirements. (In particular, the "cms" community must have specific users approve each outbound file on behalf of the file's owner.)</p>
+<p>For more SFTP details see <a href="../sftp-transfers/">this document</a>.</p>
+<h3 id="curl">Curl<a class="headerlink" href="#curl" title="Anchor link to this section for reference">&para;</a></h3>
+<p><a href="" id="jade-curl-details"></a>
+<code>Curl</code> has been disabled. Please use <code>wget</code> instead.</p>
 <h3 id="globus">Globus<a class="headerlink" href="#globus" title="Anchor link to this section for reference">&para;</a></h3>
+<p><a href="" id="jade-globus-details"></a>
+In 2026 we will create a server to be named <code>jade-transfer01</code> which will take over SFTP duties from <code>jade01</code>. It will also offer a Globus Endpoint Server equipped with <code>High Assurance</code> software.</p>
+<h3 id="rsync">rsync<a class="headerlink" href="#rsync" title="Anchor link to this section for reference">&para;</a></h3>
+<p><a href="" id="jade-rsync-details"></a>
+<code>rsync</code> has been disabled. </p>
+<h3 id="scp">scp<a class="headerlink" href="#scp" title="Anchor link to this section for reference">&para;</a></h3>
+<p><a href="" id="jade-scp-details"></a>
+<code>scp</code> has been disabled. </p>
+<h2 id="the-transfer-file-system">The /transfer file system<a class="headerlink" href="#the-transfer-file-system" title="Anchor link to this section for reference">&para;</a></h2>
+<p><a href="" id="the-/transfer-file-system"></a>
+When JADE was designed and built, it was felt that it would be helpful to the logging and auditing efforts to have files being uploaded into the cluster (on inbound ports 2<em>11) pass through the <code>/transfer/in/&lt;comm&gt;/</code> directory trees, and outbound files (on ports 2</em>27) be first placed into the <code>/transfer/out/&lt;comm&gt;/</code> directory trees.</p>
+<p>As of March 2026, the only directory used inside <code>/transfer/</code> is <code>/transfer/out/cms/</code>  Members of the CMS community must have files they wish to transfer out of JADE first be reviewed by a team of HARP "data moderators." Those moderators move approved files from <code>/proposed/cms/</code> directory to the <code>/transfer/out/cms/</code> so CMS users can then run SFTP from outside JADE to "pick them up."</p>
 
 
 
@@ -5600,7 +5752,7 @@
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="December 21, 2025 09:02:39 UTC">December 21, 2025</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="March 6, 2026 05:02:59 UTC">March 6, 2026</span>
   </span>
 
     
