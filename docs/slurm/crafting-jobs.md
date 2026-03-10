@@ -133,7 +133,7 @@ You can configure jobs to run in order with some conditional control. Conditions
 This can be used to achieve different goals, such as
 
 * controlling how many resources you consume at one time when running jobs on PI partitions where there are no enforced QOS limits, and
-* breaking up jobs into smaller pieces yet still have them run in the right order. For example, copying some data to /fastscratch and, if that was successful, launching an analysis job.
+* breaking up jobs into smaller pieces yet still have them run in the right order. For example, copying some data to /fastscratch and, if that was successful, launching an analysis job. Another: Instead of having a single job which involves both GPU computing and preliminary or post analysis work sit on a GPU node and only using the GPU for a fraction of the total time, create dependencies between jobs which launch a specific one when another has successfully completed.
 
 Smaller jobs start more quickly, and it can be better to make progress where possible while, for example, waiting for a large amount of RAM to become available on a single node. This is also more efficient for the cluster, since work can be done with, say, less RAM for this portion of the overall task, then a large amount for that portion, then a smaller amount again for some cleanup or merging portion. This is much better than having to wait for a large amount of RAM to become available and then, when it is allocated, tying it down for the entire duration of the single job.
 
@@ -141,10 +141,10 @@ This approach also allows you to use different resources to complete a larger ta
 
 {==As you can see, people can get more work done more quickly by crafting a set of jobs to use only the necessary resources for each stage of a larger task.==}
 
-You can use different terms (afterany, aftercorr, afterok, afternotok, singleton) and syntaxes to build dependencies. Some people use programs to create dependency graphs to manage their jobs.
+You can use different terms (**afterany**, **aftercorr**, **afterok**, **afternotok**, **singleton**) and syntaxes to build dependencies. Some people use programs made for the purpose to create dependency graphs to manage their jobs.
 
 !!! Tip
-    You may think that the dependency term "after" is okay to use. Note that it does not mean after a job ends. It means after a job is started or cancelled.
+    You may think that the dependency term "**after**" is okay to use. Note that it does not mean "after a job ends." It means "after a job is started or cancelled."
 
 Note that SLURM's idea of whether a job completed successfully may not match your definition. You may need to look at the logic of your batch script and add "exit N" statements and other logic to provide non-zero exit codes if something goes wrong before the very last command in the script. You can also add code that specifically checks for success (as opposed to only counting on a final exit code).
 

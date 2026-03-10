@@ -1,8 +1,27 @@
 						
+## Overview
 We have a number of GPU nodes on the JHPCE cluster that are available for
-general use. Below is the process for accessing the GPU node with an
-interactive session, and a couple of examples of running programs and
-submitting jobs that utilizes a GPU.
+general use.  This page provides information about our collection of GPU resources, shows how to access them, and gives examples of running programs and submitting jobs that utilizes a GPU.
+
+### GPU resources are limited - please consider your fellow users
+
+*Please use a GPU node only for performing GPU calculations.* If you can do preliminary or post analysis work on a normal node, please craft your jobs to do that, as opposed to putting everything into a single job. You can create dependencies between jobs which launch a specific one when another has successfully completed.
+
+*Please use the GPU cards with the lowest memory which meet your jobs needs.* The latest model cards will perform calculations more quickly. However, they also tend to have the most memory. If you run a low-memory-requiring job on the latest cards, you will be blocking other users with larger memory needs.
+
+### GPU-capable partitions
+
+There are several partitions with GPUs in them, documented in [our partitions page](/slurm/partitions/#gpu-partitions).  By default all users should only access the "gpu" partition. The other partitions are PI-specific partitions for groups which have purchased GPUs for the JHPCE cluster. The partitions beginning with "bst" are for members of the Biostatics department.
+
+Please note the different time limits set on the various GPU partitions. 
+
+### Accessing an interactive session on a GPU node
+
+You can see what GPUs are currently available by running the ```slurmpic -g``` command.
+The GPUS column will show how many GPUs are in use and how many are available
+on each node:
+
+![](images/slurmpic1.png)
 
 From the JHPCE SLURM cluster login node, you can access a GPU node
 interactively by using the &#8220;&#8211;partition gpu&#8221; and
@@ -33,6 +52,9 @@ request a single GPU on the &#8220;gpu&#8221; partition. You can run
  |=======================================================================================|
  |  No running processes found                                                           |
  +---------------------------------------------------------------------------------------+
+
+### JHPCE GPU nodes and cards
+
 </pre></code>
 As of November 2024, we have the following GPUs available on the gpu partition:
 <table>
@@ -80,22 +102,6 @@ As of November 2024, we have the following GPUs available on the gpu partition:
 
 </table>
 
-You can request a particular model of GPU using the "GRES" option
-(Generic Resources) to srun and sbatch. The following GRES options are available for
-the various models of GPUS:
-
-<center><table>
-<tr><td><strong>GPU Type</strong></td><td><strong>GRES  Option</strong></td></tr>
-<tr><td>Nvidia Titan V with 11GB RAM</td><td>titanv</td></tr>
-<tr><td>Nvidia V100 with 32GB RAM</td><td>tesv100</td></tr>
-<tr><td>Nvidia V100S with 32GB RAM</td><td>tesv100s</td></tr>
-<tr><td>Nvidia A100 with 80GB RAM</td><td>tesa100</td></tr>
-<tr><td>Nvidia H100 with 96GB RAM</td><td>tesh100</td></tr>
-<tr><td>Nvidia L40S with 46GB RAM</td><td>l40s</td></tr>
-</table></center>
-
-There are also different time limits set on the various GPU partitions that you should be aware of, as outlined in [our partitions page](/slurm/partitions/#gpu-partitions).
-
 NVIDIA assigns different "Computing Capability" values to each GPU model. These values can be found [here](https://developer.nvidia.com/cuda-gpus), and help one determine what the GPU is capable of doing. Details can be found [here](https://docs.nvidia.com/cuda/cuda-c-programming-guide/index.html#compute-capabilities). Specific descriptions for each generation as well as some specific CUDA routines to use with each are here: [7.x](https://docs.nvidia.com/cuda/cuda-c-programming-guide/index.html#compute-capability-7-x), [8.x](https://docs.nvidia.com/cuda/cuda-c-programming-guide/index.html#compute-capability-8-x), and [9.x](https://docs.nvidia.com/cuda/cuda-c-programming-guide/index.html#compute-capability-9-0)
 
 <center><table>
@@ -108,29 +114,27 @@ NVIDIA assigns different "Computing Capability" values to each GPU model. These 
 <tr><td>Nvidia L40S with 46GB RAM</td><td>l40s</td><td>8.9</td></tr>
 </table></center>
 
-You can see what GPUs are available by running the ```slurmpic -g``` command.
-The GPUS column will show how many GPUs are in use and how many are available
-on each node:
+### Requesting specific GPU card types
 
-![](images/slurmpic1.png)
+You can request a particular model of GPU using the "GRES" option
+(Generic RESources) to srun and sbatch. The following GRES names are available for the various models of GPUS:
 
-One commonly used option when using GPUs in a SLURM environment is the ```--gpu-bind=closest```
-option. This will make sure the core/CPU that is assigned to your job is the closest one to the controling bus that the GPU is on. So if you are trying to get the most out of the performance of your GPU code, this option may be helpful.  There is a really good description of GPU/CORE binding at [https://pawsey.atlassian.net/wiki/spaces/US/pages/51929056/Example+Slurm+Batch+Scripts+for+Setonix+on+GPU+Compute+Nodes](https://pawsey.atlassian.net/wiki/spaces/US/pages/51929056/Example+Slurm+Batch+Scripts+for+Setonix+on+GPU+Compute+Nodes)
+<center><table>
+<tr><td><strong>GPU Type</strong></td><td><strong>GRES  Option</strong></td></tr>
+<tr><td>Nvidia Titan V with 11GB RAM</td><td>titanv</td></tr>
+<tr><td>Nvidia V100 with 32GB RAM</td><td>tesv100</td></tr>
+<tr><td>Nvidia V100S with 32GB RAM</td><td>tesv100s</td></tr>
+<tr><td>Nvidia A100 with 80GB RAM</td><td>tesa100</td></tr>
+<tr><td>Nvidia H100 with 96GB RAM</td><td>tesh100</td></tr>
+<tr><td>Nvidia L40S with 46GB RAM</td><td>l40s</td></tr>
+</table></center>
 
-You will also notice that there are several partitions with GPUs in them.  By
-default all users should only access the "gpu" partition. The other partitions
-ar PI-specific partitions for groups that have purchases GPUs for the JHPCE
-cluster.
-
-
-So, in order request a particular model of GPU you would use the value in the
+To request a particular model of GPU, you would use the value in the
 &#8220;GRES Option&#8221; column above to srun or sbatch. In general it is
 better to allow the cluster to assign an available gpu to you rather than
 requesting a particular model, as certain models may not be available at the
 time you are trying to run your program. In the below example, we are
 requesting an Nvidia Titan V GPU.
-
-
 
 <pre><code>[login31 /users/mmill116]$ <strong>srun --pty --x11 --partition gpu --gres=gpu:titanv:1&nbsp; bash</strong>
 [compute-117 /users/mmill116]$ <strong>nvidia-smi</strong>
@@ -156,6 +160,11 @@ requesting an Nvidia Titan V GPU.
  +---------------------------------------------------------------------------------------+ 
 </pre></code>
 
+#### Helpful SLURM job arguments
+
+One commonly used option when using GPUs in a SLURM environment is the ```--gpu-bind=closest```
+option. This will make sure the core/CPU that is assigned to your job is the closest one to the controling bus that the GPU is on. So if you are trying to get the most out of the performance of your GPU code, this option may be helpful.  There is a really good description of GPU/CORE binding at [https://pawsey.atlassian.net/wiki/spaces/US/pages/51929056/Example+Slurm+Batch+Scripts+for+Setonix+on+GPU+Compute+Nodes](https://pawsey.atlassian.net/wiki/spaces/US/pages/51929056/Example+Slurm+Batch+Scripts+for+Setonix+on+GPU+Compute+Nodes)
+
 Another option for for requesting a particular GPU model is to use the "--constraints" option to request a particular Node Feature defined for the node.  This is especially helpful when you want to select a number of GPU models that would be acceptible to you to use.  For example, one could run the folloing to request a node with either an l40s, tesv100, or titanv.
 
 <pre><code>
@@ -164,13 +173,16 @@ Another option for for requesting a particular GPU model is to use the "--constr
 
 You can read more about using features at https://jhpce.jhu.edu/slurm/node-features/
 
-At this point you can start running your GPU specific code. You can either use
+## Examples
+
+At this point you can start running your GPU specific code. You can either
 install your own GPU-enabled programs, or use the version of python that is
 installed on the GPU nodes.
 
-Below is an example of running an MNIST tensorflow program. The tensorflow and keras python modules have been installed on the GPU nodes, so you can use the default system version of python. This example comes from <a href="https://www.tensorflow.org/tutorials/quickstart/beginner">https://www.tensorflow.org/tutorials/quickstart/beginner</a></p>
+### Running an MNIST tensorflow program
+Below is an example of running an MNIST tensorflow program. The **tensorflow** and **keras** python modules have been installed on the GPU nodes, so you can use the default system version of python. This example comes from <a href="https://www.tensorflow.org/tutorials/quickstart/beginner">https://www.tensorflow.org/tutorials/quickstart/beginner</a></p>
 
-
+#### MNIST interactive job
 
 <pre><code>[login31 /users/mmill116]$ srun --pty --x11 --partition gpu --gpus=1 --mem=10G bash
 [compute-117 /users/mmill116]$ python
@@ -229,13 +241,12 @@ Epoch 5/5
 [0.07143650203943253, 0.975600004196167]
 >>> </code></pre>
 
+#### MNIST batch job
 
 You can also submit a batch job to the cluster that uses GPUs. In this example
 of submitting a batch job to use a GPU, we are creating 2 files, one containing
 the python steps that we used above, and the second containing a shell script
 that will be submitted to SLURM. The Python program looks like:
-
-
 
 <pre><code>[login31 /users/mmill116/gpu-test]$ <strong>ls -al
 </strong> total 496
