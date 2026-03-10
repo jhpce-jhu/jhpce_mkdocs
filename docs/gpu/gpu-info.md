@@ -53,9 +53,11 @@ request a single GPU on the &#8220;gpu&#8221; partition. You can run
  |  No running processes found                                                           |
  +---------------------------------------------------------------------------------------+
 
+</pre>
+
 ### JHPCE GPU nodes and cards
 
-</pre></code>
+</code>
 As of November 2024, we have the following GPUs available on the gpu partition:
 <table>
 <tr>
@@ -116,8 +118,20 @@ NVIDIA assigns different "Computing Capability" values to each GPU model. These 
 
 ### Requesting specific GPU card types
 
-You can request a particular model of GPU using the "GRES" option
-(Generic RESources) to srun and sbatch. The following GRES names are available for the various models of GPUS:
+In general it is better to allow the cluster to assign both nodes and GPU cards to you rather than requesting a specific node or a particular model, as certain models may not be available at the time you are trying to run your program.
+
+However, you may need the features of a particular model or sets of models, such as RAM size.
+
+If you want to request a particular model of GPU, you can use either the GRES name with the "--gres=gpu:" argument, or by using a particular Node Feature name with the "--constrain" argument.
+
+If you want to request a set of acceptable models of GPU, use the Node Feature names. Examples of both are shown below.
+
+#### Using the GRES name
+
+You can request a particular model of GPU using the "GRES"
+(Generic RESources) argument to srun and sbatch.
+
+The following GRES names are available for the various models of GPUS:
 
 <center><table>
 <tr><td><strong>GPU Type</strong></td><td><strong>GRES  Option</strong></td></tr>
@@ -129,14 +143,12 @@ You can request a particular model of GPU using the "GRES" option
 <tr><td>Nvidia L40S with 46GB RAM</td><td>l40s</td></tr>
 </table></center>
 
-To request a particular model of GPU, you would use the value in the
-&#8220;GRES Option&#8221; column above to srun or sbatch. In general it is
-better to allow the cluster to assign an available gpu to you rather than
-requesting a particular model, as certain models may not be available at the
-time you are trying to run your program. In the below example, we are
-requesting an Nvidia Titan V GPU.
+You would use the value in the &#8220;GRES Option&#8221; column above to srun or sbatch.
 
-<pre><code>[login31 /users/mmill116]$ <strong>srun --pty --x11 --partition gpu --gres=gpu:titanv:1&nbsp; bash</strong>
+In the below example, we are requesting an Nvidia Titan V GPU.
+
+<pre>
+<code>[login31 /users/mmill116]$ <strong>srun --pty --x11 --partition gpu --gres=gpu:titanv:1&nbsp; bash</strong>
 [compute-117 /users/mmill116]$ <strong>nvidia-smi</strong>
  Tue Nov 28 10:50:25 2023&nbsp; &nbsp; &nbsp; &nbsp;
  +---------------------------------------------------------------------------------------+
@@ -158,20 +170,26 @@ requesting an Nvidia Titan V GPU.
  |=======================================================================================|
  |&nbsp; No running processes found &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; |
  +---------------------------------------------------------------------------------------+ 
-</pre></code>
+</code>
+</pre>
 
-#### Helpful SLURM job arguments
+### Using node features names
 
-One commonly used option when using GPUs in a SLURM environment is the ```--gpu-bind=closest```
-option. This will make sure the core/CPU that is assigned to your job is the closest one to the controling bus that the GPU is on. So if you are trying to get the most out of the performance of your GPU code, this option may be helpful.  There is a really good description of GPU/CORE binding at [https://pawsey.atlassian.net/wiki/spaces/US/pages/51929056/Example+Slurm+Batch+Scripts+for+Setonix+on+GPU+Compute+Nodes](https://pawsey.atlassian.net/wiki/spaces/US/pages/51929056/Example+Slurm+Batch+Scripts+for+Setonix+on+GPU+Compute+Nodes)
+Node feature names are strings the systems administrators have assigned to each node. You can read more about using [features](https://jhpce.jhu.edu/slurm/node-features).
 
-Another option for for requesting a particular GPU model is to use the "--constraints" option to request a particular Node Feature defined for the node.  This is especially helpful when you want to select a number of GPU models that would be acceptible to you to use.  For example, one could run the folloing to request a node with either an l40s, tesv100, or titanv.
+You can specify a single (or a list of) acceptable GPU models using the "--constrain" argument to sbatch and srun. 
+
+This is especially helpful when you want to select a number of GPU models that would be acceptible to you to use.  For example, one could run the folloing to request a node with either an l40s, tesv100, or titanv.
 
 <pre><code>
 [mmill116@jhpce01 ~]$ srun --pty -p gpu --gpus=1 --constrain="l40s|tesv100|titanv" bash 
 </code></pre>
 
-You can read more about using features at https://jhpce.jhu.edu/slurm/node-features/
+#### Helpful SLURM job arguments
+
+One commonly used option when using GPUs in a SLURM environment is the ```--gpu-bind=closest```
+option. This will make sure the core/CPU that is assigned to your job is the closest one to the controling bus that the GPU is on. So if you are trying to get the most out of the performance of your GPU code, this option may be helpful.  There is a really good description of GPU/CORE binding [here](https://pawsey.atlassian.net/wiki/spaces/US/pages/51929056/Example+Slurm+Batch+Scripts+for+Setonix+on+GPU+Compute+Nodes).
+
 
 ## Examples
 
