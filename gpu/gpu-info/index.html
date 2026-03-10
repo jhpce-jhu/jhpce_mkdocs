@@ -4084,6 +4084,17 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#jhpce-gpu-nodes-and-cards" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        JHPCE GPU nodes and cards
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#requesting-specific-gpu-card-types" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -4093,6 +4104,34 @@
   </a>
   
     <nav class="md-nav" aria-label="Requesting specific GPU card types">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#using-the-gres-name" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Using the GRES name
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#using-node-features-names" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Using node features names
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Using node features names">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -5683,6 +5722,17 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#jhpce-gpu-nodes-and-cards" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        JHPCE GPU nodes and cards
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#requesting-specific-gpu-card-types" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -5692,6 +5742,34 @@
   </a>
   
     <nav class="md-nav" aria-label="Requesting specific GPU card types">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#using-the-gres-name" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Using the GRES name
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#using-node-features-names" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Using node features names
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Using node features names">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -5833,9 +5911,9 @@ request a single GPU on the &#8220;gpu&#8221; partition. You can run
  |  No running processes found                                                           |
  +---------------------------------------------------------------------------------------+
 
-### JHPCE GPU nodes and cards
-
 </pre>
+
+<h3 id="jhpce-gpu-nodes-and-cards">JHPCE GPU nodes and cards<a class="headerlink" href="#jhpce-gpu-nodes-and-cards" title="Anchor link to this section for reference">&para;</a></h3>
 <p></code>
 As of November 2024, we have the following GPUs available on the gpu partition:</p>
 <table>
@@ -5895,8 +5973,14 @@ As of November 2024, we have the following GPUs available on the gpu partition:<
 </table></center>
 
 <h3 id="requesting-specific-gpu-card-types">Requesting specific GPU card types<a class="headerlink" href="#requesting-specific-gpu-card-types" title="Anchor link to this section for reference">&para;</a></h3>
-<p>You can request a particular model of GPU using the "GRES" option
-(Generic RESources) to srun and sbatch. The following GRES names are available for the various models of GPUS:</p>
+<p>In general it is better to allow the cluster to assign both nodes and GPU cards to you rather than requesting a specific node or a particular model, as certain models may not be available at the time you are trying to run your program.</p>
+<p>However, you may need the features of a particular model or sets of models, such as RAM size.</p>
+<p>If you want to request a particular model of GPU, you can use either the GRES name with the "--gres=gpu:" argument, or by using a particular Node Feature name with the "--constrain" argument.</p>
+<p>If you want to request a set of acceptable models of GPU, use the Node Feature names. Examples of both are shown below.</p>
+<h4 id="using-the-gres-name">Using the GRES name<a class="headerlink" href="#using-the-gres-name" title="Anchor link to this section for reference">&para;</a></h4>
+<p>You can request a particular model of GPU using the "GRES"
+(Generic RESources) argument to srun and sbatch.</p>
+<p>The following GRES names are available for the various models of GPUS:</p>
 <center><table>
 <tr><td><strong>GPU Type</strong></td><td><strong>GRES  Option</strong></td></tr>
 <tr><td>Nvidia Titan V with 11GB RAM</td><td>titanv</td></tr>
@@ -5907,13 +5991,10 @@ As of November 2024, we have the following GPUs available on the gpu partition:<
 <tr><td>Nvidia L40S with 46GB RAM</td><td>l40s</td></tr>
 </table></center>
 
-<p>To request a particular model of GPU, you would use the value in the
-&#8220;GRES Option&#8221; column above to srun or sbatch. In general it is
-better to allow the cluster to assign an available gpu to you rather than
-requesting a particular model, as certain models may not be available at the
-time you are trying to run your program. In the below example, we are
-requesting an Nvidia Titan V GPU.</p>
-<pre><code>[login31 /users/mmill116]$ <strong>srun --pty --x11 --partition gpu --gres=gpu:titanv:1&nbsp; bash</strong>
+<p>You would use the value in the &#8220;GRES Option&#8221; column above to srun or sbatch.</p>
+<p>In the below example, we are requesting an Nvidia Titan V GPU.</p>
+<pre>
+<code>[login31 /users/mmill116]$ <strong>srun --pty --x11 --partition gpu --gres=gpu:titanv:1&nbsp; bash</strong>
 [compute-117 /users/mmill116]$ <strong>nvidia-smi</strong>
  Tue Nov 28 10:50:25 2023&nbsp; &nbsp; &nbsp; &nbsp;
  +---------------------------------------------------------------------------------------+
@@ -5935,17 +6016,20 @@ requesting an Nvidia Titan V GPU.</p>
  |=======================================================================================|
  |&nbsp; No running processes found &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; |
  +---------------------------------------------------------------------------------------+ 
+</code>
 </pre>
-<p></code></p>
-<h4 id="helpful-slurm-job-arguments">Helpful SLURM job arguments<a class="headerlink" href="#helpful-slurm-job-arguments" title="Anchor link to this section for reference">&para;</a></h4>
-<p>One commonly used option when using GPUs in a SLURM environment is the <code>--gpu-bind=closest</code>
-option. This will make sure the core/CPU that is assigned to your job is the closest one to the controling bus that the GPU is on. So if you are trying to get the most out of the performance of your GPU code, this option may be helpful.  There is a really good description of GPU/CORE binding at <a href="https://pawsey.atlassian.net/wiki/spaces/US/pages/51929056/Example+Slurm+Batch+Scripts+for+Setonix+on+GPU+Compute+Nodes">https://pawsey.atlassian.net/wiki/spaces/US/pages/51929056/Example+Slurm+Batch+Scripts+for+Setonix+on+GPU+Compute+Nodes</a></p>
-<p>Another option for for requesting a particular GPU model is to use the "--constraints" option to request a particular Node Feature defined for the node.  This is especially helpful when you want to select a number of GPU models that would be acceptible to you to use.  For example, one could run the folloing to request a node with either an l40s, tesv100, or titanv.</p>
+
+<h3 id="using-node-features-names">Using node features names<a class="headerlink" href="#using-node-features-names" title="Anchor link to this section for reference">&para;</a></h3>
+<p>Node feature names are strings the systems administrators have assigned to each node. You can read more about using <a href="https://jhpce.jhu.edu/slurm/node-features">features</a>.</p>
+<p>You can specify a single (or a list of) acceptable GPU models using the "--constrain" argument to sbatch and srun. </p>
+<p>This is especially helpful when you want to select a number of GPU models that would be acceptible to you to use.  For example, one could run the folloing to request a node with either an l40s, tesv100, or titanv.</p>
 <pre><code>
 [mmill116@jhpce01 ~]$ srun --pty -p gpu --gpus=1 --constrain="l40s|tesv100|titanv" bash 
 </code></pre>
 
-<p>You can read more about using features at https://jhpce.jhu.edu/slurm/node-features/</p>
+<h4 id="helpful-slurm-job-arguments">Helpful SLURM job arguments<a class="headerlink" href="#helpful-slurm-job-arguments" title="Anchor link to this section for reference">&para;</a></h4>
+<p>One commonly used option when using GPUs in a SLURM environment is the <code>--gpu-bind=closest</code>
+option. This will make sure the core/CPU that is assigned to your job is the closest one to the controling bus that the GPU is on. So if you are trying to get the most out of the performance of your GPU code, this option may be helpful.  There is a really good description of GPU/CORE binding <a href="https://pawsey.atlassian.net/wiki/spaces/US/pages/51929056/Example+Slurm+Batch+Scripts+for+Setonix+on+GPU+Compute+Nodes">here</a>.</p>
 <h2 id="examples">Examples<a class="headerlink" href="#examples" title="Anchor link to this section for reference">&para;</a></h2>
 <p>At this point you can start running your GPU specific code. You can either
 install your own GPU-enabled programs, or use the version of python that is
@@ -6144,7 +6228,7 @@ python nvidia-test.py
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="March 10, 2026 16:56:55 UTC">March 10, 2026</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="March 10, 2026 18:15:14 UTC">March 10, 2026</span>
   </span>
 
     
