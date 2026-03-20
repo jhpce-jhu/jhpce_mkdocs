@@ -2088,8 +2088,8 @@
   {
     "page_name": "STORAGE OVERVIEW",
     "page_url": "../../storage/",
-    "text": "- Part of DCS04 was used for legacy-dcs01 space\n- Part of DCS05 was used for legacy-dcl01 space\n- SSD-based array used by CSUB cluster\n",
-    "html": "<pre><span></span><code>- Part of DCS04 was used for legacy-dcs01 space\n- Part of DCS05 was used for legacy-dcl01 space\n- SSD-based array used by CSUB cluster\n</code></pre>",
+    "text": "- Part of DCS04 was used for legacy-dcs01 space\n- Part of DCS05 was used for legacy-dcl01 space\n- SSD-based array used by JADE cluster\n",
+    "html": "<pre><span></span><code>- Part of DCS04 was used for legacy-dcs01 space\n- Part of DCS05 was used for legacy-dcl01 space\n- SSD-based array used by JADE cluster\n</code></pre>",
     "language": ""
   },
   {
