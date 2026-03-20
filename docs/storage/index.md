@@ -9,7 +9,7 @@ tags:
 There are three types of data storage spaces available on the JHPCE cluster.
 
 !!! warning "This page does not describe the JADE cluster"
-    JHPCE manages two clusters -- the main one ("JHPCE") and a second smaller one for protected CMS and dbGaP data ("JADE" (formerly the "C-SUB")).  See the C-SUB Orientation document for descriptions of storage on that cluster.
+    JHPCE manages two clusters -- the main one ("JHPCE") and a second smaller one for protected CMS and dbGaP data ("JADE" (formerly the "C-SUB")).
 
 <style>
     table, th, td {
@@ -81,34 +81,41 @@ process for bringing a new storage array online, we will reach out to all
 active PIs on the cluster, and survey them for their expected storage needs.
 We will then size the new storage array based on those needs.
 
-Our last large storage build was in 2023, for the DCS07 storage array.  We
-do still have some unsold capacity on this array, so please reach out to
-us at bitsupport@lists.jhu.edu if you have a need for additional storage.
+Our last large storage build was in 2025, for the DCS10 storage array.  DCS11
+has been ordered but delays in hard drive deliveries will delay its commision
+until late in 2026.
 
-As of 2024-05-01, the currect project storage arrays in places are:
+!!! note "Requesting an allocation"
+    We have some unsold capacity on several servers, so please reach out to
+    us at bitsupport@lists.jhu.edu if you have a need for additional storage.
+    We sell storage in 1TB increments.  Please let us know if you would like
+    your allocation backed up to our offsite server DCS09. (Our DCS servers
+    have redundant disks to protect against disk failure, but that is not
+    the same as a backup.)
+
+As of 2026-03-19, the currect project storage arrays in places are:
 <div class="heatMap">
 <TABLE align="left">
 <TR><TH>Storage Name</TH><TH>Year Built</TH><TH># of Disks</TH><TH>Disk Size</TH><TH># of JBODs</TH><TH>Useable Space</TH><TH>Cost</TH><TH>Cost per TB</TH></TR>
-<TR><TD>DCL02</TD><TD>2018</TD><TD>440</TD><TD>8TB</TD><TD>10</TD><TD>2.4PB</TD><TD>$164,870.14</TD><TD>$66.57</TD></TR>
 <TR><TD>DCS04</TD><TD>2020</TD><TD>720</TD><TD>12TB</TD><TD>10</TD><TD>5.0PB</TD><TD>$202,451.29</TD><TD>$40.45</TD></TR>
 <TR><TD>DCS05</TD><TD>2021</TD><TD>480</TD><TD>20TB</TD><TD>8</TD><TD>6.2PB</TD><TD>$240,881.36</TD><TD>$38.83</TD></TR>
 <TR><TD>DCS06</TD><TD>2021</TD><TD>16</TD><TD>7.68</TD><TD>1</TD><TD>88TB</TD><TD>$34,207.00</TD><TD>$305.17</TD></TR>
 <TR><TD>DCS07</TD><TD>2023</TD><TD>300</TD><TD>22TB</TD><TD>5</TD><TD>4.8PB</TD><TD>$145,453.99</TD><TD>$30.61</TD></TR>
+<TR><TD>DCS10</TD><TD>2025</TD><TD>120</TD><TD>24TB</TD><TD>2</TD><TD>4.2PB</TD><TD>$??</TD><TD>$??</TD></TR>
 </TABLE>
 </div>
 ###### Notes:
     - Part of DCS04 was used for legacy-dcs01 space
     - Part of DCS05 was used for legacy-dcl01 space
-    - SSD-based array used by CSUB cluster
+    - SSD-based array used by JADE cluster
 
 Other Storage Arrays currently in use on the JHPCE cluster:
 
 <div class="heatMap">
 <TABLE align="left">
 <TR><TH>Storage Name</TH><TH>Use</TH><TH>Year Built</TH><TH># of Disks</TH><TH>Disk Size</TH><TH># of JBODs</TH><TH>Useable Space</TH><TH>Cost</TH><TH>Cost per TB</TH></TR>
-<TR><TD>DCS02</TD><TD>/home,/jhpce,/legacy</TD><TD>2016</TD><TD>40</TD><TD>6TB</TD><TD>1</TD><TD>172TB</TD><TD>$21,168.50</TD><TD>$122.50</TD></TR>
-<TR><TD>DCS03</TD><TD>Backups</TD><TD>2017</TD><TD>450</TD><TD>4TB,6TB</TD><TD>10</TD><TD>2.1PB</TD><TD>$136,919.94</TD><TD>$62.55</TD></TR>
 <TR><TD>Fastscratch</TD><TD>Scratch</TD><TD>2018</TD><TD>24</TD><TD>1TB</TD><TD>1</TD><TD>24TB</TD><TD>$17,983.45</TD><TD>$749.29</TD></TR>
+<TR><TD>DCS09</TD><TD>Backups</TD><TD>202?</TD><TD>168</TD><TD>20TB</TD><TD>4</TD><TD>??PB</TD><TD>$??</TD><TD>$??</TD></TR>
 </TABLE>
 </div>
 These storage arrays are built on the Dirt Cheap Storage and Dirt Cheap Lustre
