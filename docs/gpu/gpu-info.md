@@ -11,7 +11,7 @@ general use.  This page provides information about our collection of GPU resourc
 
 ### GPU-capable partitions
 
-There are several partitions with GPUs in them, documented in [our partitions page](/slurm/partitions/#gpu-partitions).  By default all users should only access the "gpu" partition. The other partitions are PI-specific partitions for groups which have purchased GPUs for the JHPCE cluster. The partitions beginning with "bst" are for members of the Biostatics department.
+There are several partitions with GPUs in them, documented in [our partitions page](../slurm/partitions.md#gpu-partitions).  By default all users should only access the "gpu" partition. The other partitions are PI-specific partitions for groups which have purchased GPUs for the JHPCE cluster. The partitions beginning with "bst" are for members of the Biostatics department.
 
 Please note the different time limits set on the various GPU partitions. 
 

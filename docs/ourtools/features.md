@@ -43,8 +43,7 @@ Jeffrey recommends these features in particular:
 * [Fenced code blocks](features.md/#fenced-code-blocks)
 * [keyboard meta keys](features.md/#symbols-for-keyboard-keys) (like ++ctrl++)
 
-PAGE TABLE OF CONTENT
-[TOC]
+<!-- toc -->
 
 ## Critical Material for MkDocs reference material
 Look here for information about these and other features!!! Just keep in mind that ones marked "insiders" are not available for our use.
@@ -713,17 +712,28 @@ pip3 install mkdocs-mermaid2-plugin
 pip3 install mkdocs-git-authors-plugin
 pip3 install mkdocs-extract-listings-plugin
 pip3 install mkdocs_table_reader_plugin
+
+#
+# Build a directory full of processed files - and view them
+#
 mkdocs build
 mkdocs serve
+Several options are available for the 'serve' subcommand, such as:
+mkdocs serve --dirty
+mkdocs serve --dirty -w <dir_to_watch> [-w <2nd_dir_to_watch>]
 
-# For example, create a new directory
+# For example, create a new directory under docs
 mkdir newsection
 # create a MarkDown document bob.md inside newsection/
 vi newsection/bob.md # or use whatever editor you prefer
 
+2026 - it used to be that the running "mkdocs serve" process would wait until you wrote out changes from your editor to disk. Now, for Jeffrey at least using MacDown, the slightest change to the file will lead to the serve process from regenerating the entire tree. So once he gets a gander at the existing or revised page, he control-Z's "mkdocs serve" until he is done with a bunch of edits.
+
 # Review your changed document in browser at `http://127.0.0.1:8000/`
 
+#
 # Add revised files and commit them
+#
 git add newsection/bob.md
 git -m "rebuild-site My_descriptive_text"
 

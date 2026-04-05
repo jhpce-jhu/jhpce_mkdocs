@@ -14,11 +14,11 @@ You can access our latest orientation slides at [This Link](https://docs.google.
 ??? "Click to expand answer"
     Properly quit Chrome, always.  Otherwise you risk being unable to start Chrome in the future. The problem and solution are described in [this page](https://jhpce.jhu.edu/sw/chrome).
 
-## Compatibility
+## Compatibility Between Windows & Linux Newline Characters
 - My script is giving odd error messages about `\r` or `^M`.
 
 ??? "Click to expand answer"
-    Windows and Unix use different characters to indicate a new line.  If you have uploaded your script from a Windows machine, it may have the Windows newline characters.  These need to be replaced by the Unix newline characters.  To do this, you can run the “dos2unix” command on your script `dos2unix myscript.sh`. This will strip out all of the Windows newlines and replace them with the Unix newlines.
+    Windows and Unix use different characters to indicate a new line.  If you have uploaded your script from a Windows machine, it may have the Windows newline characters.  These need to be replaced by the Unix newline characters.  To do this, you can run the “dos2unix” command on your script e.g. `dos2unix myscript.sh`. This will strip out all of the Windows newlines and replace them with the Unix newlines. a safer version is `dos2unix --newfile myscript.sh newscript.sh`, as the original file is not modified.
 
 - My app is complaining that it can’t find a shared library, e.g. libgfortran.so.1
 ??? "Click to expand answer"
@@ -53,6 +53,14 @@ You can access our latest orientation slides at [This Link](https://docs.google.
         Please do not copy or move any larger files on the login nodes. Use the transfer node for internal/external transfers and compute nodes for transfers between cluster storage locations.
 
 ## Login
+- SSH Connection Refused
+??? "Click to expand answer"
+    "ssh: connect to host jhpce01.jhsph.edu port 22: Connection refused"
+    
+    This is most frequently encountered if you have too many recent failures to log into one of our public-facing servers, such as `jhpce01.jhsph.edu` or `jhpce03.jhsph.edu` (JHPCE cluster) or `jade01.jhsph.edu` (JADE cluster).
+    We use software called `fail2ban` to watch for password and verification code failures. If too many occur too soon the IP address you are using to connect to that JHPCE server is banned for a period of time (called the `bantime`) which ranges from 10 minutes to 4 weeks. When banned you'll receive "connection refused". 
+    We have a [fail2ban](../access/fail2ban.md) document with more details.
+
 - SSH gave a warning: REMOTE HOST IDENTIFICATION HAS CHANGED
 ??? "Click to expand answer"
     Go into the ~/.ssh directory of your laptop/desktop and edit the known_hosts file. Search for the line that starts with the host that you ssh’d to. Delete that line (it is probably a long line that wraps). Then try again

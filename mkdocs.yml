@@ -42,7 +42,9 @@ nav:
       - Overview: access/access-overview.md
       - SSH: access/ssh.md
       - X11: access/x11.md
+      - Web Portal: access/web.md
       - MobaXterm: access/mobaxterm.md
+      - Fail2ban: access/fail2ban.md
       - Transferring files in or out: 
         - Overview: access/file-transfer.md
         - Globus: access/globus.md
