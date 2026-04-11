@@ -1478,6 +1478,10 @@
       
         
       
+        
+      
+        
+      
     
     
     
@@ -1611,6 +1615,34 @@
   
   
     <li class="md-nav__item">
+      <a href="../../access/web/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Web Portal
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../../access/mobaxterm/" class="md-nav__link">
         
   
@@ -1619,6 +1651,34 @@
     
   
     MobaXterm
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../access/fail2ban/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Fail2ban
   
 
     
@@ -1657,10 +1717,10 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1_6_5" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1_6_7" >
         
           
-          <label class="md-nav__link" for="__nav_1_6_5" id="__nav_1_6_5_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_1_6_7" id="__nav_1_6_7_label" tabindex="0">
             
   
   
@@ -1678,8 +1738,8 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_1_6_5_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_1_6_5">
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_1_6_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_1_6_7">
             <span class="md-nav__icon md-icon"></span>
             
   
@@ -2463,6 +2523,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#back-up-of-project-data-filesystems" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Back up of project data filesystems
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#home-directories" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -2471,19 +2542,30 @@
     </span>
   </a>
   
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#backing-up-other-filesystems" class="md-nav__link">
+    <nav class="md-nav" aria-label="Home directories">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#zfs-snapshots" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Backing up other filesystems
+        ZFS snapshots
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Backing up other filesystems">
-      <ul class="md-nav__list">
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#backups-to-external-server" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Backups to external server
+      
+    </span>
+  </a>
+  
+</li>
         
           <li class="md-nav__item">
   <a href="#self-service-restores" class="md-nav__link">
@@ -5569,6 +5651,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#back-up-of-project-data-filesystems" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Back up of project data filesystems
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#home-directories" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -5577,19 +5670,30 @@
     </span>
   </a>
   
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#backing-up-other-filesystems" class="md-nav__link">
+    <nav class="md-nav" aria-label="Home directories">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#zfs-snapshots" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Backing up other filesystems
+        ZFS snapshots
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Backing up other filesystems">
-      <ul class="md-nav__list">
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#backups-to-external-server" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Backups to external server
+      
+    </span>
+  </a>
+  
+</li>
         
           <li class="md-nav__item">
   <a href="#self-service-restores" class="md-nav__link">
@@ -5627,59 +5731,93 @@
 <h1 id="backups-and-restores">Backups and Restores<a class="headerlink" href="#backups-and-restores" title="Anchor link to this section for reference">&para;</a></h1>
 <h2 id="caveat">Caveat<a class="headerlink" href="#caveat" title="Anchor link to this section for reference">&para;</a></h2>
 <p>We try to protect your data, but ultimately you need to keep copies of your
-most vital files elsewhere.</p>
+<strong>most vital files</strong> elsewhere. That's the reality of any data protection scheme.</p>
+<p>Our storage servers in the ARCH data center near Bayview Hospital use RAID across many hard drives to protect against data loss caused by failures of individual disks. We have a backup server in the Bloomberg School of Public Health building. That also uses RAID, but holds only a few project file systems.</p>
+<h2 id="back-up-of-project-data-filesystems">Back up of project data filesystems<a class="headerlink" href="#back-up-of-project-data-filesystems" title="Anchor link to this section for reference">&para;</a></h2>
+<p>We offer petabytes of data file systems from our DCS (Dirt Cheap Storage) servers such as dcs07. PIs can choose to
+requested to have backups made of their DCS spaces.  Only a minority of these allocations are backed up. We charge for backing up project space via the standard JHPCE quarterly billing process. The cost has historically been about around $20/TB/yr.  If you are interested in backing up your project storage space, please email us at bitsupport@lists.jhu.edu.</p>
 <h2 id="home-directories">Home directories<a class="headerlink" href="#home-directories" title="Anchor link to this section for reference">&para;</a></h2>
-<p>We do backup all users' home directories on a nightly basis in 2 manners. First
-we use ZFS snapshots to create a point-in-time view of the home directory.  We
+<p>We do backup all users' home directories on a nightly basis in 2 manners.</p>
+<h3 id="zfs-snapshots">ZFS snapshots<a class="headerlink" href="#zfs-snapshots" title="Anchor link to this section for reference">&para;</a></h3>
+<p>We use ZFS snapshots to create a point-in-time view of the home directory.  We
 maintain 2 week's work of snapshots, so if you need to recover a file from
 your home directory to a state that it was in within the last 2 weeks, you
 can restore you files using the instructions in the
 <a href="#self-service-restores">Self Service Restores</a> section below.</p>
+<h3 id="backups-to-external-server">Backups to external server<a class="headerlink" href="#backups-to-external-server" title="Anchor link to this section for reference">&para;</a></h3>
 <p>We also do nightly disk-to-disk backups from the cluster located at Bayview to
 a storage array in the BSPH building. We retain snapshots of these backups
 using what is commonly called a Grandfather-Father-Son (GFS)
 backups scheme (or Grandparent-Parent-Child using non-gendered terminology). </p>
-<p>So, we have daily backups that we keep for 1 week, weekly backups (taken on
+<p>Data retention:</p>
+<p>We have daily backups that we keep for 1 week, weekly backups (taken on
 Sunday) that we keep for 1 month, monthly backups (taken on the 1st of the
 month) that we keep for 1 year, and yearly backups (taken on January 1st) that
 we keep for 10 years.  So we wouldn't be able to recover a file as it looked
 on a specific date, say October 18, 2019, but we would have the file as it was
 on January 1st 2019 or 2020. </p>
-<p>File recovery from the backup server would be done via a request
-to bitsupport@lists.jhu.edu.</p>
-<h2 id="backing-up-other-filesystems">Backing up other filesystems<a class="headerlink" href="#backing-up-other-filesystems" title="Anchor link to this section for reference">&para;</a></h2>
-<p>In addition to home directories, we also have a number of PIs that have
-requested to have backups of their DCS and/or DCL spaces. We do charge for
-backing up project space, and backup space is billed space is via the standard
-JHPCE quarterly billing process. The cost has historically been about
-$20/TB/yr.  If you are interested in backing up your project storage
-space, please email us at bitsupport@lists.jhu.edu.</p>
+<p>File recovery from the backup server would be done via a request to bitsupport@lists.jhu.edu.</p>
+<div class="admonition note">
+<p class="admonition-title">What we need to know to do restores</p>
+<p>As many details as possible, especially if you are unsure of things such as exact file name patterns. Items to include:
+1. What is the full path to the files? If you don't know that, at what point in the path does your uncertainty begin?
+2. If you don't know the names of the files, do you have any description of them, such as file name substrings or suffixes? Rough file sizes?
+3. When did the files last exist?
+4. When do you think they were deleted or overwritten?
+5. Where do you want files restored to?
+6. If the files were owned by a different user, who should own the restored files? Please try to have the original owner or the PI contact us to give their permission for any change of owner or access.</p>
+</div>
 <h3 id="self-service-restores">Self Service Restores<a class="headerlink" href="#self-service-restores" title="Anchor link to this section for reference">&para;</a></h3>
-<p>We make snapshots of the /users file system for fourteen days (currently at 11:30pm). You can restore files you have deleted recently by changing directory to the appropriate location and then copying the file or files back to your home directory (or anywhere else you desire).</p>
+<p>We make snapshots of the /users file system for fourteen days (currently at 11:30pm). You can restore files you have deleted recently from one or more of those directories. </p>
 <p>Files created and deleted in-between snapshots are not recoverable.</p>
-<p>At any one time there are fourteen subdirectories in the path <code>/users/.zfs/snapshot</code></p>
-<p>Here is an example of looking through the collection of snapshots to find copies of a file you want to restore. Let's say that you deleted a file inside your home directory named susan that was stored in the absolute path <code>/users/your-userid/bob/frank/susan</code> You can see from the <code>ls -ld</code> output when the file existed and also the size of the possibly various versions of that file across the collection of snapshots (perhaps you changed it several times in the last two weeks).</p>
-<div class="highlight"><pre><span></span><code>cd /users/.zfs/snapshot
-ls
+<p>At any one time there are fourteen subdirectories in the path <code>/users/.zfs/snapshot/</code> They have the form of <code>YYYY-MM-DD-HH:MM</code> Immediately below them are the home directories for everyone, which are named <code>&lt;your-userid&gt;</code>.</p>
+<p><div class="highlight"><pre><span></span><code>ls /users/.zfs/snapshot
 2025-05-29-23:30/  2025-06-01-23:30/  2025-06-04-23:30/  2025-06-07-23:30/  2025-06-10-23:30/
 2025-05-30-23:30/  2025-06-02-23:30/  2025-06-05-23:30/  2025-06-08-23:30/  2025-06-11-23:30/
 2025-05-31-23:30/  2025-06-03-23:30/  2025-06-06-23:30/  2025-06-09-23:30/  2025-06-12-23:30/
-
-     HERE YOU RUN YOUR COMMANDS TO POKE AROUND AND IDENTIFY WHAT IS PRESENT
-     IN ANY PARTICULAR SNAPSHOT
-     SUCH AS LOOKING FOR A FILE NAMED &quot;susan&quot; AND CHECKING ON ITS DATE OR SIZE IN THE
-     VARIOUS SNAPSHOTS. (REPLACE &quot;your-userid&quot; WITH YOUR CLUSTER USERNAME.)
-
-ls -ld */your-userid/project1/sample5/susan
-cp -p 2024-02-16-23:00/your-userid/project1/sample5/susan $HOME/restored-susan
 </code></pre></div>
-<p>Tips:</p>
+WORKING WITH THESE DIRECTORIES</p>
+<p>It is common to not know which files are available to restore, and which ones are the best candidates.</p>
+<p>Do <strong>not</strong> try to drill down by simply changing directory with <code>cd</code> into a directory tree and then <code>ls</code> each level to see what is present!</p>
+<p>It is important for you to know that these diretories are actually file systems which are <em><em>created on the fly</em></em> by the operating system kernel. It frequently happens very quickly in your working with these file systems that the operating system gets confused and begins preventing you from accessing some of them. That should not happen, but it does. The error you will see will look like this:</p>
+<div class="highlight"><pre><span></span><code>cd /users/.zfs/snapshot/
+cd 2026-04-09-23:30
+bash: cd: 2026-04-09-23:30: Stale file handle
+</code></pre></div>
+<p>After some period of time where you don't try to work with that directory again, the files <strong>will</strong> become accessible again. This confusion is also confined to the particular computer you are logged into at the time. (So you can move to a different machine and try to use the knowledge you have gained from your previous search attempts to begin at a newer level.)</p>
+<p><strong>What we have found to work best is to use your understanding of the paths to your home directory</strong> </p>
+<p><code>/users/.zfs/snapshot/&lt;YYYY-MM-DD-HH:MM&gt;/&lt;your-username&gt;</code></p>
+<p><strong>to perform tight, controlled file listing commands from outside of the <code>/users/.zfs/snapshot/</code> directory.</strong></p>
+<p>Let's say that you deleted a file inside your home directory named <code>&lt;something&gt;susan.&lt;some-suffix&gt;</code> which was stored in the absolute path <code>/users/your-userid/bob/frank/</code>  What are the actual file names? When did they exist, and with what size (you might have changed it several times in the last two weeks)?</p>
+<p>Use appropriate wildcards and extra arguments for <code>ls</code> to see as much relevant information as possible in the fewest commands. To try to avoid the dreaded "stale file handle" situation.</p>
+<p><code>ls -ld /users/.zfs/snapshot/*/&lt;your-username&gt;/bob/frank/*susan*</code></p>
+<details class="tip">
+<summary>Using wildcards in paths and dealing with dot files</summary>
+<p>By wildcards, I mean “*” which represents zero or more characters in any combinations, and “?” which represents any one single character.</p>
+<p>By extra flags for <code>ls</code>, I mean use <code>ls -ld</code> to get a long listing (the “l” argument) and not provide a listing of the contents of directories (unless you need to).</p>
+<p>You also need to understand that, by default, the <code>ls</code> command does not show “dot files” like <code>.bashrc</code>. And the asterisk wild card does not include dot files. To see a file containing the string <code>bashrc</code> which might be a dot file, you would use <code>ls -ld &lt;path&gt;/.*bashrc* &lt;path&gt;/*bashrc*</code></p>
+</details>
+<p>The command</p>
+<p><code>ls -ld /users/.zfs/snapshot/2026-0?/&lt;your-username&gt;/.*rc</code></p>
+<p>will list all of your dot files ending in “rc” in all of the backup directories for the first nine months of 2026. (We only keep 14 directories at a time, but we're illustrating the use of wildcards.)</p>
+<div class="admonition tip">
+<p class="admonition-title">Tips for restoring</p>
 <ul>
 <li>If restoring substantial amounts of data, please do that work on a compute node instead of a login node.</li>
-<li>Take care not to overwrite existing files in your home directory -- create a restore directory and put stuff in there, for example. Since snapshots are only made once a day, if you nuke files in-between snapshots you cannot get them back.</li>
-<li>Consider using command options which retain original timestamps or other attributes of a file. For <code>cp</code> that is <code>-p</code>. For rsync there are a variety of options which impact the copying. The typically-used <code>-a</code> ("archive") flag is shorthand for a list of options, including <code>-t</code> for timestamps.</li>
-<li>If your files of restore interest include ones with ACL rules or symbolic links etc, you may need to use additional <code>rsync</code> arguments to keep those parameters.</li>
+<li>Take care not to overwrite existing files in your home directory -- create a scratch restore directory and put stuff in there</li>
+<li>If needing to do a recursive file copy, instead of using <code>cp -rp</code>, consider using <code>rsync -av</code></li>
+<li>Consider using command options which retain original timestamps or other attributes of a file. For <code>cp</code> that is <code>-p</code>. For rsync there are a variety of options which impact the copying. The typically-used <code>-a</code> ("archive") rsync flag is shorthand for a list of options, including <code>-t</code> for timestamps and <code>-p</code> for permissions.</li>
+<li>If your files of restore interest include ones with ACL rules or symbolic links etc, you may need to use additional <code>rsync</code> arguments to keep those parameters. <code>cp -rp</code> will <strong>not</strong> recreate symbolic links. See the manual pages for <code>cp</code> and <code>rsync</code> for details.</li>
 </ul>
+</div>
+<div class="highlight"><pre><span></span><code>mkdir ~/restored-susan
+
+# If susan is a file
+cp -p 2024-02-16-23:00/&lt;your-userid&gt;/project1/sample5/susan ~/restored-susan/
+
+# If susan is a directory
+rsync -av 2024-02-16-23:00/&lt;your-userid&gt;/project1/sample5/susan/ ~/restored-susan/
+</code></pre></div>
 
 
 
@@ -5700,7 +5838,7 @@ cp -p 2024-02-16-23:00/your-userid/project1/sample5/susan $HOME/restored-susan
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="June 13, 2025 17:58:55 UTC">June 13, 2025</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="April 11, 2026 23:56:41 UTC">April 11, 2026</span>
   </span>
 
     
@@ -5716,7 +5854,7 @@ cp -p 2024-02-16-23:00/your-userid/project1/sample5/susan $HOME/restored-susan
     </span>
     <nav>
       
-        <a href="mailto:marcus@jhu.edu">Mark Miller</a>
+        <a href="mailto:tunison@jhu.edu">jeffreytunison</a>
     </nav>
   </span>
 

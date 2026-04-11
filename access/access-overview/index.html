@@ -1480,6 +1480,10 @@
       
         
       
+        
+      
+        
+      
     
     
     
@@ -1622,17 +1626,6 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#x11the-x-window-system" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        X11/The X Window System
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#multi-factor-authentication-mfa" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -1657,6 +1650,28 @@
         
       </ul>
     </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#fail2ban-protecting-against-hackers" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Fail2ban - Protecting Against Hackers
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#x11the-x-window-system" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        X11/The X Window System
+      
+    </span>
+  </a>
   
 </li>
       
@@ -1765,6 +1780,34 @@
   
   
     <li class="md-nav__item">
+      <a href="../web/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Web Portal
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../mobaxterm/" class="md-nav__link">
         
   
@@ -1773,6 +1816,34 @@
     
   
     MobaXterm
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../fail2ban/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Fail2ban
   
 
     
@@ -1811,10 +1882,10 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1_6_5" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1_6_7" >
         
           
-          <label class="md-nav__link" for="__nav_1_6_5" id="__nav_1_6_5_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_1_6_7" id="__nav_1_6_7_label" tabindex="0">
             
   
   
@@ -1832,8 +1903,8 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_1_6_5_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_1_6_5">
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_1_6_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_1_6_7">
             <span class="md-nav__icon md-icon"></span>
             
   
@@ -5646,17 +5717,6 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#x11the-x-window-system" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        X11/The X Window System
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#multi-factor-authentication-mfa" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -5681,6 +5741,28 @@
         
       </ul>
     </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#fail2ban-protecting-against-hackers" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Fail2ban - Protecting Against Hackers
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#x11the-x-window-system" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        X11/The X Window System
+      
+    </span>
+  </a>
   
 </li>
       
@@ -5737,7 +5819,7 @@
 <h1 id="accessing-the-cluster-overview">Accessing the Cluster: Overview<a class="headerlink" href="#accessing-the-cluster-overview" title="Anchor link to this section for reference">&para;</a></h1>
 <h2 id="cluster-structure-overview">Cluster structure overview<a class="headerlink" href="#cluster-structure-overview" title="Anchor link to this section for reference">&para;</a></h2>
 <p>The cluster consists of some public-facing hosts with the remaining computers "behind them" on private networks. An incomplete and very oversimplified approximation:</p>
-<pre class="mermaid"><code>graph TD
+<p><pre class="mermaid"><code>graph TD
    A[Your computer] --&gt; B([Login nodes])
    A[Your computer] -- Only via Hopkins/VPN --&gt; D((Web Portal))
    A[Your computer] --&gt; C([Transfer node])
@@ -5748,18 +5830,57 @@
    B([Login nodes]) --&gt; G[Compute node3]
    D((Web Portal)) --&gt; G[Compute node3]
    C([Transfer node]) &lt;--&gt; H[(storage servers)]</code></pre>
+Ways in which this diagram is oversimplified include</p>
+<ul>
+<li>the diagram represents our main cluster. Our secure cluster, JADE (JHPCE Advanced Data Enclave), cannot be accessed at all unless you are connecting from a Hopkins network</li>
+<li>users don't log into compute nodes directly but use SLURM to launch batch jobs or open interactive sessions</li>
+<li>the compute nodes also conduct NFS (Network File Service) with the storage servers</li>
+<li>same with the transfer server and the storage servers</li>
+</ul>
 <h2 id="public-facing-login-and-transfer">Public-facing: Login and Transfer<a class="headerlink" href="#public-facing-login-and-transfer" title="Anchor link to this section for reference">&para;</a></h2>
 <p>The login and transfer nodes are accessible to the wider Internet. 
 For security reasons, the web portal is only available to computers on Hopkins networks. If you are not on a Hopkins campus, that means that you need to use the VPN to be able to see that node.</p>
-<ul>
-<li><strong>login</strong>: Normally jhpce01.jhsph.edu and jhpce02.jhsph.edu</li>
-<li><strong>transfer</strong>: <mark class="critic">jhpce-transfer01.jhsph.edu</mark></li>
-<li><strong>web portal</strong>: <mark class="critic"><a href="https://jhpce-app02.jhsph.edu">jhpce-app02.jhsph.edu</a></mark></li>
-</ul>
+<table>
+<thead>
+<tr>
+<th>Purpose</th>
+<th>JHPCE Cluster</th>
+<th>JADE Cluster</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>login</strong></td>
+<td>jhpce01.jhsph.edu &amp; jhpce03.jhsph.edu</td>
+<td>jade01.jhsph.edu</td>
+</tr>
+<tr>
+<td><strong>transfer</strong></td>
+<td>jhpce-transfer01.jhsph.edu</td>
+<td>jade-transfer01.jhsph.edu</td>
+</tr>
+<tr>
+<td><strong>web portal</strong></td>
+<td><a href="https://jhpce-app02.jhsph.edu">jhpce-app02.jhsph.edu</a></td>
+<td><a href="https://jade-ondemand01.jhsph.edu">jade-ondemand01.jhsph.edu</a></td>
+</tr>
+</tbody>
+</table>
 <h2 id="ssh-is-the-primary-method">SSH Is The Primary Method<a class="headerlink" href="#ssh-is-the-primary-method" title="Anchor link to this section for reference">&para;</a></h2>
 <p>Access to the JHPCE cluster requires the use of SSH.</p>
-<p>SSH stands for Secure SHell. SSH is actually a set of internet standard protocols. Programs implementing these protocols include both command line interface (CLI) tools and those with graphic user interfaces (GUI).  They all enable you to make secure, encrypted connections from one computer to the next.</p>
+<p>SSH stands for Secure SHell. SSH is actually a <strong>set</strong> of internet standard protocols. Programs implementing these protocols include both command line interface (CLI) tools and those with graphic user interfaces (GUI).  They all enable you to make secure, encrypted connections from one computer to the next.</p>
 <p><a href="../ssh/">This document</a> provides more information on SSH.</p>
+<h2 id="multi-factor-authentication-mfa">Multi-factor authentication (MFA)<a class="headerlink" href="#multi-factor-authentication-mfa" title="Anchor link to this section for reference">&para;</a></h2>
+<p>Our clusters are configured to require MFA.</p>
+<p>There are two basic "factors" required to log into a computer, whether your laptop or a remote UNIX cluster login node -- your username and a password. <mark class="critic">JHPCE requires the use of an additional factor</mark>, either a <a href="../ssh/#one-time-passwords">one-time password</a> (OTP) six digit code, or the use of <a href="../ssh/#ssh-keys">SSH key pairs</a>. </p>
+<h3 id="one-time-passwords">One Time Passwords<a class="headerlink" href="#one-time-passwords" title="Anchor link to this section for reference">&para;</a></h3>
+<p>When you SSH into JHPCE, you will be prompted for a “Verification Code:” This is your cue to enter in a one-time password six digit code.</p>
+<p>Programs like <code>Google Authenticator</code> and <code>Micrsoft Authenticator</code> generate one-time password codes (OTP). <mark class="critic">These are only good for a single use, whether you successfully log in or not.</mark> Typically they are used to generate a <em>stream</em> of time-based OTPs, or TOTPs. These are only good for one minute, adding another layer of difficulty for someone trying to impersonate you.</p>
+<p>These programs are usually used on smartphones, but there are programs available to create them on laptops and desktops. The key with using ANY OTP program is to get it from a trusted source. We will default to mentioning the <code>Google Authenticator</code>.</p>
+<p>After you log into JHPCE for the first time, you should immediately configure your OTP program using a "secret" accessible to you on the cluster via the <code>auth_util</code> program. Instructions for doing that are found in the <a href="https://docs.google.com/presentation/d/1elMSTUdKws7FLVFK7vVV_AErA4brNSPX/pub" target="_blank">orientation documents</a>.</p>
+<h2 id="fail2ban-protecting-against-hackers">Fail2ban - Protecting Against Hackers<a class="headerlink" href="#fail2ban-protecting-against-hackers" title="Anchor link to this section for reference">&para;</a></h2>
+<p>We use a package called fail2ban on our public-facing servers to watch for IP addresses which are trying and failing to connect. After specific numbers of failures within various time windows, IP addresses are banned - again for various lengths of time.</p>
+<p>For more information, please see our <a href="../fail2ban/">fail2ban</a> document.</p>
 <h2 id="x11the-x-window-system">X11/The X Window System<a class="headerlink" href="#x11the-x-window-system" title="Anchor link to this section for reference">&para;</a></h2>
 <p>The <a href="https://en.wikipedia.org/wiki/X_Window_System">X Window System</a> (aka X11, aka X) is the primary GUI system for UNIX computers. X allows a program (an X "client") running on a UNIX computer in the cluster to be displayed on a remote computer (running an X "server"<sup id="fnref:2"><a class="footnote-ref" href="#fn:2">1</a></sup>) over the network. To use it, your local computer needs to have X server software installed on it.</p>
 <p>SSH provides support for tunnelling X11 over an encrypted connection. You may need to tell SSH that you want that service, by, for example, adding the -X flag to an ssh command in a macOS Terminal.</p>
@@ -5769,17 +5890,11 @@ For security reasons, the web portal is only available to computers on Hopkins n
 <li>Linux laptop or desktop users are already using X as their windowing system.</li>
 </ul>
 <p>For more information, see <a href="../x11/">our X11 document</a>.</p>
-<h2 id="multi-factor-authentication-mfa">Multi-factor authentication (MFA)<a class="headerlink" href="#multi-factor-authentication-mfa" title="Anchor link to this section for reference">&para;</a></h2>
-<p>There are two basic "factors" required to log into a computer, whether your laptop or a remote UNIX cluster login node -- your username and a password. <mark class="critic">JHPCE requires the use of an additional factor</mark>, either a <a href="../ssh/#one-time-passwords">one-time password</a> (OTP) six digit code, or the use of <a href="../ssh/#ssh-keys">SSH key pairs</a>. </p>
-<h3 id="one-time-passwords">One Time Passwords<a class="headerlink" href="#one-time-passwords" title="Anchor link to this section for reference">&para;</a></h3>
-<p>When you SSH into JHPCE, you will be prompted for a “Verification Code:” This is your cue to enter in a one-time password six digit code.</p>
-<p>Programs like <code>Google Authenticator</code> and <code>Micrsoft Authenticator</code> generate one-time password codes (OTP). These are only good for a single use, whether you successfully log in or not. Typically they are used to generate a <em>stream</em> of time-based OTPs, or TOTPs. These are only good for one minute, adding another layer of difficulty for someone trying to impersonate you.</p>
-<p>These programs are usually used on smartphones, but there are programs available to create them on laptops and desktops. The key with using ANY OTP program is to get it from a trusted source. We will default to mentioning the <code>Google Authenticator</code>.</p>
-<p>After you log into JHPCE for the first time, you should immediately configure your OTP program using a "secret" accessible to you on the cluster via the <code>auth_util</code> program. Instructions for doing that are found in the <a href="https://docs.google.com/presentation/d/1elMSTUdKws7FLVFK7vVV_AErA4brNSPX/pub" target="_blank">orientation documents</a>.</p>
 <h2 id="web-portal">Web Portal<a class="headerlink" href="#web-portal" title="Anchor link to this section for reference">&para;</a></h2>
-<p>We have a web server named <a href="https://jhpce-app02.jhsph.edu">jhpce-app02.jhsph.edu</a> configured to offer a growing number of services. Click on the links to learn more.</p>
+<p>Access to our clusters will be changing in 2026. The main source of information will be the (now-sparse) page about <a href="../web/">web services</a>.</p>
+<p>We have a web server named <a href="https://jhpce-app02.jhsph.edu">jhpce-app02.jhsph.edu</a> configured to offer a number of services. Click on the links to learn more.</p>
 <ul>
-<li>Reset your password or generate a OTP (<a href="../../portal/web-reset/">learn more</a>)</li>
+<li>Reset your password or generate a OTP (<a href="../../portal/web-reset/">learn more</a>) (<strong><mark class="critic">requires a valid JHEDID account</mark></strong>)</li>
 <li>Run applications on the cluster (RStudio, JupyterLab, VS Code) (<a href="../../portal/web-apps/">learn more</a>)</li>
 <li>Inspect a catalog of research databases (under development) (<a href="../../portal/datacatalog/">learn more</a>)</li>
 </ul>
@@ -5820,7 +5935,7 @@ This computer also offers a Globus Endpoint service (described <a href="../globu
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="January 13, 2026 20:48:35 UTC">January 13, 2026</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="April 5, 2026 03:17:57 UTC">April 5, 2026</span>
   </span>
 
     

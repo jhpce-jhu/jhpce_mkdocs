@@ -834,48 +834,6 @@
   },
   {
     "page_name": "FAQ",
-    "page_url": "../../help/faq-old/",
-    "text": "bash: module: command not found\n",
-    "html": "<pre><span></span><code>bash:<span class=\"w\"> </span>module:<span class=\"w\"> </span><span class=\"nb\">command</span><span class=\"w\"> </span>not<span class=\"w\"> </span>found\n</code></pre>",
-    "language": ""
-  },
-  {
-    "page_name": "FAQ",
-    "page_url": "../../help/faq-old/",
-    "text": "if [ -f /etc/bashrc ]; then\n. /etc/bashrc\nfi\n",
-    "html": "<pre><span></span><code><span class=\"k\">if</span><span class=\"w\"> </span><span class=\"o\">[</span><span class=\"w\"> </span>-f<span class=\"w\"> </span>/etc/bashrc<span class=\"w\"> </span><span class=\"o\">]</span><span class=\"p\">;</span><span class=\"w\"> </span><span class=\"k\">then</span>\n.<span class=\"w\"> </span>/etc/bashrc\n<span class=\"k\">fi</span>\n</code></pre>",
-    "language": ""
-  },
-  {
-    "page_name": "FAQ",
-    "page_url": "../../help/faq-old/",
-    "text": "(require 'use-package)\n(add-to-list 'package-archives '(\"gnu\" . \"http://elpa.gnu.org/packages/\") t)\n(add-to-list 'package-archives '(\"melpa\" . \"http://melpa.org/packages/\") t)\n",
-    "html": "<pre><span></span><code><span class=\"p\">(</span><span class=\"nb\">require</span><span class=\"w\"> </span><span class=\"ss\">'use-package</span><span class=\"p\">)</span>\n<span class=\"p\">(</span><span class=\"nv\">add-to-list</span><span class=\"w\"> </span><span class=\"ss\">'package-archives</span><span class=\"w\"> </span><span class=\"o\">'</span><span class=\"p\">(</span><span class=\"s\">\"gnu\"</span><span class=\"w\"> </span><span class=\"o\">.</span><span class=\"w\"> </span><span class=\"s\">\"http://elpa.gnu.org/packages/\"</span><span class=\"p\">)</span><span class=\"w\"> </span><span class=\"no\">t</span><span class=\"p\">)</span>\n<span class=\"p\">(</span><span class=\"nv\">add-to-list</span><span class=\"w\"> </span><span class=\"ss\">'package-archives</span><span class=\"w\"> </span><span class=\"o\">'</span><span class=\"p\">(</span><span class=\"s\">\"melpa\"</span><span class=\"w\"> </span><span class=\"o\">.</span><span class=\"w\"> </span><span class=\"s\">\"http://melpa.org/packages/\"</span><span class=\"p\">)</span><span class=\"w\"> </span><span class=\"no\">t</span><span class=\"p\">)</span>\n</code></pre>",
-    "language": ""
-  },
-  {
-    "page_name": "FAQ",
-    "page_url": "../../help/faq-old/",
-    "text": "EnableEscapeCommandline=yes\n",
-    "html": "<pre><span></span><code>EnableEscapeCommandline=yes\n</code></pre>",
-    "language": ""
-  },
-  {
-    "page_name": "FAQ",
-    "page_url": "../../help/faq-old/",
-    "text": "$ ssh -X username@jhpce01.jhsph.edu -o ForwardX11Timeout=336h\n",
-    "html": "<pre><span></span><code>$ ssh -X username@jhpce01.jhsph.edu -o ForwardX11Timeout=336h\n</code></pre>",
-    "language": ""
-  },
-  {
-    "page_name": "FAQ",
-    "page_url": "../../help/faq-old/",
-    "text": "#!/bin/bash\n\n# Source the global bashrc\nif [ -f /etc/bashrc ]; then\n. /etc/bashrc\nfi\nmodule load JHPCE_DEFAULT_ENV\n",
-    "html": "<pre><span></span><code><span class=\"ch\">#!/bin/bash</span>\n\n<span class=\"c1\"># Source the global bashrc</span>\n<span class=\"k\">if</span><span class=\"w\"> </span><span class=\"o\">[</span><span class=\"w\"> </span>-f<span class=\"w\"> </span>/etc/bashrc<span class=\"w\"> </span><span class=\"o\">]</span><span class=\"p\">;</span><span class=\"w\"> </span><span class=\"k\">then</span>\n.<span class=\"w\"> </span>/etc/bashrc\n<span class=\"k\">fi</span>\nmodule<span class=\"w\"> </span>load<span class=\"w\"> </span>JHPCE_DEFAULT_ENV\n</code></pre>",
-    "language": ""
-  },
-  {
-    "page_name": "FAQ",
     "page_url": "../../help/faq/",
     "text": "#!/bin/bash\n\nrsync -avzh /users/bob/src /dcs08/bob/dst\n",
     "html": "<pre><span></span><code>#!/bin/bash\n\nrsync -avzh /users/bob/src /dcs08/bob/dst\n</code></pre>",
@@ -1234,8 +1192,8 @@
   {
     "page_name": "Handy Features",
     "page_url": "../../ourtools/features/",
-    "text": "cd ~/Documents/GitHub/\n\n# Clone the repo\n# Depending on how you authenticate when pushing files to the repo\n\ngit clone https://github.com/jhpce-jhu/jhpce_mkdocs\n# or you can use the ssh-key method:\ngit clone git@github.com:jhpce-jhu/jhpce_mkdocs\n\n# If you want to use ssh keys, then before you can push you need to:\n# Generate a GitHub-specific key\n# Add that key to your GitHub account (https://github.com/settings/keys)\n# Have that key loaded in your ssh agent\n# Possibly, run this command to define origin correctly:\n# git remote set-url origin git@github.com:jhpce-jhu/jhpce_mkdocs.git\n\ncd jhpce_mkdocs/docs/\n\n# Edit in the docs/ subdirectory, not in sites/ (the latter is where\n# the web pages are built by an Action configured in the repo's\n# underlying configuration if your commit includes 'rebuild-site')\ncd docs/\n\npip3 install mkdocs-material\npip3 install mkdocs-git-revision-date-localized-plugin\npip3 install mkdocs-open-in-new-tab\npip3 install mkdocs-mermaid2-plugin\npip3 install mkdocs-git-authors-plugin\npip3 install mkdocs-extract-listings-plugin\npip3 install mkdocs_table_reader_plugin\nmkdocs build\nmkdocs serve\n\n# For example, create a new directory\nmkdir newsection\n# create a MarkDown document bob.md inside newsection/\nvi newsection/bob.md # or use whatever editor you prefer\n\n# Review your changed document in browser at `http://127.0.0.1:8000/`\n\n# Add revised files and commit them\ngit add newsection/bob.md\ngit -m \"rebuild-site My_descriptive_text\"\n\ngit push\n\n# If you cannot push b/c someone else changed the repo since your last pull\ngit pull --rebase\ngit push\n",
-    "html": "<pre><span></span><code>cd ~/Documents/GitHub/\n\n# Clone the repo\n# Depending on how you authenticate when pushing files to the repo\n\ngit clone https://github.com/jhpce-jhu/jhpce_mkdocs\n# or you can use the ssh-key method:\ngit clone git@github.com:jhpce-jhu/jhpce_mkdocs\n\n# If you want to use ssh keys, then before you can push you need to:\n# Generate a GitHub-specific key\n# Add that key to your GitHub account (https://github.com/settings/keys)\n# Have that key loaded in your ssh agent\n# Possibly, run this command to define origin correctly:\n# git remote set-url origin git@github.com:jhpce-jhu/jhpce_mkdocs.git\n\ncd jhpce_mkdocs/docs/\n\n# Edit in the docs/ subdirectory, not in sites/ (the latter is where\n# the web pages are built by an Action configured in the repo's\n# underlying configuration if your commit includes 'rebuild-site')\ncd docs/\n\npip3 install mkdocs-material\npip3 install mkdocs-git-revision-date-localized-plugin\npip3 install mkdocs-open-in-new-tab\npip3 install mkdocs-mermaid2-plugin\npip3 install mkdocs-git-authors-plugin\npip3 install mkdocs-extract-listings-plugin\npip3 install mkdocs_table_reader_plugin\nmkdocs build\nmkdocs serve\n\n# For example, create a new directory\nmkdir newsection\n# create a MarkDown document bob.md inside newsection/\nvi newsection/bob.md # or use whatever editor you prefer\n\n# Review your changed document in browser at `http://127.0.0.1:8000/`\n\n# Add revised files and commit them\ngit add newsection/bob.md\ngit -m \"rebuild-site My_descriptive_text\"\n\ngit push\n\n# If you cannot push b/c someone else changed the repo since your last pull\ngit pull --rebase\ngit push\n</code></pre>",
+    "text": "cd ~/Documents/GitHub/\n\n# Clone the repo\n# Depending on how you authenticate when pushing files to the repo\n\ngit clone https://github.com/jhpce-jhu/jhpce_mkdocs\n# or you can use the ssh-key method:\ngit clone git@github.com:jhpce-jhu/jhpce_mkdocs\n\n# If you want to use ssh keys, then before you can push you need to:\n# Generate a GitHub-specific key\n# Add that key to your GitHub account (https://github.com/settings/keys)\n# Have that key loaded in your ssh agent\n# Possibly, run this command to define origin correctly:\n# git remote set-url origin git@github.com:jhpce-jhu/jhpce_mkdocs.git\n\ncd jhpce_mkdocs/docs/\n\n# Edit in the docs/ subdirectory, not in sites/ (the latter is where\n# the web pages are built by an Action configured in the repo's\n# underlying configuration if your commit includes 'rebuild-site')\ncd docs/\n\npip3 install mkdocs-material\npip3 install mkdocs-git-revision-date-localized-plugin\npip3 install mkdocs-open-in-new-tab\npip3 install mkdocs-mermaid2-plugin\npip3 install mkdocs-git-authors-plugin\npip3 install mkdocs-extract-listings-plugin\npip3 install mkdocs_table_reader_plugin\n\n#\n# Build a directory full of processed files - and view them\n#\nmkdocs build\nmkdocs serve\nSeveral options are available for the 'serve' subcommand, such as:\nmkdocs serve --dirty\nmkdocs serve --dirty -w <dir_to_watch> [-w <2nd_dir_to_watch>]\n\n# For example, create a new directory under docs\nmkdir newsection\n# create a MarkDown document bob.md inside newsection/\nvi newsection/bob.md # or use whatever editor you prefer\n\n2026 - it used to be that the running \"mkdocs serve\" process would wait until you wrote out changes from your editor to disk. Now, for Jeffrey at least using MacDown, the slightest change to the file will lead to the serve process from regenerating the entire tree. So once he gets a gander at the existing or revised page, he control-Z's \"mkdocs serve\" until he is done with a bunch of edits.\n\n# Review your changed document in browser at `http://127.0.0.1:8000/`\n\n#\n# Add revised files and commit them\n#\ngit add newsection/bob.md\ngit -m \"rebuild-site My_descriptive_text\"\n\ngit push\n\n# If you cannot push b/c someone else changed the repo since your last pull\ngit pull --rebase\ngit push\n",
+    "html": "<pre><span></span><code>cd ~/Documents/GitHub/\n\n# Clone the repo\n# Depending on how you authenticate when pushing files to the repo\n\ngit clone https://github.com/jhpce-jhu/jhpce_mkdocs\n# or you can use the ssh-key method:\ngit clone git@github.com:jhpce-jhu/jhpce_mkdocs\n\n# If you want to use ssh keys, then before you can push you need to:\n# Generate a GitHub-specific key\n# Add that key to your GitHub account (https://github.com/settings/keys)\n# Have that key loaded in your ssh agent\n# Possibly, run this command to define origin correctly:\n# git remote set-url origin git@github.com:jhpce-jhu/jhpce_mkdocs.git\n\ncd jhpce_mkdocs/docs/\n\n# Edit in the docs/ subdirectory, not in sites/ (the latter is where\n# the web pages are built by an Action configured in the repo's\n# underlying configuration if your commit includes 'rebuild-site')\ncd docs/\n\npip3 install mkdocs-material\npip3 install mkdocs-git-revision-date-localized-plugin\npip3 install mkdocs-open-in-new-tab\npip3 install mkdocs-mermaid2-plugin\npip3 install mkdocs-git-authors-plugin\npip3 install mkdocs-extract-listings-plugin\npip3 install mkdocs_table_reader_plugin\n\n#\n# Build a directory full of processed files - and view them\n#\nmkdocs build\nmkdocs serve\nSeveral options are available for the 'serve' subcommand, such as:\nmkdocs serve --dirty\nmkdocs serve --dirty -w &lt;dir_to_watch&gt; [-w &lt;2nd_dir_to_watch&gt;]\n\n# For example, create a new directory under docs\nmkdir newsection\n# create a MarkDown document bob.md inside newsection/\nvi newsection/bob.md # or use whatever editor you prefer\n\n2026 - it used to be that the running \"mkdocs serve\" process would wait until you wrote out changes from your editor to disk. Now, for Jeffrey at least using MacDown, the slightest change to the file will lead to the serve process from regenerating the entire tree. So once he gets a gander at the existing or revised page, he control-Z's \"mkdocs serve\" until he is done with a bunch of edits.\n\n# Review your changed document in browser at `http://127.0.0.1:8000/`\n\n#\n# Add revised files and commit them\n#\ngit add newsection/bob.md\ngit -m \"rebuild-site My_descriptive_text\"\n\ngit push\n\n# If you cannot push b/c someone else changed the repo since your last pull\ngit pull --rebase\ngit push\n</code></pre>",
     "language": ""
   },
   {
@@ -2095,8 +2053,22 @@
   {
     "page_name": "Backups and Restores",
     "page_url": "../../storage/backups-restores/",
-    "text": "cd /users/.zfs/snapshot\nls\n2025-05-29-23:30/  2025-06-01-23:30/  2025-06-04-23:30/  2025-06-07-23:30/  2025-06-10-23:30/\n2025-05-30-23:30/  2025-06-02-23:30/  2025-06-05-23:30/  2025-06-08-23:30/  2025-06-11-23:30/\n2025-05-31-23:30/  2025-06-03-23:30/  2025-06-06-23:30/  2025-06-09-23:30/  2025-06-12-23:30/\n\n     HERE YOU RUN YOUR COMMANDS TO POKE AROUND AND IDENTIFY WHAT IS PRESENT\n     IN ANY PARTICULAR SNAPSHOT\n     SUCH AS LOOKING FOR A FILE NAMED \"susan\" AND CHECKING ON ITS DATE OR SIZE IN THE\n     VARIOUS SNAPSHOTS. (REPLACE \"your-userid\" WITH YOUR CLUSTER USERNAME.)\n\nls -ld */your-userid/project1/sample5/susan\ncp -p 2024-02-16-23:00/your-userid/project1/sample5/susan $HOME/restored-susan\n",
-    "html": "<pre><span></span><code>cd /users/.zfs/snapshot\nls\n2025-05-29-23:30/  2025-06-01-23:30/  2025-06-04-23:30/  2025-06-07-23:30/  2025-06-10-23:30/\n2025-05-30-23:30/  2025-06-02-23:30/  2025-06-05-23:30/  2025-06-08-23:30/  2025-06-11-23:30/\n2025-05-31-23:30/  2025-06-03-23:30/  2025-06-06-23:30/  2025-06-09-23:30/  2025-06-12-23:30/\n\n     HERE YOU RUN YOUR COMMANDS TO POKE AROUND AND IDENTIFY WHAT IS PRESENT\n     IN ANY PARTICULAR SNAPSHOT\n     SUCH AS LOOKING FOR A FILE NAMED \"susan\" AND CHECKING ON ITS DATE OR SIZE IN THE\n     VARIOUS SNAPSHOTS. (REPLACE \"your-userid\" WITH YOUR CLUSTER USERNAME.)\n\nls -ld */your-userid/project1/sample5/susan\ncp -p 2024-02-16-23:00/your-userid/project1/sample5/susan $HOME/restored-susan\n</code></pre>",
+    "text": "ls /users/.zfs/snapshot\n2025-05-29-23:30/  2025-06-01-23:30/  2025-06-04-23:30/  2025-06-07-23:30/  2025-06-10-23:30/\n2025-05-30-23:30/  2025-06-02-23:30/  2025-06-05-23:30/  2025-06-08-23:30/  2025-06-11-23:30/\n2025-05-31-23:30/  2025-06-03-23:30/  2025-06-06-23:30/  2025-06-09-23:30/  2025-06-12-23:30/\n",
+    "html": "<pre><span></span><code>ls /users/.zfs/snapshot\n2025-05-29-23:30/  2025-06-01-23:30/  2025-06-04-23:30/  2025-06-07-23:30/  2025-06-10-23:30/\n2025-05-30-23:30/  2025-06-02-23:30/  2025-06-05-23:30/  2025-06-08-23:30/  2025-06-11-23:30/\n2025-05-31-23:30/  2025-06-03-23:30/  2025-06-06-23:30/  2025-06-09-23:30/  2025-06-12-23:30/\n</code></pre>",
+    "language": ""
+  },
+  {
+    "page_name": "Backups and Restores",
+    "page_url": "../../storage/backups-restores/",
+    "text": "cd /users/.zfs/snapshot/\ncd 2026-04-09-23:30\nbash: cd: 2026-04-09-23:30: Stale file handle\n",
+    "html": "<pre><span></span><code>cd /users/.zfs/snapshot/\ncd 2026-04-09-23:30\nbash: cd: 2026-04-09-23:30: Stale file handle\n</code></pre>",
+    "language": ""
+  },
+  {
+    "page_name": "Backups and Restores",
+    "page_url": "../../storage/backups-restores/",
+    "text": "mkdir ~/restored-susan\n\n# If susan is a file\ncp -p 2024-02-16-23:00/<your-userid>/project1/sample5/susan ~/restored-susan/\n\n# If susan is a directory\nrsync -av 2024-02-16-23:00/<your-userid>/project1/sample5/susan/ ~/restored-susan/\n",
+    "html": "<pre><span></span><code>mkdir ~/restored-susan\n\n# If susan is a file\ncp -p 2024-02-16-23:00/&lt;your-userid&gt;/project1/sample5/susan ~/restored-susan/\n\n# If susan is a directory\nrsync -av 2024-02-16-23:00/&lt;your-userid&gt;/project1/sample5/susan/ ~/restored-susan/\n</code></pre>",
     "language": ""
   },
   {

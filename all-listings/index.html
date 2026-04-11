@@ -1474,6 +1474,10 @@
       
         
       
+        
+      
+        
+      
     
     
     
@@ -1607,6 +1611,34 @@
   
   
     <li class="md-nav__item">
+      <a href="../access/web/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Web Portal
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../access/mobaxterm/" class="md-nav__link">
         
   
@@ -1615,6 +1647,34 @@
     
   
     MobaXterm
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../access/fail2ban/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Fail2ban
   
 
     
@@ -1653,10 +1713,10 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1_6_5" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1_6_7" >
         
           
-          <label class="md-nav__link" for="__nav_1_6_5" id="__nav_1_6_5_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_1_6_7" id="__nav_1_6_7_label" tabindex="0">
             
   
   
@@ -1674,8 +1734,8 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_1_6_5_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_1_6_5">
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_1_6_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_1_6_7">
             <span class="md-nav__icon md-icon"></span>
             
   
@@ -6868,22 +6928,6 @@ python nvidia-test.py
  1875/1875 [==============================] - 4s 2ms/step - loss: 0.0751 - accuracy: 0.9769
  313/313 - 1s - loss: 0.0713 - accuracy: 0.9780 - 600ms/epoch - 2ms/step
  [login31 /users/mmill116/gpu-test]$ 
-</code></pre><h2><a class="heading" href="../help/faq-old/">FAQ</a></h2><a class="url" href="../help/faq-old/">help/faq-old/</a><pre><span></span><code>bash:<span class="w"> </span>module:<span class="w"> </span><span class="nb">command</span><span class="w"> </span>not<span class="w"> </span>found
-</code></pre><pre><span></span><code><span class="k">if</span><span class="w"> </span><span class="o">[</span><span class="w"> </span>-f<span class="w"> </span>/etc/bashrc<span class="w"> </span><span class="o">]</span><span class="p">;</span><span class="w"> </span><span class="k">then</span>
-.<span class="w"> </span>/etc/bashrc
-<span class="k">fi</span>
-</code></pre><pre><span></span><code><span class="p">(</span><span class="nb">require</span><span class="w"> </span><span class="ss">'use-package</span><span class="p">)</span>
-<span class="p">(</span><span class="nv">add-to-list</span><span class="w"> </span><span class="ss">'package-archives</span><span class="w"> </span><span class="o">'</span><span class="p">(</span><span class="s">"gnu"</span><span class="w"> </span><span class="o">.</span><span class="w"> </span><span class="s">"http://elpa.gnu.org/packages/"</span><span class="p">)</span><span class="w"> </span><span class="no">t</span><span class="p">)</span>
-<span class="p">(</span><span class="nv">add-to-list</span><span class="w"> </span><span class="ss">'package-archives</span><span class="w"> </span><span class="o">'</span><span class="p">(</span><span class="s">"melpa"</span><span class="w"> </span><span class="o">.</span><span class="w"> </span><span class="s">"http://melpa.org/packages/"</span><span class="p">)</span><span class="w"> </span><span class="no">t</span><span class="p">)</span>
-</code></pre><pre><span></span><code>EnableEscapeCommandline=yes
-</code></pre><pre><span></span><code>$ ssh -X username@jhpce01.jhsph.edu -o ForwardX11Timeout=336h
-</code></pre><pre><span></span><code><span class="ch">#!/bin/bash</span>
-
-<span class="c1"># Source the global bashrc</span>
-<span class="k">if</span><span class="w"> </span><span class="o">[</span><span class="w"> </span>-f<span class="w"> </span>/etc/bashrc<span class="w"> </span><span class="o">]</span><span class="p">;</span><span class="w"> </span><span class="k">then</span>
-.<span class="w"> </span>/etc/bashrc
-<span class="k">fi</span>
-module<span class="w"> </span>load<span class="w"> </span>JHPCE_DEFAULT_ENV
 </code></pre><h2><a class="heading" href="../help/faq/">FAQ</a></h2><a class="url" href="../help/faq/">help/faq/</a><pre><span></span><code>#!/bin/bash
 
 rsync -avzh /users/bob/src /dcs08/bob/dst
@@ -7083,17 +7127,28 @@ pip3 install mkdocs-mermaid2-plugin
 pip3 install mkdocs-git-authors-plugin
 pip3 install mkdocs-extract-listings-plugin
 pip3 install mkdocs_table_reader_plugin
+
+#
+# Build a directory full of processed files - and view them
+#
 mkdocs build
 mkdocs serve
+Several options are available for the 'serve' subcommand, such as:
+mkdocs serve --dirty
+mkdocs serve --dirty -w &lt;dir_to_watch&gt; [-w &lt;2nd_dir_to_watch&gt;]
 
-# For example, create a new directory
+# For example, create a new directory under docs
 mkdir newsection
 # create a MarkDown document bob.md inside newsection/
 vi newsection/bob.md # or use whatever editor you prefer
 
+2026 - it used to be that the running "mkdocs serve" process would wait until you wrote out changes from your editor to disk. Now, for Jeffrey at least using MacDown, the slightest change to the file will lead to the serve process from regenerating the entire tree. So once he gets a gander at the existing or revised page, he control-Z's "mkdocs serve" until he is done with a bunch of edits.
+
 # Review your changed document in browser at `http://127.0.0.1:8000/`
 
+#
 # Add revised files and commit them
+#
 git add newsection/bob.md
 git -m "rebuild-site My_descriptive_text"
 
@@ -7805,19 +7860,20 @@ User                UserCPU             WCKey               WCKeyID
 </code></pre><h2><a class="heading" href="../storage/">STORAGE OVERVIEW</a></h2><a class="url" href="../storage/">storage/</a><pre><span></span><code>- Part of DCS04 was used for legacy-dcs01 space
 - Part of DCS05 was used for legacy-dcl01 space
 - SSD-based array used by JADE cluster
-</code></pre><h2><a class="heading" href="../storage/backups-restores/">Backups and Restores</a></h2><a class="url" href="../storage/backups-restores/">storage/backups-restores/</a><pre><span></span><code>cd /users/.zfs/snapshot
-ls
+</code></pre><h2><a class="heading" href="../storage/backups-restores/">Backups and Restores</a></h2><a class="url" href="../storage/backups-restores/">storage/backups-restores/</a><pre><span></span><code>ls /users/.zfs/snapshot
 2025-05-29-23:30/  2025-06-01-23:30/  2025-06-04-23:30/  2025-06-07-23:30/  2025-06-10-23:30/
 2025-05-30-23:30/  2025-06-02-23:30/  2025-06-05-23:30/  2025-06-08-23:30/  2025-06-11-23:30/
 2025-05-31-23:30/  2025-06-03-23:30/  2025-06-06-23:30/  2025-06-09-23:30/  2025-06-12-23:30/
+</code></pre><pre><span></span><code>cd /users/.zfs/snapshot/
+cd 2026-04-09-23:30
+bash: cd: 2026-04-09-23:30: Stale file handle
+</code></pre><pre><span></span><code>mkdir ~/restored-susan
 
-     HERE YOU RUN YOUR COMMANDS TO POKE AROUND AND IDENTIFY WHAT IS PRESENT
-     IN ANY PARTICULAR SNAPSHOT
-     SUCH AS LOOKING FOR A FILE NAMED "susan" AND CHECKING ON ITS DATE OR SIZE IN THE
-     VARIOUS SNAPSHOTS. (REPLACE "your-userid" WITH YOUR CLUSTER USERNAME.)
+# If susan is a file
+cp -p 2024-02-16-23:00/&lt;your-userid&gt;/project1/sample5/susan ~/restored-susan/
 
-ls -ld */your-userid/project1/sample5/susan
-cp -p 2024-02-16-23:00/your-userid/project1/sample5/susan $HOME/restored-susan
+# If susan is a directory
+rsync -av 2024-02-16-23:00/&lt;your-userid&gt;/project1/sample5/susan/ ~/restored-susan/
 </code></pre><h2><a class="heading" href="../storage/quotas/">Quotas</a></h2><a class="url" href="../storage/quotas/">storage/quotas/</a><pre><span></span><code><span class="nb">cd</span>
 du<span class="w"> </span>-sh<span class="w"> </span>.
 </code></pre><pre><span></span><code><span class="nb">cd</span><span class="w"> </span><span class="nv">$MYSCRATCH</span>
