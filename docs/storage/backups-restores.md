@@ -40,6 +40,7 @@ on January 1st 2019 or 2020.
 File recovery from the backup server would be done via a request to bitsupport@lists.jhu.edu.
 
 !!! Note "What we need to know to do restores"
+    
     As many details as possible, especially if you are unsure of things such as exact file name patterns. Items to include:
     1. What is the full path to the files? If you don't know that, at what point in the path does your uncertainty begin?
     2. If you don't know the names of the files, do you have any description of them, such as file name substrings or suffixes? Rough file sizes?
