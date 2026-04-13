@@ -4,6 +4,8 @@
 
 Questions about using SLURM are covered in their own FAQ [here](https://jhpce.jhu.edu/slurm/slurm-faq/).
 
+Commands related to SLURM can be found in [this document](../slurm/slurm-commands-ref.md) 
+
 ## Orientation/Cluster Basics
 You can access our latest orientation slides at [This Link](https://docs.google.com/presentation/d/1elMSTUdKws7FLVFK7vVV_AErA4brNSPX/pub){:target="_blank"}
 (C-SUB users go [here](../orient/images/latest-csub-orient.pdf) instead (pdf).)  We update these periodically. The version date can be found on the first page in the lower right corner.
@@ -14,22 +16,51 @@ You can access our latest orientation slides at [This Link](https://docs.google.
 ??? "Click to expand answer"
     Properly quit Chrome, always.  Otherwise you risk being unable to start Chrome in the future. The problem and solution are described in [this page](https://jhpce.jhu.edu/sw/chrome).
 
+- The Authy Chrome plugin works on one machine but not on another
+  
+??? "Click to expand answer"
+    Check that the time is set correctly on your machine. The six-digit One Time Passwords (OTP) are time-based and are only valid for 30 seconds. So if the time is off on your machine it will not generate the correct OTP for the 30 second interval.
+
 ## Compatibility Between Windows & Linux Newline Characters
 - My script is giving odd error messages about `\r` or `^M`.
 
 ??? "Click to expand answer"
     Windows and Unix use different characters to indicate a new line.  If you have uploaded your script from a Windows machine, it may have the Windows newline characters.  These need to be replaced by the Unix newline characters.  To do this, you can run the “dos2unix” command on your script e.g. `dos2unix myscript.sh`. This will strip out all of the Windows newlines and replace them with the Unix newlines. a safer version is `dos2unix --newfile myscript.sh newscript.sh`, as the original file is not modified.
 
-- My app is complaining that it can’t find a shared library, e.g. libgfortran.so.1
-??? "Click to expand answer"
-    Nine times out of ten, the allegedly missing library is there. The problem is that your application is looking for the version of the library that is compatible with the old system software. It will not help to point your application to the new libraries. They are more than likely to be incompatible with the new system. The correct solution is to reinstall your software. If the problem persists after the reinstallation, then please contact us and we will install standard libraries that are actually missing.
-
 ## File Transfer
+- My winscp program stopped working!
+
+??? "Click to expand answer"
+    With 2 Factor Authentication, you need to include you username in the definition for your session
+
 - I cannot connect with SFTP in MobaXterm or other GUI program
 
 ??? "Click to expand answer"
     Because we use multifactor authentication (MFA), you need to configure your GUI program to either expect a prompt for a one time password (OTP) or be able to provide public key information.
     In MobaXterm, when configuring an SFTP session, you need to check the "2-steps authentication" box under the Advanced Settings tab.
+
+- I use CyberDuck to transfer files from my mac to the cluster. Now it doesn't work anymore.
+  
+??? "Click to expand answer"
+    Always update your cyberDuck to the latest version when needing to troubleshoot. We wrote Cyberduck [configuration suggestions](https://jhpce.jhu.edu/access/file-transfer/#graphical-sftp-cyberduckmobaxterm). 
+    
+    We have had several people run into issues related to saved passwords. Please make sure that your password is not saved in the Cyberduck connection settings! Old passwords can also be stored by Cyberduck in your macOS KeyChain. The latter can only be found by searching in KeyChain for sufficiently broad terms (e.g. perhaps search for "jhpce" instead of "jhpce01"). 
+    
+    We recommend using [Filezilla](https://filezilla-project.org) instead, because of its simplicity.
+   
+- I use Filezilla to transfer files from my mac to the cluster. Now it doesn't work
+
+<details>
+<summary>"Click to expand answer"</summary>
+    Update your Filezilla to the latest version.  In Filezilla, create a new Site:
+    <ol>
+    <li>Enter the "Hostname" (eg. jhpce-transfer01.jhsph.edu)</li>
+    <li>Set the "Protocol" to "SFTP"</li>
+    <li>Set the "Logon Type" to "Interactive"</li>
+    <li>Set the "User" to your JHPCE UserID. Do not touch the "Password" and "Account" fields.</li>
+    <li>Click "Connect". You will be prompted for your "Verification Code", which is the 6 digit number from Google Authenticator, and then "Password", which is your JHPCE Password.</li>
+    </ol>
+</details>
 
 - How do I copy a large directory structure from one place to another? Within the cluster? Into the cluster? Out of the cluster?
 
@@ -102,12 +133,17 @@ You can access our latest orientation slides at [This Link](https://docs.google.
     . /etc/bashrc
     fi
     ```
+- My app is complaining that it can’t find a shared library, e.g. libgfortran.so.1
+??? "Click to expand answer"
+    Perhaps you have not loaded a required module before trying to run the app?
+    Are you using a program which was compiled elsewhere? On a different operating system? You will need to rebuild the program from source or find a copy compiled for Rocky 9 (the OS we use, which is compatible with RedHat Enterprise Linux (RHEL)).
+    If the problem persists after the reinstallation, then please contact us and we will install standard libraries that are actually missing.
 
 ## OpenSSL
 - OpenSSL version mismatch error (e.g. Built against 30000070, you have 30100050)
 
 ??? "Click to expand answer"
-    Please unload the conda_R module before doing your `git clone` or other ssh-related command. That module contains its own OpenSSL libraries which conflict with the system-provided one.
+    Please unload the conda_R module before doing your `git clone` or other ssh-related command. That module contains its own OpenSSL libraries which conflict with the system-provided ones.
 
 ## Resources
 - What is the SAFE desktop?
@@ -150,10 +186,6 @@ We have a [SAS usage document](../sw/sas.md). Please read it for useful tips, in
     libGL error: failed to load driver: swrast
     ```
 
-## Slurm
-- There is a dedicated [SLURM FAQ](../slurm/slurm-faq.md) document
-- Commands related to SLURM can be found in [this document](../slurm/slurm-commands-ref.md) 
-
 ## SSH
 - For a variety of questions and information about ssh - please see our [ssh document](../access/ssh.md).
 
@@ -177,6 +209,10 @@ See [this page](../storage/storage-tips.md) for information about evaluating dis
 - I've deleted files but I'm still restricted by disk quota
 
 See [this document](../storage/quotas.md/#file-deletion-and-delayed-change-in-quota).
+
+- I have deleted files and need to restore them.
+
+See [this document](../storage/backups-restores.md).
 
 ## X11
 
@@ -202,37 +238,9 @@ See [this document](../storage/quotas.md/#file-deletion-and-delayed-change-in-qu
 ??? "Click to expand answer"
     With the upgrade to MacOS Sierra, the “-X” option to ssh to enable X11 forwarding may not work. If you receive the message: untrusted X11 forwarding setup failed: xauth key data not generated , you can resolve the issue by add the line ForwardX11Trusted yes to your ~/.ssh/config file on your Mac. You may still see the warning: Warning: No xauth data; using fake authentication data for X11 forwarding. To eliminate this warning, add the line XAuthLocation /usr/X11/bin/xauth to your ~/.ssh/config file on your Mac.
 
-## 2 Factor Authentication
+## Multi Factor Authentication (MFA)
 
-- My winscp program stopped working!
+Answers to various issues related to MFA are scattered through this FAQ, and on the web site. Please use the search tool in upper right corner of all of the pages on our website for terms such as MFA, authentication, etc.
 
-??? "Click to expand answer"
-    With 2 Factor Authentication, you need to include you username in the definition for your session
 
-- The Authy Chrome plugin works on one machine but not on another
-  
-??? "Click to expand answer"
-    Check that the time is set correctly on your machine. The six-digit One Time Passwords (OTP) are time-based and are only valid for 30 seconds. So if the time is off on your machine it will not generate the correct OTP for the 30 second interval.
 
-- I use CyberDuck to transfer files from my mac to the cluster. Now it doesn't work anymore.
-  
-??? "Click to expand answer"
-    We have had several people that have still had issues with Cyberduck even after applying the fixes below. We recommend using <a title="https://filezilla-project.org/" href="https://filezilla-project.org/"> Filezilla </a> instead.  You can also try to update your cyberDuck to the latest version.  Please make sure that your password is not saved in the Cyberduck connection.
-
-- I use Filezilla to transfer files from my mac to the cluster. Now it doesn't work
-
-<details>
-<summary>"Click to expand answer"</summary>
-    Update your Filezilla to the latest version.  In Filezilla, create a new Site:
-    <ol>
-    <li>Enter the "Hostname" (eg. jhpce-transfer01.jhsph.edu)</li>
-    <li>Set the "Protocol" to "SFTP"</li>
-    <li>Set the "Logon Type" to "Interactive"</li>
-    <li>Set the "User" to your JHPCE UserID. Do not touch the "Password" and "Account" fields.</li>
-    <li>Click "Connect". You will be prompted for your "Verification Code", which is the 6 digit number from Google Authenticator, and then "Password", which is your JHPCE Password.</li>
-    </ol>
-</details>
-
-## Sun Grid Engine
-
-We transitioned from the Sun Grid Engine to SLURM in 2024. We wrote [this document](../orient/images/transition-sge-2-slurm.pdf) for users familiar with SGE who needed to learn some SLURM basics.

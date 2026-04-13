@@ -25,23 +25,24 @@ can restore you files using the instructions in the
 
 We also do nightly disk-to-disk backups from the cluster located at Bayview to
 a storage array in the BSPH building. We retain snapshots of these backups
-using what is commonly called a Grandfather-Father-Son (GFS)
-backups scheme (or Grandparent-Parent-Child using non-gendered terminology). 
+using what is called a Grandparent-Parent-Child backups scheme. 
 
 Data retention:
 
-We have daily backups that we keep for 1 week, weekly backups (taken on
-Sunday) that we keep for 1 month, monthly backups (taken on the 1st of the
-month) that we keep for 1 year, and yearly backups (taken on January 1st) that
-we keep for 10 years.  So we wouldn't be able to recover a file as it looked
-on a specific date, say October 18, 2019, but we would have the file as it was
-on January 1st 2019 or 2020. 
+We have
+
+- daily backups that we keep for 1 week,
+- weekly backups (taken on Sunday) that we keep for 1 month,
+- monthly backups (taken on the 1st of the month) that we keep for 1 year, and
+- yearly backups (taken on January 1st) that we keep for 10 years.
+
+So we wouldn't be able to recover a file as it looked on a specific date, say October 18, 2019, but we would have the file as it was on January 1st 2019 or 2020. 
 
 File recovery from the backup server would be done via a request to bitsupport@lists.jhu.edu.
 
 !!! Note "What we need to know to do restores"
     
-    As many details as possible, especially if you are unsure of things such as exact file name patterns. Items to include:
+    As many details as possible, especially if you are unsure of things such as exact file name patterns. Items to consider including:
     
     1. What is the full path to the files? If you don't know that, at what point in the path does your uncertainty begin?
     2. If you don't know the names of the files, do you have any description of them, such as file name substrings or suffixes? Rough file sizes?
