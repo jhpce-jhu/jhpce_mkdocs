@@ -28,64 +28,52 @@ A number of options exist for transfering files to-and-fro between JHPCE and you
 
 The most common method for transferring files to and from JHPCE is with sftp.  The sftp command is part of the ssh suite of programs used for interacting securely with remote systems.  The sftp command allows you to transfer files to and from JHPCE over a secure encypted channel.
 
+We stronly recommend setting up [SSH public key pairs](ssh.md#ssh-keys) (as long as you provide a strong passphrase to encrypt them with). Without keys, you will be prompted for your verification code and password for each file you transfer. You can save these public keys both in your home directory and, in graphical programs, choosing the correct preferences.
+
 #### Text based SFTP usage
 
-By default, sftp is a text-baseed interactive program. The "sftp" progam is installed by default on MacOS and Linux desktops, and is availble from running a Terminal on one's local system. 
-To use `sftp`, you would run the command (substituting JHPCE-USERID with your JHPCE login ID) :
+By default, sftp is a text-baseed interactive program. The "sftp" progam is installed by default on MacOS, Linux and Windows 11 or later, and is available when running a Terminal (or PowerShell or command prompt) on one's local system.  
+ 
+To use `sftp`, you would run the command (substituting your JHPCE username for JHPCE-USERID) :
 
 ```
 sftp JHPCE-USERID@jhpce-transfer01.jhsph.edu
 ```
-and then proceed to login with your JHPCE password and Google Authenticator.
+and then proceed to login with your JHPCE password and Google Authenticator MFA verification code.
 
-Once you’ve connected, you’ll be shown an `sftp>` prompt.  From here you can use
-the standard shell commands `ls` to get a directory listing, and `cd` to
-change directories.  While the `ls` and `cd` commands refer to your location on the cluster,
-there are sister commands `lls` and `lcd` to navigate on you local system. 
-In addition to the `ls` and `cd` commands, there are commands for actually doing the file transfers.
+Once you’ve connected, you’ll be shown an `sftp>` prompt. Type `help` to see the possible commands.
 
-- You can use the `get` command to transfer a file from the cluster to your local system
-- You can uhe `put` command to transfer a file from your local system to the cluster.
+From here you can use some of the the standard shell commands (but with only a small subset of normal arguments) to move around on the remote system.
+
+- `pwd` to print your "present working directory"
+- `ls` to get a directory listing (allowed args: `-1afhlnrSt`)
+- `cd` to change directories
+
+While the `ls` and `cd` commands refer to your location in the file system, there are sister commands `lpwd`, `lls`, and `lcd` to navigate on you local system.
+ 
+There are commands for doing the file transfers, as well as manipulating files (`mkdir`, `rm`, `rename`, ...).
+
+- You can use the `get` command to transfer a file FROM the cluster TO your local system.
+- You can use `put` command to transfer a file FROM your local system TO the cluster.
+- Add the `-R` flag with get or put to do recursive transfers.
 
 Once you are done with `sftp`, you would type `exit` to end the session.
 
-Here is an example of using sftp from a terminal running on a MacOS system.
+Here is an example of using sftp from a terminal running on a macOS system.
 
 <pre class="mbash"><code class="mbash">
 MyMac: <b>sftp mmill116@jhpce-transfer01.jhsph.edu</b>
-(mmill116@jhpce-transfer01.jhsph.edu) Verification code: <b>(JHPCE Verification Code Typed In)</b>
-(mmill116@jhpce-transfer01.jhsph.edu) Password: <b>(JHPCE Password Typed In)</b>
+(mmill116@jhpce-transfer01.jhsph.edu) Verification code: <b>(enter your JHPCE Verification Code)</b>
+(mmill116@jhpce-transfer01.jhsph.edu) Password: <b>(enter your JHPCE Password)</b>
 Connected to jhpce-transfer01.jhsph.edu.
 sftp> <b>ls</b>
-10billion                                                                       
-2024-09                                                                         
-500                                                                             
-Bird.jpeg                                                                       
-CITATION                                                                        
-bin                                                                             
-data                                                                            
-jhpce-app                                                                       
-scripts                                                                         
-tmp                                                                             
+10billion   Bird.jpeg   bin   data   jhpce-app   scripts tmp                                                                             
 sftp> <b>cd tmp</b>
 sftp> <b>ls</b>
-ACL                                     HLA                                     
-a                                       a1                                      
-aaa                                     aaaa                                    
-abc                                     acl-test                                
-shared                                  temp-26800-7554-21111.sam               
-test-rsync                              test1                                   
-test2                                   testhere                                
-tmp                                     tmp2                                    
-tmp3                                    x                                       
-zzz                                     zzzz                                    
-
+ACL.txt      HLA   shared   x.py   zzz.c                                   
 sftp> <b>lcd Documents</b>
 sftp> <b>lls</b>
 ACL-CMS.txt
-Screenshot 2024-11-12 at 3.30.24 PM.png
-Screenshot 2025-02-25 at 10.34.09 AM.png
-Screenshot 2025-02-25 at 10.34.18 AM.png
 Screenshot 2025-02-26 at 3.28.57 PM.png
 Zoom
 show-example.txt
@@ -93,17 +81,7 @@ sftp> <b>put show-example.txt</b>
 Uploading show-example.txt to /users/mmill116/tmp/show-example.txt
 show-example.txt                          100% 4798   182.1KB/s   00:00    
 sftp> <b>ls</b>
-ACL                                     HLA                                     
-a                                       a1                                      
-aaa                                     aaaa                                    
-abc                                     acl-test                                
-shared                                  <mark>show-example.txt                    </mark>
-temp-26800-7554-21111.sam               test-rsync                              
-test1                                   test2                                   
-testhere                                tmp                                     
-tmp2                                    tmp3                                    
-x                                       zzz                                     
-zzzz 
+ACL.txt      HLA   shared   <mark>show-example.txt</mark>  x.py   zzz.c
 sftp> <b>exit</b>
 MyMac: 
 
@@ -112,12 +90,13 @@ MyMac:
 #### Graphical SFTP - Cyberduck/MobaXterm
 
 If you would rather use a graphical SFTP connection, wherein you can drag-and-drop files between your local system
-and the cluster you can use either MobaXterm on a Windows system, or Cyberduck on a Mac system.  We have
-an example of setting up SFTP in MobaXterm at [on this page](https://jhpce.jhu.edu/access/mobaxterm/#configuring-sftp-sessions)
+and the cluster you can use either MobaXterm on a Windows system, or Cyberduck or FileZilla on a Mac system.  
 
-For Macos, we recommend Cyberduck from [this site](https://cyberduck.io/).  Cyberduck still uses sftp under the hood,
-but presents files and folders in a graphical window, allowing drag-and-drop operations between your local system and
-the JHPCE cluster.
+These programs still use sftp under the hood, but present files and folders in graphical windows.
+
+We have an example of setting up SFTP in MobaXterm at [on this page](https://jhpce.jhu.edu/access/mobaxterm/#configuring-sftp-sessions)
+
+For Macos, you can download Cyberduck from [this site](https://cyberduck.io/).
 
 Below are the steps to setting up Cyberduck on your local MacOS system:
 
@@ -139,7 +118,7 @@ Below are the steps to setting up Cyberduck on your local MacOS system:
 - You will be prompted for your Verification Code and Password
 - At this point you will see your JHPCE home directory displayed, and you can drag-and-drop files between your Mac and the JHPCE cluster.
 
-One last note - we stronly recommend setting up SSH Keys [SSH key pairs](ssh.md#ssh-keys). Without keys, you will be prompted for your verification code and password for each file you transfer.
+One last note - 
 
 **Update 2026-03-03:** There is a way to configure Cyberduck so that it will not prompt you for each transfer without keys. You can go into Cyberduck settings, and under Transfers->General, set the "Transfer Files" option to "Use browser connection" instead of "Open Multiple Connections".
 
