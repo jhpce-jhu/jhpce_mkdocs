@@ -5575,39 +5575,17 @@ dcs10             23.60
    C([Transfer node]) &lt;--&gt; H[(storage servers)]</code></pre><h2><a class="heading" href="../access/file-transfer/">Overview</a></h2><a class="url" href="../access/file-transfer/">access/file-transfer/</a><pre><span></span><code>sftp JHPCE-USERID@jhpce-transfer01.jhsph.edu
 </code></pre><pre class="mbash"><code class="mbash">
 MyMac: <b>sftp mmill116@jhpce-transfer01.jhsph.edu</b>
-(mmill116@jhpce-transfer01.jhsph.edu) Verification code: <b>(JHPCE Verification Code Typed In)</b>
-(mmill116@jhpce-transfer01.jhsph.edu) Password: <b>(JHPCE Password Typed In)</b>
+(mmill116@jhpce-transfer01.jhsph.edu) Verification code: <b>(enter your JHPCE Verification Code)</b>
+(mmill116@jhpce-transfer01.jhsph.edu) Password: <b>(enter your JHPCE Password)</b>
 Connected to jhpce-transfer01.jhsph.edu.
 sftp&gt; <b>ls</b>
-10billion                                                                       
-2024-09                                                                         
-500                                                                             
-Bird.jpeg                                                                       
-CITATION                                                                        
-bin                                                                             
-data                                                                            
-jhpce-app                                                                       
-scripts                                                                         
-tmp                                                                             
+10billion   Bird.jpeg   bin   data   jhpce-app   scripts tmp                                                                             
 sftp&gt; <b>cd tmp</b>
 sftp&gt; <b>ls</b>
-ACL                                     HLA                                     
-a                                       a1                                      
-aaa                                     aaaa                                    
-abc                                     acl-test                                
-shared                                  temp-26800-7554-21111.sam               
-test-rsync                              test1                                   
-test2                                   testhere                                
-tmp                                     tmp2                                    
-tmp3                                    x                                       
-zzz                                     zzzz                                    
-
+ACL.txt      HLA   shared   x.py   zzz.c                                   
 sftp&gt; <b>lcd Documents</b>
 sftp&gt; <b>lls</b>
 ACL-CMS.txt
-Screenshot 2024-11-12 at 3.30.24 PM.png
-Screenshot 2025-02-25 at 10.34.09 AM.png
-Screenshot 2025-02-25 at 10.34.18 AM.png
 Screenshot 2025-02-26 at 3.28.57 PM.png
 Zoom
 show-example.txt
@@ -5615,17 +5593,7 @@ sftp&gt; <b>put show-example.txt</b>
 Uploading show-example.txt to /users/mmill116/tmp/show-example.txt
 show-example.txt                          100% 4798   182.1KB/s   00:00    
 sftp&gt; <b>ls</b>
-ACL                                     HLA                                     
-a                                       a1                                      
-aaa                                     aaaa                                    
-abc                                     acl-test                                
-shared                                  <mark>show-example.txt                    </mark>
-temp-26800-7554-21111.sam               test-rsync                              
-test1                                   test2                                   
-testhere                                tmp                                     
-tmp2                                    tmp3                                    
-x                                       zzz                                     
-zzzz 
+ACL.txt      HLA   shared   <mark>show-example.txt</mark>  x.py   zzz.c
 sftp&gt; <b>exit</b>
 MyMac: 
 
