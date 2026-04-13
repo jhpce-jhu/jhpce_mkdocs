@@ -1682,6 +1682,24 @@
         
       
       
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Fail2ban
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
       <a href="./" class="md-nav__link md-nav__link--active">
         
   
@@ -1698,6 +1716,108 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#what" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#why" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Why
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ban-details" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Ban details
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#troubleshooting-the-causes-of-login-failures" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Troubleshooting the causes of login failures
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Troubleshooting the causes of login failures">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#multi-factor-authentication" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Multi-factor authentication
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#memorized-passwords" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Memorized passwords
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#dealing-with-bans" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Dealing with bans
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
       
     </li>
   
@@ -5524,6 +5644,97 @@
     
   
   
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#what" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#why" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Why
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ban-details" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Ban details
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#troubleshooting-the-causes-of-login-failures" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Troubleshooting the causes of login failures
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Troubleshooting the causes of login failures">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#multi-factor-authentication" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Multi-factor authentication
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#memorized-passwords" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Memorized passwords
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#dealing-with-bans" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Dealing with bans
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -5540,7 +5751,38 @@
 
 
 <h1 id="fail2ban-protecting-our-clusters-from-hackers">Fail2ban - Protecting Our Clusters From Hackers<a class="headerlink" href="#fail2ban-protecting-our-clusters-from-hackers" title="Anchor link to this section for reference">&para;</a></h1>
-<p>This is a placeholder document. Information will be added to it later.</p>
+<p>Example error message:</p>
+<p>"ssh: connect to host jhpce01.jhsph.edu port 22: Connection refused"</p>
+<h2 id="what">What<a class="headerlink" href="#what" title="Anchor link to this section for reference">&para;</a></h2>
+<p>Our public-facing servers use a software package called <code>fail2ban</code> which monitors incoming connection requests and temporarily bans IP addresses if they fail to log in successfully too many times within a certain time window.</p>
+<h2 id="why">Why<a class="headerlink" href="#why" title="Anchor link to this section for reference">&para;</a></h2>
+<p>We have configured the fail2ban settings to allow real users to fail a bit but fairly quickly lock out in-person or automated hackers.</p>
+<h2 id="ban-details">Ban details<a class="headerlink" href="#ban-details" title="Anchor link to this section for reference">&para;</a></h2>
+<p>Each set of three failed ssh attempts gets your IP address banned from contacting that server. Each server keeps its own connection database and imposes its own bans.</p>
+<p>Ban time progression:</p>
+<ul>
+<li>The first three bans are for 10min each,</li>
+<li>next two are for 20min each,</li>
+<li>then the sixth is 5hr.</li>
+</ul>
+<p>If you hit eight short-term bans within seven days your IP address is banned for 4 weeks. We expect that real users will reach out to us fairly early in that sequence.</p>
+<p>Remember, each short term ban requires three failed login attempts, so in order to be banned for 5 hours requires five times three equals 15 failures.</p>
+<h2 id="troubleshooting-the-causes-of-login-failures">Troubleshooting the causes of login failures<a class="headerlink" href="#troubleshooting-the-causes-of-login-failures" title="Anchor link to this section for reference">&para;</a></h2>
+<p>Please consider what is causing you to fail repeatedly enough to be banned.</p>
+<h3 id="multi-factor-authentication">Multi-factor authentication<a class="headerlink" href="#multi-factor-authentication" title="Anchor link to this section for reference">&para;</a></h3>
+<p>Our servers require multi-factor authentication (MFA).</p>
+<p>Some SSH/SFTP client programs, particularly GUI ones, may require you to check a preference box to let that app know that it needs to be prompting you for a One-Time Password (OTP), which we call verification codes.</p>
+<p>If you are copy-and-pasting verification codes, consider entering them by hand. This prevents you from inadvertently copying a trailing space character.</p>
+<p>Users of our main JHPCE cluster can request a password reset or a scratch verification code using our web portal https://jhpce-app02.jhsph.edu. You must have a current JHEDID and log in from a computer on a Hopkins network.</p>
+<h3 id="memorized-passwords">Memorized passwords<a class="headerlink" href="#memorized-passwords" title="Anchor link to this section for reference">&para;</a></h3>
+<p>We recommend that users do not tell their SSH/SFTP client programs (e.g. MobaXterm or CyberDuck or FileZilla or VS Code) to remember their passwords. Primarily that is because it leads users to forgetting what their passwords are. Secondarily, the default settings for some of these programs is to retry connection attempts, perhaps without your even asking for a fresh connection. (For example an SFTP client might want to reconnect you and resume a transfer if the network drops.)</p>
+<p>We have <a href="../file-transfer/">configuration instructions</a> for MobaXterm (Windows) and Cyberduck (macOS).</p>
+<h2 id="dealing-with-bans">Dealing with bans<a class="headerlink" href="#dealing-with-bans" title="Anchor link to this section for reference">&para;</a></h2>
+<p>These bans are of your IP address, not your account. </p>
+<p>Our main JHPCE cluster has two, equivalent, login servers, each of which maintains its own database of failed logins. So, if <code>jhpce01.jhsph.edu</code> has blocked you, you can try <code>jhpce03.jhsph.edu</code>.</p>
+<p>Our JADE cluster has only one login server, <code>jade01.jhsph.edu</code>.</p>
+<p>Both clusters have only one dedicated file-transfer server.</p>
+<p>In a pinch, if you can use a new IP address to originate your login attempt you can do that. Perhaps log into another server somewhere else, then connect to JHPCE or JADE.</p>
 
 
 
@@ -5561,7 +5803,7 @@
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="April 5, 2026 03:17:57 UTC">April 5, 2026</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="April 13, 2026 16:57:02 UTC">April 13, 2026</span>
   </span>
 
     
