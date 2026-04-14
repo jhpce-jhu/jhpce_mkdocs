@@ -5995,7 +5995,7 @@ In MobaXterm, when configuring an SFTP session, you need to check the "2-steps a
 <summary>Click to expand answer</summary>
 <p>Always update your cyberDuck to the latest version when needing to troubleshoot. We wrote Cyberduck <a href="https://jhpce.jhu.edu/access/file-transfer/#graphical-sftp-cyberduckmobaxterm">configuration suggestions</a>. </p>
 <p>We have had several people run into issues related to saved passwords. Please make sure that your password is not saved in the Cyberduck connection settings! Old passwords can also be stored by Cyberduck in your macOS KeyChain. The latter can only be found by searching in KeyChain for sufficiently broad terms (e.g. perhaps search for "jhpce" instead of "jhpce01"). </p>
-<p>We recommend using <a href="https://filezilla-project.org">Filezilla</a> instead, because of its simplicity.</p>
+<p>You might consider using <a href="https://filezilla-project.org">Filezilla</a> instead, because of its simplicity. It is less "Mac-like" but the fewer bells and whistles it has can make simple transfers easier to accomplish.</p>
 </details>
 <ul>
 <li>I use Filezilla to transfer files from my mac to the cluster. Now it doesn't work</li>
@@ -6008,7 +6008,8 @@ In MobaXterm, when configuring an SFTP session, you need to check the "2-steps a
     <li>Set the "Protocol" to "SFTP"</li>
     <li>Set the "Logon Type" to "Interactive"</li>
     <li>Set the "User" to your JHPCE UserID. Do not touch the "Password" and "Account" fields.</li>
-    <li>Click "Connect". You will be prompted for your "Verification Code", which is the 6 digit number from Google Authenticator, and then "Password", which is your JHPCE Password.</li>
+    <li>Because we use multi-factor authentication (MFA), and a new code is needed for each connection, it is best to disable the default "helpful" setting allowing FileZilla to try to create new threads. Go to the Transfer Settings tab in Site Manager, check Limit number of simultaneous connections, and set "Maximum number of connections" to 1.</li>
+    <li>Click "Connect". You will be prompted for your "Verification Code", which is the 6 digit number for JHPCE from Google or Microsoft Authenticator, and then "Password", which is your JHPCE Password.</li>
     </ol>
 </details>
 
@@ -6233,7 +6234,7 @@ ForwardX11Timeout=0
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="April 13, 2026 00:12:01 UTC">April 13, 2026</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="April 14, 2026 21:35:02 UTC">April 14, 2026</span>
   </span>
 
     
