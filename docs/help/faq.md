@@ -46,7 +46,7 @@ You can access our latest orientation slides at [This Link](https://docs.google.
     
     We have had several people run into issues related to saved passwords. Please make sure that your password is not saved in the Cyberduck connection settings! Old passwords can also be stored by Cyberduck in your macOS KeyChain. The latter can only be found by searching in KeyChain for sufficiently broad terms (e.g. perhaps search for "jhpce" instead of "jhpce01"). 
     
-    We recommend using [Filezilla](https://filezilla-project.org) instead, because of its simplicity.
+    You might consider using [Filezilla](https://filezilla-project.org) instead, because of its simplicity. It is less "Mac-like" but the fewer bells and whistles it has can make simple transfers easier to accomplish.
    
 - I use Filezilla to transfer files from my mac to the cluster. Now it doesn't work
 
@@ -58,7 +58,8 @@ You can access our latest orientation slides at [This Link](https://docs.google.
     <li>Set the "Protocol" to "SFTP"</li>
     <li>Set the "Logon Type" to "Interactive"</li>
     <li>Set the "User" to your JHPCE UserID. Do not touch the "Password" and "Account" fields.</li>
-    <li>Click "Connect". You will be prompted for your "Verification Code", which is the 6 digit number from Google Authenticator, and then "Password", which is your JHPCE Password.</li>
+    <li>Because we use multi-factor authentication (MFA), and a new code is needed for each connection, it is best to disable the default "helpful" setting allowing FileZilla to try to create new threads. Go to the Transfer Settings tab in Site Manager, check Limit number of simultaneous connections, and set "Maximum number of connections" to 1.</li>
+    <li>Click "Connect". You will be prompted for your "Verification Code", which is the 6 digit number for JHPCE from Google or Microsoft Authenticator, and then "Password", which is your JHPCE Password.</li>
     </ol>
 </details>
 
