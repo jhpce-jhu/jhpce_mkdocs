@@ -44,7 +44,7 @@ You can access our latest orientation slides at [This Link](https://docs.google.
 ??? "Click to expand answer"
     Always update your cyberDuck to the latest version when needing to troubleshoot. We wrote Cyberduck [configuration suggestions](https://jhpce.jhu.edu/access/file-transfer/#graphical-sftp-cyberduckmobaxterm). 
     
-    We have had several people run into issues related to saved passwords. Please make sure that your password is not saved in the Cyberduck connection settings! Old passwords can also be stored by Cyberduck in your macOS KeyChain. The latter can only be found by searching in KeyChain for sufficiently broad terms (e.g. perhaps search for "jhpce" instead of "jhpce01"). 
+    We have had several people run into issues related to saved passwords. Please make sure that your password is not saved in the Cyberduck connection settings! Old passwords can also be stored by Cyberduck in your macOS KeyChain. The latter can only be found by searching in KeyChain for "cyberduck" (or "jhpce" or the hostname of the system you think is involved). 
     
     You might consider using [Filezilla](https://filezilla-project.org) instead, because of its simplicity. It is less "Mac-like" but the fewer bells and whistles it has can make simple transfers easier to accomplish.
    
