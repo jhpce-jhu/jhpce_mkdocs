@@ -7184,6 +7184,37 @@ module load conda_R
 export TMPDIR=$MYSCRATCH
 R CMD BATCH myprog.R
 </code></pre><pre><span></span><code><span class="ch">#!/bin/bash</span>
+<span class="c1">#SBATCH --job-name=master_manager</span>
+<span class="c1">#SBATCH --partition=long           # Choose a partition that allows long runtimes</span>
+<span class="c1">#SBATCH --time=7-00:00:00          # Example: 7 days</span>
+<span class="c1">#SBATCH --nodes=1</span>
+<span class="c1">#SBATCH --ntasks=1</span>
+<span class="c1">#SBATCH --cpus-per-task=1          # Low resource usage as it mostly waits</span>
+<span class="c1">#SBATCH --mem=2G</span>
+<span class="c1">#SBATCH --output=master_%j.log</span>
+
+<span class="c1">## 1. Submit Stage 1</span>
+<span class="c1"># Capture the Job ID of the first step</span>
+<span class="nv">JOB_ID_1</span><span class="o">=</span><span class="k">$(</span>sbatch<span class="w"> </span>--parsable<span class="w"> </span>stage1.sh<span class="k">)</span>
+<span class="nb">echo</span><span class="w"> </span><span class="s2">"Submitted Stage 1: Job ID </span><span class="nv">$JOB_ID_1</span><span class="s2">"</span>
+
+<span class="c1">## 2. Submit Stage 2 (Depends on Stage 1 completing successfully)</span>
+<span class="c1"># --dependency=afterok:JOBID ensures stage 2 only runs if stage 1 exits with code 0</span>
+<span class="nv">JOB_ID_2</span><span class="o">=</span><span class="k">$(</span>sbatch<span class="w"> </span>--parsable<span class="w"> </span>--dependency<span class="o">=</span>afterok:<span class="nv">$JOB_ID_1</span><span class="w"> </span>stage2.sh<span class="k">)</span>
+<span class="nb">echo</span><span class="w"> </span><span class="s2">"Submitted Stage 2: Job ID </span><span class="nv">$JOB_ID_2</span><span class="s2">"</span>
+
+<span class="c1">## 3. Submit Stage 3 (Parallel Fan-out)</span>
+<span class="c1"># You can launch multiple jobs that all depend on the same previous step</span>
+<span class="k">for</span><span class="w"> </span>i<span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="o">{</span><span class="m">1</span>..5<span class="o">}</span><span class="p">;</span><span class="w"> </span><span class="k">do</span>
+<span class="w">    </span>sbatch<span class="w"> </span>--dependency<span class="o">=</span>afterok:<span class="nv">$JOB_ID_2</span><span class="w"> </span>parallel_task.sh<span class="w"> </span><span class="nv">$i</span>
+<span class="k">done</span>
+
+<span class="c1">## 4. Final Cleanup (Runs after Stage 2 finishes, regardless of success)</span>
+<span class="c1"># --dependency=afterany:JOBID runs after the job terminates (success or failure)</span>
+sbatch<span class="w"> </span>--dependency<span class="o">=</span>afterany:<span class="nv">$JOB_ID_2</span><span class="w"> </span>cleanup.sh
+
+<span class="nb">echo</span><span class="w"> </span><span class="s2">"All subordinate jobs have been submitted to the queue."</span>
+</code></pre><pre><span></span><code><span class="ch">#!/bin/bash</span>
 
 <span class="c1">#SBATCH -p shared</span>
 <span class="c1">#SBATCH --mem=10G</span>

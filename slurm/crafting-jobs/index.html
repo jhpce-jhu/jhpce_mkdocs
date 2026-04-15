@@ -3844,6 +3844,45 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="Input/output Considerations">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#job-outputerror-messages" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Job output/error messages
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#where-to-write-to-or-read-from" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Where to write to or read from
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#job-success-or-failure" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Job Success or Failure
+      
+    </span>
+  </a>
+  
 </li>
       
         <li class="md-nav__item">
@@ -6003,6 +6042,45 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="Input/output Considerations">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#job-outputerror-messages" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Job output/error messages
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#where-to-write-to-or-read-from" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Where to write to or read from
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#job-success-or-failure" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Job Success or Failure
+      
+    </span>
+  </a>
+  
 </li>
       
         <li class="md-nav__item">
@@ -6311,10 +6389,12 @@
 <p>By default jobs start in the same directory that was the current working directory where you ran <code>sbatch</code> or <code>srun</code>. The directive <code>--chdir=somepath</code> or <code>#SBATCH --chdir=somepath</code> can be used to set the working directory of the job. Whether you choose to use this directive depends on your workflow and typical awareness of where you "are". Would you rather change batch files or set command line arguments to ensure that jobs run in the desired directories or would you rather double-check your location? </p>
 <p>Another file-location issue is where your SLURM output and error files are created. By default they are created by SLURM in the job's working directory. You may want to make them easier to find and/or keep project directories clear of transient clutter by creating directories in your home directory or file allocation (e.g. <code>/dcs07/my-research-group/data/slurm-output</code>) and use directives (e.g. <code>--output=~/slurmout/%j.out</code>).</p>
 <h2 id="inputoutput-considerations"><strong>Input/output Considerations</strong><a class="headerlink" href="#inputoutput-considerations" title="Anchor link to this section for reference">&para;</a></h2>
-<div class="admonition note">
-<p class="admonition-title">Authoring Note</p>
-<p>Use the same terms as used in the storage overview page. We want to be consistent. It helps users, and helps us make links between related articles.</p>
-</div>
+<h3 id="job-outputerror-messages">Job output/error messages<a class="headerlink" href="#job-outputerror-messages" title="Anchor link to this section for reference">&para;</a></h3>
+<p>By default SLURM will write a single file, named <code>slurm-&lt;jobid&gt;.out</code> in the same directory from which the job was submitted, which contains both "standard output" and "standard error" text. If you submit your job from a directory in which you lack write permissions, then you won't have such a file or the job may fail. You can separate the two types of output using the command line arguments <code>-o &lt;filename&gt;</code> (aka<code>--output=&lt;filename&gt;</code>) and <code>-e &lt;filename&gt;</code> (aka<code>--error=&lt;filename&gt;</code>). These can be added as <code>#SBATCH</code> directives in your batch scripts.</p>
+<p>For job arrays, the default file name is <code>slurm-%A_%a.out</code>, <code>%A</code> is replaced by the job ID and <code>%a</code> with  the  array  index.</p>
+<p>An alternatives to that behavior is for you to create a single directory somewhere and set that location in your <code>~/.slurm/defaults</code> file. Then you have a single place to look for the status of your jobs, and can more easily delete them afterwards. In JADE we create for new accounts a <code>~/slurmout</code> directory as a prompt to consider this strategy.  Of course you can choose to set a per-project single directory in those batch scripts.</p>
+<h3 id="where-to-write-to-or-read-from">Where to write to or read from<a class="headerlink" href="#where-to-write-to-or-read-from" title="Anchor link to this section for reference">&para;</a></h3>
+<p>Our various storage locations have different attributes -- capacity, disk quota, speed, your ability to write.</p>
 <ul>
 <li>home directory</li>
 <li>project storage</li>
@@ -6330,6 +6410,11 @@ module load conda_R
 export TMPDIR=$MYSCRATCH
 R CMD BATCH myprog.R
 </code></pre></div>
+<h2 id="job-success-or-failure">Job Success or Failure<a class="headerlink" href="#job-success-or-failure" title="Anchor link to this section for reference">&para;</a></h2>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Note that SLURM's idea of whether a job completed successfully may not match your definition. SLURM reports success or failure of a whole job based on the very last exit code it encounters within the job. If you ran several commands and ended with an echo statement into the job log file, then its the success or failure of that echo that SLURM will report. You may need to look at the logic of your batch script and add "exit N" statements and other logic to provide non-zero exit codes if something goes wrong before the very last command in the script. You can also add code that specifically checks for success (as opposed to only counting on a final exit code).</p>
+</div>
 <h2 id="job-arrays"><strong>Job Arrays</strong><a class="headerlink" href="#job-arrays" title="Anchor link to this section for reference">&para;</a></h2>
 <div class="admonition tip">
 <p class="admonition-title">Tip</p>
@@ -6428,8 +6513,43 @@ R CMD BATCH myprog.R
 <p class="admonition-title">Tip</p>
 <p>You may think that the dependency term "<strong>after</strong>" is okay to use. Note that it does not mean "after a job ends." It means "after a job is started or cancelled."</p>
 </div>
-<p>Note that SLURM's idea of whether a job completed successfully may not match your definition. You may need to look at the logic of your batch script and add "exit N" statements and other logic to provide non-zero exit codes if something goes wrong before the very last command in the script. You can also add code that specifically checks for success (as opposed to only counting on a final exit code).</p>
-<p>See <a href="https://slurm.schedmd.com/archive/slurm-22.05.9/sbatch.html#OPT_dependency">this part</a> of the sbatch manual page. Many clusters have sections describing this technique. <a href="https://docs.ycrc.yale.edu/clusters-at-yale/job-scheduling/dependency/">Yale</a>. CECI has a bunch of <a href="https://support.ceci-hpc.be/doc/_contents/SubmittingJobs/WorkflowManagement.html#introduction">info on workflows</a> including using additional software to manage job arrays and dependencies.</p>
+<details class="tip">
+<summary>Example master sbatch script (click to open)</summary>
+<div class="highlight"><pre><span></span><code><span class="ch">#!/bin/bash</span>
+<span class="c1">#SBATCH --job-name=master_manager</span>
+<span class="c1">#SBATCH --partition=long           # Choose a partition that allows long runtimes</span>
+<span class="c1">#SBATCH --time=7-00:00:00          # Example: 7 days</span>
+<span class="c1">#SBATCH --nodes=1</span>
+<span class="c1">#SBATCH --ntasks=1</span>
+<span class="c1">#SBATCH --cpus-per-task=1          # Low resource usage as it mostly waits</span>
+<span class="c1">#SBATCH --mem=2G</span>
+<span class="c1">#SBATCH --output=master_%j.log</span>
+
+<span class="c1">## 1. Submit Stage 1</span>
+<span class="c1"># Capture the Job ID of the first step</span>
+<span class="nv">JOB_ID_1</span><span class="o">=</span><span class="k">$(</span>sbatch<span class="w"> </span>--parsable<span class="w"> </span>stage1.sh<span class="k">)</span>
+<span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Submitted Stage 1: Job ID </span><span class="nv">$JOB_ID_1</span><span class="s2">&quot;</span>
+
+<span class="c1">## 2. Submit Stage 2 (Depends on Stage 1 completing successfully)</span>
+<span class="c1"># --dependency=afterok:JOBID ensures stage 2 only runs if stage 1 exits with code 0</span>
+<span class="nv">JOB_ID_2</span><span class="o">=</span><span class="k">$(</span>sbatch<span class="w"> </span>--parsable<span class="w"> </span>--dependency<span class="o">=</span>afterok:<span class="nv">$JOB_ID_1</span><span class="w"> </span>stage2.sh<span class="k">)</span>
+<span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Submitted Stage 2: Job ID </span><span class="nv">$JOB_ID_2</span><span class="s2">&quot;</span>
+
+<span class="c1">## 3. Submit Stage 3 (Parallel Fan-out)</span>
+<span class="c1"># You can launch multiple jobs that all depend on the same previous step</span>
+<span class="k">for</span><span class="w"> </span>i<span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="o">{</span><span class="m">1</span>..5<span class="o">}</span><span class="p">;</span><span class="w"> </span><span class="k">do</span>
+<span class="w">    </span>sbatch<span class="w"> </span>--dependency<span class="o">=</span>afterok:<span class="nv">$JOB_ID_2</span><span class="w"> </span>parallel_task.sh<span class="w"> </span><span class="nv">$i</span>
+<span class="k">done</span>
+
+<span class="c1">## 4. Final Cleanup (Runs after Stage 2 finishes, regardless of success)</span>
+<span class="c1"># --dependency=afterany:JOBID runs after the job terminates (success or failure)</span>
+sbatch<span class="w"> </span>--dependency<span class="o">=</span>afterany:<span class="nv">$JOB_ID_2</span><span class="w"> </span>cleanup.sh
+
+<span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;All subordinate jobs have been submitted to the queue.&quot;</span>
+</code></pre></div>
+</details>
+<p>See <a href="https://slurm.schedmd.com/archive/slurm-22.05.9/sbatch.html#OPT_dependency">this part</a> of the sbatch manual page.</p>
+<p>Many clusters have sections describing this technique. <a href="https://docs.ycrc.yale.edu/clusters-at-yale/job-scheduling/dependency/">Yale</a>. CECI has a bunch of <a href="https://support.ceci-hpc.be/doc/_contents/SubmittingJobs/WorkflowManagement.html#introduction">info on workflows</a> including using additional software to manage job arrays and dependencies.</p>
 <h2 id="heterogeneous-job-support"><strong>Heterogeneous Job Support</strong><a class="headerlink" href="#heterogeneous-job-support" title="Anchor link to this section for reference">&para;</a></h2>
 <p>These kinds of jobs aim to achieve some of the same goals as the simpler technique of specifying dependencies between jobs. Such as specifying different resource requirements for different components.</p>
 <p>Each component of such jobs has virtually all job options available including partition and QOS (Quality Of Service). See this <a href="https://slurm.schedmd.com/archive/slurm-22.05.9/heterogeneous_jobs.html">vendor document</a>.</p>
@@ -6580,7 +6700,7 @@ run an algorithm with many different parameter sets.</p>
 <hr />
 <ol>
 <li id="fn:1">
-<p>Such storms can get our servers banned by mail administrators, leading to no one getting any job-related email.&#160;<a class="footnote-backref" href="#fnref:1" title="Jump back to footnote 1 in the text">&#8617;</a></p>
+<p>Such storms can get our servers banned by mail administrators, leading to <strong>no one</strong> getting any job-related email.&#160;<a class="footnote-backref" href="#fnref:1" title="Jump back to footnote 1 in the text">&#8617;</a></p>
 </li>
 </ol>
 </div>
@@ -6604,7 +6724,7 @@ run an algorithm with many different parameter sets.</p>
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="March 10, 2026 16:56:55 UTC">March 10, 2026</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="April 15, 2026 16:36:43 UTC">April 15, 2026</span>
   </span>
 
     
