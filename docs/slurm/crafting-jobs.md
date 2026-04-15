@@ -56,8 +56,17 @@ Another file-location issue is where your SLURM output and error files are creat
     
 ## **Input/output Considerations**
 
-!!! Note "Authoring Note" 
-    Use the same terms as used in the storage overview page. We want to be consistent. It helps users, and helps us make links between related articles.
+### Job output/error messages
+
+By default SLURM will write a single file, named `slurm-<jobid>.out` in the same directory from which the job was submitted, which contains both "standard output" and "standard error" text. If you submit your job from a directory in which you lack write permissions, then you won't have such a file or the job may fail. You can separate the two types of output using the command line arguments `-o <filename>` (aka`--output=<filename>`) and `-e <filename>` (aka`--error=<filename>`). These can be added as `#SBATCH` directives in your batch scripts.
+
+For job arrays, the default file name is `slurm-%A_%a.out`, `%A` is replaced by the job ID and `%a` with  the  array  index.
+
+An alternatives to that behavior is for you to create a single directory somewhere and set that location in your `~/.slurm/defaults` file. Then you have a single place to look for the status of your jobs, and can more easily delete them afterwards. In JADE we create for new accounts a `~/slurmout` directory as a prompt to consider this strategy.  Of course you can choose to set a per-project single directory in those batch scripts.
+
+### Where to write to or read from
+
+Our various storage locations have different attributes -- capacity, disk quota, speed, your ability to write.
 
 - home directory
 - project storage
@@ -78,6 +87,11 @@ export TMPDIR=$MYSCRATCH
 R CMD BATCH myprog.R
 
 ```
+
+## Job Success or Failure
+!!! Warning
+    Note that SLURM's idea of whether a job completed successfully may not match your definition. SLURM reports success or failure of a whole job based on the very last exit code it encounters within the job. If you ran several commands and ended with an echo statement into the job log file, then its the success or failure of that echo that SLURM will report. You may need to look at the logic of your batch script and add "exit N" statements and other logic to provide non-zero exit codes if something goes wrong before the very last command in the script. You can also add code that specifically checks for success (as opposed to only counting on a final exit code).
+    
 ## **Job Arrays**
 
 !!! Tip
@@ -110,7 +124,7 @@ Another nice straightforward description is in this [Ronin blog post](https://bl
 ### **Job Array Email Notifications**
  These are handled at the job level, not the individual task element level, _unless_ you provide an extra arguement. Please don't do that, unless you KNOW that your jobs are going to take a long time, so you don't create a mail "storm" of messages.[^1]
  
-[^1]: Such storms can get our servers banned by mail administrators, leading to no one getting any job-related email.
+[^1]: Such storms can get our servers banned by mail administrators, leading to **no one** getting any job-related email.
 
 ### **Job array-related environment variables**
 
@@ -146,9 +160,44 @@ You can use different terms (**afterany**, **aftercorr**, **afterok**, **afterno
 !!! Tip
     You may think that the dependency term "**after**" is okay to use. Note that it does not mean "after a job ends." It means "after a job is started or cancelled."
 
-Note that SLURM's idea of whether a job completed successfully may not match your definition. You may need to look at the logic of your batch script and add "exit N" statements and other logic to provide non-zero exit codes if something goes wrong before the very last command in the script. You can also add code that specifically checks for success (as opposed to only counting on a final exit code).
+??? Tip "Example master sbatch script (click to open)"
+    ```bash
+    #!/bin/bash
+    #SBATCH --job-name=master_manager
+    #SBATCH --partition=long           # Choose a partition that allows long runtimes
+    #SBATCH --time=7-00:00:00          # Example: 7 days
+    #SBATCH --nodes=1
+    #SBATCH --ntasks=1
+    #SBATCH --cpus-per-task=1          # Low resource usage as it mostly waits
+    #SBATCH --mem=2G
+    #SBATCH --output=master_%j.log
 
-See [this part](https://slurm.schedmd.com/archive/slurm-22.05.9/sbatch.html#OPT_dependency) of the sbatch manual page. Many clusters have sections describing this technique. [Yale](https://docs.ycrc.yale.edu/clusters-at-yale/job-scheduling/dependency/). CECI has a bunch of [info on workflows](https://support.ceci-hpc.be/doc/_contents/SubmittingJobs/WorkflowManagement.html#introduction) including using additional software to manage job arrays and dependencies.
+    ## 1. Submit Stage 1
+    # Capture the Job ID of the first step
+    JOB_ID_1=$(sbatch --parsable stage1.sh)
+    echo "Submitted Stage 1: Job ID $JOB_ID_1"
+
+    ## 2. Submit Stage 2 (Depends on Stage 1 completing successfully)
+    # --dependency=afterok:JOBID ensures stage 2 only runs if stage 1 exits with code 0
+    JOB_ID_2=$(sbatch --parsable --dependency=afterok:$JOB_ID_1 stage2.sh)
+    echo "Submitted Stage 2: Job ID $JOB_ID_2"
+
+    ## 3. Submit Stage 3 (Parallel Fan-out)
+    # You can launch multiple jobs that all depend on the same previous step
+    for i in {1..5}; do
+        sbatch --dependency=afterok:$JOB_ID_2 parallel_task.sh $i
+    done
+
+    ## 4. Final Cleanup (Runs after Stage 2 finishes, regardless of success)
+    # --dependency=afterany:JOBID runs after the job terminates (success or failure)
+    sbatch --dependency=afterany:$JOB_ID_2 cleanup.sh
+
+    echo "All subordinate jobs have been submitted to the queue."
+    ```
+
+See [this part](https://slurm.schedmd.com/archive/slurm-22.05.9/sbatch.html#OPT_dependency) of the sbatch manual page.
+
+Many clusters have sections describing this technique. [Yale](https://docs.ycrc.yale.edu/clusters-at-yale/job-scheduling/dependency/). CECI has a bunch of [info on workflows](https://support.ceci-hpc.be/doc/_contents/SubmittingJobs/WorkflowManagement.html#introduction) including using additional software to manage job arrays and dependencies.
 
 ## **Heterogeneous Job Support**
 
