@@ -67,6 +67,7 @@ nav:
     - Storage Policies and Practices: 
       - storage/index.md
       - Storage Overview: storage/index.md
+      - Managing Allocation Access: storage/allocation-access.md
       - Backups and Restores: storage/backups-restores.md
       - Quotas: storage/quotas.md
       - Fastscratch: storage/fastscratch.md
@@ -120,6 +121,7 @@ nav:
       - Cost Calculator: help/cost-calculator.md
       - Navigating Deep Directory Trees: files/deep-paths.md
       - SED Modifying Files en Masse: files/sed-tips.md
+      - Using FreeIPA: sw/freeipa.md
     - Web Portal:
       - GUI Applications: portal/web-apps.md
       - Datacatalog: portal/datacatalog.md
