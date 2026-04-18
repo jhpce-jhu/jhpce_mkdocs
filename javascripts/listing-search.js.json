@@ -2058,6 +2058,27 @@
     "language": ""
   },
   {
+    "page_name": "Managing Allocation Access",
+    "page_url": "../../storage/allocation-access/",
+    "text": "jhpce01% ls -ld /dcs10/bob/data`\ndrwxrws--- 3 bob bobgrp 3 Nov 10  2025 /dcs10/bob/data\n",
+    "html": "<pre><span></span><code>jhpce01% ls -ld /dcs10/bob/data`\ndrwxrws--- 3 bob bobgrp 3 Nov 10  2025 /dcs10/bob/data\n</code></pre>",
+    "language": ""
+  },
+  {
+    "page_name": "Managing Allocation Access",
+    "page_url": "../../storage/allocation-access/",
+    "text": "jhpce01% ls -l /dcs10/bob/data`\ndrwxrws--- 3 bob bobgrp 3 Nov 10  2025 /dcs10/bob/data\ndrwxrws--- 3 bob bobgrp 3 Dec 15  2025 /dcs10/bob/data/dir1/\ndrwx------ 3 bob users  3 Dec 15  2025 /dcs10/bob/data/mydir/\ndrwxr-s--- 3 jane bobgrp 3 Nov 12  2025 /dcs10/bob/data/dir2/\n-rwx--s--- 3 frank bobgrp 3 Dec 20  2025 /dcs10/bob/data/file10\n",
+    "html": "<pre><span></span><code>jhpce01% ls -l /dcs10/bob/data`\ndrwxrws--- 3 bob bobgrp 3 Nov 10  2025 /dcs10/bob/data\ndrwxrws--- 3 bob bobgrp 3 Dec 15  2025 /dcs10/bob/data/dir1/\ndrwx------ 3 bob users  3 Dec 15  2025 /dcs10/bob/data/mydir/\ndrwxr-s--- 3 jane bobgrp 3 Nov 12  2025 /dcs10/bob/data/dir2/\n-rwx--s--- 3 frank bobgrp 3 Dec 20  2025 /dcs10/bob/data/file10\n</code></pre>",
+    "language": ""
+  },
+  {
+    "page_name": "Managing Allocation Access",
+    "page_url": "../../storage/allocation-access/",
+    "text": "jhpce01% ls -l /dcs10/bob/data`\ndrwxrwx--- 3 bob bobgrp 3 Nov 10  2025 /dcs10/bob/data\ndrwxr-s--- 3 bob bobgrp 4 Dec 15  2025 /dcs10/bob/data/tools/\ndrwxrws--- 3 bob bob_atoms 5 Dec 18  2025 /dcs10/bob/data/atoms/\ndrwx------ 3 bob users 2 Dec 15  2025 /dcs10/bob/data/mydir/\ndrwxr-s--- 3 jane bob_atoms 23 Nov 12  2025 /dcs10/bob/data/dir2/\n-rwx------ 3 frank users 3 Dec 20  2025 /dcs10/bob/data/file10\n",
+    "html": "<pre><span></span><code>jhpce01% ls -l /dcs10/bob/data`\ndrwxrwx--- 3 bob bobgrp 3 Nov 10  2025 /dcs10/bob/data\ndrwxr-s--- 3 bob bobgrp 4 Dec 15  2025 /dcs10/bob/data/tools/\ndrwxrws--- 3 bob bob_atoms 5 Dec 18  2025 /dcs10/bob/data/atoms/\ndrwx------ 3 bob users 2 Dec 15  2025 /dcs10/bob/data/mydir/\ndrwxr-s--- 3 jane bob_atoms 23 Nov 12  2025 /dcs10/bob/data/dir2/\n-rwx------ 3 frank users 3 Dec 20  2025 /dcs10/bob/data/file10\n</code></pre>",
+    "language": ""
+  },
+  {
     "page_name": "Backups and Restores",
     "page_url": "../../storage/backups-restores/",
     "text": "ls /users/.zfs/snapshot\n2025-05-29-23:30/  2025-06-01-23:30/  2025-06-04-23:30/  2025-06-07-23:30/  2025-06-10-23:30/\n2025-05-30-23:30/  2025-06-02-23:30/  2025-06-05-23:30/  2025-06-08-23:30/  2025-06-11-23:30/\n2025-05-31-23:30/  2025-06-03-23:30/  2025-06-06-23:30/  2025-06-09-23:30/  2025-06-12-23:30/\n",
@@ -2342,6 +2363,27 @@
     "page_url": "../../sw/conda/",
     "text": "conda install conda-forge::numpy\n",
     "html": "<pre><span></span><code>conda install conda-forge::numpy\n</code></pre>",
+    "language": ""
+  },
+  {
+    "page_name": "Using FreeIPA",
+    "page_url": "../../sw/freeipa/",
+    "text": "jhpce03:~% klist\nTicket cache: KCM:42629:7180\nDefault principal: tunison@CM.CLUSTER\n\nValid starting       Expires              Service principal\n04/16/2026 16:14:12  04/17/2026 15:42:35  krbtgt/CM.CLUSTER@CM.CLUSTER\n04/16/2026 16:14:53  04/17/2026 15:42:35  HTTP/ns01.cm.cluster@CM.CLUSTER\n04/16/2026 19:57:00  04/17/2026 15:42:35  host/compute-140.cm.cluster@CM.CLUSTER\n",
+    "html": "<pre><span></span><code>jhpce03:~% klist\nTicket cache: KCM:42629:7180\nDefault principal: tunison@CM.CLUSTER\n\nValid starting       Expires              Service principal\n04/16/2026 16:14:12  04/17/2026 15:42:35  krbtgt/CM.CLUSTER@CM.CLUSTER\n04/16/2026 16:14:53  04/17/2026 15:42:35  HTTP/ns01.cm.cluster@CM.CLUSTER\n04/16/2026 19:57:00  04/17/2026 15:42:35  host/compute-140.cm.cluster@CM.CLUSTER\n</code></pre>",
+    "language": ""
+  },
+  {
+    "page_name": "Using FreeIPA",
+    "page_url": "../../sw/freeipa/",
+    "text": "jhpce03:~% ipa help topics\n# here I list only three results\ngroup              Groups of users\nhost               Hosts/Machines\nuser               Users\njhpce03:~% ipa help group\n[USEFUL INFO not shown here]\njhpce03:~% ipa group-add-member --help\nUsage: ipa [global-options] group-add-member GROUP-NAME [options]\n\nAdd members to a group.\nOptions:\n  -h, --help            show this help message and exit\n  --external=STR        Members of a trusted domain in DOM\\name or name@domain\n                        form\n  --all                 Retrieve and print all attributes from the server.\n                        Affects command output.\n  --raw                 Print entries as stored on the server. Only affects\n                        output format.\n  --no-members          Suppress processing of membership attributes.\n  --users=STR           users to add\n  --groups=STR          groups to add\n  --services=STR        services to add\n  --idoverrideusers=STR\n                        User ID overrides to add\n",
+    "html": "<pre><span></span><code>jhpce03:~% ipa help topics\n# here I list only three results\ngroup              Groups of users\nhost               Hosts/Machines\nuser               Users\njhpce03:~% ipa help group\n[USEFUL INFO not shown here]\njhpce03:~% ipa group-add-member --help\nUsage: ipa [global-options] group-add-member GROUP-NAME [options]\n\nAdd members to a group.\nOptions:\n  -h, --help            show this help message and exit\n  --external=STR        Members of a trusted domain in DOM\\name or name@domain\n                        form\n  --all                 Retrieve and print all attributes from the server.\n                        Affects command output.\n  --raw                 Print entries as stored on the server. Only affects\n                        output format.\n  --no-members          Suppress processing of membership attributes.\n  --users=STR           users to add\n  --groups=STR          groups to add\n  --services=STR        services to add\n  --idoverrideusers=STR\n                        User ID overrides to add\n</code></pre>",
+    "language": ""
+  },
+  {
+    "page_name": "Using FreeIPA",
+    "page_url": "../../sw/freeipa/",
+    "text": "jhpce03:prolog% ipa group-find cphit --all\n---------------\n1 group matched\n---------------\n  dn: cn=cphit,cn=groups,cn=accounts,dc=cm,dc=cluster\n  Group name: cphit\n  GID: 4281\n  Member users: trichard, anishimu, xding\n  ipauniqueid: 059f11f0-39c8-11f1-a6fc-3e9957d14bbb\n  objectclass: top, groupofnames, nestedgroup, ipausergroup, ipaobject, posixgroup\n----------------------------\nNumber of entries returned 1\n----------------------------\n\njhpce03:~% ipa group-mod cphit --desc=\"Tom Richard alloc gateway group\"\n----------------------\nModified group \"cphit\"\n----------------------\n  Group name: cphit\n  Description: Tom Richard alloc gateway group\n  GID: 4281\n  Member users: trichard, anishimu, xding\n\njhpce03:~% ipa group-add cphit_acgclustering --desc=\"Tom Richard alloc secondary group\"\n---------------------------------\nAdded group \"cphit_acgclustering\"\n---------------------------------\n  Group name: cphit_acgclustering\n  Description: Tom Richard secondary group\n  GID: 1295400066\n\njhpce03:~% ipa group-add-member cphit_acgclustering --users={trichard, anishimu, xding}\nipa: ERROR: command 'group_add_member' takes at most 1 argument\n\njhpce03:~% ipa group-add-member cphit_acgclustering --users={trichard,anishimu,xding}\n  Group name: cphit_acgclustering\n  Description: Tom Richard secondary group\n  GID: 1295400066\n  Member users: trichard, anishimu, xding\n-------------------------\nNumber of members added 3\n-------------------------\n\njhpce03:ipa-help% ipa group-add-member-manager cphit --users=trichard\n  Group name: cphit\n  Description: Tom Richard alloc gateway group\n  GID: 4281\n  Member users: trichard, anishimu, xding\n  Membership managed by users: trichard\n-------------------------\nNumber of members added 1\n-------------------------\n\njhpce03:ipa-help% ipa group-add-member-manager cphit_acgclustering --users=trichard\n  Group name: cphit_acgclustering\n  Description: Tom Richard secondary group\n  GID: 1295400066\n  Member users: trichard, anishimu, xding\n  Membership managed by users: trichard\n-------------------------\nNumber of members added 1\n-------------------------\n",
+    "html": "<pre><span></span><code>jhpce03:prolog% ipa group-find cphit --all\n---------------\n1 group matched\n---------------\n  dn: cn=cphit,cn=groups,cn=accounts,dc=cm,dc=cluster\n  Group name: cphit\n  GID: 4281\n  Member users: trichard, anishimu, xding\n  ipauniqueid: 059f11f0-39c8-11f1-a6fc-3e9957d14bbb\n  objectclass: top, groupofnames, nestedgroup, ipausergroup, ipaobject, posixgroup\n----------------------------\nNumber of entries returned 1\n----------------------------\n\njhpce03:~% ipa group-mod cphit --desc=\"Tom Richard alloc gateway group\"\n----------------------\nModified group \"cphit\"\n----------------------\n  Group name: cphit\n  Description: Tom Richard alloc gateway group\n  GID: 4281\n  Member users: trichard, anishimu, xding\n\njhpce03:~% ipa group-add cphit_acgclustering --desc=\"Tom Richard alloc secondary group\"\n---------------------------------\nAdded group \"cphit_acgclustering\"\n---------------------------------\n  Group name: cphit_acgclustering\n  Description: Tom Richard secondary group\n  GID: 1295400066\n\njhpce03:~% ipa group-add-member cphit_acgclustering --users={trichard, anishimu, xding}\nipa: ERROR: command 'group_add_member' takes at most 1 argument\n\njhpce03:~% ipa group-add-member cphit_acgclustering --users={trichard,anishimu,xding}\n  Group name: cphit_acgclustering\n  Description: Tom Richard secondary group\n  GID: 1295400066\n  Member users: trichard, anishimu, xding\n-------------------------\nNumber of members added 3\n-------------------------\n\njhpce03:ipa-help% ipa group-add-member-manager cphit --users=trichard\n  Group name: cphit\n  Description: Tom Richard alloc gateway group\n  GID: 4281\n  Member users: trichard, anishimu, xding\n  Membership managed by users: trichard\n-------------------------\nNumber of members added 1\n-------------------------\n\njhpce03:ipa-help% ipa group-add-member-manager cphit_acgclustering --users=trichard\n  Group name: cphit_acgclustering\n  Description: Tom Richard secondary group\n  GID: 1295400066\n  Member users: trichard, anishimu, xding\n  Membership managed by users: trichard\n-------------------------\nNumber of members added 1\n-------------------------\n</code></pre>",
     "language": ""
   },
   {
