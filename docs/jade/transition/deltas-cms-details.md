@@ -269,11 +269,11 @@ created.
 
     JADE
 
-        Incoming   /transfer/in/cms/<cdua>/<username>
+        Incoming   /users/cms/<cdua>/<username> (your home directory)
         Outgoing   /transfer/out/cms/<cdua>/<username>
 
         Example:
-        Incoming   /transfer/in/cms/c55548/c-jxu123-55548
+        Incoming   /users/cms/c55548/c-jxu123-55548
         Outgoing   /transfer/out/cms/c55548/c-jxu123-55548
 
     **There are two ways you work with these new paths - when inside an SFTP
@@ -285,10 +285,9 @@ created.
         inside the directory appropriate for your community. You can only see
         files below that point.
 
-        So you "start from" either `/transfer/in/cms/` or `/transfer/out/cms/`
+        So you "start from" either `/users/cms/<cdua>/<username>` or `/transfer/out/cms/`
 
-        ** To reach your own files, you need to cd into your group's directory, then
-        into your own personal directory. **
+        ** When pulling files out of JADE, to reach your own files, you need to cd into your group's directory (it is named with a leading 'c' character followed by your DUA number), then into your own personal directory. **
 
         For example: `cd c55548/c-jxu123-55548`
 
@@ -298,12 +297,11 @@ created.
         having to issue any cd commands every time.
 
     === "While in the operating system"
-        After you transfer files into JADE, you need to use a different path to
-        access them, whether from your shell prompt or a graphic interface, such
+        After you transfer files into JADE, you will look for them wherever you chose to put them. You could have put them in your home directory or you might have changed directory and placed them somewhere else. This is true whether using your shell prompt or a graphic interface, such
 	as the file manager `thunar`.
         
         {==On the C-SUB, you used `/cms01/incoming/<username>`<br>
-        On JADE, you will use `/transfer/in/cms/<cdua>/<username>`==}
+        On JADE, you use any directory where you had write ability. ==}
 
 <!-- ------------------------------------------------------------------------->
 ??? danger "Data moderation process - differs only for moderators"
