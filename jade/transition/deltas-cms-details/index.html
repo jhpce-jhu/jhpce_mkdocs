@@ -5938,11 +5938,11 @@ We cannot create symbolic links to hide this change.</p>
 Outgoing   /cms01/outgoing/&lt;username&gt;
 </code></pre></div>
 <p>JADE</p>
-<div class="highlight"><pre><span></span><code>Incoming   /transfer/in/cms/&lt;cdua&gt;/&lt;username&gt;
+<div class="highlight"><pre><span></span><code>Incoming   /users/cms/&lt;cdua&gt;/&lt;username&gt; (your home directory)
 Outgoing   /transfer/out/cms/&lt;cdua&gt;/&lt;username&gt;
 
 Example:
-Incoming   /transfer/in/cms/c55548/c-jxu123-55548
+Incoming   /users/cms/c55548/c-jxu123-55548
 Outgoing   /transfer/out/cms/c55548/c-jxu123-55548
 </code></pre></div>
 <p><strong>There are two ways you work with these new paths - when inside an SFTP
@@ -5954,9 +5954,8 @@ Click on each tab below to learn more.</p>
 <p>When you connect with SFTP to JADE, the SFTP server program places you
 inside the directory appropriate for your community. You can only see
 files below that point.</p>
-<p>So you "start from" either <code>/transfer/in/cms/</code> or <code>/transfer/out/cms/</code></p>
-<p>** To reach your own files, you need to cd into your group's directory, then
-into your own personal directory. **</p>
+<p>So you "start from" either <code>/users/cms/&lt;cdua&gt;/&lt;username&gt;</code> or <code>/transfer/out/cms/</code></p>
+<p>** When pulling files out of JADE, to reach your own files, you need to cd into your group's directory (it is named with a leading 'c' character followed by your DUA number), then into your own personal directory. **</p>
 <p>For example: <code>cd c55548/c-jxu123-55548</code></p>
 <p>If you use the MobaXterm SFTP program, there is a place in the session's
 settings where you can specify your directory. If you configure that
@@ -5964,14 +5963,13 @@ once, you will automatically "land" in your final destination without
 having to issue any cd commands every time.</p>
 </div>
 <div class="tabbed-block">
-<p>After you transfer files into JADE, you need to use a different path to
-access them, whether from your shell prompt or a graphic interface, such</p>
+<p>After you transfer files into JADE, you will look for them wherever you chose to put them. You could have put them in your home directory or you might have changed directory and placed them somewhere else. This is true whether using your shell prompt or a graphic interface, such</p>
 </div>
 </div>
 </div>
 <p>as the file manager <code>thunar</code>.</p>
 <div class="highlight"><pre><span></span><code><mark class="critic">On the C-SUB, you used `/cms01/incoming/&lt;username&gt;`&lt;br&gt;
-On JADE, you will use `/transfer/in/cms/&lt;cdua&gt;/&lt;username&gt;`</mark>
+On JADE, you use any directory where you had write ability. </mark>
 </code></pre></div>
 </details>
 <!-- ------------------------------------------------------------------------->
@@ -6081,7 +6079,7 @@ To convert, add a "j" and change the leading "1" to "0".</p>
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="January 10, 2026 05:23:27 UTC">January 10, 2026</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="April 21, 2026 03:09:46 UTC">April 21, 2026</span>
   </span>
 
     

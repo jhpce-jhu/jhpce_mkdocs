@@ -912,15 +912,15 @@
   {
     "page_name": "Change details",
     "page_url": "../../jade/transition/deltas-cms-details/",
-    "text": "Incoming   /transfer/in/cms/<cdua>/<username>\nOutgoing   /transfer/out/cms/<cdua>/<username>\n\nExample:\nIncoming   /transfer/in/cms/c55548/c-jxu123-55548\nOutgoing   /transfer/out/cms/c55548/c-jxu123-55548\n",
-    "html": "<pre><span></span><code>Incoming   /transfer/in/cms/&lt;cdua&gt;/&lt;username&gt;\nOutgoing   /transfer/out/cms/&lt;cdua&gt;/&lt;username&gt;\n\nExample:\nIncoming   /transfer/in/cms/c55548/c-jxu123-55548\nOutgoing   /transfer/out/cms/c55548/c-jxu123-55548\n</code></pre>",
+    "text": "Incoming   /users/cms/<cdua>/<username> (your home directory)\nOutgoing   /transfer/out/cms/<cdua>/<username>\n\nExample:\nIncoming   /users/cms/c55548/c-jxu123-55548\nOutgoing   /transfer/out/cms/c55548/c-jxu123-55548\n",
+    "html": "<pre><span></span><code>Incoming   /users/cms/&lt;cdua&gt;/&lt;username&gt; (your home directory)\nOutgoing   /transfer/out/cms/&lt;cdua&gt;/&lt;username&gt;\n\nExample:\nIncoming   /users/cms/c55548/c-jxu123-55548\nOutgoing   /transfer/out/cms/c55548/c-jxu123-55548\n</code></pre>",
     "language": ""
   },
   {
     "page_name": "Change details",
     "page_url": "../../jade/transition/deltas-cms-details/",
-    "text": "On the C-SUB, you used `/cms01/incoming/<username>`<br>\nOn JADE, you will use `/transfer/in/cms/<cdua>/<username>`\n",
-    "html": "<pre><span></span><code><mark class=\"critic\">On the C-SUB, you used `/cms01/incoming/&lt;username&gt;`&lt;br&gt;\nOn JADE, you will use `/transfer/in/cms/&lt;cdua&gt;/&lt;username&gt;`</mark>\n</code></pre>",
+    "text": "On the C-SUB, you used `/cms01/incoming/<username>`<br>\nOn JADE, you use any directory where you had write ability. \n",
+    "html": "<pre><span></span><code><mark class=\"critic\">On the C-SUB, you used `/cms01/incoming/&lt;username&gt;`&lt;br&gt;\nOn JADE, you use any directory where you had write ability. </mark>\n</code></pre>",
     "language": ""
   },
   {
