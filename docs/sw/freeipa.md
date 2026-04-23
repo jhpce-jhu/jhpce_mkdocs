@@ -2,10 +2,10 @@
 
 JHPCE uses the open source [FreeIPA](https://www.freeipa.org) Identity Management suite to manage UNIX user accounts. (FreeIPA is often shortened "ipa", as that is the command you typically use.) Applications on our computers work with the operating system to consult our FreeIPA master server to get user names, passwords, the groups a user is in and similar facts.
 
-So you are using FreeIPA every time you login and when you try to access a file. That is all invisible to you, which is the way it should be. However, there are a small number of situations where users might want to use ipa manually.
+You are using FreeIPA every time you login, and when you try to access a file. That is all invisible to you, which is the way it should be. However, there are a small number of situations where users might want to use ipa manually.
 
 !!! Note
-    The primary `ipa` use case is where primary investigators ask for and are granted the ability to manage one of the UNIX user groups the systems administrators have created.
+    **The primary `ipa` use case is where primary investigators ask for and are granted the ability to manage one of the UNIX user groups the systems administrators have created.**
     
     Those groups are the primary method for controlling access to project storage allocations such as `/dcs07/<primary-investigator>/data/`.
     
@@ -13,7 +13,7 @@ So you are using FreeIPA every time you login and when you try to access a file.
     
     This topic is covered in our document [Managing Allocation Access](../storage/allocation-access.md).
 
-Instructions for managing group membership follows the IPA usage sections at [TL;DR](#TL;DR).
+Instructions for managing group membership follows the IPA usage sections at [TL;DR](#tldr).
 
 ## Becoming authorized to use ipa
 
@@ -21,13 +21,13 @@ A service called `Kerberos` is used by FreeIPA to control access to information.
 
 Kerberos commands usually begin with the letter "k".  Users change their cluster password with `kpasswd`
 
-Tickets are associated with user and computer "principals". Your "principal" or the user name you are known by when logging in or using the ipa command is: `<your cluster user name>@CM.CLUSTER`
+Tickets are associated with user and computer "principals". Your "principal" or the user name you are known by when logging in or using the ipa command is: `<your cluster user name>@CM.CLUSTER`, e.g. bobmiller@CM.CLUSTER. Note the capitalization of CM.CLUSTER.
 
 ### Seeing your ticket(s)
 Issue the command `klist` 
 
 ??? Note "Example klist output (click to open)""
-    This example was generated on 04/18/2026 at 16:20, after all of these tickets expired. So the principal `tunison@CM.CLUSTER` has no valid current tickets.
+    This example was generated on 04/18/2026 at 16:20, after all of the tickets listed expired. So the principal `tunison@CM.CLUSTER` has no valid current tickets.
     
     ```shellsession
     jhpce03:~% klist
@@ -44,11 +44,11 @@ Use the "kinit" command: `kinit <your principal name>` where that is as describe
 
 ## Getting ipa command syntax
 
-The commands you will need are found in the [TL;DR](#TL;DR) section below.
+The commands you will need are found in the [TL;DR](#tldr) section below.
 
 If you need or want to learn more about FreeIPA:
 
-The RHEL documentation for using FreeIPA to work with groups is found [here](https://docs.redhat.com/en/documentation/red_hat_enterprise_linux/9/html/managing_idm_users_groups_hosts_and_access_control_rules/index). (JHPCE uses an operating system (Rocky) which is a binary compatible version of the Red Hat Enterprise Linux (RHEL) operating system.)
+The RHEL documentation for using FreeIPA to work with groups is found [here](https://docs.redhat.com/en/documentation/red_hat_enterprise_linux/9/html/managing_idm_users_groups_hosts_and_access_control_rules/index). (JHPCE uses an operating system (Rocky Linux) which is a binary compatible version of the Red Hat Enterprise Linux (RHEL) operating system.)
 
 The ipa manual page (seen with `man ipa`) has an ***EXAMPLES*** section but they are of course not a complete reference.  The main help tool to use is `ipa` itself.
 
@@ -96,7 +96,7 @@ We have several related documents:
 - [Sharing files](../files/sharing-files.md)
 - [Managing Allocation Access](../storage/allocation-access.md)
 
-<A HREF="TL;DR"></A>
+<A ID="tldr"></A>
 ### TL;DR
 
 In the following example, a path `/dcs10/trichard/data/` is accessible by members of the gateway group "cphit". A secondary group, `cphit_acgclustering` will be used to own the files and directories inside the top level of the allocation. The result will be able to accomodate future `cphit_*` groups, whose members may or may not also be members of `cphit_acgclustering`
