@@ -5824,24 +5824,24 @@
 
 <h1 id="using-the-freeipa-identity-management-software">Using the FreeIPA Identity Management Software<a class="headerlink" href="#using-the-freeipa-identity-management-software" title="Anchor link to this section for reference">&para;</a></h1>
 <p>JHPCE uses the open source <a href="https://www.freeipa.org">FreeIPA</a> Identity Management suite to manage UNIX user accounts. (FreeIPA is often shortened "ipa", as that is the command you typically use.) Applications on our computers work with the operating system to consult our FreeIPA master server to get user names, passwords, the groups a user is in and similar facts.</p>
-<p>So you are using FreeIPA every time you login and when you try to access a file. That is all invisible to you, which is the way it should be. However, there are a small number of situations where users might want to use ipa manually.</p>
+<p>You are using FreeIPA every time you login, and when you try to access a file. That is all invisible to you, which is the way it should be. However, there are a small number of situations where users might want to use ipa manually.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>The primary <code>ipa</code> use case is where primary investigators ask for and are granted the ability to manage one of the UNIX user groups the systems administrators have created.</p>
+<p><strong>The primary <code>ipa</code> use case is where primary investigators ask for and are granted the ability to manage one of the UNIX user groups the systems administrators have created.</strong></p>
 <p>Those groups are the primary method for controlling access to project storage allocations such as <code>/dcs07/&lt;primary-investigator&gt;/data/</code>.</p>
 <p>Without the delegation, PIs or their authorized representatives must send change requests to <code>bitsupport@lists.jh.edu</code></p>
 <p>This topic is covered in our document <a href="../../storage/allocation-access/">Managing Allocation Access</a>.</p>
 </div>
-<p>Instructions for managing group membership follows the IPA usage sections at <a href="#TL;DR">TL;DR</a>.</p>
+<p>Instructions for managing group membership follows the IPA usage sections at <a href="#tldr">TL;DR</a>.</p>
 <h2 id="becoming-authorized-to-use-ipa">Becoming authorized to use ipa<a class="headerlink" href="#becoming-authorized-to-use-ipa" title="Anchor link to this section for reference">&para;</a></h2>
 <p>A service called <code>Kerberos</code> is used by FreeIPA to control access to information. When you want to work with ipa you need to prove to Kerberos that you are an authorized user, which involves providing your username and password. If successful, Kerberos issues you a security token called a "ticket" This is good for 24 hours.</p>
 <p>Kerberos commands usually begin with the letter "k".  Users change their cluster password with <code>kpasswd</code></p>
-<p>Tickets are associated with user and computer "principals". Your "principal" or the user name you are known by when logging in or using the ipa command is: <code>&lt;your cluster user name&gt;@CM.CLUSTER</code></p>
+<p>Tickets are associated with user and computer "principals". Your "principal" or the user name you are known by when logging in or using the ipa command is: <code>&lt;your cluster user name&gt;@CM.CLUSTER</code>, e.g. bobmiller@CM.CLUSTER. Note the capitalization of CM.CLUSTER.</p>
 <h3 id="seeing-your-tickets">Seeing your ticket(s)<a class="headerlink" href="#seeing-your-tickets" title="Anchor link to this section for reference">&para;</a></h3>
 <p>Issue the command <code>klist</code> </p>
 <details class="note">
 <summary>Example klist output (click to open)"</summary>
-<p>This example was generated on 04/18/2026 at 16:20, after all of these tickets expired. So the principal <code>tunison@CM.CLUSTER</code> has no valid current tickets.</p>
+<p>This example was generated on 04/18/2026 at 16:20, after all of the tickets listed expired. So the principal <code>tunison@CM.CLUSTER</code> has no valid current tickets.</p>
 <div class="highlight"><pre><span></span><code>jhpce03:~% klist
 Ticket cache: KCM:42629:7180
 Default principal: tunison@CM.CLUSTER
@@ -5855,9 +5855,9 @@ Valid starting       Expires              Service principal
 <h3 id="acquiring-a-ticket">Acquiring a ticket<a class="headerlink" href="#acquiring-a-ticket" title="Anchor link to this section for reference">&para;</a></h3>
 <p>Use the "kinit" command: <code>kinit &lt;your principal name&gt;</code> where that is as described earlier. </p>
 <h2 id="getting-ipa-command-syntax">Getting ipa command syntax<a class="headerlink" href="#getting-ipa-command-syntax" title="Anchor link to this section for reference">&para;</a></h2>
-<p>The commands you will need are found in the <a href="#TL;DR">TL;DR</a> section below.</p>
+<p>The commands you will need are found in the <a href="#tldr">TL;DR</a> section below.</p>
 <p>If you need or want to learn more about FreeIPA:</p>
-<p>The RHEL documentation for using FreeIPA to work with groups is found <a href="https://docs.redhat.com/en/documentation/red_hat_enterprise_linux/9/html/managing_idm_users_groups_hosts_and_access_control_rules/index">here</a>. (JHPCE uses an operating system (Rocky) which is a binary compatible version of the Red Hat Enterprise Linux (RHEL) operating system.)</p>
+<p>The RHEL documentation for using FreeIPA to work with groups is found <a href="https://docs.redhat.com/en/documentation/red_hat_enterprise_linux/9/html/managing_idm_users_groups_hosts_and_access_control_rules/index">here</a>. (JHPCE uses an operating system (Rocky Linux) which is a binary compatible version of the Red Hat Enterprise Linux (RHEL) operating system.)</p>
 <p>The ipa manual page (seen with <code>man ipa</code>) has an <strong><em>EXAMPLES</em></strong> section but they are of course not a complete reference.  The main help tool to use is <code>ipa</code> itself.</p>
 <p>Most usage of <code>ipa</code> involves providing a subcommand and arguments specific to that subcommand, e.g. <code>ipa user-find &lt;string&gt;</code></p>
 <p>The self-contained documentation uses "topics" to group subcommands together into families.</p>
@@ -5898,7 +5898,7 @@ Options:
 <li><a href="../../files/sharing-files/">Sharing files</a></li>
 <li><a href="../../storage/allocation-access/">Managing Allocation Access</a></li>
 </ul>
-<p><A HREF="TL;DR"></A></p>
+<p><A ID="tldr"></A></p>
 <h3 id="tldr">TL;DR<a class="headerlink" href="#tldr" title="Anchor link to this section for reference">&para;</a></h3>
 <p>In the following example, a path <code>/dcs10/trichard/data/</code> is accessible by members of the gateway group "cphit". A secondary group, <code>cphit_acgclustering</code> will be used to own the files and directories inside the top level of the allocation. The result will be able to accomodate future <code>cphit_*</code> groups, whose members may or may not also be members of <code>cphit_acgclustering</code></p>
 <p>Users must be added to to two groups <code>cphit</code> and <code>cphit_acgclustering</code></p>
@@ -6024,7 +6024,7 @@ Number of members added 1
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="April 18, 2026 02:10:11 UTC">April 18, 2026</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="April 23, 2026 23:14:49 UTC">April 23, 2026</span>
   </span>
 
     

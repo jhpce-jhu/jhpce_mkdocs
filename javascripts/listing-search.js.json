@@ -2060,8 +2060,8 @@
   {
     "page_name": "Managing Allocation Access",
     "page_url": "../../storage/allocation-access/",
-    "text": "jhpce01% ls -ld /dcs10/bob/data`\ndrwxrws--- 3 bob bobgrp 3 Nov 10  2025 /dcs10/bob/data\n",
-    "html": "<pre><span></span><code>jhpce01% ls -ld /dcs10/bob/data`\ndrwxrws--- 3 bob bobgrp 3 Nov 10  2025 /dcs10/bob/data\n</code></pre>",
+    "text": "jhpce01% ls -ld /dcs10/bob/data`\ndrwxrws--- 3 bob bobgrp 3 Nov 10  2025 /dcs10/bob/data\njhpce01% getent group bobgrp\nbobgrp:*:7161:bob,jane,frank\n",
+    "html": "<pre><span></span><code>jhpce01% ls -ld /dcs10/bob/data`\ndrwxrws--- 3 bob bobgrp 3 Nov 10  2025 /dcs10/bob/data\njhpce01% getent group bobgrp\nbobgrp:*:7161:bob,jane,frank\n</code></pre>",
     "language": ""
   },
   {
@@ -2074,8 +2074,8 @@
   {
     "page_name": "Managing Allocation Access",
     "page_url": "../../storage/allocation-access/",
-    "text": "jhpce01% ls -l /dcs10/bob/data`\ndrwxrwx--- 3 bob bobgrp 3 Nov 10  2025 /dcs10/bob/data\ndrwxr-s--- 3 bob bobgrp 4 Dec 15  2025 /dcs10/bob/data/tools/\ndrwxrws--- 3 bob bob_atoms 5 Dec 18  2025 /dcs10/bob/data/atoms/\ndrwx------ 3 bob users 2 Dec 15  2025 /dcs10/bob/data/mydir/\ndrwxr-s--- 3 jane bob_atoms 23 Nov 12  2025 /dcs10/bob/data/dir2/\n-rwx------ 3 frank users 3 Dec 20  2025 /dcs10/bob/data/file10\n",
-    "html": "<pre><span></span><code>jhpce01% ls -l /dcs10/bob/data`\ndrwxrwx--- 3 bob bobgrp 3 Nov 10  2025 /dcs10/bob/data\ndrwxr-s--- 3 bob bobgrp 4 Dec 15  2025 /dcs10/bob/data/tools/\ndrwxrws--- 3 bob bob_atoms 5 Dec 18  2025 /dcs10/bob/data/atoms/\ndrwx------ 3 bob users 2 Dec 15  2025 /dcs10/bob/data/mydir/\ndrwxr-s--- 3 jane bob_atoms 23 Nov 12  2025 /dcs10/bob/data/dir2/\n-rwx------ 3 frank users 3 Dec 20  2025 /dcs10/bob/data/file10\n</code></pre>",
+    "text": "jhpce01% ls -ld /dcs10/bob/data`\ndrwxr-x--- 3 bob bobgrp 3 Nov 10  2025 /dcs10/bob/data\n\njhpce01% ls -lR /dcs10/bob/data`\ndrwx------ 3 bob users 2 Dec 15  2025 only-me-dir/\ndrwxr-s--- 3 bob bobgrp 4 Dec 15  2025 tools/\ndrwxrws--- 3 bob bob_atoms 5 Dec 18  2025 atoms/\ndrwxr-s--- 3 jane bob_atoms 23 Nov 12  2025 atoms/dir2/\n-rwx------ 3 frank users 3 Dec 20  2025 atoms/file10\n",
+    "html": "<pre><span></span><code>jhpce01% ls -ld /dcs10/bob/data`\ndrwxr-x--- 3 bob bobgrp 3 Nov 10  2025 /dcs10/bob/data\n\njhpce01% ls -lR /dcs10/bob/data`\ndrwx------ 3 bob users 2 Dec 15  2025 only-me-dir/\ndrwxr-s--- 3 bob bobgrp 4 Dec 15  2025 tools/\ndrwxrws--- 3 bob bob_atoms 5 Dec 18  2025 atoms/\ndrwxr-s--- 3 jane bob_atoms 23 Nov 12  2025 atoms/dir2/\n-rwx------ 3 frank users 3 Dec 20  2025 atoms/file10\n</code></pre>",
     "language": ""
   },
   {

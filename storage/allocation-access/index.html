@@ -2580,6 +2580,17 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#adding-more-groups-to-the-allocation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Adding more groups to the allocation
+      
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -5766,6 +5777,17 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#adding-more-groups-to-the-allocation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Adding more groups to the allocation
+      
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -5797,23 +5819,29 @@
 <p>A key objective of this document is to alert PIs creating or managing allocations to the potential downsides of using the default arrangement.  If they anticipate, or simply want to be prepared for, working with multiple groups or subgroups of users inside their allocation, it is best to request a "gateway group" be created.</p>
 <h2 id="the-default-set-up">The default set up<a class="headerlink" href="#the-default-set-up" title="Anchor link to this section for reference">&para;</a></h2>
 <p>Access to the allocation's files is controlled by a UNIX users group being able to read and optionally write them. Individual files or directories (aka "objects") can be made private to the owner, readable by the group, etc by changing the permissions and group ownership after object creation, and/or by setting the user's <code>umask</code> value beforehand.</p>
+<div class="admonition warning">
+<p class="admonition-title">You need to be aware of your umask</p>
+<p>Umask is a concept and a command. Your umask setting at any one moment impacts the permissions of files and directories you create. You have a default umask (seen with the command <code>umask</code>), but can change it prior to making new objects. If you don't, you will need to, afterwards, use the <code>chmod</code> command to set the permissions the way they need to be. <a href="../../files/sharing-files/#important-concepts">More info about umasks</a>.</p>
+</div>
 <p>When creating an allocation the PI will tell us what group name to use and which users should be members.</p>
 <div class="highlight"><pre><span></span><code>jhpce01% ls -ld /dcs10/bob/data`
 drwxrws--- 3 bob bobgrp 3 Nov 10  2025 /dcs10/bob/data
+jhpce01% getent group bobgrp
+bobgrp:*:7161:bob,jane,frank
 </code></pre></div>
 <div class="admonition note">
-<p class="admonition-title">What these settings portray</p>
+<p class="admonition-title">Meaning and consequence of these settings</p>
 <ul>
 <li>A PI whose username is 'bob' is the owner of the top level</li>
 <li>A group named 'bobgrp' is the group owner of the top level</li>
-<li>Members of 'bobgrp' can read and write the directory, meaning they can create, modify and delete objects inside it.</li>
+<li>Members of 'bobgrp' can read <strong>and write the directory</strong>, meaning they can create, modify <strong>and delete</strong> objects inside it. (They can rename and delete objects owned by someone else because directories are simply special files which contain a list of member objects.) </li>
 <li>If bob wants to control the next level of objects (those inside "data") then a more appropriate setting would be 'r-s'. This prevents users from modifying things at that level.</li>
 <li>The group's permission bits (rws) have an 's' where normally you would see an 'x'. 'x' means that users can pass into the directory. An 's' implies 'x' but adds what is called "group sticky" functionality, which is that new file and directory objects created inside are given the same group ownership as is found on that data directory.</li>
 <li>A directory can be made "sticky" by setting the group ownership to the correct value, then issuing <code>chmod g+s &lt;dir&gt;</code></li>
 <li>The "other" permission bits (---) means that people who are not bob or members of bobgrp cannot see or pass into the directory.</li>
 </ul>
 </div>
-<p>This might be the contents after some actions by users bob, jane and frank. Note the variety of owners and permissions and what that means for people sharing files.</p>
+<p>This might be the contents after some actions by users bob, jane and frank. Note the variety of owners and permissions and what they mean for people working with these files.</p>
 <div class="highlight"><pre><span></span><code>jhpce01% ls -l /dcs10/bob/data`
 drwxrws--- 3 bob bobgrp 3 Nov 10  2025 /dcs10/bob/data
 drwxrws--- 3 bob bobgrp 3 Dec 15  2025 /dcs10/bob/data/dir1/
@@ -5823,37 +5851,49 @@ drwxr-s--- 3 jane bobgrp 3 Nov 12  2025 /dcs10/bob/data/dir2/
 </code></pre></div>
 <h2 id="multiple-projects-sharing-an-allocation">Multiple projects sharing an allocation<a class="headerlink" href="#multiple-projects-sharing-an-allocation" title="Anchor link to this section for reference">&para;</a></h2>
 <h3 id="the-problem">The problem<a class="headerlink" href="#the-problem" title="Anchor link to this section for reference">&para;</a></h3>
-<p>In the default set up, there is a single group involved (bobgrp). Users must be bobgrp members to access <strong>anything</strong> in the allocation. If only a subset of bobgrp should be able to access an object the only option is to define Access Control Lists. We describe ACL's and their usage <a href="../../files/acl/">here</a>. ACL's can be tricky to manage.</p>
+<p>In the default set up, there is a single group involved ("bobgrp"). Users must be "bobgrp" members to access <strong>anything</strong> in the allocation. If only a subset of bobgrp should be able to access an object the only option is to define Access Control Lists. We describe ACL's and their usage <a href="../../files/acl/">here</a>. ACL's can be tricky to manage.</p>
 <p>What happens when the PI starts a new project "genes", wants to use their existing allocation, but "genes" researchers should not be able to access the material owned by "bobgrp"?</p>
 <p>The only solution is to reorganize the allocation's lay out. Which, if paths to the objects have been embedded in, say, sbatch shell scripts, means those have to be modified. There may be years and years of references to consider accomodating.</p>
 <p>In some cases symbolic links can be used to allow previous paths to continue functioning but with new directories with different permissions/ownsership.</p>
 <h3 id="the-solution-gateway-groups">The solution - gateway groups<a class="headerlink" href="#the-solution-gateway-groups" title="Anchor link to this section for reference">&para;</a></h3>
 <p>If such scenarios are anticipated, we recommend requesting that we create a <strong>"gateway group"</strong> which allows access <strong>into</strong> the allocation, and then one or more secondary groups which are used to control access to the objects at levels inside <code>/dcs10/bob/data/</code></p>
 <p>It does mean that people have to be managed in two groups. But it lays down the foundation for an extensible data structure.</p>
-<p>We can make a PI or some list of people they designate to be “group administrators” who can manage the membership of any particular group. Consult our <a href="../../sw/freeipa/">instructions for using freeipa</a> to add or remove group members.</p>
-<p>In this example there is only one group of users but the PI is prepared to work with other groups as they come along.</p>
-<p>The gateway group is "bobgrp" and at first there is only one subordinate group "bob_atoms". <strong>The same users are members of both groups</strong>, but the objects inside of <code>/dcs10/bob/data/</code> meant to be used by the team <strong>are group-owned by "bob_atoms".</strong></p>
-<div class="highlight"><pre><span></span><code>jhpce01% ls -l /dcs10/bob/data`
-drwxrwx--- 3 bob bobgrp 3 Nov 10  2025 /dcs10/bob/data
-drwxr-s--- 3 bob bobgrp 4 Dec 15  2025 /dcs10/bob/data/tools/
-drwxrws--- 3 bob bob_atoms 5 Dec 18  2025 /dcs10/bob/data/atoms/
-drwx------ 3 bob users 2 Dec 15  2025 /dcs10/bob/data/mydir/
-drwxr-s--- 3 jane bob_atoms 23 Nov 12  2025 /dcs10/bob/data/dir2/
--rwx------ 3 frank users 3 Dec 20  2025 /dcs10/bob/data/file10
+<p>We can make a PI (or some list of people they designate) to be “group administrators” who can manage the membership of any particular group. Consult our <a href="../../sw/freeipa/">instructions for using freeipa</a> to add or remove group members.</p>
+<p>In this example there is only one group of users at this time, but the PI is prepared to work with other groups as they come along.</p>
+<p>The gateway group is "bobgrp" and at first there is only one subordinate group "bob_atoms". <strong>The same users are members of both groups</strong>, but the objects inside of <code>/dcs10/bob/data/</code> meant to be used by the current team <strong>are group-owned by "bob_atoms".</strong></p>
+<div class="highlight"><pre><span></span><code>jhpce01% ls -ld /dcs10/bob/data`
+drwxr-x--- 3 bob bobgrp 3 Nov 10  2025 /dcs10/bob/data
+
+jhpce01% ls -lR /dcs10/bob/data`
+drwx------ 3 bob users 2 Dec 15  2025 only-me-dir/
+drwxr-s--- 3 bob bobgrp 4 Dec 15  2025 tools/
+drwxrws--- 3 bob bob_atoms 5 Dec 18  2025 atoms/
+drwxr-s--- 3 jane bob_atoms 23 Nov 12  2025 atoms/dir2/
+-rwx------ 3 frank users 3 Dec 20  2025 atoms/file10
 </code></pre></div>
 <div class="admonition note">
-<p class="admonition-title">What these settings portray</p>
+<p class="admonition-title">Consequences of these settings</p>
 <ul>
-<li>"data" is no longer group sticky. Objects will be created using the user's primary group, which is here "users". Objects meant to be shared with a group must be manually changed from "users" to the new group with <code>chgrp [-R] bob_atoms</code> or <code>chgrp [-R] bobgrp</code> (only add the "-R" recursive flag when appropriate).</li>
-<li>"data" could be left group sticky. Changes in group ownership will still be needed where appropriate.</li>
-<li>"atoms" is perhaps the "parent" directory for the researchers work</li>
+<li>Compared to a default allocation situation, "/dcs10/bob/data" is not group writable.</li>
+<li>Recall that file and directory objects are normally created with the group set to the user's primary group, which in the JHPCE cluster is "users".</li>
+<li>Recall that users cannot change the ownership of files -- only systems administrators can do that!</li>
+<li>Compared to a default allocation situation, <strong>the group stickiness of "data" must be considered (as well as that on subordinate directories)</strong>. Shown here is a non-sticky top-level allocation directory (the "data" directory).</li>
+<li>"bob" will need to create subordinate directories and manage their permissions.  He cannot delegate that task.</li>
+<li>Objects just below "data" meant to be shared with a group must be manually changed by "bob" from "users" to the new group with <code>chgrp [-R] bob_atoms</code> or <code>chgrp [-R] bobgrp</code> (the "-R" (recursive) flag is shown in square brackets, which means it is optional. You don't need to use "-R" on an empty directory. If a directory contains many files, use "-R" only when appropriate).</li>
+<li>"bob" could choose to make those second-level directories group sticky with <code>chmod g+s name</code>. But "bob" may want to control things two directories deep.</li>
+<li>"data" <em>could be</em> left group sticky. Changes in group ownership will still be needed where appropriate.</li>
+<li>The "atoms" directory is perhaps the "parent" directory for the "bob_atoms" researchers' work.</li>
 <li>"file10" is private to frank</li>
-<li>"mydir/" is private to bob</li>
-<li>"dir2" is accessible by bob_atoms but jane must create writable subdirectories if desired. Jane had to use chown to set the group ownership.</li>
+<li>"only-me-dir/" is private to bob</li>
+<li>"dir2" is accessible by "bob_atoms" members. Jane can opt to create writable-by-bob_atoms subdirectories if desired. Jane would have to use chgrp to set the group ownership.</li>
 <li>"tools" is perhaps a location for all of the future researcher groups' members to find a common set of code or reference data</li>
 </ul>
 </div>
-<p>Later on, a new "genes" project comes along, with some researchers being in "bob_atoms" and some not. In that case, the gateway group is "bobgrp" and there are two subordinate groups "bob_atoms" and "bob_genes"</p>
+<h3 id="adding-more-groups-to-the-allocation">Adding more groups to the allocation<a class="headerlink" href="#adding-more-groups-to-the-allocation" title="Anchor link to this section for reference">&para;</a></h3>
+<p>Later on, a new "genes" project comes along, so "bob" asks bitsupport@lists.jh.edu to create a "bob_genes" group (and optionally designate someone to manage its membership).</p>
+<p>Some "genes" project researchers could be existing "bob_atoms" members and people only work on the "genes" work. Or there could be two separate groups. ("bob" will probably be in both groups.)</p>
+<p>The gateway group remains "bobgrp" and there are now two subordinate groups "bob_atoms" and "bob_genes".</p>
+<p>Everyone in the subordinate groups belong to "bobgrp", so they can "get into" the allocation.</p>
 
 
 
@@ -5874,7 +5914,7 @@ drwxr-s--- 3 jane bob_atoms 23 Nov 12  2025 /dcs10/bob/data/dir2/
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="April 18, 2026 02:10:11 UTC">April 18, 2026</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="April 23, 2026 23:14:49 UTC">April 23, 2026</span>
   </span>
 
     
