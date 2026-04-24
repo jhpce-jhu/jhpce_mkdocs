@@ -7570,7 +7570,28 @@ Options:
                               the end.
   --version                       Show the version and exit.
   --help                          Show this message and exit.
-</code></pre><h2><a class="heading" href="../slurm/tips-sacct/">sacct tips</a></h2><a class="url" href="../slurm/tips-sacct/">slurm/tips-sacct/</a><pre><span></span><code>sacct<span class="w"> </span>-s<span class="w"> </span>F<span class="w"> </span>-o<span class="w"> </span><span class="s2">"user,jobid,state,nodelist,start,end,exitcode"</span><span class="w"> </span>-S<span class="w"> </span>noon<span class="w"> </span>-E<span class="w"> </span>now
+</code></pre><h2><a class="heading" href="../slurm/tips-sacct/">sacct tips</a></h2><a class="url" href="../slurm/tips-sacct/">slurm/tips-sacct/</a><pre><span></span><code>jhpce01 ~% sstat -j 7928_1.batch -o MaxDiskRead,MaxDiskWrite
+MaxDiskRead MaxDiskWrite 
+------------ ------------ 
+2323346        42820
+
+# MaxRSS is the peak amount of physical RAM used, which needs to stay below the `--mem=` value you specified
+jhpce01 ~% sstat -j 31037928_1.batch -o MaxVMSize,MaxRSS
+MaxVMSize     MaxRSS 
+---------- ---------- 
+60316636K     96788K
+
+jhpce01 ~% sstat -j 31037928_1.batch -o TRESUsageInTot
+TRESUsageInTot 
+-------------- 
+cpu=05:37:35,+
+
+# Adjust the field width, a common task for sacct &amp; sstat
+jhpce01 ~% sstat -j 31037928_1.batch -o TRESUsageInTot%80
+                                                              TRESUsageInTot 
+-------------------------------------------------------------------------------- 
+cpu=05:37:55,energy=0,fs/disk=61134262687,mem=90568K,pages=401,vmem=59660328K 
+</code></pre><pre><span></span><code>sacct<span class="w"> </span>-s<span class="w"> </span>F<span class="w"> </span>-o<span class="w"> </span><span class="s2">"user,jobid,state,nodelist,start,end,exitcode"</span><span class="w"> </span>-S<span class="w"> </span>noon<span class="w"> </span>-E<span class="w"> </span>now
 
 User<span class="w"> </span>JobID<span class="w">             </span>State<span class="w">        </span>NodeList<span class="w">               </span>Start<span class="w">                 </span>End<span class="w"> </span>ExitCode<span class="w"> </span>
 ---------<span class="w"> </span>------------<span class="w"> </span>----------<span class="w"> </span>---------------<span class="w"> </span>-------------------<span class="w"> </span>-------------------<span class="w"> </span>--------<span class="w"> </span>
