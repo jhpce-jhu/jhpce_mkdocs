@@ -14,10 +14,41 @@ The [sacct](https://slurm.schedmd.com/archive/slurm-22.05.9/sstat.html) command 
 
 [^1]: In which case you can add the directive `--exclude=compute-xxx` to your job submission, then notify us via bitsupport@lists.jh.edu so we can fix that node.
 
-The [sstat](https://slurm.schedmd.com/archive/slurm-22.05.9/sstat.html) program is aimed at those who are looking for information about _running_ jobs. Much of the information on this page can be used with `sstat`, but there are differences, particularly in available output fields (compare the output of `sacct -e` and `sstat -e`).
+The [sstat](https://slurm.schedmd.com/archive/slurm-22.05.9/sstat.html) program is aimed at those who are looking for information about their own _running_ jobs. (Only the root user can see info about other people's jobs.) Much of the `sacct` concepts/ways of doing things on this page can be used with `sstat`, but there are differences, particularly in available output fields (compare the output of `sacct -e` and `sstat -e`). 
+
+??? Tip "Some sstat examples (click to open)"
+    Jobs have multiple steps, as explained [here](slurm/about-jobs.md#jobs-have-multiple-steps). `sstat` typically requires you to specify the right "step" of the job to see the desired results. You indicate which step by appending "batch" or "extern" to the jobid. For batch job 1500, you would use `sstat -j 1500.batch`. For an array task 2300_17 you would use `sstat -j 2300_17.batch`
+    ```shellsession
+    jhpce01 ~% sstat -j 7928_1.batch -o MaxDiskRead,MaxDiskWrite
+    MaxDiskRead MaxDiskWrite 
+    ------------ ------------ 
+    2323346        42820
+    
+    # MaxRSS is the peak amount of physical RAM used, which needs to stay below the `--mem=` value you specified
+    jhpce01 ~% sstat -j 31037928_1.batch -o MaxVMSize,MaxRSS
+    MaxVMSize     MaxRSS 
+    ---------- ---------- 
+    60316636K     96788K
+    
+    jhpce01 ~% sstat -j 31037928_1.batch -o TRESUsageInTot
+    TRESUsageInTot 
+    -------------- 
+    cpu=05:37:35,+
+    
+    # Adjust the field width, a common task for sacct & sstat
+    jhpce01 ~% sstat -j 31037928_1.batch -o TRESUsageInTot%80
+                                                                  TRESUsageInTot 
+    -------------------------------------------------------------------------------- 
+    cpu=05:37:55,energy=0,fs/disk=61134262687,mem=90568K,pages=401,vmem=59660328K 
+    ```
+
 
 ??? Caution "You can use `sstat` to **profile the resource use** of or **instrument** your jobs over their lifetimes."
-    You can do that in a variety of ways: (a) interactively, (b) from within your batch job scripts (although not while some other command is running), adding one or more `sstat` commands to the batch script in multiple places, and (c) from other batch jobs that you craft. (You could specify a very small resource job so it launches immediately, (perhaps using the `interactive` partition), learn how to create a hetrogenous job that spawns both the sstat commands in a timed loop as well as running your real program(s), or maybe reads files you create in the main batch job in order to figure out what jobid sstat should be monitoring.
+    You can do that in a variety of ways:
+    
+    1. interactively, on a login or compute node,
+    2. from within your batch job scripts (adding one or more `sstat` commands in-between analysis commands, or, to capture info about long-running commands, first running an sstat command in the background which writes its output to a specific named file (in case it's output might intermingle with that from your computations), and
+    3. from other batch jobs that you craft. (You could specify a very small resource job so it launches immediately, (perhaps using the `interactive` partition), learn how to create a hetrogenous job that spawns both the sstat commands in a timed loop as well as running your real program(s), or maybe reads files you create in the main batch job in order to figure out what jobid sstat should be monitoring.
     
 !!! Example
     ```Shell title="Show my failed jobs between noon and now" linenums="0"
@@ -31,10 +62,6 @@ The [sstat](https://slurm.schedmd.com/archive/slurm-22.05.9/sstat.html) program 
 
     ```
 More examples can be found throughout this document, as well as [at the end](#examples).
-
-[sacct](https://slurm.schedmd.com/archive/slurm-22.05.9/sacct.html) is a command used to display information about jobs.
-
-
 
 Examples below use angle brackets ++less++ ++greater++  to indicate where you are supposed to replace argumements with your values.
 
