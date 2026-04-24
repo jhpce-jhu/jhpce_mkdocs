@@ -8131,6 +8131,10 @@ Options:
   --services=STR        services to add
   --idoverrideusers=STR
                         User ID overrides to add
+</code></pre><pre><span></span><code>jhpce03 ~% ldapsearch -LLL -Y GSSAPI -b cn=users,cn=accounts,dc=cm,dc=cluster "(&amp;(objectClass=person)(nsAccountLock=TRUE)(uid=c-*-*))" uid cn email|less
+dn: cn=cphit,cn=groups,cn=accounts,dc=cm,dc=cluster
+cn: cphit
+memberManager: uid=trichard,cn=users,cn=accounts,dc=cm,dc=cluster
 </code></pre><pre><span></span><code>jhpce03:prolog% ipa group-find cphit --all
 ---------------
 1 group matched

@@ -5931,13 +5931,21 @@ Options:
 </li>
 </ul>
 </div>
-<ol>
-<li>Users can be deleted with the <code>group-remove-member</code> subcommand.</li>
-</ol>
+<p>Users can be deleted with the <code>group-remove-member</code> subcommand.</p>
 <div class="admonition warning">
 <p class="admonition-title">Why are you deleting a group member?</p>
 <p>If it is because you know that someone is leaving, please consider telling us at bitsupport@lists.jh.edu about the situation. Do we need to disable their ability to log in because they are done using the cluster? Delete their files so the PI doesn't need to pay for the storage?</p>
 </div>
+<details class="tip">
+<summary>Finding all group-management delegations (click to open)</summary>
+<p>We have provided a script named <code>find-group-managers</code>
+Here is a raw command example. Shown is one stanza, in which the managed group is "cphit" and the single group manager is "trichard":
+<div class="highlight"><pre><span></span><code>jhpce03 ~% ldapsearch -LLL -Y GSSAPI -b cn=users,cn=accounts,dc=cm,dc=cluster &quot;(&amp;(objectClass=person)(nsAccountLock=TRUE)(uid=c-*-*))&quot; uid cn email|less
+dn: cn=cphit,cn=groups,cn=accounts,dc=cm,dc=cluster
+cn: cphit
+memberManager: uid=trichard,cn=users,cn=accounts,dc=cm,dc=cluster
+</code></pre></div></p>
+</details>
 <h3 id="an-example-of-how-delegation-was-created">An example of how delegation was created<a class="headerlink" href="#an-example-of-how-delegation-was-created" title="Anchor link to this section for reference">&para;</a></h3>
 <p>In the following example, a path <code>/dcs10/trichard/data/</code> is accessible by members of the gateway group "cphit". A secondary group, <code>cphit_acgclustering</code> will be used to own the files and directories inside the top level of the allocation.</p>
 <p>Users must be added to to two groups <code>cphit</code> and <code>cphit_acgclustering</code></p>
@@ -6024,7 +6032,7 @@ Number of members added 1
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="April 23, 2026 23:14:49 UTC">April 23, 2026</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="April 24, 2026 00:34:40 UTC">April 24, 2026</span>
   </span>
 
     
