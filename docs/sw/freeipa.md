@@ -120,10 +120,21 @@ Users must be added to to two groups `cphit` and `cphit_acgclustering`
     
     - If you only have one username to add, do not use the curly braces, e.g. `--users=user1`
 
-8. Users can be deleted with the `group-remove-member` subcommand.
+Users can be deleted with the `group-remove-member` subcommand.
 
 !!! Warning "Why are you deleting a group member?"
     If it is because you know that someone is leaving, please consider telling us at bitsupport@lists.jh.edu about the situation. Do we need to disable their ability to log in because they are done using the cluster? Delete their files so the PI doesn't need to pay for the storage?
+
+??? Tip "Finding all group-management delegations (click to open)"
+    We have provided a script named `find-group-managers`
+    Here is a raw command example. Shown is one stanza, in which the managed group is "cphit" and the single group manager is "trichard":
+    ```shellsession
+    jhpce03 ~% ldapsearch -LLL -Y GSSAPI -b cn=users,cn=accounts,dc=cm,dc=cluster "(&(objectClass=person)(nsAccountLock=TRUE)(uid=c-*-*))" uid cn email|less
+    dn: cn=cphit,cn=groups,cn=accounts,dc=cm,dc=cluster
+    cn: cphit
+    memberManager: uid=trichard,cn=users,cn=accounts,dc=cm,dc=cluster
+    ```
+
 
 ### An example of how delegation was created
 
