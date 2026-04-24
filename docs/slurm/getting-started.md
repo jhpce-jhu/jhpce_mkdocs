@@ -5,9 +5,9 @@ tags:
 
 # Introduction to SLURM
 
-See the latest [This Link](https://docs.google.com/presentation/d/1elMSTUdKws7FLVFK7vVV_AErA4brNSPX/pub){:target="_blank"} for examples of how to use SLURM to run jobs.
+See the latest [Orientation handout](https://docs.google.com/presentation/d/1elMSTUdKws7FLVFK7vVV_AErA4brNSPX/pub){:target="_blank"} for examples of how to use SLURM to run jobs.
 
-Please check out other SLURM-related pages on this web site. There is already some great information here. 
+Please check out other SLURM-related pages on this web site. There is some great information here. The search function (magnifying lens in upper right corner) works well.
 
 ## Defaults
 By default, if you do not request any specific resources, your job will receive:
@@ -37,7 +37,3 @@ Please visit the [About SLURM Jobs](../slurm/about-jobs.md) document to read abo
 The [commands tip and reference](../slurm/slurm-commands-ref.md) document describes programs and their uses, whether they were written by the vendor or JHPCE staff. That page contains links to both manual pages and pages we've written with guidance and examples.
 
 If you can't find what you are looking for here, we have a collection of good documentation from other clusters [here](../slurm/user-guide-collection.md). SLURM is a popular tool, so Google searches will also be productive. Just keep in mind that the documentation for other clusters will include information specific to their hardware, software and policies.
-
-## Transition from Sun Grid Engine to SLURM
-
-We transitioned from the Sun Grid Engine to SLURM in 2024. We wrote [this document](../orient/images/transition-sge-2-slurm.pdf) for users familiar with SGE who needed to learn some SLURM basics.
