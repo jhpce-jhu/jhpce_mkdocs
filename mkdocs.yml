@@ -76,6 +76,7 @@ nav:
     - Software:
       - Overview: sw/sw-overview.md
       - Local Software:
+        - Code-Server: sw/code-server.md
         - Matlab: sw/matlab.md
         - Python: sw/python.md
         - R and RStudio: sw/r-n-friends.md
