@@ -24,15 +24,15 @@
 [2026-05-04T19:43:21.662Z] info  Session server listening on /users/test/.local/share/code-server/code-server-ipc.sock
 ```
 
-2. Open a terminal on your local machine to set up port forward
+2. Set up port forward - open a terminal on your local machine, copy and paste line from the output of codeserver.sh
 ```
 uname@stone ~ % ssh -J test@jhpce01.jhsph.edu -N -L 40000:127.0.0.1:40000 test@compute-149
 ```
 
-3. Open a browser on your local machine, then copy and paste the url you see from the output of your codeserver.sh
+3. Open a browser on your local machine, then copy and paste the url from the output of your codeserver.sh
 ```
 http://127.0.0.1:40000
 ```
 
-Note: The code-server is now available to use through your browser. Once you have done, type ctrl-c on both JHPCE terminal and your local terminal, and close the broser
+Note: The code-server is now available to use through your browser. Once you have done, type ctrl-c on both JHPCE terminal and your local terminal, and close the browser.
 
