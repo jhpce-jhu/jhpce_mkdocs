@@ -2729,6 +2729,8 @@
       
         
       
+        
+      
     
     
     
@@ -2770,6 +2772,34 @@
 
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../sw/code-server/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Code-Server
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
             
               
                 
@@ -8075,6 +8105,28 @@ relaunch Chromium.
 </code></pre><pre><span></span><code>/bin/rm -rf ~/.cache/chromium
 /bin/rm -rf ~/.config/chromium
 </code></pre><pre><span></span><code>mv<span class="w"> </span>~/.config/chromium<span class="w"> </span>~/.config/chromium-locked
+</code></pre><h2><a class="heading" href="../sw/code-server/">Code-Server</a></h2><a class="url" href="../sw/code-server/">sw/code-server/</a><pre><span></span><code>[test@jhpce01 ~]$ srun --pty bash
+[test@compute-149 ~]$ codeserver.sh 
+        ==================================================================================
+        Starting code-server
+
+        Please type the following on your local terminal
+            ## Note: Windows users, please use PowerShell
+            ssh -J test@jhpce01.jhsph.edu -N -L 40000:127.0.0.1:40000 test@compute-149
+
+        Then open:
+        http://127.0.0.1:40000
+
+        ====================================================================================
+[2026-05-04T19:43:21.633Z] info  code-server 4.112.0 d7599ae360900ad55b503e3c840b417a1eae4798
+[2026-05-04T19:43:21.646Z] info  Using user-data-dir /users/test/.local/share/code-server
+[2026-05-04T19:43:21.662Z] info  Using config file /users/test/.config/code-server/config.yaml
+[2026-05-04T19:43:21.662Z] info  HTTP server listening on http://127.0.0.1:40008/
+[2026-05-04T19:43:21.662Z] info    - Authentication is disabled
+[2026-05-04T19:43:21.662Z] info    - Not serving HTTPS
+[2026-05-04T19:43:21.662Z] info  Session server listening on /users/test/.local/share/code-server/code-server-ipc.sock
+</code></pre><pre><span></span><code>uname@stone ~ % ssh -J test@jhpce01.jhsph.edu -N -L 40000:127.0.0.1:40000 test@compute-149
+</code></pre><pre><span></span><code>http://127.0.0.1:40000
 </code></pre><h2><a class="heading" href="../sw/codex/">Using OpenAI codex</a></h2><a class="url" href="../sw/codex/">sw/codex/</a><pre><span></span><code><span class="gp">[user1@jhpce01 ~]$ </span>srun<span class="w"> </span>--pty<span class="w"> </span>--x11<span class="w"> </span>bash
 <span class="gp">[user1@compute-120 ~]$ </span>module<span class="w"> </span>load<span class="w"> </span>node
 <span class="gp">[user1@compute-120 ~]$ </span>codex
