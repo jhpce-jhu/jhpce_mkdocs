@@ -5,7 +5,7 @@ This page describes how to write a good help request email.
 ## A Good Request
 1. Write a descriptive summary.
     * Put in a short summary into the Subject.
-    * Which cluster are you on? We support two -- JHPCE and C-SUB. We assume JHPCE but specify "C-SUB" if that is where you are working.
+    * Which cluster are you on? We support two -- JHPCE and JADE. We assume JHPCE but specify "JADE" if that is where you are working.
  
 2. Expand on this in a first paragraph. Try to answer the following questions:
     * Please give us your user name on the cluster.
