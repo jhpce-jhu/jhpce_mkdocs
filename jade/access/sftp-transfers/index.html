@@ -5352,6 +5352,39 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#sftp-session-restrictions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        SFTP session restrictions
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#your-working-directory-after-connecting" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Your working directory after connecting
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#mobaxterm-users" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        MobaXterm Users
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#transfer-file-system" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -5717,6 +5750,39 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#sftp-session-restrictions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        SFTP session restrictions
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#your-working-directory-after-connecting" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Your working directory after connecting
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#mobaxterm-users" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        MobaXterm Users
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#transfer-file-system" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -5750,27 +5816,51 @@
 <h2 id="ports">Ports<a class="headerlink" href="#ports" title="Anchor link to this section for reference">&para;</a></h2>
 <p>JADE supports multiple communities of users. To date we have been assigning two specific TCP/IP ports to each community, one for inbound and one for outbound transfers.</p>
 <ul>
-<li>port number - community, direction</li>
+<li>Port number - Community name, Direction of data movement</li>
 <li>22011 - cms, inbound</li>
-<li>22027 - cms, outbound</li>
-<li>22111 - misc, inbound</li>
-<li>22127 - misc, outbound</li>
-<li>22211 - nist800171, inbound</li>
-<li>22227 - nist800171, outbound</li>
-<li>22311 - sysadmin, inbound</li>
+<li>
+<p>22027 - cms, outbound</p>
+</li>
+<li>
+<p>22511 - dbgap, inbound</p>
+</li>
+<li>
+<p>22527 - dbgap, outbound</p>
+</li>
+<li>
+<p>22111 - misc, inbound</p>
+</li>
+<li>
+<p>22127 - misc, outbound</p>
+</li>
+<li>
+<p>22211 - nist800171, inbound</p>
+</li>
+<li>
+<p>22227 - nist800171, outbound</p>
+</li>
+<li>
+<p>22311 - sysadmin, inbound</p>
+</li>
 <li>22327 - sysadmin, outbound</li>
-<li>22511 - dbgap, inbound</li>
-<li>22527 - dbgap, outbound</li>
 </ul>
-<div class="admonition note">
-<p class="admonition-title">Your working directory after connecting</p>
-<p>In general: The SFTP server configured to handle each port will "place you" in your home directory. You can then navigate (change directory) to other locations before uploading or downloading files.</p>
-<p>CMS users connecting to their outbound port 22027, are placed by the SFTP server configuration in the specific directory <code>/transfer/out/cms/</code>.  Their directories are found below that starting point, in the generic path <code>&lt;cdua&gt;/&lt;username&gt;</code>.</p>
+<h2 id="sftp-session-restrictions">SFTP session restrictions<a class="headerlink" href="#sftp-session-restrictions" title="Anchor link to this section for reference">&para;</a></h2>
+<p>To comply with the NIST 800-171 data security standards, the JADE SFTP server daemons handling each port are configured to allow the use of only a subset of SFTP commands. For example, when connected to an outbound port, you are not allowed to "put" files (meaning upload them into the cluster). When connected to an inbound port, you are not allowed to "get" files (meaning download them from the cluster).</p>
+<h2 id="your-working-directory-after-connecting">Your working directory after connecting<a class="headerlink" href="#your-working-directory-after-connecting" title="Anchor link to this section for reference">&para;</a></h2>
+<p>Inbound connections: The SFTP server configured to handle incoming will "place you" in your home directory. You can then navigate (change directory) to other locations before uploading or downloading files.</p>
+<p>The same is true for outbound connections for everyone except CMS users.</p>
+<p>This group of users, when connecting to their outbound port 22027, are placed by the SFTP server in the specific directory <code>/transfer/out/cms/</code>.  Your SFTP software is unable to see any other paths on the computer -- you are locked at <code>/transfer/out/cms</code> and below. In other words, CMS users cannot change directory to <code>/users/&lt;blah&gt;</code> or <code>/data/&lt;blah&gt;</code>.  Below that starting point are directories for each "cdua", e.g. "c55548" Below those are CMS user per-person directories, in the generic path <code>&lt;cdua&gt;/&lt;username&gt;</code>.</p>
+<h2 id="mobaxterm-users">MobaXterm Users<a class="headerlink" href="#mobaxterm-users" title="Anchor link to this section for reference">&para;</a></h2>
+<p>MobaXterm allows you to use many different kinds of connections. SFTP Sessions are different than SSH Sessions. You should configure two "SFTP Session" so you are prepared to move data in both directions. You will wind up with three JADE-related Sessions saved in your Favorites (aka Bookmarks)(the gold star icon in the left-side toolbar). Once those are configured you can re-use them. It can be a good idea to, when defining an SFTP Session, to go into the "Bookmarks settings" tab and change the name of the session to reflect its use, say "JADE inbound SFTP".</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p><mark>You need to change a special setting when defining SFTP sessions!!!</mark> There is a check box in the “Advanced Sftp settings” tab, titled “2-steps authentication”. Enabling that tells MobaXterm to handle the prompt for a verification code.</p>
 </div>
 <h2 id="transfer-file-system">/transfer file system<a class="headerlink" href="#transfer-file-system" title="Anchor link to this section for reference">&para;</a></h2>
-<p>When JADE was designed and built, it was felt that it would be helpful to the logging and auditing efforts to have files being uploaded into the cluster (on inbound ports 2<em>11) pass through the <code>/transfer/in/&lt;comm&gt;/</code> directory trees, and outbound files (on ports 2</em>27) be first placed into the <code>/transfer/out/&lt;comm&gt;/</code> directory trees.</p>
-<p>As of March 2026, the only directory used inside <code>/transfer/</code> is <code>/transfer/out/cms/</code>  Members of the CMS community must place files they wish to transfer out of JADE into <code>/proposed/cms/&lt;cdua&gt;/&lt;username&gt;</code> directories. They then a team of HARP "data moderators" to review them. Those moderators move approved files from <code>/proposed/</code> to the <code>/transfer/out/cms/&lt;cdua&gt;/&lt;username&gt;/</code> so CMS users can then run SFTP from outside JADE to "pick them up."</p>
-<p>Currently no communities moderate incoming files, so <code>/transfer/in/&lt;comm&gt;/</code> directories are not needed. We will keep them around in case we have to change course.</p>
+<p>Members of the CMS community must place files they wish to transfer out of JADE into <code>/proposed/cms/&lt;cdua&gt;/&lt;username&gt;</code> directories. They then ask a team of HARP "data moderators" to review the files. Those moderators move approved files from <code>/proposed/&lt;blah&gt;</code> to the appropriate <code>/transfer/out/cms/&lt;cdua&gt;/&lt;username&gt;/</code> so CMS users can then run SFTP from outside JADE to "pick them up."</p>
+<p>When JADE was designed and built, it was felt that it would be helpful to the logging and auditing efforts to have files being uploaded into the cluster (on inbound ports 2<em>11) land in the <code>/transfer/in/&lt;comm&gt;/</code> directory trees, and outbound files (on ports 2</em>27) be retrieved only from the <code>/transfer/out/&lt;comm&gt;/</code> directory trees.</p>
+<p>As of March 2026, the only directory used inside <code>/transfer/</code> is <code>/transfer/out/cms/</code>  </p>
+<p>Currently no communities moderate incoming files, so <code>/transfer/in/&lt;comm&gt;/</code> directories are not needed. We may keep them around in case we have to change course.</p>
 
 
 
@@ -5791,7 +5881,7 @@
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="March 6, 2026 05:02:59 UTC">March 6, 2026</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="May 13, 2026 19:57:36 UTC">May 13, 2026</span>
   </span>
 
     
