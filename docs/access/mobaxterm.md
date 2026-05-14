@@ -5,7 +5,7 @@ tags:
 # Mobaxterm Configuration 
 Mobaxterm is a Windows application that provides an ssh client, scp
 client and X11 server all in one program.  It is a very convenient tool
-for accessing and utilizing the many features of the two clusters we maintain (named JHPCE and JADE). ("We" is an organization known as JHPCE, so it has become a bit confusing.)
+for accessing and utilizing the many features of the two clusters we maintain (named JHPCE and JADE). ("We" is an organization known as JHPCE, so it has become a bit confusing to distinguish between the organization and one of its clusters.)
 
 This FAQ
 will take you through the steps needed to configure Mobaxterm.  Before
@@ -57,7 +57,8 @@ cluster. You will be prompted for your Google Authenticator
 "Verification Code", and then your password. (We use "Verification Code",  "code" and "OTP" interchangeably.)
 
 !!! Warning
-    Verification codes are only good for one use, whether or not you successfully log in. 
+    Verification codes are only ==good for one use==, whether or not you successfully log in.
+    <br> 
     We advise against using your mouse to select, copy and paste usernames, passwords and codes when setting up your account for the first time. Too frequently people inadvertently copy in an extra character, such as a trailing space. They think they're entering something they're not and are confounded when they cannot login.
 
 You will see a number of boxes pop up. You will be prompted to save your
@@ -93,7 +94,7 @@ The JADE cluster has, in May 2026, only a login server. We are planning to creat
 !!! warning "You must interpret these screenshots/instructions"
     Do not blindly enter choices. These examples are based on configuring SFTP access to the JHPCE cluster's transfer node.
 
-1. Start MobaXterm.  You likely already have a “jhpce01.jhsph.edu” or "jhpce03.jhsph.edu" session configured for logging into the JHPCE cluster
+1. Start MobaXterm.  You likely already have a “jhpce01.jhsph.edu” or "jhpce03.jhsph.edu" SSH session configured for logging into the JHPCE cluster
 ![mobasftp-step01](images/moba-sftp-step01.png)
 <br>
 <br>
@@ -122,39 +123,41 @@ window where you can create new sessions using a variety of network protocols
 ![mobasftp-step05](images/moba-sftp-step05.png)
 <br>
 <br>
-6. Check the box marked “2-steps authentication”.  Optionally, if you are a JHPCE user with an SSH key, you can check the “Use private key” box, and then enter the path to your private key on your local computer. (See mobaxterm.md#setting-up-ssh-keys-in-mobaxterm for details)
+6. Check the box marked “2-steps authentication”.  Optionally, if you are a JHPCE user with an SSH key, you can check the “Use private key” box, and then enter the path to your private key on your local computer. (See [below](mobaxterm.md#setting-up-ssh-keys-in-mobaxterm) for details)
 <br>
 <br>
 ![mobasftp-step06](images/moba-sftp-step06.png)
 <br>
 <br>
-7. When you click “OK”, you will be prompted for you “Verification Code” (which will be from Google Authenticator) and “Password”.  After you enter your
-password, you will be prompted to “Save Password?”, ==be sure to respond
-“No’==
+7. When you click “OK”, you will be prompted for you “Verification Code” (which you get from Google Authenticator) and “Password”.  After you enter your
+password, you will be prompted to “Save Password?” ==be sure to respond
+No== (many users say Yes and then completely forget their cluster passwords).
+<br>
+<br>
 ![mobasftp-step07](images/moba-sftp-step07.png)
+<br>
+<br>
+8. You should now see three different panes: On the left, there are two representing the files and directories on your local computer. One the right is a third pane, displaying the list of files your home directory from the JHPCE or JADE cluster.  You can transfer files to and from the cluster by dragging-and-dropping them between the two columns of panes.
+<br>
+<br>
 ![mobasftp-step08](images/moba-sftp-step08.png)
 <br>
 <br>
-8. You should now see the list of files your home directory from the JHPCE
-   cluster displayed on the screen.  You can transfer files to and from the
-JHPCE cluster by dragging-and-dropping them onto this file list.
-<br>
-<br>
+9. 
 ![mobasftp-step09](images/moba-sftp-step09.png)
 <br>
 <br>
-9. To access you scratch space, you can enter the path “/fastscratch/myscratch/USERID” (where USERID is your JHPCE cluster user id.
+10. To access you scratch space, you can enter the path “/fastscratch/myscratch/USERID” (where USERID is your JHPCE cluster user id.
 <br>
 <br>
-10. When you are done with your sftp session, you can close the session by
-    clicking on the red X on the “jhpce-transfer01” tab.  This red X will show
+11. When you are done with your sftp session, you can close the session by clicking on the red X on the “jhpce-transfer01” tab.  This red X will show
 up when you hover your cursor over the right hand side of the tab.
 
     
 ## Setting up SSH Keys in MobaXterm
 
 ### Why?
-This is an optional step for JHPCE cluster users (==but not for JADE users== -- they are not allowed to use SSH key pairs) to streamline their JHPCE login process.
+This is an **optional step** for JHPCE cluster users (==but not for JADE users== -- they are not allowed to use SSH key pairs) to streamline their JHPCE login process.
 
 JHPCE and JADE require Multi-Factor Authentication (MFA). MFA refers to requiring one or more additional credentials (factors) beyond a username and password. JHPCE supports using either a OTP code or public key cryptography. JADE requires the use of a OTP code.
 
@@ -203,10 +206,9 @@ Now, at the top of the window you'll see the text version of your public
 key. Copy the contents of this field with your mouse, making sure to
 scroll all the way to the bottom of the text box. 
 
-NOTE: to do Copy/Paste in MobaXterm, you should not use \<CTRL\>-C and \<CTRL\>-V.
-Instead, select the text you want to copy, then use the right mouse
-button to bring up the context menu, and select Copy (or select Paste
-when you are pasting).
+!!! tip "Copying & Pasting in MobaXterm"
+    To do Copy/Paste in MobaXterm, you should not use \<CTRL\>-C and \<CTRL\>-V.
+Instead, select the text you want to copy, then use the right mouse button to bring up the context menu, and select Copy (or select Paste when you are pasting).
 
 Now, go back to the tab where your JHPCE ssh session is running.
 
@@ -262,10 +264,12 @@ This will open a window that looks like:
 local private key. (If it does not, or it is not the correct path, then
 click the blue icon on the right side of the field, and navigate to
 the location of your "private key" file.)
-
-![](images/Screen-Shot-2019-05-29-at-2.48.42-PM.png)
-
 3. Click OK to save your changes.
+<br>
+<br>
+![](images/Screen-Shot-2019-05-29-at-2.48.42-PM.png)
+<br>
+<br>
 
 #### Now test the changes
 1. In the left pane of Saved Sessions,
