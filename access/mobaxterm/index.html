@@ -6076,42 +6076,65 @@ verification code (which you get from Google Authenticator).</p>
 <p>Our login servers are acceptable to use when transferring small amounts of data, where small is less than 5GB.</p>
 <p>The JHPCE cluster has a "transfer" server (<code>jhpce-transfer01.jhsph.edu</code>) which should be used for everything more intensive. It is connected to the rest of Hopkins at 40 Gb/sec rather than the 10 used on the login nodes. Also, the login nodes are critical for everyone to use the cluster, while the transfer node is meant for that purpose.</p>
 <p>The JADE cluster has, in May 2026, only a login server. We are planning to create a transfer server this summer. <mark>JADE users must use non-standard TCP/IP ports as documented <a href="../../jade/access/sftp-transfers/">here</a>.</mark>  JADE users can follow the following MobaXterm configuration instructions if they substitute in the correct hostnames and TCP/IP ports.</p>
+<h3 id="configure-an-sftp-session">Configure an SFTP Session<a class="headerlink" href="#configure-an-sftp-session" title="Anchor link to this section for reference">&para;</a></h3>
 <div class="admonition warning">
 <p class="admonition-title">You must interpret these screenshots/instructions</p>
-<p>Do not blindly enter choices. These examples are based on configuring SFTP access to the JHPCE cluster.</p>
+<p>Do not blindly enter choices. These examples are based on configuring SFTP access to the JHPCE cluster's transfer node.</p>
 </div>
-<h3 id="configure-an-sftp-session">Configure an SFTP Session<a class="headerlink" href="#configure-an-sftp-session" title="Anchor link to this section for reference">&para;</a></h3>
-<p>You can set up an SFTP session in MobaXterm using the following steps.</p>
 <ol>
-<li>Start MobaXterm.  You likely already have a “jhpce01.jhsph.edu” session
-configured for logging into the JHPCE cluster
-<img alt="mobasftp-step01" src="../images/moba-sftp-step01.png" /></li>
+<li>Start MobaXterm.  You likely already have a “jhpce01.jhsph.edu” or "jhpce03.jhsph.edu" session configured for logging into the JHPCE cluster
+<img alt="mobasftp-step01" src="../images/moba-sftp-step01.png" />
+<br>
+<br></li>
 <li>Click on the “Session” icon in the upper left corner.  This will bring up a
-   window where you can create new sessions.
-<img alt="mobasftp-step02" src="../images/moba-sftp-step02.png" /></li>
+window where you can create new sessions using a variety of network protocols
+<br>
+<br>
+<img alt="mobasftp-step02" src="../images/moba-sftp-step02.png" />
+<br>
+<br></li>
 <li>Select “SFTP”
-<img alt="mobasftp-step03" src="../images/moba-sftp-step03.png" /></li>
-<li>In the “Remote host” field, enter jhpce-transfer01.jhsph.edu.  In the
-   “Username” field, enter your JHPCE user ID.
-<img alt="mobasftp-step04" src="../images/moba-sftp-step04.png" /></li>
+<br>
+<br>
+<img alt="mobasftp-step03" src="../images/moba-sftp-step03.png" />
+<br>
+<br></li>
+<li>In the “Remote host” field, enter jhpce-transfer01.jhsph.edu.  In the “Username” field, enter your JHPCE or JADE user ID.
+<br>
+<br>
+<img alt="mobasftp-step04" src="../images/moba-sftp-step04.png" />
+<br>
+<br></li>
 <li>Click on the “Advanced Sftp Setting” tab.
-<img alt="mobasftp-step05" src="../images/moba-sftp-step05.png" /></li>
-<li>Check the box marked “2-steps authentication”.  Optionally, if you have an
-   SSH key, you can check the “Use private key” box, and then enter the path to
-your private key.
-<img alt="mobasftp-step06" src="../images/moba-sftp-step06.png" /></li>
-<li>When you click “OK”, you will be prompted for you “Verification Code” (which
-   will be from Google Authenticator) and “Password”.  After you enter your
-password, you will be prompted to “Save Password?”, and be sure to respond
-“No’.
+<br>
+<br>
+<img alt="mobasftp-step05" src="../images/moba-sftp-step05.png" />
+<br>
+<br></li>
+<li>Check the box marked “2-steps authentication”.  Optionally, if you are a JHPCE user with an SSH key, you can check the “Use private key” box, and then enter the path to your private key on your local computer. (See mobaxterm.md#setting-up-ssh-keys-in-mobaxterm for details)
+<br>
+<br>
+<img alt="mobasftp-step06" src="../images/moba-sftp-step06.png" />
+<br>
+<br></li>
+<li>When you click “OK”, you will be prompted for you “Verification Code” (which will be from Google Authenticator) and “Password”.  After you enter your
+password, you will be prompted to “Save Password?”, <mark>be sure to respond
+“No’</mark>
 <img alt="mobasftp-step07" src="../images/moba-sftp-step07.png" />
-<img alt="mobasftp-step08" src="../images/moba-sftp-step08.png" /></li>
+<img alt="mobasftp-step08" src="../images/moba-sftp-step08.png" />
+<br>
+<br></li>
 <li>You should now see the list of files your home directory from the JHPCE
    cluster displayed on the screen.  You can transfer files to and from the
 JHPCE cluster by dragging-and-dropping them onto this file list.
-<img alt="mobasftp-step09" src="../images/moba-sftp-step09.png" /></li>
-<li>To access you scratch space, you can enter the path
-   “/fastscratch/myscratch/USERID” (where USERID is your JHPCE cluster user id.</li>
+<br>
+<br>
+<img alt="mobasftp-step09" src="../images/moba-sftp-step09.png" />
+<br>
+<br></li>
+<li>To access you scratch space, you can enter the path “/fastscratch/myscratch/USERID” (where USERID is your JHPCE cluster user id.
+<br>
+<br></li>
 <li>When you are done with your sftp session, you can close the session by
     clicking on the red X on the “jhpce-transfer01” tab.  This red X will show
 up when you hover your cursor over the right hand side of the tab.</li>
@@ -6233,7 +6256,7 @@ to enter a Google Authenticator PIN. </li>
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="May 14, 2026 01:43:43 UTC">May 14, 2026</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="May 14, 2026 01:53:49 UTC">May 14, 2026</span>
   </span>
 
     
