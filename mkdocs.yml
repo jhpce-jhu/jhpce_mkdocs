@@ -143,9 +143,9 @@ nav:
         - Using sed to modify files: jade/transition/sed-tips-jade.md
       - Accessing JADE:
         - Overview: jade/access/access-overview.md
-        - SSH: jade/access/ssh-jade.md
-        - X11: jade/access/x11-jade.md
-        - MobaXterm: jade/access/mobaxterm-jade.md
+        - SSH: access/ssh.md
+        - X11: access/x11.md
+        - MobaXterm: access/mobaxterm.md
         - Transferring files in or out: 
           - Overview: jade/access/transfer-overview.md
           - SFTP: jade/access/sftp-transfers.md
