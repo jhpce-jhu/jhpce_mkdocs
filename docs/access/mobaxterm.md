@@ -88,41 +88,64 @@ The JHPCE cluster has a "transfer" server (`jhpce-transfer01.jhsph.edu`) which s
 
 The JADE cluster has, in May 2026, only a login server. We are planning to create a transfer server this summer. ==JADE users must use non-standard TCP/IP ports as documented [here](../jade/access/sftp-transfers.md).==  JADE users can follow the following MobaXterm configuration instructions if they substitute in the correct hostnames and TCP/IP ports.
 
-!!! warning "You must interpret these screenshots/instructions"
-    Do not blindly enter choices. These examples are based on configuring SFTP access to the JHPCE cluster.
-
 ### Configure an SFTP Session
-You can set up an SFTP session in MobaXterm using the following steps.
 
-1. Start MobaXterm.  You likely already have a “jhpce01.jhsph.edu” session
-configured for logging into the JHPCE cluster
+!!! warning "You must interpret these screenshots/instructions"
+    Do not blindly enter choices. These examples are based on configuring SFTP access to the JHPCE cluster's transfer node.
+
+1. Start MobaXterm.  You likely already have a “jhpce01.jhsph.edu” or "jhpce03.jhsph.edu" session configured for logging into the JHPCE cluster
 ![mobasftp-step01](images/moba-sftp-step01.png)
+<br>
+<br>
 2. Click on the “Session” icon in the upper left corner.  This will bring up a
-   window where you can create new sessions.
+window where you can create new sessions using a variety of network protocols
+<br>
+<br>
 ![mobasftp-step02](images/moba-sftp-step02.png)
+<br>
+<br>
 3. Select “SFTP”
+<br>
+<br>
 ![mobasftp-step03](images/moba-sftp-step03.png)
-4. In the “Remote host” field, enter jhpce-transfer01.jhsph.edu.  In the
-   “Username” field, enter your JHPCE user ID.
+<br>
+<br>
+4. In the “Remote host” field, enter jhpce-transfer01.jhsph.edu.  In the “Username” field, enter your JHPCE or JADE user ID.
+<br>
+<br>
 ![mobasftp-step04](images/moba-sftp-step04.png)
+<br>
+<br>
 5. Click on the “Advanced Sftp Setting” tab.
+<br>
+<br>
 ![mobasftp-step05](images/moba-sftp-step05.png)
-6. Check the box marked “2-steps authentication”.  Optionally, if you have an
-   SSH key, you can check the “Use private key” box, and then enter the path to
-your private key.
+<br>
+<br>
+6. Check the box marked “2-steps authentication”.  Optionally, if you are a JHPCE user with an SSH key, you can check the “Use private key” box, and then enter the path to your private key on your local computer. (See mobaxterm.md#setting-up-ssh-keys-in-mobaxterm for details)
+<br>
+<br>
 ![mobasftp-step06](images/moba-sftp-step06.png)
-7. When you click “OK”, you will be prompted for you “Verification Code” (which
-   will be from Google Authenticator) and “Password”.  After you enter your
-password, you will be prompted to “Save Password?”, and be sure to respond
-“No’.
+<br>
+<br>
+7. When you click “OK”, you will be prompted for you “Verification Code” (which will be from Google Authenticator) and “Password”.  After you enter your
+password, you will be prompted to “Save Password?”, ==be sure to respond
+“No’==
 ![mobasftp-step07](images/moba-sftp-step07.png)
 ![mobasftp-step08](images/moba-sftp-step08.png)
+<br>
+<br>
 8. You should now see the list of files your home directory from the JHPCE
    cluster displayed on the screen.  You can transfer files to and from the
 JHPCE cluster by dragging-and-dropping them onto this file list.
+<br>
+<br>
 ![mobasftp-step09](images/moba-sftp-step09.png)
-9. To access you scratch space, you can enter the path
-   “/fastscratch/myscratch/USERID” (where USERID is your JHPCE cluster user id.
+<br>
+<br>
+9. To access you scratch space, you can enter the path “/fastscratch/myscratch/USERID” (where USERID is your JHPCE cluster user id.
+<br>
+<br>
 10. When you are done with your sftp session, you can close the session by
     clicking on the red X on the “jhpce-transfer01” tab.  This red X will show
 up when you hover your cursor over the right hand side of the tab.
