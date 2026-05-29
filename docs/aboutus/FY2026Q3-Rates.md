@@ -1,4 +1,3 @@
-
 FY2026Q3 compute rates per queue/partition
 ```
                queue rate $/GBhr
