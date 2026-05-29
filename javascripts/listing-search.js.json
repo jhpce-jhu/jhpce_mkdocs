@@ -23,8 +23,8 @@
   {
     "page_name": "FY2026Q3 Rates",
     "page_url": "../../aboutus/FY2026Q3-Rates/",
-    "text": "dcs04             28.80\ndcs04-legacy      11.80\ndcs05             26.20\ndcs05-legacy      11.60\ndcs07             25.20\ndcs08   /users/  430.70\ndcs10-legacy       7.00\ndcs10         20.90\n",
-    "html": "<pre><span></span><code>dcs04             28.80\ndcs04-legacy      11.80\ndcs05             26.20\ndcs05-legacy      11.60\ndcs07             25.20\ndcs08   /users/  430.70\ndcs10-legacy       7.00\ndcs10         20.90\n</code></pre>",
+    "text": "dcs04             28.80\ndcs04-legacy      11.80\ndcs05             26.20\ndcs05-legacy      11.60\ndcs07             25.20\ndcs08(/users)    430.70\ndcs10-legacy       7.00\ndcs10             20.90\n",
+    "html": "<pre><span></span><code>dcs04             28.80\ndcs04-legacy      11.80\ndcs05             26.20\ndcs05-legacy      11.60\ndcs07             25.20\ndcs08(/users)    430.70\ndcs10-legacy       7.00\ndcs10             20.90\n</code></pre>",
     "language": ""
   },
   {
