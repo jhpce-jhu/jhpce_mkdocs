@@ -34,12 +34,12 @@ FY2026Q3 compute rates per queue/partition
 FY2026Q3 allocated storage rates - $/TB/yr
 
 ```
-dcs04	          28.80
+dcs04             28.80
 dcs04-legacy      11.80
-dcs05	          26.20
+dcs05             26.20
 dcs05-legacy      11.60
-dcs07	          25.20
-dcs08	/users/  430.70
+dcs07             25.20
+dcs08(/users)    430.70
 dcs10-legacy       7.00
-dcs10		  20.90
+dcs10             20.90
 ```
