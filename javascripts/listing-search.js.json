@@ -14,6 +14,20 @@
     "language": ""
   },
   {
+    "page_name": "FY2026Q3 Rates",
+    "page_url": "../../aboutus/FY2026Q3-Rates/",
+    "text": "               queue rate $/GBhr\n              bstgpu   0.010072\n             bstgpu2   0.021890\n             bstgpu3   0.019853\n               c-lau   0.000018\n               c-sas   0.104249\n            c-shared   0.115713\n           cancergen   0.009513\n                 cee   0.003444\n                 cms   0.042614\n            d-shared   0.063559\n                 gee   0.008140\n                 gpu   0.015901\n             hongkai   0.016005\n         interactive   0.262521\n  interactive-larger   0.008163\n               katun   0.009255\n                 lau   0.016915\n               momme   0.003011\n              neuron   0.008021\n             rocky96   7.144260\n            s-shared   0.115034\n                 sas   0.159017\n            scavenge   0.009129\n              shared   0.008775\n                 sql   1.166110\n             stanley   0.005421\n            sysadmin 118.563000\n            transfer   0.000000\n",
+    "html": "<pre><span></span><code>               queue rate $/GBhr\n              bstgpu   0.010072\n             bstgpu2   0.021890\n             bstgpu3   0.019853\n               c-lau   0.000018\n               c-sas   0.104249\n            c-shared   0.115713\n           cancergen   0.009513\n                 cee   0.003444\n                 cms   0.042614\n            d-shared   0.063559\n                 gee   0.008140\n                 gpu   0.015901\n             hongkai   0.016005\n         interactive   0.262521\n  interactive-larger   0.008163\n               katun   0.009255\n                 lau   0.016915\n               momme   0.003011\n              neuron   0.008021\n             rocky96   7.144260\n            s-shared   0.115034\n                 sas   0.159017\n            scavenge   0.009129\n              shared   0.008775\n                 sql   1.166110\n             stanley   0.005421\n            sysadmin 118.563000\n            transfer   0.000000\n</code></pre>",
+    "language": ""
+  },
+  {
+    "page_name": "FY2026Q3 Rates",
+    "page_url": "../../aboutus/FY2026Q3-Rates/",
+    "text": "dcs04             28.80\ndcs04-legacy      11.80\ndcs05             26.20\ndcs05-legacy      11.60\ndcs07             25.20\ndcs08   /users/  430.70\ndcs10-legacy       7.00\ndcs10         20.90\n",
+    "html": "<pre><span></span><code>dcs04             28.80\ndcs04-legacy      11.80\ndcs05             26.20\ndcs05-legacy      11.60\ndcs07             25.20\ndcs08   /users/  430.70\ndcs10-legacy       7.00\ndcs10         20.90\n</code></pre>",
+    "language": ""
+  },
+  {
     "page_name": "Overview",
     "page_url": "../../access/access-overview/",
     "text": "graph TD\n   A[Your computer] --> B([Login nodes])\n   A[Your computer] -- Only via Hopkins/VPN --> D((Web Portal))\n   A[Your computer] --> C([Transfer node])\n   B([Login nodes]) --> E[Compute node1]\n   D((Web Portal)) --> E[Compute node1]\n   B([Login nodes]) --> F[Compute node2]\n   D((Web Portal)) --> F[Compute node2]\n   B([Login nodes]) --> G[Compute node3]\n   D((Web Portal)) --> G[Compute node3]\n   C([Transfer node]) <--> H[(storage servers)]",
