@@ -5,6 +5,19 @@ tags:
 
 # STORAGE OVERVIEW
 
+## Other important storage web pages
+Depending on how you arrived here, you may not be aware of the 
+other related important pages.
+
+In the top level navigation bar for our site there is a section called "Storage
+Policies and Practices", with a '>' to the right of it. You will see two
+different things depending on whether you clicked on the words or the >.
+
+Clicking on the words takes you to this page.
+
+Clicking on the ++>++ symbol will reveal a submenu, which contains pages related
+to backups and restores, managing allocation access, disk quotas, etc.
+
 ## Types of storage
 There are three types of data storage spaces available on the JHPCE cluster.
 
