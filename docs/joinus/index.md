@@ -8,14 +8,12 @@ Depending on how you arrived here, you may not be aware of the
 other related important pages.
 
 In the top level navigation bar for our site there is a section called "Getting
-Started", with a ++\>++ to the right of it. You will see two
-different things depending on whether you clicked on the words or the ++\>++.
+Started", with a ++greater-than++ to the right of it. You will see two
+different things depending on whether you clicked on the words or the ++greater-than++
 
 Clicking on the words takes you to this page.
 
-Clicking on the ++\>++ symbol will reveal a submenu, which contains pages such
-as forms for new users and new PIs, pages about our orientations, what to do
-when leaving as a user or a PI, etc.
+Clicking on the ++greater-than++ symbol will reveal a submenu, which contains pages such as forms for new users and new PIs, pages about our orientations, what to do when leaving as a user or a PI, etc.
 
 ## Overview for new PIs and users
 The JHPCE cluster is a Linux based HPC environment, and is designed for running
