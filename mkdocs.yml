@@ -92,6 +92,7 @@ nav:
       - JHPCE-created: sw/locally-written.md
       - Helpful GUI Programs: sw/gui-tools.md
       - Using OpenAI codex: sw/codex.md
+      - Using Claude CLI: sw/claude.md
     - Job scheduler (SLURM): 
       - Getting Started: slurm/getting-started.md
       - About Jobs: slurm/about-jobs.md
