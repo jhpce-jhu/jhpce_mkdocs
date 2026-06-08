@@ -3,18 +3,6 @@ tags:
    - topic-overview
 ---
 
-## Other important related web pages
-Depending on how you arrived here, you may not be aware of the
-other related important pages.
-
-In the top level navigation bar for our site there is a section called "Getting
-Started", with a ++greater-than++ to the right of it. You will see two
-different things depending on whether you clicked on the words or the ++greater-than++
-
-Clicking on the words takes you to this page.
-
-Clicking on the ++greater-than++ symbol will reveal a submenu, which contains pages such as forms for new users and new PIs, pages about our orientations, what to do when leaving as a user or a PI, etc.
-
 ## Overview for new PIs and users
 The JHPCE cluster is a Linux based HPC environment, and is designed for running
 loosely coupled parallelizable jobs, or programs needing large amounts of 
@@ -46,7 +34,7 @@ large amounts of data, you can purchase an allocation on one of our large
 storage arrays.  Every 12 months or so we purchase a new large storage array 
 for the JHPCE cluster, and sell allocations on that array. The cost for an 
 allocation will be based on the actual cost of the storage, but has been 
-decreasing over time.  Our latest storage build worked out to be about $30 
+decreasing over time.  Our latest storage build worked out to be about $25 
 per TB per year.  There is typically a 10TB minimum buy-in for new storage 
 purchases.
 
