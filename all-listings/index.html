@@ -2640,6 +2640,8 @@
       
         
       
+        
+      
     
     
     
@@ -3227,6 +3229,34 @@
     
   
     Using OpenAI codex
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../sw/claude-example/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Using Claude CLI
   
 
     
@@ -8142,6 +8172,102 @@ relaunch Chromium.
 </code></pre><pre><span></span><code>/bin/rm -rf ~/.cache/chromium
 /bin/rm -rf ~/.config/chromium
 </code></pre><pre><span></span><code>mv<span class="w"> </span>~/.config/chromium<span class="w"> </span>~/.config/chromium-locked
+</code></pre><h2><a class="heading" href="..//sw/claude-example/">Using Claude CLI</a></h2><a class="url" href="..//sw/claude-example/">/sw/claude-example/</a><pre><span></span><code><span class="gp">[user1@jhpce01 ~]$ </span>srun<span class="w"> </span>--pty<span class="w"> </span>--x11<span class="w"> </span>bash
+<span class="gp">[user1@compute-107 ~]$ </span>module<span class="w"> </span>load<span class="w"> </span>node
+<span class="gp">[user1@compute-107 ~]$ </span>claude
+<span class="go">╭─── Claude Code v2.1.150 ─────────────────────────────────────────────────────╮</span>
+<span class="go">│                                                    │ Tips for getting        │</span>
+<span class="go">│                Welcome back Marcus!                │ started                 │</span>
+<span class="go">│                                                    │ Run /init to create a … │</span>
+<span class="go">│                       ▐▛███▜▌                      │ Note: You have launche… │</span>
+<span class="go">│                      ▝▜█████▛▘                     │ ─────────────────────── │</span>
+<span class="go">│                        ▘▘ ▝▝                       │ What's new              │</span>
+<span class="go">│                                                    │ Bug fixes and reliabil… │</span>
+<span class="go">│    Opus 4.7 (1M context) · API Usage Billing ·     │ Bug fixes and reliabil… │</span>
+<span class="go">│    Marcus‘s Individual Org                         │ Added `fallbackModel` … │</span>
+<span class="go">│                  /users/user1                      │ /release-notes for more │</span>
+<span class="go">╰──────────────────────────────────────────────────────────────────────────────╯</span>
+<span class="go">&gt;  </span>
+</code></pre><pre><span></span><code><span class="go">❯ please make a directory called claude-demo                                    </span>
+
+<span class="go">● Bash(mkdir /users/user1/claude-demo)</span>
+<span class="go">  ⎿  Done</span>
+
+<span class="go">● Created /users/user1/claude-demo.</span>
+
+<span class="go">✻ Brewed for 5s</span>
+
+<span class="go">❯ cd claude-demo                                                                </span>
+
+<span class="go">● Bash(cd /users/user1/claude-demo &amp;&amp; pwd)</span>
+<span class="go">  ⎿  /users/user1/claude-demo</span>
+
+<span class="go">● Now in /users/user1/claude-demo.</span>
+
+<span class="go">✻ Brewed for 4s</span>
+
+<span class="go">❯ create a python script called count.py that prints the numbers from 1 to 10.  </span>
+
+<span class="go">● Write(count.py)</span>
+<span class="go">  ⎿  Wrote 2 lines to count.py</span>
+<span class="go">      1 for i in range(1, 11):</span>
+<span class="go">      2     print(i)</span>
+
+<span class="go">● Created count.py.</span>
+
+<span class="go">✻ Baked for 6s</span>
+
+<span class="go">❯ submit count.py as a slurm job                                                </span>
+
+<span class="go">● Bash(which sbatch &amp;&amp; sinfo 2&gt;/dev/null | head -20)</span>
+<span class="go">  ⎿  /usr/bin/sbatch</span>
+<span class="go">     PARTITION          AVAIL  TIMELIMIT  NODES  STATE NODELIST</span>
+<span class="go">     cluster-is-jhpce    down 90-00:00:0      1   idle compute-100</span>
+<span class="go">     … +18 lines (ctrl+o to expand)</span>
+
+<span class="go">● Write(count.sbatch)</span>
+<span class="go">  ⎿  Wrote 10 lines to count.sbatch</span>
+<span class="go">       1 #!/bin/bash</span>
+<span class="go">       2 #SBATCH --job-name=count</span>
+<span class="go">       3 #SBATCH --partition=shared</span>
+<span class="go">       4 #SBATCH --time=00:05:00</span>
+<span class="go">       5 #SBATCH --mem=1G</span>
+<span class="go">       6 #SBATCH --cpus-per-task=1</span>
+<span class="go">       7 #SBATCH --output=count_%j.out</span>
+<span class="go">       8 #SBATCH --error=count_%j.err</span>
+<span class="go">       9 </span>
+<span class="go">      10 python count.py                                     </span>
+
+<span class="go">● Bash(sbatch count.sbatch)</span>
+<span class="go">  ⎿  Submitted batch job 32459003</span>
+
+<span class="go">● Submitted job 32459003 to the shared partition. Output will land in</span>
+<span class="go">  count_32459003.out once it runs.</span>
+
+<span class="go">✻ Crunched for 13s</span>
+
+<span class="go">❯ show me the result of the job                                                 </span>
+
+<span class="go">  Read 1 file (ctrl+o to expand)</span>
+
+<span class="go">● Job output:</span>
+
+<span class="go">  1</span>
+<span class="go">  2  </span>
+<span class="go">  3</span>
+<span class="go">  4</span>
+<span class="go">  5</span>
+<span class="go">  6</span>
+<span class="go">  7</span>
+<span class="go">  8</span>
+<span class="go">  9</span>
+<span class="go">  10</span>
+
+<span class="go">✻ Brewed for 5s</span>
+
+<span class="go">※ recap: You created a claude-demo directory with count.py (prints 1-10) and </span>
+<span class="go">  submitted it as a SLURM job, which completed successfully. Next: decide what </span>
+<span class="go">  to do with the demo, or move on to another task. (disable recaps in /config)</span>
 </code></pre><h2><a class="heading" href="..//sw/code-server/">Code-Server</a></h2><a class="url" href="..//sw/code-server/">/sw/code-server/</a><pre><span></span><code>[test@jhpce01 ~]$ srun --pty bash
 [test@compute-149 ~]$ codeserver.sh 
         ==================================================================================

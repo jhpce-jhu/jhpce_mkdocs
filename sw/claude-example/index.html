@@ -8,13 +8,13 @@
       
       
       
-        <link rel="canonical" href="https://jhpce.jhu.edu/sw/r-n-friends/">
+        <link rel="canonical" href="https://jhpce.jhu.edu/sw/claude-example/">
       
       
-        <link rel="prev" href="../python/">
+        <link rel="prev" href="../codex/">
       
       
-        <link rel="next" href="../sas/">
+        <link rel="next" href="../../slurm/getting-started/">
       
       
         
@@ -25,7 +25,7 @@
     
     
       
-        <title>Running R in JHPCE - JHPCE</title>
+        <title>Using Claude CLI - JHPCE</title>
       
     
     
@@ -88,7 +88,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#running-r-in-jhpce" class="md-skip">
+        <a href="#claude-transcript" class="md-skip">
           Skip to content
         </a>
       
@@ -123,7 +123,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Running R in JHPCE
+              Using Claude CLI
             
           </span>
         </div>
@@ -2722,10 +2722,8 @@
                 
   
   
-    
   
   
-  
     
     
       
@@ -2747,11 +2745,11 @@
       
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1_9_2" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1_9_2" >
         
           
           <label class="md-nav__link" for="__nav_1_9_2" id="__nav_1_9_2_label" tabindex="0">
@@ -2772,7 +2770,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_1_9_2_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_1_9_2_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_1_9_2">
             <span class="md-nav__icon md-icon"></span>
             
@@ -2871,37 +2869,10 @@
                 
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    R and RStudio
-  
-
-    
-  </span>
-  
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../r-n-friends/" class="md-nav__link">
         
   
   
@@ -2917,249 +2888,6 @@
   
 
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#r-basics" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        R Basics
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#ways-to-run-r-on-jhpce" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Ways to run R on JHPCE
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Ways to run R on JHPCE">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#using-the-text-based-version-of-r" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Using the text-based version of R
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Using the text-based version of R">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#running-r-interactively" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Running R Interactively
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#running-r-in-batch-mode" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Running R in batch mode
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#running-the-x11-version-of-rstudio" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Running the X11 version of RStudio
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Running the X11 version of RStudio">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#resetting-the-rstudio-environment" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Resetting the Rstudio environment
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#running-rstudio-server" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Running RStudio Server
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Running RStudio Server">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#for-mac-or-linux-computers" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        For Mac or Linux computers:
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#for-windows-computers-or-from-the-safe-desktop" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        For Windows computers, or from the SAFE Desktop:
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#shutting-down-the-rstudio-server" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Shutting down the Rstudio Server
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#running-rstudio-server-via-web" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Running RStudio Server via web
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#r-on-jhpce-common-considerations" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        R on JHPCE - Common Considerations
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="R on JHPCE - Common Considerations">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#installing-r-packages" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Installing R Packages
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#installing-your-own-r" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Installing your own R
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#from-lieber-working-with-slurm-via-r-and-slurmjobs" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        From Lieber - Working with SLURM via R and slurmjobs
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="From Lieber - Working with SLURM via R and slurmjobs">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#faqscomments" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        FAQs/Comments
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -3524,10 +3252,37 @@
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../claude-example/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Using Claude CLI
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   
@@ -3543,6 +3298,37 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#environment-notes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Environment Notes
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -5913,225 +5699,13 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#r-basics" class="md-nav__link">
+  <a href="#environment-notes" class="md-nav__link">
     <span class="md-ellipsis">
       
-        R Basics
+        Environment Notes
       
     </span>
   </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#ways-to-run-r-on-jhpce" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Ways to run R on JHPCE
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Ways to run R on JHPCE">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#using-the-text-based-version-of-r" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Using the text-based version of R
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Using the text-based version of R">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#running-r-interactively" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Running R Interactively
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#running-r-in-batch-mode" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Running R in batch mode
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#running-the-x11-version-of-rstudio" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Running the X11 version of RStudio
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Running the X11 version of RStudio">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#resetting-the-rstudio-environment" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Resetting the Rstudio environment
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#running-rstudio-server" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Running RStudio Server
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Running RStudio Server">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#for-mac-or-linux-computers" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        For Mac or Linux computers:
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#for-windows-computers-or-from-the-safe-desktop" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        For Windows computers, or from the SAFE Desktop:
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#shutting-down-the-rstudio-server" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Shutting down the Rstudio Server
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#running-rstudio-server-via-web" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Running RStudio Server via web
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#r-on-jhpce-common-considerations" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        R on JHPCE - Common Considerations
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="R on JHPCE - Common Considerations">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#installing-r-packages" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Installing R Packages
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#installing-your-own-r" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Installing your own R
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#from-lieber-working-with-slurm-via-r-and-slurmjobs" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        From Lieber - Working with SLURM via R and slurmjobs
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="From Lieber - Working with SLURM via R and slurmjobs">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#faqscomments" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        FAQs/Comments
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
       
@@ -6152,297 +5726,115 @@
 
 
 
-<h1 id="running-r-in-jhpce">Running R in JHPCE<a class="headerlink" href="#running-r-in-jhpce" title="Anchor link to this section for reference">&para;</a></h1>
-<h2 id="r-basics">R Basics<a class="headerlink" href="#r-basics" title="Anchor link to this section for reference">&para;</a></h2>
-<p>There are a number of ways to run R on the JHPCE cluster.  There is a text-based version of R which is available as a module.  We also have a way to run rstudio over the X11 interface. We have a way to run Rstudio Server through an ssh tunnel.  Lastly we have a way to run Rstudio Server through our Web Application Server.</p>
-<p>During orientation, participants are shown a number of example files stored in a directory copied into new account home directories. There is a copy of the latest set of those in the directory /jhpce/shared/jhpce/class-scripts/.  We have one set for users of the main cluster and a second for users of the C-SUB.  You can copy the latest files into your home directory with this command, replacing "<em>clustername</em>" with either "jhpce" or "c-sub"
-<code>rsync -av /jhpce/shared/jhpce/slurm/class-scripts/clustername/ $HOME/class-scripts/</code>
-For that rsync command to work correctly, there needs to be a trailing slash on the path to the originals of the class-scripts.</p>
-<h2 id="ways-to-run-r-on-jhpce">Ways to run R on JHPCE<a class="headerlink" href="#ways-to-run-r-on-jhpce" title="Anchor link to this section for reference">&para;</a></h2>
-<h3 id="using-the-text-based-version-of-r">Using the text-based version of R<a class="headerlink" href="#using-the-text-based-version-of-r" title="Anchor link to this section for reference">&para;</a></h3>
-<p>There are 2 ways to make use of the text-based version of R on the cluster.  You can either run R interactively, and enter your R code in the R, or you can submit an non-interactive batch program that uses R.</p>
-<h4 id="running-r-interactively">Running R Interactively<a class="headerlink" href="#running-r-interactively" title="Anchor link to this section for reference">&para;</a></h4>
-<div class="highlight"><pre><span></span><code>[test@login31 ~]$ srun --pty bash
-srun: job 3176550 queued and waiting for resources
-srun: job 3176550 has been allocated resources
-[test@compute-152 ~]$ module load conda_R
-Loading conda_R/4.3.x
-(4.3.x)[test@compute-152 ~]$ module list
-
-Currently Loaded Modules:
-  1) JHPCE_ROCKY9_DEFAULT_ENV   2) JHPCE_tools/3.0   3) conda/3-23.3.1   4) conda_R/4.3.x
-
-(4.3.x)[test@compute-152 ~]$ R
-
-R version 4.3.2 Patched (2024-02-08 r85876) -- &quot;Eye Holes&quot;
-Copyright (C) 2024 The R Foundation for Statistical Computing
-Platform: x86_64-conda-linux-gnu (64-bit)
-...
-Type &#39;demo()&#39; for some demos, &#39;help()&#39; for on-line help, or
-&#39;help.start()&#39; for an HTML browser interface to help.
-Type &#39;q()&#39; to quit R.
-...
-&gt; 
-</code></pre></div>
-<h4 id="running-r-in-batch-mode">Running R in batch mode<a class="headerlink" href="#running-r-in-batch-mode" title="Anchor link to this section for reference">&para;</a></h4>
-<p>In $HOME/class-scripts/R-demo there is an example of submitting an R job on the cluster.  You'll note that there are two files here, a SLURM batch job file and an R program file. Here is an example of running an R session interactively.</p>
-<ol>
-<li>
-<p>Write your R source in a file with .r extension (e.g. plot1.r). Here is what the example file looks like:
-<div class="highlight"><pre><span></span><code>[test@login31 R-demo]$ cat plot1.r
-# Set output file name
-pdf(&quot;plot1-R-results.pdf&quot;)
-
-# Define 2 vectors
-cars &lt;- c(1, 3, 6, 4, 9)
-trucks &lt;- c(2, 5, 4, 5, 12)
-
-# Graph cars using a y axis that ranges from 0 to 12
-plot(cars, type=&quot;o&quot;, col=&quot;blue&quot;, ylim=c(0,12))
-
-# Graph trucks with red dashed line and square points
-lines(trucks, type=&quot;o&quot;, pch=22, lty=2, col=&quot;red&quot;)
-
-# Create a title with a red, bold/italic font
-title(main=&quot;Autos&quot;, col.main=&quot;red&quot;, font.main=4)
-</code></pre></div></p>
-</li>
-<li>
-<p>Write a submit job script (e.g. plot1.sh)
-<div class="highlight"><pre><span></span><code>[test@login31 R-demo]$ cat plot1.sh 
-#!/bin/bash
-
-#SBATCH --mem=2G
-#SBATCH --time=2:00
-
-module load conda_R
-R CMD BATCH plot1.r
-</code></pre></div></p>
-</li>
-<li>
-<p>Submit your R job
-<div class="highlight"><pre><span></span><code>[test@login31 ~]$ sbatch plot1.sh 
-Submitted batch job 3177833
-</code></pre></div></p>
-</li>
-<li>
-<p>Monitor the job status
-<div class="highlight"><pre><span></span><code>[test@login31 ~]$ squeue --me
-             JOBID PARTITION     NAME     USER ST       TIME  NODES NODELIST(REASON)
-           3177833    shared plot1.sh    test  R       0:03      1 compute-095
-</code></pre></div></p>
-</li>
-<li>
-<p>When the job is finished, the output files are created in your Current Working Directory
-<div class="highlight"><pre><span></span><code>-rw-r--r--    1 test test        22 Mar 13 16:29  slurm-3177833.out
--rw-r--r--    1 test test      4988 Mar 13 16:29  plot1-R-results.pdf
-</code></pre></div></p>
-</li>
-<li>
-<p>Look at the result file, plot1-R-results.pdf; you can use xpdf to view it if you have set X11 forward when login.
-   Otherwise, you need download the file to local machine to view it.
-<div class="highlight"><pre><span></span><code>[test@login31 ~]$ xpdf plot1-R-results.pdf
-</code></pre></div></p>
-</li>
-</ol>
-<h3 id="running-the-x11-version-of-rstudio">Running the X11 version of RStudio<a class="headerlink" href="#running-the-x11-version-of-rstudio" title="Anchor link to this section for reference">&para;</a></h3>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>In order to run the X11 version of Rstudio, you need to have X11 setup on your local system.
-- For Windows, MobaXterm has an X server built into it<br />
-- For Mac, you need to have the XQuartz program installed (which requires a reboot), and you need to add the "-X" option to ssh:<br />
-<div class="highlight"><pre><span></span><code>ssh -X yourusername@jhpce01.jhsph.edu
-</code></pre></div>
-See more detailed info on X11 <a href="../../access/x11/">here</a></p>
-</div>
-<p>If you prefer the graphical version of R, you can the X11 version of Rstudio. Here is an example of running the X11 version of Rstudio:
-<div class="highlight"><pre><span></span><code>[test@login31 ~]$ srun --mem 10G --x11 --pty bash
-srun: job 3244190 queued and waiting for resources
-srun: job 3244190 has been allocated resources
-[test@compute-097 ~]$ module load R
-Loading R/4.3
-(4.3)[test@compute-097 ~]$ module load rstudio
-(4.3)[test@compute-097 ~]$ rstudio
-</code></pre></div></p>
-<p>When you run rstudio, you should see the familiar graphical Rstudio interface come up.</p>
-<h4 id="resetting-the-rstudio-environment">Resetting the Rstudio environment<a class="headerlink" href="#resetting-the-rstudio-environment" title="Anchor link to this section for reference">&para;</a></h4>
-<p>We have occasionally seen cases where Rstudio will fail to launch.  This can occur when the Rstudio environment
-either gets to large for your session to handle, or the environment becomes inconsistent in some way. There are 2 approaches to resolving this.</p>
-<p>1.) You can request more RAM for your session.  We recommend 10G to start with, but if you need, say, 20G, you could use the following commands.
-<div class="highlight"><pre><span></span><code>[test@login31 ~]$ srun --mem 20G --x11 --pty bash
-srun: job 3244191 queued and waiting for resources
-srun: job 3244191 has been allocated resources
-[test@compute-143 ~]$ module load R
-Loading R/4.3
-(4.3)[test@compute-143 ~]$ module load rstudio
-(4.3)[test@compute-143 ~]$ rstudio
-</code></pre></div>
-2.) You may need to remove, or rename, the Rstudio environment and cache directories.  This can allow Rstudio to start running with a clean slate, though any saved session information you had will be reset.
-<div class="highlight"><pre><span></span><code>[test@login31 ~]$ srun --mem 20G --x11 --pty bash
-srun: job 3244192 queued and waiting for resources
-srun: job 3244192 has been allocated resources
-[test@compute-065 ~]$ module load R
-Loading R/4.3
-(4.3)[test@compute-065 ~]$ module load rstudio
-(4.3)[test@compute-065 ~]$ mv ~/.local/share/rstudio ~/.local/share/rstudio-backup
-(4.3)[test@compute-065 ~]$ mv ~/.config/rstudio ~/.config/rstudio-backup
-(4.3)[test@compute-065 ~]$ rstudio
-</code></pre></div></p>
-<p>If this resolves the issue, you can remove the ~/.local/share/rstudio-backup and ~/.config/rstudio-backup directories.</p>
-<h3 id="running-rstudio-server">Running RStudio Server<a class="headerlink" href="#running-rstudio-server" title="Anchor link to this section for reference">&para;</a></h3>
-<p>Depending on which cluster you are using, run one of the following two scripts after starting an interactive session and landing on a compute node. (The discussion below assumes that you are on the jhpce cluster.) </p>
+<h1 id="claude-transcript">Claude Transcript<a class="headerlink" href="#claude-transcript" title="Anchor link to this section for reference">&para;</a></h1>
+<p>This page captures a Codex CLI session that walks through creating a simple Python script, submitting it as a Slurm job, monitoring the run, and gathering the output.</p>
+<h2 id="environment-notes">Environment Notes<a class="headerlink" href="#environment-notes" title="Anchor link to this section for reference">&para;</a></h2>
 <ul>
-<li>jhpce-rstudio-server</li>
-<li>csub-rstudio-server</li>
+<li>Session ran inside <code>/users/user1</code> with workspace-write sandboxing and restricted network access.</li>
+<li>Prior to running this, a Clause API license was acquired through the Claude web interface.</li>
+<li>An API key was generated on the Claude web site and added tothe file ~/.claude/settings.json file</li>
+<li>To running claude, you will need to srun into a compute node, load the "node" module, and run the "claude" command.
+.
+<div class="highlight"><pre><span></span><code><span class="gp">[user1@jhpce01 ~]$ </span>srun<span class="w"> </span>--pty<span class="w"> </span>--x11<span class="w"> </span>bash
+<span class="gp">[user1@compute-107 ~]$ </span>module<span class="w"> </span>load<span class="w"> </span>node
+<span class="gp">[user1@compute-107 ~]$ </span>claude
+<span class="go">╭─── Claude Code v2.1.150 ─────────────────────────────────────────────────────╮</span>
+<span class="go">│                                                    │ Tips for getting        │</span>
+<span class="go">│                Welcome back Marcus!                │ started                 │</span>
+<span class="go">│                                                    │ Run /init to create a … │</span>
+<span class="go">│                       ▐▛███▜▌                      │ Note: You have launche… │</span>
+<span class="go">│                      ▝▜█████▛▘                     │ ─────────────────────── │</span>
+<span class="go">│                        ▘▘ ▝▝                       │ What&#39;s new              │</span>
+<span class="go">│                                                    │ Bug fixes and reliabil… │</span>
+<span class="go">│    Opus 4.7 (1M context) · API Usage Billing ·     │ Bug fixes and reliabil… │</span>
+<span class="go">│    Marcus‘s Individual Org                         │ Added `fallbackModel` … │</span>
+<span class="go">│                  /users/user1                      │ /release-notes for more │</span>
+<span class="go">╰──────────────────────────────────────────────────────────────────────────────╯</span>
+<span class="go">&gt;  </span>
+</code></pre></div></li>
 </ul>
-<p>Rstudio Server is a web based environment for developing R programs.  On the JHPCE cluster we have put together a script called “jhpce-rstudio-server” which will allow you to run your own personal copy of Rstudio Server and access it from a browser on your laptop or desktop.  When the “jhpce-rstudio-server” program is run, it starts an instance of the Rstudio Server web server within a Singularity image on a unique port number, and then provides instructions for setting up an ssh tunnel to allow you to access Rstudio Server from your local system.</p>
-<p>You will need to perform one step to enable access to this Rstudio Server from your local laptop/desktop;  specifically, you will need to add a tunnel to your existing ssh session to the JHPCE cluster.</p>
-<div class="admonition tip">
-<p class="admonition-title">Tip</p>
-<p>In UNIX, you send an interrupt signal to a running foreground program using the key combination <span class="keys"><kbd class="key-control">Ctrl</kbd><span>+</span><kbd class="key-c">C</kbd></span> This is historically written as <code>^C</code>  Note that you DO NOT actually use the SHIFT key to capitalize the C. The way it is written is misleading. You do NOT type <span class="keys"><kbd class="key-control">Ctrl</kbd><span>+</span><kbd class="key-shift">Shift</kbd><span>+</span><kbd class="key-c">C</kbd></span>. However this <code>^C</code> is the way it has been written for decades, and we will do so.</p>
-</div>
-<div class="admonition warning">
-<p class="admonition-title">Warning</p>
-<p>However, you DO need to capitalize the letter <code>c</code> when trying to send an interrupt signal to the ssh program on Mac or Linux computers. The key combination for an ssh interrupt is <code>~ SHIFT c</code> or <span class="keys"><kbd class="key-tilde">~</kbd><span>+</span><kbd class="key-shift">Shift</kbd><span>+</span><kbd class="key-c">C</kbd></span></p>
-</div>
-<h4 id="for-mac-or-linux-computers">For Mac or Linux computers:<a class="headerlink" href="#for-mac-or-linux-computers" title="Anchor link to this section for reference">&para;</a></h4>
-<p>To add this tunnel, first type ~C (while holding down SHIFT, press “~” then “C”).  The ~C is used to send an interrupt to your ssh session.  The ~C will likely not show up, but you should see an “ssh&gt;” prompt as a result.  At this “ssh&gt;” prompt you activate the tunnel by typing  -L XXXXX:compute-YYY:XXXXX  .  This will allow your laptop/desktop to access the compute node compute-YYY on port XXXXX (in the above example, the port used was 12345 and the compute node used was compute-012).</p>
-<h4 id="for-windows-computers-or-from-the-safe-desktop">For Windows computers, or from the SAFE Desktop:<a class="headerlink" href="#for-windows-computers-or-from-the-safe-desktop" title="Anchor link to this section for reference">&para;</a></h4>
-<p>If you connected to the JHPCE cluster with MobaXterm from a Windows-based system or SAFE desktop, you should ignore the first step (entering ~C and adding the local tunnel). </p>
-<p>Instead, you will need to  add a tunnel from MobaXterm.</p>
-<p>Before setting up the tunnel you may find it helpful to set up an SSH key using the steps at <a href="../../access/ssh/#ssh-keys">this page about ssh</a>   While not a requirement, this will eliminate the need to login using your password and Google Verification Code.  Note that if you are setting up the tunnel for the C-SUB, you will not be able to use SSH keys due to the enhanced security of the C-SUB.</p>
-<p>To start, click on the “Tunneling” icon at the top of MobaXterm, and you should see the window below:</p>
-<p><img alt="" src="../images/Screen-Shot-2019-05-28-at-4.05.48-PM-3.png" /></p>
-<p>Click on “New SSH Tunnel”, and you should see:</p>
-<p><img alt="" src="../images/Screen-Shot-2019-05-29-at-11.48.46-AM.png" /></p>
-<p>Enter the following in the window:</p>
-<ul>
-<li>For “Forwarded Port”, enter the port number displayed (this is 12345 in the example)</li>
-<li>For “Remote Server”, enter the compute node (compute-012 in the example)</li>
-<li>For “Remote Port”, enter the port number (12345 in the example)</li>
-<li>For “SSH Server”, enter “jhpce01.jhsph.edu” if you are on the JHPCE cluster, or “jhpcecms01.jhsph.edu” if you are on the CSUB.</li>
-<li>For “SSH Login”, enter your JHPCE cluster login name (jdoe1 in the example)</li>
-<li>For “SSH Port”, enter “22”</li>
-</ul>
-<p>Then click “Save”, and you’ll be take back to the “MobaSSHTunnel” screen with your new tunnel displayed.</p>
-<p><img alt="" src="../images/Screen-Shot-2019-05-28-at-4.08.55-PM.png" /></p>
-<p>Next, click on the yellow “Key” icon  <a href="https://jhpce.jhu.edu/wp-content/uploads/2019/05/Screen-Shot-2019-05-29-at-12.48.29-PM.png"><img alt="" src="https://jhpce.jhu.edu/wp-content/uploads/2019/05/Screen-Shot-2019-05-29-at-12.48.29-PM.png" /></a> and browse to the location of your private key (the “.ppk” file).  Now start your tunnel by clicking on the Green triangle icon<a href="https://jhpce.jhu.edu/wp-content/uploads/2019/05/Screen-Shot-2019-05-29-at-12.48.20-PM.png"><img alt="" src="https://jhpce.jhu.edu/wp-content/uploads/2019/05/Screen-Shot-2019-05-29-at-12.48.20-PM.png" /></a> in the “Start/Stop” column.</p>
-<p>Now that the tunnel is established, you can then access Rstudio Server from your laptop/desktop by using a web browser, and connecting to the url, <strong>http://localhost:XXXXX</strong> .  Once connected you will be prompted for your login and password, and you will need to enter you your JHPCE login and password at this point.</p>
-<p><img alt="" src="../images/Screen-Shot-2019-05-28-at-3.01.05-PM.png" /></p>
-<p>Once you enter your login and password, you should see Rstudio running in your browser.</p>
-<p><img alt="" src="../images/Screen-Shot-2019-05-28-at-3.02.11-PM-1.png" /></p>
-<h4 id="shutting-down-the-rstudio-server">Shutting down the Rstudio Server<a class="headerlink" href="#shutting-down-the-rstudio-server" title="Anchor link to this section for reference">&para;</a></h4>
-<hr />
-<p>When you have finished using Rstudio Server, you should close the browser tab or window that you are using to run Rstudio Server, and then return to the ssh session where you ran the “jhpce-rstudio-server” command.  To stop the Rstudio Server, type “^C”.  You will then be given a few additional steps to run to deactivate the port forward. As with the establishment of the tunnel, these steps are for MacOS and Linux based desktops/laptops.  You will again be prompted to type “~C”, and then enter “-KL XXXXX” at the “ssh&gt;” prompt to stop the forwarding (NOTE: you’ll need to hit <enter> once before typing “~C”).  The session should look similar to:</p>
-<div class="highlight"><pre><span></span><code><span class="gp">[login31 /users/jdoe1] $ </span>srun<span class="w"> </span>--pty<span class="w"> </span>--x11<span class="w"> </span>--mem<span class="o">=</span>10G<span class="w"> </span>bash
-<span class="go">Last login: Wed May 1 17:02:29 2019 from login31.cm.cluster</span>
-<span class="go">Loading conda_R/3.5.x</span>
-<span class="gp">[compute-012 /users/jdoe1] $ </span>jhpce-rstudio-server
-<span class="go">------------</span>
-<span class="go">1) Establish your SSH tunnel.</span>
-<span class="go">* Windows users see: https://jhpce.jhu.edu/sw/rstudio-server/</span>
-<span class="go">* Mac or Linux Desktop users, please type:</span>
-<span class="go">~C</span>
-<span class="go">-L 12345:compute-012:12345</span>
+<p>Below is an example of using claude to create a simple program and submit it as a job on the JHPCE cluster.</p>
+<div class="highlight"><pre><span></span><code><span class="go">❯ please make a directory called claude-demo                                    </span>
 
-<span class="go">2) From the browser running on your local system or SAFE desktop, go to:</span>
+<span class="go">● Bash(mkdir /users/user1/claude-demo)</span>
+<span class="go">  ⎿  Done</span>
 
-<span class="go">  http://localhost:12345</span>
+<span class="go">● Created /users/user1/claude-demo.</span>
 
-<span class="go">3) When prompted for Username, enter your JHPCE ID:  jdoe1</span>
-<span class="go">4) When prompted for Password, enter your JHPCE password.</span>
+<span class="go">✻ Brewed for 5s</span>
 
-<span class="go">When you are finished using Rstudio Server, type &lt;CTRL&gt;-C</span>
+<span class="go">❯ cd claude-demo                                                                </span>
 
-<span class="go">~C</span>
-<span class="go">ssh&gt; -L 12345:compute-012:12345</span>
-<span class="go">Forwarding port.</span>
+<span class="go">● Bash(cd /users/user1/claude-demo &amp;&amp; pwd)</span>
+<span class="go">  ⎿  /users/user1/claude-demo</span>
 
-<span class="go">****Cleaning up...</span>
-<span class="go">------------</span>
-<span class="go">Now type:</span>
-<span class="go">~C</span>
-<span class="go">-KL 41354</span>
+<span class="go">● Now in /users/user1/claude-demo.</span>
 
-<span class="gp">[compute-012 /users/jdoe1] $</span>
-<span class="gp">[compute-012 /users/jdoe1] $</span>**~C**
-<span class="go">ssh&gt; **-KL 12345**</span>
-<span class="go">Canceled forwarding.</span>
-<span class="gp">[compute-012 /users/jdoe1] $ </span><span class="nb">exit</span>
-<span class="gp">[login31 /users/jdoe1] $ </span><span class="nb">exit</span>
+<span class="go">✻ Brewed for 4s</span>
+
+<span class="go">❯ create a python script called count.py that prints the numbers from 1 to 10.  </span>
+
+<span class="go">● Write(count.py)</span>
+<span class="go">  ⎿  Wrote 2 lines to count.py</span>
+<span class="go">      1 for i in range(1, 11):</span>
+<span class="go">      2     print(i)</span>
+
+<span class="go">● Created count.py.</span>
+
+<span class="go">✻ Baked for 6s</span>
+
+<span class="go">❯ submit count.py as a slurm job                                                </span>
+
+<span class="go">● Bash(which sbatch &amp;&amp; sinfo 2&gt;/dev/null | head -20)</span>
+<span class="go">  ⎿  /usr/bin/sbatch</span>
+<span class="go">     PARTITION          AVAIL  TIMELIMIT  NODES  STATE NODELIST</span>
+<span class="go">     cluster-is-jhpce    down 90-00:00:0      1   idle compute-100</span>
+<span class="go">     … +18 lines (ctrl+o to expand)</span>
+
+<span class="go">● Write(count.sbatch)</span>
+<span class="go">  ⎿  Wrote 10 lines to count.sbatch</span>
+<span class="go">       1 #!/bin/bash</span>
+<span class="go">       2 #SBATCH --job-name=count</span>
+<span class="go">       3 #SBATCH --partition=shared</span>
+<span class="go">       4 #SBATCH --time=00:05:00</span>
+<span class="go">       5 #SBATCH --mem=1G</span>
+<span class="go">       6 #SBATCH --cpus-per-task=1</span>
+<span class="go">       7 #SBATCH --output=count_%j.out</span>
+<span class="go">       8 #SBATCH --error=count_%j.err</span>
+<span class="go">       9 </span>
+<span class="go">      10 python count.py                                     </span>
+
+<span class="go">● Bash(sbatch count.sbatch)</span>
+<span class="go">  ⎿  Submitted batch job 32459003</span>
+
+<span class="go">● Submitted job 32459003 to the shared partition. Output will land in</span>
+<span class="go">  count_32459003.out once it runs.</span>
+
+<span class="go">✻ Crunched for 13s</span>
+
+<span class="go">❯ show me the result of the job                                                 </span>
+
+<span class="go">  Read 1 file (ctrl+o to expand)</span>
+
+<span class="go">● Job output:</span>
+
+<span class="go">  1</span>
+<span class="go">  2  </span>
+<span class="go">  3</span>
+<span class="go">  4</span>
+<span class="go">  5</span>
+<span class="go">  6</span>
+<span class="go">  7</span>
+<span class="go">  8</span>
+<span class="go">  9</span>
+<span class="go">  10</span>
+
+<span class="go">✻ Brewed for 5s</span>
+
+<span class="go">※ recap: You created a claude-demo directory with count.py (prints 1-10) and </span>
+<span class="go">  submitted it as a SLURM job, which completed successfully. Next: decide what </span>
+<span class="go">  to do with the demo, or move on to another task. (disable recaps in /config)</span>
 </code></pre></div>
-<h3 id="running-rstudio-server-via-web">Running RStudio Server via web<a class="headerlink" href="#running-rstudio-server-via-web" title="Anchor link to this section for reference">&para;</a></h3>
-<p>You can run RStudio via <a href="https://jhpce-app02.jhsph.edu/">JHPCE Application Portal</a> by login with your JHED ID and password.
-Please see <a href="../../portal/web-apps/">our page</a> about using the JHPCE Web Portal.</p>
-<h2 id="r-on-jhpce-common-considerations">R on JHPCE - Common Considerations<a class="headerlink" href="#r-on-jhpce-common-considerations" title="Anchor link to this section for reference">&para;</a></h2>
-<h3 id="installing-r-packages">Installing R Packages<a class="headerlink" href="#installing-r-packages" title="Anchor link to this section for reference">&para;</a></h3>
-<p>In all cases, there are a number of R packages preinstalled in each of the R environments.</p>
-<p>When running the text based version of R or the X11 based version of R, you will be making use of
-one of the R modules. This module is named conda_R and is managed by Dr. Kasper Hansen in the
-Biostatistics department in the BSPH.  Dr. Hansen preloads a </p>
-<p>You can see the various version of the conda_R packages that are available (as of April 2025)
-with the "module avail conda_R" command. </p>
-<div class="highlight"><pre><span></span><code>[mmill116@compute-112 ~]$ module avail conda_R
-
---------------------- /jhpce/shared/community/modulefiles ----------------------
-   conda_R/devel    conda_R/4.3.x    conda_R/4.4.x
-   conda_R/test     conda_R/4.3      conda_R/4.4   (D)
-</code></pre></div>
-<p>Dr. Hansen preinstals a ton of R packages in these R modules.  If you find that you need to
-install your own modules, you can also install your own R packages to your home directory.  By
-deafult, these packages will be installed in the the R directory in your home directory</p>
-<p><div class="highlight"><pre><span></span><code><span class="p">[</span><span class="n">mmill116</span><span class="o">@</span><span class="n">jhpce01</span><span class="w"> </span><span class="o">~</span><span class="p">]</span><span class="o">$</span><span class="w"> </span><span class="n">srun</span><span class="w"> </span><span class="o">--</span><span class="n">pty</span><span class="w"> </span><span class="o">--</span><span class="n">X11</span><span class="w"> </span><span class="n">bash</span>
-<span class="p">[</span><span class="n">mmill116</span><span class="o">@</span><span class="n">compute</span><span class="m">-112</span><span class="w"> </span><span class="o">~</span><span class="p">]</span><span class="o">$</span><span class="w"> </span><span class="n">module</span><span class="w"> </span><span class="n">load</span><span class="w"> </span><span class="nf">conda_R</span>
-<span class="p">(</span><span class="o">/</span><span class="n">jhpce</span><span class="o">/</span><span class="n">shared</span><span class="o">/</span><span class="n">community</span><span class="o">/</span><span class="n">core</span><span class="o">/</span><span class="n">conda_R</span><span class="o">/</span><span class="m">4.4</span><span class="p">)</span><span class="w"> </span><span class="p">[</span><span class="n">mmill116</span><span class="o">@</span><span class="n">compute</span><span class="m">-112</span><span class="w"> </span><span class="o">~</span><span class="p">]</span><span class="o">$</span><span class="w"> </span><span class="n">R</span>
-<span class="n">R</span><span class="w"> </span><span class="n">version</span><span class="w"> </span><span class="m">4.4</span><span class="n">.</span><span class="m">0</span><span class="w"> </span><span class="nf">Patched </span><span class="p">(</span><span class="m">2024-05-22</span><span class="w"> </span><span class="n">r86590</span><span class="p">)</span><span class="w"> </span><span class="o">--</span><span class="w"> </span><span class="s">&quot;Puppy Cup&quot;</span>
-<span class="nf">Copyright </span><span class="p">(</span><span class="n">C</span><span class="p">)</span><span class="w"> </span><span class="m">2024</span><span class="w"> </span><span class="n">The</span><span class="w"> </span><span class="n">R</span><span class="w"> </span><span class="n">Foundation</span><span class="w"> </span><span class="kr">for</span><span class="w"> </span><span class="n">Statistical</span><span class="w"> </span><span class="n">Computing</span>
-<span class="n">.</span><span class="w"> </span><span class="n">.</span><span class="w"> </span><span class="n">.</span>
-<span class="o">&gt;</span><span class="w"> </span><span class="nf">install.packages</span><span class="p">(</span><span class="s">&quot;sf&quot;</span><span class="p">)</span>
-<span class="o">&gt;</span><span class="w"> </span><span class="nf">library</span><span class="p">(</span><span class="s">&#39;sf&#39;</span><span class="p">)</span>
-<span class="o">&gt;</span><span class="w"> </span><span class="nf">q</span><span class="p">()</span>
-<span class="p">(</span><span class="o">/</span><span class="n">jhpce</span><span class="o">/</span><span class="n">shared</span><span class="o">/</span><span class="n">community</span><span class="o">/</span><span class="n">core</span><span class="o">/</span><span class="n">conda_R</span><span class="o">/</span><span class="m">4.4</span><span class="p">)</span><span class="w"> </span><span class="p">[</span><span class="n">mmill116</span><span class="o">@</span><span class="n">compute</span><span class="m">-112</span><span class="w"> </span><span class="o">~</span><span class="p">]</span><span class="o">$</span><span class="w"> </span><span class="n">ls</span><span class="w"> </span><span class="o">-</span><span class="n">la</span><span class="w"> </span><span class="n">R</span><span class="o">/</span><span class="m">4.4</span>
-<span class="n">total</span><span class="w"> </span><span class="m">61</span>
-<span class="n">drwxr</span><span class="o">-</span><span class="n">xr</span><span class="o">-</span><span class="n">x</span><span class="w">  </span><span class="m">4</span><span class="w"> </span><span class="n">mmill116</span><span class="w"> </span><span class="n">mmi</span><span class="w">  </span><span class="m">4</span><span class="w"> </span><span class="n">Apr</span><span class="w"> </span><span class="m">10</span><span class="w"> </span><span class="m">10</span><span class="o">:</span><span class="m">58</span><span class="w"> </span><span class="n">.</span>
-<span class="n">drwxr</span><span class="o">-</span><span class="n">xr</span><span class="o">-</span><span class="n">x</span><span class="w"> </span><span class="m">19</span><span class="w"> </span><span class="n">mmill116</span><span class="w"> </span><span class="n">mmi</span><span class="w"> </span><span class="m">20</span><span class="w"> </span><span class="n">May</span><span class="w"> </span><span class="m">15</span><span class="w">  </span><span class="m">2024</span><span class="w"> </span><span class="n">..</span>
-<span class="n">drwxr</span><span class="o">-</span><span class="n">xr</span><span class="o">-</span><span class="n">x</span><span class="w"> </span><span class="m">19</span><span class="w"> </span><span class="n">mmill116</span><span class="w"> </span><span class="n">mmi</span><span class="w"> </span><span class="m">25</span><span class="w"> </span><span class="n">Apr</span><span class="w"> </span><span class="m">10</span><span class="w"> </span><span class="m">10</span><span class="o">:</span><span class="m">58</span><span class="w"> </span><span class="n">sf</span>
-</code></pre></div>
-The same directory is used for both the text-based version of R and the X11 version of Rstuido, since they rely on the same "conda_R" packages.</p>
-<p>However for the Rstudio Server options mentioned above the R version will be contained in the
-singularity used to run Rstudio Server.  So, any R packages that were installed under the
-conda_R will need to be reinstalled under the Rstudio Server environment.  Any R packages you
-install will be installed in the directory $HOME/R/packages/singularity-R$VERSION.</p>
-<p>In all of the above cases, when you change the version of R that you are using, you will need
-to reinstall any R packages.</p>
-<p>When installing R packages from source with compiled programs, you can add custom compiler flags in ~/.R/Makevars. Adding optimization flags may provide a boost in performance for some packages. 
-<div class="highlight"><pre><span></span><code>STDFLAGS = -O2 -pipe -Wall 
-</code></pre></div>
-We have a wide variety of CPU architecture across the cluster, so you probably don't want to add to STDFLAGS <code>-march=</code> and <code>-mtune=</code> arguments.</p>
-<p>For the X11 version of Rstudio, you will also be making </p>
-<h3 id="installing-your-own-r">Installing your own R<a class="headerlink" href="#installing-your-own-r" title="Anchor link to this section for reference">&para;</a></h3>
-<p>If you find that you have a specific need in R that is not available in our current offerings, you can compile your own
-instance of R in your home directory. We don't have a guide for doing this, but if you are
-at this point, you probably have compiled R before, and know what specific settings and customizations you need, and know what you're doing more than we do :-)
-Here is one example from the <a href="https://iowabiostat.github.io/hpc/12.html">Iowa Biostat Site</a></p>
-<h2 id="from-lieber-working-with-slurm-via-r-and-slurmjobs">From Lieber - Working with SLURM via R and slurmjobs<a class="headerlink" href="#from-lieber-working-with-slurm-via-r-and-slurmjobs" title="Anchor link to this section for reference">&para;</a></h2>
-<p>The Lieber group has put together some tools for working with R on the JHPCE cluster</p>
-<p><a href="http://research.libd.org/slurmjobs/articles/slurmjobs.html#basics">slurmjobs</a> provides helper functions for interacting with SLURM-managed high-performance-computing environments from R. It includes functions for creating submittable jobs (including array jobs), monitoring partitions, and extracting info about running or complete jobs.</p>
-<p>R is an open-source statistical environment which can be easily modified to enhance its functionality via packages. </p>
-<p>slurmjobs is a R package available via the <a href="http://bioconductor.org/">Bioconductor</a> repository for packages. R can be installed on any operating system from <a href="https://cran.r-project.org/">CRAN</a> after which you can install slurmjobs </p>
-<p>For more information about slurmjobs, see</p>
-<p><a href="http://research.libd.org/slurmjobs/articles/slurmjobs.html#basics">http://research.libd.org/slurmjobs/articles/slurmjobs.html</a></p>
-<p>For Windows desktops/laptops, you should also use “^C” to terminate the Rstudio Server, but to stop the tunnel you will need to return to the MobaSSHTunnel screen, and use the “Stop” icon  in the Start/Stop column.  You can keep this tunnel configuration in MobaSSHTunnel, and reuse it the next time you run Rstudio Server, however you will need to edit the tunnel configuration and change the “Remote Server” to match the compute node you are running on.</p>
-<h3 id="faqscomments">FAQs/Comments<a class="headerlink" href="#faqscomments" title="Anchor link to this section for reference">&para;</a></h3>
-<p>Q) Why did you do this?  R works just fine for me on the cluster!</p>
-<p>A) On the JHPCE cluster we have historically had several ways to run R programs.  Often  people will use the text-based version of R to run programs, and that works well for a lot of people.  Some people prefer to work in a graphical environment, so we also have the X11-based “Rstudio” available on the cluster, which is great, except that on a slower network connection, this can get quite laggy.  The web based Rstudio Server provides the same graphical version available in Rstudio, but over a much lighter network protocol than the X11-based Rstudio, so it is much faster and more responsive to use.</p>
-<p>Q) Why not just set up a dedicated web server to run Rstudio Server like I had back at ZZZZ?</p>
-<p>A) Rstudio Server does not play well with clusters.  For us to run a dedicated Rstudio Server server, we would need to purchase a fairly large system with lots of RAM and CPU power.  This was considered, but in the end was deemed cost prohibitive, and it didn’t allow the use of the JHPCE cluster resources to run R programs.  This solution allows the nice web-based Rstudio Server to be used, while making use of the existing CPU and RAM resources available on the cluster.</p>
-<p>Q) My program can’t run because it needs XXX package!</p>
-<p>A) The R that is run within the Rstudio Server is completely separate  from the default version of R that is used on the JHPCE cluster, therefor you may need to install packages using the install.packages() function, or through the Rstudio Server GUI .</p>
-<p>Q) I forgot to cleanly disconnect from the Rstudio Server/My session got disconnected.</p>
-<p>A) This should be fine.  Your interactive srun session will eventually time out and will kill the Rstudio Server that was running.  You may get warning messages about ports being in use – if so, please wait a few minutes and try again.</p>
-<p>Q) When I try to add the port forward, I get an error message about “Port is in use”.  How do I fix this?</p>
-<p>A) You can only run one instance of Rstudio Server. You likely have another SSH session running that has the port forward lingering.  If you had been using Rstudio Server in another SSH session, you will need to either need to log out of that ssh session, or run the “~C” “-KL XXXXX” command to tear down the port forward.</p>
-<p>If you have any questions  about using Rstudio Server, please feel free to email us at bitsupport.</p>
 
 
 
@@ -6463,7 +5855,7 @@ Here is one example from the <a href="https://iowabiostat.github.io/hpc/12.html"
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="May 19, 2025 15:01:02 UTC">May 19, 2025</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="June 8, 2026 17:24:06 UTC">June 8, 2026</span>
   </span>
 
     
@@ -6479,7 +5871,7 @@ Here is one example from the <a href="https://iowabiostat.github.io/hpc/12.html"
     </span>
     <nav>
       
-        <a href="mailto:mmill116@marks-macbook-pro.local">Mark Miller</a>
+        <a href="mailto:mmill116@jhu.edu">mamiller615</a>
     </nav>
   </span>
 
@@ -6566,7 +5958,7 @@ Here is one example from the <a href="https://iowabiostat.github.io/hpc/12.html"
       <nav class="md-footer__inner md-grid" aria-label="Footer" >
         
           
-          <a href="../python/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Python">
+          <a href="../codex/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Using OpenAI codex">
             <div class="md-footer__button md-icon">
               
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
@@ -6576,20 +5968,20 @@ Here is one example from the <a href="https://iowabiostat.github.io/hpc/12.html"
                 Previous
               </span>
               <div class="md-ellipsis">
-                Python
+                Using OpenAI codex
               </div>
             </div>
           </a>
         
         
           
-          <a href="../sas/" class="md-footer__link md-footer__link--next" aria-label="Next: SAS">
+          <a href="../../slurm/getting-started/" class="md-footer__link md-footer__link--next" aria-label="Next: Getting Started">
             <div class="md-footer__title">
               <span class="md-footer__direction">
                 Next
               </span>
               <div class="md-ellipsis">
-                SAS
+                Getting Started
               </div>
             </div>
             <div class="md-footer__button md-icon">
