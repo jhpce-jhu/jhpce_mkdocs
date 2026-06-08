@@ -1,6 +1,6 @@
 # Claude Transcript
 
-This page captures a Codex CLI session that walks through creating a simple Python script, submitting it as a Slurm job, monitoring the run, and gathering the output.
+This page captures a Claude CLI session that walks through creating a simple Python script, submitting it as a Slurm job, monitoring the run, and gathering the output.
 
 ## Environment Notes
 
