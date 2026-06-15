@@ -79,8 +79,8 @@ Limits for CPU cores, RAM and Time (default/maximum)
 | shared | public | 400 | 2.5TB | (1d/90d) | DEFAULT |
 | interactive | public | 2 | 20gb | (1d/90d) | Small but accessible |
 | interactive-larger | public | 8 | 80gb | (1d/5d) | Limit 2 jobs per user |
-| gpu | public | (none) | (none) | (1d/90d) | Only for GPU jobs |
-| sas | application | (none) | (none) | (none/90d) | Licensed for SAS |
+| gpu | public | (none) | (none) | (1d/90d) | Only for GPU jobs!!! |
+| sas | application | (none) | (none) | (1d/90d) | Licensed for SAS |
 | scavenge | public | 11 per job | 250G per job | (1d/5d) | See below |
 | transfer | public | (none) | (none) | (none/90d) | Data in or out of cluster via SLURM jobs |
 
@@ -88,7 +88,7 @@ To reduce table width, column names are terse.
 
 {==Experimental `interactive-larger` partition:==} Our interactive partitions give jobs a higher priority and are evaluated before those in other partitions. This "larger" one was created to try to allow people to run interactive jobs a bit larger in size than our smaller `interactive` partition. This is meant to help you explore data visually, debug a batch script that has failed by running one command at a time (on a small-enough data set), etc. WE MAY NEED TO REMOVE THE PARTITION OR MODIFY THE ALLOWED PARAMETERS. 20250220
 
-{==Experimental `scavenge` partition:==} This was created to try to "harvest" some usually-unused resources from some specific nodes. You can specify it along with your normal partition, e.g. `--partion=shared,scavenge` and it will be used if available. If your job's CPU, RAM, or duration parameters exceed those set for `scavenge` then your job will run on the other partition(s) you specified. WE MAY NEED TO REMOVE THE PARTITION OR MODIFY THE ALLOWED PARAMETERS. 20250220
+{==Experimental `scavenge` partition:==} This was created to try to "harvest" some usually-unused resources from some specific nodes. You can specify it along with your normal partition, e.g. `--partition=shared,scavenge` and it will be used if available. If your job's CPU, RAM, or duration parameters exceed those set for `scavenge` then your job will run on the other partition(s) you specified. WE MAY NEED TO REMOVE THE PARTITION OR MODIFY THE ALLOWED PARAMETERS. 20250220
 
 ### PI CPU Partitions
 
@@ -100,18 +100,17 @@ Limits for CPU cores, RAM and Time (default/maximum)
 | ---- | :----: | ---- | ---- | :-------: | ----- |
 | bader | PI | (none) | (none) | (none/90d) | |
 | cancergen | PI | (none) | (none) | (none/90d) | |
-| caracol | PI | (none) | (none) | (none/90d) | UNIX group |
+| caracol | PI | (none) | (none) | (none/90d) | access enforced by UNIX group |
 | cee | PI | (none) | (none) | (none/90d) | |
 | cegs2 | PI | (none) | (none) | (none/90d) | |
 | chatterjee | PI | (none) | (none) | (none/90d) | |
 | echodac | PI | (none) | (none) | (none/90d) | |
-| gwas | PI | (none) | (none) | (none/90d) | not yet defined |
-| hl | PI | (none) | (none) | (none/90d) | hl = hearing loss |
 | hongkai | PI | (none) | (none) | (none/90d) | |
-| katun | PI | (none) | (none) | (none/90d) | UNIX group |
-| mommee | PI | (none) | (none) | (none/90d) | |
-| stanley | PI | (none) | (none) | (none/90d) | UNIX group |
-| sysadmin | admin | (none) | (none) | (none/90d) | For system testing |
+| katun | PI | (none) | (none) | (none/90d) | access enforced by UNIX group |
+| local-scharpf | PI | (none) | (none) | (1d/90d) | cancergen nodes with local SSD<BR>access enforced by UNIX group |
+| momme | PI | (none) | (none) | (none/90d) | |
+| stanley | PI | (none) | (none) | (none/90d) | access enforced by UNIX group |
+| sysadmin | admin | (none) | (none) | (none/90d) | For system testing<BR>access enforced by UNIX group |
 
 
 ## GPU Partitions
@@ -119,13 +118,14 @@ To see the member nodes and resources of the any partitions, use `slurmpic -g`
 
 To learn more about the GPU card types and how to use them, see [https://jhpce.jhu.edu/gpu/gpu-info/](https://jhpce.jhu.edu/gpu/gpu-info/)
 
-The Biostatistics partions are for anyone who is sponsored by a PI in that department.
+The Biostatistics partitions are for anyone who is sponsored by a PI in that department.
 
 Limits for CPU cores, RAM and Time (default/maximum)
 
 | Name | Type | Requires Approval | Core | RAM | GPU | Time | Notes/Use |
 | ---- | :----: | :-----: | ---- | ---- | :-------: | ----- | ------|
-| gpu | public | no | (none) | (none) | (none) | (1d/90d) | ONLY public GPU resource|
+| gee | PI | yes | (none) | (none) | (none) | (none/90d) | |
+| gpu | public | no | (none) | (none) | (none) | (1d/90d) | the ONLY public GPU resource|
 | caracol | PI | yes | (none) | (none) | (none) | (none/90d) | Lieber |
 | neuron | PI | yes | (none) | (none) | (none) | (none/90d) | |
 | bstgpu | PI | yes | (none) | (none) | (none) | (none/90d) | bst=biostatistics |
