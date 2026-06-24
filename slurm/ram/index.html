@@ -3523,10 +3523,60 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#tools-to-use-to-get-ram-usage-information" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Tools to use to get RAM usage information:
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Tools to use to get RAM usage information:">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#sacct-sstat" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        sacct &amp; sstat
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#seff-reportseff" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        seff &amp; reportseff
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#estimating-ram-usage" class="md-nav__link">
     <span class="md-ellipsis">
       
         Estimating RAM usage
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#impacts-of-ram-requests" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Impacts of RAM requests
       
     </span>
   </a>
@@ -5715,10 +5765,60 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#tools-to-use-to-get-ram-usage-information" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Tools to use to get RAM usage information:
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Tools to use to get RAM usage information:">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#sacct-sstat" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        sacct &amp; sstat
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#seff-reportseff" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        seff &amp; reportseff
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#estimating-ram-usage" class="md-nav__link">
     <span class="md-ellipsis">
       
         Estimating RAM usage
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#impacts-of-ram-requests" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Impacts of RAM requests
       
     </span>
   </a>
@@ -5761,27 +5861,46 @@ Some examples of using these options:
 <div class="highlight"><pre><span></span><code><span class="go">srun --mem-per-cpu=5G --cpus-per-task=4 --pty --x11 bash</span>
 </code></pre></div>
 - This would give your interactive session a total of 20GB of RAM and 4 cores</p>
+<h2 id="tools-to-use-to-get-ram-usage-information">Tools to use to get RAM usage information:<a class="headerlink" href="#tools-to-use-to-get-ram-usage-information" title="Anchor link to this section for reference">&para;</a></h2>
+<h3 id="sacct-sstat">sacct &amp; sstat<a class="headerlink" href="#sacct-sstat" title="Anchor link to this section for reference">&para;</a></h3>
+<p>The <code>sacct</code> command is used to query the SLURM job accounting database, usually
+for jobs which have ended (one way or the other). Of course, if a job has not
+started or finished, <code>sacct</code> cannot show you things it does not yet know. The
+<code>sstat</code> program can look at stats about running jobs.</p>
+<p>This page has instructions &amp; examples:<br>
+<a href="https://jhpce.jhu.edu/slurm/tips-reportseff">https://jhpce.jhu.edu/slurm/tips-sacct</a></p>
+<h3 id="seff-reportseff">seff &amp; reportseff<a class="headerlink" href="#seff-reportseff" title="Anchor link to this section for reference">&para;</a></h3>
+<p>seff is a program which looks up accounting data using the <code>sacct</code> command to
+show some stats for a single completed job. <code>reportseff</code> allows you to look
+over the information for a number of jobs.</p>
+<p>This page has instructions &amp; examples:<br>
+<a href="https://jhpce.jhu.edu/slurm/tips-reportseff">https://jhpce.jhu.edu/slurm/tips-reportseff</a></p>
 <h2 id="estimating-ram-usage">Estimating RAM usage<a class="headerlink" href="#estimating-ram-usage" title="Anchor link to this section for reference">&para;</a></h2>
-<p>There is, sadly, no easy formula to know ahead of time how much RAM a job will need when working
-with large data. Every program has its own way of dealing with RAM. It may sometimes be an iterative process
-to determine the best value to use for your jobs.  Here are some tips to help find good values for your job:</p>
+<p>There is, sadly, no easy formula to know ahead of time how much RAM a job will need when working with large data. Every program has its own way of dealing with RAM. It is often an iterative process to determine the best value to use for your jobs.</p>
+<p>Here are some tips to help find good values for your job:</p>
 <ul>
-<li>You can run a test job on a small subset of data.  From here you should be able to extrapolate the amount
-of RAM your full job will need.</li>
+<li>You can run a test job on a small subset of data, then a larger one.  From this kind of data you should be able to extrapolate the amount of RAM your full job will need. The <code>seff</code> and <code>reportseff</code> commands are useful here. </li>
 <li>One good place to start is to look at the size of the files you will be
-reading in. Add a bit extra, as a starting point.  So if your job is reading in a 20GB image file, you
-may want to ask for 25GB or RAM.</li>
-<li>You can run sacct to gather info on a completed job:
-sacct -o JobID,JobName,ReqTRES%40,MaxVMSize,MAXRSS,State%20 -j JOBID</li>
-<li>If the "STATE" from the above command is "OUT_OF_MEMORY" it means that you job has run out of RAM, and
-you will need to resubmit your job with a larger RAM request.</li>
-<li>Use <code>slurmpic</code> to see the current core and RAM availability,
-and plan accordingly</li>
+reading in. Add a bit extra, as a starting point.  If your job is reading in a 20GB image file, you may want to ask for 25GB or RAM. (But your code may wind up reading in segments of the file and not grow as much. Or it might copy the original data into a second array, thereby doubling the amount of space needed.)</li>
+<li>You can run <code>sacct</code> to gather info on a completed job, where JOBID is its number.<blockquote>
+<p>sacct -o JobID,JobName,ReqTRES%40,MaxVMSize,MAXRSS,State%20 -j JOBID</p>
+</blockquote>
+</li>
+<li>You can run <code>sstat</code> to gather info on a running job.</li>
+<li>If the <code>STATE</code> from the above command is <code>OUT_OF_MEMORY</code> it means that you job has run out of RAM, and you will need to resubmit your job with a larger RAM request.</li>
+<li>Use <code>slurmpic</code> to see the current core and RAM availability, and plan accordingly</li>
 </ul>
+<h2 id="impacts-of-ram-requests">Impacts of RAM requests<a class="headerlink" href="#impacts-of-ram-requests" title="Anchor link to this section for reference">&para;</a></h2>
 <p>Try to make your RAM request slightly higher than your expected usage.</p>
 <ul>
 <li>Too low and your job will get killed for exceeding your request</li>
-<li>Too high and your job may take longer to get scheduled, plus you’ll be squatting on RAM that others can use.</li>
+<li>Too high and<ul>
+<li>your job may take longer to get scheduled,</li>
+<li>you’ll be squatting on RAM that others can use,</li>
+<li>you'll be able to run fewer jobs if your partition has a quota, and</li>
+<li>the job will cost more.</li>
+</ul>
+</li>
 </ul>
 
 
@@ -5803,7 +5922,7 @@ and plan accordingly</li>
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="November 5, 2024 14:50:12 UTC">November 5, 2024</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="June 24, 2026 23:22:54 UTC">June 24, 2026</span>
   </span>
 
     
@@ -5814,11 +5933,12 @@ and plan accordingly</li>
   <span class="md-source-file__fact">
     <span class="md-icon" title="Contributors">
       
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 4a4 4 0 0 1 4 4 4 4 0 0 1-4 4 4 4 0 0 1-4-4 4 4 0 0 1 4-4m0 10c4.42 0 8 1.79 8 4v2H4v-2c0-2.21 3.58-4 8-4"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 5.5A3.5 3.5 0 0 1 15.5 9a3.5 3.5 0 0 1-3.5 3.5A3.5 3.5 0 0 1 8.5 9 3.5 3.5 0 0 1 12 5.5M5 8c.56 0 1.08.15 1.53.42-.15 1.43.27 2.85 1.13 3.96C7.16 13.34 6.16 14 5 14a3 3 0 0 1-3-3 3 3 0 0 1 3-3m14 0a3 3 0 0 1 3 3 3 3 0 0 1-3 3c-1.16 0-2.16-.66-2.66-1.62a5.54 5.54 0 0 0 1.13-3.96c.45-.27.97-.42 1.53-.42M5.5 18.25c0-2.07 2.91-3.75 6.5-3.75s6.5 1.68 6.5 3.75V20h-13zM0 20v-1.5c0-1.39 1.89-2.56 4.45-2.9-.59.68-.95 1.62-.95 2.65V20zm24 0h-3.5v-1.75c0-1.03-.36-1.97-.95-2.65 2.56.34 4.45 1.51 4.45 2.9z"/></svg>
       
     </span>
     <nav>
       
+        <a href="mailto:tunison@jhu.edu">jeffreytunison</a>, 
         <a href="mailto:mmill116@jhu.edu">mamiller615</a>
     </nav>
   </span>
