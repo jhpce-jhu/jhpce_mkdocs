@@ -125,7 +125,7 @@ Limits for CPU cores, RAM and Time (default/maximum)
 | Name | Type | Requires Approval | Core | RAM | GPU | Time | Notes/Use |
 | ---- | :----: | :-----: | ---- | ---- | :-------: | ----- | ------|
 | gee | PI | yes | (none) | (none) | (none) | (none/90d) | |
-| gpu | public | no | (none) | (none) | (none) | (1d/90d) | the ONLY public GPU resource|
+| gpu | public | no | (none) | (none) | (none) | (1d/90d) | the ONLY public GPU resource<BR>** Limit of 5/user **|
 | caracol | PI | yes | (none) | (none) | (none) | (none/90d) | Lieber |
 | neuron | PI | yes | (none) | (none) | (none) | (none/90d) | |
 | bstgpu | dept | yes | (none) | (none) | (none) | (none/90d) | bst=biostatistics |

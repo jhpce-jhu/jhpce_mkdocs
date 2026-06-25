@@ -5,9 +5,11 @@ general use.  This page provides information about our collection of GPU resourc
 
 ### GPU resources are limited - please consider your fellow users
 
-*Please use a GPU node only for performing GPU calculations.* If you can do preliminary or post analysis work on a normal node, please craft your jobs to do that, as opposed to putting everything into a single job. You can create dependencies between jobs which launch a specific one when another has successfully completed.
+{==*Please use a GPU node only for performing GPU calculations.*==} If you can do preliminary or post analysis work on a normal node, please craft your jobs to do that, as opposed to putting everything into a single job. You can create dependencies between jobs which launch a specific one when another has successfully completed.
 
-*Please use the GPU cards with the lowest memory which meet your jobs needs.* The latest model cards will perform calculations more quickly. However, they also tend to have the most memory. If you run a low-memory-requiring job on the latest cards, you will be blocking other users with larger memory needs.
+{==*Please use the GPU cards with the lowest memory which meet your jobs needs.*==} The latest model cards will perform calculations more quickly. However, they also tend to have the most memory. If you run a low-memory-requiring job on the latest cards, you will be blocking other users with larger memory needs.
+
+{==*The "gpu" partition has a limit of 5 GPU per user*==} This limit allows each user access to a significant fraction of the GPUs which are available to everyone. 
 
 ### GPU-capable partitions
 
@@ -58,7 +60,7 @@ request a single GPU on the &#8220;gpu&#8221; partition. You can run
 ### JHPCE GPU nodes and cards
 
 </code>
-As of November 2024, we have the following GPUs available on the gpu partition:
+As of July 2026, we have the following GPUs available:
 <table>
 <tr>
 <td><strong>Node Name</strong></td>
@@ -73,9 +75,21 @@ As of November 2024, we have the following GPUs available on the gpu partition:
 </tr>
 
 <tr>
+<td><strong>compute-118</strong></td>
+<td>Neuron group.<br>1 Intel(R) Xeon(R) Gold 5218R CPU and 768GB of RAM</td>
+<td> 4 Nvidia V100 GPUs with 32GB RAM</td>
+</tr>
+
+<tr>
 <td><strong>compute-123</strong></td>
 <td> The first Biostat GPU node<br>2 Intel(R) Xeon(R) Silver 4210R CPUs and 768GB of RAM</td>
 <td> 4 Nvidia V100s GPUs with 32GB RAM</td>
+</tr>
+
+<tr>
+<td><strong>compute-125</strong></td>
+<td>Neuron group.<br>1 Intel(R) Xeon(R) Gold 5317 CPU and 1TB of RAM</td>
+<td>4 Nvidia A100 GPUs with 80GB RAM</td>
 </tr>
 
 <tr>
@@ -87,7 +101,7 @@ As of November 2024, we have the following GPUs available on the gpu partition:
 <tr>
 <td><strong>compute-128</strong></td>
 <td>One of the Feinberg Lab (CEGS) GPU nodes<br>2 Intel(R) Xeon(R) Gold 5317 CPUs and 512GB of RAM</td>
-<td>4 Nvidia A100 GPUs with 80GB RAM</td>
+<td>3 Nvidia A100 GPUs with 80GB RAM</td>
 </tr>
 
 <tr>
