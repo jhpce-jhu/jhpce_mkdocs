@@ -6052,8 +6052,9 @@
 <p>We have a number of GPU nodes on the JHPCE cluster that are available for
 general use.  This page provides information about our collection of GPU resources, shows how to access them, and gives examples of running programs and submitting jobs that utilizes a GPU.</p>
 <h3 id="gpu-resources-are-limited-please-consider-your-fellow-users">GPU resources are limited - please consider your fellow users<a class="headerlink" href="#gpu-resources-are-limited-please-consider-your-fellow-users" title="Anchor link to this section for reference">&para;</a></h3>
-<p><em>Please use a GPU node only for performing GPU calculations.</em> If you can do preliminary or post analysis work on a normal node, please craft your jobs to do that, as opposed to putting everything into a single job. You can create dependencies between jobs which launch a specific one when another has successfully completed.</p>
-<p><em>Please use the GPU cards with the lowest memory which meet your jobs needs.</em> The latest model cards will perform calculations more quickly. However, they also tend to have the most memory. If you run a low-memory-requiring job on the latest cards, you will be blocking other users with larger memory needs.</p>
+<p><mark class="critic"><em>Please use a GPU node only for performing GPU calculations.</em></mark> If you can do preliminary or post analysis work on a normal node, please craft your jobs to do that, as opposed to putting everything into a single job. You can create dependencies between jobs which launch a specific one when another has successfully completed.</p>
+<p><mark class="critic"><em>Please use the GPU cards with the lowest memory which meet your jobs needs.</em></mark> The latest model cards will perform calculations more quickly. However, they also tend to have the most memory. If you run a low-memory-requiring job on the latest cards, you will be blocking other users with larger memory needs.</p>
+<p><mark class="critic"><em>The "gpu" partition has a limit of 5 GPU per user</em></mark> This limit allows each user access to a significant fraction of the GPUs which are available to everyone. </p>
 <h3 id="gpu-capable-partitions">GPU-capable partitions<a class="headerlink" href="#gpu-capable-partitions" title="Anchor link to this section for reference">&para;</a></h3>
 <p>There are several partitions with GPUs in them, documented in <a href="../../slurm/partitions/#gpu-partitions">our partitions page</a>.  By default all users should only access the "gpu" partition. The other partitions are PI-specific partitions for groups which have purchased GPUs for the JHPCE cluster. The partitions beginning with "bst" are for members of the Biostatics department.</p>
 <p>Please note the different time limits set on the various GPU partitions. </p>
@@ -6095,7 +6096,7 @@ request a single GPU on the &#8220;gpu&#8221; partition. You can run
 
 <h3 id="jhpce-gpu-nodes-and-cards">JHPCE GPU nodes and cards<a class="headerlink" href="#jhpce-gpu-nodes-and-cards" title="Anchor link to this section for reference">&para;</a></h3>
 <p></code>
-As of November 2024, we have the following GPUs available on the gpu partition:</p>
+As of July 2026, we have the following GPUs available:</p>
 <table>
 <tr>
 <td><strong>Node Name</strong></td>
@@ -6110,9 +6111,21 @@ As of November 2024, we have the following GPUs available on the gpu partition:<
 </tr>
 
 <tr>
+<td><strong>compute-118</strong></td>
+<td>Neuron group.<br>1 Intel(R) Xeon(R) Gold 5218R CPU and 768GB of RAM</td>
+<td> 4 Nvidia V100 GPUs with 32GB RAM</td>
+</tr>
+
+<tr>
 <td><strong>compute-123</strong></td>
 <td> The first Biostat GPU node<br>2 Intel(R) Xeon(R) Silver 4210R CPUs and 768GB of RAM</td>
 <td> 4 Nvidia V100s GPUs with 32GB RAM</td>
+</tr>
+
+<tr>
+<td><strong>compute-125</strong></td>
+<td>Neuron group.<br>1 Intel(R) Xeon(R) Gold 5317 CPU and 1TB of RAM</td>
+<td>4 Nvidia A100 GPUs with 80GB RAM</td>
 </tr>
 
 <tr>
@@ -6124,7 +6137,7 @@ As of November 2024, we have the following GPUs available on the gpu partition:<
 <tr>
 <td><strong>compute-128</strong></td>
 <td>One of the Feinberg Lab (CEGS) GPU nodes<br>2 Intel(R) Xeon(R) Gold 5317 CPUs and 512GB of RAM</td>
-<td>4 Nvidia A100 GPUs with 80GB RAM</td>
+<td>3 Nvidia A100 GPUs with 80GB RAM</td>
 </tr>
 
 <tr>
@@ -6408,7 +6421,7 @@ python nvidia-test.py
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="April 5, 2026 03:17:57 UTC">April 5, 2026</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="June 25, 2026 18:40:46 UTC">June 25, 2026</span>
   </span>
 
     
