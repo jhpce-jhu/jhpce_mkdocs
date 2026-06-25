@@ -7794,12 +7794,13 @@ sacctmgr show qos format=Name%20,Priority,Flags%30,MaxWall,MaxTRESPU%20,MaxJobsP
 sacctmgr show user withassoc  | less
 
 # See a particular user's database values
-sacctmgr show user withassoc where name=smburke
+sacctmgr show user withassoc where name=jsmith
 </code></pre><pre><span></span><code># How JHPCE3 users accounts are created in the sacctmgr database
 sacctmgr -i create user name=$userid cluster=jhpce3 account=jhpce 
 
 # How C-SUB users accounts are created in the sacctmgr database on jhpcecms01
-sacctmgr -i create user name=$userid account=generic cluster=cms
+sacctmgr -i create user name=$userid account=jade-&lt;COMMUNITY&gt; cluster=jade
+    (where &lt;COMMUNITY&gt; is one of the valid community names (e.g. cms, dbgap, nist800-171))
 </code></pre><pre><span></span><code># Add a QOS to a user's existing allowed QOS:
 sacctmgr -i mod user mmill116 set qos+=high-priority
 # or, you can redefine their whole list
