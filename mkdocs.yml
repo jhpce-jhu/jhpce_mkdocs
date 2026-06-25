@@ -12,17 +12,20 @@ nav:
       - Grant and Acknowledgment Blurbs: aboutus/GrantAndAckBlurbs.md
     - Getting Started:
       - joinus/index.md
-      - Getting Started Overview: joinus/index.md
-      - New user form: joinus/new-users-form.md
-      - New PI information and form: 
-         - New PI Information: joinus/new-pi.md
-         - New PI Form: joinus/new-pi-form.md
-      - Orientation/Logging In:
-        - Overview: orient/orientation-overview.md
-        - JHPCE Orientation (PDF download): https://docs.google.com/presentation/d/1elMSTUdKws7FLVFK7vVV_AErA4brNSPX/export/pdf
-        - C-SUB Orientation (PDF): orient/images/latest-csub-orient.pdf
-      - Leaving JHPCE as a User or PI: joinus/leaving.md
-      - New C-SUB PI or user?: csub/new-csub-users.md
+      - JHPCE Cluster:
+        - Getting Started Overview: joinus/index.md
+        - New user form: joinus/new-users-form.md
+        - New PI information and form: 
+          - New PI Information: joinus/new-pi.md
+          - New PI Form: joinus/new-pi-form.md
+        - Orientation/Logging In:
+          - Overview: orient/orientation-overview.md
+          - JHPCE Orientation (pdf download): https://docs.google.com/presentation/d/1elMSTUdKws7FLVFK7vVV_AErA4brNSPX/export/pdf
+      - Leaving JHPCE or JADE as a User or PI: joinus/leaving.md
+      - JADE Cluster:
+        - New JADE User Form: jade/new-users-form.md
+        - New JADE DUA Form: jade/new-dua-form.md
+        - C-SUB Orientation (pdf): orient/images/latest-csub-orient.pdf
       - Policies: joinus/policies.md
       - HIPAA on JHPCE: joinus/hipaa.md
     - Getting Help:
