@@ -15,7 +15,7 @@ include dates such as admission, discharge, service, DOB, DOD; and location
 information such as city, state, five digit or more zip code; and ages in
 years, months or days or hours.
 
-## Using PHI or PII on JHPCE
+## Using PHI or PII on JHPCE/JADE
 The JHPCE cluster may be able to meet the requirements specified by the data
 provider for the handling of PHI data.  There may be additional steps that
 the data analysts will need to go through in order to access the data, but this
@@ -24,16 +24,14 @@ have a dataset with sensitive data, please reach out to us at [bitsupport@lists.
 and we can review the data handling requirements to assess whether the JHPCE
 cluster can meet them.
 
-## CSUB
+## JADE
 
-The JHPCE maintains a small sub-cluster for handling CMS Medicare and Medicaid
-claims data. This sub-cluster has a number of additional security features
-in place to ensure the security of this more sensitive data. If you are
-interested in accessing the CMS data, please email [support@harp-csub.freshdesk.com](mailto:support@harp-csub.freshdesk.com) for more information. We have
-additional information in [our CSUB Section](../csub/csub-overview.md).
+The JHPCE team maintains a second cluster for handling sensitive data such as Controlled Unclassified Information for several research communities, such as CMS Medicare and Medicaid
+claims data. JADE was designed to provide NIST 800-171 level security to protect these more sensitive data sets. If you are
+interested in using JADE, please explore the JADE section of our website for more information, starting with [a JADE overview](../jade/jade-overview.md).
 
 ## Links
-<p>The following links from the JHPSH IRB,  SOM IRB and the US Department of Health &amp; Human Services (HHS) provide details on how to de-identify your data so that you are in compliance with the <em>HIPAA Privacy Rule Standards</em>.</p>
+<p>The following links from the JHPSH IRB, SOM IRB and the US Department of Health &amp; Human Services (HHS) provide details on how to de-identify your data so that you are in compliance with the <em>HIPAA Privacy Rule Standards</em>.</p>
 <ul>
 <li><a href="http://www.jhsph.edu/offices-and-services/institutional-review-board/hipaa/">JHSPH IRB HIPAA page</a></li>
 <li><a href="http://www.hopkinsmedicine.org/institutional_review_board/hipaa_research/de_identified_data.html" target="_blank">JHMI IRB definition of de-identified data</a></li>
