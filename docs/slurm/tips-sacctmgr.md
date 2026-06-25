@@ -28,14 +28,14 @@ sacctmgr show qos format=Name%20,Priority,Flags%30,MaxWall,MaxTRESPU%20,MaxJobsP
 sacctmgr show user withassoc  | less
 
 # See a particular user's database values
-sacctmgr show user withassoc where name=smburke
+sacctmgr show user withassoc where name=jsmith
 ```
 
 ## **Sacctmgr for Systems Administrators**
 
-We currently have two clusters, named "jhpce3" and "cms" You don't have to specify which cluster you want to consult/change, as we have a SLURM server for each cluster. And because they aren't connected in any way, you cannot extract data from one when logged into a node in the other cluster.
+We currently have two clusters, named (as far as SLURM is concerned) "jhpce3" and "jade" You don't have to specify which cluster you want to consult/change, as we have a SLURM server for each cluster. And because they aren't connected in any way, you cannot extract data from one when logged into a node in the other cluster.
 
-Like many administrative SLURM commands, you can run the `sacctmgr` command to enter into its shell version. This is useful if you are exploring some situation, although you cannot paginate output. It supports up-arrow to get at previous commands. Issuing the command "verbose" when in the interactive shell may display interesting info.
+Like some SLURM commands, you can run the `sacctmgr` command to enter into its shell version. This is useful if you are exploring some situation, although you cannot paginate output. It supports up-arrow to get at previous commands. Issuing the command "verbose" when in the interactive shell may display interesting info.
 
 You can add the CLI flag "-i" to avoid the "are-you-sure" 30 second prompt and delay. Useful when scripting.
 
@@ -46,7 +46,8 @@ You can add the CLI flag "-i" to avoid the "are-you-sure" 30 second prompt and d
 sacctmgr -i create user name=$userid cluster=jhpce3 account=jhpce 
 
 # How C-SUB users accounts are created in the sacctmgr database on jhpcecms01
-sacctmgr -i create user name=$userid account=generic cluster=cms
+sacctmgr -i create user name=$userid account=jade-<COMMUNITY> cluster=jade
+    (where <COMMUNITY> is one of the valid community names (e.g. cms, dbgap, nist800-171))
 ```
 
 #### Associations

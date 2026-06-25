@@ -70,43 +70,43 @@ As of July 2026, we have the following GPUs available:
 
 <tr>
 <td><strong>compute-117</strong></td>
-<td>Our first GPU node.<br>2 Intel(R) Xeon(R) Silver 4116 CPUs and 384GB of RAM</td>
+<td>Our first GPU node.<br>2 Intel Xeon Silver 4116 CPUs and 384GB of RAM</td>
 <td> 2 Nvidia V100 GPUs with 32GB RAM<br> 1 Nvidia Titan V with 11GB RAM</td>
 </tr>
 
 <tr>
 <td><strong>compute-118</strong></td>
-<td>Neuron group.<br>1 Intel(R) Xeon(R) Gold 5218R CPU and 768GB of RAM</td>
+<td>Neuron group.<br>1 Intel Xeon Gold 5218R CPU and 768GB of RAM</td>
 <td> 4 Nvidia V100 GPUs with 32GB RAM</td>
 </tr>
 
 <tr>
 <td><strong>compute-123</strong></td>
-<td> The first Biostat GPU node<br>2 Intel(R) Xeon(R) Silver 4210R CPUs and 768GB of RAM</td>
+<td> The first Biostat GPU node<br>2 Intel Xeon Silver 4210R CPUs and 768GB of RAM</td>
 <td> 4 Nvidia V100s GPUs with 32GB RAM</td>
 </tr>
 
 <tr>
 <td><strong>compute-125</strong></td>
-<td>Neuron group.<br>1 Intel(R) Xeon(R) Gold 5317 CPU and 1TB of RAM</td>
+<td>Neuron group.<br>1 Intel Xeon Gold 5317 CPU and 1TB of RAM</td>
 <td>4 Nvidia A100 GPUs with 80GB RAM</td>
 </tr>
 
 <tr>
 <td><strong>compute-126</strong></td>
-<td>One of the Lieber (Collado) GPU nodes<br>2 Intel(R) Xeon(R) Gold 5317 CPUs and 512GB of RAM</td>
+<td>One of the Lieber (Collado) GPU nodes<br>2 Intel Xeon Gold 5317 CPUs and 512GB of RAM</td>
 <td>4 Nvidia A100 GPUs with 80GB RAM</td>
 </tr>
 
 <tr>
 <td><strong>compute-128</strong></td>
-<td>One of the Feinberg Lab (CEGS) GPU nodes<br>2 Intel(R) Xeon(R) Gold 5317 CPUs and 512GB of RAM</td>
+<td>One of the Feinberg Lab (CEGS) GPU nodes<br>2 Intel Xeon Gold 5317 CPUs and 512GB of RAM</td>
 <td>3 Nvidia A100 GPUs with 80GB RAM</td>
 </tr>
 
 <tr>
 <td><strong>compute-170</strong></td>
-<td> The second Biostat GPU node<br>1 Intel(R) Xeon(R) Silver 4510R CPUs and 1TB of RAM</td>
+<td> The second Biostat GPU node<br>1 Intel Xeon Silver 4510R CPUs and 1TB of RAM</td>
 <td>2 Nvidia H100s GPUs with 96GB RAM</td>
 </tr>
 
