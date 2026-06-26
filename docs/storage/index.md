@@ -93,9 +93,7 @@ process for bringing a new storage array online, we will reach out to all
 active PIs on the cluster, and survey them for their expected storage needs.
 We will then size the new storage array based on those needs.
 
-Our last large storage build was in 2025, for the DCS10 storage array.  DCS11
-has been ordered but delays in hard drive deliveries will delay its commision
-until late in 2026.
+Our last large storage build was in mid-2026, for the DCS11 storage array.
 
 !!! note "Requesting an allocation"
     We have some unsold capacity on several servers, so please reach out to
@@ -105,7 +103,7 @@ until late in 2026.
     have redundant disks to protect against disk failure, but that is not
     the same as a backup.)
 
-As of 2026-03-19, the currect project storage arrays in places are:
+As of 2026-06-26, the currect project storage arrays in places are:
 <div class="heatMap">
 <TABLE align="left">
 <TR><TH>Storage Name</TH><TH>Year Built</TH><TH># of Disks</TH><TH>Disk Size</TH><TH># of JBODs</TH><TH>Useable Space</TH><TH>Cost</TH><TH>Cost per TB</TH></TR>
@@ -114,12 +112,13 @@ As of 2026-03-19, the currect project storage arrays in places are:
 <TR><TD>DCS06</TD><TD>2021</TD><TD>16</TD><TD>7.68</TD><TD>1</TD><TD>88TB</TD><TD>$34,207.00</TD><TD>$305.17</TD></TR>
 <TR><TD>DCS07</TD><TD>2023</TD><TD>300</TD><TD>22TB</TD><TD>5</TD><TD>4.8PB</TD><TD>$145,453.99</TD><TD>$30.61</TD></TR>
 <TR><TD>DCS10</TD><TD>2025</TD><TD>120</TD><TD>24TB</TD><TD>2</TD><TD>4.2PB</TD><TD>$??</TD><TD>$??</TD></TR>
+<TR><TD>DCS11</TD><TD>2026</TD><TD>??</TD><TD>??TB</TD><TD>2</TD><TD>??PB</TD><TD>$??</TD><TD>$??</TD></TR>
 </TABLE>
 </div>
 ###### Notes:
     - Part of DCS04 was used for legacy-dcs01 space
     - Part of DCS05 was used for legacy-dcl01 space
-    - SSD-based array used by JADE cluster
+    - DCS06 is a SSD-based array used by JADE cluster
 
 Other Storage Arrays currently in use on the JHPCE cluster:
 
@@ -127,6 +126,7 @@ Other Storage Arrays currently in use on the JHPCE cluster:
 <TABLE align="left">
 <TR><TH>Storage Name</TH><TH>Use</TH><TH>Year Built</TH><TH># of Disks</TH><TH>Disk Size</TH><TH># of JBODs</TH><TH>Useable Space</TH><TH>Cost</TH><TH>Cost per TB</TH></TR>
 <TR><TD>Fastscratch</TD><TD>Scratch</TD><TD>2018</TD><TD>24</TD><TD>1TB</TD><TD>1</TD><TD>24TB</TD><TD>$17,983.45</TD><TD>$749.29</TD></TR>
+<TR><TD>DCS08</TD><TD>Home directories</TD><TD>202?</TD><TD>??</TD><TD>??TB</TD><TD>?</TD><TD>??PB</TD><TD>$??</TD><TD>$??</TD></TR>
 <TR><TD>DCS09</TD><TD>Backups</TD><TD>202?</TD><TD>168</TD><TD>20TB</TD><TD>4</TD><TD>??PB</TD><TD>$??</TD><TD>$??</TD></TR>
 </TABLE>
 </div>
