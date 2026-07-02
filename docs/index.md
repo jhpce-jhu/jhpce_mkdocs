@@ -5,7 +5,9 @@ hide:
 
 # Joint HPC Exchange
 ![cluster logo](images/cluster_ai_2.png)
+
 ![cluster usage](images/pct.gif)
+
 NOTICE: DCS10 storage array downtime 2026-07-08 from 6:00 PM until 9:00 PM. [More Details](https://jhpce.jhu.edu/announcements/dcs10-downtime-2026-07-02/)
 <div class="grid cards" markdown>
   
