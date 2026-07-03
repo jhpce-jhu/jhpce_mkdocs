@@ -96,6 +96,7 @@ nav:
       - Helpful GUI Programs: sw/gui-tools.md
       - Using OpenAI codex: sw/codex.md
       - Using Claude CLI: sw/claude-example.md
+      - JHU Generative AI Resources: help/images/JHU_Generative_AI_Resources.pdf
     - Job scheduler (SLURM): 
       - Getting Started: slurm/getting-started.md
       - About Jobs: slurm/about-jobs.md
