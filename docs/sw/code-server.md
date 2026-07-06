@@ -1,4 +1,4 @@
-## Run code-server interactively on JHPCE
+## Run code-server interactively on JHPCE (an alternative way to run vscode/vs-code via the web portal)
 
 1. Run the following commands after login to JHPCE
 ```
