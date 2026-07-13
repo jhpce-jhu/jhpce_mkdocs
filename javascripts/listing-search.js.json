@@ -28,6 +28,20 @@
     "language": ""
   },
   {
+    "page_name": "FY2026Q4 Rates",
+    "page_url": "/aboutus/FY2026Q4-Rates/",
+    "text": "               queue rate $/GBhr\n              bstgpu   0.010334\n             bstgpu2   0.039606\n             bstgpu3   0.023382\n               c-lau   0.000000\n               c-sas   0.035970\n            c-shared   0.077241\n           cancergen   0.007936\n             caracol   0.008583\n                 cee   0.004983\n                 gee   0.012947\n                 gpu   0.019263\n            gpu-test   0.015672\n             hongkai   0.009969\n         interactive   0.158021\n  interactive-larger   0.013743\n               katun   0.010266\n       local-scharpf   0.007539\n               momme   0.002261\n              neuron   0.008580\n             rocky96  16.925200\n            s-shared   3.340200\n                 sas   0.115875\n            scavenge   0.017149\n              shared   0.007825\n             stanley   0.004521\n            transfer   0.000000\n",
+    "html": "<pre><span></span><code>               queue rate $/GBhr\n              bstgpu   0.010334\n             bstgpu2   0.039606\n             bstgpu3   0.023382\n               c-lau   0.000000\n               c-sas   0.035970\n            c-shared   0.077241\n           cancergen   0.007936\n             caracol   0.008583\n                 cee   0.004983\n                 gee   0.012947\n                 gpu   0.019263\n            gpu-test   0.015672\n             hongkai   0.009969\n         interactive   0.158021\n  interactive-larger   0.013743\n               katun   0.010266\n       local-scharpf   0.007539\n               momme   0.002261\n              neuron   0.008580\n             rocky96  16.925200\n            s-shared   3.340200\n                 sas   0.115875\n            scavenge   0.017149\n              shared   0.007825\n             stanley   0.004521\n            transfer   0.000000\n</code></pre>",
+    "language": ""
+  },
+  {
+    "page_name": "FY2026Q4 Rates",
+    "page_url": "/aboutus/FY2026Q4-Rates/",
+    "text": "dcs04             25.10\ndcs04-legacy      13.50\ndcs05             25.10\ndcs05-legacy       9.90\ndcs07             21.70\ndcs08(/users)    360.60\ndcs10-legacy       6.40\ndcs10             19.30\n",
+    "html": "<pre><span></span><code>dcs04             25.10\ndcs04-legacy      13.50\ndcs05             25.10\ndcs05-legacy       9.90\ndcs07             21.70\ndcs08(/users)    360.60\ndcs10-legacy       6.40\ndcs10             19.30\n</code></pre>",
+    "language": ""
+  },
+  {
     "page_name": "Overview",
     "page_url": "/access/access-overview/",
     "text": "graph TD\n   A[Your computer] --> B([Login nodes])\n   A[Your computer] -- Only via Hopkins/VPN --> D((Web Portal))\n   A[Your computer] --> C([Transfer node])\n   B([Login nodes]) --> E[Compute node1]\n   D((Web Portal)) --> E[Compute node1]\n   B([Login nodes]) --> F[Compute node2]\n   D((Web Portal)) --> F[Compute node2]\n   B([Login nodes]) --> G[Compute node3]\n   D((Web Portal)) --> G[Compute node3]\n   C([Transfer node]) <--> H[(storage servers)]",
