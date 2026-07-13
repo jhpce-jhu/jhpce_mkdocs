@@ -115,3 +115,7 @@ fi
 # If I prefer gcc/4.8.1 as my default compiler
 module load gcc/4.8.1
 ```
+
+## Currently Installed JHPCE/JADE modules
+
+We have a list of currently installed module on the JHPCE and JADE cluster [at this link](./current-modules.md)
