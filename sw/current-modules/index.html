@@ -5852,10 +5852,127 @@
   <h1>Current modules</h1>
 
 <h2 id="currently-install-module-on-jhpce-and-jade">Currently Install Module on JHPCE and JADE<a class="headerlink" href="#currently-install-module-on-jhpce-and-jade" title="Anchor link to this section for reference">&para;</a></h2>
-<p><div class="highlight"><pre><span></span><code><span class="go">/users/mmill116/update-web-site/update-modules.sh: line 15: module: command not found</span>
+<p><div class="highlight"><pre><span></span><code><span class="go">----------------------- /jhpce/shared/jhpce/modulefiles ------------------------</span>
+<span class="go">   DMFold/1.2                      java/19            (D)</span>
+<span class="go">   JADE_ROCKY9_DEFAULT_ENV         jhuacg/14.0.1</span>
+<span class="go">   JHPCE_ROCKY9_DEFAULT_ENV (L)    jrt-test</span>
+<span class="go">   JHPCE_tools/3.0          (L)    julia/1.9.2        (D)</span>
+<span class="go">   R_test/4.3.2                    julia/1.10.5</span>
+<span class="go">   afni/23.3.09                    julia/1.11.1</span>
+<span class="go">   alphafold/2.3.1          (D)    kakoune/2023-08-05</span>
+<span class="go">   alphafold/3.0.0                 latex/20240117</span>
+<span class="go">   anaconda/2023.03         (D)    matlab/R2023a</span>
+<span class="go">   anaconda/2024.10                matlab/R2023b</span>
+<span class="go">   aws/2.12.7                      matlab/R2025a      (D)</span>
+<span class="go">   azcopy/10.24.0                  mpc/1.3.1</span>
+<span class="go">   bcl2fastq/2.17.1                mpfr/4.2.0</span>
+<span class="go">   blast/2.16.0                    node/24.11</span>
+<span class="go">   bowtie/2.5.1                    ollama/0.30.8</span>
+<span class="go">   code-server/4.112.0             python/3.9.14      (D)</span>
+<span class="go">   conda/3-23.3.1-testing          python/3.10.13</span>
+<span class="go">   conda/3-23.3.1                  python/3.11.8</span>
+<span class="go">   conda/3-24.3.0           (D)    python/3.12.12</span>
+<span class="go">   cuda/12.1.1                     python/3.13.4</span>
+<span class="go">   dcmtk/3.6.7                     python/3.14.6</span>
+<span class="go">   encfs/1.9.5                     python2/2.7.9      (D)</span>
+<span class="go">   ffmpeg/6.0                      python2/2.7.18</span>
+<span class="go">   freesurfer/7.4.1                rclone/1.69.1</span>
+<span class="go">   fresh/0.1.55                    reportseff/2.3.2</span>
+<span class="go">   fsl/6.0.6.5                     rstudio/2023.06.1</span>
+<span class="go">   gcc/9.5.0                       rstudio/2024.04.2  (D)</span>
+<span class="go">   gcc/13.1.0               (D)    rstudio/2025.05.1</span>
+<span class="go">   gdal/3.6.0                      ruby/3.1.2</span>
+<span class="go">   gh/2.46.0                       rust/1.76.0</span>
+<span class="go">   ghostscript/10.02.1             sas/9.0</span>
+<span class="go">   glpk/5.0                        sas/9.4            (D)</span>
+<span class="go">   gmp/6.2.1                       shapeit/5.1.1</span>
+<span class="go">   go/20.6                  (D)    singularity/3.11.4</span>
+<span class="go">   go/22.1                         sra-toolkit/3.1.1</span>
+<span class="go">   go/23.1                         stata/17</span>
+<span class="go">   go/26.1                         tesseract/5.5.1</span>
+<span class="go">   gurobi/11.0.3                   tex/20240117</span>
+<span class="go">   gurobi/12.0.3            (D)    texstudio/4.8.7</span>
+<span class="go">   helix/23.10.0                   wine/7.11</span>
+
+<span class="go">--------------------- /jhpce/shared/community/modulefiles ----------------------</span>
+<span class="go">   R/4.3              conda_R/test     conda_R/4.4.x        conda_R/4.5</span>
+<span class="go">   bedtools/2.31.0    conda_R/4.3.x    conda_R/4.4   (D)</span>
+<span class="go">   conda_R/devel      conda_R/4.3      conda_R/4.5.x</span>
+
+<span class="go">------------------------ /jhpce/shared/libd/modulefiles ------------------------</span>
+<span class="go">   PRSice/2.2.13                 nda-tools/0.3.0</span>
+<span class="go">   Salmon/1.2.1                  nda-tools/0.5.0</span>
+<span class="go">   Salmon/1.10.1          (D)    nda-tools/0.6.0</span>
+<span class="go">   arioc/1.52                    nda-tools/0.7.0     (D)</span>
+<span class="go">   aws/2.28               (D)    nextflow/20.01.0</span>
+<span class="go">   bamtofastq/1.4.1              nextflow/22.10.7</span>
+<span class="go">   bcftools/1.10.2               nextflow/23.10.0</span>
+<span class="go">   bcftools/1.18          (D)    nextflow/24.10.5    (D)</span>
+<span class="go">   bfg/1.13.0                    paste/1.3.0</span>
+<span class="go">   bin2cell/0.3.0                plink/1.90b</span>
+<span class="go">   bismark/0.23.0                plink/2.00a4.6      (D)</span>
+<span class="go">   bs/1.3.0                      plink2/2.0</span>
+<span class="go">   bustools/0.39.3               qctool/2.2.5</span>
+<span class="go">   cell2location/0.1.3           qtl_gtex/dae3369</span>
+<span class="go">   cell2location/0.8a0    (D)    r_nac/1.0</span>
+<span class="go">   cellpose/2.0                  regtools/0.5.33g</span>
+<span class="go">   cellpose/2.2.2         (D)    resept/1.0.0</span>
+<span class="go">   cellprofiler/4.2.6            rmate/1.5.10</span>
+<span class="go">   cellranger-atac/2.1.0         rseqc/3.0.1</span>
+<span class="go">   cellranger/7.0.0              ruby/3.2.2          (D)</span>
+<span class="go">   cellranger/7.2.0              rust/1.95.0         (D)</span>
+<span class="go">   cellranger/8.0.1              samblaster/0.1.26</span>
+<span class="go">   cellranger/9.0.0              samtools/1.10</span>
+<span class="go">   cellranger/9.0.1              samtools/1.18       (D)</span>
+<span class="go">   cellranger/10.0.0      (D)    samui/1.0.0-next.24</span>
+<span class="go">   cellranger_arc/2.0.2          samui/1.0.0-next.45</span>
+<span class="go">   cibersortx/04_04_2020         samui/1.0.0-next.49</span>
+<span class="go">   dissect/dc45940c              samui/1.0.1         (D)</span>
+<span class="go">   fastqc/0.11.8                 spaceranger/2.1.0</span>
+<span class="go">   fastqc/0.12.1          (D)    spaceranger/3.0.0</span>
+<span class="go">   ficture/dev_a455e5c           spaceranger/3.1.1</span>
+<span class="go">   ficture/0.0.3.1        (D)    spaceranger/3.1.2</span>
+<span class="go">   fusion_twas/github            spaceranger/3.1.3</span>
+<span class="go">   gatk/4.5.0.0                  spaceranger/4.0.1</span>
+<span class="go">   gffread/github                spaceranger/4.1.0   (D)</span>
+<span class="go">   gffread/0.12.7         (D)    spagcn/1.2.0</span>
+<span class="go">   git-lfs/3.4.0                 spatula/f0e9936</span>
+<span class="go">   git-status-size/github        spatula/1.0.0</span>
+<span class="go">   graphst/da29b75               spatula/7fe7171     (D)</span>
+<span class="go">   harmony2/2.0.1                stalign/1.0.1</span>
+<span class="go">   hergast/0.0.1                 star/2.7.8a</span>
+<span class="go">   hipstr/0.7                    subread/2.0.0</span>
+<span class="go">   hisat2/2.2.1                  synapse/2.7.2</span>
+<span class="go">   htslib/1.10.2                 synapse/3.1.1       (D)</span>
+<span class="go">   htslib/1.18            (D)    tangram/1.0.4</span>
+<span class="go">   java/17                       tensorqtl/1.0.8</span>
+<span class="go">   java/18                       trimgalore/0.6.6</span>
+<span class="go">   kallisto/0.46.1               trimmomatic/0.39</span>
+<span class="go">   ldsc/1.0.1                    vampire/3.4.4</span>
+<span class="go">   leafcutter/0.2.9              vcftools/0.1.16</span>
+<span class="go">   liana_plus/1.5.1              visium_hd/1.0</span>
+<span class="go">   liana_plus/1.7.1       (D)    wiggletools/1.2.1</span>
+<span class="go">   liftover/1.0                  wigtobigwig/2.9</span>
+<span class="go">   magma/1.10                    xeniumranger/1.7.1</span>
+<span class="go">   methyldackel/0.5.2            xeniumranger/2.0.0</span>
+<span class="go">   methylpy/1.4.3                xeniumranger/3.1.1</span>
+<span class="go">   nda-tools/0.2.27              xeniumranger/4.0.0  (D)</span>
+
+<span class="go">  Where:</span>
+<span class="go">   D:  Default Module</span>
+<span class="go">   L:  Module is loaded</span>
+
+<span class="go">If the avail list is too long consider trying:</span>
+
+<span class="go">&quot;module --default avail&quot; or &quot;ml -d av&quot; to just list the default modules.</span>
+<span class="go">&quot;module overview&quot; or &quot;ml ov&quot; to display the number of modules for each name.</span>
+
+<span class="go">Use &quot;module spider&quot; to find all possible modules and extensions.</span>
+<span class="go">Use &quot;module keyword key1 key2 ...&quot; to search for all possible modules matching</span>
+<span class="go">any of the &quot;keys&quot;.</span>
 </code></pre></div>
 Note: some modules may not be available on the login node or on the JADE nodes.
-Updated: Mon Jul 13 12:55:02 PM EDT 2026</p>
+Updated: Mon Jul 13 01:00:02 PM EDT 2026</p>
 
 
 
@@ -5876,7 +5993,7 @@ Updated: Mon Jul 13 12:55:02 PM EDT 2026</p>
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="July 13, 2026 16:55:02 UTC">July 13, 2026</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="July 13, 2026 17:00:02 UTC">July 13, 2026</span>
   </span>
 
     
