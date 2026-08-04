@@ -1,22 +1,23 @@
-## Run code-server interactively
+# Run code-server interactively
 
 ### Overview
 We do not allow VS Code or Code-server to be run on login nodes. Therefore users need to log in, get onto a compute node and run the application there.
 
 We have two methods to do this:
 
-* On our main cluster (not the JADE cluster): Use the web portal ([https://jhpce-app02.jhsph.edu](https://jhpce-app02.jhsph.edu)). This approach requires several things to be true:
+* Entirely manually, which works on both clusters and is described in this document.
+
+* Use a web portal. Our main cluster has a web portal ([https://jhpce-app02.jhsph.edu](https://jhpce-app02.jhsph.edu)). Our JADE cluster has an Open OnDemand server [https://jade-ondemand01.jhsph.edu](https://jade-ondemand01.jhsph.edu).  Using these web interfaces requires several things to be true:
 
     1. You must be on a Hopkins network (which includes the VPN).
     2. You must have an active JHEDID to log into the portal (and to log into the VPN if you're "off campus").
-    3. Your Hopkins JHEDID account has to be configured to know the text-message-capable phone number to send job-specific information to you (e.g. the name of the compute node it chose to launch your session on).
+    3. For the main cluster web portal: Your Hopkins JHEDID account has to be configured to know the text-message-capable phone number to send job-specific information to you (e.g. the name of the compute node it chose to launch your session on).
 
-* Entirely manually, which works on both clusters and is described in this document.
  
 ### Details
 
 !!! warning "Customize your commands!"
-   The following examples show the approach you should follow. Do not use the details shown -- you must substitute in your specific information, such as the name of the cluster login server, your cluster username (here we use "test"), the name of the compute node that is assigned to your job by SLURM and the TCP/IP port number assigned (here "40000").
+    The following examples show the approach you should follow. Do not use the details shown -- you must substitute in your specific information, such as the name of the cluster login server, your cluster username (here we use "test"), the name of the compute node that is assigned to your job by SLURM and the TCP/IP port number assigned (here "40000").
    
 1. Run the following commands after logging into either cluster.
 
@@ -57,10 +58,10 @@ http://127.0.0.1:40000
 
 The code-server interface should now appear in your local browser.
 
-!!! Note "Issues you might run into"
-   (1) Note that we use `http` in the URL, not `https`. Your web browser may try to use https. (2) You may find that this method works better in one web browser than another. The security rules built into browsers might make things either break or be more troublesome.
-
 4. Once you are done, type ++CTRL++-c in your cluster terminal and then in your local terminal, and close the browser.
 
-If your session fails, whether you are able to successfully connect or it seems to die in mid-stream, please check to see whether the job is still running. You can use `squeue` to check for your jobs on the workstation in question. If your code-server job appears, please use `scancel <jobid>` to kill it. Otherwise it will continue to run for a full day, which consumes community resources as well as costing you money.
+!!! Note "Issues you might run into"
+    (1) Note that we use `http` in the URL, not `https`. Your web browser may try to use https.
+    (2) You may find that this method works better in one web browser than another. The security rules built into browsers might make things either break or be more troublesome.
+    (3) If your session fails, whether you are able to successfully connect or it seems to die in mid-stream, please check to see whether the job is still running. You can use `squeue` to check for your jobs on the workstation in question. If your code-server job appears, please use `scancel <jobid>` to kill it. Otherwise it will continue to run for a full day, which consumes community resources as well as costing you money.
 
