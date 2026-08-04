@@ -2326,8 +2326,8 @@
   {
     "page_name": "Code-Server",
     "page_url": "/sw/code-server/",
-    "text": "uname@stone ~ % ssh -J test@jhpce01.jhsph.edu -N -L 40000:127.0.0.1:40000 test@compute-149\n",
-    "html": "<pre><span></span><code>uname@stone ~ % ssh -J test@jhpce01.jhsph.edu -N -L 40000:127.0.0.1:40000 test@compute-149\n</code></pre>",
+    "text": "ssh -J test@jhpce01.jhsph.edu -N -L 40000:127.0.0.1:40000 test@compute-149\n",
+    "html": "<pre><span></span><code>ssh -J test@jhpce01.jhsph.edu -N -L 40000:127.0.0.1:40000 test@compute-149\n</code></pre>",
     "language": ""
   },
   {
