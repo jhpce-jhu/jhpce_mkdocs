@@ -11,12 +11,10 @@ tags:
 * PARTITIONS - showing, creating, deleting, updating
 * RESERVATIONS - showing, creating, deleting, updating
 
-All  commands and options are case-insensitive, although node names, partition names, and reservation names are case-sensitive. All  commands  and options can be abbreviated to the extent that the specification is unique. 
+All  commands and options are case-insensitive, although node names, partition names, and reservation names are case-sensitive. All  commands  and options can be abbreviated to the extent that the specification is unique. Examples below use angle brackets ++less++ ++greater++  to indicate where you are supposed to replace argumements with your values.
 
-!!! tip "Use the web manual page"
-    The installed `scontrol` manual page (use `man scontrol`) can be hard to read. We suggest using the web version, which has an [Index](https://slurm.schedmd.com/archive/slurm-22.05.9/scontrol.html#index) section at the bottom. The links there are very handy for getting to the right section, and the visual layout is much better. 
-
-Examples below use angle brackets ++less++ ++greater++  to indicate where you are supposed to replace argumements with your values.
+!!! tip "Use indices to navigate documentation"
+    This JHPCE web page has many subsections. Look at the page's navigation bar to see the overall layout of topics. Similarly, the `scontrol` manual page installed on nodes (visible with `man scontrol`) can be hard to read. We suggest using the SLURM vendor's web version, which has an [Index](https://slurm.schedmd.com/archive/slurm-22.05.9/scontrol.html#index) section at the bottom. The links there are very handy for getting to the right section, and the visual layout is much better. 
 
 ## **Scontrol for Users**
 
@@ -268,10 +266,9 @@ Some flags are important to include. They are capitalized here to make them stan
    * end after the reservation's end time, and
    * use any nodes inside and/or outside of the reservation.
    
-   ==Without FLEX, jobs will be killed the moment a reservation ends==
+     ==Without FLEX, jobs will be killed the moment a reservation ends==
    
-   FLEX allows for smooth backfilling. 
-   SLURM can schedule and start reservation-linked jobs early if the nodes happen to clear out ahead of schedule.
+     FLEX allows for smooth backfilling, because SLURM can schedule and start reservation-linked jobs early if the nodes happen to clear out ahead of schedule.
 
 * **IGNORE_JOBS** - Ignore currently running jobs when creating the reservation. Otherwise you will be prevented from creating the reservation.
 
