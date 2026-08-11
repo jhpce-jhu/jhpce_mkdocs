@@ -1808,6 +1808,27 @@
   {
     "page_name": "scontrol tips",
     "page_url": "/slurm/tips-scontrol/",
+    "text": "scontrol update jobid=<jobid> TimeLimit=<time-specification>\n",
+    "html": "<pre><span></span><code>scontrol<span class=\"w\"> </span>update<span class=\"w\"> </span><span class=\"nv\">jobid</span><span class=\"o\">=</span>&lt;jobid&gt;<span class=\"w\"> </span><span class=\"nv\">TimeLimit</span><span class=\"o\">=</span>&lt;time-specification&gt;\n</code></pre>",
+    "language": ""
+  },
+  {
+    "page_name": "scontrol tips",
+    "page_url": "/slurm/tips-scontrol/",
+    "text": "scontrol hold <job-list>  # <job-list> can be comma-separated list of jobids\n",
+    "html": "<pre><span></span><code>scontrol<span class=\"w\"> </span>hold<span class=\"w\"> </span>&lt;job-list&gt;<span class=\"w\">  </span><span class=\"c1\"># &lt;job-list&gt; can be comma-separated list of jobids</span>\n</code></pre>",
+    "language": ""
+  },
+  {
+    "page_name": "scontrol tips",
+    "page_url": "/slurm/tips-scontrol/",
+    "text": "scontrol release <job-list>  # Can be comma-separated list of jobids\n",
+    "html": "<pre><span></span><code>scontrol<span class=\"w\"> </span>release<span class=\"w\"> </span>&lt;job-list&gt;<span class=\"w\">  </span><span class=\"c1\"># Can be comma-separated list of jobids</span>\n</code></pre>",
+    "language": ""
+  },
+  {
+    "page_name": "scontrol tips",
+    "page_url": "/slurm/tips-scontrol/",
     "text": "scontrol update jobid=<jobid> reservation=<reservation-name>\n",
     "html": "<pre><span></span><code>scontrol<span class=\"w\"> </span>update<span class=\"w\"> </span><span class=\"nv\">jobid</span><span class=\"o\">=</span>&lt;jobid&gt;<span class=\"w\"> </span><span class=\"nv\">reservation</span><span class=\"o\">=</span>&lt;reservation-name&gt;\n</code></pre>",
     "language": ""
@@ -1838,27 +1859,6 @@
     "page_url": "/slurm/tips-scontrol/",
     "text": "scontrol update jobid=<jobid> ArrayTaskThrottle=<count>\n",
     "html": "<pre><span></span><code>scontrol<span class=\"w\"> </span>update<span class=\"w\"> </span><span class=\"nv\">jobid</span><span class=\"o\">=</span>&lt;jobid&gt;<span class=\"w\"> </span><span class=\"nv\">ArrayTaskThrottle</span><span class=\"o\">=</span>&lt;count&gt;\n</code></pre>",
-    "language": ""
-  },
-  {
-    "page_name": "scontrol tips",
-    "page_url": "/slurm/tips-scontrol/",
-    "text": "scontrol update jobid=<jobid> TimeLimit=<time-specification>\n",
-    "html": "<pre><span></span><code>scontrol<span class=\"w\"> </span>update<span class=\"w\"> </span><span class=\"nv\">jobid</span><span class=\"o\">=</span>&lt;jobid&gt;<span class=\"w\"> </span><span class=\"nv\">TimeLimit</span><span class=\"o\">=</span>&lt;time-specification&gt;\n</code></pre>",
-    "language": ""
-  },
-  {
-    "page_name": "scontrol tips",
-    "page_url": "/slurm/tips-scontrol/",
-    "text": "scontrol hold <job-list>  # Can be comma-separated list of jobids\n",
-    "html": "<pre><span></span><code>scontrol<span class=\"w\"> </span>hold<span class=\"w\"> </span>&lt;job-list&gt;<span class=\"w\">  </span><span class=\"c1\"># Can be comma-separated list of jobids</span>\n</code></pre>",
-    "language": ""
-  },
-  {
-    "page_name": "scontrol tips",
-    "page_url": "/slurm/tips-scontrol/",
-    "text": "scontrol release <job-list>  # Can be comma-separated list of jobids\n",
-    "html": "<pre><span></span><code>scontrol<span class=\"w\"> </span>release<span class=\"w\"> </span>&lt;job-list&gt;<span class=\"w\">  </span><span class=\"c1\"># Can be comma-separated list of jobids</span>\n</code></pre>",
     "language": ""
   },
   {
@@ -1899,15 +1899,22 @@
   {
     "page_name": "scontrol tips",
     "page_url": "/slurm/tips-scontrol/",
-    "text": "scontrol show config\nscontrol show config | grep -i debug # show debug, debugflags\n",
-    "html": "<pre><span></span><code>scontrol<span class=\"w\"> </span>show<span class=\"w\"> </span>config\nscontrol<span class=\"w\"> </span>show<span class=\"w\"> </span>config<span class=\"w\"> </span><span class=\"p\">|</span><span class=\"w\"> </span>grep<span class=\"w\"> </span>-i<span class=\"w\"> </span>debug<span class=\"w\"> </span><span class=\"c1\"># show debug, debugflags</span>\n</code></pre>",
+    "text": "scontrol update partitionname=interactive allowqos=normal,interactive-default\n",
+    "html": "<pre><span></span><code>scontrol<span class=\"w\"> </span>update<span class=\"w\"> </span><span class=\"nv\">partitionname</span><span class=\"o\">=</span>interactive<span class=\"w\"> </span><span class=\"nv\">allowqos</span><span class=\"o\">=</span>normal,interactive-default\n</code></pre>",
     "language": ""
   },
   {
     "page_name": "scontrol tips",
     "page_url": "/slurm/tips-scontrol/",
-    "text": "scontrol setdebug info [nodes=<nodelist>]\n# (info is our normal level, so please return to that after debugging)\n# values in order: quiet,fatal,error,info,verbose,debug,debug2 thru debug5\n",
-    "html": "<pre><span></span><code>scontrol<span class=\"w\"> </span>setdebug<span class=\"w\"> </span>info<span class=\"w\"> </span><span class=\"o\">[</span><span class=\"nv\">nodes</span><span class=\"o\">=</span>&lt;nodelist&gt;<span class=\"o\">]</span>\n<span class=\"c1\"># (info is our normal level, so please return to that after debugging)</span>\n<span class=\"c1\"># values in order: quiet,fatal,error,info,verbose,debug,debug2 thru debug5</span>\n</code></pre>",
+    "text": "scontrol show config\nscontrol show config | grep -i debug # will show debug and debugflags\n",
+    "html": "<pre><span></span><code>scontrol<span class=\"w\"> </span>show<span class=\"w\"> </span>config\nscontrol<span class=\"w\"> </span>show<span class=\"w\"> </span>config<span class=\"w\"> </span><span class=\"p\">|</span><span class=\"w\"> </span>grep<span class=\"w\"> </span>-i<span class=\"w\"> </span>debug<span class=\"w\"> </span><span class=\"c1\"># will show debug and debugflags</span>\n</code></pre>",
+    "language": ""
+  },
+  {
+    "page_name": "scontrol tips",
+    "page_url": "/slurm/tips-scontrol/",
+    "text": "scontrol setdebug info [nodes=<nodelist>]\n# (info is our normal level, so please return to that after debugging)\n# values in order: quiet,fatal,error,info,verbose,debug, and debug2 thru debug5\n",
+    "html": "<pre><span></span><code>scontrol<span class=\"w\"> </span>setdebug<span class=\"w\"> </span>info<span class=\"w\"> </span><span class=\"o\">[</span><span class=\"nv\">nodes</span><span class=\"o\">=</span>&lt;nodelist&gt;<span class=\"o\">]</span>\n<span class=\"c1\"># (info is our normal level, so please return to that after debugging)</span>\n<span class=\"c1\"># values in order: quiet,fatal,error,info,verbose,debug, and debug2 thru debug5</span>\n</code></pre>",
     "language": ""
   },
   {
@@ -1920,13 +1927,6 @@
   {
     "page_name": "scontrol tips",
     "page_url": "/slurm/tips-scontrol/",
-    "text": "scontrol update partitionname=interactive allowqos=normal,interactive-default\n",
-    "html": "<pre><span></span><code>scontrol<span class=\"w\"> </span>update<span class=\"w\"> </span><span class=\"nv\">partitionname</span><span class=\"o\">=</span>interactive<span class=\"w\"> </span><span class=\"nv\">allowqos</span><span class=\"o\">=</span>normal,interactive-default\n</code></pre>",
-    "language": ""
-  },
-  {
-    "page_name": "scontrol tips",
-    "page_url": "/slurm/tips-scontrol/",
     "text": "scontrol show reservation\n",
     "html": "<pre><span></span><code>scontrol<span class=\"w\"> </span>show<span class=\"w\"> </span>reservation\n</code></pre>",
     "language": ""
@@ -1934,8 +1934,8 @@
   {
     "page_name": "scontrol tips",
     "page_url": "/slurm/tips-scontrol/",
-    "text": "scontrol create reservation starttime=now duration=UNLIMITED user=root,tunison,mmill116,jyang flags=maint,flex,ignore_jobs,NO_HOLD_JOBS_AFTER reservation=resv-name nodes=compute-number\n",
-    "html": "<pre><span></span><code>scontrol<span class=\"w\"> </span>create<span class=\"w\"> </span>reservation<span class=\"w\"> </span><span class=\"nv\">starttime</span><span class=\"o\">=</span>now<span class=\"w\"> </span><span class=\"nv\">duration</span><span class=\"o\">=</span>UNLIMITED<span class=\"w\"> </span><span class=\"nv\">user</span><span class=\"o\">=</span>root,tunison,mmill116,jyang<span class=\"w\"> </span><span class=\"nv\">flags</span><span class=\"o\">=</span>maint,flex,ignore_jobs,NO_HOLD_JOBS_AFTER<span class=\"w\"> </span><span class=\"nv\">reservation</span><span class=\"o\">=</span>resv-name<span class=\"w\"> </span><span class=\"nv\">nodes</span><span class=\"o\">=</span>compute-number\n</code></pre>",
+    "text": "scontrol create reservation starttime=now duration=UNLIMITED \\ user=root,tunison,mmill116,jyang \\ flags=maint,flex,ignore_jobs,NO_HOLD_JOBS_AFTER \\ reservation=<resv-name> nodes=compute-number\n",
+    "html": "<pre><span></span><code>scontrol<span class=\"w\"> </span>create<span class=\"w\"> </span>reservation<span class=\"w\"> </span><span class=\"nv\">starttime</span><span class=\"o\">=</span>now<span class=\"w\"> </span><span class=\"nv\">duration</span><span class=\"o\">=</span>UNLIMITED<span class=\"w\"> </span><span class=\"se\">\\ </span><span class=\"nv\">user</span><span class=\"o\">=</span>root,tunison,mmill116,jyang<span class=\"w\"> </span><span class=\"se\">\\ </span><span class=\"nv\">flags</span><span class=\"o\">=</span>maint,flex,ignore_jobs,NO_HOLD_JOBS_AFTER<span class=\"w\"> </span><span class=\"se\">\\ </span><span class=\"nv\">reservation</span><span class=\"o\">=</span>&lt;resv-name&gt;<span class=\"w\"> </span><span class=\"nv\">nodes</span><span class=\"o\">=</span>compute-number\n</code></pre>",
     "language": ""
   },
   {
