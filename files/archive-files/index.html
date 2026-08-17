@@ -6238,7 +6238,7 @@ tar -cf /dcs07/mygroup/my-tar-file.tar some-directory other-dir2 file9
 </code></pre></div>
 <p>Create a compressed archive of a directory tree using multiple CPU threads. (Four in this example.) (You need to request four CPU from SLURM to be able to have them to use on the compute node.) By default <code>pigz</code> deletes files after compressing them, so be sure to use the <code>-k</code> "keep" argument.</p>
 <div class="highlight"><pre><span></span><code>cd /dcs05/mygroup/data/trial5/experiment8/
-tar -cf /dcs07/mygroup/my-tar-file.tar --use-compress-program=&quot;pigz -k -p4&quot; some-large-directory
+tar -cf /dcs07/mygroup/my-tar-file.tar --use-compress-program="pigz -k -p4" some-large-directory
 </code></pre></div>
 <p>Extract everything from an archive. It is always a good idea to look at the contents of the archive to see what file structure will be created during extraction. You do not want to overwrite other files. There are options like <code>--keep-old-files</code> and <code>--keep-newer-files</code> (and others) which affect extraction behavior. Better safe than sorry!</p>
 <div class="highlight"><pre><span></span><code>tar -tzf compressed-archive.tgz | less
@@ -6247,10 +6247,10 @@ tar -xvzf compressed-archive.tgz
 <p>Extract multiple files from an archive. You need to first examine the contents of the archive and look for occurences of the names you want to extract -- there may be multiple items which match. You may need to provide partial paths to indicate which copy of the file you want.</p>
 <div class="highlight"><pre><span></span><code>tar -tf somearchive.tar &gt; mylisting.txt
 less mylisting.txt
-tar -xvf somearchive.tar &quot;file1&quot; &quot;file2&quot;
+tar -xvf somearchive.tar "file1" "file2"
 </code></pre></div>
 <p>Extract files matching a wildcard pattern
-<div class="highlight"><pre><span></span><code>tar -xvf somearchive.tar --wildcards &#39;*.php&#39;
+<div class="highlight"><pre><span></span><code>tar -xvf somearchive.tar --wildcards '*.php'
 </code></pre></div></p>
 <h3 id="find-command"><strong>Find command</strong><a class="headerlink" href="#find-command" title="Anchor link to this section for reference">&para;</a></h3>
 <p>The find command is a very useful tool. If you want to modify files or directories found with find, it is recommended to use xargs.</p>

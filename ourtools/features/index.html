@@ -6833,9 +6833,9 @@ themselves.</p>
 <h2 id="modifying-text-patterns-across-the-site">Modifying text patterns across the site<a class="headerlink" href="#modifying-text-patterns-across-the-site" title="Anchor link to this section for reference">&para;</a></h2>
 <p>Example of changing all markdown files in a copy of the git repo:</p>
 <div class="highlight"><pre><span></span><code><span class="nb">cd</span><span class="w"> </span>jhpce_mkdocs
-find<span class="w"> </span>.<span class="w"> </span>-type<span class="w"> </span>f<span class="w"> </span>-name<span class="w"> </span><span class="se">\*</span>.md<span class="w"> </span>-exec<span class="w"> </span>grep<span class="w"> </span>-il<span class="w"> </span><span class="s2">&quot;www.jhpce.jhu.edu&quot;</span><span class="w"> </span><span class="o">{}</span><span class="w"> </span><span class="se">\;</span>
-find<span class="w"> </span>.<span class="w"> </span>-type<span class="w"> </span>f<span class="w"> </span>-name<span class="w"> </span><span class="se">\*</span>.md<span class="w"> </span>-exec<span class="w"> </span>sed<span class="w"> </span>-i<span class="w"> </span><span class="s1">&#39;&#39;</span><span class="w"> </span><span class="s2">&quot;s/www.jhpce.jhu.edu/jhpce-old.jhu.edu/g&quot;</span><span class="w"> </span><span class="o">{}</span><span class="w"> </span><span class="se">\;</span>
-find<span class="w"> </span>.<span class="w"> </span>-type<span class="w"> </span>f<span class="w"> </span>-name<span class="w"> </span><span class="se">\*</span>.md<span class="w"> </span>-exec<span class="w"> </span>grep<span class="w"> </span>-il<span class="w"> </span><span class="s2">&quot;jhpce-old.jhu.edu&quot;</span><span class="w"> </span><span class="o">{}</span><span class="w"> </span><span class="se">\;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>xargs<span class="w"> </span>git<span class="w"> </span>add
+find<span class="w"> </span>.<span class="w"> </span>-type<span class="w"> </span>f<span class="w"> </span>-name<span class="w"> </span><span class="se">\*</span>.md<span class="w"> </span>-exec<span class="w"> </span>grep<span class="w"> </span>-il<span class="w"> </span><span class="s2">"www.jhpce.jhu.edu"</span><span class="w"> </span><span class="o">{}</span><span class="w"> </span><span class="se">\;</span>
+find<span class="w"> </span>.<span class="w"> </span>-type<span class="w"> </span>f<span class="w"> </span>-name<span class="w"> </span><span class="se">\*</span>.md<span class="w"> </span>-exec<span class="w"> </span>sed<span class="w"> </span>-i<span class="w"> </span><span class="s1">''</span><span class="w"> </span><span class="s2">"s/www.jhpce.jhu.edu/jhpce-old.jhu.edu/g"</span><span class="w"> </span><span class="o">{}</span><span class="w"> </span><span class="se">\;</span>
+find<span class="w"> </span>.<span class="w"> </span>-type<span class="w"> </span>f<span class="w"> </span>-name<span class="w"> </span><span class="se">\*</span>.md<span class="w"> </span>-exec<span class="w"> </span>grep<span class="w"> </span>-il<span class="w"> </span><span class="s2">"jhpce-old.jhu.edu"</span><span class="w"> </span><span class="o">{}</span><span class="w"> </span><span class="se">\;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>xargs<span class="w"> </span>git<span class="w"> </span>add
 </code></pre></div>
 <h2 id="diagramming-with-mermaid">Diagramming with Mermaid<a class="headerlink" href="#diagramming-with-mermaid" title="Anchor link to this section for reference">&para;</a></h2>
 <p>mkdocs.yml contains code enabling the use of a JavaScript tool called Mermaid. If you want your local <code>mkdocs serve</code> program to be able to display it, you need to <code>pip install mkdocs-mermaid2-plugin</code> (see <a href="./#recipe-for-running-mkdocs-locally">recipe</a> at bottom of this page)</p>
@@ -6886,7 +6886,7 @@ https://squidfunk.github.io/mkdocs-material/reference/admonitions/#usage</p>
 </div>
 <div class="admonition example">
 <p class="admonition-title">Code block inside of an admonition</p>
-<div class="highlight"><span class="filename">Show my failed jobs between noon and now</span><pre><span></span><code>sacct<span class="w"> </span>-s<span class="w"> </span>F<span class="w"> </span>-o<span class="w"> </span><span class="s2">&quot;user,jobid,state,nodelist,start,end,exitcode&quot;</span><span class="w"> </span>-S<span class="w"> </span>noon<span class="w"> </span>-E<span class="w"> </span>now
+<div class="highlight"><span class="filename">Show my failed jobs between noon and now</span><pre><span></span><code>sacct<span class="w"> </span>-s<span class="w"> </span>F<span class="w"> </span>-o<span class="w"> </span><span class="s2">"user,jobid,state,nodelist,start,end,exitcode"</span><span class="w"> </span>-S<span class="w"> </span>noon<span class="w"> </span>-E<span class="w"> </span>now
 </code></pre></div>
 </div>
 <h2 id="details-vertically-collapsed-by-default-colored-blocks">Details (vertically collapsed-by-default colored blocks)<a class="headerlink" href="#details-vertically-collapsed-by-default-colored-blocks" title="Anchor link to this section for reference">&para;</a></h2>
@@ -6983,23 +6983,23 @@ tab characters though!!!)</p>
 <div class="highlight"><pre><span></span><code><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;iostream&gt;</span>
 
 <span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
-<span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;Hello World!&quot;</span><span class="p">;</span>
+<span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">"Hello World!"</span><span class="p">;</span>
 <span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
 <span class="p">}</span>
 </code></pre></div></p>
 </div>
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Hello, world!&#39;</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><code><span class="nb">print</span><span class="p">(</span><span class="s1">'Hello, world!'</span><span class="p">)</span>
 </code></pre></div>
 </div>
 <div class="tabbed-block">
 <p>Discussion about bash code
 <div class="highlight"><pre><span></span><code>usage<span class="o">()</span>
 <span class="o">{</span>
-<span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Usage: </span><span class="nv">$0</span><span class="s2"> [-h] &quot;</span>
-<span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Displays all defined QOS with nice formatting.&quot;</span>
-<span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Caution, this script may not show all fields relevant/used in future.&quot;</span>
-<span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;    -h     |--help        display usage&quot;</span>
+<span class="nb">echo</span><span class="w"> </span><span class="s2">"Usage: </span><span class="nv">$0</span><span class="s2"> [-h] "</span>
+<span class="nb">echo</span><span class="w"> </span><span class="s2">"Displays all defined QOS with nice formatting."</span>
+<span class="nb">echo</span><span class="w"> </span><span class="s2">"Caution, this script may not show all fields relevant/used in future."</span>
+<span class="nb">echo</span><span class="w"> </span><span class="s2">"    -h     |--help        display usage"</span>
 <span class="o">}</span>
 </code></pre></div></p>
 </div>
@@ -7027,7 +7027,7 @@ them. Example:</p>
 tags:
   - a-tag
 toc_depth: 2
-title: some docs need explicit titles set b/c they can&#39;t be correctly guessed from page content
+title: some docs need explicit titles set b/c they can't be correctly guessed from page content
 hide:
 - toc
 ---
@@ -7130,7 +7130,7 @@ Hmmm, if Jeffrey tries to use that syntax then the rest of the text in this docu
 <h2 id="open-urls-in-new-tabs">Open URLs in new tabs<a class="headerlink" href="#open-urls-in-new-tabs" title="Anchor link to this section for reference">&para;</a></h2>
 <p>(Adi has configured the server to always open URLs in new tabs.)</p>
 <p>JRT thinks there might be plugins which make this easier than what you have to do othwerwise, which is to use <abbr title="Hyper Text Markup Language">HTML</abbr> instead of the Markdown notation. In normal <abbr title="Hyper Text Markup Language">HTML</abbr> you add a space and a string to the end of the URL: <code>target="_blank"</code></p>
-<div class="highlight"><pre><span></span><code>&lt;a href=&quot;https://squidfunk.github.io/mkdocs-material/reference/admonitions/&quot; target=&quot;_blank&quot;&gt;About admonitions&lt;/a&gt;
+<div class="highlight"><pre><span></span><code>&lt;a href="https://squidfunk.github.io/mkdocs-material/reference/admonitions/" target="_blank"&gt;About admonitions&lt;/a&gt;
 </code></pre></div>
 <h2 id="footnotes">Footnotes<a class="headerlink" href="#footnotes" title="Anchor link to this section for reference">&para;</a></h2>
 <p>This<sup id="fnref:1"><a class="footnote-ref" href="#fn:1">1</a></sup> is a reference to the feature's description.</p>
@@ -7276,7 +7276,7 @@ using key symbols in a web page is handy.</p>
 <p>When Snippets is enabled, <abbr title="Hyper Text Markup Language">HTML</abbr> or Markdown content from other files (including source files) can be embedded by using the <code>--8&lt;--</code> (scissors) notation directly from within a code block to pull in a file via a relative path (starting inside of docs/, not relative to the document doing the including), in this case <code>ourtools/includes/sample-bashrc</code></p>
 <p>It can be extremely frustrating figuring out what path to use to make a snippet actually display. If you get it wrong in certain ways it will prevent the rebuilding of the whole site.</p>
 <p><div class="highlight"><span class="filename">sample bashrc</span><pre><span></span><code># System-wide .bashrc file for interactive bash(1) shells.
-if [ -z &quot;$PS1&quot; ]; then
+if [ -z "$PS1" ]; then
      return
 fi
 </code></pre></div>
@@ -7311,8 +7311,8 @@ git clone git@github.com:jhpce-jhu/jhpce_mkdocs
 cd jhpce_mkdocs/docs/
 
 # Edit in the docs/ subdirectory, not in sites/ (the latter is where
-# the web pages are built by an Action configured in the repo&#39;s
-# underlying configuration if your commit includes &#39;rebuild-site&#39;)
+# the web pages are built by an Action configured in the repo's
+# underlying configuration if your commit includes 'rebuild-site')
 cd docs/
 
 pip3 install mkdocs-material
@@ -7328,7 +7328,7 @@ pip3 install mkdocs_table_reader_plugin
 #
 mkdocs build
 mkdocs serve
-Several options are available for the &#39;serve&#39; subcommand, such as:
+Several options are available for the 'serve' subcommand, such as:
 mkdocs serve --dirty
 mkdocs serve --dirty -w &lt;dir_to_watch&gt; [-w &lt;2nd_dir_to_watch&gt;]
 
@@ -7337,7 +7337,7 @@ mkdir newsection
 # create a MarkDown document bob.md inside newsection/
 vi newsection/bob.md # or use whatever editor you prefer
 
-2026 - it used to be that the running &quot;mkdocs serve&quot; process would wait until you wrote out changes from your editor to disk. Now, for Jeffrey at least using MacDown, the slightest change to the file will lead to the serve process from regenerating the entire tree. So once he gets a gander at the existing or revised page, he control-Z&#39;s &quot;mkdocs serve&quot; until he is done with a bunch of edits.
+2026 - it used to be that the running "mkdocs serve" process would wait until you wrote out changes from your editor to disk. Now, for Jeffrey at least using MacDown, the slightest change to the file will lead to the serve process from regenerating the entire tree. So once he gets a gander at the existing or revised page, he control-Z's "mkdocs serve" until he is done with a bunch of edits.
 
 # Review your changed document in browser at `http://127.0.0.1:8000/`
 
@@ -7345,7 +7345,7 @@ vi newsection/bob.md # or use whatever editor you prefer
 # Add revised files and commit them
 #
 git add newsection/bob.md
-git -m &quot;rebuild-site My_descriptive_text&quot;
+git -m "rebuild-site My_descriptive_text"
 
 git push
 
@@ -7358,10 +7358,10 @@ git push
 <div class="highlight"><pre><span></span><code>INFO    -  DeprecationWarning: Call to deprecated method findAll. (Replaced by find_all) -- Deprecated since
            version 4.0.0.
              File
-           &quot;/Users/mmill116/Library/Python/3.9/lib/python/site-packages/mkdocs_extract_listings_plugin/html_parser.py&quot;,
+           "/Users/mmill116/Library/Python/3.9/lib/python/site-packages/mkdocs_extract_listings_plugin/html_parser.py",
            line 18, in parse_listings_from_html
-               for pre in soup.findAll(&#39;pre&#39;):
-             File &quot;/Users/mmill116/Library/Python/3.9/lib/python/site-packages/bs4/_deprecation.py&quot;, line 56,
+               for pre in soup.findAll('pre'):
+             File "/Users/mmill116/Library/Python/3.9/lib/python/site-packages/bs4/_deprecation.py", line 56,
            in alias
                warnings.warn(
 </code></pre></div>
@@ -7375,7 +7375,7 @@ The fix was to edit <code>..../Library/Python/3.9/lib/python/site-packages/mkdoc
 <span class="w">  </span><span class="nt">unrecognized_links</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">warn</span>
 </code></pre></div></p>
 <p>The <code>mkdocs serve</code> program will spew out a number of warnings and error messages as you change files. Most of them are important but a few of them are going to recur and are harmless. For example warnings about files in the docs/ tree which are not mentioned in the nav bar. Such files are only going to grow in number. Perhaps there is a way to exclude known cases?</p>
-<div class="highlight"><span class="filename">This error means you have an error in frontmatter YML code somewhere</span><pre><span></span><code>TypeError:<span class="w"> </span><span class="s1">&#39;&lt;&#39;</span><span class="w"> </span>not<span class="w"> </span>supported<span class="w"> </span>between<span class="w"> </span>instances<span class="w"> </span>of<span class="w"> </span><span class="s1">&#39;NoneType&#39;</span><span class="w"> </span>and<span class="w"> </span><span class="s1">&#39;str&#39;</span>
+<div class="highlight"><span class="filename">This error means you have an error in frontmatter YML code somewhere</span><pre><span></span><code>TypeError:<span class="w"> </span><span class="s1">'&lt;'</span><span class="w"> </span>not<span class="w"> </span>supported<span class="w"> </span>between<span class="w"> </span>instances<span class="w"> </span>of<span class="w"> </span><span class="s1">'NoneType'</span><span class="w"> </span>and<span class="w"> </span><span class="s1">'str'</span>
 ERROR<span class="w">   </span>-<span class="w">  </span><span class="o">[</span><span class="m">14</span>:46:28<span class="o">]</span><span class="w"> </span>An<span class="w"> </span>error<span class="w"> </span>happened<span class="w"> </span>during<span class="w"> </span>the<span class="w"> </span>rebuild.<span class="w"> </span>The<span class="w"> </span>server<span class="w"> </span>will<span class="w"> </span>appear
 <span class="w">           </span>stuck<span class="w"> </span><span class="k">until</span><span class="w"> </span>build<span class="w"> </span>errors<span class="w"> </span>are<span class="w"> </span>resolved.
 </code></pre></div>

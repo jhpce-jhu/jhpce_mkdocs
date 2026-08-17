@@ -6091,7 +6091,7 @@ prints what was passed to it.)</p>
 <div class="highlight"><pre><span></span><code>%<span class="w"> </span>date
 Fri<span class="w"> </span>Dec<span class="w"> </span><span class="m">26</span><span class="w"> </span><span class="m">19</span>:28:49<span class="w"> </span>EST<span class="w"> </span><span class="m">2025</span>
 
-%<span class="w"> </span>date<span class="w"> </span><span class="p">|</span><span class="w"> </span>sed<span class="w"> </span>-e<span class="w"> </span><span class="s1">&#39;s/Fri/Friday/&#39;</span>
+%<span class="w"> </span>date<span class="w"> </span><span class="p">|</span><span class="w"> </span>sed<span class="w"> </span>-e<span class="w"> </span><span class="s1">'s/Fri/Friday/'</span>
 Friday<span class="w"> </span>Dec<span class="w"> </span><span class="m">26</span><span class="w"> </span><span class="m">19</span>:29:32<span class="w"> </span>EST<span class="w"> </span><span class="m">2025</span>
 </code></pre></div>
 </div>
@@ -6139,14 +6139,14 @@ third programs then fail to do what you expect.</p>
 <div class="highlight"><pre><span></span><code>%<span class="w"> </span>date
 Fri<span class="w"> </span>Dec<span class="w"> </span><span class="m">26</span><span class="w"> </span><span class="m">19</span>:28:49<span class="w"> </span>EST<span class="w"> </span><span class="m">2025</span>
 
-%<span class="w"> </span>date<span class="w"> </span><span class="p">|</span><span class="w"> </span>sed<span class="w"> </span>-e<span class="w"> </span><span class="s1">&#39;s/2025/2032/&#39;</span><span class="w"> </span>-e<span class="w"> </span><span class="s1">&#39;s/Fri/Freakday/&#39;</span>
+%<span class="w"> </span>date<span class="w"> </span><span class="p">|</span><span class="w"> </span>sed<span class="w"> </span>-e<span class="w"> </span><span class="s1">'s/2025/2032/'</span><span class="w"> </span>-e<span class="w"> </span><span class="s1">'s/Fri/Freakday/'</span>
 Freakday<span class="w"> </span>Dec<span class="w"> </span><span class="m">26</span><span class="w"> </span><span class="m">19</span>:37:23<span class="w"> </span>EST<span class="w"> </span><span class="m">2032</span>
 </code></pre></div>
 <div class="admonition example">
 <p class="admonition-title">Change multiple occurences per line, case-insensitive</p>
 <p>Each program is executed once, so only the first occurence of a match in a
 line is replaced, unless you add a 'g' after the third delimiter character.
-<div class="highlight"><pre><span></span><code>%<span class="w"> </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Bob susan franky-frank bobby&quot;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>sed<span class="w"> </span>-e<span class="w"> </span><span class="s1">&#39;s/bob/paper/gi&#39;</span>
+<div class="highlight"><pre><span></span><code>%<span class="w"> </span><span class="nb">echo</span><span class="w"> </span><span class="s2">"Bob susan franky-frank bobby"</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>sed<span class="w"> </span>-e<span class="w"> </span><span class="s1">'s/bob/paper/gi'</span>
 paper<span class="w"> </span>susan<span class="w"> </span>franky-frank<span class="w"> </span>paperby
 </code></pre></div></p>
 </div>
@@ -6154,7 +6154,7 @@ paper<span class="w"> </span>susan<span class="w"> </span>franky-frank<span clas
 <!-- ------------------------------------------------------------------------->
 <details class="example">
 <summary>Chg a pattern inline in a file while making a backup with suffix '.bak'</summary>
-<p><div class="highlight"><pre><span></span><code>%<span class="w"> </span>sed<span class="w"> </span>-i.bak<span class="w"> </span><span class="s1">&#39;s/LogDenied/LogApproved/&#39;</span><span class="w"> </span>filename
+<p><div class="highlight"><pre><span></span><code>%<span class="w"> </span>sed<span class="w"> </span>-i.bak<span class="w"> </span><span class="s1">'s/LogDenied/LogApproved/'</span><span class="w"> </span>filename
 </code></pre></div>
 The result will be two files: <code>filename.bak</code> which contains the original
 contents, and <code>filename</code>, which contains either the original contents or
@@ -6191,7 +6191,7 @@ In JADE, each community's partitions' names begin with their community letter an
 <details class="example">
 <summary>Replace <code>/cms01/data/55548/</code> with <code>/data/cms/c55548/cui/</code></summary>
 <p><mark class="critic">Those strings contain forward slashes, so we change our sed program delimiter character to “(“.</mark>
-<div class="highlight"><pre><span></span><code>sed<span class="w"> </span>-i.bak<span class="w"> </span><span class="s1">&#39;s(/cms01/data/55548/(/data/cms/c55548/cui/(g&#39;</span><span class="w"> </span>sample.sh
+<div class="highlight"><pre><span></span><code>sed<span class="w"> </span>-i.bak<span class="w"> </span><span class="s1">'s(/cms01/data/55548/(/data/cms/c55548/cui/(g'</span><span class="w"> </span>sample.sh
 </code></pre></div>
 The original file is found as: <code>sample.sh.bak</code></p>
 <p>The modified resulting file (named <code>sample.sh</code>) contains:</p>
@@ -6219,14 +6219,14 @@ then you always need to include their username, e.g. <code>~that-bob-guy</code><
 <div class="admonition example">
 <p class="admonition-title">Use the full path</p>
 </div>
-<p><div class="highlight"><pre><span></span><code><span class="w">    </span>sed<span class="w"> </span>-i.bak2<span class="w"> </span><span class="s1">&#39;s(/users/55548/c-jxu123-55548(/users/cms/c55548/c-jxu123-55548(g&#39;</span><span class="w"> </span>sample.sh
+<p><div class="highlight"><pre><span></span><code><span class="w">    </span>sed<span class="w"> </span>-i.bak2<span class="w"> </span><span class="s1">'s(/users/55548/c-jxu123-55548(/users/cms/c55548/c-jxu123-55548(g'</span><span class="w"> </span>sample.sh
 </code></pre></div>
 The resulting <code>sample.sh</code> would contain <br>
      <code>/users/cms/c55548/c-jxu123-55548/bin/myscript ${i}.sas7bdat</code></p>
 <div class="admonition example">
 <p class="admonition-title">Use a tilde</p>
 </div>
-<p><div class="highlight"><pre><span></span><code><span class="w">    </span>sed<span class="w"> </span>-i.bak2<span class="w"> </span><span class="s1">&#39;s(/users/55548/c-jxu123-55548(~(g&#39;</span><span class="w"> </span>sample.sh
+<p><div class="highlight"><pre><span></span><code><span class="w">    </span>sed<span class="w"> </span>-i.bak2<span class="w"> </span><span class="s1">'s(/users/55548/c-jxu123-55548(~(g'</span><span class="w"> </span>sample.sh
 </code></pre></div>
 The resulting <code>sample.sh</code> would contain <br>
      <code>~/bin/myscript ${i}.sas7bdat</code></p>
@@ -6234,7 +6234,7 @@ The resulting <code>sample.sh</code> would contain <br>
 <!-- ------------------------------------------------------------------------->
 <details class="example">
 <summary>Correct the partition name to be <code>c-sas</code></summary>
-<p><div class="highlight"><pre><span></span><code>sed<span class="w"> </span>-i.bak3<span class="s1">&#39;s(--partition=sas(--partition=c-sas(&#39;</span><span class="w"> </span>sample.sh
+<p><div class="highlight"><pre><span></span><code>sed<span class="w"> </span>-i.bak3<span class="s1">'s(--partition=sas(--partition=c-sas('</span><span class="w"> </span>sample.sh
 </code></pre></div>
 <mark class="critic">We always recommend your making backups of files you modify with sed, but
 you'll need to be conscious of what you're doing so you can go back to the
@@ -6280,7 +6280,7 @@ directory in which you execute your <code>for</code> loop command.</p>
 ./myproj/sample15/mouse.sh
 </code></pre></div>
 Send the file names to <code>sed</code>:
-<div class="highlight"><pre><span></span><code>%<span class="w"> </span><span class="k">for</span><span class="w"> </span>i<span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="sb">`</span>cat<span class="w"> </span>myinput.txt<span class="sb">`</span><span class="w"> </span><span class="p">;</span><span class="w"> </span><span class="k">do</span><span class="w"> </span><span class="nb">echo</span><span class="w"> </span><span class="nv">$i</span><span class="w"> </span><span class="p">;</span><span class="w"> </span>sed<span class="w"> </span>-i.orig<span class="w"> </span><span class="s1">&#39;s/pat1/pat2/gi&#39;</span><span class="w"> </span><span class="si">${</span><span class="nv">i</span><span class="si">}</span><span class="p">;</span><span class="k">done</span>
+<div class="highlight"><pre><span></span><code>%<span class="w"> </span><span class="k">for</span><span class="w"> </span>i<span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="sb">`</span>cat<span class="w"> </span>myinput.txt<span class="sb">`</span><span class="w"> </span><span class="p">;</span><span class="w"> </span><span class="k">do</span><span class="w"> </span><span class="nb">echo</span><span class="w"> </span><span class="nv">$i</span><span class="w"> </span><span class="p">;</span><span class="w"> </span>sed<span class="w"> </span>-i.orig<span class="w"> </span><span class="s1">'s/pat1/pat2/gi'</span><span class="w"> </span><span class="si">${</span><span class="nv">i</span><span class="si">}</span><span class="p">;</span><span class="k">done</span>
 </code></pre></div></p>
 </details>
 <p>You can also use other commands to create a list of files in a file,
@@ -6290,7 +6290,7 @@ verify for yourself that you're listing only the right type of files.</p>
 <summary>How to do that</summary>
 <div class="highlight"><pre><span></span><code>ls<span class="w"> </span>-1<span class="w"> </span>*/script*<span class="w"> </span>journey/*.scr<span class="w"> </span>&gt;<span class="w"> </span>myinput.txt
 nano<span class="w"> </span>myinput.txt
-%<span class="w"> </span><span class="k">for</span><span class="w"> </span>i<span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="sb">`</span>cat<span class="w"> </span>myinput.txt<span class="sb">`</span><span class="w"> </span><span class="p">;</span><span class="w"> </span><span class="k">do</span><span class="w"> </span><span class="nb">echo</span><span class="w"> </span><span class="nv">$i</span><span class="w"> </span><span class="p">;</span><span class="w"> </span>sed<span class="w"> </span>-i.orig<span class="w"> </span><span class="s1">&#39;s/pat1/pat2/gi&#39;</span><span class="w"> </span><span class="si">${</span><span class="nv">i</span><span class="si">}</span><span class="p">;</span><span class="k">done</span>
+%<span class="w"> </span><span class="k">for</span><span class="w"> </span>i<span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="sb">`</span>cat<span class="w"> </span>myinput.txt<span class="sb">`</span><span class="w"> </span><span class="p">;</span><span class="w"> </span><span class="k">do</span><span class="w"> </span><span class="nb">echo</span><span class="w"> </span><span class="nv">$i</span><span class="w"> </span><span class="p">;</span><span class="w"> </span>sed<span class="w"> </span>-i.orig<span class="w"> </span><span class="s1">'s/pat1/pat2/gi'</span><span class="w"> </span><span class="si">${</span><span class="nv">i</span><span class="si">}</span><span class="p">;</span><span class="k">done</span>
 </code></pre></div>
 </details>
 <h3 id="using-the-find-command">Using the find command<a class="headerlink" href="#using-the-find-command" title="Anchor link to this section for reference">&para;</a></h3>

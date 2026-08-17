@@ -5954,7 +5954,7 @@ Currently Loaded Modules:
 <li>
 <p>Write your matlab source in a file with .m extension (e.g. matlab_example.m)
 <div class="highlight"><pre><span></span><code>x = [1 2 3 4];
-fprintf(&#39;Example number = %i\n&#39;, x)
+fprintf('Example number = %i\n', x)
 </code></pre></div></p>
 </li>
 <li>
@@ -5968,7 +5968,7 @@ fprintf(&#39;Example number = %i\n&#39;, x)
 #SBATCH -e slurm.%N.%J.%u.err   # STDERR
 
 module load matlab
-matlab -nojvm -nodisplay -r &quot;matlab_example;quit;&quot;
+matlab -nojvm -nodisplay -r "matlab_example;quit;"
 </code></pre></div></p>
 </li>
 <li>

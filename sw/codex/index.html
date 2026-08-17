@@ -6048,7 +6048,7 @@
 <h2 id="2-submit-the-program-as-a-slurm-job">2. Submit the Program as a Slurm Job<a class="headerlink" href="#2-submit-the-program-as-a-slurm-job" title="Anchor link to this section for reference">&para;</a></h2>
 <p><strong>User Prompt:</strong> “please run count.py as a slurm job on the cluster.”<br />
 <strong>Codex Response:</strong> After confirming permission to run <code>sbatch</code>, Codex submitted:</p>
-<div class="highlight"><pre><span></span><code>sbatch<span class="w"> </span>--wrap<span class="w"> </span><span class="s2">&quot;python /users/user1/count.py&quot;</span>
+<div class="highlight"><pre><span></span><code>sbatch<span class="w"> </span>--wrap<span class="w"> </span><span class="s2">"python /users/user1/count.py"</span>
 </code></pre></div>
 <p><em>Output:</em> <code>Submitted batch job 29465151</code><br />
 <em>Explanation:</em> The <code>--wrap</code> flag lets us wrap a short command line without writing a separate Slurm script.</p>

@@ -6243,13 +6243,13 @@ sacctmgr show user withassoc where name=$USER
 sacctmgr show qos
 
 # See our currently defined QOS in a readable format
-# (*we put this in the script &quot;showqos&quot;)
+# (*we put this in the script "showqos")
 sacctmgr show qos format=Name%20,Priority,Flags%30,MaxWall,MaxTRESPU%20,MaxJobsPU,MaxSubmitPU,MaxTRESPA%25
 
 # See all users database values
 sacctmgr show user withassoc  | less
 
-# See a particular user&#39;s database values
+# See a particular user's database values
 sacctmgr show user withassoc where name=jsmith
 </code></pre></div>
 <h2 id="sacctmgr-for-systems-administrators"><strong>Sacctmgr for Systems Administrators</strong><a class="headerlink" href="#sacctmgr-for-systems-administrators" title="Anchor link to this section for reference">&para;</a></h2>
@@ -6276,15 +6276,15 @@ So a small number of users can have multiple associations.</p>
 <p>Our users have no limits on them, at the user account level, other than a 10,000 job limit. The typical account has a default QOS named "normal". If you run <code>showqos</code> you will see that "normal" doesn't have any restrictions other than the 10k job limit. Therefore users entitled to run jobs in their private per-research group partitions are not limited in how many of their nodes' resources they can consume. (Users found running jobs on partitions they are not entitled to use will have their jobs killed and have to acknowledge that they understand that they need to use public partitions.)</p>
 <p>For public partitions like "shared" and "interactive", the slurm config file <code>/etc/slurm/partitions.conf</code> specifies a default partition QOS of, for example, "shared-default". We use that to control how many CPUs and how much RAM each user can use in public partitions. We can change that setting for everyone as the cluster's resources shrink or grow by changing the appropriate single QOS.</p>
 <p>When changing qos, use the '=' operator when intending to explicitly set the qos to what you specify.  In most cases you will want to instead use the '+=' or '-=' operators to either add to, or remove from, the existing qos already in place.</p>
-<div class="highlight"><pre><span></span><code># Add a QOS to a user&#39;s existing allowed QOS:
+<div class="highlight"><pre><span></span><code># Add a QOS to a user's existing allowed QOS:
 sacctmgr -i mod user mmill116 set qos+=high-priority
 # or, you can redefine their whole list
 sacctmgr mod user where name=tunison set qos=normal,shared-200-2
 
-# Remove a QOS from a user&#39;s existing allowed QOS:
+# Remove a QOS from a user's existing allowed QOS:
 sacctmgr -i mod user where name=tunison set qos-=shared-200-2 # to remove
 
-# Limit a user&#39;s ability to run and submit jobs
+# Limit a user's ability to run and submit jobs
 sacctmgr -i mod user where name=tunison set MaxJobs=100,MaxSubmit=200
 
 # An example of defining a QOS, then applying it to one user for each of three partitions:
@@ -6303,7 +6303,7 @@ sacctmgr list assoc format=user,partition,qos where qos=shared-400-4
 <p>Here are tips about looking into the database for "non-standard" users.</p>
 <div class="highlight"><pre><span></span><code># WHO HAS EXTRA ASSOCIATIONS
 
-sacctmgr show user withassoc|grep -v &quot; normal &quot;
+sacctmgr show user withassoc|grep -v " normal "
 
 produces a sixteen column wide display. NOTE: (**The space
 character on either side of the word normal is critical.**)
@@ -6333,7 +6333,7 @@ $16 defaultqos
 # header lines printed do not make sense.
 # The printf args need field width specifications to better
 # align column entries
-# sacctmgr show user withassoc|grep -v &quot;normal &quot;|awk &#39;{printf &quot;%s\t\t%s\t%s\t\n&quot;, $1,$6,$15}&#39;
+# sacctmgr show user withassoc|grep -v "normal "|awk '{printf "%s\t\t%s\t%s\t\n", $1,$6,$15}'
 </code></pre></div>
 <h3 id="managing-qos"><strong>Managing QOS</strong><a class="headerlink" href="#managing-qos" title="Anchor link to this section for reference">&para;</a></h3>
 <p><mark class="critic">To delete a parameter from a QOS, set it to the value -1</mark></p>
@@ -6352,7 +6352,7 @@ Therefore every QOS needs <code>MaxSubmitJobsPU=10000</code></mark></p>
 <p>Note that one <em>can</em> use the fact that all users are in the same account to limit the total number of users in the cluster who can do some things, like submit jobs, or whatever the parameter category is. But take care to consider whether you are limiting what everyone can do, in aggregate, not individually.</p>
 </div>
 <div class="highlight"><pre><span></span><code># Define a QOS which will limit a user to 25 running jobs with a max of 25 more pending
-# This QOS won&#39;t change any behavior until it is added to a partition or association etc
+# This QOS won't change any behavior until it is added to a partition or association etc
 # JADE: Always start a QOS name with the letter of the community it is to apply to.
 sacctmgr -i add qos job-25run50sub
 
@@ -6370,7 +6370,7 @@ sacctmgr -i modify qos job-25run50sub set MaxJobsPerUser=25 MaxSubmitJobsPerUser
 # Remove one of those parameters
 sacctmgr modify qos job-25run50sub set MaxJobsPerUser=-1
 
-# Delete the QOS (they can&#39;t be renamed!!)
+# Delete the QOS (they can't be renamed!!)
 sacctmgr -i delete qos job-25run50sub
 
 # Limit the amount of a Trackable RESource
@@ -6454,7 +6454,7 @@ sacctmgr list transactions Users=simmons
 
 # Which users were created in January 2025?
 # Here is the version that will produce one user per line
-sacctmgr list transactions Action=&quot;Add Users&quot; Start=2025-01-01 End=2025-01-31 format=Where,Time%10
+sacctmgr list transactions Action="Add Users" Start=2025-01-01 End=2025-01-31 format=Where,Time%10
 </code></pre></div>
 <h3 id="miscellaneous">Miscellaneous<a class="headerlink" href="#miscellaneous" title="Anchor link to this section for reference">&para;</a></h3>
 <div class="highlight"><pre><span></span><code># View the slurmdbd configuration in force

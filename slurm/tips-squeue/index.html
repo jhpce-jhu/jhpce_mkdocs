@@ -6296,7 +6296,7 @@ This document started as a copy of that for the sacct command. Because formattin
 <p class="admonition-title">Example</p>
 <p>```squeue -S u,-t,p -o "%.6P %.8j %.20u %.2t %.10M %.12l %.4D %.4C %.5m %R"
 <div class="highlight"><pre><span></span><code>A bash shell routine you can add to your .bashrc:
-```marksq() { (squeue -O JobArrayID:10&quot; &quot;,username:8&quot; &quot;,partition:7&quot; &quot;,name:10&quot; &quot;,statecompact:3,reason:12&quot; &quot;,reservation,,PendingTime:7&quot; &quot;,tres:20|sed &#39;s/,no.*//&#39; | sed &#39;s/TRES_ALLOC[ ]*$/TRES_ALLOC/&#39;) }
+```marksq() { (squeue -O JobArrayID:10" ",username:8" ",partition:7" ",name:10" ",statecompact:3,reason:12" ",reservation,,PendingTime:7" ",tres:20|sed 's/,no.*//' | sed 's/TRES_ALLOC[ ]*$/TRES_ALLOC/') }
 </code></pre></div></p>
 </div>
 <p>sacct will show all submitted jobs but cannot, of course, provide data for a number of fields until the job has finished. Use the <a href="https://slurm.schedmd.com/archive/slurm-22.05.9/sstat.html">sstat</a> command to get information about running programs. "Instrumenting" your jobs to gather information about them can include adding one or more sstat commands to batch jobs in multiple places.</p>
@@ -6392,10 +6392,10 @@ That database needs to be modified constantly as jobs start and complete, so we 
 <li>%M - minute as decimal, 00 to 59</li>
 <li>%T - time in 24-hour notation (%H:%M:%S)</li>
 </ul>
-<p><div class="highlight"><span class="filename">Day of week MM-DD HH:MM</span><pre><span></span><code><span class="nb">export</span><span class="w"> </span><span class="nv">SLURM_TIME_FORMAT</span><span class="o">=</span><span class="s2">&quot;%a %m-%d %H:%M&quot;</span><span class="w"> </span>
+<p><div class="highlight"><span class="filename">Day of week MM-DD HH:MM</span><pre><span></span><code><span class="nb">export</span><span class="w"> </span><span class="nv">SLURM_TIME_FORMAT</span><span class="o">=</span><span class="s2">"%a %m-%d %H:%M"</span><span class="w"> </span>
 </code></pre></div>
 The start and end field widths show below are suitable for the time format shown above.</p>
-<div class="highlight"><span class="filename">Resources requested, used</span><pre><span></span><code><span class="nb">export</span><span class="w"> </span><span class="nv">SACCT_FORMAT</span><span class="o">=</span><span class="s2">&quot;user,jobid,jobname,nodelist%12,start%-20,end%-20,state%20,reqtres%40,TRESUsageInTot%200&quot;</span>
+<div class="highlight"><span class="filename">Resources requested, used</span><pre><span></span><code><span class="nb">export</span><span class="w"> </span><span class="nv">SACCT_FORMAT</span><span class="o">=</span><span class="s2">"user,jobid,jobname,nodelist%12,start%-20,end%-20,state%20,reqtres%40,TRESUsageInTot%200"</span>
 </code></pre></div>
 <h2 id="output-fields-of-interest">Output Fields of Interest<a class="headerlink" href="#output-fields-of-interest" title="Anchor link to this section for reference">&para;</a></h2>
 <p>These fields are probably the ones you'll want. See <a href="https://slurm.schedmd.com/archive/slurm-22.05.9/sacct.html#lbAF">this section</a> of the manual page for the list and their meaning. Capitalization does not matter; it is used for readability.</p>

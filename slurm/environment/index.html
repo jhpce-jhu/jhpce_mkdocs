@@ -6059,7 +6059,7 @@
 <h3 id="using-variables-to-set-slurm-job-name-and-output-files">Using variables to set SLURM job name and output files<a class="headerlink" href="#using-variables-to-set-slurm-job-name-and-output-files" title="Anchor link to this section for reference">&para;</a></h3>
 <p><strong>SLURM does not support using variables in the #SBATCH lines within a job script.</strong> However, values passed from the command line have precedence over values defined in the job script. So the job name and output/error files can be passed on the sbatch command line:</p>
 <div class="highlight"><pre><span></span><code>A=70
-b=&#39;trial-24&#39;
+b='trial-24'
 
 sbatch --job-name=${A}.${b}.run --output=${A}.${b}.out --export=D=${A},f=${b} script.sh
 </code></pre></div>

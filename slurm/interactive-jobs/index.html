@@ -5957,10 +5957,10 @@
 </dl>
 <p>You can define aliases and bash routines in your <code>.bashrc</code> file for commands you use frequently.  Bash functions can be useful for commands that are difficult to specify in simple shell aliases. You can view the definition of aliases with <code>alias</code> and bash routines with the command <code>declare -f function_name</code>.   Changes to your <code>.bashrc</code> file aren't available to your currently running shell unless you log out and back in again, launch a new shell on top of the old one, or simply have your current shell re-read the file ("source it") with <code>. .bashrc</code> The following routines can be copied to your buffer by hovering your mouse over the right-hand side and clicking on the copy icon which appears (faintly).</p>
 <p><strong>jsrun</strong> - JHPCE srun with X11 support:
-<div class="highlight"><pre><span></span><code>jsrun() { if [ -z ${DISPLAY} ]; then /usr/bin/srun --pty &quot;$@&quot; bash; else /usr/bin/srun --pty --x11 &quot;$@&quot; bash; fi }
+<div class="highlight"><pre><span></span><code>jsrun() { if [ -z ${DISPLAY} ]; then /usr/bin/srun --pty "$@" bash; else /usr/bin/srun --pty --x11 "$@" bash; fi }
 </code></pre></div></p>
 <p><strong>jxrun</strong> - JHPCE srun when you want to skip X11 entirely:</p>
-<div class="highlight"><pre><span></span><code>jxrun() { /usr/bin/srun --pty &quot;$@&quot; bash; }
+<div class="highlight"><pre><span></span><code>jxrun() { /usr/bin/srun --pty "$@" bash; }
 </code></pre></div>
 <p>Caution: If your DISPLAY var is set on the login node and you use <code>jxrun</code>, it will be set on the compute node but X11 apps won't work.</p>
 <p>These bash routine examples include <code>$@</code> symbols, which are replaced by any additional arguments you provide. The srun command requires bash or another program to come last, which is one of the reasons why a simple shell alias can't be used. You have to create either a shell script or a routine.</p>

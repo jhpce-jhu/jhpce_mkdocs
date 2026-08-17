@@ -6839,12 +6839,12 @@ R CMD BATCH myprog.R
 <span class="c1">## 1. Submit Stage 1</span>
 <span class="c1"># Capture the Job ID of the first step</span>
 <span class="nv">JOB_ID_1</span><span class="o">=</span><span class="k">$(</span>sbatch<span class="w"> </span>--parsable<span class="w"> </span>stage1.sh<span class="k">)</span>
-<span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Submitted Stage 1: Job ID </span><span class="nv">$JOB_ID_1</span><span class="s2">&quot;</span>
+<span class="nb">echo</span><span class="w"> </span><span class="s2">"Submitted Stage 1: Job ID </span><span class="nv">$JOB_ID_1</span><span class="s2">"</span>
 
 <span class="c1">## 2. Submit Stage 2 (Depends on Stage 1 completing successfully)</span>
 <span class="c1"># --dependency=afterok:JOBID ensures stage 2 only runs if stage 1 exits with code 0</span>
 <span class="nv">JOB_ID_2</span><span class="o">=</span><span class="k">$(</span>sbatch<span class="w"> </span>--parsable<span class="w"> </span>--dependency<span class="o">=</span>afterok:<span class="nv">$JOB_ID_1</span><span class="w"> </span>stage2.sh<span class="k">)</span>
-<span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Submitted Stage 2: Job ID </span><span class="nv">$JOB_ID_2</span><span class="s2">&quot;</span>
+<span class="nb">echo</span><span class="w"> </span><span class="s2">"Submitted Stage 2: Job ID </span><span class="nv">$JOB_ID_2</span><span class="s2">"</span>
 
 <span class="c1">## 3. Submit Stage 3 (Parallel Fan-out)</span>
 <span class="c1"># You can launch multiple jobs that all depend on the same previous step</span>
@@ -6856,7 +6856,7 @@ R CMD BATCH myprog.R
 <span class="c1"># --dependency=afterany:JOBID runs after the job terminates (success or failure)</span>
 sbatch<span class="w"> </span>--dependency<span class="o">=</span>afterany:<span class="nv">$JOB_ID_2</span><span class="w"> </span>cleanup.sh
 
-<span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;All subordinate jobs have been submitted to the queue.&quot;</span>
+<span class="nb">echo</span><span class="w"> </span><span class="s2">"All subordinate jobs have been submitted to the queue."</span>
 </code></pre></div>
 </details>
 <p>See <a href="https://slurm.schedmd.com/archive/slurm-22.05.9/sbatch.html#OPT_dependency">this part</a> of the sbatch manual page.</p>
@@ -6909,24 +6909,24 @@ sbatch<span class="w"> </span>--dependency<span class="o">=</span>afterany:<span
 date
 <span class="nb">cd</span><span class="w"> </span>/dcs04/sample/path/
 
-<span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;I am running on compute node:&quot;</span>
+<span class="nb">echo</span><span class="w"> </span><span class="s2">"I am running on compute node:"</span>
 hostname
 
-<span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;In directory:&quot;</span>
+<span class="nb">echo</span><span class="w"> </span><span class="s2">"In directory:"</span>
 <span class="nb">pwd</span>
 
-<span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;The files found in this directory are:&quot;</span>
+<span class="nb">echo</span><span class="w"> </span><span class="s2">"The files found in this directory are:"</span>
 /bin/ls
 
 <span class="c1"># args are meant to try to prevent files from being deleted in destination</span>
-<span class="nv">rsyncargs</span><span class="o">=</span><span class="s2">&quot;-h --progress --sparse --numeric-ids --one-file-system --stats --ignore-existing --max-delete=0&quot;</span>
+<span class="nv">rsyncargs</span><span class="o">=</span><span class="s2">"-h --progress --sparse --numeric-ids --one-file-system --stats --ignore-existing --max-delete=0"</span>
 
-<span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;about to try to rsync&quot;</span>
+<span class="nb">echo</span><span class="w"> </span><span class="s2">"about to try to rsync"</span>
 
 rsync<span class="w"> </span>-a<span class="w"> </span><span class="nv">$rsyncargs</span><span class="w"> </span>directory-to-be-copied<span class="w"> </span>/dcs05/destination/path/
 
 date
-<span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;done&quot;</span>
+<span class="nb">echo</span><span class="w"> </span><span class="s2">"done"</span>
 </code></pre></div>
 </details>
 <h3 id="copying-data-intoout-of-cluster"><strong>Copying data into/out of cluster</strong><a class="headerlink" href="#copying-data-intoout-of-cluster" title="Anchor link to this section for reference">&para;</a></h3>
@@ -6939,7 +6939,7 @@ date
 #
 # JPHCE - dispatch-to-everynode - Dispatch a job to each node which is responding
 #
-#       FAILS TO WORK IF YOU DON&#39;T SPECIFY A BUNCH OF PARTITIONS
+#       FAILS TO WORK IF YOU DON'T SPECIFY A BUNCH OF PARTITIONS
 #       BECAUSE SHARED IS USED. Following worked at this time
 #       #SBATCH --partition=shared,cee,transfer,sysadmin,sas,gpu,bstgpu,neuron
 #
@@ -6955,19 +6955,19 @@ date
 
 usage()
 {
-echo &quot;Usage: $0 [directives..] batchfile &quot;
-echo &quot;Usage:   Specify at least a job file&quot;
-echo &quot;Usage:   Good idea to include in your batch file --output=/dev/null&quot;
+echo "Usage: $0 [directives..] batchfile "
+echo "Usage:   Specify at least a job file"
+echo "Usage:   Good idea to include in your batch file --output=/dev/null"
 exit 1
 }
 
 if [ $# -lt 1 ]; then
         usage
 else
-        for i in `sinfo -N -r | awk &#39;{print $1}&#39; | sort -u | grep -v NODELIST`
+        for i in `sinfo -N -r | awk '{print $1}' | sort -u | grep -v NODELIST`
         do
                 echo $i
-                sbatch --nodelist=${i} &quot;$@&quot;
+                sbatch --nodelist=${i} "$@"
         done
 fi
 </code></pre></div>

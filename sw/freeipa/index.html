@@ -6191,7 +6191,7 @@ Options:
 <summary>Finding all group-management delegations (click to open)</summary>
 <p>We have provided a script named <code>find-group-managers</code>
 Here is a raw command example. Shown is one stanza, in which the managed group is "cphit" and the single group manager is "trichard":
-<div class="highlight"><pre><span></span><code>jhpce03 ~% ldapsearch -LLL -Y GSSAPI -b cn=users,cn=accounts,dc=cm,dc=cluster &quot;(&amp;(objectClass=person)(nsAccountLock=TRUE)(uid=c-*-*))&quot; uid cn email|less
+<div class="highlight"><pre><span></span><code>jhpce03 ~% ldapsearch -LLL -Y GSSAPI -b cn=users,cn=accounts,dc=cm,dc=cluster "(&amp;(objectClass=person)(nsAccountLock=TRUE)(uid=c-*-*))" uid cn email|less
 dn: cn=cphit,cn=groups,cn=accounts,dc=cm,dc=cluster
 cn: cphit
 memberManager: uid=trichard,cn=users,cn=accounts,dc=cm,dc=cluster
@@ -6214,25 +6214,25 @@ memberManager: uid=trichard,cn=users,cn=accounts,dc=cm,dc=cluster
 Number of entries returned 1
 ----------------------------
 
-jhpce03:~% ipa group-mod cphit --desc=&quot;Tom Richard alloc gateway group&quot;
+jhpce03:~% ipa group-mod cphit --desc="Tom Richard alloc gateway group"
 ----------------------
-Modified group &quot;cphit&quot;
+Modified group "cphit"
 ----------------------
   Group name: cphit
   Description: Tom Richard alloc gateway group
   GID: 4281
   Member users: trichard, anishimu, xding
 
-jhpce03:~% ipa group-add cphit_acgclustering --desc=&quot;Tom Richard alloc secondary group&quot;
+jhpce03:~% ipa group-add cphit_acgclustering --desc="Tom Richard alloc secondary group"
 ---------------------------------
-Added group &quot;cphit_acgclustering&quot;
+Added group "cphit_acgclustering"
 ---------------------------------
   Group name: cphit_acgclustering
   Description: Tom Richard secondary group
   GID: 1295400066
 
 jhpce03:~% ipa group-add-member cphit_acgclustering --users={trichard, anishimu, xding}
-ipa: ERROR: command &#39;group_add_member&#39; takes at most 1 argument
+ipa: ERROR: command 'group_add_member' takes at most 1 argument
 
 jhpce03:~% ipa group-add-member cphit_acgclustering --users={trichard,anishimu,xding}
   Group name: cphit_acgclustering

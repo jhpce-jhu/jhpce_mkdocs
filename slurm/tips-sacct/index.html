@@ -6310,7 +6310,7 @@ cpu=05:37:55,energy=0,fs/disk=61134262687,mem=90568K,pages=401,vmem=59660328K
 </details>
 <div class="admonition example">
 <p class="admonition-title">Example</p>
-<div class="highlight"><span class="filename">Show my failed jobs between noon and now</span><pre><span></span><code>sacct<span class="w"> </span>-s<span class="w"> </span>F<span class="w"> </span>-o<span class="w"> </span><span class="s2">&quot;user,jobid,state,nodelist,start,end,exitcode&quot;</span><span class="w"> </span>-S<span class="w"> </span>noon<span class="w"> </span>-E<span class="w"> </span>now
+<div class="highlight"><span class="filename">Show my failed jobs between noon and now</span><pre><span></span><code>sacct<span class="w"> </span>-s<span class="w"> </span>F<span class="w"> </span>-o<span class="w"> </span><span class="s2">"user,jobid,state,nodelist,start,end,exitcode"</span><span class="w"> </span>-S<span class="w"> </span>noon<span class="w"> </span>-E<span class="w"> </span>now
 
 User<span class="w"> </span>JobID<span class="w">             </span>State<span class="w">        </span>NodeList<span class="w">               </span>Start<span class="w">                 </span>End<span class="w"> </span>ExitCode<span class="w"> </span>
 ---------<span class="w"> </span>------------<span class="w"> </span>----------<span class="w"> </span>---------------<span class="w"> </span>-------------------<span class="w"> </span>-------------------<span class="w"> </span>--------<span class="w"> </span>
@@ -6358,9 +6358,9 @@ That database needs to be modified constantly as jobs start and complete, so we 
 <p><code>sacct</code> can output with other delimiters if you specify either <code>-p</code> or <code>-P</code> and <code>--delimiter=&lt;characters&gt;</code></p>
 <p><code>sacct</code> does not have a sort option. You need to sort its output by other methods. If you want to change the order of the information, specify the field names in the desired order. Remember that if you do not include the <code>-X</code> option to <code>sacct</code>, then the number of output fields might vary between the first of several lines per job and later lines. For example if you request an output format starting with "user", that field is only printed for the first line per job. (shake fist!)</p>
 <p>This is a prime example of where it is kindest to the SLURM master daemon if you run your query such that you store the results in a text file, then work with the text file contents, rather than running many variations of a command pipeline beginning with <code>sacct</code> when you already have all of the desired output option fields and are just trying to figure out the right text-processing logic to deal with the output using sort or awk or what have you. OR do your initial searching in order to produce the right kinds of output using limited date or other ranges.</p>
-<div class="highlight"><span class="filename">sort failed jobs by exitcode</span><pre><span></span><code>sacct<span class="w"> </span>-X<span class="w"> </span>-a<span class="w"> </span>-s<span class="w"> </span>F<span class="w"> </span>-o<span class="w"> </span><span class="s2">&quot;user,jobid,state,nodelist,exitcode&quot;</span><span class="w"> </span>-S<span class="w"> </span>noon<span class="w"> </span>-E<span class="w"> </span>now<span class="p">|</span>sort<span class="w"> </span>-k5<span class="p">|</span><span class="w"> </span>less
+<div class="highlight"><span class="filename">sort failed jobs by exitcode</span><pre><span></span><code>sacct<span class="w"> </span>-X<span class="w"> </span>-a<span class="w"> </span>-s<span class="w"> </span>F<span class="w"> </span>-o<span class="w"> </span><span class="s2">"user,jobid,state,nodelist,exitcode"</span><span class="w"> </span>-S<span class="w"> </span>noon<span class="w"> </span>-E<span class="w"> </span>now<span class="p">|</span>sort<span class="w"> </span>-k5<span class="p">|</span><span class="w"> </span>less
 </code></pre></div>
-<div class="highlight"><span class="filename">sort failed jobs by exitcode, then by nodelist</span><pre><span></span><code>sacct<span class="w"> </span>-X<span class="w"> </span>-a<span class="w"> </span>-s<span class="w"> </span>F<span class="w"> </span>-o<span class="w"> </span><span class="s2">&quot;user,jobid,state,nodelist,exitcode&quot;</span><span class="w"> </span>-S<span class="w"> </span>noon<span class="w"> </span>-E<span class="w"> </span>now<span class="p">|</span>sort<span class="w"> </span>-k5,5<span class="w"> </span>-k4,4<span class="p">|</span><span class="w"> </span>less
+<div class="highlight"><span class="filename">sort failed jobs by exitcode, then by nodelist</span><pre><span></span><code>sacct<span class="w"> </span>-X<span class="w"> </span>-a<span class="w"> </span>-s<span class="w"> </span>F<span class="w"> </span>-o<span class="w"> </span><span class="s2">"user,jobid,state,nodelist,exitcode"</span><span class="w"> </span>-S<span class="w"> </span>noon<span class="w"> </span>-E<span class="w"> </span>now<span class="p">|</span>sort<span class="w"> </span>-k5,5<span class="w"> </span>-k4,4<span class="p">|</span><span class="w"> </span>less
 </code></pre></div>
 <p>Useful sort options:</p>
 <ol>
@@ -6626,10 +6626,10 @@ User                UserCPU             WCKey               WCKeyID
 <li>%M - minute as decimal, 00 to 59</li>
 <li>%T - time in 24-hour notation (%H:%M:%S)</li>
 </ul>
-<p><div class="highlight"><span class="filename">Day of week MM-DD HH:MM</span><pre><span></span><code><span class="nb">export</span><span class="w"> </span><span class="nv">SLURM_TIME_FORMAT</span><span class="o">=</span><span class="s2">&quot;%a %m-%d %H:%M&quot;</span><span class="w"> </span>
+<p><div class="highlight"><span class="filename">Day of week MM-DD HH:MM</span><pre><span></span><code><span class="nb">export</span><span class="w"> </span><span class="nv">SLURM_TIME_FORMAT</span><span class="o">=</span><span class="s2">"%a %m-%d %H:%M"</span><span class="w"> </span>
 </code></pre></div>
 The start and end field widths show below are suitable for the time format shown above.</p>
-<div class="highlight"><span class="filename">Resources requested, used</span><pre><span></span><code><span class="nb">export</span><span class="w"> </span><span class="nv">SACCT_FORMAT</span><span class="o">=</span><span class="s2">&quot;user,jobid,jobname,nodelist%12,start%-20,end%-20,state%20,reqtres%40,TRESUsageInTot%200&quot;</span>
+<div class="highlight"><span class="filename">Resources requested, used</span><pre><span></span><code><span class="nb">export</span><span class="w"> </span><span class="nv">SACCT_FORMAT</span><span class="o">=</span><span class="s2">"user,jobid,jobname,nodelist%12,start%-20,end%-20,state%20,reqtres%40,TRESUsageInTot%200"</span>
 </code></pre></div>
 <h2 id="exit-error-codes"><strong>Exit Error Codes</strong><a class="headerlink" href="#exit-error-codes" title="Anchor link to this section for reference">&para;</a></h2>
 <p>In addition to the job's "state", SLURM also records error codes. Unfortunately the vendor's <a href="https://slurm.schedmd.com/job_exit_code.html">Job Exit Codes</a> page doesn't provide a meaning for the numerical values.</p>
@@ -6699,7 +6699,7 @@ Enter man signal for more information
 <p><strong>Please try to specify what you need so you don't tax the system and also have less output to inspect.</strong></p>
 <div class="admonition example">
 <p class="admonition-title">All jobs for username bob that (ran with a wall time of at least 2 days) and (were killed for running out of memory) in the past 3 months:</p>
-<div class="highlight"><pre><span></span><code>sacct --user bob --starttime $(date -d &#39;3 months ago&#39; +%D-%R) --state OUT_OF_MEMORY --timelimit-min 2-00:00:00 --format JobID,JobName,Elapsed,NCPUs,TotalCPU,CPUTime,ReqMem,MaxRSS,MaxDiskRead,MaxDiskWrite,State,ExitCode
+<div class="highlight"><pre><span></span><code>sacct --user bob --starttime $(date -d '3 months ago' +%D-%R) --state OUT_OF_MEMORY --timelimit-min 2-00:00:00 --format JobID,JobName,Elapsed,NCPUs,TotalCPU,CPUTime,ReqMem,MaxRSS,MaxDiskRead,MaxDiskWrite,State,ExitCode
 </code></pre></div>
 </div>
 <div class="admonition example">
@@ -6718,7 +6718,7 @@ Enter man signal for more information
 </div>
 <div class="admonition example">
 <p class="admonition-title">CPU &amp; RAM expended by jobs dying from out-of-memory errors in last 2 hours</p>
-<div class="highlight"><pre><span></span><code>sacct -n -S now-2hours -E now -u jzhou1 -X -s OOM -o cputimeraw,reqmem --units=G |  awk &#39;{timesum+=$1;ramsum+=$2} END{printf &quot;%s (CPU hrs) \t%s (GB)\n&quot;,timesum/60, ramsum}&#39;
+<div class="highlight"><pre><span></span><code>sacct -n -S now-2hours -E now -u jzhou1 -X -s OOM -o cputimeraw,reqmem --units=G |  awk '{timesum+=$1;ramsum+=$2} END{printf "%s (CPU hrs) \t%s (GB)\n",timesum/60, ramsum}'
 </code></pre></div>
 </div>
 <div class="admonition example">
@@ -6759,10 +6759,10 @@ MaxRSS  MaxVMSize MaxDiskWrite
 </div>
 <div class="admonition example">
 <p class="admonition-title">Using environment variables to control output format</p>
-<div class="highlight"><span class="filename">Day of week MM-DD HH:MM</span><pre><span></span><code><span class="nb">export</span><span class="w"> </span><span class="nv">SLURM_TIME_FORMAT</span><span class="o">=</span><span class="s2">&quot;%a %m-%d %H:%M&quot;</span><span class="w"> </span>
+<div class="highlight"><span class="filename">Day of week MM-DD HH:MM</span><pre><span></span><code><span class="nb">export</span><span class="w"> </span><span class="nv">SLURM_TIME_FORMAT</span><span class="o">=</span><span class="s2">"%a %m-%d %H:%M"</span><span class="w"> </span>
 </code></pre></div>
 <p>The start and end field widths show below are suitable for the time format shown above.</p>
-<div class="highlight"><span class="filename">Resources requested, used</span><pre><span></span><code><span class="nb">export</span><span class="w"> </span><span class="nv">SACCT_FORMAT</span><span class="o">=</span><span class="s2">&quot;user,jobid,jobname,nodelist%12,start%-20,end%-20,state%20,reqtres%40,TRESUsageInTot%200&quot;</span>
+<div class="highlight"><span class="filename">Resources requested, used</span><pre><span></span><code><span class="nb">export</span><span class="w"> </span><span class="nv">SACCT_FORMAT</span><span class="o">=</span><span class="s2">"user,jobid,jobname,nodelist%12,start%-20,end%-20,state%20,reqtres%40,TRESUsageInTot%200"</span>
 </code></pre></div>
 </div>
 <div class="footnote">

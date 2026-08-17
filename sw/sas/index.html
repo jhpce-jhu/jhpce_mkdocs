@@ -6199,7 +6199,7 @@ Currently Loaded Modules:
 <p>Your next step is choose which SAS command to run and
 which optional arguements to give it to about your files or how you want SAS to behave.</p>
 <p>Choose one of the following variations (note that you can click on the faint pages icon at the right end of the section to copy the contents to your copy-and-paste buffer):</p>
-<div class="highlight"><span class="filename">Chrome, no I/O redirection</span><pre><span></span><code>sas -helpbrowser SAS -xrm &quot;SAS.webBrowser:&#39;/usr/bin/chromium-browser&#39;&quot; -xrm &quot;SAS.helpBrowser:&#39;/usr/bin/chromium-browser&#39;&quot;
+<div class="highlight"><span class="filename">Chrome, no I/O redirection</span><pre><span></span><code>sas -helpbrowser SAS -xrm "SAS.webBrowser:'/usr/bin/chromium-browser'" -xrm "SAS.helpBrowser:'/usr/bin/chromium-browser'"
 </code></pre></div>
 <div class="highlight"><span class="filename">Chrome, all I/O redirected to a black hole (see tip below)</span><pre><span></span><code>csas
 </code></pre></div>
@@ -6213,11 +6213,11 @@ which optional arguements to give it to about your files or how you want SAS to 
 <div class="highlight"><pre><span></span><code><span class="c1"># SAS routines for __interactive__ sessions where plotting is involved</span>
 <span class="c1"># (because SAS generates HTML for the plots when run in interactive mode)</span>
 <span class="c1"># </span>
-<span class="c1"># (YOU HAVE TO RUN &quot;module load SAS&quot; before calling either of these routines)</span>
+<span class="c1"># (YOU HAVE TO RUN "module load SAS" before calling either of these routines)</span>
 <span class="c1">#</span>
 <span class="c1"># To use Chromium-browser as your web browser for SAS to display html help files and output:</span>
 <span class="c1">#</span>
-csas<span class="o">()</span><span class="w"> </span><span class="o">{</span><span class="w"> </span>sas<span class="w"> </span>-helpbrowser<span class="w"> </span>SAS<span class="w"> </span>-xrm<span class="w"> </span><span class="s2">&quot;SAS.webBrowser:&#39;/usr/bin/chromium-browser&#39;&quot;</span><span class="w"> </span>-xrm<span class="w"> </span><span class="s2">&quot;SAS.helpBrowser:&#39;/usr/bin/chromium-browser&#39;&quot;</span><span class="w"> </span><span class="s2">&quot;</span><span class="nv">$@</span><span class="s2">&quot;</span><span class="w"> </span>&gt;<span class="w"> </span>/dev/null<span class="w"> </span><span class="m">2</span>&gt;<span class="p">&amp;</span><span class="m">1</span><span class="p">;</span><span class="w"> </span><span class="o">}</span>
+csas<span class="o">()</span><span class="w"> </span><span class="o">{</span><span class="w"> </span>sas<span class="w"> </span>-helpbrowser<span class="w"> </span>SAS<span class="w"> </span>-xrm<span class="w"> </span><span class="s2">"SAS.webBrowser:'/usr/bin/chromium-browser'"</span><span class="w"> </span>-xrm<span class="w"> </span><span class="s2">"SAS.helpBrowser:'/usr/bin/chromium-browser'"</span><span class="w"> </span><span class="s2">"</span><span class="nv">$@</span><span class="s2">"</span><span class="w"> </span>&gt;<span class="w"> </span>/dev/null<span class="w"> </span><span class="m">2</span>&gt;<span class="p">&amp;</span><span class="m">1</span><span class="p">;</span><span class="w"> </span><span class="o">}</span>
 </code></pre></div>
 </details>
 <h2 id="running-sas-job-in-batch-mode">Running SAS job in batch mode<a class="headerlink" href="#running-sas-job-in-batch-mode" title="Anchor link to this section for reference">&para;</a></h2>
@@ -6225,7 +6225,7 @@ csas<span class="o">()</span><span class="w"> </span><span class="o">{</span><sp
 <ol>
 <li>
 <p>Write your sas source in a file with .sas extension (e.g. class-info.sas)
-<div class="highlight"><pre><span></span><code><span class="kr">DATA </span>CLASS;
+<div class="highlight"><pre><span></span><code>DATA CLASS;
      <span class="k">INPUT</span> NAME $ <span class="m">1-8</span> SEX $ <span class="m">10</span> AGE <span class="m">12-13</span> HEIGHT <span class="m">15-16</span> WEIGHT <span class="m">18-22</span>;
 <span class="k">CARDS;</span>
 <span class="x">JOHN     M 12 59 99.5</span>

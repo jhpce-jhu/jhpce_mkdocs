@@ -6354,10 +6354,10 @@ users relying on the shared resources. Overall, it's advisable to avoid using
 <p>If you must use /tmp you should first check to make sure that there is
 sufficient space for your temporary files. You could, for example, use
 the code below to make sure there is ate least 10GB (10000000 KB) in /tmp.
-<div class="highlight"><pre><span></span><code>FREETMP=`df -k /tmp | grep tmp | awk &#39;{print $4}&#39;`
+<div class="highlight"><pre><span></span><code>FREETMP=`df -k /tmp | grep tmp | awk '{print $4}'`
 if [ $FREETMP -lt 10000000 ]
 then
-   echo &quot;Not enough space in /tmp. Only $FREETMP KB available.&quot;
+   echo "Not enough space in /tmp. Only $FREETMP KB available."
    exit 1
 fi
 </code></pre></div>

@@ -6730,7 +6730,7 @@ https://colab.research.google.com/drive/1I8VjmDDO86Qj0jJYMmDlZWrAoZwVLrpj?usp=sh
 <li>If there is no <code>~/.ssh</code> directory in the remote host, you will need to login to the remote host and create one. Note, attempting to connect to another host, like <code>ssh github.com</code>, will create one if it isn't there already. </li>
 <li>You can perform the copy and append operations in one line as follows;</li>
 </ul>
-<p><div class="highlight"><pre><span></span><code>cat ~/.ssh/id_ecdsa.pub | ssh &lt;your_userid&gt;@jhpce01.jhsph.edu &#39;cat &gt;&gt; ~/.ssh/authorized_keys&#39;
+<p><div class="highlight"><pre><span></span><code>cat ~/.ssh/id_ecdsa.pub | ssh &lt;your_userid&gt;@jhpce01.jhsph.edu 'cat &gt;&gt; ~/.ssh/authorized_keys'
 </code></pre></div>
 + Where you replace <code>&lt;your_userid&gt;</code> with your JHPCE userid and where you enter your JHPCE password when you are prompted for it by ssh.
 + To test that everything is working you should be able to log into the remote host from your local host with the following command<code>ssh &lt;your_userid&gt;@jhpce01.jhsph.edu</code>.
@@ -6852,8 +6852,8 @@ configuration page</a>.</p>
 <h4 id="general-settings">General Settings<a class="headerlink" href="#general-settings" title="Anchor link to this section for reference">&para;</a></h4>
 <p><div class="highlight"><span class="filename">Useful general macOS ~/.ssh/config file settings</span><pre><span></span><code>EnableEscapeCommandline<span class="w"> </span>yes<span class="w"> </span><span class="c1"># Needed for recent macOS if you want to issue an SSH escape,</span>
 <span class="c1">#.      to create or close a tunnel for example</span>
-ForwardX11<span class="w"> </span>yes<span class="w">        </span><span class="c1"># Equiv to &quot;-X&quot; arg</span>
-ForwardX11Trusted<span class="w"> </span>yes<span class="w"> </span><span class="c1"># Equiv to &quot;-Y&quot; arg</span>
+ForwardX11<span class="w"> </span>yes<span class="w">        </span><span class="c1"># Equiv to "-X" arg</span>
+ForwardX11Trusted<span class="w"> </span>yes<span class="w"> </span><span class="c1"># Equiv to "-Y" arg</span>
 XAuthLocation<span class="w"> </span>/opt/X11/bin/xauth<span class="w">  </span><span class="c1"># only include if needed</span>
 <span class="c1"># These are for users of public keys</span>
 UseKeychain<span class="w"> </span>yes<span class="w">       </span><span class="c1"># look for passphrases for public keys in macOS keychain</span>
@@ -6861,10 +6861,10 @@ AddKeysToAgent<span class="w"> </span>yes<span class="w">    </span><span class=
 <span class="c1"># These keys are tried in order when logging in, and are loaded by your SSH agent</span>
 IdentityFile<span class="w"> </span>~/.ssh/id_ecdsa
 IdentityFile<span class="w"> </span>~/.ssh/id_rsa
-ForwardAgent<span class="w"> </span>yes<span class="w">      </span><span class="c1"># Equiv to the &quot;-A&quot; arg. For ssh&#39;ing from 1 to 2 to 3. </span>
+ForwardAgent<span class="w"> </span>yes<span class="w">      </span><span class="c1"># Equiv to the "-A" arg. For ssh'ing from 1 to 2 to 3. </span>
 </code></pre></div>
 <div class="highlight"><span class="filename">Keeping X11 forwarding enabled</span><pre><span></span><code>ForwardX11Timeout<span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="c1"># disables the timeout, which is by default 20mins</span>
-<span class="w">                    </span><span class="c1"># you can also set it to a time value like &quot;336h&quot; (2 weeks)</span>
+<span class="w">                    </span><span class="c1"># you can also set it to a time value like "336h" (2 weeks)</span>
 </code></pre></div></p>
 <div class="highlight"><span class="filename">Keeping connections alive - method one</span><pre><span></span><code>ServerAliveInterval<span class="w"> </span><span class="m">15</span>
 ServerAliveCountMax<span class="w"> </span><span class="m">30</span>

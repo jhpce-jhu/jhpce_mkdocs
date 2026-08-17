@@ -6202,7 +6202,7 @@
 <div class="highlight"><pre><span></span><code>rsync -a --verbose --dry-run --stats --itemize-changes /local1 /other2
 </code></pre></div></p>
 <p>Only copy files ending in ".txt"
-<div class="highlight"><pre><span></span><code>rsync -avz --include=&#39;*.txt&#39; /src /dest
+<div class="highlight"><pre><span></span><code>rsync -avz --include='*.txt' /src /dest
 </code></pre></div></p>
 <p>A good combination to consider using. Includes options to try to be complete, safe, and efficient. 
 <div class="highlight"><pre><span></span><code>rsync -avhAXH --progress --numeric-ids --sparse --one-file-system --stats --delete-after
@@ -6232,20 +6232,20 @@
 --xattrs, -X             preserve extended attributes
 --hard-links, -H                       preserve hard links
 
---exclude-from={&#39;list.txt&#39;}.        there is a corresponding --include-from
---exclude={&#39;*.txt&#39;,&#39;dir3&#39;,&#39;dir4&#39;}   there is a corresponding --include
+--exclude-from={'list.txt'}.        there is a corresponding --include-from
+--exclude={'*.txt','dir3','dir4'}   there is a corresponding --include
 
 --dry-run, -n            perform a trial run with no changes made
 --list-only              list the files instead of copying them
---ignore-existing        don&#39;t overwrite existing files, no matter what
---max-delete=NUM         don&#39;t delete more than NUM files (SET TO 0 OR LOW NUMBER FOR SAFETY)
+--ignore-existing        don't overwrite existing files, no matter what
+--max-delete=NUM         don't delete more than NUM files (SET TO 0 OR LOW NUMBER FOR SAFETY)
 --one-file-system, -x    ensure that you stay inside the SRC file system 
 
 --atimes -U              preserve access (use) times
 --crtimes, -N            preserve create times (newness)
 --times, -t              preserve modification times
 
---numeric-ids            don&#39;t map uid/gid values by user/group name (more efficient)
+--numeric-ids            don't map uid/gid values by user/group name (more efficient)
 --delete-after           wait until end to process deletes (much more efficient than deleting during)
 --partial                allows you to resume an interrupted transfer
 
@@ -6258,8 +6258,8 @@
 --human-readable, -h     output numbers in a human-readable format
 --stats                  provide statistics at the end
 
---size-only              skip files that match in size (know what you&#39;re doing)
---ignore-times, -I       don&#39;t skip files that match size and time (when in doubt...)
+--size-only              skip files that match in size (know what you're doing)
+--ignore-times, -I       don't skip files that match size and time (when in doubt...)
 --checksum -c            skip based on checksums, not mod-time &amp; size
 
 --sparse                 turn sequences of nulls into sparse blocks
@@ -6277,7 +6277,7 @@
 <p><div class="highlight"><pre><span></span><code>tar -cbf 20480 - some-directory | (cd /destination/place; tar -xbf 20480 -)
 </code></pre></div>
 This example extends the technique to copying the data off of your current host to another host:
-<div class="highlight"><pre><span></span><code>tar -cbf 20480 - some-directory | ssh myaccount@another-host (cd /destination/place; tar -xbf 20480 -)&quot;
+<div class="highlight"><pre><span></span><code>tar -cbf 20480 - some-directory | ssh myaccount@another-host (cd /destination/place; tar -xbf 20480 -)"
 </code></pre></div></p>
 
 

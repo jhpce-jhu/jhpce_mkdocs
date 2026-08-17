@@ -6365,13 +6365,13 @@ Currently Loaded Modules:
 
 (4.3.x)[test@compute-152 ~]$ R
 
-R version 4.3.2 Patched (2024-02-08 r85876) -- &quot;Eye Holes&quot;
+R version 4.3.2 Patched (2024-02-08 r85876) -- "Eye Holes"
 Copyright (C) 2024 The R Foundation for Statistical Computing
 Platform: x86_64-conda-linux-gnu (64-bit)
 ...
-Type &#39;demo()&#39; for some demos, &#39;help()&#39; for on-line help, or
-&#39;help.start()&#39; for an HTML browser interface to help.
-Type &#39;q()&#39; to quit R.
+Type 'demo()' for some demos, 'help()' for on-line help, or
+'help.start()' for an HTML browser interface to help.
+Type 'q()' to quit R.
 ...
 &gt; 
 </code></pre></div>
@@ -6382,20 +6382,20 @@ Type &#39;q()&#39; to quit R.
 <p>Write your R source in a file with .r extension (e.g. plot1.r). Here is what the example file looks like:
 <div class="highlight"><pre><span></span><code>[test@login31 R-demo]$ cat plot1.r
 # Set output file name
-pdf(&quot;plot1-R-results.pdf&quot;)
+pdf("plot1-R-results.pdf")
 
 # Define 2 vectors
 cars &lt;- c(1, 3, 6, 4, 9)
 trucks &lt;- c(2, 5, 4, 5, 12)
 
 # Graph cars using a y axis that ranges from 0 to 12
-plot(cars, type=&quot;o&quot;, col=&quot;blue&quot;, ylim=c(0,12))
+plot(cars, type="o", col="blue", ylim=c(0,12))
 
 # Graph trucks with red dashed line and square points
-lines(trucks, type=&quot;o&quot;, pch=22, lty=2, col=&quot;red&quot;)
+lines(trucks, type="o", pch=22, lty=2, col="red")
 
 # Create a title with a red, bold/italic font
-title(main=&quot;Autos&quot;, col.main=&quot;red&quot;, font.main=4)
+title(main="Autos", col.main="red", font.main=4)
 </code></pre></div></p>
 </li>
 <li>
@@ -6585,11 +6585,11 @@ deafult, these packages will be installed in the the R directory in your home di
 <p><div class="highlight"><pre><span></span><code><span class="p">[</span><span class="n">mmill116</span><span class="o">@</span><span class="n">jhpce01</span><span class="w"> </span><span class="o">~</span><span class="p">]</span><span class="o">$</span><span class="w"> </span><span class="n">srun</span><span class="w"> </span><span class="o">--</span><span class="n">pty</span><span class="w"> </span><span class="o">--</span><span class="n">X11</span><span class="w"> </span><span class="n">bash</span>
 <span class="p">[</span><span class="n">mmill116</span><span class="o">@</span><span class="n">compute</span><span class="m">-112</span><span class="w"> </span><span class="o">~</span><span class="p">]</span><span class="o">$</span><span class="w"> </span><span class="n">module</span><span class="w"> </span><span class="n">load</span><span class="w"> </span><span class="nf">conda_R</span>
 <span class="p">(</span><span class="o">/</span><span class="n">jhpce</span><span class="o">/</span><span class="n">shared</span><span class="o">/</span><span class="n">community</span><span class="o">/</span><span class="n">core</span><span class="o">/</span><span class="n">conda_R</span><span class="o">/</span><span class="m">4.4</span><span class="p">)</span><span class="w"> </span><span class="p">[</span><span class="n">mmill116</span><span class="o">@</span><span class="n">compute</span><span class="m">-112</span><span class="w"> </span><span class="o">~</span><span class="p">]</span><span class="o">$</span><span class="w"> </span><span class="n">R</span>
-<span class="n">R</span><span class="w"> </span><span class="n">version</span><span class="w"> </span><span class="m">4.4</span><span class="n">.</span><span class="m">0</span><span class="w"> </span><span class="nf">Patched </span><span class="p">(</span><span class="m">2024-05-22</span><span class="w"> </span><span class="n">r86590</span><span class="p">)</span><span class="w"> </span><span class="o">--</span><span class="w"> </span><span class="s">&quot;Puppy Cup&quot;</span>
+<span class="n">R</span><span class="w"> </span><span class="n">version</span><span class="w"> </span><span class="m">4.4</span><span class="n">.</span><span class="m">0</span><span class="w"> </span><span class="nf">Patched </span><span class="p">(</span><span class="m">2024-05-22</span><span class="w"> </span><span class="n">r86590</span><span class="p">)</span><span class="w"> </span><span class="o">--</span><span class="w"> </span><span class="s">"Puppy Cup"</span>
 <span class="nf">Copyright </span><span class="p">(</span><span class="n">C</span><span class="p">)</span><span class="w"> </span><span class="m">2024</span><span class="w"> </span><span class="n">The</span><span class="w"> </span><span class="n">R</span><span class="w"> </span><span class="n">Foundation</span><span class="w"> </span><span class="kr">for</span><span class="w"> </span><span class="n">Statistical</span><span class="w"> </span><span class="n">Computing</span>
 <span class="n">.</span><span class="w"> </span><span class="n">.</span><span class="w"> </span><span class="n">.</span>
-<span class="o">&gt;</span><span class="w"> </span><span class="nf">install.packages</span><span class="p">(</span><span class="s">&quot;sf&quot;</span><span class="p">)</span>
-<span class="o">&gt;</span><span class="w"> </span><span class="nf">library</span><span class="p">(</span><span class="s">&#39;sf&#39;</span><span class="p">)</span>
+<span class="o">&gt;</span><span class="w"> </span><span class="nf">install.packages</span><span class="p">(</span><span class="s">"sf"</span><span class="p">)</span>
+<span class="o">&gt;</span><span class="w"> </span><span class="nf">library</span><span class="p">(</span><span class="s">'sf'</span><span class="p">)</span>
 <span class="o">&gt;</span><span class="w"> </span><span class="nf">q</span><span class="p">()</span>
 <span class="p">(</span><span class="o">/</span><span class="n">jhpce</span><span class="o">/</span><span class="n">shared</span><span class="o">/</span><span class="n">community</span><span class="o">/</span><span class="n">core</span><span class="o">/</span><span class="n">conda_R</span><span class="o">/</span><span class="m">4.4</span><span class="p">)</span><span class="w"> </span><span class="p">[</span><span class="n">mmill116</span><span class="o">@</span><span class="n">compute</span><span class="m">-112</span><span class="w"> </span><span class="o">~</span><span class="p">]</span><span class="o">$</span><span class="w"> </span><span class="n">ls</span><span class="w"> </span><span class="o">-</span><span class="n">la</span><span class="w"> </span><span class="n">R</span><span class="o">/</span><span class="m">4.4</span>
 <span class="n">total</span><span class="w"> </span><span class="m">61</span>

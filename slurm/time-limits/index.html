@@ -6147,13 +6147,13 @@ You can tell that a job has been terminated due to exceeding its time limit by n
  #!/bin/bash
  # Test script for JHPCE cluster
  date
- echo &quot;I am now running on compute node:&quot;
+ echo "I am now running on compute node:"
  hostname
  SLEEPTIME=$((20 + $RANDOM % 60))
- echo &quot;Sleeping &quot; $SLEEPTIME &quot; seconds...&quot;
+ echo "Sleeping " $SLEEPTIME " seconds..."
  sleep $SLEEPTIME
  date
- echo &quot;Done...&quot;
+ echo "Done..."
  exit 0 
 [mmill116@login31 class-scripts]$ sbatch -a 1-10%4 -t 00:00:30 script1
 Submitted batch job 1980474 
