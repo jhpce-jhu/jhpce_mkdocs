@@ -3720,6 +3720,34 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="Getting Info About Partitions">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#what-partitions-exist" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What Partitions Exist?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#a-better-view-of-partitions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        A Better View of Partitions
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
         <li class="md-nav__item">
@@ -6014,6 +6042,34 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="Getting Info About Partitions">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#what-partitions-exist" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What Partitions Exist?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#a-better-view-of-partitions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        A Better View of Partitions
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
         <li class="md-nav__item">
@@ -6092,8 +6148,12 @@
 <li><strong>GPU</strong> (equipped with GPU cards)</li>
 <li><strong>PI-owned</strong> (for use only by members of the PI's group)</li>
 </ul>
+<div class="admonition tip">
+<p class="admonition-title">slurmpic is a vital tool</p>
+<p>Our command <code>slurmpic</code> shows information about partitions, including the member nodes, their current utilization, and some summary statistics. You should use it regularly. More details are given below.</p>
+</div>
 <h2 id="choosing-partitions-for-your-jobs">Choosing Partitions For Your Jobs<a class="headerlink" href="#choosing-partitions-for-your-jobs" title="Anchor link to this section for reference">&para;</a></h2>
-<p>You should only submit jobs to partitions that you are entitled to use.</p>
+<p><mark>You should only submit jobs to partitions that you are entitled to use.</mark></p>
 <p>Jobs can be submitted to multiple partitions to increase the odds that they will start more quickly. They will generally start in the first partition that has the required resources. This is mainly of use to members of PI partitions where their PI partition member nodes are busy at the moment, or they need maximum resources to meet a deadline.</p>
 <p>Simply separate partition names with commas (and no spaces!!). For example, in a batch job file:</p>
 <div class="highlight"><pre><span></span><code>`#SBATCH --partition=cancergen,shared`
@@ -6115,7 +6175,14 @@
 <p>First it provides surge capacity to stakeholders who temporarily need more compute capacity than they own, and second, it gives provides non-stakeholders access to computing capacity.</p>
 <p>Scheduling polices attempt to harvest unused capacity as efficiently as possible while mitigating the impact on the rights of stakeholders to use their resources. The JHPCE service center does not guarantee that stakeholders will provide sufficient excess capacity to meet non-stakeholders needs, however in practice the cluster is rarely operating at full capacity so there is usually ample computing capacity on the shared queue.</p>
 <h2 id="getting-info-about-partitions">Getting Info About Partitions<a class="headerlink" href="#getting-info-about-partitions" title="Anchor link to this section for reference">&para;</a></h2>
-<p>Our command <code>slurmpic</code> shows information about partitions, including the member nodes, their current utilization, and some summary statistics.<sup id="fnref:1"><a class="footnote-ref" href="#fn:1">1</a></sup> Text is color-coded to try to indicate how fully consumed nodes are. By default it displays the <strong>shared</strong> partition. Specific partitions can be displayed using <code>slurmpic -p partitionname</code>. All of the nodes in all of the GPU partitions can be displayed with <code>slurmpic -g</code>. Individual GPU-containing partitions can be shown with <code>slurmpic -g -p partitionname</code> <mark class="critic">Important:</mark> Run <code>slurmpic -h</code> to see important usage notes!</p>
+<h3 id="what-partitions-exist">What Partitions Exist?<a class="headerlink" href="#what-partitions-exist" title="Anchor link to this section for reference">&para;</a></h3>
+<p>You can view a list with this command:<br> <code>scontrol show partition | grep -i partitionname</code></p>
+<p>You can view all of their details with this command:<br> <code>scontrol show partition | less</code></p>
+<p>You will not see any partitions which have either been marked hidden (which we haven't done) or have a rule saying the partition can only be used by members of a UNIX users group. The latter is true for a few "PI partitions".</p>
+<h3 id="a-better-view-of-partitions">A Better View of Partitions<a class="headerlink" href="#a-better-view-of-partitions" title="Anchor link to this section for reference">&para;</a></h3>
+<p>Our command <code>slurmpic</code> shows information about partitions, including the member nodes, their current utilization, and some summary statistics.<sup id="fnref:1"><a class="footnote-ref" href="#fn:1">1</a></sup> Text is color-coded to try to indicate how fully consumed nodes are. <mark>By default it displays the <strong>shared</strong> partition.</mark> </p>
+<p>Specific partitions can be displayed using <code>slurmpic -p partitionname</code>.</p>
+<p>All of the nodes in all of the GPU partitions can be displayed with <code>slurmpic -g</code>. Individual GPU-containing partitions can be shown with <code>slurmpic -g -p partitionname</code> <mark class="critic">Important:</mark> Run <code>slurmpic -h</code> to see important usage notes!</p>
 <p>The best way to see the <em>configuration</em> of a partition is with the scontrol command. 
 <div class="highlight"><pre><span></span><code>scontrol<span class="w"> </span>show<span class="w"> </span>partition<span class="w"> </span>partitionname
 </code></pre></div>
@@ -6438,7 +6505,7 @@
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="June 25, 2026 18:40:46 UTC">June 25, 2026</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="August 19, 2026 02:57:14 UTC">August 19, 2026</span>
   </span>
 
     
