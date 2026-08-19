@@ -4,13 +4,15 @@ tags:
   - slurm
 ---
 # **reportseff useful command examples**
- 
+
 !!! Caution 
     If you have not already read about basic job facts like job notation, steps, names and states, please first visit the "About SLURM Jobs" document [here](../slurm/about-jobs.md).
- 
-## **Reportseff Overview**
 
-`seff` is a program which looks up accounting data using the `sacct command to show some stats for a ***single*** completed job.
+IT support people at Princeton University created [the jobstats suite of tools](https://princetonuniversity.github.io/jobstats/) to help manage cluster resources. `seff` and `reportseff` are small parts of that suite. They are extremely useful when inspecting the behaviors of your jobs.
+
+## **The seff (Slurm EFFiciency) command**
+
+`seff` is a program which looks up accounting data using the `sacct` command to show some stats for a ***single*** _completed_ job.
 
 ??? Example "Example seff output"
     ```
@@ -25,10 +27,15 @@ tags:
     Memory Utilized: 67.40 GB
     Memory Efficiency: 22.47% of 300.00 GB
     ```
+## **Reportseff Overview**
 
-`Reportseff` is a python script which makes displaying job efficiency easier for other cases such as "all of a user's jobs for a time period" or "all of the elements of an array job". It also uses `sacct` to retrieve information.  It was written so that you could use the same kinds of syntax as you would with `sacct`. For example when indicating time ranges or asking for changes to the output format. You can also pass other arguments straight to `sacct` if desired.
+`Reportseff` is a python script which makes displaying job efficiency possible (and easy!) when looking at many jobs, such as: "all of a user's jobs for a time period" or "all of the elements of an array job". The Princeton [reportseff page](https://princetonuniversity.github.io/jobstats/tools/reportseff/) describes the big picture well.
 
-Home page for more information: https://github.com/troycomi/reportseff
+It uses `sacct` to retrieve information. It was written to accept "sacct-like" arguments and syntax. It can also pass some arguments straight through to `sacct`. This can be a bit confusing until you get used to it. For example, when indicating time ranges, it uses it's own ``--since` instead of `sacct's` `--starttime` or `-S`. But the way you express time matches the way `sacct` works, e.g. `--since now-4days`.  `reportseff` has a default output format, but you can pass along additional field names from the list that `sacct` accepts (you can see a field list with `sacct -e`).
+
+You can create data files with `sacct` and process them with `reportseff`
+
+Home page for more information: [https://github.com/troycomi/reportseff](https://github.com/troycomi/reportseff)
 
 !!! Example "Example reportseff output"
     ``` title="Show my COMPLETED jobs between noon and now, adding 2 fields"
@@ -192,17 +199,23 @@ I suppose that they chose their argument flags to avoid overlapping with those u
 
 Note that you can add `sacct` fields to `reportseff`'s default ones with a simple `--format +fieldname,otherfield`
 
-### GPU support?
-Another feature of interest is supposedly the ability to calculate memory use efficiency for GPU jobs. If we discovered that many users were typically not using all of the memory on GPUs, it would open the door to partitioning GPUs into slices and therefore increasing the number of available GPUs for zero dollars. However it is the case that we would have to install other software (parts of the Princeton jobstats suite) to enable the acquisition of GPU usage data. We probably won't have time to do that.
+### GPU SUPPORT?
+GPU jobs consume not only system CPU and RAM but also, of course, resources on GPU cards. IT support people at Princeton University created [the jobstats suite of tools](https://princetonuniversity.github.io/jobstats/) to help manage cluster resources. `seff` and `reportseff` are small parts of that suite.
+
+They have the ability to calculate efficiency figures for GPU jobs. Users and administrators alike would love to see that info. However, a bunch of work is required to install and configure the tools which reach into each node on a frequent basis to gather information and tie it to specific SLURM jobs!!! 
+(`sacct` has no native ability to interrogate GPU tools like `nvidia-smi`. `nvidia-smi` has not concept of SLURM jobs.) We probably won't have time to do this work. It doesn't help that we have a wide diversity of GPU models. 
 
 ### COLORIZED OUTPUT
-It seems to use `less` as its pagination tool by default when output is longer than your terminal's size. Normally it produces colorized output which is very nice, as Borat would say. But the colors go away and you see the ugly escape characters unless you have the LESS environment variable defined to include `-R`. So you may want to add to your `~/.bashrc` file a command like `export LESS="-i -M -R"` (The `-i` means "do case-insensitive searches, unless a capital is used", `-M` means "make prompt show lines and current byte" and `-R` means "show color text where ESC sequences are present".) 
+It seems to use `less` as its pagination tool by default when output is longer than your terminal's size. Normally it produces colorized output which is *_very nice_*, as Borat would say. But the colors go away and you see the ugly escape characters unless you have the LESS environment variable defined to include `-R`. So you may want to add to your `~/.bashrc` file a command like `export LESS="-i -M -R"` (The `-i` means "do case-insensitive searches, unless a capital is used", `-M` means "make prompt show lines and current byte" and `-R` means "show color text where ESC sequences are present".) 
 
 Adding the flag `--color` did not help. There is a `--no-color` which might be handy for generating reports lacking escape characters when redirecting the output to a file.
 
 ### MEMORY USE ABOVE 100%
-Like other tools I've used which provide memory efficiency stats, this one shows jobs where efficiency is above 100%. Which I perhaps mistakenly interpret as indicating that the user has exceeded their memory limits. (I think I've also seen this in pure sacct output where no one is trying to combine data and calculate anything.)   DO THESE CASES REPRESENT INSTANCES OF THE USER'S PROCESSES GRABBING MORE MEMORY THAN "ALLOWED" FOR BRIEF-ENOUGH PERIODS THAT CGROUP LIMITS ARE NOT RESULTING IN KILLED PROCESSES? Or some other explanation that doesn't indicate that our understandings about memory stats or cgroups are flawed?
+Like other tools I've used which provide memory efficiency stats, both `seff` and `reportseff` commonly shows jobs where memory efficiency is above 100%.  However many jobs with memory use above 100% run through to completion, indicating that they did not, in fact, exceed the RAM they requested. SLURM uses UNIX "cgroups" to control jobs access to CPU cores and RAM.
 
-Ultimately I would like to be able to tell users / write in the docs an explanation for why you see values above 100% even if only to aid them in understanding how to utilize the info to make their cluster use better. (At least I've never seen any negative numbers!)
+Possible explanations:
 
-One explanation for  memory numbers that are "off" that I've seen is that someone is using MaxVM instead of MaxRSS etc. I happen to see in output_renderer.py a line `"MemEff": ["REQMEM", "NNodes", "AllocCPUS", "MaxRSS", "NTasks"]` which might imply which field is being used.
+1. **What is "memory" anyway?** - A computer program's memory in RAM is divided into specific segments when running. Aside from the *stack* (which handles function calls and local variables), key memory components include the *heap* for dynamic data, the *text* segment for executable code, and *data segments* for global variables. If you look at available `sacct` output fields (using `sacct -e`) you will see a variety of memory-related ones.
+2. **Challenges of adding up memory** - Modern programs make use of many software libraries even if they don't call them directly and explicitly. UNIX has been tuned over decades to be as efficient as possible, so it will only read into RAM the parts of a library that it needs at the time. {==My primary suspect for memory totals over 100% is that `sacct` and therefore `reportseff` are adding together the whole sizes of linked libraries and reporting that, rather than the maximum amount actually ever loaded into RAM.==}
+3. **Grabbing before being smacked** - There is a possibility that the job's processes grab more memory than they are allowed _before_ the operating system has time to prevent that by imposing cgroup limits. Countering this idea is the large number of times jobs complete successfully.
+4. One explanation formemory numbers that are "off" that I've seen is that the `reportseff` code is using MaxVM instead of MaxRSS etc. I happen to see in one of the parts of `reportseff` (the file`output_renderer.py`) a line `"MemEff": ["REQMEM", "NNodes", "AllocCPUS", "MaxRSS", "NTasks"]` One would need to pore over the code to ensure the "correct" fields are being used in every place.
