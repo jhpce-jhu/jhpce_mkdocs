@@ -6,7 +6,7 @@ tags:
 
 # Partitions
 
-A partition is a logical collections of nodes that comprise different hardware resources and limits to help meet the wide variety of jobs that get scheduled on the cluster. Nodes can belong to more than one partition.
+A partition is a logical collections of nodes that comprise different hardware resources and limits to help meet the wide variety of jobs that get scheduled on the cluster. Nodes usually belong to more than one partition.
 
 There are several *types* of partitions:
 
@@ -21,20 +21,33 @@ There are several *types* of partitions:
 ## Choosing Partitions For Your Jobs
 ==You should only submit jobs to partitions that you are entitled to use.==
 
-Jobs can be submitted to multiple partitions to increase the odds that they will start more quickly. They will generally start in the first partition that has the required resources. This is mainly of use to members of PI partitions where their PI partition member nodes are busy at the moment, or they need maximum resources to meet a deadline.
+If you don't specify a partition:
+
+- In the JHPCE cluster your job will go into the **shared** partition
+- In the JADE cluster your job will go into the **N-shared** partition, where "N" is the community letter, such as "**c-shared**" for CMS community members.
+
+### Consider Submitting Non-batch Jobs To Multiple Partitions
+
+**Jobs can be submitted to multiple partitions to increase the odds that they will start more quickly.** They will generally start in the first partition that has the required resources. There are a number of ways in which partitions are configured which may nudge a pending job to one partition over others. Pending jobs in some partitions are evaluated ahead of others. Priorities can be set on some partitions (such as `interactive`) as described [here](../slurm/whenstart.md/#partition-priority).
 
 Simply separate partition names with commas (and no spaces!!). For example, in a batch job file:
 
 ```
-`#SBATCH --partition=cancergen,shared`
+#SBATCH --partition=cancergen,shared
 ```
- 
-There are a number of ways in which partitions are configured which may nudge a pending job to one partition over others. Pending jobs in some partitions are evaluated ahead of others. Priorities can be set on some partitions (such as `interactive`) as described [here](../slurm/whenstart.md/#partition-priority).
 
-Array jobs *seem* to be able to dispatch child jobs to any of the partitions specified. We are not 100% sure of this -- they might all be run into the first partition chosen. (If the latter is true, you may not want to tie your array completion to a partition that has many fewer resources than your other option(s).)
+This tactic is useful for several cases:
+
+- If you're trying to get a small interactive job running on a node to quickly test something, you might include two or more of: **shared**, **interactive**, **interactive-larger** or **scavenge** partitions.
+
+- If you are elible to use a PI partition, you might include your PI partition and shared.
+
+!!! Warning "Batch jobs get locked into one partition"
+    All of the members of array jobs will be run into the first partition chosen for the first element. This sad fact means you cannot trivially spread child jobs around for maximum throughput. You might consider breaking your array down into chunks and submit each to one or multiple partitions.
+    Slurm job arrays lock into a single partition because the scheduler modifies the master job record during the initiation of the first task, replacing the original comma-separated list of partitions with the specific partition that allowed the task to start first. Subsequent tasks in the array then inherit this single partition, preventing them from utilizing other, potentially idle partitions originally requested.
 
 ## PI Partitions
-JHPCE exists because Primary Investigators worked together to create a cluster. They share their resources via public partitions (see cost recovery descriptions [here](../aboutus/model.md/#cost-recovery) and [here](../joinus/new-pi.md)).
+JHPCE exists because Primary Investigators worked together to create a cluster. They share their resources via public partitions to support their fellow faculty members and to reduce their cost of ownership (see cost recovery descriptions [here](../aboutus/model.md/#cost-recovery) and [here](../joinus/new-pi.md)).
 
 {==Only submit jobs to these partitions if you are a member of the Primary Investigator's research groups or have been given explicit permission to do so.==} If you are in doubt, ask before submitting. Jobs from non-group members will be killed and repeated abuse *will* lead to repercussions.  
 
@@ -59,29 +72,44 @@ Scheduling polices attempt to harvest unused capacity as efficiently as possible
 
 ### What Partitions Exist?
 
-You can view a list with this command:<br> `scontrol show partition | grep -i partitionname`
+You can view a list with this command:<br>
 
-You can view all of their details with this command:<br> `scontrol show partition | less`
+```bash linenums="0"
+list-partitions
+```
 
 You will not see any partitions which have either been marked hidden (which we haven't done) or have a rule saying the partition can only be used by members of a UNIX users group. The latter is true for a few "PI partitions".
 
-### A Better View of Partitions
+You can view the details with a specific one with this command:<br>
 
-Our command `slurmpic` shows information about partitions, including the member nodes, their current utilization, and some summary statistics.[^1] Text is color-coded to try to indicate how fully consumed nodes are. ==By default it displays the **shared** partition.== 
-
-Specific partitions can be displayed using `slurmpic -p partitionname`.
-
-All of the nodes in all of the GPU partitions can be displayed with `slurmpic -g`. Individual GPU-containing partitions can be shown with `slurmpic -g -p partitionname` {==Important:==} Run `slurmpic -h` to see important usage notes!
-
-[^1]: Note that the statistics displayed are for that partition, not the whole cluster. Also, memory and CPU use of nodes that are DOWN or in DRAIN are not included in the stats.
- 
-The best way to see the _configuration_ of a partition is with the scontrol command. 
-```bash linenums="0"
-scontrol show partition partitionname
+```
+scontrol show partition <partitionname>
 ```
 (For tips about using `scontrol`, see our [local scontrol tips](../slurm/tips-scontrol.md) page.)
 
-`slurmpic` is based on the SLURM command [`sinfo`](https://slurm.schedmd.com/archive/slurm-22.05.9/sinfo.html), which shows information about nodes and partitions. It has many options, so you can also use it to see information about nodes. (Note: Partitions which *require* group membership to submit to are only visible via `sinfo` to members of those groups. Because the local command `slurmpic` uses `sinfo` to retrieve information, the output of `slurmpic -a` (show all nodes) will omit those private PI partitions' nodes.)
+### A Better View of Partitions
+
+Our command `slurmpic` shows information about partitions, including the member nodes, their current utilization, and some summary statistics. Text is color-coded to try to indicate how fully consumed nodes are. ==You should run slurmpic regularly to get a feeling for the state of the cluster.==
+
+Run `slurmpic -h` to see important usage notes!
+
+**Which partitions to you see?**
+
+- By default `slurmpic` displays one partition, while `slurmpic -a` shows all partitions. 
+- In the JHPCE cluster: slurmpic defaults to the **shared** partition
+- In the JADE cluster: slurmpic defaults to the **N-shared** partition, where "N" is the community letter, e.g. "**c-shared**" for CMS community members.
+- Specific partitions can be displayed using: `slurmpic -p <partitionname>`
+- All of the nodes in all of the GPU partitions can be displayed with `slurmpic -g`.
+- Individual GPU-containing partitions can be shown with `slurmpic -g -p <partitionname>`
+- You will not see hidden or restricted partitions you cannot submit to.
+
+**About the displayed summary statistics:**
+
+- They are for a single partition, not the whole cluster (except for `slurmpic -a`)
+- They do not include the resources of hidden or restricted partitions.
+- Memory and CPU use of nodes that are DOWN or in DRAIN are not included in the stats.
+
+`slurmpic` uses the SLURM command [`sinfo`](https://slurm.schedmd.com/archive/slurm-22.05.9/sinfo.html), which shows information about nodes and partitions.
 
 ## CPU Partitions
 
@@ -98,14 +126,14 @@ Limits for CPU cores, RAM and Time (default/maximum)
 | interactive-larger | public | 8 | 80gb | (1d/5d) | Limit 2 jobs per user |
 | gpu | public | (none) | (none) | (1d/90d) | Only for GPU jobs!!! |
 | sas | application | (none) | (none) | (1d/90d) | Licensed for SAS |
-| scavenge | public | 11 per job | 250G per job | (1d/5d) | See below |
+| scavenge | public | 11 per node | 250G per node | (1d/5d) | See below |
 | transfer | public | (none) | (none) | (none/90d) | Data in or out of cluster via SLURM jobs |
 
 To reduce table width, column names are terse.
 
-{==Experimental `interactive-larger` partition:==} Our interactive partitions give jobs a higher priority and are evaluated before those in other partitions. This "larger" one was created to try to allow people to run interactive jobs a bit larger in size than our smaller `interactive` partition. This is meant to help you explore data visually, debug a batch script that has failed by running one command at a time (on a small-enough data set), etc. WE MAY NEED TO REMOVE THE PARTITION OR MODIFY THE ALLOWED PARAMETERS. 20250220
+{==Experimental `interactive-larger` partition:==} Our interactive partitions give jobs a higher priority and are evaluated before those in other partitions. This "larger" one was created to try to allow people to run interactive jobs a bit larger in size than our smaller `interactive` partition. This is meant to help you explore data visually, debug a batch script that has failed by running one command at a time (on a small-enough data set), etc.
 
-{==Experimental `scavenge` partition:==} This was created to try to "harvest" some usually-unused resources from some specific nodes. You can specify it along with your normal partition, e.g. `--partition=shared,scavenge` and it will be used if available. If your job's CPU, RAM, or duration parameters exceed those set for `scavenge` then your job will run on the other partition(s) you specified. WE MAY NEED TO REMOVE THE PARTITION OR MODIFY THE ALLOWED PARAMETERS. 20250220
+{==`scavenge` partition:==} This was created to try to "harvest" some typically-unused CPU and RAM resources from specific GPU nodes.  To protect the ability to run GPU jobs, only a fixed amount of each node can be used by _all of the jobs which land on it_. You can specify it along with your normal partition, e.g. `--partition=shared,scavenge` and it will be used if available. If your job's CPU, RAM, or duration parameters exceed those set for `scavenge` then your job will run on the other partition(s) you specified.
 
 ### PI CPU Partitions
 
