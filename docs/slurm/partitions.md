@@ -15,8 +15,11 @@ There are several *types* of partitions:
 * **GPU** (equipped with GPU cards)
 * **PI-owned** (for use only by members of the PI's group)
 
+!!! Tip "slurmpic is a vital tool"
+    Our command `slurmpic` shows information about partitions, including the member nodes, their current utilization, and some summary statistics. You should use it regularly. More details are given below.
+
 ## Choosing Partitions For Your Jobs
-You should only submit jobs to partitions that you are entitled to use.
+==You should only submit jobs to partitions that you are entitled to use.==
 
 Jobs can be submitted to multiple partitions to increase the odds that they will start more quickly. They will generally start in the first partition that has the required resources. This is mainly of use to members of PI partitions where their PI partition member nodes are busy at the moment, or they need maximum resources to meet a deadline.
 
@@ -54,7 +57,21 @@ Scheduling polices attempt to harvest unused capacity as efficiently as possible
 
 ## Getting Info About Partitions
 
-Our command `slurmpic` shows information about partitions, including the member nodes, their current utilization, and some summary statistics.[^1] Text is color-coded to try to indicate how fully consumed nodes are. By default it displays the **shared** partition. Specific partitions can be displayed using `slurmpic -p partitionname`. All of the nodes in all of the GPU partitions can be displayed with `slurmpic -g`. Individual GPU-containing partitions can be shown with `slurmpic -g -p partitionname` {==Important:==} Run `slurmpic -h` to see important usage notes!
+### What Partitions Exist?
+
+You can view a list with this command:<br> `scontrol show partition | grep -i partitionname`
+
+You can view all of their details with this command:<br> `scontrol show partition | less`
+
+You will not see any partitions which have either been marked hidden (which we haven't done) or have a rule saying the partition can only be used by members of a UNIX users group. The latter is true for a few "PI partitions".
+
+### A Better View of Partitions
+
+Our command `slurmpic` shows information about partitions, including the member nodes, their current utilization, and some summary statistics.[^1] Text is color-coded to try to indicate how fully consumed nodes are. ==By default it displays the **shared** partition.== 
+
+Specific partitions can be displayed using `slurmpic -p partitionname`.
+
+All of the nodes in all of the GPU partitions can be displayed with `slurmpic -g`. Individual GPU-containing partitions can be shown with `slurmpic -g -p partitionname` {==Important:==} Run `slurmpic -h` to see important usage notes!
 
 [^1]: Note that the statistics displayed are for that partition, not the whole cluster. Also, memory and CPU use of nodes that are DOWN or in DRAIN are not included in the stats.
  
