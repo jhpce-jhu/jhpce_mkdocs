@@ -1423,15 +1423,22 @@
   {
     "page_name": "Partitions",
     "page_url": "/slurm/partitions/",
-    "text": "`#SBATCH --partition=cancergen,shared`\n",
-    "html": "<pre><span></span><code>`#SBATCH --partition=cancergen,shared`\n</code></pre>",
+    "text": "#SBATCH --partition=cancergen,shared\n",
+    "html": "<pre><span></span><code>#SBATCH --partition=cancergen,shared\n</code></pre>",
     "language": ""
   },
   {
     "page_name": "Partitions",
     "page_url": "/slurm/partitions/",
-    "text": "scontrol show partition partitionname\n",
-    "html": "<pre><span></span><code>scontrol<span class=\"w\"> </span>show<span class=\"w\"> </span>partition<span class=\"w\"> </span>partitionname\n</code></pre>",
+    "text": "list-partitions\n",
+    "html": "<pre><span></span><code>list-partitions\n</code></pre>",
+    "language": ""
+  },
+  {
+    "page_name": "Partitions",
+    "page_url": "/slurm/partitions/",
+    "text": "scontrol show partition <partitionname>\n",
+    "html": "<pre><span></span><code>scontrol show partition &lt;partitionname&gt;\n</code></pre>",
     "language": ""
   },
   {
