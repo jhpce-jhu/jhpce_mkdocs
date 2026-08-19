@@ -3974,6 +3974,17 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#the-seff-slurm-efficiency-command" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The seff (Slurm EFFiciency) command
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#reportseff-overview" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -4000,7 +4011,7 @@
   <a href="#gpu-support" class="md-nav__link">
     <span class="md-ellipsis">
       
-        GPU support?
+        GPU SUPPORT?
       
     </span>
   </a>
@@ -5944,6 +5955,17 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#the-seff-slurm-efficiency-command" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The seff (Slurm EFFiciency) command
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#reportseff-overview" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -5970,7 +5992,7 @@
   <a href="#gpu-support" class="md-nav__link">
     <span class="md-ellipsis">
       
-        GPU support?
+        GPU SUPPORT?
       
     </span>
   </a>
@@ -6026,8 +6048,9 @@
 <p class="admonition-title">Caution</p>
 <p>If you have not already read about basic job facts like job notation, steps, names and states, please first visit the "About SLURM Jobs" document <a href="../about-jobs/">here</a>.</p>
 </div>
-<h2 id="reportseff-overview"><strong>Reportseff Overview</strong><a class="headerlink" href="#reportseff-overview" title="Anchor link to this section for reference">&para;</a></h2>
-<p><code>seff</code> is a program which looks up accounting data using the `sacct command to show some stats for a <strong><em>single</em></strong> completed job.</p>
+<p>IT support people at Princeton University created <a href="https://princetonuniversity.github.io/jobstats/">the jobstats suite of tools</a> to help manage cluster resources. <code>seff</code> and <code>reportseff</code> are small parts of that suite. They are extremely useful when inspecting the behaviors of your jobs.</p>
+<h2 id="the-seff-slurm-efficiency-command"><strong>The seff (Slurm EFFiciency) command</strong><a class="headerlink" href="#the-seff-slurm-efficiency-command" title="Anchor link to this section for reference">&para;</a></h2>
+<p><code>seff</code> is a program which looks up accounting data using the <code>sacct</code> command to show some stats for a <strong><em>single</em></strong> <em>completed</em> job.</p>
 <details class="example">
 <summary>Example seff output</summary>
 <div class="highlight"><pre><span></span><code>Job ID: 9709
@@ -6042,8 +6065,11 @@ Memory Utilized: 67.40 GB
 Memory Efficiency: 22.47% of 300.00 GB
 </code></pre></div>
 </details>
-<p><code>Reportseff</code> is a python script which makes displaying job efficiency easier for other cases such as "all of a user's jobs for a time period" or "all of the elements of an array job". It also uses <code>sacct</code> to retrieve information.  It was written so that you could use the same kinds of syntax as you would with <code>sacct</code>. For example when indicating time ranges or asking for changes to the output format. You can also pass other arguments straight to <code>sacct</code> if desired.</p>
-<p>Home page for more information: https://github.com/troycomi/reportseff</p>
+<h2 id="reportseff-overview"><strong>Reportseff Overview</strong><a class="headerlink" href="#reportseff-overview" title="Anchor link to this section for reference">&para;</a></h2>
+<p><code>Reportseff</code> is a python script which makes displaying job efficiency possible (and easy!) when looking at many jobs, such as: "all of a user's jobs for a time period" or "all of the elements of an array job". The Princeton <a href="https://princetonuniversity.github.io/jobstats/tools/reportseff/">reportseff page</a> describes the big picture well.</p>
+<p>It uses <code>sacct</code> to retrieve information. It was written to accept "sacct-like" arguments and syntax. It can also pass some arguments straight through to <code>sacct</code>. This can be a bit confusing until you get used to it. For example, when indicating time ranges, it uses it's own <code>`--since</code> instead of <code>sacct's</code> <code>--starttime</code> or <code>-S</code>. But the way you express time matches the way <code>sacct</code> works, e.g. <code>--since now-4days</code>.  <code>reportseff</code> has a default output format, but you can pass along additional field names from the list that <code>sacct</code> accepts (you can see a field list with <code>sacct -e</code>).</p>
+<p>You can create data files with <code>sacct</code> and process them with <code>reportseff</code></p>
+<p>Home page for more information: <a href="https://github.com/troycomi/reportseff">https://github.com/troycomi/reportseff</a></p>
 <div class="admonition example">
 <p class="admonition-title">Example reportseff output</p>
 <div class="highlight"><span class="filename">Show my COMPLETED jobs between noon and now, adding 2 fields</span><pre><span></span><code>module load reportseff
@@ -6196,15 +6222,22 @@ Options:
 <p>So I was able to run <code>reportseff -u someuser --since now-4days</code></p>
 <p>I suppose that they chose their argument flags to avoid overlapping with those used by sacct, so you see things like <code>--since</code> and <code>--until</code> instead of <code>sacct</code>'s <code>-S</code> and <code>-E</code>  But most <code>sacct</code> arguments will work. </p>
 <p>Note that you can add <code>sacct</code> fields to <code>reportseff</code>'s default ones with a simple <code>--format +fieldname,otherfield</code></p>
-<h3 id="gpu-support">GPU support?<a class="headerlink" href="#gpu-support" title="Anchor link to this section for reference">&para;</a></h3>
-<p>Another feature of interest is supposedly the ability to calculate memory use efficiency for GPU jobs. If we discovered that many users were typically not using all of the memory on GPUs, it would open the door to partitioning GPUs into slices and therefore increasing the number of available GPUs for zero dollars. However it is the case that we would have to install other software (parts of the Princeton jobstats suite) to enable the acquisition of GPU usage data. We probably won't have time to do that.</p>
+<h3 id="gpu-support">GPU SUPPORT?<a class="headerlink" href="#gpu-support" title="Anchor link to this section for reference">&para;</a></h3>
+<p>GPU jobs consume not only system CPU and RAM but also, of course, resources on GPU cards. IT support people at Princeton University created <a href="https://princetonuniversity.github.io/jobstats/">the jobstats suite of tools</a> to help manage cluster resources. <code>seff</code> and <code>reportseff</code> are small parts of that suite.</p>
+<p>They have the ability to calculate efficiency figures for GPU jobs. Users and administrators alike would love to see that info. However, a bunch of work is required to install and configure the tools which reach into each node on a frequent basis to gather information and tie it to specific SLURM jobs!!! 
+(<code>sacct</code> has no native ability to interrogate GPU tools like <code>nvidia-smi</code>. <code>nvidia-smi</code> has not concept of SLURM jobs.) We probably won't have time to do this work. It doesn't help that we have a wide diversity of GPU models. </p>
 <h3 id="colorized-output">COLORIZED OUTPUT<a class="headerlink" href="#colorized-output" title="Anchor link to this section for reference">&para;</a></h3>
-<p>It seems to use <code>less</code> as its pagination tool by default when output is longer than your terminal's size. Normally it produces colorized output which is very nice, as Borat would say. But the colors go away and you see the ugly escape characters unless you have the LESS environment variable defined to include <code>-R</code>. So you may want to add to your <code>~/.bashrc</code> file a command like <code>export LESS="-i -M -R"</code> (The <code>-i</code> means "do case-insensitive searches, unless a capital is used", <code>-M</code> means "make prompt show lines and current byte" and <code>-R</code> means "show color text where ESC sequences are present".) </p>
+<p>It seems to use <code>less</code> as its pagination tool by default when output is longer than your terminal's size. Normally it produces colorized output which is <em><em>very nice</em></em>, as Borat would say. But the colors go away and you see the ugly escape characters unless you have the LESS environment variable defined to include <code>-R</code>. So you may want to add to your <code>~/.bashrc</code> file a command like <code>export LESS="-i -M -R"</code> (The <code>-i</code> means "do case-insensitive searches, unless a capital is used", <code>-M</code> means "make prompt show lines and current byte" and <code>-R</code> means "show color text where ESC sequences are present".) </p>
 <p>Adding the flag <code>--color</code> did not help. There is a <code>--no-color</code> which might be handy for generating reports lacking escape characters when redirecting the output to a file.</p>
 <h3 id="memory-use-above-100">MEMORY USE ABOVE 100%<a class="headerlink" href="#memory-use-above-100" title="Anchor link to this section for reference">&para;</a></h3>
-<p>Like other tools I've used which provide memory efficiency stats, this one shows jobs where efficiency is above 100%. Which I perhaps mistakenly interpret as indicating that the user has exceeded their memory limits. (I think I've also seen this in pure sacct output where no one is trying to combine data and calculate anything.)   DO THESE CASES REPRESENT INSTANCES OF THE USER'S PROCESSES GRABBING MORE MEMORY THAN "ALLOWED" FOR BRIEF-ENOUGH PERIODS THAT CGROUP LIMITS ARE NOT RESULTING IN KILLED PROCESSES? Or some other explanation that doesn't indicate that our understandings about memory stats or cgroups are flawed?</p>
-<p>Ultimately I would like to be able to tell users / write in the docs an explanation for why you see values above 100% even if only to aid them in understanding how to utilize the info to make their cluster use better. (At least I've never seen any negative numbers!)</p>
-<p>One explanation for  memory numbers that are "off" that I've seen is that someone is using MaxVM instead of MaxRSS etc. I happen to see in output_renderer.py a line <code>"MemEff": ["REQMEM", "NNodes", "AllocCPUS", "MaxRSS", "NTasks"]</code> which might imply which field is being used.</p>
+<p>Like other tools I've used which provide memory efficiency stats, both <code>seff</code> and <code>reportseff</code> commonly shows jobs where memory efficiency is above 100%.  However many jobs with memory use above 100% run through to completion, indicating that they did not, in fact, exceed the RAM they requested. SLURM uses UNIX "cgroups" to control jobs access to CPU cores and RAM.</p>
+<p>Possible explanations:</p>
+<ol>
+<li><strong>What is "memory" anyway?</strong> - A computer program's memory in RAM is divided into specific segments when running. Aside from the <em>stack</em> (which handles function calls and local variables), key memory components include the <em>heap</em> for dynamic data, the <em>text</em> segment for executable code, and <em>data segments</em> for global variables. If you look at available <code>sacct</code> output fields (using <code>sacct -e</code>) you will see a variety of memory-related ones.</li>
+<li><strong>Challenges of adding up memory</strong> - Modern programs make use of many software libraries even if they don't call them directly and explicitly. UNIX has been tuned over decades to be as efficient as possible, so it will only read into RAM the parts of a library that it needs at the time. <mark class="critic">My primary suspect for memory totals over 100% is that <code>sacct</code> and therefore <code>reportseff</code> are adding together the whole sizes of linked libraries and reporting that, rather than the maximum amount actually ever loaded into RAM.</mark></li>
+<li><strong>Grabbing before being smacked</strong> - There is a possibility that the job's processes grab more memory than they are allowed <em>before</em> the operating system has time to prevent that by imposing cgroup limits. Countering this idea is the large number of times jobs complete successfully.</li>
+<li>One explanation formemory numbers that are "off" that I've seen is that the <code>reportseff</code> code is using MaxVM instead of MaxRSS etc. I happen to see in one of the parts of <code>reportseff</code> (the file<code>output_renderer.py</code>) a line <code>"MemEff": ["REQMEM", "NNodes", "AllocCPUS", "MaxRSS", "NTasks"]</code> One would need to pore over the code to ensure the "correct" fields are being used in every place.</li>
+</ol>
 <div class="footnote">
 <hr />
 <ol>
@@ -6233,7 +6266,7 @@ Options:
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="March 31, 2025 16:37:05 UTC">March 31, 2025</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="August 19, 2026 05:24:52 UTC">August 19, 2026</span>
   </span>
 
     
