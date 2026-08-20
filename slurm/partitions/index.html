@@ -6177,7 +6177,7 @@
 <p>A partition is a logical collections of nodes that comprise different hardware resources and limits to help meet the wide variety of jobs that get scheduled on the cluster. Nodes usually belong to more than one partition.</p>
 <p>There are several <em>types</em> of partitions:</p>
 <ul>
-<li><strong>General access</strong> (e.g. shared, interactive, gpu, transfer)</li>
+<li><strong>Public - general access</strong> (e.g. shared, interactive, gpu, transfer)</li>
 <li><strong>Application only</strong> (e.g. sas)</li>
 <li><strong>GPU</strong> (equipped with GPU cards)</li>
 <li><strong>PI-owned</strong> (for use only by members of the PI's group)</li>
@@ -6187,12 +6187,16 @@
 <p>Our command <code>slurmpic</code> shows information about partitions, including the member nodes, their current utilization, and some summary statistics. You should use it regularly. More details are given below.</p>
 </div>
 <h2 id="choosing-partitions-for-your-jobs">Choosing Partitions For Your Jobs<a class="headerlink" href="#choosing-partitions-for-your-jobs" title="Anchor link to this section for reference">&para;</a></h2>
-<p><mark>You should only submit jobs to partitions that you are entitled to use.</mark></p>
+<p><mark class="critic">You should only submit jobs to partitions that you are entitled to use.</mark></p>
 <p>If you don't specify a partition:</p>
 <ul>
 <li>In the JHPCE cluster your job will go into the <strong>shared</strong> partition</li>
-<li>In the JADE cluster your job will go into the <strong>N-shared</strong> partition, where "N" is the community letter, such as "<strong>c-shared</strong>" for CMS community members.</li>
+<li>In the JADE cluster your job will go into the <strong>N-shared</strong> partition, where "N" is the community letter, such as "<strong>c-shared</strong>" for CMS community members. (The only other type of partition in JADE is ones for SAS)</li>
 </ul>
+<div class="admonition warning">
+<p class="admonition-title">This page not yet rewritten to describe JADE</p>
+<p>Details about specific partitions on this page are almost entirely about those found in the main JHPCE cluster. Until then, know that, in addition to the above about shared, the JADE partitions include: <strong>c-sas</strong> (application-only, for CMS users), <strong>c-lau</strong> (PI, for researchers in the Lau/Joshu/Rudolph group), <strong>sql</strong> (PI, for a database administrator for that same group), and <strong>sysadmin</strong> (for our testing). There are no GPU cards in JADE.</p>
+</div>
 <h3 id="consider-submitting-non-batch-jobs-to-multiple-partitions">Consider Submitting Non-batch Jobs To Multiple Partitions<a class="headerlink" href="#consider-submitting-non-batch-jobs-to-multiple-partitions" title="Anchor link to this section for reference">&para;</a></h3>
 <p><strong>Jobs can be submitted to multiple partitions to increase the odds that they will start more quickly.</strong> They will generally start in the first partition that has the required resources. There are a number of ways in which partitions are configured which may nudge a pending job to one partition over others. Pending jobs in some partitions are evaluated ahead of others. Priorities can be set on some partitions (such as <code>interactive</code>) as described <a href="../whenstart/#partition-priority">here</a>.</p>
 <p>Simply separate partition names with commas (and no spaces!!). For example, in a batch job file:</p>
@@ -6208,9 +6212,10 @@
 </li>
 </ul>
 <div class="admonition warning">
-<p class="admonition-title">Batch jobs get locked into one partition</p>
+<p class="admonition-title">Batch jobs becp,e locked into one partition</p>
 <p>All of the members of array jobs will be run into the first partition chosen for the first element. This sad fact means you cannot trivially spread child jobs around for maximum throughput. You might consider breaking your array down into chunks and submit each to one or multiple partitions.
-Slurm job arrays lock into a single partition because the scheduler modifies the master job record during the initiation of the first task, replacing the original comma-separated list of partitions with the specific partition that allowed the task to start first. Subsequent tasks in the array then inherit this single partition, preventing them from utilizing other, potentially idle partitions originally requested.</p>
+For example, if one had a 2,000 element array batch job, and they submitted it to shared and scavenge, and the first element ran on the scavenge partition, then the shared partition would never be used. The scavenge partition is described later, but here the thing to know is that it consists of only a few nodes.
+(Technical note for systems administrators: Slurm job arrays lock into a single partition because the scheduler modifies the master job record during the initiation of the first task, replacing the original comma-separated list of partitions with the specific partition that allowed the task to start first. Subsequent tasks in the array then inherit this single partition, preventing them from utilizing other, potentially idle partitions originally requested.)</p>
 </div>
 <h2 id="pi-partitions">PI Partitions<a class="headerlink" href="#pi-partitions" title="Anchor link to this section for reference">&para;</a></h2>
 <p>JHPCE exists because Primary Investigators worked together to create a cluster. They share their resources via public partitions to support their fellow faculty members and to reduce their cost of ownership (see cost recovery descriptions <a href="../../aboutus/model/#cost-recovery">here</a> and <a href="../../joinus/new-pi/">here</a>).</p>
@@ -6565,7 +6570,7 @@ Slurm job arrays lock into a single partition because the scheduler modifies the
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="August 19, 2026 04:15:13 UTC">August 19, 2026</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="August 20, 2026 02:59:12 UTC">August 20, 2026</span>
   </span>
 
     
