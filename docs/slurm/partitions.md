@@ -17,7 +17,29 @@ There are several *types* of partitions:
 
 !!! Tip "slurmpic is a vital tool"
     Our command `slurmpic` shows information about partitions, including the member nodes, their current utilization, and some summary statistics. You should use it regularly. More details are given below.
+
+## PI Partitions
+JHPCE exists because Primary Investigators worked together to create a cluster. They share their resources via public partitions to support their fellow faculty members and to reduce their cost of ownership (see cost recovery descriptions [here](../aboutus/model.md/#cost-recovery) and [here](../joinus/new-pi.md)).
+
+{==Only submit jobs to these partitions if you are a member of the Primary Investigator's research groups or have been given explicit permission to do so.==} If you are in doubt, ask before submitting. Jobs from non-group members will be killed and repeated abuse *will* lead to repercussions.  
+
+## Public Partitions 
+
+Partitions **shared**, **interactive**, **interactive-larger**, **gpu**, **sas**, **scavenge** and **transfer** are considered public and available to all.
+
+!!! Note "Specific uses"
+    Only jobs which require the use of GPU cards should be submitted to the **gpu** partition.
+
+    Only jobs which require the use of the SAS application should be submitted to the **sas** partition.
     
+    Only jobs related to transferring data into or out of the cluster should be submitted to the **transfer** partition.
+
+The public partitions provide low-priority access to unused capacity throughout the cluster. Capacity on the shared queue is provided on a strictly “as-available” basis and serves two purposes:
+
+First it provides surge capacity to stakeholders who temporarily need more compute capacity than they own, and second, it gives provides non-stakeholders access to computing capacity.
+
+Scheduling polices attempt to harvest unused capacity as efficiently as possible while mitigating the impact on the rights of stakeholders to use their resources. The JHPCE service center does not guarantee that stakeholders will provide sufficient excess capacity to meet non-stakeholders needs, however in practice the cluster is rarely operating at full capacity so there is usually ample computing capacity on the shared queue.
+  
 ## Choosing Partitions For Your Jobs
 {==You should only submit jobs to partitions that you are entitled to use.==}
 
@@ -49,28 +71,6 @@ This tactic is useful for several cases:
     All of the members of array jobs will be run into the first partition chosen for the first element. This sad fact means you cannot trivially spread child jobs around for maximum throughput. You might consider breaking your array down into chunks and submit each to one or multiple partitions.
     For example, if one had a 2,000 element array batch job, and they submitted it to shared and scavenge, and the first element ran on the scavenge partition, then the shared partition would never be used. The scavenge partition is described later, but here the thing to know is that it consists of only a few nodes.
     (Technical note for systems administrators: Slurm job arrays lock into a single partition because the scheduler modifies the master job record during the initiation of the first task, replacing the original comma-separated list of partitions with the specific partition that allowed the task to start first. Subsequent tasks in the array then inherit this single partition, preventing them from utilizing other, potentially idle partitions originally requested.)
-
-## PI Partitions
-JHPCE exists because Primary Investigators worked together to create a cluster. They share their resources via public partitions to support their fellow faculty members and to reduce their cost of ownership (see cost recovery descriptions [here](../aboutus/model.md/#cost-recovery) and [here](../joinus/new-pi.md)).
-
-{==Only submit jobs to these partitions if you are a member of the Primary Investigator's research groups or have been given explicit permission to do so.==} If you are in doubt, ask before submitting. Jobs from non-group members will be killed and repeated abuse *will* lead to repercussions.  
-
-## Public Partitions 
-
-Partitions **shared**, **interactive**, **interactive-larger**, **gpu**, **sas**, **scavenge** and **transfer** are considered public and available to all.
-
-!!! Note "Specific use"
-    Only jobs which require the use of GPU cards should be submitted to the **gpu** partition.
-
-    Only jobs which require the use of the SAS application should be submitted to the **sas** partition.
-    
-    Only jobs related to transferring data into or out of the cluster should be submitted to the **transfer** partition.
-
-The public partitions provide low-priority access to unused capacity throughout the cluster. Capacity on the shared queue is provided on a strictly “as-available” basis and serves two purposes:
-
-First it provides surge capacity to stakeholders who temporarily need more compute capacity than they own, and second, it gives provides non-stakeholders access to computing capacity.
-
-Scheduling polices attempt to harvest unused capacity as efficiently as possible while mitigating the impact on the rights of stakeholders to use their resources. The JHPCE service center does not guarantee that stakeholders will provide sufficient excess capacity to meet non-stakeholders needs, however in practice the cluster is rarely operating at full capacity so there is usually ample computing capacity on the shared queue.
 
 ## Getting Info About Partitions
 
