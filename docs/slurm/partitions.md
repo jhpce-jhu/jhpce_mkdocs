@@ -100,7 +100,8 @@ Run `slurmpic -h` to see important usage notes!
 **Which partitions to you see?**
 
 - By default `slurmpic` displays one partition, while `slurmpic -a` shows all partitions. 
-- In the JHPCE cluster: slurmpic defaults to the **shared** partition
+- `slurmpic -a` allows you to see which partitions each node belongs to.
+- In the JHPCE cluster: slurmpic defaults to the **shared** partition.
 - In the JADE cluster: slurmpic defaults to the **N-shared** partition, where "N" is the community letter, e.g. "**c-shared**" for CMS community members.
 - Specific partitions can be displayed using: `slurmpic -p <partitionname>`
 - All of the nodes in all of the GPU partitions can be displayed with `slurmpic -g`.
