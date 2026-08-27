@@ -45,8 +45,8 @@
 
 --------------------- /jhpce/shared/community/modulefiles ----------------------
    R/4.3              conda_R/test     conda_R/4.4.x        conda_R/4.5
-   bedtools/2.31.0    conda_R/4.3.x    conda_R/4.4   (D)
-   conda_R/devel      conda_R/4.3      conda_R/4.5.x
+   bedtools/2.31.0    conda_R/4.3.x    conda_R/4.4   (D)    conda_R/4.6.x
+   conda_R/devel      conda_R/4.3      conda_R/4.5.x        conda_R/4.6
 
 ------------------------ /jhpce/shared/libd/modulefiles ------------------------
    PRSice/2.2.13                 nda-tools/0.3.0
@@ -125,4 +125,4 @@ any of the "keys".
 ```
 Note: some modules may not be available on the login node or on the JADE nodes.
 
-#####Updated: Wed Aug 26 05:32:02 AM EDT 2026
+#####Updated: Thu Aug 27 05:32:02 AM EDT 2026
