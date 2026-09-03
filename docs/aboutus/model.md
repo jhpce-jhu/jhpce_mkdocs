@@ -47,9 +47,8 @@ Development (LIBD). We support the HPC needs of over 2000 user accounts,
 with 300 active users each quarter.
 
 ## JHPCE Cluster Details
-As of November, 2024, the computing and storage systems are optimized for genomics and
-biomedical research. The cluster has 84 compute nodes, providing about
-3100 cores, 40TB of DRAM and over 20 PB of networked mass
+As of July, 2026, the JADE and JHPCE clusters have 93 compute nodes, providing about
+4500 cores, 60TB of DRAM and over 20 PB of networked mass
 storage. The JHPCE cluster also have 37 Nvidia GPUs in support of AI and ML research done
 in our community.  The network fabric consists of 10/40 Gbps ethernet connections.
 The facility is connected via a 40Gbps network to the University’s Science DMZ.
