@@ -2,46 +2,48 @@
 ```console
 
 ----------------------- /jhpce/shared/jhpce/modulefiles ------------------------
-   DMFold/1.2                      java/19            (D)
-   JADE_ROCKY9_DEFAULT_ENV         jhuacg/14.0.1
-   JHPCE_ROCKY9_DEFAULT_ENV (L)    jrt-test
-   JHPCE_tools/3.0          (L)    julia/1.9.2        (D)
-   R_test/4.3.2                    julia/1.10.5
-   afni/23.3.09                    julia/1.11.1
-   alphafold/2.3.1          (D)    kakoune/2023-08-05
-   alphafold/3.0.0                 latex/20240117
-   anaconda/2023.03         (D)    matlab/R2023a
-   anaconda/2024.10                matlab/R2023b
-   aws/2.12.7                      matlab/R2025a      (D)
-   azcopy/10.24.0                  mpc/1.3.1
-   bcl2fastq/2.17.1                mpfr/4.2.0
-   blast/2.16.0                    node/24.11
-   bowtie/2.5.1                    ollama/0.30.8
-   code-server/4.112.0             python/3.9.14      (D)
-   conda/3-23.3.1-testing          python/3.10.13
-   conda/3-23.3.1                  python/3.11.8
-   conda/3-24.3.0           (D)    python/3.12.12
-   cuda/12.1.1                     python/3.13.4
-   dcmtk/3.6.7                     python/3.14.6
-   encfs/1.9.5                     python2/2.7.9      (D)
-   ffmpeg/6.0                      python2/2.7.18
-   freesurfer/7.4.1                rclone/1.69.1
-   fresh/0.1.55                    reportseff/2.3.2
-   fsl/6.0.6.5                     rstudio/2023.06.1
-   gcc/9.5.0                       rstudio/2024.04.2  (D)
-   gcc/13.1.0               (D)    rstudio/2025.05.1
-   gdal/3.6.0                      ruby/3.1.2
-   gh/2.46.0                       rust/1.76.0
-   ghostscript/10.02.1             sas/9.0
-   glpk/5.0                        sas/9.4            (D)
-   gmp/6.2.1                       shapeit/5.1.1
-   go/20.6                  (D)    singularity/3.11.4
+   DMFold/1.2                      jhuacg/14.0.1
+   JADE_ROCKY9_DEFAULT_ENV         jrt-test
+   JHPCE_ROCKY9_DEFAULT_ENV (L)    julia/1.9.2        (D)
+   JHPCE_tools/3.0          (L)    julia/1.10.5
+   R_test/4.3.2                    julia/1.11.1
+   afni/23.3.09                    kakoune/2023-08-05
+   alphafold/2.3.1          (D)    latex/20240117
+   alphafold/3.0.0                 matlab/R2023a
+   anaconda/2023.03         (D)    matlab/R2023b
+   anaconda/2024.10                matlab/R2025a      (D)
+   apptainer/1.5.3                 mpc/1.3.1
+   aws/2.12.7                      mpfr/4.2.0
+   azcopy/10.24.0                  node/24.11
+   bcl2fastq/2.17.1                ollama/0.30.8
+   blast/2.16.0                    python/3.9.14      (D)
+   bowtie/2.5.1                    python/3.10.13
+   code-server/4.112.0             python/3.11.8
+   conda/3-23.3.1-testing          python/3.12.12
+   conda/3-23.3.1                  python/3.13.4
+   conda/3-24.3.0           (D)    python/3.14.6
+   cuda/12.1.1                     python2/2.7.9      (D)
+   dcmtk/3.6.7                     python2/2.7.18
+   encfs/1.9.5                     rclone/1.69.1
+   ffmpeg/6.0                      reportseff/2.3.2
+   freesurfer/7.4.1                rstudio/2023.06.1
+   fresh/0.1.55                    rstudio/2024.04.2  (D)
+   fsl/6.0.6.5                     rstudio/2025.05.1
+   gcc/9.5.0                       rstudio/2026.08.2
+   gcc/13.1.0               (D)    ruby/3.1.2
+   gdal/3.6.0                      rust/1.76.0
+   gh/2.46.0                       sas/9.0
+   ghostscript/10.02.1             sas/9.4            (D)
+   glpk/5.0                        shapeit/5.1.1
+   gmp/6.2.1                       singularity/3.11.4 (D)
+   go/20.6                  (D)    singularity/4.5.1
    go/22.1                         sra-toolkit/3.1.1
    go/23.1                         stata/17
    go/26.1                         tesseract/5.5.1
    gurobi/11.0.3                   tex/20240117
    gurobi/12.0.3            (D)    texstudio/4.8.7
    helix/23.10.0                   wine/7.11
+   java/19                  (D)
 
 --------------------- /jhpce/shared/community/modulefiles ----------------------
    R/4.3              conda_R/test     conda_R/4.4.x        conda_R/4.5
@@ -125,4 +127,4 @@ any of the "keys".
 ```
 Note: some modules may not be available on the login node or on the JADE nodes.
 
-#####Updated: Tue Sep  8 05:30:02 AM EDT 2026
+#####Updated: Wed Sep  9 05:30:03 AM EDT 2026
