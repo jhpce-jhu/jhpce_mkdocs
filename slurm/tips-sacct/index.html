@@ -6401,7 +6401,7 @@ That database needs to be modified constantly as jobs start and complete, so we 
 <p>If you know the exact time limit of the jobs you are looking for, set both min and max time limit to the same value. For jobs with a time limit of 30 minutes that ran in the last month:</p>
 <p><code>sacct -S $(date -d 'last month' +%D-%R) --timelimit-min 30 --timelimit-max 30</code></p>
 <h2 id="job-state-values"><strong>Job State Values</strong><a class="headerlink" href="#job-state-values" title="Anchor link to this section for reference">&para;</a></h2>
-<p>Using the <code>-s &lt;states&gt;</code> option, you can prune your search by looking for only jobs which match the state you need, such as F for failed. (All of these work: f, failed, F, FAILED). You can specify more than one state if you separate them with commas. Note that you use a different flag for state with the <code>squeue</code> command, <code>-t &lt;states&gt;</code>.</p>
+<p>Using the <code>-s &lt;states&gt;</code> option, you can prune your search by looking for only jobs which match the state you need, such as F for failed. (All of these work: f, failed, F, FAILED). You can specify more than one state if you separate them with commas. Note that you use a <strong>different flag</strong> for state with the <code>squeue</code> command, <code>-t &lt;states&gt;</code>.</p>
 <p>Job states have short names consisting of one or two letters, and a full name.  You can use either form when working with SLURM commands. They are shown here capitalized for emphasis but can be specified as lower-case.</p>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
@@ -6632,59 +6632,59 @@ The start and end field widths show below are suitable for the time format shown
 <div class="highlight"><span class="filename">Resources requested, used</span><pre><span></span><code><span class="nb">export</span><span class="w"> </span><span class="nv">SACCT_FORMAT</span><span class="o">=</span><span class="s2">"user,jobid,jobname,nodelist%12,start%-20,end%-20,state%20,reqtres%40,TRESUsageInTot%200"</span>
 </code></pre></div>
 <h2 id="exit-error-codes"><strong>Exit Error Codes</strong><a class="headerlink" href="#exit-error-codes" title="Anchor link to this section for reference">&para;</a></h2>
-<p>In addition to the job's "state", SLURM also records error codes. Unfortunately the vendor's <a href="https://slurm.schedmd.com/job_exit_code.html">Job Exit Codes</a> page doesn't provide a meaning for the numerical values.</p>
-<p>Error <code>0:53</code> often means that something wasn't readable or writable. For example, job output or error files couldn't be written in the directory in which the job ran (or where you told SLURM to put them with a directive).</p>
-<div class="highlight"><pre><span></span><code>a guide for exit codes:
-
-0 → success
-non-zero → failure
-Exit code 1 indicates a general failure
-Exit code 2 indicates incorrect use of shell builtins
-Exit codes 3-124 indicate some error in job (check software exit codes)
-Exit code 125 indicates out of memory
-Exit code 126 indicates command cannot execute
-Exit code 127 indicates command not found
-Exit code 128 indicates invalid argument to exit
-Exit codes 129-192 indicate jobs terminated by Linux signals
-For these, subtract 128 from the number and match to signal code
-Enter kill -l to list signal codes
-Enter man signal for more information
-</code></pre></div>
-<p>We will try to put specific entries here that we see more frequently and can identify.</p>
+<p>In addition to the job's "state", SLURM also records error codes, using the fields <code>ExitCode</code> &amp; <code>DerivedExitCode</code>. Unfortunately the vendor's <a href="https://slurm.schedmd.com/job_exit_code.html">Job Exit Codes</a> page doesn't provide a meaning for the numerical values.</p>
+<p><code>ExitCode</code> consists of two numbers separated by a colon</p>
+<p><code>&lt;job_script_exit_code&gt;:&lt;UNIX_signal_value&gt;</code></p>
+<p>Example: error <code>0:53</code> means that that the job script didn't fail (the "0") but it was killed because the operating system sent a signal (the "53") to kill it.</p>
+<p>The most frequently seen:</p>
 <table>
 <thead>
 <tr>
 <th>Exitcode</th>
-<th>Probable Meaning</th>
+<th>Possible Meanings</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>0:9</td>
-<td>cancelled (does it indicate who cancelled - user or slurm?)</td>
-</tr>
-<tr>
-<td>0:15</td>
-<td>cancelled (looks like this is used when either user cancelled or job ran out of time)</td>
+<td>0:125</td>
+<td>Ran out of memory</td>
 </tr>
 <tr>
 <td>0:53</td>
-<td>Some file or directory was not readable or writable, ran out of disk space or reached disk quota</td>
+<td>Failure to write standard output or error file(s)</td>
 </tr>
 <tr>
-<td>0:125</td>
-<td>Job ran out of memory</td>
+<td>0:15</td>
+<td>Job ran out of time and died within 30 sec (KillWait value in slurm.conf). <br>Job was cancelled.</td>
 </tr>
 <tr>
-<td>1:0</td>
-<td>??</td>
-</tr>
-<tr>
-<td>2:0</td>
-<td>??</td>
+<td>0:9</td>
+<td>Job ran out of time and took longer than 30 sec to die.<br>Job was cancelled.</td>
 </tr>
 </tbody>
 </table>
+<p>???? Note "About UNIX Signals"
+    Programs can send and receive signals while they are running. On RHEL 9 x86_64, the standard signals occupy numbers 1–31, and the 32 real-time signals occupy 34 (SIGRTMIN) through 64 (SIGRTMAX). Signal numbers can be found in 3 ways: <code>kill -l</code>, <code>man 7 signal</code>, and <code>less /usr/include/bits/signum.h</code>. SLURM uses its own scheme for which signals mean what, such as choosing value 53 (called SIGRTMAX−11 in the OS documentation) when process stdout and stderr cannot be written.</p>
+<p>Error <code>0:53</code> means that that the job's standard output or standard error files could not be written, for any cause. Possible causes: you exceeded a disk quota, you didn't have write permission on the directory in which you launched the job (which only matters if you did not specify an explicit path), you specified a file path but directories in it don't exist.</p>
+<div class="highlight"><pre><span></span><code>ExitCode format: &lt;script_exit&gt;:&lt;signal&gt;
+
+Before the colon (script exit code):
+  0        → script exited cleanly
+  1–124    → application-specific error (check the software)
+  125      → (bash) command not found in restricted context
+  126      → (bash) command found but not executable
+  127      → (bash) command not found
+  128      → (bash) invalid argument to exit
+  129–192  → (bash) a child was killed by signal N; script exited with 128+N
+
+After the colon (signal sent by SLURM/kernel):
+  9        → SIGKILL (timeout, cancelled)
+  15       → SIGTERM (timeout, cancelled)
+  53       → SLURM internal: standard output or error file write failure
+  125      → SLURM internal: out of memory (real-time signal)
+  Other    → check `kill -l`; real-time signals (34–64) are
+             SLURM-internal and have no standard POSIX name
+</code></pre></div>
 <h2 id="diagnostic-arguments"><strong>Diagnostic Arguments</strong><a class="headerlink" href="#diagnostic-arguments" title="Anchor link to this section for reference">&para;</a></h2>
 <p>These can be useful to double-check what someone actually did.</p>
 <div class="highlight"><span class="filename">See the full command issued to submit the job</span><pre><span></span><code>sacct<span class="w"> </span>-o<span class="w"> </span>SubmitLine%250<span class="w"> </span>-j<span class="w"> </span>&lt;jobid&gt;<span class="w"> </span><span class="c1"># may need to increase field width</span>
@@ -6793,7 +6793,7 @@ MaxRSS  MaxVMSize MaxDiskWrite
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="April 24, 2026 04:07:41 UTC">April 24, 2026</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="September 14, 2026 21:59:53 UTC">September 14, 2026</span>
   </span>
 
     

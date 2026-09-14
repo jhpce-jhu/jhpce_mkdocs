@@ -7960,21 +7960,24 @@ User                UserCPU             WCKey               WCKeyID
 </code></pre><pre><span></span><code>sacct<span class="w"> </span>-o<span class="w"> </span>ALL<span class="w"> </span>-j<span class="w"> </span>&lt;jobid&gt;
 </code></pre><pre><span></span><code><span class="nb">export</span><span class="w"> </span><span class="nv">SLURM_TIME_FORMAT</span><span class="o">=</span><span class="s2">"%a %m-%d %H:%M"</span><span class="w"> </span>
 </code></pre><pre><span></span><code><span class="nb">export</span><span class="w"> </span><span class="nv">SACCT_FORMAT</span><span class="o">=</span><span class="s2">"user,jobid,jobname,nodelist%12,start%-20,end%-20,state%20,reqtres%40,TRESUsageInTot%200"</span>
-</code></pre><pre><span></span><code>a guide for exit codes:
+</code></pre><pre><span></span><code>ExitCode format: &lt;script_exit&gt;:&lt;signal&gt;
 
-0 → success
-non-zero → failure
-Exit code 1 indicates a general failure
-Exit code 2 indicates incorrect use of shell builtins
-Exit codes 3-124 indicate some error in job (check software exit codes)
-Exit code 125 indicates out of memory
-Exit code 126 indicates command cannot execute
-Exit code 127 indicates command not found
-Exit code 128 indicates invalid argument to exit
-Exit codes 129-192 indicate jobs terminated by Linux signals
-For these, subtract 128 from the number and match to signal code
-Enter kill -l to list signal codes
-Enter man signal for more information
+Before the colon (script exit code):
+  0        → script exited cleanly
+  1–124    → application-specific error (check the software)
+  125      → (bash) command not found in restricted context
+  126      → (bash) command found but not executable
+  127      → (bash) command not found
+  128      → (bash) invalid argument to exit
+  129–192  → (bash) a child was killed by signal N; script exited with 128+N
+
+After the colon (signal sent by SLURM/kernel):
+  9        → SIGKILL (timeout, cancelled)
+  15       → SIGTERM (timeout, cancelled)
+  53       → SLURM internal: standard output or error file write failure
+  125      → SLURM internal: out of memory (real-time signal)
+  Other    → check `kill -l`; real-time signals (34–64) are
+             SLURM-internal and have no standard POSIX name
 </code></pre><pre><span></span><code>sacct<span class="w"> </span>-o<span class="w"> </span>SubmitLine%250<span class="w"> </span>-j<span class="w"> </span>&lt;jobid&gt;<span class="w"> </span><span class="c1"># may need to increase field width</span>
 </code></pre><pre><span></span><code>sacct<span class="w"> </span>-B<span class="w"> </span>-j<span class="w"> </span>&lt;jobid&gt;
 </code></pre><pre><span></span><code>sacct<span class="w"> </span>-o<span class="w"> </span>WorkDir<span class="w"> </span>-j<span class="w"> </span>&lt;jobid&gt;
