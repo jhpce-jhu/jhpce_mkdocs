@@ -162,7 +162,7 @@ If you know the exact time limit of the jobs you are looking for, set both min a
 `sacct -S $(date -d 'last month' +%D-%R) --timelimit-min 30 --timelimit-max 30`
 
 ## **Job State Values**
-Using the `-s <states>` option, you can prune your search by looking for only jobs which match the state you need, such as F for failed. (All of these work: f, failed, F, FAILED). You can specify more than one state if you separate them with commas. Note that you use a different flag for state with the `squeue` command, `-t <states>`.
+Using the `-s <states>` option, you can prune your search by looking for only jobs which match the state you need, such as F for failed. (All of these work: f, failed, F, FAILED). You can specify more than one state if you separate them with commas. Note that you use a **different flag** for state with the `squeue` command, `-t <states>`.
 
 Job states have short names consisting of one or two letters, and a full name.  You can use either form when working with SLURM commands. They are shown here capitalized for emphasis but can be specified as lower-case.
 
@@ -273,38 +273,49 @@ export SACCT_FORMAT="user,jobid,jobname,nodelist%12,start%-20,end%-20,state%20,r
 ```
 
 ## **Exit Error Codes**
-In addition to the job's "state", SLURM also records error codes. Unfortunately the vendor's [Job Exit Codes](https://slurm.schedmd.com/job_exit_code.html) page doesn't provide a meaning for the numerical values.
+In addition to the job's "state", SLURM also records error codes, using the fields `ExitCode` & `DerivedExitCode`. Unfortunately the vendor's [Job Exit Codes](https://slurm.schedmd.com/job_exit_code.html) page doesn't provide a meaning for the numerical values.
 
-Error `0:53` often means that something wasn't readable or writable. For example, job output or error files couldn't be written in the directory in which the job ran (or where you told SLURM to put them with a directive).
+`ExitCode` consists of two numbers separated by a colon
 
-```
-a guide for exit codes:
+`<job_script_exit_code>:<UNIX_signal_value>`
 
-0 → success
-non-zero → failure
-Exit code 1 indicates a general failure
-Exit code 2 indicates incorrect use of shell builtins
-Exit codes 3-124 indicate some error in job (check software exit codes)
-Exit code 125 indicates out of memory
-Exit code 126 indicates command cannot execute
-Exit code 127 indicates command not found
-Exit code 128 indicates invalid argument to exit
-Exit codes 129-192 indicate jobs terminated by Linux signals
-For these, subtract 128 from the number and match to signal code
-Enter kill -l to list signal codes
-Enter man signal for more information
-```
+Example: error `0:53` means that that the job script didn't fail (the "0") but it was killed because the operating system sent a signal (the "53") to kill it.
 
-We will try to put specific entries here that we see more frequently and can identify.
+The most frequently seen:
 
-|Exitcode|Probable Meaning|
+|Exitcode|Possible Meanings|
 |---|----|
-|0:9|cancelled (does it indicate who cancelled - user or slurm?)
-|0:15|cancelled (looks like this is used when either user cancelled or job ran out of time)
-|0:53|Some file or directory was not readable or writable, ran out of disk space or reached disk quota|
-|0:125|Job ran out of memory|
-|1:0|??|
-|2:0|??|
+|0:125|Ran out of memory|
+|0:53|Failure to write standard output or error file(s)|
+|0:15|Job ran out of time and died within 30 sec (KillWait value in slurm.conf). <br>Job was cancelled.
+|0:9|Job ran out of time and took longer than 30 sec to die.<br>Job was cancelled.|
+
+
+???? Note "About UNIX Signals"
+    Programs can send and receive signals while they are running. On RHEL 9 x86_64, the standard signals occupy numbers 1–31, and the 32 real-time signals occupy 34 (SIGRTMIN) through 64 (SIGRTMAX). Signal numbers can be found in 3 ways: `kill -l`, `man 7 signal`, and `less /usr/include/bits/signum.h`. SLURM uses its own scheme for which signals mean what, such as choosing value 53 (called SIGRTMAX−11 in the OS documentation) when process stdout and stderr cannot be written.
+
+Error `0:53` means that that the job's standard output or standard error files could not be written, for any cause. Possible causes: you exceeded a disk quota, you didn't have write permission on the directory in which you launched the job (which only matters if you did not specify an explicit path), you specified a file path but directories in it don't exist.
+
+```
+ExitCode format: <script_exit>:<signal>
+
+Before the colon (script exit code):
+  0        → script exited cleanly
+  1–124    → application-specific error (check the software)
+  125      → (bash) command not found in restricted context
+  126      → (bash) command found but not executable
+  127      → (bash) command not found
+  128      → (bash) invalid argument to exit
+  129–192  → (bash) a child was killed by signal N; script exited with 128+N
+
+After the colon (signal sent by SLURM/kernel):
+  9        → SIGKILL (timeout, cancelled)
+  15       → SIGTERM (timeout, cancelled)
+  53       → SLURM internal: standard output or error file write failure
+  125      → SLURM internal: out of memory (real-time signal)
+  Other    → check `kill -l`; real-time signals (34–64) are
+             SLURM-internal and have no standard POSIX name
+```
 
 ## **Diagnostic Arguments**
 
