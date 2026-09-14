@@ -286,15 +286,13 @@ The most frequently seen:
 |Exitcode|Possible Meanings|
 |---|----|
 |0:125|Ran out of memory|
-|0:53|Failure to write standard output or error file(s)|
+|0:53|Failure to write standard output or error file(s) for any reason|
 |0:15|Job ran out of time and died within 30 sec (KillWait value in slurm.conf). <br>Job was cancelled.
 |0:9|Job ran out of time and took longer than 30 sec to die.<br>Job was cancelled.|
 
 
-???? Note "About UNIX Signals"
+??? Note "About UNIX Signals"
     Programs can send and receive signals while they are running. On RHEL 9 x86_64, the standard signals occupy numbers 1–31, and the 32 real-time signals occupy 34 (SIGRTMIN) through 64 (SIGRTMAX). Signal numbers can be found in 3 ways: `kill -l`, `man 7 signal`, and `less /usr/include/bits/signum.h`. SLURM uses its own scheme for which signals mean what, such as choosing value 53 (called SIGRTMAX−11 in the OS documentation) when process stdout and stderr cannot be written.
-
-Error `0:53` means that that the job's standard output or standard error files could not be written, for any cause. Possible causes: you exceeded a disk quota, you didn't have write permission on the directory in which you launched the job (which only matters if you did not specify an explicit path), you specified a file path but directories in it don't exist.
 
 ```
 ExitCode format: <script_exit>:<signal>
