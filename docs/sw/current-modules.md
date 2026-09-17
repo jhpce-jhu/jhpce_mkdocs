@@ -51,33 +51,34 @@
    conda_R/devel      conda_R/4.3      conda_R/4.5.x        conda_R/4.6
 
 ------------------------ /jhpce/shared/libd/modulefiles ------------------------
-   PRSice/2.2.13                 nda-tools/0.3.0
-   Salmon/1.2.1                  nda-tools/0.5.0
-   Salmon/1.10.1          (D)    nda-tools/0.6.0
-   arioc/1.52                    nda-tools/0.7.0     (D)
-   aws/2.28               (D)    nextflow/20.01.0
-   bamtofastq/1.4.1              nextflow/22.10.7
-   bcftools/1.10.2               nextflow/23.10.0
-   bcftools/1.18          (D)    nextflow/24.10.5    (D)
-   bfg/1.13.0                    paste/1.3.0
-   bin2cell/0.3.0                plink/1.90b
-   bismark/0.23.0                plink/2.00a4.6      (D)
-   bs/1.3.0                      plink2/2.0
-   bustools/0.39.3               qctool/2.2.5
-   cell2location/0.1.3           qtl_gtex/dae3369
-   cell2location/0.8a0    (D)    r_nac/1.0
-   cellpose/2.0                  regtools/0.5.33g
-   cellpose/2.2.2         (D)    resept/1.0.0
-   cellprofiler/4.2.6            rmate/1.5.10
-   cellranger-atac/2.1.0         rseqc/3.0.1
-   cellranger/7.0.0              ruby/3.2.2          (D)
-   cellranger/7.2.0              rust/1.95.0         (D)
-   cellranger/8.0.1              samblaster/0.1.26
-   cellranger/9.0.0              samtools/1.10
-   cellranger/9.0.1              samtools/1.18       (D)
-   cellranger/10.0.0             samui/1.0.0-next.24
-   cellranger/10.1.0      (D)    samui/1.0.0-next.45
-   cellranger_arc/2.0.2          samui/1.0.0-next.49
+   PRSice/2.2.13                 nda-tools/0.2.27
+   Salmon/1.2.1                  nda-tools/0.3.0
+   Salmon/1.10.1          (D)    nda-tools/0.5.0
+   arioc/1.52                    nda-tools/0.6.0
+   aws/2.28               (D)    nda-tools/0.7.0     (D)
+   bamtofastq/1.4.1              nextflow/20.01.0
+   bcftools/1.10.2               nextflow/22.10.7
+   bcftools/1.18          (D)    nextflow/23.10.0
+   bfg/1.13.0                    nextflow/24.10.5    (D)
+   bin2cell/0.3.0                paste/1.3.0
+   bismark/0.23.0                plink/1.90b
+   bs/1.3.0                      plink/2.00a4.6      (D)
+   bustools/0.39.3               plink2/2.0
+   cell2location/0.1.3           qctool/2.2.5
+   cell2location/0.8a0    (D)    qtl_gtex/dae3369
+   cellpose/2.0                  r_nac/1.0
+   cellpose/2.2.2         (D)    regtools/0.5.33g
+   cellprofiler/4.2.6            resept/1.0.0
+   cellranger-atac/2.1.0         rmate/1.5.10
+   cellranger/7.0.0              rseqc/3.0.1
+   cellranger/7.2.0              ruby/3.2.2          (D)
+   cellranger/8.0.1              rust/1.95.0         (D)
+   cellranger/9.0.0              samblaster/0.1.26
+   cellranger/9.0.1              samtools/1.10
+   cellranger/10.0.0             samtools/1.18       (D)
+   cellranger/10.1.0      (D)    samui/1.0.0-next.24
+   cellranger_arc/2.0.2          samui/1.0.0-next.45
+   cellranger_arc/2.2.0   (D)    samui/1.0.0-next.49
    cibersortx/04_04_2020         samui/1.0.1         (D)
    dissect/dc45940c              spaceranger/2.1.0
    fastqc/0.11.8                 spaceranger/3.0.0
@@ -108,7 +109,6 @@
    magma/1.10                    xeniumranger/2.0.0
    methyldackel/0.5.2            xeniumranger/3.1.1
    methylpy/1.4.3                xeniumranger/4.0.0  (D)
-   nda-tools/0.2.27
 
   Where:
    D:  Default Module
@@ -127,4 +127,4 @@ any of the "keys".
 ```
 Note: some modules may not be available on the login node or on the JADE nodes.
 
-#####Updated: Wed Sep 16 05:30:02 AM EDT 2026
+#####Updated: Thu Sep 17 05:30:03 AM EDT 2026
