@@ -329,7 +329,15 @@ STDFLAGS = -O2 -pipe -Wall
 ```
 We have a wide variety of CPU architecture across the cluster, so you probably don't want to add to STDFLAGS `-march=` and `-mtune=` arguments.
 
-For the X11 version of Rstudio, you will also be making 
+### Positron - From Lieber
+
+If you would like to use Positron on the JHPCE cluster, please refer to the
+documentaion that the Lieber group has put together at this
+[Google Doc]( https://docs.google.com/document/d/1lGbZfl-FjrzQXnVsJKIEMTN8ecnFNzE0M0zKFNnVCCA/edit?tab=t.0#heading=h.vw66t5j2xvrq)
+
+The Lieber group has also put together a [Youtube Video]( https://www.youtube.com/watch?v=CnmaJG8VPp8&list=PLNNI62fcZPdB3G8Nl87gUlAQTEe2EH5K4&index=20)
+which goes through the Positron setup.
+
 ### Installing your own R 
 
 If you find that you have a specific need in R that is not available in our current offerings, you can compile your own
