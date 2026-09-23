@@ -7,34 +7,43 @@ tags:
 # **squeue -- useful command examples**
    
 !!! Warning
-    AS OF 04/30/2024 THIS DOCUMENT CONTAINS NO UNIQUE/USEFUL INFO.
-    This document started as a copy of that for the sacct command. Because formatting output is similar, etc. It will be pruned and modified.
+    AS OF 09/22/2026 THIS DOCUMENT CONTAINS ONLY A LITTLE USEFUL INFO.
+    This document started as a copy of that for the sacct command because formatting output options are similar, etc. It will be pruned and modified when we have time.
 
-!!! Example
+[squeue](https://slurm.schedmd.com/archive/slurm-22.05.9/squeue.html) is the primary basic SLURM command used to display information about pending and running jobs. By default it shows a limited amount of information. We hope that this page will help you use the command effectively, by, for example, describing how to request more columns using the `-o` and `-O` formatting options. 
+
+SLURM jobs are always in one "state" or another. Each state has a full name and an abbrieviation what you can use instead when using tools such as `squeue`. Here the relevent two states are `RUNNING` (abbrieviation: `R`) and `PENDING` (abbrieviation: `PD`) (upper case is not required, but we use it here for clarity).
+
+A key piece of information about PENDING jobs is their `Reason`
+
+!!! Example "Simple examples"
     ```Shell title="Show my pending and running jobs" linenums="0"
-    squeue --me
+    squeue --me   # both types
+    squeue --me --states=PD  # only PENDING
+    squeue --me --nodelist=compute-112
+    
+          JOBID PARTITION     NAME     USER ST       TIME  NODES NODELIST(REASON)
+          35862069  sysadmin     bash  tunison  R      40:29      1 compute-112
     ```
-
-[sacct](https://slurm.schedmd.com/archive/slurm-22.05.9/squeue.html) is a command used to display information about pending and running jobs. It has a number of subtleties, such as the formatting of output. We hope that this page will help you get the information you need.
-
-`squeue` can be used to investigate jobs' resource usage, nodes used, and exit codes. It can point to important information, such as jobs dying on a particular node but working on other nodes
 
 !!! Example
     ```squeue --sort=-p,i --states=PD # sort PENDING by partition and job priority
     ```
+
 
 Adds columns for: amount of CPU, RAM requested as well as time job limit.
 
 jobid,partition,job name,user,state,time run,time limit,node count,cpu,memory,nodelist or reason
 
 !!! Example
-    ```squeue -S u,-t,p -o "%.6P %.8j %.20u %.2t %.10M %.12l %.4D %.4C %.5m %R"
-    ```
-    A bash shell routine you can add to your .bashrc:
-    ```marksq() { (squeue -O JobArrayID:10" ",username:8" ",partition:7" ",name:10" ",statecompact:3,reason:12" ",reservation,,PendingTime:7" ",tres:20|sed 's/,no.*//' | sed 's/TRES_ALLOC[ ]*$/TRES_ALLOC/') }
-    ```
+    squeue -S u,-t,p -o "%.6P %.8j %.20u %.2t %.10M %.12l %.4D %.4C %.5m %R"
     
-sacct will show all submitted jobs but cannot, of course, provide data for a number of fields until the job has finished. Use the [sstat](https://slurm.schedmd.com/archive/slurm-22.05.9/sstat.html) command to get information about running programs. "Instrumenting" your jobs to gather information about them can include adding one or more sstat commands to batch jobs in multiple places.
+    A bash shell routine "mysq" you can add to your .bashrc:
+    mysq() { (squeue -O JobArrayID:10" ",username:8" ",partition:7" ",name:10" ",statecompact:3,reason:12" ",reservation,,PendingTime:7" ",tres:20|sed 's/,no.*//' | sed 's/TRES_ALLOC[ ]*$/TRES_ALLOC/') }
+    ```
+
+## [EDITING LEFT OFF HERE -- BELOW IS SACCT-SPECIFIC MATERIAL]
+
 
 Examples below use angle brackets ++less++ ++greater++  to indicate where you are supposed to replace argumements with your values.
     
@@ -42,28 +51,22 @@ Examples below use angle brackets ++less++ ++greater++  to indicate where you ar
 ## sacct basics
 
 1. By default only your own jobs are displayed. Use the `--allusers` or `-a` flag if necessary.
-2. Only jobs from a certain time window are displayed by default. That window varies in a confusing manner depending the arguments you provide. See [this section](https://slurm.schedmd.com/archive/slurm-22.05.9/sacct.html#lbAH) of the manual page. Therefore it is recommended to **always** provide start (`-S`) and end (`-E`) times to be sure that you are seeing what you expect.
-3. You can choose output fields and control their width. 
+2. You can choose output fields and control their width. 
 4. Even the simplest of batch jobs contain multiple "steps" as far as SLURM is concerned. One of them, named "extern" represents the ssh to the compute node on behalf of your job. Job records consist of a primary entry for the job as a whole  as  well as entries for job steps. The [Job Launch](https://slurm.schedmd.com/archive/slurm-22.05.9/job_launch.html#job_record) page has a more detailed description of each type of job step. You may find the `-X` flag helpful to omit clutter.
 5. Regular jobs are in the form: **JobID[.JobStep]**
 6. Array jobs are in the form: **ArrayJobID_ArrayTaskID**
 
-!!! Warning
-    Sacct retrieves data from a SQL database. Be careful when creating your sacct commands to limit the queries to the information you need. Narrow the search as much as possible. 
-    That database needs to be modified constantly as jobs start and complete, so we don't want it tied up answering sacct queries. If you want to look at a large amount of data in a variety of ways, consider saving the output to a text file and then working with that file.
-
 ## Command Options of Note
 
-Check the [man page](https://slurm.schedmd.com/archive/slurm-22.05.9/sacct.html). There are other useful options.
+Check the [man page](https://slurm.schedmd.com/archive/slurm-22.05.9/squeue.html). There are other useful options. Here we show both the short and human-readable flag names, e.g. `-n` and `--name`. When a flag requires an argument, you need to specify it using an equals character, e.g. `--name=fred_type`  When the argument can contain one or more values, separate them with a comma (but no spaces), e.g. `-p shared,cancergen`.
 
-- `-X`  show stats for the job allocation itself, ignoring steps (try it)
-- `-R` *reasonlist*  show jobs not scheduled for given reason
-- `-a`  allusers
-- `-N` *nodelist*  only show jobs which ran on this/these nodes
+- `-n, --name` *namelist*  accepts one or more names
+- `-p, --partition` *partlist* only those in listed partition(s)
+- `-t, --states` *statelist*
+- `-w, --nodelist` *nodelist* only show jobs currently running on listed nodes
 - `-u` *userlist*  only show jobs which ran by this/these users
-- `--name=`*namelist* - only show jobs with this list of names
 - `-n`  noheader
-- `-p`  parsable  puts a | between fields and at end of line
+- `-p`  <partition>  only those in that partition
 - `-P`  parsable2  does not put a | at end of line
 - `--delimeter` <char> - use that char instead of | for `-p` or `-P`
 - `--units=[KMGTP]` - display in this unit
@@ -71,42 +74,6 @@ Check the [man page](https://slurm.schedmd.com/archive/slurm-22.05.9/sacct.html)
 - `-K` *maximum time* - looking for jobs with time limits in a range
 - `-q` *qoslist* - list of qos used
 
-## Start and End Times
-It is best to use always specify a `-S` start time and a `-E` end time.
-
-Special time words: **today**, **midnight**, **noon**, **now**
-
-now[{+|-}count[seconds(default)|minutes|hours|days|weeks]]
-
-Examples:
-: `now-3day`
-: `now-2hr`
-
-Valid time formats are:
-
-                   HH:MM[:SS][AM|PM]
-                   MMDD[YY][-HH:MM[:SS]]
-                   MM.DD[.YY][-HH:MM[:SS]]
-                   MM/DD[/YY][-HH:MM[:SS]]
-                   YYYY-MM-DD[THH:MM[:SS]]
-
-## Job State Values
-Using the `-s <state>` option, you can prune your search by looking for only jobs which match the state you need, such as F for failed. (All of these work: f, failed, F, FAILED)
-
-!!! Warning
-    Different steps of a job can have different end states. For example the "extern" step is often COMPLETED when the "batch" and overall steps are FAILED
-
-See [this section](https://slurm.schedmd.com/archive/slurm-22.05.9/sacct.html#lbAG) of the manual page, which has also been saved to a text file you can copy for your own reference `/jhpce/shared/jhpce/slurm/docs/job-states.txt`
-
-Primary job states of interest:
-
-- CA CANCELLED
-- CD COMPLETED
-- F FAILED
-- OOM OUT_OF_MEMORY
-- PD PENDING
-- R RUNNING
-- TO TIMEOUT
 
 ## Available fields
 
@@ -197,46 +164,3 @@ These fields are probably the ones you'll want. See [this section](https://slurm
 Virtual Memory Size (VMSize) is the total memory size of a job. It includes both memory actually in RAM (the RSS) and parts of executabilities which were not needed to be read in off of disk into RAM. Because, for example, routines in dynamically linked libraries were never called, so those libraries were not loaded. 
 
 RSS - resident set size (RSS) is the portion of memory (measured in megabytes) occupied by a job that is held in main memory (RAM). The rest of the memory required by the job exists in the swap space or file system, either because some parts of the occupied memory were paged out, or because some parts of the executable were never loaded.
-
-## Exit Error Codes
-In addition to the job's "state", SLURM also records error codes. Unfortunately their [Job Exit Codes](https://slurm.schedmd.com/job_exit_code.html) page doesn't provide a meaning for the numerical values.
-
-Error `0:53` often means that something wasn't readable or writable. For example, job output or error files couldn't be written in the directory in which the job ran (or where you told SLURM to put them with a directive).
-
-```
-a guide for exit codes:
-
-0 → success
-non-zero → failure
-Exit code 1 indicates a general failure
-Exit code 2 indicates incorrect use of shell builtins
-Exit codes 3-124 indicate some error in job (check software exit codes)
-Exit code 125 indicates out of memory
-Exit code 126 indicates command cannot execute
-Exit code 127 indicates command not found
-Exit code 128 indicates invalid argument to exit
-Exit codes 129-192 indicate jobs terminated by Linux signals
-For these, subtract 128 from the number and match to signal code
-Enter kill -l to list signal codes
-Enter man signal for more information
-```
-
-## Diagnostic Arguments
-
-These can be useful to double-check what someone actually did.
-
-```Shell title="See the full command issued to submit the job" linenums="0"
-sacct -o SubmitLine -j <jobid>
-```
-
-```Shell title="See batch file used" linenums="0"
-sacct -B -j <jobid>
-```
-
-```Shell title="Directory used by the job to execute commands" linenums="0"
-sacct -o WorkDir -j <jobid>
-```
-
-```Shell title="See jobs given a time limit btwn 1min & 1 day" linenums="0"
-sacct -k 00:01 -K 1-0
-```

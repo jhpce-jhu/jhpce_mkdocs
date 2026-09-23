@@ -31,27 +31,30 @@ Batch jobs consist of several job steps, two at minimum ("batch"[^2] and "extern
 8. RUNNING jobs can run correctly but run into their wall-clock time limit and become DEADLINE (DL) or FAILED.
 9. RUNNING jobs can run correctly, switch to COMPLETING (CG) as processes are quitting, and then COMPLETED (CD).
 
-
 ## **PENDING JOBS**
 
-!!! Note "Authoring Note"
-    Need to insert here the most common reasons and their explanations.
-
-Jobs waiting to run will sit "in the queue." They will be shown to have a "Reason"
+Jobs waiting to run will sit "in the queue" with the "State" `PENDING` They will be shown to have a `Reason`.
+This [When Will My Job Start?](../slurm/whenstart.md) page discusses factors which impact the transition from `PENDING` to `RUNNING`.
 
 ### **Tools for pending jobs**
-`squeue --me`
+We have a page with [tips for using the squeue command](../slurm/tips-squeue.md).
 
-`squeue --me --start`
+`squeue --me --states=PENDING`
 
-`scontrol show job` - this only works for pending and running jobs.
+`squeue --me -t PD` - equivalent to the above
+
+`squeue --me -t PD --start` - this will provide an estimated job start date if SLURM's job scheduler has determined one. The accuracy of that estimate will vary.
+
+`scontrol show job <jobid>` - this only works for pending and running jobs.
+
+`showjob <jobid>` - a JHPCE script which produces well-formatted output for easier inspection
 
 ## **RUNNING JOBS**
 
 ### **How to get information about running jobs?**
-If you want or need to get more information about your jobs, you should add "instrumentation" to them. Instrumentation is any of a number of techniques which gather and save or print information for you to inspect. A trivial example is adding a command in your batch file script that echoes "I'm running on node" and then runs the hostname command.
+If you want or need to get more information about your jobs, you can add "instrumentation" to them. Instrumentation is any of a number of techniques which gather and save or print information for you to inspect. A trivial example is adding a command in your batch file script that echoes "I'm running on node" and then runs the hostname command. A more complex example is to add `sstat` commands at different points which use the automatically-defined `$SLURM_JOBID` variable to display performance information such as how much RAM is being used at that point. 
 
-1. `scontrol show job`
+1. `scontrol show job <jobid>` or `showjob <jobid>`
 2. Look at their output and error files
 2. Look at files they are writing to
 3. Use `sstat` to inspect parameters SLURM has collected for the job
@@ -60,7 +63,7 @@ If you want or need to get more information about your jobs, you should add "ins
 
 
 ## **COMPLETED JOBS**
-Here we mean jobs that are no longer running, whether they succeeded or failed for some reason.
+Here we mean jobs that are no longer running, whether they succeeded or failed for any reason.
 
 ### **How to get information about completed jobs?**
 If you want or need to get more information about your jobs, you should add "instrumentation" to them. Instrumentation is any of a number of techniques which gather and save or print information for you to inspect. A trivial example is adding a command in your batch file script that echoes "I'm running on node" and then runs the hostname command.
