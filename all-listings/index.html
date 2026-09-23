@@ -8233,37 +8233,16 @@ scontrol<span class="w"> </span>create<span class="w"> </span><span class="nv">r
 <span class="k">done</span>
 </code></pre><pre><span></span><code>scontrol<span class="w"> </span>delete<span class="w"> </span><span class="nv">reservation</span><span class="o">=</span>&lt;resv-name&gt;
 </code></pre><pre><span></span><code>scontrol<span class="w"> </span>update<span class="w"> </span><span class="nv">reservation</span><span class="o">=</span>&lt;resv-name&gt;<span class="w"> </span><span class="nv">endtime</span><span class="o">=</span>now
-</code></pre><h2><a class="heading" href="..//slurm/tips-squeue/">squeue tips</a></h2><a class="url" href="..//slurm/tips-squeue/">/slurm/tips-squeue/</a><pre><span></span><code>squeue<span class="w"> </span>--me
-</code></pre><pre><span></span><code>A bash shell routine you can add to your .bashrc:
-```marksq() { (squeue -O JobArrayID:10" ",username:8" ",partition:7" ",name:10" ",statecompact:3,reason:12" ",reservation,,PendingTime:7" ",tres:20|sed 's/,no.*//' | sed 's/TRES_ALLOC[ ]*$/TRES_ALLOC/') }
-</code></pre><pre><span></span><code>               HH:MM[:SS][AM|PM]
-               MMDD[YY][-HH:MM[:SS]]
-               MM.DD[.YY][-HH:MM[:SS]]
-               MM/DD[/YY][-HH:MM[:SS]]
-               YYYY-MM-DD[THH:MM[:SS]]
+</code></pre><h2><a class="heading" href="..//slurm/tips-squeue/">squeue tips</a></h2><a class="url" href="..//slurm/tips-squeue/">/slurm/tips-squeue/</a><pre><span></span><code>squeue<span class="w"> </span>--me<span class="w">   </span><span class="c1"># both types</span>
+squeue<span class="w"> </span>--me<span class="w"> </span>--states<span class="o">=</span>PD<span class="w">  </span><span class="c1"># only PENDING</span>
+squeue<span class="w"> </span>--me<span class="w"> </span>--nodelist<span class="o">=</span>compute-112
+
+<span class="w">      </span>JOBID<span class="w"> </span>PARTITION<span class="w">     </span>NAME<span class="w">     </span>USER<span class="w"> </span>ST<span class="w">       </span>TIME<span class="w">  </span>NODES<span class="w"> </span>NODELIST<span class="o">(</span>REASON<span class="o">)</span>
+<span class="w">      </span><span class="m">35862069</span><span class="w">  </span>sysadmin<span class="w">     </span>bash<span class="w">  </span>tunison<span class="w">  </span>R<span class="w">      </span><span class="m">40</span>:29<span class="w">      </span><span class="m">1</span><span class="w"> </span>compute-112
 </code></pre><pre><span></span><code>sacct<span class="w"> </span>-e
 </code></pre><pre><span></span><code>sacct<span class="w"> </span>-o<span class="w"> </span>ALL<span class="w"> </span>-j<span class="w"> </span>&lt;jobid&gt;
 </code></pre><pre><span></span><code><span class="nb">export</span><span class="w"> </span><span class="nv">SLURM_TIME_FORMAT</span><span class="o">=</span><span class="s2">"%a %m-%d %H:%M"</span><span class="w"> </span>
 </code></pre><pre><span></span><code><span class="nb">export</span><span class="w"> </span><span class="nv">SACCT_FORMAT</span><span class="o">=</span><span class="s2">"user,jobid,jobname,nodelist%12,start%-20,end%-20,state%20,reqtres%40,TRESUsageInTot%200"</span>
-</code></pre><pre><span></span><code>a guide for exit codes:
-
-0 → success
-non-zero → failure
-Exit code 1 indicates a general failure
-Exit code 2 indicates incorrect use of shell builtins
-Exit codes 3-124 indicate some error in job (check software exit codes)
-Exit code 125 indicates out of memory
-Exit code 126 indicates command cannot execute
-Exit code 127 indicates command not found
-Exit code 128 indicates invalid argument to exit
-Exit codes 129-192 indicate jobs terminated by Linux signals
-For these, subtract 128 from the number and match to signal code
-Enter kill -l to list signal codes
-Enter man signal for more information
-</code></pre><pre><span></span><code>sacct<span class="w"> </span>-o<span class="w"> </span>SubmitLine<span class="w"> </span>-j<span class="w"> </span>&lt;jobid&gt;
-</code></pre><pre><span></span><code>sacct<span class="w"> </span>-B<span class="w"> </span>-j<span class="w"> </span>&lt;jobid&gt;
-</code></pre><pre><span></span><code>sacct<span class="w"> </span>-o<span class="w"> </span>WorkDir<span class="w"> </span>-j<span class="w"> </span>&lt;jobid&gt;
-</code></pre><pre><span></span><code>sacct<span class="w"> </span>-k<span class="w"> </span><span class="m">00</span>:01<span class="w"> </span>-K<span class="w"> </span><span class="m">1</span>-0
 </code></pre><h2><a class="heading" href="..//slurm/whenstart/">When Will My Job Start?</a></h2><a class="url" href="..//slurm/whenstart/">/slurm/whenstart/</a><pre><span></span><code>squeue<span class="w"> </span>--me<span class="w"> </span>--start
 </code></pre><pre><span></span><code>sprio<span class="w"> </span>-S<span class="w"> </span>-y,p,u<span class="w"> </span><span class="p">|</span><span class="w"> </span>less
 </code></pre><pre><span></span><code>sprio<span class="w"> </span>-o<span class="w"> </span><span class="s2">"%.15i %9r %.8u %.10Y %.10A %.10F %.10P"</span><span class="w"> </span>-S<span class="w"> </span>-y,p,u

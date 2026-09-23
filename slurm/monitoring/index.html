@@ -6458,20 +6458,20 @@
 <li>RUNNING jobs can run correctly, switch to COMPLETING (CG) as processes are quitting, and then COMPLETED (CD).</li>
 </ol>
 <h2 id="pending-jobs"><strong>PENDING JOBS</strong><a class="headerlink" href="#pending-jobs" title="Anchor link to this section for reference">&para;</a></h2>
-<div class="admonition note">
-<p class="admonition-title">Authoring Note</p>
-<p>Need to insert here the most common reasons and their explanations.</p>
-</div>
-<p>Jobs waiting to run will sit "in the queue." They will be shown to have a "Reason"</p>
+<p>Jobs waiting to run will sit "in the queue" with the "State" <code>PENDING</code> They will be shown to have a <code>Reason</code>.
+This <a href="../whenstart/">When Will My Job Start?</a> page discusses factors which impact the transition from <code>PENDING</code> to <code>RUNNING</code>.</p>
 <h3 id="tools-for-pending-jobs"><strong>Tools for pending jobs</strong><a class="headerlink" href="#tools-for-pending-jobs" title="Anchor link to this section for reference">&para;</a></h3>
-<p><code>squeue --me</code></p>
-<p><code>squeue --me --start</code></p>
-<p><code>scontrol show job</code> - this only works for pending and running jobs.</p>
+<p>We have a page with <a href="../tips-squeue/">tips for using the squeue command</a>.</p>
+<p><code>squeue --me --states=PENDING</code></p>
+<p><code>squeue --me -t PD</code> - equivalent to the above</p>
+<p><code>squeue --me -t PD --start</code> - this will provide an estimated job start date if SLURM's job scheduler has determined one. The accuracy of that estimate will vary.</p>
+<p><code>scontrol show job &lt;jobid&gt;</code> - this only works for pending and running jobs.</p>
+<p><code>showjob &lt;jobid&gt;</code> - a JHPCE script which produces well-formatted output for easier inspection</p>
 <h2 id="running-jobs"><strong>RUNNING JOBS</strong><a class="headerlink" href="#running-jobs" title="Anchor link to this section for reference">&para;</a></h2>
 <h3 id="how-to-get-information-about-running-jobs"><strong>How to get information about running jobs?</strong><a class="headerlink" href="#how-to-get-information-about-running-jobs" title="Anchor link to this section for reference">&para;</a></h3>
-<p>If you want or need to get more information about your jobs, you should add "instrumentation" to them. Instrumentation is any of a number of techniques which gather and save or print information for you to inspect. A trivial example is adding a command in your batch file script that echoes "I'm running on node" and then runs the hostname command.</p>
+<p>If you want or need to get more information about your jobs, you can add "instrumentation" to them. Instrumentation is any of a number of techniques which gather and save or print information for you to inspect. A trivial example is adding a command in your batch file script that echoes "I'm running on node" and then runs the hostname command. A more complex example is to add <code>sstat</code> commands at different points which use the automatically-defined <code>$SLURM_JOBID</code> variable to display performance information such as how much RAM is being used at that point. </p>
 <ol>
-<li><code>scontrol show job</code></li>
+<li><code>scontrol show job &lt;jobid&gt;</code> or <code>showjob &lt;jobid&gt;</code></li>
 <li>Look at their output and error files</li>
 <li>Look at files they are writing to</li>
 <li>Use <code>sstat</code> to inspect parameters SLURM has collected for the job</li>
@@ -6479,7 +6479,7 @@
 <li>Log into a node and inspect system state with commands like <code>ps</code> or <code>htop</code></li>
 </ol>
 <h2 id="completed-jobs"><strong>COMPLETED JOBS</strong><a class="headerlink" href="#completed-jobs" title="Anchor link to this section for reference">&para;</a></h2>
-<p>Here we mean jobs that are no longer running, whether they succeeded or failed for some reason.</p>
+<p>Here we mean jobs that are no longer running, whether they succeeded or failed for any reason.</p>
 <h3 id="how-to-get-information-about-completed-jobs"><strong>How to get information about completed jobs?</strong><a class="headerlink" href="#how-to-get-information-about-completed-jobs" title="Anchor link to this section for reference">&para;</a></h3>
 <p>If you want or need to get more information about your jobs, you should add "instrumentation" to them. Instrumentation is any of a number of techniques which gather and save or print information for you to inspect. A trivial example is adding a command in your batch file script that echoes "I'm running on node" and then runs the hostname command.</p>
 <ol>
@@ -6637,7 +6637,7 @@ Memory Efficiency: 76.71% of 20.00 GB
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="March 31, 2025 16:37:05 UTC">March 31, 2025</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="September 23, 2026 06:00:49 UTC">September 23, 2026</span>
   </span>
 
     
