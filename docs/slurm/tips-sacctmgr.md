@@ -7,9 +7,7 @@ tags:
     
 [Sacctmgr](https://slurm.schedmd.com/archive/slurm-22.05.9/sacctmgr.html) is mostly used by systems administrators. Only they are allowed to make changes. Users can use it to view settings.
 
-`sacctmgr` is used by systems administrators to create and modify user accounts as well as to define QOS (qualities of service -- see our [QOS page](../slurm/qos.md) for more information) and to define TRES (Trackable RESources). Cluster users cannot run SLURM jobs unless they have been correctly defined in the `sacctmgr` database.
-
-Please note that SLURM and its documentation uses the term "account" to mean the parent object of user accounts. SLURM accounts are meant for gathering user accounts together into entities like departments and PI research groups. We do not currently put our users into different accounts (many other clusters do).
+`sacctmgr` is used by systems administrators to create and modify user accounts as well as to define QOS (qualities of service -- see our [QOS page](../slurm/qos.md) for more information) and to define TRES (Trackable RESources). ==Cluster users cannot run SLURM jobs unless they have been correctly defined in the `sacctmgr` database.==
 
 ## **Sacctmgr for Users**
 
@@ -21,7 +19,7 @@ sacctmgr show user withassoc where name=$USER
 sacctmgr show qos
 
 # See our currently defined QOS in a readable format
-# (*we put this in the script "showqos")
+# (we created a script "showqos" to do this for you)
 sacctmgr show qos format=Name%20,Priority,Flags%30,MaxWall,MaxTRESPU%20,MaxJobsPU,MaxSubmitPU,MaxTRESPA%25
 
 # See all users database values
@@ -33,42 +31,205 @@ sacctmgr show user withassoc where name=jsmith
 
 ## **Sacctmgr for Systems Administrators**
 
-We currently have two clusters, named (as far as SLURM is concerned) "jhpce3" and "jade" You don't have to specify which cluster you want to consult/change, as we have a SLURM server for each cluster. And because they aren't connected in any way, you cannot extract data from one when logged into a node in the other cluster.
+`sacctmgr` groups entities in various ways, which shows up in the components you have to use when constructing commands.  The primary entities you will use are User, Association, QOS, Account, and TRES.
 
-Like some SLURM commands, you can run the `sacctmgr` command to enter into its shell version. This is useful if you are exploring some situation, although you cannot paginate output. It supports up-arrow to get at previous commands. Issuing the command "verbose" when in the interactive shell may display interesting info.
+Like some SLURM commands, you can run the `sacctmgr` command to enter into its shell version. This is useful if you are exploring some situation, although you cannot paginate output. And other users cannot inspect account history to see what was done. The shell environment supports the use of ++arrow-up++ and ++arrow-down++ to get at the command history. Issuing the command "verbose" when in the interactive shell may display interesting info.
 
-You can add the CLI flag "-i" to avoid the "are-you-sure" 30 second prompt and delay. Useful when scripting.
+You can add the CLI flag "-i" to avoid the "are-you-sure" 30 second prompt and delay. Essential when scripting, such as when creating user accounts.
 
-### **Creating SLURM user associations (which are like accounts)**
+### About clusters
+We currently have two clusters, named (as far as SLURM is concerned) "jhpce3" and "jade".  `sacctmgr` can support running commands on other clusters if they are cross-connected in terms of SLURM configuration. We don't do that here. Therefore you don't have to specify which cluster you want to consult/change, as we have a SLURM server for each cluster.
+
+### About ACCOUNTS
+
+Please note that SLURM and its documentation uses the term "Account" to mean the parent object of actual user accounts. We will try to capitalize the word to help distinguish SLURM's ACCOUNTS from user accounts. SLURM ACCOUNTS are meant for gathering user accounts together into entities like departments and PI research groups. Many clusters do this, and their users might belong to multiple ACCOUNTS, say for different research projects. They can choose the account to be billed for their work for each job. (We create multiple whole user accounts for that situation.)
+
+In our main JHPCE cluster, we do not currently put our users into different ACCOUNTS -- they all belong to the `jhpce` ACCOUNT.
+
+In our JADE cluster, we DO split users into ACCOUNTS based on their "community", e.g. `jade-sysadmin` or `jade-cms`. You can see them with `sacctmgr list accounts`. As of 20260922: Jeffrey cannot remember whether those ACCOUNTS are used anywhere in the current SLURM configuration. He believes that they are not, and that he chose to define them to provide a way to apply community-wide limits if that becomes desirable.
+
+#### Where ACCOUNT membership matters
+ACCOUNT information is kept and inspected throughout SLURM commands and databases, e.g. each job has an ACCOUNT.
+
+ACCOUNTS can show up when managing QOS and Associations. You can create ACCOUNT-related limits in QOS such as `MaxJobsPerAccount` or `MaxTRESPerAccount`, or limit access to partitions by defining the `AllowAccounts` parameter.
+
+#### Creating JADE ACCOUNTS
+`sacctmgr create account name=jade-nist800171 desc="jade-nist800171" parent=jade`
+
+### About groups - user vs associations
+
+"Group" is an overloaded term when it comes to SLURM and `sacctmgr` in particular. It can refer to either a user's GID or when dealing with QOS limits beginning with `Grp` it means a "SLURM association and its children" — i.e. some kind of a hierarchy within the associations database (where ACCOUNT associations can be one kind of parent). The section of the [sacctmgr manual page](https://slurm.schedmd.com/archive/slurm-22.05.9/sacctmgr.html) where "Grp"-prefixed paramters are described contain very specific details, e.g. read about "GrpTRESMins".
+
+This section discusses the per-user "GroupId" field.
+
+For each user, SLURM keeps track of the GID of their primary UNIX group in its user database in a field named "GroupId".
+
+Users only ever belong to one GROUP, and it is **the primary group** of a user ==at the time when an association was defined for that user==.  SLURM will **NEVER** be aware of a user's membership in secondary groups **EXCEPT** that the `AllowGroups` parameter in partition definitions will respect all of the user's memberships (well, at least up to 16).
+
+`sacctmgr` does not work with GROUPS directly -- the GroupId is an internal field in the slurmdbd user record that is not exposed through `sacctmgr show user` at all. 
+
+The [sacctmgr manual page](https://slurm.schedmd.com/archive/slurm-22.05.9/sacctmgr.html): "A user's account can not be changed directly. A new association needs to be created for the user with the new account. Then the association with the old account can be deleted.""
+         
+A users' SLURM group does not change when their UNIX primary group is changed by systems administrators. JRT believes that you must delete that user from the sacctmgr database and recreate them to pick up the new primary group. **THE USER CANNOT HAVE ANY RUNNING JOBS WHILE THIS IS HAPPENING**!!!! (There is a ?10minute? cache of user records in `slurmtcld`, so you might need to wait (or restart slurmctld) before you see the change.)
+
+If we wanted to ensure correctness, we would find enabled JHPCE users in FreeIPA whose primary group isn't `users`, then check that the SLURM GroupId matched. JRT is sure that such discrepancies exist. However we only limit access to a handful of partitions by group.
+
+In our main JHPCE cluster, we do not intentionally put our users into specific GROUPS -- they essentially all belong to the `users` ACCOUNT.
+
+In our JADE cluster, we DO set the primary group according to user community, e.g. `j-d-users` for all `dbgap` members.
+
+#### Where GROUP membership matters
+GROUP information is kept in the SLURM user database and in job-accounting records, e.g. each job has an `GroupId`. The only place it is inspected is when jobs are submitted to partitions which use `AllowGroups`.
+
+#### How do you actually see GroupId?
+There are three ways:
+
+1. sacctmgr dump — the flat-file dump includes all user record fields, including the GroupId
+```
+sacctmgr dump cluster=yourcluster file=/tmp/dump.txt
+grep "^User - bob" /tmp/dump.txt
+```
+2. Job records via sacct — every job record carries the GroupId that was captured when the user submitted:
+```
+sacct -u bob --format=JobID,User,Group,Account -S yesterday
+```
+3. Query the database directly (requires DB access as the slurmdbd user):
+```
+SELECT name, group_id FROM users WHERE name = 'bob';
+```
+    
+### **Creating SLURM user associations**
 
 ```
 # How JHPCE3 users accounts are created in the sacctmgr database
 sacctmgr -i create user name=$userid cluster=jhpce3 account=jhpce 
 
-# How C-SUB users accounts are created in the sacctmgr database on jhpcecms01
+# How JADE users accounts are created in the sacctmgr database on jade-slurm01
 sacctmgr -i create user name=$userid account=jade-<COMMUNITY> cluster=jade
-    (where <COMMUNITY> is one of the valid community names (e.g. cms, dbgap, nist800-171))
+    (where <COMMUNITY> is one of the valid community names (e.g. cms, dbgap, misc, nist800-171 and sysadmin))
 ```
 
 #### Associations
 
-To see all of the information about a user, you need to add the argument "withassoc" to sacctmgr commands.
+TL;DR: To see all of the information about a user, you need to add the argument "withassoc" to sacctmgr commands.
 
 Our users normally have a single entry in the sacctmgr database. This is called an association. Associations are 4-tuples of {user, account, cluster, partition}. There are limits in each association, such as maxjobs, maxsubmit(jobs), ....  You will not see those limits unless you use "withassoc"!!!
 
-Each user association has a field called "QOS", which by default contains the string "normal", and another field called "Def QOS", which is empty by default. The "QOS" field is the comma-separated list of QOS' that a user is allowed to specify when submitting jobs.
+Each user association has a field called "QOS", which by default contains the string "normal", and another field called "Def QOS", which is empty by default. The "QOS" field is the comma-separated list of QOS that a user is allowed to specify when submitting jobs.
 
 If you grant access to additional allowed QOS, they will be listed in the user's original allocation.  The same thing is true if you add limits like the maximum number of jobs they are allowed to run at one time. 
 
-However, if you want to set a per-user, per-partition limit, that requires its own association.
-So a small number of users can have multiple associations.
+However, if you want to set a per-user, per-partition limit, that requires its own association. We have only defined such associations once, in order to prevent an abusive user from using too many resources across three specific partitions.
 
+So you will normally see only a very small number of users who have multiple associations.
 
-### **Managing QOS for users**
+### Managing QOS Themselves
 
-See our [QOS page](../slurm/qos.md) for more information.
+{==To delete a parameter from a QOS, set it to the value -1==}
 
-Our users have no limits on them, at the user account level, other than a 10,000 job limit. The typical account has a default QOS named "normal". If you run `showqos` you will see that "normal" doesn't have any restrictions other than the 10k job limit. Therefore users entitled to run jobs in their private per-research group partitions are not limited in how many of their nodes' resources they can consume. (Users found running jobs on partitions they are not entitled to use will have their jobs killed and have to acknowledge that they understand that they need to use public partitions.)
+{==You MUST define flags=DenyOnLimit,OverPartQOS for a QOS to work as expected==}
+
+{==We now limit all partitions to 10,000 jobs per user. 
+Therefore every QOS needs `MaxSubmitJobsPU=10000`==}
+
+{==Note that the output field names displayed are not necessarily the same as the keywords used when modifying, e.g. MaxTRESPerUser is the keyword but the more concise MaxTRESPU is displayed.==}
+
+If you provide the `-i` flag, the operation is immediately implemented. Without it, you have 30 seconds to respond (which doesn't work in scripts).
+
+There are a number of variants of some categories of limit parameters -- per user, per group, per account.
+
+`MaxJobs*` means jobs that can be running at one time.
+
+`MaxJobsSubmit*` means jobs that can be both pending and running, altogether, in total, e.g. `MaxJobsSubmitPerUser`
+
+Accounts and groups have been discussed earlier. However, remember that in the QOS context, "group" refers to an association and its children.
+
+Note that one _can_ use the fact that all (JHPCE) or many users (JADE) are in the same account to limit the total number of users in the cluster who can do some things, like submit jobs, or whatever the parameter category is. But take care to consider the granularity level you are considering using.
+
+Here are examples of important tasks. Note that many start by defining a QOS, then use additional commands to flesh it out. Here I am using the `-i` argument to immediately execute the change. 
+
+```
+# DEFINE A QOS TO USE IN A PARTITION DEFINITION:
+
+# It sets: default & max job durations, limits CPU & RAM consumption
+# (We have typically set limits such that any one user cannot use more than
+# 10% of the cluster.)
+
+# JADE: Always start a QOS name with the letter of the community it is to apply to.
+sacctmgr -i add qos c-shared
+
+# You MUST define these flags for the QOS to work as expected
+sacctmgr -i modify qos c-shared set flags=DenyOnLimit,OverPartQOS
+
+# We limit all partitions to 10,000 jobs per user to prevent craziness
+# (We also add that limit to the "normal" QOS when setting up a cluster.)
+sacctmgr -i modify qos c-shared set MaxSubmitJobsPU=10000
+
+# Limit each user to 100 CPU and 512GB (you must specify RAM in megabytes):
+sacctmgr modify qos c-shared set MaxTRESPerUser=mem=524288 MaxTRESPerUser=cpu=100
+```
+
+```
+# DEFINE A QOS LIMITING EACH USER TO 25 RUNNING JOBS WITH A MAX OF 25 MORE PENDING JOBS
+# This QOS won't change any behavior until it is added to a partition or association etc.
+
+sacctmgr -i add qos job-25run50sub
+sacctmgr -i modify qos job-25run50sub set flags=DenyOnLimit,OverPartQOS MaxSubmitJobsPU=10000
+
+# Add the job-limiting arguments 
+sacctmgr -i modify qos job-25run50sub set MaxJobsPerUser=25 MaxSubmitJobsPerUser=50
+
+# Remove one of those parameters
+sacctmgr modify qos job-25run50sub set MaxJobsPerUser=-1
+
+# Delete the QOS (they can't be renamed!!)
+# You CANNOT delete a QOS which is part of a PartitionName definition
+# You CANNOT delete a QOS which is associated with running jobs!!!
+# (What about pending jobs which have explicitly specified that QOS?)
+
+sacctmgr -i delete qos job-25run50sub
+```
+
+```
+# CREATE AN ACCOUNT FOR A COMMUNITY IN JADE
+sacctmgr create account name=jade-nist800171 desc="jade-nist800171" parent=jade
+```
+
+```
+# Limit the amount of a Trackable RESource
+sacctmgr modify qos public-gpu-limit set MaxTRESPerUser=gres/gpu=4
+sacctmgr modify qos local-scharpf set MaxTRESPerUser=local-scharpf=1848
+
+# Limit maximum job run time to 1 day
+sacctmgr modify qos cms-larger set MaxWallDurationPerJob=1-0
+```
+
+```
+# Limit each user to one of: a pending or running job.
+# Limit whole cluster to running 1 job with up to one more pending
+
+# This means only one job using this QOS can run in the whole cluster. To put a lid
+# on things. If you include MaxJobsPA=1 then no second user in the same account can submit
+# much less run a job (within the scope of the QOS (scope meaning within a partition which
+# uses DefaultQOS=<this QOS>))
+# JHPCE: MaxJobsPA=1 applied to the "normal" QOS would be, well, bad
+# JADE: Note that this cluster has one account per community, so we can now
+# control how many jobs a community can run
+sacctmgr modify qos cms-larger set MaxJobsPerUser=1 MaxSubmitJobsPerUser=1  MaxSubmitJobsPA=2
+```
+
+```
+# You cannot rename a QOS, so you have to delete the old name -- be aware that jobs might
+# be using it!!! (You also may not be allowed to delete it while it is still included in
+# a `partitions.conf` configuration.)
+sacctmgr delete qos <qosname>
+```
+
+### Managing QOS for users
+
+See our [QOS page](../slurm/qos.md) for additional information.
+
+Our users by default have no limits on them, at the user account level, other than a 10,000 job limit. The typical account has a default QOS named "normal". If you run `showqos` you will see that "normal" doesn't have any restrictions other than the 10k job limit. Therefore users entitled to run jobs in their private per-research group partitions are not limited in how many of their nodes' resources they can consume. (Users found running jobs on partitions they are not entitled to use will have their jobs killed and have to acknowledge that they understand that they need to use public partitions.)
 
 For public partitions like "shared" and "interactive", the slurm config file `/etc/slurm/partitions.conf` specifies a default partition QOS of, for example, "shared-default". We use that to control how many CPUs and how much RAM each user can use in public partitions. We can change that setting for everyone as the cluster's resources shrink or grow by changing the appropriate single QOS.
 
@@ -96,6 +257,8 @@ sacctmgr -i add user where name=bob cluster=jhpce3 account=jhpce partition=bstgp
 # Finding users of a specific QOS:
 sacctmgr list assoc format=user,partition,qos where qos=shared-400-4
 ```
+!!! Note
+    There are a number of parameters which allow you to place limits based on a user's Group or Account. We are not currently using those sets of limits.  As noted in the About Groups section, when working with QOS, "Group" does not mean user's GroupId. It means "an association and all of its children".
 
 #### Finding users who have been modified
 
@@ -141,81 +304,13 @@ $16 defaultqos
 # sacctmgr show user withassoc|grep -v "normal "|awk '{printf "%s\t\t%s\t%s\t\n", $1,$6,$15}'
 ```
 
-### **Managing QOS**
-
-{==To delete a parameter from a QOS, set it to the value -1==}
-
-{==You MUST define flags=DenyOnLimit,OverPartQOS for a QOS to work as expected==}
-
-{==We now limit all partitions to 10,000 jobs per user. 
-Therefore every QOS needs `MaxSubmitJobsPU=10000`==}
-
-{==Note that the output field names displayed are not necessarily the same as the keywords used when modifying, e.g. MaxTRESPerUser is the keyword but the more concise MaxTRESPU is displayed.==}
-
-If you provide the `-i` flag, the operation is immediately implemented. Without it, you have 30 seconds to respond (which doesn't work in scripts).
-
-There are a number of variants of some categories of parameters -- by user, by group, by account, etc.
-
-`MaxJobs*` means jobs that can be running at one time
-`MaxJobsSubmit*` means jobs that can be both pending and running, altogether, in total, e.g. `MaxJobsSubmitPerUser`
-
-!!! Note
-    There are a number of parameters which allow you to place limits based on a user's Group or Account. We cannot use those sets of limits.  We do not place users in Accounts. (In many other organizations, Accounts are created for entities like departments and PIs, and can be given consumable resouce allocations, such as so many CPU hours, which then decline towards zero as they are used. Think of them like bank accounts.) Group is the user's primary UNIX group at the time they were added to the sacctmgr database. A users' SLURM group does not change when their UNIX primary group is changed by systems administrators. JRT believes that you cannot see or modify a sacctmgr user object's group -- you have to delete that user and recreate them.  A user's secondary groups are ignored by SLURM. By default our cluster users are all in the same group ("users" in jhpce3 and "c-users" in cms). SLURM doesn't look at secondary group membership, only the primary group. AND we don't maintain groups for all of our PI groups. In jhpce3, we maintain UNIX user groups primarily to control disk storage permissions. (In jhpce3 some users DO have primary groups different from "users".)
-    
-    Accounts are similar to groups in that our current model has all user accounts belonging to a single higher-level account object ("jhpce" in jhpce3 and "generic" in cms (for some reason -- there's also a csub account) (and the small number of c-*-10101 users happen to be in the "sysadmin" account)).
-    
-    Note that one _can_ use the fact that all users are in the same account to limit the total number of users in the cluster who can do some things, like submit jobs, or whatever the parameter category is. But take care to consider whether you are limiting what everyone can do, in aggregate, not individually.
-
-
-```
-# Define a QOS which will limit a user to 25 running jobs with a max of 25 more pending
-# This QOS won't change any behavior until it is added to a partition or association etc
-# JADE: Always start a QOS name with the letter of the community it is to apply to.
-sacctmgr -i add qos job-25run50sub
-
-# You MUST define these flags for the QOS to work as expected
-# We limit all partitions to 10,000 jobs per user
-sacctmgr -i modify qos job-25run50sub set flags=DenyOnLimit,OverPartQOS
-sacctmgr -i modify qos job-25run50sub set MaxSubmitJobsPU=10000
-
-# Limit each user to 100 CPU and 512GB (you must specify RAM in megabytes):
-sacctmgr modify qos shared-default set MaxTRESPerUser=mem=524288 MaxTRESPerUser=cpu=100
-
-# Add the job-limiting arguments 
-sacctmgr -i modify qos job-25run50sub set MaxJobsPerUser=25 MaxSubmitJobsPerUser=50
-
-# Remove one of those parameters
-sacctmgr modify qos job-25run50sub set MaxJobsPerUser=-1
-
-# Delete the QOS (they can't be renamed!!)
-sacctmgr -i delete qos job-25run50sub
-
-# Limit the amount of a Trackable RESource
-sacctmgr modify qos public-gpu-limit set MaxTRESPerUser=gres/gpu=4
-
-# Limit maximum job run time to 1 day
-sacctmgr modify qos cms-larger set MaxWall=1-0
-
-# Limit each user to one of: a pending or running job.
-# Limit whole cluster to running 1 job with up to one more pending
-# This means only one job using this QOS can run in the whole cluster. To put a lid
-# on things. If you include MaxJobsPA=1 then no second user can submit
-# JADE: Note that this cluster has one account per community, so we can now
-# control how many jobs a community can run
-sacctmgr modify qos cms-larger set MaxJobsPerUser=1 MaxSubmitJobsPerUser=1  MaxSubmitJobsPA=2
-
-# You cannot rename a QOS, so you have to delete the old name -- be aware that jobs might
-# be using it!!! (You also may not be allowed to delete it while it is still included in
-# a `partitions.conf` configuration.)
-sacctmgr delete qos <qosname>
-```
 
 ### TRES (Trackable RESources)
 
-Display TRES (Trackable RESources) (will be different on each cluster).
-We can add TRES items to the default list, and need to do so for, for example, each model of GPU card found in the cluster.
+`TRES (Trackable RESources)` are distinct entities used when users request resources like GPU cards or units of storage for the "local-scharpf" partition. They are also used in accounting and configuration e.g. "TRESBillingWeights" in partition definitions. TRES can be specified in QOS definitions (fewer in version 22.05 than in newer versions).
 
-TRES can be specified in QOS (fewer in version 22.05 than in newer versions)
+The first eight are provided by SLURM. We can add TRES items to the default list, and need to do so for, for example, each model of GPU card found in a cluster. They will be different on each cluster.
+
 
 ```
 sacctmgr show tres
@@ -233,10 +328,20 @@ sacctmgr show tres
     gres     gpu:tesv100   1002 
     gres      gpu:titanv   1003 
     gres     gpu:tesa100   1004 
-    gres    gpu:tesv100s   1005 
+    gres    gpu:tesv100s   1005
+    gres        gpu:l40s   1007 
+    gres           shard   1008 
+    gres   local-scharpf   1009 
 ```
 
-### Backing Up Users and QOS
+```
+sacctmgr show qos where name=local-scharpf format=Name%15,MaxTRESPerNode%30
+           Name                 MaxTRESPerNode 
+--------------- ------------------------------ 
+  local-scharpf        gres/local-scharpf=1848
+```
+
+### Backing Up Users and QOS Databases
 
 Currently JRT has stored some in `/root/slurm/sacctmgr-stuff/sacctmgr-dumps/`
 
@@ -295,6 +400,14 @@ sacctmgr list transactions Users=simmons
 # Here is the version that will produce one user per line
 sacctmgr list transactions Action="Add Users" Start=2025-01-01 End=2025-01-31 format=Where,Time%10
 ```
+
+### Elevated privileges
+
+There are three levels: None (default), Operator, and Admin.
+
+"Operator" can manage database objects and reservations but not alter slurmctld configuration
+
+> sacctmgr modify user <username> set adminlevel=admin   
 
 ### Miscellaneous
 
