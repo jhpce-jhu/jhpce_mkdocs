@@ -8017,7 +8017,7 @@ sacctmgr show user withassoc where name=$USER
 sacctmgr show qos
 
 # See our currently defined QOS in a readable format
-# (*we put this in the script "showqos")
+# (we created a script "showqos" to do this for you)
 sacctmgr show qos format=Name%20,Priority,Flags%30,MaxWall,MaxTRESPU%20,MaxJobsPU,MaxSubmitPU,MaxTRESPA%25
 
 # See all users database values
@@ -8025,12 +8025,75 @@ sacctmgr show user withassoc  | less
 
 # See a particular user's database values
 sacctmgr show user withassoc where name=jsmith
+</code></pre><pre><span></span><code>sacctmgr dump cluster=yourcluster file=/tmp/dump.txt
+grep "^User - bob" /tmp/dump.txt
+</code></pre><pre><span></span><code>sacct -u bob --format=JobID,User,Group,Account -S yesterday
+</code></pre><pre><span></span><code>SELECT name, group_id FROM users WHERE name = 'bob';
 </code></pre><pre><span></span><code># How JHPCE3 users accounts are created in the sacctmgr database
 sacctmgr -i create user name=$userid cluster=jhpce3 account=jhpce 
 
-# How C-SUB users accounts are created in the sacctmgr database on jhpcecms01
+# How JADE users accounts are created in the sacctmgr database on jade-slurm01
 sacctmgr -i create user name=$userid account=jade-&lt;COMMUNITY&gt; cluster=jade
-    (where &lt;COMMUNITY&gt; is one of the valid community names (e.g. cms, dbgap, nist800-171))
+    (where &lt;COMMUNITY&gt; is one of the valid community names (e.g. cms, dbgap, misc, nist800-171 and sysadmin))
+</code></pre><pre><span></span><code># DEFINE A QOS TO USE IN A PARTITION DEFINITION:
+
+# It sets: default &amp; max job durations, limits CPU &amp; RAM consumption
+# (We have typically set limits such that any one user cannot use more than
+# 10% of the cluster.)
+
+# JADE: Always start a QOS name with the letter of the community it is to apply to.
+sacctmgr -i add qos c-shared
+
+# You MUST define these flags for the QOS to work as expected
+sacctmgr -i modify qos c-shared set flags=DenyOnLimit,OverPartQOS
+
+# We limit all partitions to 10,000 jobs per user to prevent craziness
+# (We also add that limit to the "normal" QOS when setting up a cluster.)
+sacctmgr -i modify qos c-shared set MaxSubmitJobsPU=10000
+
+# Limit each user to 100 CPU and 512GB (you must specify RAM in megabytes):
+sacctmgr modify qos c-shared set MaxTRESPerUser=mem=524288 MaxTRESPerUser=cpu=100
+</code></pre><pre><span></span><code># DEFINE A QOS LIMITING EACH USER TO 25 RUNNING JOBS WITH A MAX OF 25 MORE PENDING JOBS
+# This QOS won't change any behavior until it is added to a partition or association etc.
+
+sacctmgr -i add qos job-25run50sub
+sacctmgr -i modify qos job-25run50sub set flags=DenyOnLimit,OverPartQOS MaxSubmitJobsPU=10000
+
+# Add the job-limiting arguments 
+sacctmgr -i modify qos job-25run50sub set MaxJobsPerUser=25 MaxSubmitJobsPerUser=50
+
+# Remove one of those parameters
+sacctmgr modify qos job-25run50sub set MaxJobsPerUser=-1
+
+# Delete the QOS (they can't be renamed!!)
+# You CANNOT delete a QOS which is part of a PartitionName definition
+# You CANNOT delete a QOS which is associated with running jobs!!!
+# (What about pending jobs which have explicitly specified that QOS?)
+
+sacctmgr -i delete qos job-25run50sub
+</code></pre><pre><span></span><code># CREATE AN ACCOUNT FOR A COMMUNITY IN JADE
+sacctmgr create account name=jade-nist800171 desc="jade-nist800171" parent=jade
+</code></pre><pre><span></span><code># Limit the amount of a Trackable RESource
+sacctmgr modify qos public-gpu-limit set MaxTRESPerUser=gres/gpu=4
+sacctmgr modify qos local-scharpf set MaxTRESPerUser=local-scharpf=1848
+
+# Limit maximum job run time to 1 day
+sacctmgr modify qos cms-larger set MaxWallDurationPerJob=1-0
+</code></pre><pre><span></span><code># Limit each user to one of: a pending or running job.
+# Limit whole cluster to running 1 job with up to one more pending
+
+# This means only one job using this QOS can run in the whole cluster. To put a lid
+# on things. If you include MaxJobsPA=1 then no second user in the same account can submit
+# much less run a job (within the scope of the QOS (scope meaning within a partition which
+# uses DefaultQOS=&lt;this QOS&gt;))
+# JHPCE: MaxJobsPA=1 applied to the "normal" QOS would be, well, bad
+# JADE: Note that this cluster has one account per community, so we can now
+# control how many jobs a community can run
+sacctmgr modify qos cms-larger set MaxJobsPerUser=1 MaxSubmitJobsPerUser=1  MaxSubmitJobsPA=2
+</code></pre><pre><span></span><code># You cannot rename a QOS, so you have to delete the old name -- be aware that jobs might
+# be using it!!! (You also may not be allowed to delete it while it is still included in
+# a `partitions.conf` configuration.)
+sacctmgr delete qos &lt;qosname&gt;
 </code></pre><pre><span></span><code># Add a QOS to a user's existing allowed QOS:
 sacctmgr -i mod user mmill116 set qos+=high-priority
 # or, you can redefine their whole list
@@ -8084,46 +8147,6 @@ $16 defaultqos
 # The printf args need field width specifications to better
 # align column entries
 # sacctmgr show user withassoc|grep -v "normal "|awk '{printf "%s\t\t%s\t%s\t\n", $1,$6,$15}'
-</code></pre><pre><span></span><code># Define a QOS which will limit a user to 25 running jobs with a max of 25 more pending
-# This QOS won't change any behavior until it is added to a partition or association etc
-# JADE: Always start a QOS name with the letter of the community it is to apply to.
-sacctmgr -i add qos job-25run50sub
-
-# You MUST define these flags for the QOS to work as expected
-# We limit all partitions to 10,000 jobs per user
-sacctmgr -i modify qos job-25run50sub set flags=DenyOnLimit,OverPartQOS
-sacctmgr -i modify qos job-25run50sub set MaxSubmitJobsPU=10000
-
-# Limit each user to 100 CPU and 512GB (you must specify RAM in megabytes):
-sacctmgr modify qos shared-default set MaxTRESPerUser=mem=524288 MaxTRESPerUser=cpu=100
-
-# Add the job-limiting arguments 
-sacctmgr -i modify qos job-25run50sub set MaxJobsPerUser=25 MaxSubmitJobsPerUser=50
-
-# Remove one of those parameters
-sacctmgr modify qos job-25run50sub set MaxJobsPerUser=-1
-
-# Delete the QOS (they can't be renamed!!)
-sacctmgr -i delete qos job-25run50sub
-
-# Limit the amount of a Trackable RESource
-sacctmgr modify qos public-gpu-limit set MaxTRESPerUser=gres/gpu=4
-
-# Limit maximum job run time to 1 day
-sacctmgr modify qos cms-larger set MaxWall=1-0
-
-# Limit each user to one of: a pending or running job.
-# Limit whole cluster to running 1 job with up to one more pending
-# This means only one job using this QOS can run in the whole cluster. To put a lid
-# on things. If you include MaxJobsPA=1 then no second user can submit
-# JADE: Note that this cluster has one account per community, so we can now
-# control how many jobs a community can run
-sacctmgr modify qos cms-larger set MaxJobsPerUser=1 MaxSubmitJobsPerUser=1  MaxSubmitJobsPA=2
-
-# You cannot rename a QOS, so you have to delete the old name -- be aware that jobs might
-# be using it!!! (You also may not be allowed to delete it while it is still included in
-# a `partitions.conf` configuration.)
-sacctmgr delete qos &lt;qosname&gt;
 </code></pre><pre><span></span><code>sacctmgr show tres
     Type            Name     ID 
 -------- --------------- ------ 
@@ -8139,7 +8162,14 @@ sacctmgr delete qos &lt;qosname&gt;
     gres     gpu:tesv100   1002 
     gres      gpu:titanv   1003 
     gres     gpu:tesa100   1004 
-    gres    gpu:tesv100s   1005 
+    gres    gpu:tesv100s   1005
+    gres        gpu:l40s   1007 
+    gres           shard   1008 
+    gres   local-scharpf   1009 
+</code></pre><pre><span></span><code>sacctmgr show qos where name=local-scharpf format=Name%15,MaxTRESPerNode%30
+           Name                 MaxTRESPerNode 
+--------------- ------------------------------ 
+  local-scharpf        gres/local-scharpf=1848
 </code></pre><pre><span></span><code># Dump the accounting database
 sacctmgr dump &lt;cluster-name&gt; file=&lt;filename&gt;
 </code></pre><pre><span></span><code># Dump the QOS definitions
