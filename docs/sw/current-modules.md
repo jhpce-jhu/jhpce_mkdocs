@@ -24,26 +24,26 @@
    conda/3-24.3.0           (D)    python/3.14.6
    cuda/12.1.1                     python2/2.7.9      (D)
    dcmtk/3.6.7                     python2/2.7.18
-   encfs/1.9.5                     rclone/1.69.1
-   ffmpeg/6.0                      reportseff/2.3.2
-   freesurfer/7.4.1                rstudio/2023.06.1
-   fresh/0.1.55                    rstudio/2024.04.2  (D)
-   fsl/6.0.6.5                     rstudio/2025.05.1
-   gcc/9.5.0                       rstudio/2026.08.2
-   gcc/13.1.0               (D)    ruby/3.1.2
-   gdal/3.6.0                      rust/1.76.0
-   gh/2.46.0                       sas/9.0
-   ghostscript/10.02.1             sas/9.4            (D)
-   glpk/5.0                        shapeit/5.1.1
-   gmp/6.2.1                       singularity/3.11.4 (D)
-   go/20.6                  (D)    singularity/4.5.1
-   go/22.1                         sra-toolkit/3.1.1
-   go/23.1                         stata/17
-   go/26.1                         tesseract/5.5.1
-   gurobi/11.0.3                   tex/20240117
-   gurobi/12.0.3            (D)    texstudio/4.8.7
-   helix/23.10.0                   wine/7.11
-   java/19                  (D)
+   encfs/1.9.5                     quarto/1.10.18
+   ffmpeg/6.0                      rclone/1.69.1
+   freesurfer/7.4.1                reportseff/2.3.2
+   fresh/0.1.55                    rstudio/2023.06.1
+   fsl/6.0.6.5                     rstudio/2024.04.2  (D)
+   gcc/9.5.0                       rstudio/2025.05.1
+   gcc/13.1.0               (D)    rstudio/2026.08.2
+   gdal/3.6.0                      ruby/3.1.2
+   gh/2.46.0                       rust/1.76.0
+   ghostscript/10.02.1             sas/9.0
+   glpk/5.0                        sas/9.4            (D)
+   gmp/6.2.1                       shapeit/5.1.1
+   go/20.6                  (D)    singularity/3.11.4 (D)
+   go/22.1                         singularity/4.5.1
+   go/23.1                         sra-toolkit/3.1.1
+   go/26.1                         stata/17
+   gurobi/11.0.3                   tesseract/5.5.1
+   gurobi/12.0.3            (D)    tex/20240117
+   helix/23.10.0                   texstudio/4.8.7
+   java/19                  (D)    wine/7.11
 
 --------------------- /jhpce/shared/community/modulefiles ----------------------
    R/4.3              conda_R/test     conda_R/4.4.x        conda_R/4.5
@@ -128,4 +128,4 @@ any of the "keys".
 ```
 Note: some modules may not be available on the login node or on the JADE nodes.
 
-#####Updated: Tue Sep 22 05:30:03 AM EDT 2026
+#####Updated: Wed Sep 23 05:30:03 AM EDT 2026
