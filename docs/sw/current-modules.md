@@ -60,56 +60,56 @@
    bcftools/1.10.2               nextflow/23.10.0
    bcftools/1.18          (D)    nextflow/24.10.5    (D)
    bfg/1.13.0                    paste/1.3.0
-   bin2cell/0.3.0                plink/1.90b
-   bismark/0.23.0                plink/2.00a4.6      (D)
-   bs/1.3.0                      plink2/2.0
-   bustools/0.39.3               qctool/2.2.5
-   cell2location/0.1.3           qtl_gtex/dae3369
-   cell2location/0.8a0    (D)    r_nac/1.0
-   cellpose/2.0                  regtools/0.5.33g
-   cellpose/2.2.2         (D)    resept/1.0.0
-   cellprofiler/4.2.6            rmate/1.5.10
-   cellranger-atac/2.1.0         rseqc/3.0.1
-   cellranger/7.0.0              ruby/3.2.2          (D)
-   cellranger/7.2.0              rust/1.95.0         (D)
-   cellranger/8.0.1              samblaster/0.1.26
-   cellranger/9.0.0              samtools/1.10
-   cellranger/9.0.1              samtools/1.18       (D)
-   cellranger/10.0.0             samui/1.0.0-next.24
-   cellranger/10.1.0      (D)    samui/1.0.0-next.45
-   cellranger_arc/2.0.2          samui/1.0.0-next.49
-   cellranger_arc/2.2.0   (D)    samui/1.0.1
-   cibersortx/04_04_2020         samui/1.1.0         (D)
-   dissect/dc45940c              spaceranger/2.1.0
-   fastqc/0.11.8                 spaceranger/3.0.0
-   fastqc/0.12.1          (D)    spaceranger/3.1.1
-   ficture/dev_a455e5c           spaceranger/3.1.2
-   ficture/0.0.3.1        (D)    spaceranger/3.1.3
-   fusion_twas/github            spaceranger/4.0.1
-   gatk/4.5.0.0                  spaceranger/4.1.0   (D)
-   gffread/github                spagcn/1.2.0
-   gffread/0.12.7         (D)    spatula/f0e9936
-   git-lfs/3.4.0                 spatula/1.0.0
-   git-status-size/github        spatula/7fe7171     (D)
-   graphst/da29b75               stalign/1.0.1
-   harmony2/2.0.1                star/2.7.8a
-   hergast/0.0.1                 subread/2.0.0
-   hipstr/0.7                    synapse/2.7.2
-   hisat2/2.2.1                  synapse/3.1.1       (D)
-   htslib/1.10.2                 tangram/1.0.4
-   htslib/1.18            (D)    tensorqtl/1.0.8
-   java/17                       trimgalore/0.6.6
-   java/18                       trimmomatic/0.39
-   kallisto/0.46.1               vampire/3.4.4
-   ldsc/1.0.1                    vcftools/0.1.16
-   leafcutter/0.2.9              visium_hd/1.0
-   liana_plus/1.5.1              wiggletools/1.2.1
-   liana_plus/1.7.1       (D)    wigtobigwig/2.9
-   liftover/1.0                  xeniumranger/1.7.1
-   magma/1.10                    xeniumranger/2.0.0
-   methyldackel/0.5.2            xeniumranger/3.1.1
-   methylpy/1.4.3                xeniumranger/4.0.0  (D)
-   nda-tools/0.2.27
+   bin2cell/0.3.0                pdtcli/1.4.10
+   bismark/0.23.0                plink/1.90b
+   bs/1.3.0                      plink/2.00a4.6      (D)
+   bustools/0.39.3               plink2/2.0
+   cell2location/0.1.3           qctool/2.2.5
+   cell2location/0.8a0    (D)    qtl_gtex/dae3369
+   cellpose/2.0                  r_nac/1.0
+   cellpose/2.2.2         (D)    regtools/0.5.33g
+   cellprofiler/4.2.6            resept/1.0.0
+   cellranger-atac/2.1.0         rmate/1.5.10
+   cellranger/7.0.0              rseqc/3.0.1
+   cellranger/7.2.0              ruby/3.2.2          (D)
+   cellranger/8.0.1              rust/1.95.0         (D)
+   cellranger/9.0.0              samblaster/0.1.26
+   cellranger/9.0.1              samtools/1.10
+   cellranger/10.0.0             samtools/1.18       (D)
+   cellranger/10.1.0      (D)    samui/1.0.0-next.24
+   cellranger_arc/2.0.2          samui/1.0.0-next.45
+   cellranger_arc/2.2.0   (D)    samui/1.0.0-next.49
+   cibersortx/04_04_2020         samui/1.0.1
+   dissect/dc45940c              samui/1.1.0         (D)
+   fastqc/0.11.8                 spaceranger/2.1.0
+   fastqc/0.12.1          (D)    spaceranger/3.0.0
+   ficture/dev_a455e5c           spaceranger/3.1.1
+   ficture/0.0.3.1        (D)    spaceranger/3.1.2
+   fusion_twas/github            spaceranger/3.1.3
+   gatk/4.5.0.0                  spaceranger/4.0.1
+   gffread/github                spaceranger/4.1.0   (D)
+   gffread/0.12.7         (D)    spagcn/1.2.0
+   git-lfs/3.4.0                 spatula/f0e9936
+   git-status-size/github        spatula/1.0.0
+   graphst/da29b75               spatula/7fe7171     (D)
+   harmony2/2.0.1                stalign/1.0.1
+   hergast/0.0.1                 star/2.7.8a
+   hipstr/0.7                    subread/2.0.0
+   hisat2/2.2.1                  synapse/2.7.2
+   htslib/1.10.2                 synapse/3.1.1       (D)
+   htslib/1.18            (D)    tangram/1.0.4
+   java/17                       tensorqtl/1.0.8
+   java/18                       trimgalore/0.6.6
+   kallisto/0.46.1               trimmomatic/0.39
+   ldsc/1.0.1                    vampire/3.4.4
+   leafcutter/0.2.9              vcftools/0.1.16
+   liana_plus/1.5.1              visium_hd/1.0
+   liana_plus/1.7.1       (D)    wiggletools/1.2.1
+   liftover/1.0                  wigtobigwig/2.9
+   magma/1.10                    xeniumranger/1.7.1
+   methyldackel/0.5.2            xeniumranger/2.0.0
+   methylpy/1.4.3                xeniumranger/3.1.1
+   nda-tools/0.2.27              xeniumranger/4.0.0  (D)
 
   Where:
    D:  Default Module
@@ -128,4 +128,4 @@ any of the "keys".
 ```
 Note: some modules may not be available on the login node or on the JADE nodes.
 
-#####Updated: Wed Sep 23 05:30:03 AM EDT 2026
+#####Updated: Thu Sep 24 05:30:02 AM EDT 2026
