@@ -2,14 +2,12 @@
 
 ## We Have A SAS Partition
 
-We have a limited number of licenses. They run on computers with limited amounts of RAM. The command `slurmpic -p sas` will display the current resources used out of total available.
+We created a "sas" partition because we have a limited number of licenses. The command `squeue --partition=sas` will display running and pending SAS jobs. Please use this partition by specifying `-p sas` when submitting your jobs. You can see the available resources in this partition with the command `slurmpic -p sas` If your job will not fit in the "sas" partition or you want to run your job in a PI partition you are authorized to use, you can use a different one.
 
-Please use this partition by specifying `-p sas` when submitting your jobs. You can see the available resources in this partition with the command `slurmpic -p sas` If your job will not fit in the partition or you want to run your job in a PI partition you are authorized to use, you can use a different one.
 
 ## Other ways to access SAS
-SAS is available in a virtual Windows environment called SAFE maintained by Hopkins central IT. For small jobs,
-or collaborating on files with private personal information with others, or if you don't have SAS installed on your
-personal computer, you might want to register for this free service (you have to wait for someone to create your account).
+SAS is available in a virtual Windows environment called SAFE maintained by Hopkins central IT. You might want to register for this free service (which can take a business day or two to fulfill), if you need another place to run SAS. The SAFE Desktop was created to give researchers a place to work with others on small amounts of shared datasets (100GB) containing PPI (private personal information() with others. It is also useful if you don't have SAS installed on your
+personal computer. The SAFE Desktop uses Citrix technology, which is more responsive than X11 Window System used in JHPCE  for GUI applications like SAS when working interactively.
 
 [Here is a link](../access/access-overview.md#safe-desktop) to information about SAFE.
 
@@ -21,11 +19,11 @@ Many of our SAS users work with this licensed database.
 Contact  Shanshan Lin  <slin95@jhu.edu> in the Epidemiology Department.
 Her group controls the access to the Marketscan data on the JHPCE cluster.  They have some
 good guides on how the data is organized on the cluster.  She will then ask us to add you to
-the "alexander" UNIX group so you can see the database's files.
+the "alexander" and "marketscan" UNIX groups so you can see the database's files.
 
 ### Where Is It Located?
 
-As of July 2025 it is located in `/dcs10/alexander/data`
+As of October 2026 it is located in several subdirectories inside `/dcs10/alexander/data`
 
 ## Using SAS interactively
 
