@@ -1,24 +1,32 @@
-## Requesting Additional Memory
-All jobs need to use a certain amount of Memory or RAM (We use the terms Memory and RAM interchangeably) in order
-to run.
-By default on the JHPCE cluster when you submit a job with sbatch, or run srun, you are allotted 5GB of RAM   
-for your job. 
+## About Memory
 
-If you are running a larger job and need more than the 5GB of RAM, you can request more (or less) RAM 
-via 2 options:
+All jobs need to use a certain amount of memory or RAM in order to run. We use the terms memory and RAM interchangeably. Neither term refers to the space occupied by files on hard drives.
+
+The primary command to use to get information about your SLURM jobs is the `sacct` command. One of the things it displays is a job state. If the `STATE` field from the `sacct` command is `OUT_OF_MEMORY` it means that your job has run out of RAM, and you will need to resubmit your job with a larger RAM request.
+
+## Requesting Additional Memory
+
+{==When you submit a job with sbatch, or run srun to get an interactive job on a compute node, you are by default allotted 5GB of RAM for your job. (And one CPU core.)==}
+This is true on both of our clusters: JADE & JHPCE.
+
+If you are running a larger job and need more than the 5GB of RAM, you can request more (or less) RAM via two command options:
+
 ```console
     --mem : memory per node (for all cores used)
     --mem-per-cpu : memory per core (harder to accurately estimate)
 ```
+
 Some examples of using these options:
+
 ```console
+# This would give your batch job a total of 10GB of RAM
 sbatch --mem=10G job1.sh
 ```
-- This would give your batch job a total of 10GB of RAM
+
 ```console
+# This would give your interactive session a total of 20GB of RAM & 4 cores
 srun --mem-per-cpu=5G --cpus-per-task=4 --pty --x11 bash
 ```
-- This would give your interactive session a total of 20GB of RAM and 4 cores
 
 ## Tools to use to get RAM usage information:
 
@@ -45,12 +53,12 @@ There is, sadly, no easy formula to know ahead of time how much RAM a job will n
 Here are some tips to help find good values for your job:
 
 - You can run a test job on a small subset of data, then a larger one.  From this kind of data you should be able to extrapolate the amount of RAM your full job will need. The `seff` and `reportseff` commands are useful here.
-- One good place to start looking for a minimum is to look at the size of the files you will be reading in. Add a bit extra, as a starting point.  If your job is reading in a 20GB image file, you may want to ask for 25GB or RAM. (But your code may wind up reading in the file one chunk at a time, then releasing that memory and not grow as much. Orrrrrr it might copy the original data into a second array, thereby doubling the amount of space needed.)
+- One good place to start looking for a minimum is to look at the size of the files you will be reading in. Add a bit extra, as a starting point.  If your job is reading in a 20GB image file, you may want to ask for 25GB or RAM.
+- However the way your job processes data and impacts the RAM used can vary wildly. The code you write in a batch script, and **all of the code** in libraries or applications spawned by your script, can use fractions or multiples of any data file's size. Your code may wind up reading in the file one chunk at a time, then releasing that memory as it finishes, then read in another chunk, and will not grow as much as if it read it all in at once. Orrrrrr your code might copy the original data into a second array, thereby doubling the amount of space needed. It all depends.
 - You can run `sacct` to gather info on a completed job, where JOBID is its number.</br>
 > sacct -j JOBID -o JobID,JobName,ReqTRES%40,MaxVMSize,MAXRSS,State%20
 - You can run `sstat` to gather info on a running job.</br>
 > sstat -j JOBID -a -o JobID,MaxVMSizeNode,MaxVMSize,AveVMSize,MaxRSS,AveRSS,MaxDiskRead,MaxDiskWrite,AveCPUFreq,TRESUsageInMax
-- If the `STATE` from sacct command is `OUT_OF_MEMORY` it means that you job has run out of RAM, and you will need to resubmit your job with a larger RAM request.
 
 ## Impacts of RAM requests
 
@@ -63,9 +71,9 @@ Try to make your RAM request slightly higher than your expected usage.
      - you'll be able to run fewer jobs if your partition has a quota, and
      - the job will cost more.
 
-To get a feeling for what amounts of RAM are available on compute nodes, run the ```slurmpic``` command. You will see the total core and RAM on each node, as well as current core and RAM usage/availability.  If you want to request 750GB, you will see how many/few nodes can even be considered candidates for your job.
+To get a feeling for what amounts of RAM are available on compute nodes, run the `slurmpic` command. You will see the total core and RAM on each node, as well as current core and RAM usage/availability.  If you want to request 750GB, you will see how many/few nodes can even be considered candidates for your job.
 
-About the three RAM-related columns:
+About the three RAM-related columns `slurmpic` prints:
 
 - TOT_MEM - Total amount SLURM can use
 - FREEMEM - Amount remaining that SLURM jobs can use. (When you request RAM, it is reserved for you. SLURM takes TOT_MEM and adds or subtracts the per-job requested RAM values to arrive at FREEMEM.)
