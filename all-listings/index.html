@@ -7733,8 +7733,10 @@ transfer-01                         intel,ivybridge,transfer                    
 </code></pre><h2><a class="heading" href="..//slurm/qos/">Quality of Service (QOS)</a></h2><a class="url" href="..//slurm/qos/">/slurm/qos/</a><pre><span></span><code>scontrol<span class="w"> </span>show<span class="w"> </span>partition<span class="w"> </span>partitionname<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>-i<span class="w"> </span>qos
 </code></pre><h2><a class="heading" href="..//slurm/ram/">Memory Usage</a></h2><a class="url" href="..//slurm/ram/">/slurm/ram/</a><pre><span></span><code><span class="go">    --mem : memory per node (for all cores used)</span>
 <span class="go">    --mem-per-cpu : memory per core (harder to accurately estimate)</span>
-</code></pre><pre><span></span><code><span class="go">sbatch --mem=10G job1.sh</span>
-</code></pre><pre><span></span><code><span class="go">srun --mem-per-cpu=5G --cpus-per-task=4 --pty --x11 bash</span>
+</code></pre><pre><span></span><code><span class="gp"># </span>This<span class="w"> </span>would<span class="w"> </span>give<span class="w"> </span>your<span class="w"> </span>batch<span class="w"> </span>job<span class="w"> </span>a<span class="w"> </span>total<span class="w"> </span>of<span class="w"> </span>10GB<span class="w"> </span>of<span class="w"> </span>RAM
+<span class="go">sbatch --mem=10G job1.sh</span>
+</code></pre><pre><span></span><code><span class="gp"># </span>This<span class="w"> </span>would<span class="w"> </span>give<span class="w"> </span>your<span class="w"> </span>interactive<span class="w"> </span>session<span class="w"> </span>a<span class="w"> </span>total<span class="w"> </span>of<span class="w"> </span>20GB<span class="w"> </span>of<span class="w"> </span>RAM<span class="w"> </span><span class="p">&amp;</span><span class="w"> </span><span class="m">4</span><span class="w"> </span>cores
+<span class="go">srun --mem-per-cpu=5G --cpus-per-task=4 --pty --x11 bash</span>
 </code></pre><h2><a class="heading" href="..//slurm/time-limits/">Time Limits</a></h2><a class="url" href="..//slurm/time-limits/">/slurm/time-limits/</a><pre><span></span><code>Note: The following was largely written using ChatGPT.
 </code></pre><pre><span></span><code>srun:*:time=5-00
 sbatch:*:time=10-00
@@ -8671,18 +8673,19 @@ conda install package-name
 <span class="go">   hisat2/2.2.1                  synapse/2.7.2</span>
 <span class="go">   htslib/1.10.2                 synapse/3.1.1       (D)</span>
 <span class="go">   htslib/1.18            (D)    tangram/1.0.4</span>
-<span class="go">   java/17                       tensorqtl/1.0.8</span>
-<span class="go">   java/18                       trimgalore/0.6.6</span>
-<span class="go">   kallisto/0.46.1               trimmomatic/0.39</span>
-<span class="go">   ldsc/1.0.1                    vampire/3.4.4</span>
-<span class="go">   leafcutter/0.2.9              vcftools/0.1.16</span>
-<span class="go">   liana_plus/1.5.1              visium_hd/1.0</span>
-<span class="go">   liana_plus/1.7.1       (D)    wiggletools/1.2.1</span>
-<span class="go">   liftover/1.0                  wigtobigwig/2.9</span>
-<span class="go">   magma/1.10                    xeniumranger/1.7.1</span>
-<span class="go">   methyldackel/0.5.2            xeniumranger/2.0.0</span>
-<span class="go">   methylpy/1.4.3                xeniumranger/3.1.1</span>
-<span class="go">   nda-tools/0.2.27              xeniumranger/4.0.0  (D)</span>
+<span class="go">   illumina_cli/1.0              tensorqtl/1.0.8</span>
+<span class="go">   java/17                       trimgalore/0.6.6</span>
+<span class="go">   java/18                       trimmomatic/0.39</span>
+<span class="go">   kallisto/0.46.1               vampire/3.4.4</span>
+<span class="go">   ldsc/1.0.1                    vcftools/0.1.16</span>
+<span class="go">   leafcutter/0.2.9              visium_hd/1.0</span>
+<span class="go">   liana_plus/1.5.1              wiggletools/1.2.1</span>
+<span class="go">   liana_plus/1.7.1       (D)    wigtobigwig/2.9</span>
+<span class="go">   liftover/1.0                  xeniumranger/1.7.1</span>
+<span class="go">   magma/1.10                    xeniumranger/2.0.0</span>
+<span class="go">   methyldackel/0.5.2            xeniumranger/3.1.1</span>
+<span class="go">   methylpy/1.4.3                xeniumranger/4.0.0  (D)</span>
+<span class="go">   nda-tools/0.2.27</span>
 
 <span class="go">  Where:</span>
 <span class="go">   D:  Default Module</span>

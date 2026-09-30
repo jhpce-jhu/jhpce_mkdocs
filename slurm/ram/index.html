@@ -88,7 +88,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#requesting-additional-memory" class="md-skip">
+        <a href="#about-memory" class="md-skip">
           Skip to content
         </a>
       
@@ -3703,6 +3703,17 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#about-memory" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        About Memory
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#requesting-additional-memory" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -5945,6 +5956,17 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#about-memory" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        About Memory
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#requesting-additional-memory" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -6035,23 +6057,23 @@
 
   <h1>Memory Usage</h1>
 
+<h2 id="about-memory">About Memory<a class="headerlink" href="#about-memory" title="Anchor link to this section for reference">&para;</a></h2>
+<p>All jobs need to use a certain amount of memory or RAM in order to run. We use the terms memory and RAM interchangeably. Neither term refers to the space occupied by files on hard drives.</p>
+<p>The primary command to use to get information about your SLURM jobs is the <code>sacct</code> command. One of the things it displays is a job state. If the <code>STATE</code> field from the <code>sacct</code> command is <code>OUT_OF_MEMORY</code> it means that your job has run out of RAM, and you will need to resubmit your job with a larger RAM request.</p>
 <h2 id="requesting-additional-memory">Requesting Additional Memory<a class="headerlink" href="#requesting-additional-memory" title="Anchor link to this section for reference">&para;</a></h2>
-<p>All jobs need to use a certain amount of Memory or RAM (We use the terms Memory and RAM interchangeably) in order
-to run.
-By default on the JHPCE cluster when you submit a job with sbatch, or run srun, you are allotted 5GB of RAM <br />
-for your job. </p>
-<p>If you are running a larger job and need more than the 5GB of RAM, you can request more (or less) RAM 
-via 2 options:
+<p><mark class="critic">When you submit a job with sbatch, or run srun to get an interactive job on a compute node, you are by default allotted 5GB of RAM for your job. (And one CPU core.)</mark>
+This is true on both of our clusters: JADE &amp; JHPCE.</p>
+<p>If you are running a larger job and need more than the 5GB of RAM, you can request more (or less) RAM via two command options:</p>
 <div class="highlight"><pre><span></span><code><span class="go">    --mem : memory per node (for all cores used)</span>
 <span class="go">    --mem-per-cpu : memory per core (harder to accurately estimate)</span>
 </code></pre></div>
-Some examples of using these options:
-<div class="highlight"><pre><span></span><code><span class="go">sbatch --mem=10G job1.sh</span>
+<p>Some examples of using these options:</p>
+<div class="highlight"><pre><span></span><code><span class="gp"># </span>This<span class="w"> </span>would<span class="w"> </span>give<span class="w"> </span>your<span class="w"> </span>batch<span class="w"> </span>job<span class="w"> </span>a<span class="w"> </span>total<span class="w"> </span>of<span class="w"> </span>10GB<span class="w"> </span>of<span class="w"> </span>RAM
+<span class="go">sbatch --mem=10G job1.sh</span>
 </code></pre></div>
-- This would give your batch job a total of 10GB of RAM
-<div class="highlight"><pre><span></span><code><span class="go">srun --mem-per-cpu=5G --cpus-per-task=4 --pty --x11 bash</span>
+<div class="highlight"><pre><span></span><code><span class="gp"># </span>This<span class="w"> </span>would<span class="w"> </span>give<span class="w"> </span>your<span class="w"> </span>interactive<span class="w"> </span>session<span class="w"> </span>a<span class="w"> </span>total<span class="w"> </span>of<span class="w"> </span>20GB<span class="w"> </span>of<span class="w"> </span>RAM<span class="w"> </span><span class="p">&amp;</span><span class="w"> </span><span class="m">4</span><span class="w"> </span>cores
+<span class="go">srun --mem-per-cpu=5G --cpus-per-task=4 --pty --x11 bash</span>
 </code></pre></div>
-- This would give your interactive session a total of 20GB of RAM and 4 cores</p>
 <h2 id="tools-to-use-to-get-ram-usage-information">Tools to use to get RAM usage information:<a class="headerlink" href="#tools-to-use-to-get-ram-usage-information" title="Anchor link to this section for reference">&para;</a></h2>
 <h3 id="sacct-sstat">sacct &amp; sstat<a class="headerlink" href="#sacct-sstat" title="Anchor link to this section for reference">&para;</a></h3>
 <p>The <code>sacct</code> command is used to query the SLURM job accounting database, usually
@@ -6071,7 +6093,8 @@ over the information for a number of jobs.</p>
 <p>Here are some tips to help find good values for your job:</p>
 <ul>
 <li>You can run a test job on a small subset of data, then a larger one.  From this kind of data you should be able to extrapolate the amount of RAM your full job will need. The <code>seff</code> and <code>reportseff</code> commands are useful here.</li>
-<li>One good place to start looking for a minimum is to look at the size of the files you will be reading in. Add a bit extra, as a starting point.  If your job is reading in a 20GB image file, you may want to ask for 25GB or RAM. (But your code may wind up reading in the file one chunk at a time, then releasing that memory and not grow as much. Orrrrrr it might copy the original data into a second array, thereby doubling the amount of space needed.)</li>
+<li>One good place to start looking for a minimum is to look at the size of the files you will be reading in. Add a bit extra, as a starting point.  If your job is reading in a 20GB image file, you may want to ask for 25GB or RAM.</li>
+<li>However the way your job processes data and impacts the RAM used can vary wildly. The code you write in a batch script, and <strong>all of the code</strong> in libraries or applications spawned by your script, can use fractions or multiples of any data file's size. Your code may wind up reading in the file one chunk at a time, then releasing that memory as it finishes, then read in another chunk, and will not grow as much as if it read it all in at once. Orrrrrr your code might copy the original data into a second array, thereby doubling the amount of space needed. It all depends.</li>
 <li>You can run <code>sacct</code> to gather info on a completed job, where JOBID is its number.</br><blockquote>
 <p>sacct -j JOBID -o JobID,JobName,ReqTRES%40,MaxVMSize,MAXRSS,State%20</p>
 </blockquote>
@@ -6080,7 +6103,6 @@ over the information for a number of jobs.</p>
 <p>sstat -j JOBID -a -o JobID,MaxVMSizeNode,MaxVMSize,AveVMSize,MaxRSS,AveRSS,MaxDiskRead,MaxDiskWrite,AveCPUFreq,TRESUsageInMax</p>
 </blockquote>
 </li>
-<li>If the <code>STATE</code> from sacct command is <code>OUT_OF_MEMORY</code> it means that you job has run out of RAM, and you will need to resubmit your job with a larger RAM request.</li>
 </ul>
 <h2 id="impacts-of-ram-requests">Impacts of RAM requests<a class="headerlink" href="#impacts-of-ram-requests" title="Anchor link to this section for reference">&para;</a></h2>
 <p>Try to make your RAM request slightly higher than your expected usage.</p>
@@ -6095,7 +6117,7 @@ over the information for a number of jobs.</p>
 </li>
 </ul>
 <p>To get a feeling for what amounts of RAM are available on compute nodes, run the <code>slurmpic</code> command. You will see the total core and RAM on each node, as well as current core and RAM usage/availability.  If you want to request 750GB, you will see how many/few nodes can even be considered candidates for your job.</p>
-<p>About the three RAM-related columns:</p>
+<p>About the three RAM-related columns <code>slurmpic</code> prints:</p>
 <ul>
 <li>TOT_MEM - Total amount SLURM can use</li>
 <li>FREEMEM - Amount remaining that SLURM jobs can use. (When you request RAM, it is reserved for you. SLURM takes TOT_MEM and adds or subtracts the per-job requested RAM values to arrive at FREEMEM.)</li>
@@ -6121,7 +6143,7 @@ over the information for a number of jobs.</p>
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="September 14, 2026 18:55:05 UTC">September 14, 2026</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="September 30, 2026 02:44:51 UTC">September 30, 2026</span>
   </span>
 
     
@@ -6132,13 +6154,12 @@ over the information for a number of jobs.</p>
   <span class="md-source-file__fact">
     <span class="md-icon" title="Contributors">
       
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 5.5A3.5 3.5 0 0 1 15.5 9a3.5 3.5 0 0 1-3.5 3.5A3.5 3.5 0 0 1 8.5 9 3.5 3.5 0 0 1 12 5.5M5 8c.56 0 1.08.15 1.53.42-.15 1.43.27 2.85 1.13 3.96C7.16 13.34 6.16 14 5 14a3 3 0 0 1-3-3 3 3 0 0 1 3-3m14 0a3 3 0 0 1 3 3 3 3 0 0 1-3 3c-1.16 0-2.16-.66-2.66-1.62a5.54 5.54 0 0 0 1.13-3.96c.45-.27.97-.42 1.53-.42M5.5 18.25c0-2.07 2.91-3.75 6.5-3.75s6.5 1.68 6.5 3.75V20h-13zM0 20v-1.5c0-1.39 1.89-2.56 4.45-2.9-.59.68-.95 1.62-.95 2.65V20zm24 0h-3.5v-1.75c0-1.03-.36-1.97-.95-2.65 2.56.34 4.45 1.51 4.45 2.9z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 4a4 4 0 0 1 4 4 4 4 0 0 1-4 4 4 4 0 0 1-4-4 4 4 0 0 1 4-4m0 10c4.42 0 8 1.79 8 4v2H4v-2c0-2.21 3.58-4 8-4"/></svg>
       
     </span>
     <nav>
       
-        <a href="mailto:tunison@jhu.edu">jeffreytunison</a>, 
-        <a href="mailto:mmill116@jhu.edu">mamiller615</a>
+        <a href="mailto:tunison@jhu.edu">jeffreytunison</a>
     </nav>
   </span>
 
