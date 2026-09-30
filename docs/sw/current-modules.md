@@ -98,18 +98,19 @@
    hisat2/2.2.1                  synapse/2.7.2
    htslib/1.10.2                 synapse/3.1.1       (D)
    htslib/1.18            (D)    tangram/1.0.4
-   java/17                       tensorqtl/1.0.8
-   java/18                       trimgalore/0.6.6
-   kallisto/0.46.1               trimmomatic/0.39
-   ldsc/1.0.1                    vampire/3.4.4
-   leafcutter/0.2.9              vcftools/0.1.16
-   liana_plus/1.5.1              visium_hd/1.0
-   liana_plus/1.7.1       (D)    wiggletools/1.2.1
-   liftover/1.0                  wigtobigwig/2.9
-   magma/1.10                    xeniumranger/1.7.1
-   methyldackel/0.5.2            xeniumranger/2.0.0
-   methylpy/1.4.3                xeniumranger/3.1.1
-   nda-tools/0.2.27              xeniumranger/4.0.0  (D)
+   illumina_cli/1.0              tensorqtl/1.0.8
+   java/17                       trimgalore/0.6.6
+   java/18                       trimmomatic/0.39
+   kallisto/0.46.1               vampire/3.4.4
+   ldsc/1.0.1                    vcftools/0.1.16
+   leafcutter/0.2.9              visium_hd/1.0
+   liana_plus/1.5.1              wiggletools/1.2.1
+   liana_plus/1.7.1       (D)    wigtobigwig/2.9
+   liftover/1.0                  xeniumranger/1.7.1
+   magma/1.10                    xeniumranger/2.0.0
+   methyldackel/0.5.2            xeniumranger/3.1.1
+   methylpy/1.4.3                xeniumranger/4.0.0  (D)
+   nda-tools/0.2.27
 
   Where:
    D:  Default Module
@@ -128,4 +129,4 @@ any of the "keys".
 ```
 Note: some modules may not be available on the login node or on the JADE nodes.
 
-#####Updated: Tue Sep 29 05:30:02 AM EDT 2026
+#####Updated: Wed Sep 30 05:30:03 AM EDT 2026
