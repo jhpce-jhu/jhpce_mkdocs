@@ -1,14 +1,24 @@
-## JHPCE FAQ
-
-### SLURM Questions
+## SLURM Questions
 
 Questions about using SLURM are covered in their own FAQ [here](https://jhpce.jhu.edu/slurm/slurm-faq/).
 
 Commands related to SLURM can be found in [this document](../slurm/slurm-commands-ref.md) 
 
 ## Orientation/Cluster Basics
-You can access our latest orientation slides at [This Link](https://docs.google.com/presentation/d/1elMSTUdKws7FLVFK7vVV_AErA4brNSPX/pub){:target="_blank"}
-(C-SUB users go [here](../orient/images/latest-csub-orient.pdf) instead (pdf).)  We update these periodically. The version date can be found on the first page in the lower right corner.
+The organization called JHPCE manages two clusters: JHPCE (the historical name) aka JASPER (a name new in late 2026) and JADE. JASPER is being introduced so that cluster can be distinguished from the organization. Cluster names come and go over time, while the JHPCE organization will remain.
+
+{==JHPCE==} = Joint High Performance Computing Exchange
+
+{==JASPER==} = JHPCE Advanced Scientific Platform for Enabling Research Computing
+
+{==JADE==} = JHPCE Advanced Data Enclave
+
+Most of the information on this web site applies to all users, because both clusters use SLURM and Rocky Linux. However, there are critical differences.
+
+You can access our latest orientation slides at these links. We update these periodically. (The version date can be found on the first page in the lower right corner.)
+
+- [JHPCE/JASPER](https://docs.google.com/presentation/d/1elMSTUdKws7FLVFK7vVV_AErA4brNSPX/pub){:target="_blank"}
+- JADE does not yet have orientation material. There is a JADE section in the web site navigation bar. JADE was preceeded by a cluster named C-SUB. [Here](../orient/images/latest-csub-orient.pdf) (pdf) is the C-SUB orientation document. 
 
 ## Chrome
 - Locked profile error
@@ -26,6 +36,12 @@ You can access our latest orientation slides at [This Link](https://docs.google.
 
 ??? "Click to expand answer"
     Windows and Unix use different characters to indicate a new line.  If you have uploaded your script from a Windows machine, it may have the Windows newline characters.  These need to be replaced by the Unix newline characters.  To do this, you can run the “dos2unix” command on your script e.g. `dos2unix myscript.sh`. This will strip out all of the Windows newlines and replace them with the Unix newlines. a safer version is `dos2unix --newfile myscript.sh newscript.sh`, as the original file is not modified.
+
+## File Sharing
+Collaborating with others is a daily activity on the cluster. There are better -- and worse -- ways to do that.
+
+- [Advice about file sharing](https://jhpce.jhu.edu/files/sharing-files/)
+- Access Control Lists (ACLs) are an advanced tool when simple UNIX file/directory ownership and permissions are insufficient. See [this document](https://jhpce.jhu.edu/files/acl/) to learn more.
 
 ## File Transfer
 - My winscp program stopped working!
@@ -83,6 +99,23 @@ You can access our latest orientation slides at [This Link](https://docs.google.
 
     !!! Warning
         Please do not copy or move any larger files on the login nodes. Use the transfer node for internal/external transfers and compute nodes for transfers between cluster storage locations.
+
+## JADE
+{==JADE==} = JHPCE Advanced Data Enclave
+
+JADE is a secure, NIST 800-171 compliant High Performance Compute (HPC) cluster managed by the Joint High Perfomance Computing Exchange (JHPCE) organization.
+
+The JADE cluster is designed to provide researchers with a work environment which meets or exceeds the requirements for handling Controlled Unclassified Information (CUI) data. Several communities of researchers use CUI data, such as the Genotypes and Phenotypes (dbGaP) datasets. The NIH requires NIST 800-171 compliance for dbGaP files.
+
+## JASPER
+{==JASPER==} = JHPCE Advanced Scientific Platform for Enabling Research Computing
+
+JASPER is a name introduced in late 2026 for the main cluster supported by JHPCE. JASPER is being introduced so that cluster can be distinguished from the organization. Cluster names come and go over time, while the JHPCE organization will remain.
+
+## JHPCE
+{==JHPCE==} = Joint High Performance Computing Exchange
+
+The Joint High Performance Computing Exchange (JHPCE) is a High-Performance Computing (HPC) facility in the Department of Biostatistics at the Johns Hopkins Bloomberg School of Public Health. This fee-for-service core began in 2008 as a collaborative effort between Biostatistics and the Computational Biology & Research Computing group in the department of Molecular Microbiology and Immunology. The facility has grown over the years and is open to all Johns Hopkins affiliated researchers.
 
 ## Login
 - SSH Connection Refused
