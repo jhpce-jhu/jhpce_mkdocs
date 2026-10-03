@@ -105,6 +105,7 @@ nav:
       - Time Limits: slurm/time-limits.md
       - Command tips and reference:
         - Cmd tips and reference: slurm/slurm-commands-ref.md
+        - slurmpic tips: slurm/slurmpic.md
         - sacct tips: slurm/tips-sacct.md
         - sacctmgr tips: slurm/tips-sacctmgr.md
         - scontrol tips: slurm/tips-scontrol.md
