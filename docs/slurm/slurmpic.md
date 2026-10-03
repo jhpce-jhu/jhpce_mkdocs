@@ -25,7 +25,7 @@ The summary statistics give insight into how heavily utilized the partition or c
 ## Example output
 Here is a condensed example of the output from running `slurmpic --all`
 
-![Example of slurmpic -a](../slurm/images/slurmpic-all-example.png)
+[![](../slurm/images/slurmpic-all-example.png)](../slurm/images/slurmpic-all-example.png "Example of slurmpic --all")
 
 Notes:
 
@@ -39,7 +39,7 @@ Notes:
 
 Does this image display differently?
 
-![Image title](../slurm/images/slurmpic-all-example.png){: .centered }
+[![](../slurm/images/slurmpic-all-example.png)](../slurm/images/slurmpic-all-example.png "Example of slurmpic --all"){: .centered }
 Image caption text   
 
 ## Which partitions do you see?
