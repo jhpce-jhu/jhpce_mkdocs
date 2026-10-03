@@ -25,7 +25,7 @@ The summary statistics give insight into how heavily utilized the partition or c
 ## Example output
 Here is a condensed example of the output from running `slurmpic --all`
 
-[![](images/slurmpic-all-example.png)](images/slurmpic-all-example.png)
+[![](images/slurmpic-all-example.png)](images/slurmpic-all-example.png "Example of slurmpic --all")
 
 Notes:
 
@@ -37,10 +37,9 @@ Notes:
 - compute-099's NODESTATE is "allocated" because all of its cores are in use.
 - compute-101 is idle.
 
-Does this image display differently?
+Example of `slurmpic --gpu`:
 
-[![](../slurm/images/slurmpic-all-example.png)](../slurm/images/slurmpic-all-example.png "Example of slurmpic --all"){: .centered }
-Image caption text   
+[![](../slurm/images/slurmpic-gpu.png)](../slurm/images/slurmpic-all-gpu.png "Example of slurmpic --gpu"){: .centered }  
 
 ## Which partitions do you see?
 
