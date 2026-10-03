@@ -25,7 +25,7 @@ The summary statistics give insight into how heavily utilized the partition or c
 ## Example output
 Here is a condensed example of the output from running `slurmpic --all`
 
-[![](../slurm/images/slurmpic-all-example.png)](../slurm/images/slurmpic-all-example.png "Example of slurmpic --all")
+[![](images/slurmpic-all-example.png)](images/slurmpic-all-example.png)
 
 Notes:
 
