@@ -23,7 +23,24 @@ The per-node lines give you specific answers to questions like:
 The summary statistics give insight into how heavily utilized the partition or cluster is at this moment.
 
 ## Example output
-[Example of slurmpic -a](../slurm/images/slurmpic-all-example.png)
+Here is a condensed example of the output from running `slurmpic --all`
+
+![Example of slurmpic -a](../slurm/images/slurmpic-all-example.png)
+
+Notes:
+
+- Because we used `--all`, the PARTITIONS column lists all of the partitions that the node is a member of.
+- compute-053's cores are almost all used, so CPUS_A/T is a cautionary yellow. But it has enough unallocated RAM to be able to run more SLURM jobs, so FREEMEM is in green. The NODESTATE is "mixed" because it is being used but is not completely allocated.
+- compute-054's still has many free cores, so CPUS_A/T is green. But it has almost no unallocated RAM for more SLURM jobs, so FREEMEM is in danger red.
+- compute-057 is turned off and reserved, so RESERVED is in red.
+- compute-090 is working normally and is reserved, so RESERVED is in purple.
+- compute-099's NODESTATE is "allocated" because all of its cores are in use.
+- compute-101 is idle.
+
+Does this image display differently?
+
+![Image title](../slurm/images/slurmpic-all-example.png){: .centered }
+Image caption text   
 
 ## Which partitions do you see?
 
