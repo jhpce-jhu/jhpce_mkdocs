@@ -6023,7 +6023,21 @@
 </ul>
 <p>The summary statistics give insight into how heavily utilized the partition or cluster is at this moment.</p>
 <h2 id="example-output">Example output<a class="headerlink" href="#example-output" title="Anchor link to this section for reference">&para;</a></h2>
-<p><a href="../slurm/images/slurmpic-all-example.png">Example of slurmpic -a</a></p>
+<p>Here is a condensed example of the output from running <code>slurmpic --all</code></p>
+<p><img alt="Example of slurmpic -a" src="../slurm/images/slurmpic-all-example.png" /></p>
+<p>Notes:</p>
+<ul>
+<li>Because we used <code>--all</code>, the PARTITIONS column lists all of the partitions that the node is a member of.</li>
+<li>compute-053's cores are almost all used, so CPUS_A/T is a cautionary yellow. But it has enough unallocated RAM to be able to run more SLURM jobs, so FREEMEM is in green. The NODESTATE is "mixed" because it is being used but is not completely allocated.</li>
+<li>compute-054's still has many free cores, so CPUS_A/T is green. But it has almost no unallocated RAM for more SLURM jobs, so FREEMEM is in danger red.</li>
+<li>compute-057 is turned off and reserved, so RESERVED is in red.</li>
+<li>compute-090 is working normally and is reserved, so RESERVED is in purple.</li>
+<li>compute-099's NODESTATE is "allocated" because all of its cores are in use.</li>
+<li>compute-101 is idle.</li>
+</ul>
+<p>Does this image display differently?</p>
+<p><img alt="Image title" class="centered" src="../slurm/images/slurmpic-all-example.png" />
+Image caption text   </p>
 <h2 id="which-partitions-do-you-see">Which partitions do you see?<a class="headerlink" href="#which-partitions-do-you-see" title="Anchor link to this section for reference">&para;</a></h2>
 <ul>
 <li>By default <code>slurmpic</code> displays one partition, while <code>slurmpic -a</code> shows all partitions. </li>
@@ -6138,7 +6152,7 @@ slurm-hist-shared-mem</p>
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="October 3, 2026 06:14:43 UTC">October 3, 2026</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="October 3, 2026 06:28:46 UTC">October 3, 2026</span>
   </span>
 
     
