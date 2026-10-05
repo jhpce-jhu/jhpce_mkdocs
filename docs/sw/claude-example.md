@@ -1,3 +1,16 @@
+# Important note about about using Claude on JHPCE
+
+Please be sure to restrict Claude file access to only your home directory
+or project directories that your group has access to.  Please do not let Claude
+search for files on the entire system, or the /users home directory space, as
+this can put an undue load on the storage arrays, and impact the performance
+of the cluster for all users.
+
+Claude is a very powerful tool in aiding with software development and data
+analysis, but it can often try to be too helpful.  This is fine when working
+locally on an individual laptop, but on a shared system like JHPCE, this 
+helpfulness can overreach boundaries and affect other users.
+
 # Claude Transcript
 
 This page captures a Claude CLI session that walks through creating a simple Python script, submitting it as a Slurm job, monitoring the run, and gathering the output.
