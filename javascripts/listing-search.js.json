@@ -1470,6 +1470,13 @@
     "language": ""
   },
   {
+    "page_name": "slurmpic tips",
+    "page_url": "/slurm/slurmpic/",
+    "text": "slurmpic [-p|--partition <PARTITION>] [-a|--all] [-g|--gpu] [-r|--ramstats]\nslurmpic [-h|--help]\n",
+    "html": "<pre><span></span><code>slurmpic [-p|--partition &lt;PARTITION&gt;] [-a|--all] [-g|--gpu] [-r|--ramstats]\nslurmpic [-h|--help]\n</code></pre>",
+    "language": ""
+  },
+  {
     "page_name": "Time Limits",
     "page_url": "/slurm/time-limits/",
     "text": "Note: The following was largely written using ChatGPT.\n",

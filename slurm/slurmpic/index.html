@@ -6270,47 +6270,53 @@
 
 
 <h1 id="slurmpic">slurmpic<a class="headerlink" href="#slurmpic" title="Anchor link to this section for reference">&para;</a></h1>
-<p><code>slurmpic</code> (SLURM PICture) is a JHPCE-written program which is an important tool for both users and systems administrators. <mark>You should run slurmpic regularly</mark> to get a feeling for the state of the cluster, and whenever you are wondering about something such as why a node you requested is not available. Run <code>slurmpic -h</code> to see important usage notes!</p>
-<p>It shows current information about individual compute nodes and partitions (groups of compute nodes). When <code>slurmpic -a</code> is run, it shows info about <strong>all</strong> of the nodes in the cluster, and therefore the statistics provided are for the whole cluster. Text is color-coded to try to indicate how fully consumed nodes are.</p>
+<p><code>slurmpic</code> (SLURM PICture) is a JHPCE-written program which is an important tool for both users and systems administrators. <mark>You should run slurmpic regularly</mark> to get a feeling for the state of the cluster, and whenever you are wondering about something such as why a node or partition you explicitly requested is not available (e.g. a node might be down). Run <code>slurmpic -h</code> to see important usage notes!</p>
+<p>It shows current information about individual compute nodes and partitions (groups of compute nodes). When <code>slurmpic --all</code> is run, it shows info about <strong>all</strong> of the nodes in the cluster, and therefore the statistics provided are for the whole cluster. Text is color-coded to try to indicate how fully consumed nodes are.</p>
+<p>The command takes these arguments:</p>
+<div class="highlight"><pre><span></span><code>slurmpic [-p|--partition &lt;PARTITION&gt;] [-a|--all] [-g|--gpu] [-r|--ramstats]
+slurmpic [-h|--help]
+</code></pre></div>
 <p>The SLURM command <a href="https://slurm.schedmd.com/archive/slurm-22.05.9/sinfo.html">"sinfo --node"</a> is the underlying tool. That produces a node-oriented format with one line per node. <code>slurmpic</code> modifies <code>sinfo</code> output by adding color-coding, a little upper/lower case modifications for NODESTATE and a summary block of statistics about the nodes displayed.</p>
 <h2 id="why-is-it-useful">Why is it useful?<a class="headerlink" href="#why-is-it-useful" title="Anchor link to this section for reference">&para;</a></h2>
 <p>The per-node lines give you specific answers to questions like:</p>
 <ul>
-<li>"What is the maximum amount of RAM or CPU cores on a single node in the cluster or partition?" (If you try to submit a job request which requests more than that, then the job will never run.)</li>
-<li>"Which nodes or partitions have available capacity that my job might be able to use now or in the near future?" (Of course, your jobs are submitted into a queue of jobs from other users. But some times you can be reminded of partitions like "scavenge" and see that resources are available.)</li>
+<li><strong>"How heavily utilized is a partition or the cluster is at this moment?"</strong></li>
+<li><strong>"What is the maximum amount of RAM and CPU cores on a single node in the cluster or partition?"</strong>  A basic SLURM job requires all of the specified resources to exist on a single node. If you try to submit a job request which specifies more of either resource than those maximums, then the job will be rejected -- because no node can <em>ever</em> accept such a job. (You'll need to divide up the computing effort.)</li>
+<li><strong>"Which nodes or partitions have available capacity that my job might be able to use now or in the near future?"</strong> The <code>slurmpic</code> output will give you an idea of what is possible/likely to run now. Of course, your jobs are submitted into a queue of jobs from other users, and <a href="../whenstart/">various factors</a> will determine the order in which they are dispatched to a particular node.  Also, sometimes you will be reminded of partitions like "scavenge" or "interactive-larger" and see that they have available resources. (You can see descriptions &amp; limitations of our partitions <a href="../partitions/">here</a>.)</li>
 </ul>
-<p>The summary statistics give insight into how heavily utilized the partition or cluster is at this moment.</p>
 <h2 id="example-output">Example output<a class="headerlink" href="#example-output" title="Anchor link to this section for reference">&para;</a></h2>
-<p>Here is a condensed example of the output from running <code>slurmpic --all</code></p>
+<p>Here is a condensed example of the output from running <code>slurmpic --all</code> on the JHPCE/JASPER cluster:</p>
 <p><a href="../images/slurmpic-all-example.png" title="Example of slurmpic --all"><img alt="" src="../images/slurmpic-all-example.png" /></a></p>
 <p>Notes:</p>
 <ul>
+<li>Later sections of this document provide details about the columns &amp; color-coding.</li>
 <li>Because we used <code>--all</code>, the PARTITIONS column lists all of the partitions that the node is a member of.</li>
-<li>compute-053's cores are almost all used, so CPUS_A/T is a cautionary yellow. But it has enough unallocated RAM to be able to run more SLURM jobs, so FREEMEM is in green. The NODESTATE is "mixed" because it is being used but is not completely allocated.</li>
+<li>compute-053's cores are almost all used, so CPUS_A/T is a cautionary yellow. But it has enough unallocated RAM to be able to run more SLURM jobs, so FREEMEM is in green. The NODESTATE is "mixed" because it is being used but neither CPU nor RAM are 100% allocated.</li>
 <li>compute-054's still has many free cores, so CPUS_A/T is green. But it has almost no unallocated RAM for more SLURM jobs, so FREEMEM is in danger red.</li>
 <li>compute-057 is turned off and reserved, so RESERVED is in red.</li>
 <li>compute-090 is working normally and is reserved, so RESERVED is in purple.</li>
 <li>compute-099's NODESTATE is "allocated" because all of its cores are in use.</li>
 <li>compute-101 is idle.</li>
 </ul>
-<p>Example of <code>slurmpic --gpu</code>:</p>
+<p>Example of <code>slurmpic --gpu</code> on the JHPCE/JASPER cluster:</p>
 <p><a class="centered" href="../slurm/images/slurmpic-all-gpu.png" title="Example of slurmpic --gpu"><img alt="" src="../images/slurmpic-gpu.png" /></a>  </p>
 <h2 id="which-partitions-do-you-see">Which partitions do you see?<a class="headerlink" href="#which-partitions-do-you-see" title="Anchor link to this section for reference">&para;</a></h2>
 <ul>
-<li>By default <code>slurmpic</code> displays one partition, while <code>slurmpic -a</code> shows all partitions. </li>
-<li><code>slurmpic -a</code> allows you to see which partitions each node belongs to.</li>
+<li>By default <code>slurmpic</code> displays one partition, while <code>slurmpic -a</code> shows all partitions.</li>
+<li><code>slurmpic -a</code> allows you to see which partitions a node belongs to.</li>
+<li>Your default partition is shown with an asterisk.</li>
 <li>In the JHPCE cluster: slurmpic defaults to the <strong>shared</strong> partition.</li>
-<li>In the JADE cluster: slurmpic defaults to the <strong>N-shared</strong> partition, where "N" is the community letter, e.g. "<strong>c-shared</strong>" for CMS community members, "<strong>m-shared</strong>" for MISC community members.</li>
-<li>Specific partitions can be displayed using: <code>slurmpic -p &lt;partitionname&gt;</code></li>
+<li>In the JADE cluster: slurmpic defaults to the <strong>N-shared</strong> partition, where "N" is the community letter, e.g. "<strong>c-shared</strong>" for CMS community members, "<strong>m-shared</strong>" for MISC community members. (On JADE, that is the one defined in your <code>~/.slurm/defaults</code> file.)</li>
+<li>Specific partitions can be displayed using: <code>slurmpic -p &lt;partition_name&gt;</code></li>
 <li>All of the nodes in all of the GPU partitions can be displayed with <code>slurmpic -g</code>.</li>
-<li>Individual GPU-containing partitions can be shown with <code>slurmpic -g -p &lt;partitionname&gt;</code></li>
-<li>You will not see hidden or restricted partitions you cannot submit to, unless you specify <code>-a</code>.</li>
+<li>Individual GPU-containing partitions can be shown with <code>slurmpic -g -p &lt;partition_name&gt;</code></li>
+<li>You will not see hidden or restricted partitions you cannot submit to, unless you specify <code>-a</code>. Partitions can be hidden from view because of their configuration in two ways: They can be defined as hidden (which we haven't done so far). Partitions can also be configured with an "AllowedGroups" parameter. That restricts usage to members of the specified UNIX user group members. It also hides the partition's nodes in the default output of SLURM commands. The <code>sinfo -a</code> option is documented to toggle the visability.</li>
 </ul>
 <h2 id="about-the-displayed-summary-statistics">About the displayed summary statistics:<a class="headerlink" href="#about-the-displayed-summary-statistics" title="Anchor link to this section for reference">&para;</a></h2>
 <ul>
 <li>They are for a single partition, not the whole cluster (except for <code>slurmpic -a</code>)</li>
 <li>They do not include the resources of hidden or restricted partitions.</li>
-<li>Memory and CPU use of nodes that are DOWN or in DRAIN are not included in the stats.</li>
+<li>Memory and CPU use of nodes that are DOWN, in DRAIN or are RESERVED are not included in the stats.</li>
 </ul>
 <h2 id="column-names-and-contents">Column names and contents<a class="headerlink" href="#column-names-and-contents" title="Anchor link to this section for reference">&para;</a></h2>
 <p>Typically you will see this header line:</p>
@@ -6371,12 +6377,11 @@ Red: Almost all or all cores are being used.<br></p>
 </ul>
 <h2 id="caveats">Caveats<a class="headerlink" href="#caveats" title="Anchor link to this section for reference">&para;</a></h2>
 <ul>
-<li>Summary stats are for specified partition(s), and exclude nodes in DOWN, DRAIN &amp; RESERVED states.</li>
-<li>Output width - You may need to widen your terminal window. One hundred (100) characters should suffice.</li>
+<li>Summary stats are for specified partition(s), and the values for nodes in DOWN, DRAIN &amp; RESERVED states <mark>are excluded</mark>. The philosophy implemented is "What CPU &amp; RAM figures apply to most users when they submit new jobs?"</li>
+<li>Output width - You may need to widen your terminal window. One hundred (110) characters should suffice when looking at GPU info.</li>
+<li>The JADE cluster does not have any GPU-equipped nodes. Therefore the <code>--gpu</code> option does not produce useful info there.</li>
 <li>The count of GPUs when using <code>-g</code> is how many are currently <strong>running code</strong>, not the number locked down by SLURM job requests. Therefore it can appear that GPUs are available when they are not.</li>
 <li>Using <code>--all</code> &amp; <code>--gpu</code> together provides (as of 20261003) different output depending on the ordering. Ordering should not matter. <code>slurmpic -g -a</code> will show all cluster nodes, with GPU-related statistics. <code>slurmpic -a -g</code> will show only GPU-equipped nodes, with GPU-related statistics.</li>
-<li>Hidden partitions - Use the <code>--all</code> option to see all nodes. Partitions can be hidden from view because of their configuration. They can be defined as hidden (which we haven't done so far). Partitions can also be configured with an "AllowedGroups" parameter. That restricts usage (and visability) to members of the specified UNIX user group members.</li>
-<li>The JADE cluster does not have any GPU-equipped nodes. Therefore the <code>--gpu</code> option does not work there.</li>
 </ul>
 <h2 id="ram-usage-stats">RAM usage stats<a class="headerlink" href="#ram-usage-stats" title="Anchor link to this section for reference">&para;</a></h2>
 <p>The <code>-r | --ramstats</code> flag was added to assist systems administrators to get a feeling for how much users were over-allocating RAM when composing their job requests.</p>
@@ -6409,7 +6414,7 @@ slurm-hist-shared-mem</p>
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="October 3, 2026 07:09:26 UTC">October 3, 2026</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="October 5, 2026 20:59:04 UTC">October 5, 2026</span>
   </span>
 
     

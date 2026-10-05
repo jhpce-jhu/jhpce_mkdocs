@@ -7767,6 +7767,8 @@ transfer-01                         intel,ivybridge,transfer                    
 <span class="go">sbatch --mem=10G job1.sh</span>
 </code></pre><pre><span></span><code><span class="gp"># </span>This<span class="w"> </span>would<span class="w"> </span>give<span class="w"> </span>your<span class="w"> </span>interactive<span class="w"> </span>session<span class="w"> </span>a<span class="w"> </span>total<span class="w"> </span>of<span class="w"> </span>20GB<span class="w"> </span>of<span class="w"> </span>RAM<span class="w"> </span><span class="p">&amp;</span><span class="w"> </span><span class="m">4</span><span class="w"> </span>cores
 <span class="go">srun --mem-per-cpu=5G --cpus-per-task=4 --pty --x11 bash</span>
+</code></pre><h2><a class="heading" href="..//slurm/slurmpic/">slurmpic tips</a></h2><a class="url" href="..//slurm/slurmpic/">/slurm/slurmpic/</a><pre><span></span><code>slurmpic [-p|--partition &lt;PARTITION&gt;] [-a|--all] [-g|--gpu] [-r|--ramstats]
+slurmpic [-h|--help]
 </code></pre><h2><a class="heading" href="..//slurm/time-limits/">Time Limits</a></h2><a class="url" href="..//slurm/time-limits/">/slurm/time-limits/</a><pre><span></span><code>Note: The following was largely written using ChatGPT.
 </code></pre><pre><span></span><code>srun:*:time=5-00
 sbatch:*:time=10-00
