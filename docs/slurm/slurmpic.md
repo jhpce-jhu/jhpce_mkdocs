@@ -7,9 +7,16 @@ tags:
 
 # slurmpic
 
-`slurmpic` (SLURM PICture) is a JHPCE-written program which is an important tool for both users and systems administrators. ==You should run slurmpic regularly== to get a feeling for the state of the cluster, and whenever you are wondering about something such as why a node you requested is not available. Run `slurmpic -h` to see important usage notes!
+`slurmpic` (SLURM PICture) is a JHPCE-written program which is an important tool for both users and systems administrators. ==You should run slurmpic regularly== to get a feeling for the state of the cluster, and whenever you are wondering about something such as why a node or partition you explicitly requested is not available (e.g. a node might be down). Run `slurmpic -h` to see important usage notes!
 
-It shows current information about individual compute nodes and partitions (groups of compute nodes). When `slurmpic -a` is run, it shows info about **all** of the nodes in the cluster, and therefore the statistics provided are for the whole cluster. Text is color-coded to try to indicate how fully consumed nodes are.
+It shows current information about individual compute nodes and partitions (groups of compute nodes). When `slurmpic --all` is run, it shows info about **all** of the nodes in the cluster, and therefore the statistics provided are for the whole cluster. Text is color-coded to try to indicate how fully consumed nodes are.
+
+The command takes these arguments:
+
+```
+slurmpic [-p|--partition <PARTITION>] [-a|--all] [-g|--gpu] [-r|--ramstats]
+slurmpic [-h|--help]
+```
 
 The SLURM command ["sinfo --node"](https://slurm.schedmd.com/archive/slurm-22.05.9/sinfo.html) is the underlying tool. That produces a node-oriented format with one line per node. `slurmpic` modifies `sinfo` output by adding color-coding, a little upper/lower case modifications for NODESTATE and a summary block of statistics about the nodes displayed.
 
@@ -17,46 +24,48 @@ The SLURM command ["sinfo --node"](https://slurm.schedmd.com/archive/slurm-22.05
 
 The per-node lines give you specific answers to questions like:
 
-- "What is the maximum amount of RAM or CPU cores on a single node in the cluster or partition?" (If you try to submit a job request which requests more than that, then the job will never run.)
-- "Which nodes or partitions have available capacity that my job might be able to use now or in the near future?" (Of course, your jobs are submitted into a queue of jobs from other users. But some times you can be reminded of partitions like "scavenge" and see that resources are available.)
-
-The summary statistics give insight into how heavily utilized the partition or cluster is at this moment.
+- **"How heavily utilized is a partition or the cluster is at this moment?"**
+- **"What is the maximum amount of RAM and CPU cores on a single node in the cluster or partition?"**  A basic SLURM job requires all of the specified resources to exist on a single node. If you try to submit a job request which specifies more of either resource than those maximums, then the job will be rejected -- because no node can _ever_ accept such a job. (You'll need to divide up the computing effort.)
+- **"Which nodes or partitions have available capacity that my job might be able to use now or in the near future?"** The `slurmpic` output will give you an idea of what is possible/likely to run now. Of course, your jobs are submitted into a queue of jobs from other users, and [various factors](../slurm/whenstart.md) will determine the order in which they are dispatched to a particular node.  Also, sometimes you will be reminded of partitions like "scavenge" or "interactive-larger" and see that they have available resources. (You can see descriptions & limitations of our partitions [here](../slurm/partitions.md).)
 
 ## Example output
-Here is a condensed example of the output from running `slurmpic --all`
+
+Here is a condensed example of the output from running `slurmpic --all` on the JHPCE/JASPER cluster:
 
 [![](images/slurmpic-all-example.png)](images/slurmpic-all-example.png "Example of slurmpic --all")
 
 Notes:
 
+- Later sections of this document provide details about the columns & color-coding.
 - Because we used `--all`, the PARTITIONS column lists all of the partitions that the node is a member of.
-- compute-053's cores are almost all used, so CPUS_A/T is a cautionary yellow. But it has enough unallocated RAM to be able to run more SLURM jobs, so FREEMEM is in green. The NODESTATE is "mixed" because it is being used but is not completely allocated.
+- compute-053's cores are almost all used, so CPUS_A/T is a cautionary yellow. But it has enough unallocated RAM to be able to run more SLURM jobs, so FREEMEM is in green. The NODESTATE is "mixed" because it is being used but neither CPU nor RAM are 100% allocated.
 - compute-054's still has many free cores, so CPUS_A/T is green. But it has almost no unallocated RAM for more SLURM jobs, so FREEMEM is in danger red.
 - compute-057 is turned off and reserved, so RESERVED is in red.
 - compute-090 is working normally and is reserved, so RESERVED is in purple.
 - compute-099's NODESTATE is "allocated" because all of its cores are in use.
 - compute-101 is idle.
 
-Example of `slurmpic --gpu`:
+Example of `slurmpic --gpu` on the JHPCE/JASPER cluster:
 
 [![](../slurm/images/slurmpic-gpu.png)](../slurm/images/slurmpic-all-gpu.png "Example of slurmpic --gpu"){: .centered }  
 
 ## Which partitions do you see?
 
-- By default `slurmpic` displays one partition, while `slurmpic -a` shows all partitions. 
-- `slurmpic -a` allows you to see which partitions each node belongs to.
+- By default `slurmpic` displays one partition, while `slurmpic -a` shows all partitions.
+- `slurmpic -a` allows you to see which partitions a node belongs to.
+- Your default partition is shown with an asterisk.
 - In the JHPCE cluster: slurmpic defaults to the **shared** partition.
-- In the JADE cluster: slurmpic defaults to the **N-shared** partition, where "N" is the community letter, e.g. "**c-shared**" for CMS community members, "**m-shared**" for MISC community members.
-- Specific partitions can be displayed using: `slurmpic -p <partitionname>`
+- In the JADE cluster: slurmpic defaults to the **N-shared** partition, where "N" is the community letter, e.g. "**c-shared**" for CMS community members, "**m-shared**" for MISC community members. (On JADE, that is the one defined in your `~/.slurm/defaults` file.)
+- Specific partitions can be displayed using: `slurmpic -p <partition_name>`
 - All of the nodes in all of the GPU partitions can be displayed with `slurmpic -g`.
-- Individual GPU-containing partitions can be shown with `slurmpic -g -p <partitionname>`
-- You will not see hidden or restricted partitions you cannot submit to, unless you specify `-a`.
+- Individual GPU-containing partitions can be shown with `slurmpic -g -p <partition_name>`
+- You will not see hidden or restricted partitions you cannot submit to, unless you specify `-a`. Partitions can be hidden from view because of their configuration in two ways: They can be defined as hidden (which we haven't done so far). Partitions can also be configured with an "AllowedGroups" parameter. That restricts usage to members of the specified UNIX user group members. It also hides the partition's nodes in the default output of SLURM commands. The `sinfo -a` option is documented to toggle the visability.
 
 ## About the displayed summary statistics:
 
 - They are for a single partition, not the whole cluster (except for `slurmpic -a`)
 - They do not include the resources of hidden or restricted partitions.
-- Memory and CPU use of nodes that are DOWN or in DRAIN are not included in the stats.
+- Memory and CPU use of nodes that are DOWN, in DRAIN or are RESERVED are not included in the stats.
 
 ## Column names and contents
 
@@ -121,12 +130,11 @@ We have not, to date, colorized these fields:
 
 ## Caveats
 
-- Summary stats are for specified partition(s), and exclude nodes in DOWN, DRAIN & RESERVED states.
-- Output width - You may need to widen your terminal window. One hundred (100) characters should suffice.
+- Summary stats are for specified partition(s), and the values for nodes in DOWN, DRAIN & RESERVED states ==are excluded==. The philosophy implemented is "What CPU & RAM figures apply to most users when they submit new jobs?"
+- Output width - You may need to widen your terminal window. One hundred (110) characters should suffice when looking at GPU info.
+- The JADE cluster does not have any GPU-equipped nodes. Therefore the `--gpu` option does not produce useful info there.
 - The count of GPUs when using `-g` is how many are currently **running code**, not the number locked down by SLURM job requests. Therefore it can appear that GPUs are available when they are not.
 - Using `--all` & `--gpu` together provides (as of 20261003) different output depending on the ordering. Ordering should not matter. `slurmpic -g -a` will show all cluster nodes, with GPU-related statistics. `slurmpic -a -g` will show only GPU-equipped nodes, with GPU-related statistics.
-- Hidden partitions - Use the `--all` option to see all nodes. Partitions can be hidden from view because of their configuration. They can be defined as hidden (which we haven't done so far). Partitions can also be configured with an "AllowedGroups" parameter. That restricts usage (and visability) to members of the specified UNIX user group members.
-- The JADE cluster does not have any GPU-equipped nodes. Therefore the `--gpu` option does not work there.
 
 ## RAM usage stats
 
