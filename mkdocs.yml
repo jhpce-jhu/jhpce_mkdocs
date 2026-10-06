@@ -97,6 +97,11 @@ nav:
       - Using OpenAI codex: sw/codex.md
       - Using Claude CLI: sw/claude-example.md
       - JHU Generative AI Resources: help/images/JHU_Generative_AI_Resources.pdf
+    - AI:
+      - Overview: ai/overview.md
+      - VS Code: ai/vscode.md
+      - Codex: ai/codex.md
+      - Claude: ai/claude-example.md
     - Job scheduler (SLURM): 
       - Getting Started: slurm/getting-started.md
       - About Jobs: slurm/about-jobs.md
@@ -129,10 +134,12 @@ nav:
       - Navigating Deep Directory Trees: files/deep-paths.md
       - SED Modifying Files en Masse: files/sed-tips.md
       - Using FreeIPA: sw/freeipa.md
-    - Web Portal:
+    - Web Portal (JHPCE):
       - GUI Applications: portal/web-apps.md
       - Datacatalog: portal/datacatalog.md
       - Self Service MFA, Password Requests : portal/web-reset.md
+    - Web Portal (JADE):
+      - Overview: ood/jade-overview.md
     - JADE:
       - About: jade/jade-overview.md
       - New JADE User Form: jade/new-users-form.md
@@ -152,6 +159,7 @@ nav:
         - SSH: access/ssh.md
         - X11: access/x11.md
         - MobaXterm: access/mobaxterm.md
+        - Open OnDemand (OOD): ood/jade-overview.md
         - Transferring files in or out: 
           - Overview: jade/access/transfer-overview.md
           - SFTP: jade/access/sftp-transfers.md
