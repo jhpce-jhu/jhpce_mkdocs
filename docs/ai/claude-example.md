@@ -1,3 +1,10 @@
+---
+tags:
+  - ai
+  - in-progress
+  - claude
+---
+
 # Important note about about using Claude on JHPCE
 
 Please be sure to restrict Claude file access to only your home directory

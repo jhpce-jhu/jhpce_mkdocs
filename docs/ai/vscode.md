@@ -1,3 +1,9 @@
+---
+tags:
+  - ai
+  - in-progress
+  - vscode
+---
 # Virtual Studio Code
 
 The currently only acceptable way to run vscode on the cluster is via the

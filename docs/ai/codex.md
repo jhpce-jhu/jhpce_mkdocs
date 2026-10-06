@@ -1,3 +1,10 @@
+---
+tags:
+  - ai
+  - in-progress
+  - codex
+---
+
 # Important note about using Codex on JHPCE
 
 Please be sure to restrict Codex file access to only your home directory
