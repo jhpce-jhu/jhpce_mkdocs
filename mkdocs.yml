@@ -159,7 +159,7 @@ nav:
         - SSH: access/ssh.md
         - X11: access/x11.md
         - MobaXterm: access/mobaxterm.md
-        - Open OnDemand (OOD): ood/jade-ood-overview.md
+        - 'Open OnDemand (OOD)': ood/jade-ood-overview.md
         - Transferring files in or out: 
           - Overview: jade/access/transfer-overview.md
           - SFTP: jade/access/sftp-transfers.md

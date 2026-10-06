@@ -12,11 +12,11 @@ The AI section of our website and this document provide information about broad 
 
 AI technology is a double-edged sword - along with positives there are negatives that you can - and should - avoid!!
 
-Everyone is striving to integrate AI into, well, everything, and to make using it extremely simple. That has resulted in choices being made where doing "simple" things cause private data to become public or to generate a great number of activities "behind the scenes".
+Everyone is striving to integrate AI into, well, everything, and to make using it extremely simple. That has resulted in choices being made for you by AI vendors and plugin/extension authors where doing "simple" things can cause private data to become public or to generate a great number of activities "behind the scenes". All in the hopes of "being helpful" and "reducing user workload."
 
-For example, ==providing research data in AI queries== can generate severe legal and moral consequences to Hopkins. There are subleties to how and where one uses AI to do their work. Hopkins is trying to create secure ways to work with certain classes of data, and provide guidance about the whole AI landscape.
+For example, ==providing research data in AI queries== can generate severe legal and moral consequences to Hopkins. There are subleties to how and where one uses AI to do their work. Details in usage agreements matter. Hopkins is trying to create secure ways to work with certain classes of data, and provide guidance about the whole AI landscape.
 
-Tools like `VS Code` can default to, or prompt you for permission to, do things which seem useful but have negative implications beyond your understanding at that moment. You might disable something like Claudes "--dangerously-skip-permissions” flag because doing so means you don't have to respond to a prompt each time you enter a directory of files. But those controls also might require your approval before the application deletes any of your files. Perhaps all of the ones you have write access to, in the cluster, across multiple file systems. Do you collaborate with others using group-writable files and directories? Think about all of those being deleted or modified for a moment!
+Tools like `VS Code` can default to, or prompt you for permission to, do things which seem useful but have negative implications beyond your understanding at that moment. You might enable or disable something quickly because you just want to get on with your work. A great example: We have seen Claude's "--dangerously-skip-permissions” flag being enabled (perhaps via a GUI checkbox whose label is more innocuous than the CLI string) because doing so means you don't have to respond to a prompt each time you enter a directory of files. But those controls also might require your approval before the application deletes any of your files. Perhaps all of the ones you have write access to, in the cluster, across multiple file systems. Do you collaborate with others using group-writable files and directories? Think for a moment about all of those being deleted or modified!
 
 ## Hopkins AI tools & policies
 
@@ -26,18 +26,25 @@ The [JHU Generative AI Resources](https://jhpce.jhu.edu/help/images/JHU_Generati
 
 ## Some specific things to avoid
 
-??? warning "Do not run AI programs on login nodes. Only use compute nodes!!"
-    Login nodes do not have a lot of RAM or CPU power. They are also critical to the entire user community. You must not intentionally or unintentionally spawn workloads on these servers.
+??? warning "Do not run AI programs on login nodes. Only use compute nodes!! (Usually via web portals)"
+    Login nodes have a limited amount of RAM and CPU resources. ==They are critical to the entire user community.== You must not intentionally or unintentionally spawn AI workloads on these servers.
     
-??? danger "Do not create broad file search queries without careful consideration."
-    Be very aware that you should start every interaction process with explicit limits in place. Tools like Codex make it _trivial_ to search for files which include "data" anywhere in their name or are of type "pdf". Our clusters host _millions of files_, occupying petabytes. If you do not add limits like the starting path for a search, these tools will start at the root (i.e. "/") of the file systems on the computer and go everywhere they have permission to go.
+??? danger "Do not create file search queries without careful consideration."
+    Be very aware that you should start every AI interaction process with explicit limits in place. Tools like Codex make it _trivial_ to search for files which include some string such as "data" anywhere in their name or are of type "pdf". Our clusters host _millions of files_, occupying petabytes.
+    If you do not add limits like the starting path for a file search, these tools will start at the root (i.e. "/") of the file systems on the computer and go everywhere they have permission to go.
 
-## Specific AI application usage in JHPCE: tutorials & guidance
+In October 2026 a Claude user caused the file storage server holding everyone's home directories to crash. Their search looked for a single Python file, starting at "/" and going six levels deep in all accessible file systems. Which included all of the files on the compute node and all of the NFS-mounted file systems.
 
-In some cases, you can start applications using our web portals. These require you to be connected to a Hopkins institutional network, such as the VPN when working remotely.
+## AI application usage in JHPCE clusters: tutorials & guidance
 
-!!! warning "Web portals: Note the job duration setting"
-    Our web portals spawn SLURM jobs running as you. When launching a job, you have drop-down menus which allow you to request RAM, CPU and sometimes job durations. Two things about durations: (1) You should note when it will end, modify it if possible, and ensure you finish your work beforehand. (2) You might want to check using `squeue --me` that the job has ended, especially if you couldn't access the session or are disconnected because of a network or computer problem. Otherwise the job will continue running and accrue charges to your PI's budget. 
+??? warning "You may need a JHED ID to run some AI tools."
+    You can start some AI applications using our web portals. That is the supported way to run VS Code, for example. These servers require you to be connected to a Hopkins institutional network, such as the VPN when working remotely. Using the the Hopkins VPN requires your having a JHED (JH Enterprise Directory) account. You might need to work with a Hopkins department administrator to sponsor a JHED for you.
+
+??? warning "Web portals: Note the job duration setting"
+    Our web portals spawn SLURM jobs running as you. When launching a job, you have drop-down menus which allow you to request RAM, CPU and sometimes job durations.
+    Two things about durations:
+    (1) You should note when it will end, modify it if possible, and ensure you finish your work beforehand.
+    (2) You might want to check using `squeue --me` that the job has ended, especially if you couldn't access the session or are disconnected because of a network or computer problem. Otherwise the job will continue running, which consumes community resources and accrues charges to your PI's budget. 
 
 ### VS Code from Microsoft
 

@@ -5,30 +5,29 @@ tags:
   - claude
 ---
 
-# Important note about about using Claude on JHPCE
+# Claude notes
 
-Please be sure to restrict Claude file access to only your home directory
-or project directories that your group has access to.  Please do not let Claude
-search for files on the entire system, or the /users home directory space, as
-this can put an undue load on the storage arrays, and impact the performance
-of the cluster for all users.
+## Important warnings about using Claude on JHPCE
 
-Claude is a very powerful tool in aiding with software development and data
-analysis, but it can often try to be too helpful.  This is fine when working
-locally on an individual laptop, but on a shared system like JHPCE, this 
-helpfulness can overreach boundaries and affect other users.
+Please be sure to restrict Claude file access to only your home directory or project directories that your group has access to.  Please do not let Claude search for files on the entire system, or in whole file systems such as /users/ or a project allocation space like "/dcs10", as this will put an undue load on the storage arrays, and impact the performance of the cluster for all users.
 
-# Claude Transcript
+Claude is a very powerful tool in aiding with software development and data analysis, but it can often try to be too helpful.  This is fine when working locally on an individual laptop, but on a shared system like JHPCE, this helpfulness can overreach boundaries and affect other users.
 
-This page captures a Claude CLI session that walks through creating a simple Python script, submitting it as a Slurm job, monitoring the run, and gathering the output.
+## Claude Transcript
 
-## Environment Notes
+An example Claude CLI session is shown below which walks you through creating a simple Python script, submitting it as a Slurm job, monitoring the run, and gathering the output.
 
-- Session ran inside `/users/user1` with workspace-write sandboxing and restricted network access.
-- Prior to running this, a Clause API license was acquired through the Claude web interface.
-- An API key was generated on the Claude web site and added tothe file ~/.claude/settings.json file
-- To running claude, you will need to srun into a compute node, load the "node" module, and run the "claude" command.
-.
+### Environment Notes
+
+- Before starting Claude, an API license must be acquired through the Claude web interface.
+- An API key is generated on the Claude web site and added to the file `~/.claude/settings.json` file
+- To run Claude, you will need to `srun` into a compute node, load the `node` module, and run the `claude` command.
+- Sessions run with workspace-write sandboxing and restricted network access.
+
+### The Session
+
+"user1" is the user name.
+
 ```console
 [user1@jhpce01 ~]$ srun --pty --x11 bash
 [user1@compute-107 ~]$ module load node
@@ -48,7 +47,7 @@ This page captures a Claude CLI session that walks through creating a simple Pyt
 >  
 ```
 
-Below is an example of using claude to create a simple program and submit it as a job on the JHPCE cluster.
+Next we create a simple program and submit it as a job on the cluster.
 
 ```console
 ❯ please make a directory called claude-demo                                    
@@ -133,3 +132,9 @@ Below is an example of using claude to create a simple program and submit it as 
   to do with the demo, or move on to another task. (disable recaps in /config)
   
 ```
+
+### Productivity Note
+
+Claude stores its files in your home directory in a `./claude` subdirectory. You can find a copy of your session interactions in files with the `.jsonl` suffix.
+
+You can `srun` into a compute node, run claude, and, if you `/exit` out of claude, and then exit out of the compute node, you can later `srun` into a different compute node and run `claude --continue` or `claude --resume` and it will pick up from where you exited out.
