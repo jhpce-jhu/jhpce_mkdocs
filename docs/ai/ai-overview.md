@@ -8,13 +8,13 @@ tags:
 
 The AI section of our website and this document provide information about broad and specific AI topics for users of the JHPCE clusters: JHPCE (aka JASPER) and JADE. If you have suggested material to include, please send email to bitsupport@lists.jh.edu.
 
-## Dangers accompanying opportunities
+## Dangers accompany opportunities
 
 AI technology is a double-edged sword - along with positives there are negatives that you can - and should - avoid!!
 
-Everyone is striving to integrate AI into, well, everything, and to make using it extremely simple. That has resulted in choices being made for you by AI vendors and plugin/extension authors where doing "simple" things can cause private data to become public or to generate a great number of activities "behind the scenes". All in the hopes of "being helpful" and "reducing user workload."
+Everyone is striving to integrate AI into, well, everything, and to make using it extremely simple. That has resulted in choices being made _for you_ by AI vendors and plugin/extension authors where doing "simple" things can cause private data to become public or to generate a great number of activities "behind the scenes". All in the hopes of "being helpful", "reducing user workload", "enabling faster research."
 
-For example, ==providing research data in AI queries== can generate severe legal and moral consequences to Hopkins. There are subleties to how and where one uses AI to do their work. Details in usage agreements matter. Hopkins is trying to create secure ways to work with certain classes of data, and provide guidance about the whole AI landscape.
+For example, ==providing research data in AI queries== can generate severe legal and moral consequences to Hopkins. There are subleties to how and where one uses AI to do their work. The details in both data and software usage agreements matter a lot. Hopkins is trying to create secure ways to work with certain classes of data, and provide guidance about the whole AI landscape.
 
 Tools like `VS Code` can default to, or prompt you for permission to, do things which seem useful but have negative implications beyond your understanding at that moment. You might enable or disable something quickly because you just want to get on with your work. A great example: We have seen Claude's "--dangerously-skip-permissions” flag being enabled (perhaps via a GUI checkbox whose label is more innocuous than the CLI string) because doing so means you don't have to respond to a prompt each time you enter a directory of files. But those controls also might require your approval before the application deletes any of your files. Perhaps all of the ones you have write access to, in the cluster, across multiple file systems. Do you collaborate with others using group-writable files and directories? Think for a moment about all of those being deleted or modified!
 
@@ -33,9 +33,15 @@ The [JHU Generative AI Resources](https://jhpce.jhu.edu/help/images/JHU_Generati
     Be very aware that you should start every AI interaction process with explicit limits in place. Tools like Codex make it _trivial_ to search for files which include some string such as "data" anywhere in their name or are of type "pdf". Our clusters host _millions of files_, occupying petabytes.
     If you do not add limits like the starting path for a file search, these tools will start at the root (i.e. "/") of the file systems on the computer and go everywhere they have permission to go.
 
-In October 2026 a Claude user caused the file storage server holding everyone's home directories to crash. Their search looked for a single Python file, starting at "/" and going six levels deep in all accessible file systems. Which included all of the files on the compute node and all of the NFS-mounted file systems.
+In October 2026 a Claude user caused the file storage server holding everyone's home directories to crash. Their search looked for a single Python file, starting at "/" and going six levels deep in all accessible file systems. Which included all of the files on that particular compute node and all of those found on the NFS-mounted file systems. All of `/users/*`, all of `/dcs04/*`, all of `/dcs05/*`, all of `/dcs10`, all of `/dcs11/*` and all of `/jhpce/shared`...
 
 ## AI application usage in JHPCE clusters: tutorials & guidance
+
+The web portal for the JHPCE (aka JASPER) cluster is [https://jhpce-app02.jhsph.edu/](https://jhpce-app02.jhsph.edu/)
+
+The Open OnDemand (OOD) web portal for the JADE cluster is [https://jade-ondemand01.jhsph.edu/](https://jade-ondemand01.jhsph.edu/).
+
+These portals are the approved way to run VS Code sessions on compute nodes. 
 
 ??? warning "You may need a JHED ID to run some AI tools."
     You can start some AI applications using our web portals. That is the supported way to run VS Code, for example. These servers require you to be connected to a Hopkins institutional network, such as the VPN when working remotely. Using the the Hopkins VPN requires your having a JHED (JH Enterprise Directory) account. You might need to work with a Hopkins department administrator to sponsor a JHED for you.
@@ -49,10 +55,6 @@ In October 2026 a Claude user caused the file storage server holding everyone's 
 ### VS Code from Microsoft
 
 We have a [document](../ai/vscode.md) about this.
-    
-In the JHPCE/JASPER cluster, use our web portal to launch VS Code sessions. The web page for the portal is: [https://jhpce-app02.jhsph.edu/](https://jhpce-app02.jhsph.edu/)
-
-In the JADE cluster, use our Open OnDemand web portal to launch VS Code sessions. The web page for the OOD portal is: [https://jade-ondemand01.jhsph.edu/](https://jade-ondemand01.jhsph.edu/)
 
 ### Codex from OpenAI
 

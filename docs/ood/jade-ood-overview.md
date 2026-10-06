@@ -28,3 +28,13 @@ The JADE cluster's security model requires the use of a multi-factor credential 
 On JADE, we use a software package called Keycloak to handle the MFA credential component. 
 
 Instructions will follow on the web site about working with OTP changes.
+
+### File transfer capabilities are restricted
+
+One of the primary JADE user communities, CMS, has Data Usage Agreement requirements which require a team of moderators to review each file before it is able to be pulled out of the cluster.
+
+The Open OnDemand server configuration has been modified to disable file transfer in a number of places.
+
+((Insert here or in another document (transferring data on JADE?) the details of specific disabled functionalities.))
+
+It is impossible to prevent all data transfers from occurring with all of the applications which can be launched using OOD. ==CMS users must understand that the existence of that capability does not relieve them of the legal requirement to go through the HARP-approved data moderation process. 

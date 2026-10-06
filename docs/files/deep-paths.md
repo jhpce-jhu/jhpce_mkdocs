@@ -1,8 +1,4 @@
----
-icon: material/eye
----
-
-# **Navigating Deep Directory Trees**
+# Navigating Deep Directory Trees
 
 Everyone on a computer use directory and file names to create logical structures
 to hold their files. Researchers can create complex and/or numerous directories
@@ -20,9 +16,9 @@ These two techniques can make life on the command line better:
 1. A "redirect" directory of symbolic links
 2. The commands `pushd`, `popd` and `dirs`
 
-## **(A Nest of) Redirecting Symbolic Links**
+## (A Nest of) Redirecting Symbolic Links
 
-### **TL;DR**
+### TL;DR
 
 Create a directory of aliases pointing to far-flung files or directories.
 
@@ -35,7 +31,7 @@ currently located in the file system), e.g. `~/redir/`
 5. You can keep the name you use to refer to the object unchanged even if you
 change the symbolic link to point to a different object, e.g. `~/redir/my-current-project`
 
-### **Explanation and examples**
+### Explanation and examples
 A *symbolic link* is a special kind of file which points at another file or a
 directory. Also known as symlinks. The symbolic link takes up almost no space.
 It is not a copy of the original file. Deleting the symlink does not delete the
@@ -85,7 +81,7 @@ And, when October 2026 rolls around, you can delete the symlink
 `~/r/worklog.txt` and point it at the new file (because in this example you're trying to keep
 your lab notes in single month increments).
 
-## **The Pushd, Popd and Dirs Commands**
+## The Pushd, Popd and Dirs Commands
 
 If you’re repeatedly working in several directories and don’t need to open multiple windows to look at them simultaneously, these commands allow you to switch rapidly between them. They use a “stack” data structure. Think of a stack as a pile of plates in a cafeteria. When you want one, you usually take the one from the top. Then a fresh one is exposed. You’ve “popped” a plate from the stack. If you “push” three plates onto the stack, then the stack is deeper. You can access the top plate easily, but in this case you can also get at the third plate down.
 
@@ -122,7 +118,7 @@ will cd back to the top directory in the stack while removing your current direc
     alias po='popd'
     ```
 
-### **Create a default directory stack**
+### Create a default directory stack
 
 You can create a stack ahead of time using the –n option to pushd. That option adds the directory to the stack but does not change to it.
  

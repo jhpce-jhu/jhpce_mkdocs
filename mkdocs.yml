@@ -41,14 +41,16 @@ nav:
          - Tips & Conventions: ourtools/tips-conventions.md
          - Wishlist: ourtools/wishlist.md
     - FAQ: help/faq.md
-    - Accessing the cluster:
+    - Accessing our clusters:
       - Overview: access/access-overview.md
       - SSH: access/ssh.md
       - X11: access/x11.md
-      - Web Portal: access/web.md
+      - Web Portal (JHPCE): access/web.md
+      - Web Portal (OOD) (JHPCE): ood/jhpce-ood-overview.md
+      - Web Portal (OOD) (JADE): ood/jade-ood-overview.md
       - MobaXterm: access/mobaxterm.md
       - Fail2ban: access/fail2ban.md
-      - Transferring files in or out: 
+      - JHPCE: Transferring files in or out: 
         - Overview: access/file-transfer.md
         - Globus: access/globus.md
         - OneDrive via rclone: access/onedrive.md
@@ -94,14 +96,12 @@ nav:
 #        - Singularity: sw/singularity.md
       - JHPCE-created: sw/locally-written.md
       - Helpful GUI Programs: sw/gui-tools.md
-      - Using OpenAI codex: sw/codex.md
-      - Using Claude CLI: sw/claude-example.md
-      - JHU Generative AI Resources: help/images/JHU_Generative_AI_Resources.pdf
     - AI:
       - Overview: ai/ai-overview.md
       - VS Code: ai/vscode.md
-      - Codex: ai/codex.md
+      - OpenAI Codex: ai/codex.md
       - Claude: ai/claude-example.md
+      - JHU Generative AI Resources: help/images/JHU_Generative_AI_Resources.pdf
     - Job scheduler (SLURM): 
       - Getting Started: slurm/getting-started.md
       - About Jobs: slurm/about-jobs.md
@@ -129,7 +129,6 @@ nav:
       - GPU: 
         - Using GPUs on JHPCE: gpu/gpu-info.md
         - Alphafold: gpu/alphafold.md
-      - VS Code: sw/vscode.md
       - Cost Calculator: help/cost-calculator.md
       - Navigating Deep Directory Trees: files/deep-paths.md
       - SED Modifying Files en Masse: files/sed-tips.md
