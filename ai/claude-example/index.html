@@ -88,7 +88,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#important-note-about-about-using-claude-on-jhpce" class="md-skip">
+        <a href="#claude-notes" class="md-skip">
           Skip to content
         </a>
       
@@ -3638,6 +3638,24 @@
         
       
       
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Claude
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
       <a href="./" class="md-nav__link md-nav__link--active">
         
   
@@ -3654,6 +3672,86 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#important-warnings-about-using-claude-on-jhpce" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Important warnings about using Claude on JHPCE
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#claude-transcript" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Claude Transcript
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Claude Transcript">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#environment-notes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Environment Notes
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#the-session" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The Session
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#productivity-note" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Productivity Note
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
       
     </li>
   
@@ -6167,6 +6265,75 @@
     
   
   
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#important-warnings-about-using-claude-on-jhpce" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Important warnings about using Claude on JHPCE
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#claude-transcript" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Claude Transcript
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Claude Transcript">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#environment-notes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Environment Notes
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#the-session" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The Session
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#productivity-note" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Productivity Note
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -6182,25 +6349,21 @@
 
 
 
-<h1 id="important-note-about-about-using-claude-on-jhpce">Important note about about using Claude on JHPCE<a class="headerlink" href="#important-note-about-about-using-claude-on-jhpce" title="Anchor link to this section for reference">&para;</a></h1>
-<p>Please be sure to restrict Claude file access to only your home directory
-or project directories that your group has access to.  Please do not let Claude
-search for files on the entire system, or the /users home directory space, as
-this can put an undue load on the storage arrays, and impact the performance
-of the cluster for all users.</p>
-<p>Claude is a very powerful tool in aiding with software development and data
-analysis, but it can often try to be too helpful.  This is fine when working
-locally on an individual laptop, but on a shared system like JHPCE, this 
-helpfulness can overreach boundaries and affect other users.</p>
-<h1 id="claude-transcript">Claude Transcript<a class="headerlink" href="#claude-transcript" title="Anchor link to this section for reference">&para;</a></h1>
-<p>This page captures a Claude CLI session that walks through creating a simple Python script, submitting it as a Slurm job, monitoring the run, and gathering the output.</p>
-<h2 id="environment-notes">Environment Notes<a class="headerlink" href="#environment-notes" title="Anchor link to this section for reference">&para;</a></h2>
+<h1 id="claude-notes">Claude notes<a class="headerlink" href="#claude-notes" title="Anchor link to this section for reference">&para;</a></h1>
+<h2 id="important-warnings-about-using-claude-on-jhpce">Important warnings about using Claude on JHPCE<a class="headerlink" href="#important-warnings-about-using-claude-on-jhpce" title="Anchor link to this section for reference">&para;</a></h2>
+<p>Please be sure to restrict Claude file access to only your home directory or project directories that your group has access to.  Please do not let Claude search for files on the entire system, or in whole file systems such as /users/ or a project allocation space like "/dcs10", as this will put an undue load on the storage arrays, and impact the performance of the cluster for all users.</p>
+<p>Claude is a very powerful tool in aiding with software development and data analysis, but it can often try to be too helpful.  This is fine when working locally on an individual laptop, but on a shared system like JHPCE, this helpfulness can overreach boundaries and affect other users.</p>
+<h2 id="claude-transcript">Claude Transcript<a class="headerlink" href="#claude-transcript" title="Anchor link to this section for reference">&para;</a></h2>
+<p>An example Claude CLI session is shown below which walks you through creating a simple Python script, submitting it as a Slurm job, monitoring the run, and gathering the output.</p>
+<h3 id="environment-notes">Environment Notes<a class="headerlink" href="#environment-notes" title="Anchor link to this section for reference">&para;</a></h3>
 <ul>
-<li>Session ran inside <code>/users/user1</code> with workspace-write sandboxing and restricted network access.</li>
-<li>Prior to running this, a Clause API license was acquired through the Claude web interface.</li>
-<li>An API key was generated on the Claude web site and added tothe file ~/.claude/settings.json file</li>
-<li>To running claude, you will need to srun into a compute node, load the "node" module, and run the "claude" command.
-.
+<li>Before starting Claude, an API license must be acquired through the Claude web interface.</li>
+<li>An API key is generated on the Claude web site and added to the file <code>~/.claude/settings.json</code> file</li>
+<li>To run Claude, you will need to <code>srun</code> into a compute node, load the <code>node</code> module, and run the <code>claude</code> command.</li>
+<li>Sessions run with workspace-write sandboxing and restricted network access.</li>
+</ul>
+<h3 id="the-session">The Session<a class="headerlink" href="#the-session" title="Anchor link to this section for reference">&para;</a></h3>
+<p>"user1" is the user name.</p>
 <div class="highlight"><pre><span></span><code><span class="gp">[user1@jhpce01 ~]$ </span>srun<span class="w"> </span>--pty<span class="w"> </span>--x11<span class="w"> </span>bash
 <span class="gp">[user1@compute-107 ~]$ </span>module<span class="w"> </span>load<span class="w"> </span>node
 <span class="gp">[user1@compute-107 ~]$ </span>claude
@@ -6217,9 +6380,8 @@ helpfulness can overreach boundaries and affect other users.</p>
 <span class="go">│                  /users/user1                      │ /release-notes for more │</span>
 <span class="go">╰──────────────────────────────────────────────────────────────────────────────╯</span>
 <span class="go">&gt;  </span>
-</code></pre></div></li>
-</ul>
-<p>Below is an example of using claude to create a simple program and submit it as a job on the JHPCE cluster.</p>
+</code></pre></div>
+<p>Next we create a simple program and submit it as a job on the cluster.</p>
 <div class="highlight"><pre><span></span><code><span class="gp">❯ </span>please<span class="w"> </span>make<span class="w"> </span>a<span class="w"> </span>directory<span class="w"> </span>called<span class="w"> </span>claude-demo<span class="w">                                    </span>
 
 <span class="go">● Bash(mkdir /users/user1/claude-demo)</span>
@@ -6301,6 +6463,9 @@ helpfulness can overreach boundaries and affect other users.</p>
 <span class="go">  submitted it as a SLURM job, which completed successfully. Next: decide what </span>
 <span class="go">  to do with the demo, or move on to another task. (disable recaps in /config)</span>
 </code></pre></div>
+<h3 id="productivity-note">Productivity Note<a class="headerlink" href="#productivity-note" title="Anchor link to this section for reference">&para;</a></h3>
+<p>Claude stores its files in your home directory in a <code>./claude</code> subdirectory. You can find a copy of your session interactions in files with the <code>.jsonl</code> suffix.</p>
+<p>You can <code>srun</code> into a compute node, run claude, and, if you <code>/exit</code> out of claude, and then exit out of the compute node, you can later <code>srun</code> into a different compute node and run <code>claude --continue</code> or <code>claude --resume</code> and it will pick up from where you exited out.</p>
 
 
 
@@ -6321,7 +6486,7 @@ helpfulness can overreach boundaries and affect other users.</p>
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="October 6, 2026 21:02:52 UTC">October 6, 2026</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="October 6, 2026 22:47:54 UTC">October 6, 2026</span>
   </span>
 
     
