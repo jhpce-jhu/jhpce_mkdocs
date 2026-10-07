@@ -1,7 +1,11 @@
 # No TABs allowed in this file. None. Your editor may try to insert some.
 # Beware, this is YAML and YAML CARES. A LOT. (too much)
+
 site_name: JHPCE
 site_url: https://jhpce.jhu.edu/
+
+# It may be necessary to quote strings used on the left hand side of
+# navigation bar lines. For example, if you want to include a colon.
 nav:
   - Home:
     - index.md
@@ -50,7 +54,7 @@ nav:
       - Web Portal (OOD) (JADE): ood/jade-ood-overview.md
       - MobaXterm: access/mobaxterm.md
       - Fail2ban: access/fail2ban.md
-      - JHPCE: Transferring files in or out: 
+      - 'JHPCE: Transferring files in or out': 
         - Overview: access/file-transfer.md
         - Globus: access/globus.md
         - OneDrive via rclone: access/onedrive.md
