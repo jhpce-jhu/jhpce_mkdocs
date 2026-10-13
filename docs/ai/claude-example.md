@@ -7,26 +7,39 @@ tags:
 
 # Claude notes
 
-## Important warnings about using Claude on JHPCE
+An example Claude CLI session is shown below which walks you through creating a simple Python script, submitting it as a Slurm job, monitoring the run, and gathering the output.
 
-Please be sure to restrict Claude file access to only your home directory or project directories that your group has access to.  Please do not let Claude search for files on the entire system, or in whole file systems such as /users/ or a project allocation space like "/dcs10", as this will put an undue load on the storage arrays, and impact the performance of the cluster for all users.
+## Important warnings about using Claude on JHPCE
 
 Claude is a very powerful tool in aiding with software development and data analysis, but it can often try to be too helpful.  This is fine when working locally on an individual laptop, but on a shared system like JHPCE, this helpfulness can overreach boundaries and affect other users.
 
+### Do not run claude on login servers
+Always run programs on compute nodes. The login servers are for small simple tasks.
+
+### Control the scope of file searches
+
+{==Please be sure to restrict Claude file access to only your home directory or project directories==} that your group has access to.  Please do not let Claude search for files on the entire system, or in whole file systems such as ""/users/"" or a project allocation space like "/dcs10", as this will put an undue load on the storage arrays, and impact the performance of the cluster for all users.
+
+### dangerously-skip-permissions
+
+A great example of people checking a box or adding an option in order to ease their use of Claude without considering more carefully the consequences.
+
+We have seen Claude's {=="--dangerously-skip-permissions”==} flag being enabled (perhaps via a GUI checkbox whose label is more innocuous-sounding than the CLI string), because doing so means one doesn't have to respond to a prompt each time they enter a directory of files. But those controls also might normally require your approval before the application _deletes_ any of your files. Perhaps all of the ones you have write access to, in the cluster, across multiple file systems. Do you collaborate with others using group-writable files and directories? Think for a moment about all of those being deleted or modified! {==This has happened out in the real world.==}
+
 ## Claude Transcript
 
-An example Claude CLI session is shown below which walks you through creating a simple Python script, submitting it as a Slurm job, monitoring the run, and gathering the output.
+Here is an example Claude CLI session. It walks you through creating a simple Python script, submitting it as a Slurm job, monitoring the run, and gathering the output.
 
 ### Environment Notes
 
 - Before starting Claude, an API license must be acquired through the Claude web interface.
 - An API key is generated on the Claude web site and added to the file `~/.claude/settings.json` file
-- To run Claude, you will need to `srun` into a compute node, load the `node` module, and run the `claude` command.
+- To run Claude, you will need to `srun` into a compute node, {==load the `node` module==}, and run the `claude` command.
 - Sessions run with workspace-write sandboxing and restricted network access.
 
 ### The Session
 
-"user1" is the user name.
+"user1" is the user name. You will see your own username, and you can start SLURM jobs on our other login server, `jhpce03.jhsph.edu`. It is often faster to respond than `jhpce01`.
 
 ```console
 [user1@jhpce01 ~]$ srun --pty --x11 bash

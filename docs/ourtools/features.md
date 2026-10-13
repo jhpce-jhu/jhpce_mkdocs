@@ -3,43 +3,42 @@ icon: material/eye
 toc_depth: 2
 ---
 
-WEB SITE TOOLS/ENABLED FEATURES YOU MAY WANT TO KNOW HOW TO USE
+# How to use Materials for MkDocs on JHPCE web sites
+
+## Overview
+[Material for MkDocs](https://squidfunk.github.io/mkdocs-material/) is a software ecosystem which allows one to create static web pages from MkDocs documents. (Because only static web pages are supported, Mark Miller had to develop a way to use Google Forms to support dynamic pages like new user forms.) 
+
+By "ecosystem" we mean that there is a core software suite created by an "Squidfunk" organization which is extended by libraries/plugins created by both Squidfunk and the Internet community. All of the components have version numbers and are enhanced over time.  We use only free features. If we paid a yearly fee, we would have have access to a larger set of features. (Keep that in mind when reading documention -- often there are cryptic icons next to a feature and you must know that you cannot use those.)
+
+We use a GitHub repo [jhpce-jhu/jhpce_mkdocs]([repository](https://github.com/jhpce-jhu/jhpce_mkdocs) to hold and serve the web site's files. That repository also contains configuration and programs which make the web site function. **The repository contains Materials for Mkdocs Python packages.** (We do not have a list of what high level changes were needed. This will make it challenging to create a new repo/web-site or recover if we attempt to upgrade the software and the effort explodes in our face.)
+
+### Making changes to the web site
+
+JHPCE web site contributors can edit the web site's pages in a web browser or by using `git` to work with the site's files. If you use `git`, you can decide to install and run a `mkdocs` Python program on your computer. You use `mkdocs` to run a local HTTP server which will process MkDocs files as they are modified. Doing that allows you to create documents and/or significantly revise them without affecting the active web site. A [local mkdocs server](features.md#recipe-for-running-mkdocs-locally) section is included.
+
+Vital operational things for systems administrators to know:
+
+1. You can check on the status of rebuilding the web site in the [Workflows section](https://github.com/jhpce-jhu/jhpce_mkdocs/actions/workflows/ci.yml).
+2. You must include `rebuild-site` in the Git commit comment when you want the web site to be re-generated.
+
+## Productively using Material for MkDocs
 
 **Material for MkDocs is packed with many great features that make technical writing a *joyful* activity.**
 
 Let's create a visually appealing web site using some of these features!!
 
-Please consult the [Tips and Conventions](../ourtools/tips-conventions.md) page for authoring guidance and tips.
-There is another document containing [wishlist](wishlist.md) items that we might want to enable/configure.
+There are two other related documents: 
 
-To quickly develop pages, and to review your content before you modify the
-actual web site, you can use a WYSIWYG MarkDown editor and a local copy
-of the MkDocs website generator. You do not have to commit changes until you are
-ready. When you push changes up, your commit comment needs to include
-"rebuild-site".
-
-[MacDown](features.md#macdown-wysiwyg-editor) is an
-Mac editor, and displays standard MarkDown (some of the Material for MkDocs
-functionality is not rendered properly.)  
-
-You can install the mkdocs package via python pip 
-[here is the recipe](features.md#recipe-for-running-mkdocs-locally),
-and run mkdoc _subcommand_ to rebuild a local copy of the web site
-("mkdocs build") and/or serve it with local web server ("mkdocs serve"). When
-you are in "serve" mode, mkdocs will watch for changes in your repository and
-kick off site rebuilds. (Control-C it if you are making many changes, as it
-scurries off to rebuild after every change it notices. It takes most of a
-minute to regenerate our site. So you won't see the final result until after
-the last rebuild, many minutes later.)  Mkdocs very helpful displays error
-messages it finds in your website definition (mkdocs.yml) and the pages
-themselves.
+* Please consult the [Tips and Conventions](../ourtools/tips-conventions.md) page for JHPCE-specific authoring guidance and tips.
+* There is another document containing [wishlist](wishlist.md) items that we might want to enable/configure.
 
 Jeffrey recommends these features in particular:
 
 * [Admonitions](features.md#admonitions) -- a lot!!
 * Details [(collapsed blocks)](features.md/#details-collapsed-blocks)
 * Content Tabs [present diff info horizontally](features.md/#tabs)
-* {==[highlighting text](features.md/#highlighting-text)==}
+* {==[highlighting text in various ways](features.md/#highlighting-text)==}
+* [Code blocks](https://squidfunk.github.io/mkdocs-material/reference/code-blocks/) are a critical thing to understand in Materials for MkDocs. They are used for all kinds of formatting!!!!!!
 * [Fenced code blocks](features.md/#fenced-code-blocks)
 * [keyboard meta keys](features.md/#symbols-for-keyboard-keys) (like ++ctrl++)
 
@@ -165,32 +164,29 @@ Documentation [here](https://facelessuser.github.io/pymdown-extensions/extension
 You can probably include [code blocks](#fenced-code-blocks) inside of detail
 blocks like you can with admonitions.
 
-## Content Tabs (horizontally collapsed colored tabs)
-(These don't render correctly in MacDown.app)
+## Content Tabs (horizontally-collapsed colored tabs)
+(These don't render correctly in the `MacDown.app` macOS program Jeffrey uses.)
 
-Tabs are a kind of code block which begins with three
+Tabs are a kind of `code block` which begins with three
 ++equals+equals+equals++ marks.
 
 These are very neat. They allow you to create a horizontal set of headings.
 Clicking on each heading causes a different set of content to appear. This can
-save A LOT of vertical page space.
+save A LOT of vertical page space. It is intuitive for readers to click on what they need.
 
 Let's say you want to describe how to do the same activity on three different
 operating systems. Or show the equivalent code in four different programming
-langues.
+languages. Or how something differs between two clusters.
 
-You provide different information in the same amount of vertical space, and it's
-intuitive for readers to click on what you need.
+Here is the core
+[tabs documentation](https://squidfunk.github.io/mkdocs-material/reference/content-tabs/#content-tabs).
 
-[tabs documentation](https://squidfunk.github.io/mkdocs-material/reference/content-tabs/#content-tabs)
+`Tabs` are created with similar syntax as `admonitions` or `details`:
 
-Tabs are created with similar syntax as admonitions or details.
-
-There has to be a blank line before the beginning of (admonition, detail, tab)
-
-Everything has to be indented FOUR SPACES (not a tab char!!!) inside of (admonition, detail, tab)
-
-You MUST enclose the title of the tab in double quotes even if it is a single word (it seems to Jeffrey)
+* There must be a blank line before the beginning of a (admonition, detail, tab).
+* The first line consists of: three punctuation marks ++space++
+* Everything else inside the visual block must be indented FOUR SPACES (not a tab char!!!) inside of (admonition, detail, tab)
+* You MUST enclose the title of the tab in double quotes even if it is a single word (it seems to Jeffrey)
 
 ### Simple example of content tabs
 
@@ -310,7 +306,7 @@ An example of frontmatter is the code to [add tags](https://squidfunk.github.io/
 
 A lot of optional tag-related settings/capabilities seem to be reserved for paying sponsers as of 20240201. See this [page](https://squidfunk.github.io/mkdocs-material/insiders/). Can users search for documents by tags in the search field?
 
-The tags I envision using at the outset are shown below, so we can try to use them to figure out which pages need attention and possibly who is assigned to finish it.
+Some tags I envision using at the outset are shown below, so we can try to use them to figure out which pages need attention and possibly who volunteered or was assigned to finish it.
 
 The tag "needs-improvement-later" could be added to a page which has "done" to indicate that what we have is able to be published but needs more work.
 
@@ -385,7 +381,7 @@ You can create images of keyboard keys, such as meta keys like ++ctrl++ or ++cmd
 
 This can be useful when trying to draw attention to important small characters like back ticks, exclamation marks or vertical pipe symbols. You can also use them as tags like ++mail++ some-address@bob.edu or ++help++ some-URL
 
-DO NOT USE ANY CAPITAL LETTERS or the symbol will not display, only the word you typed.  "Ctrl" will fail, "ctrl" will succeed.
+DO NOT USE ANY CAPITAL LETTERS or the symbol will not display! Instead you will see only the word you typed.  "Ctrl" will fail, "ctrl" will succeed.
 
 EXAMPLES:
 ++context-menu++
@@ -591,26 +587,28 @@ pass
 ```
 ## Highlighting text
 
-[code blocks
-docs](https://squidfunk.github.io/mkdocs-material/reference/code-blocks/)
+### Some reference resources
+
+[code blocks](https://squidfunk.github.io/mkdocs-material/reference/code-blocks/) are a critical thing to understand in Materials for MkDocs. They are used for all kinds of formatting, not just highlighting a small number of words!!!!!!
 
 [https://squidfunk.github.io/mkdocs-material/reference/formatting/#highlighting-text](https://squidfunk.github.io/mkdocs-material/reference/formatting/#highlighting-text)
 
 [https://squidfunk.github.io/mkdocs-material/setup/extensions/python-markdown-extensions/#caret-mark-tilde](https://squidfunk.github.io/mkdocs-material/setup/extensions/python-markdown-extensions/#caret-mark-tilde)
 
-Text can be {--deleted--} and replacement text {++added++}. This can also be
-combined into {~~one~>a single~~} operation. {==Highlighting==} is also
-possible {>>and comments can be added inline<<}.
+### 
+{==Highlighting==} is extremely useful!!!!
+
+There are tools which make collaborating on revising documents possible. You can also use them for emphasis.Text can be {--deleted--} and replacement text {++added++}. You can show _replacement_ of old text with new text {~~like~>this~~} operation.  {>>Comments can be added inline<<}.
 
 {==
 
-Formatting can also be applied to blocks by putting the opening and closing tags on separate lines and adding new lines between the tags and the content.
+Formatting can also be applied to blocks by putting the opening and closing tags on separate lines. Doing this requires you to add a blank line between the content and the beginning and ending tags.
 
 ==}
 
-I could not figure out how to escape the characters involved in highlighting so
-they would be displayed instead of rendered. So these are examples of where
-using key symbols in a web page is handy.
+Making the specific characters required to implement these things visible to you in this document:
+
+I could not figure out how to escape the characters involved in highlighting so they would be displayed instead of rendered. Therefore I made use of another feature, which is where you can tell Materials for MkDocs to display icons for keyboard keys.
 
 {==Highlight==} a passage by starting with
 
@@ -672,14 +670,39 @@ I cannot discern the threat level to us in our usage.
 [https://github.com/facelessuser/pymdown-extensions/security/advisories/GHSA-jh85-wwv9-24hv](https://github.com/facelessuser/pymdown-extensions/security/advisories/GHSA-jh85-wwv9-24hv)
 
 ## Recipe for Running Mkdocs Locally
+
+!!! attention "Causing the web site to display your modifications"
+    When you push modified files up from your personal computer to the [repository](https://github.com/jhpce-jhu/jhpce_mkdocs), {==your commit comment MUST INCLUDE the string "rebuild-site"==}. When pages are committed _and_ that string is present, a GitHub Action runs a program `ci.yml`
+
 If you're doing a lot of edits or want to review changes before you commit them to the web site, it is very useful to be able to do that on your local machine.
+
+To quickly develop pages, and to review your content before you modify the
+actual web site, you can use a WYSIWYG MarkDown editor and a local copy
+of the MkDocs website generator. You do not have to commit changes until you are
+ready. 
+
+[MacDown](features.md#macdown-wysiwyg-editor) is an
+Mac editor, and displays standard MarkDown (some of the Material for MkDocs
+functionality is not rendered properly.)  
+
+You can install the mkdocs package via python pip 
+[here is the recipe](features.md#recipe-for-running-mkdocs-locally),
+and run mkdoc _subcommand_ to rebuild a local copy of the web site
+("mkdocs build") and/or serve it with local web server ("mkdocs serve"). When
+you are in "serve" mode, mkdocs will watch for changes in your repository and
+kick off site rebuilds. (Control-C it if you are making many changes, as it
+scurries off to rebuild after every change it notices. It takes most of a
+minute to regenerate our site. So you won't see the final result until after
+the last rebuild, many minutes later.)  Mkdocs very helpful displays error
+messages it finds in your website definition (mkdocs.yml) and the pages
+themselves.
 
 As of 20251211 these steps are needed to build and start a local Material for MkDocs server that will run a browser at `http://127.0.0.1:8000/`
 
 JRT thinks that the OS involved was macOS 12 (Monteray) or 14 (Sonoma).
 
 !!! Warning
-    Because our `mkdocs.yml` contains some certain material, JRT thinks, `mkdocs serve` spits out errors if it doesn't find Git supporting files/directories. But you're supposed to be able to create stand-alone web pages outside of Git so it would be nice to understand the interdependency.
+    You will errors & warnings when using `mkdocs serve`. This happens for two general reasons: because your python set up doesn't include the required packages to handle some document content, or because of GitHub issues, such as being unable to find Git supporting files/directories.
 
 ```ShellSession linenums="0"
 cd ~/Documents/GitHub/

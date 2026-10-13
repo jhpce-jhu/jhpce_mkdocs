@@ -21,13 +21,13 @@ Open OnDemand provides remote access to a cluster like JADE via web browsers rat
 ### An additional MFA code just for JADE OOD
 
 !!! Warning "Two different OTP for JADE"
-    To use [JADE's OOD server](https://jade-ondemand01.jhsph.edu), you need to use a dedicated OOD One Time Password (OTP). This is in addition to the OTP that you use when logging into the `jade01.jhsph.edu` server using SSH. You need to maintain access to two OTP "accounts" to be able to log in via SSH and OOD. ==When logging in with SSH and OOD, you use the same username & password, but the OTP's are different.==
+    To use [JADE's OOD server](https://jade-ondemand01.jhsph.edu), you need to use a dedicated One Time Password (OTP).  This is different from, and _in addition to,_ the OTP that you use when logging into the `jade01.jhsph.edu` server using SSH. In other words, to be able to log in via both SSH and the Open OnDemand web interface, you will need to maintain access to two "OTP accounts".  ==You use the same username & password no matter which interface you use, but the OTP's are different.==
 
-The JADE cluster's security model requires the use of a multi-factor credential during login. When you use SSH, you need to provide a username, password and a `One Time Password (OTP)` (technically it is a Time-based One Time Password (TOTP)). The OTP is also called a `verification code`.   Users configure applications like Google or Microsoft Authenticator using a user-specific "secret" 
+The JADE cluster's security model requires the use of a multi-factor credential during login. When you use SSH, you need to provide a username, password and a `One Time Password (OTP)` (technically it is a _Time-based_ One Time Password (TOTP)). The OTP is also called a `verification code`.   Users configure applications like Google or Microsoft Authenticator using a user-specific "secret" which is either a QR code image or a "secret" string of text characters.
 
-On JADE, we use a software package called Keycloak to handle the MFA credential component. 
+On JADE, we use a software package called Keycloak to handle the MFA credential login process. 
 
-Instructions will follow on the web site about working with OTP changes.
+Instructions will follow on this web site about working with Keycloak to do things like generating a new OTP.
 
 ### File transfer capabilities are restricted
 
