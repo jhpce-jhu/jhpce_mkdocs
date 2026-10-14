@@ -1569,6 +1569,17 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#relationship-between-markdown-mkdocs-and-materials-for-mkdocs" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Relationship between Markdown, MkDocs, and Materials for MkDocs
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#overview" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -1713,10 +1724,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#toc" class="md-nav__link">
+  <a href="#toc-generating-table-of-content" class="md-nav__link">
     <span class="md-ellipsis">
       
-        TOC
+        TOC - Generating Table of Content
       
     </span>
   </a>
@@ -1724,10 +1735,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#tags" class="md-nav__link">
+  <a href="#page-tags" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Tags
+        Page Tags
       
     </span>
   </a>
@@ -6696,6 +6707,17 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#relationship-between-markdown-mkdocs-and-materials-for-mkdocs" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Relationship between Markdown, MkDocs, and Materials for MkDocs
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#overview" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -6840,10 +6862,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#toc" class="md-nav__link">
+  <a href="#toc-generating-table-of-content" class="md-nav__link">
     <span class="md-ellipsis">
       
-        TOC
+        TOC - Generating Table of Content
       
     </span>
   </a>
@@ -6851,10 +6873,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#tags" class="md-nav__link">
+  <a href="#page-tags" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Tags
+        Page Tags
       
     </span>
   </a>
@@ -7228,12 +7250,22 @@
 
 
 <h1 id="how-to-use-materials-for-mkdocs-on-jhpce-web-sites">How to use Materials for MkDocs on JHPCE web sites<a class="headerlink" href="#how-to-use-materials-for-mkdocs-on-jhpce-web-sites" title="Anchor link to this section for reference">&para;</a></h1>
+<h2 id="relationship-between-markdown-mkdocs-and-materials-for-mkdocs">Relationship between Markdown, MkDocs, and Materials for MkDocs<a class="headerlink" href="#relationship-between-markdown-mkdocs-and-materials-for-mkdocs" title="Anchor link to this section for reference">&para;</a></h2>
+<p>In short: you write Markdown documents and MkDocs turns them into a static web site using the Material for MkDocs theme. </p>
+<ul>
+<li><code>Markdown</code> is the lightweight markup language used to write the content (headings, lists, code blocks, etc.).</li>
+<li><a href="https://www.mkdocs.org/getting-started/"><code>MkDocs</code></a> is a Python-based static site generator that converts those Markdown files into a documentation website.</li>
+<li><a href="https://squidfunk.github.io/mkdocs-material/"><code>Material for MkDocs</code></a> is a <strong><em>theme and feature framework</em></strong> built on top of MkDocs — it layers "Material Design" styling, client-side search, dark mode, code annotations, content tabs, admonitions, and 10,000+ icons/emojis onto the base <code>MkDocs</code> build pipeline. </li>
+</ul>
+<p><code>Material for MkDocs</code> is the most-installed third-party MkDocs theme on PyPI. It makes sites look and behave professionally, without any custom CSS or JS (although you can override things with custom CSS (and we do a little of that).</p>
 <h2 id="overview">Overview<a class="headerlink" href="#overview" title="Anchor link to this section for reference">&para;</a></h2>
-<p><a href="https://squidfunk.github.io/mkdocs-material/">Material for MkDocs</a> is a software ecosystem which allows one to create static web pages from MkDocs documents. (Because only static web pages are supported, Mark Miller had to develop a way to use Google Forms to support dynamic pages like new user forms.) </p>
-<p>By "ecosystem" we mean that there is a core software suite created by an "Squidfunk" organization which is extended by libraries/plugins created by both Squidfunk and the Internet community. All of the components have version numbers and are enhanced over time.  We use only free features. If we paid a yearly fee, we would have have access to a larger set of features. (Keep that in mind when reading documention -- often there are cryptic icons next to a feature and you must know that you cannot use those.)</p>
-<p>We use a GitHub repo <a href="[repository](https://github.com/jhpce-jhu/jhpce_mkdocs) to hold and serve the web site's files. That repository also contains configuration and programs which make the web site function. **The repository contains Materials for Mkdocs Python packages.** (We do not have a list of what high level changes were needed. This will make it challenging to create a new repo/web-site or recover if we attempt to upgrade the software and the effort explodes in our face">jhpce-jhu/jhpce_mkdocs</a>)</p>
+<p><a href="https://squidfunk.github.io/mkdocs-material/">Material for MkDocs</a> is a software ecosystem which allows one to create static web pages from Markdown documents. (Because only static web pages are supported, Mark Miller had to develop a way to use Google Forms to support dynamic pages e.g. new user form.) </p>
+<p>By "ecosystem" we mean that there is a core software suite created by an "Squidfunk" organization which is extended by libraries/plugins created by both Squidfunk and the Internet community. All of the components have version numbers and are enhanced over time. We use only free features. If we paid a yearly fee, we would have have access to a larger set of features. (Keep that in mind when reading documention -- often there are cryptic icons next to a feature and you must know that you cannot use those.)</p>
+<p>We use a GitHub repo [jhpce-jhu/jhpce_mkdocs](<a href="https://github.com/jhpce-jhu/jhpce_mkdocs">repository</a> to hold and serve the web site's files. That repository also contains configuration and programs which make the web site function. <strong>The repository contains Materials for Mkdocs Python packages.</strong></p>
+<p>We do not have a list of what high level changes to a default repository were needed. This will make it challenging to create a new repo for a new web site, or recover if we attempt to upgrade the software and the effort explodes in our face.</p>
 <h3 id="making-changes-to-the-web-site">Making changes to the web site<a class="headerlink" href="#making-changes-to-the-web-site" title="Anchor link to this section for reference">&para;</a></h3>
-<p>JHPCE web site contributors can edit the web site's pages in a web browser or by using <code>git</code> to work with the site's files. If you use <code>git</code>, you can decide to install and run a <code>mkdocs</code> Python program on your computer. You use <code>mkdocs</code> to run a local HTTP server which will process MkDocs files as they are modified. Doing that allows you to create documents and/or significantly revise them without affecting the active web site. A <a href="./#recipe-for-running-mkdocs-locally">local mkdocs server</a> section is included.</p>
+<p>JHPCE web site contributors can edit the web site's pages in a web browser or by using <code>git</code> to work with the site's files.</p>
+<p>If you use <code>git</code>, you can decide to install and run a <code>mkdocs</code> Python program on your computer. You use <code>mkdocs</code> to run a local HTTP server which will process MkDocs files as they are modified. Doing that allows you to create documents and/or significantly revise them without affecting the active web site. A <a href="./#recipe-for-running-mkdocs-locally">local mkdocs server</a> section is included.</p>
 <p>Vital operational things for systems administrators to know:</p>
 <ol>
 <li>You can check on the status of rebuilding the web site in the <a href="https://github.com/jhpce-jhu/jhpce_mkdocs/actions/workflows/ci.yml">Workflows section</a>.</li>
@@ -7355,13 +7387,12 @@ blocks like you can with admonitions.</p>
 <h2 id="content-tabs-horizontally-collapsed-colored-tabs">Content Tabs (horizontally-collapsed colored tabs)<a class="headerlink" href="#content-tabs-horizontally-collapsed-colored-tabs" title="Anchor link to this section for reference">&para;</a></h2>
 <p>(These don't render correctly in the <code>MacDown.app</code> macOS program Jeffrey uses.)</p>
 <p>Tabs are a kind of <code>code block</code> which begins with three
-++equals+equals+equals++ marks.</p>
+<span class="keys"><kbd class="key-equal">=</kbd><span>+</span><kbd class="key-equal">=</kbd><span>+</span><kbd class="key-equal">=</kbd></span> marks.</p>
 <p>These are very neat. They allow you to create a horizontal set of headings.
 Clicking on each heading causes a different set of content to appear. This can
 save A LOT of vertical page space. It is intuitive for readers to click on what they need.</p>
-<p>Let's say you want to describe how to do the same activity on three different
-operating systems. Or show the equivalent code in four different programming
-languages. Or how something differs between two clusters.</p>
+<p>Places you would use <code>content tabs</code>: You want to describe how something differs between two clusters, show the steps to do the same activity on three different operating systems, or show the equivalent code for four different programming
+languages.</p>
 <p>Here is the core
 <a href="https://squidfunk.github.io/mkdocs-material/reference/content-tabs/#content-tabs">tabs documentation</a>.</p>
 <p><code>Tabs</code> are created with similar syntax as <code>admonitions</code> or <code>details</code>:</p>
@@ -7379,11 +7410,11 @@ languages. Or how something differs between two clusters.</p>
 <p>More intuitive and elegant</p>
 </div>
 <div class="tabbed-block">
-<p>The lesser way</p>
+<p>The lesser way. What Microsoft forces upon you.</p>
 </div>
 <div class="tabbed-block">
 <p>Respect your elders. It was all we had for a LONG TIME.</p>
-<p>Really, a long time. At least we had calculators instead of slide rules.</p>
+<p>Really, a long time. At least we Generation X-ers had calculators instead of slide rules.</p>
 </div>
 </div>
 </div>
@@ -7467,14 +7498,14 @@ hide:
 - toc
 ---
 </code></pre></div>
-<h2 id="toc">TOC<a class="headerlink" href="#toc" title="Anchor link to this section for reference">&para;</a></h2>
+<h2 id="toc-generating-table-of-content">TOC - Generating Table of Content<a class="headerlink" href="#toc-generating-table-of-content" title="Anchor link to this section for reference">&para;</a></h2>
 <p>You can add an automatically-generated Table of Contents to a page by inserting
 at any point "[TOC]". The TOC material will also be shown as a new sidebar on the
-right side. An optional directive can be placed in the frontmatter to control how
-many levels of indentation are displayed. (A directive in the mkdocs.yml file
+right side. An optional directive can be placed in the <code>frontmatter</code> to control how
+many levels of indentation are displayed. (A directive in the <code>mkdocs.yml</code> file
 controls how many levels are shown in the navigation bar. Entries can be made in the <em>frontmatter</em> section to control how toc's are handled, such as hiding them or specifying a document-specific depth level.)</p>
-<h2 id="tags">Tags<a class="headerlink" href="#tags" title="Anchor link to this section for reference">&para;</a></h2>
-<p>An example of frontmatter is the code to <a href="https://squidfunk.github.io/mkdocs-material/setup/setting-up-tags/">add tags</a> to documents. 20240211 I tested adding a tag and it works. I tried to create a page which made a list of tags and the pages which used them using a particular string. (On 20251220 I cannot remember if it worked or not. I thought that it did work. But we no longer see the tags on pages, so perhaps whatever change hid the tags also prevents the tag-generation code fail.) See comments in mkdocs.yml's nav section for notes.</p>
+<h2 id="page-tags">Page Tags<a class="headerlink" href="#page-tags" title="Anchor link to this section for reference">&para;</a></h2>
+<p>An example of <code>frontmatter</code> is the code to <a href="https://squidfunk.github.io/mkdocs-material/setup/setting-up-tags/">add tags</a> to documents. 20240211 Jeffrey tested adding a tag and it works. I tried to create a page which made a list of tags and the pages which used them using a particular string. (On 20251220 I cannot remember if it worked or not. I thought that it did work. But we no longer see the tags on pages, so perhaps whatever change Makr made to hide the tags also prevents the tag-generation code fail.) See comments in <code>mkdocs.yml</code>'s navigation section for notes.</p>
 <p>A lot of optional tag-related settings/capabilities seem to be reserved for paying sponsers as of 20240201. See this <a href="https://squidfunk.github.io/mkdocs-material/insiders/">page</a>. Can users search for documents by tags in the search field?</p>
 <p>Some tags I envision using at the outset are shown below, so we can try to use them to figure out which pages need attention and possibly who volunteered or was assigned to finish it.</p>
 <p>The tag "needs-improvement-later" could be added to a page which has "done" to indicate that what we have is able to be published but needs more work.</p>
@@ -7518,7 +7549,7 @@ Hmmm, if Jeffrey tries to use that syntax then the rest of the text in this docu
 <div class="highlight"><pre><span></span><code>![Image title](../files/images/dir-stack-push-pop.png){align=left} The text that you want to the right side of image.
 </code></pre></div>
 <h2 id="symbols-for-keyboard-keys"><strong>Symbols for keyboard keys</strong><a class="headerlink" href="#symbols-for-keyboard-keys" title="Anchor link to this section for reference">&para;</a></h2>
-<p>(enabled by the pymdownx.keys extension)</p>
+<p>(enabled by the <code>pymdownx.keys</code> extension)</p>
 <p>You can create images of keyboard keys, such as meta keys like <span class="keys"><kbd class="key-control">Ctrl</kbd></span> or <span class="keys"><kbd class="key-command">Cmd</kbd></span> by <mark class="critic">surrounding a keyword such as "ctrl" with two plus characters</mark></p>
 <p><span class="keys"><kbd class="key-plus">+</kbd></span> <span class="keys"><kbd class="key-plus">+</kbd></span> ctrl <span class="keys"><kbd class="key-plus">+</kbd></span> <span class="keys"><kbd class="key-plus">+</kbd></span> will create <span class="keys"><kbd class="key-control">Ctrl</kbd></span></p>
 <p>This can be useful when trying to draw attention to important small characters like back ticks, exclamation marks or vertical pipe symbols. You can also use them as tags like <span class="keys"><kbd class="key-mail">Mail</kbd></span> some-address@bob.edu or <span class="keys"><kbd class="key-help">Help</kbd></span> some-URL</p>
@@ -7888,7 +7919,7 @@ https://www.starfallprojects.co.uk/blog/material-custom-status/#enable-the-featu
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="October 13, 2026 23:03:29 UTC">October 13, 2026</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="October 14, 2026 00:28:17 UTC">October 14, 2026</span>
   </span>
 
     
