@@ -16,7 +16,7 @@ There are several *categories* of partitions:
 * **PI-owned** (for use only by members of the PI's group)
 
 !!! Tip "slurmpic is a vital tool"
-    Our command `slurmpic` shows information about partitions, including the member nodes, their current utilization, and some summary statistics. You should know how to use it because it allows you to easily answer a number of questions about your jobs and the cluster. Here is [our web page](../slurm/slurmpic.md) about the command.
+    Our command `slurmpic` shows information about partitions, including the member nodes, their current utilization, and some summary statistics. You should know how to use it because it allows you to easily answer a number of questions about your jobs and the cluster. 
 
 ## PI Partitions
 JHPCE exists because Primary Investigators worked together to create a cluster. They share their resources via public partitions to support their fellow faculty members and to reduce their cost of ownership (see cost recovery descriptions [here](../aboutus/model.md/#cost-recovery) and [here](../joinus/new-pi.md)).
@@ -77,6 +77,8 @@ This tactic is useful for several cases:
 ## Getting Info About Partitions
 
 ### What Partitions Exist?
+
+Several tables appear later in this page which list all of the partitions and provide important details on resource limits. The command `slurmpic --all` will show the partitions each node belongs to. Here is [our web page](../slurm/slurmpic.md) about the command.
 
 You can view a list with this command:<br>
 
@@ -158,7 +160,7 @@ Limits for CPU cores, RAM and Time (default/maximum)
 | Name | Type | Requires Approval | Core | RAM | GPU | Time | Notes/Use |
 | ---- | :----: | :-----: | ---- | ---- | :-------: | ----- | ------|
 | gee | PI | yes | (none) | (none) | (none) | (none/90d) | |
-| gpu | public | no | (none) | (none) | (none) | (1d/90d) | the ONLY public GPU resource<BR>** Limit of 5/user **|
+| gpu | public | no | (none) | (none) | (none) | (1d/90d) | the ONLY public GPU resource<BR>** Limit of 5 jobs/user **|
 | caracol | PI | yes | (none) | (none) | (none) | (none/90d) | Lieber |
 | neuron | PI | yes | (none) | (none) | (none) | (none/90d) | |
 | bstgpu | dept | yes | (none) | (none) | (none) | (none/90d) | bst=biostatistics |
