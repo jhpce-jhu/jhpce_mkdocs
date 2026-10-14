@@ -25,16 +25,27 @@ Open OnDemand provides remote access to a cluster like JADE via web browsers rat
 
 The JADE cluster's security model requires the use of a multi-factor credential during login. When you use SSH, you need to provide a username, password and a `One Time Password (OTP)` (technically it is a _Time-based_ One Time Password (TOTP)). The OTP is also called a `verification code`.   Users configure applications like Google or Microsoft Authenticator using a user-specific "secret" which is either a QR code image or a "secret" string of text characters.
 
-On JADE, we use a software package called Keycloak to handle the MFA credential login process. 
+On JADE, we use a software package called [Keycloak](https://www.keycloak.org/) to handle the MFA credential login process. 
 
 Instructions will follow on this web site about working with Keycloak to do things like generating a new OTP.
 
 ### File transfer capabilities are restricted
 
+By default, Open OnDemand offers file transfer facilities both natively and through options in applications you launch via OOD, such as Jupyter.
+
+{==The Open OnDemand server configuration has been modified to disable file transfer in a number of places.==}
+
+This was done to meet essential security requirements (i.e. NIST standard 800-171) which are the whole reason why JADE was created. We completely understand the inconvenience this creates.
+
+The normal way JADE users push data into or pull files out of JADE is by using SFTP on an external computer to connect to unique TCP/IP networking port numbers. Our master web page about JADE data transfers is [here](../jade/access/transfer-overview.md).
+
 One of the primary JADE user communities, CMS, has Data Usage Agreement requirements which require a team of moderators to review each file before it is able to be pulled out of the cluster.
 
-The Open OnDemand server configuration has been modified to disable file transfer in a number of places.
+Some specific disabled functionalities:
 
-((Insert here or in another document (transferring data on JADE?) the details of specific disabled functionalities.))
+- OOD's File Browser - Upload/download buttons were disabled.
+- Rstudio - A flag was changed in the RStudio configuration file.
+- VS Code - The codeserver configuration includes `--disabled-file-download`
+- Jupyter - A setting was changed in a JSON file.
 
-It is impossible to prevent all data transfers from occurring with all of the applications which can be launched using OOD. ==CMS users must understand that the existence of that capability does not relieve them of the legal requirement to go through the HARP-approved data moderation process. 
+It is impossible to prevent all data transfers from occurring via all of the applications which can be launched using OOD. {==CMS users must understand that the existence of that capability does not relieve them of the legal requirement to go through the HARP-approved data moderation process.==}

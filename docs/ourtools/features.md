@@ -5,16 +5,29 @@ toc_depth: 2
 
 # How to use Materials for MkDocs on JHPCE web sites
 
+## Relationship between Markdown, MkDocs, and Materials for MkDocs
+In short: you write Markdown documents and MkDocs turns them into a static web site using the Material for MkDocs theme. 
+
+* `Markdown` is the lightweight markup language used to write the content (headings, lists, code blocks, etc.).
+* [`MkDocs`](https://www.mkdocs.org/getting-started/) is a Python-based static site generator that converts those Markdown files into a documentation website.
+* [`Material for MkDocs`](https://squidfunk.github.io/mkdocs-material/) is a ***theme and feature framework*** built on top of MkDocs — it layers "Material Design" styling, client-side search, dark mode, code annotations, content tabs, admonitions, and 10,000+ icons/emojis onto the base `MkDocs` build pipeline. 
+
+`Material for MkDocs` is the most-installed third-party MkDocs theme on PyPI. It makes sites look and behave professionally, without any custom CSS or JS (although you can override things with custom CSS (and we do a little of that).
+
 ## Overview
-[Material for MkDocs](https://squidfunk.github.io/mkdocs-material/) is a software ecosystem which allows one to create static web pages from MkDocs documents. (Because only static web pages are supported, Mark Miller had to develop a way to use Google Forms to support dynamic pages like new user forms.) 
+[Material for MkDocs](https://squidfunk.github.io/mkdocs-material/) is a software ecosystem which allows one to create static web pages from Markdown documents. (Because only static web pages are supported, Mark Miller had to develop a way to use Google Forms to support dynamic pages e.g. new user form.) 
 
-By "ecosystem" we mean that there is a core software suite created by an "Squidfunk" organization which is extended by libraries/plugins created by both Squidfunk and the Internet community. All of the components have version numbers and are enhanced over time.  We use only free features. If we paid a yearly fee, we would have have access to a larger set of features. (Keep that in mind when reading documention -- often there are cryptic icons next to a feature and you must know that you cannot use those.)
+By "ecosystem" we mean that there is a core software suite created by an "Squidfunk" organization which is extended by libraries/plugins created by both Squidfunk and the Internet community. All of the components have version numbers and are enhanced over time. We use only free features. If we paid a yearly fee, we would have have access to a larger set of features. (Keep that in mind when reading documention -- often there are cryptic icons next to a feature and you must know that you cannot use those.)
 
-We use a GitHub repo [jhpce-jhu/jhpce_mkdocs]([repository](https://github.com/jhpce-jhu/jhpce_mkdocs) to hold and serve the web site's files. That repository also contains configuration and programs which make the web site function. **The repository contains Materials for Mkdocs Python packages.** (We do not have a list of what high level changes were needed. This will make it challenging to create a new repo/web-site or recover if we attempt to upgrade the software and the effort explodes in our face.)
+We use a GitHub repo [jhpce-jhu/jhpce_mkdocs]([repository](https://github.com/jhpce-jhu/jhpce_mkdocs) to hold and serve the web site's files. That repository also contains configuration and programs which make the web site function. **The repository contains Materials for Mkdocs Python packages.**
+
+We do not have a list of what high level changes to a default repository were needed. This will make it challenging to create a new repo for a new web site, or recover if we attempt to upgrade the software and the effort explodes in our face.
 
 ### Making changes to the web site
 
-JHPCE web site contributors can edit the web site's pages in a web browser or by using `git` to work with the site's files. If you use `git`, you can decide to install and run a `mkdocs` Python program on your computer. You use `mkdocs` to run a local HTTP server which will process MkDocs files as they are modified. Doing that allows you to create documents and/or significantly revise them without affecting the active web site. A [local mkdocs server](features.md#recipe-for-running-mkdocs-locally) section is included.
+JHPCE web site contributors can edit the web site's pages in a web browser or by using `git` to work with the site's files.
+
+If you use `git`, you can decide to install and run a `mkdocs` Python program on your computer. You use `mkdocs` to run a local HTTP server which will process MkDocs files as they are modified. Doing that allows you to create documents and/or significantly revise them without affecting the active web site. A [local mkdocs server](features.md#recipe-for-running-mkdocs-locally) section is included.
 
 Vital operational things for systems administrators to know:
 
@@ -168,15 +181,14 @@ blocks like you can with admonitions.
 (These don't render correctly in the `MacDown.app` macOS program Jeffrey uses.)
 
 Tabs are a kind of `code block` which begins with three
-++equals+equals+equals++ marks.
+++equal+equal+equal++ marks.
 
 These are very neat. They allow you to create a horizontal set of headings.
 Clicking on each heading causes a different set of content to appear. This can
 save A LOT of vertical page space. It is intuitive for readers to click on what they need.
 
-Let's say you want to describe how to do the same activity on three different
-operating systems. Or show the equivalent code in four different programming
-languages. Or how something differs between two clusters.
+Places you would use `content tabs`: You want to describe how something differs between two clusters, show the steps to do the same activity on three different operating systems, or show the equivalent code for four different programming
+languages.
 
 Here is the core
 [tabs documentation](https://squidfunk.github.io/mkdocs-material/reference/content-tabs/#content-tabs).
@@ -196,12 +208,12 @@ This example contains one or two lines of text. The default tab is the left-most
     More intuitive and elegant
     
 === "*Other Way*"
-    The lesser way
+    The lesser way. What Microsoft forces upon you.
     
 === "Pencil and Paper Way"
     Respect your elders. It was all we had for a LONG TIME.
     
-    Really, a long time. At least we had calculators instead of slide rules.
+    Really, a long time. At least we Generation X-ers had calculators instead of slide rules.
     
 ### Content tabs inside of admonitions or details
 
@@ -294,15 +306,15 @@ hide:
 ---
 ```
 
-## TOC
+## TOC - Generating Table of Content
 You can add an automatically-generated Table of Contents to a page by inserting
 at any point "[TOC]". The TOC material will also be shown as a new sidebar on the
-right side. An optional directive can be placed in the frontmatter to control how
-many levels of indentation are displayed. (A directive in the mkdocs.yml file
+right side. An optional directive can be placed in the `frontmatter` to control how
+many levels of indentation are displayed. (A directive in the `mkdocs.yml` file
 controls how many levels are shown in the navigation bar. Entries can be made in the *frontmatter* section to control how toc's are handled, such as hiding them or specifying a document-specific depth level.)
 
-## Tags
-An example of frontmatter is the code to [add tags](https://squidfunk.github.io/mkdocs-material/setup/setting-up-tags/) to documents. 20240211 I tested adding a tag and it works. I tried to create a page which made a list of tags and the pages which used them using a particular string. (On 20251220 I cannot remember if it worked or not. I thought that it did work. But we no longer see the tags on pages, so perhaps whatever change hid the tags also prevents the tag-generation code fail.) See comments in mkdocs.yml's nav section for notes.
+## Page Tags
+An example of `frontmatter` is the code to [add tags](https://squidfunk.github.io/mkdocs-material/setup/setting-up-tags/) to documents. 20240211 Jeffrey tested adding a tag and it works. I tried to create a page which made a list of tags and the pages which used them using a particular string. (On 20251220 I cannot remember if it worked or not. I thought that it did work. But we no longer see the tags on pages, so perhaps whatever change Makr made to hide the tags also prevents the tag-generation code fail.) See comments in `mkdocs.yml`'s navigation section for notes.
 
 A lot of optional tag-related settings/capabilities seem to be reserved for paying sponsers as of 20240201. See this [page](https://squidfunk.github.io/mkdocs-material/insiders/). Can users search for documents by tags in the search field?
 
@@ -373,7 +385,7 @@ This third example results in the whole rest of the document wrapped up to the r
 
 ## **Symbols for keyboard keys**
 
-(enabled by the pymdownx.keys extension)
+(enabled by the `pymdownx.keys` extension)
 
 You can create images of keyboard keys, such as meta keys like ++ctrl++ or ++cmd++ by {==surrounding a keyword such as "ctrl" with two plus characters==}
 
