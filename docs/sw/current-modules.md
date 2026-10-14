@@ -51,9 +51,10 @@
    conda_R/devel      conda_R/4.3      conda_R/4.5.x        conda_R/4.6
 
 ------------------------ /jhpce/shared/libd/modulefiles ------------------------
-   PRSice/2.2.13                 nda-tools/0.3.0
-   Salmon/1.2.1                  nda-tools/0.5.0
-   Salmon/1.10.1          (D)    nda-tools/0.6.0
+   PRSice/2.2.13                 nda-tools/0.2.27
+   Salmon/1.2.1                  nda-tools/0.3.0
+   Salmon/1.10.1          (D)    nda-tools/0.5.0
+   ai-singbox/0.5.0-dev          nda-tools/0.6.0
    arioc/1.52                    nda-tools/0.7.0     (D)
    aws/2.28               (D)    nextflow/20.01.0
    bamtofastq/1.4.1              nextflow/22.10.7
@@ -110,7 +111,6 @@
    magma/1.10                    xeniumranger/2.0.0
    methyldackel/0.5.2            xeniumranger/3.1.1
    methylpy/1.4.3                xeniumranger/4.0.0  (D)
-   nda-tools/0.2.27
 
   Where:
    D:  Default Module
@@ -129,4 +129,4 @@ any of the "keys".
 ```
 Note: some modules may not be available on the login node or on the JADE nodes.
 
-#####Updated: Tue Oct 13 05:30:03 AM EDT 2026
+#####Updated: Wed Oct 14 05:30:03 AM EDT 2026
