@@ -6,26 +6,28 @@ tags:
 
 # Partitions
 
-A partition is a logical collections of nodes that comprise different hardware resources and limits to help meet the wide variety of jobs that get scheduled on the cluster. Nodes usually belong to more than one partition.
+A partition is a logical collections of nodes that comprise different hardware resources and limits to help meet the wide variety of jobs that get scheduled on the cluster. Nodes usually belong to more than one partition. Our partitions give you access to either CPU nodes or GPU nodes.
 
-There are several *types* of partitions:
+There are several *categories* of partitions:
 
-* **Public - general access** (e.g. shared, interactive, gpu, transfer)
+* **Public - general access** (e.g. shared, interactive, gpu, transfer, scavenge)
 * **Application only** (e.g. sas)
 * **GPU** (equipped with GPU cards)
 * **PI-owned** (for use only by members of the PI's group)
 
 !!! Tip "slurmpic is a vital tool"
-    Our command `slurmpic` shows information about partitions, including the member nodes, their current utilization, and some summary statistics. You should use it regularly. More details are given below.
+    Our command `slurmpic` shows information about partitions, including the member nodes, their current utilization, and some summary statistics. You should know how to use it because it allows you to easily answer a number of questions about your jobs and the cluster. Here is [our web page](../slurm/slurmpic.md) about the command.
 
 ## PI Partitions
 JHPCE exists because Primary Investigators worked together to create a cluster. They share their resources via public partitions to support their fellow faculty members and to reduce their cost of ownership (see cost recovery descriptions [here](../aboutus/model.md/#cost-recovery) and [here](../joinus/new-pi.md)).
 
-{==Only submit jobs to these partitions if you are a member of the Primary Investigator's research groups or have been given explicit permission to do so.==} If you are in doubt, ask before submitting. Jobs from non-group members will be killed and repeated abuse *will* lead to repercussions.  
+{==Only submit jobs to these partitions if you are a member of the Primary Investigator's research groups or have been given explicit permission to do so.==} If you are in doubt, ask before submitting. Jobs from non-group members will be killed and repeated abuse *will* lead to repercussions.
+
+Two tables provide more info: [CPU ones](partitions.md#pi-cpu-partitions) and [GPU ones](partitions.md#gpu-partitions).
 
 ## Public Partitions 
 
-Partitions **shared**, **interactive**, **interactive-larger**, **gpu**, **sas**, **scavenge** and **transfer** are considered public and available to all.
+Partitions **shared**, **interactive**, **interactive-larger**, **gpu**, **sas**, **scavenge** and **transfer** are considered public and available to all. A [table](partitions.md#public-cpu-partitions) contains limits and defaults.
 
 !!! Note "Specific uses"
     Only jobs which require the use of GPU cards should be submitted to the **gpu** partition.
@@ -34,7 +36,7 @@ Partitions **shared**, **interactive**, **interactive-larger**, **gpu**, **sas**
     
     Only jobs related to transferring data into or out of the cluster should be submitted to the **transfer** partition.
 
-The public partitions provide low-priority access to unused capacity throughout the cluster. Capacity on the shared queue is provided on a strictly “as-available” basis and serves two purposes:
+The public partitions provide _low-priority access_ to unused capacity throughout the cluster. Capacity on the shared queue is _provided on a strictly “as-available” basis_ and serves two purposes:
 
 First it provides surge capacity to stakeholders who temporarily need more compute capacity than they own, and second, it gives provides non-stakeholders access to computing capacity.
 
@@ -95,26 +97,7 @@ scontrol show partition <partitionname>
 
 Our command `slurmpic` shows information about partitions, including the member nodes, their current utilization, and some summary statistics. Text is color-coded to try to indicate how fully consumed nodes are. ==You should run slurmpic regularly to get a feeling for the state of the cluster.==
 
-Run `slurmpic -h` to see important usage notes!
-
-**Which partitions to you see?**
-
-- By default `slurmpic` displays one partition, while `slurmpic -a` shows all partitions. 
-- `slurmpic -a` allows you to see which partitions each node belongs to.
-- In the JHPCE cluster: slurmpic defaults to the **shared** partition.
-- In the JADE cluster: slurmpic defaults to the **N-shared** partition, where "N" is the community letter, e.g. "**c-shared**" for CMS community members.
-- Specific partitions can be displayed using: `slurmpic -p <partitionname>`
-- All of the nodes in all of the GPU partitions can be displayed with `slurmpic -g`.
-- Individual GPU-containing partitions can be shown with `slurmpic -g -p <partitionname>`
-- You will not see hidden or restricted partitions you cannot submit to.
-
-**About the displayed summary statistics:**
-
-- They are for a single partition, not the whole cluster (except for `slurmpic -a`)
-- They do not include the resources of hidden or restricted partitions.
-- Memory and CPU use of nodes that are DOWN or in DRAIN are not included in the stats.
-
-`slurmpic` uses the SLURM command [`sinfo`](https://slurm.schedmd.com/archive/slurm-22.05.9/sinfo.html), which shows information about nodes and partitions.
+Here is [our web page](../slurm/slurmpic.md) about the command and its options.
 
 ## CPU Partitions
 
