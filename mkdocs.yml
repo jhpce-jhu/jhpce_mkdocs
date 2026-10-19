@@ -272,12 +272,16 @@ plugins:
   - table-reader
   # TAGS
   # The tags plugin enables the display of page tags. It can be helpful to
-  # enable while doing a lot of page-revision work.
+  # enable while doing a lot of page-revision work. It also allows for the
+  # creation of an index web page which automatically lists the currently-
+  # defined tags & gives you a list of the pages containing that tag. This is
+  # useful for both users & sysadmins.
+  # https://squidfunk.github.io/mkdocs-material/plugins/tags/
   # IF YOU COMMENT THIS PLUGIN OUT, YOU NEED TO also comment out the line for
-  # any tag-list files in the navigation section above.
+  # any tag list files in the navigation section above.
   # 20251216 - somehow this next line being present suddenly broke the ability
   # for the site to be built
-  #- tags
+  - tags
       # This does not work as advertised (no info is dynamically generated)
       # You're supposed to put a special string in there and it will be replaced
       # they say, by all of the tags and pages.
