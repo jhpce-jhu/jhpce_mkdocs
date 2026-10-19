@@ -272,23 +272,33 @@ plugins:
   # JRT added https://timvink.github.io/mkdocs-table-reader-plugin/
   - table-reader
   # TAGS
+  #     https://squidfunk.github.io/mkdocs-material/setup/setting-up-tags/
   #     https://squidfunk.github.io/mkdocs-material/plugins/tags/
   # The tags plugin enables the display of page tags. It can be helpful to
   # enable while doing a lot of page-revision work. It also allows for the
   # creation of an index web page which automatically lists the currently-
   # defined tags & gives you a list of the pages containing that tag. This is
   # useful for both users & sysadmins.
+  # + You can define tags for an entire folder by creating a ".meta.yml" file
+  #   inside the directory.
+  # + You can enable "scoped listings" which will only include pages that are
+  #   on the same level or below the page containing the listing.
   # IF YOU COMMENT THIS PLUGIN OUT, YOU NEED TO also comment out the line for
   # any tag list files in the navigation section above.
+  # JRT enabled this 20261019.
   - tags:
-      tags_file: ourtools/site-tag-list.md
-      # This index file must contain a special specific string where the index
-      # should appear. This file must be mentioned in the nav: section, also.
       tags: false
-      # Setting "tags: false" means they will not be displayed at the top of
+      # Setting "tags: false" means THEY WILL NOT BE DISPLAYED at the top of
       # a page. They continue to exist and be processed, which is all that you
       # need to accomplish things with the info in the index page.
 
+  #   tags_file: ourtools/site-tag-list.md
+      # This index file was required in mkdocs-material versions like 8.2. It
+      # is now deprecated in versions 9.x. That tags_file: document had to
+      # contain a special specific string 
+      #     <!-- material/tags { scope: true } -->
+      # where the index material should appear. Now (in version 9.7.7) you can
+      # simply add the string to any page mentioned in the nav: section.
 #
 # Python MarkDown Extensions
 #
@@ -347,7 +357,7 @@ markdown_extensions:
       custom_checkbox: true
 #
 # FOOTER-RELATED SETTINGS (other than the req'd features:navigation.footer)
-copyright: Copyright &copy; 2024 - 2028 Joint JHPCE Exchange
+copyright: Copyright &copy; 2024 - 2028 Joint HPC Exchange
 #
 extra:
   generator: false # do not display "Made with Material for MkDocs"
@@ -375,11 +385,31 @@ extra:
 # This follows the .gitignore pattern format
 # (https://www.mkdocs.org/user-guide/configuration/#exclude_docs)
 # (https://git-scm.com/docs/gitignore#_pattern_format)
-exclude_docs: |
-  drafts
-  file/images/drafts
 #
-# https://www.mkdocs.org/user-guide/configuration/#validation
+exclude_docs: |
+  bak/
+# We added bak/ to an actual .gitignore file but if we instead used the
+# exclude_docs: directive, the github repo would contain those files. Which JRT
+# thinks are _much_ easier to peruse looking for deltas or other info without
+# having to hunt through Github changelogs. 20261019 JRT HAS NOT YET MODIFIED
+# THE .GITIGNORE FILE.
+#
+# ALLOW DRAFT VERSIONS TO BE KEPT  
+# JRT added 20261019
+# This directive and list of files/dirs cause them not to render in the actual
+# web site.  However, if you use "mkdocs --serve" & "mkdocs --build" locally,
+# they WILL be rendered. They will contain a small "DRAFT" label rendered
+# above the content.
+# This follows the .gitignore pattern format, so adding a trailing slash to
+# directory names means that pattern can be located anywhere inside docs/
+draft_docs: |
+  drafts/
+#
+# VALIDATION CONTROLS
+# These validation controls cause "mkdocs --serve" & "mkdocs --build"
+# to issue useful warnings. So one can see them when working locally, before
+# pushing files into the repo.
+#    https://www.mkdocs.org/user-guide/configuration/#validation
 validation:
   omitted_files: warn
   absolute_links: warn
