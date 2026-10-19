@@ -282,7 +282,7 @@ plugins:
   # any tag list files in the navigation section above.
   # 20251216 - somehow this next line being present suddenly broke the ability
   # for the site to be built
-  - tags
+  - tags:
       tags_file: ourtools/site-tag-list.md
       # This does not work as advertised (no info is dynamically generated)
       # You're supposed to put a special string in there and it will be replaced
