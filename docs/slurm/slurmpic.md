@@ -1,10 +1,9 @@
 ---
+icon: material/eye
 tags:
-  icon: material/eye
-  tags:
-    - slurm
-    - in-progress
-    - jeffrey
+  - slurm
+  - in-progress
+  - jeffrey
 ---
 
 # slurmpic
