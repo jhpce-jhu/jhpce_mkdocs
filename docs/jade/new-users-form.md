@@ -1,7 +1,10 @@
-Please complete the below form to request an account on the JADE cluster.
-under and existing DUA on JADE. Once the form is completed, we will reach out
-to you to coordinate the setup of your account. Please feel free to reach out
-to us at bitsupport@lists.jhu.edu if you have any questions.
+CMS Data Users - Please reach out to support@harp-csub.freshdesk.com to request
+an account.
+For all other JADE users, please complete the below form to request
+an account on the JADE cluster under an existing DUA.
+Once the form is completed, we will reach out
+to you to coordinate the setup of your account. 
+Please feel free to contact us at bitsupport@lists.jhu.edu if you have any questions.
 
 <div style="position: static; overflow: hidden; border: solid 2px #555; width:720px; height:1600px;">
 
