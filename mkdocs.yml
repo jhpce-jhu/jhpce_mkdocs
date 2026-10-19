@@ -44,6 +44,7 @@ nav:
          - Handy Features: ourtools/features.md
          - Tips & Conventions: ourtools/tips-conventions.md
          - Wishlist: ourtools/wishlist.md
+         - Tags Index: ourtools/site-tag-list.md
     - FAQ: help/faq.md
     - Accessing our clusters:
       - Overview: access/access-overview.md
@@ -282,11 +283,11 @@ plugins:
   # 20251216 - somehow this next line being present suddenly broke the ability
   # for the site to be built
   - tags
+      tags_file: ourtools/site-tag-list.md
       # This does not work as advertised (no info is dynamically generated)
       # You're supposed to put a special string in there and it will be replaced
       # they say, by all of the tags and pages.
       # If you try add it back, have to add a : to the -tags line above
-      #tags_file: ourtools/site-tag-list.md
 
 #
 # Python MarkDown Extensions
