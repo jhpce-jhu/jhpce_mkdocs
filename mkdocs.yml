@@ -5,7 +5,8 @@ site_name: JHPCE
 site_url: https://jhpce.jhu.edu/
 
 # It may be necessary to quote strings used on the left hand side of
-# navigation bar lines. For example, if you want to include a colon.
+# navigation bar lines! For example, that is required if you want to
+# include a colon.
 nav:
   - Home:
     - index.md
@@ -44,7 +45,7 @@ nav:
          - Handy Features: ourtools/features.md
          - Tips & Conventions: ourtools/tips-conventions.md
          - Wishlist: ourtools/wishlist.md
-         - Tags Index: ourtools/site-tag-list.md
+         - Page Tags Index: ourtools/site-tag-list.md
     - FAQ: help/faq.md
     - Accessing our clusters:
       - Overview: access/access-overview.md
@@ -236,42 +237,50 @@ theme:
     # https://squidfunk.github.io/mkdocs-material/reference/code-blocks/#adding-annotations
     - content.code.annotate # Allow annotations inside blocks after comment chars
 #
-# Plugins
+# PLUGINS
 #
-# If you add a plugin, update the mkdocs recipe in the features.md
-#
-# ROUGHLY ALPHABETICAL by topic
+# If you want to/add a plugin, keep these things in mind:
+# + Some features are only available to paying subscribers. These are denoted
+#   by some little icon in the documentation - maybe a heart?
+# + The GitHub Action program "ci.yml" may need to be modified
+#   to add support by installing a new Python package
+# + Update the "mkdocs --serve" recipe in the features.md
+#   so people can refer to it to be able to build the site
+#   locally.
 #
 # https://squidfunk.github.io/mkdocs-material/plugins/
 plugins:
+  # AUTHORSHIP --------------- 
   # https://timvink.github.io/mkdocs-git-authors-plugin/index.html
-  # AUTHORSHIP
   - git-authors:
       enabled: true
       show_contribution: true
       authorship_threshold_percent: 33
       fallback_to_empty: true
-  # BLOG
+  # BLOG ---------------
   # https://squidfunk.github.io/mkdocs-material/setup/setting-up-a-blog/
   # Be aware that you cannot use features preceeded by "Insiders"
   #- blog
   - git-revision-date-localized # this forces you to work in a git cloned repo
   # If you are not, then everything breaks until you comment out this plugin.
   - open-in-new-tab
-  # SEARCH
+  # SEARCH ---------------
   # search is enabled by default but if you add options it HAS TO BE LISTED
   # there are A LOT of extras you can do. Someone explore later if desired.
   # https://squidfunk.github.io/mkdocs-material/setup/setting-up-site-search/
   - search
+  # EXTRACT LISTINGS --------------
   # Adi added extract_listings 20240401
   # https://github.com/six-two/mkdocs-extract-listings-plugin
   - extract_listings:
       listings_file: all-listings.md
       placeholder: JHPCE_PLACEHOLDER_FOR_THE_LISTINGS_PLUGIN
       javascript_search_file: javascripts/listing-search.js
+  # TABLE READER --------------- 
   # JRT added https://timvink.github.io/mkdocs-table-reader-plugin/
   - table-reader
-  # TAGS
+  # TAGS ---------------
+  # JRT enabled this 20261019.
   #     https://squidfunk.github.io/mkdocs-material/setup/setting-up-tags/
   #     https://squidfunk.github.io/mkdocs-material/plugins/tags/
   # The tags plugin enables the display of page tags. It can be helpful to
@@ -280,12 +289,12 @@ plugins:
   # defined tags & gives you a list of the pages containing that tag. This is
   # useful for both users & sysadmins.
   # + You can define tags for an entire folder by creating a ".meta.yml" file
-  #   inside the directory.
+  #   inside the directory. See docs/slurm/.meta.yml for an example.
   # + You can enable "scoped listings" which will only include pages that are
-  #   on the same level or below the page containing the listing.
+  #   on the same level or below the page containing the listing. I don't know
+  #   that we will use that.
   # IF YOU COMMENT THIS PLUGIN OUT, YOU NEED TO also comment out the line for
   # any tag list files in the navigation section above.
-  # JRT enabled this 20261019.
   - tags:
       tags: false
       # Setting "tags: false" means THEY WILL NOT BE DISPLAYED at the top of
@@ -328,7 +337,7 @@ markdown_extensions:
   # https://squidfunk.github.io/mkdocs-material/reference/grids/
   - md_in_html # added to support grids for the home page. related to attr_list
   - tables
-  # TABLE OF CONTENTS
+  # TABLE OF CONTENTS ---------------
   # https://squidfunk.github.io/mkdocs-material/setup/extensions/python-markdown/#table-of-contents
   - toc:
       toc_depth: 5 # optional
@@ -355,6 +364,7 @@ markdown_extensions:
       base_path: docs
   - pymdownx.tasklist:
       custom_checkbox: true
+# END OF PLUGINS SECTION --------------- 
 #
 # FOOTER-RELATED SETTINGS (other than the req'd features:navigation.footer)
 copyright: Copyright &copy; 2024 - 2028 Joint HPC Exchange
@@ -381,7 +391,7 @@ extra:
 # hide footer in specific pages with these instructions:
 # https://squidfunk.github.io/mkdocs-material/setup/setting-up-the-footer/#hiding-prevnext-links
 #
-# EXCLUDE FILES OR DIRECTORIES
+# EXCLUDE FILES OR DIRECTORIES --------------- 
 # This follows the .gitignore pattern format
 # (https://www.mkdocs.org/user-guide/configuration/#exclude_docs)
 # (https://git-scm.com/docs/gitignore#_pattern_format)
@@ -391,10 +401,10 @@ exclude_docs: |
 # We added bak/ to an actual .gitignore file but if we instead used the
 # exclude_docs: directive, the github repo would contain those files. Which JRT
 # thinks are _much_ easier to peruse looking for deltas or other info without
-# having to hunt through Github changelogs. 20261019 JRT HAS NOT YET MODIFIED
-# THE .GITIGNORE FILE.
+# having to hunt through Github changelogs. As of 20261019 JRT HAS NOT YET
+# MODIFIED THE .GITIGNORE FILE.
 #
-# ALLOW DRAFT VERSIONS TO BE KEPT  
+# ALLOW DRAFT VERSIONS TO BE KEPT --------------- 
 # JRT added 20261019
 # This directive and list of files/dirs cause them not to render in the actual
 # web site.  However, if you use "mkdocs --serve" & "mkdocs --build" locally,
@@ -405,7 +415,7 @@ exclude_docs: |
 draft_docs: |
   drafts/
 #
-# VALIDATION CONTROLS
+# VALIDATION CONTROLS ---------------
 # These validation controls cause "mkdocs --serve" & "mkdocs --build"
 # to issue useful warnings. So one can see them when working locally, before
 # pushing files into the repo.
@@ -415,8 +425,7 @@ validation:
   absolute_links: warn
   unrecognized_links: warn
 #
-#
-#
+# ADD-IN CODE --------------- 
 extra_javascript:
   - https://unpkg.com/tablesort@5.3.0/dist/tablesort.min.js
   - javascripts/tablesort.js
