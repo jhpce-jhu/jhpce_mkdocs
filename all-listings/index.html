@@ -4629,7 +4629,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../help/cost-calculator/" class="md-nav__link">
+      <a href="../help/cost-calculator.md" class="md-nav__link">
         
   
   
@@ -7851,9 +7851,7 @@ nano<span class="w"> </span>myinput.txt
 find<span class="w"> </span>.<span class="w"> </span>-type<span class="w"> </span>f<span class="w"> </span>-name<span class="w"> </span><span class="se">\*</span>.md<span class="w"> </span>-exec<span class="w"> </span>grep<span class="w"> </span>-il<span class="w"> </span><span class="s2">"www.jhpce.jhu.edu"</span><span class="w"> </span><span class="o">{}</span><span class="w"> </span><span class="se">\;</span>
 find<span class="w"> </span>.<span class="w"> </span>-type<span class="w"> </span>f<span class="w"> </span>-name<span class="w"> </span><span class="se">\*</span>.md<span class="w"> </span>-exec<span class="w"> </span>sed<span class="w"> </span>-i<span class="w"> </span><span class="s1">''</span><span class="w"> </span><span class="s2">"s/www.jhpce.jhu.edu/jhpce-old.jhu.edu/g"</span><span class="w"> </span><span class="o">{}</span><span class="w"> </span><span class="se">\;</span>
 find<span class="w"> </span>.<span class="w"> </span>-type<span class="w"> </span>f<span class="w"> </span>-name<span class="w"> </span><span class="se">\*</span>.md<span class="w"> </span>-exec<span class="w"> </span>grep<span class="w"> </span>-il<span class="w"> </span><span class="s2">"jhpce-old.jhu.edu"</span><span class="w"> </span><span class="o">{}</span><span class="w"> </span><span class="se">\;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>xargs<span class="w"> </span>git<span class="w"> </span>add
-</code></pre><pre class="mermaid"><code>graph LR
-   A[Your computer] --&gt; B[Login nodes]
-   B[Login nodes] --&gt; C[(Compute nodes)]</code></pre><pre><span></span><code>sacct<span class="w"> </span>-s<span class="w"> </span>F<span class="w"> </span>-o<span class="w"> </span><span class="s2">"user,jobid,state,nodelist,start,end,exitcode"</span><span class="w"> </span>-S<span class="w"> </span>noon<span class="w"> </span>-E<span class="w"> </span>now
+</code></pre><pre><span></span><code>sacct<span class="w"> </span>-s<span class="w"> </span>F<span class="w"> </span>-o<span class="w"> </span><span class="s2">"user,jobid,state,nodelist,start,end,exitcode"</span><span class="w"> </span>-S<span class="w"> </span>noon<span class="w"> </span>-E<span class="w"> </span>now
 </code></pre><pre><span></span><code>Nesting:
 </code></pre><pre><span></span><code>Contents for Mac users
 </code></pre><pre><span></span><code>Contents for Mac users
@@ -7894,6 +7892,7 @@ tags:
   - adi
   - brian
 ---
+</code></pre><pre><span></span><code>&lt;a href="https://squidfunk.github.io/mkdocs-material/reference/admonitions/" target="_blank"&gt;About admonitions&lt;/a&gt;
 </code></pre><pre><span></span><code>![<span class="nt">Image title</span>](<span class="na">https://dummyimage.com/600x400/eee/aaa</span>){ align=left }
 </code></pre><pre><span></span><code>![Image title](../files/images/dir-stack-push-pop.png)
 </code></pre><pre><span></span><code>![Image title](../files/images/dir-stack-push-pop.png) The text that you want to the right side of image.
@@ -7902,8 +7901,9 @@ tags:
 *[HTML]: Hyper Text Markup Language
 </code></pre><pre><span></span><code>`a sample term to define`
 :    The definition you are seeking. (But not the droids.)
-</code></pre><pre><span></span><code>&lt;a href="https://squidfunk.github.io/mkdocs-material/reference/admonitions/" target="_blank"&gt;About admonitions&lt;/a&gt;
-</code></pre><pre><span></span><code>  - attr_list
+</code></pre><pre class="mermaid"><code>graph LR
+   A[Your computer] --&gt; B[Login nodes]
+   B[Login nodes] --&gt; C[(Compute nodes)]</code></pre><pre><span></span><code>  - attr_list
   - pymdownx.emoji:
       emoji_index: !!python/name:material.extensions.emoji.twemoji
       emoji_generator: !!python/name:material.extensions.emoji.to_svg
@@ -7937,7 +7937,12 @@ cd jhpce_mkdocs/docs/
 # Edit in the docs/ subdirectory, not in sites/ (the latter is where
 # the web pages are built by an Action configured in the repo's
 # underlying configuration if your commit includes 'rebuild-site')
+
 cd docs/
+
+# These packages should be the same as what is found in the `ci.yml`
+# script found in the repo under "Actions". That file actually controls
+# how the site is built.
 
 pip3 install mkdocs-material
 pip3 install mkdocs-git-revision-date-localized-plugin
@@ -7950,20 +7955,34 @@ pip3 install mkdocs_table_reader_plugin
 #
 # Build a directory full of processed files - and view them
 #
-mkdocs build
-mkdocs serve
-Several options are available for the 'serve' subcommand, such as:
+
+mkdocs build  # Mainly useful to get a list of errors &amp; warnings
+
+mkdocs serve  # This will both build and serve
+
+# Review your changed document in browser at `http://127.0.0.1:8000/`
+
+# (Note this is not a "https" URL)
+
+# Several options are available for the 'serve' subcommand, such as:
 mkdocs serve --dirty
 mkdocs serve --dirty -w &lt;dir_to_watch&gt; [-w &lt;2nd_dir_to_watch&gt;]
+# --dirty means: Only re-build files that have changed
+# You can see the --serve options with: mkdocs serve --help
 
-# For example, create a new directory under docs
+# Modify the website, by for example, creating a new directory under docs
 mkdir newsection
+
 # create a MarkDown document bob.md inside newsection/
 vi newsection/bob.md # or use whatever editor you prefer
 
-2026 - it used to be that the running "mkdocs serve" process would wait until you wrote out changes from your editor to disk. Now, for Jeffrey at least using MacDown, the slightest change to the file will lead to the serve process from regenerating the entire tree. So once he gets a gander at the existing or revised page, he control-Z's "mkdocs serve" until he is done with a bunch of edits.
-
-# Review your changed document in browser at `http://127.0.0.1:8000/`
+2026 - it used to be that the running "mkdocs serve" process would wait until you
+wrote out changes from your editor to disk. Now, for Jeffrey at least using MacDown,
+the _slightest_ change to the file will lead to the serve process regenerating the
+entire tree. EVERY TIME you twitch a finger. To work around this, once he gets a
+gander at the existing or revised page in his web browser, he control-Z's
+"mkdocs serve" until he is done with a bunch of edits. Then he resumes to see the
+results. And so on. I checked -- it wasn't because I was using `--dirty`
 
 #
 # Add revised files and commit them
