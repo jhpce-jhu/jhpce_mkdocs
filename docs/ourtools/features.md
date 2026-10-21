@@ -47,9 +47,9 @@ There are two other related documents:
 
 Jeffrey recommends these features in particular:
 
-* [Admonitions](features.md#admonitions) -- a lot!!
-* Details [(collapsed blocks)](features.md/#details-collapsed-blocks)
-* Content Tabs [present diff info horizontally](features.md/#tabs)
+* [Admonitions](features.md#admonitions-vertically-open-by-default-colored-blocks) -- a lot!!
+* Details [(collapsed blocks)](features.md/#details-vertically-collapsed-by-default-colored-blocks)
+* Content Tabs [present diff info horizontally](features.md/#content-tabs-horizontally-collapsed-colored-tabs)
 * {==[highlighting text in various ways](features.md/#highlighting-text)==}
 * [Code blocks](https://squidfunk.github.io/mkdocs-material/reference/code-blocks/) are a critical thing to understand in Materials for MkDocs. They are used for all kinds of formatting!!!!!!
 * [Fenced code blocks](features.md/#fenced-code-blocks)
@@ -73,31 +73,6 @@ find . -type f -name \*.md -exec sed -i '' "s/www.jhpce.jhu.edu/jhpce-old.jhu.ed
 find . -type f -name \*.md -exec grep -il "jhpce-old.jhu.edu" {} \; | xargs git add
 ```
 
-## Diagramming with Mermaid
-
-mkdocs.yml contains code enabling the use of a JavaScript tool called Mermaid. If you want your local `mkdocs serve` program to be able to display it, you need to `pip install mkdocs-mermaid2-plugin` (see [recipe](features.md#recipe-for-running-mkdocs-locally) at bottom of this page)
-
-Material for MkDocs Diagrams [documentation](https://squidfunk.github.io/mkdocs-material/reference/diagrams/?h=mermaid#diagrams)
-
-[Diagram syntax](http://mermaid.js.org/intro/syntax-reference.html) from the mermaid people
-
-A [live editor](https://mermaid.live) at the mer-people site!!! You can copy the resulting code to your buffer or save the image as (png,svg).
-
-```mermaid
-graph LR
-   A[Your computer] --> B[Login nodes]
-   B[Login nodes] --> C[(Compute nodes)]
-```
-
-Supported types: [flowchart](https://mermaid.js.org/syntax/flowchart.html) (aka graph), [sequenceDiagram](https://mermaid.js.org/syntax/sequenceDiagram.html), [stateDiagram-v2](https://mermaid.js.org/syntax/stateDiagram.html),[classDiagram](https://mermaid.js.org/syntax/classDiagram.html), [erDiagram](https://mermaid.js.org/syntax/entityRelationshipDiagram.html)
-
-JRT finds these types interesting: [timeline](https://mermaid.js.org/syntax/timeline.html), user [journey](https://mermaid.js.org/syntax/userJourney.html)
-
-Numerous others, including [pie](https://mermaid.js.org/syntax/pie.html), bar and line charts ([xychart-beta](https://mermaid.js.org/syntax/xyChart.html))
-
-??? Warning "Only some types officially supported by Material for MkDocs"
-    Besides the diagram types listed above, Mermaid.js provides support for pie charts, gantt charts, user journeys, git graphs and requirement diagrams, all of which are not officially supported by Material for MkDocs. Those diagrams should still work as advertised by Mermaid.js, but we don't consider them a good choice, mostly as they don't work well on mobile. While all Mermaid.js features should work out-of-the-box, Material for MkDocs will currently only adjust the fonts and colors for flowcharts, sequence diagrams, class diagrams, state diagrams and entity relationship diagrams.
-
 ## Admonitions (vertically open-by-default colored blocks)
 (These don't render correctly in MacDown.app)
 
@@ -112,7 +87,7 @@ before you push up your modified markdown file.
 Consider whether or not you want the material collapsed or expanded when users
 first visit a page. If you want the information collapsed, create a "detail"
 instead of an "admonition" by using question marks instead of exclamation
-points. Details are described [here](#details-collapsed-blocks).
+points. Details are described [here](#details-vertically-collapsed-by-default-colored-blocks).
 
 <a href="https://squidfunk.github.io/mkdocs-material/reference/admonitions/"" target="_blank">Admonition documentation</a>
 
@@ -146,7 +121,7 @@ warning.  Here is a [list](https://squidfunk.github.io/mkdocs-material/reference
 Details are a kind of code block which begins with three
 ++question+question+question++ marks.
 
-Like an [admonition](#admonitions) but makes pages more readable by collapsing content.
+Like an [admonition](#admonitions-vertically-open-by-default-colored-blocks) but makes pages more readable by collapsing content.
 You can nest details, and choose to display them open or closed.
 Documentation [here](https://facelessuser.github.io/pymdown-extensions/extensions/details/) and also explained in the detail below.
 
@@ -307,13 +282,6 @@ hide:
 ---
 ```
 
-## TOC - Generating Table of Content
-You can add an automatically-generated Table of Contents to a page by inserting
-at any point "[TOC]". The TOC material will also be shown as a new sidebar on the
-right side. An optional directive can be placed in the `frontmatter` to control how
-many levels of indentation are displayed. (A directive in the `mkdocs.yml` file
-controls how many levels are shown in the navigation bar. Entries can be made in the *frontmatter* section to control how toc's are handled, such as hiding them or specifying a document-specific depth level.)
-
 ## Page Tags
 An example of [frontmatter](features.md#frontmatter) is the code to [add tags](https://squidfunk.github.io/mkdocs-material/setup/setting-up-tags/) to documents. a page which made a list of tags and the pages which used them using a particular string. (On 20251220 I cannot remember if it worked or not. I thought that it did work. But we no longer see the tags on pages, so perhaps whatever change Makr made to hide the tags also prevents the tag-generation code fail.) See comments in `mkdocs.yml`'s navigation section for notes.
 
@@ -347,8 +315,32 @@ tags:
   - brian
 ---
 ```
-## Internal links
+
+## TOC - Generating Table of Content
+Clarification: The site navigation bar on the left side is not dynamically generated -- one must edit `mkdocs.yml` to change that. Settings in that file control how deep TOCs go (`toc_depth`, currently `5`) and also, importantly, set `permalink: true`. This adds an anchor link to each section of a doc. 
+
+This might be the [core TOC document.](https://squidfunk.github.io/mkdocs-material/setup/extensions/python-markdown/#table-of-contents)
+
+Each page that defines more than one section (using pound signs) will automatically have a TOC displayed in the right sidebar.
+
+Optional directives can be made in the [frontmatter](features.md#frontmatter) section to control how toc's are handled, such as hiding them altogether or specifying a document-specific depth level.)
+
+You can also add an automatically-generated Table of Contents to a page by inserting
+at any point "[TOC]".
+
+## Anchor links (within our site or to a specific page section)
 From [this mkdocs](https://www.mkdocs.org/user-guide/writing-your-docs/#writing-with-markdown) page JRT learned that {==you can specify anchor points to document sections by knowing that they are converted to lowercase and white space is replaced by dashes.==} So this very section, named "Internal links" can be specified as a link to "../ourtools/features.md#internal-links" (in a different document) or "#internal-links" (inside the same document).
+
+Anchor link addresses are generated automatically for each section because of a setting in `mkdocs.yml`.
+
+## Open URLs in new tabs
+(Adi has configured the server to always open URLs in new tabs.)
+
+JRT thinks there might be plugins which make this easier than what you have to do othwerwise, which is to use HTML instead of the Markdown notation. In normal HTML you add a space and a string to the end of the URL: `target="_blank"`
+
+```
+<a href="https://squidfunk.github.io/mkdocs-material/reference/admonitions/" target="_blank">About admonitions</a>
+```
 
 ## Working with image files
 
@@ -420,13 +412,12 @@ All of the symbols you could desire are listed in the following web page, ({==ex
 
 [https://facelessuser.github.io/pymdown-extensions/extensions/keys/](https://facelessuser.github.io/pymdown-extensions/extensions/keys/)
 
-### **CUSTOM "KEYS"**
+### Custom "KEYS"
 You can create a key (or key combo) with any wording you want by adding double quotes around your text, for example
 
 ++plus++ ++plus++ ++dblquote++ Your Wording Here ++dblquote++ ++plus++ ++plus++ to create ++"Your Wording Here"++
 
 This can be useful to make a series of steps users need to follow more clear. ++"Do this first"+"Then do this second"++
-
 
 ## Abbreviations
 Abbreviations can be defined by using a syntax similar to URLs and footnotes, starting with an asterisk immediately followed by the term to be associated in square brackets.
@@ -441,31 +432,6 @@ The HTML specification is maintained by the W3C.
 The HTML specification is maintained by the W3C.
 *[HTML]: Hyper Text Markup Language
 
-## Glossary
-There's a way to create a document which is automatically updated when people define abbrieviations. See the wishlist document for details. Currently we have a manually written glossary, because that was quicker, and allows for the explanation to be longer than many page authors would probably provide in their individual pages.
-
-## Definition List (Indenting blocks of text for a topic)
-You can create an indented block of text using a colon followed by FOUR space characters.
-
-Example code and result:
-```
-`a sample term to define`
-:    The definition you are seeking. (But not the droids.)
-```
-
-`a sample term to define`
-:    The definition you are seeking. (But not the droids.)
-
-
-## Open URLs in new tabs
-(Adi has configured the server to always open URLs in new tabs.)
-
-JRT thinks there might be plugins which make this easier than what you have to do othwerwise, which is to use HTML instead of the Markdown notation. In normal HTML you add a space and a string to the end of the URL: `target="_blank"`
-
-```
-<a href="https://squidfunk.github.io/mkdocs-material/reference/admonitions/" target="_blank">About admonitions</a>
-```
-    
 ## Footnotes
 This[^1] is a reference to the feature's description.
 
@@ -487,6 +453,21 @@ in the midst of your text. Anywhere in the document afterwards you create the fo
 Numbering: It seems to be the case that you can use whatever number you want in your Markdown and Materials for MkDocs will generate the correct numbering in the resulting HTML files. In other words, you could give each footnote the number "1" Perhaps this depends on the ordering of the use of a footnote and its definition. (The only algorithm available to the processing is going to be to associate the first use with the first definition, the second use with the second definition, ...)
 
 [^1]: https://squidfunk.github.io/mkdocs-material/reference/footnotes/#adding-footnote-references
+
+## Glossary
+There's a way to create a document which is automatically updated when people define abbrieviations. See the wishlist document for details. Currently we have a manually written glossary, because that was quicker, and allows for the explanation to be longer than many page authors would probably provide in their individual pages.
+
+## Definition List (Indenting blocks of text for a topic)
+You can create an indented block of text using a colon followed by FOUR space characters.
+
+Example code and result:
+```
+`a sample term to define`
+:    The definition you are seeking. (But not the droids.)
+```
+
+`a sample term to define`
+:    The definition you are seeking. (But not the droids.)
 
 
 ## Data tables
@@ -520,6 +501,31 @@ https://squidfunk.github.io/mkdocs-material/reference/data-tables/#sortable-tabl
 
 ### Import CSV or Excel file
 See [https://timvink.github.io/mkdocs-table-reader-plugin/](https://timvink.github.io/mkdocs-table-reader-plugin/)
+
+## Diagramming with Mermaid
+
+mkdocs.yml contains code enabling the use of a JavaScript tool called Mermaid. If you want your local `mkdocs serve` program to be able to display it, you need to `pip install mkdocs-mermaid2-plugin` (see [recipe](features.md#recipe-for-running-mkdocs-locally) at bottom of this page)
+
+Material for MkDocs Diagrams [documentation](https://squidfunk.github.io/mkdocs-material/reference/diagrams/?h=mermaid#diagrams)
+
+[Diagram syntax](http://mermaid.js.org/intro/syntax-reference.html) from the mermaid people
+
+A [live editor](https://mermaid.live) at the mer-people site!!! You can copy the resulting code to your buffer or save the image as (png,svg).
+
+```mermaid
+graph LR
+   A[Your computer] --> B[Login nodes]
+   B[Login nodes] --> C[(Compute nodes)]
+```
+
+Supported types: [flowchart](https://mermaid.js.org/syntax/flowchart.html) (aka graph), [sequenceDiagram](https://mermaid.js.org/syntax/sequenceDiagram.html), [stateDiagram-v2](https://mermaid.js.org/syntax/stateDiagram.html),[classDiagram](https://mermaid.js.org/syntax/classDiagram.html), [erDiagram](https://mermaid.js.org/syntax/entityRelationshipDiagram.html)
+
+JRT finds these types interesting: [timeline](https://mermaid.js.org/syntax/timeline.html), user [journey](https://mermaid.js.org/syntax/userJourney.html)
+
+Numerous others, including [pie](https://mermaid.js.org/syntax/pie.html), bar and line charts ([xychart-beta](https://mermaid.js.org/syntax/xyChart.html))
+
+??? Warning "Only some types officially supported by Material for MkDocs"
+    Besides the diagram types listed above, Mermaid.js provides support for pie charts, gantt charts, user journeys, git graphs and requirement diagrams, all of which are not officially supported by Material for MkDocs. Those diagrams should still work as advertised by Mermaid.js, but we don't consider them a good choice, mostly as they don't work well on mobile. While all Mermaid.js features should work out-of-the-box, Material for MkDocs will currently only adjust the fonts and colors for flowcharts, sequence diagrams, class diagrams, state diagrams and entity relationship diagrams.
 
 ## ICONS and EMOJOIS: Examples: Kinds of check marks
 JRT found that these three kinds of check marks are examples of "icons" and "emojis".
@@ -561,7 +567,7 @@ But these other things didn't work. For some of them I downloaded an .svg file f
 Note that you can set off a block of text using three preceding and three following backtick characters.
 If you provide a valid keyword *immediately* after the backticks (no space char), then your code block will have a set of formatting choices applied to them. That keyword could be, for example, python.
 
-Code blocks can be located inside of [details](#details) and [admonitions](#admonitions) and probably other things (because of settings added to mkdocs.yml)
+Code blocks can be located inside of [details](#details-vertically-collapsed-by-default-colored-blocks) and [admonitions](#admonitions-vertically-open-by-default-colored-blocks) and probably other things (because of settings added to mkdocs.yml)
 
 There are MANY options for code blocks. All kinds of syntaxes can be used to mean different things. Here is the m[ain document ](https://squidfunk.github.io/mkdocs-material/reference/code-blocks/#code-blocks)for code blocks.
 
@@ -739,7 +745,12 @@ cd jhpce_mkdocs/docs/
 # Edit in the docs/ subdirectory, not in sites/ (the latter is where
 # the web pages are built by an Action configured in the repo's
 # underlying configuration if your commit includes 'rebuild-site')
+
 cd docs/
+
+# These packages should be the same as what is found in the `ci.yml`
+# script found in the repo under "Actions". That file actually controls
+# how the site is built.
 
 pip3 install mkdocs-material
 pip3 install mkdocs-git-revision-date-localized-plugin
@@ -752,20 +763,34 @@ pip3 install mkdocs_table_reader_plugin
 #
 # Build a directory full of processed files - and view them
 #
-mkdocs build
-mkdocs serve
-Several options are available for the 'serve' subcommand, such as:
+
+mkdocs build  # Mainly useful to get a list of errors & warnings
+
+mkdocs serve  # This will both build and serve
+
+# Review your changed document in browser at `http://127.0.0.1:8000/`
+
+# (Note this is not a "https" URL)
+
+# Several options are available for the 'serve' subcommand, such as:
 mkdocs serve --dirty
 mkdocs serve --dirty -w <dir_to_watch> [-w <2nd_dir_to_watch>]
+# --dirty means: Only re-build files that have changed
+# You can see the --serve options with: mkdocs serve --help
 
-# For example, create a new directory under docs
+# Modify the website, by for example, creating a new directory under docs
 mkdir newsection
+
 # create a MarkDown document bob.md inside newsection/
 vi newsection/bob.md # or use whatever editor you prefer
 
-2026 - it used to be that the running "mkdocs serve" process would wait until you wrote out changes from your editor to disk. Now, for Jeffrey at least using MacDown, the slightest change to the file will lead to the serve process from regenerating the entire tree. So once he gets a gander at the existing or revised page, he control-Z's "mkdocs serve" until he is done with a bunch of edits.
-
-# Review your changed document in browser at `http://127.0.0.1:8000/`
+2026 - it used to be that the running "mkdocs serve" process would wait until you
+wrote out changes from your editor to disk. Now, for Jeffrey at least using MacDown,
+the _slightest_ change to the file will lead to the serve process regenerating the
+entire tree. EVERY TIME you twitch a finger. To work around this, once he gets a
+gander at the existing or revised page in his web browser, he control-Z's
+"mkdocs serve" until he is done with a bunch of edits. Then he resumes to see the
+results. And so on. I checked -- it wasn't because I was using `--dirty`
 
 #
 # Add revised files and commit them
@@ -841,7 +866,7 @@ These icons show up in the nav bar. You can add icons to pages in two ways by mo
 Basic documentation for this: [https://github.com/squidfunk/mkdocs-material/blob/master/docs/reference/index.md](https://github.com/squidfunk/mkdocs-material/blob/master/docs/reference/index.md)
 
 ### Page Icons
-One is by defining an "icon"in the frontmatter for each document
+One is by defining an "icon"in the [frontmatter](features.md#frontmatter) for each document.
 
 This appears to the left of the page title in the nav bar. I'd rather it be on the right!!!
 

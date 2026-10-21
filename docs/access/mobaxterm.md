@@ -161,7 +161,7 @@ This is an **optional step** for JHPCE cluster users (==but not for JADE users==
 
 JHPCE and JADE require Multi-Factor Authentication (MFA). MFA refers to requiring one or more additional credentials (factors) beyond a username and password. JHPCE supports using either a OTP code or public key cryptography. JADE requires the use of a OTP code.
 
-SSH programs (of which SFTP is one) support public key cryptography. We discuss them [here](access/ssh.md/#ssh-keys-more-info). This technology uses a pair of two keys, one "private" and the other "public".
+SSH programs (of which SFTP is one) support public key cryptography. We discuss them [here](../access/ssh.md/#ssh-keys-more-info). This technology uses a pair of two keys, one "private" and the other "public".
 
 MobaXterm can be configured to use public keys, whether they are ones you have generated using another tool, or generated with MobaXterm. We show here how to do the latter.
 

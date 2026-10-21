@@ -19,7 +19,7 @@ There are several *categories* of partitions:
     Our command `slurmpic` shows information about partitions, including the member nodes, their current utilization, and some summary statistics. You should know how to use it because it allows you to easily answer a number of questions about your jobs and the cluster. 
 
 ## PI Partitions
-JHPCE exists because Primary Investigators worked together to create a cluster. They share their resources via public partitions to support their fellow faculty members and to reduce their cost of ownership (see cost recovery descriptions [here](../aboutus/model.md/#cost-recovery) and [here](../joinus/new-pi.md)).
+JHPCE exists because Primary Investigators worked together to create a cluster. They share their resources via public partitions to support their fellow faculty members and to reduce their cost of ownership (see cost recovery descriptions [here](../aboutus/model.md/#jhpce-cost-recovery) and [here](../joinus/new-pi.md)).
 
 {==Only submit jobs to these partitions if you are a member of the Primary Investigator's research groups or have been given explicit permission to do so.==} If you are in doubt, ask before submitting. Jobs from non-group members will be killed and repeated abuse *will* lead to repercussions.
 

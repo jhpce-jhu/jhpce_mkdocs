@@ -48,7 +48,7 @@ Notes:
 
 Example of `slurmpic --gpu` on the JHPCE/JASPER cluster:
 
-[![](../slurm/images/slurmpic-gpu.png)](../slurm/images/slurmpic-all-gpu.png "Example of slurmpic --gpu"){: .centered }  
+[![](../slurm/images/slurmpic-gpu.png)](../slurm/images/slurmpic-gpu.png "Example of slurmpic --gpu"){: .centered }  
 
 ## Which partitions do you see?
 

@@ -17,7 +17,7 @@ The [sacct](https://slurm.schedmd.com/archive/slurm-22.05.9/sstat.html) command 
 The [sstat](https://slurm.schedmd.com/archive/slurm-22.05.9/sstat.html) program is aimed at those who are looking for information about their own _running_ jobs. (Only the root user can see info about other people's jobs.) Much of the `sacct` concepts/ways of doing things on this page can be used with `sstat`, but there are differences, particularly in available output fields (compare the output of `sacct -e` and `sstat -e`). 
 
 ??? Tip "Some sstat examples (click to open)"
-    Jobs have multiple steps, as explained [here](slurm/about-jobs.md#jobs-have-multiple-steps). `sstat` typically requires you to specify the right "step" of the job to see the desired results. You indicate which step by appending "batch" or "extern" to the jobid. For batch job 1500, you would use `sstat -j 1500.batch`. For an array task 2300_17 you would use `sstat -j 2300_17.batch`
+    Jobs have multiple steps, as explained [here](../slurm/about-jobs.md#jobs-have-multiple-steps). `sstat` typically requires you to specify the right "step" of the job to see the desired results. You indicate which step by appending "batch" or "extern" to the jobid. For batch job 1500, you would use `sstat -j 1500.batch`. For an array task 2300_17 you would use `sstat -j 2300_17.batch`
     ```shellsession
     jhpce01 ~% sstat -j 7928_1.batch -o MaxDiskRead,MaxDiskWrite
     MaxDiskRead MaxDiskWrite 
