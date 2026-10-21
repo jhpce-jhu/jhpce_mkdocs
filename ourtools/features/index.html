@@ -1715,10 +1715,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#frontmatter-in-document-files" class="md-nav__link">
+  <a href="#frontmatter" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Frontmatter (in document files)
+        Frontmatter
       
     </span>
   </a>
@@ -2058,15 +2058,15 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#page-status" class="md-nav__link">
+  <a href="#page-status-icons" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Page Status
+        Page Status Icons
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Page Status">
+    <nav class="md-nav" aria-label="Page Status Icons">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -2081,7 +2081,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#page-status_1" class="md-nav__link">
+  <a href="#page-status" class="md-nav__link">
     <span class="md-ellipsis">
       
         Page Status
@@ -4588,8 +4588,6 @@
         
   
   
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0 8a5 5 0 0 1-5-5 5 5 0 0 1 5-5 5 5 0 0 1 5 5 5 5 0 0 1-5 5m0-12.5C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5c-1.73-4.39-6-7.5-11-7.5"/></svg>
-  
   <span class="md-ellipsis">
     
   
@@ -4599,6 +4597,14 @@
     
   </span>
   
+  
+    
+  
+  
+    <span class="md-status md-status--new" title="Recently-added">
+    </span>
+  
+
   
 
       </a>
@@ -6883,10 +6889,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#frontmatter-in-document-files" class="md-nav__link">
+  <a href="#frontmatter" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Frontmatter (in document files)
+        Frontmatter
       
     </span>
   </a>
@@ -7226,15 +7232,15 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#page-status" class="md-nav__link">
+  <a href="#page-status-icons" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Page Status
+        Page Status Icons
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Page Status">
+    <nav class="md-nav" aria-label="Page Status Icons">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -7249,7 +7255,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#page-status_1" class="md-nav__link">
+  <a href="#page-status" class="md-nav__link">
     <span class="md-ellipsis">
       
         Page Status
@@ -7293,7 +7299,7 @@
 <h2 id="overview">Overview<a class="headerlink" href="#overview" title="Anchor link to this section for reference">&para;</a></h2>
 <p><a href="https://squidfunk.github.io/mkdocs-material/">Material for MkDocs</a> is a software ecosystem which allows one to create static web pages from Markdown documents. (Because only static web pages are supported, Mark Miller had to develop a way to use Google Forms to support dynamic pages e.g. new user form.) </p>
 <p>By "ecosystem" we mean that there is a core software suite created by an "Squidfunk" organization which is extended by libraries/plugins created by both Squidfunk and the Internet community. All of the components have version numbers and are enhanced over time. We use only free features. If we paid a yearly fee, we would have have access to a larger set of features. (Keep that in mind when reading documention -- often there are cryptic icons next to a feature and you must know that you cannot use those.)</p>
-<p>We use a GitHub repo [jhpce-jhu/jhpce_mkdocs](<a href="https://github.com/jhpce-jhu/jhpce_mkdocs">repository</a> to hold and serve the web site's files. That repository also contains configuration and programs which make the web site function. <strong>The repository contains Materials for Mkdocs Python packages.</strong></p>
+<p>We use a GitHub repo <a href="https://github.com/jhpce-jhu/jhpce_mkdocs">jhpce-jhu/jhpce_mkdocs repository</a> to hold and serve the web site's files. That repository also contains configuration and programs which make the web site function. <strong>The repository contains Materials for Mkdocs Python packages.</strong></p>
 <p>We do not have a list of what high level changes to a default repository were needed. This will make it challenging to create a new repo for a new web site, or recover if we attempt to upgrade the software and the effort explodes in our face.</p>
 <h3 id="making-changes-to-the-web-site">Making changes to the web site<a class="headerlink" href="#making-changes-to-the-web-site" title="Anchor link to this section for reference">&para;</a></h3>
 <p>JHPCE web site contributors can edit the web site's pages in a web browser or by using <code>git</code> to work with the site's files.</p>
@@ -7504,27 +7510,26 @@ tab characters though!!!)</p>
 </div>
 </div>
 </div>
-<h2 id="frontmatter-in-document-files">Frontmatter (in document files)<a class="headerlink" href="#frontmatter-in-document-files" title="Anchor link to this section for reference">&para;</a></h2>
-<p>Tags are the primary use of frontmatter I think we should use at this point. 
+<h2 id="frontmatter">Frontmatter<a class="headerlink" href="#frontmatter" title="Anchor link to this section for reference">&para;</a></h2>
+<p>The beginning of a document can contain a special section called <code>frontmatter</code>. This is important tool to know exists, as the directives placed here can impact how the page is rendered
+and how the page is dealt with inside the website (you can exclude pages from search results and other such exceptions or page-specific modifications).</p>
+<p><a href="https://squidfunk.github.io/mkdocs-material/reference/">This documentation</a> is not a
+complete list of frontmatter directives, but it is a start.</p>
+<p>You can define the <em>page's title</em> here (otherwise it will be guessed at by considering the first words of a file, such as the first header section (by header I mean denoted with a pound sign).</p>
+<p><em><a href="./#page-tags">Page tags</a> are a primary use of frontmatter I think we will use.</em> 
 Tags are a list of keywords which can be used to find pages during searches,
 e.g. "in-progress" or "needs-correcting".</p>
-<p>The beginning of a document can contain a special section called "frontmatter".
-The directives placed here can impact how the page is rendered
-and how the page is dealt with inside the website. (Frontmatter is not a MarkDown standard, it was added as an enhancement.)</p>
-<p>An example of changing the appearance of the page is to control how many levels 
-of a page's sections are included in a Table of Contents. An example of changing
-the page's handling in the website is a frontmatter directive which causes an icon
-to be displayed next to the page's name in the website's navigation sidebar. Or
+<p>An example of changing the appearance of the page is to <em>control how many levels 
+of a page's sections are included in a Table of Contents</em>. Or
 to not display the page in the websites Table of Contents.</p>
-<p><a href="https://squidfunk.github.io/mkdocs-material/reference/">This documentation</a> is not a
-complete list of frontmatter directives, but it mentions page icons.</p>
-<p>multiple frontmatter elements, like both tags and a page title, need to exist together inside one </p>
+<p>An example of changing the page's handling in the website is a frontmatter directive which causes an icon to be displayed next to the page's name in the website's navigation sidebar. </p>
 <p>Frontmatter consists of a pair of three dashed lines, with directives between
 them. Example:</p>
 <div class="highlight"><pre><span></span><code>---
 tags:
   - a-tag
 toc_depth: 2
+icon: material/eye
 title: some docs need explicit titles set b/c they can't be correctly guessed from page content
 hide:
 - toc
@@ -7537,7 +7542,7 @@ right side. An optional directive can be placed in the <code>frontmatter</code> 
 many levels of indentation are displayed. (A directive in the <code>mkdocs.yml</code> file
 controls how many levels are shown in the navigation bar. Entries can be made in the <em>frontmatter</em> section to control how toc's are handled, such as hiding them or specifying a document-specific depth level.)</p>
 <h2 id="page-tags">Page Tags<a class="headerlink" href="#page-tags" title="Anchor link to this section for reference">&para;</a></h2>
-<p>An example of <code>frontmatter</code> is the code to <a href="https://squidfunk.github.io/mkdocs-material/setup/setting-up-tags/">add tags</a> to documents. 20240211 Jeffrey tested adding a tag and it works. I tried to create a page which made a list of tags and the pages which used them using a particular string. (On 20251220 I cannot remember if it worked or not. I thought that it did work. But we no longer see the tags on pages, so perhaps whatever change Makr made to hide the tags also prevents the tag-generation code fail.) See comments in <code>mkdocs.yml</code>'s navigation section for notes.</p>
+<p>An example of <a href="./#frontmatter">frontmatter</a> is the code to <a href="https://squidfunk.github.io/mkdocs-material/setup/setting-up-tags/">add tags</a> to documents. a page which made a list of tags and the pages which used them using a particular string. (On 20251220 I cannot remember if it worked or not. I thought that it did work. But we no longer see the tags on pages, so perhaps whatever change Makr made to hide the tags also prevents the tag-generation code fail.) See comments in <code>mkdocs.yml</code>'s navigation section for notes.</p>
 <p>A lot of optional tag-related settings/capabilities seem to be reserved for paying sponsers as of 20240201. See this <a href="https://squidfunk.github.io/mkdocs-material/insiders/">page</a>. Can users search for documents by tags in the search field?</p>
 <p>Some tags I envision using at the outset are shown below, so we can try to use them to figure out which pages need attention and possibly who volunteered or was assigned to finish it.</p>
 <p>The tag "needs-improvement-later" could be added to a page which has "done" to indicate that what we have is able to be published but needs more work.</p>
@@ -7907,22 +7912,19 @@ ERROR<span class="w">   </span>-<span class="w">  </span><span class="o">[</span
 <p>Does automatic pattern matching for syntax. Includes a command line program to use to open documents (Jeffrey configured his Mac using Get Info on an .md file to use MacDown by default so he can say in Terminal "open file.md" and it opens up the GUI). Supports a variety of themes for those who like dark mode.</p>
 <p>One flaw in this program is that sometimes the source code pane is blank when you open existing documents. The solution is to quit the program and launch it again. The fast workaround is to grow and shrink the document width and the dividing line between the source and rendered document panes.</p>
 <p>You can install it by download via the web or with Homebrew with <code>brew install --cask macdown</code> Stats on <a href="https://formulae.brew.sh/cask/macdown">its page </a>indicate some popularity.</p>
-<h2 id="page-status">Page Status<a class="headerlink" href="#page-status" title="Anchor link to this section for reference">&para;</a></h2>
-<p>You can add icons to pages in two ways by modifying the frontmatter of a page.</p>
-<p>Basic documentation for this: https://github.com/squidfunk/mkdocs-material/blob/master/docs/reference/index.md</p>
-<p>These show up in the nav bar. Whereas page tags as we are currently using in 04/2004 do not. Would be nice to signal more clearly to users that something was under heavy construction (because they don't necessarily understand the import of the tags, so unless you put in an authoring note at the top...)  Tags are nice to have, too, because they create a sorted list of pages to visit via simple clicks.</p>
+<h2 id="page-status-icons">Page Status Icons<a class="headerlink" href="#page-status-icons" title="Anchor link to this section for reference">&para;</a></h2>
+<p>These icons show up in the nav bar. You can add icons to pages in two ways by modifying the <a href="./#frontmatter">frontmatter</a> of a page. These can be nice to signal users that some page is important, or that it was under heavy construction.</p>
+<p>Basic documentation for this: <a href="https://github.com/squidfunk/mkdocs-material/blob/master/docs/reference/index.md">https://github.com/squidfunk/mkdocs-material/blob/master/docs/reference/index.md</a></p>
 <h3 id="page-icons">Page Icons<a class="headerlink" href="#page-icons" title="Anchor link to this section for reference">&para;</a></h3>
 <p>One is by defining an "icon"in the frontmatter for each document</p>
 <p>This appears to the left of the page title in the nav bar. I'd rather it be on the right!!!</p>
 <p>There are MANY interesting icons you can use.</p>
-<h3 id="page-status_1">Page Status<a class="headerlink" href="#page-status_1" title="Anchor link to this section for reference">&para;</a></h3>
+<h3 id="page-status">Page Status<a class="headerlink" href="#page-status" title="Anchor link to this section for reference">&para;</a></h3>
 <p>One is by defining a "status" in the frontmatter for each document
 But the only three icons available are LAME LAME LAME in both resolution and appeal</p>
-<p>You can define a new icon to go with a status, but how to do that in the css file isn't clear from the </p>
-<p>docs/stylesheets/extra.css</p>
-<p>This page goes the furthest to document exactly how to do this, although they used this to define the word BETA rather than using an icon.
-https://www.starfallprojects.co.uk/blog/material-custom-status/#enable-the-feature</p>
-<p>https://squidfunk.github.io/mkdocs-material/customization/#additional-css</p>
+<p>You can define a new icon to go with a status, but how to do that in the css file (<code>docs/stylesheets/extra.css</code>) isn't clear to me.</p>
+<p><a href="https://www.starfallprojects.co.uk/blog/material-custom-status/#enable-the-feature">This page</a> goes the furthest to document exactly how to do this, although they used this to define the word BETA rather than using an icon.</p>
+<p><a href="https://squidfunk.github.io/mkdocs-material/customization/#additional-css">See also https://squidfunk.github.io/mkdocs-material/customization/#additional-css</a></p>
 <div class="footnote">
 <hr />
 <ol>
@@ -7951,7 +7953,7 @@ https://www.starfallprojects.co.uk/blog/material-custom-status/#enable-the-featu
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="October 14, 2026 00:28:17 UTC">October 14, 2026</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="October 21, 2026 00:17:17 UTC">October 21, 2026</span>
   </span>
 
     
@@ -8094,7 +8096,7 @@ https://www.starfallprojects.co.uk/blog/material-custom-status/#enable-the-featu
       <div class="md-copyright">
   
     <div class="md-copyright__highlight">
-      Copyright &copy; 2024 - 2028 Joint HPC Exchange
+      Copyright &copy; 2024 - 2030 Joint HPC Exchange
     </div>
   
   
