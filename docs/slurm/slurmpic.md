@@ -1,5 +1,5 @@
 ---
-icon: material/eye
+status: new
 tags:
   - slurm
   - in-progress
@@ -87,7 +87,7 @@ When you add the `-r` (for RAM stats) flag, three additional columns are shown:
 - FREEMEM - Currently unused RAM available for new jobs.
 - SYSFREEMEM - The operating system's idea of RAM that is not being used for any purpose. Users can ignore this data.
 - PARTITIONS - One or more partitions that the node is a member of.
-- GPUS - (gpus option) Two numbers: GPU cards in use and total installed. (WARNING: The "in use" number is determined by checking how many are currently running code, **NOT** the number locked down by SLURM job requests.)
+- GPUS - (gpus option) Two numbers: GPU cards in use and total installed. 
 - GPU_TYPES:COUNT - (gpus option) A list of GPU card models & how many of them are being used.
 - ALLOC - (ramstats option) Total of SLURM job requests (equals TOT_MEM - FREEMEM)
 - USED - (ramstats option) Amount of memory being used for _something_ (equals TOT_MEM - SYSFREEMEM)

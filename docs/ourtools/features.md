@@ -19,7 +19,7 @@ In short: you write Markdown documents and MkDocs turns them into a static web s
 
 By "ecosystem" we mean that there is a core software suite created by an "Squidfunk" organization which is extended by libraries/plugins created by both Squidfunk and the Internet community. All of the components have version numbers and are enhanced over time. We use only free features. If we paid a yearly fee, we would have have access to a larger set of features. (Keep that in mind when reading documention -- often there are cryptic icons next to a feature and you must know that you cannot use those.)
 
-We use a GitHub repo [jhpce-jhu/jhpce_mkdocs]([repository](https://github.com/jhpce-jhu/jhpce_mkdocs) to hold and serve the web site's files. That repository also contains configuration and programs which make the web site function. **The repository contains Materials for Mkdocs Python packages.**
+We use a GitHub repo [jhpce-jhu/jhpce_mkdocs repository](https://github.com/jhpce-jhu/jhpce_mkdocs) to hold and serve the web site's files. That repository also contains configuration and programs which make the web site function. **The repository contains Materials for Mkdocs Python packages.**
 
 We do not have a list of what high level changes to a default repository were needed. This will make it challenging to create a new repo for a new web site, or recover if we attempt to upgrade the software and the effort explodes in our face.
 
@@ -272,25 +272,25 @@ These two examples contain tab blocks inside of a detail and an admonition:
         ```
         
 
-## Frontmatter (in document files)
-Tags are the primary use of frontmatter I think we should use at this point. 
+## Frontmatter
+The beginning of a document can contain a special section called `frontmatter`. This is important tool to know exists, as the directives placed here can impact how the page is rendered
+and how the page is dealt with inside the website (you can exclude pages from search results and other such exceptions or page-specific modifications).
+
+[This documentation](https://squidfunk.github.io/mkdocs-material/reference/) is not a
+complete list of frontmatter directives, but it is a start.
+
+You can define the _page's title_ here (otherwise it will be guessed at by considering the first words of a file, such as the first header section (by header I mean denoted with a pound sign).
+
+_[Page tags](features.md#page-tags) are a primary use of frontmatter I think we will use._ 
 Tags are a list of keywords which can be used to find pages during searches,
 e.g. "in-progress" or "needs-correcting".
 
-The beginning of a document can contain a special section called "frontmatter".
-The directives placed here can impact how the page is rendered
-and how the page is dealt with inside the website. (Frontmatter is not a MarkDown standard, it was added as an enhancement.)
-
-An example of changing the appearance of the page is to control how many levels 
-of a page's sections are included in a Table of Contents. An example of changing
-the page's handling in the website is a frontmatter directive which causes an icon
-to be displayed next to the page's name in the website's navigation sidebar. Or
+An example of changing the appearance of the page is to _control how many levels 
+of a page's sections are included in a Table of Contents_. Or
 to not display the page in the websites Table of Contents.
 
-[This documentation](https://squidfunk.github.io/mkdocs-material/reference/) is not a
-complete list of frontmatter directives, but it mentions page icons.
 
-multiple frontmatter elements, like both tags and a page title, need to exist together inside one 
+An example of changing the page's handling in the website is a frontmatter directive which causes an icon to be displayed next to the page's name in the website's navigation sidebar. 
 
 Frontmatter consists of a pair of three dashed lines, with directives between
 them. Example:
@@ -300,6 +300,7 @@ them. Example:
 tags:
   - a-tag
 toc_depth: 2
+icon: material/eye
 title: some docs need explicit titles set b/c they can't be correctly guessed from page content
 hide:
 - toc
@@ -314,7 +315,7 @@ many levels of indentation are displayed. (A directive in the `mkdocs.yml` file
 controls how many levels are shown in the navigation bar. Entries can be made in the *frontmatter* section to control how toc's are handled, such as hiding them or specifying a document-specific depth level.)
 
 ## Page Tags
-An example of `frontmatter` is the code to [add tags](https://squidfunk.github.io/mkdocs-material/setup/setting-up-tags/) to documents. 20240211 Jeffrey tested adding a tag and it works. I tried to create a page which made a list of tags and the pages which used them using a particular string. (On 20251220 I cannot remember if it worked or not. I thought that it did work. But we no longer see the tags on pages, so perhaps whatever change Makr made to hide the tags also prevents the tag-generation code fail.) See comments in `mkdocs.yml`'s navigation section for notes.
+An example of [frontmatter](features.md#frontmatter) is the code to [add tags](https://squidfunk.github.io/mkdocs-material/setup/setting-up-tags/) to documents. a page which made a list of tags and the pages which used them using a particular string. (On 20251220 I cannot remember if it worked or not. I thought that it did work. But we no longer see the tags on pages, so perhaps whatever change Makr made to hide the tags also prevents the tag-generation code fail.) See comments in `mkdocs.yml`'s navigation section for notes.
 
 A lot of optional tag-related settings/capabilities seem to be reserved for paying sponsers as of 20240201. See this [page](https://squidfunk.github.io/mkdocs-material/insiders/). Can users search for documents by tags in the search field?
 
@@ -833,14 +834,11 @@ One flaw in this program is that sometimes the source code pane is blank when yo
 You can install it by download via the web or with Homebrew with `brew install --cask macdown` Stats on [its page ](https://formulae.brew.sh/cask/macdown)indicate some popularity.
 
 
-## Page Status
+## Page Status Icons
 
-You can add icons to pages in two ways by modifying the frontmatter of a page.
+These icons show up in the nav bar. You can add icons to pages in two ways by modifying the [frontmatter](features.md#frontmatter) of a page. These can be nice to signal users that some page is important, or that it was under heavy construction.
 
-Basic documentation for this: https://github.com/squidfunk/mkdocs-material/blob/master/docs/reference/index.md
-
-These show up in the nav bar. Whereas page tags as we are currently using in 04/2004 do not. Would be nice to signal more clearly to users that something was under heavy construction (because they don't necessarily understand the import of the tags, so unless you put in an authoring note at the top...)  Tags are nice to have, too, because they create a sorted list of pages to visit via simple clicks.
-
+Basic documentation for this: [https://github.com/squidfunk/mkdocs-material/blob/master/docs/reference/index.md](https://github.com/squidfunk/mkdocs-material/blob/master/docs/reference/index.md)
 
 ### Page Icons
 One is by defining an "icon"in the frontmatter for each document
@@ -854,12 +852,9 @@ There are MANY interesting icons you can use.
 One is by defining a "status" in the frontmatter for each document
 But the only three icons available are LAME LAME LAME in both resolution and appeal
 
-You can define a new icon to go with a status, but how to do that in the css file isn't clear from the 
+You can define a new icon to go with a status, but how to do that in the css file (`docs/stylesheets/extra.css`) isn't clear to me.
 
-docs/stylesheets/extra.css
+[This page](https://www.starfallprojects.co.uk/blog/material-custom-status/#enable-the-feature) goes the furthest to document exactly how to do this, although they used this to define the word BETA rather than using an icon.
 
-This page goes the furthest to document exactly how to do this, although they used this to define the word BETA rather than using an icon.
-https://www.starfallprojects.co.uk/blog/material-custom-status/#enable-the-feature
-
-https://squidfunk.github.io/mkdocs-material/customization/#additional-css
+[See also https://squidfunk.github.io/mkdocs-material/customization/#additional-css](https://squidfunk.github.io/mkdocs-material/customization/#additional-css)
 

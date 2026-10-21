@@ -1,0 +1,7 @@
+# This technique allows one to add a tag to all of the pages in this
+# directory. Pages which define tags possess those plus ones listed
+# here. JRT 20261020
+tags:
+  - ourtools
+  - mkdocs
+  - materialformkdocs
