@@ -133,11 +133,9 @@ Limits for CPU cores, RAM and Time (default/maximum)
 
 | Name | Type | Core | RAM | Time | Notes/Use |
 | ---- | :----: | ---- | ---- | :-------: | ----- |
-| bader | PI | (none) | (none) | (none/90d) | |
 | cancergen | PI | (none) | (none) | (none/90d) | |
 | caracol | PI | (none) | (none) | (none/90d) | access enforced by UNIX group |
 | cee | PI | (none) | (none) | (none/90d) | |
-| cegs2 | PI | (none) | (none) | (none/90d) | |
 | chatterjee | PI | (none) | (none) | (none/90d) | |
 | echodac | PI | (none) | (none) | (none/90d) | |
 | hongkai | PI | (none) | (none) | (none/90d) | |
