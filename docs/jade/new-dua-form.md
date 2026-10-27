@@ -1,6 +1,6 @@
 # New JADE DUA Form
 
-CMS Data Users - Please reach out to support@harp-csub.freshdesk.com to request an new CMD DUA.
+CMS Data Users - Please reach out to support@harp-csub.freshdesk.com to request a new CMD DUA.
 
 Please complete the below form if you would like to host data from a new DUA
 on the JADE cluster.  Once the form is completed, we will reach out to you to
