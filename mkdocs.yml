@@ -43,7 +43,7 @@ nav:
       - How to read a manual page (pdf): help/images/guide-to-manual-pages.pdf
       - Tools For Site Developers: 
          - Handy Features: ourtools/features.md
-         - Tips & Conventions: ourtools/tips-conventions.md
+         - 'Tips & Conventions': ourtools/tips-conventions.md
          - Wishlist: ourtools/wishlist.md
          - Page Tags Index: ourtools/site-tag-list.md
     - FAQ: help/faq.md
@@ -55,8 +55,9 @@ nav:
       - Web Portal (OOD) (JHPCE): ood/jhpce-ood-overview.md
       - Web Portal (OOD) (JADE): ood/jade-ood-overview.md
       - MobaXterm: access/mobaxterm.md
-      - Fail2ban: access/fail2ban.md
-      - 'JHPCE: Transferring files in or out': 
+      - 'SAFE & SAFER Desktops': access/safe-safer-desktops.md
+      - Fail2ban (SSH Blocking): access/fail2ban.md
+      - 'JHPCE: Transferring files in/out': 
         - Overview: access/file-transfer.md
         - Globus: access/globus.md
         - OneDrive via rclone: access/onedrive.md
@@ -164,6 +165,7 @@ nav:
         - SSH: access/ssh.md
         - X11: access/x11.md
         - MobaXterm: access/mobaxterm.md
+        - 'SAFE & SAFER Desktops': access/safe-safer-desktops.md
         - 'Open OnDemand (OOD)': ood/jade-ood-overview.md
         - Transferring files in or out: 
           - Overview: jade/access/transfer-overview.md

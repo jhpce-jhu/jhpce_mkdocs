@@ -81,7 +81,7 @@ SSH provides support for tunnelling X11 over an encrypted connection. You may ne
 
 For more information, see [our X11 document](x11.md).
 
-## Web Portal
+## Web Portals
 
 Access to our clusters will be changing in 2026. The main source of information will be the (now-sparse) page about [web services](web.md).
 
@@ -91,9 +91,12 @@ We have a web server named [jhpce-app02.jhsph.edu](https://jhpce-app02.jhsph.edu
 * Run applications on the cluster (RStudio, JupyterLab, VS Code) ([learn more](../portal/web-apps.md))
 * Inspect a catalog of research databases (under development) ([learn more](../portal/datacatalog.md))
 
-## SAFE Desktop
-A virtual desktop named the [Secure Analytic Framework Environment](https://ictr.johnshopkins.edu/service/informatics/safe-desktop/) (SAFE) is a resource that some people find useful for their computing, as well as a means to access JHPCE (via the [MobaXterm](mobaxterm.md) application). It is a virtual Windows computer equipped with many applications JHPCE members use for their research, including SAS and Stata. It includes 100GB of secure data storage for sensitive (PHI, PII) information. That data can be shared by research groups. Free for Johns Hopkins Medicine staff and students, it {==requires filling out a form and waiting for approval==}.
-You can complete the [SAFE User form](https://johnshopkins.service-now.com/serviceportal?id=sc_cat_item&sys_id=61fa28a26ffb220088e1f13f5d3ee45e) to request an account. We recommend using the "Request a SAFE Desktop (no storage) option if you will be just using the SAFE desktop to access JHPCE or JADE.
+## SAFE & SAFER Desktops
+Hopkins central IT offers two services named SAFE and SAFER Desktop. These are virtual Windows computers which can be used by themselves or to access JHPCE clusters such as JADE.
+
+Members of the dbGaP community **MUST** use one of these two services to access JADE in order to meet the requirements of the NIST 800-171 security standard.
+
+More information about them including links to application forms can be found in [our page](../access/safe-safer-desktops.md).
 
 ## File Transfers
 

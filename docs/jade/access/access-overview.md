@@ -2,6 +2,7 @@
 tags:
   - jade
   - topic-overview
+  - in-progress
 title: "Access JADE Overview"
 ---
 
@@ -10,25 +11,11 @@ title: "Access JADE Overview"
 # Accessing the JADE Cluster: Overview
 
 (This page was created by duplicating the [access overview page for the main
-cluster](../../access/access-overview.md) and beginning to revise it.)
+cluster](../../access/access-overview.md) and beginning to revise it. Our goal is to revise the main page to include information for both clusters that JHPCE manages -- the main one and JADE.)
 
 ## Cluster structure overview
 
-JADE can only be accessed from Hopkins networks. JADE serves three user
-communities. The dbGAP users must connect to JADE from the SAFE or SAFER
-Desktops. 
-
-Where members of each community can login from:
-
-=== "CMS Users"
-    Hopkins VPN & campus networks
-
-=== "dbGaP Users"
-    [SAFE Desktop](#safe-desktop) or [SAFER Desktop](#safer-desktop)
-
-=== "Sysadmin Users"
-    Hopkins VPN & campus networks & SAFE
-
+JADE can only be accessed from Hopkins networks (including the Hopkins VPN). JADE serves multiple user communities, each of which can have their own requirements. {==The dbGAP users must connect to JADE from the [SAFE or SAFER Desktops](../../access/safe-safer-desktops.md).==}
 
 ## Network Diagram
 
@@ -63,7 +50,6 @@ graph TD
    B([Login nodes]) --> F[Compute node2]
    B([Login nodes]) --> G[Compute node3]
 ```
-
 
 ## Public-facing: Login and Transfer 
 The login and transfer nodes are accessible to the wider Internet. 
@@ -123,29 +109,12 @@ We have a web server named [jhpce-app02.jhsph.edu](https://jhpce-app02.jhsph.edu
 * Inspect a catalog of research databases (under development) ([learn more](../../portal/datacatalog.md))
 -->
 
-## SAFE Desktop
-The SAFE Desktop was created by the School of Medicine to enable secure
-computing that involved sensitive (PHI, PII) information. The [Research
-IT](https://researchit.jhu.edu/about-rit/) group has been creating a more secure
-facility named the SAFER Desktop.
+## SAFE & SAFER Desktops
+Hopkins central IT offers two services named SAFE and SAFER Desktop. These are virtual Windows computers which can be used by themselves or to access JHPCE clusters such as JADE.
 
-Both are virtual Windows desktops equipped with applications for researchers,
-such as SAS and STATA, as well as productivity and utility tools. They include
-a certain amount secure data storage for sensitive (PHI, PII) information,
-which can be shared by others using the same facility.
+Members of the dbGaP community **MUST** use one of these two services to access JADE in order to meet the requirements of the NIST 800-171 security standard.
 
-Both {==require having JHED accounts and filling out a form.} It can be several
-days before the request is fulfilled, so please plan ahead.
-
-SAFE (the [Secure Analytic Framework
-Environment](https://researchit.jhu.edu/safer/) is free (students need faculty
-sponsorship), and comes with 100GB of disk space. You can complete the [SAFE User form](https://johnshopkins.service-now.com/serviceportal?id=sc_cat_item&sys_id=61fa28a26ffb220088e1f13f5d3ee45e) to request an account. We recommend using the "Request a SAFE Desktop (no storage) option if you will be just using the SAFE desktop to access JHPCE or JADE.
-
-## SAFER Desktop
-SAFER (the [Secure Analytic Framework Environment for
-Research](https://researchit.jhu.edu/safer/)) is provisioned using commercial
-cloud providers. They offer several different models with varying capabilities.
-The lowest model is free.
+More information about them including links to application forms can be found in [our page](../access/safe-safer-desktops.md).
 
 ## File Transfers
 
