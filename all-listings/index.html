@@ -1677,6 +1677,8 @@
       
         
       
+        
+      
     
     
     
@@ -1922,6 +1924,34 @@
   
   
     <li class="md-nav__item">
+      <a href="../access/safe-safer-desktops/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    SAFE & SAFER Desktops
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../access/fail2ban/" class="md-nav__link">
         
   
@@ -1929,7 +1959,7 @@
   <span class="md-ellipsis">
     
   
-    Fail2ban
+    Fail2ban (SSH Blocking)
   
 
     
@@ -1968,17 +1998,17 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1_6_9" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1_6_10" >
         
           
-          <label class="md-nav__link" for="__nav_1_6_9" id="__nav_1_6_9_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_1_6_10" id="__nav_1_6_10_label" tabindex="0">
             
   
   
   <span class="md-ellipsis">
     
   
-    JHPCE: Transferring files in or out
+    JHPCE: Transferring files in/out
   
 
     
@@ -1989,12 +2019,12 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_1_6_9_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_1_6_9">
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_1_6_10_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_1_6_10">
             <span class="md-nav__icon md-icon"></span>
             
   
-    JHPCE: Transferring files in or out
+    JHPCE: Transferring files in/out
   
 
           </label>
@@ -5543,6 +5573,8 @@
       
         
       
+        
+      
     
     
     
@@ -5704,6 +5736,34 @@
   
   
     <li class="md-nav__item">
+      <a href="../access/safe-safer-desktops/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    SAFE & SAFER Desktops
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../ood/jade-ood-overview/" class="md-nav__link">
         
   
@@ -5750,10 +5810,10 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1_15_5_6" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1_15_5_7" >
         
           
-          <label class="md-nav__link" for="__nav_1_15_5_6" id="__nav_1_15_5_6_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_1_15_5_7" id="__nav_1_15_5_7_label" tabindex="0">
             
   
   
@@ -5771,8 +5831,8 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="4" aria-labelledby="__nav_1_15_5_6_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_1_15_5_6">
+        <nav class="md-nav" data-md-level="4" aria-labelledby="__nav_1_15_5_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_1_15_5_7">
             <span class="md-nav__icon md-icon"></span>
             
   
@@ -9592,7 +9652,7 @@ Platform: x86_64-conda-linux-gnu (64-bit)
 [Previously saved workspace restored]
 
 &gt; install.package("your-package-name")
-</code></pre><h2><a class="heading" href="..//sw/sas/">SAS</a></h2><a class="url" href="..//sw/sas/">/sw/sas/</a><pre><span></span><code>[test@login31 ~]$ srun --partition sas --mem 10G --x11 --pty bash
+</code></pre><h2><a class="heading" href="..//sw/sas/">SAS</a></h2><a class="url" href="..//sw/sas/">/sw/sas/</a><pre><span></span><code>[test@jhpce03 ~]$ srun --partition sas --mem 20G --cpus-per-task=4 --x11 --pty bash
 srun: job 3178287 queued and waiting for resources
 srun: job 3178287 has been allocated resources
 
@@ -9603,7 +9663,7 @@ Currently Loaded Modules:
   1) JHPCE_ROCKY9_DEFAULT_ENV   2) JHPCE_tools/3.0   3) sas/9.4
 
 [test@compute-101 ~]$ sas
-</code></pre><pre><span></span><code>[test@login31 ~]$ srun --partition sas --mem 10G --x11 --pty bash
+</code></pre><pre><span></span><code>[test@jhpce03 ~]$ srun --partition sas --mem 20G --cpus-per-task=4 --pty bash
 srun: job 3178287 queued and waiting for resources
 srun: job 3178287 has been allocated resources
 
@@ -9613,15 +9673,16 @@ srun: job 3178287 has been allocated resources
 Currently Loaded Modules:
   1) JHPCE_ROCKY9_DEFAULT_ENV   2) JHPCE_tools/3.0   3) sas/9.4
 </code></pre><pre><span></span><code>sas -helpbrowser SAS -xrm "SAS.webBrowser:'/usr/bin/chromium-browser'" -xrm "SAS.helpBrowser:'/usr/bin/chromium-browser'"
-</code></pre><pre><span></span><code>csas
-</code></pre><pre><span></span><code><span class="c1"># SAS routines for __interactive__ sessions where plotting is involved</span>
+</code></pre><pre><span></span><code>sas -helpbrowser SAS -xrm "SAS.webBrowser:'/usr/bin/chromium-browser'" -xrm "SAS.helpBrowser:'/usr/bin/chromium-browser'" "$@" &gt; /dev/null 2&gt;&amp;1
+</code></pre><pre><span></span><code><span class="c1"># SAS routines for __interactive__ sessions where plotting/help is involved</span>
 <span class="c1"># (because SAS generates HTML for the plots when run in interactive mode)</span>
 <span class="c1"># </span>
-<span class="c1"># (YOU HAVE TO RUN "module load SAS" before calling either of these routines)</span>
+<span class="c1"># (YOU HAVE TO RUN "module load SAS" before calling either of these routines. Or</span>
+<span class="c1">#  you could include them into the function definitions)</span>
 <span class="c1">#</span>
-<span class="c1"># To use Chromium-browser as your web browser for SAS to display html help files and output:</span>
-<span class="c1">#</span>
-csas<span class="o">()</span><span class="w"> </span><span class="o">{</span><span class="w"> </span>sas<span class="w"> </span>-helpbrowser<span class="w"> </span>SAS<span class="w"> </span>-xrm<span class="w"> </span><span class="s2">"SAS.webBrowser:'/usr/bin/chromium-browser'"</span><span class="w"> </span>-xrm<span class="w"> </span><span class="s2">"SAS.helpBrowser:'/usr/bin/chromium-browser'"</span><span class="w"> </span><span class="s2">"</span><span class="nv">$@</span><span class="s2">"</span><span class="w"> </span>&gt;<span class="w"> </span>/dev/null<span class="w"> </span><span class="m">2</span>&gt;<span class="p">&amp;</span><span class="m">1</span><span class="p">;</span><span class="w"> </span><span class="o">}</span>
+csas<span class="o">()</span><span class="w"> </span><span class="o">{</span><span class="w"> </span>sas<span class="w"> </span>-helpbrowser<span class="w"> </span>SAS<span class="w"> </span>-xrm<span class="w"> </span><span class="s2">"SAS.webBrowser:'/usr/bin/chromium-browser'"</span><span class="w"> </span>-xrm<span class="w"> </span><span class="s2">"SAS.helpBrowser:'/usr/bin/chromium-browser'"</span><span class="w"> </span><span class="s2">"</span><span class="nv">$@</span><span class="s2">"</span><span class="w"> </span>&gt;<span class="w"> </span>/dev/null<span class="w"> </span><span class="m">2</span>&gt;<span class="p">&amp;</span><span class="m">1</span><span class="w"> </span><span class="o">}</span>
+<span class="c1"># This one does not do I/O redirection:</span>
+csasfull<span class="o">()</span><span class="w"> </span><span class="o">{</span><span class="w"> </span>sas<span class="w"> </span>-helpbrowser<span class="w"> </span>SAS<span class="w"> </span>-xrm<span class="w"> </span><span class="s2">"SAS.webBrowser:'/usr/bin/chromium-browser'"</span><span class="w"> </span>-xrm<span class="w"> </span><span class="s2">"SAS.helpBrowser:'/usr/bin/chromium-browser'"</span><span class="w"> </span><span class="s2">"</span><span class="nv">$@</span><span class="s2">"</span><span class="w"> </span><span class="o">}</span>
 </code></pre><pre><span></span><code>DATA CLASS;
      <span class="k">INPUT</span> NAME $ <span class="m">1-8</span> SEX $ <span class="m">10</span> AGE <span class="m">12-13</span> HEIGHT <span class="m">15-16</span> WEIGHT <span class="m">18-22</span>;
 <span class="k">CARDS;</span>
