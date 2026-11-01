@@ -3043,10 +3043,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#current-available-software" class="md-nav__link">
+  <a href="#resources-for-software-packages" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Current available software
+        Resources for software packages
       
     </span>
   </a>
@@ -3054,10 +3054,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#resources-for-some-software" class="md-nav__link">
+  <a href="#listing-currently-available-software" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Resources for some software
+        Listing currently-available software
       
     </span>
   </a>
@@ -6313,10 +6313,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#current-available-software" class="md-nav__link">
+  <a href="#resources-for-software-packages" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Current available software
+        Resources for software packages
       
     </span>
   </a>
@@ -6324,10 +6324,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#resources-for-some-software" class="md-nav__link">
+  <a href="#listing-currently-available-software" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Resources for some software
+        Listing currently-available software
       
     </span>
   </a>
@@ -6354,8 +6354,28 @@
   <h1>Overview</h1>
 
 <h3 id="introduction">Introduction<a class="headerlink" href="#introduction" title="Anchor link to this section for reference">&para;</a></h3>
-<p>The Joint High Performance Computing Exchange (JHPCE) offers a variety of software for use on the cluster. They are installed and running on Rocky Linux 9.4. We use <a href="../modules/">Lmod module system</a> to manage the installed software. You can run <code>module aval</code> at the cluster prompt for the available software.</p>
-<h3 id="current-available-software">Current available software<a class="headerlink" href="#current-available-software" title="Anchor link to this section for reference">&para;</a></h3>
+<p>The Joint High Performance Computing Exchange (JHPCE) offers a variety of software applications for use on the clusters. Please see the "Software" section of the navigation bar for more info. </p>
+<h3 id="resources-for-software-packages">Resources for software packages<a class="headerlink" href="#resources-for-software-packages" title="Anchor link to this section for reference">&para;</a></h3>
+<p>We have web pages for some of the primary applications:</p>
+<ul>
+<li><a href="../matlab/">Matlab</a></li>
+<li><a href="../python/">Python</a></li>
+<li><a href="../r-n-friends/">R</a></li>
+<li><a href="../sas/">SAS</a></li>
+<li><a href="../stata/">Stata</a></li>
+</ul>
+<p>We use the <a href="../modules/">Lmod module system</a> to manage some of the installed software packages - you can run <code>module avail</code> at the cluster prompt to list them. For more info about using modules, please consult <code>man module</code> and <a href="../modules/">our page</a>.</p>
+<h3 id="listing-currently-available-software">Listing currently-available software<a class="headerlink" href="#listing-currently-available-software" title="Anchor link to this section for reference">&para;</a></h3>
+<p>System administrators place locally-written programs in a "tools" directory, <code>/jhpce/shared/jhpce/core/JHPCE_tools/3.0/bin/</code> Most of them are shell scripts, so you can inspect them with a text editor. You can also copy them and edit them to suite your needs.</p>
+<p>You'll notice that the modules are divided up into groups. These divisions are due to the fact that their are multiple people/organizations who create and maintain the modules.</p>
+<ul>
+<li>"jhpce" modules are provided by the cluster maintainers.</li>
+<li>"libd" ones are from the Lieber Institute for Brain Development.</li>
+<li>The "community" ones are supported by volunteers from the broader JHPCE community.</li>
+</ul>
+<p>For more-involved issues with "libd" and "community", please contact the  <a href="bitsupport@lists.jh.edu">bitsupport@lists.jh.edu</a> mailing list. Those maintainers are members of that list.</p>
+<p>For "jhpce" modules, contact <a href="bithelp@lists.jh.edu">bithelp@lists.jh.edu</a>.</p>
+<p>Of course, the modules you will see are the latest ones.</p>
 <div class="highlight"><pre><span></span><code>[test@compute-110 ~]$ module avail
 
 --------------------------------------------------------------------------------- /jhpce/shared/jhpce/modulefiles ---------------------------------------------------------------------------------
@@ -6383,14 +6403,6 @@
    bs/1.3.0                fastqc/0.11.8                htslib/1.10.2                 nextflow/23.10.0   (D)    samblaster/0.1.26        tangram/1.0.4
    bustools/0.39.3         fastqc/0.12.1         (D)    htslib/1.18            (D)    paste/1.3.0               samtools/1.10            tensorqtl/1.0.8
 </code></pre></div>
-<h3 id="resources-for-some-software">Resources for some software<a class="headerlink" href="#resources-for-some-software" title="Anchor link to this section for reference">&para;</a></h3>
-<ul>
-<li><a href="../matlab/">Matlab</a></li>
-<li><a href="../python/">Python</a></li>
-<li><a href="../r-n-friends/">R</a></li>
-<li><a href="../sas/">SAS</a></li>
-<li><a href="../stata/">Stata</a></li>
-</ul>
 
 
 
@@ -6411,7 +6423,7 @@
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="April 10, 2025 01:55:55 UTC">April 10, 2025</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="November 1, 2026 22:53:01 UTC">November 1, 2026</span>
   </span>
 
     
@@ -6422,12 +6434,13 @@
   <span class="md-source-file__fact">
     <span class="md-icon" title="Contributors">
       
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 4a4 4 0 0 1 4 4 4 4 0 0 1-4 4 4 4 0 0 1-4-4 4 4 0 0 1 4-4m0 10c4.42 0 8 1.79 8 4v2H4v-2c0-2.21 3.58-4 8-4"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 5.5A3.5 3.5 0 0 1 15.5 9a3.5 3.5 0 0 1-3.5 3.5A3.5 3.5 0 0 1 8.5 9 3.5 3.5 0 0 1 12 5.5M5 8c.56 0 1.08.15 1.53.42-.15 1.43.27 2.85 1.13 3.96C7.16 13.34 6.16 14 5 14a3 3 0 0 1-3-3 3 3 0 0 1 3-3m14 0a3 3 0 0 1 3 3 3 3 0 0 1-3 3c-1.16 0-2.16-.66-2.66-1.62a5.54 5.54 0 0 0 1.13-3.96c.45-.27.97-.42 1.53-.42M5.5 18.25c0-2.07 2.91-3.75 6.5-3.75s6.5 1.68 6.5 3.75V20h-13zM0 20v-1.5c0-1.39 1.89-2.56 4.45-2.9-.59.68-.95 1.62-.95 2.65V20zm24 0h-3.5v-1.75c0-1.03-.36-1.97-.95-2.65 2.56.34 4.45 1.51 4.45 2.9z"/></svg>
       
     </span>
     <nav>
       
-        <a href="mailto:bstnet@hotmail.com">jhpcehpc</a>
+        <a href="mailto:bstnet@hotmail.com">jhpcehpc</a>, 
+        <a href="mailto:tunison@jhu.edu">jeffreytunison</a>
     </nav>
   </span>
 
