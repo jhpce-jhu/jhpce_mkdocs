@@ -1,8 +1,35 @@
 ### Introduction
 
-The Joint High Performance Computing Exchange (JHPCE) offers a variety of software for use on the cluster. They are installed and running on Rocky Linux 9.4. We use [Lmod module system](modules.md) to manage the installed software. You can run `module aval` at the cluster prompt for the available software.
+The Joint High Performance Computing Exchange (JHPCE) offers a variety of software applications for use on the clusters. Please see the "Software" section of the navigation bar for more info. 
 
-### Current available software
+### Resources for software packages
+
+We have web pages for some of the primary applications:
+
+- [Matlab](matlab.md)
+- [Python](python.md)
+- [R](r-n-friends.md )
+- [SAS](sas.md)
+- [Stata](stata.md)
+
+We use the [Lmod module system](modules.md) to manage some of the installed software packages - you can run `module avail` at the cluster prompt to list them. For more info about using modules, please consult `man module` and [our page](../sw/modules.md).
+
+### Listing currently-available software
+
+System administrators place locally-written programs in a "tools" directory, `/jhpce/shared/jhpce/core/JHPCE_tools/3.0/bin/` Most of them are shell scripts, so you can inspect them with a text editor. You can also copy them and edit them to suite your needs.
+
+You'll notice that the modules are divided up into groups. These divisions are due to the fact that their are multiple people/organizations who create and maintain the modules.
+
+- "jhpce" modules are provided by the cluster maintainers.
+- "libd" ones are from the Lieber Institute for Brain Development.
+- The "community" ones are supported by volunteers from the broader JHPCE community.
+
+For more-involved issues with "libd" and "community", please contact the  [bitsupport@lists.jh.edu](bitsupport@lists.jh.edu) mailing list. Those maintainers are members of that list.
+
+For "jhpce" modules, contact [bithelp@lists.jh.edu](bithelp@lists.jh.edu).
+
+Of course, the modules you will see are the latest ones.
+
 ```
 [test@compute-110 ~]$ module avail
 
@@ -31,10 +58,3 @@ The Joint High Performance Computing Exchange (JHPCE) offers a variety of softwa
    bs/1.3.0                fastqc/0.11.8                htslib/1.10.2                 nextflow/23.10.0   (D)    samblaster/0.1.26        tangram/1.0.4
    bustools/0.39.3         fastqc/0.12.1         (D)    htslib/1.18            (D)    paste/1.3.0               samtools/1.10            tensorqtl/1.0.8
 ```
-
-### Resources for some software
-- [Matlab](matlab.md)
-- [Python](python.md)
-- [R](r-n-friends.md )
-- [SAS](sas.md)
-- [Stata](stata.md)
