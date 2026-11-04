@@ -1,3 +1,9 @@
+/*
+     20261104 JRT commented out the original values to preserve them
+                  New values added to cause Safari browser to display
+                  left nav bar & right per-page TOC sections for most
+                  non-mobile-device browser window widths.
+
 .md-grid {
   max-width: none;
 }
@@ -26,4 +32,63 @@
 .md-content {
   --md-typeset-a-color: #004fff;
 }
+*/
 
+/* ==========================================
+   ORIGINAL SETTINGS (PRESERVED)
+   ========================================== */
+/*
+.md-grid { max-width: none; } 
+.md-main__inner { margin-top: none; } 
+*/
+
+/* ==========================================
+   NEW CROSS-BROWSER WIDE LAYOUT
+   ========================================== */
+.md-grid { 
+  max-width: 100%; 
+} 
+
+.md-main__inner { 
+  margin-top: 0; 
+} 
+
+/* ==========================================
+   DESKTOP BREAKPOINT DOWNGRADE (720px)
+   Preserves mobile formatting on smaller screens
+   but reduces the width at which Safari displays the nav bar from 960px
+   ========================================== */
+@media screen and (min-width: 45rem) {
+  .md-sidebar--primary {
+    display: block;
+    position: alternate;
+  }
+  .md-sidebar--secondary {
+    display: block;
+    position: alternate;
+  }
+}
+
+/* ==========================================
+   TEAM COLOR STYLING
+   ========================================== */
+.md-footer-meta { 
+  background-color: color(srgb 0.2511 0.3187 0.7114); 
+} 
+
+.md-banner { 
+  background-color: #ffcc00; 
+  color: #cc3300; 
+} 
+
+.mbash { 
+  background-color: black; 
+  color: #00FF88; 
+  font-size: 14px; 
+  font-family: consolas, monospace; 
+  display: inline-block; 
+} 
+
+.md-content { 
+  --md-typeset-a-color: #004fff; 
+}
