@@ -1,9 +1,109 @@
-/*
-     20261104 JRT commented out the original values to preserve them
-                  New values added to cause Safari browser to display
-                  left nav bar & right per-page TOC sections for most
-                  non-mobile-device browser window widths.
+/* ==================================================
+   20261104 JRT revised this file. The orig file contents are at the bottom
+       and commented out to preserve them for comparison.
 
+       Materials for MkDocs has embedded design decisions relating to displaying
+       the same info in diff ways depending on things like browser window size.
+       Some of the settings in this file impact how those decisions are
+       implemented.
+
+       Chromium-based browsers e.g. Chrome & Brave behave differently from
+       Safari in many cases.
+
+       Motivation for mdifications: help Safari users to see
+         + left nav bar and
+         + right per-page TOC sections
+       for most widths of browsers on devices that aren't mobile ones.
+
+       In particular, the previous definition
+         .md-grid { max-width: none; }
+       meant that Safari users NEVER saw the nav bar unless in full-screen mode.
+
+       One of the consequences was that visiting Mark's pages accessed via
+       the first entries (left-most) nav bar entries resulted in Safari users
+       practically-speaking NEVER being shown any evidence of the other pages
+       available in those sections, even when using very wide (e.g. 2000+ pixels)
+       windows. What users see for those left-most entries depends on whether
+       a user clicks on the (words of the link) versus (the ">" single character
+       to the right of the words of the link). That is still true, but now
+       there is a better chance of them learning what other pages are available.
+
+   ================================================== */
+
+/* ==========================================
+   BROWSER WIDTH-RELATED VARIABLES
+   ==========================================
+
+   By default, Material for MkDocs wraps your documentation in a center-aligned
+   box that maxes out at 1220px wide (76.25rem). On a large monitor, any screen
+   real estate beyond 1220px is filled with empty, blank margins on the left and
+   right.
+*/
+
+/*  Previously:
+.md-grid { max-width: none; } 
+.md-main__inner { margin-top: none; } 
+
+JRT thinks that those changes were added to this file to help wider tables
+be displayed in usable ways (less-good ways include tables requiring users
+to use scroll bars and cell contents being rendered one character per line).
+THAT MAY NOW BE MORE LIKELY TO HAPPEN because I undid the prev settings.
+*/
+
+.md-grid { 
+  max-width: 100%; 
+} 
+
+.md-main__inner { 
+  margin-top: 0; 
+} 
+
+/* ==========================================
+   BROWSER WIDTH BREAKPOINT REDUCTION (960px --> 720px)
+   Preserves mobile formatting on smaller screens but reduces
+   the width at which Safari begins displays the nav bar.
+   ========================================== */
+@media screen and (min-width: 45rem) {
+  .md-sidebar--primary {
+    display: block;
+    position: alternate;
+  }
+
+  .md-sidebar--secondary {
+    display: block;
+    position: alternate;
+  }
+}
+
+/* ==========================================
+   COLOR STYLING OPTIONS
+   ========================================== */
+.md-footer-meta { 
+  background-color: color(srgb 0.2511 0.3187 0.7114); 
+} 
+
+.md-banner { 
+  background-color: #ffcc00; 
+  color: #cc3300; 
+} 
+
+.mbash { 
+  background-color: black; 
+  color: #00FF88; 
+  font-size: 14px; 
+  font-family: consolas, monospace; 
+  display: inline-block; 
+} 
+
+.md-content { 
+  --md-typeset-a-color: #004fff; 
+}
+
+/* ==========================================
+   BEGIN - SETTINGS BEFORE 20261104 (PRESERVED)
+   ========================================== */
+
+/* 
 .md-grid {
   max-width: none;
 }
@@ -35,60 +135,5 @@
 */
 
 /* ==========================================
-   ORIGINAL SETTINGS (PRESERVED)
+   END - ORIGINAL SETTINGS (PRESERVED)
    ========================================== */
-/*
-.md-grid { max-width: none; } 
-.md-main__inner { margin-top: none; } 
-*/
-
-/* ==========================================
-   NEW CROSS-BROWSER WIDE LAYOUT
-   ========================================== */
-.md-grid { 
-  max-width: 100%; 
-} 
-
-.md-main__inner { 
-  margin-top: 0; 
-} 
-
-/* ==========================================
-   DESKTOP BREAKPOINT DOWNGRADE (720px)
-   Preserves mobile formatting on smaller screens
-   but reduces the width at which Safari displays the nav bar from 960px
-   ========================================== */
-@media screen and (min-width: 45rem) {
-  .md-sidebar--primary {
-    display: block;
-    position: alternate;
-  }
-  .md-sidebar--secondary {
-    display: block;
-    position: alternate;
-  }
-}
-
-/* ==========================================
-   TEAM COLOR STYLING
-   ========================================== */
-.md-footer-meta { 
-  background-color: color(srgb 0.2511 0.3187 0.7114); 
-} 
-
-.md-banner { 
-  background-color: #ffcc00; 
-  color: #cc3300; 
-} 
-
-.mbash { 
-  background-color: black; 
-  color: #00FF88; 
-  font-size: 14px; 
-  font-family: consolas, monospace; 
-  display: inline-block; 
-} 
-
-.md-content { 
-  --md-typeset-a-color: #004fff; 
-}
