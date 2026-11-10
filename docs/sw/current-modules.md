@@ -37,8 +37,8 @@
    gh/2.46.0                       sas/9.0
    ghostscript/10.02.1             sas/9.4            (D)
    glpk/5.0                        shapeit/5.1.1
-   gmp/6.2.1                       singularity/3.11.4 (D)
-   go/20.6                  (D)    singularity/4.5.1
+   gmp/6.2.1                       singularity/3.11.4
+   go/20.6                  (D)    singularity/4.5.1  (D)
    go/22.1                         sra-toolkit/3.1.1
    go/23.1                         stata/17
    go/26.1                         tesseract/5.5.1
@@ -131,4 +131,4 @@ any of the "keys".
 ```
 Note: some modules may not be available on the login node or on the JADE nodes.
 
-#####Updated: Mon Nov  9 05:30:02 AM EST 2026
+#####Updated: Tue Nov 10 05:30:02 AM EST 2026
