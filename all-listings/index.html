@@ -6781,18 +6781,18 @@ ServerAliveCountMax<span class="w"> </span><span class="m">30</span>
 </code></pre><h2><a class="heading" href="..//access/x11/">X11</a></h2><a class="url" href="..//access/x11/">/access/x11/</a><pre><span></span><code>$ rm .Xauthority-l
 $ rm .Xauthority-c
 </code></pre><h2><a class="heading" href="..//ai/claude-example/">Claude</a></h2><a class="url" href="..//ai/claude-example/">/ai/claude-example/</a><pre><span></span><code><span class="gp">[user1@jhpce01 ~]$ </span>srun<span class="w"> </span>--pty<span class="w"> </span>--x11<span class="w"> </span>bash
-<span class="gp">[user1@compute-107 ~]$ </span>module<span class="w"> </span>load<span class="w"> </span>node
+<span class="gp">[user1@compute-107 ~]$ </span>module<span class="w"> </span>load<span class="w"> </span>claude
 <span class="gp">[user1@compute-107 ~]$ </span>claude
 <span class="go">╭─── Claude Code v2.1.150 ─────────────────────────────────────────────────────╮</span>
 <span class="go">│                                                    │ Tips for getting        │</span>
-<span class="go">│                Welcome back Marcus!                │ started                 │</span>
+<span class="go">│                Welcome back Bob!                │ started                 │</span>
 <span class="go">│                                                    │ Run /init to create a … │</span>
 <span class="go">│                       ▐▛███▜▌                      │ Note: You have launche… │</span>
 <span class="go">│                      ▝▜█████▛▘                     │ ─────────────────────── │</span>
 <span class="go">│                        ▘▘ ▝▝                       │ What's new              │</span>
 <span class="go">│                                                    │ Bug fixes and reliabil… │</span>
 <span class="go">│    Opus 4.7 (1M context) · API Usage Billing ·     │ Bug fixes and reliabil… │</span>
-<span class="go">│    Marcus‘s Individual Org                         │ Added `fallbackModel` … │</span>
+<span class="go">│    Bob‘s Individual Org                            │ Added `fallbackModel` … │</span>
 <span class="go">│                  /users/user1                      │ /release-notes for more │</span>
 <span class="go">╰──────────────────────────────────────────────────────────────────────────────╯</span>
 <span class="go">&gt;  </span>
@@ -6876,6 +6876,28 @@ $ rm .Xauthority-c
 <span class="go">※ recap: You created a claude-demo directory with count.py (prints 1-10) and </span>
 <span class="go">  submitted it as a SLURM job, which completed successfully. Next: decide what </span>
 <span class="go">  to do with the demo, or move on to another task. (disable recaps in /config)</span>
+</code></pre><pre><span></span><code>#!/bin/bash
+#SBATCH --job-name=claude-batch
+#SBATCH --output=logs/claude_%j.out
+#SBATCH --error=logs/claude_%j.err
+#SBATCH --time=01:00:00
+#SBATCH --cpus-per-task=4
+#SBATCH --mem=16G
+
+# 1. Load environment &amp; API key
+module load claude
+export ANTHROPIC_API_KEY=$(cat ~/.anthropic_key)
+
+# 2. Run Claude Code non-interactively
+claude -p "Analyze the error logs in ./data/run_${SLURM_ARRAY_TASK_ID}.log and write a JSON summary to ./results/summary_${SLURM_ARRAY_TASK_ID}.json" \
+  --allowedTools "Read,Write,Bash" \
+  --output-format json
+</code></pre><pre><span></span><code># Do your work
+claude -p "your task here" --output-format json &gt; result.json
+
+# Then query context in the same session (note -c continues it)
+echo "/context" | claude -p -c --output-format json --verbose | \
+    jq -r '.[1].message.content'
 </code></pre><h2><a class="heading" href="..//ai/codex/">OpenAI Codex</a></h2><a class="url" href="..//ai/codex/">/ai/codex/</a><pre><span></span><code><span class="gp">[user1@jhpce01 ~]$ </span>srun<span class="w"> </span>--pty<span class="w"> </span>--x11<span class="w"> </span>bash
 <span class="gp">[user1@compute-120 ~]$ </span>module<span class="w"> </span>load<span class="w"> </span>node
 <span class="gp">[user1@compute-120 ~]$ </span>codex
