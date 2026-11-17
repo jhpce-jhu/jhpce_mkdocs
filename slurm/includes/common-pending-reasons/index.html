@@ -6233,69 +6233,89 @@
 </thead>
 <tbody>
 <tr>
-<td>BeginTime</td>
+<td><strong>BeginTime</strong></td>
 <td>The job's earliest start time has not yet been reached</td>
-<td></td>
+<td>Rare - Only seen if you specified a start time.</td>
 </tr>
 <tr>
-<td>Dependency</td>
+<td><strong>Dependency</strong></td>
 <td>Job waiting on a user-defined dependency</td>
 <td>See why with <code>showjob &lt;jobid&gt;|grep -i depend</code></td>
 </tr>
 <tr>
-<td>DependencyNeverSatisfied</td>
+<td><strong>DependencyNeverSatisfied</strong></td>
 <td>Something went wrong</td>
-<td>You should investigate why. Incorrect dependency specified?</td>
+<td>You should investigate why. Did</td>
 </tr>
 <tr>
-<td>JobArrayTaskLimit</td>
+<td>you make a typo or a logical mistake in terms of relationships &amp; ordering?</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><strong>JobArrayTaskLimit</strong></td>
 <td>Array job configured to run only so many tasks at a time</td>
-<td>Good way to control resource use</td>
+<td>Thisis</td>
 </tr>
 <tr>
-<td>JobHeldAdmin</td>
+<td>a good way to control resource use</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><strong>JobHeldAdmin</strong></td>
 <td>The job is held by a system administrator</td>
-<td></td>
+<td>Rare.</td>
 </tr>
 <tr>
-<td>JobHeldUser</td>
+<td><strong>JobHeldUser</strong></td>
 <td>The job is held by the user</td>
-<td></td>
+<td>Please do something about it.</td>
 </tr>
 <tr>
-<td>Priority</td>
+<td><strong>Priority</strong></td>
 <td>One or more higher priority jobs exist for this partition or advanced reservation</td>
 <td></td>
 </tr>
 <tr>
-<td>QOSJobLimit</td>
+<td><strong>QOSJobLimit</strong></td>
 <td>The job's QOS has reached its maximum job count</td>
 <td></td>
 </tr>
 <tr>
-<td>QOSMaxCpuPerUserLimit</td>
+<td><strong>QOSMaxCpuPerUserLimit</strong></td>
 <td>Your other running jobs have consumed your CPU quota</td>
 <td><code>slurmuser --me</code> will show your used/pending resources</td>
 </tr>
 <tr>
-<td>QOSMaxMemoryPerUser</td>
+<td><strong>QOSMaxMemoryPerUser</strong></td>
 <td>Your other running jobs have consumed your RAM quota</td>
 <td><code>slurmuser --me</code> will show your used/pending resources</td>
 </tr>
 <tr>
-<td>Reservation</td>
+<td><strong>Reservation</strong></td>
 <td>Job waiting for its advanced reservation to become available</td>
-<td></td>
+<td>Rare.</td>
 </tr>
 <tr>
-<td>Resources</td>
+<td><strong>Resources</strong></td>
 <td>Needed resources not currently available in partition</td>
 <td><code>slurmpic -p &lt;partition&gt;</code> can show you what's used &amp; consumed in that partition</td>
 </tr>
 <tr>
-<td>ReqNodeNotAvail</td>
+<td><strong>ReqNodeNotAvail</strong></td>
 <td>Some node specifically required by the job is not currently available</td>
-<td>Usu seen when all nodes in a partition are unavailable</td>
+<td>Usu seen when all nodes in a partition are unavailable.</td>
+</tr>
+<tr>
+<td>Otherwise you may have explicitly specified particular nodes, or excluded all of the other</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>nodes which can run this job.</td>
+<td></td>
+<td></td>
 </tr>
 </tbody>
 </table>
@@ -6319,7 +6339,7 @@
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="May 3, 2024 01:56:22 UTC">May 3, 2024</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="November 17, 2026 05:49:15 UTC">November 17, 2026</span>
   </span>
 
     

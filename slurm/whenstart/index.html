@@ -88,7 +88,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#factors-affecting-job-scheduling" class="md-skip">
+        <a href="#when-will-my-job-start" class="md-skip">
           Skip to content
         </a>
       
@@ -4380,10 +4380,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#overview-the-problem" class="md-nav__link">
+  <a href="#overview-the-scheduling-problem" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Overview - The Problem
+        Overview - The Scheduling Problem
       
     </span>
   </a>
@@ -6402,10 +6402,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#overview-the-problem" class="md-nav__link">
+  <a href="#overview-the-scheduling-problem" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Overview - The Problem
+        Overview - The Scheduling Problem
       
     </span>
   </a>
@@ -6523,17 +6523,32 @@
 
 
 
-<h1 id="factors-affecting-job-scheduling">Factors Affecting Job Scheduling<a class="headerlink" href="#factors-affecting-job-scheduling" title="Anchor link to this section for reference">&para;</a></h1>
+<h1 id="when-will-my-job-start">When Will My Job Start?<a class="headerlink" href="#when-will-my-job-start" title="Anchor link to this section for reference">&para;</a></h1>
+<p>A variety of factors affect job scheduling. One or more of them are the reason your job does not transition from SLURM's <code>PENDING</code> to <code>RUNNING</code> job state.</p>
 <h2 id="tldr">TL;DR<a class="headerlink" href="#tldr" title="Anchor link to this section for reference">&para;</a></h2>
-<p>Request the smallest and/or fewest resources which will allow your job to run to completion.</p>
-<p>Choose the appropriate partition for your work. Partitions have different rules, which are explained <a href="../partitions/">here</a>.</p>
-<p>"Smaller" jobs "fit" into more slots between other jobs than "larger" jobs, so request only the resources you need. You might also consider whether you can divide up your work. You might also want to direct your job to the most appropriate partition. For example, the JHPCE cluster has an "interactive" partition for small jobs.</p>
-<p>Understand that we have implemented various policies which impact the ordering of jobs which are otherwise equivalent in terms of resources requested. </p>
-<p>If you have used a lot of resources in public partitions recently, (in the last week, especially over the last three days), your jobs will have a lower <em>priority</em> than those of someone who has consumed less.</p>
-<p>If the scheduler has been able to determine an estimated start date for your job, it will be shown in the output of</p>
+<ul>
+<li>
+<p><strong>Identify the reason:</strong> Look at the “Reason” column of the output of <code>squeue --me</code>. Read <a href="../about-jobs/#pending-job-reasons">this list</a> about the meanings &amp; things you can do.</p>
+</li>
+<li>
+<p><strong>How busy is the cluster?</strong> The <code>slurmpic</code> command can provide insight into this in both the broad and specific senses. <a href="../slurmpic/">This page</a> describes the command and its output.  If you specified a partition, then use <code>slurmpic -p &lt;partition_name&gt;</code> to see what it has available at the moment.</p>
+</li>
+<li>
+<p><strong>Request the fewest resources</strong> (cpu, ram, time) which will allow your job to run to completion. "Smaller" jobs "fit" into more slots between other jobs than "larger" jobs, so request only the resources you need, including the job duration (which defaults to one day in many cases). You might want to divide up your work into portions. <a href="../crafting-jobs/#dependent-jobs">Job dependencies</a> can be used to control the sequence in which related jobs run.</p>
+</li>
+<li>
+<p><strong>Choose the appropriate partition for your work.</strong> Partitions have different rules, which are explained <a href="../partitions/">here</a>. Your job may be better-suited for a different one than you chose. For example, the JHPCE cluster has several partitions for smaller jobs: <code>interactive</code>, <code>interactive-larger</code> and <code>scavenge</code>. If you are a member of a group which owns some nodes, then you may want to choose between the default <code>shared</code> one used by everyone and the "private" partition(s) meant for your group.</p>
+</li>
+<li>
+<p>Understand that we have implemented various **policies which impact the ordering of jobs **which are otherwise equivalent in terms of resources requested. <BR> <BR>If you have used a lot of resources in "public" partitions recently, (in the last week, especially over the last three days), your jobs will have a lower <em>priority</em> than those of someone who has consumed less.</p>
+</li>
+<li>
+<p>Sometimes the scheduler has calculated an estimated start date for your job. If so, it will be shown in the output of</p>
+</li>
+</ul>
 <div class="highlight"><span class="filename">Start time estimate</span><pre><span></span><code>squeue<span class="w"> </span>--me<span class="w"> </span>--start
 </code></pre></div>
-<h2 id="overview-the-problem">Overview - The Problem<a class="headerlink" href="#overview-the-problem" title="Anchor link to this section for reference">&para;</a></h2>
+<h2 id="overview-the-scheduling-problem">Overview - The Scheduling Problem<a class="headerlink" href="#overview-the-scheduling-problem" title="Anchor link to this section for reference">&para;</a></h2>
 <p>A job consists of at least three resources:<br></p>
 <ul>
 <li>maximum job duration (<strong>time</strong>),<br></li>
@@ -6628,7 +6643,7 @@
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="September 23, 2026 06:00:49 UTC">September 23, 2026</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="November 17, 2026 05:49:15 UTC">November 17, 2026</span>
   </span>
 
     

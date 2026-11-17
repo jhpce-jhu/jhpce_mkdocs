@@ -6223,81 +6223,82 @@
 
   <h1>All pending reasons</h1>
 
-<p>AssocGrp*Limit
+<p>Two underscores indicate multiple variants.</p>
+<p><strong>AssocGrp__Limit</strong> - 
 The job's association has reached an aggregate limit on some resource.</p>
-<p>AssociationJobLimit
+<p><strong>AssociationJobLimit</strong> - 
 The job's association has reached its maximum job count.</p>
-<p>AssocMax*Limit
+<p><strong>AssocMax__Limit</strong> - 
 The job requests a resource that violates a per-job limit on the requested association.</p>
-<p>AssociationResourceLimit
+<p><strong>AssociationResourceLimit</strong> - 
 The job's association has reached some resource limit.</p>
-<p>AssociationTimeLimit
+<p><strong>AssociationTimeLimit</strong> - 
 The job's association has reached its time limit.</p>
-<p>BadConstraints
+<p><strong>BadConstraints</strong> - 
 The job's constraints can not be satisfied.</p>
-<p>BeginTime
+<p><strong>BeginTime</strong> - 
 The job's earliest start time has not yet been reached.</p>
-<p>Cleaning
+<p><strong>Cleaning</strong> - 
 The job is being requeued and still cleaning up from its previous execution.</p>
-<p>Dependency
+<p><strong>Dependency</strong> - 
 This job has a dependency on another job that has not been satisfied.</p>
-<p>DependencyNeverSatisfied
+<p><strong>DependencyNeverSatisfied</strong> - 
 This job has a dependency on another job that will never be satisfied.</p>
-<p>FrontEndDown
+<p><strong>FrontEndDown</strong> - 
 No front end node is available to execute this job.</p>
-<p>InactiveLimit
+<p><strong>InactiveLimit</strong> - 
 The job reached the system InactiveLimit.</p>
-<p>InvalidAccount
+<p><strong>InvalidAccount</strong> - 
 The job's account is invalid.</p>
-<p>InvalidQOS
+<p><strong>InvalidQOS</strong> - 
 The job's QOS is invalid.</p>
-<p>JobHeldAdmin
+<p><strong>JobHeldAdmin</strong> - 
 The job is held by a system administrator.</p>
-<p>JobHeldUser
+<p><strong>JobHeldUser</strong> - 
 The job is held by the user.</p>
-<p>JobLaunchFailure
+<p><strong>JobLaunchFailure</strong> - 
 The job could not be launched. This may be due to a file system problem, invalid program name, etc.</p>
-<p>Licenses
+<p><strong>Licenses</strong> - 
 The job is waiting for a license.</p>
-<p>NodeDown
+<p><strong>NodeDown</strong> - 
 A node required by the job is down.</p>
-<p>NonZeroExitCode
+<p><strong>NonZeroExitCode</strong> - 
 The job terminated with a non-zero exit code.</p>
-<p>PartitionDown
+<p><strong>PartitionDown</strong> - 
 The partition required by this job is in a DOWN state.</p>
-<p>PartitionInactive
+<p><strong>PartitionInactive</strong> - 
 The partition required by this job is in an Inactive state and not able to start jobs.</p>
-<p>PartitionNodeLimit
+<p><strong>PartitionNodeLimit</strong> - 
 The number of nodes required by this job is outside of its partition's current limits. Can also indicate that required nodes are DOWN or DRAINED.</p>
-<p>PartitionTimeLimit
+<p><strong>PartitionTimeLimit</strong> - 
 The job's time limit exceeds its partition's current time limit.</p>
-<p>Priority
+<p><strong>Priority</strong> - 
 One or more higher priority jobs exist for this partition or advanced reservation.</p>
-<p>Prolog
+<p><strong>Prolog</strong> - 
 Its PrologSlurmctld program is still running.</p>
-<p>QOSGrp*Limit
+<p><strong>QOSGrp__Limit</strong> - 
 The job's QOS has reached an aggregate limit on some resource.</p>
-<p>QOSJobLimit
+<p><strong>QOSJobLimit</strong> - 
 The job's QOS has reached its maximum job count.</p>
-<p>QOSMax*Limit
+<p><strong>QOSMax__Limit</strong> - 
 The job requests a resource that violates a per-job limit on the requested QOS.</p>
-<p>QOSResourceLimit
+<p><strong>QOSResourceLimit</strong> - 
 The job's QOS has reached some resource limit.</p>
-<p>QOSTimeLimit
+<p><strong>QOSTimeLimit</strong> - 
 The job's QOS has reached its time limit.</p>
-<p>QOSUsageThreshold
+<p><strong>QOSUsageThreshold</strong> - 
 Required QOS threshold has been breached.</p>
-<p>ReqNodeNotAvail
+<p><strong>ReqNodeNotAvail</strong> - 
 Some node specifically required by the job is not currently available. The node may currently be in use, reserved for another job, in an advanced reservation, DOWN, DRAINED, or not responding. Nodes which are DOWN, DRAINED, or not responding will be identified as part of the job's "reason" field as "UnavailableNodes". Such nodes will typically require the intervention of a system administrator to make available.</p>
-<p>Reservation
+<p><strong>Reservation</strong> - 
 The job is waiting its advanced reservation to become available.</p>
-<p>Resources
+<p><strong>Resources</strong> - 
 The job is waiting for resources to become available.</p>
-<p>SystemFailure
+<p><strong>SystemFailure</strong> - 
 Failure of the Slurm system, a file system, the network, etc.</p>
-<p>TimeLimit
+<p><strong>TimeLimit</strong> - 
 The job exhausted its time limit.</p>
-<p>WaitingForScheduling
+<p><strong>WaitingForScheduling</strong> - 
 No reason has been set for this job yet. Waiting for the scheduler to determine the appropriate reason.</p>
 
 
@@ -6319,7 +6320,7 @@ No reason has been set for this job yet. Waiting for the scheduler to determine 
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="May 3, 2024 01:56:22 UTC">May 3, 2024</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="November 17, 2026 05:49:15 UTC">November 17, 2026</span>
   </span>
 
     
