@@ -2,27 +2,29 @@
 tags:
   - slurm
 ---
-# Factors Affecting Job Scheduling
+# When Will My Job Start?
+
+A variety of factors affect job scheduling. One or more of them are the reason your job does not transition from SLURM's `PENDING` to `RUNNING` job state.
 
 ## TL;DR
 
-Request the smallest and/or fewest resources which will allow your job to run to completion.
+- **Identify the reason:** Look at the “Reason” column of the output of `squeue --me`. Read [this list](../slurm/about-jobs.md#pending-job-reasons) about the meanings & things you can do.
 
-Choose the appropriate partition for your work. Partitions have different rules, which are explained [here](../slurm/partitions.md).
+- **How busy is the cluster?** The `slurmpic` command can provide insight into this in both the broad and specific senses. [This page](../slurm/slurmpic.md) describes the command and its output.  If you specified a partition, then use `slurmpic -p <partition_name>` to see what it has available at the moment.
 
-"Smaller" jobs "fit" into more slots between other jobs than "larger" jobs, so request only the resources you need. You might also consider whether you can divide up your work. You might also want to direct your job to the most appropriate partition. For example, the JHPCE cluster has an "interactive" partition for small jobs.
+- **Request the fewest resources** (cpu, ram, time) which will allow your job to run to completion. "Smaller" jobs "fit" into more slots between other jobs than "larger" jobs, so request only the resources you need, including the job duration (which defaults to one day in many cases). You might want to divide up your work into portions. [Job dependencies](../slurm/crafting-jobs.md#dependent-jobs) can be used to control the sequence in which related jobs run.
 
-Understand that we have implemented various policies which impact the ordering of jobs which are otherwise equivalent in terms of resources requested. 
+- **Choose the appropriate partition for your work.** Partitions have different rules, which are explained [here](../slurm/partitions.md). Your job may be better-suited for a different one than you chose. For example, the JHPCE cluster has several partitions for smaller jobs: `interactive`, `interactive-larger` and `scavenge`. If you are a member of a group which owns some nodes, then you may want to choose between the default `shared` one used by everyone and the "private" partition(s) meant for your group.
 
-If you have used a lot of resources in public partitions recently, (in the last week, especially over the last three days), your jobs will have a lower _priority_ than those of someone who has consumed less.
+- Understand that we have implemented various **policies which impact the ordering of jobs **which are otherwise equivalent in terms of resources requested. <BR> <BR>If you have used a lot of resources in "public" partitions recently, (in the last week, especially over the last three days), your jobs will have a lower _priority_ than those of someone who has consumed less.
 
-If the scheduler has been able to determine an estimated start date for your job, it will be shown in the output of
+- Sometimes the scheduler has calculated an estimated start date for your job. If so, it will be shown in the output of
 
 ```Shell title="Start time estimate" linenums="0"
 squeue --me --start
 ```
 
-## Overview - The Problem
+## Overview - The Scheduling Problem
 
 A job consists of at least three resources:<br>
 
@@ -43,7 +45,6 @@ Over the decades, organizations using tools like SLURM have desired both<br>
 
 * the highest efficiency utilization of available hardware, and<br>
 * the ability to set policies about who gets which resources, and in what order.
-
 
 ## Our Choices
 
