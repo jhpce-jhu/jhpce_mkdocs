@@ -69,9 +69,9 @@ This tactic is useful for several cases:
 
 - If you are elible to use a PI partition, you might include your PI partition and shared.
 
-!!! Warning "Batch jobs becp,e locked into one partition"
-    All of the members of array jobs will be run into the first partition chosen for the first element. This sad fact means you cannot trivially spread child jobs around for maximum throughput. You might consider breaking your array down into chunks and submit each to one or multiple partitions.
-    For example, if one had a 2,000 element array batch job, and they submitted it to shared and scavenge, and the first element ran on the scavenge partition, then the shared partition would never be used. The scavenge partition is described later, but here the thing to know is that it consists of only a few nodes.
+!!! Warning "Batch jobs become locked into one partition"
+    ==All of the members of array jobs will be run into the first partition chosen for the first element.== This sad fact means you cannot trivially spread child jobs around for maximum throughput. You might consider breaking your array down into chunks and submit each to one or multiple partitions.
+    For example, if one had a 2,000 element array batch job, and they submitted it to `shared` and `scavenge`, and the first element ran on the `scavenge` partition, then _the shared partition would never be used_. The scavenge partition is described later, but here the thing to know is that it consists of only a few nodes.
     (Technical note for systems administrators: Slurm job arrays lock into a single partition because the scheduler modifies the master job record during the initiation of the first task, replacing the original comma-separated list of partitions with the specific partition that allowed the task to start first. Subsequent tasks in the array then inherit this single partition, preventing them from utilizing other, potentially idle partitions originally requested.)
 
 ## Getting Info About Partitions
