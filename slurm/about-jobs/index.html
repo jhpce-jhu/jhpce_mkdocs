@@ -21,7 +21,7 @@
       
       
       <link rel="icon" href="../../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.8.1">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.8.2">
     
     
       
@@ -4191,7 +4191,7 @@
   <span class="md-ellipsis">
     
   
-    Cmd tips and reference
+    Most useful cmds
   
 
     
@@ -6773,17 +6773,12 @@ When specifying a job to a SLURM program like <code>scontrol</code> or reading o
 <tr>
 <td><strong>Dependency</strong></td>
 <td>Job waiting on a user-defined dependency</td>
-<td>See why with <code>showjob &lt;jobid&gt;|grep -i depend</code></td>
+<td>See why with <code>showjob &lt;jobid&gt; | grep -i depend</code></td>
 </tr>
 <tr>
 <td><strong>DependencyNeverSatisfied</strong></td>
 <td>Something went wrong</td>
-<td>You should investigate why. Did</td>
-</tr>
-<tr>
-<td>you make a typo or a logical mistake in terms of relationships &amp; ordering?</td>
-<td></td>
-<td></td>
+<td>You should investigate why. Did you make a typo or a logical mistake in terms of relationships &amp; job sequencing?</td>
 </tr>
 <tr>
 <td><strong>JobArrayTaskLimit</strong></td>
@@ -6828,7 +6823,7 @@ When specifying a job to a SLURM program like <code>scontrol</code> or reading o
 <tr>
 <td><strong>Reservation</strong></td>
 <td>Job waiting for its advanced reservation to become available</td>
-<td>Rare.</td>
+<td>Rare, as we haven't defined any recurring reservations.</td>
 </tr>
 <tr>
 <td><strong>Resources</strong></td>
@@ -6838,17 +6833,7 @@ When specifying a job to a SLURM program like <code>scontrol</code> or reading o
 <tr>
 <td><strong>ReqNodeNotAvail</strong></td>
 <td>Some node specifically required by the job is not currently available</td>
-<td>Usu seen when all nodes in a partition are unavailable.</td>
-</tr>
-<tr>
-<td>Otherwise you may have explicitly specified particular nodes, or excluded all of the other</td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>nodes which can run this job.</td>
-<td></td>
-<td></td>
+<td>Usu seen when all nodes in a partition are unavailable. Otherwise you may have explicitly specified particular nodes, or excluded all of the other nodes which can run this job.</td>
 </tr>
 </tbody>
 </table>
