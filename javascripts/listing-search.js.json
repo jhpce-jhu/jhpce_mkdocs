@@ -42,6 +42,20 @@
     "language": ""
   },
   {
+    "page_name": "FY2027Q1 Rates",
+    "page_url": "/aboutus/FY2027Q1-Rates/",
+    "text": "               queue      rate ($/GBhr)\n               bader      $0.005761\n              bstgpu      $0.009793\n             bstgpu2      $0.038509\n             bstgpu3      $0.035055\n               c-lau      $0.025441\n               c-sas      $0.040318\n            c-shared      $0.061868\n           cancergen      $0.006171\n             caracol      $0.008200\n                 cee      $0.006062\n            d-shared      $0.076182\n                 gee      $0.009109\n                 gpu      $0.021091\n            gpu-test      $0.008200\n             hongkai      $0.006264\n         interactive      $0.095802\n  interactive-larger      $0.012494\n               katun      $0.006416\n       local-scharpf      $0.006092\n            m-shared      $0.051560\n               momme      $0.003513\n            n-shared      $0.065642\n              neuron      $0.011643\n             rocky96      $0.085051\n            s-shared      $6.492433\n                 sas      $0.135057\n            scavenge      $0.020053\n              shared      $0.006756\n             stanley      $0.002709\n            transfer      $0.000000\n",
+    "html": "<pre><span></span><code>               queue      rate ($/GBhr)\n               bader      $0.005761\n              bstgpu      $0.009793\n             bstgpu2      $0.038509\n             bstgpu3      $0.035055\n               c-lau      $0.025441\n               c-sas      $0.040318\n            c-shared      $0.061868\n           cancergen      $0.006171\n             caracol      $0.008200\n                 cee      $0.006062\n            d-shared      $0.076182\n                 gee      $0.009109\n                 gpu      $0.021091\n            gpu-test      $0.008200\n             hongkai      $0.006264\n         interactive      $0.095802\n  interactive-larger      $0.012494\n               katun      $0.006416\n       local-scharpf      $0.006092\n            m-shared      $0.051560\n               momme      $0.003513\n            n-shared      $0.065642\n              neuron      $0.011643\n             rocky96      $0.085051\n            s-shared      $6.492433\n                 sas      $0.135057\n            scavenge      $0.020053\n              shared      $0.006756\n             stanley      $0.002709\n            transfer      $0.000000\n</code></pre>",
+    "language": ""
+  },
+  {
+    "page_name": "FY2027Q1 Rates",
+    "page_url": "/aboutus/FY2027Q1-Rates/",
+    "text": "dcs04             27.70\ndcs04-legacy      14.20\ndcs05             27.70\ndcs05-legacy      10.70\ndcs07             24.60\ndcs08(/users)    386.90\ndcs10             22.40\ndcs10-legacy       7.50\ndcs11             20.40\n",
+    "html": "<pre><span></span><code>dcs04             27.70\ndcs04-legacy      14.20\ndcs05             27.70\ndcs05-legacy      10.70\ndcs07             24.60\ndcs08(/users)    386.90\ndcs10             22.40\ndcs10-legacy       7.50\ndcs11             20.40\n</code></pre>",
+    "language": ""
+  },
+  {
     "page_name": "Overview",
     "page_url": "/access/access-overview/",
     "text": "graph TD\n   A[Your computer] --> B([Login nodes])\n   A[Your computer] -- Only via Hopkins/VPN --> D((Web Portal))\n   A[Your computer] --> C([Transfer node])\n   B([Login nodes]) --> E[Compute node1]\n   D((Web Portal)) --> E[Compute node1]\n   B([Login nodes]) --> F[Compute node2]\n   D((Web Portal)) --> F[Compute node2]\n   B([Login nodes]) --> G[Compute node3]\n   D((Web Portal)) --> G[Compute node3]\n   C([Transfer node]) <--> H[(storage servers)]",
