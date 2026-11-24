@@ -30,7 +30,6 @@ FY2027Q1 compute rates per queue/partition
             scavenge      $0.020053
               shared      $0.006756
              stanley      $0.002709
-            sysadmin      $15.180057
             transfer      $0.000000
 
 ```
