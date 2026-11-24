@@ -34,7 +34,7 @@ FY2027Q1 compute rates per queue/partition
 
 ```
 
-FY2026Q3 allocated storage rates - $/TB/yr
+FY2027Q1 allocated storage rates - $/TB/yr
 
 ```
 dcs04             27.70
