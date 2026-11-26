@@ -13,7 +13,7 @@ Most users use Claude interactively. (It can also be run in [batch mode](running
 Claude is a very powerful tool in aiding with software development and data analysis, but it can often try to be too helpful.  This is fine when working locally on an individual laptop, but on a shared system like JHPCE, this helpfulness can overreach boundaries and affect other users.
 
 ### Do not run claude on login servers
-Always run programs on compute nodes. The login servers are for small simple tasks.
+Always run claude on compute nodes.
 
 ### Control the scope of file searches
 
@@ -47,7 +47,7 @@ Here is an example Claude CLI session. It walks you through creating a simple Py
 
 - Before starting Claude, an API license must be acquired through the Claude web interface.
 - An API key is generated on the Claude web site and added to the file `~/.claude/settings.json` file
-- To run Claude, you will need to `srun` into a compute node, {==load the `node` module==}, and run the `claude` command.
+- To run Claude, you will need to `srun` into a compute node, {==load the `claude` module==}, and run the `claude` command.
 - Sessions run with workspace-write sandboxing and restricted network access.
 
 ### The Session

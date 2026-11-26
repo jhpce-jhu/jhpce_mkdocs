@@ -19,7 +19,7 @@ sacctmgr show user withassoc where name=$USER
 sacctmgr show qos
 
 # See our currently defined QOS in a readable format
-# (we created a script "showqos" to do this for you)
+# Use our "showqos" script for this task. It does something like:
 sacctmgr show qos format=Name%20,Priority,Flags%30,MaxWall,MaxTRESPU%20,MaxJobsPU,MaxSubmitPU,MaxTRESPA%25
 
 # See all users database values
@@ -33,9 +33,9 @@ sacctmgr show user withassoc where name=jsmith
 
 `sacctmgr` groups entities in various ways, which shows up in the components you have to use when constructing commands.  The primary entities you will use are User, Association, QOS, Account, and TRES.
 
-Like some SLURM commands, you can run the `sacctmgr` command to enter into its shell version. This is useful if you are exploring some situation, although you cannot paginate output. And other users cannot inspect account history to see what was done. The shell environment supports the use of ++arrow-up++ and ++arrow-down++ to get at the command history. Issuing the command "verbose" when in the interactive shell may display interesting info.
+Like some SLURM commands, you can run the `sacctmgr` command by itself to enter into its shell version. This is useful if you are exploring some situation, although you cannot paginate output, and your or other users cannot later inspect account history to see what was done. The shell environment supports the use of ++arrow-up++ and ++arrow-down++ to get at the command history. Issuing the command "verbose" when in the interactive shell may display interesting info.
 
-You can add the CLI flag "-i" to avoid the "are-you-sure" 30 second prompt and delay. Essential when scripting, such as when creating user accounts.
+You can add the CLI flag "-i" to avoid the "are-you-sure" 30 second prompt and delay. {==Essential when scripting, such as when creating user accounts==}.
 
 ### About clusters
 We currently have two clusters, named (as far as SLURM is concerned) "jhpce3" and "jade".  `sacctmgr` can support running commands on other clusters if they are cross-connected in terms of SLURM configuration. We don't do that here. Therefore you don't have to specify which cluster you want to consult/change, as we have a SLURM server for each cluster.
@@ -129,8 +129,8 @@ So you will normally see only a very small number of users who have multiple ass
 
 {==You MUST define flags=DenyOnLimit,OverPartQOS for a QOS to work as expected==}
 
-{==We now limit all partitions to 10,000 jobs per user. 
-Therefore every QOS needs `MaxSubmitJobsPU=10000`==}
+{==We now limit (essentially) all partitions to 10,000 jobs per user. 
+Therefore almost every QOS needs `MaxSubmitJobsPU=10000`==. (Some partitions use QOS whose MaxSubmitPU values are 0 (to deny all use) or small numbers like 2.)
 
 {==Note that the output field names displayed are not necessarily the same as the keywords used when modifying, e.g. MaxTRESPerUser is the keyword but the more concise MaxTRESPU is displayed.==}
 
@@ -401,11 +401,15 @@ sacctmgr list transactions Users=simmons
 sacctmgr list transactions Action="Add Users" Start=2025-01-01 End=2025-01-31 format=Where,Time%10
 ```
 
-### Elevated privileges
+### Elevated account privileges
 
 There are three levels: None (default), Operator, and Admin.
 
-"Operator" can manage database objects and reservations but not alter slurmctld configuration
+Adding Operator or Admin to a systems administrator account offers the advantages of not needing to become root to make changes, and to store in the sacctmgr command history the name of the person who made the change.
+
+"Operator" can manage database objects and reservations but not alter `slurmctld` configuration.
+
+"Admin" can do everything. 
 
 > sacctmgr modify user <username> set adminlevel=admin   
 

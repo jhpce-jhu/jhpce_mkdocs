@@ -17,27 +17,41 @@ written a page with advice about using the command, use the {==(LOCAL TIPS)==} l
 
 ## Locally Written Tools
 
-Many of these bash scripts. You can inspect their contents and if desired, make copies of them for yourself that are modified to suit you. There will also soon be bash routines defined in the default environment via either module files or the /etc/profile.d/ directory.  Most scripts have `-h` help options which will reveal more usage information.
+Many of these are bash scripts. You can inspect their contents and if desired, make copies of them for yourself that are modified to suit you. There will also soon be bash routines defined in the default environment via either module files or the /etc/profile.d/ directory.  Most scripts have `-h` or `--help` help flags which will reveal more usage information. (We have not written manual pages for any of these tools.)
 
-The command `which programname` is how you find out where it is located, if it is a program. If it is a bash routine, the same command will display the code of the routine. 
+The command `which <program_name>` is how you find out where it is located, if it is a program. If it is a bash routine, the same command will display the code of the routine. 
 
-### Information about cluster and jobs
+### The core local program to know
 
-* **slurmpic**: ***An essential program for getting cluster status info.*** Use -h option to see key usage details. By default, with no arguments, it provides info for the `shared` partition.
-* **slurmuser**: Provides a per-user list of CPU/RAM in use for running jobs and requested for pending jobs (if any). By default this is for all jobs in all partitions.
-* **qoverview**: Quick view into number of running, pending jobs on the whole cluster. Also counts the pending jobs in some primary reasons.
-* **showjob**: Displays job information when given a jobid. Only works for pending or running jobs. Currently simply a shortcut for `scontrol show job jobid --details` but hopefully in the future will produce more readable output.
-* **showqos**: Displays list of our [QOS definitions](../slurm/qos.md) in a readable format.
-* **showreason**: Show the Reason line from `showjob` for nodes that are in DRAIN or DOWN etc.
+* **slurmpic**: ***An essential program for getting cluster status info.*** Use -h option to see key usage details. By default, with no arguments, it provides info for the `shared` partition or the one defined in your `~/.slurm/defaults` file.
+ 
+### Information about the whole cluster
+
+* **slurmpic**: See above.
+* **list-partitions**: Does just that. See the website for partition specifics.
+* **showres**: Displays current reservations.
+* **showqos**: Displays list of our [QOS definitions](../slurm/qos.md) in a readable format. QOS' are used to control usage. For example the "shared" partition has a QOS which limits the number of CPU cores and amount of RAM each user can consume across the whole partition.
+
+### Information about jobs
+
+* **showjob**: Displays job information when given a jobid. Only works for pending or running jobs. (You need to use `sacct` to see past jobs.)
+* **jobson**: Displays running jobs running on a specified node.
+* **recentjobson**: Displays recent jobs ran on a node over a window you specify.
+* **useron**: List nodes where a user has running jobs.
+* **slurmuser**: Provides a per-user list of CPU/RAM in use (for running jobs) and requested (for pending jobs (if any) -- except array jobs!). By default this is for all jobs in all partitions. 
+* **qoverview**: Quick view into number of running, pending jobs on the whole cluster. Also counts the pending jobs by some of the primary reasons (e.g. Dependency versus Resources).
+* **smem**: Displays memory used by your currently running jobs. If given a jobid number, it will display info about the memory usage of that job.
+* memory reporting script - puts per-user output daily into directories under `/jhpce/shared/jhpce/jhpce-log/`
+* **showreason**: For nodes that are in DRAIN or DOWN etc kinds of abnormal "state", this displays the Reason line the master SLURM daemon assigned.
+
+### Historical resource use
+
+These use information from slurmpic which is archived. Not yet well-implemented in JADE.
+
 * **slurm-hist-all-cores**: Histogram of core consumption for whole cluster
 * **slurm-hist-all-mem**: Histogram of RAM consumption for whole cluster
 * **slurm-hist-shared-cores**: Histogram of core consumption for only the shared partition
 * **slurm-hist-shared-mem**: Histogram of RAM consumption for only the shared partition
-* **slurmuser**: Displays per-user summary usage of RAM & CPU across the cluster. Can display by partition or for a specific user.
-* **smem**: Displays memory used by your currently running jobs. If given a jobid number, it will display info about the memory usage of that job. (no man page yet)
-* memory reporting script - puts per-user output daily into directories under `/jhpce/shared/jhpce/jhpce-log/`
-* **useron**: List nodes where a user has running jobs.
-* **jobson**: Displays running jobs running on a node when given a three digit node number.
 
 ### Special purpose
 
