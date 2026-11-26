@@ -4083,10 +4083,43 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#information-about-cluster-and-jobs" class="md-nav__link">
+  <a href="#the-core-local-program-to-know" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Information about cluster and jobs
+        The core local program to know
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#information-about-the-whole-cluster" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Information about the whole cluster
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#information-about-jobs" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Information about jobs
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#historical-resource-use" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Historical resource use
       
     </span>
   </a>
@@ -4144,7 +4177,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#information-about-cluster-and-jobs_1" class="md-nav__link">
+  <a href="#information-about-cluster-and-jobs" class="md-nav__link">
     <span class="md-ellipsis">
       
         Information about cluster and jobs
@@ -6400,10 +6433,43 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#information-about-cluster-and-jobs" class="md-nav__link">
+  <a href="#the-core-local-program-to-know" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Information about cluster and jobs
+        The core local program to know
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#information-about-the-whole-cluster" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Information about the whole cluster
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#information-about-jobs" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Information about jobs
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#historical-resource-use" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Historical resource use
       
     </span>
   </a>
@@ -6461,7 +6527,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#information-about-cluster-and-jobs_1" class="md-nav__link">
+  <a href="#information-about-cluster-and-jobs" class="md-nav__link">
     <span class="md-ellipsis">
       
         Information about cluster and jobs
@@ -6525,25 +6591,38 @@ written a page with advice about using the command, use the <mark class="critic"
 <p>Ensure that programs limit calls to slurmctld to the minimum necessary for the information you are trying to gather. Add arguments to limit to needed partitions or users or job data fields, etcetera.</p>
 </div>
 <h2 id="locally-written-tools">Locally Written Tools<a class="headerlink" href="#locally-written-tools" title="Anchor link to this section for reference">&para;</a></h2>
-<p>Many of these bash scripts. You can inspect their contents and if desired, make copies of them for yourself that are modified to suit you. There will also soon be bash routines defined in the default environment via either module files or the /etc/profile.d/ directory.  Most scripts have <code>-h</code> help options which will reveal more usage information.</p>
-<p>The command <code>which programname</code> is how you find out where it is located, if it is a program. If it is a bash routine, the same command will display the code of the routine. </p>
-<h3 id="information-about-cluster-and-jobs">Information about cluster and jobs<a class="headerlink" href="#information-about-cluster-and-jobs" title="Anchor link to this section for reference">&para;</a></h3>
+<p>Many of these are bash scripts. You can inspect their contents and if desired, make copies of them for yourself that are modified to suit you. There will also soon be bash routines defined in the default environment via either module files or the /etc/profile.d/ directory.  Most scripts have <code>-h</code> or <code>--help</code> help flags which will reveal more usage information. (We have not written manual pages for any of these tools.)</p>
+<p>The command <code>which &lt;program_name&gt;</code> is how you find out where it is located, if it is a program. If it is a bash routine, the same command will display the code of the routine. </p>
+<h3 id="the-core-local-program-to-know">The core local program to know<a class="headerlink" href="#the-core-local-program-to-know" title="Anchor link to this section for reference">&para;</a></h3>
 <ul>
-<li><strong>slurmpic</strong>: <strong><em>An essential program for getting cluster status info.</em></strong> Use -h option to see key usage details. By default, with no arguments, it provides info for the <code>shared</code> partition.</li>
-<li><strong>slurmuser</strong>: Provides a per-user list of CPU/RAM in use for running jobs and requested for pending jobs (if any). By default this is for all jobs in all partitions.</li>
-<li><strong>qoverview</strong>: Quick view into number of running, pending jobs on the whole cluster. Also counts the pending jobs in some primary reasons.</li>
-<li><strong>showjob</strong>: Displays job information when given a jobid. Only works for pending or running jobs. Currently simply a shortcut for <code>scontrol show job jobid --details</code> but hopefully in the future will produce more readable output.</li>
-<li><strong>showqos</strong>: Displays list of our <a href="../qos/">QOS definitions</a> in a readable format.</li>
-<li><strong>showreason</strong>: Show the Reason line from <code>showjob</code> for nodes that are in DRAIN or DOWN etc.</li>
+<li><strong>slurmpic</strong>: <strong><em>An essential program for getting cluster status info.</em></strong> Use -h option to see key usage details. By default, with no arguments, it provides info for the <code>shared</code> partition or the one defined in your <code>~/.slurm/defaults</code> file.</li>
+</ul>
+<h3 id="information-about-the-whole-cluster">Information about the whole cluster<a class="headerlink" href="#information-about-the-whole-cluster" title="Anchor link to this section for reference">&para;</a></h3>
+<ul>
+<li><strong>slurmpic</strong>: See above.</li>
+<li><strong>list-partitions</strong>: Does just that. See the website for partition specifics.</li>
+<li><strong>showres</strong>: Displays current reservations.</li>
+<li><strong>showqos</strong>: Displays list of our <a href="../qos/">QOS definitions</a> in a readable format. QOS' are used to control usage. For example the "shared" partition has a QOS which limits the number of CPU cores and amount of RAM each user can consume across the whole partition.</li>
+</ul>
+<h3 id="information-about-jobs">Information about jobs<a class="headerlink" href="#information-about-jobs" title="Anchor link to this section for reference">&para;</a></h3>
+<ul>
+<li><strong>showjob</strong>: Displays job information when given a jobid. Only works for pending or running jobs. (You need to use <code>sacct</code> to see past jobs.)</li>
+<li><strong>jobson</strong>: Displays running jobs running on a specified node.</li>
+<li><strong>recentjobson</strong>: Displays recent jobs ran on a node over a window you specify.</li>
+<li><strong>useron</strong>: List nodes where a user has running jobs.</li>
+<li><strong>slurmuser</strong>: Provides a per-user list of CPU/RAM in use (for running jobs) and requested (for pending jobs (if any) -- except array jobs!). By default this is for all jobs in all partitions. </li>
+<li><strong>qoverview</strong>: Quick view into number of running, pending jobs on the whole cluster. Also counts the pending jobs by some of the primary reasons (e.g. Dependency versus Resources).</li>
+<li><strong>smem</strong>: Displays memory used by your currently running jobs. If given a jobid number, it will display info about the memory usage of that job.</li>
+<li>memory reporting script - puts per-user output daily into directories under <code>/jhpce/shared/jhpce/jhpce-log/</code></li>
+<li><strong>showreason</strong>: For nodes that are in DRAIN or DOWN etc kinds of abnormal "state", this displays the Reason line the master SLURM daemon assigned.</li>
+</ul>
+<h3 id="historical-resource-use">Historical resource use<a class="headerlink" href="#historical-resource-use" title="Anchor link to this section for reference">&para;</a></h3>
+<p>These use information from slurmpic which is archived. Not yet well-implemented in JADE.</p>
+<ul>
 <li><strong>slurm-hist-all-cores</strong>: Histogram of core consumption for whole cluster</li>
 <li><strong>slurm-hist-all-mem</strong>: Histogram of RAM consumption for whole cluster</li>
 <li><strong>slurm-hist-shared-cores</strong>: Histogram of core consumption for only the shared partition</li>
 <li><strong>slurm-hist-shared-mem</strong>: Histogram of RAM consumption for only the shared partition</li>
-<li><strong>slurmuser</strong>: Displays per-user summary usage of RAM &amp; CPU across the cluster. Can display by partition or for a specific user.</li>
-<li><strong>smem</strong>: Displays memory used by your currently running jobs. If given a jobid number, it will display info about the memory usage of that job. (no man page yet)</li>
-<li>memory reporting script - puts per-user output daily into directories under <code>/jhpce/shared/jhpce/jhpce-log/</code></li>
-<li><strong>useron</strong>: List nodes where a user has running jobs.</li>
-<li><strong>jobson</strong>: Displays running jobs running on a node when given a three digit node number.</li>
 </ul>
 <h3 id="special-purpose">Special purpose<a class="headerlink" href="#special-purpose" title="Anchor link to this section for reference">&para;</a></h3>
 <ul>
@@ -6564,7 +6643,7 @@ written a page with advice about using the command, use the <mark class="critic"
 <li><a href="https://slurm.schedmd.com/archive/slurm-22.05.9/sbatch.html">sbatch</a>: submit a batch script to Slurm to create an allocation and run processes</li>
 <li><a href="https://slurm.schedmd.com/archive/slurm-22.05.9/srun.html">srun</a>: launch one or more tasks of an application using allocated resources</li>
 </ul>
-<h3 id="information-about-cluster-and-jobs_1">Information about cluster and jobs<a class="headerlink" href="#information-about-cluster-and-jobs_1" title="Anchor link to this section for reference">&para;</a></h3>
+<h3 id="information-about-cluster-and-jobs">Information about cluster and jobs<a class="headerlink" href="#information-about-cluster-and-jobs" title="Anchor link to this section for reference">&para;</a></h3>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
 <p><strong>Do not frequently<sup id="fnref2:1"><a class="footnote-ref" href="#fn:1">1</a></sup> run slurmpic, squeue, sacct or other Slurm client commands using loops in shell scripts or other programs.</strong> </p>
@@ -6625,7 +6704,7 @@ written a page with advice about using the command, use the <mark class="critic"
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="August 5, 2024 21:15:58 UTC">August 5, 2024</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="November 26, 2026 00:34:13 UTC">November 26, 2026</span>
   </span>
 
     

@@ -8630,7 +8630,7 @@ sacctmgr show user withassoc where name=$USER
 sacctmgr show qos
 
 # See our currently defined QOS in a readable format
-# (we created a script "showqos" to do this for you)
+# Use our "showqos" script for this task. It does something like:
 sacctmgr show qos format=Name%20,Priority,Flags%30,MaxWall,MaxTRESPU%20,MaxJobsPU,MaxSubmitPU,MaxTRESPA%25
 
 # See all users database values

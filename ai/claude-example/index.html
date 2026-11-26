@@ -6730,7 +6730,7 @@
 <h2 id="important-warnings-about-using-claude-on-jhpce">Important warnings about using Claude on JHPCE<a class="headerlink" href="#important-warnings-about-using-claude-on-jhpce" title="Anchor link to this section for reference">&para;</a></h2>
 <p>Claude is a very powerful tool in aiding with software development and data analysis, but it can often try to be too helpful.  This is fine when working locally on an individual laptop, but on a shared system like JHPCE, this helpfulness can overreach boundaries and affect other users.</p>
 <h3 id="do-not-run-claude-on-login-servers">Do not run claude on login servers<a class="headerlink" href="#do-not-run-claude-on-login-servers" title="Anchor link to this section for reference">&para;</a></h3>
-<p>Always run programs on compute nodes. The login servers are for small simple tasks.</p>
+<p>Always run claude on compute nodes.</p>
 <h3 id="control-the-scope-of-file-searches">Control the scope of file searches<a class="headerlink" href="#control-the-scope-of-file-searches" title="Anchor link to this section for reference">&para;</a></h3>
 <p><mark class="critic">Please be sure to restrict Claude file access to only your home directory or project directories</mark> that your group has access to.  Please do not let Claude search for files on the entire system, or in whole file systems such as ""/users/"" or a project allocation space like "/dcs10", as this will put an undue load on the storage arrays, and impact the performance of the cluster for all users.</p>
 <h3 id="dangerously-skip-permissions">dangerously-skip-permissions<a class="headerlink" href="#dangerously-skip-permissions" title="Anchor link to this section for reference">&para;</a></h3>
@@ -6754,7 +6754,7 @@
 <ul>
 <li>Before starting Claude, an API license must be acquired through the Claude web interface.</li>
 <li>An API key is generated on the Claude web site and added to the file <code>~/.claude/settings.json</code> file</li>
-<li>To run Claude, you will need to <code>srun</code> into a compute node, <mark class="critic">load the <code>node</code> module</mark>, and run the <code>claude</code> command.</li>
+<li>To run Claude, you will need to <code>srun</code> into a compute node, <mark class="critic">load the <code>claude</code> module</mark>, and run the <code>claude</code> command.</li>
 <li>Sessions run with workspace-write sandboxing and restricted network access.</li>
 </ul>
 <h3 id="the-session">The Session<a class="headerlink" href="#the-session" title="Anchor link to this section for reference">&para;</a></h3>
@@ -6946,7 +6946,7 @@ The --output-format json on the main claude -p call also returns total_cost_usd 
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="November 15, 2026 07:29:57 UTC">November 15, 2026</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="November 26, 2026 00:34:13 UTC">November 26, 2026</span>
   </span>
 
     
