@@ -8660,7 +8660,9 @@ sacctmgr -i add qos c-shared
 # You MUST define these flags for the QOS to work as expected
 sacctmgr -i modify qos c-shared set flags=DenyOnLimit,OverPartQOS
 
-# We limit all partitions to 10,000 jobs per user to prevent craziness
+# We limit almost all partitions to 10,000 jobs per user to prevent users from
+# controlling the cluster. slurmctld can only support something less than 100,000
+# jobs because of its RAM limits).
 # (We also add that limit to the "normal" QOS when setting up a cluster.)
 sacctmgr -i modify qos c-shared set MaxSubmitJobsPU=10000
 
